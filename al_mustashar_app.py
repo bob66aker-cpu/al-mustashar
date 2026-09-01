@@ -44,23 +44,35 @@ def get_clean_shield_base64(image_path):
 
 shield_b64 = get_clean_shield_base64("shield_logo.png")
 
-# 2. تخصيص المظهر وتنسيق النصوص وحماية الواجهة من أدوات المطور
+# 2. تخصيص المظهر وتنسيق النصوص وحماية الواجهة وإخفاء كافة أيقونات المنصة
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap');
     
-    /* ========================================== */
-    /* 🛡️ حماية الواجهة وإخفاء شريط أدوات المطور  */
-    /* ========================================== */
+    /* ========================================================= */
+    /* 🛡️ حماية الواجهة وإخفاء الشريط السفلي وأيقونات الزاوية   */
+    /* ========================================================= */
     #MainMenu {visibility: hidden !important; display: none !important;}
     footer {visibility: hidden !important; display: none !important;}
     header {visibility: hidden !important; display: none !important;}
     
-    /* إخفاء الخانة السوداء والشريط السفلي كلياً */
+    /* إخفاء الشريط السفلي والخانة السوداء */
     div[data-testid="stToolbar"] {visibility: hidden !important; display: none !important;}
     div[data-testid="stDecoration"] {visibility: hidden !important; display: none !important;}
     div[data-testid="stStatusWidget"] {visibility: hidden !important; display: none !important;}
     #MainMenu, footer, header, .stAppHeader, [data-testid="stHeader"] {display: none !important; opacity: 0 !important;}
+    
+    /* إخفاء الأيقونة الحمراء والشعار في زاوية الشاشة السفلى */
+    .viewerBadge_container__1s523, 
+    [data-testid="stStatusWidget"],
+    a[href*="streamlit.io"],
+    div[class*="viewerBadge"],
+    .viewerBadge_link__1S137,
+    div[data-testid="stAppViewBlockContainer"] + div {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+    }
     
     html, body, [class*="css"], .stMarkdown, p, h1, h2, h3, h4, span, label, button {
         font-family: 'Cairo', sans-serif !important;

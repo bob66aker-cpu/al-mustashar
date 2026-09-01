@@ -111,7 +111,7 @@ st.markdown("""
     .share-fb { background-color: #1877F2; }
     .share-tg { background-color: #0088cc; }
     
-    /* صندوق معلومات المطور البديل عن الـ expander */
+    /* صندوق المعلومات والملاحظات */
     .custom-box {
         background-color: #f8f9fa;
         border: 1px solid #e9ecef;
@@ -164,18 +164,31 @@ def load_data():
 
 df_pesticides = load_data()
 
-# 5. الواجهة العلوية مع أيقونة الدرع المباشرة 🛡️
+# 5. الواجهة العلوية مع صورة الدرع الذهبي المخصصة
+st.markdown('<div class="app-header">', unsafe_allow_html=True)
+
+col_logo, col_title = st.columns([1, 4])
+
+with col_logo:
+    if os.path.exists("shield_logo.png"):
+        st.image("shield_logo.png", width=75)
+    else:
+        st.write("🛡️")
+
+with col_title:
+    st.markdown("""
+        <h1 style="margin:0; padding:0; text-align:right;">المستشار الزراعي</h1>
+        <p style="margin:0; text-align:right;">منظومة تدقيق المبيدات والمواد الفعالة - دولة ليبيا</p>
+    """, unsafe_allow_html=True)
+
 st.markdown("""
-<div class="app-header">
-    <h1>المستشار الزراعي 🛡️</h1>
-    <p>منظومة تدقيق المبيدات والمواد الفعالة - دولة ليبيا</p>
     <div class="motto-box">
         <span class="motto-text">« على قدر المعرفة تأتي المسؤولية »</span>
     </div>
 </div>
 """, unsafe_allow_html=True)
 
-# 6. بطاقة معلومات التطبيق والمطور (حل التداخل بإلغاء expander واستخدام زر إظهار/إخفاء نظيف)
+# 6. بطاقة معلومات التطبيق والمطور
 APP_URL = "https://al-mustashar-ly.streamlit.app"
 text_to_share = "تطبيق المستشار الزراعي - دليل تدقيق المبيدات والمواد الفعالة المحظورة والمسموحة في ليبيا:"
 
@@ -259,7 +272,7 @@ CURRENT_MONTH = 9
 if "وضع المزارع" in mode:
     st.subheader("🧑‍🌾 بوابة الفحص السريع للمزارع")
     
-    tab_write, tab_camera = st.tabs(["✍️ البحث بالكتابة اليدوية", "📸 الفحص الذكي بالكاميرا"])
+    tab_write, tab_camera = st.tabs(["✍️ البحث بالكتابة اليدوية", "📸 الفحص الذكي بالكاميرا والصور"])
     
     found_substance = None
     scanned_expiry_date = None
@@ -296,9 +309,23 @@ if "وضع المزارع" in mode:
             st.warning("يرجى التأكد من رفع ملف قاعدة البيانات.")
             
     with tab_camera:
-        uploaded_image = st.camera_input("وجه الكاميرا نحو ملصق المادة الفعالة على العبوة 📷")
+        source_type = st.radio(
+            "اختر طريقة إدخال الصورة:",
+            ["📸 التقاط مباشر بالكاميرا", "🖼️ رفع صورة من الاستوديو / الملفات"],
+            horizontal=True,
+            key="camera_source_radio"
+        )
+        
+        uploaded_image = None
+        
+        if "التقاط مباشر" in source_type:
+            st.info("💡 **ملاحظة للهواتف:** فتح الكاميرا الخلفية تلقائياً. تأكد من وضوح الإضاءة والتركيز على الملصق.")
+            uploaded_image = st.camera_input("وجه الكاميرا نحو ملصق العبوة 📷", key="pesticide_cam")
+        else:
+            uploaded_image = st.file_uploader("اختر صورة الملصق من الاستوديو أو الملفات:", type=["jpg", "jpeg", "png"], key="pesticide_file")
+
         if uploaded_image:
-            st.write("🔄 جاري تحليل النصوص والتواريخ...")
+            st.write("🔄 جاري تحليل النصوص والتواريخ عبر الذكاء الاصطناعي...")
             try:
                 import easyocr
                 reader = easyocr.Reader(['en'], gpu=False)

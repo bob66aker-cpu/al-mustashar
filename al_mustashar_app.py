@@ -44,15 +44,23 @@ def get_clean_shield_base64(image_path):
 
 shield_b64 = get_clean_shield_base64("shield_logo.png")
 
-# 2. تخصيص المظهر وتنسيق النصوص
+# 2. تخصيص المظهر وتنسيق النصوص وحماية الواجهة من أدوات المطور
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap');
     
-    #MainMenu {visibility: hidden;}
-    footer {visibility: hidden;}
-    header {visibility: hidden;}
-    div[data-testid="stToolbar"] {visibility: hidden;}
+    /* ========================================== */
+    /* 🛡️ حماية الواجهة وإخفاء شريط أدوات المطور  */
+    /* ========================================== */
+    #MainMenu {visibility: hidden !important; display: none !important;}
+    footer {visibility: hidden !important; display: none !important;}
+    header {visibility: hidden !important; display: none !important;}
+    
+    /* إخفاء الخانة السوداء والشريط السفلي كلياً */
+    div[data-testid="stToolbar"] {visibility: hidden !important; display: none !important;}
+    div[data-testid="stDecoration"] {visibility: hidden !important; display: none !important;}
+    div[data-testid="stStatusWidget"] {visibility: hidden !important; display: none !important;}
+    #MainMenu, footer, header, .stAppHeader, [data-testid="stHeader"] {display: none !important; opacity: 0 !important;}
     
     html, body, [class*="css"], .stMarkdown, p, h1, h2, h3, h4, span, label, button {
         font-family: 'Cairo', sans-serif !important;
@@ -470,7 +478,7 @@ if "وضع المزارع" in mode:
 else:
     st.subheader("👮‍♂️ بوابة الضبط والتفتيش والمهندسين الزراعيين")
     
-    show_guide = st.checkbox("🔍 عرض دليل كشف تلاعب وغش تواريخ الصلاحية (ل للمفتشين)")
+    show_guide = st.checkbox("🔍 عرض دليل كشف تلاعب وغش تواريخ الصلاحية (للمفتشين)")
     if show_guide:
         st.markdown("""
         <div class="custom-box">
@@ -544,7 +552,7 @@ else:
             default_sub_name = selected_inspector_sub if selected_inspector_sub else "أدخل اسم المادة"
             selected_substance_manual = st.text_input("اسم المادة الفعالة المضبوطة:", default_sub_name)
             
-        if st.button("🖨️ توليد وحفظ تقرير ضبط وإثبات الحالة (PDF)"):
+        if st.button("🖨️ توليد وحفظ تقرير ضبط وإثبات حالة (PDF)"):
             try:
                 from fpdf import FPDF
                 import arabic_reshaper

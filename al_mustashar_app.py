@@ -15,7 +15,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-# 2. تخصيص المظهر والتنسيق
+# 2. تخصيص المظهر وتنسيق النصوص
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap');
@@ -110,6 +110,15 @@ st.markdown("""
     .share-wa { background-color: #25D366; }
     .share-fb { background-color: #1877F2; }
     .share-tg { background-color: #0088cc; }
+    
+    /* صندوق معلومات المطور البديل عن الـ expander */
+    .custom-box {
+        background-color: #f8f9fa;
+        border: 1px solid #e9ecef;
+        border-radius: 12px;
+        padding: 15px;
+        margin-bottom: 15px;
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -155,7 +164,7 @@ def load_data():
 
 df_pesticides = load_data()
 
-# 5. الواجهة العلوية مع إيموجي الدرع 🛡️
+# 5. الواجهة العلوية مع أيقونة الدرع المباشرة 🛡️
 st.markdown("""
 <div class="app-header">
     <h1>المستشار الزراعي 🛡️</h1>
@@ -166,11 +175,14 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# 6. بطاقة معلومات التطبيق (استخدام عنوان إنجليزي لمنع تداخل keyboard_arrow)
+# 6. بطاقة معلومات التطبيق والمطور (حل التداخل بإلغاء expander واستخدام زر إظهار/إخفاء نظيف)
 APP_URL = "https://al-mustashar-ly.streamlit.app"
 text_to_share = "تطبيق المستشار الزراعي - دليل تدقيق المبيدات والمواد الفعالة المحظورة والمسموحة في ليبيا:"
 
-with st.expander("ℹ️ About App & Developer Info | معلومات المطور والقرارات"):
+show_info = st.checkbox("ℹ️ عرض معلومات التطبيق والمطور والقرارات الرسمية وخيارات المشاركة")
+
+if show_info:
+    st.markdown('<div class="custom-box">', unsafe_allow_html=True)
     col_img, col_info = st.columns([1, 2])
     
     with col_img:
@@ -202,6 +214,7 @@ with st.expander("ℹ️ About App & Developer Info | معلومات المطو�
     
     <small>تطبيق إرشادي مستقل يهدف لخدمة المزارعين والشرطة الزراعية لتسهيل تطبيق القرارات الرسمية.</small>
     """, unsafe_allow_html=True)
+    st.markdown('</div>', unsafe_allow_html=True)
 
 # 7. وضع الاستخدام
 mode = st.radio(
@@ -387,14 +400,19 @@ if "وضع المزارع" in mode:
 else:
     st.subheader("👮‍♂️ بوابة الضبط والتفتيش والمهندسين الزراعيين")
     
-    with st.expander("🔍 Inspector Guide | دليل كشف تلاعب وغش التواريخ"):
+    show_guide = st.checkbox("🔍 عرض دليل كشف تلاعب وغش تواريخ الصلاحية (للمفتشين)")
+    if show_guide:
         st.markdown("""
-        ### 🛡️ علامات الغش والتلاعب بالتواريخ:
-        1. **اختلاف حبر الطباعة:** الحبر المزيف يسهل مسحه أو كشطه بالكحول.
-        2. **آثار الكشط:** وجود خدوش حول منطقة التاريخ بالعبوة.
-        3. **تطابق التشغيلة (Batch Number):** مطابقة التشغيلة مع الفواتير الأصلية.
-        4. **الترسبات والتكتل:** انفصال السائل أو تكتل البودرة دليل تلف المادة الفعالة.
-        """)
+        <div class="custom-box">
+            <h4>🛡️ علامات الغش والتلاعب بالتواريخ:</h4>
+            <ol>
+                <li><b>اختلاف حبر الطباعة:</b> الحبر المزيف يسهل مسحه أو كشطه بالكحول.</li>
+                <li><b>آثار الكشط:</b> وجود خدوش حول منطقة التاريخ بالعبوة.</li>
+                <li><b>تطابق التشغيلة (Batch Number):</b> مطابقة التشغيلة مع الفواتير الأصلية.</li>
+                <li><b>الترسبات والتكتل:</b> انفصال السائل أو تكتل البودرة دليل تلف المادة الفعالة.</li>
+            </ol>
+        </div>
+        """, unsafe_allow_html=True)
 
     if not df_pesticides.empty:
         substances_list_eng = [""] + sorted(df_pesticides["المادة الفعالة (Active Substance)"].dropna().unique().tolist())

@@ -26,7 +26,6 @@ def get_clean_shield_base64(image_path):
             
             new_data = []
             for item in datas:
-                # الكشف عن المربعات البيضاء والرمادية التابعة للخلفية الوهمية وتحويلها إلى شفافية
                 if item[0] > 180 and item[1] > 180 and item[2] > 180:
                     new_data.append((255, 255, 255, 0))
                 else:
@@ -44,34 +43,39 @@ def get_clean_shield_base64(image_path):
 
 shield_b64 = get_clean_shield_base64("shield_logo.png")
 
-# 2. تخصيص المظهر وتنسيق النصوص وحماية الواجهة وإخفاء كافة أيقونات المنصة
+# 2. تخصيص المظهر وتنسيق النصوص وحماية الواجهة وإخفاء كافة أيقونات المنصة نهائياً
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap');
     
     /* ========================================================= */
-    /* 🛡️ حماية الواجهة وإخفاء الشريط السفلي وأيقونات الزاوية   */
+    /* 🛡️ إخفاء الشعارين وأيقونات Streamlit في الزاوية نهائياً    */
     /* ========================================================= */
     #MainMenu {visibility: hidden !important; display: none !important;}
     footer {visibility: hidden !important; display: none !important;}
     header {visibility: hidden !important; display: none !important;}
     
-    /* إخفاء الشريط السفلي والخانة السوداء */
+    /* إخفاء القوائم والشريط السفلي */
     div[data-testid="stToolbar"] {visibility: hidden !important; display: none !important;}
     div[data-testid="stDecoration"] {visibility: hidden !important; display: none !important;}
     div[data-testid="stStatusWidget"] {visibility: hidden !important; display: none !important;}
     #MainMenu, footer, header, .stAppHeader, [data-testid="stHeader"] {display: none !important; opacity: 0 !important;}
     
-    /* إخفاء الأيقونة الحمراء والشعار في زاوية الشاشة السفلى */
+    /* إخفاء الأيقونة الحمراء وشعار المنصة ومنع الضغط عليهما */
     .viewerBadge_container__1s523, 
+    .viewerBadge_link__1S137,
     [data-testid="stStatusWidget"],
     a[href*="streamlit.io"],
     div[class*="viewerBadge"],
-    .viewerBadge_link__1S137,
-    div[data-testid="stAppViewBlockContainer"] + div {
+    div[class*="styles_viewerBadge"],
+    div[data-testid="stAppViewBlockContainer"] + div,
+    #root > div:nth-child(1) > div:nth-child(2) > div {
         display: none !important;
         visibility: hidden !important;
         opacity: 0 !important;
+        pointer-events: none !important;
+        height: 0 !important;
+        width: 0 !important;
     }
     
     html, body, [class*="css"], .stMarkdown, p, h1, h2, h3, h4, span, label, button {

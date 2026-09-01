@@ -114,13 +114,29 @@ download_arabic_font()
 @st.cache_data
 def load_data():
     csv_file = "pesticides_database_for_app.csv"
+    # إذا لم يجد الملف بالامتداد .csv، نبحث عنه بدون امتداد في حال تم رفعه بدون امتداد على GitHub
     if not os.path.exists(csv_file):
-        st.error("⚠️ ملف قاعدة البيانات `pesticides_database_for_app.csv` غير موجود بجوار هذا الملف البرمجي!")
+        csv_file = "pesticides_database_for_app"
+    
+    # وإذا لم يجده بكلا الاسمين، نبحث عن أي ملف يحتوي على كلمة pesticides_database
+    if not os.path.exists(csv_file):
+        all_files = os.listdir('.')
+        for f in all_files:
+            if "pesticides_database" in f:
+                csv_file = f
+                break
+
+    if not os.path.exists(csv_file):
+        st.error("⚠️ ملف قاعدة البيانات `pesticides_database_for_app.csv` غير موجود بجوار هذا الملف البرمجي! يرجى التأكد من رفع ملف قاعدة البيانات بالشكل الصحيح.")
         return pd.DataFrame()
     
-    df = pd.read_csv(csv_file)
-    df.columns = df.columns.str.replace('﻿', '').str.strip()
-    return df
+    try:
+        df = pd.read_csv(csv_file)
+        df.columns = df.columns.str.replace('﻿', '').str.strip()
+        return df
+    except Exception as e:
+        st.error(f"⚠️ حدث خطأ أثناء قراءة ملف قاعدة البيانات: {e}")
+        return pd.DataFrame()
 
 df_pesticides = load_data()
 

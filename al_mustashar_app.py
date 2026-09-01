@@ -49,19 +49,18 @@ st.markdown("""
     @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap');
     
     /* ========================================================= */
-    /* 🛡️ إخفاء الشعارين وأيقونات Streamlit في الزاوية نهائياً    */
+    /* 🛡️ إخفاء القوائم والشعارين وأيقونات Streamlit تماماً       */
     /* ========================================================= */
     #MainMenu {visibility: hidden !important; display: none !important;}
     footer {visibility: hidden !important; display: none !important;}
     header {visibility: hidden !important; display: none !important;}
     
-    /* إخفاء القوائم والشريط السفلي */
     div[data-testid="stToolbar"] {visibility: hidden !important; display: none !important;}
     div[data-testid="stDecoration"] {visibility: hidden !important; display: none !important;}
     div[data-testid="stStatusWidget"] {visibility: hidden !important; display: none !important;}
     #MainMenu, footer, header, .stAppHeader, [data-testid="stHeader"] {display: none !important; opacity: 0 !important;}
     
-    /* إخفاء الأيقونة الحمراء وشعار المنصة ومنع الضغط عليهما */
+    /* إخفاء الأيقونة الحمراء وشعار المنصة التراكمي في الزاوية */
     .viewerBadge_container__1s523, 
     .viewerBadge_link__1S137,
     [data-testid="stStatusWidget"],
@@ -69,7 +68,8 @@ st.markdown("""
     div[class*="viewerBadge"],
     div[class*="styles_viewerBadge"],
     div[data-testid="stAppViewBlockContainer"] + div,
-    #root > div:nth-child(1) > div:nth-child(2) > div {
+    #root > div:nth-child(1) > div:nth-child(2) > div,
+    iframe[title="data-testid"] {
         display: none !important;
         visibility: hidden !important;
         opacity: 0 !important;
@@ -255,7 +255,7 @@ st.markdown(f"""
 </div>
 """, unsafe_allow_html=True)
 
-# 6. بطاقة معلومات التطبيق والمطور
+# 6. بطاقة معلومات التطبيق والمطور (تم تعديل القرارات القانونية هنا)
 APP_URL = "https://al-mustashar-ly.streamlit.app"
 text_to_share = "تطبيق المستشار الزراعي - دليل تدقيق المبيدات والمواد الفعالة المحظورة والمسموحة في ليبيا:"
 
@@ -290,7 +290,7 @@ if show_info:
     st.markdown("""
     **📜 المرجعية القانونية والقرارات:**
     1. **المواد المحظورة:** قرار وزير الزراعة رقم **(248) لسنة 2024م**.
-    2. **المواد المسجلة والمسموحة:** قرارات وزير الزراعة رقم **(500) ورقم (467) لسنة 2026م**.
+    2. **المواد المسجلة والمسموحة:** قرار وزير الزراعة رقم **(500) لسنة 2026م**.
     
     <small>تطبيق إرشادي مستقل يهدف لخدمة المزارعين والشرطة الزراعية لتسهيل تطبيق القرارات الرسمية.</small>
     """, unsafe_allow_html=True)

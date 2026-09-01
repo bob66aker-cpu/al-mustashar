@@ -86,7 +86,8 @@ st.markdown("""
         color: #ffb300 !important;
         text-align: center;
         margin-top: 5px;
-        font-style: italic;\n    }
+        font-style: italic;
+    }
     
     /* إخفاء عناصر streamlit غير الضرورية للمظهر الاحترافي */
     #MainMenu {visibility: hidden;}
@@ -128,7 +129,7 @@ st.markdown("""
 <div class="app-header">
     <h1>تطبيق الـمُـسْـتَـشَـار 🌱</h1>
     <p>دليل المبيدات الزراعية والمواد الفعالة في ليبيا</p>
-    <div class="motto-text">\"على قدر المعرفة تأتي المسؤولية\"</div>
+    <div class="motto-text">"على قدر المعرفة تأتي المسؤولية"</div>
 </div>
 """, unsafe_allow_html=True)
 
@@ -190,7 +191,8 @@ def parse_date_from_text(text):
 CURRENT_YEAR = 2026
 CURRENT_MONTH = 9
 
-# ==================== 🧑‍🌾 أولاً: وضع المزارع البسيط ====================\nif "وضع المزارع" in mode:
+# ==================== 🧑‍🌾 أولاً: وضع المزارع البسيط ====================
+if "وضع المزارع" in mode:
     st.subheader("🧑‍🌾 بوابة الفحص السريع للمزارع")
     st.info("ابحث باسم المادة الفعالة بالإنجليزية المكتوبة على العبوة أو استخدم الكاميرا لقراءتها وتلوين الشاشة فوراً.")
     
@@ -277,7 +279,7 @@ CURRENT_MONTH = 9
             except ImportError:
                 st.error("⚠️ لم يتم تفعيل نظام الكاميرا الذكية (EasyOCR) على خادم الويب بعد. يرجى استخدام البحث اليدوي في الوقت الحالي.")
             except Exception as e:
-                st.error(f\"حدث خطأ أثناء فحص الصورة: {e}\")
+                st.error(f"حدث خطأ أثناء فحص الصورة: {e}")
 
     # --- عرض النتيجة الملونة للمزارع (الإشارة الضوئية الفورية) ---
     if found_substance is not None:
@@ -320,7 +322,8 @@ CURRENT_MONTH = 9
                 st.markdown(f"""
                 <div class="status-card status-red">
                     <h2>🔴 مادة محظورة وممنوعة تماماً! ❌</h2>
-                    <p style="font-size: 20px; font-weight: bold; margin: 10px 0;">{sub_name}</p>\n                    <p style="font-size: 16px;">ممنوع تركيبها، استيرادها، أو تداولها في دولة ليبيا نهائياً ويُعاقب عليها القانون.</p>
+                    <p style="font-size: 20px; font-weight: bold; margin: 10px 0;">{sub_name}</p>
+                    <p style="font-size: 16px;">ممنوع تركيبها، استيرادها، أو تداولها في دولة ليبيا نهائياً ويُعاقب عليها القانون.</p>
                     <p style="font-size: 14px; opacity: 0.9; margin-top: 15px;">⚠️ السند القانوني: قرار وزير الزراعة رقم 248 لعام 2024م</p>
                 </div>
                 """, unsafe_allow_html=True)
@@ -340,11 +343,13 @@ CURRENT_MONTH = 9
                 <div class="status-card status-yellow">
                     <h2>⚠️ مادة خاضعة للمراجعة والقيود (انتبه) ⚠️</h2>
                     <p style="font-size: 20px; font-weight: bold; margin: 10px 0;">{sub_name}</p>
-                    <p style="font-size: 16px;">{status}</p>\n                    <p style="font-size: 14px; opacity: 0.9; margin-top: 10px;"><b>تفصيل القانون:</b> {details}</p>
+                    <p style="font-size: 16px;">{status}</p>
+                    <p style="font-size: 14px; opacity: 0.9; margin-top: 10px;"><b>تفصيل القانون:</b> {details}</p>
                 </div>
                 """, unsafe_allow_html=True)
 
-# ==================== 👮‍♂️ ثانياً: وضع المهندس والمفتش ورجل الأمن ====================\nelse:
+# ==================== 👮‍♂️ ثانياً: وضع المهندس والمفتش ورجل الأمن ====================
+else:
     st.subheader("👮‍♂️ بوابة الضبط والتفتيش والمهندسين")
     st.info("تتيح هذه البوابة للمفتشين والشرطة الزراعية الحصول على المرجعية الفنية الكاملة وأرقام CAS والقرارات الرسمية لإصدار محاضر الضبط الفورية.")
     
@@ -412,7 +417,8 @@ CURRENT_MONTH = 9
         if st.button("🖨️ توليد وحفظ تقرير ضبط وإثبات الحالة (PDF)"):
             try:
                 from fpdf import FPDF
-                import arabic_reshaper\n                from bidi.algorithm import get_display
+                import arabic_reshaper
+                from bidi.algorithm import get_display
                 
                 pdf = FPDF()
                 pdf.add_page()
@@ -432,7 +438,8 @@ CURRENT_MONTH = 9
                 title_text = clean_ar("وزارة الزراعة والثروة الحيوانية - دولة ليبيا")
                 header_text = clean_ar("تقرير فني رسمي لإثبات حالة ضبط مخالفة مواد زراعية")
                 
-                pdf.cell(190, 10, txt=title_text, ln=True, align="C")\n                pdf.cell(190, 10, txt=header_text, ln=True, align="C")
+                pdf.cell(190, 10, txt=title_text, ln=True, align="C")
+                pdf.cell(190, 10, txt=header_text, ln=True, align="C")
                 pdf.line(10, 30, 200, 30)
                 pdf.ln(10)
                 

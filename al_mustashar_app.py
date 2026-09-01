@@ -227,25 +227,18 @@ if "وضع المزارع" in mode:
     with col_exp2:
         if has_expiry:
             expiry_date_input = st.date_input(
-                "تاريخ انتهاء الصلاحية المكتوب على العبوة:",
-                value=datetime(2026, 9, 1),
-                min_value=datetime(2020, 1, 1),
-                max_value=datetime(2035, 12, 31)
-            )
-            # مقارنة تاريخ اليوم (سبتمبر 2026) بالتاريخ المدخل
-            if expiry_date_input < datetime(2026, 9, 1):
-                manual_expiry_expired = True
-    
-    # --- التبويب الأول: البحث بالكتابة اليدوية ---
-    with tab_write:
-        if not df_pesticides.empty:
-            substances_list = [""] + sorted(df_pesticides["المادة الفعالة (Active Substance)"].dropna().unique().tolist())
-            search_input = st.selectbox(
-                "اختر أو اكتب اسم المادة الفعالة بالإنجليزية (Active Ingredient):",
-                substances_list,
-                index=0,
-                key="write_select"
-            )
+            # كود آمن لمعالجة مقارنة التاريخ
+import datetime
+
+# تأكيد تحويل المدخل إلى تاريخ فقط
+if isinstance(expiry_date_input, datetime.datetime):
+    check_date = expiry_date_input.date()
+else:
+    check_date = expiry_date_input
+
+# المقارنة الصحيحة
+if check_date < datetime.date(2026, 9, 1):
+    # كود التحذير أو انتهاء الصلاحية الخاص بك   
             if search_input:
                 found_substance = df_pesticides[df_pesticides["المادة الفعالة (Active Substance)"] == search_input].iloc[0]
         else:

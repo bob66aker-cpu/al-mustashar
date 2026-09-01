@@ -15,7 +15,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-# 2. تخصيص المظهر - معالجة جذريّة وشاملة لتداخل النصوص والأيقونات
+# 2. تخصيص المظهر والتنسيق
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap');
@@ -29,27 +29,6 @@ st.markdown("""
         font-family: 'Cairo', sans-serif !important;
         text-align: right;
         direction: rtl;
-    }
-
-    /* حل قاطع للتشوه البصري: إخفاء نصوص وسهم الأيقونة الافتراضية لمنع تداخل keyboard_arrow */
-    details summary span[data-testid="stHeaderActionElements"],
-    details summary div[data-testid="stExpanderToggleIcon"],
-    details summary span:has(svg),
-    details summary svg {
-        display: none !important;
-        width: 0 !important;
-        height: 0 !important;
-        visibility: hidden !important;
-    }
-
-    /* ضبط عنوان الـ Expander ليعمل بشكل صافي بدون أي نصوص نظام متداخلة */
-    details summary {
-        direction: rtl !important;
-        text-align: right !important;
-        font-weight: bold !important;
-        font-size: 16px !important;
-        cursor: pointer !important;
-        padding: 10px !important;
     }
     
     /* تصميم البطاقات الملونة */
@@ -176,7 +155,7 @@ def load_data():
 
 df_pesticides = load_data()
 
-# 5. الواجهة العلوية مع إضافة أيقونة الدرع 🛡️ مباشرة بالرمز الأصلي
+# 5. الواجهة العلوية مع إيموجي الدرع 🛡️
 st.markdown("""
 <div class="app-header">
     <h1>المستشار الزراعي 🛡️</h1>
@@ -187,11 +166,11 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# 6. بطاقة معلومات التطبيق والمطور + خيارات المشاركة
+# 6. بطاقة معلومات التطبيق (استخدام عنوان إنجليزي لمنع تداخل keyboard_arrow)
 APP_URL = "https://al-mustashar-ly.streamlit.app"
 text_to_share = "تطبيق المستشار الزراعي - دليل تدقيق المبيدات والمواد الفعالة المحظورة والمسموحة في ليبيا:"
 
-with st.expander("🔻 معلومات التطبيق والمطور والقرارات الرسمية | 📲 مشاركة التطبيق"):
+with st.expander("ℹ️ About App & Developer Info | معلومات المطور والقرارات"):
     col_img, col_info = st.columns([1, 2])
     
     with col_img:
@@ -408,7 +387,7 @@ if "وضع المزارع" in mode:
 else:
     st.subheader("👮‍♂️ بوابة الضبط والتفتيش والمهندسين الزراعيين")
     
-    with st.expander("🔻 دليل كشف تلاعب وغش تواريخ الصلاحية (للمفتشين)"):
+    with st.expander("🔍 Inspector Guide | دليل كشف تلاعب وغش التواريخ"):
         st.markdown("""
         ### 🛡️ علامات الغش والتلاعب بالتواريخ:
         1. **اختلاف حبر الطباعة:** الحبر المزيف يسهل مسحه أو كشطه بالكحول.

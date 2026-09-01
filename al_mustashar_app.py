@@ -225,7 +225,7 @@ if "وضع المزارع" in mode:
     with col_exp1:
         has_expiry = st.checkbox("أريد فحص صلاحية المبيد (تاريخ الانتهاء)", value=False)
     with col_exp2:
-        if has_expiry:
+         if has_expiry:
 expiry_date_input = st.date_input(
             "تاريخ انتهاء الصلاحية المكتوب على العبوة:",
             value=datetime(2026, 9, 1).date(),
@@ -235,7 +235,7 @@ expiry_date_input = st.date_input(
         
         # مقارنة التاريخ المدخل
         if expiry_date_input < datetime(2026, 9, 1).date():
-            manual_expiry_expired = True
+           manual_expiry_expired = True
 # المقارنة الصحيحة
 if check_date < datetime.date(2026, 9, 1):
     # كود التحذير أو انتهاء الصلاحية الخاص بك   

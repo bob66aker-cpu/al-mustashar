@@ -15,7 +15,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-# 2. تخصيص المظهر وتصحيح التداخل البصري إضافة لنسق أزرار المشاركة
+# 2. تخصيص المظهر وتصفير كافة التداخلات البصرية تماماً
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap');
@@ -31,17 +31,20 @@ st.markdown("""
         direction: rtl;
     }
 
-    /* إصلاح تداخل نصوص الأسهم في القوائم المنزلقة */
-    .stDetails summary span {
-        direction: ltr !important;
-        display: inline-block !important;
+    /* إصلاح جذري للتشوه البصري في st.expander - إخفاء رموز الأيقونات المتداخلة */
+    div[data-testid="stExpander"] details summary span[data-testid="stHeaderActionElements"] {
+        display: none !important;
     }
-    .stDetails summary p {
+    div[data-testid="stExpander"] details summary svg {
+        display: none !important;
+    }
+    div[data-testid="stExpander"] details summary {
         direction: rtl !important;
-        display: inline-block !important;
+        text-align: right !important;
+        font-weight: bold !important;
     }
     
-    /* تصميم البطاقات الملونة المتناسقة */
+    /* تصميم البطاقات الملونة */
     .status-card {
         padding: 22px;
         border-radius: 16px;
@@ -83,13 +86,13 @@ st.markdown("""
     }
     .app-header h1 {
         color: #ffffff !important;
-        font-size: 26px !important;
+        font-size: 28px !important;
         font-weight: 800;
         margin-bottom: 6px;
     }
     .app-header p {
         color: #c8e6c9 !important;
-        font-size: 14px !important;
+        font-size: 15px !important;
         margin: 0;
     }
     .motto-box {
@@ -106,7 +109,7 @@ st.markdown("""
         text-align: center;
     }
     
-    /* أزرار مشاركة التطبيق */
+    /* أزرار المشاركة */
     .share-btn {
         display: inline-block;
         padding: 8px 14px;
@@ -165,10 +168,10 @@ def load_data():
 
 df_pesticides = load_data()
 
-# 5. الواجهة العلوية وترويسة التطبيق (الجديدة بدون كلمة وزارة الزراعة + أيقونة الدرع)
+# 5. الواجهة العلوية مع أيقونة الدرع المضمونة HTML 🛡️
 st.markdown("""
 <div class="app-header">
-    <h1>المستشار الزراعي 🛡️</h1>
+    <h1>المستشار الزراعي &#128737;</h1>
     <p>منظومة تدقيق المبيدات والمواد الفعالة - دولة ليبيا</p>
     <div class="motto-box">
         <span class="motto-text">« على قدر المعرفة تأتي المسؤولية »</span>
@@ -180,7 +183,7 @@ st.markdown("""
 APP_URL = "https://al-mustashar-ly.streamlit.app"
 text_to_share = "تطبيق المستشار الزراعي - دليل تدقيق المبيدات والمواد الفعالة المحظورة والمسموحة في ليبيا:"
 
-with st.expander("ℹ️ معلومات التطبيق والمطور وقرارات الدولة | 📲 مشاركة التطبيق"):
+with st.expander("ℹ️ معلومات التطبيق والمطور والقرارات الرسمية | 📲 مشاركة التطبيق"):
     col_img, col_info = st.columns([1, 2])
     
     with col_img:

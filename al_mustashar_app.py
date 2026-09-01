@@ -4,6 +4,7 @@ import numpy as np
 import os
 import urllib.request
 import re
+import base64
 from datetime import datetime, date
 from PIL import Image
 
@@ -14,6 +15,15 @@ st.set_page_config(
     layout="centered",
     initial_sidebar_state="collapsed",
 )
+
+# دالة تحويل الصورة إلى Base64 لدمجها داخل الـ HTML المباشر
+def get_image_base64(image_path):
+    if os.path.exists(image_path):
+        with open(image_path, "rb") as img_file:
+            return base64.b64encode(img_file.read()).decode()
+    return ""
+
+shield_b64 = get_image_base64("shield_logo.png")
 
 # 2. تخصيص المظهر وتنسيق النصوص
 st.markdown("""
@@ -61,39 +71,59 @@ st.markdown("""
         border-right: 8px solid #1a0036;
     }
     
-    /* ترويسة التطبيق الرئيسية */
+    /* ترويسة التطبيق الرئيسية - المستطيل الأخضر الموحد */
     .app-header {
         background: linear-gradient(135deg, #1e4d2b, #0c2e17);
-        padding: 22px;
-        border-radius: 0 0 20px 20px;
-        text-align: center;
+        padding: 25px 20px;
+        border-radius: 16px;
         color: white;
-        margin-bottom: 20px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+        margin-bottom: 25px;
+        box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
-    .app-header h1 {
+    .header-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 18px;
+        width: 100%;
+        direction: rtl;
+    }
+    .header-text {
+        text-align: right;
+    }
+    .header-text h1 {
         color: #ffffff !important;
-        font-size: 28px !important;
+        font-size: 30px !important;
         font-weight: 800;
-        margin-bottom: 6px;
+        margin: 0 0 4px 0 !important;
+        line-height: 1.2;
     }
-    .app-header p {
+    .header-text p {
         color: #c8e6c9 !important;
         font-size: 15px !important;
-        margin: 0;
+        margin: 0 !important;
+        font-weight: 400;
+    }
+    .shield-img {
+        width: 70px;
+        height: auto;
+        filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.3));
     }
     .motto-box {
         background-color: rgba(255, 255, 255, 0.12);
-        padding: 5px 16px;
-        border-radius: 15px;
-        display: inline-block;
-        margin-top: 10px;
+        padding: 6px 20px;
+        border-radius: 20px;
+        margin-top: 15px;
+        text-align: center;
     }
     .motto-text {
         font-size: 14px;
         font-weight: 700;
         color: #ffd54f !important;
-        text-align: center;
     }
     
     /* أزرار المشاركة */
@@ -164,24 +194,18 @@ def load_data():
 
 df_pesticides = load_data()
 
-# 5. الواجهة العلوية مع صورة الدرع الذهبي المخصصة
-st.markdown('<div class="app-header">', unsafe_allow_html=True)
+# 5. الترويسة الموحدة داخل المستطيل الأخضر مباشرة
+shield_html = f'<img src="data:image/png;base64,{shield_b64}" class="shield-img" />' if shield_b64 else '<span style="font-size:45px;">🛡️</span>'
 
-col_logo, col_title = st.columns([1, 4])
-
-with col_logo:
-    if os.path.exists("shield_logo.png"):
-        st.image("shield_logo.png", width=75)
-    else:
-        st.write("🛡️")
-
-with col_title:
-    st.markdown("""
-        <h1 style="margin:0; padding:0; text-align:right;">المستشار الزراعي</h1>
-        <p style="margin:0; text-align:right;">منظومة تدقيق المبيدات والمواد الفعالة - دولة ليبيا</p>
-    """, unsafe_allow_html=True)
-
-st.markdown("""
+st.markdown(f"""
+<div class="app-header">
+    <div class="header-content">
+        {shield_html}
+        <div class="header-text">
+            <h1>المستشار الزراعي</h1>
+            <p>منظومة تدقيق المبيدات والمواد الفعالة - دولة ليبيا</p>
+        </div>
+    </div>
     <div class="motto-box">
         <span class="motto-text">« على قدر المعرفة تأتي المسؤولية »</span>
     </div>

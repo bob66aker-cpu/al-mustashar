@@ -15,7 +15,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-# 2. تخصيص المظهر وتنسيق الألوان وإخفاء العناصر العلوية
+# 2. تخصيص المظهر وتصحيح التداخل البصري إضافة لنسق أزرار المشاركة
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap');
@@ -29,6 +29,16 @@ st.markdown("""
         font-family: 'Cairo', sans-serif !important;
         text-align: right;
         direction: rtl;
+    }
+
+    /* إصلاح تداخل نصوص الأسهم في القوائم المنزلقة */
+    .stDetails summary span {
+        direction: ltr !important;
+        display: inline-block !important;
+    }
+    .stDetails summary p {
+        direction: rtl !important;
+        display: inline-block !important;
     }
     
     /* تصميم البطاقات الملونة المتناسقة */
@@ -73,7 +83,7 @@ st.markdown("""
     }
     .app-header h1 {
         color: #ffffff !important;
-        font-size: 25px !important;
+        font-size: 26px !important;
         font-weight: 800;
         margin-bottom: 6px;
     }
@@ -95,6 +105,21 @@ st.markdown("""
         color: #ffd54f !important;
         text-align: center;
     }
+    
+    /* أزرار مشاركة التطبيق */
+    .share-btn {
+        display: inline-block;
+        padding: 8px 14px;
+        margin: 4px;
+        border-radius: 8px;
+        color: white !important;
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: bold;
+    }
+    .share-wa { background-color: #25D366; }
+    .share-fb { background-color: #1877F2; }
+    .share-tg { background-color: #0088cc; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -140,26 +165,29 @@ def load_data():
 
 df_pesticides = load_data()
 
-# 5. الواجهة العلوية وترويسة التطبيق
+# 5. الواجهة العلوية وترويسة التطبيق (الجديدة بدون كلمة وزارة الزراعة + أيقونة الدرع)
 st.markdown("""
 <div class="app-header">
     <h1>المستشار الزراعي 🛡️</h1>
-    <p>منظومة تدقيق المبيدات والمواد الفعالة بوزارة الزراعة والثروة الحيوانية</p>
+    <p>منظومة تدقيق المبيدات والمواد الفعالة - دولة ليبيا</p>
     <div class="motto-box">
         <span class="motto-text">« على قدر المعرفة تأتي المسؤولية »</span>
     </div>
 </div>
 """, unsafe_allow_html=True)
 
-# 6. بطاقة معلومات التطبيق والمطور مع الصورة الشخصية
-with st.expander("ℹ️ معلومات حول التطبيق والمطور والقرارات الرسمية"):
+# 6. بطاقة معلومات التطبيق والمطور + خيارات المشاركة
+APP_URL = "https://al-mustashar-ly.streamlit.app"
+text_to_share = "تطبيق المستشار الزراعي - دليل تدقيق المبيدات والمواد الفعالة المحظورة والمسموحة في ليبيا:"
+
+with st.expander("ℹ️ معلومات التطبيق والمطور وقرارات الدولة | 📲 مشاركة التطبيق"):
     col_img, col_info = st.columns([1, 2])
     
     with col_img:
         if os.path.exists("developer_photo.jpg"):
             st.image("developer_photo.jpg", use_container_width=True)
         else:
-            st.info("🖼️ يرجى وضع صورتك باسم developer_photo.jpg بجانب الملف")
+            st.info("🖼️ ضع صورتك باسم developer_photo.jpg بجانب الملف")
             
     with col_info:
         st.markdown("""
@@ -167,9 +195,17 @@ with st.expander("ℹ️ معلومات حول التطبيق والمطور و�
         **🏛️ الجهة:** وزارة الزراعة والثروة الحيوانية - درنة  
         **🌐 المنصة:** مؤسس منصة المستشار الزراعي الليبي  
         """)
+        
+    st.markdown("---")
+    st.markdown("**📲 شارك التطبيق مع المزارعين والمهندسين:**")
+    st.markdown(f"""
+    <a class="share-btn share-wa" href="https://api.whatsapp.com/send?text={text_to_share}%20{APP_URL}" target="_blank">📲 واتساب</a>
+    <a class="share-btn share-fb" href="https://www.facebook.com/sharer/sharer.php?u={APP_URL}" target="_blank">📘 فيسبوك</a>
+    <a class="share-btn share-tg" href="https://t.me/share/url?url={APP_URL}&text={text_to_share}" target="_blank">✈️ تليجرام</a>
+    """, unsafe_allow_html=True)
     
+    st.markdown("---")
     st.markdown("""
-    ---
     **📜 المرجعية القانونية والقرارات:**
     1. **المواد المحظورة:** قرار وزير الزراعة رقم **(248) لسنة 2024م**.
     2. **المواد المسجلة والمسموحة:** قرارات وزير الزراعة رقم **(500) ورقم (467) لسنة 2026م**.

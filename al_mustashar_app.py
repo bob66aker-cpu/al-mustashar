@@ -5,6 +5,7 @@ import os
 import urllib.request
 import re
 import base64
+import io
 from datetime import datetime, date
 from PIL import Image
 
@@ -16,14 +17,32 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-# دالة تحويل الصورة إلى Base64 لدمجها داخل الـ HTML المباشر
-def get_image_base64(image_path):
+# دالة تحويل الصورة وإزالة الخلفية الشطرنجية الرمادية تلقائياً وجعلها شفافة
+def get_clean_shield_base64(image_path):
     if os.path.exists(image_path):
-        with open(image_path, "rb") as img_file:
-            return base64.b64encode(img_file.read()).decode()
+        try:
+            img = Image.open(image_path).convert("RGBA")
+            datas = img.getdata()
+            
+            new_data = []
+            for item in datas:
+                # الكشف عن المربعات البيضاء والرمادية التابعة للخلفية الوهمية وتحويلها إلى شفافية
+                if item[0] > 180 and item[1] > 180 and item[2] > 180:
+                    new_data.append((255, 255, 255, 0))
+                else:
+                    new_data.append(item)
+            
+            img.putdata(new_data)
+            
+            buffered = io.BytesIO()
+            img.save(buffered, format="PNG")
+            return base64.b64encode(buffered.getvalue()).decode()
+        except Exception:
+            with open(image_path, "rb") as img_file:
+                return base64.b64encode(img_file.read()).decode()
     return ""
 
-shield_b64 = get_image_base64("shield_logo.png")
+shield_b64 = get_clean_shield_base64("shield_logo.png")
 
 # 2. تخصيص المظهر وتنسيق النصوص
 st.markdown("""
@@ -109,7 +128,7 @@ st.markdown("""
         font-weight: 400;
     }
     .shield-img {
-        width: 70px;
+        width: 75px;
         height: auto;
         filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.3));
     }
@@ -451,7 +470,7 @@ if "وضع المزارع" in mode:
 else:
     st.subheader("👮‍♂️ بوابة الضبط والتفتيش والمهندسين الزراعيين")
     
-    show_guide = st.checkbox("🔍 عرض دليل كشف تلاعب وغش تواريخ الصلاحية (للمفتشين)")
+    show_guide = st.checkbox("🔍 عرض دليل كشف تلاعب وغش تواريخ الصلاحية (ل للمفتشين)")
     if show_guide:
         st.markdown("""
         <div class="custom-box">

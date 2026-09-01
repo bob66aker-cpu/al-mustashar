@@ -1,0 +1,9 @@
+streamlit
+pandas
+numpy
+easyocr
+fpdf2
+arabic-reshaper
+python-bidi
+Pillow
+openpyxl

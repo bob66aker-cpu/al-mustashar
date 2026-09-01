@@ -7,38 +7,36 @@ import re
 from datetime import datetime, date
 from PIL import Image
 
-# 1. إعدادات الصفحة الأساسية لتظهر بشكل مثالي على الهواتف
+# 1. إعدادات الصفحة الأساسية
 st.set_page_config(
     page_title="المستشار الزراعي - دليل المبيدات الليبي",
-    page_icon="🧪",
+    page_icon="🛡️",
     layout="centered",
     initial_sidebar_state="collapsed",
 )
 
-# 2. تخصيص المظهر وتصميم الواجهة باستخدام CSS وإخفاء أدوات Streamlit العلوية
+# 2. تخصيص المظهر وتنسيق الألوان وإخفاء العناصر العلوية
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap');
     
-    /* إخفاء عناصر streamlit العلوية القلم وشعار القط والمساعد */
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
     header {visibility: hidden;}
     div[data-testid="stToolbar"] {visibility: hidden;}
     
-    /* تغيير الخط الافتراضي للتطبيق */
     html, body, [class*="css"], .stMarkdown, p, h1, h2, h3, h4, span, label, button {
         font-family: 'Cairo', sans-serif !important;
         text-align: right;
         direction: rtl;
     }
     
-    /* تصميم البطاقات الملونة الصارخة */
+    /* تصميم البطاقات الملونة المتناسقة */
     .status-card {
-        padding: 25px;
-        border-radius: 15px;
-        margin: 20px 0;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        padding: 22px;
+        border-radius: 16px;
+        margin: 18px 0;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         text-align: center;
         color: white !important;
     }
@@ -47,63 +45,60 @@ st.markdown("""
         text-align: center !important;
     }
     .status-red {
-        background: linear-gradient(135deg, #d32f2f, #b71c1c);
-        border-right: 10px solid #5f0909;
+        background: linear-gradient(135deg, #c62828, #8e0000);
+        border-right: 8px solid #4a0000;
     }
     .status-green {
         background: linear-gradient(135deg, #2e7d32, #1b5e20);
-        border-right: 10px solid #0c2e0e;
+        border-right: 8px solid #003300;
     }
     .status-yellow {
-        background: linear-gradient(135deg, #f57c00, #e65100);
-        border-right: 10px solid #822c00;
+        background: linear-gradient(135deg, #ef6c00, #b63d00);
+        border-right: 8px solid #5d1a00;
     }
     .status-expired {
-        background: linear-gradient(135deg, #7b1fa2, #4a148c);
-        border-right: 10px solid #22003c;
+        background: linear-gradient(135deg, #6a1b9a, #38006b);
+        border-right: 8px solid #1a0036;
     }
     
-    /* تصميم ترويسة التطبيق */
+    /* ترويسة التطبيق الرئيسية */
     .app-header {
-        background: linear-gradient(135deg, #1b5e20, #0c2e0e);
-        padding: 20px;
-        border-radius: 0 0 25px 25px;
+        background: linear-gradient(135deg, #1e4d2b, #0c2e17);
+        padding: 22px;
+        border-radius: 0 0 20px 20px;
         text-align: center;
         color: white;
-        margin-bottom: 25px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.12);
     }
     .app-header h1 {
-        color: white !important;
-        font-size: 26px !important;
+        color: #ffffff !important;
+        font-size: 25px !important;
         font-weight: 800;
-        margin-bottom: 5px;
+        margin-bottom: 6px;
     }
     .app-header p {
-        color: #a5d6a7 !important;
+        color: #c8e6c9 !important;
         font-size: 14px !important;
         margin: 0;
     }
-    
-    /* شعار التطبيق المصمم بشكل أنيق */
     .motto-box {
-        background-color: rgba(255, 255, 255, 0.15);
-        padding: 6px 15px;
-        border-radius: 20px;
+        background-color: rgba(255, 255, 255, 0.12);
+        padding: 5px 16px;
+        border-radius: 15px;
         display: inline-block;
         margin-top: 10px;
     }
     .motto-text {
-        font-size: 15px;
+        font-size: 14px;
         font-weight: 700;
-        color: #ffb300 !important;
+        color: #ffd54f !important;
         text-align: center;
-        font-style: italic;
     }
 </style>
 """, unsafe_allow_html=True)
 
-# 3. دالة تحميل الخط العربي لتقارير الـ PDF
+# 3. دالة تحميل الخط العربي للتقارير
 @st.cache_data
 def download_arabic_font():
     font_path = "Amiri-Regular.ttf"
@@ -132,7 +127,7 @@ def load_data():
                 break
 
     if not os.path.exists(csv_file):
-        st.error("⚠️ ملف قاعدة البيانات `pesticides_database_for_app.csv` غير موجود! يرجى التأكد من رفعه على GitHub.")
+        st.error("⚠️ ملف قاعدة البيانات `pesticides_database_for_app.csv` غير موجود!")
         return pd.DataFrame()
     
     try:
@@ -145,10 +140,10 @@ def load_data():
 
 df_pesticides = load_data()
 
-# 5. واجهة ترويسة التطبيق
+# 5. الواجهة العلوية وترويسة التطبيق
 st.markdown("""
 <div class="app-header">
-    <h1>تطبيق الـمُـسْـتَـشَـار الـزّرَاعِـي 🧪</h1>
+    <h1>المستشار الزراعي 🛡️</h1>
     <p>منظومة تدقيق المبيدات والمواد الفعالة بوزارة الزراعة والثروة الحيوانية</p>
     <div class="motto-box">
         <span class="motto-text">« على قدر المعرفة تأتي المسؤولية »</span>
@@ -156,22 +151,33 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# 6. لوحة الإعداد والتطوير في الشريط الجانبي داخل Expander منظم
-with st.sidebar:
-    with st.expander("⚙️ لوحة الإعداد والتطوير والمعلومات"):
-        st.markdown("### 🧑‍🏫 إعداد وتطوير")
-        st.markdown("**المهندس: أبوبكر عبدالقادر الطشاني**")
-        st.markdown("*وزارة الزراعة والثروة الحيوانية - درنة*")
-        st.markdown("مؤسس منصة: **المستشار الزراعي الليبي**")
-        st.markdown("---")
-        st.markdown("### 📜 المرجعية القانونية:")
-        st.markdown("1. **المواد المحظورة:** قرار وزير الزراعة رقم **(248) لسنة 2024م**.")
-        st.markdown("2. **المواد المسجلة:** قرارات وزير الزراعة رقم **(500) ورقم (467) لسنة 2026م**.")
-        st.markdown("---")
-        st.markdown("### ⚠️ إخلاء المسؤولية:")
-        st.markdown("<small>تطبيق خدمي إرشادي مستقل ومجاني لتسهيل الوصول للقرارات الرسمية للدولة الليبية.</small>", unsafe_allow_html=True)
+# 6. بطاقة معلومات التطبيق والمطور مع الصورة الشخصية
+with st.expander("ℹ️ معلومات حول التطبيق والمطور والقرارات الرسمية"):
+    col_img, col_info = st.columns([1, 2])
+    
+    with col_img:
+        if os.path.exists("developer_photo.jpg"):
+            st.image("developer_photo.jpg", use_container_width=True)
+        else:
+            st.info("🖼️ يرجى وضع صورتك باسم developer_photo.jpg بجانب الملف")
+            
+    with col_info:
+        st.markdown("""
+        **👨‍💻 إعداد وتطوير:** المهندس أبوبكر عبدالقادر الطشاني  
+        **🏛️ الجهة:** وزارة الزراعة والثروة الحيوانية - درنة  
+        **🌐 المنصة:** مؤسس منصة المستشار الزراعي الليبي  
+        """)
+    
+    st.markdown("""
+    ---
+    **📜 المرجعية القانونية والقرارات:**
+    1. **المواد المحظورة:** قرار وزير الزراعة رقم **(248) لسنة 2024م**.
+    2. **المواد المسجلة والمسموحة:** قرارات وزير الزراعة رقم **(500) ورقم (467) لسنة 2026م**.
+    
+    <small>تطبيق إرشادي مستقل يهدف لخدمة المزارعين والشرطة الزراعية لتسهيل تطبيق القرارات الرسمية.</small>
+    """, unsafe_allow_html=True)
 
-# 7. التبديل بين وضع المزارع ووضع المفتش
+# 7. وضع الاستخدام
 mode = st.radio(
     "اختر وضع الاستخدام المناسب لك:",
     ["🧑‍🌾 وضع المزارع (فحص سريع)", "👮‍♂️ وضع المهندس والرقابة (تفصيلي وقانوني)"],
@@ -181,7 +187,6 @@ mode = st.radio(
 
 st.markdown("---")
 
-# دالة تحليل التواريخ المكتشفة في النصوص (OCR)
 def parse_date_from_text(text):
     patterns = [
         r'\b(0[1-9]|1[0-2])[\/\-](202\d|203\d)\b',
@@ -211,10 +216,9 @@ def parse_date_from_text(text):
 CURRENT_YEAR = 2026
 CURRENT_MONTH = 9
 
-# ==================== 🧑‍🌾 أولاً: وضع المزارع البسيط ====================
+# ==================== 🧑‍🌾 وضع المزارع ====================
 if "وضع المزارع" in mode:
     st.subheader("🧑‍🌾 بوابة الفحص السريع للمزارع")
-    st.info("ابحث باسم المادة الفعالة المكتوبة بالإنجليزية على العبوة أو استخدم الكاميرا لتلقي التنبيه فوراً.")
     
     tab_write, tab_camera = st.tabs(["✍️ البحث بالكتابة اليدوية", "📸 الفحص الذكي بالكاميرا"])
     
@@ -223,7 +227,6 @@ if "وضع المزارع" in mode:
     manual_expiry_expired = False
     expiry_date_input = None
     
-    # حقل فحص الصلاحية بأسلوب آمن
     st.markdown("### 📅 فحص صلاحية المبيد (اختياري)")
     col_exp1, col_exp2 = st.columns(2)
     with col_exp1:
@@ -231,7 +234,7 @@ if "وضع المزارع" in mode:
     with col_exp2:
         if has_expiry:
             expiry_date_input = st.date_input(
-                "تاريخ انتهاء الصلاحية المكتوب على العبوة:",
+                "تاريخ انتهاء الصلاحية على العبوة:",
                 value=date(2026, 9, 1),
                 min_value=date(2020, 1, 1),
                 max_value=date(2035, 12, 31)
@@ -239,7 +242,6 @@ if "وضع المزارع" in mode:
             if expiry_date_input < date(2026, 9, 1):
                 manual_expiry_expired = True
 
-    # --- التبويب الأول: البحث اليدوي ---
     with tab_write:
         if not df_pesticides.empty:
             substances_list = [""] + sorted(df_pesticides["المادة الفعالة (Active Substance)"].dropna().unique().tolist())
@@ -254,7 +256,6 @@ if "وضع المزارع" in mode:
         else:
             st.warning("يرجى التأكد من رفع ملف قاعدة البيانات.")
             
-    # --- التبويب الثاني: الكاميرا ---
     with tab_camera:
         uploaded_image = st.camera_input("وجه الكاميرا نحو ملصق المادة الفعالة على العبوة 📷")
         if uploaded_image:
@@ -294,7 +295,6 @@ if "وضع المزارع" in mode:
             except Exception as e:
                 st.error(f"حدث خطأ أثناء فحص الصورة: {e}")
 
-    # --- عرض النتيجة الملونة للمزارع ---
     if found_substance is not None:
         sub_name = found_substance["المادة الفعالة (Active Substance)"]
         cas_num = found_substance["رقم CAS"]
@@ -318,9 +318,9 @@ if "وضع المزارع" in mode:
             st.markdown(f"""
             <div class="status-card status-expired">
                 <h2>⚠️ خطر: مبيد منتهي الصلاحية وتالف! ❌</h2>
-                <p style="font-size: 22px; font-weight: bold; margin: 10px 0;">المادة: {sub_name}</p>
+                <p style="font-size: 21px; font-weight: bold; margin: 8px 0;">المادة: {sub_name}</p>
                 <p style="font-size: 16px;"><b>التاريخ المكتشف: {expired_date_str}</b></p>
-                <p style="font-size: 15px; text-align: justify; padding: 0 10px;">
+                <p style="font-size: 14px; text-align: justify; padding: 0 10px;">
                     استخدام المبيد منتهي الصلاحية يشكل خطراً كبيراً لتحلل المادة الفعالة إلى مركب سام يسبب حرق المحاصيل وتسمم التربة.
                 </p>
             </div>
@@ -331,9 +331,9 @@ if "وضع المزارع" in mode:
                 st.markdown(f"""
                 <div class="status-card status-red">
                     <h2>🔴 مادة محظورة وممنوعة تماماً! ❌</h2>
-                    <p style="font-size: 20px; font-weight: bold; margin: 10px 0;">{sub_name}</p>
-                    <p style="font-size: 16px;">ممنوع تركيبها أو استيرادها أو تداولها في ليبيا نهائياً.</p>
-                    <p style="font-size: 14px; opacity: 0.9; margin-top: 15px;">⚠️ السند القانوني: قرار وزير الزراعة رقم 248 لسنة 2024م</p>
+                    <p style="font-size: 20px; font-weight: bold; margin: 8px 0;">{sub_name}</p>
+                    <p style="font-size: 15px;">ممنوع تركيبها أو استيرادها أو تداولها في ليبيا نهائياً.</p>
+                    <p style="font-size: 13px; opacity: 0.9; margin-top: 12px;">⚠️ السند القانوني: قرار وزير الزراعة رقم 248 لسنة 2024م</p>
                 </div>
                 """, unsafe_allow_html=True)
                 
@@ -341,9 +341,9 @@ if "وضع المزارع" in mode:
                 st.markdown(f"""
                 <div class="status-card status-green">
                     <h2>🟢 مادة مسموحة ومسجلة ✅</h2>
-                    <p style="font-size: 20px; font-weight: bold; margin: 10px 0;">{sub_name}</p>
-                    <p style="font-size: 16px;">مسموح تداولها واستخدامها ومطابقة للمعايير المعتمدة.</p>
-                    <p style="font-size: 14px; opacity: 0.9; margin-top: 15px;">📜 السند القانوني: قرار وزير الزراعة رقم 500 لسنة 2026م</p>
+                    <p style="font-size: 20px; font-weight: bold; margin: 8px 0;">{sub_name}</p>
+                    <p style="font-size: 15px;">مسموح تداولها واستخدامها ومطابقة للمعايير المعتمدة.</p>
+                    <p style="font-size: 13px; opacity: 0.9; margin-top: 12px;">📜 السند القانوني: قرار وزير الزراعة رقم 500 لسنة 2026م</p>
                 </div>
                 """, unsafe_allow_html=True)
                 
@@ -351,16 +351,15 @@ if "وضع المزارع" in mode:
                 st.markdown(f"""
                 <div class="status-card status-yellow">
                     <h2>⚠️ مادة خاضعة للمراجعة والقيود ⚠️</h2>
-                    <p style="font-size: 20px; font-weight: bold; margin: 10px 0;">{sub_name}</p>
-                    <p style="font-size: 16px;">{status}</p>
-                    <p style="font-size: 14px; opacity: 0.9; margin-top: 10px;"><b>تفصيل القانون:</b> {details}</p>
+                    <p style="font-size: 20px; font-weight: bold; margin: 8px 0;">{sub_name}</p>
+                    <p style="font-size: 15px;">{status}</p>
+                    <p style="font-size: 13px; opacity: 0.9; margin-top: 10px;"><b>تفصيل القانون:</b> {details}</p>
                 </div>
                 """, unsafe_allow_html=True)
 
-# ==================== 👮‍♂️ ثانياً: وضع المهندس والمفتش ====================
+# ==================== 👮‍♂️ وضع المهندس والمفتش ====================
 else:
     st.subheader("👮‍♂️ بوابة الضبط والتفتيش والمهندسين الزراعيين")
-    st.info("فحص دقيق ومباشر للشرطة الزراعية والمفتشين للحصول على أرقام CAS والسندات القانونية وإصدار محاشر الضبط.")
     
     with st.expander("🔍 دليل كشف تلاعب وغش تواريخ الصلاحية (للمفتشين)"):
         st.markdown("""
@@ -381,7 +380,7 @@ else:
         
         selected_row = None
         if selected_inspector_sub:
-            selected_row = df_pesticides[df_pesticides["المادة الفعality (Active Substance)"] == selected_inspector_sub if "المادة الفعality (Active Substance)" in df_pesticides.columns else df_pesticides["المادة الفعالة (Active Substance)"] == selected_inspector_sub].iloc[0]
+            selected_row = df_pesticides[df_pesticides["المادة الفعالة (Active Substance)"] == selected_inspector_sub].iloc[0]
             
             sub_name = selected_row["المادة الفعالة (Active Substance)"]
             cas_num = selected_row["رقم CAS"]
@@ -389,37 +388,35 @@ else:
             color = selected_row["اللون الإرشادي"]
             details = selected_row["التفصيل والقرار"]
             
-            # عرض بطاقة شاملة تفصيلية باللون المناسب
             if str(color).lower() == "red":
                 st.markdown(f"""
                 <div class="status-card status-red">
                     <h2>🔴 مادة محظورة وممنوعة قانوناً ❌</h2>
-                    <p style="font-size: 22px; font-weight: bold; margin: 5px 0;">المادة: {sub_name}</p>
-                    <p style="font-size: 16px;"><b>رقم CAS الدولي:</b> {cas_num}</p>
-                    <p style="font-size: 15px; margin-top: 10px;"><b>القرار والسند:</b> {details}</p>
+                    <p style="font-size: 21px; font-weight: bold; margin: 5px 0;">المادة: {sub_name}</p>
+                    <p style="font-size: 15px;"><b>رقم CAS الدولي:</b> {cas_num}</p>
+                    <p style="font-size: 14px; margin-top: 10px;"><b>القرار والسند:</b> {details}</p>
                 </div>
                 """, unsafe_allow_html=True)
             elif str(color).lower() == "green":
                 st.markdown(f"""
                 <div class="status-card status-green">
                     <h2>🟢 مادة مسجلة ومسموحة ✅</h2>
-                    <p style="font-size: 22px; font-weight: bold; margin: 5px 0;">المادة: {sub_name}</p>
-                    <p style="font-size: 16px;"><b>رقم CAS الدولي:</b> {cas_num}</p>
-                    <p style="font-size: 15px; margin-top: 10px;"><b>القرار والسند:</b> {details}</p>
+                    <p style="font-size: 21px; font-weight: bold; margin: 5px 0;">المادة: {sub_name}</p>
+                    <p style="font-size: 15px;"><b>رقم CAS الدولي:</b> {cas_num}</p>
+                    <p style="font-size: 14px; margin-top: 10px;"><b>القرار والسند:</b> {details}</p>
                 </div>
                 """, unsafe_allow_html=True)
             else:
                 st.markdown(f"""
                 <div class="status-card status-yellow">
                     <h2>⚠️ مادة خاضعة للقيود ⚠️</h2>
-                    <p style="font-size: 22px; font-weight: bold; margin: 5px 0;">المادة: {sub_name}</p>
-                    <p style="font-size: 16px;"><b>رقم CAS الدولي:</b> {cas_num}</p>
-                    <p style="font-size: 15px; margin-top: 10px;"><b>القرار والسند:</b> {details}</p>
+                    <p style="font-size: 21px; font-weight: bold; margin: 5px 0;">المادة: {sub_name}</p>
+                    <p style="font-size: 15px;"><b>رقم CAS الدولي:</b> {cas_num}</p>
+                    <p style="font-size: 14px; margin-top: 10px;"><b>القرار والسند:</b> {details}</p>
                 </div>
                 """, unsafe_allow_html=True)
 
         st.markdown("---")
-        # ميزة "إثبات الحالة وتوليد محضر"
         st.markdown("### 📝 صياغة محضر ضبط وإثبات حالة مخالفة")
         
         col_form1, col_form2 = st.columns(2)

@@ -52,38 +52,7 @@ shield_b64 = get_clean_shield_base64("shield_logo.png")
 # استخدمنا رابط الصورة المباشر لتجنب ثقل الكود وسقوط مفسر النصوص في الخطأ لعرض الأكواد على الشاشة
 shield_url = "https://raw.githubusercontent.com/bob66aker-cpu/al-mustashar/main/shield_logo.png"
 
-st.markdown(f"""
-<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onload="
-    (function() {{
-        var shield_url = '{shield_url}';
-        function updateDoc(doc) {{
-            if (!doc) return;
-            doc.title = 'المستشار الزراعي';
-            
-            // تحديث الأيقونات لمنع شعار Streamlit الأحمر
-            var links = doc.querySelectorAll('link[rel*=\'icon\']');
-            links.forEach(function(l) {{ l.parentNode.removeChild(l); }});
-            
-            var link = doc.createElement('link');
-            link.type = 'image/png';
-            link.rel = 'shortcut icon';
-            link.href = shield_url;
-            doc.getElementsByTagName('head')[0].appendChild(link);
-            
-            // أيقونة شاشة الهاتف الرئيسية
-            var appleLinks = doc.querySelectorAll('link[rel*=\'apple-touch-icon\']');
-            appleLinks.forEach(function(l) {{ l.parentNode.removeChild(l); }});
-            var appleLink = doc.createElement('link');
-            appleLink.rel = 'apple-touch-icon';
-            appleLink.href = shield_url;
-            var head_el = doc.getElementsByTagName('head')[0];
-            if (head_el) head_el.appendChild(appleLink);
-        }}
-        try {{ updateDoc(document); }} catch(e) {{}}
-        try {{ updateDoc(window.parent.document); }} catch(e) {{}}
-    }})();
-" style="display:none;" />
-""", unsafe_allow_html=True)
+st.markdown(f'<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onload="(function() {{ var shield_url = \'{shield_url}\'; function updateDoc(doc) {{ if (!doc) return; doc.title = \'المستشار الزراعي\'; var links = doc.querySelectorAll(\'link[rel*=\\\'icon\\\']\'); links.forEach(function(l) {{ l.parentNode.removeChild(l); }}); var link = doc.createElement(\'link\'); link.type = \'image/png\'; link.rel = \'shortcut icon\'; link.href = shield_url; doc.getElementsByTagName(\'head\')[0].appendChild(link); var appleLinks = doc.querySelectorAll(\'link[rel*=\\\'apple-touch-icon\\\']\'); appleLinks.forEach(function(l) {{ l.parentNode.removeChild(l); }}); var appleLink = doc.createElement(\'link\'); appleLink.rel = \'apple-touch-icon\'; appleLink.href = shield_url; var head_el = doc.getElementsByTagName(\'head\')[0]; if (head_el) head_el.appendChild(appleLink); }} try {{ updateDoc(document); }} catch(e) {{}} try {{ updateDoc(window.parent.document); }} catch(e) {{}} }})();" style="display:none;" />', unsafe_allow_html=True)
 
 # 2. تخصيص المظهر وتنسيق النصوص وحماية الواجهة وإخفاء كافة أيقونات المنصة نهائياً مع ضبط اتجاه RTL الصحيح
 st.markdown("""

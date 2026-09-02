@@ -13,13 +13,6 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# حقن كود الـ PWA الأساسي لتثبيت التطبيق على الهاتف بدون تأثير على التصميم
-st.markdown("""
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="المستشار الزراعي">
-""", unsafe_allow_html=True)
-
 # إخفاء عناصر النظام والفوتر والخانة السوداء الخاصة بالمشرف للزوار
 st.markdown("""
     <style>
@@ -37,11 +30,11 @@ def load_reader():
 
 try:
     reader = load_reader()
-except Exception as e:
-    st.warning("جاري تحميل محرك التعرف البصري...")
+except Exception:
+    pass
 
-# واجهة التطبيق الرئيسية
-st.title("🛡️ المستشار الزراعي")
+# عنوان التطبيق الرئيسي
+st.title("المستشار الزراعي")
 st.markdown("### النظام الذكي لفحص المبيدات الزراعية والتحقق من صلاحيتها")
 
 # تحميل قاعدة البيانات
@@ -53,13 +46,13 @@ def load_data():
 
 df = load_data()
 
-# شريط جانبي للتحكم والخيارات
+# القائمة الجانبية للخيارات
 with st.sidebar:
     st.header("خيارات التطبيق")
     app_mode = st.radio("اختر القسم:", ["البحث والاستعلام", "فحص صورة المبيد (OCR)", "إرشادات التثبيت على الهاتف"])
 
 if app_mode == "البحث والاستعلام":
-    st.subheader("🔍 الاستعلام عن المواد الفعالة والمبيدات")
+    st.subheader("الاستعلام عن المواد الفعالة والمبيدات")
     search_query = st.text_input("أدخل اسم المبيد أو المادة الفعالة للبحث:")
     
     if search_query and not df.empty:
@@ -73,17 +66,17 @@ if app_mode == "البحث والاستعلام":
         st.info("قاعدة بيانات المبيدات غير متوفرة حالياً أو فارغة.")
 
 elif app_mode == "فحص صورة المبيد (OCR)":
-    st.subheader("📷 التقاط أو رفع صورة ملصق المبيد")
+    st.subheader("التقاط أو رفع صورة ملصق المبيد")
     uploaded_file = st.file_uploader("اختر صورة العبوة أو الملصق (JPG, PNG)", type=["jpg", "jpeg", "png"])
     
     if uploaded_file is not None:
         image = Image.open(uploaded_file)
         
-        # تحسين الصورة قبل القراءة
+        # تحسين التباين للصورة لرفع دقة قراءة النص
         enhancer = ImageEnhance.Contrast(image)
         enhanced_image = enhancer.enhance(2.0)
         
-        st.image(image, caption="الصورة المرفوعة", use_container_width=True)
+        st.image(image, caption="الصورة المرفوعة", use_column_width=True)
         
         if st.button("بدء قراءة النص واستخراج المادة الفعالة"):
             with st.spinner("جاري تحليل الصورة واستخراج النصوص..."):
@@ -95,14 +88,14 @@ elif app_mode == "فحص صورة المبيد (OCR)":
                     results = reader.readtext(img_bytes)
                     extracted_text = " ".join([res[1] for res in results])
                     
-                    st.info(f"النصوص المستخرجة من الملصق: {extracted_text}")
+                    st.info(f"النصوص المستخرجة: {extracted_text}")
                     
                     if not df.empty and extracted_text:
                         match_found = False
                         for idx, row in df.iterrows():
                             active_ingredient = str(row.get('المادة الفعالة', ''))
                             if active_ingredient and active_ingredient in extracted_text:
-                                st.success(f"✅ تم مطابقة المادة الفعالة: {active_ingredient}")
+                                st.success(f"تم مطابقة المادة الفعالة: {active_ingredient}")
                                 st.write(row)
                                 match_found = True
                         if not match_found:
@@ -111,19 +104,17 @@ elif app_mode == "فحص صورة المبيد (OCR)":
                     st.error(f"حدث خطأ أثناء قراءة الصورة: {ex}")
 
 elif app_mode == "إرشادات التثبيت على الهاتف":
-    st.subheader("📱 كيفية تثبيت التطبيق على هاتفك المحمول (بدون متجر)")
+    st.subheader("كيفية تثبيت التطبيق على هاتفك المحمول")
     st.markdown("""
     لإبقاء التطبيق جاهزاً بنقرة واحدة على شاشة هاتفك ودون الحاجة للبحث عن الرابط كل مرة:
     
-    * **أجهزة أندرويد (متصفح كروم Chrome):**
+    - **أجهزة أندرويد (متصفح كروم):**
       1. افتح رابط التطبيق من المتصفح.
       2. اضغط على القائمة العلوية (الثلاث نقاط رأسية).
-      3. اختر **"إضافة إلى الشاشة الرئيسية" (Add to Home screen)** أو **"تثبيت التطبيق"**.
+      3. اختر **"إضافة إلى الشاشة الرئيسية"** أو **"تثبيت التطبيق"**.
     
-    * **أجهزة أيفون / آي باد (متصفح سفاري Safari):**
+    - **أجهزة أيفون (متصفح سفاري):**
       1. افتح رابط التطبيق في سفاري.
-      2. اضغط على زر المشاركة (مربع يخرج منه سهم للأعلى في الأسفل).
-      3. انزل لأسفل القائمة واختر **"إضافة إلى الشاشة الرئيسية" (Add to Home Screen)**.
-      
-    بمجرد القيام بذلك، ستظهر أيقونة التطبيق مباشرة بين تطبيقات هاتفك!
+      2. اضغط على زر المشاركة في الأسفل.
+      3. اختر **"إضافة إلى الشاشة الرئيسية"**.
     """)

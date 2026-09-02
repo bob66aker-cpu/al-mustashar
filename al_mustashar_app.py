@@ -1,7 +1,7 @@
 import os
 import streamlit as st
 import pandas as pd
-from PIL import Image, ImageEnhance, ImageFilter
+from PIL import Image, ImageEnhance
 import easyocr
 import io
 
@@ -96,14 +96,13 @@ elif app_mode == "فحص صورة المبيد (OCR)":
         
         # تحسين الصورة قبل القراءة (معالجة مسبقة لدقة OCR أعلى)
         enhancer = ImageEnhance.Contrast(image)
-        enhanced_image = enhancer.enhance(2.0) # زيادة التباين
+        enhanced_image = enhancer.enhance(2.0)
         
         st.image(image, caption="الصورة المرفوعة", use_column_width=True)
         
         if st.button("بدء قراءة النص واستخراج المادة الفعالة"):
             with st.spinner("جاري تحليل الصورة واستخراج النصوص..."):
                 try:
-                    # تحويل الصورة إلى بايتات أو مسار مؤقت لـ EasyOCR
                     img_byte_arr = io.BytesIO()
                     enhanced_image.save(img_byte_arr, format='PNG')
                     img_bytes = img_byte_arr.getvalue()
@@ -113,7 +112,6 @@ elif app_mode == "فحص صورة المبيد (OCR)":
                     
                     st.info(f"النصوص المستخرجة من الملصق: {extracted_text}")
                     
-                    # مطابقة النصوص مع قاعدة البيانات
                     if not df.empty and extracted_text:
                         match_found = False
                         for idx, row in df.iterrows():
@@ -125,7 +123,7 @@ elif app_mode == "فحص صورة المبيد (OCR)":
                         if not match_found:
                             st.warning("لم يتم العثور على مطابقة مباشرة للمادة المستخرجة داخل قاعدة البيانات الرسمية.")
                 except Exception as ex:
-                    st.error(fحدث خطأ أثناء قراءة الصورة: {ex}")
+                    st.error(f"حدث خطأ أثناء قراءة الصورة: {ex}")
 
 elif app_mode == "إرشادات التثبيت على الهاتف":
     st.subheader("📱 كيفية تثبيت التطبيق على هاتفك المحمول (بدون متجر)")

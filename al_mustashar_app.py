@@ -10,9 +10,10 @@ from datetime import datetime, date
 from PIL import Image, ImageEnhance  # تم إصلاح الاستيراد هنا بإضافة ImageEnhance لتفادي توقف الكود عند رفع الصور
 
 # 1. إعدادات الصفحة الأساسية لتظهر بشكل مثالي على الهواتف
+app_icon = "shield_logo.png" if os.path.exists("shield_logo.png") else "🛡️"
 st.set_page_config(
     page_title="المستشار الزراعي",
-    page_icon="🛡️",
+    page_icon=app_icon,
     layout="centered",
     initial_sidebar_state="expanded",
 )

@@ -7,10 +7,9 @@ import re
 import base64
 import io
 from datetime import datetime, date
-from PIL import Image, ImageEnhance  # تم إصلاح الاستيراد هنا بإضافة ImageEnhance لتفادي توقف الكود عند رفع الصور
+from PIL import Image, ImageEnhance
 
 # 1. إعدادات الصفحة الأساسية لتظهر بشكل مثالي على الهواتف
-# تحضير أيقونة الصفحة بشكل سليم كصورة PIL لتظهر في التبويب
 app_icon = "🛡️"
 if os.path.exists("shield_logo.png"):
     try:
@@ -48,20 +47,12 @@ def get_clean_shield_base64(image_path):
 
 shield_b64 = get_clean_shield_base64("shield_logo.png")
 
-# حقن جافا سكريبت لتحديث عنوان المتصفح وأيقونة التطبيق الخارجية للهواتف (PWA / Add to Home Screen)
-# استخدمنا رابط الصورة المباشر لتجنب ثقل الكود وسقوط مفسر النصوص في الخطأ لعرض الأكواد على الشاشة
-shield_url = "https://raw.githubusercontent.com/bob66aker-cpu/al-mustashar/main/shield_logo.png"
-
-st.markdown(f'<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onload="(function() {{ var shield_url = \'{shield_url}\'; function updateDoc(doc) {{ if (!doc) return; doc.title = \'المستشار الزراعي\'; var links = doc.querySelectorAll(\'link[rel*=\\\'icon\\\']\'); links.forEach(function(l) {{ l.parentNode.removeChild(l); }}); var link = doc.createElement(\'link\'); link.type = \'image/png\'; link.rel = \'shortcut icon\'; link.href = shield_url; doc.getElementsByTagName(\'head\')[0].appendChild(link); var appleLinks = doc.querySelectorAll(\'link[rel*=\\\'apple-touch-icon\\\']\'); appleLinks.forEach(function(l) {{ l.parentNode.removeChild(l); }}); var appleLink = doc.createElement(\'link\'); appleLink.rel = \'apple-touch-icon\'; appleLink.href = shield_url; var head_el = doc.getElementsByTagName(\'head\')[0]; if (head_el) head_el.appendChild(appleLink); }} try {{ updateDoc(document); }} catch(e) {{}} try {{ updateDoc(window.parent.document); }} catch(e) {{}} }})();" style="display:none;" />', unsafe_allow_html=True)
-
 # 2. تخصيص المظهر وتنسيق النصوص وحماية الواجهة وإخفاء كافة أيقونات المنصة نهائياً مع ضبط اتجاه RTL الصحيح
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Cairo:wght=300;400;600;700;800&display=swap');
     
-    /* =========================================================  */
-    /*  🛡️ إخفاء القوائم والشعارين وأيقونات Streamlit تماماً  */
-    /*  =========================================================  */
+    /* 🛡️ إخفاء القوائم والشعارين وأيقونات Streamlit تماماً لتظهر المنصة مستقلة */
     #MainMenu {visibility: hidden !important; display: none !important;}
     footer {visibility: hidden !important; display: none !important;}
     header {visibility: hidden !important; display: none !important;}
@@ -95,7 +86,7 @@ st.markdown("""
         text-align: right;
     }
     
-    /* تصميم البطاقات الملونة  */
+    /* تصميم البطاقات الملونة الصارخة للإرشاد السريع */
     .status-card {
         padding: 22px;
         border-radius: 16px;
@@ -151,14 +142,14 @@ st.markdown("""
     }
     .header-text h1 {
         color: #ffffff !important;
-        font-size: 30px !important;
+        font-size: 28px !important;
         font-weight: 800;
         margin: 0 0 4px 0 !important;
         line-height: 1.2;
     }
     .header-text p {
         color: #c8e6c9 !important;
-        font-size: 15px !important;
+        font-size: 14px !important;
         margin: 0 !important;
         font-weight: 400;
     }
@@ -189,15 +180,10 @@ st.markdown("""
         font-size: 13px;
         font-weight: bold;
     }
-    .share-wa {
-        background-color: #25D366;
-    }
-    .share-fb {
-        background-color: #1877F2;
-    }
-    .share-tg {
-        background-color: #0088cc;
-    }
+    .share-wa { background-color: #25D366; }
+    .share-fb { background-color: #1877F2; }
+    .share-tg { background-color: #0088cc; }
+    
     .custom-box {
         background-color: #f8f9fa;
         border: 1px solid #e9ecef;
@@ -239,7 +225,6 @@ def load_data():
         return pd.DataFrame()
     try:
         df = pd.read_csv(csv_file)
-        # تنظيف مسافات العناوين والرموز المخفية إن وجدت
         df.columns = df.columns.str.replace('﻿', '').str.strip()
         return df
     except Exception as e:
@@ -248,14 +233,14 @@ def load_data():
 
 df_pesticides = load_data()
 
-# 5. الترويسة الموحدة داخل المستطيل الأخضر مباشرة
-shield_html = f'<img src="data:image/png;base64,{shield_b64}" class="shield-img" />' if shield_b64 else '<span style="font-size:45px;">🛡️</span>'
+# 5. الترويسة الموحدة النظيفة (تم إزالة الإيموجي المتداخل لمنع التكرار البصري)
+shield_html = f'<img src="data:image/png;base64,{shield_b64}" class="shield-img" />' if shield_b64 else ''
 st.markdown(f"""
 <div class="app-header">
     <div class="header-content">
         {shield_html}
         <div class="header-text">
-            <h1>المستشار الزراعي 🛡️</h1>
+            <h1>المستشار الزراعي</h1>
             <p>منظومة تدقيق المبيدات والمواد الفعالة - دولة ليبيا</p>
         </div>
     </div>
@@ -265,7 +250,7 @@ st.markdown(f"""
 </div>
 """, unsafe_allow_html=True)
 
-# تنبيه توجيه متصفح الفيسبوك (منسق وصحيح تماماً)
+# تنبيه توجيه متصفح الفيسبوك
 st.markdown("""
 <div class="custom-box" style="border-right: 5px solid #2e7d32;">
     <p style="margin:0; font-size:14px; text-align:justify;">
@@ -411,7 +396,9 @@ if "وضع المزارع" in mode:
             st.write("🔄 جاري تحليل النصوص والتواريخ عبر الذكاء الاصطناعي...")
             try:
                 import easyocr
-                reader = easyocr.Reader(['ar', 'en', 'it', 'es', 'fr'], gpu=False)
+                # استخدام اللغة الإنجليزية واللاتينية لأن أسماء المواد الفعالة والتواريخ تكتب بهما دائماً
+                # هذا يضمن سرعة هائلة وخفة في ذاكرة السيرفر لعدم تجاوز 1 جيجابايت واحترازاً من الانهيار مفاجئ
+                reader = easyocr.Reader(['en'], gpu=False)
                 img = Image.open(uploaded_image)
                 
                 # تحسين تباين الصورة لتحسين دقة القراءة

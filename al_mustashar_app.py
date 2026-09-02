@@ -10,7 +10,14 @@ from datetime import datetime, date
 from PIL import Image, ImageEnhance  # تم إصلاح الاستيراد هنا بإضافة ImageEnhance لتفادي توقف الكود عند رفع الصور
 
 # 1. إعدادات الصفحة الأساسية لتظهر بشكل مثالي على الهواتف
-app_icon = "shield_logo.png" if os.path.exists("shield_logo.png") else "🛡️"
+# تحضير أيقونة الصفحة بشكل سليم كصورة PIL لتظهر في التبويب
+app_icon = "🛡️"
+if os.path.exists("shield_logo.png"):
+    try:
+        app_icon = Image.open("shield_logo.png")
+    except Exception:
+        pass
+
 st.set_page_config(
     page_title="المستشار الزراعي",
     page_icon=app_icon,
@@ -40,6 +47,40 @@ def get_clean_shield_base64(image_path):
     return ""
 
 shield_b64 = get_clean_shield_base64("shield_logo.png")
+
+# حقن جافا سكريبت لتحديث عنوان المتصفح وأيقونة التطبيق الخارجية للهواتف (PWA / Add to Home Screen)
+if shield_b64:
+    st.markdown(f"""
+    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onload="
+        (function() {{
+            var shield_data = '{shield_b64}';
+            function updateDoc(doc) {{
+                if (!doc) return;
+                doc.title = 'المستشار الزراعي';
+                
+                // إزالة أيقونة Streamlit الافتراضية وإضافة الشعار الذهبي كأيقونة مفضلة
+                var links = doc.querySelectorAll('link[rel*=\'icon\']');
+                links.forEach(function(l) {{ l.parentNode.removeChild(l); }});
+                var link = doc.createElement('link');
+                link.type = 'image/png';
+                link.rel = 'shortcut icon';
+                link.href = 'data:image/png;base64,' + shield_data;
+                doc.getElementsByTagName('head')[0].appendChild(link);
+                
+                // إضافة الشعار الذهبي كأيقونة أبل للهواتف (Apple Touch Icon) لمنع ظهور شعار Streamlit على الشاشة الرئيسية
+                var appleLinks = doc.querySelectorAll('link[rel*=\'apple-touch-icon\']');
+                appleLinks.forEach(function(l) {{ l.parentNode.removeChild(l); }});
+                var appleLink = doc.createElement('link');
+                appleLink.rel = 'apple-touch-icon';
+                appleLink.href = 'data:image/png;base64,' + shield_data;
+                head_el = doc.getElementsByTagName('head')[0];
+                if (head_el) head_el.appendChild(appleLink);
+            }}
+            try {{ updateDoc(document); }} catch(e) {{}}
+            try {{ updateDoc(window.parent.document); }} catch(e) {{}}
+        }})();
+    " style="display:none;" />
+    """, unsafe_allow_html=True)
 
 # 2. تخصيص المظهر وتنسيق النصوص وحماية الواجهة وإخفاء كافة أيقونات المنصة نهائياً مع ضبط اتجاه RTL الصحيح
 st.markdown("""

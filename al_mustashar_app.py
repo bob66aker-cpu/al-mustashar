@@ -1,178 +1,655 @@
-import os
 import streamlit as st
 import pandas as pd
-from PIL import Image, ImageEnhance
-import easyocr
+import numpy as np
+import os
+import urllib.request
+import re
+import base64
 import io
+from datetime import datetime, date
+from PIL import Image
 
-# إعداد الصفحة وتكوين العرض
+# 1. إعدادات الصفحة الأساسية
 st.set_page_config(
-    page_title="المستشار الزراعي",
+    page_title="المستشار الزراعي - دليل المبيدات الليبي",
     page_icon="🛡️",
-    layout="wide",
-    initial_sidebar_state="expanded"
+    layout="centered",
+    initial_sidebar_state="expanded",
 )
 
-# تنسيق CSS احترافي يضمن محاذاة RTL صحيحة ومنعكسة بشكل سليّم وتصميم أنيق
+# دالة تحويل الصورة وإزالة الخلفية الشطرنجية الرمادية تلقائياً وجعلها شفافة
+def get_clean_shield_base64(image_path):
+    if os.path.exists(image_path):
+        try:
+            img = Image.open(image_path).convert("RGBA")
+            datas = img.getdata()
+            
+            new_data = []
+            for item in datas:
+                if item[0] > 180 and item[1] > 180 and item[2] > 180:
+                    new_data.append((255, 255, 255, 0))
+                else:
+                    new_data.append(item)
+            
+            img.putdata(new_data)
+            
+            buffered = io.BytesIO()
+            img.save(buffered, format="PNG")
+            return base64.b64encode(buffered.getvalue()).decode()
+        except Exception:
+            with open(image_path, "rb") as img_file:
+                return base64.b64encode(img_file.read()).decode()
+    return ""
+
+shield_b64 = get_clean_shield_base64("shield_logo.png")
+
+# 2. تخصيص المظهر وتنسيق النصوص وحماية الواجهة وإخفاء كافة أيقونات المنصة نهائياً مع ضبط اتجاه RTL الصحيح
 st.markdown("""
-    <style>
-    #MainMenu {visibility: hidden;}
-    footer {visibility: hidden;}
-    header {visibility: hidden;}
-    div[data-testid="stStatusWidget"] {visibility: hidden;}
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap');
     
+    /* ========================================================= */
+    /* 🛡️ إخفاء القوائم والشعارين وأيقونات Streamlit تماماً       */
+    /* ========================================================= */
+    #MainMenu {visibility: hidden !important; display: none !important;}
+    footer {visibility: hidden !important; display: none !important;}
+    header {visibility: hidden !important; display: none !important;}
+    
+    div[data-testid="stToolbar"] {visibility: hidden !important; display: none !important;}
+    div[data-testid="stDecoration"] {visibility: hidden !important; display: none !important;}
+    div[data-testid="stStatusWidget"] {visibility: hidden !important; display: none !important;}
+    #MainMenu, footer, header, .stAppHeader, [data-testid="stHeader"] {display: none !important; opacity: 0 !important;}
+    
+    /* إخفاء الأيقونة الحمراء وشعار المنصة التراكمي في الزاوية */
+    .viewerBadge_container__1s523, 
+    .viewerBadge_link__1S137,
+    [data-testid="stStatusWidget"],
+    a[href*="streamlit.io"],
+    div[class*="viewerBadge"],
+    div[class*="styles_viewerBadge"],
+    div[data-testid="stAppViewBlockContainer"] + div,
+    #root > div:nth-child(1) > div:nth-child(2) > div,
+    iframe[title="data-testid"] {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+        height: 0 !important;
+        width: 0 !important;
+    }
+    
+    html, body, [class*="css"], .stMarkdown, p, h1, h2, h3, h4, span, label, button {
+        font-family: 'Cairo', sans-serif !important;
+        text-align: right;
+        direction: rtl;
+    }
+    
+    /* ضبط اتجاه العناصر والسيبر بار ليظهر بشكل متناسق ومستقر */
     .stApp {
         direction: rtl;
         text-align: right;
     }
     
-    .main-title {
-        font-size: 2.3rem;
-        color: #1b5e20;
-        font-weight: 800;
-        text-align: center;
-        margin-bottom: 5px;
+    section[data-testid="stSidebar"] {
+        direction: rtl;
+        text-align: right;
     }
     
-    .sub-title {
+    /* تصميم البطاقات الملونة */
+    .status-card {
+        padding: 22px;
+        border-radius: 16px;
+        margin: 18px 0;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         text-align: center;
-        color: #555555;
-        font-size: 1.05rem;
-        margin-bottom: 25px;
+        color: white !important;
     }
-    </style>
+    .status-card h2, .status-card p {
+        color: white !important;
+        text-align: center !important;
+    }
+    .status-red {
+        background: linear-gradient(135deg, #c62828, #8e0000);
+        border-right: 8px solid #4a0000;
+    }
+    .status-green {
+        background: linear-gradient(135deg, #2e7d32, #1b5e20);
+        border-right: 8px solid #003300;
+    }
+    .status-yellow {
+        background: linear-gradient(135deg, #ef6c00, #b63d00);
+        border-right: 8px solid #5d1a00;
+    }
+    .status-expired {
+        background: linear-gradient(135deg, #6a1b9a, #38006b);
+        border-right: 8px solid #1a0036;
+    }
+    
+    /* ترويسة التطبيق الرئيسية - المستطيل الأخضر الموحد */
+    .app-header {
+        background: linear-gradient(135deg, #1e4d2b, #0c2e17);
+        padding: 25px 20px;
+        border-radius: 16px;
+        color: white;
+        margin-bottom: 25px;
+        box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .header-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 18px;
+        width: 100%;
+        direction: rtl;
+    }
+    .header-text {
+        text-align: right;
+    }
+    .header-text h1 {
+        color: #ffffff !important;
+        font-size: 30px !important;
+        font-weight: 800;
+        margin: 0 0 4px 0 !important;
+        line-height: 1.2;
+    }
+    .header-text p {
+        color: #c8e6c9 !important;
+        font-size: 15px !important;
+        margin: 0 !important;
+        font-weight: 400;
+    }
+    .shield-img {
+        width: 75px;
+        height: auto;
+        filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.3));
+    }
+    .motto-box {
+        background-color: rgba(255, 255, 255, 0.12);
+        padding: 6px 20px;
+        border-radius: 20px;
+        margin-top: 15px;
+        text-align: center;
+    }
+    .motto-text {
+        font-size: 14px;
+        font-weight: 700;
+        color: #ffd54f !important;
+    }
+    
+    /* أزرار المشاركة */
+    .share-btn {
+        display: inline-block;
+        padding: 8px 14px;
+        margin: 4px;
+        border-radius: 8px;
+        color: white !important;
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: bold;
+    }
+    .share-wa { background-color: #25D366; }
+    .share-fb { background-color: #1877F2; }
+    .share-tg { background-color: #0088cc; }
+    
+    /* صندوق المعلومات والملاحظات */
+    .custom-box {
+        background-color: #f8f9fa;
+        border: 1px solid #e9ecef;
+        border-radius: 12px;
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+</style>
 """, unsafe_allow_html=True)
 
-# تحميل قارئ النصوص (EasyOCR) متعدد اللغات
-@st.cache_resource
-def load_reader():
-    return easyocr.Reader(['ar', 'en', 'it', 'es', 'fr'], gpu=False)
+# 3. دالة تحميل الخط العربي للتقارير
+@st.cache_data
+def download_arabic_font():
+    font_path = "Amiri-Regular.ttf"
+    if not os.path.exists(font_path):
+        url = "https://github.com/google/fonts/raw/main/ofl/amiri/Amiri-Regular.ttf"
+        try:
+            urllib.request.urlretrieve(url, font_path)
+        except Exception:
+            pass
+    return font_path
 
-try:
-    reader = load_reader()
-except Exception:
-    reader = None
+download_arabic_font()
 
-# تحميل قاعدة البيانات بأمان
+# 4. دالة تحميل قاعدة البيانات
 @st.cache_data
 def load_data():
-    for filename in ['pesticides_database_for_app.csv', 'pesticides_database_for_app .csv']:
-        if os.path.exists(filename):
-            return pd.read_csv(filename)
-    return pd.DataFrame(columns=['المادة الفعالة', 'اسم المبيد', 'حالة التسجيل', 'تاريخ الانتهاء'])
+    csv_file = "pesticides_database_for_app.csv"
+    if not os.path.exists(csv_file):
+        csv_file = "pesticides_database_for_app"
+    
+    if not os.path.exists(csv_file):
+        all_files = os.listdir('.')
+        for f in all_files:
+            if "pesticides_database" in f:
+                csv_file = f
+                break
 
-df = load_data()
+    if not os.path.exists(csv_file):
+        st.error("⚠️ ملف قاعدة البيانات `pesticides_database_for_app.csv` غير موجود!")
+        return pd.DataFrame()
+    
+    try:
+        df = pd.read_csv(csv_file)
+        df.columns = df.columns.str.replace('﻿', '').str.strip()
+        return df
+    except Exception as e:
+        st.error(f"⚠️ حدث خطأ أثناء قراءة ملف قاعدة البيانات: {e}")
+        return pd.DataFrame()
 
-# الشريط الجانبي (Sidebar) المنظم
-with st.sidebar:
-    if os.path.exists('shield_logo.png'):
-        st.image('shield_logo.png', use_container_width=True)
-    else:
-        st.markdown("<h3 style='text-align: center;'>🛡️ المستشار الزراعي</h3>", unsafe_allow_html=True)
-    
-    st.markdown("---")
-    st.header("لوحة التحكم والخيارات")
-    
-    # استعادة الخيارات الشاملة (للمزارعين، المهندسين، والفحص)
-    app_mode = st.radio(
-        "اختر القسم المطلوب:", 
-        [
-            "🌾 استعلام المزارعين والمهندسين", 
-            "📷 فحص صورة المبيد (OCR الذكي)", 
-            "📱 إرشادات التثبيت على الهاتف"
-        ]
-    )
-    
-    st.markdown("---")
-    st.markdown("### عن المطور")
-    if os.path.exists('developer_photo.jpg'):
-        st.image('developer_photo.jpg', use_container_width=True, caption="م. استشاري / خبير قانوني محلف")
-    st.markdown("**مهندس زراعي استشاري**\n\nخبير قانوني محلف أمام القضاء")
+df_pesticides = load_data()
 
-# الهيدر الرئيسي
-st.markdown('<div class="main-title">المستشار الزراعي</div>', unsafe_allow_html=True)
-st.markdown('<div class="sub-title">النظام الذكي المعتمد لفحص المبيدات الزراعية والتحقق من صلاحيتها ومطابقتها للقرارات التنظيمية</div>', unsafe_allow_html=True)
+# 5. الترويسة الموحدة داخل المستطيل الأخضر مباشرة
+shield_html = f'<img src="data:image/png;base64,{shield_b64}" class="shield-img" />' if shield_b64 else '<span style="font-size:45px;">🛡️</span>'
 
-# القسم الأول: استعلام المزارعين والمهندسين
-if app_mode == "🌾 استعلام المزارعين والمهندسين":
-    st.subheader("🔍 الاستعلام الميداني والفني عن المبيدات والمواد الفعالة")
-    st.markdown("مرحباً بك. يتيح هذا القسم للمزارعين والمهندسين الاستعلام الفوري عن حالة التسجيل، صلاحية المبيدات، والمواد الفعالة المعتمدة.")
+st.markdown(f"""
+<div class="app-header">
+    <div class="header-content">
+        {shield_html}
+        <div class="header-text">
+            <h1>المستشار الزراعي</h1>
+            <p>منظومة تدقيق المبيدات والمواد الفعالة - دولة ليبيا</p>
+        </div>
+    </div>
+    <div class="motto-box">
+        <span class="motto-text">« على قدر المعرفة تأتي المسؤولية »</span>
+    </div>
+</div>
+""", unsafe_allow_html=True)
+
+# 6. بطاقة معلومات التطبيق والمطور والقرارات القانونية
+APP_URL = "https://al-mustashar-ly.streamlit.app"
+text_to_share = "تطبيق المستشار الزراعي - دليل تدقيق المبيدات والمواد الفعالة المحظورة والمسموحة في ليبيا:"
+
+show_info = st.checkbox("ℹ️ عرض معلومات التطبيق والمطور والقرارات الرسمية وخيارات المشاركة")
+
+if show_info:
+    st.markdown('<div class="custom-box">', unsafe_allow_html=True)
+    col_img, col_info = st.columns([1, 2])
     
-    search_query = st.text_input("أدخل اسم المبيد، المادة الفعالة، أو رقم التسجيل للبحث:")
-    
-    if search_query and not df.empty:
-        results = df[df.astype(str).apply(lambda row: row.str.contains(search_query, case=False).any(), axis=1)]
-        if not results.empty:
-            st.success(f"تم العثور على {len(results)} نتيجة مطابقة:")
-            st.dataframe(results, use_container_width=True)
+    with col_img:
+        if os.path.exists("developer_photo.jpg"):
+            st.image("developer_photo.jpg", use_container_width=True)
         else:
-            st.warning("لم يتم العثور على نتائج مطابقة في قاعدة البيانات الرسمية.")
-    elif df.empty:
-        st.info("قاعدة بيانات المبيدات غير متوفرة حالياً أو فارغة.")
-
-# القسم الثاني: فحص صورة المبيد (OCR الذكي)
-elif app_mode == "📷 فحص صورة المبيد (OCR الذكي)":
-    st.subheader("📷 التقاط أو رفع صورة ملصق العبوة (دعم متعدد اللغات)")
-    st.markdown("النظام يدعم قراءة النصوص باللغات العربية، الإنجليزية، واللاتينية (الإيطالية، الإسبانية، الفرنسية) مع معالجة تلقائية لتباين الحروف.")
+            st.info("🖼️ ضع صورتك باسم developer_photo.jpg بجانب الملف")
+            
+    with col_info:
+        st.markdown("""
+        **👨‍💻 إعداد وتطوير:** المهندس أبوبكر عبدالقادر الطشاني  
+        **🏛️ الجهة:** وزارة الزراعة والثروة الحيوانية - درنة  
+        **🌐 المنصة:** مؤسس منصة المستشار الزراعي الليبي  
+        """)
+        
+    st.markdown("---")
+    st.markdown("**📲 شارك التطبيق مع المزارعين والمهندسين:**")
+    st.markdown(f"""
+    <a class="share-btn share-wa" href="https://api.whatsapp.com/send?text={text_to_share}%20{APP_URL}" target="_blank">📲 واتساب</a>
+    <a class="share-btn share-fb" href="https://www.facebook.com/sharer/sharer.php?u={APP_URL}" target="_blank">📘 فيسبوك</a>
+    <a class="share-btn share-tg" href="https://t.me/share/url?url={APP_URL}&text={text_to_share}" target="_blank">✈️ تليجرام</a>
+    """, unsafe_allow_html=True)
     
-    uploaded_file = st.file_uploader("اختر صورة ملصق المبيد (JPG, PNG)", type=["jpg", "jpeg", "png"])
-    
-    if uploaded_file is not None:
-        image = Image.open(uploaded_file)
-        
-        # معالجة مسبقة لتحسين الحروف الباهتة أو الناقصة
-        enhancer = ImageEnhance.Contrast(image)
-        enhanced_image = enhancer.enhance(2.2)
-        
-        col1, col2 = st.columns(2)
-        with col1:
-            st.image(image, caption="الصورة الأصلية", use_container_width=True)
-        with col2:
-            st.image(enhanced_image, caption="الصورة بعد معالجة التباين", use_container_width=True)
-        
-        if st.button("بدء تحليل النص واستخراج المادة الفعالة"):
-            if reader is not None:
-                with st.spinner("جاري تحليل الملصق وقراءة النصوص بدقة..."):
-                    try:
-                        img_byte_arr = io.BytesIO()
-                        enhanced_image.save(img_byte_arr, format='PNG')
-                        img_bytes = img_byte_arr.getvalue()
-                        
-                        results = reader.readtext(img_bytes)
-                        extracted_text = " ".join([res[1] for res in results])
-                        
-                        st.info(f"النصوص المستخرجة من الملصق: {extracted_text}")
-                        
-                        if not df.empty and extracted_text:
-                            match_found = False
-                            for idx, row in df.iterrows():
-                                active_ingredient = str(row.get('المادة الفعالة', ''))
-                                if active_ingredient and active_ingredient.lower() in extracted_text.lower():
-                                    st.success(f"✅ تم مطابقة المادة الفعالة بنجاح: {active_ingredient}")
-                                    st.dataframe(pd.DataFrame([row]), use_container_width=True)
-                                    match_found = True
-                            if not match_found:
-                                st.warning("لم يتم العثور على مطابقة مباشرة للمادة المستخرجة داخل قاعدة البيانات الرسمية.")
-                    except Exception as ex:
-                        st.error(f"حدث خطأ أثناء قراءة الصورة: {ex}")
-            else:
-                st.error("محرك التعرف البصري غير متوفر حالياً.")
-
-# القسم الثالث: إرشادات التثبيت على الهاتف
-elif app_mode == "📱 إرشادات التثبيت على الهاتف":
-    st.subheader("📱 كيفية تثبيت التطبيق على هاتفك المحمول (بدون متجر)")
+    st.markdown("---")
     st.markdown("""
-    لإبقاء التطبيق جاهزاً بنقرة واحدة على شاشة هاتفك ودون الحاجة للبحث عن الرابط كل مرة:
+    **📜 المرجعية القانونية والقرارات:**
+    1. **المواد المحظورة:** قرار وزير الزراعة رقم **(248) لسنة 2024م**.
+    2. **المواد المسجلة والمسموحة:** قرار وزير الزراعة رقم **(500) لسنة 2026م**.
     
-    * **أجهزة أندرويد (متصفح كروم Chrome):**
-      1. افتح رابط التطبيق من المتصفح.
-      2. اضغط على القائمة العلوية (الثلاث نقاط رأسية).
-      3. اختر **"إضافة إلى الشاشة الرئيسية" (Add to Home screen)** أو **"تثبيت التطبيق"**.
+    <small>تطبيق إرشادي مستقل يهدف لخدمة المزارعين والشرطة الزراعية لتسهيل تطبيق القرارات الرسمية.</small>
+    """, unsafe_allow_html=True)
+    st.markdown('</div>', unsafe_allow_html=True)
+
+# 7. وضع الاستخدام
+mode = st.radio(
+    "اختر وضع الاستخدام المناسب لك:",
+    ["🧑‍🌾 وضع المزارع (فحص سريع)", "👮‍♂️ وضع المهندس والرقابة (تفصيلي وقانوني)"],
+    index=0,
+    horizontal=True
+)
+
+st.markdown("---")
+
+def parse_date_from_text(text):
+    patterns = [
+        r'\b(0[1-9]|1[0-2])[\/\-](202\d|203\d)\b',
+        r'\b(202\d|203\d)[\/\-](0[1-9]|1[0-2])\b',
+        r'\b(0[1-9]|[12]\d|3[01])[\/\-](0[1-9]|1[0-2])[\/\-](202\d|203\d)\b',
+        r'\b(202\d|203\d)[\/\-](0[1-9]|1[0-2])[\/\-](0[1-9]|[12]\d|3[01])\b',
+    ]
     
-    * **أجهزة أيفون / آي باد (متصفح سفاري Safari):**
-      1. افتح رابط التطبيق في سفاري.
-      2. اضغط على زر المشاركة (مربع يخرج منه سهم للأعلى في الأسفل).
-      3. انزل لأسفل القائمة واختر **"إضافة إلى الشاشة الرئيسية" (Add to Home Screen)**.
-      
-    بمجرد القيام بذلك، ستظهر أيقونة التطبيق مباشرة بين تطبيقات هاتفك لخدمة الزملاء والمستفيدين!
-    """)
+    found_dates = []
+    for pattern in patterns:
+        matches = re.findall(pattern, text)
+        for m in matches:
+            if len(m) == 2:
+                if len(m[0]) == 2 and len(m[1]) == 4:
+                    month, year = int(m[0]), int(m[1])
+                else:
+                    year, month = int(m[0]), int(m[1])
+                found_dates.append((year, month))
+            elif len(m) == 3:
+                if len(m[0]) == 4:
+                    year, month, day = int(m[0]), int(m[1]), int(m[2])
+                else:
+                    day, month, year = int(m[0]), int(m[1]), int(m[2])
+                found_dates.append((year, month))
+    return found_dates
+
+CURRENT_YEAR = 2026
+CURRENT_MONTH = 9
+
+# ==================== 🧑‍🌾 وضع المزارع ====================
+if "وضع المزارع" in mode:
+    st.subheader("🧑‍🌾 بوابة الفحص السريع للمزارع")
+    
+    tab_write, tab_camera = st.tabs(["✍️ البحث بالكتابة اليدوية", "📸 الفحص الذكي بالكاميرا والصور"])
+    
+    found_substance = None
+    scanned_expiry_date = None
+    manual_expiry_expired = False
+    expiry_date_input = None
+    
+    st.markdown("### 📅 فحص صلاحية المبيد (اختياري)")
+    col_exp1, col_exp2 = st.columns(2)
+    with col_exp1:
+        has_expiry = st.checkbox("أريد فحص تاريخ صلاحية العبوة", value=False)
+    with col_exp2:
+        if has_expiry:
+            expiry_date_input = st.date_input(
+                "تاريخ انتهاء الصلاحية على العبوة:",
+                value=date(2026, 9, 1),
+                min_value=date(2020, 1, 1),
+                max_value=date(2035, 12, 31)
+            )
+            if expiry_date_input < date(2026, 9, 1):
+                manual_expiry_expired = True
+
+    with tab_write:
+        if not df_pesticides.empty:
+            substances_list = [""] + sorted(df_pesticides["المادة الفعالة (Active Substance)"].dropna().unique().tolist())
+            search_input = st.selectbox(
+                "اختر أو اكتب اسم المادة الفعالة بالإنجليزية (Active Ingredient):",
+                substances_list,
+                index=0,
+                key="write_select"
+            )
+            if search_input:
+                found_substance = df_pesticides[df_pesticides["المادة الفعالة (Active Substance)"] == search_input].iloc[0]
+        else:
+            st.warning("يرجى التأكد من رفع ملف قاعدة البيانات.")
+            
+    with tab_camera:
+        source_type = st.radio(
+            "اختر طريقة إدخال الصورة:",
+            ["📸 التقاط مباشر بالكاميرا", "🖼️ رفع صورة من الاستوديو / الملفات"],
+            horizontal=True,
+            key="camera_source_radio"
+        )
+        
+        uploaded_image = None
+        
+        if "التقاط مباشر" in source_type:
+            st.info("💡 **ملاحظة للهواتف:** فتح الكاميرا الخلفية تلقائياً. تأكد من وضوح الإضاءة والتركيز على الملصق.")
+            uploaded_image = st.camera_input("وجه الكاميرا نحو ملصق العبوة 📷", key="pesticide_cam")
+        else:
+            uploaded_image = st.file_uploader("اختر صورة الملصق من الاستوديو أو الملفات:", type=["jpg", "jpeg", "png"], key="pesticide_file")
+
+        if uploaded_image:
+            st.write("🔄 جاري تحليل النصوص والتواريخ عبر الذكاء الاصطناعي...")
+            try:
+                import easyocr
+                reader = easyocr.Reader(['ar', 'en', 'it', 'es', 'fr'], gpu=False)
+                img = Image.open(uploaded_image)
+                
+                # معالجة مسبقة لتحسين التباين ودقة التعرف البصري للملصقات
+                enhancer = ImageEnhance.Contrast(img)
+                enhanced_img = enhancer.enhance(2.2)
+                
+                img_np = np.array(enhanced_img)
+                results = reader.readtext(img_np)
+                
+                extracted_text = " ".join([res[1] for res in results]).lower()
+                st.success("🤖 تم فحص النصوص والملصق بنجاح!")
+                
+                dates_found = parse_date_from_text(extracted_text)
+                if dates_found:
+                    for y, m in dates_found:
+                        if y < CURRENT_YEAR or (y == CURRENT_YEAR and m < CURRENT_MONTH):
+                            scanned_expiry_date = f"{m:02d}/{y}"
+                            break
+                        else:
+                            scanned_expiry_date = f"{m:02d}/{y}"
+                
+                match_found = False
+                for idx, row in df_pesticides.iterrows():
+                    sub_name = str(row["المادة الفعالة (Active Substance)"]).strip()
+                    if len(sub_name) > 3 and sub_name.lower() in extracted_text:
+                        found_substance = row
+                        match_found = True
+                        st.info(f"🔎 المادة الفعالة المكتشفة تلقائياً: **{sub_name}**")
+                        break
+                        
+                if not match_found:
+                    st.warning("⚠️ لم يتم العثور على اسم مادة فعالة مطابقة بالصورة. يرجى تجربة البحث اليدوي.")
+            except ImportError:
+                st.error("⚠️ نظام OCR غير مفعل على السيرفر، يرجى استخدام البحث اليدوي.")
+            except Exception as e:
+                st.error(f"حدث خطأ أثناء فحص الصورة: {e}")
+
+    if found_substance is not None:
+        sub_name = found_substance["المادة الفعالة (Active Substance)"]
+        cas_num = found_substance["رقم CAS"]
+        status = found_substance["الحالة"]
+        color = found_substance["اللون الإرشادي"]
+        details = found_substance["التفصيل والقرار"]
+        
+        is_expired = False
+        expired_date_str = ""
+        
+        if manual_expiry_expired and expiry_date_input:
+            is_expired = True
+            expired_date_str = expiry_date_input.strftime('%d/%m/%Y')
+        elif scanned_expiry_date:
+            m, y = map(int, scanned_expiry_date.split('/'))
+            if y < CURRENT_YEAR or (y == CURRENT_YEAR and m < CURRENT_MONTH):
+                is_expired = True
+                expired_date_str = scanned_expiry_date
+
+        if is_expired:
+            st.markdown(f"""
+            <div class="status-card status-expired">
+                <h2>⚠️ خطر: مبيد منتهي الصلاحية وتالف! ❌</h2>
+                <p style="font-size: 21px; font-weight: bold; margin: 8px 0;">المادة: {sub_name}</p>
+                <p style="font-size: 16px;"><b>التاريخ المكتشف: {expired_date_str}</b></p>
+                <p style="font-size: 14px; text-align: justify; padding: 0 10px;">
+                    استخدام المبيد منتهي الصلاحية يشكل خطراً كبيراً لتحلل المادة الفعالة إلى مركب سام يسبب حرق المحاصيل وتسمم التربة.
+                </p>
+            </div>
+            """, unsafe_allow_html=True)
+            
+        else:
+            if str(color).lower() == "red":
+                st.markdown(f"""
+                <div class="status-card status-red">
+                    <h2>🔴 مادة محظورة وممنوعة تماماً! ❌</h2>
+                    <p style="font-size: 20px; font-weight: bold; margin: 8px 0;">{sub_name}</p>
+                    <p style="font-size: 15px;">ممنوع تركيبها أو استيرادها أو تداولها في ليبيا نهائياً.</p>
+                    <p style="font-size: 13px; opacity: 0.9; margin-top: 12px;">⚠️ السند القانوني: قرار وزير الزراعة رقم 248 لسنة 2024م</p>
+                </div>
+                """, unsafe_allow_html=True)
+                
+            elif str(color).lower() == "green":
+                st.markdown(f"""
+                <div class="status-card status-green">
+                    <h2>🟢 مادة مسموحة ومسجلة ✅</h2>
+                    <p style="font-size: 20px; font-weight: bold; margin: 8px 0;">{sub_name}</p>
+                    <p style="font-size: 15px;">مسموح تداولها واستخدامها ومطابقة للمعايير المعتمدة.</p>
+                    <p style="font-size: 13px; opacity: 0.9; margin-top: 12px;">📜 السند القانوني: قرار وزير الزراعة رقم 500 لسنة 2026م</p>
+                </div>
+                """, unsafe_allow_html=True)
+                
+            else:
+                st.markdown(f"""
+                <div class="status-card status-yellow">
+                    <h2>⚠️ مادة خاضعة للمراجعة والقيود ⚠️</h2>
+                    <p style="font-size: 20px; font-weight: bold; margin: 8px 0;">{sub_name}</p>
+                    <p style="font-size: 15px;">{status}</p>
+                    <p style="font-size: 13px; opacity: 0.9; margin-top: 10px;"><b>تفصيل القانون:</b> {details}</p>
+                </div>
+                """, unsafe_allow_html=True)
+
+# ==================== 👮‍♂️ وضع المهندس والمفتش ====================
+else:
+    st.subheader("👮‍♂️ بوابة الضبط والتفتيش والمهندسين الزراعيين")
+    
+    show_guide = st.checkbox("🔍 عرض دليل كشف تلاعب وغش تواريخ الصلاحية (للمفتشين)")
+    if show_guide:
+        st.markdown("""
+        <div class="custom-box">
+            <h4>🛡️ علامات الغش والتلاعب بالتواريخ:</h4>
+            <ol>
+                <li><b>اختلاف حبر الطباعة:</b> الحبر المزيف يسهل مسحه أو كشطه بالكحول.</li>
+                <li><b>آثار الكشط:</b> وجود خدوش حول منطقة التاريخ بالعبوة.</li>
+                <li><b>تطابق التشغيلة (Batch Number):</b> مطابقة التشغيلة مع الفواتير الأصلية.</li>
+                <li><b>الترسبات والتكتل:</b> انفصال السائل أو تكتل البودرة دليل تلف المادة الفعالة.</li>
+            </ol>
+        </div>
+        """, unsafe_allow_html=True)
+
+    if not df_pesticides.empty:
+        substances_list_eng = [""] + sorted(df_pesticides["المادة الفعالة (Active Substance)"].dropna().unique().tolist())
+        selected_inspector_sub = st.selectbox(
+            "🔎 اختر أو ابحث عن اسم المادة الفعالة بالإنجليزية (Active Ingredient):",
+            substances_list_eng,
+            key="inspector_select"
+        )
+        
+        selected_row = None
+        if selected_inspector_sub:
+            selected_row = df_pesticides[df_pesticides["المادة الفعالة (Active Substance)"] == selected_inspector_sub].iloc[0]
+            
+            sub_name = selected_row["المادة الفعالة (Active Substance)"]
+            cas_num = selected_row["رقم CAS"]
+            status = selected_row["الحالة"]
+            color = selected_row["اللون الإرشادي"]
+            details = selected_row["التفصيل والقرار"]
+            
+            if str(color).lower() == "red":
+                st.markdown(f"""
+                <div class="status-card status-red">
+                    <h2>🔴 مادة محظورة وممنوعة قانوناً ❌</h2>
+                    <p style="font-size: 21px; font-weight: bold; margin: 5px 0;">المادة: {sub_name}</p>
+                    <p style="font-size: 15px;"><b>رقم CAS الدولي:</b> {cas_num}</p>
+                    <p style="font-size: 14px; margin-top: 10px;"><b>القرار والسند:</b> {details}</p>
+                </div>
+                """, unsafe_allow_html=True)
+            elif str(color).lower() == "green":
+                st.markdown(f"""
+                <div class="status-card status-green">
+                    <h2>🟢 مادة مسجلة ومسموحة ✅</h2>
+                    <p style="font-size: 21px; font-weight: bold; margin: 5px 0;">المادة: {sub_name}</p>
+                    <p style="font-size: 15px;"><b>رقم CAS الدولي:</b> {cas_num}</p>
+                    <p style="font-size: 14px; margin-top: 10px;"><b>القرار والسند:</b> {details}</p>
+                </div>
+                """, unsafe_allow_html=True)
+            else:
+                st.markdown(f"""
+                <div class="status-card status-yellow">
+                    <h2>⚠️ مادة خاضعة للقيود ⚠️</h2>
+                    <p style="font-size: 21px; font-weight: bold; margin: 5px 0;">المادة: {sub_name}</p>
+                    <p style="font-size: 15px;"><b>رقم CAS الدولي:</b> {cas_num}</p>
+                    <p style="font-size: 14px; margin-top: 10px;"><b>القرار والسند:</b> {details}</p>
+                </div>
+                """, unsafe_allow_html=True)
+
+        st.markdown("---")
+        st.markdown("### 📝 صياغة محضر ضبط وإثبات حالة مخالفة")
+        
+        col_form1, col_form2 = st.columns(2)
+        with col_form1:
+            inspector_name = st.text_input("اسم ضابط الرقابة / المفتش:", "مفتش الشرطة الزراعية")
+            authority_name = st.text_input("الجهة الضبطية:", "جهاز الشرطة الزراعية - مكتب درنة")
+            offense_type = st.selectbox("نوع المخالفة المرصودة:", ["تداول مادة فعالة محظورة زراعية وقانونياً ❌", "حيازة وتداول مبيد منتهي الصلاحية وتالف ⚠️"])
+        with col_form2:
+            location_name = st.text_input("مكان وسياق الضبط:", "محلات بيع المواد الزراعية")
+            quantity_seized = st.text_input("الكمية المضبوطة:", "5 عبوات")
+            default_sub_name = selected_inspector_sub if selected_inspector_sub else "أدخل اسم المادة"
+            selected_substance_manual = st.text_input("اسم المادة الفعالة المضبوطة:", default_sub_name)
+            
+        if st.button("🖨️ توليد وحفظ تقرير ضبط وإثبات حالة (PDF)"):
+            try:
+                from fpdf import FPDF
+                import arabic_reshaper
+                from bidi.algorithm import get_display
+                
+                pdf = FPDF()
+                pdf.add_page()
+                
+                font_file = "Amiri-Regular.ttf"
+                if os.path.exists(font_file):
+                    pdf.add_font("Amiri", "", font_file, uni=True)
+                    pdf.set_font("Amiri", size=14)
+                else:
+                    pdf.set_font("Arial", size=14)
+                
+                def clean_ar(text):
+                    reshaped_text = arabic_reshaper.reshape(text)
+                    bidi_text = get_display(reshaped_text)
+                    return bidi_text
+                
+                title_text = clean_ar("وزارة الزراعة والثروة الحيوانية - دولة ليبيا")
+                header_text = clean_ar("تقرير فني رسمي لإثبات حالة ضبط مخالفة مواد زراعية")
+                
+                pdf.cell(190, 10, txt=title_text, ln=True, align="C")
+                pdf.cell(190, 10, txt=header_text, ln=True, align="C")
+                pdf.line(10, 30, 200, 30)
+                pdf.ln(10)
+                
+                pdf.cell(190, 10, txt=clean_ar(f"اسم المفتش الرقابي المسؤول: {inspector_name}"), ln=True, align="R")
+                pdf.cell(190, 10, txt=clean_ar(f"الجهة الضبطية الرسمية: {authority_name}"), ln=True, align="R")
+                pdf.cell(190, 10, txt=clean_ar(f"مكان وسياق الضبط: {location_name}"), ln=True, align="R")
+                pdf.cell(190, 10, txt=clean_ar(f"الكمية المضبوطة والمتحفظ عليها: {quantity_seized}"), ln=True, align="R")
+                pdf.cell(190, 10, txt=clean_ar(f"نوع المخالفة: {offense_type}"), ln=True, align="R")
+                pdf.ln(5)
+                pdf.line(10, 85, 200, 85)
+                pdf.ln(5)
+                
+                pdf.cell(190, 10, txt=clean_ar(f"المبيد / المادة الفعالة المضبوطة: {selected_substance_manual}"), ln=True, align="R")
+                
+                if "محظورة" in offense_type:
+                    pdf.cell(190, 10, txt=clean_ar("الحالة القانونية: محظورة وممنوعة تماماً من التداول والتركيب في ليبيا."), ln=True, align="R")
+                    pdf.cell(190, 10, txt=clean_ar("السند التشريعي: قرار وزير الزراعة رقم (248) لسنة 2024م."), ln=True, align="R")
+                else:
+                    pdf.cell(190, 10, txt=clean_ar("الحالة الفنية والقانونية: مبيد منتهي الصلاحية وتالف تمنع التشريعات استخدامه."), ln=True, align="R")
+                    pdf.cell(190, 10, txt=clean_ar("الأثر الفني: المادة الفعالة تحللت إلى نواتج سامة تهدد التربة والصحة العامة."), ln=True, align="R")
+                
+                pdf.ln(10)
+                pdf.cell(190, 10, txt=clean_ar("ملاحظات المفتش الفنية: .................................................................................."), ln=True, align="R")
+                pdf.ln(15)
+                pdf.cell(90, 10, txt=clean_ar("توقيع المستلم/المخالف: ......................."), ln=False, align="L")
+                pdf.cell(90, 10, txt=clean_ar("توقيع الضابط المسؤول: ......................."), ln=True, align="R")
+                
+                pdf_filename = "seizure_report.pdf"
+                pdf.output(pdf_filename)
+                
+                with open(pdf_filename, "rb") as f:
+                    st.download_button(
+                        label="📥 اضغط هنا لتنزيل تقرير الضبط (PDF) والطباعة الفورية",
+                        data=f,
+                        file_name=f"تقرير_ضبط_مخالفة_{selected_substance_manual}.pdf",
+                        mime="application/pdf"
+                    )
+                st.success("✅ تم توليد تقرير الضبط والمطابقة الفنية بنجاح!")
+            except Exception as e:
+                st.error(f"حدث خطأ أثناء صياغة تقرير الـ PDF: {e}")
+                
+    else:
+        st.warning("يرجى التأكد من رفع ملف قاعدة البيانات المرفق.")

@@ -58,7 +58,7 @@ df = load_data()
 with st.sidebar:
     # عرض شعار الدرع إذا توفر
     if os.path.exists('shield_logo.png'):
-        st.image('shield_logo.png', use_column_width=True)
+        st.image('shield_logo.png', use_container_width=True)
     
     st.header("خيارات التطبيق")
     app_mode = st.radio("اختر القسم:", ["البحث والاستعلام", "فحص صورة المبيد (OCR)", "إرشادات التثبيت على الهاتف"])
@@ -102,7 +102,7 @@ elif app_mode == "فحص صورة المبيد (OCR)":
         enhancer = ImageEnhance.Contrast(image)
         enhanced_image = enhancer.enhance(2.0)
         
-        st.image(image, caption="الصورة المرفوعة", use_column_width=True)
+        st.image(image, caption="الصورة المرفوعة", use_container_width=True)
         
         if st.button("بدء قراءة النص واستخراج المادة الفعالة"):
             if reader is not None:

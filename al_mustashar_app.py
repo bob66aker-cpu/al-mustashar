@@ -5,7 +5,7 @@ from PIL import Image, ImageEnhance
 import easyocr
 import io
 
-# إعداد الصفحة لتكون واسعة وتدعم الجوال
+# إعداد الصفحة
 st.set_page_config(
     page_title="المستشار الزراعي",
     page_icon="🛡️",
@@ -13,38 +13,24 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# حقن كود الـ PWA ووسوم الميتا لدعم التثبيت على الشاشة الرئيسية للهاتف
+# حقن كود الـ PWA الأساسي لتثبيت التطبيق على الهاتف بدون تأثير على التصميم
 st.markdown("""
-    <link rel="manifest" href="data:application/manifest+json;charset=utf-8,{
-        'name': 'المستشار الزراعي',
-        'short_name': 'المستشار',
-        'start_url': '.',
-        'display': 'standalone',
-        'background_color': '#ffffff',
-        'theme_color': '#2e7d32',
-        'icons': [{
-            'src': 'https://img.icons8.com/color/96/000000/agriculture.png',
-            'sizes': '96x96',
-            'type': 'image/png'
-        }]
-    }">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="المستشار الزراعي">
 """, unsafe_allow_html=True)
 
 # إخفاء عناصر النظام والفوتر والخانة السوداء الخاصة بالمشرف للزوار
-hide_streamlit_style = """
+st.markdown("""
     <style>
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
     header {visibility: hidden;}
     div[data-testid="stStatusWidget"] {visibility: hidden;}
     </style>
-"""
-st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+""", unsafe_allow_html=True)
 
-# تهيئة قارئ النصوص EasyOCR (يدعم العربية والإنجليزية)
+# تهيئة قارئ النصوص EasyOCR
 @st.cache_resource
 def load_reader():
     return easyocr.Reader(['ar', 'en'], gpu=False)
@@ -69,7 +55,6 @@ df = load_data()
 
 # شريط جانبي للتحكم والخيارات
 with st.sidebar:
-    st.image("https://img.icons8.com/color/96/000000/agriculture.png", width=80)
     st.header("خيارات التطبيق")
     app_mode = st.radio("اختر القسم:", ["البحث والاستعلام", "فحص صورة المبيد (OCR)", "إرشادات التثبيت على الهاتف"])
 
@@ -94,11 +79,11 @@ elif app_mode == "فحص صورة المبيد (OCR)":
     if uploaded_file is not None:
         image = Image.open(uploaded_file)
         
-        # تحسين الصورة قبل القراءة (معالجة مسبقة لدقة OCR أعلى)
+        # تحسين الصورة قبل القراءة
         enhancer = ImageEnhance.Contrast(image)
         enhanced_image = enhancer.enhance(2.0)
         
-        st.image(image, caption="الصورة المرفوعة", use_column_width=True)
+        st.image(image, caption="الصورة المرفوعة", use_container_width=True)
         
         if st.button("بدء قراءة النص واستخراج المادة الفعالة"):
             with st.spinner("جاري تحليل الصورة واستخراج النصوص..."):
@@ -140,5 +125,5 @@ elif app_mode == "إرشادات التثبيت على الهاتف":
       2. اضغط على زر المشاركة (مربع يخرج منه سهم للأعلى في الأسفل).
       3. انزل لأسفل القائمة واختر **"إضافة إلى الشاشة الرئيسية" (Add to Home Screen)**.
       
-    بمجرد القيام بذلك، ستظهر أيقونة التطبيق بدرع المستشار الزراعي مباشرة بين تطبيقات هاتفك!
+    بمجرد القيام بذلك، ستظهر أيقونة التطبيق مباشرة بين تطبيقات هاتفك!
     """)

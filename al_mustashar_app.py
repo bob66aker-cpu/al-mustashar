@@ -421,7 +421,12 @@ CURRENT_MONTH = 9
 # ==================== 🧑‍🌾 وضع المزارع ====================
 if "وضع المزارع" in mode:
     st.subheader("🧑‍🌾 بوابة الفحص السريع للمزارع")
-    tab_write, tab_camera = st.tabs(["✍️ البحث بالكتابة اليدوية", "📸 الفحص الذكي بالكاميرا والصور"])
+    search_method_farmer = st.radio(
+        "اختر طريقة البحث عن المادة الفعالة:",
+        ["✍️ البحث اليدوي والانتخاب", "📸 الفحص الذكي بالكاميرا والملصقات"],
+        horizontal=True,
+        key="search_method_farmer"
+    )
     
     found_substance = None
     scanned_expiry_date = None
@@ -443,7 +448,7 @@ if "وضع المزارع" in mode:
             if expiry_date_input < date(2026, 9, 1):
                 manual_expiry_expired = True
                 
-    with tab_write:
+    if "البحث اليدوي" in search_method_farmer:
         if not df_pesticides.empty:
             substances_list = [""] + sorted(df_pesticides["المادة الفعالة (Active Substance)"].dropna().unique().tolist())
             search_input = st.selectbox(
@@ -457,7 +462,7 @@ if "وضع المزارع" in mode:
         else:
             st.warning("يرجى التأكد من رفع ملف قاعدة البيانات.")
             
-    with tab_camera:
+    else:
         source_type = st.radio(
             "اختر طريقة إدخال الصورة:",
             ["📸 التقاط مباشر بالكاميرا", "🖼️ رفع صورة من الاستوديو / الملفات"],
@@ -511,9 +516,6 @@ if "وضع المزارع" in mode:
                     else:
                         st.info(f"🔎 المادة الفعالة المكتشفة: **{sub_name}** (تطابق ذكي ومطابقة مرنة بنسبة {best_ratio*100:.0f}% 🎯)")
                 else:
-                    st.warning("⚠️ لم يتم العثور على اسم مادة فعالة مطابقة بالصورة. يرجى تجربة البحث اليدوي.")
-                        
-                if not match_found:
                     st.warning("⚠️ لم يتم العثور على اسم مادة فعالة مطابقة بالصورة. يرجى تجربة البحث اليدوي.")
             except ImportError:
                 st.error("⚠️ نظام OCR غير مفعل على السيرفر، يرجى استخدام البحث اليدوي.")
@@ -598,12 +600,17 @@ else:
         """, unsafe_allow_html=True)
         
     if not df_pesticides.empty:
-        tab_write_eng, tab_camera_eng = st.tabs(["✍️ البحث واختيار المادة يدوياً", "📸 الفحص الذكي بالكاميرا والصور"])
+        search_method_eng = st.radio(
+            "اختر طريقة البحث عن المادة الفعالة للتفتيش:",
+            ["✍️ البحث واختيار المادة يدوياً", "📸 الفحص الذكي بالكاميرا والملصقات"],
+            horizontal=True,
+            key="search_method_inspector"
+        )
         
         selected_inspector_sub = ""
         scanned_inspector_sub = None
         
-        with tab_write_eng:
+        if "البحث واختيار" in search_method_eng:
             substances_list_eng = [""] + sorted(df_pesticides["المادة الفعالة (Active Substance)"].dropna().unique().tolist())
             selected_inspector_sub = st.selectbox(
                 "🔎 اختر أو ابحث عن اسم المادة الفعالة بالإنجليزية (Active Ingredient):",
@@ -611,7 +618,7 @@ else:
                 key="inspector_select"
             )
             
-        with tab_camera_eng:
+        else:
             source_type_eng = st.radio(
                 "اختر طريقة إدخال الصورة للتفتيش:",
                 ["📸 التقاط مباشر بالكاميرا", "🖼️ رفع صورة من الاستوديو / الملفات"],
@@ -630,7 +637,6 @@ else:
                 st.write("🔄 جاري تحليل النصوص ومطابقة المواد الفعالة عبر محرك البحث المرن...")
                 try:
                     import easyocr
-                    from difflib import SequenceMatcher
                     reader = easyocr.Reader(['en'], gpu=False)
                     img_eng = Image.open(uploaded_image_eng)
                     
@@ -664,10 +670,11 @@ else:
                     
         # تحديد المادة النهائية النشطة للمفتش
         final_inspector_sub = ""
-        if selected_inspector_sub:
+        if "البحث واختيار" in search_method_eng:
             final_inspector_sub = selected_inspector_sub
-        elif scanned_inspector_sub:
-            final_inspector_sub = scanned_inspector_sub
+        else:
+            if scanned_inspector_sub:
+                final_inspector_sub = scanned_inspector_sub
             
         selected_row = None
         if final_inspector_sub:

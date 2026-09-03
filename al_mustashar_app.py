@@ -336,6 +336,85 @@ def parse_date_from_text(text):
                 found_dates.append((year, month))
     return found_dates
 
+def correct_ocr_homoglyphs(text):
+    replacements = {
+        '1': 'l',
+        '0': 'o',
+        '5': 's',
+        '8': 'b',
+        '3': 'e',
+        '4': 'a',
+        '@': 'a',
+    }
+    for k, v in replacements.items():
+        text = text.replace(k, v)
+    return text
+
+def clean_ocr(text):
+    corrected = correct_ocr_homoglyphs(text.lower())
+    return re.sub(r'[^a-z]', '', corrected)
+
+def find_best_match(df_pesticides, extracted_text):
+    if df_pesticides.empty:
+        return None, 0.0, False
+        
+    text_clean = extracted_text.lower().strip()
+    text_squashed = clean_ocr(text_clean)
+    
+    best_match_row = None
+    best_ratio = 0.0
+    match_found = False
+    
+    # 1. Check direct substring match first on exact or squashed names
+    for idx, row in df_pesticides.iterrows():
+        sub_name = str(row["المادة الفعالة (Active Substance)"]).strip()
+        sub_clean = sub_name.lower()
+        sub_squashed = clean_ocr(sub_clean)
+        
+        if len(sub_clean) > 3 and (sub_clean in text_clean or sub_squashed in text_squashed):
+            return row, 1.0, True
+            
+    # 2. Check word-level match and fuzzy sliding window
+    for idx, row in df_pesticides.iterrows():
+        sub_name = str(row["المادة الفعالة (Active Substance)"]).strip()
+        sub_clean = sub_name.lower()
+        sub_squashed = clean_ocr(sub_clean)
+        
+        # Determine dynamic threshold to avoid false positives on short words (e.g. MCPA)
+        l = len(sub_squashed)
+        if l <= 4:
+            thresh = 0.90
+        elif l <= 6:
+            thresh = 0.80
+        else:
+            thresh = 0.70
+            
+        # Check standard words in OCR text
+        words_in_ocr = re.findall(r'[a-zA-Z]{3,}', text_clean)
+        for word in words_in_ocr:
+            word_clean = clean_ocr(word)
+            ratio = difflib.SequenceMatcher(None, sub_squashed, word_clean).ratio()
+            if ratio >= thresh and ratio > best_ratio:
+                best_ratio = ratio
+                best_match_row = row
+                match_found = True
+                
+        # Check sliding windows on the squashed text for longer substance names
+        if l >= 5 and len(text_squashed) >= l:
+            win_sizes = [l - 1, l, l + 1, l + 2]
+            for w_len in win_sizes:
+                for i in range(len(text_squashed) - w_len + 1):
+                    sub_str = text_squashed[i:i+w_len]
+                    if len(sub_str) >= 4:
+                        ratio = difflib.SequenceMatcher(None, sub_squashed, sub_str).ratio()
+                        if ratio >= thresh and ratio > best_ratio:
+                            best_ratio = ratio
+                            best_match_row = row
+                            match_found = True
+                            
+    return best_match_row, best_ratio, match_found
+
+
 CURRENT_YEAR = 2026
 CURRENT_MONTH = 9
 
@@ -421,33 +500,8 @@ if "وضع المزارع" in mode:
                         else:
                             scanned_expiry_date = f"{m:02d}/{y}"
                             
-                # محرك المطابقة الذكي والبحث المرن (Fuzzy Matching Engine) لتصحيح أخطاء الكاميرا الإملائية تلقائياً
-                match_found = False
-                best_match_row = None
-                best_ratio = 0.0
-                
-                # تنظيف النص المستخرج وتقسيمه لكلمات لتسهيل المقارنة التقريبية
-                text_clean = extracted_text.lower().strip()
-                words_in_ocr = re.findall(r'[a-zA-Z]{3,}', text_clean)
-                
-                for idx, row in df_pesticides.iterrows():
-                    sub_name = str(row["المادة الفعالة (Active Substance)"]).strip()
-                    sub_clean = sub_name.lower()
-                    
-                    # 1. مطابقة مباشرة (إذا كتبت المادة بشكل صحيح تماماً في النص)
-                    if len(sub_clean) > 3 and sub_clean in text_clean:
-                        best_match_row = row
-                        best_ratio = 1.0
-                        match_found = True
-                        break
-                        
-                    # 2. مطابقة مرنة (تقريبية) لمعالجة أخطاء الكاميرا (مثل قراءة l كـ 1 أو e كـ o)
-                    for word in words_in_ocr:
-                        ratio = difflib.SequenceMatcher(None, sub_clean, word).ratio()
-                        if ratio >= 0.80 and ratio > best_ratio:
-                            best_ratio = ratio
-                            best_match_row = row
-                            match_found = True
+                # استدعاء محرك البحث الذكي الموحد والمطابقة المرنة (النسخة V15 الفائقة)
+                best_match_row, best_ratio, match_found = find_best_match(df_pesticides, extracted_text)
                 
                 if match_found and best_match_row is not None:
                     found_substance = best_match_row
@@ -455,7 +509,7 @@ if "وضع المزارع" in mode:
                     if best_ratio == 1.0:
                         st.success(f"🔎 المادة الفعالة المكتشفة: **{sub_name}** (تطابق تام ✅)")
                     else:
-                        st.info(f"🔎 المادة الفعالة المكتشفة: **{sub_name}** (تطابق ذكي بنسبة {best_ratio*100:.0f}% 🎯)")
+                        st.info(f"🔎 المادة الفعالة المكتشفة: **{sub_name}** (تطابق ذكي ومطابقة مرنة بنسبة {best_ratio*100:.0f}% 🎯)")
                 else:
                     st.warning("⚠️ لم يتم العثور على اسم مادة فعالة مطابقة بالصورة. يرجى تجربة البحث اليدوي.")
                         
@@ -590,35 +644,17 @@ else:
                     extracted_text_eng = " ".join([res[1] for res in results_eng]).lower()
                     st.success("🤖 تم فحص النصوص والملصق بنجاح!")
                     
-                    best_match_sub_eng = None
-                    highest_ratio_eng = 0.0
+                    # استدعاء محرك البحث الذكي الموحد والمطابقة المرنة (النسخة V15 الفائقة)
+                    best_match_sub_eng, highest_ratio_eng, match_found_eng = find_best_match(df_pesticides, extracted_text_eng)
                     
-                    # 1. محاولة مطابقة دقيقة أولاً
-                    for idx, row in df_pesticides.iterrows():
-                        sub_name_db = str(row["المادة الفعالة (Active Substance)"]).strip()
-                        if len(sub_name_db) > 3 and sub_name_db.lower() in extracted_text_eng:
-                            best_match_sub_eng = row
-                            highest_ratio_eng = 1.0
-                            break
-                    
-                    # 2. إذا لم نجد مطابقة دقيقة، نقوم بالبحث المرن (Fuzzy Matching) على الكلمات المقروءة
-                    if highest_ratio_eng < 1.0:
-                        words_eng = extracted_text_eng.split()
-                        for idx, row in df_pesticides.iterrows():
-                            sub_name_db = str(row["المادة الفعالة (Active Substance)"]).strip().lower()
-                            if len(sub_name_db) > 3:
-                                for word in words_eng:
-                                    if len(word) > 3:
-                                        ratio = SequenceMatcher(None, sub_name_db, word).ratio()
-                                        if ratio > highest_ratio_eng:
-                                            highest_ratio_eng = ratio
-                                            best_match_sub_eng = row
-                    
-                    # نقبل التطابق إذا كانت النسبة أعلى من 80% (0.80)
-                    if best_match_sub_eng is not None and highest_ratio_eng >= 0.80:
+                    # نقبل التطابق بناءً على نتيجة محرك البحث المرن
+                    if match_found_eng and best_match_sub_eng is not None:
                         scanned_inspector_sub = best_match_sub_eng["المادة الفعالة (Active Substance)"]
                         match_percent = int(highest_ratio_eng * 100)
-                        st.info(f"🔎 المادة الفعالة المكتشفة تلقائياً: **{scanned_inspector_sub}** (تطابق ذكي بنسبة {match_percent}% 🎯)")
+                        if highest_ratio_eng == 1.0:
+                            st.info(f"🔎 المادة الفعالة المكتشفة تلقائياً: **{scanned_inspector_sub}** (تطابق تام ✅)")
+                        else:
+                            st.info(f"🔎 المادة الفعالة المكتشفة تلقائياً: **{scanned_inspector_sub}** (تطابق ذكي ومطابقة مرنة بنسبة {match_percent}% 🎯)")
                     else:
                         st.warning("⚠️ لم يتم العثور على اسم مادة فعالة مطابقة بالصورة. يرجى تجربة اختيار المادة يدوياً.")
                 except ImportError:

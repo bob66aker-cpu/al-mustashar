@@ -311,6 +311,16 @@ mode = st.radio(
 
 st.markdown("---")
 
+
+@st.cache_resource
+def load_ocr_reader():
+    try:
+        import easyocr
+        return easyocr.Reader(['en'], gpu=False)
+    except Exception as e:
+        st.error(f"❌ خطأ أثناء تحميل محرك OCR: {e}")
+        return None
+
 def parse_date_from_text(text):
     patterns = [
         r'\b(0[1-9]|1[0-2])[/-](202\d|203\d)\b',
@@ -480,10 +490,9 @@ if "وضع المزارع" in mode:
         if uploaded_image:
             st.write("🔄 جاري تحليل النصوص والتواريخ عبر الذكاء الاصطناعي...")
             try:
-                import easyocr
-                # استخدام اللغة الإنجليزية واللاتينية لأن أسماء المواد الفعالة والتواريخ تكتب بهما دائماً
-                # هذا يضمن سرعة هائلة وخفة في ذاكرة السيرفر لعدم تجاوز 1 جيجابايت واحترازاً من الانهيار مفاجئ
-                reader = easyocr.Reader(['en'], gpu=False)
+                reader = load_ocr_reader()
+                if reader is None:
+                    raise ValueError("محرك OCR غير جاهز أو غير مفعل على السيرفر.")
                 img = Image.open(uploaded_image)
                 
                 # تحسين تباين الصورة لتحسين دقة القراءة
@@ -636,8 +645,9 @@ else:
             if uploaded_image_eng:
                 st.write("🔄 جاري تحليل النصوص ومطابقة المواد الفعالة عبر محرك البحث المرن...")
                 try:
-                    import easyocr
-                    reader = easyocr.Reader(['en'], gpu=False)
+                    reader = load_ocr_reader()
+                    if reader is None:
+                        raise ValueError("محرك OCR غير جاهز أو غير مفعل على السيرفر.")
                     img_eng = Image.open(uploaded_image_eng)
                     
                     # تحسين تباين الصورة لتحسين دقة القراءة

@@ -4,6 +4,7 @@ import numpy as np
 import os
 import urllib.request
 import re
+import difflib
 import base64
 import io
 from datetime import datetime, date
@@ -420,14 +421,43 @@ if "وضع المزارع" in mode:
                         else:
                             scanned_expiry_date = f"{m:02d}/{y}"
                             
+                # محرك المطابقة الذكي والبحث المرن (Fuzzy Matching Engine) لتصحيح أخطاء الكاميرا الإملائية تلقائياً
                 match_found = False
+                best_match_row = None
+                best_ratio = 0.0
+                
+                # تنظيف النص المستخرج وتقسيمه لكلمات لتسهيل المقارنة التقريبية
+                text_clean = extracted_text.lower().strip()
+                words_in_ocr = re.findall(r'[a-zA-Z]{3,}', text_clean)
+                
                 for idx, row in df_pesticides.iterrows():
                     sub_name = str(row["المادة الفعالة (Active Substance)"]).strip()
-                    if len(sub_name) > 3 and sub_name.lower() in extracted_text:
-                        found_substance = row
+                    sub_clean = sub_name.lower()
+                    
+                    # 1. مطابقة مباشرة (إذا كتبت المادة بشكل صحيح تماماً في النص)
+                    if len(sub_clean) > 3 and sub_clean in text_clean:
+                        best_match_row = row
+                        best_ratio = 1.0
                         match_found = True
-                        st.info(f"🔎 المادة الفعالة المكتشفة تلقائياً: **{sub_name}**")
                         break
+                        
+                    # 2. مطابقة مرنة (تقريبية) لمعالجة أخطاء الكاميرا (مثل قراءة l كـ 1 أو e كـ o)
+                    for word in words_in_ocr:
+                        ratio = difflib.SequenceMatcher(None, sub_clean, word).ratio()
+                        if ratio >= 0.80 and ratio > best_ratio:
+                            best_ratio = ratio
+                            best_match_row = row
+                            match_found = True
+                
+                if match_found and best_match_row is not None:
+                    found_substance = best_match_row
+                    sub_name = found_substance["المادة الفعالة (Active Substance)"]
+                    if best_ratio == 1.0:
+                        st.success(f"🔎 المادة الفعالة المكتشفة: **{sub_name}** (تطابق تام ✅)")
+                    else:
+                        st.info(f"🔎 المادة الفعالة المكتشفة: **{sub_name}** (تطابق ذكي بنسبة {best_ratio*100:.0f}% 🎯)")
+                else:
+                    st.warning("⚠️ لم يتم العثور على اسم مادة فعالة مطابقة بالصورة. يرجى تجربة البحث اليدوي.")
                         
                 if not match_found:
                     st.warning("⚠️ لم يتم العثور على اسم مادة فعالة مطابقة بالصورة. يرجى تجربة البحث اليدوي.")
@@ -514,16 +544,98 @@ else:
         """, unsafe_allow_html=True)
         
     if not df_pesticides.empty:
-        substances_list_eng = [""] + sorted(df_pesticides["المادة الفعالة (Active Substance)"].dropna().unique().tolist())
-        selected_inspector_sub = st.selectbox(
-            "🔎 اختر أو ابحث عن اسم المادة الفعالة بالإنجليزية (Active Ingredient):",
-            substances_list_eng,
-            key="inspector_select"
-        )
+        tab_write_eng, tab_camera_eng = st.tabs(["✍️ البحث واختيار المادة يدوياً", "📸 الفحص الذكي بالكاميرا والصور"])
         
-        selected_row = None
+        selected_inspector_sub = ""
+        scanned_inspector_sub = None
+        
+        with tab_write_eng:
+            substances_list_eng = [""] + sorted(df_pesticides["المادة الفعالة (Active Substance)"].dropna().unique().tolist())
+            selected_inspector_sub = st.selectbox(
+                "🔎 اختر أو ابحث عن اسم المادة الفعالة بالإنجليزية (Active Ingredient):",
+                substances_list_eng,
+                key="inspector_select"
+            )
+            
+        with tab_camera_eng:
+            source_type_eng = st.radio(
+                "اختر طريقة إدخال الصورة للتفتيش:",
+                ["📸 التقاط مباشر بالكاميرا", "🖼️ رفع صورة من الاستوديو / الملفات"],
+                horizontal=True,
+                key="camera_source_radio_eng"
+            )
+            
+            uploaded_image_eng = None
+            if "التقاط مباشر" in source_type_eng:
+                st.info("💡 **ملاحظة للمفتشين:** سيتم محاولة فتح الكاميرا الخلفية تلقائياً. تأكد من تركيز الكاميرا على اسم المادة الفعالة.")
+                uploaded_image_eng = st.camera_input("وجه الكاميرا نحو ملصق العبوة المراد ضبطها 📷", key="pesticide_cam_eng")
+            else:
+                uploaded_image_eng = st.file_uploader("اختر صورة الملصق من الاستوديو أو الملفات للتفتيش:", type=["jpg", "jpeg", "png"], key="pesticide_file_eng")
+                
+            if uploaded_image_eng:
+                st.write("🔄 جاري تحليل النصوص ومطابقة المواد الفعالة عبر محرك البحث المرن...")
+                try:
+                    import easyocr
+                    from difflib import SequenceMatcher
+                    reader = easyocr.Reader(['en'], gpu=False)
+                    img_eng = Image.open(uploaded_image_eng)
+                    
+                    # تحسين تباين الصورة لتحسين دقة القراءة
+                    enhancer_eng = ImageEnhance.Contrast(img_eng)
+                    enhanced_img_eng = enhancer_eng.enhance(2.2)
+                    
+                    img_np_eng = np.array(enhanced_img_eng)
+                    results_eng = reader.readtext(img_np_eng)
+                    
+                    extracted_text_eng = " ".join([res[1] for res in results_eng]).lower()
+                    st.success("🤖 تم فحص النصوص والملصق بنجاح!")
+                    
+                    best_match_sub_eng = None
+                    highest_ratio_eng = 0.0
+                    
+                    # 1. محاولة مطابقة دقيقة أولاً
+                    for idx, row in df_pesticides.iterrows():
+                        sub_name_db = str(row["المادة الفعالة (Active Substance)"]).strip()
+                        if len(sub_name_db) > 3 and sub_name_db.lower() in extracted_text_eng:
+                            best_match_sub_eng = row
+                            highest_ratio_eng = 1.0
+                            break
+                    
+                    # 2. إذا لم نجد مطابقة دقيقة، نقوم بالبحث المرن (Fuzzy Matching) على الكلمات المقروءة
+                    if highest_ratio_eng < 1.0:
+                        words_eng = extracted_text_eng.split()
+                        for idx, row in df_pesticides.iterrows():
+                            sub_name_db = str(row["المادة الفعالة (Active Substance)"]).strip().lower()
+                            if len(sub_name_db) > 3:
+                                for word in words_eng:
+                                    if len(word) > 3:
+                                        ratio = SequenceMatcher(None, sub_name_db, word).ratio()
+                                        if ratio > highest_ratio_eng:
+                                            highest_ratio_eng = ratio
+                                            best_match_sub_eng = row
+                    
+                    # نقبل التطابق إذا كانت النسبة أعلى من 80% (0.80)
+                    if best_match_sub_eng is not None and highest_ratio_eng >= 0.80:
+                        scanned_inspector_sub = best_match_sub_eng["المادة الفعالة (Active Substance)"]
+                        match_percent = int(highest_ratio_eng * 100)
+                        st.info(f"🔎 المادة الفعالة المكتشفة تلقائياً: **{scanned_inspector_sub}** (تطابق ذكي بنسبة {match_percent}% 🎯)")
+                    else:
+                        st.warning("⚠️ لم يتم العثور على اسم مادة فعالة مطابقة بالصورة. يرجى تجربة اختيار المادة يدوياً.")
+                except ImportError:
+                    st.error("⚠️ نظام OCR غير مفعل على السيرفر، يرجى استخدام البحث اليدوي.")
+                except Exception as e:
+                    st.error(f"حدث خطأ أثناء فحص الصورة: {e}")
+                    
+        # تحديد المادة النهائية النشطة للمفتش
+        final_inspector_sub = ""
         if selected_inspector_sub:
-            selected_row = df_pesticides[df_pesticides["المادة الفعالة (Active Substance)"] == selected_inspector_sub].iloc[0]
+            final_inspector_sub = selected_inspector_sub
+        elif scanned_inspector_sub:
+            final_inspector_sub = scanned_inspector_sub
+            
+        selected_row = None
+        if final_inspector_sub:
+            selected_row = df_pesticides[df_pesticides["المادة الفعالة (Active Substance)"] == final_inspector_sub].iloc[0]
             
             sub_name = selected_row["المادة الفعالة (Active Substance)"]
             cas_num = selected_row["رقم CAS"]
@@ -570,7 +682,7 @@ else:
         with col_form2:
             location_name = st.text_input("مكان وسياق الضبط:", "محلات بيع المواد الزراعية")
             quantity_seized = st.text_input("الكمية المضبوطة:", "5 عبوات")
-            default_sub_name = selected_inspector_sub if selected_inspector_sub else "أدخل اسم المادة"
+            default_sub_name = final_inspector_sub if final_inspector_sub else "أدخل اسم المادة"
             selected_substance_manual = st.text_input("اسم المادة الفعالة المضبوطة:", default_sub_name)
             
         if st.button("🖨️ توليد وحفظ تقرير ضبط وإثبات حالة (PDF)"):

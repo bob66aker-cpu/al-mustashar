@@ -1,0 +1,941 @@
+﻿IMPORTANT:
+This is an EXISTING WORKING Android application.
+
+DO NOT rebuild the application from scratch.
+DO NOT change, remove, replace, or simplify any existing core functionality.
+DO NOT modify the existing database structure, pesticide data, legal decisions, OCR logic, matching logic, search logic, results, calculations, or business rules unless explicitly required for the new features below.
+
+The objective of this task is:
+
+1. REDESIGN the complete UI/UX.
+2. ADD the missing image-gallery scanning capability.
+3. ADD professional real sharing capabilities.
+4. Improve visual hierarchy, usability, animations and interactions.
+5. Preserve 100% of the application's existing functionality and data.
+
+The application is:
+
+"المستشار الزراعي"
+"AGRICULTURAL ADVISOR"
+
+It is an agricultural pesticide/active-ingredient information application.
+
+==================================================
+PART 1 — CORE FUNCTIONALITY MUST REMAIN UNCHANGED
+==================================================
+
+Before modifying anything, inspect the existing project and identify:
+
+- Existing screens
+- Existing navigation
+- Existing database
+- Existing pesticide/active ingredient records
+- Existing legal status logic
+- Existing OCR implementation
+- Existing fuzzy matching
+- Existing search
+- Existing dashboard/statistics
+- Existing history
+- Existing settings
+- Existing developer/about information
+- Existing PDF/report functionality
+- Existing offline functionality
+
+Create an internal dependency map before editing.
+
+Then redesign the presentation layer WITHOUT changing the underlying business logic.
+
+Existing functionality must continue working exactly as before.
+
+DO NOT replace real functionality with mockups.
+DO NOT introduce fake buttons.
+DO NOT create placeholder data.
+DO NOT delete existing working functionality just because it is visually redesigned.
+
+==================================================
+PART 2 — NEW DESIGN LANGUAGE
+==================================================
+
+Completely redesign the visual interface using a modern 2026 premium mobile design language.
+
+The visual direction should combine:
+
+- Bento Grid 2.0
+- Advanced Glassmorphism
+- Liquid Glass
+- Soft Neo-Minimalism
+- Tactile UI
+- Motion-driven UI
+- Micro-interactions
+- Subtle spatial depth
+- Premium agricultural + scientific aesthetic
+
+The application must feel:
+
+PREMIUM
+MODERN
+SCIENTIFIC
+TRUSTWORTHY
+AGRICULTURAL
+CALM
+EASY TO USE
+FAST
+PROFESSIONAL
+
+It must NOT look like:
+
+- a generic government application
+- an old agricultural application
+- a template
+- a dashboard overloaded with cards
+- a social media application
+- a gaming interface
+
+==================================================
+PART 3 — COLOR SYSTEM
+==================================================
+
+Replace the current color system with a refined professional palette.
+
+Primary visual identity:
+
+- Deep agricultural green
+- Natural leaf green
+- Soft sage
+- Warm off-white
+- Very light neutral backgrounds
+- Deep charcoal for text
+
+Functional colors:
+
+RED:
+Only for prohibited / banned / danger states.
+
+AMBER / ORANGE:
+For warnings, low confidence, attention required.
+
+BLUE:
+For information and technical details.
+
+GREEN:
+For approved / positive / verified states.
+
+IMPORTANT:
+
+Do not rely on color alone to communicate status.
+
+Every important status must also contain:
+
+- icon
+- text label
+- appropriate visual indicator
+
+Avoid excessive saturated green.
+
+The interface should have enough neutral space to create a premium appearance.
+
+==================================================
+PART 4 — BENTO GRID 2.0
+==================================================
+
+Use Bento Grid 2.0 as a major layout system.
+
+Do NOT turn every screen into a rigid grid.
+
+Use different card sizes and visual hierarchy.
+
+Example Home layout:
+
+Large primary Bento card:
+"فحص مبيد"
+
+Second large card:
+"بحث عن مادة فعالة"
+
+Smaller cards:
+- المسح بالكاميرا
+- الصور من الهاتف
+- سجل الفحوصات
+- الإحصائيات
+
+Use asymmetric but balanced compositions.
+
+Cards should have:
+
+- rounded corners
+- subtle depth
+- controlled transparency
+- soft shadows
+- elegant borders
+- strong typography hierarchy
+- small supporting icons
+- meaningful information
+
+Avoid excessive cards.
+
+Every card must have a purpose.
+
+==================================================
+PART 5 — LIQUID GLASS / GLASSMORPHISM 2.0
+==================================================
+
+Introduce a sophisticated Liquid Glass visual language.
+
+Use:
+
+- translucent surfaces
+- subtle background blur
+- layered surfaces
+- soft gradients
+- thin translucent borders
+- controlled reflections
+- depth between layers
+- dynamic transparency
+
+Glass effects must remain subtle.
+
+DO NOT make the entire application transparent.
+
+Important information must remain highly readable.
+
+Use glass effects primarily for:
+
+- floating navigation
+- action panels
+- search bars
+- modal sheets
+- camera controls
+- result highlights
+- important action cards
+- bottom sheets
+- floating buttons
+
+Glass surfaces must maintain accessibility and readability.
+
+==================================================
+PART 6 — MICRO-INTERACTIONS
+==================================================
+
+Add professional micro-interactions throughout the application.
+
+Examples:
+
+When pressing a button:
+- subtle scale-down
+- soft feedback
+- quick release animation
+
+When opening a card:
+- smooth scale/fade transition
+
+When searching:
+- elegant loading state
+
+When OCR detects text:
+- subtle scanning animation
+
+When a result is found:
+- smooth result reveal
+
+When a prohibited substance is detected:
+- controlled warning animation
+- never exaggerated
+- never flashing aggressively
+
+When switching between Farmer Mode and Professional Mode:
+- smooth transition
+
+When filtering:
+- animated filter chips
+
+When navigating:
+- Fade + Slide transitions
+
+Use micro-interactions to communicate state.
+
+Do NOT add animations everywhere.
+
+Animations must feel:
+
+FAST
+NATURAL
+PREMIUM
+USEFUL
+
+==================================================
+PART 7 — HOME SCREEN
+==================================================
+
+Redesign the Home screen completely.
+
+The Home screen should immediately communicate:
+
+"Identify a pesticide or active ingredient quickly."
+
+Suggested hierarchy:
+
+Top:
+- application name
+- small status indicator "يعمل دون اتصال"
+- settings/info access
+
+Main hero Bento:
+"افحص الآن"
+
+Subtext:
+"صوّر اسم المبيد أو المادة الفعالة"
+
+Primary actions:
+
+1. كاميرا مباشرة
+2. اختيار صورة من الهاتف
+3. البحث اليدوي
+
+Secondary Bento cards:
+
+- سجل الفحوصات
+- الإحصائيات
+- وضع المزارع
+- الوضع الاحترافي
+
+Keep the home screen clean.
+
+==================================================
+PART 8 — REAL SOCIAL SHARING
+==================================================
+
+ADD professional real sharing capabilities.
+
+There must be TWO DIFFERENT sharing concepts:
+
+A) SHARE THE APPLICATION
+
+Create a "مشاركة التطبيق" action.
+
+When the user taps it, open the REAL Android sharing mechanism / native Android Sharesheet.
+
+The user must be able to share through installed applications such as:
+
+- WhatsApp
+- Telegram
+- Facebook Messenger
+- Facebook
+- Email
+- SMS
+- other installed compatible applications
+
+DO NOT create fake sharing buttons.
+
+DO NOT pretend to share through an application that is not installed.
+
+Use the native Android sharing mechanism whenever possible.
+
+The shared content should include:
+
+"المستشار الزراعي | AGRICULTURAL ADVISOR"
+
+plus a configurable application download/store link.
+
+If a store URL is not yet available, create a clearly marked configurable placeholder in Settings/Build Configuration, NOT fake production data.
+
+B) SHARE ANALYSIS / REPORT
+
+Allow the user to share:
+
+- analysis result
+- active ingredient
+- CAS number
+- classification
+- legal status
+- confidence score
+- source
+- database version
+
+as a professionally formatted text report and/or PDF when supported by the existing application.
+
+The user should be able to share the result using the same native Android sharing system.
+
+==================================================
+PART 9 — REAL SOCIAL MEDIA ICONS
+==================================================
+
+Where branded sharing shortcuts are displayed visually, use REAL recognizable platform icons.
+
+Examples:
+
+- WhatsApp
+- Telegram
+- Facebook Messenger
+- Facebook
+- Email
+
+DO NOT use emoji.
+
+DO NOT use random generic icons pretending to be WhatsApp or Telegram.
+
+Prefer official/legally appropriate brand icon assets or platform-supported icons.
+
+If a specific application is not installed:
+
+- do not show a broken action
+- gracefully disable/hide the direct shortcut
+- keep the native Android Share option available
+
+The native Android Sharesheet remains the primary reliable sharing mechanism.
+
+==================================================
+PART 10 — SCAN IMAGES STORED ON THE PHONE
+==================================================
+
+ADD A NEW FEATURE:
+
+"فحص صورة من الهاتف"
+
+The user must be able to select an existing image from the device gallery/photos.
+
+Supported use case:
+
+The user has a photo of a pesticide bottle/label already stored on the phone.
+
+They select the image.
+
+The application processes it using the EXISTING OCR and matching pipeline.
+
+DO NOT create a separate unrelated recognition system.
+
+Connect the gallery image input to the existing OCR pipeline.
+
+==================================================
+PART 11 — IMAGE PROCESSING FOR GALLERY SCANNING
+==================================================
+
+When an image is selected, provide an image-processing workflow.
+
+Possible preprocessing:
+
+- crop
+- rotate
+- perspective correction
+- deskew
+- upscale
+- grayscale
+- contrast enhancement
+- sharpening
+- denoise
+- adaptive threshold
+- brightness adjustment
+
+Allow the user to manually crop the relevant area if necessary.
+
+Example:
+
+A full photo may contain:
+
+- bottle
+- table
+- background
+- person's hand
+
+The user should be able to crop only the label.
+
+Then run OCR.
+
+==================================================
+PART 12 — SMART OCR EXPERIENCE
+==================================================
+
+Preserve the existing OCR and matching logic.
+
+Improve only the UX around it.
+
+Display a clear processing sequence:
+
+IMAGE
+↓
+PREPROCESSING
+↓
+OCR
+↓
+TEXT NORMALIZATION
+↓
+DATABASE SEARCH
+↓
+FUZZY MATCHING
+↓
+RESULT
+
+Show progress in a simple understandable way.
+
+Example:
+
+"جاري قراءة النص..."
+"جاري تحسين الصورة..."
+"جاري مطابقة المادة..."
+"تم العثور على نتائج"
+
+Do not expose technical complexity to normal users unless they use Professional Mode.
+
+==================================================
+PART 13 — SEARCH RESULT DESIGN
+==================================================
+
+Redesign search results using premium Bento cards.
+
+Each result should clearly show:
+
+- active ingredient name
+- Arabic/English name where available
+- CAS
+- functional classification
+- approval status
+- prohibited status
+- matching confidence
+
+Use strong visual hierarchy.
+
+For example:
+
+MATCH:
+97%
+
+"تطابق مرتفع"
+
+Do not make the confidence percentage look like legal certainty.
+
+Use wording such as:
+
+"درجة التطابق"
+
+NOT:
+
+"درجة الأمان"
+
+==================================================
+PART 14 — PROHIBITED MATERIAL RESULT
+==================================================
+
+If a substance is found in the prohibited database:
+
+Make the warning extremely clear.
+
+Use:
+
+- red warning indicator
+- prohibition icon
+- strong text
+- legal decision reference
+- source
+
+Example:
+
+"مدرج ضمن قائمة المواد المحظورة"
+
+"قرار وزير الزراعة رقم 248 لسنة 2024"
+
+Do not use the word "آمن".
+
+For substances not found in the prohibited database use wording such as:
+
+"غير مدرج ضمن قائمة المواد المحظورة في قاعدة البيانات الحالية"
+
+Never interpret absence as absolute safety.
+
+==================================================
+PART 15 — FARMER MODE
+==================================================
+
+Redesign Farmer Mode for users with limited technical education.
+
+Use:
+
+- very large text
+- simple language
+- strong icons
+- minimal technical terminology
+- short explanations
+- visual status
+
+Example:
+
+"هذه المادة موجودة في قاعدة البيانات."
+
+"هذه المادة مدرجة ضمن المواد المحظورة."
+
+"لم نجد تطابقاً موثوقاً."
+
+Avoid long technical paragraphs.
+
+==================================================
+PART 16 — PROFESSIONAL MODE
+==================================================
+
+Professional Mode should contain detailed information:
+
+- Active ingredient
+- CAS
+- Functional classification
+- Approval status
+- Prohibited status
+- Legal decision
+- Main use when available
+- Data source
+- Database version
+- Update date
+- OCR confidence
+- Matching score
+
+Use expandable sections to avoid overwhelming the user.
+
+==================================================
+PART 17 — DASHBOARD
+==================================================
+
+Redesign the existing dashboard using Bento Grid 2.0.
+
+Use visual statistical cards for the existing statistics.
+
+Do not invent new numbers.
+
+Use only the existing database statistics.
+
+Possible presentation:
+
+Total registered active ingredients
+Approved
+REV / REV*
+RAR
+Prohibited materials
+Functional categories
+
+Use elegant charts only where they improve understanding.
+
+==================================================
+PART 18 — HISTORY
+==================================================
+
+Redesign History.
+
+Each history item should show:
+
+- date/time
+- searched/scanned name
+- result
+- status
+- confidence
+- source method:
+  Camera / Gallery / Manual Search
+
+Use swipe or contextual actions where appropriate.
+
+Allow:
+
+- open result
+- delete history item
+- clear history
+
+Preserve the existing data behavior.
+
+==================================================
+PART 19 — CAMERA SCREEN
+==================================================
+
+Redesign the live camera scanner.
+
+Make it feel like a professional scientific scanner.
+
+Include:
+
+- camera preview
+- scanning frame
+- flashlight
+- gallery button
+- capture/scan action
+- crop/edit access
+- subtle scanning animation
+
+Avoid excessive futuristic effects.
+
+The user should immediately understand:
+
+"Place the pesticide label inside the frame."
+
+==================================================
+PART 20 — ACCESSIBILITY
+==================================================
+
+The application must remain accessible.
+
+Ensure:
+
+- sufficient contrast
+- readable Arabic typography
+- large touch targets
+- no information communicated by color alone
+- support for larger text where possible
+- clear icon labels
+- RTL-first layout
+
+The interface must work well on low and medium specification Android phones.
+
+==================================================
+PART 21 — TYPOGRAPHY
+==================================================
+
+Use a modern high-quality Arabic font suitable for mobile applications.
+
+Arabic must be the primary interface language.
+
+English terminology may appear underneath where useful.
+
+Typography should have:
+
+- strong hierarchy
+- large headings
+- readable body text
+- clear numbers
+- excellent spacing
+
+Do not use too many font weights.
+
+==================================================
+PART 22 — NAVIGATION
+==================================================
+
+Redesign navigation with a modern mobile navigation pattern.
+
+Prefer:
+
+- floating glass navigation
+OR
+- clean bottom navigation
+
+Suggested sections:
+
+الرئيسية
+البحث
+الفحص
+السجل
+الإعدادات
+
+Keep navigation simple.
+
+==================================================
+PART 23 — DEVELOPER PAGE
+==================================================
+
+Preserve the existing developer information.
+
+Developer:
+
+م. أبوبكر عبدالقادر الطشاني
+
+Profession:
+
+مهندس بقطاع الزراعة والثروة الحيوانية – درنة
+
+Version:
+
+1.0.0
+
+Date:
+
+07 سبتمبر 2026
+
+Message:
+
+"على قدر المعرفة تأتي المسؤولية"
+
+The supplied developer portrait should appear ONLY on the Developer/About page.
+
+Do NOT use it as the application icon.
+
+Create an elegant developer profile card using the new glass/Bento visual language.
+
+Include:
+
+"تم تطوير هذا التطبيق لخدمة القطاع الزراعي وتسهيل الوصول إلى المعلومات الفنية المتعلقة بالمبيدات والمواد الفعالة."
+
+And:
+
+"Agricultural Advisor © 2026"
+
+==================================================
+PART 24 — APP ICON
+==================================================
+
+Improve the application icon if necessary.
+
+Concept:
+
+A modern agricultural leaf combined subtly with:
+
+- lens
+- analysis
+- scientific identification
+
+The icon must remain simple at small sizes.
+
+DO NOT use the developer portrait.
+
+DO NOT use government logos.
+
+DO NOT make the icon overly detailed.
+
+==================================================
+PART 25 — DARK MODE
+==================================================
+
+Add a premium dark mode.
+
+Dark mode should not simply invert colors.
+
+Use:
+
+- deep charcoal / dark green background
+- translucent glass surfaces
+- soft borders
+- controlled highlights
+- readable text
+- appropriate status colors
+
+Ensure both Light and Dark modes look intentionally designed.
+
+==================================================
+PART 26 — PERFORMANCE
+==================================================
+
+UI redesign must NOT negatively affect performance.
+
+Avoid excessive:
+
+- blur
+- animations
+- shadows
+- large image processing operations on the UI thread
+
+Use efficient rendering.
+
+Animations should remain smooth on mid-range Android devices.
+
+Heavy image processing must run asynchronously/background.
+
+==================================================
+PART 27 — OFFLINE-FIRST
+==================================================
+
+The application must continue working offline.
+
+Do not introduce unnecessary online dependencies.
+
+The following must work without internet:
+
+- search
+- database lookup
+- OCR where supported locally
+- matching
+- history
+- existing analysis
+- dashboard
+
+Sharing may use installed applications and does not require the agricultural database to be online.
+
+==================================================
+PART 28 — NO FUNCTIONAL REGRESSION
+==================================================
+
+After redesigning the UI, perform a complete regression check.
+
+Verify:
+
+1. Manual search works.
+2. Partial search works.
+3. CAS search works.
+4. OCR works.
+5. Matching works.
+6. Prohibited list checking works.
+7. Legal status works.
+8. Dashboard works.
+9. History works.
+10. Farmer Mode works.
+11. Professional Mode works.
+12. Offline mode works.
+13. PDF/report works if already implemented.
+14. Settings work.
+15. Developer page works.
+16. Camera works.
+17. Gallery image scanning works.
+18. Sharing works.
+19. Dark mode works.
+20. RTL works.
+
+==================================================
+PART 29 — IMPORTANT DESIGN PRINCIPLE
+==================================================
+
+The visual redesign must make the existing application feel like a completely new premium product WITHOUT changing its scientific/legal core.
+
+Think:
+
+"Same engine — dramatically better experience."
+
+Do not modify the underlying pesticide database or legal interpretation.
+
+Do not invent information.
+
+Do not invent statistics.
+
+Do not invent pesticide safety conclusions.
+
+The database remains the authoritative source.
+
+==================================================
+PART 30 — FINAL QUALITY STANDARD
+==================================================
+
+Before considering the task complete:
+
+Review every screen visually.
+
+Remove:
+
+- unnecessary borders
+- excessive cards
+- inconsistent spacing
+- random colors
+- emoji used as icons
+- outdated-looking components
+- fake social buttons
+- placeholder UI
+- excessive animations
+- inconsistent typography
+
+Ensure:
+
+- consistent 8-point spacing system
+- consistent corner radius
+- consistent icon style
+- consistent shadows
+- consistent glass surfaces
+- consistent button behavior
+- consistent RTL alignment
+- consistent status indicators
+
+The final result should look like a premium 2026 professional agricultural/scientific Android application.
+
+MOST IMPORTANT:
+
+DO NOT BREAK THE EXISTING APPLICATION.
+
+DO NOT REWRITE THE DATABASE.
+
+DO NOT REMOVE EXISTING FEATURES.
+
+DO NOT CHANGE EXISTING LEGAL LOGIC.
+
+DO NOT REPLACE REAL FUNCTIONALITY WITH MOCK DATA.
+
+FIRST inspect the existing project.
+
+THEN redesign the UI and add only the requested features.
+
+Finally, report exactly what files/components/screens were modified and confirm that the existing core functionality remains intact.

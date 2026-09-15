@@ -1,0 +1,11 @@
+{
+  "name": "المستشار الزراعي",
+  "short_name": "المستشار الزراعي",
+  "start_url": "./",
+  "display": "standalone",
+  "dir": "rtl",
+  "lang": "ar",
+  "background_color": "#f5f7f1",
+  "theme_color": "#1f6f52",
+  "icons": []
+}

@@ -1,3 +1,649 @@
-<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#1f6f52"><link rel="manifest" href="manifest.json"><title>المستشار الزراعي</title><style>
-:root{--ink:#17342a;--muted:#64776d;--paper:#f5f7f1;--surface:#fff;--line:#d8e3da;--accent:#1f6f52;--soft:#e9f2eb;--bad:#a93636;--warn:#966b17}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;font-size:16px}main{max-width:980px;margin:auto;padding:24px 20px 64px}header{display:flex;justify-content:space-between;align-items:center;padding:12px 0 28px;border-bottom:1px solid var(--line)}.brand{display:flex;gap:12px;align-items:center}.mark{font-size:28px;background:var(--soft);padding:10px;border-radius:16px}.eyebrow{font-size:12px;color:var(--muted);margin:0 0 3px}.brand h1{font-size:20px;margin:0}.statusline{display:flex;gap:8px;flex-wrap:wrap;font-size:12px;color:var(--muted)}.chip{border:1px solid var(--line);background:var(--surface);padding:8px 10px;border-radius:999px}.intro{padding:42px 0 24px;max-width:700px}.intro h2{font-size:clamp(30px,5vw,56px);line-height:1.05;letter-spacing:-.04em;margin:0 0 14px}.intro p{color:var(--muted);line-height:1.7;margin:0}.mode{display:flex;align-items:center;gap:10px;margin:18px 0 12px}.mode select,.query{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:12px;padding:13px 14px;font:inherit}.mode select:focus,.query:focus,.search button:focus,.secondary:focus{outline:3px solid #93c7ac}.search{display:grid;grid-template-columns:1fr auto;gap:10px;max-width:760px}.search button,.secondary{border:0;border-radius:12px;background:var(--accent);color:var(--paper);padding:0 22px;font:inherit;font-weight:700;min-height:50px;cursor:pointer}.hint{font-size:13px;color:var(--muted);margin:10px 0 0}.tools{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.secondary{background:var(--soft);color:var(--accent);border:1px solid var(--line);min-height:44px}.scan{margin-top:18px;border:1px solid var(--line);border-radius:16px;background:var(--surface);padding:16px}.scan summary{cursor:pointer;font-weight:700}.scan input{margin-top:12px}.preview{display:block;max-width:100%;max-height:250px;margin-top:12px;border-radius:12px}.scan-note{font-size:13px;color:var(--muted);line-height:1.7}.summary{display:flex;justify-content:space-between;align-items:end;border-bottom:1px solid var(--line);padding:40px 0 10px}.summary h2{font-size:20px;margin:0}.results{display:grid;gap:12px;padding-top:14px}.result{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px}.result-top{display:flex;justify-content:space-between;gap:18px;align-items:start}.result-top strong{font-size:22px;color:var(--accent);font-variant-numeric:tabular-nums}.source,.meta,.match{font-size:12px;color:var(--muted)}.result h3{margin:5px 0 0;font-size:20px}.status{display:inline-block;padding:7px 10px;border-radius:8px;font-size:13px;font-weight:700}.good{background:#e5f3e9;color:#226641}.bad{background:#fae7e7;color:var(--bad)}.review{background:#fff4d8;color:var(--warn)}.possible{border-color:#d8b66d}.caution{color:var(--warn);font-size:13px}.notice{padding:18px;border-radius:14px;background:#fff4d8;color:#684d15;line-height:1.7}.footer{margin-top:44px;color:var(--muted);font-size:12px;line-height:1.7}@media(max-width:620px){main{padding:16px 14px 50px}header{align-items:start;gap:12px;flex-direction:column}.search{grid-template-columns:1fr}.search button{min-height:48px}.intro{padding-top:32px}.result h3{font-size:17px}}
-</style></head><body><main><header><div class="brand"><div class="mark">🌿</div><div><p class="eyebrow">بيانات محلية، قرار واضح</p><h1>المستشار الزراعي</h1></div></div><div class="statusline"><span class="chip" id="dbState">جاري تجهيز القواعد</span><span class="chip" id="offlineState">🟢 متصل</span></div></header><section class="intro"><h2>اعرف المادة قبل أن تستخدمها.</h2><p>ابحث بالاسم أو رقم CAS. ليبيا هي المرجع الأول، والمصادر الدولية للمقارنة فقط. لا تعرض النتيجة موافقة قانونية إذا لم يكن التطابق موثوقًا.</p><div class="mode"><label for="mode">الوضع:</label><select id="mode"><option value="farmer">المزارع</option><option value="pro">المحترف</option></select><span id="modeLabel">المزارع</span></div><form class="search" id="searchForm"><input class="query" id="query" placeholder="مثال: Glyphosate أو 1071-83-6" autocomplete="off"><button type="submit">فحص المادة</button></form><div class="tools"><button class="secondary" type="button" id="cameraBtn">📷 تصوير الملصق</button><button class="secondary" type="button" id="copyBtn">نسخ التقرير</button></div><p class="hint">البحث يعمل محليًا بعد أول تشغيل. نتيجة غير مؤكدة تعني ضرورة مراجعة الاسم والملصق.</p><details class="scan" id="scanPanel"><summary>المسح البصري</summary><input id="camera" type="file" accept="image/*" capture="environment"><img id="preview" class="preview" hidden alt="معاينة صورة الملصق"><p id="ocrMsg" class="scan-note">صوّر اسم المادة الفعالة بوضوح. محرك OCR المحلي سيُفعّل بعد وضع ملفاته داخل مجلد tess/.</p></details></section><section class="summary"><h2 id="resultTitle">نتائج الفحص</h2><span class="chip" id="dbCount">...</span></section><section class="results" id="results"><div class="notice">اكتب اسم المادة أو رقم CAS ثم اضغط «فحص المادة».</div></section><p class="footer">المستشار الزراعي أداة مساعدة للبحث في قواعد البيانات المرفقة. المرجع القانوني النهائي هو الجهة الرسمية المختصة.</p></main><script src="app.js"></script></body></html>
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1f6f52">
+  <link rel="manifest" href="manifest.json">
+  <title>المستشار الزراعي - فحص المبيدات</title>
+  
+  <style>
+    :root {
+      /* الألوان الأساسية */
+      --primary-dark: #1F6F52;
+      --primary-light: #E9F2EB;
+      --primary-medium: #2E8659;
+      
+      /* الألوان الحالات */
+      --danger-dark: #A93636;
+      --danger-light: #FAE7E7;
+      --warning-dark: #966B17;
+      --warning-light: #FFF4D8;
+      --success-dark: #226641;
+      --success-light: #E5F3E9;
+      --info-dark: #1E5F8A;
+      --info-light: #E8F4F8;
+      
+      /* الألوان النصوص */
+      --text-primary: #17342A;
+      --text-secondary: #64776D;
+      --text-tertiary: #D8E3DA;
+      
+      /* الخلفيات */
+      --surface-main: #FFFFFF;
+      --surface-bg: #F5F7F1;
+      
+      /* الظل */
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+      --shadow-md: 0 2px 6px rgba(0,0,0,0.12);
+      --shadow-lg: 0 4px 12px rgba(0,0,0,0.16);
+      
+      /* المسافات */
+      --spacing-xs: 8px;
+      --spacing-sm: 12px;
+      --spacing-md: 16px;
+      --spacing-lg: 24px;
+      --spacing-xl: 32px;
+      
+      /* نمط النهار */
+      --bg: var(--surface-bg);
+      --surface: var(--surface-main);
+      --text-main: var(--text-primary);
+      --text-muted: var(--text-secondary);
+      --border: var(--text-tertiary);
+    }
+
+    /* نمط الليل */
+    html[data-theme="dark"] {
+      --surface-main: #1E1E1E;
+      --surface-bg: #121212;
+      --text-primary: #FFFFFF;
+      --text-secondary: #B3B3B3;
+      --text-tertiary: #333333;
+      --primary-light: #2E8659;
+      --danger-light: #EF5350;
+      --warning-light: #FFA726;
+      --warning-dark: #FFB74D;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text-main);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Cairo', 'Droid Arabic Kufi', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    main {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: var(--spacing-lg) var(--spacing-md) 80px;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--spacing-md) 0 var(--spacing-lg);
+      border-bottom: 1px solid var(--border);
+      margin-bottom: var(--spacing-lg);
+      flex-wrap: wrap;
+      gap: var(--spacing-md);
+    }
+
+    .brand {
+      display: flex;
+      gap: var(--spacing-md);
+      align-items: center;
+      flex: 1;
+    }
+
+    .mark {
+      font-size: 28px;
+      background: var(--primary-light);
+      padding: 10px;
+      border-radius: 16px;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .brand h1 {
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 3px;
+    }
+
+    .statusline {
+      display: flex;
+      gap: var(--spacing-xs);
+      flex-wrap: wrap;
+      font-size: 12px;
+      color: var(--text-muted);
+      align-items: center;
+    }
+
+    .chip {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      padding: var(--spacing-xs) var(--spacing-sm);
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .chip.active {
+      background: var(--primary-light);
+      border-color: var(--primary-dark);
+      color: var(--primary-dark);
+    }
+
+    /* Theme Toggle */
+    .theme-toggle {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      padding: var(--spacing-xs) var(--spacing-sm);
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 18px;
+      transition: all 0.2s ease;
+    }
+
+    .theme-toggle:hover {
+      background: var(--primary-light);
+      border-color: var(--primary-dark);
+    }
+
+    /* Intro Section */
+    .intro {
+      padding: var(--spacing-xl) 0 var(--spacing-lg);
+      max-width: 700px;
+    }
+
+    .intro h2 {
+      font-size: clamp(30px, 5vw, 56px);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      margin-bottom: var(--spacing-md);
+      font-weight: 700;
+    }
+
+    .intro p {
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: var(--spacing-lg);
+    }
+
+    /* Mode Selection */
+    .mode {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+      margin: var(--spacing-lg) 0 var(--spacing-md);
+      flex-wrap: wrap;
+    }
+
+    .mode label {
+      font-weight: 600;
+    }
+
+    .mode select {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text-main);
+      border-radius: 12px;
+      padding: var(--spacing-sm) var(--spacing-md);
+      font: inherit;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .mode select:focus {
+      outline: 3px solid var(--primary-light);
+      border-color: var(--primary-dark);
+    }
+
+    .mode select:hover {
+      border-color: var(--primary-dark);
+    }
+
+    .mode-label {
+      font-size: 14px;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* Search Form */
+    .search {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: var(--spacing-sm);
+      max-width: 760px;
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .query {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text-main);
+      border-radius: 12px;
+      padding: 13px var(--spacing-md);
+      font: inherit;
+      transition: all 0.2s ease;
+    }
+
+    .query::placeholder {
+      color: var(--text-muted);
+    }
+
+    .query:focus {
+      outline: 3px solid var(--primary-light);
+      border-color: var(--primary-dark);
+    }
+
+    .search button {
+      border: 0;
+      border-radius: 12px;
+      background: var(--primary-dark);
+      color: var(--surface-bg);
+      padding: 0 var(--spacing-lg);
+      font: inherit;
+      font-weight: 700;
+      min-height: 50px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .search button:hover {
+      background: var(--primary-medium);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .search button:active {
+      transform: translateY(0);
+    }
+
+    /* Tools */
+    .tools {
+      display: flex;
+      gap: var(--spacing-xs);
+      flex-wrap: wrap;
+      margin-bottom: var(--spacing-md);
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      padding: var(--spacing-sm) var(--spacing-md);
+      font: inherit;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 14px;
+    }
+
+    .btn-secondary:hover {
+      background: var(--primary-dark);
+      color: var(--surface-bg);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* Hint */
+    .hint {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: var(--spacing-sm);
+    }
+
+    /* Camera/Scan Section */
+    .scan {
+      margin-top: var(--spacing-lg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: var(--surface);
+      padding: var(--spacing-md);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .scan summary {
+      cursor: pointer;
+      font-weight: 700;
+      padding: var(--spacing-sm);
+      user-select: none;
+      transition: all 0.2s ease;
+    }
+
+    .scan summary:hover {
+      color: var(--primary-dark);
+    }
+
+    .scan[open] summary {
+      color: var(--primary-dark);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .scan input[type="file"] {
+      margin-top: var(--spacing-md);
+      cursor: pointer;
+    }
+
+    .preview {
+      display: block;
+      max-width: 100%;
+      max-height: 250px;
+      margin-top: var(--spacing-md);
+      border-radius: 12px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .scan-note {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-top: var(--spacing-md);
+    }
+
+    /* Summary Section */
+    .summary {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-bottom: 1px solid var(--border);
+      padding: var(--spacing-xl) 0 var(--spacing-sm);
+      margin-bottom: var(--spacing-md);
+      gap: var(--spacing-md);
+    }
+
+    .summary h2 {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    /* Results Grid */
+    .results {
+      display: grid;
+      gap: var(--spacing-sm);
+      padding: var(--spacing-md) 0;
+    }
+
+    .result {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: var(--spacing-lg);
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+    }
+
+    .result:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+
+    .result.possible {
+      border-color: var(--warning-light);
+    }
+
+    .result-top {
+      display: flex;
+      justify-content: space-between;
+      gap: var(--spacing-lg);
+      align-items: flex-start;
+      margin-bottom: var(--spacing-md);
+    }
+
+    .result-top strong {
+      font-size: 22px;
+      color: var(--primary-dark);
+      font-variant-numeric: tabular-nums;
+      min-width: 60px;
+      text-align: left;
+    }
+
+    .result h3 {
+      margin: 5px 0 var(--spacing-sm);
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .source {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+
+    .meta, .match {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .meta {
+      margin: var(--spacing-sm) 0;
+    }
+
+    .status {
+      display: inline-block;
+      padding: 7px 10px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      margin: var(--spacing-sm) 0;
+    }
+
+    .status.good {
+      background: var(--success-light);
+      color: var(--success-dark);
+    }
+
+    .status.bad {
+      background: var(--danger-light);
+      color: var(--danger-dark);
+    }
+
+    .status.review {
+      background: var(--warning-light);
+      color: var(--warning-dark);
+    }
+
+    .caution {
+      color: var(--warning-dark);
+      font-size: 13px;
+      margin-top: var(--spacing-sm);
+      padding: var(--spacing-sm);
+      background: var(--warning-light);
+      border-radius: 8px;
+      border-right: 3px solid var(--warning-dark);
+    }
+
+    .notice {
+      padding: var(--spacing-lg);
+      border-radius: 14px;
+      background: var(--warning-light);
+      color: var(--warning-dark);
+      line-height: 1.7;
+      border-right: 4px solid var(--warning-dark);
+    }
+
+    .notice.warn {
+      color: var(--text-primary);
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: var(--spacing-xl);
+      padding-top: var(--spacing-xl);
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    /* Loading Animation */
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .loading {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2px solid var(--border);
+      border-top-color: var(--primary-dark);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    /* Responsive */
+    @media (max-width: 620px) {
+      main {
+        padding: var(--spacing-md) var(--spacing-sm) 60px;
+      }
+
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .search {
+        grid-template-columns: 1fr;
+      }
+
+      .search button {
+        min-height: 48px;
+        width: 100%;
+      }
+
+      .intro {
+        padding-top: var(--spacing-xl);
+      }
+
+      .intro h2 {
+        font-size: 28px;
+      }
+
+      .result-top {
+        flex-direction: column;
+      }
+
+      .result h3 {
+        font-size: 17px;
+      }
+
+      .result-top strong {
+        font-size: 18px;
+      }
+
+      .summary {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .tools {
+        width: 100%;
+      }
+
+      .btn-secondary {
+        flex: 1;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div class="brand">
+        <div class="mark">🌿</div>
+        <div>
+          <p class="eyebrow">بيانات محلية، قرار واضح</p>
+          <h1>المستشار الزراعي</h1>
+        </div>
+      </div>
+      <div class="statusline">
+        <span class="chip" id="dbState">جاري تجهيز القواعد</span>
+        <span class="chip" id="offlineState">🟢 متصل</span>
+        <button class="theme-toggle" id="themeToggle" title="تبديل نمط الليل">🌙</button>
+      </div>
+    </header>
+
+    <section class="intro">
+      <h2>اعرف المادة قبل أن تستخدمها.</h2>
+      <p>ابحث بالاسم أو رقم CAS. ليبيا هي المرجع الأول، والمصادر الدولية للمقارنة فقط. لا تعرض النتيجة موافقة قانونية إذا لم يكن التطابق موثوقًا.</p>
+      
+      <div class="mode">
+        <label for="mode">الوضع:</label>
+        <select id="mode">
+          <option value="farmer">المزارع</option>
+          <option value="pro">المحترف</option>
+        </select>
+        <span class="mode-label" id="modeLabel">المزارع</span>
+      </div>
+
+      <form class="search" id="searchForm">
+        <input class="query" id="query" placeholder="مثال: Glyphosate أو 1071-83-6" autocomplete="off">
+        <button type="submit">فحص المادة</button>
+      </form>
+
+      <div class="tools">
+        <button class="btn-secondary" type="button" id="cameraBtn">📷 تصوير الملصق</button>
+        <button class="btn-secondary" type="button" id="copyBtn">📋 نسخ التقرير</button>
+        <button class="btn-secondary" type="button" id="historyBtn">📜 السجل</button>
+      </div>
+
+      <p class="hint">💡 البحث يعمل محليًا بعد أول تشغيل. نتيجة غير مؤكدة تعني ضرورة مراجعة الاسم والملصق.</p>
+
+      <details class="scan" id="scanPanel">
+        <summary>📸 المسح البصري</summary>
+        <input id="camera" type="file" accept="image/*" capture="environment">
+        <img id="preview" class="preview" hidden alt="معاينة صورة الملصق">
+        <p id="ocrMsg" class="scan-note">صوّر اسم المادة الفعالة بوضوح. محرك OCR سيبدأ بعد اختيار الصورة.</p>
+      </details>
+    </section>
+
+    <section class="summary">
+      <h2 id="resultTitle">نتائج الفحص</h2>
+      <span class="chip" id="dbCount">...</span>
+    </section>
+
+    <section class="results" id="results">
+      <div class="notice">اكتب اسم المادة أو رقم CAS ثم اضغط «فحص المادة».</div>
+    </section>
+
+    <p class="footer">المستشار الزراعي أداة مساعدة للبحث في قواعد البيانات المرفقة. المرجع القانوني النهائي هو الجهة الرسمية المختصة. لا نتحمل مسؤولية الاستخدام غير الصحيح للمعلومات.</p>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

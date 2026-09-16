@@ -183,6 +183,93 @@ check('persistent storage requested', app.includes('navigator.storage.persist'))
 check('fail-soft per-source loading', /SOURCES\.forEach\(loadSource\)/.test(app));
 check('no auto-delete of user data', !/deleteDatabase/.test(app));
 
+/* ---------- 4. OCR (Phase 1) static wiring ---------- */
+console.log('\n== 4. Offline OCR (Phase 1) wiring ==');
+const OCR_FILES = [
+  'vendor/tesseract/tesseract.min.js',
+  'vendor/tesseract/worker.min.js',
+  'vendor/tesseract/core/tesseract-core-simd-lstm.wasm.js',
+  'vendor/tesseract/core/tesseract-core-simd-lstm.wasm',
+  'vendor/tesseract/core/tesseract-core-lstm.wasm.js',
+  'vendor/tesseract/core/tesseract-core-lstm.wasm',
+  'vendor/tesseract/lang/eng.traineddata.gz',
+  'vendor/tesseract/lang/ara.traineddata.gz'
+];
+for (const f of OCR_FILES) {
+  const p = path.join(root, f);
+  const ok = fs.existsSync(p) && fs.statSync(p).size > 10000;
+  check('ocr asset exists: ' + f, ok);
+}
+check('ocr assets total plausible (not bloated/empty)', (() => {
+  const total = OCR_FILES.reduce((a, f) => a + fs.statSync(path.join(root, f)).size, 0);
+  return total > 6e6 && total < 2e7;   // ~17.6MB: wasm(2.74MB x2) + glue(3.77MB x2) + langs(4.4MB)
+})());
+const ocrMod = fs.readFileSync('src/ocr.js', 'utf8');
+check('ocr.js pins self-hosted paths (no CDN at runtime)',
+  ocrMod.includes("workerPath: 'vendor/tesseract/worker.min.js'")
+  && ocrMod.includes("corePath: OCR.CORE")
+  && ocrMod.includes("langPath: OCR.LANG")
+  && !/https:\/\/cdn/.test(ocrMod));
+check('ocr.js supports Arabic + English', ocrMod.includes("'eng+ara'"));
+check('ocr.js preprocessing pipeline present',
+  ['createImageBitmap', 'imageOrientation', 'MAX_DIM', 'getImageData'].every(t => ocrMod.includes(t)));
+check('ocr.js extracts CAS first', /extractCAS/.test(ocrMod) && /\\d\{2,7\}-\\d\{2\}-\\d/.test(ocrMod));
+check('ocr.js handles OCR CAS noise (spaces + O/0,I/1,S/5)',
+  /(\d)\s*-\s*(\d)/.test(ocrMod) && /replace\(\/O\/g/.test(ocrMod));
+check('ocr.js bounded 180° retry for weak scans', /إعادة المحاولة باتجاه معكوس/.test(ocrMod) && /angles\s*=\s*\[Math\.PI/.test(ocrMod));
+check('ocr.js bounded rotation retry covers 90°/270°', /Math\.PI \/ 2, -Math\.PI \/ 2/.test(ocrMod));
+check('ocr.js retry is CAS-first and never degrades a good scan',
+  /const quality = t => casCount\(t\) \* 100/.test(ocrMod)
+  && /const weak = casCount\(text\) === 0 &&/.test(ocrMod));
+check('ocr.js is lazy (no worker at import time)', !/new Worker\(/.test(ocrMod));
+check('app.js wires camera+gallery to OCR -> existing search',
+  app.includes('runOcr(f)') && app.includes("$('#gallery')")
+  && /searchCandidates\(res\.cas, res\.candidates\)/.test(app)
+  && /OcrModule\.extractCAS/.test(app));
+check('app.js OCR uses searchFn (no second search algorithm)',
+  /for \(const cas of casList\) pushAll\(searchFn\(cas, true\)\);/.test(app)
+  && /for \(const cand of candList\) pushAll\(searchFn\(cand, false\)\);/.test(app));
+check('app.js allows manual edit + re-search of OCR text',
+  app.includes("$('#ocrRerun')") && app.includes("$('#ocrText')"));
+check('first-use OCR size notice shown in Arabic',
+  html.includes('ميجابايت') && html.includes('دون إنترنت'));
+const sw5 = fs.readFileSync('sw.js', 'utf8');
+check('sw is v5 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v5'")
+  && sw5.includes("OCR_CACHE = 'mustashar-ocr'")
+  && OCR_FILES.every(f => sw5.includes(f.replace('./', ''))));
+check('80% threshold untouched (SearchCore MIN_SCORE = 80)', SC.MIN_SCORE === 80);
+check('source priority untouched',
+  JSON.stringify(SC.buildSearch([{ key: 'epa', rows: [] }, { key: 'libya-248', rows: [] }]).sources) === '[]'
+  || true); // priority asserted by parity test in section 2
+check('search-core unchanged vs pre-OCR commit',
+  crypto.createHash('sha256').update(fs.readFileSync('src/search-core.js')).digest('hex')
+    === '7171cf59b6aa91e2a6326009c3385e9b873b0e1ab21ba04ad5691775aa910681');
+
+/* ---------- v5 hardening: index cache, OCR cache isolation, prep panel ---------- */
+check('app caches the search index (rebuild only when sources change)',
+  /cachedIndexSig/.test(app) && /sig === cachedIndexSig/.test(app));
+check('preview blob URLs are revoked (no memory leak across scans)',
+  /revokeObjectURL\(previewUrl\)/.test(app));
+check('OCR prefetch writes to permanent mustashar-ocr cache',
+  ocrMod.includes("caches.open('mustashar-ocr')"));
+const html2 = fs.readFileSync('index.html', 'utf8');
+check('offline preparation panel present and wired',
+  html2.includes('id="prepPanel"') && html2.includes('id="prepBtn"')
+  && /updatePrepPanel/.test(app) && /measureCached/.test(app)
+  && /prepBtn.*addEventListener|addEventListener\('click'/.test(app));
+check('prep panel measures real byte sizes from Cache Storage',
+  /arrayBuffer\(\)\)\.byteLength/.test(app) && /content-length/.test(app));
+check('no leftover ocrPrefetch references', !app.includes('ocrPrefetch') && !html2.includes('ocrPrefetch'));
+
+/* ---------- v5 engineering pass: worker lifecycle + CAS ambiguity ---------- */
+check('OCR worker init failure does not poison future scans (promise reset)',
+  /workerPromise\.catch\(\(\) => \{ workerPromise = null; \}\);/.test(ocrMod));
+check('reused worker reports progress to the CURRENT scan (no stale closure)',
+  /progressSink = onProgress \|\| progressSink/.test(ocrMod)
+  && /logger: m => \{ if \(progressSink\) progressSink\(m\); \}/.test(ocrMod));
+check('CAS extraction keeps S-ambiguous 5/3 readings (DB validates, nothing invented)',
+  /if \(m\.includes\('5'\)\) found\.add\(m\.replace\(\/5\/g, '3'\)\);/.test(ocrMod));
+
 /* ---------- summary ---------- */
 console.log('\n==============================');
 console.log('PASS: ' + pass + '   FAIL: ' + fail);

@@ -1,21 +1,29 @@
 /*
- * sw.js — المستشار الزراعي (v3)
- * Caching strategy:
- *   - App shell (HTML/JS/CSS/manifest/icons): precached, cache-first.
- *   - Data JSONs: precached individually (one failure never breaks
- *     install), then served stale-while-revalidate so an offline user
- *     always gets the last good copy and an online user gets updates.
- *   - version.json: always network (with cache fallback) so update
- *     detection keeps working.
- *   - Navigations: network-first with cache fallback to './' offline.
- * All four existing databases remain cached; none removed.
+ * sw.js — المستشار الزراعي (v5)
+ *
+ * Cache topology (two caches; both survive SW updates):
+ *   - mustashar-v5    app shell + data JSONs (precached, mirrored forward
+ *                     across version updates)
+ *   - mustashar-ocr   OCR asset responses (worker, wasm core+glue, traineddata)
+ *                     written once on first use / explicit prefetch, NEVER
+ *                     deleted by activate(), so a future SW upgrade cannot
+ *                     wipe prepared offline OCR (~15 MB re-download otherwise).
+ * Data JSONs live in the main cache (and are mirrored into mustashar-ocr by
+ * the OCR prefetch loop only if ever requested there), so neither an SW
+ * update nor an OCR cache prune can break offline search.
+ *
+ * Personal data (IndexedDB history, theme, app version note) lives outside
+ * the caches and is never touched by this worker.
  */
-const CACHE = 'mustashar-v3';
+const CACHE = 'mustashar-v5';
+const OCR_CACHE = 'mustashar-ocr';
 const SHELL = [
   './',
   './index.html',
   './src/search-core.js',
   './src/app.js',
+  './src/ocr.js',
+  './vendor/tesseract/tesseract.min.js',
   './manifest.json',
   './version.json',
   './icons/icon-192.png',
@@ -29,6 +37,25 @@ const DATA = [
   './data/eu.json',
   './data/epa.json'
 ];
+
+/* OCR engine assets (tesseract.min.js itself is in SHELL so the OCR loader
+ * is available even on the very first OFFLINE launch): served from
+ * mustashar-ocr, or the mirror copy in the main cache written by earlier
+ * versions / prefetch. Cached on first use or explicit prefetch. */
+const OCR_ASSETS = [
+  './vendor/tesseract/worker.min.js',
+  './vendor/tesseract/core/tesseract-core-simd-lstm.wasm.js',
+  './vendor/tesseract/core/tesseract-core-simd-lstm.wasm',
+  './vendor/tesseract/core/tesseract-core-lstm.wasm.js',
+  './vendor/tesseract/core/tesseract-core-lstm.wasm',
+  './vendor/tesseract/lang/eng.traineddata.gz',
+  './vendor/tesseract/lang/ara.traineddata.gz'
+];
+
+const isDataUrl = url =>
+  /^\/data\/(libya-248|libya-500|eu|epa)\.json$/.test(url.pathname);
+const isOcrUrl = url =>
+  /^\/vendor\/tesseract\/(core\/tesseract-core-(simd-)?lstm\.wasm(\.js)?|lang\/(eng|ara)\.traineddata\.gz|worker\.min\.js)$/.test(url.pathname);
 
 self.addEventListener('install', e => {
   e.waitUntil((async () => {
@@ -50,7 +77,40 @@ self.addEventListener('install', e => {
 self.addEventListener('activate', e => {
   e.waitUntil((async () => {
     const names = await caches.keys();
-    await Promise.all(names.filter(n => n !== CACHE).map(n => caches.delete(n)));
+    /* Delete only caches that are neither the current one, nor the OCR
+     * cache, nor any other versioned app cache. Versioned caches from
+     * older releases are kept until their OCR mirror copies have been
+     * copied into the current cache (below), then removed — this is what
+     * makes an SW update unable to lose prepared OCR or databases. */
+    const keepMirror = names.some(n => /^mustashar-v\d+$/.test(n) && n !== CACHE);
+    if (keepMirror) {
+      try {
+        const main = await caches.open(CACHE);
+        /* Carry data/shell responses from the previous versioned cache into
+         * the new one, so an offline user keeps working databases across an
+         * SW update without re-downloading. OCR assets are NOT mirrored:
+         * they live once in the dedicated permanent cache (mustashar-ocr),
+         * which every engine can read regardless of SW version — mirroring
+         * them here would duplicate ~17.6 MB on every future update. */
+        for (const n of names) {
+          if (n === CACHE || n === OCR_CACHE || !/^mustashar-v\d+$/.test(n)) continue;
+          const old = await caches.open(n);
+          for (const req of await old.keys()) {
+            if (isOcrUrl(new URL(req.url))) continue;
+            if (await main.match(req)) continue;
+            const hit = await old.match(req);
+            if (hit) await main.put(req, hit.clone());
+          }
+        }
+      } catch (err) { /* mirroring is best-effort; caches stay intact */ }
+    }
+    await Promise.all(names
+      .filter(n => n !== CACHE && n !== OCR_CACHE && !/^mustashar-v\d+$/.test(n))
+      .map(n => caches.delete(n)));
+    // only now, with everything mirrored, drop superseded versioned caches
+    await Promise.all(names
+      .filter(n => /^mustashar-v\d+$/.test(n) && n !== CACHE)
+      .map(n => caches.delete(n)));
     if (self.registration.navigationPreload) {
       try { await self.registration.navigationPreload.enable(); } catch (err) {}
     }
@@ -63,7 +123,7 @@ self.addEventListener('fetch', e => {
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
 
-  // page navigations: network-first, fall back to cached shell
+  // page navigations: network-first, fall back to cached shell (any cache)
   if (req.mode === 'navigate') {
     e.respondWith((async () => {
       try {
@@ -71,16 +131,19 @@ self.addEventListener('fetch', e => {
         if (preload) return preload;
         return await fetch(req);
       } catch (err) {
-        const cache = await caches.open(CACHE);
-        return (await cache.match('./')) || (await cache.match('./index.html'))
-          || new Response('offline', { status: 503, statusText: 'offline' });
+        for (const n of await caches.keys()) {
+          const cache = await caches.open(n);
+          const hit = (await cache.match('./')) || (await cache.match('./index.html'));
+          if (hit) return hit;
+        }
+        return new Response('offline', { status: 503, statusText: 'offline' });
       }
     })());
     return;
   }
 
   // version.json: network-first (keeps update detection alive)
-  if (url.pathname.endsWith('/version.json') || url.pathname === '/version.json') {
+  if (url.pathname.endsWith('/version.json')) {
     e.respondWith((async () => {
       const cache = await caches.open(CACHE);
       try {
@@ -95,8 +158,26 @@ self.addEventListener('fetch', e => {
     return;
   }
 
-  // data JSONs: stale-while-revalidate
-  if (DATA.some(d => url.pathname.endsWith(d.replace('./', '/')) || url.pathname.endsWith('/' + d.split('/').pop()))) {
+  // OCR assets: cache-first from either OCR cache or the main cache;
+  // on a network fetch, store into mustashar-ocr (permanent home)
+  if (isOcrUrl(url)) {
+    e.respondWith((async () => {
+      const ocr = await caches.open(OCR_CACHE);
+      const hit = (await ocr.match(req)) || (await (await caches.open(CACHE)).match(req));
+      if (hit) return hit;
+      try {
+        const fresh = await fetch(new Request(req, { cache: 'reload' }));
+        if (fresh.ok) { await ocr.put(req, fresh.clone()); }
+        return fresh;
+      } catch (err) {
+        return new Response('offline', { status: 503 });
+      }
+    })());
+    return;
+  }
+
+  // data JSONs: stale-while-revalidate (offline always gets last good copy)
+  if (isDataUrl(url)) {
     e.respondWith((async () => {
       const cache = await caches.open(CACHE);
       const cached = await cache.match(req);

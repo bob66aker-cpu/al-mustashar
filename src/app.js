@@ -360,15 +360,30 @@
     });
   }
 
-  /* ============================================================
+  /*
    * Wiring
    * ============================================================ */
   const DB = {};   // key -> validated data object (or absent if unavailable)
   let searchFn = null;
 
+  /*
+   * The search index is rebuilt ONLY when the set of loaded databases
+   * actually changes (phase/count of any source). Rows are immutable
+   * while loaded, so caching the index between searches is safe and
+   * produces identical results — it just avoids re-normalizing ~8,000
+   * fields on every submit (measured ~26 ms per search on desktop;
+   * several times that on low-end phones, all on the main thread).
+   */
+  let cachedIndexSig = null;
+  let cachedSearch = null;
+
   function rebuildSearch() {
+    const sig = SOURCES.map(s => s.key + ':' + state[s.key].phase + ':' + state[s.key].count).join('|');
+    if (cachedSearch && sig === cachedIndexSig) { searchFn = cachedSearch; return; }
     const sources = SOURCES.map(s => ({ key: s.key, rows: (DB[s.key] || {}).rows || null }));
     searchFn = SearchCore.buildSearch(sources);
+    cachedSearch = searchFn;
+    cachedIndexSig = sig;
   }
 
   $('#searchForm').addEventListener('submit', e => {
@@ -417,16 +432,214 @@
     navigator.clipboard && navigator.clipboard.writeText($('#results').innerText).catch(() => {});
   });
 
-  /* Camera (preview only — OCR intentionally NOT implemented yet) */
+  /* Camera / gallery -> offline OCR (src/ocr.js) -> EXISTING search engine.
+     The 80% threshold and source priority live in SearchCore and are not
+     touched here; this only feeds candidate text into the same search(). */
   const camera = $('#camera'), preview = $('#preview'), ocrMsg = $('#ocrMsg');
+  let ocrBusy = false;
+  let previewUrl = null;   // revoke old blob URLs so repeated scans don't leak memory
+
+  function showPreview(file) {
+    if (previewUrl) { try { URL.revokeObjectURL(previewUrl); } catch (e) {} }
+    previewUrl = URL.createObjectURL(file);
+    preview.src = previewUrl;
+    preview.hidden = false;
+    $('#scanPanel').open = true;
+  }
+
   $('#cameraBtn').addEventListener('click', () => camera.click());
   camera.addEventListener('change', () => {
     const f = camera.files && camera.files[0];
     if (!f) return;
-    preview.src = URL.createObjectURL(f);
-    preview.hidden = false;
-    ocrMsg.textContent = 'الصورة جاهزة. محرك OCR غير مفعّل بعد.';
-    $('#scanPanel').open = true;
+    showPreview(f);
+    runOcr(f);
+  });
+
+  /* Gallery selection — same OCR pipeline, no second workflow */
+  const gallery = $('#gallery');
+  $('#galleryBtn').addEventListener('click', () => gallery.click());
+  gallery.addEventListener('change', () => {
+    const f = gallery.files && gallery.files[0];
+    if (!f) return;
+    showPreview(f);
+    runOcr(f);
+  });
+
+  /* Run candidate text through the existing search and merge results. */
+  function searchCandidates(casList, candList) {
+    rebuildSearch();
+    if (!searchFn || !searchFn.sources.length) return [];
+    const rank = { 'libya-248': 0, 'libya-500': 1, eu: 2, epa: 3 };
+    const merged = [];
+    const seen = new Set();
+    const pushAll = list => (list || []).forEach(x => {
+      const key = x.k + ':' + (x.r.row ?? x.r.name);
+      if (!seen.has(key)) { seen.add(key); merged.push(x); }
+    });
+    for (const cas of casList) pushAll(searchFn(cas, true));   // CAS exact (100%)
+    for (const cand of candList) pushAll(searchFn(cand, false)); // same 80% rule
+    merged.sort((a, b) => ((rank[a.k] ?? 99) - (rank[b.k] ?? 99)) || (b.s.v - a.s.v));
+    return merged.slice(0, 24);
+  }
+
+  function showOcrResults(merged, noneMsg) {
+    if (merged.length) {
+      render(merged, '');
+      $('#resultTitle').textContent = 'نتائج المسح البصري';
+    } else {
+      $('#resultTitle').textContent = 'نتائج المسح البصري';
+      $('#results').innerHTML = '<div class="notice warn"><b>' + noneMsg
+        + '</b><br>عدّل النص المكتشف أو اكتب الاسم/CAS يدويًا في حقل البحث.</div>';
+    }
+  }
+
+  async function runOcr(file) {
+    if (ocrBusy || typeof OcrModule === 'undefined') return;
+    ocrBusy = true;
+    ocrMsg.textContent = 'جارٍ تجهيز الصورة…';
+    try {
+      const res = await OcrModule.recognize(file, p => {
+        if (!p) return;
+        if (p.status === 'prep') ocrMsg.textContent = 'جارٍ تجهيز الصورة…';
+        else if (p.status === 'done') ocrMsg.textContent = 'اكتملت القراءة.';
+        else {
+          const pct = Math.round((p.progress || 0) * 100);
+          ocrMsg.textContent = p.status + (pct ? ' (' + pct + '%)' : '');
+        }
+      });
+      const textLen = (res.text || '').replace(/\s/g, '').length;
+      const weak = textLen < 6 || (res.confidence !== null && res.confidence < 40);
+      $('#ocrText').value = res.text || '';
+      $('#ocrActions').hidden = false;
+      if (weak) {
+        ocrMsg.textContent = 'تعذّر قراءة نص واضح بثقة كافية. جرّب صورة أوضح وإضاءة أفضل، أو عدّل النص أدناه ثم اضغط «بحث من النص».';
+      } else {
+        ocrMsg.textContent = 'اكتملت القراءة. راجع النص المكتشف — يمكنك تعديله ثم إعادة البحث.';
+      }
+      showOcrResults(
+        searchCandidates(res.cas, res.candidates),
+        'لم يتم العثور على تطابق موثوق من النص المكتشف');
+    } catch (e) {
+      ocrMsg.textContent = 'تعذّر تشغيل محرك القراءة. تأكد من فتح التطبيق مرة واحدة أثناء الاتصال لتحميل ملفات OCR، أو ابحث يدويًا.';
+    } finally {
+      ocrBusy = false;
+    }
+  }
+
+  /* Re-search from (possibly edited) OCR text — same pipeline, same rules. */
+  $('#ocrRerun').addEventListener('click', () => {
+    if (typeof OcrModule === 'undefined') return;
+    const text = $('#ocrText').value || '';
+    const cas = OcrModule.extractCAS(text);
+    const cands = OcrModule.extractCandidates(text);
+    showOcrResults(searchCandidates(cas, cands),
+      'لم يتم العثور على تطابق موثوق من النص المدخل');
+  });
+
+  /* ============================================================
+   * Offline preparation panel — «تجهيز العمل بدون إنترنت»
+   * Shows what is already stored (with real byte sizes read from
+   * Cache Storage), whether search and OCR are ready offline, and a
+   * single explicit prepare action. No hidden or repeated downloads:
+   * assets are fetched once (or already cached by a first online scan)
+   * and afterwards served exclusively from cache.
+   * ============================================================ */
+  const SHELL_PATHS = ['index.html', 'src/search-core.js', 'src/app.js', 'src/ocr.js',
+    'manifest.json', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/maskable-512.png'];
+  const DATA_PATHS = ['data/libya-248.json', 'data/libya-500.json', 'data/eu.json', 'data/epa.json'];
+  const OCR_ASSET_PATHS = [
+    'vendor/tesseract/tesseract.min.js',
+    'vendor/tesseract/worker.min.js',
+    'vendor/tesseract/core/tesseract-core-simd-lstm.wasm.js',
+    'vendor/tesseract/core/tesseract-core-simd-lstm.wasm',
+    'vendor/tesseract/core/tesseract-core-lstm.wasm.js',
+    'vendor/tesseract/core/tesseract-core-lstm.wasm',
+    'vendor/tesseract/lang/eng.traineddata.gz',
+    'vendor/tesseract/lang/ara.traineddata.gz'
+  ];
+
+  /* Find a cached response for a path in ANY app cache (current, OCR,
+   * or a previous version) and measure its real size. Opening only
+   * cache names that already exist — never creates caches. */
+  async function measureCached(paths) {
+    try {
+      const names = await caches.keys();
+      let bytes = 0, ready = 0;
+      for (const p of paths) {
+        const url = new URL(p, location.href);
+        let hit = null;
+        for (const name of names) {
+          const c = await caches.open(name);
+          hit = await c.match(url.href);
+          if (hit) break;
+        }
+        if (!hit) return { ready: false, bytes: 0 };
+        ready++;
+        const len = parseInt(hit.headers.get('content-length') || '', 10);
+        bytes += (Number.isFinite(len) && len > 0)
+          ? len
+          : (await hit.clone().arrayBuffer()).byteLength;
+      }
+      return { ready: ready === paths.length, bytes };
+    } catch (e) { return { ready: false, bytes: 0 }; }
+  }
+
+  const fmtMB = b => (b / 1048576).toFixed(1) + ' ميجابايت';
+
+  function setPrepItem(liId, sizeId, info) {
+    const li = $(liId), sz = $(sizeId);
+    if (!li) return;
+    li.classList.toggle('done', !!info.ready);
+    if (sz) sz.textContent = info.ready ? fmtMB(info.bytes) : '—';
+  }
+
+  let prepMeasured = false;
+  async function updatePrepPanel() {
+    const st = $('#prepState'), btn = $('#prepBtn');
+    if (!st) return;
+    if (!window.caches) { st.textContent = 'المتصفح لا يدعم التخزين المحلي الكامل'; return; }
+    const [shell, data, ocr] = await Promise.all([
+      measureCached(SHELL_PATHS), measureCached(DATA_PATHS), measureCached(OCR_ASSET_PATHS)
+    ]);
+    prepMeasured = true;
+    setPrepItem('#prepShell', '#prepShellSize', shell);
+    setPrepItem('#prepData', '#prepDataSize', data);
+    setPrepItem('#prepOcr', '#prepOcrSize', ocr);
+    if (shell.ready && data.ready && ocr.ready) {
+      st.textContent = 'جاهز للعمل بدون إنترنت ✅';
+      st.className = 'chip active';
+      if (btn) { btn.textContent = '✅ التطبيق مجهز بالكامل'; btn.disabled = true; }
+    } else if (shell.ready && data.ready) {
+      st.textContent = 'البحث جاهز دون إنترنت — المسح البصري بحاجة للتجهيز';
+      if (btn) { btn.textContent = '⬇️ تجهيز ملفات المسح البصري'; btn.disabled = false; }
+    } else {
+      st.textContent = 'أكمل أول تشغيل أثناء الاتصال ليكتمل التجهيز';
+      if (btn) { btn.textContent = '⬇️ تجهيز الآن'; btn.disabled = false; }
+    }
+  }
+
+  /* One explicit preparation action (OCR assets + missing shell/data).
+     Persistence is re-requested here: a user gesture is the strongest
+     signal an engine can get, so asking at the exact moment the user
+     opts into ~19 MB of local data maximizes the chance the stored
+     databases/OCR are protected from eviction. */
+  $('#prepBtn').addEventListener('click', async () => {
+    if (typeof OcrModule === 'undefined') return;
+    const btn = $('#prepBtn'), st = $('#prepState');
+    btn.disabled = true;
+    st.textContent = 'جارٍ التجهيز…';
+    requestPersistence();
+    ocrMsg.textContent = 'جارٍ تحميل ملفات المسح البصري للاستخدام دون إنترنت…';
+    try {
+      const n = await OcrModule.prefetch();
+      prepMeasured = false;                 // re-measure with fresh data
+      await updatePrepPanel();
+      ocrMsg.textContent = 'تم تحميل ملفات OCR (' + n + '/8). سيعمل المسح البصري دون إنترنت.';
+    } catch (e) {
+      st.textContent = 'تعذّر التجهيز الآن — أعد المحاولة أثناء الاتصال';
+      ocrMsg.textContent = 'تعذّر تحميل ملفات OCR الآن. سيُعاد المحاولة تلقائيًا عند أول مسح أثناء الاتصال.';
+    }
+    btn.disabled = false;
   });
 
   /* Theme (now persisted) */
@@ -466,7 +679,8 @@
           }
         });
       });
-    }).catch(() => {});
+      return navigator.serviceWorker.ready;
+    }).then(() => updatePrepPanel()).catch(() => {});
   }
 
   /* ============================================================
@@ -476,4 +690,5 @@
   requestPersistence();
   loadAll();
   checkVersion();
+  updatePrepPanel();          // works even if the SW is still installing
 })();

@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#1f6f52">
   <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="المستشار الزراعي">
   <title>المستشار الزراعي - فحص المبيدات</title>
   
   <style>
@@ -477,6 +483,51 @@
       color: var(--warning-dark);
     }
 
+    /* DB status chips */
+    .chip.db-ok       { background: var(--success-light); color: var(--success-dark); border-color: var(--success-dark); }
+    .chip.db-cached   { background: var(--info-light);    color: var(--info-dark);    border-color: var(--info-dark); }
+    .chip.db-loading  { background: var(--warning-light); color: var(--warning-dark); border-color: var(--warning-dark); }
+    .chip.db-bad      { background: var(--danger-light);  color: var(--danger-dark);  border-color: var(--danger-dark); }
+
+    /* Banners for load/update state */
+    .banner {
+      border-radius: 12px;
+      padding: var(--spacing-sm) var(--spacing-md);
+      margin: 0 0 var(--spacing-md);
+      font-size: 13px;
+      line-height: 1.7;
+      border-right: 4px solid;
+    }
+    .banner-warn  { background: var(--warning-light); color: var(--warning-dark); border-color: var(--warning-dark); }
+    .banner-error { background: var(--danger-light);  color: var(--danger-dark);  border-color: var(--danger-dark); }
+    .banner-info  { background: var(--info-light);    color: var(--info-dark);    border-color: var(--info-dark); }
+
+    /* History panel */
+    .history-panel {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: var(--surface);
+      padding: var(--spacing-md);
+      margin: var(--spacing-md) 0;
+      box-shadow: var(--shadow-sm);
+    }
+    .history-item {
+      display: flex;
+      justify-content: space-between;
+      gap: var(--spacing-sm);
+      padding: var(--spacing-xs) var(--spacing-sm);
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .history-item:last-child { border-bottom: 0; }
+    .history-item:hover { background: var(--primary-light); }
+    .history-meta { color: var(--text-muted); font-size: 12px; white-space: nowrap; }
+
+    /* Result extra rows (source-verbatim values) */
+    .result p.status { margin-top: var(--spacing-sm); }
+    .result .match { margin-top: 2px; }
+
     .caution {
       color: var(--warning-dark);
       font-size: 13px;
@@ -593,9 +644,14 @@
       </div>
       <div class="statusline">
         <span class="chip" id="dbState">جاري تجهيز القواعد</span>
+        <span class="chip db-loading" id="db-libya-248">ليبيا 248: جارٍ التحميل…</span>
+        <span class="chip db-loading" id="db-libya-500">ليبيا 500: جارٍ التحميل…</span>
+        <span class="chip db-loading" id="db-eu">الاتحاد الأوروبي: جارٍ التحميل…</span>
+        <span class="chip db-loading" id="db-epa">USA / EPA: جارٍ التحميل…</span>
         <span class="chip" id="offlineState">🟢 متصل</span>
         <button class="theme-toggle" id="themeToggle" title="تبديل نمط الليل">🌙</button>
       </div>
+      <div class="banner banner-warn" id="dbBanner" hidden></div>
     </header>
 
     <section class="intro">
@@ -628,13 +684,24 @@
         <summary>📸 المسح البصري</summary>
         <input id="camera" type="file" accept="image/*" capture="environment">
         <img id="preview" class="preview" hidden alt="معاينة صورة الملصق">
-        <p id="ocrMsg" class="scan-note">صوّر اسم المادة الفعالة بوضوح. محرك OCR سيبدأ بعد اختيار الصورة.</p>
+        <p id="ocrMsg" class="scan-note">صوّر اسم المادة الفعالة بوضوح. محرك OCR غير مفعّل في هذه النسخة.</p>
       </details>
     </section>
 
     <section class="summary">
       <h2 id="resultTitle">نتائج الفحص</h2>
       <span class="chip" id="dbCount">...</span>
+    </section>
+
+    <section class="history-panel" id="historyPanel" hidden>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;">
+        <h2 style="font-size:16px;font-weight:700;">📜 سجل البحث</h2>
+        <div style="display:flex;gap:8px;">
+          <button class="btn-secondary" type="button" id="historyClear">مسح السجل</button>
+          <button class="btn-secondary" type="button" id="historyClose">إغلاق</button>
+        </div>
+      </div>
+      <div id="historyList"></div>
     </section>
 
     <section class="results" id="results">
@@ -644,6 +711,7 @@
     <p class="footer">المستشار الزراعي أداة مساعدة للبحث في قواعد البيانات المرفقة. المرجع القانوني النهائي هو الجهة الرسمية المختصة. لا نتحمل مسؤولية الاستخدام غير الصحيح للمعلومات.</p>
   </main>
 
-  <script src="app.js"></script>
+  <script src="src/search-core.js"></script>
+  <script src="src/app.js"></script>
 </body>
 </html>

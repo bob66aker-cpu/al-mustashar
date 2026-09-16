@@ -1,0 +1,21 @@
+{
+  "_comment": "Immutable baseline of the four original database files. tests/verify.mjs recomputes SHA-256 and row counts and fails if anything changed. Do not edit these values unless the user deliberately replaces a source file.",
+  "files": {
+    "data/libya-248.json": {
+      "sha256": "764108e27ca0fd412792a2979f86a1d7496df2e693dcbb246f9bfa8979ceb65d",
+      "rows": 77
+    },
+    "data/libya-500.json": {
+      "sha256": "372a5faf4a574728eeff4f9f587f94c4d110a4c5a35da38d7af53149f4df3672",
+      "rows": 411
+    },
+    "data/eu.json": {
+      "sha256": "ef629525c2dae8f741e1697faaecf2319e1a646e4e011d2754ef66e23844101e",
+      "rows": 1483
+    },
+    "data/epa.json": {
+      "sha256": "7b72bd38f804750f11acab74c2a44300ee3c2531770c6040fb2938c8763ba1d8",
+      "rows": 2199
+    }
+  }
+}

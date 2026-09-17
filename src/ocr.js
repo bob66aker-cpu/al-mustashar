@@ -157,8 +157,24 @@
     const lines = String(text || '')
       .split(/\r?\n/).map(l => l.trim())
       .filter(l => l.length >= 4 && l.length <= 60 && /[A-Za-z\u0600-\u06FF]{3,}/.test(l));
+    /* Dense labels spend the 12-candidate cap on the trade name and legal
+       text before reaching the "ACTIVE INGREDIENT" section (proven case:
+       "BIFEN XTS" — Bifenthrin never reached SearchCore). Give that
+       section priority: the header line plus the next two lines (the
+       chemical name and its concentration; a "% by wt." column often
+       sits between them) are scanned first. Ordering only — no candidate
+       is added, removed, or scored differently. */
+    const isAI = l => /active\s*ingredients?/i.test(l) && !/\bin\s*active/i.test(l);
+    const prio = new Set();
+    for (let i = 0; i < lines.length; i++) {
+      if (isAI(lines[i])) {
+        prio.add(lines[i]);
+        for (let j = i + 1; j < Math.min(i + 3, lines.length); j++) prio.add(lines[j]);
+      }
+    }
+    const ordered = [...prio, ...lines.filter(l => !prio.has(l))];
     const cands = new Set();
-    for (const line of lines) {
+    for (const line of ordered) {
       const clean = line.replace(/[^\w\s\u0600-\u06FF.-]/g, ' ').replace(/\s+/g, ' ').trim();
       if (clean.length >= 4) cands.add(clean);
       const words = clean.split(' ').filter(w => w.length >= 4 && /[A-Za-z\u0600-\u06FF]/.test(w) && !/^\d+$/.test(w));

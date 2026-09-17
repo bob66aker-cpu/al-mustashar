@@ -1,0 +1,223 @@
+<!doctype html>
+<!--
+  tests/ab-ocr.html — A/B harness for OCR language configs (EXPERIMENTAL branch only)
+  A) ara+eng (current checkpoint behavior)   B) eng-only
+  Both configs process the IDENTICAL generated image set through the SAME
+  preprocessing (OcrModule.preprocess), the SAME CAS-first extraction
+  (OcrModule.extractCAS / extractCandidates), and the REAL SearchCore index
+  built from the four original databases. No production code paths change.
+  Runner: see ab-run.mjs (drives this page once per config, then aggregates).
+-->
+<html lang="ar" dir="rtl">
+<head><meta charset="utf-8"><title>AB-OCR</title></head>
+<body>
+<script src="../src/search-core.js"></script>
+<script src="../vendor/tesseract/tesseract.min.js"></script>
+<script src="../src/ocr.js"></script>
+<script>
+'use strict';
+const CONFIG = new URLSearchParams(location.search).get('config') === 'eng' ? 'eng' : 'eng+ara';
+
+/* ---------------- image set (single source of truth for both configs) ---------------- */
+function noise(ctx, W, H, n, alpha) {
+  for (let i = 0; i < n; i++) {
+    ctx.fillStyle = 'rgba(0,0,0,' + alpha + ')';
+    ctx.fillRect(Math.random() * W, Math.random() * H, 1.5, 1.5);
+  }
+}
+function labelImage({ W = 900, H = 300, bg = '#efefef', fg = '#141414', scale = 1, rot = 0, invert = false, lines, grain = 300 }) {
+  return (ctx) => {
+    const c2 = document.createElement('canvas');
+    c2.width = W; c2.height = H;
+    const x = c2.getContext('2d');
+    const bgc = invert ? '#1a1a1a' : bg, fgc = invert ? '#f4f4f4' : fg;
+    x.fillStyle = bgc; x.fillRect(0, 0, W, H);
+    x.fillStyle = fgc; x.textAlign = 'center';
+    for (const [text, size, dy, bold] of lines) {
+      x.font = (bold ? 'bold ' : '') + Math.round(size * scale) + 'px sans-serif';
+      x.fillText(text, W / 2, H / 2 + dy * scale);
+    }
+    if (grain) noise(x, W, H, grain, 0.08);
+    // rotate into the output canvas
+    const swap = rot === 90 || rot === 270;
+    ctx.canvas.width = swap ? H : W; ctx.canvas.height = swap ? W : H;
+    ctx.translate(ctx.canvas.width / 2, ctx.canvas.height / 2);
+    ctx.rotate(rot * Math.PI / 180);
+    ctx.drawImage(c2, -W / 2, -H / 2);
+  };
+}
+function noiseOnly(ctx) {
+  const c2 = document.createElement('canvas');
+  c2.width = 900; c2.height = 300;
+  const x = c2.getContext('2d');
+  x.fillStyle = '#808080'; x.fillRect(0, 0, 900, 300);
+  for (let i = 0; i < 9000; i++) { x.fillStyle = Math.random() > 0.5 ? '#fff' : '#000'; x.fillRect(Math.random() * 900, Math.random() * 300, 2, 2); }
+  ctx.canvas.width = 900; ctx.canvas.height = 300;
+  ctx.drawImage(c2, 0, 0);
+}
+function arabicOnly(ctx) {
+  const c2 = document.createElement('canvas');
+  c2.width = 700; c2.height = 200;
+  const x = c2.getContext('2d');
+  x.fillStyle = '#f2f2f2'; x.fillRect(0, 0, 700, 200);
+  x.fillStyle = '#111'; x.textAlign = 'center';
+  x.font = 'bold 48px "Noto Naskh Arabic", sans-serif';
+  x.fillText('غليفوسات', 350, 100);
+  noise(x, 700, 200, 200, 0.08);
+  ctx.canvas.width = 700; ctx.canvas.height = 200;
+  ctx.drawImage(c2, 0, 0);
+}
+
+const SPECS = [
+  { id: 'clear_label',        gtName: 'Glyphosate', gtCas: '1071-83-6',
+    draw: labelImage({ lines: [['GLYPHOSATE 480 SL', 44, -30, 1], ['CAS: 1071-83-6', 36, 30], ['Batch 2024-A', 26, 90]] }) },
+  { id: 'small_text',         gtName: 'Glyphosate', gtCas: '1071-83-6',
+    draw: labelImage({ scale: 0.5, lines: [['GLYPHOSATE 480 SL', 44, -30, 1], ['CAS: 1071-83-6', 36, 30]] }) },
+  { id: 'low_contrast',       gtName: 'Glyphosate', gtCas: '1071-83-6',
+    draw: labelImage({ bg: '#c8c8c8', fg: '#9a9a9a', lines: [['GLYPHOSATE 480 SL', 44, -30, 1], ['CAS: 1071-83-6', 36, 30]] }) },
+  { id: 'heavy_noise',        gtName: 'Glyphosate', gtCas: '1071-83-6',
+    draw: labelImage({ grain: 3000, lines: [['GLYPHOSATE 480 SL', 44, -30, 1], ['CAS: 1071-83-6', 36, 30]] }) },
+  { id: 'rot90',              gtName: 'Glyphosate', gtCas: '1071-83-6',
+    draw: labelImage({ rot: 90, lines: [['GLYPHOSATE 480 SL', 44, -30, 1], ['CAS: 1071-83-6', 36, 30]] }) },
+  { id: 'rot180',             gtName: 'Glyphosate', gtCas: '1071-83-6',
+    draw: labelImage({ rot: 180, lines: [['GLYPHOSATE 480 SL', 44, -30, 1], ['CAS: 1071-83-6', 36, 30]] }) },
+  { id: 'rot270',             gtName: 'Glyphosate', gtCas: '1071-83-6',
+    draw: labelImage({ rot: 270, lines: [['GLYPHOSATE 480 SL', 44, -30, 1], ['CAS: 1071-83-6', 36, 30]] }) },
+  { id: 'spaced_cas',         gtName: 'Glyphosate', gtCas: '1071-83-6',
+    draw: labelImage({ lines: [['GLYPHOSATE 480 SL', 44, -30, 1], ['CAS: 1071 - 83 - 6', 36, 30]] }) },
+  { id: 'confusion_O0_I1',    gtName: 'Glyphosate', gtCas: '1071-83-6',
+    draw: labelImage({ lines: [['GLYPHOSATE 480 SL', 44, -30, 1], ['IO7I-83-6', 36, 30]] }) },
+  { id: 'confusion_I1_B8',    gtName: 'Mancozeb', gtCas: '8018-01-7',
+    draw: labelImage({ lines: [['MANCOZEB 80 WP', 44, -30, 1], ['8018-0I-7', 36, 30]] }) },
+  { id: 'tiny_cas_only',      gtName: null, gtCas: '1071-83-6',
+    draw: labelImage({ scale: 0.45, lines: [['1071-83-6', 36, 0]] }) },
+  { id: 'haloxyfop',          gtName: 'Haloxyfop', gtCas: '138261-41-3',
+    draw: labelImage({ lines: [['HALOXYFOP-R 11% EC', 40, -30, 1], ['CAS: 138261-41-3', 34, 30]] }) },
+  { id: 'diuron',             gtName: 'Diuron', gtCas: '330-54-1',
+    draw: labelImage({ lines: [['DIURON 80 WP', 44, -30, 1], ['CAS: 330-54-1', 36, 30]] }) },
+  { id: 'paraquat_branding',  gtName: 'Paraquat', gtCas: '1910-42-5',
+    draw: labelImage({ lines: [['GRAMOXONE', 30, -80, 1], ['PARAQUAT DICHLORIDE', 36, -20, 1], ['CAS: 1910-42-5', 34, 40]] }) },
+  { id: 'name_24d',           gtName: '2,4-D', gtCas: '94-75-7',
+    draw: labelImage({ lines: [['2,4-D AMINE 720', 44, -30, 1], ['CAS: 94-75-7', 36, 30]] }) },
+  { id: 'dark_photo',         gtName: 'Glyphosate', gtCas: '1071-83-6',
+    draw: labelImage({ invert: true, lines: [['GLYPHOSATE 480 SL', 44, -30, 1], ['CAS: 1071-83-6', 36, 30]] }) },
+  { id: 'mixed_arabic_english', gtName: 'Glyphosate', gtCas: '1071-83-6',
+    draw: (ctx) => {
+      const c2 = document.createElement('canvas');
+      c2.width = 900; c2.height = 300;
+      const x = c2.getContext('2d');
+      x.fillStyle = '#efefef'; x.fillRect(0, 0, 900, 300);
+      x.textAlign = 'center';
+      x.fillStyle = '#111';
+      x.font = 'bold 40px "Noto Naskh Arabic", sans-serif';
+      x.fillText('مبيد غليفوسات الزراعي', 450, 60);
+      x.font = 'bold 44px sans-serif';
+      x.fillText('GLYPHOSATE 480 SL', 450, 130);
+      x.font = '36px sans-serif';
+      x.fillText('CAS: 1071-83-6', 450, 200);
+      noise(x, 900, 300, 250, 0.08);
+      ctx.canvas.width = 900; ctx.canvas.height = 300;
+      ctx.drawImage(c2, 0, 0);
+    } },
+  { id: 'arabic_only',        gtName: null, gtCas: null, draw: arabicOnly },
+  { id: 'noise_only',         gtName: null, gtCas: null, draw: noiseOnly }
+];
+
+/* ---------------- OCR with the app's retry semantics (config-parameterized) ---------------- */
+function makeWorker() {
+  return Tesseract.createWorker(CONFIG, 1, {
+    workerPath: '../vendor/tesseract/worker.min.js',
+    corePath: '../vendor/tesseract/core',
+    langPath: '../vendor/tesseract/lang',
+    gzip: true,
+    cacheMethod: 'none',
+    logger: () => {}
+  });
+}
+const wordish = t => (String(t || '').match(/[A-Za-z\u0600-\u06FF]{4,}/g) || []).length;
+const quality = t => OcrModule.extractCAS(t).length * 100 + Math.min(wordish(t), 6) * 10;
+
+async function recognizeOne(blob, worker) {
+  const canvas = await OcrModule.preprocess(blob);
+  let res = await worker.recognize(canvas);
+  let text = (res && res.data && res.data.text) || '';
+  let conf = res && res.data && typeof res.data.confidence === 'number' ? res.data.confidence : null;
+  const weak = OcrModule.extractCAS(text).length === 0 &&
+    (text.replace(/\s/g, '').length < 6 || wordish(text) < 2 || (conf !== null && conf < 40));
+  if (weak) {
+    for (const ang of [Math.PI, Math.PI / 2, -Math.PI / 2]) {
+      const rc = document.createElement('canvas');
+      rc.width = ang === Math.PI ? canvas.width : canvas.height;
+      rc.height = ang === Math.PI ? canvas.height : canvas.width;
+      const rx = rc.getContext('2d', { willReadFrequently: true });
+      rx.translate(rc.width / 2, rc.height / 2);
+      rx.rotate(ang);
+      rx.drawImage(canvas, -canvas.width / 2, -canvas.height / 2);
+      const r2 = await worker.recognize(rc);
+      const t2 = (r2 && r2.data && r2.data.text) || '';
+      if (quality(t2) > quality(text)) { text = t2; conf = r2 && r2.data && r2.data.confidence; }
+      if (OcrModule.extractCAS(text).length > 0 || wordish(text) >= 2) break;
+    }
+  }
+  return { text, conf, cas: OcrModule.extractCAS(text), candidates: OcrModule.extractCandidates(text) };
+}
+
+/* ---------------- real search over the four databases ---------------- */
+function searchMerged(searchFn, casList, candList) {
+  const rank = { 'libya-248': 0, 'libya-500': 1, eu: 2, epa: 3 };
+  const merged = [], seen = new Set();
+  const pushAll = list => (list || []).forEach(x => {
+    const key = x.k + ':' + (x.r.row ?? x.r.name);
+    if (!seen.has(key)) { seen.add(key); merged.push(x); }
+  });
+  for (const c of casList) pushAll(searchFn(c, true));
+  for (const c of candList) pushAll(searchFn(c, false));
+  merged.sort((a, b) => ((rank[a.k] ?? 99) - (rank[b.k] ?? 99)) || (b.s.v - a.s.v));
+  return merged.slice(0, 24);
+}
+
+/* ---------------- main ---------------- */
+(async () => {
+  const dbs = {};
+  for (const k of ['libya-248', 'libya-500', 'eu', 'epa']) {
+    const r = await fetch('../data/' + k + '.json').then(x => x.json());
+    if (r.meta && Array.isArray(r.rows)) dbs[k] = r;
+  }
+  const searchFn = SearchCore.buildSearch(Object.entries(dbs).map(([key, d]) => ({ key, rows: d.rows })));
+
+  const worker = await makeWorker();
+  // warmup image (discarded) so both configs are measured warm
+  const warm = await new Promise(res => { const c = document.createElement('canvas'); c.width = 400; c.height = 100; const x = c.getContext('2d'); x.fillStyle = '#eee'; x.fillRect(0,0,400,100); x.fillStyle = '#111'; x.font = '30px sans-serif'; x.fillText('WARMUP 123', 20, 55); c.toBlob(res, 'image/png'); });
+  await recognizeOne(warm, worker);
+
+  const out = [];
+  for (const spec of SPECS) {
+    const c = document.createElement('canvas');
+    const ctx = c.getContext('2d', { willReadFrequently: true });
+    spec.draw(ctx);
+    const blob = await new Promise(res => c.toBlob(res, 'image/jpeg', 0.9));
+    const t0 = performance.now();
+    let r;
+    try { r = await recognizeOne(blob, worker); } catch (e) { r = { text: '', conf: null, cas: [], candidates: [], err: String(e.message || e) }; }
+    const ms = performance.now() - t0;
+    const merged = r.err ? [] : searchMerged(searchFn, r.cas, r.candidates);
+    const names = merged.map(x => String(x.r.name || ''));
+    const nameHit = spec.gtName ? names.some(n => n.toLowerCase().includes(spec.gtName.toLowerCase())) : null;
+    const casHit = spec.gtCas ? (r.cas.includes(spec.gtCas)
+      || merged.some(x => String(x.s.type || '').indexOf('CAS') === 0 && String(x.r.cas || '').includes(spec.gtCas))) : null;
+    const falseMatch = spec.gtName ? (merged.length > 0 && !nameHit) : (merged.length > 0);
+    out.push({
+      id: spec.id, config: CONFIG, gtName: spec.gtName, gtCas: spec.gtCas,
+      conf: r.conf, ms: Math.round(ms), casFound: r.cas.length,
+      nameHit, casHit, falseMatch, needManual: !merged.length || (r.conf !== null && r.conf < 40),
+      resultCount: merged.length, textSample: (r.text || '').replace(/\s+/g, ' ').trim().slice(0, 90)
+    });
+    document.title = 'PROGRESS ' + out.length + '/' + SPECS.length;
+  }
+  window.__AB_RESULTS__ = out;
+  window.__AB_DONE__ = true;
+  document.title = 'AB-DONE';
+})().catch(e => { window.__AB_ERROR__ = String(e.message || e); document.title = 'AB-ERROR'; });
+</script>
+</body>
+</html>

@@ -154,17 +154,26 @@
   /* Clean OCR lines and build short name candidates (1-3 words).
      Filters obvious non-names (long digits-only noise, single chars). */
   function extractCandidates(text) {
-    const lines = String(text || '')
-      .split(/\r?\n/).map(l => l.trim())
-      .filter(l => l.length >= 4 && l.length <= 60 && /[A-Za-z\u0600-\u06FF]{3,}/.test(l));
-    /* Dense labels spend the 12-candidate cap on the trade name and legal
-       text before reaching the "ACTIVE INGREDIENT" section (proven case:
-       "BIFEN XTS" — Bifenthrin never reached SearchCore). Give that
-       section priority: the header line plus the next two lines (the
-       chemical name and its concentration; a "% by wt." column often
-       sits between them) are scanned first. Ordering only — no candidate
-       is added, removed, or scored differently. */
+    /* Split first WITHOUT a length floor, then apply the floor per line:
+       4 generally, relaxed to 3 only inside the ACTIVE INGREDIENT
+       context, because short standalone active-ingredient names (e.g.
+       "DDT", present in EU and Libya 248) are otherwise dropped before
+       ever reaching SearchCore. */
+    const raw = String(text || '').split(/\r?\n/).map(l => l.trim());
     const isAI = l => /active\s*ingredients?/i.test(l) && !/\bin\s*active/i.test(l);
+    /* A line is in the AI context when it is the section header itself or
+       one of the two lines right after it (the chemical name and its
+       concentration; a "% by wt." column often sits between them). */
+    const aiCtx = raw.map((l, i) =>
+      isAI(l) || (i >= 1 && isAI(raw[i - 1])) || (i >= 2 && isAI(raw[i - 2])));
+    const lines = [], lineCtx = [];
+    raw.forEach((l, i) => {
+      const min = aiCtx[i] ? 3 : 4;
+      if (l.length >= min && l.length <= 60 && /[A-Za-z\u0600-\u06FF]{3,}/.test(l)) {
+        lines.push(l);
+        lineCtx.push(aiCtx[i]);
+      }
+    });
     const prio = new Set();
     for (let i = 0; i < lines.length; i++) {
       if (isAI(lines[i])) {
@@ -172,12 +181,22 @@
         for (let j = i + 1; j < Math.min(i + 3, lines.length); j++) prio.add(lines[j]);
       }
     }
+    const ctxOf = new Map();
+    lines.forEach((l, i) => { if (!ctxOf.has(l)) ctxOf.set(l, lineCtx[i]); });
     const ordered = [...prio, ...lines.filter(l => !prio.has(l))];
     const cands = new Set();
     for (const line of ordered) {
+      const ai = !!ctxOf.get(line);
+      const min = ai ? 3 : 4;
       const clean = line.replace(/[^\w\s\u0600-\u06FF.-]/g, ' ').replace(/\s+/g, ' ').trim();
-      if (clean.length >= 4) cands.add(clean);
-      const words = clean.split(' ').filter(w => w.length >= 4 && /[A-Za-z\u0600-\u06FF]/.test(w) && !/^\d+$/.test(w));
+      if (clean.length >= min) cands.add(clean);
+      const words = clean.split(' ').filter(w =>
+        w.length >= min &&
+        /[A-Za-z\u0600-\u06FF]/.test(w) &&
+        !/^\d+$/.test(w) &&
+        /* In AI context only pure alphabetic words qualify for the 3-char
+           floor — no digits or punctuation fragments ("75%", "wt."). */
+        (ai ? /^[A-Za-z\u0600-\u06FF]+$/.test(w) : true));
       for (const w of words) cands.add(w);
       for (let i = 0; i + 1 < words.length; i++) cands.add(words[i] + ' ' + words[i + 1]);
       for (let i = 0; i + 2 < words.length; i++) cands.add(words[i] + ' ' + words[i + 1] + ' ' + words[i + 2]);

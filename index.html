@@ -1,755 +1,133 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#1f6f52">
-  <link rel="manifest" href="manifest.json">
-  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
-  <link rel="apple-touch-icon" href="icons/icon-192.png">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <meta name="apple-mobile-web-app-title" content="المستشار الزراعي">
-  <title>المستشار الزراعي - فحص المبيدات</title>
-
-  <style>
-    :root {
-      /* الألوان الأساسية */
-      --primary-dark: #1F6F52;
-      --primary-light: #E9F2EB;
-      --primary-medium: #2E8659;
-
-      /* ألوان الحالات */
-      --danger-dark: #A93636;
-      --danger-light: #FAE7E7;
-      --warning-dark: #966B17;
-      --warning-light: #FFF4D8;
-      --success-dark: #226641;
-      --success-light: #E5F3E9;
-      --info-dark: #1E5F8A;
-      --info-light: #E8F4F8;
-
-      /* النصوص */
-      --text-primary: #17342A;
-      --text-secondary: #64776D;
-      --text-tertiary: #D8E3DA;
-
-      /* الخلفيات */
-      --surface-main: #FFFFFF;
-      --surface-bg: #F5F7F1;
-
-      /* الزجاج */
-      --glass: rgba(255, 255, 255, 0.72);
-
-      /* الظل */
-      --shadow-sm: 0 1px 3px rgba(23, 52, 42, 0.08);
-      --shadow-md: 0 2px 6px rgba(23, 52, 42, 0.12);
-      --shadow-lg: 0 8px 24px rgba(23, 52, 42, 0.14);
-
-      /* المسافات */
-      --spacing-xs: 8px;
-      --spacing-sm: 12px;
-      --spacing-md: 16px;
-      --spacing-lg: 24px;
-      --spacing-xl: 32px;
-      --radius: 18px;
-
-      --bg: var(--surface-bg);
-      --surface: var(--surface-main);
-      --text-main: var(--text-primary);
-      --text-muted: var(--text-secondary);
-      --border: var(--text-tertiary);
-    }
-
-    /* نمط الليل */
-    html[data-theme="dark"] {
-      --surface-main: #1E1E1E;
-      --surface-bg: #121212;
-      --text-primary: #FFFFFF;
-      --text-secondary: #B3B3B3;
-      --text-tertiary: #333333;
-      --primary-light: #2E8659;
-      --danger-light: #4A1F1F;
-      --danger-dark: #EF9A9A;
-      --warning-light: #3A2E10;
-      --warning-dark: #FFB74D;
-      --success-light: #16321F;
-      --success-dark: #7FD49B;
-      --info-light: #102433;
-      --info-dark: #7FC8E8;
-      --glass: rgba(30, 30, 30, 0.72);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html, body { width: 100%; height: 100%; }
-
-    body {
-      background: var(--bg);
-      color: var(--text-main);
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Cairo', 'Droid Arabic Kufi', sans-serif;
-      font-size: 16px;
-      line-height: 1.6;
-      transition: background-color 0.3s ease, color 0.3s ease;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    main {
-      max-width: 980px;
-      margin: 0 auto;
-      padding: var(--spacing-lg) var(--spacing-md) 80px;
-    }
-
-    /* ===== Header (frosted, sticky, light) ===== */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: var(--spacing-md);
-      padding: var(--spacing-sm) var(--spacing-md);
-      margin: 0 calc(-1 * var(--spacing-md)) var(--spacing-lg);
-      background: var(--glass);
-      -webkit-backdrop-filter: saturate(1.4) blur(14px);
-      backdrop-filter: saturate(1.4) blur(14px);
-      border-bottom: 1px solid var(--border);
-      flex-wrap: wrap;
-    }
-
-    .brand {
-      display: flex;
-      gap: var(--spacing-sm);
-      align-items: center;
-      flex: 1;
-      min-width: 200px;
-    }
-
-    .mark {
-      font-size: 26px;
-      background: var(--primary-light);
-      padding: 9px;
-      border-radius: 15px;
-      width: 48px;
-      height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .brand h1 { font-size: 19px; font-weight: 800; line-height: 1.2; }
-
-    .eyebrow {
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-bottom: 2px;
-    }
-
-    /* ===== Status bento ===== */
-    .statusline {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-      font-size: 12px;
-      color: var(--text-muted);
-      align-items: center;
-      justify-content: flex-end;
-    }
-
-    .chip {
-      border: 1px solid var(--border);
-      background: var(--surface);
-      padding: 7px 11px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 600;
-      white-space: nowrap;
-      transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
-    }
-
-    .chip.active {
-      background: var(--primary-light);
-      border-color: var(--primary-dark);
-      color: var(--primary-dark);
-    }
-
-    /* chips in loading state show a small spinner */
-    .chip.db-loading::before {
-      content: '';
-      display: inline-block;
-      width: 10px;
-      height: 10px;
-      margin-inline-end: 6px;
-      border: 2px solid currentColor;
-      border-top-color: transparent;
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-      vertical-align: -1px;
-    }
-
-    .theme-toggle {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      color: var(--text-main);
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      cursor: pointer;
-      font-size: 18px;
-      transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .theme-toggle:hover {
-      background: var(--primary-light);
-      border-color: var(--primary-dark);
-    }
-    .theme-toggle:active { transform: scale(0.94); }
-
-    /* ===== Intro ===== */
-    .intro {
-      padding: var(--spacing-lg) 0 var(--spacing-md);
-      max-width: 720px;
-    }
-
-    .intro h2 {
-      font-size: clamp(28px, 5vw, 50px);
-      line-height: 1.08;
-      letter-spacing: -0.03em;
-      margin-bottom: var(--spacing-md);
-      font-weight: 800;
-    }
-
-    .intro p {
-      color: var(--text-muted);
-      line-height: 1.75;
-      margin-bottom: var(--spacing-md);
-    }
-
-    /* ===== Mode ===== */
-    .mode {
-      display: flex;
-      align-items: center;
-      gap: var(--spacing-sm);
-      margin: var(--spacing-md) 0;
-      flex-wrap: wrap;
-    }
-
-    .mode label { font-weight: 700; }
-
-    .mode select {
-      border: 1px solid var(--border);
-      background: var(--surface);
-      color: var(--text-main);
-      border-radius: 12px;
-      padding: 12px var(--spacing-md);
-      font: inherit;
-      min-height: 48px;
-      cursor: pointer;
-      transition: border-color 0.2s ease;
-    }
-
-    .mode select:focus { outline: 3px solid var(--primary-light); border-color: var(--primary-dark); }
-    .mode select:hover { border-color: var(--primary-dark); }
-
-    .mode-label { font-size: 14px; color: var(--text-muted); font-style: italic; }
-
-    /* ===== Search ===== */
-    .search {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: var(--spacing-sm);
-      max-width: 760px;
-      margin-bottom: var(--spacing-md);
-    }
-
-    .query {
-      border: 1px solid var(--border);
-      background: var(--surface);
-      color: var(--text-main);
-      border-radius: 14px;
-      padding: 14px var(--spacing-md);
-      font: inherit;
-      min-height: 52px;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .query::placeholder { color: var(--text-muted); }
-
-    .query:focus {
-      outline: none;
-      border-color: var(--primary-dark);
-      box-shadow: 0 0 0 3px var(--primary-light);
-    }
-
-    .search button {
-      border: 0;
-      border-radius: 14px;
-      background: var(--primary-dark);
-      color: #fff;
-      padding: 0 var(--spacing-lg);
-      font: inherit;
-      font-weight: 800;
-      min-height: 52px;
-      cursor: pointer;
-      transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .search button:hover {
-      background: var(--primary-medium);
-      box-shadow: var(--shadow-md);
-    }
-    .search button:active { transform: translateY(1px) scale(0.99); }
-
-    /* ===== Tools (large touch targets) ===== */
-    .tools {
-      display: flex;
-      gap: var(--spacing-xs);
-      flex-wrap: wrap;
-      margin-bottom: var(--spacing-md);
-    }
-
-    .btn-secondary {
-      border: 1px solid var(--border);
-      border-radius: 13px;
-      background: var(--primary-light);
-      color: var(--primary-dark);
-      padding: 13px var(--spacing-md);
-      font: inherit;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
-      font-size: 14px;
-      min-height: 48px;
-    }
-
-    .btn-secondary:hover {
-      background: var(--primary-dark);
-      color: #fff;
-      box-shadow: var(--shadow-md);
-    }
-    .btn-secondary:active { transform: scale(0.97); }
-    .btn-secondary:disabled { opacity: 0.6; cursor: wait; }
-
-    .hint {
-      font-size: 13px;
-      color: var(--text-muted);
-      margin-top: var(--spacing-xs);
-    }
-
-    /* ===== Cards (bento-lite) ===== */
-    .card {
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      background: var(--surface);
-      padding: var(--spacing-md);
-      box-shadow: var(--shadow-sm);
-      margin-top: var(--spacing-md);
-    }
-
-    /* Scan panel */
-    .scan {
-      margin-top: var(--spacing-md);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      background: var(--surface);
-      padding: var(--spacing-md);
-      box-shadow: var(--shadow-sm);
-    }
-
-    .scan summary {
-      cursor: pointer;
-      font-weight: 800;
-      padding: var(--spacing-xs);
-      user-select: none;
-      min-height: 44px;
-      display: flex;
-      align-items: center;
-      transition: color 0.2s ease;
-    }
-
-    .scan summary:hover { color: var(--primary-dark); }
-
-    .scan[open] summary { color: var(--primary-dark); margin-bottom: var(--spacing-sm); }
-
-    .scan input[type="file"] { margin-top: var(--spacing-sm); cursor: pointer; }
-
-    .preview {
-      display: block;
-      max-width: 100%;
-      max-height: 250px;
-      margin-top: var(--spacing-md);
-      border-radius: 14px;
-      box-shadow: var(--shadow-md);
-    }
-
-    .scan-note {
-      font-size: 13px;
-      color: var(--text-muted);
-      line-height: 1.7;
-      margin-top: var(--spacing-sm);
-    }
-
-    /* ===== Offline preparation card ===== */
-    .prep-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: var(--spacing-sm);
-      flex-wrap: wrap;
-      margin-bottom: var(--spacing-sm);
-    }
-
-    .prep-head h2 { font-size: 17px; font-weight: 800; }
-
-    .prep-list { list-style: none; display: grid; gap: 6px; margin-bottom: var(--spacing-sm); }
-
-    .prep-list li {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 14px;
-      padding: 9px 12px;
-      border: 1px dashed var(--border);
-      border-radius: 12px;
-      color: var(--text-muted);
-      transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
-    }
-
-    .prep-list li b {
-      margin-inline-start: auto;
-      font-variant-numeric: tabular-nums;
-      font-size: 12px;
-      color: inherit;
-    }
-
-    .prep-list li.done {
-      border: 1px solid var(--success-dark);
-      background: var(--success-light);
-      color: var(--success-dark);
-    }
-
-    .prep-list li.pending::before {
-      content: '';
-      width: 10px;
-      height: 10px;
-      border: 2px solid currentColor;
-      border-top-color: transparent;
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-    }
-
-    .prep-state { font-weight: 700; }
-
-    /* ===== Results ===== */
-    .summary {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      border-bottom: 1px solid var(--border);
-      padding: var(--spacing-lg) 0 var(--spacing-sm);
-      margin-bottom: var(--spacing-md);
-      gap: var(--spacing-md);
-    }
-
-    .summary h2 { font-size: 20px; font-weight: 800; }
-
-    .results { display: grid; gap: var(--spacing-sm); padding: var(--spacing-sm) 0; }
-
-    .result {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: var(--spacing-lg);
-      box-shadow: var(--shadow-sm);
-      transition: box-shadow 0.25s ease, border-color 0.25s ease;
-    }
-
-    .result:hover { box-shadow: var(--shadow-md); border-color: var(--primary-medium); }
-
-    .result.possible { border-color: var(--warning-light); }
-
-    .result-top {
-      display: flex;
-      justify-content: space-between;
-      gap: var(--spacing-lg);
-      align-items: flex-start;
-      margin-bottom: var(--spacing-sm);
-    }
-
-    .result-top strong {
-      font-size: 22px;
-      color: var(--primary-dark);
-      font-variant-numeric: tabular-nums;
-      min-width: 60px;
-      text-align: left;
-    }
-
-    .result h3 {
-      margin: 5px 0 var(--spacing-sm);
-      font-size: 20px;
-      font-weight: 800;
-    }
-
-    .source {
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 4px;
-    }
-
-    .meta, .match { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
-    .meta { margin: var(--spacing-sm) 0; }
-
-    .status {
-      display: inline-block;
-      padding: 7px 10px;
-      border-radius: 8px;
-      font-size: 13px;
-      font-weight: 800;
-      margin: var(--spacing-sm) 0;
-    }
-
-    .status.good { background: var(--success-light); color: var(--success-dark); }
-    .status.bad { background: var(--danger-light); color: var(--danger-dark); }
-    .status.review { background: var(--warning-light); color: var(--warning-dark); }
-
-    /* DB status chips */
-    .chip.db-ok      { background: var(--success-light); color: var(--success-dark); border-color: var(--success-dark); }
-    .chip.db-cached  { background: var(--info-light);    color: var(--info-dark);    border-color: var(--info-dark); }
-    .chip.db-loading { background: var(--warning-light); color: var(--warning-dark); border-color: var(--warning-dark); }
-    .chip.db-bad     { background: var(--danger-light);  color: var(--danger-dark);  border-color: var(--danger-dark); }
-
-    /* Banners */
-    .banner {
-      border-radius: 12px;
-      padding: var(--spacing-sm) var(--spacing-md);
-      margin: 0 0 var(--spacing-md);
-      font-size: 13px;
-      line-height: 1.7;
-      border-right: 4px solid;
-      flex-basis: 100%;
-    }
-    .banner-warn  { background: var(--warning-light); color: var(--warning-dark); border-color: var(--warning-dark); }
-    .banner-error { background: var(--danger-light);  color: var(--danger-dark);  border-color: var(--danger-dark); }
-    .banner-info  { background: var(--info-light);    color: var(--info-dark);    border-color: var(--info-dark); }
-
-    /* History panel */
-    .history-panel {
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      background: var(--surface);
-      padding: var(--spacing-md);
-      margin: var(--spacing-md) 0;
-      box-shadow: var(--shadow-sm);
-    }
-    .history-item {
-      display: flex;
-      justify-content: space-between;
-      gap: var(--spacing-sm);
-      padding: 12px var(--spacing-sm);
-      border-bottom: 1px solid var(--border);
-      cursor: pointer;
-      font-size: 14px;
-      border-radius: 8px;
-      min-height: 44px;
-      align-items: center;
-      transition: background-color 0.15s ease;
-    }
-    .history-item:last-child { border-bottom: 0; }
-    .history-item:hover { background: var(--primary-light); }
-    .history-meta { color: var(--text-muted); font-size: 12px; white-space: nowrap; }
-
-    .result p.status { margin-top: var(--spacing-sm); }
-    .result .match { margin-top: 2px; }
-
-    .caution {
-      color: var(--warning-dark);
-      font-size: 13px;
-      margin-top: var(--spacing-sm);
-      padding: var(--spacing-sm);
-      background: var(--warning-light);
-      border-radius: 8px;
-      border-right: 3px solid var(--warning-dark);
-    }
-
-    .notice {
-      padding: var(--spacing-lg);
-      border-radius: 14px;
-      background: var(--warning-light);
-      color: var(--warning-dark);
-      line-height: 1.7;
-      border-right: 4px solid var(--warning-dark);
-    }
-
-    .notice.warn { color: var(--text-primary); }
-
-    .footer {
-      margin-top: var(--spacing-xl);
-      padding-top: var(--spacing-lg);
-      border-top: 1px solid var(--border);
-      color: var(--text-muted);
-      font-size: 12px;
-      line-height: 1.7;
-    }
-
-    /* Loading animation */
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    /* Focus visibility (keyboard + switch access) */
-    :is(button, input, select, textarea, summary, [tabindex]):focus-visible {
-      outline: 3px solid var(--primary-medium);
-      outline-offset: 2px;
-    }
-
-    /* Respect reduced-motion */
-    @media (prefers-reduced-motion: reduce) {
-      * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-    }
-
-    /* Responsive */
-    @media (max-width: 620px) {
-      main { padding: var(--spacing-sm) var(--spacing-sm) 60px; }
-      header {
-        margin: 0 calc(-1 * var(--spacing-sm)) var(--spacing-md);
-        padding: var(--spacing-xs) var(--spacing-sm);
-      }
-      .statusline { justify-content: flex-start; }
-      .search { grid-template-columns: 1fr; }
-      .search button { min-height: 52px; width: 100%; }
-      .intro { padding-top: var(--spacing-md); }
-      .intro h2 { font-size: 27px; }
-      .result-top { flex-direction: column; gap: var(--spacing-xs); }
-      .result h3 { font-size: 17px; }
-      .result-top strong { font-size: 18px; }
-      .summary { flex-direction: column; align-items: flex-start; }
-      .tools { width: 100%; }
-      .btn-secondary { flex: 1 1 auto; text-align: center; }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#174f3b">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="المستشار الزراعي">
+<title>المستشار الزراعي</title>
+<style>
+:root{--green:#174f3b;--green2:#237455;--mint:#e8f4ed;--bg:#f3f7f4;--card:rgba(255,255,255,.78);--text:#17342a;--muted:#687b72;--line:#d8e5dd;--danger:#a33d3d;--warn:#936b18;--shadow:0 10px 30px rgba(23,52,42,.10);--r:24px}
+html[data-theme="dark"]{--bg:#101714;--card:rgba(27,36,32,.86);--text:#f2f7f4;--muted:#b1c0b9;--line:#34423c;--mint:#19382b;--green:#65c493;--green2:#7bd2a5}
+*{box-sizing:border-box;margin:0;padding:0}html,body{min-height:100%;background:var(--bg);color:var(--text)}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Cairo","Noto Sans Arabic",sans-serif;line-height:1.65;-webkit-tap-highlight-color:transparent;background-image:radial-gradient(circle at 10% 0%,rgba(35,116,85,.10),transparent 28%),radial-gradient(circle at 100% 20%,rgba(90,170,120,.08),transparent 25%)}
+button,input,textarea,select{font:inherit}button{cursor:pointer}.hidden-input{display:none!important}
+main{max-width:1080px;margin:auto;padding:14px 16px 100px}.topbar{position:sticky;top:0;z-index:50;margin:0 -16px 18px;padding:10px 16px;background:rgba(243,247,244,.82);backdrop-filter:blur(18px) saturate(1.3);border-bottom:1px solid var(--line)}
+html[data-theme="dark"] .topbar{background:rgba(16,23,20,.82)}.toprow{display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{display:flex;align-items:center;gap:11px}.brand-mark{width:46px;height:46px;border-radius:16px;background:var(--mint);display:grid;place-items:center;font-size:25px;box-shadow:var(--shadow)}.brand h1{font-size:18px;line-height:1.2}.brand small{display:block;color:var(--muted);font-size:11px;margin-top:2px}.top-actions{display:flex;gap:7px}.icon-btn{width:42px;height:42px;border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:13px;display:grid;place-items:center;font-size:18px}
+.statusline{display:none}.banner{margin-top:10px;border-radius:14px;padding:10px 13px;font-size:13px}.banner-warn{background:#fff4d8;color:var(--warn)}.banner-error{background:#fae7e7;color:var(--danger)}.banner-info{background:#e8f4f8;color:#1e5f8a}
+.view{display:none;animation:fade .25s ease}.view.active{display:block}@keyframes fade{from{opacity:.3;transform:translateY(5px)}to{opacity:1;transform:none}}
+.hero{border-radius:30px;padding:28px 22px;background:linear-gradient(145deg,var(--green),#276e54);color:white;box-shadow:var(--shadow);position:relative;overflow:hidden}.hero:after{content:"🌿";position:absolute;left:-12px;bottom:-28px;font-size:120px;opacity:.10}.hero h2{font-size:clamp(27px,6vw,48px);line-height:1.15;margin-bottom:9px}.hero p{opacity:.9;max-width:700px}.welcome{font-size:13px;opacity:.78;margin-bottom:5px}
+.action-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:16px 0}.action{border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:24px;padding:20px 16px;min-height:150px;text-align:right;box-shadow:var(--shadow);transition:transform .18s ease,box-shadow .18s ease}.action:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(23,52,42,.15)}.action:active{transform:scale(.98)}.action .ico{width:54px;height:54px;border-radius:18px;background:var(--mint);display:grid;place-items:center;font-size:28px;margin-bottom:12px}.action b{display:block;font-size:17px}.action span{display:block;color:var(--muted);font-size:12px;margin-top:4px}
+.section-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:20px 2px 10px}.section-head h2{font-size:18px}.pill{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:6px 10px;font-size:11px;color:var(--muted)}
+.card{border:1px solid var(--line);background:var(--card);border-radius:var(--r);padding:18px;box-shadow:var(--shadow);margin-top:14px;backdrop-filter:blur(12px)}.card h2{font-size:18px}.muted{color:var(--muted);font-size:13px}.back{border:0;background:transparent;color:var(--green);font-weight:800;padding:8px 0;font-size:14px}.page-title{font-size:28px;margin:4px 0 4px}.page-sub{color:var(--muted);font-size:13px;margin-bottom:15px}
+.scan-choice{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.scan-choice button{border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:22px;padding:22px 12px;min-height:145px;text-align:center;box-shadow:var(--shadow)}.scan-choice .big{font-size:38px;display:block;margin-bottom:8px}.scan-choice b{display:block}.scan-choice small{display:block;color:var(--muted);margin-top:4px}
+.searchbox{display:grid;grid-template-columns:1fr auto;gap:9px;margin-top:15px}.query{width:100%;border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:16px;padding:14px 15px;min-height:52px;outline:none}.query:focus{border-color:var(--green2);box-shadow:0 0 0 3px rgba(35,116,85,.12)}.primary{border:0;border-radius:16px;background:var(--green);color:white;padding:0 20px;min-height:52px;font-weight:800}.secondary{border:1px solid var(--line);border-radius:14px;background:var(--mint);color:var(--green);padding:11px 14px;font-weight:750}.tools{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.preview{display:block;max-width:100%;max-height:320px;margin:15px auto 0;border-radius:18px;box-shadow:var(--shadow)}.scan-note{color:var(--muted);font-size:13px;margin-top:9px}.ocr-progress{margin-top:12px}.ocr-progress:empty{display:none}.progressbar{height:7px;border-radius:99px;background:var(--line);overflow:hidden}.progressbar i{display:block;height:100%;width:40%;background:var(--green2);animation:load 1.2s infinite ease-in-out}@keyframes load{0%{transform:translateX(-120%)}100%{transform:translateX(300%)}}
+#ocrActions{margin-top:14px}textarea.query{resize:vertical;min-height:110px}
+.summary{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:18px 0 10px}.summary h2{font-size:20px}.results{display:grid;gap:10px}.result{border:1px solid var(--line);background:var(--card);border-radius:20px;padding:16px;box-shadow:var(--shadow)}.result-top{display:flex;justify-content:space-between;gap:12px}.result h3{font-size:18px}.source{font-size:11px;color:var(--muted)}.result-top strong{font-size:22px;color:var(--green);white-space:nowrap}.status{display:inline-block;padding:5px 10px;border-radius:999px;font-size:12px;font-weight:800;margin-top:9px}.status.good{background:#e5f3e9;color:#226641}.status.review{background:#fff4d8;color:#936b18}.status.bad{background:#fae7e7;color:#a33d3d}.meta,.match{font-size:12px;color:var(--muted);margin-top:6px}.caution{font-size:12px;background:#fff4d8;color:#936b18;border-radius:12px;padding:8px;margin-top:9px}.notice{padding:17px;border-radius:18px;background:var(--mint);color:var(--text);font-size:14px;border:1px solid var(--line)}.notice.warn{background:#fff4d8;color:#604b16}
+.prep-list{list-style:none;display:grid;gap:7px;margin-top:12px}.prep-list li{display:flex;align-items:center;gap:8px;padding:10px;border:1px dashed var(--line);border-radius:13px;font-size:12px}.prep-list b{margin-inline-start:auto}.history-panel{margin-top:15px}.history-item{display:flex;justify-content:space-between;gap:10px;padding:12px;border-bottom:1px solid var(--line);cursor:pointer}.history-meta{font-size:11px;color:var(--muted)}
+.mode-card{display:grid;grid-template-columns:1fr 1fr;gap:10px}.mode-card button{padding:15px;border:1px solid var(--line);border-radius:16px;background:var(--card);color:var(--text);font-weight:800}.mode-card button.active{background:var(--mint);border-color:var(--green2);color:var(--green)}
+.about{text-align:center;padding:25px}.dev-icon{width:78px;height:78px;border-radius:50%;background:var(--mint);display:grid;place-items:center;font-size:36px;margin:0 auto 12px}.quote{font-weight:800;color:var(--green);margin:15px 0}.footer{color:var(--muted);font-size:11px;text-align:center;margin:25px 5px 0}
+.bottom-nav{position:fixed;z-index:60;bottom:0;left:50%;transform:translateX(-50%);width:min(1080px,100%);padding:8px 12px calc(8px + env(safe-area-inset-bottom));background:rgba(243,247,244,.9);backdrop-filter:blur(18px);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr);gap:5px}.bottom-nav button{border:0;background:transparent;color:var(--muted);padding:7px 4px;border-radius:13px;font-size:11px}.bottom-nav button span{display:block;font-size:20px;line-height:1.1;margin-bottom:2px}.bottom-nav button.active{background:var(--mint);color:var(--green);font-weight:800}html[data-theme="dark"] .bottom-nav{background:rgba(16,23,20,.92)}
+.db-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;margin-top:12px}.chip{display:block;border:1px solid var(--line);background:var(--card);padding:8px 9px;border-radius:12px;font-size:11px;color:var(--muted)}.chip.db-ok{background:#e5f3e9;color:#226641}.chip.db-cached{background:#e8f4f8;color:#1e5f8a}.chip.db-loading{background:#fff4d8;color:#936b18}.chip.db-bad{background:#fae7e7;color:#a33d3d}
+@media(min-width:700px){.action-grid{grid-template-columns:repeat(4,1fr)}.scan-choice{max-width:650px}.hero{padding:40px}.db-grid{grid-template-columns:repeat(4,1fr)}}@media(max-width:480px){.action-grid,.scan-choice{grid-template-columns:1fr 1fr}.action{min-height:135px;padding:16px 13px}.action .ico{width:48px;height:48px;font-size:25px}.searchbox{grid-template-columns:1fr}.primary{width:100%}.hero{padding:23px 18px}}
+:is(button,input,textarea,select):focus-visible{outline:3px solid var(--green2);outline-offset:2px}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
 </head>
 <body>
-  <main>
-    <header>
-      <div class="brand">
-        <div class="mark">🌿</div>
-        <div>
-          <p class="eyebrow">بيانات محلية، قرار واضح</p>
-          <h1>المستشار الزراعي</h1>
-        </div>
-      </div>
-      <div class="statusline">
-        <span class="chip" id="dbState">جاري تجهيز القواعد</span>
-        <span class="chip db-loading" id="db-libya-248">ليبيا 248: جارٍ التحميل…</span>
-        <span class="chip db-loading" id="db-libya-500">ليبيا 500: جارٍ التحميل…</span>
-        <span class="chip db-loading" id="db-eu">الاتحاد الأوروبي: جارٍ التحميل…</span>
-        <span class="chip db-loading" id="db-epa">USA / EPA: جارٍ التحميل…</span>
-        <span class="chip" id="offlineState">🟢 متصل</span>
-        <button class="theme-toggle" id="themeToggle" title="تبديل نمط الليل" aria-label="تبديل نمط الليل">🌙</button>
-      </div>
-      <div class="banner banner-warn" id="dbBanner" hidden></div>
-    </header>
+<main>
+<header class="topbar">
+  <div class="toprow">
+    <div class="brand"><div class="brand-mark">🌿</div><div><h1>المستشار الزراعي</h1><small>فحص المبيدات بوضوح وموثوقية</small></div></div>
+    <div class="top-actions"><button class="icon-btn" id="themeToggle" title="تبديل نمط الليل" aria-label="تبديل نمط الليل">🌙</button><button class="icon-btn" id="aboutBtn" title="حول التطبيق" aria-label="حول التطبيق">ⓘ</button></div>
+  </div>
+  <div class="statusline"><span class="chip" id="dbState">جاري تجهيز القواعد</span><span class="chip db-loading" id="db-libya-248">ليبيا 248: جارٍ التحميل…</span><span class="chip db-loading" id="db-libya-500">ليبيا 500: جارٍ التحميل…</span><span class="chip db-loading" id="db-eu">الاتحاد الأوروبي: جارٍ التحميل…</span><span class="chip db-loading" id="db-epa">USA / EPA: جارٍ التحميل…</span><span class="chip" id="offlineState">🟢 متصل</span></div>
+  <div class="banner banner-warn" id="dbBanner" hidden></div>
+</header>
 
-    <section class="intro">
-      <h2>اعرف المادة قبل أن تستخدمها.</h2>
-      <p>ابحث بالاسم أو رقم CAS. ليبيا هي المرجع الأول، والمصادر الدولية للمقارنة فقط. لا تعرض النتيجة موافقة قانونية إذا لم يكن التطابق موثوقًا.</p>
+<section id="homeView" class="view active">
+  <div class="hero"><div class="welcome">مرحبًا بك في</div><h2>المستشار الزراعي</h2><p>ساعد نفسك في التعرف على المادة الفعالة وفحصها في قواعد البيانات المتاحة، حتى عند العمل دون إنترنت.</p></div>
+  <div class="action-grid">
+    <button class="action" data-go="scanView"><span class="ico">📷</span><b>فحص ملصق مبيد</b><span>تصوير بالكاميرا أو اختيار صورة من المعرض</span></button>
+    <button class="action" data-go="searchView"><span class="ico">🔎</span><b>بحث يدوي</b><span>بالاسم أو رقم CAS</span></button>
+    <button class="action" data-go="historyView"><span class="ico">📜</span><b>سجل الفحوصات</b><span>الرجوع إلى عمليات البحث السابقة</span></button>
+    <button class="action" data-go="settingsView"><span class="ico">⚙️</span><b>الإعدادات</b><span>الوضع، العمل دون إنترنت والمساعدة</span></button>
+  </div>
+  <div class="card"><div class="section-head"><h2>حالة قواعد البيانات</h2><span class="pill" id="dbCount">...</span></div><div class="db-grid"><span class="chip db-loading" id="home-db-libya-248">ليبيا 248</span><span class="chip db-loading" id="home-db-libya-500">ليبيا 500</span><span class="chip db-loading" id="home-db-eu">الاتحاد الأوروبي</span><span class="chip db-loading" id="home-db-epa">USA / EPA</span></div><p class="muted" style="margin-top:10px">تعمل قواعد البحث محليًا بعد تجهيزها، ولا يحتاج البحث العادي إلى اتصال بالإنترنت.</p></div>
+</section>
 
-      <div class="mode">
-        <label for="mode">الوضع:</label>
-        <select id="mode">
-          <option value="farmer">المزارع</option>
-          <option value="pro">المحترف</option>
-        </select>
-        <span class="mode-label" id="modeLabel">المزارع</span>
-      </div>
+<section id="scanView" class="view">
+  <button class="back" data-go="homeView">‹ الرئيسية</button><h2 class="page-title">فحص ملصق مبيد</h2><p class="page-sub">اختر طريقة واحدة فقط. بعد قراءة الصورة ستظهر النتيجة هنا، ويمكنك تعديل النص إذا لزم.</p>
+  <div class="scan-choice">
+    <button type="button" id="cameraBtn"><span class="big">📷</span><b>مسح بالكاميرا</b><small>صوّر الملصق الآن</small></button>
+    <button type="button" id="galleryBtn"><span class="big">🖼️</span><b>من المعرض</b><small>اختر صورة موجودة</small></button>
+  </div>
+  <input id="camera" class="hidden-input" type="file" accept="image/*" capture="environment"><input id="gallery" class="hidden-input" type="file" accept="image/*">
+  <div class="card"><p id="ocrMsg" class="scan-note">نصيحة: اجعل اسم المادة الفعالة ورقم CAS واضحين قدر الإمكان، ويفضل أن تكون الصورة مستقيمة ومضيئة.</p><div id="ocrProgress" class="ocr-progress"></div><img id="preview" class="preview" hidden alt="معاينة صورة الملصق"><div id="ocrActions" hidden><textarea id="ocrText" class="query" rows="4" dir="auto" placeholder="النص المكتشف من الصورة — يمكنك تصحيحه ثم إعادة البحث"></textarea><div class="tools"><button class="secondary" type="button" id="ocrRerun">🔍 بحث من النص المصحح</button></div></div></div>
+  <div class="summary"><h2 id="resultTitle">نتائج الفحص</h2><span class="pill" id="scanDbCount"></span></div><section class="results" id="results"><div class="notice">بعد اختيار صورة ستظهر نتيجة التعرف هنا.</div></section>
+</section>
 
-      <form class="search" id="searchForm">
-        <input class="query" id="query" placeholder="مثال: Glyphosate أو 1071-83-6" autocomplete="off" inputmode="search">
-        <button type="submit">فحص المادة</button>
-      </form>
+<section id="searchView" class="view">
+  <button class="back" data-go="homeView">‹ الرئيسية</button><h2 class="page-title">البحث اليدوي</h2><p class="page-sub">اكتب اسم المادة الفعالة أو رقم CAS. يتم تطبيق حد المطابقة الموثوقة تلقائيًا.</p>
+  <form class="searchbox" id="searchForm"><input class="query" id="query" placeholder="مثال: Glyphosate أو 1071-83-6" autocomplete="off" inputmode="search"><button class="primary" type="submit">فحص المادة</button></form>
+  <div class="card"><div class="section-head"><h2>الوضع</h2><span class="pill" id="modeLabel">المزارع</span></div><div class="mode-card"><button type="button" id="farmerMode">👨‍🌾 المزارع</button><button type="button" id="proMode">🧑‍🔬 المحترف</button></div><select id="mode" class="hidden-input"><option value="farmer">المزارع</option><option value="pro">المحترف</option></select></div>
+  <div class="summary"><h2 id="searchResultTitle">نتائج الفحص</h2><span class="pill" id="searchDbCount"></span></div><section class="results" id="searchResults"><div class="notice">اكتب الاسم أو رقم CAS ثم اضغط «فحص المادة».</div></section>
+</section>
 
-      <div class="tools">
-        <button class="btn-secondary" type="button" id="cameraBtn">📷 تصوير الملصق</button>
-        <button class="btn-secondary" type="button" id="copyBtn">📋 نسخ التقرير</button>
-        <button class="btn-secondary" type="button" id="historyBtn">📜 السجل</button>
-      </div>
+<section id="historyView" class="view">
+  <button class="back" data-go="homeView">‹ الرئيسية</button><h2 class="page-title">سجل الفحوصات</h2><p class="page-sub">السجل محفوظ محليًا على جهازك.</p>
+  <div class="card history-panel" id="historyPanel"><div class="tools" style="margin-top:0"><button class="secondary" type="button" id="historyClear">مسح السجل</button><button class="secondary" type="button" id="historyClose">إغلاق</button></div><div id="historyList" style="margin-top:10px"></div></div>
+</section>
 
-      <p class="hint">💡 البحث يعمل محليًا بعد أول تشغيل. نتيجة غير مؤكدة تعني ضرورة مراجعة الاسم والملصق.</p>
-    </section>
+<section id="settingsView" class="view">
+  <button class="back" data-go="homeView">‹ الرئيسية</button><h2 class="page-title">الإعدادات والمساعدة</h2><p class="page-sub">أدوات إضافية تظهر عند الحاجة فقط، حتى تبقى الواجهة الرئيسية بسيطة.</p>
+  <div class="card"><div class="section-head"><h2>تجهيز العمل دون إنترنت</h2><span class="pill" id="prepState">جارٍ الفحص…</span></div><ul class="prep-list"><li id="prepShell"><span>🧩</span> ملفات التطبيق <b id="prepShellSize">—</b></li><li id="prepData"><span>🗄️</span> قواعد البيانات الأربع <b id="prepDataSize">—</b></li><li id="prepOcr"><span>🔎</span> محرك OCR عربي + إنجليزي <b id="prepOcrSize">—</b></li></ul><p class="muted" id="prepNote" style="margin-top:10px">تجهيز الملفات مرة واحدة يساعد على العمل الميداني دون إنترنت.</p><div class="tools"><button class="secondary" type="button" id="prepBtn">⬇️ تجهيز الآن</button></div></div>
+  <div class="card"><h2>معلومة مهمة</h2><p class="muted" style="margin-top:7px">عدم العثور على المادة في قواعد البيانات لا يعني أنها مسموحة. الحالة التنظيمية تعرض من المصدر فقط ولا تُستنتج تلقائيًا.</p></div>
+  <div class="card"><h2>حول التطبيق</h2><div class="about"><div class="dev-icon">👨‍🌾</div><p><b>المهندس أبوبكر عبدالقادر الطشاني</b></p><p class="muted">مهندس بقطاع الزراعة والثروة الحيوانية – درنة</p><p class="quote">«علي قدر المعرفة تأتي المسئولية»</p><p class="muted">المستشار الزراعي — أداة مساعدة للبحث في قواعد البيانات المرفقة.</p></div></div>
+</section>
 
-    <!-- Offline preparation: one visible, non-repeated download -->
-    <section class="card" id="prepPanel" aria-label="تجهيز العمل بدون إنترنت">
-      <div class="prep-head">
-        <h2>📦 تجهيز العمل بدون إنترنت</h2>
-        <span class="chip" id="prepState">جارٍ الفحص…</span>
-      </div>
-      <ul class="prep-list">
-        <li id="prepShell"><span>🧩</span> ملفات التطبيق (الواجهة + محرك البحث) <b id="prepShellSize">—</b></li>
-        <li id="prepData"><span>🗄️</span> قواعد البيانات الأربع (77 · 411 · 1,483 · 2,199 سجلًا) <b id="prepDataSize">—</b></li>
-        <li id="prepOcr"><span>🔎</span> ملفات المسح البصري OCR — عربي + إنجليزي <b id="prepOcrSize">—</b></li>
-      </ul>
-      <p class="scan-note" id="prepNote">يُنزَّل كل شيء مرة واحدة فقط (إجمالي ~17 ميجابايت)، ثم يعمل التطبيق كاملًا — بحث ومسح — دون إنترنت. لا تُنزَّل أي ملفات أثناء البحث العادي.</p>
-      <div class="tools">
-        <button class="btn-secondary" type="button" id="prepBtn">⬇️ تجهيز الآن</button>
-      </div>
-    </section>
+<p class="footer">المرجع القانوني النهائي هو الجهة الرسمية المختصة. التطبيق أداة مساعدة للبحث والمقارنة ولا يستبدل القرار الرسمي.</p>
+</main>
 
-    <details class="scan" id="scanPanel">
-      <summary>📸 المسح البصري</summary>
-      <p class="scan-note">💡 يعمل المسح البصري محليًا دون إنترنت بعد تجهيز ملفات OCR مرة واحدة (من لوحة «تجهيز العمل بدون إنترنت» أعلاه). تتم معالجة الصور على جهازك ولا تُرسل إلى أي خادم.</p>
-      <input id="camera" type="file" accept="image/*" capture="environment">
-      <input id="gallery" type="file" accept="image/*">
-      <img id="preview" class="preview" hidden alt="معاينة صورة الملصق">
-      <p id="ocrMsg" class="scan-note">صوّر اسم المادة الفعالة بوضوح، أو اختر صورة من المعرض. سيبدأ التعرف الضوئي تلقائيًا.</p>
-      <div class="tools">
-        <button class="btn-secondary" type="button" id="galleryBtn">🖼️ اختيار صورة من المعرض</button>
-      </div>
-      <div id="ocrActions" hidden>
-        <textarea id="ocrText" class="query" style="width:100%" rows="4" dir="auto" placeholder="النص المكتشف من الصورة — يمكن تعديله ثم إعادة البحث"></textarea>
-        <div class="tools">
-          <button class="btn-secondary" type="button" id="ocrRerun">🔍 بحث من النص</button>
-        </div>
-      </div>
-    </details>
+<nav class="bottom-nav" aria-label="التنقل الرئيسي"><button data-go="homeView" class="active"><span>⌂</span>الرئيسية</button><button data-go="scanView"><span>📷</span>فحص</button><button data-go="searchView"><span>🔎</span>بحث</button><button data-go="settingsView"><span>☰</span>المزيد</button></nav>
 
-    <section class="summary">
-      <h2 id="resultTitle">نتائج الفحص</h2>
-      <span class="chip" id="dbCount">...</span>
-    </section>
-
-    <section class="history-panel" id="historyPanel" hidden>
-      <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;">
-        <h2 style="font-size:16px;font-weight:700;">📜 سجل البحث</h2>
-        <div style="display:flex;gap:8px;">
-          <button class="btn-secondary" type="button" id="historyClear">مسح السجل</button>
-          <button class="btn-secondary" type="button" id="historyClose">إغلاق</button>
-        </div>
-      </div>
-      <div id="historyList"></div>
-    </section>
-
-    <section class="results" id="results">
-      <div class="notice">اكتب اسم المادة أو رقم CAS ثم اضغط «فحص المادة».</div>
-    </section>
-
-    <p class="footer">المستشار الزراعي أداة مساعدة للبحث في قواعد البيانات المرفقة. المرجع القانوني النهائي هو الجهة الرسمية المختصة. لا نتحمل مسؤولية الاستخدام غير الصحيح للمعلومات.</p>
-  </main>
-
-  <script src="src/search-core.js"></script>
-  <script src="vendor/tesseract/tesseract.min.js"></script>
-  <script src="src/ocr.js"></script>
-  <script src="src/app.js"></script>
+<script src="src/search-core.js"></script>
+<script src="vendor/tesseract/tesseract.min.js"></script>
+<script src="src/ocr.js"></script>
+<script src="src/app.js"></script>
+<script>
+(function(){
+  'use strict';
+  const views=[...document.querySelectorAll('.view')];
+  const nav=[...document.querySelectorAll('.bottom-nav [data-go]')];
+  function go(id){
+    views.forEach(v=>v.classList.toggle('active',v.id===id));
+    nav.forEach(b=>b.classList.toggle('active',b.dataset.go===id));
+    window.scrollTo({top:0,behavior:'smooth'});
+    if(id==='historyView' && window.openHistoryForUI) window.openHistoryForUI();
+  }
+  document.addEventListener('click',e=>{const b=e.target.closest('[data-go]');if(b){e.preventDefault();go(b.dataset.go)}});
+  const about=document.getElementById('aboutBtn'); if(about) about.addEventListener('click',()=>go('settingsView'));
+  const fm=document.getElementById('farmerMode'),pm=document.getElementById('proMode'),sel=document.getElementById('mode'),label=document.getElementById('modeLabel');
+  function setMode(v){if(!sel)return;sel.value=v;label.textContent=v==='pro'?'المحترف':'المزارع';fm&&fm.classList.toggle('active',v!=='pro');pm&&pm.classList.toggle('active',v==='pro');sel.dispatchEvent(new Event('change'))}
+  fm&&fm.addEventListener('click',()=>setMode('farmer'));pm&&pm.addEventListener('click',()=>setMode('pro'));setMode('farmer');
+  const oldResults=document.getElementById('results');
+  const searchResults=document.getElementById('searchResults');
+  const form=document.getElementById('searchForm');
+  if(form){form.addEventListener('submit',()=>{setTimeout(()=>{if(searchResults&&oldResults)searchResults.innerHTML=oldResults.innerHTML;const t=document.getElementById('resultTitle'),st=document.getElementById('searchResultTitle');if(t&&st)st.textContent=t.textContent;},0)})}
+  const count=document.getElementById('dbCount');['home-db-libya-248','home-db-libya-500','home-db-eu','home-db-epa'].forEach((id,i)=>{const target=document.getElementById(id),src=['db-libya-248','db-libya-500','db-eu','db-epa'][i];const s=document.getElementById(src);if(target&&s){new MutationObserver(()=>{target.className=s.className;target.textContent=s.textContent}).observe(s,{childList:true,attributes:true});target.textContent=s.textContent;target.className=s.className}});
+  const oldOpen=document.getElementById('historyBtn'); if(oldOpen) oldOpen.style.display='none';
+  const hp=document.getElementById('historyPanel'); if(hp) hp.hidden=false;
+  window.openHistoryForUI=function(){const btn=document.getElementById('historyBtn');if(btn)btn.click()};
+  // Keep the single OCR workflow visible; camera/gallery controls remain owned by app.js.
+  const scan=document.getElementById('scanView');
+  const prep=document.getElementById('prepPanel');
+})();
+</script>
 </body>
 </html>

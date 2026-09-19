@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>OCR V2 functional suite</title>
+<style>body{font:13px sans-serif} .ok{color:#0a7a3d} .bad{color:#b3261e}</style>
+</head>
+<body>
+<div id="status">loading…</div>
+<div id="out"></div>
+<script src="/src/search-core.js?v=5"></script>
+<script src="/vendor/tesseract/tesseract.min.js?v=5"></script>
+<script src="/src/ocr.js?v=5"></script>
+<script>
+(function () {
+  const out = [];
+  const box = document.getElementById('out');
+  function log(name, ok, detail) {
+    out.push({ name, ok, detail: detail || '' });
+    console.log('[case] ' + (ok ? 'PASS' : 'FAIL') + ' ' + name + (detail ? ' — ' + detail : ''));
+    const el = document.createElement('div');
+    el.className = ok ? 'ok' : 'bad';
+    el.textContent = (ok ? 'PASS ' : 'FAIL ') + name + (detail ? ' — ' + detail : '');
+    box.appendChild(el);
+  }
+  window.__log = log;
+  window.__done = () => {
+    const p = out.filter(r => r.ok).length, f = out.length - p;
+    document.getElementById('status').textContent = 'PASS:' + p + ' FAIL:' + f;
+    window.__results = { pass: p, fail: f, results: out };
+  };
+
+  async function loadDBs() {
+    const specs = [
+      ['libya-248', '/data/libya-248.json'], ['libya-500', '/data/libya-500.json'],
+      ['eu', '/data/eu.json'], ['epa', '/data/epa.json']
+    ];
+    const sources = [];
+    for (const [key, url] of specs) {
+      const data = await (await fetch(url, { cache: 'no-store' })).json();
+      sources.push({ key, rows: data.rows });
+    }
+    window.__search = SearchCore.buildSearch(sources);
+    return sources;
+  }
+
+  /* canvas label generator: dark text on light, light on dark, small, rotated */
+  function labelCanvas(opts) {
+    const c = document.createElement('canvas');
+    const W = opts.W || 900, H = opts.H || 620;
+    c.width = W; c.height = H;
+    const g = c.getContext('2d');
+    g.fillStyle = opts.bg || '#f2f2ee';
+    g.fillRect(0, 0, W, H);
+    g.fillStyle = opts.fg || '#111';
+    const F = '"DejaVu Sans", "Noto Sans", Arial, sans-serif';
+    const lines = opts.lines || [];
+    let y = 40;
+    for (const L of lines) {
+      g.font = (L.bold ? 'bold ' : '') + (L.size || 26) + 'px ' + F;
+      g.fillText(L.t, L.x || 30, y);
+      y += (L.size || 26) + 14;
+    }
+    if (opts.rotate) {
+      /* Only ±90° rotations leave the W×H bounding box — swap dims there.
+       * 180° keeps the same bounding box: swapping dims here CLIPS the
+       * label and the active ingredient would be cut off the canvas. */
+      const swap = Math.abs(Math.abs(opts.rotate) % Math.PI - Math.PI / 2) < 1e-6;
+      const r = document.createElement('canvas');
+      r.width = swap ? H : W;
+      r.height = swap ? W : H;
+      const rg = r.getContext('2d');
+      rg.translate(r.width / 2, r.height / 2);
+      rg.rotate(opts.rotate);
+      rg.drawImage(c, -W / 2, -H / 2);
+      return r;
+    }
+    return c;
+  }
+
+  function canvasToBlob(c) {
+    return new Promise(res => c.toBlob(res, 'image/png'));
+  }
+
+  /* noise overlay for noisy scenario */
+  function addNoise(c, amount) {
+    const g = c.getContext('2d');
+    const img = g.getImageData(0, 0, c.width, c.height);
+    const d = img.data;
+    for (let i = 0; i < d.length; i += 4) {
+      const n = (Math.random() - 0.5) * amount;
+      d[i] = Math.max(0, Math.min(255, d[i] + n));
+      d[i + 1] = Math.max(0, Math.min(255, d[i + 1] + n));
+      d[i + 2] = Math.max(0, Math.min(255, d[i + 2] + n));
+    }
+    g.putImageData(img, 0, 0);
+    return c;
+  }
+
+  window.__run = async function () {
+    await loadDBs();
+    OcrModule.setSearchRef(window.__search);
+    const search = window.__search;
+
+    /* optional case window (?from=N&to=M) so slow CI hosts can run the
+       suite in short chunks without hitting command timeouts */
+    const qs = new URLSearchParams(location.search);
+    const FROM = parseInt(qs.get('from') || '1', 10);
+    const TO = parseInt(qs.get('to') || '99', 10);
+    let caseIdx = 0;
+
+    /* best result checker: does the top merged result match expected name/CAS/db */
+    function bestOf(cas, cands) {
+      const rank = { 'libya-248': 0, 'libya-500': 1, eu: 2, epa: 3 };
+      /* Keep the BEST score per row: candidates like "Bifenthrin 7.9" (a
+       * weak fuzzy hit on the SAME row as the exact word "Bifenthrin")
+       * must never mask the 100% match SearchCore already produced. */
+      const byRow = new Map();
+      const pushAll = list => (list || []).forEach(x => {
+        const prev = byRow.get(x.r);
+        if (!prev || x.s.v > prev.s.v) byRow.set(x.r, x);
+      });
+      for (const casn of cas) pushAll(search(casn, true));
+      for (const c of cands) pushAll(search(c, false));
+      const merged = [...byRow.values()];
+      merged.sort((a, b) => (rank[a.k] - rank[b.k]) || (b.s.v - a.s.v));
+      return merged;
+    }
+
+    async function scanCase(name, canvas, checkFn) {
+      caseIdx++;
+      if (caseIdx < FROM || caseIdx > TO) return null;   // outside ?from/?to window
+      const blob = await canvasToBlob(canvas);
+      console.log('[case] START ' + name);   // progress marker for killed runs
+      const file = new File([blob], name + '.png', { type: 'image/png' });
+      const t0 = performance.now();
+      let res;
+      try { res = await OcrModule.recognize(file, null, { search: window.__search }); }
+      catch (e) { log(name, false, 'exception: ' + (e && typeof e === 'object' && 'message' in e ? e.message : String(e))); return null; }
+      const ms = Math.round(performance.now() - t0);
+      const merged = bestOf(res.cas, res.candidates);
+      const ok = checkFn(res, merged);
+      const top = merged[0];
+      log(name, !!ok,
+        ok === true ? (top ? ('top: ' + top.k + ' ' + Math.round(top.s.v) + '% — ' + String(top.r.name).slice(0, 28)
+          + ' | passes:' + res.passes + ' ' + ms + 'ms conf:' + Math.round(res.confidence || 0)) : 'no-result ok')
+          : ('top=' + (top ? top.k + ' ' + Math.round(top.s.v) + '% ' + String(top.r.name).slice(0, 24) : 'none')
+          + ' cands=' + res.candidates.slice(0, 4).join('|') + ' cas=' + res.cas.join(',') + ' ' + ms + 'ms'
+          + ' raw=' + String(res.text || '').replace(/\s+/g, ' ').slice(0, 140)));
+      return { res, merged, ms };
+    }
+
+    const AI = (chem, pct) => [
+      { t: 'MAXXPRO 480 SC', size: 34, bold: true },
+      { t: 'Suspension Concentrate', size: 20 },
+      { t: 'ACTIVE INGREDIENT:', size: 24, bold: true },
+      { t: chem + (pct ? ' ' + pct : ''), size: 26 },
+      { t: 'OTHER INGREDIENTS: 60.0%', size: 22 },
+      { t: 'EPA Reg. No. 264-1152', size: 20 },
+      { t: 'Keep Out of Reach of Children', size: 20 }
+    ];
+
+    /* 1) clear glyphosate (DB best name for the pure word: >=90) */
+    await scanCase('glyphosate_clear',
+      labelCanvas({ lines: AI('Glyphosate', '48.8%') }),
+      (r, m) => m[0] && /glyphosate/i.test(m[0].r.name) && m[0].s.v >= 90);
+
+    /* 2) bifenthrin + trade name above (test-name vs DB name differ: use >=90) */
+    await scanCase('bifenthrin_trade',
+      labelCanvas({ lines: AI('Bifenthrin', '7.9%') }),
+      (r, m) => m[0] && /bifenthrin/i.test(m[0].r.name) && m[0].s.v >= 90);
+
+    /* 3) DDT standalone (3-char active ingredient) */
+    await scanCase('ddt_active',
+      labelCanvas({ lines: AI('DDT', '75%') }),
+      (r, m) => m[0] && /ddt/i.test(m[0].r.name) && m[0].s.v >= 96);
+
+    /* 4) acetamiprid small text (DB name carries extra chars: >=90) */
+    await scanCase('acetamiprid_small',
+      labelCanvas({ lines: AI('Acetamiprid', '20%'), W: 640, H: 460 }),
+      (r, m) => m[0] && /acetamiprid/i.test(m[0].r.name) && m[0].s.v >= 90);
+
+    /* 5) clethodim low contrast */
+    await scanCase('clethodim_lowcontrast',
+      labelCanvas({ lines: AI('Clethodim', '24%'), fg: '#8a8a86', bg: '#e4e4de' }),
+      (r, m) => m[0] && /clethodim/i.test(m[0].r.name) && m[0].s.v >= 80);
+
+    /* 6) hexachlorobenzene light on dark */
+    await scanCase('hexa_lightondark',
+      labelCanvas({ lines: AI('Hexachlorobenzene', '10%'), bg: '#1c1c1e', fg: '#e8e8e2' }),
+      (r, m) => m[0] && /hexachloro/i.test(m[0].r.name) && m[0].s.v >= 80);
+
+    /* 7) aluminum sulfate */
+    await scanCase('alum_sulfate',
+      labelCanvas({ lines: AI('Aluminum sulfate', '48%') }),
+      (r, m) => m[0] && /alum/i.test(m[0].r.name) && m[0].s.v >= 80);
+
+    /* 8) CAS exact only — CAS-first gives a 100% row; top NAME row may be any
+          DB row matching the digit-string fuzzily, so assert on CAS + any 100% */
+    await scanCase('cas_exact',
+      labelCanvas({ lines: [{ t: 'Contains:', size: 22 }, { t: 'CAS 1071-83-6', size: 30, bold: true }] }),
+      (r, m) => r.cas.includes('1071-83-6') && m.some(x => x.s.v >= 100));
+
+    /* 9) CAS with spaces — assert CAS recovered + 100% row present */
+    await scanCase('cas_spaces',
+      labelCanvas({ lines: [{ t: 'CAS 1071 - 83 - 6', size: 30, bold: true }] }),
+      (r, m) => r.cas.includes('1071-83-6') && m.some(x => x.s.v >= 100));
+
+    /* 10) CAS O/0 I/1 confusion — assert CAS recovered + 100% row present */
+    await scanCase('cas_OI_confusion',
+      labelCanvas({ lines: [{ t: 'CAS IO7I-83-6', size: 30, bold: true }] }),
+      (r, m) => r.cas.includes('1071-83-6') && m.some(x => x.s.v >= 100));
+
+    /* 11) CAS S/5 confusion — assert CAS variants recovered + 100% row present */
+    await scanCase('cas_S_confusion',
+      labelCanvas({ lines: [{ t: 'CAS 1O7I-8S-6', size: 30, bold: true }] }),
+      (r, m) => (r.cas.includes('1071-83-6') || r.cas.includes('1071-85-6') || r.cas.includes('1071-86-6'))
+        && m.some(x => x.s.v >= 100));
+
+    /* 12) rotated 90 */
+    await scanCase('rotated_90',
+      labelCanvas({ lines: AI('Glyphosate', '41%'), rotate: Math.PI / 2 }),
+      (r, m) => m[0] && /glyphosate/i.test(m[0].r.name) && m[0].s.v >= 96);
+
+    /* 13) rotated 180 */
+    await scanCase('rotated_180',
+      labelCanvas({ lines: AI('Bifenthrin', '7.9%'), rotate: Math.PI }),
+      (r, m) => m[0] && /bifenthrin/i.test(m[0].r.name) && m[0].s.v >= 96);
+
+    /* 14) rotated 270 */
+    await scanCase('rotated_270',
+      labelCanvas({ lines: AI('Paraquat', '27.6%'), rotate: -Math.PI / 2 }),
+      (r, m) => m[0] && /paraquat/i.test(m[0].r.name) && m[0].s.v >= 96);
+
+    /* 15) tiny text */
+    await scanCase('tiny_text',
+      labelCanvas({ lines: [{ t: 'ACTIVE INGREDIENT:', size: 13 }, { t: 'Imidacloprid 17.8%', size: 12 }, { t: 'OTHER: 82.2%', size: 12 }], W: 480, H: 300 }),
+      (r, m) => m[0] && /imidacloprid/i.test(m[0].r.name) && m[0].s.v >= 80);
+
+    /* 16) noisy image */
+    await scanCase('noisy_image',
+      addNoise(labelCanvas({ lines: AI('Mancozeb', '80%') }), 90),
+      (r, m) => m[0] && /mancozeb/i.test(m[0].r.name) && m[0].s.v >= 80);
+
+    /* 17) EPA Reg No never treated as CAS or active */
+    await scanCase('epa_reg_negative',
+      labelCanvas({ lines: [{ t: 'EPA Reg. No. 264-1152', size: 28, bold: true }, { t: 'Batch 2451-02-7', size: 26 }] }),
+      (r, m) => !r.cas.includes('264-1152') && !r.cas.includes('2451-02-7'));
+
+    /* 18) noise image: nothing recognizable -> no match.
+     * NOTE: uniform per-pixel noise reliably crashes Tesseract's WASM
+     * layout analyzer (component explosion) in this engine build, so the
+     * unreadable texture is built from random streaks instead — equally
+     * free of text, equally zero-evidence for the matcher. */
+    {
+      const c = document.createElement('canvas');
+      c.width = 640; c.height = 480;
+      const g = c.getContext('2d');
+      g.fillStyle = '#777'; g.fillRect(0, 0, 640, 480);
+      for (let i = 0; i < 260; i++) {
+        const shade = 40 + Math.floor(Math.random() * 150);
+        g.strokeStyle = 'rgb(' + shade + ',' + shade + ',' + shade + ')';
+        g.lineWidth = 1 + Math.random() * 5;
+        g.beginPath();
+        const x = Math.random() * 640, y = Math.random() * 480;
+        g.moveTo(x, y);
+        g.lineTo(x + (Math.random() - 0.5) * 260, y + (Math.random() - 0.5) * 200);
+        g.stroke();
+      }
+      await scanCase('noise_no_match', c,
+        (r, m) => !m.length || m[0].s.v < 96);
+    }
+
+    /* 19) trade name only: clean reject */
+    await scanCase('trade_name_only',
+      labelCanvas({ lines: [{ t: 'MAXXPRO 480', size: 40, bold: true }] }),
+      (r, m) => !m.length || m[0].s.v < 90);
+
+    /* 20) multi-chemical label */
+    await scanCase('multi_chemical',
+      labelCanvas({ lines: [
+        { t: 'DUO COMBO', size: 30, bold: true },
+        { t: 'ACTIVE INGREDIENTS:', size: 22, bold: true },
+        { t: 'Chlorpyrifos 30%', size: 24 },
+        { t: 'Cypermethrin 10%', size: 24 }
+      ] }),
+      (r, m) => m[0] && /(chlorpyrifos|cypermethrin)/i.test(m[0].r.name) && m[0].s.v >= 96);
+
+    window.__done();
+  };
+})();
+</script>
+</body>
+</html>

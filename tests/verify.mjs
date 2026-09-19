@@ -206,9 +206,11 @@ check('ocr assets total plausible (not bloated/empty)', (() => {
 })());
 const ocrMod = fs.readFileSync('src/ocr.js', 'utf8');
 check('ocr.js pins self-hosted paths (no CDN at runtime)',
-  ocrMod.includes("workerPath: 'vendor/tesseract/worker.min.js'")
-  && ocrMod.includes("corePath: OCR.CORE")
-  && ocrMod.includes("langPath: OCR.LANG")
+  ocrMod.includes("'vendor/tesseract/worker.min.js'")
+  /* V2: core/lang paths are made origin-rooted absolute URLs (new URL('/' + OCR.CORE + '/', ...))
+     so the harness page depth (/tests/...) cannot resolve them against the Tesseract worker base. */
+  && ocrMod.includes("new URL('/' + OCR.CORE + '/'")
+  && ocrMod.includes("new URL('/' + OCR.LANG + '/'")
   && !/https:\/\/cdn/.test(ocrMod));
 check('ocr.js supports Arabic + English', ocrMod.includes("'eng+ara'"));
 check('ocr.js preprocessing pipeline present',
@@ -218,9 +220,10 @@ check('ocr.js handles OCR CAS noise (spaces + O/0,I/1,S/5)',
   /(\d)\s*-\s*(\d)/.test(ocrMod) && /replace\(\/O\/g/.test(ocrMod));
 check('ocr.js bounded 180° retry for weak scans', /إعادة المحاولة باتجاه معكوس/.test(ocrMod) && /angles\s*=\s*\[Math\.PI/.test(ocrMod));
 check('ocr.js bounded rotation retry covers 90°/270°', /Math\.PI \/ 2, -Math\.PI \/ 2/.test(ocrMod));
-check('ocr.js retry is CAS-first and never degrades a good scan',
-  /const quality = t => casCount\(t\) \* 100/.test(ocrMod)
-  && /const weak = casCount\(text\) === 0 &&/.test(ocrMod));
+check('V2 keeps CAS-first scan quality (exact CAS +250 dominates pass ranking; best pass never degraded)',
+  /db\.exactCAS\) s \+= 250/.test(ocrMod)
+  && /db\.exactName\) s \+= 200/.test(ocrMod)
+  && /score > bestPass\.score/.test(ocrMod));
 check('ocr.js is lazy (no worker at import time)', !/new Worker\(/.test(ocrMod));
 check('app.js wires camera+gallery to OCR -> existing search',
   app.includes('runOcr(f)') && app.includes("$('#gallery')")
@@ -261,7 +264,7 @@ check('prep panel measures real byte sizes from Cache Storage',
   /arrayBuffer\(\)\)\.byteLength/.test(app) && /content-length/.test(app));
 check('no leftover ocrPrefetch references', !app.includes('ocrPrefetch') && !html2.includes('ocrPrefetch'));
 
-/* ---------- v5 engineering pass: worker lifecycle + CAS ambiguity ---------- */
+/* ---------- V5 engineering pass: worker lifecycle + CAS ambiguity (preserved in V2) ---------- */
 check('OCR worker init failure does not poison future scans (promise reset)',
   /workerPromise\.catch\(\(\) => \{ workerPromise = null; \}\);/.test(ocrMod));
 check('reused worker reports progress to the CURRENT scan (no stale closure)',
@@ -269,6 +272,51 @@ check('reused worker reports progress to the CURRENT scan (no stale closure)',
   && /logger: m => \{ if \(progressSink\) progressSink\(m\); \}/.test(ocrMod));
 check('CAS extraction keeps S-ambiguous 5/3 readings (DB validates, nothing invented)',
   /if \(m\.includes\('5'\)\) found\.add\(m\.replace\(\/5\/g, '3'\)\);/.test(ocrMod));
+
+/* ---------- OCR V2 (feature/ocr-v2-field-test) ---------- */
+check('V2: multi-variant preprocessing ladder present (6+ variants, no single-variant pipeline)',
+  /const VARIANTS = \['original', 'gray', 'sharp', 'adaptive', 'global', 'invert'\]/.test(ocrMod)
+  && /light_on_dark/.test(ocrMod) && /dark_on_light/.test(ocrMod));
+check('V2: multiple PSMs used (11 sparse, 6 block, 12 sparse+OSD)',
+  /const PSM_LIST = \[11, 6, 12\]/.test(ocrMod)
+  && /tessedit_pageseg_mode/.test(ocrMod));
+check('V2: user_defined_dpi set for upscaled phone photos', /user_defined_dpi/.test(ocrMod));
+check('V2: adaptive (local) threshold via integral images survives glare',
+  /function adaptiveThreshold/.test(ocrMod) && /Float64Array/.test(ocrMod));
+check('V2: TSV word boxes collected for layout analysis',
+  /bbox\.x0, y0: node\.bbox\.y0/.test(ocrMod) || /x0: node\.bbox\.x0/.test(ocrMod));
+check('V2: ACTIVE INGREDIENT ROI detection from word boxes',
+  /function aiRegionFromWords/.test(ocrMod) && /function looksLikeAIWord/.test(ocrMod));
+check('V2: ROI re-OCR run on the ingredient region (header + two lines)',
+  /قراءة منطقة المادة الفعالة/.test(ocrMod) && /cropCanvas\(/.test(ocrMod));
+check('V2: results are FUSED across passes (no pass overwrite)',
+  /fusionCandidates\.add/.test(ocrMod) && /fusionCAS\.add/.test(ocrMod));
+check('V2: database-aware pass scoring (DB dominates raw confidence)',
+  /function passScore\(/.test(ocrMod)
+  && /db\.exactCAS\) s \+= 250/.test(ocrMod)
+  && /Math\.min\(conf \|\| 0, 100\) \* 0\.3/.test(ocrMod));
+check('V2: early exit on exact/96%+ database hit (bounded work)',
+  /if \(exactHit\) break;/.test(ocrMod)
+  && /if \(db\.exactCAS \|\| db\.exactName \|\| db\.best >= 96\) \{ exactHit = true; \}/.test(ocrMod));
+check('V2: bounded MAX_PASSES (never all variants × all PSMs)',
+  /MAX_PASSES = 14/.test(ocrMod));
+check('V2: rotations only when no exact hit yet (progressive escalation)',
+  /if \(!exactHit\) \{[\s\S]*?const angles = \[Math\.PI, Math\.PI \/ 2, -Math\.PI \/ 2\]/.test(ocrMod));
+check('V2: junk vocabulary gated outside AI context (EPA Reg/Batch/company/trade lines)',
+  /const JUNK = \//.test(ocrMod) && /epa\\s\*reg|batch|manufactur|telephone|insecticide/.test(ocrMod));
+check('V2: AI-context candidates get priority + 3-char floor preserved (DDT)',
+  /const min = aiCtx\[i\] \? 3 : 4;/.test(ocrMod) && /const ordered = \[\.\.\.prio,/.test(ocrMod));
+check('V2: candidate pool not capped below what fusion needs (cap >= 24)',
+  /slice\(0, 40\)/.test(ocrMod));
+check('V2: worker reuse preserved (singleton, no per-pass worker creation)',
+  /let workerPromise = null/.test(ocrMod) && !/createWorker[\s\S]{0,200}createWorker/.test(ocrMod));
+check('V2: search injected for DB-aware scoring (same SearchCore instance, no second engine)',
+  /setSearchRef/.test(ocrMod) && /opts\.search\) setSearchRef\(opts\.search\)/.test(ocrMod));
+check('V2: canvases released after use (no pixel-buffer leak across scans)',
+  /releaseVariants/.test(ocrMod));
+check('V2: still self-hosted, no CDN, eng+ara unchanged',
+  ocrMod.includes("'vendor/tesseract/worker.min.js'")
+  && ocrMod.includes("'eng+ara'") && !/https:\/\/cdn/.test(ocrMod));
 
 /* ---------- summary ---------- */
 console.log('\n==============================');

@@ -470,14 +470,17 @@
     rebuildSearch();
     if (!searchFn || !searchFn.sources.length) return [];
     const rank = { 'libya-248': 0, 'libya-500': 1, eu: 2, epa: 3 };
-    const merged = [];
-    const seen = new Set();
+    /* Keep the BEST score per row: a weak fuzzy hit from a candidate like
+     * "Bifenthrin 7.9" must never mask the exact 100% match for the same
+     * row that another candidate ("Bifenthrin") already produced. */
+    const byRow = new Map();
     const pushAll = list => (list || []).forEach(x => {
-      const key = x.k + ':' + (x.r.row ?? x.r.name);
-      if (!seen.has(key)) { seen.add(key); merged.push(x); }
+      const prev = byRow.get(x.r);
+      if (!prev || x.s.v > prev.s.v) byRow.set(x.r, x);
     });
     for (const cas of casList) pushAll(searchFn(cas, true));   // CAS exact (100%)
     for (const cand of candList) pushAll(searchFn(cand, false)); // same 80% rule
+    const merged = [...byRow.values()];
     merged.sort((a, b) => ((rank[a.k] ?? 99) - (rank[b.k] ?? 99)) || (b.s.v - a.s.v));
     return merged.slice(0, 24);
   }
@@ -498,6 +501,7 @@
     ocrBusy = true;
     ocrMsg.textContent = 'جارٍ تجهيز الصورة…';
     try {
+      rebuildSearch();   // ensure the 4-DB index is current before DB-aware OCR scoring
       const res = await OcrModule.recognize(file, p => {
         if (!p) return;
         if (p.status === 'prep') ocrMsg.textContent = 'جارٍ تجهيز الصورة…';
@@ -506,7 +510,7 @@
           const pct = Math.round((p.progress || 0) * 100);
           ocrMsg.textContent = p.status + (pct ? ' (' + pct + '%)' : '');
         }
-      });
+      }, { search: searchFn });   // DB-aware pass scoring: SearchCore ranks candidates, OCR confidence never overrides the databases
       const textLen = (res.text || '').replace(/\s/g, '').length;
       const weak = textLen < 6 || (res.confidence !== null && res.confidence < 40);
       $('#ocrText').value = res.text || '';

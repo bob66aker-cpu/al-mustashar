@@ -52,9 +52,16 @@
   let cancelFlag = false;     // cooperative cancellation between passes
 
   /* status(messageKey) — emits a stable KEY (never a hardcoded UI string);
-   * the app maps keys to the current language. Unknown keys pass through. */
+   * the app maps keys to the current language. Unknown keys pass through.
+   * Re-entrancy guard: sinks may themselves call status() (the worker logger
+   * routes through progressSink), which would otherwise recurse infinitely. */
+  let statusBusy = false;
   function status(key, progress) {
-    progressSink && progressSink({ statusKey: key, status: messages && messages[key] || key, progress: progress });
+    if (statusBusy) return;
+    statusBusy = true;
+    try {
+      progressSink && progressSink({ statusKey: key, status: messages && messages[key] || key, progress: progress });
+    } finally { statusBusy = false; }
   }
 
   /* ============================================================
@@ -607,7 +614,8 @@
 
     status('ocr.init', 0.04);
     const worker = await ensureWorker(m => {
-      if (m && m.status === 'recognizing text') return;  // pass progress reported per-pass
+      if (m && m.statusKey) return;                       // already an app status event
+      if (m && m.status === 'recognizing text') return;   // pass progress reported per-pass
       if (m && m.status) status('ocr.loading', 0.04 + (m.progress || 0) * 0.06);
     });
 

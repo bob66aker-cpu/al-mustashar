@@ -11,6 +11,7 @@
   "background_color": "#f5f7f1",
   "theme_color": "#1f6f52",
   "description": "أداة بحث محلية في قواعد بيانات المبيدات (ليبيا 248، ليبيا 500، الاتحاد الأوروبي، USA/EPA) تعمل دون إنترنت بعد أول تحميل.",
+  "lang_alternates": ["en", "fr", "zh"],
   "categories": ["productivity", "utilities", "education"],
   "icons": [
     {

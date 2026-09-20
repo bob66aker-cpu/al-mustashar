@@ -1,0 +1,47 @@
+# ترخيص الاستخدام — المستشار الزراعي
+# License — Agricultural Advisor (al-mustashar)
+
+الحقوق المؤلفية للشيفرة محفوظة (c) 2026 مطوّر المستشار الزراعي (bob66aker-cpu).
+Copyright (c) 2026 the Agricultural Advisor developer (bob66aker-cpu).
+
+## الشيفرة / Code
+
+ترخيص «المشاع الإبداعي: نسب المصنّف — غير تجاري — الترخيص بالمثل 4.0»
+Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)
+
+النص القانوني الكامل (المرجع الملزم، غير منسوخ هنا تجنبًا للخطأ):
+Full legal code (the binding reference, not reproduced here to avoid transcription error):
+
+    https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+
+الملخص غير الرسمي (غير بديل عن النص القانوني):
+Unofficial summary (not a substitute for the legal code):
+
+- نسب المصنّف: يجب ذكر صاحب الحقوق ورابط هذا الترخيص.
+  Attribution: you must credit the copyright holder and link this license.
+- غير تجاري: الاستخدام التجاري منعٌ إلا بترخيص تجاري منفصل يُطلب من المطور.
+  NonCommercial: commercial use requires a separate commercial license from the developer.
+- الترخيص بالمثل: التعديلات توزَّع بالترخيص نفسه.
+  ShareAlike: adaptations are distributed under the same license.
+- الاسم والشعار خارج هذا الترخيص ولا يُستعملان للإيحاء بالاعتماد.
+  The name and logo are outside this license and must not imply endorsement.
+
+ملاحظة: مراجعة قانونية تسبق أي عقد تجاري.
+Note: a legal review precedes any commercial agreement.
+
+## البيانات / Data
+
+بيانات القواعد الأربع تبقى بتراخيص مصادرها الأصلية — راجع
+«docs/data-provenance.md» (بيان المصدر) لكل قاعدة. هذا الترخيص لا يغيّر
+حقوق مصادر البيانات ولا يدّعي ملكيتها.
+
+The four reference datasets remain under their original source licenses —
+see docs/data-provenance.md. This license neither claims ownership of the
+data nor alters the sources' terms.
+
+## المساهمات / Contributions
+
+لا تُقبل شيفرة خارجية إلا باتفاقية تنازل أو ترخيص مساهمين، لتبقى حقوق
+المؤلف صافية. راجع docs/AUTHORSHIP.md.
+External code is accepted only under a contributor agreement, so copyright
+stays clean. See docs/AUTHORSHIP.md.

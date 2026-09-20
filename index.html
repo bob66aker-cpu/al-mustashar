@@ -747,13 +747,13 @@
         </div>
       </div>
       <div class="statusline">
-        <span class="chip" id="dbState">جاري تجهيز القواعد</span>
-        <span class="chip db-loading" id="db-libya-248">ليبيا 248: جارٍ التحميل…</span>
-        <span class="chip db-loading" id="db-libya-500">ليبيا 500: جارٍ التحميل…</span>
-        <span class="chip db-loading" id="db-eu">الاتحاد الأوروبي: جارٍ التحميل…</span>
-        <span class="chip db-loading" id="db-epa">USA / EPA: جارٍ التحميل…</span>
-        <span class="chip db-loading" id="db-fao">FAO / Codex: جارٍ التحميل…</span>
-        <span class="chip" id="offlineState">🟢 متصل</span>
+        <span class="chip" id="dbState" data-i18n="db.initial">جاري تجهيز القواعد</span>
+        <span class="chip db-loading" id="db-libya-248" data-i18n="db.loading.248">ليبيا 248: جارٍ التحميل…</span>
+        <span class="chip db-loading" id="db-libya-500" data-i18n="db.loading.500">ليبيا 500: جارٍ التحميل…</span>
+        <span class="chip db-loading" id="db-eu" data-i18n="db.loading.eu">الاتحاد الأوروبي: جارٍ التحميل…</span>
+        <span class="chip db-loading" id="db-epa" data-i18n="db.loading.epa">USA / EPA: جارٍ التحميل…</span>
+        <span class="chip db-loading" id="db-fao" data-i18n="db.loading.fao">FAO / Codex: جارٍ التحميل…</span>
+        <span class="chip" id="offlineState" data-i18n="chip.online">🟢 متصل</span>
         <select id="langSelect" class="lang-toggle" data-i18n-title="lang.title" aria-label="Language">
           <option value="ar">ع</option>
           <option value="en">EN</option>
@@ -765,6 +765,8 @@
       <div class="banner banner-warn" id="dbBanner" hidden></div>
       <!-- Attribution / about (user decision ج5): sources + no endorsement -->
       <div class="about-box" data-i18n="about.sources"></div>
+      <div class="about-box" data-i18n="about.disclaimer"></div>
+      <div class="about-box" data-i18n="about.privacy"></div>
       <!-- Disclaimer strip: mandatory neutral wording (user decision ب1) -->
       <div class="disclaimer-strip" data-i18n="disclaimer.strip">هذه الأداة مساندة وليست حكمًا قانونيًا — المرجع قرارات وزارة الزراعة والجهات الرسمية.</div>
       <!-- Support/contact button: reads config/support.json; hidden when empty -->
@@ -782,7 +784,7 @@
           <option value="farmer" data-i18n="mode.farmer">المزارع</option>
           <option value="pro" data-i18n="mode.pro">المحترف</option>
         </select>
-        <span class="mode-label" id="modeLabel">المزارع</span>
+        <span class="mode-label" id="modeLabel" data-i18n="mode.farmer">المزارع</span>
       </div>
 
       <form class="search" id="searchForm">
@@ -803,7 +805,7 @@
     <section class="card" id="prepPanel" aria-label="تجهيز العمل بدون إنترنت">
       <div class="prep-head">
         <h2 data-i18n="prep.h2">📦 تجهيز العمل بدون إنترنت</h2>
-        <span class="chip" id="prepState">جارٍ الفحص…</span>
+        <span class="chip" id="prepState" data-i18n="prep.checking">جارٍ الفحص…</span>
       </div>
       <ul class="prep-list">
         <li id="prepShell"><span>🧩</span> <span data-i18n="prep.shell">ملفات التطبيق (الواجهة + محرك البحث)</span> <b id="prepShellSize">—</b></li>
@@ -860,7 +862,7 @@
     </section>
 
     <section class="results" id="results">
-      <div class="notice">اكتب اسم المادة أو رقم CAS ثم اضغط «فحص المادة».</div>
+      <div class="notice" data-i18n="results.hint">اكتب اسم المادة أو رقم CAS ثم اضغط «فحص المادة».</div>
     </section>
 
     <p class="footer" data-i18n="footer">المستشار الزراعي أداة مساعدة للبحث في قواعد البيانات المرفقة. المرجع القانوني النهائي هو الجهة الرسمية المختصة. لا نتحمل مسؤولية الاستخدام غير الصحيح للمعلومات.</p>

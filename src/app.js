@@ -593,39 +593,163 @@
     }
   }
 
+  /* د4 — image quality probe BEFORE reading: sharpness (Laplacian-ish
+   * gradient energy), glare (blown-out highlights ratio) and light level.
+   * Returns a guidance key list; advisory only, never blocks the scan. */
+  function probeImage(file) {
+    return new Promise(resolve => {
+      const img = new Image();
+      const url = URL.createObjectURL(file);
+      img.onload = () => {
+        try {
+          const w = Math.min(320, img.width || 320), h = Math.max(1, Math.round((img.height || 240) * w / (img.width || 320)));
+          const c = document.createElement('canvas'); c.width = w; c.height = h;
+          const g = c.getContext('2d', { willReadFrequently: true });
+          g.drawImage(img, 0, 0, w, h);
+          const d = g.getImageData(0, 0, w, h).data;
+          let lap = 0, blown = 0, dark = 0, n = 0;
+          for (let y = 1; y < h - 1; y++) for (let x = 1; x < w - 1; x++) {
+            const i = (y * w + x) * 4;
+            const g2 = (d[i] * 299 + d[i + 1] * 587 + d[i + 2] * 114) / 1000 | 0;
+            const gx = d[i + 4] - d[i - 4];
+            const gy = d[i + w * 4] - d[i - w * 4];
+            lap += Math.abs(gx) + Math.abs(gy);
+            if (g2 > 250) blown++;
+            if (g2 < 25) dark++;
+            n++;
+          }
+          URL.revokeObjectURL(url);
+          const keys = [];
+          if (n && lap / n < 6) keys.push('ocr.tip.blur');
+          if (n && blown / n > 0.08) keys.push('ocr.tip.glare');
+          if (n && dark / n > 0.45) keys.push('ocr.tip.dark');
+          resolve(keys);
+        } catch (e) { URL.revokeObjectURL(url); resolve([]); }
+      };
+      img.onerror = () => { URL.revokeObjectURL(url); resolve([]); };
+      img.src = url;
+    });
+  }
+
+  /* د5 — local diagnostics log (localStorage, capped, no images, no upload).
+   * Export is manual-only via the button; nothing is ever sent anywhere. */
+  const DIAG_KEY = 'mustashar-diag';
+  function diagAdd(entry) {
+    try {
+      const list = JSON.parse(localStorage.getItem(DIAG_KEY) || '[]');
+      list.push(entry);
+      while (list.length > 100) list.shift();
+      localStorage.setItem(DIAG_KEY, JSON.stringify(list));
+    } catch (e) { /* storage may be unavailable */ }
+  }
+  function diagExport() {
+    try {
+      const list = JSON.parse(localStorage.getItem(DIAG_KEY) || '[]');
+      const blob = new Blob([JSON.stringify(list, null, 1)], { type: 'application/json' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'mustashar-diagnostics-' + new Date().toISOString().slice(0, 10) + '.json';
+      a.click();
+      setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+    } catch (e) {}
+  }
+
+  /* د4 — confirmation step: after OCR, the user confirms/edits the extracted
+   * active-ingredient candidates BEFORE any search is run or saved. */
+  let pendingScan = null;   // { res, tips }
+  function showConfirmPanel(res, tips) {
+    const sel = $('#aiConfirm');
+    if (!sel) { proceedWithScan(res); return; }
+    pendingScan = { res, tips };
+    sel.innerHTML = '';
+    const opts = (res.candidates || []).filter(c => /^[A-Za-z\u0600-\u06FF]/.test(c)).slice(0, 8);
+    if (!opts.length) { proceedWithScan(res); return; }
+    opts.forEach((c, i) => {
+      const o = document.createElement('option');
+      o.value = c; o.textContent = c;
+      sel.appendChild(o);
+    });
+    $('#confirmPanel').hidden = false;
+    $('#ocrActions').hidden = false;
+    $('#ocrText').value = res.text || '';
+    ocrMsg.textContent = tips.length
+      ? t('ocr.tips', 'ملاحظات على الصورة:') + ' ' + tips.map(k => t(k, k)).join(' · ')
+      : t('ocr.confirm', 'راجع المادة الفعالة المقروءة ثم اضغط «بحث».');
+  }
+  function proceedWithScan(res) {
+    showOcrResults(
+      searchCandidates(res.cas, res.candidates),
+      t('ocr.none.t', 'لم يتم العثور على تطابق موثوق من النص المكتشف'));
+  }
+  $('#aiConfirmBtn').addEventListener('click', () => {
+    if (!pendingScan) return;
+    const chosen = $('#aiConfirm').value;
+    const res = pendingScan.res;
+    pendingScan = null;
+    $('#confirmPanel').hidden = true;
+    const cands = chosen ? [chosen, ...res.candidates.filter(c => c !== chosen)] : res.candidates;
+    diagAdd({ at: Date.now(), confirmed: chosen, passes: res.passes, conf: res.confidence,
+      variant: res.variant, psm: res.psm, top: (res.best || {}).name || '', cas: res.cas.join(',') });
+    showOcrResults(searchCandidates(res.cas, cands),
+      t('ocr.none.t', 'لم يتم العثور على تطابق موثوق من النص المكتشف'));
+  });
+  $('#aiConfirmSkip').addEventListener('click', () => {
+    if (!pendingScan) return;
+    const res = pendingScan.res; pendingScan = null;
+    $('#confirmPanel').hidden = true;
+    diagAdd({ at: Date.now(), confirmed: '(skipped)', passes: res.passes, conf: res.confidence });
+    proceedWithScan(res);
+  });
+  $('#diagBtn').addEventListener('click', diagExport);
+
   async function runOcr(file) {
     if (ocrBusy || typeof OcrModule === 'undefined') return;
     ocrBusy = true;
+    $('#cancelOcrBtn').hidden = false;
     ocrMsg.textContent = t('ocr.prep', 'جارٍ تجهيز الصورة…');
+    const t0 = performance.now();
+    const tips = await probeImage(file);
     try {
       rebuildSearch();   // ensure the 4-DB index is current before DB-aware OCR scoring
+      const msgs = {};
+      for (const k of ['ocr.prep','ocr.init','ocr.loading','ocr.pass','ocr.roi','ocr.rotate','ocr.done']) msgs[k] = t(k, k);
       const res = await OcrModule.recognize(file, p => {
         if (!p) return;
-        if (p.status === 'prep') ocrMsg.textContent = t('ocr.prep', 'جارٍ تجهيز الصورة…');
+        if (p.statusKey) ocrMsg.textContent = (p.status || p.statusKey) + (p.progress ? ' (' + Math.round(p.progress * 100) + '%)' : '');
         else if (p.status === 'done') ocrMsg.textContent = t('ocr.done', 'اكتملت القراءة.');
         else {
           const pct = Math.round((p.progress || 0) * 100);
           ocrMsg.textContent = p.status + (pct ? ' (' + pct + '%)' : '');
         }
-      }, { search: searchFn });   // DB-aware pass scoring: SearchCore ranks candidates, OCR confidence never overrides the databases
+      }, { search: searchFn, messages: msgs });   // DB-aware pass scoring + i18n keys
+      const ms = Math.round(performance.now() - t0);
       const textLen = (res.text || '').replace(/\s/g, '').length;
       const weak = textLen < 6 || (res.confidence !== null && res.confidence < 40);
-      $('#ocrText').value = res.text || '';
-      $('#ocrActions').hidden = false;
       if (weak) {
-        ocrMsg.textContent = t('ocr.weak', 'تعذّر قراءة نص واضح بثقة كافية.');
-      } else {
-        ocrMsg.textContent = t('ocr.doneEdit', 'اكتملت القراءة. راجع النص المكتشف — يمكنك تعديله ثم إعادة البحث.');
+        /* د4 safe failure: no guessing — ask for manual entry */
+        ocrMsg.textContent = t('ocr.weak.manual', 'لم أستطع القراءة بثقة كافية — أدخل الاسم يدويًا في حقل البحث، أو عدّل النص أدناه.');
+        $('#ocrText').value = res.text || '';
+        $('#ocrActions').hidden = false;
+        $('#cancelOcrBtn').hidden = true;
+        diagAdd({ at: Date.now(), outcome: 'weak', ms, passes: res.passes });
+        return;
       }
-      showOcrResults(
-        searchCandidates(res.cas, res.candidates),
-        'لم يتم العثور على تطابق موثوق من النص المكتشف');
+      diagAdd({ at: Date.now(), outcome: 'scanned', ms, passes: res.passes, conf: res.confidence, variant: res.variant });
+      showConfirmPanel(res, tips);   // confirmation step before any search
     } catch (e) {
-      ocrMsg.textContent = t('ocr.fail', 'تعذّر تشغيل محرك القراءة.');
+      const cancelled = e && String(e.message || e).indexOf('ocr.cancelled') === 0;
+      ocrMsg.textContent = cancelled
+        ? t('ocr.cancelled', 'أُلغي المسح.')
+        : t('ocr.fail', 'تعذّر تشغيل محرك القراءة.');
+      diagAdd({ at: Date.now(), outcome: cancelled ? 'cancelled' : 'error', ms: Math.round(performance.now() - t0) });
     } finally {
       ocrBusy = false;
+      $('#cancelOcrBtn').hidden = true;
     }
   }
+  $('#cancelOcrBtn').addEventListener('click', () => {
+    if (typeof OcrModule !== 'undefined') OcrModule.cancelCurrent();
+  });
 
   /* Re-search from (possibly edited) OCR text — same pipeline, same rules. */
   $('#ocrRerun').addEventListener('click', () => {

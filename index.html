@@ -769,6 +769,7 @@
       <div class="disclaimer-strip" data-i18n="disclaimer.strip">هذه الأداة مساندة وليست حكمًا قانونيًا — المرجع قرارات وزارة الزراعة والجهات الرسمية.</div>
       <!-- Support/contact button: reads config/support.json; hidden when empty -->
       <button id="supportBtn" class="support-btn" hidden></button>
+      <button id="diagBtn" class="support-btn" data-i18n="diag.export">⬇️ تصدير سجل التشخيص</button>
     </header>
 
     <section class="intro">
@@ -824,6 +825,15 @@
       <p id="ocrMsg" class="scan-note" data-i18n="scan.msg">صوّر اسم المادة الفعالة بوضوح، أو اختر صورة من المعرض. سيبدأ التعرف الضوئي تلقائيًا.</p>
       <div class="tools">
         <button class="btn-secondary" type="button" id="galleryBtn" data-i18n="scan.gallery">🖼️ اختيار صورة من المعرض</button>
+        <button class="btn-secondary" type="button" id="cancelOcrBtn" data-i18n="ocr.cancel" hidden>إلغاء</button>
+      </div>
+      <div id="confirmPanel" hidden class="confirm-panel">
+        <p class="scan-note" data-i18n="ocr.confirm.title">المادة الفعالة المقروءة — أكّدها قبل البحث:</p>
+        <select id="aiConfirm" class="query" style="width:100%" dir="auto"></select>
+        <div class="tools">
+          <button class="btn-primary" type="button" id="aiConfirmBtn" data-i18n="ocr.confirm.ok">بحث</button>
+          <button class="btn-secondary" type="button" id="aiConfirmSkip" data-i18n="ocr.confirm.skip">البحث بالنص الكامل</button>
+        </div>
       </div>
       <div id="ocrActions" hidden>
         <textarea id="ocrText" class="query" style="width:100%" rows="4" dir="auto" data-i18n-placeholder="scan.placeholder" placeholder="النص المكتشف من الصورة — يمكن تعديله ثم إعادة البحث"></textarea>

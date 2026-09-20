@@ -218,7 +218,8 @@ check('ocr.js preprocessing pipeline present',
 check('ocr.js extracts CAS first', /extractCAS/.test(ocrMod) && /\\d\{2,7\}-\\d\{2\}-\\d/.test(ocrMod));
 check('ocr.js handles OCR CAS noise (spaces + O/0,I/1,S/5)',
   /(\d)\s*-\s*(\d)/.test(ocrMod) && /replace\(\/O\/g/.test(ocrMod));
-check('ocr.js bounded 180° retry for weak scans', /إعادة المحاولة باتجاه معكوس/.test(ocrMod) && /angles\s*=\s*\[Math\.PI/.test(ocrMod));
+check('ocr.js bounded 180° retry for weak scans',
+  /angles\s*=\s*\[Math\.PI/.test(ocrMod) && /'ocr\.rotate'/.test(ocrMod));
 check('ocr.js bounded rotation retry covers 90°/270°', /Math\.PI \/ 2, -Math\.PI \/ 2/.test(ocrMod));
 check('V2 keeps CAS-first scan quality (exact CAS +250 dominates pass ranking; best pass never degraded)',
   /db\.exactCAS\) s \+= 250/.test(ocrMod)
@@ -288,7 +289,7 @@ check('V2: TSV word boxes collected for layout analysis',
 check('V2: ACTIVE INGREDIENT ROI detection from word boxes',
   /function aiRegionFromWords/.test(ocrMod) && /function looksLikeAIWord/.test(ocrMod));
 check('V2: ROI re-OCR run on the ingredient region (header + two lines)',
-  /قراءة منطقة المادة الفعالة/.test(ocrMod) && /cropCanvas\(/.test(ocrMod));
+  /'ocr\.roi'/.test(ocrMod) && /cropCanvas\(/.test(ocrMod));
 check('V2: results are FUSED across passes (no pass overwrite)',
   /fusionCandidates\.add/.test(ocrMod) && /fusionCAS\.add/.test(ocrMod));
 check('V2: database-aware pass scoring (DB dominates raw confidence)',

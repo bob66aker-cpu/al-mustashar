@@ -48,6 +48,14 @@
   let progressSink = null;    // latest onProgress: the reused worker's logger
                               // must report to the CURRENT scan, not the first
   let searchRef = null;       // injected SearchCore search fn (DB-aware scoring)
+  let messages = null;        // injected i18n map for progress/status strings
+  let cancelFlag = false;     // cooperative cancellation between passes
+
+  /* status(messageKey) — emits a stable KEY (never a hardcoded UI string);
+   * the app maps keys to the current language. Unknown keys pass through. */
+  function status(key, progress) {
+    progressSink && progressSink({ statusKey: key, status: messages && messages[key] || key, progress: progress });
+  }
 
   /* ============================================================
    * Canvas variant factory — built ONCE from the original photo
@@ -591,22 +599,35 @@
     const progress = onProgress || (() => {});
     const opts = options || {};
     if (opts.search) setSearchRef(opts.search);
+    if (opts.messages) messages = opts.messages;
+    cancelFlag = false;
 
-    progress({ status: 'جارٍ تجهيز الصورة…', progress: 0 });
+    status('ocr.prep', 0);
     const base = await baseCanvas(file);
 
-    progress({ status: 'تهيئة محرك القراءة…', progress: 0.04 });
+    status('ocr.init', 0.04);
     const worker = await ensureWorker(m => {
       if (m && m.status === 'recognizing text') return;  // pass progress reported per-pass
-      if (m && m.status) progress({ status: 'تحميل محرك القراءة…', progress: 0.04 + (m.progress || 0) * 0.06 });
+      if (m && m.status) status('ocr.loading', 0.04 + (m.progress || 0) * 0.06);
     });
 
     const t0 = (global.performance || Date).now ? (global.performance || Date).now() : Date.now();
 
     /* One watchdog for the whole scan: a wedged Tesseract init (rare, but
        observed after heavy reuse) never resolves createWorker — without
-       this the scan would hang forever, stalling every later case. */
-    const SCAN_TIMEOUT_MS = 180000;
+       this the scan would hang forever, stalling every later case.
+       The budget is device-aware (user decision د4): low-memory / coarse-
+       pointer devices get a shorter budget so a farmer is never stuck
+       for 3 minutes; a desktop may use the full allowance. */
+    const lowEnd = (() => {
+      try {
+        if (navigator.deviceMemory && navigator.deviceMemory <= 4) return true;
+        if (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4) return true;
+        return matchMedia('(pointer: coarse)').matches;
+      } catch (e) { return false; }
+    })();
+    const SCAN_TIMEOUT_MS = Math.min(180000, lowEnd ? 60000 : 100000);
+    opts.scanBudget = SCAN_TIMEOUT_MS;
     const scanGuard = { timer: null };
     const scanTimeout = new Promise((_, rej) => {
       scanGuard.timer = setTimeout(() => {
@@ -621,11 +642,11 @@
       return await scanRace(recognizeInner());
     } finally { finishScan(); }
 
-    async function recognizeInner() {
-
-    /* ---------- pass queue ---------- */
+    async function recognizeInner() {      /* ---------- pass queue ---------- */
     // fast lane: 2 quick passes on the two highest-yield variants
     // deep lane: remaining variants + rotations, only if needed
+    const CANCELLED = 'ocr.cancelled';
+    const ensureNotCancelled = () => { if (cancelFlag) throw new Error(CANCELLED); };
     const queue = [];
     for (const psm of [11, 6]) queue.push({ variant: 'original', psm, lane: 'fast' });
     for (const v of ['gray', 'sharp']) for (const psm of [11, 6]) queue.push({ variant: v, psm, lane: 'deep1' });
@@ -664,10 +685,11 @@
       for (const item of queue) {
         if (passCount >= MAX_PASSES) break;
         if (exactHit && item.lane !== 'fast') break;   // early exit on exact DB hit
+        ensureNotCancelled();
         passCount++;
         const canvas = getVariant(item.variant);
         const share = 0.06 + Math.min(0.5, passCount * 0.05);
-        progress({ status: 'جارٍ قراءة النص (محاولة ' + passCount + ')…', progress: share });
+        status('ocr.pass', share);
 
         let pass;
         try { pass = await runPass(worker, canvas, item.psm); }
@@ -696,8 +718,9 @@
         if (aiRect && !opts.noRoi) {
           const roi = cropCanvas(bestCanvas || canvas, aiRect);
           if (roi) {
+            ensureNotCancelled();
             passCount++;
-            progress({ status: 'قراءة منطقة المادة الفعالة…', progress: Math.min(0.6, share + 0.05) });
+            status('ocr.roi', Math.min(0.6, share + 0.05));
             try {
               const r1 = await runPass(worker, roi, 6);
               const rcas = extractCAS(r1.text);
@@ -726,9 +749,9 @@
     /* ---------- rotations: only when still nothing exact ---------- */
     if (!exactHit) {
       const angles = [Math.PI, Math.PI / 2, -Math.PI / 2];
-      const labels = ['إعادة المحاولة باتجاه معكوس…', 'إعادة المحاولة بوضع عمودي…', 'إعادة المحاولة بوضع عمودي…'];
       for (let a = 0; a < angles.length; a++) {
-        progress({ status: labels[a], progress: 0.7 + a * 0.04 });
+        ensureNotCancelled();
+        status('ocr.rotate', 0.7 + a * 0.04);
         const rot = makeCanvas(a === 0 ? base.width : base.height, a === 0 ? base.height : base.width);
         const rx = rot.getContext('2d', { willReadFrequently: true });
         rx.translate(rot.width / 2, rot.height / 2);
@@ -783,7 +806,7 @@
 
     const bestDb = dbScorePass(allCAS, allCandidates);
     if (!bestPass) {
-      progress({ status: 'done', progress: 1 });
+      status('ocr.done', 1);
       return { text: '', cas: [], candidates: [], confidence: null, passes: 0, best: bestDb, aiRegion: false };
     }
 
@@ -792,7 +815,7 @@
       !/^\s*(active\s*ingredients?|ingredients?)\s*$/i.test(c));
     const text = fusionText.filter(Boolean).join('\n');
 
-    progress({ status: 'done', progress: 1 });
+    status('ocr.done', 1);
     return {
       text,
       cas: allCAS,
@@ -805,6 +828,35 @@
       aiRegion: !!aiRect
     };
   }
+  }
+
+  /* Cancel a running scan cooperatively: the next pass boundary throws.
+   * Nothing is invented — whatever completed earlier is simply discarded. */
+  function cancelCurrent() { cancelFlag = true; }
+
+  /* د2 — unified engine interface (transducer). Image in, lines+words+cas
+   * out; wraps recognize() without changing its behavior. Consumers can
+   * rely on this shape regardless of the engine behind it (also used by
+   * the alt-engine experiment branch). */
+  async function scan(file, options) {
+    const res = await recognize(file, null, options);
+    const lines = String(res.text || '').split(/\r?\n/)
+      .map(l => l.trim()).filter(Boolean)
+      .map(l => ({ text: l, conf: res.confidence }));
+    return {
+      engine: 'tesseract-6.0.1',
+      lines,                       // [{text, conf}]
+      words: [],                   // per-word boxes stay internal to the engine
+      cas: res.cas,
+      candidates: res.candidates,
+      confidence: res.confidence,
+      passes: res.passes,
+      variant: res.variant,
+      psm: res.psm,
+      best: res.best,
+      aiRegion: res.aiRegion,
+      text: res.text
+    };
   }
 
   /* Prefetch all OCR assets into the dedicated OCR cache (offline
@@ -832,6 +884,7 @@
 
   global.OcrModule = {
     recognize, extractCAS, extractCandidates, prefetch, setSearchRef,
+    cancelCurrent, scan,
     OCR, VARIANTS, PSM_LIST, aiRegionFromWords, buildVariant
   };
 })(typeof window !== 'undefined' ? window : globalThis);

@@ -238,7 +238,7 @@ check('app.js allows manual edit + re-search of OCR text',
 check('first-use OCR size notice shown in Arabic',
   html.includes('ميجابايت') && html.includes('دون إنترنت'));
 const sw5 = fs.readFileSync('sw.js', 'utf8');
-check('sw is v6 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v6'")
+check('sw is v7 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v7'")
   && sw5.includes("OCR_CACHE = 'mustashar-ocr'")
   && OCR_FILES.every(f => sw5.includes(f.replace('./', ''))));
 check('80% threshold untouched (SearchCore MIN_SCORE = 80)', SC.MIN_SCORE === 80);

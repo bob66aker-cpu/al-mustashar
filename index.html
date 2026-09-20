@@ -585,6 +585,7 @@
     .chip.db-bad     { background: var(--danger-light);  color: var(--danger-dark);  border-color: var(--danger-dark); }
 
     /* Banners */
+    .badge-beta { display: inline-block; font-size: 11px; background: var(--primary-light, #e7f0ea); color: var(--primary, #1f6f52); border: 1px solid var(--primary, #1f6f52); border-radius: 999px; padding: 3px 10px; margin: 6px 0 0; }
     .banner {
       border-radius: 12px;
       padding: var(--spacing-sm) var(--spacing-md);
@@ -763,6 +764,8 @@
         <button class="theme-toggle" id="themeToggle" data-i18n-title="theme.title" aria-label="تبديل نمط الليل">🌙</button>
       </div>
       <div class="banner banner-warn" id="dbBanner" hidden></div>
+      <!-- Field-review beta badge (ز6): version + data date, informational -->
+      <div class="badge-beta" id="betaBadge" data-i18n="badge.beta">تجريبي للمراجعة الميدانية</div>
       <!-- Attribution / about (user decision ج5): sources + no endorsement -->
       <div class="about-box" data-i18n="about.sources"></div>
       <div class="about-box" data-i18n="about.disclaimer"></div>

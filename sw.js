@@ -1,8 +1,8 @@
 /*
- * sw.js — المستشار الزراعي (v6)
+ * sw.js — المستشار الزراعي (v7)
  *
  * Cache topology (two caches; both survive SW updates):
- *   - mustashar-v5    app shell + data JSONs (precached, mirrored forward
+ *   - mustashar-v7    app shell + data JSONs (precached, mirrored forward
  *                     across version updates)
  *   - mustashar-ocr   OCR asset responses (worker, wasm core+glue, traineddata)
  *                     written once on first use / explicit prefetch, NEVER
@@ -15,7 +15,7 @@
  * Personal data (IndexedDB history, theme, app version note) lives outside
  * the caches and is never touched by this worker.
  */
-const CACHE = 'mustashar-v6';
+const CACHE = 'mustashar-v7';
 const OCR_CACHE = 'mustashar-ocr';
 const SHELL = [
   './',
@@ -23,9 +23,12 @@ const SHELL = [
   './src/search-core.js',
   './src/app.js',
   './src/ocr.js',
+  './src/i18n.js',
+  './src/cas.js',
   './vendor/tesseract/tesseract.min.js',
   './manifest.json',
   './version.json',
+  './config/support.json',
   './icons/icon-192.png',
   './icons/icon-512.png',
   './icons/maskable-512.png',
@@ -55,10 +58,13 @@ const OCR_ASSETS = [
   './vendor/tesseract/lang/ara.traineddata.gz'
 ];
 
+/* Subpath-safe matchers (GitHub Pages serves under /<repo>/): match by
+ * pathname suffix, not from the root. FAO stays on the generic cache-first
+ * path (as in v6) until the update agent produces the file. */
 const isDataUrl = url =>
-  /^\/data\/(libya-248|libya-500|eu|epa)\.json$/.test(url.pathname);
+  /\/data\/(libya-248|libya-500|eu|epa)\.json$/.test(url.pathname);
 const isOcrUrl = url =>
-  /^\/vendor\/tesseract\/(core\/tesseract-core-(simd-)?lstm\.wasm(\.js)?|lang\/(eng|ara)\.traineddata\.gz|worker\.min\.js)$/.test(url.pathname);
+  /\/vendor\/tesseract\/(core\/tesseract-core-(simd-)?lstm\.wasm(\.js)?|lang\/(eng|ara)\.traineddata\.gz|worker\.min\.js)$/.test(url.pathname);
 
 self.addEventListener('install', e => {
   e.waitUntil((async () => {

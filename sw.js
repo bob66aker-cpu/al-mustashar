@@ -38,10 +38,10 @@ const DATA = [
   './data/libya-248.json',
   './data/libya-500.json',
   './data/eu.json',
-  './data/epa.json',
-  /* FAO/WHO Codex — written by the update agent (scripts/update-intl-dbs.mjs);
-   * absent files fail install per-entry and never break the shell. */
-  './data/fao.json'
+  './data/epa.json'
+  /* FAO/Codex removed (c5): publications are CC BY-NC-SA with unclear
+   * dataset terms — no FAO/WHO data in this round. The international
+   * alert layer (Rotterdam/Stockholm/PAN lists) stores links only. */
 ];
 
 /* OCR engine assets (tesseract.min.js itself is in SHELL so the OCR loader

@@ -90,7 +90,6 @@
       base.rup = rup;
       return base;
     }
-    if (key === 'fao') return { key: 'st.fao.off', tone: 'neutral', raw: st };
     return { key: 'st.unknown', tone: 'neutral', raw: st };
   }
 

@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>أداة مراجعة المقابلة بالأصل — المستشار الزراعي</title>
+<!--
+  tools/verify-decision.html — أداة مراجعة القرارين مقابل الأصل الرسمي
+  ===================================================================
+  صفحة ثابتة بلا خادم. تعرض صفوف القاعدة بالترتيب الرسمي مع خانة مراجعة
+  لكل صف (صحيح / خطأ / ملاحظة) وتصدير النتائج إلى ملف. يقابلها المستخدم
+  بالأصل الورقي (أو الصور مع مراعاة الميل).
+
+  - لا تُنشر مع التطبيق ولا تُخزَّن في ذاكرة العمل دون اتصال (خارج sw.js).
+  - لا إيموجي. الألوان من نظام التطبيق. لا اتصال بأي نطاق خارجي.
+  - النتائج تُحفظ محليًا في this browser (localStorage) وتُصدَّر يدويًا.
+-->
+<style>
+  :root {
+    --bg: #121e18; --card: #16211b; --nav: #17211d;
+    --primary: #2e7b4b; --text: #e8efe9; --muted: #94a3b8;
+    --ban: #ef4444; --caution: #f59e0b; --info: #3b82f6;
+    --line: #24312a;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.6 "Segoe UI", Tahoma, sans-serif; }
+  header { background: var(--nav); padding: 12px 16px; border-bottom: 1px solid var(--line); position: sticky; top: 0; }
+  header h1 { margin: 0 0 6px; font-size: 16px; }
+  .bar { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  select, button, input[type=file] {
+    background: var(--card); color: var(--text); border: 1px solid var(--line);
+    border-radius: 8px; padding: 8px 12px; font: inherit; min-height: 44px; cursor: pointer;
+  }
+  button.primary { background: var(--primary); border-color: var(--primary); }
+  .progress { color: var(--muted); font-size: 12px; }
+  main { padding: 12px 16px 80px; max-width: 1100px; margin: 0 auto; }
+  .row { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; margin: 8px 0; }
+  .row .head { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+  .no { color: var(--muted); min-width: 44px; }
+  .name { font-weight: 600; }
+  .cas { direction: ltr; unicode-bidi: embed; background: var(--nav); border: 1px solid var(--line); border-radius: 6px; padding: 1px 8px; font-family: Consolas, monospace; font-size: 13px; }
+  .st { border-radius: 6px; padding: 1px 8px; font-size: 12px; border: 1px solid var(--line); }
+  .st.Approved { color: var(--primary); } .st.REV { color: var(--info); } .st.RAR { color: var(--caution); }
+  .st REV-star, .st["data-star"] { color: var(--caution); }
+  .badsum { color: var(--caution); font-size: 12px; }
+  .verdict { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+  .verdict label { border: 1px solid var(--line); border-radius: 8px; padding: 6px 12px; cursor: pointer; min-height: 44px; display: inline-flex; align-items: center; }
+  .verdict input { margin-inline-end: 6px; }
+  .verdict label.ok.on { border-color: var(--primary); color: var(--primary); }
+  .verdict label.bad.on { border-color: var(--ban); color: var(--ban); }
+  .verdict label.note.on { border-color: var(--info); color: var(--info); }
+  .note-in { width: 100%; margin-top: 6px; background: var(--nav); border: 1px solid var(--line); color: var(--text); border-radius: 8px; padding: 8px; font: inherit; display: none; }
+  footer { position: fixed; bottom: 0; inset-inline: 0; background: var(--nav); border-top: 1px solid var(--line); padding: 10px 16px; display: flex; gap: 10px; align-items: center; }
+  .hint { color: var(--muted); font-size: 12px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>أداة مراجعة المقابلة بالأصل — قرر 500 / قائمة المحظورات</h1>
+  <div class="bar">
+    <select id="src">
+      <option value="libya-500">قرار 500 — القائمة المؤقتة (411)</option>
+      <option value="libya-248">قائمة المحظورات (77)</option>
+    </select>
+    <button id="load" class="primary">تحميل الصفوف</button>
+    <button id="export">تصدير النتائج</button>
+    <button id="clear">مسح مراجعاتي</button>
+    <span class="progress" id="prog"></span>
+  </div>
+  <div class="hint">افتح الملف مباشرة (file://) أو من خادم محلي. الصفوف بترتيبها الرسمي — قابلها بالأصل صفًا صفًا. لا يُرسل شيء إلى أي خادم.</div>
+</header>
+<main id="list"></main>
+<footer>
+  <span class="hint" id="saved">—</span>
+</footer>
+<script>
+(function () {
+  'use strict';
+  var KEY = 'verify-decision-v1-';
+  var current = 'libya-500';
+  var reviews = {};
+  try { reviews = JSON.parse(localStorage.getItem(KEY + current) || '{}'); } catch (e) { reviews = {}; }
+
+  function $(s) { return document.querySelector(s); }
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (m) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m]; }); }
+
+  /* CAS checksum (same rule as src/judge.js) */
+  function checksum(cas) {
+    var d = String(cas || '').replace(/[^0-9]/g, '');
+    if (d.length < 5 || d.length > 11) return null;
+    var chk = Number(d[d.length - 1]), sum = 0;
+    for (var i = 0; i < d.length - 1; i++) sum += Number(d[d.length - 2 - i]) * (i + 1);
+    return sum % 10 === chk;
+  }
+
+  function saveState() {
+    localStorage.setItem(KEY + current, JSON.stringify(reviews));
+    var done = Object.keys(reviews).length;
+    $('#saved').textContent = 'محفوظ محليًا: ' + done + ' صفًا مُراجَعًا';
+  }
+
+  function render(rows) {
+    var box = $('#list');
+    var html = [];
+    for (var i = 0; i < rows.length; i++) {
+      var r = rows[i];
+      var casList = String(r.cas || '').split(/\n+/).filter(Boolean);
+      var casHtml = casList.map(function (c) {
+        var v = checksum(c);
+        var flag = v === false ? ' <span class="badsum">رقم التحقق لا يجتاز (تالف في المصدر — انقله كما هو)</span>' : '';
+        return '<span class="cas">' + esc(c) + '</span>' + flag;
+      }).join(' ');
+      var st = esc(r.status || '');
+      var star = /\*/.test(st) ? ' data-star="1"' : '';
+      var rv = reviews[i] || {};
+      html.push(
+        '<div class="row" data-i="' + i + '">' +
+        '<div class="head"><span class="no">' + esc(r.row != null ? r.row : (i + 1)) + '</span>' +
+        '<span class="name">' + esc(String(r.name).split(/\n+/)[0]) + '</span>' +
+        casHtml + '<span class="st" ' + star + '>' + st + '</span>' +
+        '<span class="hint">' + esc(r.category || '') + '</span></div>' +
+        '<div class="verdict">' +
+        '<label class="ok ' + (rv.v === 'ok' ? 'on' : '') + '"><input type="radio" name="v' + i + '" value="ok"' + (rv.v === 'ok' ? ' checked' : '') + '>صحيح</label>' +
+        '<label class="bad ' + (rv.v === 'bad' ? 'on' : '') + '"><input type="radio" name="v' + i + '" value="bad"' + (rv.v === 'bad' ? ' checked' : '') + '>خطأ</label>' +
+        '<label class="note ' + (rv.v === 'note' ? 'on' : '') + '"><input type="radio" name="v' + i + '" value="note"' + (rv.v === 'note' ? ' checked' : '') + '>ملاحظة</label>' +
+        '</div>' +
+        '<textarea class="note-in" placeholder="ملاحظة اختيارية (ما رأيته في الأصل حرفيًا)">' + esc(rv.n || '') + '</textarea>' +
+        '</div>');
+    }
+    box.innerHTML = html.join('');
+    box.onchange = function (e) {
+      var rowEl = e.target.closest('.row');
+      if (!rowEl) return;
+      var i = rowEl.getAttribute('data-i');
+      var rv = reviews[i] = reviews[i] || {};
+      if (e.target.type === 'radio') {
+        rv.v = e.target.value;
+        var labels = rowEl.querySelectorAll('.verdict label');
+        for (var j = 0; j < labels.length; j++) labels[j].className = labels[j].className.replace(/\s*on/g, '') + (labels[j].querySelector('input').checked ? ' on' : '');
+        if (e.target.value !== 'note') {
+          var ta = rowEl.querySelector('.note-in'); ta.style.display = 'none';
+        } else {
+          rowEl.querySelector('.note-in').style.display = 'block';
+        }
+      }
+      saveState();
+    };
+    box.oninput = function (e) {
+      if (e.target.tagName !== 'TEXTAREA') return;
+      var rowEl = e.target.closest('.row');
+      var i = rowEl.getAttribute('data-i');
+      var rv = reviews[i] = reviews[i] || {};
+      rv.n = e.target.value;
+      saveState();
+    };
+    var done = Object.keys(reviews).length;
+    $('#prog').textContent = rows.length + ' صفًا — مُراجَع ' + done;
+    saveState();
+  }
+
+  function load() {
+    current = $('#src').value;
+    try { reviews = JSON.parse(localStorage.getItem(KEY + current) || '{}'); } catch (e) { reviews = {}; }
+    fetch('../data/' + current + '.json', { cache: 'no-store' })
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        var rows = d.rows.slice().sort(function (a, b) { return (a.row || 0) - (b.row || 0); });
+        render(rows);
+      })
+      .catch(function () {
+        $('#list').innerHTML = '<p class="hint">تعذر تحميل ../data/' + current + '.json — افتح الأداة عبر خادم محلي من جذر المستودع (مثل: python3 -m http.server).</p>';
+      });
+  }
+
+  $('#load').addEventListener('click', load);
+  $('#src').addEventListener('change', load);
+  $('#clear').addEventListener('click', function () {
+    if (!confirm('مسح كل مراجعات هذه القاعدة من هذا المتصفح؟')) return;
+    reviews = {};
+    saveState();
+    load();
+  });
+  $('#export').addEventListener('click', function () {
+    var rows = [];
+    var all = document.querySelectorAll('.row');
+    for (var i = 0; i < all.length; i++) {
+      var el = all[i];
+      var idx = el.getAttribute('data-i');
+      var rv = reviews[idx] || {};
+      rows.push({
+        official_no: el.querySelector('.no').textContent,
+        verdict: rv.v || '',
+        note: rv.n || ''
+      });
+    }
+    var blob = new Blob([JSON.stringify({ source: current, exported: new Date().toISOString(), reviews: rows }, null, 1)], { type: 'application/json' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'verify-' + current + '-' + new Date().toISOString().slice(0, 10) + '.json';
+    document.body.appendChild(a); a.click(); a.remove();
+  });
+
+  load();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,261 @@
+# الأزواج المتقاربة (تقرير آلي — 2026-09-20)
+
+> أزواج سجلين برقمَي CAS مختلفين قد يظهر أحدهما نتيجةً للآخر. قاعدة الأمان: لا يُعرض أي زوج منها كتطابق مؤكد دون لافتة ملتبس/احتمالي (اختبار `tests/namepairs.test.mjs` يفشل إن خالفه العرض).
+
+- الإجمالي: **1561** زوجًا
+- same-name (اسم متطابق، CAS مختلف): 61
+- containment (احتواء ≥72%): 166
+- fuzzy (تشابه ≥80%): 1334
+
+> (عرض أول 250 زوجًا فقط؛ الإحصاء أعلاه كامل)
+
+- `libya-248#3` 2,4-D ((2,4-dichlorophenoxy) acetic acid) [94-75-7]  ↔  `epa#95` 2,4,5-Trichlorophenoxyacetic acid [93-76-5] — 87%
+- `libya-248#10` Alpha hexachloro cyclohexane [58-89-9]  ↔  `libya-248#16` Beta hexachloro cyclohexane [319-85-7] — 85%
+- `libya-248#18` Bromoxynil octanoate [34681-10-2]  ↔  `epa#1248` Bromoxynil octanoate [1689-99-2] — 100%
+- `libya-248#18` Bromoxynil octanoate [34681-10-2]  ↔  `epa#1610` Bromoxynil heptanoate [56634-95-8] — 85%
+- `libya-248#19` Butocarboxim [34681-10-2]  ↔  `libya-248#20` Butoxycarboxim [34681-23-7] — 86%
+- `libya-248#19` Butocarboxim [34681-10-2]  ↔  `eu#184` Butoxycarboxim [noCAS] — 86%
+- `libya-248#19` Butocarboxim [34681-10-2]  ↔  `epa#423` Butoxycarboxim [34681-23-7] — 86%
+- `libya-248#20` Butoxycarboxim [34681-23-7]  ↔  `eu#183` Butocarboxim [34681-10-2] — 86%
+- `libya-248#20` Butoxycarboxim [34681-23-7]  ↔  `eu#184` Butoxycarboxim [noCAS] — 100%
+- `libya-248#22` Captafol [2425-06-1]  ↔  `epa#456` Captafol [2939-80-2] — 100%
+- `libya-248#29` Chlordane [57-74-9]  ↔  `eu#227` Chlordane [12789-03-6] — 100%
+- `libya-248#33` DDT [50-29-3]  ↔  `eu#302` DDT [noCAS] — 100%
+- `libya-248#36` Dicrotophos [141-66-2]  ↔  `eu#325` Dicrotophos [3735-78-2] — 100%
+- `libya-248#39` Dimethoate [60-51-5]  ↔  `eu#666` Omethoate [1113-02-6] — 80%
+- `libya-248#49` Hexachlorobenzene [118-74-1]  ↔  `epa#485` Chlorobenzene [108-90-7] — 73%
+- `libya-248#50` Hexaconazole [79983-71-4]  ↔  `eu#385` Etaconazole [60207-93-4] — 83%
+- `libya-248#55` Maneb [12427-38-2]  ↔  `eu#581` Maneb [8018-01-7] — 100%
+- `libya-248#60` Methyl isothiocyanate [556-61-6]  ↔  `epa#1233` Allyl isothiocyanate [57-06-7] — 80%
+- `libya-248#71` Propineb [12071-83-9]  ↔  `eu#785` Propineb [9016-72-2] — 100%
+- `libya-500#1` (E)-11-Tetradecen-1-yl acetate (SCLP Acetates) [33189-72-9]  ↔  `libya-500#3` (E)-5-Decen-1-yl acetate (SCLP Acetates) [38421-90-8] — 80%
+- `libya-500#1` (E)-11-Tetradecen-1-yl acetate (SCLP Acetates) [33189-72-9]  ↔  `libya-500#4` (E)-8-Dodecen-1-yl acetate (SCLP Acetates) [38363-29-0] — 80%
+- `libya-500#1` (E)-11-Tetradecen-1-yl acetate (SCLP Acetates) [33189-72-9]  ↔  `libya-500#10` (E,Z)-3,8-Tetradecadien-1-yl acetate (SCLP Aceta [noCAS] — 85%
+- `libya-500#1` (E)-11-Tetradecen-1-yl acetate (SCLP Acetates) [33189-72-9]  ↔  `libya-500#12` (E,Z,Z)-3,8,11-Tetradecatrien-1-yl acetate (SCLP [noCAS] — 81%
+- `libya-500#1` (E)-11-Tetradecen-1-yl acetate (SCLP Acetates) [33189-72-9]  ↔  `libya-500#14` (Z)-11-Hexadecen-1-yl acetate (SCLP Acetates) [34010-21-4] — 89%
+- `libya-500#1` (E)-11-Tetradecen-1-yl acetate (SCLP Acetates) [33189-72-9]  ↔  `libya-500#16` (Z)-11-Tetradecen-1-yl acetate (SCLP Acetates) [20711-10-8] — 97%
+- `libya-500#1` (E)-11-Tetradecen-1-yl acetate (SCLP Acetates) [33189-72-9]  ↔  `libya-500#23` (Z)-8-Tetradecen-1-yl acetate (SCLP Acetates) [noCAS] — 91%
+- `libya-500#1` (E)-11-Tetradecen-1-yl acetate (SCLP Acetates) [33189-72-9]  ↔  `libya-500#27` (Z)-9-Tetradecen-1-yl acetate (SCLP Acetates) [16725-53-4] — 91%
+- `libya-500#1` (E)-11-Tetradecen-1-yl acetate (SCLP Acetates) [33189-72-9]  ↔  `libya-500#28` (Z,E)-9,12-Tetradecadien-1-yl acetate (SCLP - Ac [31654-77-0] — 85%
+- `libya-500#1` (E)-11-Tetradecen-1-yl acetate (SCLP Acetates) [33189-72-9]  ↔  `libya-500#418` n-Tetradecylacetate (SCLP Acetates) [noCAS] — 83%
+- `libya-500#1` (E)-11-Tetradecen-1-yl acetate (SCLP Acetates) [33189-72-9]  ↔  `eu#1110` (E)-5-Decen-1-yl acetate (SCLP Acetates) [38421-90-8] — 80%
+- `libya-500#1` (E)-11-Tetradecen-1-yl acetate (SCLP Acetates) [33189-72-9]  ↔  `eu#1111` (E)-8-Dodecen-1-yl acetate (SCLP Acetates) [38363-29-0] — 80%
+- `libya-500#1` (E)-11-Tetradecen-1-yl acetate (SCLP Acetates) [33189-72-9]  ↔  `eu#1117` (E,Z)-3,8-Tetradecadien-1-yl acetate (SCLP Aceta [noCAS] — 85%
+- `libya-500#1` (E)-11-Tetradecen-1-yl acetate (SCLP Acetates) [33189-72-9]  ↔  `eu#1119` (E,Z,Z)-3,8,11-Tetradecatrien-1-yl acetate (SCLP [noCAS] — 81%
+- `libya-500#1` (E)-11-Tetradecen-1-yl acetate (SCLP Acetates) [33189-72-9]  ↔  `eu#1121` (Z)-11-Hexadecen-1-yl acetate (SCLP Acetates) [34010-21-4] — 89%
+- `libya-500#1` (E)-11-Tetradecen-1-yl acetate (SCLP Acetates) [33189-72-9]  ↔  `eu#1123` (Z)-11-Tetradecen-1-yl acetate (SCLP Acetates) [20711-10-8] — 97%
+- `libya-500#1` (E)-11-Tetradecen-1-yl acetate (SCLP Acetates) [33189-72-9]  ↔  `eu#1130` (Z)-8-Tetradecen-1-yl acetate (SCLP Acetates) [noCAS] — 91%
+- `libya-500#1` (E)-11-Tetradecen-1-yl acetate (SCLP Acetates) [33189-72-9]  ↔  `eu#1134` (Z)-9-Tetradecen-1-yl acetate (SCLP Acetates) [16725-53-4] — 91%
+- `libya-500#1` (E)-11-Tetradecen-1-yl acetate (SCLP Acetates) [33189-72-9]  ↔  `eu#1136` (Z,E)-9,11-tetradecadien-1-yl-acetate (SCLP Acet [noCAS] — 88%
+- `libya-500#1` (E)-11-Tetradecen-1-yl acetate (SCLP Acetates) [33189-72-9]  ↔  `eu#1137` (Z,E)-9,12-Tetradecadien-1-yl acetate (SCLP  - A [31654-77-0] — 85%
+- `libya-500#1` (E)-11-Tetradecen-1-yl acetate (SCLP Acetates) [33189-72-9]  ↔  `eu#1352` n-Tetradecylacetate (SCLP Acetates) [noCAS] — 83%
+- `libya-500#2` (E)-5-Decen-1-ol (SCLP Alcohols) [56578-18-8]  ↔  `libya-500#20` (Z)-8-Dodecen-1-ol (SCLP Alcohols) [40642-40-8] — 83%
+- `libya-500#2` (E)-5-Decen-1-ol (SCLP Alcohols) [56578-18-8]  ↔  `libya-500#160` Dodecan-1-ol (SCLP Alcohols) [112-53-8] — 86%
+- `libya-500#2` (E)-5-Decen-1-ol (SCLP Alcohols) [56578-18-8]  ↔  `libya-500#382` Tetradecan-1-ol (SCLP Alcohols) [63393-82-8] — 80%
+- `libya-500#2` (E)-5-Decen-1-ol (SCLP Alcohols) [56578-18-8]  ↔  `eu#1127` (Z)-8-Dodecen-1-ol (SCLP Alcohols) [40642-40-8] — 83%
+- `libya-500#2` (E)-5-Decen-1-ol (SCLP Alcohols) [56578-18-8]  ↔  `eu#1254` Dodecan-1-ol (SCLP Alcohols) [112-53-8] — 86%
+- `libya-500#2` (E)-5-Decen-1-ol (SCLP Alcohols) [56578-18-8]  ↔  `eu#1450` Tetradecan-1-ol (SCLP Alcohols) [63393-82-8] — 80%
+- `libya-500#3` (E)-5-Decen-1-yl acetate (SCLP Acetates) [38421-90-8]  ↔  `libya-500#4` (E)-8-Dodecen-1-yl acetate (SCLP Acetates) [38363-29-0] — 90%
+- `libya-500#3` (E)-5-Decen-1-yl acetate (SCLP Acetates) [38421-90-8]  ↔  `libya-500#14` (Z)-11-Hexadecen-1-yl acetate (SCLP Acetates) [34010-21-4] — 82%
+- `libya-500#3` (E)-5-Decen-1-yl acetate (SCLP Acetates) [38421-90-8]  ↔  `libya-500#16` (Z)-11-Tetradecen-1-yl acetate (SCLP Acetates) [20711-10-8] — 80%
+- `libya-500#3` (E)-5-Decen-1-yl acetate (SCLP Acetates) [38421-90-8]  ↔  `libya-500#19` (Z)-7-dodecen-1-yl acetate (SCLP Acetates) [noCAS] — 87%
+- `libya-500#3` (E)-5-Decen-1-yl acetate (SCLP Acetates) [38421-90-8]  ↔  `libya-500#21` (Z)-8-Dodecen-1-yl acetate (SCLP Acetates) [28079-04-1] — 87%
+- `libya-500#3` (E)-5-Decen-1-yl acetate (SCLP Acetates) [38421-90-8]  ↔  `libya-500#23` (Z)-8-Tetradecen-1-yl acetate (SCLP Acetates) [noCAS] — 82%
+- `libya-500#3` (E)-5-Decen-1-yl acetate (SCLP Acetates) [38421-90-8]  ↔  `libya-500#24` (Z)-9-Dodecen-1-yl acetate (SCLP Acetates) [16974-11-1] — 87%
+- `libya-500#3` (E)-5-Decen-1-yl acetate (SCLP Acetates) [38421-90-8]  ↔  `libya-500#27` (Z)-9-Tetradecen-1-yl acetate (SCLP Acetates) [16725-53-4] — 82%
+- `libya-500#3` (E)-5-Decen-1-yl acetate (SCLP Acetates) [38421-90-8]  ↔  `libya-500#161` Dodecyl acetate (SCLP Acetates) [112-66-3] — 83%
+- `libya-500#3` (E)-5-Decen-1-yl acetate (SCLP Acetates) [38421-90-8]  ↔  `eu#1108` (E)-11-Tetradecen-1-yl acetate (SCLP Acetates) [33189-72-9] — 80%
+- `libya-500#3` (E)-5-Decen-1-yl acetate (SCLP Acetates) [38421-90-8]  ↔  `eu#1111` (E)-8-Dodecen-1-yl acetate (SCLP Acetates) [38363-29-0] — 90%
+- `libya-500#3` (E)-5-Decen-1-yl acetate (SCLP Acetates) [38421-90-8]  ↔  `eu#1121` (Z)-11-Hexadecen-1-yl acetate (SCLP Acetates) [34010-21-4] — 82%
+- `libya-500#3` (E)-5-Decen-1-yl acetate (SCLP Acetates) [38421-90-8]  ↔  `eu#1123` (Z)-11-Tetradecen-1-yl acetate (SCLP Acetates) [20711-10-8] — 80%
+- `libya-500#3` (E)-5-Decen-1-yl acetate (SCLP Acetates) [38421-90-8]  ↔  `eu#1125` (Z)-7-dodecen-1-yl acetate (SCLP Actetates) [noCAS] — 84%
+- `libya-500#3` (E)-5-Decen-1-yl acetate (SCLP Acetates) [38421-90-8]  ↔  `eu#1128` (Z)-8-Dodecen-1-yl acetate (SCLP Actetates) [28079-04-1] — 84%
+- `libya-500#3` (E)-5-Decen-1-yl acetate (SCLP Acetates) [38421-90-8]  ↔  `eu#1130` (Z)-8-Tetradecen-1-yl acetate (SCLP Acetates) [noCAS] — 82%
+- `libya-500#3` (E)-5-Decen-1-yl acetate (SCLP Acetates) [38421-90-8]  ↔  `eu#1131` (Z)-9-Dodecen-1-yl acetate (SCLP Acetates) [16974-11-1] — 87%
+- `libya-500#3` (E)-5-Decen-1-yl acetate (SCLP Acetates) [38421-90-8]  ↔  `eu#1134` (Z)-9-Tetradecen-1-yl acetate (SCLP Acetates) [16725-53-4] — 82%
+- `libya-500#3` (E)-5-Decen-1-yl acetate (SCLP Acetates) [38421-90-8]  ↔  `eu#1255` Dodecyl acetate (SCLP Acetates) [112-66-3] — 83%
+- `libya-500#4` (E)-8-Dodecen-1-yl acetate (SCLP Acetates) [38363-29-0]  ↔  `libya-500#5` (E,E)-7,9-Dodecadien-1-yl acetate (SCLP Acetates [noCAS] — 83%
+- `libya-500#4` (E)-8-Dodecen-1-yl acetate (SCLP Acetates) [38363-29-0]  ↔  `libya-500#7` (E,E)-8,10-Dodecadien-1-yl acetate (SCLP Acetate [noCAS] — 84%
+- `libya-500#4` (E)-8-Dodecen-1-yl acetate (SCLP Acetates) [38363-29-0]  ↔  `libya-500#11` (E,Z)-7,9-Dodecadien-1-yl acetate (SCLP Acetates [54364-62-4] — 83%
+- `libya-500#4` (E)-8-Dodecen-1-yl acetate (SCLP Acetates) [38363-29-0]  ↔  `libya-500#16` (Z)-11-Tetradecen-1-yl acetate (SCLP Acetates) [20711-10-8] — 80%
+- `libya-500#4` (E)-8-Dodecen-1-yl acetate (SCLP Acetates) [38363-29-0]  ↔  `libya-500#19` (Z)-7-dodecen-1-yl acetate (SCLP Acetates) [noCAS] — 94%
+- `libya-500#4` (E)-8-Dodecen-1-yl acetate (SCLP Acetates) [38363-29-0]  ↔  `libya-500#21` (Z)-8-Dodecen-1-yl acetate (SCLP Acetates) [28079-04-1] — 97%
+- `libya-500#4` (E)-8-Dodecen-1-yl acetate (SCLP Acetates) [38363-29-0]  ↔  `libya-500#23` (Z)-8-Tetradecen-1-yl acetate (SCLP Acetates) [noCAS] — 82%
+- `libya-500#4` (E)-8-Dodecen-1-yl acetate (SCLP Acetates) [38363-29-0]  ↔  `libya-500#24` (Z)-9-Dodecen-1-yl acetate (SCLP Acetates) [16974-11-1] — 94%
+- `libya-500#4` (E)-8-Dodecen-1-yl acetate (SCLP Acetates) [38363-29-0]  ↔  `libya-500#27` (Z)-9-Tetradecen-1-yl acetate (SCLP Acetates) [16725-53-4] — 82%
+- `libya-500#4` (E)-8-Dodecen-1-yl acetate (SCLP Acetates) [38363-29-0]  ↔  `libya-500#161` Dodecyl acetate (SCLP Acetates) [112-66-3] — 84%
+- `libya-500#4` (E)-8-Dodecen-1-yl acetate (SCLP Acetates) [38363-29-0]  ↔  `eu#1108` (E)-11-Tetradecen-1-yl acetate (SCLP Acetates) [33189-72-9] — 80%
+- `libya-500#4` (E)-8-Dodecen-1-yl acetate (SCLP Acetates) [38363-29-0]  ↔  `eu#1110` (E)-5-Decen-1-yl acetate (SCLP Acetates) [38421-90-8] — 90%
+- `libya-500#4` (E)-8-Dodecen-1-yl acetate (SCLP Acetates) [38363-29-0]  ↔  `eu#1112` (E,E)-7,9-Dodecadien-1-yl acetate (SCLP Acetates [noCAS] — 83%
+- `libya-500#4` (E)-8-Dodecen-1-yl acetate (SCLP Acetates) [38363-29-0]  ↔  `eu#1114` (E,E)-8,10-Dodecadien-1-yl acetate (SCLP Acetate [noCAS] — 84%
+- `libya-500#4` (E)-8-Dodecen-1-yl acetate (SCLP Acetates) [38363-29-0]  ↔  `eu#1118` (E,Z)-7,9-Dodecadien-1-yl acetate (SCLP Acetates [54364-62-4] — 83%
+- `libya-500#4` (E)-8-Dodecen-1-yl acetate (SCLP Acetates) [38363-29-0]  ↔  `eu#1123` (Z)-11-Tetradecen-1-yl acetate (SCLP Acetates) [20711-10-8] — 80%
+- `libya-500#4` (E)-8-Dodecen-1-yl acetate (SCLP Acetates) [38363-29-0]  ↔  `eu#1125` (Z)-7-dodecen-1-yl acetate (SCLP Actetates) [noCAS] — 91%
+- `libya-500#4` (E)-8-Dodecen-1-yl acetate (SCLP Acetates) [38363-29-0]  ↔  `eu#1128` (Z)-8-Dodecen-1-yl acetate (SCLP Actetates) [28079-04-1] — 94%
+- `libya-500#4` (E)-8-Dodecen-1-yl acetate (SCLP Acetates) [38363-29-0]  ↔  `eu#1130` (Z)-8-Tetradecen-1-yl acetate (SCLP Acetates) [noCAS] — 82%
+- `libya-500#4` (E)-8-Dodecen-1-yl acetate (SCLP Acetates) [38363-29-0]  ↔  `eu#1131` (Z)-9-Dodecen-1-yl acetate (SCLP Acetates) [16974-11-1] — 94%
+- `libya-500#4` (E)-8-Dodecen-1-yl acetate (SCLP Acetates) [38363-29-0]  ↔  `eu#1134` (Z)-9-Tetradecen-1-yl acetate (SCLP Acetates) [16725-53-4] — 82%
+- `libya-500#4` (E)-8-Dodecen-1-yl acetate (SCLP Acetates) [38363-29-0]  ↔  `eu#1255` Dodecyl acetate (SCLP Acetates) [112-66-3] — 84%
+- `libya-500#5` (E,E)-7,9-Dodecadien-1-yl acetate (SCLP Acetates [noCAS]  ↔  `libya-500#8` (E,Z)-2,13-Octadecadien-1-yl acetate (SCLP Aceta [86252-65-5] — 82%
+- `libya-500#5` (E,E)-7,9-Dodecadien-1-yl acetate (SCLP Acetates [noCAS]  ↔  `libya-500#11` (E,Z)-7,9-Dodecadien-1-yl acetate (SCLP Acetates [54364-62-4] — 97%
+- `libya-500#5` (E,E)-7,9-Dodecadien-1-yl acetate (SCLP Acetates [noCAS]  ↔  `libya-500#21` (Z)-8-Dodecen-1-yl acetate (SCLP Acetates) [28079-04-1] — 81%
+- `libya-500#5` (E,E)-7,9-Dodecadien-1-yl acetate (SCLP Acetates [noCAS]  ↔  `libya-500#24` (Z)-9-Dodecen-1-yl acetate (SCLP Acetates) [16974-11-1] — 83%
+- `libya-500#5` (E,E)-7,9-Dodecadien-1-yl acetate (SCLP Acetates [noCAS]  ↔  `eu#1111` (E)-8-Dodecen-1-yl acetate (SCLP Acetates) [38363-29-0] — 83%
+- `libya-500#5` (E,E)-7,9-Dodecadien-1-yl acetate (SCLP Acetates [noCAS]  ↔  `eu#1115` (E,Z)-2,13-Octadecadien-1-yl acetate (SCLP Aceta [86252-65-5] — 82%
+- `libya-500#5` (E,E)-7,9-Dodecadien-1-yl acetate (SCLP Acetates [noCAS]  ↔  `eu#1118` (E,Z)-7,9-Dodecadien-1-yl acetate (SCLP Acetates [54364-62-4] — 97%
+- `libya-500#5` (E,E)-7,9-Dodecadien-1-yl acetate (SCLP Acetates [noCAS]  ↔  `eu#1131` (Z)-9-Dodecen-1-yl acetate (SCLP Acetates) [16974-11-1] — 83%
+- `libya-500#7` (E,E)-8,10-Dodecadien-1-yl acetate (SCLP Acetate [noCAS]  ↔  `libya-500#8` (E,Z)-2,13-Octadecadien-1-yl acetate (SCLP Aceta [86252-65-5] — 82%
+- `libya-500#7` (E,E)-8,10-Dodecadien-1-yl acetate (SCLP Acetate [noCAS]  ↔  `libya-500#11` (E,Z)-7,9-Dodecadien-1-yl acetate (SCLP Acetates [54364-62-4] — 89%
+- `libya-500#7` (E,E)-8,10-Dodecadien-1-yl acetate (SCLP Acetate [noCAS]  ↔  `libya-500#21` (Z)-8-Dodecen-1-yl acetate (SCLP Acetates) [28079-04-1] — 81%
+- `libya-500#7` (E,E)-8,10-Dodecadien-1-yl acetate (SCLP Acetate [noCAS]  ↔  `libya-500#28` (Z,E)-9,12-Tetradecadien-1-yl acetate (SCLP - Ac [31654-77-0] — 80%
+- `libya-500#7` (E,E)-8,10-Dodecadien-1-yl acetate (SCLP Acetate [noCAS]  ↔  `eu#1111` (E)-8-Dodecen-1-yl acetate (SCLP Acetates) [38363-29-0] — 84%
+- `libya-500#7` (E,E)-8,10-Dodecadien-1-yl acetate (SCLP Acetate [noCAS]  ↔  `eu#1115` (E,Z)-2,13-Octadecadien-1-yl acetate (SCLP Aceta [86252-65-5] — 82%
+- `libya-500#7` (E,E)-8,10-Dodecadien-1-yl acetate (SCLP Acetate [noCAS]  ↔  `eu#1118` (E,Z)-7,9-Dodecadien-1-yl acetate (SCLP Acetates [54364-62-4] — 89%
+- `libya-500#7` (E,E)-8,10-Dodecadien-1-yl acetate (SCLP Acetate [noCAS]  ↔  `eu#1137` (Z,E)-9,12-Tetradecadien-1-yl acetate (SCLP  - A [31654-77-0] — 80%
+- `libya-500#8` (E,Z)-2,13-Octadecadien-1-yl acetate (SCLP Aceta [86252-65-5]  ↔  `libya-500#9` (E,Z)-3,13-Octadecadien-1-yl acetate (SCLP Aceta [noCAS] — 97%
+- `libya-500#8` (E,Z)-2,13-Octadecadien-1-yl acetate (SCLP Aceta [86252-65-5]  ↔  `libya-500#10` (E,Z)-3,8-Tetradecadien-1-yl acetate (SCLP Aceta [noCAS] — 85%
+- `libya-500#8` (E,Z)-2,13-Octadecadien-1-yl acetate (SCLP Aceta [86252-65-5]  ↔  `libya-500#11` (E,Z)-7,9-Dodecadien-1-yl acetate (SCLP Acetates [54364-62-4] — 85%
+- `libya-500#8` (E,Z)-2,13-Octadecadien-1-yl acetate (SCLP Aceta [86252-65-5]  ↔  `libya-500#28` (Z,E)-9,12-Tetradecadien-1-yl acetate (SCLP - Ac [31654-77-0] — 83%
+- `libya-500#8` (E,Z)-2,13-Octadecadien-1-yl acetate (SCLP Aceta [86252-65-5]  ↔  `libya-500#30` (Z,Z)-7,11-Hexadecadien-1-yl acetate (SCLP Aceta [noCAS] — 85%
+- `libya-500#8` (E,Z)-2,13-Octadecadien-1-yl acetate (SCLP Aceta [86252-65-5]  ↔  `eu#1112` (E,E)-7,9-Dodecadien-1-yl acetate (SCLP Acetates [noCAS] — 82%
+- `libya-500#8` (E,Z)-2,13-Octadecadien-1-yl acetate (SCLP Aceta [86252-65-5]  ↔  `eu#1114` (E,E)-8,10-Dodecadien-1-yl acetate (SCLP Acetate [noCAS] — 82%
+- `libya-500#8` (E,Z)-2,13-Octadecadien-1-yl acetate (SCLP Aceta [86252-65-5]  ↔  `eu#1116` (E,Z)-3,13-Octadecadien-1-yl acetate (SCLP Aceta [noCAS] — 97%
+- `libya-500#8` (E,Z)-2,13-Octadecadien-1-yl acetate (SCLP Aceta [86252-65-5]  ↔  `eu#1117` (E,Z)-3,8-Tetradecadien-1-yl acetate (SCLP Aceta [noCAS] — 85%
+- `libya-500#8` (E,Z)-2,13-Octadecadien-1-yl acetate (SCLP Aceta [86252-65-5]  ↔  `eu#1118` (E,Z)-7,9-Dodecadien-1-yl acetate (SCLP Acetates [54364-62-4] — 85%
+- `libya-500#8` (E,Z)-2,13-Octadecadien-1-yl acetate (SCLP Aceta [86252-65-5]  ↔  `eu#1135` (Z,E)-7,11-Hexadecadien-1-yl acetate (SCLP Aceta [noCAS] — 82%
+- `libya-500#8` (E,Z)-2,13-Octadecadien-1-yl acetate (SCLP Aceta [86252-65-5]  ↔  `eu#1136` (Z,E)-9,11-tetradecadien-1-yl-acetate (SCLP Acet [noCAS] — 83%
+- `libya-500#8` (E,Z)-2,13-Octadecadien-1-yl acetate (SCLP Aceta [86252-65-5]  ↔  `eu#1137` (Z,E)-9,12-Tetradecadien-1-yl acetate (SCLP  - A [31654-77-0] — 83%
+- `libya-500#8` (E,Z)-2,13-Octadecadien-1-yl acetate (SCLP Aceta [86252-65-5]  ↔  `eu#1138` (Z,Z)-3,13-Octadecadien-1-yl acetate (SCLP Aceta [noCAS] — 95%
+- `libya-500#8` (E,Z)-2,13-Octadecadien-1-yl acetate (SCLP Aceta [86252-65-5]  ↔  `eu#1139` (Z,Z)-7,11-Hexadecadien-1-yl acetate (SCLP Aceta [noCAS] — 85%
+- `libya-500#9` (E,Z)-3,13-Octadecadien-1-yl acetate (SCLP Aceta [noCAS]  ↔  `libya-500#11` (E,Z)-7,9-Dodecadien-1-yl acetate (SCLP Acetates [54364-62-4] — 85%
+- `libya-500#9` (E,Z)-3,13-Octadecadien-1-yl acetate (SCLP Aceta [noCAS]  ↔  `libya-500#28` (Z,E)-9,12-Tetradecadien-1-yl acetate (SCLP - Ac [31654-77-0] — 83%
+- `libya-500#9` (E,Z)-3,13-Octadecadien-1-yl acetate (SCLP Aceta [noCAS]  ↔  `eu#1115` (E,Z)-2,13-Octadecadien-1-yl acetate (SCLP Aceta [86252-65-5] — 97%
+- `libya-500#9` (E,Z)-3,13-Octadecadien-1-yl acetate (SCLP Aceta [noCAS]  ↔  `eu#1118` (E,Z)-7,9-Dodecadien-1-yl acetate (SCLP Acetates [54364-62-4] — 85%
+- `libya-500#9` (E,Z)-3,13-Octadecadien-1-yl acetate (SCLP Aceta [noCAS]  ↔  `eu#1137` (Z,E)-9,12-Tetradecadien-1-yl acetate (SCLP  - A [31654-77-0] — 83%
+- `libya-500#10` (E,Z)-3,8-Tetradecadien-1-yl acetate (SCLP Aceta [noCAS]  ↔  `libya-500#11` (E,Z)-7,9-Dodecadien-1-yl acetate (SCLP Acetates [54364-62-4] — 82%
+- `libya-500#10` (E,Z)-3,8-Tetradecadien-1-yl acetate (SCLP Aceta [noCAS]  ↔  `libya-500#16` (Z)-11-Tetradecen-1-yl acetate (SCLP Acetates) [20711-10-8] — 85%
+- `libya-500#10` (E,Z)-3,8-Tetradecadien-1-yl acetate (SCLP Aceta [noCAS]  ↔  `libya-500#27` (Z)-9-Tetradecen-1-yl acetate (SCLP Acetates) [16725-53-4] — 85%
+- `libya-500#10` (E,Z)-3,8-Tetradecadien-1-yl acetate (SCLP Aceta [noCAS]  ↔  `libya-500#28` (Z,E)-9,12-Tetradecadien-1-yl acetate (SCLP - Ac [31654-77-0] — 90%
+- `libya-500#10` (E,Z)-3,8-Tetradecadien-1-yl acetate (SCLP Aceta [noCAS]  ↔  `eu#1108` (E)-11-Tetradecen-1-yl acetate (SCLP Acetates) [33189-72-9] — 85%
+- `libya-500#10` (E,Z)-3,8-Tetradecadien-1-yl acetate (SCLP Aceta [noCAS]  ↔  `eu#1115` (E,Z)-2,13-Octadecadien-1-yl acetate (SCLP Aceta [86252-65-5] — 85%
+- `libya-500#10` (E,Z)-3,8-Tetradecadien-1-yl acetate (SCLP Aceta [noCAS]  ↔  `eu#1118` (E,Z)-7,9-Dodecadien-1-yl acetate (SCLP Acetates [54364-62-4] — 82%
+- `libya-500#10` (E,Z)-3,8-Tetradecadien-1-yl acetate (SCLP Aceta [noCAS]  ↔  `eu#1123` (Z)-11-Tetradecen-1-yl acetate (SCLP Acetates) [20711-10-8] — 85%
+- `libya-500#10` (E,Z)-3,8-Tetradecadien-1-yl acetate (SCLP Aceta [noCAS]  ↔  `eu#1134` (Z)-9-Tetradecen-1-yl acetate (SCLP Acetates) [16725-53-4] — 85%
+- `libya-500#10` (E,Z)-3,8-Tetradecadien-1-yl acetate (SCLP Aceta [noCAS]  ↔  `eu#1137` (Z,E)-9,12-Tetradecadien-1-yl acetate (SCLP  - A [31654-77-0] — 90%
+- `libya-500#11` (E,Z)-7,9-Dodecadien-1-yl acetate (SCLP Acetates [54364-62-4]  ↔  `libya-500#19` (Z)-7-dodecen-1-yl acetate (SCLP Acetates) [noCAS] — 86%
+- `libya-500#11` (E,Z)-7,9-Dodecadien-1-yl acetate (SCLP Acetates [54364-62-4]  ↔  `libya-500#21` (Z)-8-Dodecen-1-yl acetate (SCLP Acetates) [28079-04-1] — 83%
+- `libya-500#11` (E,Z)-7,9-Dodecadien-1-yl acetate (SCLP Acetates [54364-62-4]  ↔  `libya-500#24` (Z)-9-Dodecen-1-yl acetate (SCLP Acetates) [16974-11-1] — 86%
+- `libya-500#11` (E,Z)-7,9-Dodecadien-1-yl acetate (SCLP Acetates [54364-62-4]  ↔  `libya-500#30` (Z,Z)-7,11-Hexadecadien-1-yl acetate (SCLP Aceta [noCAS] — 82%
+- `libya-500#11` (E,Z)-7,9-Dodecadien-1-yl acetate (SCLP Acetates [54364-62-4]  ↔  `eu#1111` (E)-8-Dodecen-1-yl acetate (SCLP Acetates) [38363-29-0] — 83%
+- `libya-500#11` (E,Z)-7,9-Dodecadien-1-yl acetate (SCLP Acetates [54364-62-4]  ↔  `eu#1112` (E,E)-7,9-Dodecadien-1-yl acetate (SCLP Acetates [noCAS] — 97%
+- `libya-500#11` (E,Z)-7,9-Dodecadien-1-yl acetate (SCLP Acetates [54364-62-4]  ↔  `eu#1114` (E,E)-8,10-Dodecadien-1-yl acetate (SCLP Acetate [noCAS] — 89%
+- `libya-500#11` (E,Z)-7,9-Dodecadien-1-yl acetate (SCLP Acetates [54364-62-4]  ↔  `eu#1115` (E,Z)-2,13-Octadecadien-1-yl acetate (SCLP Aceta [86252-65-5] — 85%
+- `libya-500#11` (E,Z)-7,9-Dodecadien-1-yl acetate (SCLP Acetates [54364-62-4]  ↔  `eu#1116` (E,Z)-3,13-Octadecadien-1-yl acetate (SCLP Aceta [noCAS] — 85%
+- `libya-500#11` (E,Z)-7,9-Dodecadien-1-yl acetate (SCLP Acetates [54364-62-4]  ↔  `eu#1117` (E,Z)-3,8-Tetradecadien-1-yl acetate (SCLP Aceta [noCAS] — 82%
+- `libya-500#11` (E,Z)-7,9-Dodecadien-1-yl acetate (SCLP Acetates [54364-62-4]  ↔  `eu#1125` (Z)-7-dodecen-1-yl acetate (SCLP Actetates) [noCAS] — 83%
+- `libya-500#11` (E,Z)-7,9-Dodecadien-1-yl acetate (SCLP Acetates [54364-62-4]  ↔  `eu#1128` (Z)-8-Dodecen-1-yl acetate (SCLP Actetates) [28079-04-1] — 81%
+- `libya-500#11` (E,Z)-7,9-Dodecadien-1-yl acetate (SCLP Acetates [54364-62-4]  ↔  `eu#1131` (Z)-9-Dodecen-1-yl acetate (SCLP Acetates) [16974-11-1] — 86%
+- `libya-500#11` (E,Z)-7,9-Dodecadien-1-yl acetate (SCLP Acetates [54364-62-4]  ↔  `eu#1138` (Z,Z)-3,13-Octadecadien-1-yl acetate (SCLP Aceta [noCAS] — 82%
+- `libya-500#11` (E,Z)-7,9-Dodecadien-1-yl acetate (SCLP Acetates [54364-62-4]  ↔  `eu#1139` (Z,Z)-7,11-Hexadecadien-1-yl acetate (SCLP Aceta [noCAS] — 82%
+- `libya-500#12` (E,Z,Z)-3,8,11-Tetradecatrien-1-yl acetate (SCLP [noCAS]  ↔  `libya-500#16` (Z)-11-Tetradecen-1-yl acetate (SCLP Acetates) [20711-10-8] — 81%
+- `libya-500#12` (E,Z,Z)-3,8,11-Tetradecatrien-1-yl acetate (SCLP [noCAS]  ↔  `libya-500#28` (Z,E)-9,12-Tetradecadien-1-yl acetate (SCLP - Ac [31654-77-0] — 84%
+- `libya-500#12` (E,Z,Z)-3,8,11-Tetradecatrien-1-yl acetate (SCLP [noCAS]  ↔  `eu#1108` (E)-11-Tetradecen-1-yl acetate (SCLP Acetates) [33189-72-9] — 81%
+- `libya-500#12` (E,Z,Z)-3,8,11-Tetradecatrien-1-yl acetate (SCLP [noCAS]  ↔  `eu#1123` (Z)-11-Tetradecen-1-yl acetate (SCLP Acetates) [20711-10-8] — 81%
+- `libya-500#12` (E,Z,Z)-3,8,11-Tetradecatrien-1-yl acetate (SCLP [noCAS]  ↔  `eu#1137` (Z,E)-9,12-Tetradecadien-1-yl acetate (SCLP  - A [31654-77-0] — 84%
+- `libya-500#13` (Z)-11-Hexadecen-1-ol (SCLP Alcohols) [56683-54-6]  ↔  `libya-500#22` (Z)-8-Tetradecen-1-ol (SCLP Alcohols) [noCAS] — 81%
+- `libya-500#13` (Z)-11-Hexadecen-1-ol (SCLP Alcohols) [56683-54-6]  ↔  `libya-500#26` (Z)-9-Tetradecen-1-ol (SCLP Alcohols) [noCAS] — 81%
+- `libya-500#13` (Z)-11-Hexadecen-1-ol (SCLP Alcohols) [56683-54-6]  ↔  `eu#1129` (Z)-8-Tetradecen-1-ol (SCLP Alcohols) [noCAS] — 81%
+- `libya-500#13` (Z)-11-Hexadecen-1-ol (SCLP Alcohols) [56683-54-6]  ↔  `eu#1133` (Z)-9-Tetradecen-1-ol (SCLP Alcohols) [noCAS] — 81%
+- `libya-500#14` (Z)-11-Hexadecen-1-yl acetate (SCLP Acetates) [34010-21-4]  ↔  `libya-500#16` (Z)-11-Tetradecen-1-yl acetate (SCLP Acetates) [20711-10-8] — 91%
+- `libya-500#14` (Z)-11-Hexadecen-1-yl acetate (SCLP Acetates) [34010-21-4]  ↔  `libya-500#19` (Z)-7-dodecen-1-yl acetate (SCLP Acetates) [noCAS] — 82%
+- `libya-500#14` (Z)-11-Hexadecen-1-yl acetate (SCLP Acetates) [34010-21-4]  ↔  `libya-500#21` (Z)-8-Dodecen-1-yl acetate (SCLP Acetates) [28079-04-1] — 82%
+- `libya-500#14` (Z)-11-Hexadecen-1-yl acetate (SCLP Acetates) [34010-21-4]  ↔  `libya-500#23` (Z)-8-Tetradecen-1-yl acetate (SCLP Acetates) [noCAS] — 85%
+- `libya-500#14` (Z)-11-Hexadecen-1-yl acetate (SCLP Acetates) [34010-21-4]  ↔  `libya-500#24` (Z)-9-Dodecen-1-yl acetate (SCLP Acetates) [16974-11-1] — 82%
+- `libya-500#14` (Z)-11-Hexadecen-1-yl acetate (SCLP Acetates) [34010-21-4]  ↔  `libya-500#27` (Z)-9-Tetradecen-1-yl acetate (SCLP Acetates) [16725-53-4] — 85%
+- `libya-500#14` (Z)-11-Hexadecen-1-yl acetate (SCLP Acetates) [34010-21-4]  ↔  `libya-500#30` (Z,Z)-7,11-Hexadecadien-1-yl acetate (SCLP Aceta [noCAS] — 87%
+- `libya-500#14` (Z)-11-Hexadecen-1-yl acetate (SCLP Acetates) [34010-21-4]  ↔  `libya-500#218` Hexadecyl acetate (SCLP Acetates) [629-70-9] — 82%
+- `libya-500#14` (Z)-11-Hexadecen-1-yl acetate (SCLP Acetates) [34010-21-4]  ↔  `eu#1108` (E)-11-Tetradecen-1-yl acetate (SCLP Acetates) [33189-72-9] — 89%
+- `libya-500#14` (Z)-11-Hexadecen-1-yl acetate (SCLP Acetates) [34010-21-4]  ↔  `eu#1110` (E)-5-Decen-1-yl acetate (SCLP Acetates) [38421-90-8] — 82%
+- `libya-500#14` (Z)-11-Hexadecen-1-yl acetate (SCLP Acetates) [34010-21-4]  ↔  `eu#1123` (Z)-11-Tetradecen-1-yl acetate (SCLP Acetates) [20711-10-8] — 91%
+- `libya-500#14` (Z)-11-Hexadecen-1-yl acetate (SCLP Acetates) [34010-21-4]  ↔  `eu#1130` (Z)-8-Tetradecen-1-yl acetate (SCLP Acetates) [noCAS] — 85%
+- `libya-500#14` (Z)-11-Hexadecen-1-yl acetate (SCLP Acetates) [34010-21-4]  ↔  `eu#1131` (Z)-9-Dodecen-1-yl acetate (SCLP Acetates) [16974-11-1] — 82%
+- `libya-500#14` (Z)-11-Hexadecen-1-yl acetate (SCLP Acetates) [34010-21-4]  ↔  `eu#1134` (Z)-9-Tetradecen-1-yl acetate (SCLP Acetates) [16725-53-4] — 85%
+- `libya-500#14` (Z)-11-Hexadecen-1-yl acetate (SCLP Acetates) [34010-21-4]  ↔  `eu#1135` (Z,E)-7,11-Hexadecadien-1-yl acetate (SCLP Aceta [noCAS] — 87%
+- `libya-500#14` (Z)-11-Hexadecen-1-yl acetate (SCLP Acetates) [34010-21-4]  ↔  `eu#1136` (Z,E)-9,11-tetradecadien-1-yl-acetate (SCLP Acet [noCAS] — 80%
+- `libya-500#14` (Z)-11-Hexadecen-1-yl acetate (SCLP Acetates) [34010-21-4]  ↔  `eu#1139` (Z,Z)-7,11-Hexadecadien-1-yl acetate (SCLP Aceta [noCAS] — 87%
+- `libya-500#14` (Z)-11-Hexadecen-1-yl acetate (SCLP Acetates) [34010-21-4]  ↔  `eu#1303` Hexadecyl acetate (SCLP Acetates) [629-70-9] — 82%
+- `libya-500#15` (Z)-11-Hexadecenal (SCLP Aldehydes) [53939-28-9]  ↔  `libya-500#17` (Z)-13-Octadecenal (SCLP Aldehydes) [58594-45-9] — 85%
+- `libya-500#15` (Z)-11-Hexadecenal (SCLP Aldehydes) [53939-28-9]  ↔  `libya-500#18` (Z)-7-Tetradecenal (SCLP Aldehydes) [65128-96-3] — 81%
+- `libya-500#15` (Z)-11-Hexadecenal (SCLP Aldehydes) [53939-28-9]  ↔  `libya-500#25` (Z)-9-Hexadecenal (SCLP Aldehydes) [56219-04-6] — 93%
+- `libya-500#15` (Z)-11-Hexadecenal (SCLP Aldehydes) [53939-28-9]  ↔  `eu#1124` (Z)-13-Octadecenal (SCLP Aldehydes) [58594-45-9] — 85%
+- `libya-500#15` (Z)-11-Hexadecenal (SCLP Aldehydes) [53939-28-9]  ↔  `eu#1126` (Z)-7-Tetradecenal (SCLP Aldehydes) [65128-96-3] — 81%
+- `libya-500#15` (Z)-11-Hexadecenal (SCLP Aldehydes) [53939-28-9]  ↔  `eu#1132` (Z)-9-Hexadecenal (SCLP Aldehydes) [56219-04-6] — 93%
+- `libya-500#16` (Z)-11-Tetradecen-1-yl acetate (SCLP Acetates) [20711-10-8]  ↔  `libya-500#19` (Z)-7-dodecen-1-yl acetate (SCLP Acetates) [noCAS] — 80%
+- `libya-500#16` (Z)-11-Tetradecen-1-yl acetate (SCLP Acetates) [20711-10-8]  ↔  `libya-500#21` (Z)-8-Dodecen-1-yl acetate (SCLP Acetates) [28079-04-1] — 80%
+- `libya-500#16` (Z)-11-Tetradecen-1-yl acetate (SCLP Acetates) [20711-10-8]  ↔  `libya-500#23` (Z)-8-Tetradecen-1-yl acetate (SCLP Acetates) [noCAS] — 94%
+- `libya-500#16` (Z)-11-Tetradecen-1-yl acetate (SCLP Acetates) [20711-10-8]  ↔  `libya-500#24` (Z)-9-Dodecen-1-yl acetate (SCLP Acetates) [16974-11-1] — 80%
+- `libya-500#16` (Z)-11-Tetradecen-1-yl acetate (SCLP Acetates) [20711-10-8]  ↔  `libya-500#27` (Z)-9-Tetradecen-1-yl acetate (SCLP Acetates) [16725-53-4] — 94%
+- `libya-500#16` (Z)-11-Tetradecen-1-yl acetate (SCLP Acetates) [20711-10-8]  ↔  `libya-500#28` (Z,E)-9,12-Tetradecadien-1-yl acetate (SCLP - Ac [31654-77-0] — 85%
+- `libya-500#16` (Z)-11-Tetradecen-1-yl acetate (SCLP Acetates) [20711-10-8]  ↔  `libya-500#418` n-Tetradecylacetate (SCLP Acetates) [noCAS] — 83%
+- `libya-500#16` (Z)-11-Tetradecen-1-yl acetate (SCLP Acetates) [20711-10-8]  ↔  `eu#1108` (E)-11-Tetradecen-1-yl acetate (SCLP Acetates) [33189-72-9] — 97%
+- `libya-500#16` (Z)-11-Tetradecen-1-yl acetate (SCLP Acetates) [20711-10-8]  ↔  `eu#1110` (E)-5-Decen-1-yl acetate (SCLP Acetates) [38421-90-8] — 80%
+- `libya-500#16` (Z)-11-Tetradecen-1-yl acetate (SCLP Acetates) [20711-10-8]  ↔  `eu#1111` (E)-8-Dodecen-1-yl acetate (SCLP Acetates) [38363-29-0] — 80%
+- `libya-500#16` (Z)-11-Tetradecen-1-yl acetate (SCLP Acetates) [20711-10-8]  ↔  `eu#1117` (E,Z)-3,8-Tetradecadien-1-yl acetate (SCLP Aceta [noCAS] — 85%
+- `libya-500#16` (Z)-11-Tetradecen-1-yl acetate (SCLP Acetates) [20711-10-8]  ↔  `eu#1119` (E,Z,Z)-3,8,11-Tetradecatrien-1-yl acetate (SCLP [noCAS] — 81%
+- `libya-500#16` (Z)-11-Tetradecen-1-yl acetate (SCLP Acetates) [20711-10-8]  ↔  `eu#1121` (Z)-11-Hexadecen-1-yl acetate (SCLP Acetates) [34010-21-4] — 91%
+- `libya-500#16` (Z)-11-Tetradecen-1-yl acetate (SCLP Acetates) [20711-10-8]  ↔  `eu#1130` (Z)-8-Tetradecen-1-yl acetate (SCLP Acetates) [noCAS] — 94%
+- `libya-500#16` (Z)-11-Tetradecen-1-yl acetate (SCLP Acetates) [20711-10-8]  ↔  `eu#1131` (Z)-9-Dodecen-1-yl acetate (SCLP Acetates) [16974-11-1] — 80%
+- `libya-500#16` (Z)-11-Tetradecen-1-yl acetate (SCLP Acetates) [20711-10-8]  ↔  `eu#1134` (Z)-9-Tetradecen-1-yl acetate (SCLP Acetates) [16725-53-4] — 94%
+- `libya-500#16` (Z)-11-Tetradecen-1-yl acetate (SCLP Acetates) [20711-10-8]  ↔  `eu#1136` (Z,E)-9,11-tetradecadien-1-yl-acetate (SCLP Acet [noCAS] — 88%
+- `libya-500#16` (Z)-11-Tetradecen-1-yl acetate (SCLP Acetates) [20711-10-8]  ↔  `eu#1137` (Z,E)-9,12-Tetradecadien-1-yl acetate (SCLP  - A [31654-77-0] — 85%
+- `libya-500#16` (Z)-11-Tetradecen-1-yl acetate (SCLP Acetates) [20711-10-8]  ↔  `eu#1352` n-Tetradecylacetate (SCLP Acetates) [noCAS] — 83%
+- `libya-500#17` (Z)-13-Octadecenal (SCLP Aldehydes) [58594-45-9]  ↔  `libya-500#18` (Z)-7-Tetradecenal (SCLP Aldehydes) [65128-96-3] — 81%
+- `libya-500#17` (Z)-13-Octadecenal (SCLP Aldehydes) [58594-45-9]  ↔  `libya-500#25` (Z)-9-Hexadecenal (SCLP Aldehydes) [56219-04-6] — 81%
+- `libya-500#17` (Z)-13-Octadecenal (SCLP Aldehydes) [58594-45-9]  ↔  `eu#1122` (Z)-11-Hexadecenal (SCLP Aldehydes) [53939-28-9] — 85%
+- `libya-500#17` (Z)-13-Octadecenal (SCLP Aldehydes) [58594-45-9]  ↔  `eu#1126` (Z)-7-Tetradecenal (SCLP Aldehydes) [65128-96-3] — 81%
+- `libya-500#17` (Z)-13-Octadecenal (SCLP Aldehydes) [58594-45-9]  ↔  `eu#1132` (Z)-9-Hexadecenal (SCLP Aldehydes) [56219-04-6] — 81%
+- `libya-500#18` (Z)-7-Tetradecenal (SCLP Aldehydes) [65128-96-3]  ↔  `libya-500#25` (Z)-9-Hexadecenal (SCLP Aldehydes) [56219-04-6] — 85%
+- `libya-500#18` (Z)-7-Tetradecenal (SCLP Aldehydes) [65128-96-3]  ↔  `eu#1122` (Z)-11-Hexadecenal (SCLP Aldehydes) [53939-28-9] — 81%
+- `libya-500#18` (Z)-7-Tetradecenal (SCLP Aldehydes) [65128-96-3]  ↔  `eu#1124` (Z)-13-Octadecenal (SCLP Aldehydes) [58594-45-9] — 81%
+- `libya-500#18` (Z)-7-Tetradecenal (SCLP Aldehydes) [65128-96-3]  ↔  `eu#1132` (Z)-9-Hexadecenal (SCLP Aldehydes) [56219-04-6] — 85%
+- `libya-500#19` (Z)-7-dodecen-1-yl acetate (SCLP Acetates) [noCAS]  ↔  `libya-500#21` (Z)-8-Dodecen-1-yl acetate (SCLP Acetates) [28079-04-1] — 97%
+- `libya-500#19` (Z)-7-dodecen-1-yl acetate (SCLP Acetates) [noCAS]  ↔  `libya-500#24` (Z)-9-Dodecen-1-yl acetate (SCLP Acetates) [16974-11-1] — 97%
+- `libya-500#19` (Z)-7-dodecen-1-yl acetate (SCLP Acetates) [noCAS]  ↔  `libya-500#27` (Z)-9-Tetradecen-1-yl acetate (SCLP Acetates) [16725-53-4] — 82%
+- `libya-500#19` (Z)-7-dodecen-1-yl acetate (SCLP Acetates) [noCAS]  ↔  `libya-500#161` Dodecyl acetate (SCLP Acetates) [112-66-3] — 84%
+- `libya-500#19` (Z)-7-dodecen-1-yl acetate (SCLP Acetates) [noCAS]  ↔  `eu#1110` (E)-5-Decen-1-yl acetate (SCLP Acetates) [38421-90-8] — 87%
+- `libya-500#19` (Z)-7-dodecen-1-yl acetate (SCLP Acetates) [noCAS]  ↔  `eu#1111` (E)-8-Dodecen-1-yl acetate (SCLP Acetates) [38363-29-0] — 94%
+- `libya-500#19` (Z)-7-dodecen-1-yl acetate (SCLP Acetates) [noCAS]  ↔  `eu#1118` (E,Z)-7,9-Dodecadien-1-yl acetate (SCLP Acetates [54364-62-4] — 86%
+- `libya-500#19` (Z)-7-dodecen-1-yl acetate (SCLP Acetates) [noCAS]  ↔  `eu#1121` (Z)-11-Hexadecen-1-yl acetate (SCLP Acetates) [34010-21-4] — 82%
+- `libya-500#19` (Z)-7-dodecen-1-yl acetate (SCLP Acetates) [noCAS]  ↔  `eu#1123` (Z)-11-Tetradecen-1-yl acetate (SCLP Acetates) [20711-10-8] — 80%
+- `libya-500#19` (Z)-7-dodecen-1-yl acetate (SCLP Acetates) [noCAS]  ↔  `eu#1128` (Z)-8-Dodecen-1-yl acetate (SCLP Actetates) [28079-04-1] — 94%
+- `libya-500#19` (Z)-7-dodecen-1-yl acetate (SCLP Acetates) [noCAS]  ↔  `eu#1131` (Z)-9-Dodecen-1-yl acetate (SCLP Acetates) [16974-11-1] — 97%
+- `libya-500#19` (Z)-7-dodecen-1-yl acetate (SCLP Acetates) [noCAS]  ↔  `eu#1134` (Z)-9-Tetradecen-1-yl acetate (SCLP Acetates) [16725-53-4] — 82%
+- `libya-500#19` (Z)-7-dodecen-1-yl acetate (SCLP Acetates) [noCAS]  ↔  `eu#1255` Dodecyl acetate (SCLP Acetates) [112-66-3] — 84%
+- `libya-500#20` (Z)-8-Dodecen-1-ol (SCLP Alcohols) [40642-40-8]  ↔  `libya-500#22` (Z)-8-Tetradecen-1-ol (SCLP Alcohols) [noCAS] — 81%
+- `libya-500#20` (Z)-8-Dodecen-1-ol (SCLP Alcohols) [40642-40-8]  ↔  `libya-500#160` Dodecan-1-ol (SCLP Alcohols) [112-53-8] — 88%
+- `libya-500#20` (Z)-8-Dodecen-1-ol (SCLP Alcohols) [40642-40-8]  ↔  `eu#1109` (E)-5-Decen-1-ol (SCLP Alcohols) [56578-18-8] — 83%
+- `libya-500#20` (Z)-8-Dodecen-1-ol (SCLP Alcohols) [40642-40-8]  ↔  `eu#1129` (Z)-8-Tetradecen-1-ol (SCLP Alcohols) [noCAS] — 81%
+- `libya-500#20` (Z)-8-Dodecen-1-ol (SCLP Alcohols) [40642-40-8]  ↔  `eu#1254` Dodecan-1-ol (SCLP Alcohols) [112-53-8] — 88%
+- `libya-500#21` (Z)-8-Dodecen-1-yl acetate (SCLP Acetates) [28079-04-1]  ↔  `libya-500#23` (Z)-8-Tetradecen-1-yl acetate (SCLP Acetates) [noCAS] — 85%
+- `libya-500#21` (Z)-8-Dodecen-1-yl acetate (SCLP Acetates) [28079-04-1]  ↔  `libya-500#24` (Z)-9-Dodecen-1-yl acetate (SCLP Acetates) [16974-11-1] — 97%
+- `libya-500#21` (Z)-8-Dodecen-1-yl acetate (SCLP Acetates) [28079-04-1]  ↔  `libya-500#27` (Z)-9-Tetradecen-1-yl acetate (SCLP Acetates) [16725-53-4] — 82%
+- `libya-500#21` (Z)-8-Dodecen-1-yl acetate (SCLP Acetates) [28079-04-1]  ↔  `libya-500#161` Dodecyl acetate (SCLP Acetates) [112-66-3] — 84%
+- `libya-500#21` (Z)-8-Dodecen-1-yl acetate (SCLP Acetates) [28079-04-1]  ↔  `eu#1110` (E)-5-Decen-1-yl acetate (SCLP Acetates) [38421-90-8] — 87%
+- `libya-500#21` (Z)-8-Dodecen-1-yl acetate (SCLP Acetates) [28079-04-1]  ↔  `eu#1111` (E)-8-Dodecen-1-yl acetate (SCLP Acetates) [38363-29-0] — 97%
+- `libya-500#21` (Z)-8-Dodecen-1-yl acetate (SCLP Acetates) [28079-04-1]  ↔  `eu#1112` (E,E)-7,9-Dodecadien-1-yl acetate (SCLP Acetates [noCAS] — 81%
+- `libya-500#21` (Z)-8-Dodecen-1-yl acetate (SCLP Acetates) [28079-04-1]  ↔  `eu#1114` (E,E)-8,10-Dodecadien-1-yl acetate (SCLP Acetate [noCAS] — 81%
+- `libya-500#21` (Z)-8-Dodecen-1-yl acetate (SCLP Acetates) [28079-04-1]  ↔  `eu#1118` (E,Z)-7,9-Dodecadien-1-yl acetate (SCLP Acetates [54364-62-4] — 83%
+- `libya-500#21` (Z)-8-Dodecen-1-yl acetate (SCLP Acetates) [28079-04-1]  ↔  `eu#1121` (Z)-11-Hexadecen-1-yl acetate (SCLP Acetates) [34010-21-4] — 82%
+- `libya-500#21` (Z)-8-Dodecen-1-yl acetate (SCLP Acetates) [28079-04-1]  ↔  `eu#1123` (Z)-11-Tetradecen-1-yl acetate (SCLP Acetates) [20711-10-8] — 80%
+- `libya-500#21` (Z)-8-Dodecen-1-yl acetate (SCLP Acetates) [28079-04-1]  ↔  `eu#1125` (Z)-7-dodecen-1-yl acetate (SCLP Actetates) [noCAS] — 94%
+- `libya-500#21` (Z)-8-Dodecen-1-yl acetate (SCLP Acetates) [28079-04-1]  ↔  `eu#1130` (Z)-8-Tetradecen-1-yl acetate (SCLP Acetates) [noCAS] — 85%
+- `libya-500#21` (Z)-8-Dodecen-1-yl acetate (SCLP Acetates) [28079-04-1]  ↔  `eu#1131` (Z)-9-Dodecen-1-yl acetate (SCLP Acetates) [16974-11-1] — 97%
+- `libya-500#21` (Z)-8-Dodecen-1-yl acetate (SCLP Acetates) [28079-04-1]  ↔  `eu#1134` (Z)-9-Tetradecen-1-yl acetate (SCLP Acetates) [16725-53-4] — 82%
+- `libya-500#21` (Z)-8-Dodecen-1-yl acetate (SCLP Acetates) [28079-04-1]  ↔  `eu#1255` Dodecyl acetate (SCLP Acetates) [112-66-3] — 84%
+- `libya-500#22` (Z)-8-Tetradecen-1-ol (SCLP Alcohols) [noCAS]  ↔  `libya-500#382` Tetradecan-1-ol (SCLP Alcohols) [63393-82-8] — 89%
+- `libya-500#22` (Z)-8-Tetradecen-1-ol (SCLP Alcohols) [noCAS]  ↔  `eu#1120` (Z)-11-Hexadecen-1-ol (SCLP Alcohols) [56683-54-6] — 81%
+- `libya-500#22` (Z)-8-Tetradecen-1-ol (SCLP Alcohols) [noCAS]  ↔  `eu#1127` (Z)-8-Dodecen-1-ol (SCLP Alcohols) [40642-40-8] — 81%
+- `libya-500#22` (Z)-8-Tetradecen-1-ol (SCLP Alcohols) [noCAS]  ↔  `eu#1450` Tetradecan-1-ol (SCLP Alcohols) [63393-82-8] — 89%
+- `libya-500#23` (Z)-8-Tetradecen-1-yl acetate (SCLP Acetates) [noCAS]  ↔  `libya-500#24` (Z)-9-Dodecen-1-yl acetate (SCLP Acetates) [16974-11-1] — 82%
+- `libya-500#23` (Z)-8-Tetradecen-1-yl acetate (SCLP Acetates) [noCAS]  ↔  `libya-500#27` (Z)-9-Tetradecen-1-yl acetate (SCLP Acetates) [16725-53-4] — 97%
+- `libya-500#23` (Z)-8-Tetradecen-1-yl acetate (SCLP Acetates) [noCAS]  ↔  `libya-500#28` (Z,E)-9,12-Tetradecadien-1-yl acetate (SCLP - Ac [31654-77-0] — 83%

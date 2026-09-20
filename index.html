@@ -560,6 +560,23 @@
     .status.good { background: var(--success-light); color: var(--success-dark); }
     .status.bad { background: var(--danger-light); color: var(--danger-dark); }
     .status.review { background: var(--warning-light); color: var(--warning-dark); }
+    /* Decision-layer styles (src/cas.js): neutral status, verdict chips,
+     * CAS checksum marks, ambiguity banner, disclaimer strip. */
+    .status.neutral { background: var(--info-light); color: var(--info-dark); }
+    .verdict { display: inline-block; margin-inline-start: 6px; padding: 1px 8px;
+      border-radius: 999px; font-size: 11px; font-weight: 700; }
+    .verdict.exact { background: var(--success-light); color: var(--success-dark); }
+    .verdict.probable { background: var(--warning-light); color: var(--warning-dark); }
+    .cas-bad { text-decoration: underline wavy var(--danger-dark); font-weight: 700; }
+    .nocas { color: var(--text-secondary); font-size: 12px; }
+    .ambgroup { background: var(--warning-light); color: var(--warning-dark);
+      border: 1px solid var(--warning-dark); border-radius: 10px;
+      padding: 10px 12px; margin: 0 0 10px; font-weight: 600; }
+    .disclaimer-strip { background: var(--info-light); color: var(--info-dark);
+      border-radius: 10px; padding: 8px 12px; margin: 10px 0; font-size: 13px; }
+    .support-btn { margin-inline-start: 8px; }
+    .about-box { background: var(--primary-light); border-radius: 10px;
+      padding: 10px 14px; margin: 10px 0; font-size: 13px; }
 
     /* DB status chips */
     .chip.db-ok      { background: var(--success-light); color: var(--success-dark); border-color: var(--success-dark); }
@@ -746,6 +763,12 @@
         <button class="theme-toggle" id="themeToggle" data-i18n-title="theme.title" aria-label="تبديل نمط الليل">🌙</button>
       </div>
       <div class="banner banner-warn" id="dbBanner" hidden></div>
+      <!-- Attribution / about (user decision ج5): sources + no endorsement -->
+      <div class="about-box" data-i18n="about.sources"></div>
+      <!-- Disclaimer strip: mandatory neutral wording (user decision ب1) -->
+      <div class="disclaimer-strip" data-i18n="disclaimer.strip">هذه الأداة مساندة وليست حكمًا قانونيًا — المرجع قرارات وزارة الزراعة والجهات الرسمية.</div>
+      <!-- Support/contact button: reads config/support.json; hidden when empty -->
+      <button id="supportBtn" class="support-btn" hidden></button>
     </header>
 
     <section class="intro">
@@ -835,6 +858,7 @@
 
   <script src="src/i18n.js"></script>
   <script src="src/search-core.js"></script>
+  <script src="src/cas.js"></script>
   <script src="vendor/tesseract/tesseract.min.js"></script>
   <script src="src/ocr.js"></script>
   <script src="src/app.js"></script>

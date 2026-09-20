@@ -299,6 +299,21 @@
     return [s.includes('Approved') || s === 'مسموح' ? 'مسموح' : s, 'good'];
   }
 
+  /* Per-source status display via the decision layer (src/cas.js):
+   * each source is shown with its OWN vocabulary — never merged into one
+   * verdict. Red (banned tone) is reserved for Libya decree 248 alone;
+   * reference-source alerts are amber; everything else is neutral.
+   * The raw source term stays beside the translation (never hidden). */
+  function statusDisplay(r, k, showDetails) {
+    const d = CasDissect.dissectStatus(r, k);
+    const phrase = t(d.key, d.raw || '?');
+    let extra = '';
+    if (/^st\.500\./.test(d.key) && d.raw) extra = ' (' + d.raw + ')';   // code stays visible
+    else if (showDetails && d.raw && d.raw !== phrase) extra = ' · ' + d.raw;
+    if (d.rup) extra += ' · ' + t('st.epa.rup.note', 'استخدام مقيد (للمرخّصين فقط)');
+    return { text: phrase + extra, tone: d.tone, raw: d.raw };
+  }
+
   function render(results, q) {
     const box = $('#results');
     lastResults = results || [];
@@ -313,14 +328,46 @@
      * it is never assumed or invented. Merged from the Base44 exploration. */
     const prohibited = results.filter(x => x.k === 'libya-248');
     const showDetails = $('#mode').value === 'pro';
-    box.innerHTML = (prohibited.length
+    /* Ambiguity banner (decision layer): two different substances (different
+     * CAS) in a near tie with no confirmed winner → both are shown and the
+     * user is told to check the full name. Never auto-picked. */
+    const amb = window.CasDissect ? CasDissect.ambiguity(results) : null;
+    const ambHtml = amb
+      ? '<div class="ambgroup">' + tf('results.ambiguous',
+          '⚠️ نتيجة ملتبسة: توجد مادة أخرى مشابهة برقم كيميائي مختلف ({a} {va}% ↔ {b} {vb}%). تحقق من الاسم الكامل قبل أي قرار.',
+          { a: esc(String(amb.a.r.name || '').split('\n')[0]), va: amb.a.s.v,
+            b: esc(String(amb.b.r.name || '').split('\n')[0]), vb: amb.b.s.v })
+        + '</div>'
+      : '';
+    box.innerHTML = ambHtml + (prohibited.length
       ? '<div class="prohibited">' + tf('results.prohibited',
           '⚠️ تحذير: هذه المادة مدرجة ضمن قائمة المبيدات المحظورة في ليبيا (قرار 248) — {name}',
           { name: esc(String(prohibited[0].r.name || '')).replace(/\n/g, ' · ') })
         + '</div>'
       : '')
       + results.map(x => {
-      const [st, cl] = statusLabel(x.r, x.k);
+      /* --- decision layer: per-source status, verdict class, CAS checks --- */
+      const sd = statusDisplay(x.r, x.k, showDetails);
+      const stClass = sd.tone === 'banned' ? 'bad' : (sd.tone === 'amber' ? 'review' : 'neutral');
+      const isExact = window.CasDissect && CasDissect.classify(x.s.v) === 'exact';
+      const verdict = isExact
+        ? '<span class="verdict exact">' + t('verdict.exact', 'تطابق تام') + '</span>'
+        : '<span class="verdict probable">' + t('verdict.probable', 'احتمالي — تحقق من الاسم الكامل') + '</span>';
+      /* CAS display: every listed CAS is checksum-validated for display
+       * (failed ones are marked, never corrected); no-CAS rows are labelled. */
+      const casList = window.CasDissect ? CasDissect.casOf(x) : '';
+      let casHtml;
+      if (casList) {
+        casHtml = casList.split(',').map(c =>
+          CasDissect.casChecksum(c) === false
+            ? '<span class="cas-bad" title="' + t('cas.badsum', 'رقم التحقق غير صحيح في بيانات المصدر') + '">' + esc(c) + '</span>'
+            : esc(c)).join(' · ');
+      } else if (x.r.cas) {
+        casHtml = esc(String(x.r.cas).replace(/\n/g, ' · '))
+          + ' <span class="nocas">(' + t('cas.nocas', 'بلا رقم في المصدر') + ')</span>';
+      } else {
+        casHtml = t('cas.missing', 'غير متوفر');
+      }
       const strong = x.s.v >= 90;
       const raw = x.r.status_raw && showDetails
         ? '<p class="match">' + t('results.source.raw', 'الحالة كما وردت في المصدر:') + ' ' + esc(x.r.status_raw) + '</p>'
@@ -339,12 +386,11 @@
       return '<article class="result ' + (strong ? '' : 'possible') + '">'
         + '<div class="result-top"><div><span class="source">' + esc(sourceLabel(x.k)) + '</span>'
         + '<h3>' + esc(x.r.name || 'بدون اسم').replace(/\n/g, ' · ') + '</h3>'
-        + badge + '</div>'
+        + badge + verdict + '</div>'
         + '<strong>' + x.s.v + '%</strong></div>'
         + bar
-        + '<p class="status ' + cl + '">' + esc(st) + '</p>'
-        + '<p class="meta">' + t('cas.label', 'CAS:') + ' '
-        + esc(String(x.r.cas || t('cas.missing', 'غير متوفر'))).replace(/\n/g, ' · ') + '</p>'
+        + '<p class="status ' + stClass + '">' + esc(sd.text) + '</p>'
+        + '<p class="meta">' + t('cas.label', 'CAS:') + ' ' + casHtml + '</p>'
         + cat + raw + matchType
         + (!strong ? '<p class="caution">' + t('results.caution', 'تطابق محتمل، راجع الاسم والملصق قبل الاستخدام.') + '</p>' : '')
         + '</article>';
@@ -696,6 +742,22 @@
     }
     btn.disabled = false;
   });
+
+  /* Support/contact button: reads config/support.json; hidden when empty.
+   * No payment integration by design (user decision 5). */
+  (function initSupport() {
+    const btn = $('#supportBtn');
+    if (!btn) return;
+    fetch('config/support.json', { cache: 'no-store' }).then(r => (r.ok ? r.json() : null)).then(cfg => {
+      if (!cfg || (!cfg.contact && !cfg.url)) return;   // stays hidden
+      btn.hidden = false;
+      btn.textContent = cfg.label || t('support.label', 'ادعم أو تواصل');
+      btn.addEventListener('click', () => {
+        if (cfg.url) window.open(cfg.url, '_blank', 'noopener');
+        else if (cfg.contact) location.href = cfg.contact;
+      });
+    }).catch(() => { /* hidden = safe default */ });
+  })();
 
   /* Theme (now persisted) */
   const themeBtn = $('#themeToggle');

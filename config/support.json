@@ -1,0 +1,6 @@
+{
+  "_comment": "Support/contact button config. Empty 'contact'/'url' => the button stays hidden. Set 'contact' to a mailto: address or 'url' to a link to show it. No payment integration by design.",
+  "label": "ادعم أو تواصل",
+  "contact": "",
+  "url": ""
+}

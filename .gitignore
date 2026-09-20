@@ -1,0 +1,19 @@
+# Secrets — NEVER commit. Keys live only in the environment
+# (Freebuff Settings → Environment / freebuff-deploy env set).
+.env
+.env.*
+!.env.example
+
+# Node / tooling
+node_modules/
+npm-debug.log*
+*.log
+
+# Update-agent working artifacts (backups of refreshed international DBs)
+data/archive/
+/tmp/
+*.tmp
+
+# OS noise
+.DS_Store
+Thumbs.db

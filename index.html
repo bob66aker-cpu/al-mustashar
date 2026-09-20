@@ -4,6 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#1f6f52">
+  <!-- Security: the app is fully local — no external code, data or fonts are ever loaded.
+       'wasm-unsafe-eval' is required only by the self-hosted Tesseract WASM engine. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data:; font-src 'self'; connect-src 'self'; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'">
+  <meta name="referrer" content="no-referrer">
   <link rel="manifest" href="manifest.json">
   <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
   <link rel="apple-touch-icon" href="icons/icon-192.png">
@@ -91,6 +95,11 @@
 
     body {
       background: var(--bg);
+      background-image:
+        radial-gradient(at 20% 10%, rgba(31, 111, 82, 0.07) 0px, transparent 50%),
+        radial-gradient(at 85% 90%, rgba(46, 134, 89, 0.05) 0px, transparent 50%),
+        radial-gradient(at 50% 50%, rgba(23, 52, 42, 0.04) 0px, transparent 50%);
+      background-attachment: fixed;
       color: var(--text-main);
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Cairo', 'Droid Arabic Kufi', sans-serif;
       font-size: 16px;
@@ -133,7 +142,8 @@
 
     .mark {
       font-size: 26px;
-      background: var(--primary-light);
+      background: linear-gradient(135deg, var(--primary-medium), var(--primary-dark));
+      color: #fff;
       padding: 9px;
       border-radius: 15px;
       width: 48px;
@@ -215,6 +225,21 @@
     }
     .theme-toggle:active { transform: scale(0.94); }
 
+    .lang-toggle {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      height: 44px;
+      border-radius: 12px;
+      font: inherit;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 0 10px;
+      cursor: pointer;
+      transition: background-color 0.2s ease, border-color 0.2s ease;
+    }
+    .lang-toggle:hover { background: var(--primary-light); border-color: var(--primary-dark); }
+
     /* ===== Intro ===== */
     .intro {
       padding: var(--spacing-lg) 0 var(--spacing-md);
@@ -294,7 +319,7 @@
     .search button {
       border: 0;
       border-radius: 14px;
-      background: var(--primary-dark);
+      background: linear-gradient(135deg, var(--primary-medium), var(--primary-dark));
       color: #fff;
       padding: 0 var(--spacing-lg);
       font: inherit;
@@ -306,7 +331,7 @@
     }
 
     .search button:hover {
-      background: var(--primary-medium);
+      filter: brightness(1.07);
       box-shadow: var(--shadow-md);
     }
     .search button:active { transform: translateY(1px) scale(0.99); }
@@ -477,6 +502,16 @@
 
     .result:hover { box-shadow: var(--shadow-md); border-color: var(--primary-medium); }
 
+    /* Glass surfaces (merged from the Base44 design exploration) */
+    .card, .scan, .result, .history-panel {
+      background: var(--glass);
+      -webkit-backdrop-filter: saturate(1.3) blur(12px);
+      backdrop-filter: saturate(1.3) blur(12px);
+    }
+
+    .result, .history-item { animation: slide-up 0.35s ease both; }
+    .notice { animation: fade-in 0.4s ease both; }
+
     .result.possible { border-color: var(--warning-light); }
 
     .result-top {
@@ -605,8 +640,52 @@
       line-height: 1.7;
     }
 
+    /* ===== Match badges + score bar + prohibited warning ===== */
+    .badge {
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+    }
+    .badge.strong   { background: var(--success-light); color: var(--success-dark); border: 1px solid var(--success-dark); }
+    .badge.possible { background: var(--info-light);    color: var(--info-dark);    border: 1px solid var(--info-dark); }
+
+    .scorebar {
+      height: 6px;
+      border-radius: 999px;
+      background: var(--text-tertiary);
+      overflow: hidden;
+      margin: 8px 0 var(--spacing-sm);
+    }
+    .scorebar > i {
+      display: block;
+      height: 100%;
+      border-radius: 999px;
+      background: var(--primary-dark);
+      transition: width 0.4s ease;
+    }
+    .result.possible .scorebar > i { background: var(--warning-dark); }
+
+    .prohibited {
+      border: 2px solid var(--danger-dark);
+      background: var(--danger-light);
+      color: var(--danger-dark);
+      border-radius: 14px;
+      padding: var(--spacing-md);
+      font-weight: 800;
+      font-size: 14px;
+      line-height: 1.7;
+      margin-bottom: var(--spacing-sm);
+      animation: scale-in 0.3s ease both;
+    }
+
     /* Loading animation */
     @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes scale-in { from { opacity: 0; transform: scale(0.97); } to { opacity: 1; transform: scale(1); } }
+    @keyframes slide-up { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
     /* Focus visibility (keyboard + switch access) */
     :is(button, input, select, textarea, summary, [tabindex]):focus-visible {
@@ -646,8 +725,8 @@
       <div class="brand">
         <div class="mark">🌿</div>
         <div>
-          <p class="eyebrow">بيانات محلية، قرار واضح</p>
-          <h1>المستشار الزراعي</h1>
+          <p class="eyebrow" data-i18n="brand.eyebrow">بيانات محلية، قرار واضح</p>
+          <h1 data-i18n="brand.title">المستشار الزراعي</h1>
         </div>
       </div>
       <div class="statusline">
@@ -656,85 +735,92 @@
         <span class="chip db-loading" id="db-libya-500">ليبيا 500: جارٍ التحميل…</span>
         <span class="chip db-loading" id="db-eu">الاتحاد الأوروبي: جارٍ التحميل…</span>
         <span class="chip db-loading" id="db-epa">USA / EPA: جارٍ التحميل…</span>
+        <span class="chip db-loading" id="db-fao">FAO / Codex: جارٍ التحميل…</span>
         <span class="chip" id="offlineState">🟢 متصل</span>
-        <button class="theme-toggle" id="themeToggle" title="تبديل نمط الليل" aria-label="تبديل نمط الليل">🌙</button>
+        <select id="langSelect" class="lang-toggle" data-i18n-title="lang.title" aria-label="Language">
+          <option value="ar">ع</option>
+          <option value="en">EN</option>
+          <option value="fr">FR</option>
+          <option value="zh">中文</option>
+        </select>
+        <button class="theme-toggle" id="themeToggle" data-i18n-title="theme.title" aria-label="تبديل نمط الليل">🌙</button>
       </div>
       <div class="banner banner-warn" id="dbBanner" hidden></div>
     </header>
 
     <section class="intro">
-      <h2>اعرف المادة قبل أن تستخدمها.</h2>
-      <p>ابحث بالاسم أو رقم CAS. ليبيا هي المرجع الأول، والمصادر الدولية للمقارنة فقط. لا تعرض النتيجة موافقة قانونية إذا لم يكن التطابق موثوقًا.</p>
+      <h2 data-i18n="intro.h2">اعرف المادة قبل أن تستخدمها.</h2>
+      <p data-i18n="intro.p">ابحث بالاسم أو رقم CAS. ليبيا هي المرجع الأول، والمصادر الدولية للمقارنة فقط. لا تعرض النتيجة موافقة قانونية إذا لم يكن التطابق موثوقًا.</p>
 
       <div class="mode">
-        <label for="mode">الوضع:</label>
+        <label for="mode" data-i18n="mode.label">الوضع:</label>
         <select id="mode">
-          <option value="farmer">المزارع</option>
-          <option value="pro">المحترف</option>
+          <option value="farmer" data-i18n="mode.farmer">المزارع</option>
+          <option value="pro" data-i18n="mode.pro">المحترف</option>
         </select>
         <span class="mode-label" id="modeLabel">المزارع</span>
       </div>
 
       <form class="search" id="searchForm">
-        <input class="query" id="query" placeholder="مثال: Glyphosate أو 1071-83-6" autocomplete="off" inputmode="search">
-        <button type="submit">فحص المادة</button>
+        <input class="query" id="query" data-i18n-placeholder="search.placeholder" placeholder="مثال: Glyphosate أو 1071-83-6" autocomplete="off" inputmode="search">
+        <button type="submit" data-i18n="search.btn">فحص المادة</button>
       </form>
 
       <div class="tools">
-        <button class="btn-secondary" type="button" id="cameraBtn">📷 تصوير الملصق</button>
-        <button class="btn-secondary" type="button" id="copyBtn">📋 نسخ التقرير</button>
-        <button class="btn-secondary" type="button" id="historyBtn">📜 السجل</button>
+        <button class="btn-secondary" type="button" id="cameraBtn" data-i18n="tool.camera">📷 تصوير الملصق</button>
+        <button class="btn-secondary" type="button" id="copyBtn" data-i18n="tool.copy">📋 نسخ التقرير</button>
+        <button class="btn-secondary" type="button" id="historyBtn" data-i18n="tool.history">📜 السجل</button>
       </div>
 
-      <p class="hint">💡 البحث يعمل محليًا بعد أول تشغيل. نتيجة غير مؤكدة تعني ضرورة مراجعة الاسم والملصق.</p>
+      <p class="hint" data-i18n="hint">💡 البحث يعمل محليًا بعد أول تشغيل. نتيجة غير مؤكدة تعني ضرورة مراجعة الاسم والملصق.</p>
     </section>
 
     <!-- Offline preparation: one visible, non-repeated download -->
     <section class="card" id="prepPanel" aria-label="تجهيز العمل بدون إنترنت">
       <div class="prep-head">
-        <h2>📦 تجهيز العمل بدون إنترنت</h2>
+        <h2 data-i18n="prep.h2">📦 تجهيز العمل بدون إنترنت</h2>
         <span class="chip" id="prepState">جارٍ الفحص…</span>
       </div>
       <ul class="prep-list">
-        <li id="prepShell"><span>🧩</span> ملفات التطبيق (الواجهة + محرك البحث) <b id="prepShellSize">—</b></li>
-        <li id="prepData"><span>🗄️</span> قواعد البيانات الأربع (77 · 411 · 1,483 · 2,199 سجلًا) <b id="prepDataSize">—</b></li>
-        <li id="prepOcr"><span>🔎</span> ملفات المسح البصري OCR — عربي + إنجليزي <b id="prepOcrSize">—</b></li>
+        <li id="prepShell"><span>🧩</span> <span data-i18n="prep.shell">ملفات التطبيق (الواجهة + محرك البحث)</span> <b id="prepShellSize">—</b></li>
+        <li id="prepData"><span>🗄️</span> <span data-i18n="prep.data">قواعد البيانات الأربع (77 · 411 · 1,483 · 2,199 سجلًا)</span> <b id="prepDataSize">—</b></li>
+        <li id="prepOcr"><span>🔎</span> <span data-i18n="prep.ocr">ملفات المسح البصري OCR — عربي + إنجليزي</span> <b id="prepOcrSize">—</b></li>
       </ul>
-      <p class="scan-note" id="prepNote">يُنزَّل كل شيء مرة واحدة فقط (إجمالي ~17 ميجابايت)، ثم يعمل التطبيق كاملًا — بحث ومسح — دون إنترنت. لا تُنزَّل أي ملفات أثناء البحث العادي.</p>
+      <p class="scan-note" id="prepNote" data-i18n="prep.note">يُنزَّل كل شيء مرة واحدة فقط (إجمالي ~17 ميجابايت)، ثم يعمل التطبيق كاملًا — بحث ومسح — دون إنترنت. لا تُنزَّل أي ملفات أثناء البحث العادي.</p>
       <div class="tools">
-        <button class="btn-secondary" type="button" id="prepBtn">⬇️ تجهيز الآن</button>
+        <button class="btn-secondary" type="button" id="prepBtn" data-i18n="prep.btn">⬇️ تجهيز الآن</button>
       </div>
     </section>
 
     <details class="scan" id="scanPanel">
-      <summary>📸 المسح البصري</summary>
-      <p class="scan-note">💡 يعمل المسح البصري محليًا دون إنترنت بعد تجهيز ملفات OCR مرة واحدة (من لوحة «تجهيز العمل بدون إنترنت» أعلاه). تتم معالجة الصور على جهازك ولا تُرسل إلى أي خادم.</p>
+      <summary data-i18n="scan.title">📸 المسح البصري</summary>
+      <p class="scan-note" data-i18n="scan.note">💡 يعمل المسح البصري محليًا دون إنترنت بعد تجهيز ملفات OCR مرة واحدة (من لوحة «تجهيز العمل بدون إنترنت» أعلاه). تتم معالجة الصور على جهازك ولا تُرسل إلى أي خادم.</p>
       <input id="camera" type="file" accept="image/*" capture="environment">
       <input id="gallery" type="file" accept="image/*">
       <img id="preview" class="preview" hidden alt="معاينة صورة الملصق">
-      <p id="ocrMsg" class="scan-note">صوّر اسم المادة الفعالة بوضوح، أو اختر صورة من المعرض. سيبدأ التعرف الضوئي تلقائيًا.</p>
+      <p id="ocrMsg" class="scan-note" data-i18n="scan.msg">صوّر اسم المادة الفعالة بوضوح، أو اختر صورة من المعرض. سيبدأ التعرف الضوئي تلقائيًا.</p>
       <div class="tools">
-        <button class="btn-secondary" type="button" id="galleryBtn">🖼️ اختيار صورة من المعرض</button>
+        <button class="btn-secondary" type="button" id="galleryBtn" data-i18n="scan.gallery">🖼️ اختيار صورة من المعرض</button>
       </div>
       <div id="ocrActions" hidden>
-        <textarea id="ocrText" class="query" style="width:100%" rows="4" dir="auto" placeholder="النص المكتشف من الصورة — يمكن تعديله ثم إعادة البحث"></textarea>
+        <textarea id="ocrText" class="query" style="width:100%" rows="4" dir="auto" data-i18n-placeholder="scan.placeholder" placeholder="النص المكتشف من الصورة — يمكن تعديله ثم إعادة البحث"></textarea>
         <div class="tools">
-          <button class="btn-secondary" type="button" id="ocrRerun">🔍 بحث من النص</button>
+          <button class="btn-secondary" type="button" id="ocrRerun" data-i18n="scan.rerun">🔍 بحث من النص</button>
         </div>
       </div>
     </details>
 
     <section class="summary">
-      <h2 id="resultTitle">نتائج الفحص</h2>
+      <h2 id="resultTitle" data-i18n="results.title">نتائج الفحص</h2>
       <span class="chip" id="dbCount">...</span>
     </section>
 
     <section class="history-panel" id="historyPanel" hidden>
       <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;">
-        <h2 style="font-size:16px;font-weight:700;">📜 سجل البحث</h2>
+        <h2 style="font-size:16px;font-weight:700;" data-i18n="history.h2">📜 سجل البحث</h2>
         <div style="display:flex;gap:8px;">
-          <button class="btn-secondary" type="button" id="historyClear">مسح السجل</button>
-          <button class="btn-secondary" type="button" id="historyClose">إغلاق</button>
+          <button class="btn-secondary" type="button" id="historyClear" data-i18n="history.clear">مسح السجل</button>
+          <button class="btn-secondary" type="button" id="historyClose" data-i18n="history.close">إغلاق</button>
         </div>
       </div>
       <div id="historyList"></div>
@@ -744,9 +830,10 @@
       <div class="notice">اكتب اسم المادة أو رقم CAS ثم اضغط «فحص المادة».</div>
     </section>
 
-    <p class="footer">المستشار الزراعي أداة مساعدة للبحث في قواعد البيانات المرفقة. المرجع القانوني النهائي هو الجهة الرسمية المختصة. لا نتحمل مسؤولية الاستخدام غير الصحيح للمعلومات.</p>
+    <p class="footer" data-i18n="footer">المستشار الزراعي أداة مساعدة للبحث في قواعد البيانات المرفقة. المرجع القانوني النهائي هو الجهة الرسمية المختصة. لا نتحمل مسؤولية الاستخدام غير الصحيح للمعلومات.</p>
   </main>
 
+  <script src="src/i18n.js"></script>
   <script src="src/search-core.js"></script>
   <script src="vendor/tesseract/tesseract.min.js"></script>
   <script src="src/ocr.js"></script>

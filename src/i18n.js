@@ -1,0 +1,462 @@
+/*
+ * i18n.js — المستشار الزراعي · lightweight offline i18n (no dependencies)
+ *
+ * Arabic (ar) is the PRIMARY language and the default. English, French
+ * and Chinese are bundled. Any additional language is produced by the
+ * translation agent workflow (scripts/agent-translate.md): the agent
+ * translates the `ar` dictionary of this file and the result is merged
+ * into DICTS — nothing else in the app needs to change.
+ * To add any additional language: translate the `ar` dictionary below.
+ *
+ * Regulatory status values coming from the four databases are ALWAYS
+ * displayed verbatim (source-of-truth strings) and are deliberately
+ * NOT translated — statuses must never be reinterpreted.
+ */
+(function () {
+  'use strict';
+
+  var DICTS = {
+    ar: {
+      'brand.title': 'المستشار الزراعي',
+      'brand.eyebrow': 'بيانات محلية، قرار واضح',
+      'chip.preparing': 'جاري تجهيز القواعد',
+      'chip.online': '🟢 متصل',
+      'chip.offline': '🔴 بدون إنترنت',
+      'theme.title': 'تبديل نمط الليل',
+      'lang.title': 'تغيير اللغة',
+      'src.248': 'ليبيا، قرار 248 لسنة 2024',
+      'src.500': 'ليبيا، قرار 500 لسنة 2026',
+      'src.eu': 'الاتحاد الأوروبي',
+      'src.epa': 'USA / EPA',
+      'src.fao': 'FAO/WHO كودكس (حدود المبيدات)',
+      'intro.h2': 'اعرف المادة قبل أن تستخدمها.',
+      'intro.p': 'ابحث بالاسم أو رقم CAS. ليبيا هي المرجع الأول، والمصادر الدولية للمقارنة فقط. لا تعرض النتيجة موافقة قانونية إذا لم يكن التطابق موثوقًا.',
+      'mode.label': 'الوضع:',
+      'mode.farmer': 'المزارع',
+      'mode.pro': 'المحترف',
+      'search.placeholder': 'مثال: Glyphosate أو 1071-83-6',
+      'search.btn': 'فحص المادة',
+      'tool.camera': '📷 تصوير الملصق',
+      'tool.copy': '📋 نسخ التقرير',
+      'tool.history': '📜 السجل',
+      'hint': '💡 البحث يعمل محليًا بعد أول تشغيل. نتيجة غير مؤكدة تعني ضرورة مراجعة الاسم والملصق.',
+      'prep.h2': '📦 تجهيز العمل بدون إنترنت',
+      'prep.shell': '🧩 ملفات التطبيق (الواجهة + محرك البحث)',
+      'prep.data': '🗄️ قواعد البيانات الأربع (77 · 411 · 1,483 · 2,199 سجلًا)',
+      'prep.ocr': '🔎 ملفات المسح البصري OCR — عربي + إنجليزي',
+      'prep.note': 'يُنزَّل كل شيء مرة واحدة فقط (إجمالي ~17 ميجابايت)، ثم يعمل التطبيق كاملًا — بحث ومسح — دون إنترنت. لا تُنزَّل أي ملفات أثناء البحث العادي.',
+      'prep.btn': '⬇️ تجهيز الآن',
+      'scan.title': '📸 المسح البصري',
+      'scan.note': '💡 يعمل المسح البصري محليًا دون إنترنت بعد تجهيز ملفات OCR مرة واحدة (من لوحة «تجهيز العمل بدون إنترنت» أعلاه). تتم معالجة الصور على جهازك ولا تُرسل إلى أي خادم.',
+      'scan.msg': 'صوّر اسم المادة الفعالة بوضوح، أو اختر صورة من المعرض. سيبدأ التعرف الضوئي تلقائيًا.',
+      'scan.gallery': '🖼️ اختيار صورة من المعرض',
+      'scan.placeholder': 'النص المكتشف من الصورة — يمكن تعديله ثم إعادة البحث',
+      'scan.rerun': '🔍 بحث من النص',
+      'results.title': 'نتائج الفحص',
+      'history.h2': '📜 سجل البحث',
+      'history.clear': 'مسح السجل',
+      'history.close': 'إغلاق',
+      'footer': 'المستشار الزراعي أداة مساعدة للبحث في قواعد البيانات المرفقة. المرجع القانوني النهائي هو الجهة الرسمية المختصة. لا نتحمل مسؤولية الاستخدام غير الصحيح للمعلومات.',
+      'db.loading': 'جارٍ التحميل…',
+      'db.ok': 'جاهز',
+      'db.cached': 'جاهز (نسخة محلية)',
+      'db.unavailable': 'غير متاح',
+      'db.ready': 'القواعد المحلية جاهزة',
+      'db.partial': 'جاهز جزئيًا ({n})',
+      'db.none': 'القواعد غير متاحة',
+      'db.count': '{n} سجل',
+      'db.count.none': 'لا توجد قواعد محمّلة',
+      'db.banner.error': 'تعذّر تحميل أي قاعدة بيانات. البحث غير متاح حتى يتم تحميل قاعدة واحدة على الأقل.',
+      'db.banner.warn': 'تعذّر تحميل: {names}. النتائج لا تشمل هذه القواعد.',
+      'update.banner': 'يتوفر إصدار جديد من التطبيق ({a} → {b}). حدّث الصفحة للحصول عليه. لن يتم حذف أي بيانات محفوظة.',
+      'sw.update': 'يتوفر تحديث للتطبيق. أعد تحميل الصفحة للتحديث — لن يتم حذف أي بيانات محفوظة.',
+      'results.none.t': 'لم يتم العثور على تطابق موثوق',
+      'results.none.b': 'عدم العثور على المادة لا يعني أنها مسموحة. جرّب الاسم الكامل أو رقم CAS.',
+      'results.badge.strong': 'تطابق قوي',
+      'results.badge.possible': 'تطابق محتمل',
+      'results.caution': 'تطابق محتمل، راجع الاسم والملصق قبل الاستخدام.',
+      'results.prohibited': '⚠️ تحذير: هذه المادة مدرجة ضمن قائمة المبيدات المحظورة في ليبيا (قرار 248) — {name}',
+      'results.source.raw': 'الحالة كما وردت في المصدر:',
+      'results.source.category': 'التصنيف كما ورد في المصدر:',
+      'cas.label': 'CAS:',
+      'cas.missing': 'غير متوفر',
+      'search.noDB.t': 'قواعد البيانات غير متاحة',
+      'search.noDB.b': 'تعذّر تحميل قاعدة واحدة على الأقل، لذلك لا يمكن تنفيذ البحث.',
+      'history.empty': 'لا يوجد سجل بحث بعد.',
+      'history.fail': 'تعذّر قراءة السجل.',
+      'ocr.prep': 'جارٍ تجهيز الصورة…',
+      'ocr.done': 'اكتملت القراءة.',
+      'ocr.weak': 'تعذّر قراءة نص واضح بثقة كافية. جرّب صورة أوضح وإضاءة أفضل، أو عدّل النص أدناه ثم اضغط «بحث من النص».',
+      'ocr.doneEdit': 'اكتملت القراءة. راجع النص المكتشف — يمكنك تعديله ثم إعادة البحث.',
+      'ocr.fail': 'تعذّر تشغيل محرك القراءة. تأكد من فتح التطبيق مرة واحدة أثناء الاتصال لتحميل ملفات OCR، أو ابحث يدويًا.',
+      'ocr.loading': 'جارٍ تحميل ملفات المسح البصري للاستخدام دون إنترنت…',
+      'ocr.loadDone': 'تم تحميل ملفات OCR ({n}/8). سيعمل المسح البصري دون إنترنت.',
+      'ocr.title': 'نتائج المسح البصري',
+      'ocr.none.t': 'لم يتم العثور على تطابق موثوق من النص المكتشف',
+      'ocr.none.b': 'عدّل النص المكتشف أو اكتب الاسم/CAS يدويًا في حقل البحث.',
+      'ocr.rerun.none.t': 'لم يتم العثور على تطابق موثوق من النص المدخل',
+      'prep.check': 'جارٍ الفحص…',
+      'prep.full': 'جاهز للعمل بدون إنترنت ✅',
+      'prep.searchReady': 'البحث جاهز دون إنترنت — المسح البصري بحاجة للتجهيز',
+      'prep.ocrBtn': '⬇️ تجهيز ملفات المسح البصري',
+      'prep.firstRun': 'أكمل أول تشغيل أثناء الاتصال ليكتمل التجهيز',
+      'prep.done': '✅ التطبيق مجهز بالكامل',
+      'prep.working': 'جارٍ التجهيز…',
+      'prep.fail': 'تعذّر التجهيز الآن — أعد المحاولة أثناء الاتصال',
+      'prep.failNote': 'تعذّر تحميل ملفات OCR الآن. سيُعاد المحاولة تلقائيًا عند أول مسح أثناء الاتصال.',
+      'prep.noStorage': 'المتصفح لا يدعم التخزين المحلي الكامل'
+    },
+
+    en: {
+      'brand.title': 'Agricultural Advisor',
+      'brand.eyebrow': 'Local data, clear decisions',
+      'chip.preparing': 'Preparing databases',
+      'chip.online': '🟢 Online',
+      'chip.offline': '🔴 Offline',
+      'theme.title': 'Toggle dark mode',
+      'lang.title': 'Change language',
+      'src.248': 'Libya, Decree 248 of 2024',
+      'src.500': 'Libya, Decree 500 of 2026',
+      'src.eu': 'European Union',
+      'src.epa': 'USA / EPA',
+      'src.fao': 'FAO/WHO Codex (MRLs)',
+      'intro.h2': 'Know the substance before you use it.',
+      'intro.p': 'Search by name or CAS number. Libya is the primary reference; international sources are for comparison only. No legal approval is shown unless the match is reliable.',
+      'mode.label': 'Mode:',
+      'mode.farmer': 'Farmer',
+      'mode.pro': 'Professional',
+      'search.placeholder': 'e.g. Glyphosate or 1071-83-6',
+      'search.btn': 'Check substance',
+      'tool.camera': '📷 Scan the label',
+      'tool.copy': '📋 Copy report',
+      'tool.history': '📜 History',
+      'hint': '💡 Search works locally after the first run. An uncertain result means you must verify the name and the label.',
+      'prep.h2': '📦 Prepare offline use',
+      'prep.shell': '🧩 App files (UI + search engine)',
+      'prep.data': '🗄️ The four databases (77 · 411 · 1,483 · 2,199 records)',
+      'prep.ocr': '🔎 OCR engine files — Arabic + English',
+      'prep.note': 'Everything is downloaded once (~17 MB total), then the whole app — search and OCR — works offline. No files are downloaded during normal searches.',
+      'prep.btn': '⬇️ Prepare now',
+      'scan.title': '📸 Visual scan',
+      'scan.note': '💡 OCR runs locally without internet after preparing the OCR files once (from the "Prepare offline use" panel above). Images are processed on your device and never sent to any server.',
+      'scan.msg': 'Photograph the active-ingredient name clearly, or pick an image from the gallery. Recognition starts automatically.',
+      'scan.gallery': '🖼️ Pick an image from the gallery',
+      'scan.placeholder': 'Text detected from the image — you can edit it and search again',
+      'scan.rerun': '🔍 Search from text',
+      'results.title': 'Check results',
+      'history.h2': '📜 Search history',
+      'history.clear': 'Clear history',
+      'history.close': 'Close',
+      'footer': 'Agricultural Advisor is a lookup aid for the attached databases. The final legal reference is the competent official authority. We accept no liability for misuse of this information.',
+      'db.loading': 'Loading…',
+      'db.ok': 'Ready',
+      'db.cached': 'Ready (local copy)',
+      'db.unavailable': 'Unavailable',
+      'db.ready': 'Local databases ready',
+      'db.partial': 'Partially ready ({n})',
+      'db.none': 'Databases unavailable',
+      'db.count': '{n} records',
+      'db.count.none': 'No databases loaded',
+      'db.banner.error': 'No database could be loaded. Search is unavailable until at least one database loads.',
+      'db.banner.warn': 'Failed to load: {names}. Results exclude these databases.',
+      'update.banner': 'A new app version is available ({a} → {b}). Refresh the page to get it. No saved data will be deleted.',
+      'sw.update': 'An app update is available. Reload the page to update — no saved data will be deleted.',
+      'results.none.t': 'No reliable match found',
+      'results.none.b': 'Not finding the substance does not mean it is approved. Try the full name or the CAS number.',
+      'results.badge.strong': 'Strong match',
+      'results.badge.possible': 'Possible match',
+      'results.caution': 'Possible match — verify the name and label before use.',
+      'results.prohibited': '⚠️ Warning: this substance is listed among the pesticides prohibited in Libya (Decree 248) — {name}',
+      'results.source.raw': 'Status as stated in the source:',
+      'results.source.category': 'Category as stated in the source:',
+      'cas.label': 'CAS:',
+      'cas.missing': 'Not available',
+      'search.noDB.t': 'Databases unavailable',
+      'search.noDB.b': 'At least one database failed to load, so the search cannot run.',
+      'history.empty': 'No search history yet.',
+      'history.fail': 'Could not read the history.',
+      'ocr.prep': 'Preparing the image…',
+      'ocr.done': 'Reading complete.',
+      'ocr.weak': 'Could not read clear text with enough confidence. Try a sharper photo with better lighting, or edit the text below and press "Search from text".',
+      'ocr.doneEdit': 'Reading complete. Review the detected text — you can edit it and search again.',
+      'ocr.fail': 'Could not start the OCR engine. Open the app once while online to download the OCR files, or search manually.',
+      'ocr.loading': 'Downloading OCR files for offline use…',
+      'ocr.loadDone': 'OCR files downloaded ({n}/8). Visual scan will now work offline.',
+      'ocr.title': 'Visual scan results',
+      'ocr.none.t': 'No reliable match from the detected text',
+      'ocr.none.b': 'Edit the detected text or type the name/CAS manually in the search box.',
+      'ocr.rerun.none.t': 'No reliable match from the entered text',
+      'prep.check': 'Checking…',
+      'prep.full': 'Ready for offline use ✅',
+      'prep.searchReady': 'Search ready offline — OCR still needs preparing',
+      'prep.ocrBtn': '⬇️ Prepare OCR files',
+      'prep.firstRun': 'Complete the first run while online to finish preparing',
+      'prep.done': '✅ Fully prepared',
+      'prep.working': 'Preparing…',
+      'prep.fail': 'Could not prepare now — retry while online',
+      'prep.failNote': 'Could not download OCR files now. It will retry automatically on the first scan while online.',
+      'prep.noStorage': 'This browser does not fully support local storage'
+    },
+
+    fr: {
+      'brand.title': 'Conseiller Agricole',
+      'brand.eyebrow': 'Données locales, décisions claires',
+      'chip.preparing': 'Préparation des bases',
+      'chip.online': '🟢 En ligne',
+      'chip.offline': '🔴 Hors ligne',
+      'theme.title': 'Basculer le mode sombre',
+      'lang.title': 'Changer de langue',
+      'src.248': 'Libye, arrêté 248 de 2024',
+      'src.500': 'Libye, arrêté 500 de 2026',
+      'src.eu': 'Union européenne',
+      'src.epa': 'USA / EPA',
+      'src.fao': 'Codex FAO/OMS (LMR)',
+      'intro.h2': 'Connaissez la substance avant de l\u2019utiliser.',
+      'intro.p': 'Recherchez par nom ou numéro CAS. La Libye est la référence première ; les sources internationales ne servent qu\u2019à la comparaison. Aucune approbation légale n\u2019est affichée si la correspondance n\u2019est pas fiable.',
+      'mode.label': 'Mode :',
+      'mode.farmer': 'Agriculteur',
+      'mode.pro': 'Professionnel',
+      'search.placeholder': 'ex. Glyphosate ou 1071-83-6',
+      'search.btn': 'Vérifier la substance',
+      'tool.camera': '📷 Scanner l\u2019étiquette',
+      'tool.copy': '📋 Copier le rapport',
+      'tool.history': '📜 Historique',
+      'hint': '💡 La recherche fonctionne localement après le premier lancement. Un résultat incertain impose de vérifier le nom et l\u2019étiquette.',
+      'prep.h2': '📦 Préparer l\u2019utilisation hors ligne',
+      'prep.shell': '🧩 Fichiers de l\u2019app (interface + moteur de recherche)',
+      'prep.data': '🗄️ Les quatre bases de données (77 · 411 · 1 483 · 2 199 enregistrements)',
+      'prep.ocr': '🔎 Fichiers OCR — arabe + anglais',
+      'prep.note': 'Tout est téléchargé une seule fois (~17 Mo au total), puis l\u2019app entière — recherche et OCR — fonctionne hors ligne. Aucun téléchargement lors des recherches normales.',
+      'prep.btn': '⬇️ Préparer maintenant',
+      'scan.title': '📸 Scan visuel',
+      'scan.note': '💡 L\u2019OCR fonctionne localement sans internet après une seule préparation des fichiers (panneau « Préparer l\u2019utilisation hors ligne » ci-dessus). Les images sont traitées sur votre appareil et ne sont jamais envoyées à un serveur.',
+      'scan.msg': 'Photographiez clairement le nom de la matière active, ou choisissez une image de la galerie. La reconnaissance démarre automatiquement.',
+      'scan.gallery': '🖼️ Choisir une image de la galerie',
+      'scan.placeholder': 'Texte détecté dans l\u2019image — modifiable, puis relancez la recherche',
+      'scan.rerun': '🔍 Rechercher depuis le texte',
+      'results.title': 'Résultats de la vérification',
+      'history.h2': '📜 Historique des recherches',
+      'history.clear': 'Effacer l\u2019historique',
+      'history.close': 'Fermer',
+      'footer': 'Conseiller Agricole est un outil d\u2019interrogation des bases jointes. La référence légale finale reste l\u2019autorité officielle compétente. Aucune responsabilité n\u2019est acceptée en cas d\u2019usage inapproprié.',
+      'db.loading': 'Chargement…',
+      'db.ok': 'Prête',
+      'db.cached': 'Prête (copie locale)',
+      'db.unavailable': 'Indisponible',
+      'db.ready': 'Bases locales prêtes',
+      'db.partial': 'Partiellement prête ({n})',
+      'db.none': 'Bases indisponibles',
+      'db.count': '{n} enregistrements',
+      'db.count.none': 'Aucune base chargée',
+      'db.banner.error': 'Aucune base n\u2019a pu être chargée. La recherche est indisponible tant qu\u2019une base au moins n\u2019est pas chargée.',
+      'db.banner.warn': 'Échec du chargement : {names}. Les résultats excluent ces bases.',
+      'update.banner': 'Une nouvelle version est disponible ({a} → {b}). Rechargez la page. Aucune donnée enregistrée ne sera supprimée.',
+      'sw.update': 'Une mise à jour est disponible. Rechargez la page — aucune donnée enregistrée ne sera supprimée.',
+      'results.none.t': 'Aucune correspondance fiable trouvée',
+      'results.none.b': 'Ne pas trouver la substance ne signifie pas qu\u2019elle est approuvée. Essayez le nom complet ou le numéro CAS.',
+      'results.badge.strong': 'Correspondance forte',
+      'results.badge.possible': 'Correspondance possible',
+      'results.caution': 'Correspondance possible — vérifiez le nom et l\u2019étiquette avant utilisation.',
+      'results.prohibited': '⚠️ Avertissement : cette substance figure parmi les pesticides interdits en Libye (arrêté 248) — {name}',
+      'results.source.raw': 'Statut tel qu\u2019indiqué dans la source :',
+      'results.source.category': 'Catégorie telle qu\u2019indiquée dans la source :',
+      'cas.label': 'CAS :',
+      'cas.missing': 'Non disponible',
+      'search.noDB.t': 'Bases de données indisponibles',
+      'search.noDB.b': 'Au moins une base n\u2019a pas pu être chargée ; la recherche ne peut pas s\u2019exécuter.',
+      'history.empty': 'Aucun historique pour le moment.',
+      'history.fail': 'Impossible de lire l\u2019historique.',
+      'ocr.prep': 'Préparation de l\u2019image…',
+      'ocr.done': 'Lecture terminée.',
+      'ocr.weak': 'Impossible de lire un texte clair avec une confiance suffisante. Essayez une photo plus nette et mieux éclairée, ou corrigez le texte ci-dessous puis appuyez sur « Rechercher depuis le texte ».',
+      'ocr.doneEdit': 'Lecture terminée. Vérifiez le texte détecté — vous pouvez le corriger puis relancer la recherche.',
+      'ocr.fail': 'Impossible de démarrer le moteur OCR. Ouvrez l\u2019app une fois en ligne pour télécharger les fichiers OCR, ou effectuez une recherche manuelle.',
+      'ocr.loading': 'Téléchargement des fichiers OCR pour une utilisation hors ligne…',
+      'ocr.loadDone': 'Fichiers OCR téléchargés ({n}/8). Le scan visuel fonctionnera hors ligne.',
+      'ocr.title': 'Résultats du scan visuel',
+      'ocr.none.t': 'Aucune correspondance fiable depuis le texte détecté',
+      'ocr.none.b': 'Modifiez le texte détecté ou saisissez le nom/CAS manuellement dans le champ de recherche.',
+      'ocr.rerun.none.t': 'Aucune correspondance fiable depuis le texte saisi',
+      'prep.check': 'Vérification…',
+      'prep.full': 'Prêt pour l\u2019utilisation hors ligne ✅',
+      'prep.searchReady': 'Recherche prête hors ligne — l\u2019OCR doit encore être préparé',
+      'prep.ocrBtn': '⬇️ Préparer les fichiers OCR',
+      'prep.firstRun': 'Effectuez le premier lancement en ligne pour terminer la préparation',
+      'prep.done': '✅ Application entièrement prête',
+      'prep.working': 'Préparation…',
+      'prep.fail': 'Préparation impossible maintenant — réessayez en ligne',
+      'prep.failNote': 'Impossible de télécharger les fichiers OCR maintenant. Nouvelle tentative automatique au premier scan en ligne.',
+      'prep.noStorage': 'Ce navigateur ne prend pas entièrement en charge le stockage local'
+    },
+
+    zh: {
+      'brand.title': '农业顾问',
+      'brand.eyebrow': '本地数据，决策明确',
+      'chip.preparing': '正在准备数据库',
+      'chip.online': '🟢 在线',
+      'chip.offline': '🔴 离线',
+      'theme.title': '切换深色模式',
+      'lang.title': '更改语言',
+      'src.248': '利比亚第248号决议（2024）',
+      'src.500': '利比亚第500号决议（2026）',
+      'src.eu': '欧盟',
+      'src.epa': '美国 EPA',
+      'src.fao': 'FAO/WHO 食典委（残留限量）',
+      'intro.h2': '使用之前，先了解这种物质。',
+      'intro.p': '按名称或 CAS 号搜索。利比亚是首要参考；国际来源仅用于比较。若匹配不可靠，则不显示任何法律批准状态。',
+      'mode.label': '模式：',
+      'mode.farmer': '农户',
+      'mode.pro': '专业',
+      'search.placeholder': '例如：Glyphosate 或 1071-83-6',
+      'search.btn': '检查物质',
+      'tool.camera': '📷 扫描标签',
+      'tool.copy': '📋 复制报告',
+      'tool.history': '📜 历史',
+      'hint': '💡 首次运行后搜索即可在本地进行。结果不确定时，务必核对名称与标签。',
+      'prep.h2': '📦 准备离线使用',
+      'prep.shell': '🧩 应用文件（界面 + 搜索引擎）',
+      'prep.data': '🗄️ 四个数据库（77 · 411 · 1,483 · 2,199 条记录）',
+      'prep.ocr': '🔎 OCR 引擎文件（阿拉伯语 + 英语）',
+      'prep.note': '所有内容只需下载一次（约 17 MB），之后搜索与扫描即可完全离线运行。日常搜索不会下载任何文件。',
+      'prep.btn': '⬇️ 立即准备',
+      'scan.title': '📸 视觉扫描',
+      'scan.note': '💡 在一次性准备 OCR 文件后（见上方"准备离线使用"面板），扫描即可离线在本地运行。图像仅在你的设备上处理，绝不发送到任何服务器。',
+      'scan.msg': '请清晰拍摄有效成分名称，或从相册选择图片。识别将自动开始。',
+      'scan.gallery': '🖼️ 从相册选择图片',
+      'scan.placeholder': '从图像识别的文字——可编辑后重新搜索',
+      'scan.rerun': '🔍 从文字搜索',
+      'results.title': '检查结果',
+      'history.h2': '📜 搜索历史',
+      'history.clear': '清空历史',
+      'history.close': '关闭',
+      'footer': '农业顾问是所附数据库的查询辅助工具。最终法律依据以主管官方机构为准。对信息使用不当概不负责。',
+      'db.loading': '加载中…',
+      'db.ok': '就绪',
+      'db.cached': '就绪（本地副本）',
+      'db.unavailable': '不可用',
+      'db.ready': '本地数据库就绪',
+      'db.partial': '部分就绪（{n}）',
+      'db.none': '数据库不可用',
+      'db.count': '{n} 条记录',
+      'db.count.none': '未加载数据库',
+      'db.banner.error': '无法加载任何数据库。至少加载一个数据库后才能搜索。',
+      'db.banner.warn': '加载失败：{names}。结果将不包含这些数据库。',
+      'update.banner': '发现新版本（{a} → {b}）。请刷新页面获取。不会删除任何已保存的数据。',
+      'sw.update': '应用有可用更新。请刷新页面——不会删除任何已保存的数据。',
+      'results.none.t': '未找到可靠匹配',
+      'results.none.b': '未找到该物质并不代表它已被批准。请尝试完整名称或 CAS 号。',
+      'results.badge.strong': '强匹配',
+      'results.badge.possible': '可能匹配',
+      'results.caution': '可能匹配——使用前请核对名称与标签。',
+      'results.prohibited': '⚠️ 警告：该物质已被列入利比亚禁用农药清单（第248号决议）——{name}',
+      'results.source.raw': '来源中所述的状态：',
+      'results.source.category': '来源中所述的分类：',
+      'cas.label': 'CAS：',
+      'cas.missing': '不可用',
+      'search.noDB.t': '数据库不可用',
+      'search.noDB.b': '至少一个数据库加载失败，因此无法执行搜索。',
+      'history.empty': '暂无搜索历史。',
+      'history.fail': '无法读取历史记录。',
+      'ocr.prep': '正在处理图像…',
+      'ocr.done': '识别完成。',
+      'ocr.weak': '无法以足够置信度读取清晰文本。请尝试更清晰、光线更好的照片，或修改下方文本后点击"从文字搜索"。',
+      'ocr.doneEdit': '识别完成。请核对识别文本——可修改后重新搜索。',
+      'ocr.fail': '无法启动 OCR 引擎。请在联网时打开应用一次以下载 OCR 文件，或手动搜索。',
+      'ocr.loading': '正在下载 OCR 文件以供离线使用…',
+      'ocr.loadDone': 'OCR 文件已下载（{n}/8）。视觉扫描今后可离线运行。',
+      'ocr.title': '视觉扫描结果',
+      'ocr.none.t': '识别文本未找到可靠匹配',
+      'ocr.none.b': '请修改识别文本，或在搜索框中手动输入名称/CAS。',
+      'ocr.rerun.none.t': '输入文本未找到可靠匹配',
+      'prep.check': '正在检查…',
+      'prep.full': '离线使用已就绪 ✅',
+      'prep.searchReady': '搜索可离线——OCR 仍需准备',
+      'prep.ocrBtn': '⬇️ 准备 OCR 文件',
+      'prep.firstRun': '请在联网时完成首次运行以结束准备',
+      'prep.done': '✅ 应用已完全就绪',
+      'prep.working': '正在准备…',
+      'prep.fail': '当前无法准备——请在联网时重试',
+      'prep.failNote': '当前无法下载 OCR 文件。首次联网扫描时将自动重试。',
+      'prep.noStorage': '此浏览器不完全支持本地存储'
+    }
+  };
+
+  var RTL = { ar: true };
+  var current = 'ar';
+  try {
+    var saved = localStorage.getItem('mustashar-lang');
+    if (saved && DICTS[saved]) current = saved;
+  } catch (e) { /* storage may be unavailable */ }
+
+  function t(key, fallback) {
+    var d = DICTS[current] || DICTS.ar;
+    return (key in d) ? d[key] : (fallback != null ? fallback : key);
+  }
+
+  /* tf('key', 'fallback', {n: 5}) — simple {placeholder} interpolation */
+  function tf(key, fallback, vars) {
+    var s = t(key, fallback);
+    var v = vars || {};
+    Object.keys(v).forEach(function (k) {
+      s = s.split('{' + k + '}').join(String(v[k]));
+    });
+    return s;
+  }
+
+  function apply() {
+    var dict = DICTS[current] || DICTS.ar;
+    document.documentElement.lang = current;
+    document.documentElement.dir = RTL[current] ? 'rtl' : 'ltr';
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+      var v = dict[el.getAttribute('data-i18n')];
+      if (v != null) el.textContent = v;
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(function (el) {
+      var v = dict[el.getAttribute('data-i18n-placeholder')];
+      if (v != null) el.setAttribute('placeholder', v);
+    });
+    document.querySelectorAll('[data-i18n-title]').forEach(function (el) {
+      var v = dict[el.getAttribute('data-i18n-title')];
+      if (v != null) el.setAttribute('title', v);
+    });
+    var sel = document.getElementById('langSelect');
+    if (sel && sel.value !== current) sel.value = current;
+  }
+
+  function setLang(lang) {
+    if (!DICTS[lang] || lang === current) { apply(); return; }
+    current = lang;
+    try { localStorage.setItem('mustashar-lang', lang); } catch (e) {}
+    apply();
+    try {
+      document.dispatchEvent(new CustomEvent('langchange', { detail: { lang: lang } }));
+    } catch (e) {}
+  }
+
+  /* Language switcher — self-wiring (element rendered in index.html) */
+  document.addEventListener('DOMContentLoaded', function () {
+    var sel = document.getElementById('langSelect');
+    if (sel) {
+      sel.value = current;
+      sel.addEventListener('change', function () { setLang(sel.value); });
+    }
+    apply();
+  });
+  if (document.readyState !== 'loading') {
+    var sel0 = document.getElementById('langSelect');
+    if (sel0) {
+      sel0.value = current;
+      sel0.addEventListener('change', function () { setLang(sel0.value); });
+    }
+    apply();
+  }
+
+  window.I18N = {
+    t: t,
+    tf: tf,
+    apply: apply,
+    setLang: setLang,
+    getLang: function () { return current; },
+    langs: Object.keys(DICTS)
+  };
+})();

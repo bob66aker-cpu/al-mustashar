@@ -1,5 +1,5 @@
 /*
- * sw.js — المستشار الزراعي (v5)
+ * sw.js — المستشار الزراعي (v6)
  *
  * Cache topology (two caches; both survive SW updates):
  *   - mustashar-v5    app shell + data JSONs (precached, mirrored forward
@@ -15,7 +15,7 @@
  * Personal data (IndexedDB history, theme, app version note) lives outside
  * the caches and is never touched by this worker.
  */
-const CACHE = 'mustashar-v5';
+const CACHE = 'mustashar-v6';
 const OCR_CACHE = 'mustashar-ocr';
 const SHELL = [
   './',
@@ -35,7 +35,10 @@ const DATA = [
   './data/libya-248.json',
   './data/libya-500.json',
   './data/eu.json',
-  './data/epa.json'
+  './data/epa.json',
+  /* FAO/WHO Codex — written by the update agent (scripts/update-intl-dbs.mjs);
+   * absent files fail install per-entry and never break the shell. */
+  './data/fao.json'
 ];
 
 /* OCR engine assets (tesseract.min.js itself is in SHELL so the OCR loader

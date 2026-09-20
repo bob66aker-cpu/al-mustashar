@@ -73,6 +73,17 @@
     return c;
   }
 
+  /* appRoot() — URL of the app's root directory. The page may live at
+   * /index.html, /src/…, /tests/… (harness) or under a subpath like
+   * /<repo>/ on GitHub Pages; taking the page directory and stripping a
+   * known page directory (/src/ or /tests/) keeps asset URLs inside the
+   * app root in every case. */
+  function appRoot() {
+    const base = (global.location && global.location.href) || 'http://localhost/';
+    const dir = new URL('.', base).href;   // always ends with '/'
+    return dir.replace(/\/(?:src|tests)\/$/, '/');
+  }
+
   async function decodeImage(file) {
     if (global.createImageBitmap) {
       try { return await createImageBitmap(file, { imageOrientation: 'from-image' }); }
@@ -265,12 +276,14 @@
         1,                               // OEM: LSTM only (matches the vendored core)
         {
           workerBlobURL: false,            // real same-origin worker (Blob workers cannot importScripts)
-          /* absolute, page-relative URLs: relative strings would resolve against
-             the Tesseract worker's own base (/tests/... in the harness) — the
-             leading slash keeps them origin-rooted, so any page depth works */
-          workerPath: new URL('/vendor/tesseract/worker.min.js', global.location ? global.location.href : 'http://localhost/').href,
-          corePath: new URL('/' + OCR.CORE + '/', global.location ? global.location.href : 'http://localhost/').href,
-          langPath: new URL('/' + OCR.LANG + '/', global.location ? global.location.href : 'http://localhost/').href,
+          /* App-root-relative URLs: the app root is the page URL minus its
+             known directory (/src/, /tests/ or /), so GitHub Pages subpath
+             deployments (/<repo>/) resolve inside the app, not at the
+             origin root. 'vendor/tesseract/...' literal is pinned by the
+             static suite (tests/verify.mjs). */
+          workerPath: new URL('vendor/tesseract/worker.min.js', appRoot()).href,
+          corePath: new URL(OCR.CORE + '/', appRoot()).href,
+          langPath: new URL(OCR.LANG + '/', appRoot()).href,
           gzip: true,
           cacheMethod: 'none',           // SW owns caching (no refreshCost)
           logger: m => { if (progressSink) progressSink(m); }

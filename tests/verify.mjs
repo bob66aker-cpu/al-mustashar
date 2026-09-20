@@ -207,10 +207,11 @@ check('ocr assets total plausible (not bloated/empty)', (() => {
 const ocrMod = fs.readFileSync('src/ocr.js', 'utf8');
 check('ocr.js pins self-hosted paths (no CDN at runtime)',
   ocrMod.includes("'vendor/tesseract/worker.min.js'")
-  /* V2: core/lang paths are made origin-rooted absolute URLs (new URL('/' + OCR.CORE + '/', ...))
-     so the harness page depth (/tests/...) cannot resolve them against the Tesseract worker base. */
-  && ocrMod.includes("new URL('/' + OCR.CORE + '/'")
-  && ocrMod.includes("new URL('/' + OCR.LANG + '/'")
+  /* ز1: core/lang/worker URLs are app-root-relative (new URL(OCR.CORE + '/', appRoot()))
+     so GitHub Pages subpath deployments (/<repo>/) resolve inside the app, while the
+     harness page depth (/tests/...) still resolves against the app root, not the worker base. */
+  && ocrMod.includes("new URL(OCR.CORE + '/', appRoot())")
+  && ocrMod.includes("new URL(OCR.LANG + '/', appRoot())")
   && !/https:\/\/cdn/.test(ocrMod));
 check('ocr.js supports Arabic + English', ocrMod.includes("'eng+ara'"));
 check('ocr.js preprocessing pipeline present',

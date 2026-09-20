@@ -1,0 +1,52 @@
+{
+  "_comment": "International ALERT layer (work order c5). Membership notices ONLY: 'listed in X' — never 'banned'. Only substance name + CAS + which list + official link + fetch date. No text is copied from the sources (license terms not verified). Libya ratification status: NOT VERIFIED. Update policy: links only; copying content requires checking each site's terms first.",
+  "libya_treaty_status": {
+    "rotterdam": "غير مؤكد — لم يُتحقق من وضع ليبيا في جدول التصديقات على موقع الأمانة العامة",
+    "stockholm": "غير مؤكد — لم يُتحقق من وضع ليبيا في جدول التصديقات على موقع الأمانة العامة",
+    "verified_on": null
+  },
+  "lists": [
+    {
+      "id": "rotterdam-annex3",
+      "label": "المرفق الثالث لاتفاقية روتردام",
+      "label_en": "Rotterdam Convention Annex III (PIC procedure)",
+      "nature": "إجراء الموافقة المسبقة المطلية — إشعار موافقة/رفض للتجارة؛ ليس حظرًا تلقائيًا",
+      "url": "https://www.pic.int/Procedures/OverviewofthePICprocedure/tabid/1078/language/en-US/Default.aspx",
+      "annex_url": "https://www.pic.int/TheConvention/Chemicals/AnnexIIIChemicals/tabid/1132/language/en-US/Default.aspx",
+      "license": "لم يُتحقق — احفظ الروابط فقط حتى يُراجع شروط الاستخدام",
+      "fetched": "2026-09-20",
+      "substances": []
+    },
+    {
+      "id": "stockholm-pops",
+      "label": "اتفاقية ستوكهولم (الملوثات العضوية الثابتة)",
+      "label_en": "Stockholm Convention on POPs",
+      "nature": "قيود/استبعاد إنتاج واستخدام لمواد محددة عالميًا — الحالة لكل مادة وردت في نص الاتفاقية ومرفقاتها",
+      "url": "https://www.pops.int/TheConvention/Overview/tabid/335/Default.aspx",
+      "annex_url": "https://www.pops.int/TheConvention/ThePOPs/AllPOPs/tabid/2509/Default.aspx",
+      "license": "لم يُتحقق — احفظ الروابط فقط حتى يُراجع شروط الاستخدام",
+      "fetched": "2026-09-20",
+      "substances": []
+    },
+    {
+      "id": "pan-consolidated",
+      "label": "قائمة الحظر الموحدة حسب الدولة — شبكة العمل ضد المبيدات",
+      "label_en": "PAN International Consolidated List of Bans",
+      "nature": "تجميع مدني لحالات الحظر الوطنية المُعلنة في دول مختلفة — الإشارة تخص الدولة الحاظِرة، وليست قرارًا ليبيًا",
+      "url": "https://pan-international.org/pan-international-consolidated-list-of-bans/",
+      "license": "لم يُتحقق — احفظ الروابط فقط حتى يُراجع شروط الاستخدام",
+      "fetched": "2026-09-20",
+      "substances": []
+    },
+    {
+      "id": "pan-hhp",
+      "label": "قائمة مبيدات الشديدة الخطورة — شبكة العمل ضد المبيدات",
+      "label_en": "PAN List of Highly Hazardous Pesticides (HHP)",
+      "nature": "إشارة خطورة مرجعية من منظمة مدنية — ليست حالة قانونية",
+      "url": "https://pan-international.org/highly-hazardous-pesticides/",
+      "license": "لم يُتحقق — احفظ الروابط فقط حتى يُراجع شروط الاستخدام",
+      "fetched": "2026-09-20",
+      "substances": []
+    }
+  ]
+}

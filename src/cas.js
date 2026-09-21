@@ -70,7 +70,14 @@
           if (Number.isFinite(t) && t < Date.now())
             return { key: 'st.eu.expired', tone: 'amber', raw: raw };
         }
-        return { key: 'st.eu.approved', tone: 'neutral', raw: raw };
+        /* ج4: original export extra categories — shown verbatim, never
+         * mapped to a derived verdict. Candidate carries its textual
+         * reason in candidate_reason (from the official export). */
+        const extra = [];
+        if (r.candidate_for_substitution) extra.push({ key: 'st.eu.candidate', reason: String(r.candidate_reason || '').trim() });
+        if (r.basic_substance)            extra.push({ key: 'st.eu.basic' });
+        if (r.low_risk)                   extra.push({ key: 'st.eu.lowrisk' });
+        return { key: 'st.eu.approved', tone: 'neutral', raw: raw, extra: extra.length ? extra : null };
       }
       return { key: 'st.eu.unknown', tone: 'neutral', raw: raw || st };
     }

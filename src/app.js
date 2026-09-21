@@ -189,6 +189,11 @@
    * Loading — parallel + fail-soft.
    * Each source is independent: one failure never blocks others.
    * ============================================================ */
+  /* c3: documented row counts (docs/data-provenance.md). A loaded file
+   * that arrives SHORTER than documented is a silent-truncation alarm —
+ * the banner fires and the count is still shown, nothing is hidden. */
+  const EXPECTED_ROWS = { 'libya-248': 77, 'libya-500': 411, eu: 1483, epa: 2199 };
+
   function loadSource(src) {
     setPhase(src.key, 'loading');
     const attemptFetch = () => fetch(src.url, { cache: 'no-store' }).then(async res => {
@@ -198,10 +203,26 @@
       return data;
     });
 
+    /* returns true when the count is materially short (>=5% missing) */
+    const tooShort = data => {
+      const exp = EXPECTED_ROWS[src.key];
+      return exp && data.rows.length < exp * 0.95;
+    };
+
     return attemptFetch()
       .then(data => {
         DB[src.key] = data;
         setPhase(src.key, 'ok', data.rows.length);
+        if (tooShort(data)) {
+          const banner = $('#dbBanner');
+          if (banner) {
+            banner.hidden = false;
+            banner.className = 'banner banner-warn';
+            banner.textContent = tf('db.banner.short',
+              'تحذير: {key} وصل بعدد أقل من الموثق ({got} من {exp}) — قد تكون هناك بيانات مقتطعة.',
+              { key: t(src.labelKey, src.label), got: data.rows.length, exp: EXPECTED_ROWS[src.key] });
+          }
+        }
         // cache after success; never overwrite a valid cache with bad data
         return idbPut(STORE_DB, src.key, data).catch(() => {});
       })
@@ -378,6 +399,10 @@
         + '<p class="status ' + stClass + '">' + esc(sd.text) + '</p>'
         + '<p class="meta">' + t('cas.label', 'CAS:') + ' ' + casHtml + '</p>'
         + cat + raw + matchType
+        + (sd.extra && sd.extra.length
+          ? '<p class="meta">' + sd.extra.map(e => t(e.key, '')
+            + (e.reason ? ' — ' + esc(e.reason) : '')).filter(Boolean).join(' · ') + '</p>'
+          : '')
         + (!strong ? '<p class="caution">' + t('results.caution', 'تطابق محتمل، راجع الاسم والملصق قبل الاستخدام.') + '</p>' : '')
         + '</article>';
     }).join('');

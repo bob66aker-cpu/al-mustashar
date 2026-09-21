@@ -1,0 +1,6 @@
+image_file,printed_active_ingredient,printed_cas,condition,notes
+# ground truth for the 17-label set (14 field + ideal/damaged/low-light)
+# filled by the user from THEIR OWN reading of each label - never from OCR output
+# condition examples: field / ideal / damaged / low-light / glare / angled / rotated
+# example row (delete when filling):
+# label-01.jpg,Bifenthrin,82657-04-3,field,trade name BIFEN XTS visible

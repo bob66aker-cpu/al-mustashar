@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#1f6f52">
+  <meta name="theme-color" content="#121e18">
   <!-- Security: the app is fully local — no external code, data or fonts are ever loaded.
        'wasm-unsafe-eval' is required only by the self-hosted Tesseract WASM engine. -->
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data:; font-src 'self'; connect-src 'self'; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'">
@@ -13,864 +13,1006 @@
   <link rel="apple-touch-icon" href="icons/icon-192.png">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="المستشار الزراعي">
   <title>المستشار الزراعي - فحص المبيدات</title>
 
+  <!-- Local font: IBM Plex Sans Arabic (OFL 1.1) — see assets/fonts/LICENSE-OFL-IBM-Plex-Sans-Arabic.txt -->
   <style>
+    @font-face {
+      font-family: 'IBM Plex Sans Arabic';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('assets/fonts/ibm-plex-sans-arabic-regular.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'IBM Plex Sans Arabic';
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url('assets/fonts/ibm-plex-sans-arabic-bold.woff2') format('woff2');
+    }
+
+    /* ============ design tokens — dark (default, matches reference) ============ */
     :root {
-      /* الألوان الأساسية */
-      --primary-dark: #1F6F52;
-      --primary-light: #E9F2EB;
-      --primary-medium: #2E8659;
-
-      /* ألوان الحالات */
-      --danger-dark: #A93636;
-      --danger-light: #FAE7E7;
-      --warning-dark: #966B17;
-      --warning-light: #FFF4D8;
-      --success-dark: #226641;
-      --success-light: #E5F3E9;
-      --info-dark: #1E5F8A;
-      --info-light: #E8F4F8;
-
-      /* النصوص */
-      --text-primary: #17342A;
-      --text-secondary: #64776D;
-      --text-tertiary: #D8E3DA;
-
-      /* الخلفيات */
-      --surface-main: #FFFFFF;
-      --surface-bg: #F5F7F1;
-
-      /* الزجاج */
-      --glass: rgba(255, 255, 255, 0.72);
-
-      /* الظل */
-      --shadow-sm: 0 1px 3px rgba(23, 52, 42, 0.08);
-      --shadow-md: 0 2px 6px rgba(23, 52, 42, 0.12);
-      --shadow-lg: 0 8px 24px rgba(23, 52, 42, 0.14);
-
-      /* المسافات */
-      --spacing-xs: 8px;
-      --spacing-sm: 12px;
-      --spacing-md: 16px;
-      --spacing-lg: 24px;
-      --spacing-xl: 32px;
-      --radius: 18px;
-
-      --bg: var(--surface-bg);
-      --surface: var(--surface-main);
-      --text-main: var(--text-primary);
-      --text-muted: var(--text-secondary);
-      --border: var(--text-tertiary);
+      --bg: #121e18;
+      --card: #16211b;
+      --nav: #17211d;
+      --border: #1f2b24;
+      --primary: #2e7b4b;          /* surfaces/buttons only (white text on it passes) */
+      --primary-strong: #6fbf8f;   /* green TEXT on dark (>= 4.5 on card) */
+      --primary-soft: rgba(46, 123, 75, 0.16);
+      --text: #e8efe9;
+      --muted: #94a3b8;
+      --ban: #f87171;
+      --caution: #fbbf24;
+      --info: #60a5fa;
+      --on-primary: #ffffff;
+      --field: #121b16;
+      color-scheme: dark;
+    }
+    /* ============ light theme (same structure, derived) ============ */
+    html[data-theme="light"] {
+      --bg: #f4f8f5;
+      --card: #ffffff;
+      --nav: #ffffff;
+      --border: #dfe8e2;
+      --primary: #2e7b4b;
+      --primary-strong: #1e5c38;   /* green TEXT on light (>= 4.5 on card) */
+      --primary-soft: rgba(46, 123, 75, 0.12);
+      --text: #14231a;
+      --muted: #56685d;
+      --ban: #b91c1c;
+      --caution: #92400e;
+      --info: #1d4ed8;
+      --on-primary: #ffffff;
+      --field: #f4f8f5;
+      color-scheme: light;
     }
 
-    /* نمط الليل */
-    html[data-theme="dark"] {
-      --surface-main: #1E1E1E;
-      --surface-bg: #121212;
-      --text-primary: #FFFFFF;
-      --text-secondary: #B3B3B3;
-      --text-tertiary: #333333;
-      --primary-light: #2E8659;
-      --danger-light: #4A1F1F;
-      --danger-dark: #EF9A9A;
-      --warning-light: #3A2E10;
-      --warning-dark: #FFB74D;
-      --success-light: #16321F;
-      --success-dark: #7FD49B;
-      --info-light: #102433;
-      --info-dark: #7FC8E8;
-      --glass: rgba(30, 30, 30, 0.72);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html, body { width: 100%; height: 100%; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
 
     body {
       background: var(--bg);
-      background-image:
-        radial-gradient(at 20% 10%, rgba(31, 111, 82, 0.07) 0px, transparent 50%),
-        radial-gradient(at 85% 90%, rgba(46, 134, 89, 0.05) 0px, transparent 50%),
-        radial-gradient(at 50% 50%, rgba(23, 52, 42, 0.04) 0px, transparent 50%);
-      background-attachment: fixed;
-      color: var(--text-main);
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Cairo', 'Droid Arabic Kufi', sans-serif;
-      font-size: 16px;
-      line-height: 1.6;
-      transition: background-color 0.3s ease, color 0.3s ease;
+      color: var(--text);
+      font-family: 'IBM Plex Sans Arabic', 'Segoe UI', Tahoma, sans-serif;
+      font-size: 15px;
+      line-height: 1.65;
       -webkit-tap-highlight-color: transparent;
+      transition: background-color 0.2s ease, color 0.2s ease;
     }
 
-    main {
-      max-width: 980px;
-      margin: 0 auto;
-      padding: var(--spacing-lg) var(--spacing-md) 80px;
+    .ic { width: 24px; height: 24px; display: block; }
+    .ic-sm { width: 18px; height: 18px; }
+    .ic-lg { width: 32px; height: 32px; }
+    [data-icon] { display: inline-flex; flex: none; }
+
+    .visually-hidden {
+      position: absolute; width: 1px; height: 1px;
+      overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
     }
 
-    /* ===== Header (frosted, sticky, light) ===== */
+    /* ============ header (fixed height 56) ============ */
     header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: var(--spacing-md);
-      padding: var(--spacing-sm) var(--spacing-md);
-      margin: 0 calc(-1 * var(--spacing-md)) var(--spacing-lg);
-      background: var(--glass);
-      -webkit-backdrop-filter: saturate(1.4) blur(14px);
-      backdrop-filter: saturate(1.4) blur(14px);
-      border-bottom: 1px solid var(--border);
-      flex-wrap: wrap;
-    }
-
-    .brand {
-      display: flex;
-      gap: var(--spacing-sm);
-      align-items: center;
-      flex: 1;
-      min-width: 200px;
-    }
-
-    .mark {
-      font-size: 26px;
-      background: linear-gradient(135deg, var(--primary-medium), var(--primary-dark));
-      color: #fff;
-      padding: 9px;
-      border-radius: 15px;
-      width: 48px;
-      height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .brand h1 { font-size: 19px; font-weight: 800; line-height: 1.2; }
-
-    .eyebrow {
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-bottom: 2px;
-    }
-
-    /* ===== Status bento ===== */
-    .statusline {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-      font-size: 12px;
-      color: var(--text-muted);
-      align-items: center;
-      justify-content: flex-end;
-    }
-
-    .chip {
-      border: 1px solid var(--border);
-      background: var(--surface);
-      padding: 7px 11px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 600;
-      white-space: nowrap;
-      transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
-    }
-
-    .chip.active {
-      background: var(--primary-light);
-      border-color: var(--primary-dark);
-      color: var(--primary-dark);
-    }
-
-    /* chips in loading state show a small spinner */
-    .chip.db-loading::before {
-      content: '';
-      display: inline-block;
-      width: 10px;
-      height: 10px;
-      margin-inline-end: 6px;
-      border: 2px solid currentColor;
-      border-top-color: transparent;
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-      vertical-align: -1px;
-    }
-
-    .theme-toggle {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      color: var(--text-main);
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      cursor: pointer;
-      font-size: 18px;
-      transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .theme-toggle:hover {
-      background: var(--primary-light);
-      border-color: var(--primary-dark);
-    }
-    .theme-toggle:active { transform: scale(0.94); }
-
-    .lang-toggle {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      color: var(--text-main);
-      height: 44px;
-      border-radius: 12px;
-      font: inherit;
-      font-size: 13px;
-      font-weight: 700;
-      padding: 0 10px;
-      cursor: pointer;
-      transition: background-color 0.2s ease, border-color 0.2s ease;
-    }
-    .lang-toggle:hover { background: var(--primary-light); border-color: var(--primary-dark); }
-
-    /* ===== Intro ===== */
-    .intro {
-      padding: var(--spacing-lg) 0 var(--spacing-md);
-      max-width: 720px;
-    }
-
-    .intro h2 {
-      font-size: clamp(28px, 5vw, 50px);
-      line-height: 1.08;
-      letter-spacing: -0.03em;
-      margin-bottom: var(--spacing-md);
-      font-weight: 800;
-    }
-
-    .intro p {
-      color: var(--text-muted);
-      line-height: 1.75;
-      margin-bottom: var(--spacing-md);
-    }
-
-    /* ===== Mode ===== */
-    .mode {
-      display: flex;
-      align-items: center;
-      gap: var(--spacing-sm);
-      margin: var(--spacing-md) 0;
-      flex-wrap: wrap;
-    }
-
-    .mode label { font-weight: 700; }
-
-    .mode select {
-      border: 1px solid var(--border);
-      background: var(--surface);
-      color: var(--text-main);
-      border-radius: 12px;
-      padding: 12px var(--spacing-md);
-      font: inherit;
-      min-height: 48px;
-      cursor: pointer;
-      transition: border-color 0.2s ease;
-    }
-
-    .mode select:focus { outline: 3px solid var(--primary-light); border-color: var(--primary-dark); }
-    .mode select:hover { border-color: var(--primary-dark); }
-
-    .mode-label { font-size: 14px; color: var(--text-muted); font-style: italic; }
-
-    /* ===== Search ===== */
-    .search {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: var(--spacing-sm);
-      max-width: 760px;
-      margin-bottom: var(--spacing-md);
-    }
-
-    .query {
-      border: 1px solid var(--border);
-      background: var(--surface);
-      color: var(--text-main);
-      border-radius: 14px;
-      padding: 14px var(--spacing-md);
-      font: inherit;
-      min-height: 52px;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .query::placeholder { color: var(--text-muted); }
-
-    .query:focus {
-      outline: none;
-      border-color: var(--primary-dark);
-      box-shadow: 0 0 0 3px var(--primary-light);
-    }
-
-    .search button {
-      border: 0;
-      border-radius: 14px;
-      background: linear-gradient(135deg, var(--primary-medium), var(--primary-dark));
-      color: #fff;
-      padding: 0 var(--spacing-lg);
-      font: inherit;
-      font-weight: 800;
-      min-height: 52px;
-      cursor: pointer;
-      transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .search button:hover {
-      filter: brightness(1.07);
-      box-shadow: var(--shadow-md);
-    }
-    .search button:active { transform: translateY(1px) scale(0.99); }
-
-    /* ===== Tools (large touch targets) ===== */
-    .tools {
-      display: flex;
-      gap: var(--spacing-xs);
-      flex-wrap: wrap;
-      margin-bottom: var(--spacing-md);
-    }
-
-    .btn-secondary {
-      border: 1px solid var(--border);
-      border-radius: 13px;
-      background: var(--primary-light);
-      color: var(--primary-dark);
-      padding: 13px var(--spacing-md);
-      font: inherit;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
-      font-size: 14px;
-      min-height: 48px;
-    }
-
-    .btn-secondary:hover {
-      background: var(--primary-dark);
-      color: #fff;
-      box-shadow: var(--shadow-md);
-    }
-    .btn-secondary:active { transform: scale(0.97); }
-    .btn-secondary:disabled { opacity: 0.6; cursor: wait; }
-
-    .hint {
-      font-size: 13px;
-      color: var(--text-muted);
-      margin-top: var(--spacing-xs);
-    }
-
-    /* ===== Cards (bento-lite) ===== */
-    .card {
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      background: var(--surface);
-      padding: var(--spacing-md);
-      box-shadow: var(--shadow-sm);
-      margin-top: var(--spacing-md);
-    }
-
-    /* Scan panel */
-    .scan {
-      margin-top: var(--spacing-md);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      background: var(--surface);
-      padding: var(--spacing-md);
-      box-shadow: var(--shadow-sm);
-    }
-
-    .scan summary {
-      cursor: pointer;
-      font-weight: 800;
-      padding: var(--spacing-xs);
-      user-select: none;
-      min-height: 44px;
-      display: flex;
-      align-items: center;
-      transition: color 0.2s ease;
-    }
-
-    .scan summary:hover { color: var(--primary-dark); }
-
-    .scan[open] summary { color: var(--primary-dark); margin-bottom: var(--spacing-sm); }
-
-    .scan input[type="file"] { margin-top: var(--spacing-sm); cursor: pointer; }
-
-    .preview {
-      display: block;
-      max-width: 100%;
-      max-height: 250px;
-      margin-top: var(--spacing-md);
-      border-radius: 14px;
-      box-shadow: var(--shadow-md);
-    }
-
-    .scan-note {
-      font-size: 13px;
-      color: var(--text-muted);
-      line-height: 1.7;
-      margin-top: var(--spacing-sm);
-    }
-
-    /* ===== Offline preparation card ===== */
-    .prep-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: var(--spacing-sm);
-      flex-wrap: wrap;
-      margin-bottom: var(--spacing-sm);
-    }
-
-    .prep-head h2 { font-size: 17px; font-weight: 800; }
-
-    .prep-list { list-style: none; display: grid; gap: 6px; margin-bottom: var(--spacing-sm); }
-
-    .prep-list li {
-      display: flex;
-      align-items: center;
+      position: fixed; top: 0; inset-inline: 0; z-index: 30;
+      height: 56px;
+      display: flex; align-items: center; justify-content: space-between;
       gap: 8px;
-      font-size: 14px;
-      padding: 9px 12px;
-      border: 1px dashed var(--border);
-      border-radius: 12px;
-      color: var(--text-muted);
-      transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
-    }
-
-    .prep-list li b {
-      margin-inline-start: auto;
-      font-variant-numeric: tabular-nums;
-      font-size: 12px;
-      color: inherit;
-    }
-
-    .prep-list li.done {
-      border: 1px solid var(--success-dark);
-      background: var(--success-light);
-      color: var(--success-dark);
-    }
-
-    .prep-list li.pending::before {
-      content: '';
-      width: 10px;
-      height: 10px;
-      border: 2px solid currentColor;
-      border-top-color: transparent;
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-    }
-
-    .prep-state { font-weight: 700; }
-
-    /* ===== Results ===== */
-    .summary {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
+      padding: 0 12px;
+      background: var(--nav);
       border-bottom: 1px solid var(--border);
-      padding: var(--spacing-lg) 0 var(--spacing-sm);
-      margin-bottom: var(--spacing-md);
-      gap: var(--spacing-md);
     }
-
-    .summary h2 { font-size: 20px; font-weight: 800; }
-
-    .results { display: grid; gap: var(--spacing-sm); padding: var(--spacing-sm) 0; }
-
-    .result {
-      background: var(--surface);
+    .brand {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none; color: inherit; min-width: 0;
+      min-height: 44px;
+    }
+    .brand-mark {
+      width: 36px; height: 36px; border-radius: 11px;
+      background: var(--primary); color: var(--on-primary);
+      display: flex; align-items: center; justify-content: center;
+      flex: none;
+    }
+    .brand-mark .ic { width: 22px; height: 22px; }
+    .brand-name {
+      color: var(--primary-strong);
+      font-weight: 700; font-size: 17px; line-height: 1.2;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .head-actions { display: flex; align-items: center; gap: 6px; }
+    .head-actions select, .icon-btn {
+      min-height: 44px; min-width: 44px;
       border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: var(--spacing-lg);
-      box-shadow: var(--shadow-sm);
-      transition: box-shadow 0.25s ease, border-color 0.25s ease;
+      border-radius: 12px;
+      background: var(--card); color: var(--text);
+      font: inherit; font-size: 14px; font-weight: 700;
+      padding: 0 8px; cursor: pointer;
+    }
+    .head-actions select#mode { max-width: 108px; }
+    .icon-btn { display: inline-flex; align-items: center; justify-content: center; }
+    .head-actions select:focus-visible, .icon-btn:focus-visible { outline: 3px solid var(--primary-strong); outline-offset: 1px; }
+
+    /* ============ main column (max 448) ============ */
+    main {
+      max-width: 448px;
+      margin: 0 auto;
+      padding: 68px 16px 96px;
     }
 
-    .result:hover { box-shadow: var(--shadow-md); border-color: var(--primary-medium); }
-
-    /* Glass surfaces (merged from the Base44 design exploration) */
-    .card, .scan, .result, .history-panel {
-      background: var(--glass);
-      -webkit-backdrop-filter: saturate(1.3) blur(12px);
-      backdrop-filter: saturate(1.3) blur(12px);
-    }
-
-    .result, .history-item { animation: slide-up 0.35s ease both; }
-    .notice { animation: fade-in 0.4s ease both; }
-
-    .result.possible { border-color: var(--warning-light); }
-
-    .result-top {
-      display: flex;
-      justify-content: space-between;
-      gap: var(--spacing-lg);
-      align-items: flex-start;
-      margin-bottom: var(--spacing-sm);
-    }
-
-    .result-top strong {
-      font-size: 22px;
-      color: var(--primary-dark);
-      font-variant-numeric: tabular-nums;
-      min-width: 60px;
-      text-align: left;
-    }
-
-    .result h3 {
-      margin: 5px 0 var(--spacing-sm);
-      font-size: 20px;
-      font-weight: 800;
-    }
-
-    .source {
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 4px;
-    }
-
-    .meta, .match { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
-    .meta { margin: var(--spacing-sm) 0; }
-
-    .status {
-      display: inline-block;
-      padding: 7px 10px;
-      border-radius: 8px;
-      font-size: 13px;
-      font-weight: 800;
-      margin: var(--spacing-sm) 0;
-    }
-
-    .status.good { background: var(--success-light); color: var(--success-dark); }
-    .status.bad { background: var(--danger-light); color: var(--danger-dark); }
-    .status.review { background: var(--warning-light); color: var(--warning-dark); }
-    /* Decision-layer styles (src/cas.js): neutral status, verdict chips,
-     * CAS checksum marks, ambiguity banner, disclaimer strip. */
-    .status.neutral { background: var(--info-light); color: var(--info-dark); }
-    .verdict { display: inline-block; margin-inline-start: 6px; padding: 1px 8px;
-      border-radius: 999px; font-size: 11px; font-weight: 700; }
-    .verdict.exact { background: var(--success-light); color: var(--success-dark); }
-    .verdict.probable { background: var(--warning-light); color: var(--warning-dark); }
-    .cas-bad { text-decoration: underline wavy var(--danger-dark); font-weight: 700; }
-    .nocas { color: var(--text-secondary); font-size: 12px; }
-    .ambgroup { background: var(--warning-light); color: var(--warning-dark);
-      border: 1px solid var(--warning-dark); border-radius: 10px;
-      padding: 10px 12px; margin: 0 0 10px; font-weight: 600; }
-    .disclaimer-strip { background: var(--info-light); color: var(--info-dark);
-      border-radius: 10px; padding: 8px 12px; margin: 10px 0; font-size: 13px; }
-    .support-btn { margin-inline-start: 8px; }
-    .about-box { background: var(--primary-light); border-radius: 10px;
-      padding: 10px 14px; margin: 10px 0; font-size: 13px; }
-
-    /* DB status chips */
-    .chip.db-ok      { background: var(--success-light); color: var(--success-dark); border-color: var(--success-dark); }
-    .chip.db-cached  { background: var(--info-light);    color: var(--info-dark);    border-color: var(--info-dark); }
-    .chip.db-loading { background: var(--warning-light); color: var(--warning-dark); border-color: var(--warning-dark); }
-    .chip.db-bad     { background: var(--danger-light);  color: var(--danger-dark);  border-color: var(--danger-dark); }
-
-    /* Banners */
-    .badge-beta { display: inline-block; font-size: 11px; background: var(--primary-light, #e7f0ea); color: var(--primary, #1f6f52); border: 1px solid var(--primary, #1f6f52); border-radius: 999px; padding: 3px 10px; margin: 6px 0 0; }
     .banner {
       border-radius: 12px;
-      padding: var(--spacing-sm) var(--spacing-md);
-      margin: 0 0 var(--spacing-md);
+      padding: 10px 14px;
+      margin: 0 0 12px;
       font-size: 13px;
       line-height: 1.7;
-      border-right: 4px solid;
-      flex-basis: 100%;
-    }
-    .banner-warn  { background: var(--warning-light); color: var(--warning-dark); border-color: var(--warning-dark); }
-    .banner-error { background: var(--danger-light);  color: var(--danger-dark);  border-color: var(--danger-dark); }
-    .banner-info  { background: var(--info-light);    color: var(--info-dark);    border-color: var(--info-dark); }
-
-    /* History panel */
-    .history-panel {
       border: 1px solid var(--border);
-      border-radius: var(--radius);
-      background: var(--surface);
-      padding: var(--spacing-md);
-      margin: var(--spacing-md) 0;
-      box-shadow: var(--shadow-sm);
+      border-inline-start: 4px solid var(--border);
     }
-    .history-item {
-      display: flex;
-      justify-content: space-between;
-      gap: var(--spacing-sm);
-      padding: 12px var(--spacing-sm);
-      border-bottom: 1px solid var(--border);
-      cursor: pointer;
-      font-size: 14px;
-      border-radius: 8px;
+    .banner-warn  { background: var(--card); color: var(--caution); border-inline-start-color: var(--caution); }
+    .banner-error { background: var(--card); color: var(--ban);     border-inline-start-color: var(--ban); }
+    .banner-info  { background: var(--card); color: var(--info);    border-inline-start-color: var(--info); }
+
+    /* ============ views ============ */
+    .view { display: block; }
+    .view[hidden] { display: none; }
+    .page-head { margin: 4px 0 14px; }
+    .page-head h2 { font-size: 22px; font-weight: 700; letter-spacing: -0.01em; }
+    .page-head p { color: var(--muted); font-size: 14px; margin-top: 4px; }
+
+    /* ============ cards ============ */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
+      margin-top: 12px;
+    }
+    .card h3 { font-size: 17px; font-weight: 700; }
+
+    /* ============ home: hero ============ */
+    .hero {
+      border-radius: 24px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 28px 16px;
+      text-align: center;
+      margin-top: 12px;
+    }
+    .hero-mark {
+      width: 64px; height: 64px; border-radius: 20px;
+      background: var(--primary); color: var(--on-primary);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 12px;
+    }
+    .hero-mark .ic { width: 34px; height: 34px; }
+    .hero h1 { color: var(--primary-strong); font-size: 22px; font-weight: 700; }
+    .hero .latin {
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      direction: ltr;
+      margin-top: 2px;
+    }
+    .hero .welcome { margin-top: 10px; font-size: 15px; }
+
+    /* ============ home: stat grid ============ */
+    .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
+    .stat {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 14px;
+      display: flex; flex-direction: column; gap: 4px; align-items: flex-start;
+    }
+    .stat .num { font-size: 26px; font-weight: 700; line-height: 1.15; font-variant-numeric: tabular-nums; }
+    .stat .lbl { font-size: 12px; color: var(--muted); }
+    .stat .ic { width: 20px; height: 20px; }
+    .stat.ban  .num, .stat.ban  .ic { color: var(--ban); }
+    .stat.warn .num, .stat.warn .ic { color: var(--caution); }
+    .stat.info .num, .stat.info .ic { color: var(--info); }
+
+    /* ============ home: scan CTA ============ */
+    .cta-scan {
+      margin-top: 12px;
+      display: flex; align-items: center; gap: 14px;
+      width: 100%;
+      background: var(--primary); color: var(--on-primary);
+      border: 1px solid var(--primary);
+      border-radius: 16px; padding: 16px;
+      cursor: pointer; font: inherit; text-align: start;
+    }
+    .cta-scan .sq {
+      width: 48px; height: 48px; border-radius: 14px;
+      background: var(--on-primary); color: var(--primary);
+      display: flex; align-items: center; justify-content: center; flex: none;
+    }
+    .cta-scan b { display: block; font-size: 16px; }
+    .cta-scan span.sub { display: block; font-size: 12px; opacity: 0.92; }
+
+    /* ============ home: shortcuts ============ */
+    .shortcuts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
+    .shortcut {
+      display: flex; align-items: center; gap: 10px;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 12px 14px;
+      color: inherit; text-decoration: none; font: inherit;
+      min-height: 56px; cursor: pointer; width: 100%;
+    }
+    .shortcut .ic { width: 20px; height: 20px; color: var(--primary-strong); }
+    .shortcut span.t { font-size: 14px; font-weight: 700; }
+
+    /* ============ home: share + connection + prep ============ */
+    .btn-outline {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      width: 100%; min-height: 44px;
+      background: transparent; color: var(--text);
+      border: 1px solid var(--border); border-radius: 12px;
+      font: inherit; font-size: 14px; font-weight: 700; cursor: pointer;
+      padding: 10px 16px;
+    }
+    .btn-outline .ic { width: 18px; height: 18px; }
+    .conn-line {
+      display: flex; align-items: center; gap: 8px; justify-content: center;
+      color: var(--muted); font-size: 13px; margin-top: 10px; min-height: 20px;
+    }
+    .conn-line .ic { width: 16px; height: 16px; }
+    .prep-mini {
+      margin-top: 12px;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 14px 16px;
+    }
+    .prep-mini .row1 { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; }
+    .prep-mini .row1 .ic { width: 18px; height: 18px; color: var(--caution); }
+    .prep-mini .bar {
+      height: 6px; border-radius: 999px; background: var(--border);
+      overflow: hidden; margin: 10px 0;
+    }
+    .prep-mini .bar > i { display: block; height: 100%; width: 0; border-radius: 999px; background: var(--primary); transition: width 0.3s ease; }
+    .prep-mini .ready { display: flex; align-items: center; gap: 8px; color: var(--primary-strong); font-size: 14px; font-weight: 700; }
+    .prep-mini .ready .ic { width: 18px; height: 18px; }
+    .prep-mini[hidden] { display: none; }
+
+    /* ============ forms ============ */
+    .field-wrap { position: relative; margin-top: 12px; }
+    .field-wrap .lead-ic {
+      position: absolute; inset-inline-start: 12px; top: 50%;
+      transform: translateY(-50%); color: var(--muted); pointer-events: none;
+      display: inline-flex;
+    }
+    .field-wrap .lead-ic .ic { width: 18px; height: 18px; }
+    .query, .input {
+      width: 100%; min-height: 48px;
+      background: var(--field); color: var(--text);
+      border: 1px solid var(--border); border-radius: 12px;
+      padding: 12px 16px; font: inherit; font-size: 15px;
+      transition: border-color 0.15s ease;
+    }
+    .field-wrap .query { padding-inline-start: 40px; }
+    .query::placeholder, .input::placeholder { color: var(--muted); }
+    .query:focus, .input:focus { outline: none; border-color: var(--primary-strong); }
+    .btn-primary {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
       min-height: 44px;
-      align-items: center;
-      transition: background-color 0.15s ease;
+      background: var(--primary); color: var(--on-primary);
+      border: 1px solid var(--primary); border-radius: 12px;
+      font: inherit; font-weight: 700; font-size: 15px;
+      padding: 10px 20px; cursor: pointer;
+    }
+    .search-row { display: grid; grid-template-columns: 1fr; gap: 10px; }
+    .search-row .btn-primary { width: 100%; }
+
+    .hint { font-size: 13px; color: var(--muted); margin-top: 10px; }
+
+    /* ============ empty state ============ */
+    .empty {
+      text-align: center; padding: 40px 16px;
+      color: var(--muted);
+    }
+    .empty .big { display: flex; justify-content: center; margin-bottom: 12px; opacity: 0.55; }
+    .empty .big .ic { width: 56px; height: 56px; }
+    .empty p { font-size: 14px; }
+
+    /* ============ results ============ */
+    .results-title {
+      display: flex; align-items: baseline; justify-content: space-between;
+      gap: 12px; margin: 18px 0 4px;
+    }
+    .results-title h2 { font-size: 20px; font-weight: 700; }
+    .results { display: grid; gap: 10px; padding: 8px 0 0; }
+    .result {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
+    }
+    .result.possible { border-color: var(--caution); }
+    .result-top {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      gap: 12px; margin-bottom: 8px;
+    }
+    .result-top strong {
+      font-size: 22px; color: var(--primary-strong);
+      font-variant-numeric: tabular-nums; min-width: 60px; text-align: end;
+    }
+    .result h3 { margin: 2px 0 8px; font-size: 20px; font-weight: 700; overflow-wrap: anywhere; }
+    .source-chip {
+      display: inline-block;
+      direction: ltr; unicode-bidi: embed;
+      font-size: 12px; font-weight: 700;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 1px 10px;
+      background: var(--field);
+      letter-spacing: 0.02em;
+    }
+    .meta, .match { font-size: 12px; color: var(--muted); line-height: 1.6; }
+    .meta { margin: 8px 0; overflow-wrap: anywhere; }
+    .cas-chip {
+      display: inline-block; direction: ltr; unicode-bidi: embed;
+      background: var(--field); border: 1px solid var(--border);
+      border-radius: 6px; padding: 0 8px;
+      font-family: Consolas, monospace; font-size: 12px;
+    }
+    .status {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 10px; border-radius: 8px;
+      font-size: 13px; font-weight: 700;
+      border: 1px solid var(--border);
+      margin: 8px 0;
+    }
+    .status .ic { width: 15px; height: 15px; }
+    .status.bad     { color: var(--ban);     border-color: var(--ban); }
+    .status.review  { color: var(--caution); border-color: var(--caution); }
+    .status.neutral { color: var(--info);    border-color: var(--info); }
+    .verdict {
+      display: inline-block; margin-inline-start: 6px;
+      padding: 1px 8px; border-radius: 999px;
+      font-size: 12px; font-weight: 700;
+      border: 1px solid var(--border);
+    }
+    .verdict.exact    { color: var(--primary-strong); border-color: var(--primary-strong); }
+    .verdict.probable { color: var(--caution); border-color: var(--caution); }
+    .cas-bad { text-decoration: underline wavy var(--ban); font-weight: 700; }
+    .nocas { color: var(--muted); font-size: 12px; }
+    .ambgroup {
+      background: var(--card); color: var(--caution);
+      border: 1px solid var(--caution); border-radius: 12px;
+      padding: 10px 12px; margin: 0 0 10px; font-weight: 700; font-size: 13px;
+      display: flex; gap: 8px; align-items: flex-start;
+    }
+    .ambgroup .ic { width: 18px; height: 18px; flex: none; margin-top: 2px; }
+    .disclaimer-strip {
+      background: var(--card); color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 10px; padding: 8px 12px; margin: 10px 0; font-size: 12px;
+    }
+    .support-btn { margin-inline-start: 8px; }
+    .prohibited {
+      border: 2px solid var(--ban);
+      color: var(--ban);
+      border-radius: 16px;
+      padding: 16px; font-weight: 700; font-size: 14px; line-height: 1.7;
+      margin-bottom: 10px;
+      display: flex; gap: 10px; align-items: flex-start;
+    }
+    .prohibited .ic { width: 22px; height: 22px; flex: none; margin-top: 2px; }
+    .notice {
+      padding: 20px 16px;
+      border-radius: 14px;
+      background: var(--card);
+      color: var(--text);
+      line-height: 1.7;
+      border: 1px solid var(--border);
+      font-size: 14px;
+    }
+    .caution {
+      color: var(--caution); font-size: 13px;
+      margin-top: 10px; padding: 10px 12px;
+      background: var(--card);
+      border-radius: 8px;
+      border-inline-start: 3px solid var(--caution);
+    }
+    .badge {
+      display: inline-block; padding: 3px 10px; border-radius: 999px;
+      font-size: 12px; font-weight: 700;
+      border: 1px solid var(--border);
+    }
+    .badge.strong   { color: var(--primary-strong); border-color: var(--primary-strong); }
+    .badge.possible { color: var(--info); border-color: var(--info); }
+    .scorebar {
+      height: 6px; border-radius: 999px; background: var(--border);
+      overflow: hidden; margin: 8px 0 8px;
+    }
+    .scorebar > i { display: block; height: 100%; border-radius: 999px; background: var(--primary-strong); }
+    .result.possible .scorebar > i { background: var(--caution); }
+
+    /* ============ scan view ============ */
+    .scan-cards { display: grid; gap: 10px; margin-top: 12px; }
+    .scan-card {
+      display: flex; align-items: center; gap: 14px;
+      width: 100%; text-align: start;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 16px;
+      color: inherit; font: inherit; cursor: pointer;
+      min-height: 88px;
+    }
+    .scan-card .disc {
+      width: 80px; height: 80px; border-radius: 50%;
+      background: var(--primary); color: var(--on-primary);
+      display: flex; align-items: center; justify-content: center; flex: none;
+    }
+    .scan-card .disc .ic { width: 34px; height: 34px; }
+    .scan-card.small .disc {
+      width: 48px; height: 48px; border-radius: 14px;
+      background: transparent; color: var(--info);
+      border: 1px solid var(--info);
+    }
+    .scan-card.small .disc .ic { width: 22px; height: 22px; }
+    .scan-card b { display: block; font-size: 16px; }
+    .scan-card span.sub { display: block; font-size: 12px; color: var(--muted); }
+    .scan-note {
+      font-size: 13px; color: var(--muted); line-height: 1.7;
+      margin-top: 10px;
+    }
+    .preview {
+      display: block; max-width: 100%; max-height: 250px;
+      margin-top: 12px; border-radius: 14px;
+    }
+    .tools { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+    .tools .btn-outline { width: auto; }
+    .confirm-panel {
+      margin-top: 12px;
+      border: 1px solid var(--border); border-radius: 16px; padding: 14px 16px;
+      background: var(--card);
+    }
+    #ocrActions { margin-top: 12px; }
+    #ocrText { min-height: 110px; }
+    input[type="file"] { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+    /* ============ history view ============ */
+    .history-head {
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 8px; margin: 0 0 8px;
+    }
+    .history-head h2 { font-size: 20px; font-weight: 700; }
+    .history-item {
+      display: flex; justify-content: space-between; align-items: center; gap: 8px;
+      padding: 12px; min-height: 44px;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer; font-size: 14px; border-radius: 8px;
     }
     .history-item:last-child { border-bottom: 0; }
-    .history-item:hover { background: var(--primary-light); }
-    .history-meta { color: var(--text-muted); font-size: 12px; white-space: nowrap; }
+    .history-item:hover { background: var(--field); }
+    .history-item span.q { overflow-wrap: anywhere; }
+    .history-meta { color: var(--muted); font-size: 12px; white-space: nowrap; }
+    .history-clear { margin-top: 16px; }
 
-    .result p.status { margin-top: var(--spacing-sm); }
-    .result .match { margin-top: 2px; }
-
-    .caution {
-      color: var(--warning-dark);
-      font-size: 13px;
-      margin-top: var(--spacing-sm);
-      padding: var(--spacing-sm);
-      background: var(--warning-light);
-      border-radius: 8px;
-      border-right: 3px solid var(--warning-dark);
+    /* ============ data view ============ */
+    .db-card summary {
+      list-style: none; cursor: pointer; user-select: none;
+      display: flex; align-items: center; gap: 10px;
+      min-height: 52px;
     }
-
-    .notice {
-      padding: var(--spacing-lg);
-      border-radius: 14px;
-      background: var(--warning-light);
-      color: var(--warning-dark);
-      line-height: 1.7;
-      border-right: 4px solid var(--warning-dark);
+    .db-card summary::-webkit-details-marker { display: none; }
+    .db-card summary .ic { width: 20px; height: 20px; color: var(--primary-strong); }
+    .db-card summary .nm { font-weight: 700; font-size: 15px; flex: 1; }
+    .db-card summary .cv { color: var(--muted); display: inline-flex; }
+    .db-card[open] summary .cv.down { display: none; }
+    .db-card .cv.up { display: none; }
+    .db-card[open] .cv.up { display: inline-flex; }
+    .db-card .body { border-top: 1px solid var(--border); padding-top: 10px; margin-top: 6px; }
+    .chip {
+      display: inline-flex; align-items: center; gap: 6px;
+      border: 1px solid var(--border); background: var(--field);
+      padding: 6px 10px; border-radius: 999px;
+      font-size: 12px; font-weight: 700; min-height: 24px;
+      color: var(--muted);
+      overflow-wrap: anywhere;
     }
-
-    .notice.warn { color: var(--text-primary); }
-
-    .footer {
-      margin-top: var(--spacing-xl);
-      padding-top: var(--spacing-lg);
-      border-top: 1px solid var(--border);
-      color: var(--text-muted);
-      font-size: 12px;
-      line-height: 1.7;
+    .chip.db-loading { color: var(--caution); border-color: var(--caution); }
+    .chip.db-ok      { color: var(--primary-strong); border-color: var(--primary-strong); }
+    .chip.db-cached  { color: var(--info); border-color: var(--info); }
+    .chip.db-bad     { color: var(--ban); border-color: var(--ban); }
+    .chip.loading-mark .ic { width: 12px; height: 12px; animation: spin 0.8s linear infinite; }
+    .audit-table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 13px; }
+    .audit-table th, .audit-table td {
+      text-align: start; padding: 8px 6px; border-bottom: 1px solid var(--border);
     }
-
-    /* ===== Match badges + score bar + prohibited warning ===== */
-    .badge {
-      display: inline-block;
-      padding: 5px 10px;
-      border-radius: 999px;
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 0.3px;
+    .audit-table th { color: var(--muted); font-size: 12px; font-weight: 700; }
+    .audit-table td.n { font-variant-numeric: tabular-nums; direction: ltr; text-align: end; }
+    .prep-list { list-style: none; display: grid; gap: 6px; margin-top: 10px; }
+    .prep-list li {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; padding: 9px 12px;
+      border: 1px dashed var(--border); border-radius: 12px;
+      color: var(--muted);
     }
-    .badge.strong   { background: var(--success-light); color: var(--success-dark); border: 1px solid var(--success-dark); }
-    .badge.possible { background: var(--info-light);    color: var(--info-dark);    border: 1px solid var(--info-dark); }
+    .prep-list li .ic { width: 16px; height: 16px; flex: none; }
+    .prep-list li b { margin-inline-start: auto; font-variant-numeric: tabular-nums; font-size: 12px; color: inherit; }
+    .prep-list li.done { border: 1px solid var(--primary-strong); color: var(--primary-strong); }
+    .prep-list li.pending .ic { animation: spin 0.8s linear infinite; }
+    .prep-state { font-weight: 700; }
 
-    .scorebar {
-      height: 6px;
-      border-radius: 999px;
-      background: var(--text-tertiary);
-      overflow: hidden;
-      margin: 8px 0 var(--spacing-sm);
+    /* ============ about view ============ */
+    .about-hero { text-align: center; padding: 20px 0 4px; }
+    .about-hero .mark {
+      width: 64px; height: 64px; border-radius: 20px;
+      background: var(--primary); color: var(--on-primary);
+      display: flex; align-items: center; justify-content: center; margin: 0 auto 12px;
     }
-    .scorebar > i {
-      display: block;
-      height: 100%;
-      border-radius: 999px;
-      background: var(--primary-dark);
-      transition: width 0.4s ease;
+    .about-hero .mark .ic { width: 34px; height: 34px; }
+    .about-hero h1 { color: var(--primary-strong); font-size: 22px; font-weight: 700; }
+    .about-hero .latin {
+      color: var(--muted); font-size: 12px; letter-spacing: 0.32em;
+      text-transform: uppercase; direction: ltr; margin-top: 2px;
     }
-    .result.possible .scorebar > i { background: var(--warning-dark); }
-
-    .prohibited {
-      border: 2px solid var(--danger-dark);
-      background: var(--danger-light);
-      color: var(--danger-dark);
-      border-radius: 14px;
-      padding: var(--spacing-md);
-      font-weight: 800;
+    .info-rows { display: grid; }
+    .info-rows .r {
+      display: flex; justify-content: space-between; gap: 12px;
+      padding: 9px 0; border-bottom: 1px solid var(--border);
       font-size: 14px;
-      line-height: 1.7;
-      margin-bottom: var(--spacing-sm);
-      animation: scale-in 0.3s ease both;
+    }
+    .info-rows .r:last-child { border-bottom: 0; }
+    .info-rows .k { color: var(--muted); }
+    .info-rows .v { font-weight: 700; overflow-wrap: anywhere; }
+    .fold summary {
+      list-style: none; cursor: pointer; user-select: none;
+      display: flex; align-items: center; gap: 10px; min-height: 48px;
+      font-weight: 700; font-size: 15px;
+    }
+    .fold summary::-webkit-details-marker { display: none; }
+    .fold summary .ic { width: 20px; height: 20px; color: var(--primary-strong); }
+    .fold summary .ttl { flex: 1; }
+    .fold .cv { color: var(--muted); display: inline-flex; }
+    .fold[open] summary .cv.down { display: none; }
+    .fold .cv.up { display: none; }
+    .fold[open] .cv.up { display: inline-flex; }
+    .fold .body { border-top: 1px solid var(--border); padding-top: 10px; font-size: 14px; line-height: 1.8; }
+    .dev-card .body { display: grid; gap: 10px; }
+    .dev-top { display: flex; align-items: center; gap: 12px; }
+    .dev-photo {
+      width: 64px; height: 64px; border-radius: 16px; object-fit: cover;
+      border: 1px solid var(--border); background: var(--field); flex: none;
+    }
+    .dev-photo-fallback {
+      width: 64px; height: 64px; border-radius: 16px;
+      border: 1px solid var(--border); background: var(--field);
+      display: flex; align-items: center; justify-content: center; color: var(--muted);
+      flex: none;
+    }
+    .dev-name { font-weight: 700; font-size: 15px; }
+    .dev-role { color: var(--muted); font-size: 13px; }
+    .dev-quote { color: var(--primary-strong); font-style: italic; font-size: 14px; }
+    .dev-frame {
+      border: 1px solid var(--border); border-radius: 12px;
+      padding: 10px 12px; font-size: 13px; color: var(--text);
+    }
+    .dev-copyright { direction: ltr; color: var(--muted); font-size: 12px; }
+    .alert-box {
+      display: flex; gap: 10px; align-items: flex-start;
+      background: var(--card); border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--info);
+      border-radius: 12px; padding: 12px 14px; margin-top: 12px;
+      font-size: 13px; line-height: 1.7; color: var(--text);
+    }
+    .alert-box .ic { width: 18px; height: 18px; flex: none; margin-top: 3px; color: var(--info); }
+    .beta-badge {
+      display: inline-block; font-size: 12px; color: var(--caution);
+      border: 1px solid var(--caution); border-radius: 999px;
+      padding: 2px 10px; margin-bottom: 6px;
+    }
+    .about-foot {
+      color: var(--muted); font-size: 12px; line-height: 1.7;
+      margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--border);
     }
 
-    /* Loading animation */
-    @keyframes spin { to { transform: rotate(360deg); } }
-    @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
-    @keyframes scale-in { from { opacity: 0; transform: scale(0.97); } to { opacity: 1; transform: scale(1); } }
-    @keyframes slide-up { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    /* ============ bottom nav (fixed height 64 + safe area) ============ */
+    nav.bottom {
+      position: fixed; bottom: 0; inset-inline: 0; z-index: 30;
+      background: var(--nav);
+      border-top: 1px solid var(--border);
+      border-start-start-radius: 16px;
+      border-start-end-radius: 16px;
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+    nav.bottom .row {
+      max-width: 448px; margin: 0 auto;
+      height: 64px;
+      display: flex; align-items: stretch; justify-content: space-around;
+    }
+    .nav-item {
+      flex: 1; min-width: 48px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 3px; text-decoration: none; color: var(--muted);
+      font-size: 12px; font-weight: 700;
+    }
+    .nav-item .nav-ic {
+      width: 32px; height: 32px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .nav-item .nav-ic .ic { width: 19px; height: 19px; }
+    .nav-item.active { color: var(--primary-strong); }
+    .nav-item.active .nav-ic { background: var(--primary); color: var(--on-primary); }
 
-    /* Focus visibility (keyboard + switch access) */
-    :is(button, input, select, textarea, summary, [tabindex]):focus-visible {
-      outline: 3px solid var(--primary-medium);
+    /* ============ misc ============ */
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .view-anim { animation: view-in 0.18s ease both; }
+    @keyframes view-in { from { opacity: 0; } to { opacity: 1; } }
+    :is(button, input, select, textarea, summary, a):focus-visible {
+      outline: 3px solid var(--primary-strong);
       outline-offset: 2px;
     }
-
-    /* Respect reduced-motion */
     @media (prefers-reduced-motion: reduce) {
       * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
     }
-
-    /* Responsive */
-    @media (max-width: 620px) {
-      main { padding: var(--spacing-sm) var(--spacing-sm) 60px; }
-      header {
-        margin: 0 calc(-1 * var(--spacing-sm)) var(--spacing-md);
-        padding: var(--spacing-xs) var(--spacing-sm);
-      }
-      .statusline { justify-content: flex-start; }
-      .search { grid-template-columns: 1fr; }
-      .search button { min-height: 52px; width: 100%; }
-      .intro { padding-top: var(--spacing-md); }
-      .intro h2 { font-size: 27px; }
-      .result-top { flex-direction: column; gap: var(--spacing-xs); }
-      .result h3 { font-size: 17px; }
-      .result-top strong { font-size: 18px; }
-      .summary { flex-direction: column; align-items: flex-start; }
-      .tools { width: 100%; }
-      .btn-secondary { flex: 1 1 auto; text-align: center; }
+    @media (min-width: 480px) {
+      main { padding-top: 72px; }
     }
   </style>
 </head>
 <body>
-  <main>
-    <header>
-      <div class="brand">
-        <div class="mark">🌿</div>
-        <div>
-          <p class="eyebrow" data-i18n="brand.eyebrow">بيانات محلية، قرار واضح</p>
-          <h1 data-i18n="brand.title">المستشار الزراعي</h1>
+  <header>
+    <a class="brand" href="#/">
+      <span class="brand-mark" data-icon="brand"></span>
+      <span class="brand-name" data-i18n="brand.title">المستشار الزراعي</span>
+    </a>
+    <div class="head-actions">
+      <select id="mode" data-i18n-title="mode.label" aria-label="الوضع">
+        <option value="farmer" data-i18n="mode.farmer">المزارع</option>
+        <option value="pro" data-i18n="mode.pro">المحترف</option>
+      </select>
+      <span id="modeLabel" class="visually-hidden" data-i18n="mode.farmer">المزارع</span>
+      <select id="langSelect" data-i18n-title="lang.title" aria-label="Language">
+        <option value="ar">ع</option>
+        <option value="en">EN</option>
+        <option value="fr">FR</option>
+        <option value="zh">中文</option>
+      </select>
+      <button class="icon-btn" id="themeToggle" type="button" data-i18n-title="theme.title">
+        <span id="themeIcon" data-icon="theme-dark"></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="appMain">
+    <div class="banner banner-warn" id="dbBanner" hidden></div>
+
+    <!-- ================= HOME ================= -->
+    <section class="view" id="view-home" data-view="home">
+      <div class="hero">
+        <div class="hero-mark" data-icon="brand"></div>
+        <h1 data-i18n="brand.title">المستشار الزراعي</h1>
+        <p class="latin" data-i18n="brand.latin">AGRICULTURAL ADVISOR</p>
+        <p class="welcome" data-i18n="intro.h2">اعرف المادة قبل أن تستخدمها.</p>
+      </div>
+
+      <div class="stats">
+        <div class="stat ban">
+          <span data-icon="ban"></span>
+          <span class="num" id="stat-248">—</span>
+          <span class="lbl" data-i18n="db.src.248">ليبيا 248</span>
+        </div>
+        <div class="stat warn">
+          <span data-icon="report"></span>
+          <span class="num" id="stat-500">—</span>
+          <span class="lbl" data-i18n="db.src.500">ليبيا 500</span>
+        </div>
+        <div class="stat info">
+          <span data-icon="databases"></span>
+          <span class="num" id="stat-eu">—</span>
+          <span class="lbl" data-i18n="db.src.eu">الاتحاد الأوروبي</span>
+        </div>
+        <div class="stat info">
+          <span data-icon="databases"></span>
+          <span class="num" id="stat-epa">—</span>
+          <span class="lbl" data-i18n="db.src.epa">USA / EPA</span>
         </div>
       </div>
-      <div class="statusline">
-        <span class="chip" id="dbState" data-i18n="db.initial">جاري تجهيز القواعد</span>
-        <span class="chip db-loading" id="db-libya-248" data-i18n="db.loading.248">ليبيا 248: جارٍ التحميل…</span>
-        <span class="chip db-loading" id="db-libya-500" data-i18n="db.loading.500">ليبيا 500: جارٍ التحميل…</span>
-        <span class="chip db-loading" id="db-eu" data-i18n="db.loading.eu">الاتحاد الأوروبي: جارٍ التحميل…</span>
-        <span class="chip db-loading" id="db-epa" data-i18n="db.loading.epa">USA / EPA: جارٍ التحميل…</span>
-        <span class="chip" id="offlineState" data-i18n="chip.online">🟢 متصل</span>
-        <select id="langSelect" class="lang-toggle" data-i18n-title="lang.title" aria-label="Language">
-          <option value="ar">ع</option>
-          <option value="en">EN</option>
-          <option value="fr">FR</option>
-          <option value="zh">中文</option>
-        </select>
-        <button class="theme-toggle" id="themeToggle" data-i18n-title="theme.title" aria-label="تبديل نمط الليل">🌙</button>
-      </div>
-      <div class="banner banner-warn" id="dbBanner" hidden></div>
-      <!-- Field-review beta badge (ز6): version + data date, informational -->
-      <div class="badge-beta" id="betaBadge" data-i18n="badge.beta">تجريبي للمراجعة الميدانية</div>
-      <!-- Attribution / about (user decision ج5): sources + no endorsement -->
-      <div class="about-box" data-i18n="about.sources"></div>
-      <div class="about-box" data-i18n="about.disclaimer"></div>
-      <div class="about-box" data-i18n="about.privacy"></div>
-      <!-- Disclaimer strip: mandatory neutral wording (user decision ب1) -->
-      <div class="disclaimer-strip" data-i18n="disclaimer.strip">هذه الأداة مساندة وليست حكمًا قانونيًا — المرجع قرارات وزارة الزراعة والجهات الرسمية.</div>
-      <!-- Support/contact button: reads config/support.json; hidden when empty -->
-      <button id="supportBtn" class="support-btn" hidden></button>
-      <button id="diagBtn" class="support-btn" data-i18n="diag.export">⬇️ تصدير سجل التشخيص</button>
-    </header>
 
-    <section class="intro">
-      <h2 data-i18n="intro.h2">اعرف المادة قبل أن تستخدمها.</h2>
-      <p data-i18n="intro.p">ابحث بالاسم أو رقم CAS. ليبيا هي المرجع الأول، والمصادر الدولية للمقارنة فقط. لا تعرض النتيجة موافقة قانونية إذا لم يكن التطابق موثوقًا.</p>
+      <a class="cta-scan" href="#/scan" id="homeScanCta">
+        <span class="sq" data-icon="scan"></span>
+        <span>
+          <b data-i18n="scan.title">المسح البصري</b>
+          <span class="sub" data-i18n="scan.note">يعمل المسح البصري محليًا دون إنترنت بعد تجهيز ملفات OCR مرة واحدة (من لوحة «تجهيز العمل بدون إنترنت» أعلاه). تتم معالجة الصور على جهازك ولا تُرسل إلى أي خادم.</span>
+        </span>
+      </a>
 
-      <div class="mode">
-        <label for="mode" data-i18n="mode.label">الوضع:</label>
-        <select id="mode">
-          <option value="farmer" data-i18n="mode.farmer">المزارع</option>
-          <option value="pro" data-i18n="mode.pro">المحترف</option>
-        </select>
-        <span class="mode-label" id="modeLabel" data-i18n="mode.farmer">المزارع</span>
+      <div class="shortcuts">
+        <a class="shortcut" href="#/scan" data-icon-action="gallery">
+          <span data-icon="gallery"></span><span class="t" data-i18n="scan.gallery">اختيار صورة من المعرض</span>
+        </a>
+        <a class="shortcut" href="#/search">
+          <span data-icon="search"></span><span class="t" data-i18n="home.q.search">البحث اليدوي</span>
+        </a>
+        <a class="shortcut" href="#/history">
+          <span data-icon="history"></span><span class="t" data-i18n="history.h2">سجل البحث</span>
+        </a>
+        <a class="shortcut" href="#/data">
+          <span data-icon="databases"></span><span class="t" data-i18n="data.title">القواعد</span>
+        </a>
+        <a class="shortcut" href="#/about">
+          <span data-icon="about"></span><span class="t" data-i18n="about.title">حول</span>
+        </a>
       </div>
 
-      <form class="search" id="searchForm">
-        <input class="query" id="query" data-i18n-placeholder="search.placeholder" placeholder="مثال: Glyphosate أو 1071-83-6" autocomplete="off" inputmode="search">
-        <button type="submit" data-i18n="search.btn">فحص المادة</button>
+      <div class="card">
+        <button class="btn-outline" id="shareBtn" type="button">
+          <span data-icon="share"></span><span data-i18n="home.share">مشاركة التطبيق</span>
+        </button>
+        <div class="conn-line">
+          <span id="connIcon" data-icon="online"></span>
+          <span id="offlineState" data-i18n="chip.online">متصل</span>
+        </div>
+      </div>
+
+      <div class="prep-mini" id="homePrepCard">
+        <div id="homePrepWorking">
+          <div class="row1"><span data-icon="download"></span><span data-i18n="prep.h2">تجهيز العمل بدون إنترنت</span></div>
+          <div class="bar" aria-hidden="true"><i id="homePrepBar"></i></div>
+          <a class="btn-outline" href="#/data" id="homePrepLink"><span data-i18n="data.title">القواعد</span><span data-icon="back"></span></a>
+        </div>
+        <div id="homeReadyLine" class="ready" hidden>
+          <span data-icon="ready"></span><span data-i18n="prep.full">جاهز للعمل بدون إنترنت</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SEARCH ================= -->
+    <section class="view" id="view-search" data-view="search" hidden>
+      <div class="page-head">
+        <h2 data-i18n="intro.h2">اعرف المادة قبل أن تستخدمها.</h2>
+        <p data-i18n="intro.p">ابحث بالاسم أو رقم CAS. ليبيا هي المرجع الأول، والمصادر الدولية للمقارنة فقط. لا تعرض النتيجة موافقة قانونية إذا لم يكن التطابق موثوقًا.</p>
+      </div>
+
+      <form id="searchForm">
+        <div class="field-wrap">
+          <span class="lead-ic" data-icon="search"></span>
+          <input class="query" id="query" data-i18n-placeholder="search.placeholder" placeholder="مثال: Glyphosate أو 1071-83-6" autocomplete="off" inputmode="search">
+        </div>
+        <div class="search-row" style="margin-top:10px">
+          <button class="btn-primary" type="submit" data-i18n="search.btn">فحص المادة</button>
+        </div>
       </form>
+      <p class="hint" data-i18n="hint">البحث يعمل محليًا بعد أول تشغيل. نتيجة غير مؤكدة تعني ضرورة مراجعة الاسم والملصق.</p>
 
-      <div class="tools">
-        <button class="btn-secondary" type="button" id="cameraBtn" data-i18n="tool.camera">📷 تصوير الملصق</button>
-        <button class="btn-secondary" type="button" id="copyBtn" data-i18n="tool.copy">📋 نسخ التقرير</button>
-        <button class="btn-secondary" type="button" id="historyBtn" data-i18n="tool.history">📜 السجل</button>
-      </div>
+      <div class="results-title"><h2 id="resultTitle" data-i18n="results.title2">نتائج الفحص</h2></div>
 
-      <p class="hint" data-i18n="hint">💡 البحث يعمل محليًا بعد أول تشغيل. نتيجة غير مؤكدة تعني ضرورة مراجعة الاسم والملصق.</p>
+      <section class="results" id="results">
+        <div class="empty">
+          <span class="big" data-icon="search"></span>
+          <p data-i18n="results.hint">اكتب اسم المادة أو رقم CAS ثم اضغط «فحص المادة».</p>
+        </div>
+      </section>
+
+      <!-- The standing disclaimer strip stays with the results (unchanged text) -->
+      <div class="disclaimer-strip" data-i18n="disclaimer.strip">هذه الأداة مساندة وليست حكمًا قانونيًا — المرجع قرارات وزارة الزراعة والجهات الرسمية.</div>
     </section>
 
-    <!-- Offline preparation: one visible, non-repeated download -->
-    <section class="card" id="prepPanel" aria-label="تجهيز العمل بدون إنترنت">
-      <div class="prep-head">
-        <h2 data-i18n="prep.h2">📦 تجهيز العمل بدون إنترنت</h2>
-        <span class="chip" id="prepState" data-i18n="prep.checking">جارٍ الفحص…</span>
+    <!-- ================= SCAN ================= -->
+    <section class="view" id="view-scan" data-view="scan" hidden>
+      <div class="page-head">
+        <h2 data-i18n="scan.page">المسح الذكي</h2>
       </div>
-      <ul class="prep-list">
-        <li id="prepShell"><span>🧩</span> <span data-i18n="prep.shell">ملفات التطبيق (الواجهة + محرك البحث)</span> <b id="prepShellSize">—</b></li>
-        <li id="prepData"><span>🗄️</span> <span data-i18n="prep.data">قواعد البيانات الأربع (77 · 411 · 1,483 · 2,199 سجلًا)</span> <b id="prepDataSize">—</b></li>
-        <li id="prepOcr"><span>🔎</span> <span data-i18n="prep.ocr">ملفات المسح البصري OCR — عربي + إنجليزي</span> <b id="prepOcrSize">—</b></li>
-      </ul>
-      <p class="scan-note" id="prepNote" data-i18n="prep.note">يُنزَّل كل شيء مرة واحدة فقط (إجمالي ~17 ميجابايت)، ثم يعمل التطبيق كاملًا — بحث ومسح — دون إنترنت. لا تُنزَّل أي ملفات أثناء البحث العادي.</p>
-      <div class="tools">
-        <button class="btn-secondary" type="button" id="prepBtn" data-i18n="prep.btn">⬇️ تجهيز الآن</button>
-      </div>
-    </section>
 
-    <details class="scan" id="scanPanel">
-      <summary data-i18n="scan.title">📸 المسح البصري</summary>
-      <p class="scan-note" data-i18n="scan.note">💡 يعمل المسح البصري محليًا دون إنترنت بعد تجهيز ملفات OCR مرة واحدة (من لوحة «تجهيز العمل بدون إنترنت» أعلاه). تتم معالجة الصور على جهازك ولا تُرسل إلى أي خادم.</p>
+      <div class="scan-cards">
+        <button class="scan-card" id="cameraBtn" type="button">
+          <span class="disc" data-icon="scan"></span>
+          <span>
+            <b data-i18n="tool.camera">تصوير الملصق</b>
+            <span class="sub" data-i18n="scan.msg">صوّر اسم المادة الفعالة بوضوح، أو اختر صورة من المعرض. سيبدأ التعرف الضوئي تلقائيًا.</span>
+          </span>
+        </button>
+        <button class="scan-card small" id="galleryBtn" type="button">
+          <span class="disc" data-icon="gallery"></span>
+          <span><b data-i18n="scan.gallery">اختيار صورة من المعرض</b></span>
+        </button>
+      </div>
+
+      <p class="scan-note"><span data-icon="privacy"></span> <span data-i18n="scan.note">يعمل المسح البصري محليًا دون إنترنت بعد تجهيز ملفات OCR مرة واحدة (من لوحة «تجهيز العمل بدون إنترنت» أعلاه). تتم معالجة الصور على جهازك ولا تُرسل إلى أي خادم.</span></p>
+
       <input id="camera" type="file" accept="image/*" capture="environment">
       <input id="gallery" type="file" accept="image/*">
-      <img id="preview" class="preview" hidden alt="معاينة صورة الملصق">
-      <p id="ocrMsg" class="scan-note" data-i18n="scan.msg">صوّر اسم المادة الفعالة بوضوح، أو اختر صورة من المعرض. سيبدأ التعرف الضوئي تلقائيًا.</p>
+      <img id="preview" class="preview" hidden alt="">
+      <p id="ocrMsg" class="scan-note"></p>
+
       <div class="tools">
-        <button class="btn-secondary" type="button" id="galleryBtn" data-i18n="scan.gallery">🖼️ اختيار صورة من المعرض</button>
-        <button class="btn-secondary" type="button" id="cancelOcrBtn" data-i18n="ocr.cancel" hidden>إلغاء</button>
+        <button class="btn-outline" type="button" id="cancelOcrBtn" hidden data-i18n="ocr.cancel">إلغاء</button>
       </div>
+
       <div id="confirmPanel" hidden class="confirm-panel">
         <p class="scan-note" data-i18n="ocr.confirm.title">المادة الفعالة المقروءة — أكّدها قبل البحث:</p>
-        <select id="aiConfirm" class="query" style="width:100%" dir="auto"></select>
+        <select id="aiConfirm" class="input" dir="auto" style="width:100%"></select>
         <div class="tools">
           <button class="btn-primary" type="button" id="aiConfirmBtn" data-i18n="ocr.confirm.ok">بحث</button>
-          <button class="btn-secondary" type="button" id="aiConfirmSkip" data-i18n="ocr.confirm.skip">البحث بالنص الكامل</button>
+          <button class="btn-outline" type="button" id="aiConfirmSkip" data-i18n="ocr.confirm.skip">البحث بالنص الكامل</button>
         </div>
       </div>
+
       <div id="ocrActions" hidden>
-        <textarea id="ocrText" class="query" style="width:100%" rows="4" dir="auto" data-i18n-placeholder="scan.placeholder" placeholder="النص المكتشف من الصورة — يمكن تعديله ثم إعادة البحث"></textarea>
+        <textarea id="ocrText" class="query" rows="4" dir="auto" data-i18n-placeholder="scan.placeholder" placeholder="النص المكتشف من الصورة — يمكن تعديله ثم إعادة البحث"></textarea>
         <div class="tools">
-          <button class="btn-secondary" type="button" id="ocrRerun" data-i18n="scan.rerun">🔍 بحث من النص</button>
+          <button class="btn-outline" type="button" id="ocrRerun"><span data-icon="search"></span><span data-i18n="scan.rerun">بحث من النص</span></button>
         </div>
       </div>
-    </details>
-
-    <section class="summary">
-      <h2 id="resultTitle" data-i18n="results.title">نتائج الفحص</h2>
-      <span class="chip" id="dbCount">...</span>
     </section>
 
-    <section class="history-panel" id="historyPanel" hidden>
-      <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;">
-        <h2 style="font-size:16px;font-weight:700;" data-i18n="history.h2">📜 سجل البحث</h2>
-        <div style="display:flex;gap:8px;">
-          <button class="btn-secondary" type="button" id="historyClear" data-i18n="history.clear">مسح السجل</button>
-          <button class="btn-secondary" type="button" id="historyClose" data-i18n="history.close">إغلاق</button>
+    <!-- ================= HISTORY ================= -->
+    <section class="view" id="view-history" data-view="history" hidden>
+      <section class="history-panel" id="historyPanel">
+        <div class="history-head">
+          <h2 data-i18n="history.h2">سجل البحث</h2>
+          <button class="icon-btn" id="historyClose" type="button" data-i18n-title="history.close">
+            <span data-icon="close"></span>
+          </button>
+        </div>
+        <div id="historyList"></div>
+        <div class="history-clear">
+          <button class="btn-outline" type="button" id="historyClear" data-i18n="history.clear">مسح السجل</button>
+        </div>
+      </section>
+    </section>
+
+    <!-- ================= DATA ================= -->
+    <section class="view" id="view-data" data-view="data" hidden>
+      <div class="page-head">
+        <h2 data-i18n="data.title">القواعد</h2>
+        <p><span id="dbState" data-i18n="db.initial">جاري تجهيز القواعد</span> · <span id="dbCount">...</span></p>
+      </div>
+
+      <details class="card fold db-card" id="dbCard-libya-248">
+        <summary>
+          <span data-icon="ban"></span>
+          <span class="nm" data-i18n="db.src.248">ليبيا 248</span>
+          <span class="cv down" data-icon="chevron"></span>
+          <span class="cv up" data-icon="chevron-open"></span>
+        </summary>
+        <div class="body">
+          <span class="chip loading-mark" id="db-libya-248" data-i18n="db.loading.248">ليبيا 248: جارٍ التحميل…</span>
+        </div>
+      </details>
+
+      <details class="card fold db-card" id="dbCard-libya-500">
+        <summary>
+          <span data-icon="report"></span>
+          <span class="nm" data-i18n="db.src.500">ليبيا 500</span>
+          <span class="cv down" data-icon="chevron"></span>
+          <span class="cv up" data-icon="chevron-open"></span>
+        </summary>
+        <div class="body">
+          <span class="chip loading-mark" id="db-libya-500" data-i18n="db.loading.500">ليبيا 500: جارٍ التحميل…</span>
+        </div>
+      </details>
+
+      <details class="card fold db-card" id="dbCard-eu">
+        <summary>
+          <span data-icon="databases"></span>
+          <span class="nm" data-i18n="db.src.eu">الاتحاد الأوروبي</span>
+          <span class="cv down" data-icon="chevron"></span>
+          <span class="cv up" data-icon="chevron-open"></span>
+        </summary>
+        <div class="body">
+          <span class="chip loading-mark" id="db-eu" data-i18n="db.loading.eu">الاتحاد الأوروبي: جارٍ التحميل…</span>
+        </div>
+      </details>
+
+      <details class="card fold db-card" id="dbCard-epa">
+        <summary>
+          <span data-icon="databases"></span>
+          <span class="nm" data-i18n="db.src.epa">USA / EPA</span>
+          <span class="cv down" data-icon="chevron"></span>
+          <span class="cv up" data-icon="chevron-open"></span>
+        </summary>
+        <div class="body">
+          <span class="chip loading-mark" id="db-epa" data-i18n="db.loading.epa">USA / EPA: جارٍ التحميل…</span>
+        </div>
+      </details>
+
+      <section class="card" id="prepPanel" aria-label="تجهيز العمل بدون إنترنت">
+        <div class="history-head">
+          <h3 data-i18n="prep.h2">تجهيز العمل بدون إنترنت</h3>
+          <span class="chip prep-state" id="prepState" data-i18n="prep.checking">جارٍ الفحص…</span>
+        </div>
+        <ul class="prep-list">
+          <li id="prepShell"><span data-icon="ready"></span> <span data-i18n="prep.shell">ملفات التطبيق (الواجهة + محرك البحث)</span> <b id="prepShellSize">—</b></li>
+          <li id="prepData"><span data-icon="databases"></span> <span data-i18n="prep.data">قواعد البيانات الأربع (77 · 411 · 1,483 · 2,199 سجلًا)</span> <b id="prepDataSize">—</b></li>
+          <li id="prepOcr"><span data-icon="search"></span> <span data-i18n="prep.ocr">ملفات المسح البصري OCR — عربي + إنجليزي</span> <b id="prepOcrSize">—</b></li>
+        </ul>
+        <p class="scan-note" id="prepNote" data-i18n="prep.note">يُنزَّل كل شيء مرة واحدة فقط (إجمالي ~17 ميجابايت)، ثم يعمل التطبيق كاملًا — بحث ومسح — دون إنترنت. لا تُنزَّل أي ملفات أثناء البحث العادي.</p>
+        <div class="tools">
+          <button class="btn-outline" type="button" id="prepBtn"><span data-icon="download"></span><span data-i18n="prep.btn">تجهيز الآن</span></button>
+        </div>
+      </section>
+
+      <div class="card">
+        <button class="btn-outline" id="diagBtn" type="button"><span data-icon="report"></span><span data-i18n="diag.export">تصدير سجل التشخيص</span></button>
+      </div>
+    </section>
+
+    <!-- ================= ABOUT ================= -->
+    <section class="view" id="view-about" data-view="about" hidden>
+      <div class="about-hero">
+        <div class="mark" data-icon="brand"></div>
+        <h1 data-i18n="brand.title">المستشار الزراعي</h1>
+        <p class="latin" data-i18n="brand.latin">AGRICULTURAL ADVISOR</p>
+      </div>
+
+      <div class="card">
+        <span class="beta-badge" id="betaBadge" data-i18n="badge.beta">تجريبي للمراجعة الميدانية</span>
+        <h3 data-i18n="about.info.title">معلومات التطبيق</h3>
+        <div class="info-rows" style="margin-top:6px">
+          <div class="r"><span class="k" data-i18n="about.info.version">الإصدار</span><span class="v" id="aboutVersion">—</span></div>
+          <div class="r"><span class="k" data-i18n="about.info.date">تاريخ الإصدار</span><span class="v" id="aboutDate">—</span></div>
+          <div class="r"><span class="k" data-i18n="about.info.type">النوع</span><span class="v" data-i18n="about.type.value">تطبيق معلومات زراعية وتحقق تنظيمي</span></div>
         </div>
       </div>
-      <div id="historyList"></div>
-    </section>
 
-    <section class="results" id="results">
-      <div class="notice" data-i18n="results.hint">اكتب اسم المادة أو رقم CAS ثم اضغط «فحص المادة».</div>
-    </section>
+      <details class="card fold" id="aboutPrivacyCard">
+        <summary>
+          <span data-icon="privacy"></span>
+          <span class="ttl" data-i18n="about.privacy.title">الخصوصية والأمان</span>
+          <span class="cv down" data-icon="chevron"></span>
+          <span class="cv up" data-icon="chevron-open"></span>
+        </summary>
+        <div class="body" data-i18n="about.privacy">الخصوصية: يعمل التطبيق على جهازك دون إنترنت بعد أول تحميل. الصور والبحث والسجل لا يغادرون هاتفك إطلاقًا، ولا يُرفع أي شيء لأي خادم.</div>
+      </details>
 
-    <p class="footer" data-i18n="footer">المستشار الزراعي أداة مساعدة للبحث في قواعد البيانات المرفقة. المرجع القانوني النهائي هو الجهة الرسمية المختصة. لا نتحمل مسؤولية الاستخدام غير الصحيح للمعلومات.</p>
+      <details class="card fold" id="aboutSourcesCard">
+        <summary>
+          <span data-icon="databases"></span>
+          <span class="ttl" data-i18n="about.sources.title">المصادر والقواعد</span>
+          <span class="cv down" data-icon="chevron"></span>
+          <span class="cv up" data-icon="chevron-open"></span>
+        </summary>
+        <div class="body" data-i18n="about.sources">المصادر: قرارا وزارة الزراعة الليبية 248/2024 و500/2026 (المرجع الأول)، قاعدة بيانات المبيدات الأوروبية، وبيانات وكالة حماية البيئة الأمريكية — التفاصيل في docs/data-provenance.md. بيانات الاتحاد الأوروبي لا قيمة قانونية لها، وهذه الأداة لا تحمل شعار أي جهة ولا تنسب إليها اعتمادًا.</div>
+      </details>
+
+      <details class="card fold dev-card" id="aboutDevCard" open>
+        <summary>
+          <span data-icon="developer"></span>
+          <span class="ttl" data-i18n="about.developer.title">المطور</span>
+          <span class="cv down" data-icon="chevron"></span>
+          <span class="cv up" data-icon="chevron-open"></span>
+        </summary>
+        <div class="body">
+          <div class="dev-top">
+            <img class="dev-photo" id="devPhoto" src="assets/developer.jpg" alt="" hidden>
+            <span class="dev-photo-fallback" id="devPhotoFallback" data-icon="developer"></span>
+            <span>
+              <span class="dev-name" data-i18n="dev.name">م. أبوبكر عبدالقادر الطشاني</span>
+              <span class="dev-role" data-i18n="dev.role">مهندس بقطاع الزراعة والثروة الحيوانية – درنة</span>
+            </span>
+          </div>
+          <p class="dev-quote" data-i18n="dev.quote">على قدر المعرفة تأتي المسؤولية</p>
+          <div class="dev-frame" data-i18n="dev.frame">تم تطوير هذا التطبيق لخدمة القطاع الزراعي وتسهيل الوصول إلى المعلومات الفنية المتعلقة بالمواد الفعالة والمبيدات.</div>
+          <p class="dev-copyright" data-i18n="dev.copyright">Agricultural Advisor © 2026</p>
+        </div>
+      </details>
+
+      <button id="supportBtn" class="btn-outline support-btn" hidden></button>
+
+      <div class="alert-box">
+        <span data-icon="neutral"></span>
+        <span data-i18n="about.disclaimer">إخلاء مسؤولية: هذه الأداة مساندة فقط وليست حكمًا قانونيًا. المرجع الملزم هو قرارات وزارة الزراعة الليبية ونصوصها الرسمية. عدم ظهور مادة في القواعد لا يعني إباحتها، ونتيجة «احتمالي» لا تُعتبر قرارًا.</span>
+      </div>
+
+      <p class="about-foot" data-i18n="footer">المستشار الزراعي أداة مساعدة للبحث في قواعد البيانات المرفقة. المرجع القانوني النهائي هو الجهة الرسمية المختصة. لا نتحمل مسؤولية الاستخدام غير الصحيح للمعلومات.</p>
+    </section>
   </main>
 
+  <nav class="bottom" id="bottomNav" aria-label="main">
+    <div class="row">
+      <a class="nav-item" href="#/" data-nav="home"><span class="nav-ic" data-icon="home"></span><span data-i18n="nav.home">الرئيسية</span></a>
+      <a class="nav-item" href="#/search" data-nav="search"><span class="nav-ic" data-icon="search"></span><span data-i18n="nav.search">البحث</span></a>
+      <a class="nav-item" href="#/scan" data-nav="scan"><span class="nav-ic" data-icon="scan"></span><span data-i18n="nav.scan">المسح</span></a>
+      <a class="nav-item" href="#/history" data-nav="history"><span class="nav-ic" data-icon="history"></span><span data-i18n="nav.history">السجل</span></a>
+      <a class="nav-item" href="#/about" data-nav="about"><span class="nav-ic" data-icon="about"></span><span data-i18n="nav.about">حول</span></a>
+    </div>
+  </nav>
+
   <script src="src/i18n.js"></script>
+  <script src="src/icons.js"></script>
   <script src="src/search-core.js"></script>
   <script src="src/cas.js"></script>
   <script src="src/intl.js"></script>

@@ -27,6 +27,31 @@
 
   const $ = s => document.querySelector(s);
 
+  /* ============================================================
+   * UI round: hash router across the six views (#/ ... #/about).
+   * Same-document navigation (back button + GitHub Pages subpath safe).
+   * No business logic here — only show/hide + active nav state.
+   * ============================================================ */
+  const VIEWS = ['home', 'search', 'scan', 'history', 'data', 'about'];
+  function currentView() {
+    const h = (location.hash || '').replace(/^#\/?/, '');
+    return VIEWS.indexOf(h) >= 0 ? h : 'home';
+  }
+  function applyView() {
+    const v = currentView();
+    VIEWS.forEach(name => {
+      const el = document.querySelector('[data-view="' + name + '"]');
+      if (el) el.hidden = (name !== v);
+    });
+    document.querySelectorAll('[data-nav]').forEach(a => {
+      const on = a.getAttribute('data-nav') === v;
+      a.classList.toggle('active', on);
+      if (on) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
+    });
+    if (v === 'history') openHistory();
+  }
+  window.addEventListener('hashchange', applyView);
+
   /* i18n helpers (src/i18n.js loads before this file). Arabic fallbacks
    * keep every string working even if the i18n module failed to load. */
   const t = (k, fb) => (window.I18N ? I18N.t(k, fb) : fb);
@@ -161,6 +186,12 @@
       else if (ready.length === SOURCES.length) overall.textContent = t('db.ready', 'القواعد المحلية جاهزة');
       else overall.textContent = tf('db.partial', 'جاهز جزئيًا ({n})', { n: ready.length + '/' + SOURCES.length });
     }
+    /* Home stat cards (counts come from the loaded databases only) */
+    const statIds = { 'libya-248': 'stat-248', 'libya-500': 'stat-500', eu: 'stat-eu', epa: 'stat-epa' };
+    SOURCES.forEach(s => {
+      const el = $('#' + statIds[s.key]);
+      if (el) el.textContent = state[s.key].count ? state[s.key].count.toLocaleString('en-US') : '—';
+    });
     const banner = $('#dbBanner');
     if (banner) {
       const bad = SOURCES.filter(s => state[s.key].phase === 'unavailable');
@@ -340,17 +371,17 @@
      * user is told to check the full name. Never auto-picked. */
     const amb = window.CasDissect ? CasDissect.ambiguity(results) : null;
     const ambHtml = amb
-      ? '<div class="ambgroup">' + tf('results.ambiguous',
-          '⚠️ نتيجة ملتبسة: توجد مادة أخرى مشابهة برقم كيميائي مختلف ({a} {va}% ↔ {b} {vb}%). تحقق من الاسم الكامل قبل أي قرار.',
+      ? '<div class="ambgroup"><span data-icon="caution"></span><span>' + tf('results.ambiguous',
+          'نتيجة ملتبسة: توجد مادة أخرى مشابهة برقم كيميائي مختلف ({a} {va}% مقابل {b} {vb}%). تحقق من الاسم الكامل قبل أي قرار.',
           { a: esc(String(amb.a.r.name || '').split('\n')[0]), va: amb.a.s.v,
             b: esc(String(amb.b.r.name || '').split('\n')[0]), vb: amb.b.s.v })
-        + '</div>'
+        + '</span></div>'
       : '';
     box.innerHTML = ambHtml + (prohibited.length
-      ? '<div class="prohibited">' + tf('results.prohibited',
-          '⚠️ تحذير: هذه المادة مدرجة ضمن قائمة المبيدات المحظورة في ليبيا (قرار 248) — {name}',
+      ? '<div class="prohibited"><span data-icon="ban"></span><span>' + tf('results.prohibited',
+          'تحذير: هذه المادة مدرجة ضمن قائمة المبيدات المحظورة في ليبيا (قرار 248) — {name}',
           { name: esc(String(prohibited[0].r.name || '')).replace(/\n/g, ' · ') })
-        + '</div>'
+        + '</span></div>'
       : '')
       + results.map(x => {
       /* --- decision layer: per-source status, verdict class, CAS checks --- */
@@ -406,6 +437,8 @@
         + (!strong ? '<p class="caution">' + t('results.caution', 'تطابق محتمل، راجع الاسم والملصق قبل الاستخدام.') + '</p>' : '')
         + '</article>';
     }).join('');
+    /* Paint inline icons inside freshly rendered result markup */
+    if (window.UIIcons) UIIcons.paint(box);
   }
 
   /* ============================================================
@@ -497,9 +530,14 @@
     if (results.length) addHistory(q, results.length);
   });
 
-  $('#mode').addEventListener('change', () => {
-    $('#modeLabel').textContent = $('#mode').value === 'pro'
+  const modeSel = $('#mode');
+  function syncModeLabel() {
+    const ml = $('#modeLabel');
+    if (ml && modeSel) ml.textContent = modeSel.value === 'pro'
       ? t('mode.pro', 'المحترف') : t('mode.farmer', 'المزارع');
+  }
+  if (modeSel) modeSel.addEventListener('change', () => {
+    syncModeLabel();
     /* Re-render the current results so the detail level switches live
      * (farmer = simplified verdict, professional = full evidence). */
     const first = $('#results .result') || $('#results .prohibited');
@@ -515,17 +553,13 @@
   document.addEventListener('langchange', () => {
     renderDbStatus();
     updateOnlineBadge();
+    syncModeLabel();
     if (lastResults.length) render(lastResults, $('#query').value.trim());
     updatePrepPanel();
   });
 
-  /* History panel */
-  $('#historyBtn').addEventListener('click', () => {
-    const p = $('#historyPanel');
-    p.hidden = !p.hidden;
-    if (!p.hidden) openHistory();
-  });
-  $('#historyClose').addEventListener('click', () => { $('#historyPanel').hidden = true; });
+  /* History view: lives at #/history; the close button returns home. */
+  $('#historyClose').addEventListener('click', () => { location.hash = '#/'; });
   $('#historyClear').addEventListener('click', () => {
     idbClear(STORE_HISTORY).then(openHistory).catch(() => {});
   });
@@ -536,10 +570,19 @@
     $('#searchForm').dispatchEvent(new Event('submit', { cancelable: true }));
   });
 
-  /* Copy report */
-  $('#copyBtn').addEventListener('click', () => {
-    navigator.clipboard && navigator.clipboard.writeText($('#results').innerText).catch(() => {});
+  /* Share the app (Web Share API when present; clipboard fallback) */
+  $('#shareBtn').addEventListener('click', () => {
+    const data = { title: t('brand.title', 'المستشار الزراعي'), url: location.origin + location.pathname };
+    if (navigator.share) navigator.share(data).catch(() => {});
+    else if (navigator.clipboard) navigator.clipboard.writeText(data.url).catch(() => {});
   });
+
+  /* Home shortcut: pick an image straight from the gallery flow */
+  const galShortcut = document.querySelector('[data-icon-action="gallery"]');
+  const galleryInput0 = $('#gallery');
+  if (galShortcut && galleryInput0) {
+    galShortcut.addEventListener('click', e => { e.preventDefault(); galleryInput0.click(); });
+  }
 
   /* Camera / gallery -> offline OCR (src/ocr.js) -> EXISTING search engine.
      The 80% threshold and source priority live in SearchCore and are not
@@ -553,7 +596,7 @@
     previewUrl = URL.createObjectURL(file);
     preview.src = previewUrl;
     preview.hidden = false;
-    $('#scanPanel').open = true;
+    if (location.hash !== '#/scan') location.hash = '#/scan';   // show the preview in the scan view
   }
 
   $('#cameraBtn').addEventListener('click', () => camera.click());
@@ -841,16 +884,26 @@
     setPrepItem('#prepShell', '#prepShellSize', shell);
     setPrepItem('#prepData', '#prepDataSize', data);
     setPrepItem('#prepOcr', '#prepOcrSize', ocr);
+    /* Home mini card: visible only while preparation is incomplete */
+    const mini = $('#homePrepCard');
+    if (mini) {
+      const allReady = shell.ready && data.ready && ocr.ready;
+      const working = $('#homePrepWorking'), readyLine = $('#homeReadyLine'), bar = $('#homePrepBar');
+      if (working) working.hidden = allReady;
+      if (readyLine) readyLine.hidden = !allReady;
+      if (bar) bar.style.width = Math.round(((shell.ready ? 1 : 0) + (data.ready ? 1 : 0) + (ocr.ready ? 1 : 0)) / 3 * 100) + '%';
+    }
+    const btnText = $('#prepBtnText');
     if (shell.ready && data.ready && ocr.ready) {
-      st.textContent = t('prep.full', 'جاهز للعمل بدون إنترنت ✅');
-      st.className = 'chip active';
-      if (btn) { btn.textContent = t('prep.done', '✅ التطبيق مجهز بالكامل'); btn.disabled = true; }
+      st.textContent = t('prep.full', 'جاهز للعمل بدون إنترنت');
+      st.className = 'chip db-ok';
+      if (btn) { if (btnText) btnText.textContent = t('prep.done', 'التطبيق مجهز بالكامل'); btn.disabled = true; }
     } else if (shell.ready && data.ready) {
       st.textContent = t('prep.searchReady', 'البحث جاهز دون إنترنت — المسح البصري بحاجة للتجهيز');
-      if (btn) { btn.textContent = t('prep.ocrBtn', '⬇️ تجهيز ملفات المسح البصري'); btn.disabled = false; }
+      if (btn) { if (btnText) btnText.textContent = t('prep.ocrBtn', 'تجهيز ملفات المسح البصري'); btn.disabled = false; }
     } else {
       st.textContent = t('prep.firstRun', 'أكمل أول تشغيل أثناء الاتصال ليكتمل التجهيز');
-      if (btn) { btn.textContent = t('prep.btn', '⬇️ تجهيز الآن'); btn.disabled = false; }
+      if (btn) { if (btnText) btnText.textContent = t('prep.btn', 'تجهيز الآن'); btn.disabled = false; }
     }
   }
 
@@ -894,24 +947,63 @@
     }).catch(() => { /* hidden = safe default */ });
   })();
 
-  /* Theme (now persisted) */
+  /* Theme (persisted; dark is the default and matches the reference) */
   const themeBtn = $('#themeToggle');
+  function renderThemeIcon() {
+    const ic = $('#themeIcon');
+    if (ic && window.UIIcons) {
+      ic.setAttribute('data-icon', document.documentElement.dataset.theme === 'light' ? 'theme' : 'theme-dark');
+      UIIcons.paint(ic);
+    }
+  }
   try {
     const saved = localStorage.getItem('mustashar-theme');
-    if (saved) document.documentElement.dataset.theme = saved;
-  } catch (e) { /* storage may be unavailable */ }
-  themeBtn.addEventListener('click', () => {
-    const next = document.documentElement.dataset.theme === 'dark' ? '' : 'dark';
-    if (next) document.documentElement.dataset.theme = next;
-    else delete document.documentElement.dataset.theme;
-    try { localStorage.setItem('mustashar-theme', next || 'light'); } catch (e) {}
+    document.documentElement.dataset.theme = (saved === 'light') ? 'light' : 'dark';
+  } catch (e) { document.documentElement.dataset.theme = 'dark'; }
+  if (themeBtn) themeBtn.addEventListener('click', () => {
+    const next = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
+    document.documentElement.dataset.theme = next;
+    try { localStorage.setItem('mustashar-theme', next); } catch (e) {}
+    renderThemeIcon();
   });
+  renderThemeIcon();
 
   /* Service worker registration + update detection */
   function updateOnlineBadge() {
-    $('#offlineState').textContent = navigator.onLine
-      ? t('chip.online', '🟢 متصل') : t('chip.offline', '🔴 بدون إنترنت');
+    const el = $('#offlineState');
+    if (el) el.textContent = navigator.onLine
+      ? t('chip.online', 'متصل') : t('chip.offline', 'بدون إنترنت');
+    const ic = $('#connIcon');
+    if (ic && window.UIIcons) {
+      ic.setAttribute('data-icon', navigator.onLine ? 'online' : 'offline');
+      UIIcons.paint(ic);
+    }
   }
+
+  /* About page: version + release date come from the real version file */
+  function fillAboutMeta() {
+    fetch('version.json', { cache: 'no-store' })
+      .then(r => (r.ok ? r.json() : null))
+      .then(info => {
+        if (!info) return;
+        const v = $('#aboutVersion'), d = $('#aboutDate');
+        if (v && info.version) v.textContent = info.version;
+        if (d && info.released) d.textContent = info.released;
+      }).catch(() => {});
+  }
+
+  /* Developer photo: fixed path; falls back to an icon circle when the
+   * user has not added assets/developer.jpg yet (404 expected, harmless). */
+  (function initDevPhoto() {
+    const img = $('#devPhoto'), fb = $('#devPhotoFallback');
+    if (!img || !fb) return;
+    img.addEventListener('error', () => { img.hidden = true; fb.hidden = false; });
+    img.addEventListener('load', () => {
+      if (img.naturalWidth > 0) { img.hidden = false; fb.hidden = true; }
+      else { img.hidden = true; fb.hidden = false; }
+    });
+    img.src = 'assets/developer.jpg';
+  })();
   window.addEventListener('online', updateOnlineBadge);
   window.addEventListener('offline', updateOnlineBadge);
   updateOnlineBadge();
@@ -939,9 +1031,12 @@
   /* ============================================================
    * Boot
    * ============================================================ */
+  applyView();
+  syncModeLabel();
   renderDbStatus();
   requestPersistence();
   loadAll();
   checkVersion();
+  fillAboutMeta();
   updatePrepPanel();          // works even if the SW is still installing
 })();

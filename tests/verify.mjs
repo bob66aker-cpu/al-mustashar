@@ -174,8 +174,40 @@ for (const i of manifest.icons) {
 check('manifest keeps dir rtl + lang ar', manifest.dir === 'rtl' && manifest.lang === 'ar');
 const html = fs.readFileSync('index.html', 'utf8');
 check('index loads search-core before app', html.indexOf('src/search-core.js') < html.indexOf('src/app.js'));
+/* UI round (2026-09-21): status chips were replaced by home stat cards +
+ * per-database chips inside the #/data view. The chip ELEMENTS survive with
+ * the same ids (tests/app logic depend on them); the OLD assertions about
+ * a header statusline no longer apply and were replaced. */
 check('per-DB status chips present', ['db-libya-248', 'db-libya-500', 'db-eu', 'db-epa'].every(id => html.includes(id)));
-check('history panel present', html.includes('historyPanel') && html.includes('historyBtn'));
+check('six views + hash router targets present',
+  ['view-home', 'view-search', 'view-scan', 'view-history', 'view-data', 'view-about'].every(id => html.includes(id)));
+check('bottom nav with 5 items + data route',
+  ['data-nav="home"', 'data-nav="search"', 'data-nav="scan"', 'data-nav="history"', 'data-nav="about"'].every(m => html.includes(m))
+  && html.includes('href="#/data"'));
+check('home stat cards wired to app.js', ['stat-248', 'stat-500', 'stat-eu', 'stat-epa'].every(id => html.includes(id)) && /statIds\[s\.key\]/.test(fs.readFileSync('src/app.js', 'utf8')));
+check('local font files exist and are referenced',
+  fs.existsSync('assets/fonts/ibm-plex-sans-arabic-regular.woff2')
+  && fs.existsSync('assets/fonts/ibm-plex-sans-arabic-bold.woff2')
+  && html.includes('assets/fonts/ibm-plex-sans-arabic-regular.woff2')
+  && fs.statSync('assets/fonts/ibm-plex-sans-arabic-regular.woff2').size < 100000
+  && (fs.statSync('assets/fonts/ibm-plex-sans-arabic-regular.woff2').size + fs.statSync('assets/fonts/ibm-plex-sans-arabic-bold.woff2').size) < 200000);
+check('font licenses + icon license files present',
+  fs.existsSync('assets/fonts/LICENSE-OFL-IBM-Plex-Sans-Arabic.txt')
+  && fs.existsSync('assets/icons/LICENSE-LUCIDE-ISC.txt'));
+check('icon helper loads before app', html.indexOf('src/icons.js') > 0 && html.indexOf('src/icons.js') < html.indexOf('src/app.js'));
+check('no emoji anywhere in displayed UI/code/data',
+  (() => { const appSrc = fs.readFileSync('src/app.js', 'utf8'); const i18nSrc = fs.readFileSync('src/i18n.js', 'utf8');
+    const re = /[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{2B00}-\u{2BFF}\u{FE0F}]/u;
+    return !re.test(html) && !re.test(appSrc) && !re.test(i18nSrc); })());
+check('SW precaches new UI assets',
+  sw.includes('src/icons.js') && sw.includes('assets/fonts/ibm-plex-sans-arabic-regular.woff2')
+  && sw.includes('assets/fonts/ibm-plex-sans-arabic-bold.woff2'));
+check('about page: app info card reads real version file',
+  html.includes('aboutVersion') && /fillAboutMeta/.test(fs.readFileSync('src/app.js', 'utf8')));
+check('about page: developer card with optional photo fallback',
+  html.includes('assets/developer.jpg') && html.includes('devPhotoFallback') && /initDevPhoto/.test(fs.readFileSync('src/app.js', 'utf8')));
+check('result cards keep source + CAS as LTR chips', html.includes('source-chip') && html.includes('cas-chip'));
+check('history panel present', html.includes('historyPanel') && html.includes('historyList'));
 check('RTL preserved', html.includes('dir="rtl"') && html.includes('lang="ar"'));
 const app = fs.readFileSync('src/app.js', 'utf8');
 check('IndexedDB upgraded to v2 (db + history)', app.includes('DB_VERSION = 2') && app.includes("STORE_HISTORY = 'history'"));
@@ -237,9 +269,9 @@ check('app.js OCR uses searchFn (no second search algorithm)',
 check('app.js allows manual edit + re-search of OCR text',
   app.includes("$('#ocrRerun')") && app.includes("$('#ocrText')"));
 check('first-use OCR size notice shown in Arabic',
-  html.includes('ميجابايت') && html.includes('دون إنترنت'));
+  fs.readFileSync('src/i18n.js', 'utf8').includes('ميجابايت') && fs.readFileSync('src/i18n.js', 'utf8').includes('دون إنترنت'));
 const sw5 = fs.readFileSync('sw.js', 'utf8');
-check('sw is v7 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v7'")
+check('sw is v8 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v8'")
   && sw5.includes("OCR_CACHE = 'mustashar-ocr'")
   && OCR_FILES.every(f => sw5.includes(f.replace('./', ''))));
 check('80% threshold untouched (SearchCore MIN_SCORE = 80)', SC.MIN_SCORE === 80);

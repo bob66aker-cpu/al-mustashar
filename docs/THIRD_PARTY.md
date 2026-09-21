@@ -10,6 +10,8 @@
 | Tesseract WASM core (simd-lstm) | `vendor/tesseract/core/tesseract-core-simd-lstm.wasm{,.js}` | كما أعلاه | Apache-2.0 | كما أعلاه | يُختار تلقائيًا عند دعم SIMD |
 | نموذج العربية | `vendor/tesseract/lang/ara.traineddata.gz` | tessdata_fast ❓ (لا رقم داخل الملف) | Apache-2.0 | https://github.com/tesseract-ocr/tessdata_fast | 1.66MB |
 | نموذج الإنجليزية | `vendor/tesseract/lang/eng.traineddata.gz` | كما أعلاه | Apache-2.0 | كما أعلاه | 2.95MB |
+| خط IBM Plex Sans Arabic | `assets/fonts/ibm-plex-sans-arabic-{regular,bold}.woff2` | v15 (من Google Fonts، بدون أرقام داخل الملف) | SIL OFL 1.1 — النص الكامل مرفق: `assets/fonts/LICENSE-OFL-IBM-Plex-Sans-Arabic.txt` | https://fonts.google.com/specimen/IBM+Plex+Sans+Arabic | وزنان 400/700 — 19.5KB + 19.2KB (مقاس بالتشغيل) — ترويسة الملف الثنائي لا تحمل نصًا، الترخيص موثق من صفحة المصدر |
+| أيقونات Lucide | `src/icons.js` (inner markup) + `assets/icons/LICENSE-LUCIDE-ISC.txt` | 0.462.0 | ISC — النص الكامل مرفق في الملف المذكور | https://lucide.dev | 31 رمزًا — الوسوم الداخلية منقولة حرفيًا من `lucide-static@0.462.0`، ترويسة المصدر تحمل سطر `@license lucide-static v0.462.0 - ISC` |
 
 ## إجراء التحقق المستخدم
 

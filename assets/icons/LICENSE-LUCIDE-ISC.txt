@@ -1,0 +1,2 @@
+Lucide icons v0.462.0 — ISC License — https://lucide.dev // Copied: leaf,house,search,camera,image,clock,info,database,globe,languages,shield,code,chevron-down,chevron-up,sun,moon,wifi,wifi-off,share-2,copy,file-text,download,arrow-right,check,loader,x,ban,triangle-alert,circle-help,wheat,microscope
+<svg

@@ -271,7 +271,7 @@ check('app.js allows manual edit + re-search of OCR text',
 check('first-use OCR size notice shown in Arabic',
   fs.readFileSync('src/i18n.js', 'utf8').includes('ميجابايت') && fs.readFileSync('src/i18n.js', 'utf8').includes('دون إنترنت'));
 const sw5 = fs.readFileSync('sw.js', 'utf8');
-check('sw is v9 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v9'")
+check('sw is v10 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v10'")
   && sw5.includes("OCR_CACHE = 'mustashar-ocr'")
   && OCR_FILES.every(f => sw5.includes(f.replace('./', ''))));
 check('search input has a clear button (44px target, icon-by-meaning, i18n title)',

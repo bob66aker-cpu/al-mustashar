@@ -583,11 +583,12 @@
     .dev-card .body { display: grid; gap: 10px; }
     .dev-top { display: flex; align-items: center; gap: 12px; }
     .dev-photo {
-      width: 64px; height: 64px; border-radius: 16px; object-fit: cover;
+      width: 64px; height: 64px; border-radius: 50%; object-fit: cover;
       border: 1px solid var(--border); background: var(--field); flex: none;
+      box-shadow: 0 0 0 4px var(--card), 0 0 0 5px var(--border);
     }
     .dev-photo-fallback {
-      width: 64px; height: 64px; border-radius: 16px;
+      width: 64px; height: 64px; border-radius: 50%;
       border: 1px solid var(--border); background: var(--field);
       display: flex; align-items: center; justify-content: center; color: var(--muted);
       flex: none;

@@ -1,5 +1,5 @@
 /*
- * sw.js — المستشار الزراعي (v8)
+ * sw.js — المستشار الزراعي (v10)
  *
  * Cache topology (two caches; both survive SW updates):
  *   - mustashar-v7    app shell + data JSONs (precached, mirrored forward
@@ -15,7 +15,7 @@
  * Personal data (IndexedDB history, theme, app version note) lives outside
  * the caches and is never touched by this worker.
  */
-const CACHE = 'mustashar-v9';
+const CACHE = 'mustashar-v10';
 const OCR_CACHE = 'mustashar-ocr';
 const SHELL = [
   './',

@@ -15,7 +15,7 @@
  * Personal data (IndexedDB history, theme, app version note) lives outside
  * the caches and is never touched by this worker.
  */
-const CACHE = 'mustashar-v8';
+const CACHE = 'mustashar-v9';
 const OCR_CACHE = 'mustashar-ocr';
 const SHELL = [
   './',

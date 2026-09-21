@@ -271,9 +271,15 @@ check('app.js allows manual edit + re-search of OCR text',
 check('first-use OCR size notice shown in Arabic',
   fs.readFileSync('src/i18n.js', 'utf8').includes('ميجابايت') && fs.readFileSync('src/i18n.js', 'utf8').includes('دون إنترنت'));
 const sw5 = fs.readFileSync('sw.js', 'utf8');
-check('sw is v8 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v8'")
+check('sw is v9 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v9'")
   && sw5.includes("OCR_CACHE = 'mustashar-ocr'")
   && OCR_FILES.every(f => sw5.includes(f.replace('./', ''))));
+check('search input has a clear button (44px target, icon-by-meaning, i18n title)',
+  fs.readFileSync('index.html', 'utf8').includes('id="clearQuery"')
+  && fs.readFileSync('index.html', 'utf8').includes('data-icon="clear-query"')
+  && fs.readFileSync('src/icons.js', 'utf8').includes("'clear-query': 'circle-x'")
+  && ['مسح الكتابة', 'Clear text', 'Effacer le texte', '清除文字'].every(s => fs.readFileSync('src/i18n.js', 'utf8').includes(s))
+  && fs.readFileSync('src/app.js', 'utf8').includes("$('#clearQuery')"));
 check('80% threshold untouched (SearchCore MIN_SCORE = 80)', SC.MIN_SCORE === 80);
 check('source priority untouched',
   JSON.stringify(SC.buildSearch([{ key: 'epa', rows: [] }, { key: 'libya-248', rows: [] }]).sources) === '[]'

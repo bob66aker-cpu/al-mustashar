@@ -513,6 +513,18 @@
     cachedIndexSig = sig;
   }
 
+  /* Clear-query button: empty #query, refocus for typing or paste (UI round) */
+  const clearBtn = $('#clearQuery');
+  const queryInput = $('#query');
+  const syncClear = () => { clearBtn.style.display = queryInput.value ? 'inline-flex' : 'none'; };
+  queryInput.addEventListener('input', syncClear);
+  clearBtn.addEventListener('click', () => {
+    queryInput.value = '';
+    syncClear();
+    queryInput.focus();
+  });
+  syncClear();
+
   $('#searchForm').addEventListener('submit', e => {
     e.preventDefault();
     const q = $('#query').value.trim();
@@ -567,6 +579,7 @@
     const item = e.target.closest('.history-item');
     if (!item) return;
     $('#query').value = item.dataset.q || '';
+    syncClear();
     $('#searchForm').dispatchEvent(new Event('submit', { cancelable: true }));
   });
 

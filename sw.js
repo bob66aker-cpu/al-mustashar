@@ -30,6 +30,7 @@ const SHELL = [
   './assets/fonts/ibm-plex-sans-arabic-bold.woff2',
   './assets/fonts/LICENSE-OFL-IBM-Plex-Sans-Arabic.txt',
   './assets/icons/LICENSE-LUCIDE-ISC.txt',
+  './assets/developer.jpg',
   './vendor/tesseract/tesseract.min.js',
   './manifest.json',
   './version.json',

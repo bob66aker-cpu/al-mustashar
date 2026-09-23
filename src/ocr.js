@@ -2,7 +2,7 @@
  * ocr.js — OCR V2: multi-pass, database-aware OCR for the Agricultural Advisor
  * ---------------------------------------------------------------------------
  * Builds on the f2359a8 Phase-1 engine (same self-hosted Tesseract.js v6.0.1
- * assets, same eng+ara languages, same worker reuse, same CAS-first policy,
+ * assets, eng-only languages — see docs/ocr-arabic-hallucination-diagnosis.md, same worker reuse, same CAS-first policy,
  * same preprocessing quality gates, same 80% search threshold which lives in
  * SearchCore and is NOT touched here).
  *
@@ -272,7 +272,7 @@
         return;
       }
       resolve(Tesseract.createWorker(
-        'eng+ara',                       // langs: both, one warm-up
+        'eng',                           // langs: eng only — ara removal (Arabic hallucination fix, docs/ocr-arabic-hallucination-diagnosis.md)
         1,                               // OEM: LSTM only (matches the vendored core)
         {
           workerBlobURL: false,            // real same-origin worker (Blob workers cannot importScripts)
@@ -310,7 +310,7 @@
    * reset so the NEXT scan starts fresh. Nothing is invented: whatever the
    * earlier passes already read is exactly what gets fused. */
   const PASS_TIMEOUT_MS = 30000;   // phone-class: a 1600px pass takes 2-8s
-  const INIT_TIMEOUT_MS = 60000;   // first-pass engine init (WASM + 2 langs)
+  const INIT_TIMEOUT_MS = 60000;   // first-pass engine init (WASM + eng)
 
   function withTimeout(promise, ms, label) {
     let timer = null;
@@ -836,6 +836,20 @@
       !/^\s*(active\s*ingredients?|ingredients?)\s*$/i.test(c));
     const text = fusionText.filter(Boolean).join('\n');
 
+    /* Latin-ratio gate (ج) — final barrier before any output leaves the
+     * engine: a merged text below 60% Latin among non-space characters is
+     * rejected wholesale with «لم يُستخرج نص موثوق» and no candidates, no
+     * CAS, no boxes. Kept OFF the rotate/invert passes themselves (ب). */
+    const rejected = rejectedTextReason(text);
+    if (rejected) {
+      status('ocr.done', 1);
+      return {
+        text: '', cas: [], candidates: [], confidence: null,
+        passes: passCount, variant: bestPass.variant, psm: bestPass.psm,
+        best: bestDb, aiRegion: !!aiRect, rejected
+      };
+    }
+
     status('ocr.done', 1);
     return {
       text,
@@ -859,11 +873,47 @@
    * out; wraps recognize() without changing its behavior. Consumers can
    * rely on this shape regardless of the engine behind it (also used by
    * the alt-engine experiment branch). */
+  /* Latin-ratio filter (ج): any extracted text where Latin letters make up
+   * less than 60% of non-space characters is rejected outright — the label
+   * photos are foreign/English, so a heavy Arabic share can only be
+   * hallucination leakage (see docs/ocr-arabic-hallucination-diagnosis.md).
+   * Used as the final gate of recognize() and on the engine interface's
+   * text output; unrelated pipelines (e.g. manual text) are untouched. */
+  function latinRatio(text) {
+    const chars = String(text || '').replace(/\s/g, '');
+    if (!chars.length) return { ratio: 1, latin: 0, nonSpace: 0, ok: true };
+    const latin = (chars.match(/[A-Za-z]/g) || []).length;
+    const ratio = latin / chars.length;
+    return { ratio, latin, nonSpace: chars.length, ok: ratio >= 0.6 };
+  }
+  function rejectedTextReason(text) {
+    const m = latinRatio(text);
+    if (m.ok) return null;
+    return {
+      arabicLeak: true,
+      ratio: Math.round(m.ratio * 100) / 100,
+      latin: m.latin,
+      nonSpace: m.nonSpace,
+      key: 'ocr.rejected.mixed',
+      message: 'لم يُستخرج نص موثوق'
+    };
+  }
   async function scan(file, options) {
     const res = await recognize(file, null, options);
     const lines = String(res.text || '').split(/\r?\n/)
       .map(l => l.trim()).filter(Boolean)
       .map(l => ({ text: l, conf: res.confidence }));
+    const rej = rejectedTextReason(res.text);
+    if (rej) {
+      return {
+        engine: 'tesseract-6.0.1',
+        rejected: rej,
+        lines: [], words: [], cas: [], candidates: [], confidence: null,
+        passes: res.passes, variant: res.variant, psm: res.psm,
+        best: res.best, aiRegion: res.aiRegion,
+        text: ''
+        };
+    }
     return {
       engine: 'tesseract-6.0.1',
       lines,                       // [{text, conf}]
@@ -892,8 +942,7 @@
       OCR.CORE + '/tesseract-core-simd-lstm.wasm',
       OCR.CORE + '/tesseract-core-lstm.wasm.js',
       OCR.CORE + '/tesseract-core-lstm.wasm',
-      OCR.LANG + '/eng.traineddata.gz',
-      OCR.LANG + '/ara.traineddata.gz'
+      OCR.LANG + '/eng.traineddata.gz'
     ];
     const cache = await caches.open('mustashar-ocr');
     let n = 0;
@@ -905,7 +954,7 @@
 
   global.OcrModule = {
     recognize, extractCAS, extractCandidates, prefetch, setSearchRef,
-    cancelCurrent, scan,
+    cancelCurrent, scan, latinRatio, rejectedTextReason,
     OCR, VARIANTS, PSM_LIST, aiRegionFromWords, buildVariant
   };
 })(typeof window !== 'undefined' ? window : globalThis);

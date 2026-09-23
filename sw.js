@@ -1,8 +1,8 @@
 /*
- * sw.js — المستشار الزراعي (v12)
+ * sw.js — المستشار الزراعي (v14)
  *
  * Cache topology (two caches; both survive SW updates):
- *   - mustashar-v12   app shell + data JSONs (precached, mirrored forward
+ *   - mustashar-v14   app shell + data JSONs (precached, mirrored forward
  *                     across version updates)
  *   - mustashar-ocr   OCR asset responses (worker, wasm core+glue, traineddata)
  *                     written once on first use / explicit prefetch, NEVER
@@ -15,7 +15,7 @@
  * Personal data (IndexedDB history, theme, app version note) lives outside
  * the caches and is never touched by this worker.
  */
-const CACHE = 'mustashar-v12';
+const CACHE = 'mustashar-v14';
 const OCR_CACHE = 'mustashar-ocr';
 const SHELL = [
   './',
@@ -61,8 +61,10 @@ const OCR_ASSETS = [
   './vendor/tesseract/core/tesseract-core-simd-lstm.wasm',
   './vendor/tesseract/core/tesseract-core-lstm.wasm.js',
   './vendor/tesseract/core/tesseract-core-lstm.wasm',
-  './vendor/tesseract/lang/eng.traineddata.gz',
-  './vendor/tesseract/lang/ara.traineddata.gz'
+  './vendor/tesseract/lang/eng.traineddata.gz'
+  /* ara.traineddata.gz removed from the runtime set: eng-only engine
+   * (Arabic-hallucination fix — docs/ocr-arabic-hallucination-diagnosis.md).
+   * The file stays in the repo as an asset; not prefetched or cached. */
 ];
 
 /* Subpath-safe matchers (GitHub Pages serves under /<repo>/): match by
@@ -71,7 +73,7 @@ const OCR_ASSETS = [
 const isDataUrl = url =>
   /\/data\/(libya-248|libya-500|eu|epa)\.json$/.test(url.pathname);
 const isOcrUrl = url =>
-  /\/vendor\/tesseract\/(core\/tesseract-core-(simd-)?lstm\.wasm(\.js)?|lang\/(eng|ara)\.traineddata\.gz|worker\.min\.js)$/.test(url.pathname);
+  /\/vendor\/tesseract\/(core\/tesseract-core-(simd-)?lstm\.wasm(\.js)?|lang\/eng\.traineddata\.gz|worker\.min\.js)$/.test(url.pathname);
 
 self.addEventListener('install', e => {
   e.waitUntil((async () => {

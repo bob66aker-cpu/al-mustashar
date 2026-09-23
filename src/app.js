@@ -831,7 +831,7 @@
     try {
       rebuildSearch();   // ensure the 4-DB index is current before DB-aware OCR scoring
       const msgs = {};
-      for (const k of ['ocr.prep','ocr.init','ocr.loading','ocr.pass','ocr.roi','ocr.rotate','ocr.done']) msgs[k] = t(k, k);
+      for (const k of ['ocr.prep','ocr.init','ocr.loading','ocr.pass','ocr.roi','ocr.rotate','ocr.done','ocr.rejected.mixed']) msgs[k] = t(k, k);
       const res = await OcrModule.recognize(file, p => {
         if (!p) return;
         if (p.statusKey) ocrMsg.textContent = (p.status || p.statusKey) + (p.progress ? ' (' + Math.round(p.progress * 100) + '%)' : '');
@@ -842,6 +842,18 @@
         }
       }, { search: searchFn, messages: msgs });   // DB-aware pass scoring + i18n keys
       const ms = Math.round(performance.now() - t0);
+      /* Latin-ratio rejection (ج): the engine itself refused the merged text
+       * (Arabic leak on a foreign label). Show the literal message via i18n
+       * and keep the editor empty — nothing from a rejected text is surfaced. */
+      if (res.rejected) {
+        ocrMsg.textContent = t('ocr.rejected.mixed', 'لم يُستخرج نص موثوق');
+        $('#ocrText').value = '';
+        $('#ocrActions').hidden = false;
+        $('#cancelOcrBtn').hidden = true;
+        diagAdd({ at: Date.now(), outcome: 'rejected', ms, passes: res.passes,
+                  reason: res.rejected.ratio });
+        return;
+      }
       const textLen = (res.text || '').replace(/\s/g, '').length;
       const weak = textLen < 6 || (res.confidence !== null && res.confidence < 40);
       if (weak) {
@@ -898,8 +910,7 @@
     'vendor/tesseract/core/tesseract-core-simd-lstm.wasm',
     'vendor/tesseract/core/tesseract-core-lstm.wasm.js',
     'vendor/tesseract/core/tesseract-core-lstm.wasm',
-    'vendor/tesseract/lang/eng.traineddata.gz',
-    'vendor/tesseract/lang/ara.traineddata.gz'
+    'vendor/tesseract/lang/eng.traineddata.gz'
   ];
 
   /* Find a cached response for a path in ANY app cache (current, OCR,
@@ -988,7 +999,7 @@
       const n = await OcrModule.prefetch();
       prepMeasured = false;                 // re-measure with fresh data
       await updatePrepPanel();
-      ocrMsg.textContent = tf('ocr.loadDone', 'تم تحميل ملفات OCR ({n}/8). سيعمل المسح البصري دون إنترنت.', { n: n });
+      ocrMsg.textContent = tf('ocr.loadDone', 'تم تحميل ملفات OCR ({n}/7). سيعمل المسح البصري دون إنترنت.', { n: n });
     } catch (e) {
       st.textContent = t('prep.fail', 'تعذّر التجهيز الآن — أعد المحاولة أثناء الاتصال');
       ocrMsg.textContent = t('prep.failNote', 'تعذّر تحميل ملفات OCR الآن. سيُعاد المحاولة تلقائيًا عند أول مسح أثناء الاتصال.');

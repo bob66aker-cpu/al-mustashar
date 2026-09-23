@@ -32,7 +32,7 @@
    * Same-document navigation (back button + GitHub Pages subpath safe).
    * No business logic here — only show/hide + active nav state.
    * ============================================================ */
-  const VIEWS = ['home', 'search', 'scan', 'history', 'data', 'about'];
+  const VIEWS = ['home', 'search', 'scan', 'history', 'data', 'about', 'legend'];
   function currentView() {
     const h = (location.hash || '').replace(/^#\/?/, '');
     return VIEWS.indexOf(h) >= 0 ? h : 'home';
@@ -51,6 +51,41 @@
     if (v === 'history') openHistory();
   }
   window.addEventListener('hashchange', applyView);
+
+  /* ============================================================
+   * Legend (شرح الرموز) — status explanations are verbatim decree
+   * texts (i18n keys st.500.*.explain); category names come from the
+   * prompt's fixed table ONLY (I18N.catName / LEGEND_CAT_KEYS below).
+   * Unknown codes are never interpreted — shown verbatim with the
+   * «رمز غير معرّف في دليل القرار» hint.
+   * ============================================================ */
+  const LEGEND_STATUS_KEYS = {
+    'Approved': 'st.500.approved.explain',
+    'REV':      'st.500.rev.explain',
+    'RAR':      'st.500.rar.explain',
+    'REV*':     'st.500.revstar.explain'
+  };
+  const LEGEND_CAT_KEYS = {
+    'I': 'legend.cat.I', 'F': 'legend.cat.F', 'A': 'legend.cat.A',
+    'N': 'legend.cat.N', 'H': 'legend.cat.H', 'R': 'legend.cat.R',
+    'M': 'legend.cat.M', 'S.ph': 'legend.cat.S.ph',
+    'PGR': 'legend.cat.PGR', 'rep': 'legend.cat.rep'
+  };
+  function statusExplain(rawStatus) {
+    const k = LEGEND_STATUS_KEYS[String(rawStatus || '').trim()];
+    return k ? t(k, '') : '';
+  }
+  function catName(code) {
+    const k = LEGEND_CAT_KEYS[String(code || '').trim()];
+    return k ? t(k, '') : '';
+  }
+  /* Category tooltip: known codes get the fixed-table meaning; any other
+   * code gets the literal «رمز غير معرّف في دليل القرار» hint only. */
+  function catTitle(code) {
+    const c = String(code || '').trim();
+    if (!c) return '';
+    return catName(c) || t('legend.cat.unknown', 'رمز غير معرّف في دليل القرار.');
+  }
 
   /* i18n helpers (src/i18n.js loads before this file). Arabic fallbacks
    * keep every string working even if the i18n module failed to load. */
@@ -349,7 +384,14 @@
     if (/^st\.500\./.test(d.key) && d.raw) extra = ' (' + d.raw + ')';   // code stays visible
     else if (showDetails && d.raw && d.raw !== phrase) extra = ' · ' + d.raw;
     if (d.rup) extra += ' · ' + t('st.epa.rup.note', 'استخدام مقيد (للمرخّصين فقط)');
-    return { text: phrase + extra, tone: d.tone, raw: d.raw };
+    /* Status legend badge (شرح الرموز): a clickable info chip only for
+     * Decree-500 statuses that have a verbatim explanation (Approved, REV,
+     * RAR, REV*). Renders as part of the status paragraph. */
+    const ek = LEGEND_STATUS_KEYS[String(d.raw || '').trim()];
+    const chip = ek
+      ? ' <button type="button" class="st-explain" data-status="' + esc(String(d.raw).trim()) + '" aria-haspopup="dialog" title="' + esc(t('legend.title', 'شرح الرموز')) + '">' + t('legend.open', 'شرح الرموز') + '</button>'
+      : '';
+    return { text: phrase + extra, tone: d.tone, raw: d.raw, chip, explainKey: ek || null };
   }
 
   function render(results, q) {
@@ -411,7 +453,11 @@
         ? '<p class="match">' + t('results.source.raw', 'الحالة كما وردت في المصدر:') + ' ' + esc(x.r.status_raw) + '</p>'
         : '';
       const cat = x.r.category && showDetails
-        ? '<p class="match">' + t('results.source.category', 'التصنيف كما ورد في المصدر:') + ' ' + esc(x.r.category) + '</p>'
+        ? '<p class="match">' + t('results.source.category', 'التصنيف كما ورد في المصدر:') + ' '
+          + String(x.r.category).split(/\n+/).map(function (c) {
+              return '<span class="cat-code" tabindex="0" role="button" data-cat="' + esc(c) + '">' + esc(c) + '</span>';
+            }).join(' · ')
+          + '</p>'
         : '';
       const matchType = showDetails
         ? '<p class="match">' + esc(x.s.type) + ': ' + esc(x.s.field) + '</p>'
@@ -427,7 +473,7 @@
         + badge + verdict + '</div>'
         + '<strong>' + x.s.v + '%</strong></div>'
         + bar
-        + '<p class="status ' + stClass + '">' + esc(sd.text) + '</p>'
+        + '<p class="status ' + stClass + '">' + esc(sd.text) + (sd.chip || '') + '</p>'
         + '<p class="meta">' + t('cas.label', 'CAS:') + ' ' + casHtml + '</p>'
         + cat + raw + matchType
         + (sd.extra && sd.extra.length
@@ -439,6 +485,12 @@
     }).join('');
     /* Paint inline icons inside freshly rendered result markup */
     if (window.UIIcons) UIIcons.paint(box);
+    /* Legend tooltips: fill each category chip's title once, from the fixed
+     * table (or the unknown-code hint). Pure attributes — no re-decoding. */
+    box.querySelectorAll('.cat-code[data-cat]').forEach(el => {
+      const title = catTitle(el.getAttribute('data-cat'));
+      if (title) el.setAttribute('title', title);
+    });
   }
 
   /* ============================================================
@@ -1041,6 +1093,80 @@
     }).then(() => updatePrepPanel()).catch(() => {});
   }
 
+  /* ============================================================
+   * Legend popovers + page wiring (شرح الرموز)
+   * ============================================================ */
+  function legendCard(status) {
+    const code = String(status || '').trim();
+    const body = statusExplain(code);
+    if (!body) return '';
+    /* REV* is rendered exactly as the prompt structures it: the connective
+     * line, then REV's own text, then the asterisk note as a separate line. */
+    if (code === 'REV*') {
+      return '<strong class="lg-code">' + esc(code) + '</strong>'
+        + '<p class="lg-body">' + esc(body) + '</p>'
+        + '<p class="lg-body">' + esc(statusExplain('REV')) + '</p>'
+        + '<p class="lg-note">' + esc(t('st.500.revstar.note', '')) + '</p>';
+    }
+    return '<strong class="lg-code">' + esc(code) + '</strong>'
+      + '<p class="lg-body">' + esc(body) + '</p>';
+  }
+  function openLegend(status, anchor) {
+    const pop = $('#legendPop');
+    if (!pop) return;
+    const content = legendCard(status);
+    if (!content) return;
+    const body = pop.querySelector('.lg-content');
+    if (body) body.innerHTML = content;
+    pop.hidden = false;
+    const r = anchor.getBoundingClientRect();
+    const pw = Math.min(300, window.innerWidth - 24);
+    let left = Math.min(Math.max(12, r.left + r.width / 2 - pw / 2), window.innerWidth - pw - 12);
+    pop.style.left = left + 'px';
+    pop.style.top = Math.max(8, r.bottom + 8) + 'px';
+    const btn = pop.querySelector('.lg-close');
+    if (btn) btn.focus();
+  }
+  function closeLegend() {
+    const pop = $('#legendPop');
+    if (pop) pop.hidden = true;
+  }
+  document.addEventListener('click', e => {
+    const chip = e.target.closest('.st-explain');
+    if (chip) { openLegend(chip.getAttribute('data-status'), chip); return; }
+    const cat = e.target.closest('.cat-code[data-cat]');
+    if (cat) {
+      const code = cat.getAttribute('data-cat');
+      openLegendRaw(catName(code)
+        ? code + '\n' + catName(code)
+        : t('legend.cat.unknown', 'رمز غير معرّف في دليل القرار.'), cat);
+      return;
+    }
+    if (!e.target.closest('#legendPop')) closeLegend();
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLegend();
+    const chip = e.target.closest && e.target.closest('.st-explain');
+    if (chip && (e.key === 'Enter' || e.key === ' ')) {
+      e.preventDefault();
+      openLegend(chip.getAttribute('data-status'), chip);
+    }
+  });
+  function openLegendRaw(text, anchor) {
+    const pop = $('#legendPop');
+    if (!pop) return;
+    const body = pop.querySelector('.lg-content');
+    if (!body) return;
+    body.innerHTML = '<strong class="lg-code">' + esc(String(text).split('\n')[0]) + '</strong>'
+      + '<p class="lg-body">' + esc(String(text).split('\n').slice(1).join('\n') || t('legend.cat.unknown', 'رمز غير معرّف في دليل القرار.')) + '</p>';
+    pop.hidden = false;
+    const r = anchor.getBoundingClientRect();
+    const pw = Math.min(300, window.innerWidth - 24);
+    pop.style.left = Math.min(Math.max(12, r.left + r.width / 2 - pw / 2), window.innerWidth - pw - 12) + 'px';
+    pop.style.top = Math.max(8, r.bottom + 8) + 'px';
+    const btn = pop.querySelector('.lg-close');
+    if (btn) btn.focus();
+  }
   /* ============================================================
    * Boot
    * ============================================================ */

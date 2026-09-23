@@ -602,6 +602,36 @@
       padding: 10px 12px; font-size: 13px; color: var(--text);
     }
     .dev-copyright { direction: ltr; color: var(--muted); font-size: 12px; }
+    /* legend (شرح الرموز) — status chip, category chip, popover, page */
+    .st-explain {
+      display: inline-flex; align-items: center;
+      background: none; border: 1px solid var(--border); border-radius: 999px;
+      color: var(--muted); font: inherit; font-size: 11px;
+      padding: 1px 8px; margin-inline-start: 6px; cursor: pointer; min-height: 24px;
+    }
+    .st-explain:hover, .st-explain:focus-visible { color: var(--primary-strong); border-color: var(--primary-strong); }
+    .cat-code {
+      display: inline-block; border: 1px solid var(--border); border-radius: 6px;
+      padding: 0 6px; background: var(--field); cursor: help; font-size: 13px;
+    }
+    .legend-pop {
+      position: fixed; z-index: 60; max-width: 300px;
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, .35); padding: 10px 12px;
+      font-size: 13px; line-height: 1.7;
+    }
+    .legend-pop .lg-close {
+      position: absolute; top: 4px; inset-inline-end: 4px;
+      background: none; border: 0; color: var(--muted); cursor: pointer; padding: 4px;
+    }
+    .legend-pop .lg-code { color: var(--primary-strong); }
+    .legend-pop .lg-note { margin: 6px 0 0; color: var(--muted); border-top: 1px solid var(--border); padding-top: 6px; }
+    .legend-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+    .legend-table th, .legend-table td { border: 1px solid var(--border); padding: 6px 8px; text-align: start; font-size: 13px; }
+    .lg-row { margin-top: 8px; }
+    .lg-row .lg-code, .legend-table .lg-code { color: var(--primary-strong); direction: ltr; unicode-bidi: embed; }
+    .lg-row .lg-body { margin: 2px 0 0; }
+    .lg-note { color: var(--muted); font-size: 12px; margin: 6px 0 0; }
     .alert-box {
       display: flex; gap: 10px; align-items: flex-start;
       background: var(--card); border: 1px solid var(--border);
@@ -1005,6 +1035,11 @@
         </div>
       </details>
 
+      <a class="btn-outline" id="legendLink" href="#/legend">
+        <span data-icon="about"></span>
+        <span data-i18n="legend.open">شرح الرموز</span>
+      </a>
+
       <button id="supportBtn" class="btn-outline support-btn" hidden></button>
 
       <div class="alert-box">
@@ -1013,6 +1048,56 @@
       </div>
 
       <p class="about-foot" data-i18n="footer">المستشار الزراعي أداة مساعدة للبحث في قواعد البيانات المرفقة. المرجع القانوني النهائي هو الجهة الرسمية المختصة. لا نتحمل مسؤولية الاستخدام غير الصحيح للمعلومات.</p>
+    </section>
+
+    <!-- ================= LEGEND — شرح الرموز ================= -->
+    <section class="view" id="view-legend" data-view="legend" hidden>
+      <div class="page-head">
+        <h2 data-i18n="legend.title">شرح الرموز</h2>
+        <p><a href="#/about" data-i18n="legend.back">عودة إلى حول</a></p>
+      </div>
+
+      <div class="card">
+        <h3 data-i18n="legend.h.status">رموز الحالة (قرار 500 لسنة 2026)</h3>
+        <div class="lg-row">
+          <strong class="lg-code">Approved</strong>
+          <p class="lg-body" data-i18n="st.500.approved.explain"></p>
+        </div>
+        <div class="lg-row">
+          <strong class="lg-code">REV</strong>
+          <p class="lg-body" data-i18n="st.500.rev.explain"></p>
+        </div>
+        <div class="lg-row">
+          <strong class="lg-code">RAR</strong>
+          <p class="lg-body" data-i18n="st.500.rar.explain"></p>
+        </div>
+        <div class="lg-row">
+          <strong class="lg-code">REV*</strong>
+          <p class="lg-body" data-i18n="st.500.revstar.explain"></p>
+          <p class="lg-body" data-i18n="st.500.rev.explain"></p>
+          <p class="lg-note" data-i18n="st.500.revstar.note"></p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 data-i18n="legend.h.category">رموز التصنيف الوظيفي</h3>
+        <table class="legend-table">
+          <thead><tr><th data-i18n="legend.col.code">الرمز</th><th data-i18n="legend.col.meaning">المعنى</th></tr></thead>
+          <tbody>
+            <tr><td class="lg-code">I</td><td data-i18n="legend.cat.I"></td></tr>
+            <tr><td class="lg-code">F</td><td data-i18n="legend.cat.F"></td></tr>
+            <tr><td class="lg-code">A</td><td data-i18n="legend.cat.A"></td></tr>
+            <tr><td class="lg-code">N</td><td data-i18n="legend.cat.N"></td></tr>
+            <tr><td class="lg-code">H</td><td data-i18n="legend.cat.H"></td></tr>
+            <tr><td class="lg-code">R</td><td data-i18n="legend.cat.R"></td></tr>
+            <tr><td class="lg-code">M</td><td data-i18n="legend.cat.M"></td></tr>
+            <tr><td class="lg-code">S.ph</td><td data-i18n="legend.cat.S.ph"></td></tr>
+            <tr><td class="lg-code">PGR</td><td data-i18n="legend.cat.PGR"></td></tr>
+            <tr><td class="lg-code">rep</td><td data-i18n="legend.cat.rep"></td></tr>
+          </tbody>
+        </table>
+        <p class="lg-note" data-i18n="legend.cat.vnote"></p>
+      </div>
     </section>
   </main>
 
@@ -1025,6 +1110,13 @@
       <a class="nav-item" href="#/about" data-nav="about"><span class="nav-ic" data-icon="about"></span><span data-i18n="nav.about">حول</span></a>
     </div>
   </nav>
+
+  <div id="legendPop" class="legend-pop" hidden>
+    <button type="button" class="lg-close" aria-label="x" data-i18n-title="legend.close">
+      <span data-icon="close"></span>
+    </button>
+    <div class="lg-content"></div>
+  </div>
 
   <script src="src/i18n.js"></script>
   <script src="src/icons.js"></script>

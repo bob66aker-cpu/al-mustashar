@@ -34,7 +34,7 @@ console.log('\n== provenance vs files ==');
 const prov = fs.readFileSync('docs/data-provenance.md', 'utf8');
 const FILES = {
   'libya-248': { rows: 77,  sha: '764108e27ca0fd412792a2979f86a1d7496df2e693dcbb246f9bfa8979ceb65d' },
-  'libya-500': { rows: 411, sha: '32db2a3593cd9873380bb734f905e9e5f1bd67d929ff9786cd230a71c8c9e777' },
+  'libya-500': { rows: 411, sha: '0c9c475534b5606d49449da2e31da14e37a61dec64d250dba5d81469d2c4936e' },
   'eu':        { rows: 1483, sha: 'ef629525c2dae8f741e1697faaecf2319e1a646e4e011d2754ef66e23844101e' },
   'epa':       { rows: 2199, sha: '7b72bd38f804750f11acab74c2a44300ee3c2531770c6040fb2938c8763ba1d8' }
 };

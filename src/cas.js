@@ -44,8 +44,9 @@
    *  - epa rows: status_raw is a ';'-joined list. Cancelled-only rows are
    *    amber; rows containing any Active registration are neutral, with an
    *    amber add-on when rup_active > 0 (restricted-use pesticide).
-   *  - libya-500 codes (Approved/RAR/REV/REV*) are shown verbatim as
-   *    «رمز غير مفسَّر» — interpretation is pending the user's decree text. */
+   *  - libya-500 codes (Approved/RAR/REV/REV*) are shown verbatim;
+   *    the verbatim decree explanations are attached in the UI layer
+   *    (شرح الرموز legend) — this layer still interprets no code. */
   function dissectStatus(r, key) {
     const st = String((r && r.status) || '');
     const raw = String((r && r.status_raw) || '');
@@ -55,8 +56,8 @@
     if (key === 'libya-500') {
       if (st === 'Approved') return { key: 'st.500.approved', tone: 'neutral', raw: st };
       if (st === 'RAR')      return { key: 'st.500.rar',      tone: 'neutral', raw: st };
-      if (st === 'REV' || st === 'REV*')
-                             return { key: 'st.500.rev',      tone: 'neutral', raw: st };
+      if (st === 'REV')      return { key: 'st.500.rev',      tone: 'neutral', raw: st };
+      if (st === 'REV*')     return { key: 'st.500.revstar',  tone: 'neutral', raw: st };
       return { key: 'st.500.unknown', tone: 'neutral', raw: st };
     }
     if (key === 'eu') {

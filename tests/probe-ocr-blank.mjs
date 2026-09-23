@@ -26,7 +26,10 @@ import puppeteer from 'puppeteer-core';
 
 const CHROME = process.env.CHROME || '/home/daytona/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome';
 const PORT = 8099;
-const BASE = 'http://127.0.0.1:' + PORT;
+/* Default: a local static server for this repo. Set BASE_URL to probe any
+ * deployed instance (e.g. the GitHub Pages URL) with the exact live path. */
+const BASE = process.env.BASE_URL || ('http://127.0.0.1:' + PORT);
+const LOCAL_SERVER = !process.env.BASE_URL;
 const CASES = (process.argv[2] || 'all');
 const wanted = CASES === 'all' ? ['blank', 'noise', 'logo', 'label'] : [CASES];
 
@@ -46,12 +49,12 @@ http.createServer((req, res) => {
   });
 }).listen(${PORT}, '127.0.0.1', () => console.log('LISTENING'));
 `;
-const srv = spawn(process.execPath, ['-e', SERVER_SRC], { stdio: ['ignore', 'pipe', 'inherit'] });
-srv.stdout.on('data', () => {});
-process.on('exit', () => srv.kill());
+const srv = LOCAL_SERVER ? spawn(process.execPath, ['-e', SERVER_SRC], { stdio: ['ignore', 'pipe', 'inherit'] }) : null;
+if (srv) srv.stdout.on('data', () => {});
+process.on('exit', () => { if (srv) srv.kill(); });
 
 /* wait for the server */
-{
+if (LOCAL_SERVER) {
   const t0 = Date.now();
   while (Date.now() - t0 < 15000) {
     try { const r = await fetch(BASE + '/index.html'); if (r.ok) break; } catch {}
@@ -180,6 +183,6 @@ try {
   }
 } finally {
   await browser.close();
-  srv.kill();
+  if (srv) srv.kill();
   process.exit(0);
 }

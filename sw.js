@@ -1,8 +1,8 @@
 /*
- * sw.js — المستشار الزراعي (v10)
+ * sw.js — المستشار الزراعي (v11)
  *
  * Cache topology (two caches; both survive SW updates):
- *   - mustashar-v7    app shell + data JSONs (precached, mirrored forward
+ *   - mustashar-v11   app shell + data JSONs (precached, mirrored forward
  *                     across version updates)
  *   - mustashar-ocr   OCR asset responses (worker, wasm core+glue, traineddata)
  *                     written once on first use / explicit prefetch, NEVER
@@ -15,7 +15,7 @@
  * Personal data (IndexedDB history, theme, app version note) lives outside
  * the caches and is never touched by this worker.
  */
-const CACHE = 'mustashar-v10';
+const CACHE = 'mustashar-v11';
 const OCR_CACHE = 'mustashar-ocr';
 const SHELL = [
   './',

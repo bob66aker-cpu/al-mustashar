@@ -6,6 +6,10 @@
  *   - no text rendered below 12px
  *   - interactive targets >= 44px
  *   - no horizontal scrolling at 320px viewport
+ *   - developer photo fallback toggle: photo loads → fallback display:none;
+ *     photo 404s → fallback visible (exactly one avatar circle either way).
+ *     Guards the mustashar-v11 fix: author `display:flex` used to override
+ *     the UA `[hidden] { display:none }` on #devPhotoFallback.
  * Chrome-109 feature usage is statically checked in verify.mjs (running the
  * real 109 binary is not possible here; recorded as "not measured" for the
  * manual user test).
@@ -156,6 +160,54 @@ for (const theme of ['dark', 'light']) {
     if (over > 0) bad.push(v + ' (+' + over + 'px)');
   }
   check('no horizontal scroll at 320px (all views)', bad.length === 0, bad.join(', '));
+}
+
+/* Developer photo / fallback toggle (about card).
+ * The about card holds two avatar circles: <img id=devPhoto> and the icon
+ * fallback <span id=devPhotoFallback>. app.js toggles `hidden` on them.
+ * Exactly one circle must be visible in both states. */
+{
+  await page.setViewport({ width: 360, height: 800 });
+  const state = () => page.evaluate(() => {
+    const i = document.getElementById('devPhoto');
+    const f = document.getElementById('devPhotoFallback');
+    const circles = [i, f].filter(el => el && getComputedStyle(el).display !== 'none').length;
+    return {
+      nw: i ? i.naturalWidth : -1,
+      iHidden: i ? i.hidden : null,
+      iDisplay: i ? getComputedStyle(i).display : null,
+      fHidden: f ? f.hidden : null,
+      fDisplay: f ? getComputedStyle(f).display : null,
+      circles
+    };
+  });
+
+  /* (a) success: real assets/developer.jpg loads → photo circle only.
+   * Wait for the true success end-state (fallback hidden), not the initial
+   * markup state, to avoid measuring mid-load. */
+  await page.goto(BASE + '/index.html#/about', { waitUntil: 'networkidle0', timeout: 30000 });
+  await page.waitForFunction(() => {
+    const f = document.getElementById('devPhotoFallback');
+    const i = document.getElementById('devPhoto');
+    return !!f && !!i && i.complete && i.naturalWidth > 0 && f.hidden;
+  }, { timeout: 10000 }).catch(() => {});
+  const ok = await state();
+  check('photo loads → photo visible, fallback display:none',
+    ok.nw > 0 && !ok.iHidden && ok.fHidden && ok.fDisplay === 'none', JSON.stringify(ok));
+  check('exactly one avatar circle visible when photo loads', ok.circles === 1, JSON.stringify(ok));
+
+  /* (b) failure: fake 404 → fallback circle only (the regression this guards).
+   * Success end-state differs from failure by naturalWidth (photo >0, 404 =0). */
+  await page.evaluate(() => { document.getElementById('devPhoto').src = '/__missing_404__/developer.jpg'; });
+  await page.waitForFunction(() => {
+    const i = document.getElementById('devPhoto');
+    const f = document.getElementById('devPhotoFallback');
+    return !!i && !!f && i.complete && i.naturalWidth === 0 && i.hidden && !f.hidden;
+  }, { timeout: 10000 }).catch(() => {});
+  const bad = await state();
+  check('photo 404 → fallback visible, photo hidden',
+    bad.nw === 0 && bad.iHidden && !bad.fHidden && bad.fDisplay !== 'none', JSON.stringify(bad));
+  check('exactly one avatar circle visible when photo fails', bad.circles === 1, JSON.stringify(bad));
 }
 
 await browser.close();

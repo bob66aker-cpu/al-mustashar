@@ -1,5 +1,16 @@
 /*
- * sw.js — المستشار الزراعي (v14)
+ * sw.js — المستشار الزراعي (v16)
+ *
+ * v16 (2026-09-23): أ4 — حد الثقة للقراءة غير المهيكلة (MIN_CONFIDENCE = 45)
+ *   في مسار OCR الحي: أي نص مدموج تقل ثقة قراءته الكلية عن 45 يُرفض كليًا
+ *   («لم يُستخرج نص موثوق — القراءة منخفضة الثقة») مع استثناء الأدلة المهيكلة
+ *   (CAS/منطقة المادة الفعالة). يغيّر سلوك الواجهة → يجب رفع الكاش معه.
+ *
+ * v15 (2026-09-23): EPA Master (PPIS) — قاعدة خامسة قابلة للبحث
+ *   `data/epa-cancelled.json` (أرشيف الملغى، 1,425 سجلًا) تُجهَّز مسبقًا
+ *   مع الأربع القواعد وتُخدم stale-while-revalidate مثلها؛ والقاعدة النشطة
+ *   `epa.json` أُعيد بناؤها (1,361 سجلًا). تحديث قسري للمستخدمين الجدد،
+ *   والقديم يستمر بآخر نسخة جيدة حتى التجهيز التالي.
  *
  * Cache topology (two caches; both survive SW updates):
  *   - mustashar-v14   app shell + data JSONs (precached, mirrored forward
@@ -15,7 +26,7 @@
  * Personal data (IndexedDB history, theme, app version note) lives outside
  * the caches and is never touched by this worker.
  */
-const CACHE = 'mustashar-v14';
+const CACHE = 'mustashar-v16';
 const OCR_CACHE = 'mustashar-ocr';
 const SHELL = [
   './',
@@ -45,6 +56,7 @@ const DATA = [
   './data/libya-500.json',
   './data/eu.json',
   './data/epa.json',
+  './data/epa-cancelled.json',
   './data/intl-alerts.json'
   /* FAO/Codex removed (c5): publications are CC BY-NC-SA with unclear
    * dataset terms — no FAO/WHO data in this round. The international
@@ -71,7 +83,7 @@ const OCR_ASSETS = [
  * pathname suffix, not from the root. FAO stays on the generic cache-first
  * path (as in v6) until the update agent produces the file. */
 const isDataUrl = url =>
-  /\/data\/(libya-248|libya-500|eu|epa)\.json$/.test(url.pathname);
+  /\/data\/(libya-248|libya-500|eu|epa|epa-cancelled)\.json$/.test(url.pathname);
 const isOcrUrl = url =>
   /\/vendor\/tesseract\/(core\/tesseract-core-(simd-)?lstm\.wasm(\.js)?|lang\/eng\.traineddata\.gz|worker\.min\.js)$/.test(url.pathname);
 

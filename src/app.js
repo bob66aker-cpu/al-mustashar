@@ -17,7 +17,8 @@
     { key: 'libya-248', url: 'data/libya-248.json', labelKey: 'db.src.248', label: 'ليبيا 248' },
     { key: 'libya-500', url: 'data/libya-500.json', labelKey: 'db.src.500', label: 'ليبيا 500' },
     { key: 'eu',        url: 'data/eu.json',        labelKey: 'db.src.eu',  label: 'الاتحاد الأوروبي' },
-    { key: 'epa',       url: 'data/epa.json',       labelKey: 'db.src.epa', label: 'USA / EPA' }
+    { key: 'epa',       url: 'data/epa.json',       labelKey: 'db.src.epa', label: 'USA / EPA' },
+    { key: 'epa-cancelled', url: 'data/epa-cancelled.json', labelKey: 'db.src.epac', label: 'USA / EPA — ملغى' }
   ];
 
   const DB_NAME = 'mustashar-local';
@@ -222,7 +223,7 @@
       else overall.textContent = tf('db.partial', 'جاهز جزئيًا ({n})', { n: ready.length + '/' + SOURCES.length });
     }
     /* Home stat cards (counts come from the loaded databases only) */
-    const statIds = { 'libya-248': 'stat-248', 'libya-500': 'stat-500', eu: 'stat-eu', epa: 'stat-epa' };
+    const statIds = { 'libya-248': 'stat-248', 'libya-500': 'stat-500', eu: 'stat-eu', epa: 'stat-epa', 'epa-cancelled': 'stat-epac' };
     SOURCES.forEach(s => {
       const el = $('#' + statIds[s.key]);
       if (el) el.textContent = state[s.key].count ? state[s.key].count.toLocaleString('en-US') : '—';
@@ -831,7 +832,7 @@
     try {
       rebuildSearch();   // ensure the 4-DB index is current before DB-aware OCR scoring
       const msgs = {};
-      for (const k of ['ocr.prep','ocr.init','ocr.loading','ocr.pass','ocr.roi','ocr.rotate','ocr.done','ocr.rejected.mixed']) msgs[k] = t(k, k);
+      for (const k of ['ocr.prep','ocr.init','ocr.loading','ocr.pass','ocr.roi','ocr.rotate','ocr.done','ocr.rejected.mixed','ocr.rejected.conf']) msgs[k] = t(k, k);
       const res = await OcrModule.recognize(file, p => {
         if (!p) return;
         if (p.statusKey) ocrMsg.textContent = (p.status || p.statusKey) + (p.progress ? ' (' + Math.round(p.progress * 100) + '%)' : '');
@@ -842,16 +843,17 @@
         }
       }, { search: searchFn, messages: msgs });   // DB-aware pass scoring + i18n keys
       const ms = Math.round(performance.now() - t0);
-      /* Latin-ratio rejection (ج): the engine itself refused the merged text
-       * (Arabic leak on a foreign label). Show the literal message via i18n
-       * and keep the editor empty — nothing from a rejected text is surfaced. */
+      /* Rejection (ج Latin-ratio + أ4 confidence floor): the engine refused
+       * the merged text. Show the matching literal message via i18n and keep
+       * the editor empty — nothing from a rejected text is surfaced. */
       if (res.rejected) {
-        ocrMsg.textContent = t('ocr.rejected.mixed', 'لم يُستخرج نص موثوق');
+        const rejKey = res.rejected.lowConfidence ? 'ocr.rejected.conf' : 'ocr.rejected.mixed';
+        ocrMsg.textContent = t(rejKey, 'لم يُستخرج نص موثوق');
         $('#ocrText').value = '';
         $('#ocrActions').hidden = false;
         $('#cancelOcrBtn').hidden = true;
         diagAdd({ at: Date.now(), outcome: 'rejected', ms, passes: res.passes,
-                  reason: res.rejected.ratio });
+                  reason: res.rejected.lowConfidence ? res.rejected.conf : res.rejected.ratio });
         return;
       }
       const textLen = (res.text || '').replace(/\s/g, '').length;
@@ -902,7 +904,7 @@
    * ============================================================ */
   const SHELL_PATHS = ['index.html', 'src/search-core.js', 'src/app.js', 'src/ocr.js',
     'manifest.json', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/maskable-512.png'];
-  const DATA_PATHS = ['data/libya-248.json', 'data/libya-500.json', 'data/eu.json', 'data/epa.json'];
+  const DATA_PATHS = ['data/libya-248.json', 'data/libya-500.json', 'data/eu.json', 'data/epa.json', 'data/epa-cancelled.json'];
   const OCR_ASSET_PATHS = [
     'vendor/tesseract/tesseract.min.js',
     'vendor/tesseract/worker.min.js',

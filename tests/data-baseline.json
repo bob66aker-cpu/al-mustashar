@@ -1,5 +1,5 @@
 {
-  "_comment": "Immutable baseline of the four original database files. tests/verify.mjs recomputes SHA-256 and row counts and fails if anything changed. Do not edit these values unless the user deliberately replaces a source file.",
+  "_comment": "Immutable baseline of the database files. tests/verify.mjs recomputes SHA-256 and row counts and fails if anything changed. Do not edit these values unless the user deliberately replaces a source file. epa.json + epa-cancelled.json rebuilt 2026-09-23 by tools/build-epa-master.js from sources/EPA_Master/EPA_Master.xlsx (EPA Master / PPIS, 5 official EPA files, full reads) — see docs/data-provenance.md sections 4-5.",
   "files": {
     "data/libya-248.json": {
       "sha256": "764108e27ca0fd412792a2979f86a1d7496df2e693dcbb246f9bfa8979ceb65d",
@@ -14,8 +14,12 @@
       "rows": 1483
     },
     "data/epa.json": {
-      "sha256": "7b72bd38f804750f11acab74c2a44300ee3c2531770c6040fb2938c8763ba1d8",
-      "rows": 2199
+      "sha256": "b24d7c3e3a8dbd7e84ef7b1a59bbfb98674b5c8ad44ff7f7a3dbe0d90d7775f3",
+      "rows": 1361
+    },
+    "data/epa-cancelled.json": {
+      "sha256": "c2b5b38e4bfe07dc466c45d4f18518691a57de17b078822e2e6fab00de58fde7",
+      "rows": 1425
     }
   }
 }

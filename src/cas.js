@@ -50,6 +50,7 @@
   function dissectStatus(r, key) {
     const st = String((r && r.status) || '');
     const raw = String((r && r.status_raw) || '');
+    const parts = raw.split(';').map(s => s.trim()).filter(Boolean);
     if (key === 'libya-248') {
       return { key: 'st.248.banned', tone: 'banned', raw: st };
     }
@@ -83,20 +84,35 @@
       return { key: 'st.eu.unknown', tone: 'neutral', raw: raw || st };
     }
     if (key === 'epa') {
-      const parts = raw.split(';').map(s => s.trim()).filter(Boolean);
-      const anyActive = parts.some(p => p.indexOf('Active') === 0);
-      const cancelledOnly = parts.length > 0 && parts.every(p => p.indexOf('Inactive') === 0);
+      /* EPA Master (PPIS) rebuild (2026-09-23): status_raw is the workbook's
+       * verbatim Arabic sheet text. Rows carry exactly one of:
+       *   'له تسجيل نشط واحد على الأقل'            -> active registry
+       *   'كل تسجيلاته ملغاة'                       -> all-cancelled archive
+       *   'غير مرتبط بأي منتج في formula.txt/product.txt' -> no-product sheet
+       *     rows (dropped from both files by the builder, kept for defense).
+       * The legacy ';'-joined Active/Inactive format is still understood. */
+      if (/غير مرتبط بأي منتج/.test(raw))
+        return { key: 'st.epa.noproduct', tone: 'neutral', raw: raw };
+      if (/كل تسجيلاته ملغاة/.test(raw) || (raw && parts.every(p => p.indexOf('Inactive') === 0)))
+        return { key: 'st.epa.cancelled', tone: 'amber', raw: raw };
+      if (/له تسجيل نشط/.test(raw) || (parts.length && parts.some(p => p.indexOf('Active') === 0)))
+        return { key: 'st.epa.registered', tone: 'neutral', raw: raw };
       const conditional = parts.some(p => p.indexOf('Conditionally') === 0);
-      const rup = (+((r && r.rup_active) || 0)) > 0;
-      let base;
-      if (cancelledOnly)     base = { key: 'st.epa.cancelled',   tone: 'amber',   raw: raw };
-      else if (anyActive && conditional)
-                             base = { key: 'st.epa.conditional', tone: 'neutral', raw: raw };
-      else if (anyActive)    base = { key: 'st.epa.registered',  tone: 'neutral', raw: raw };
-      else                   base = { key: 'st.epa.mixed',       tone: 'neutral', raw: raw };
-      /* restricted-use flag travels separately (the UI appends its own note) */
-      base.rup = rup;
-      return base;
+      const anyActive = parts.some(p => p.indexOf('Active') === 0);
+      if (anyActive && conditional)
+        return { key: 'st.epa.conditional', tone: 'neutral', raw: raw };
+      if (parts.length) return { key: 'st.epa.mixed', tone: 'neutral', raw: raw };
+      /* no status_raw at all: fall back to the status field */
+      if (st === 'مسموح') return { key: 'st.epa.registered', tone: 'neutral', raw: raw };
+      if (st === 'محظور') return { key: 'st.epa.cancelled', tone: 'amber', raw: raw };
+      return { key: 'st.epa.mixed', tone: 'neutral', raw: raw || st };
+    }
+    if (key === 'epa-cancelled') {
+      /* All-cancelled EPA archive: every row here has zero active
+       * registrations and at least one real cancelled registration
+       * (builder drops no-product sheet rows). Amber, never red — red
+       * stays reserved for the Libya 248 ban list. */
+      return { key: 'st.epa.cancelled', tone: 'amber', raw: raw || st };
     }
     return { key: 'st.unknown', tone: 'neutral', raw: st };
   }

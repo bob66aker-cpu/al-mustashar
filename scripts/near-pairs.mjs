@@ -24,7 +24,7 @@ globalThis.window = globalThis;
 require('./../src/search-core.js');
 const SC = globalThis.SearchCore;
 
-const KEYS = ['libya-248', 'libya-500', 'eu', 'epa'];
+const KEYS = ['libya-248', 'libya-500', 'eu', 'epa', 'epa-cancelled'];
 const dbs = {};
 for (const k of KEYS) dbs[k] = JSON.parse(fs.readFileSync('data/' + k + '.json', 'utf8')).rows;
 

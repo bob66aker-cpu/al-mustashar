@@ -1,33 +1,40 @@
-# الأزواج المتقاربة (تقرير آلي — 2026-09-20)
+# الأزواج المتقاربة (تقرير آلي — 2026-09-24)
 
 > أزواج سجلين برقمَي CAS مختلفين قد يظهر أحدهما نتيجةً للآخر. قاعدة الأمان: لا يُعرض أي زوج منها كتطابق مؤكد دون لافتة ملتبس/احتمالي (اختبار `tests/namepairs.test.mjs` يفشل إن خالفه العرض).
 
-- الإجمالي: **1559** زوجًا
-- same-name (اسم متطابق، CAS مختلف): 59
-- containment (احتواء ≥72%): 166
-- fuzzy (تشابه ≥80%): 1334
+- الإجمالي: **2267** زوجًا
+- same-name (اسم متطابق، CAS مختلف): 451
+- containment (احتواء ≥72%): 187
+- fuzzy (تشابه ≥80%): 1629
 
 > (عرض أول 250 زوجًا فقط؛ الإحصاء أعلاه كامل)
 
-- `libya-248#3` 2,4-D ((2,4-dichlorophenoxy) acetic acid) [94-75-7]  ↔  `epa#95` 2,4,5-Trichlorophenoxyacetic acid [93-76-5] — 87%
+- `libya-248#3` 2,4-D ((2,4-dichlorophenoxy) acetic acid) [94-75-7]  ↔  `epa-cancelled#179` 2,4,5-Trichlorophenoxyacetic acid [93-76-5] — 87%
 - `libya-248#10` Alpha hexachloro cyclohexane [58-89-9]  ↔  `libya-248#16` Beta hexachloro cyclohexane [319-85-7] — 85%
-- `libya-248#18` Bromoxynil octanoate [34681-10-2]  ↔  `epa#1248` Bromoxynil octanoate [1689-99-2] — 100%
-- `libya-248#18` Bromoxynil octanoate [34681-10-2]  ↔  `epa#1610` Bromoxynil heptanoate [56634-95-8] — 85%
+- `libya-248#18` Bromoxynil octanoate [34681-10-2]  ↔  `epa#407` Bromoxynil heptanoate [1689-99-2] — 85%
+- `libya-248#18` Bromoxynil octanoate [34681-10-2]  ↔  `epa#408` Bromoxynil heptanoate [56634-95-8] — 85%
+- `libya-248#18` Bromoxynil octanoate [34681-10-2]  ↔  `epa#409` Bromoxynil octanoate [1689-99-2] — 100%
+- `libya-248#18` Bromoxynil octanoate [34681-10-2]  ↔  `epa#410` Bromoxynil octanoate [56634-95-8] — 100%
 - `libya-248#19` Butocarboxim [34681-10-2]  ↔  `libya-248#20` Butoxycarboxim [34681-23-7] — 86%
 - `libya-248#19` Butocarboxim [34681-10-2]  ↔  `eu#184` Butoxycarboxim [noCAS] — 86%
-- `libya-248#19` Butocarboxim [34681-10-2]  ↔  `epa#423` Butoxycarboxim [34681-23-7] — 86%
+- `libya-248#19` Butocarboxim [34681-10-2]  ↔  `epa-cancelled#500` Butoxycarboxim [34681-23-7] — 86%
 - `libya-248#20` Butoxycarboxim [34681-23-7]  ↔  `eu#183` Butocarboxim [34681-10-2] — 86%
 - `libya-248#20` Butoxycarboxim [34681-23-7]  ↔  `eu#184` Butoxycarboxim [noCAS] — 100%
-- `libya-248#22` Captafol [2425-06-1]  ↔  `epa#456` Captafol [2939-80-2] — 100%
+- `libya-248#22` Captafol [2425-06-1]  ↔  `epa-cancelled#537` Captafol [2939-80-2] — 100%
 - `libya-248#29` Chlordane [57-74-9]  ↔  `eu#227` Chlordane [12789-03-6] — 100%
 - `libya-248#33` DDT [50-29-3]  ↔  `eu#302` DDT [noCAS] — 100%
+- `libya-248#34` Diazinon [333-41-5]  ↔  `epa#562` Diazinon [72-43-5] — 100%
+- `libya-248#34` Diazinon [333-41-5]  ↔  `epa#564` Diazinon [59928-80-2] — 100%
 - `libya-248#36` Dicrotophos [141-66-2]  ↔  `eu#325` Dicrotophos [3735-78-2] — 100%
 - `libya-248#39` Dimethoate [60-51-5]  ↔  `eu#666` Omethoate [1113-02-6] — 80%
-- `libya-248#49` Hexachlorobenzene [118-74-1]  ↔  `epa#485` Chlorobenzene [108-90-7] — 73%
+- `libya-248#49` Hexachlorobenzene [118-74-1]  ↔  `epa-cancelled#567` Chlorobenzene [108-90-7] — 73%
 - `libya-248#50` Hexaconazole [79983-71-4]  ↔  `eu#385` Etaconazole [60207-93-4] — 83%
 - `libya-248#55` Maneb [12427-38-2]  ↔  `eu#581` Maneb [8018-01-7] — 100%
-- `libya-248#60` Methyl isothiocyanate [556-61-6]  ↔  `epa#1233` Allyl isothiocyanate [57-06-7] — 80%
+- `libya-248#57` Methomyl [16752-77-5]  ↔  `epa#886` Methomyl [27519-02-4] — 100%
+- `libya-248#60` Methyl isothiocyanate [556-61-6]  ↔  `epa#201` Allyl isothiocyanate [57-06-7] — 80%
+- `libya-248#66` Pentachlorophenol [87-86-5]  ↔  `epa-cancelled#1027` Pentachlorophenol [87-85-4] — 100%
 - `libya-248#71` Propineb [12071-83-9]  ↔  `eu#785` Propineb [9016-72-2] — 100%
+- `libya-248#77` Ziram [137-30-4]  ↔  `epa#1360` Ziram [155-04-4] — 100%
 - `libya-500#1` (E)-11-Tetradecen-1-yl acetate (SCLP Acetates) [33189-72-9]  ↔  `libya-500#3` (E)-5-Decen-1-yl acetate (SCLP Acetates) [38421-90-8] — 80%
 - `libya-500#1` (E)-11-Tetradecen-1-yl acetate (SCLP Acetates) [33189-72-9]  ↔  `libya-500#4` (E)-8-Dodecen-1-yl acetate (SCLP Acetates) [38363-29-0] — 80%
 - `libya-500#1` (E)-11-Tetradecen-1-yl acetate (SCLP Acetates) [33189-72-9]  ↔  `libya-500#10` (E,Z)-3,8-Tetradecadien-1-yl acetate (SCLP Aceta [noCAS] — 85%
@@ -252,10 +259,3 @@
 - `libya-500#21` (Z)-8-Dodecen-1-yl acetate (SCLP Acetates) [28079-04-1]  ↔  `eu#1131` (Z)-9-Dodecen-1-yl acetate (SCLP Acetates) [16974-11-1] — 97%
 - `libya-500#21` (Z)-8-Dodecen-1-yl acetate (SCLP Acetates) [28079-04-1]  ↔  `eu#1134` (Z)-9-Tetradecen-1-yl acetate (SCLP Acetates) [16725-53-4] — 82%
 - `libya-500#21` (Z)-8-Dodecen-1-yl acetate (SCLP Acetates) [28079-04-1]  ↔  `eu#1255` Dodecyl acetate (SCLP Acetates) [112-66-3] — 84%
-- `libya-500#22` (Z)-8-Tetradecen-1-ol (SCLP Alcohols) [noCAS]  ↔  `libya-500#382` Tetradecan-1-ol (SCLP Alcohols) [63393-82-8] — 89%
-- `libya-500#22` (Z)-8-Tetradecen-1-ol (SCLP Alcohols) [noCAS]  ↔  `eu#1120` (Z)-11-Hexadecen-1-ol (SCLP Alcohols) [56683-54-6] — 81%
-- `libya-500#22` (Z)-8-Tetradecen-1-ol (SCLP Alcohols) [noCAS]  ↔  `eu#1127` (Z)-8-Dodecen-1-ol (SCLP Alcohols) [40642-40-8] — 81%
-- `libya-500#22` (Z)-8-Tetradecen-1-ol (SCLP Alcohols) [noCAS]  ↔  `eu#1450` Tetradecan-1-ol (SCLP Alcohols) [63393-82-8] — 89%
-- `libya-500#23` (Z)-8-Tetradecen-1-yl acetate (SCLP Acetates) [noCAS]  ↔  `libya-500#24` (Z)-9-Dodecen-1-yl acetate (SCLP Acetates) [16974-11-1] — 82%
-- `libya-500#23` (Z)-8-Tetradecen-1-yl acetate (SCLP Acetates) [noCAS]  ↔  `libya-500#27` (Z)-9-Tetradecen-1-yl acetate (SCLP Acetates) [16725-53-4] — 97%
-- `libya-500#23` (Z)-8-Tetradecen-1-yl acetate (SCLP Acetates) [noCAS]  ↔  `libya-500#28` (Z,E)-9,12-Tetradecadien-1-yl acetate (SCLP - Ac [31654-77-0] — 83%

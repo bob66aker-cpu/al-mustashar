@@ -751,6 +751,11 @@
           <span class="num" id="stat-epa">—</span>
           <span class="lbl" data-i18n="db.src.epa">USA / EPA</span>
         </div>
+        <div class="stat info" id="statCard-epa-cancelled">
+          <span data-icon="ban"></span>
+          <span class="num" id="stat-epac">—</span>
+          <span class="lbl" data-i18n="db.src.epac">USA / EPA — ملغى</span>
+        </div>
       </div>
 
       <a class="cta-scan" href="#/scan" id="homeScanCta">
@@ -954,6 +959,18 @@
         </div>
       </details>
 
+      <details class="card fold db-card" id="dbCard-epa-cancelled">
+        <summary>
+          <span data-icon="ban"></span>
+          <span class="nm" data-i18n="db.src.epac">USA / EPA — ملغى</span>
+          <span class="cv down" data-icon="chevron"></span>
+          <span class="cv up" data-icon="chevron-open"></span>
+        </summary>
+        <div class="body">
+          <span class="chip loading-mark" id="db-epa-cancelled" data-i18n="db.loading.epac">USA / EPA — ملغى: جارٍ التحميل…</span>
+        </div>
+      </details>
+
       <section class="card" id="prepPanel" aria-label="تجهيز العمل بدون إنترنت">
         <div class="history-head">
           <h3 data-i18n="prep.h2">تجهيز العمل بدون إنترنت</h3>
@@ -961,7 +978,7 @@
         </div>
         <ul class="prep-list">
           <li id="prepShell"><span data-icon="ready"></span> <span data-i18n="prep.shell">ملفات التطبيق (الواجهة + محرك البحث)</span> <b id="prepShellSize">—</b></li>
-          <li id="prepData"><span data-icon="databases"></span> <span data-i18n="prep.data">قواعد البيانات الأربع (77 · 411 · 1,483 · 2,199 سجلًا)</span> <b id="prepDataSize">—</b></li>
+          <li id="prepData"><span data-icon="databases"></span> <span data-i18n="prep.data">قواعد البيانات الخمس (77 · 411 · 1,483 · 1,361 · 1,425 سجلًا)</span> <b id="prepDataSize">—</b></li>
           <li id="prepOcr"><span data-icon="search"></span> <span data-i18n="prep.ocr">ملفات المسح البصري OCR — عربي + إنجليزي</span> <b id="prepOcrSize">—</b></li>
         </ul>
         <p class="scan-note" id="prepNote" data-i18n="prep.note">يُنزَّل كل شيء مرة واحدة فقط (إجمالي ~17 ميجابايت)، ثم يعمل التطبيق كاملًا — بحث ومسح — دون إنترنت. لا تُنزَّل أي ملفات أثناء البحث العادي.</p>

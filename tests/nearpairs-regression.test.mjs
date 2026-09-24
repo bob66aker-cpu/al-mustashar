@@ -27,7 +27,7 @@ require('./../src/cas.js');
 const SC = globalThis.SearchCore;
 const CD = globalThis.CasDissect;
 
-const KEYS = ['libya-248', 'libya-500', 'eu', 'epa'];
+const KEYS = ['libya-248', 'libya-500', 'eu', 'epa', 'epa-cancelled'];
 const dbs = {};
 for (const k of KEYS) dbs[k] = JSON.parse(fs.readFileSync('data/' + k + '.json', 'utf8')).rows;
 const search = SC.buildSearch(KEYS.map(k => ({ key: k, rows: dbs[k] })));

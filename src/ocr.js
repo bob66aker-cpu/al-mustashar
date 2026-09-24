@@ -836,11 +836,17 @@
       !/^\s*(active\s*ingredients?|ingredients?)\s*$/i.test(c));
     const text = fusionText.filter(Boolean).join('\n');
 
-    /* Latin-ratio gate (ج) — final barrier before any output leaves the
-     * engine: a merged text below 60% Latin among non-space characters is
-     * rejected wholesale with «لم يُستخرج نص موثوق» and no candidates, no
-     * CAS, no boxes. Kept OFF the rotate/invert passes themselves (ب). */
-    const rejected = rejectedTextReason(text);
+    /* Latin-ratio gate (ج) + confidence floor (أ4) — final barrier before
+     * any output leaves the engine: a merged text below 60% Latin among
+     * non-space characters is rejected wholesale with «لم يُستخرج نص موثوق»,
+     * and so is unstructured text whose overall read confidence is below
+     * MIN_CONFIDENCE (noise/logo/trade-junk shapes). Structured evidence
+     * (CAS / AI region) keeps precedence over BOTH gates. Kept OFF the
+     * rotate/invert passes themselves (ب). */
+    const rejected = rejectedTextReason(text, {
+      conf: bestResult.conf,
+      structured: fusionCAS.size > 0 || !!aiRect
+    });
     if (rejected) {
       status('ocr.done', 1);
       return {
@@ -879,6 +885,15 @@
    * hallucination leakage (see docs/ocr-arabic-hallucination-diagnosis.md).
    * Used as the final gate of recognize() and on the engine interface's
    * text output; unrelated pipelines (e.g. manual text) are untouched. */
+  /* Confidence floor for unstructured reads (أ4): chosen empirically from
+   * the live suite — dense noise completed at confidence 24 while every
+   * real/synthetic label case read at >= 90 (see
+   * docs/ocr-arabic-hallucination-diagnosis.md and
+   * docs/ocr-engine-comparison.md). 45 sits far above the junk band and far
+   * below the label band; raising it further risks nothing measured but is
+   * not justified by current evidence. */
+  const MIN_CONFIDENCE = 45;
+
   function latinRatio(text) {
     const chars = String(text || '').replace(/\s/g, '');
     if (!chars.length) return { ratio: 1, latin: 0, nonSpace: 0, ok: true };
@@ -886,24 +901,57 @@
     const ratio = latin / chars.length;
     return { ratio, latin, nonSpace: chars.length, ok: ratio >= 0.6 };
   }
-  function rejectedTextReason(text) {
+  function rejectedTextReason(text, meta) {
+    /* Structured evidence (CAS extracted or an ACTIVE INGREDIENT region)
+     * keeps its documented precedence over BOTH gates: a read that yielded
+     * a valid CAS pattern or a detected AI section is database-bound
+     * evidence, not hallucination material. The original Arabic-leak cases
+     * (blank/noise/logo/barcode stripes) extract NO CAS, so they stay fully
+     * gated. This also keeps CAS-only reads alive: "Contains: CAS 1071-83-6"
+     * is ~58% Latin (digits dilute the ratio) yet is exactly the shape the
+     * engine must never discard (E2E cas_* cases). */
+    const structured = !!(meta && meta.structured);
     const m = latinRatio(text);
-    if (m.ok) return null;
-    return {
-      arabicLeak: true,
-      ratio: Math.round(m.ratio * 100) / 100,
-      latin: m.latin,
-      nonSpace: m.nonSpace,
-      key: 'ocr.rejected.mixed',
-      message: 'لم يُستخرج نص موثوق'
-    };
+    if (!m.ok && !structured) {
+      return {
+        arabicLeak: true,
+        ratio: Math.round(m.ratio * 100) / 100,
+        latin: m.latin,
+        nonSpace: m.nonSpace,
+        key: 'ocr.rejected.mixed',
+        message: 'لم يُستخرج نص موثوق'
+      };
+    }
+    /* Confidence floor (أ4 — 2026-09-23): unstructured text read below
+     * MIN_CONFIDENCE is rejected wholesale. Dense noise completed at raw
+     * confidence 24 (documented in the diagnosis) and produced accepted-
+     * shaped Latin junk; the 60% Latin gate alone cannot see it. The floor
+     * applies ONLY to unstructured reads: any CAS extracted or an ACTIVE
+     * INGREDIENT region detected is structured evidence, which keeps its
+     * documented precedence over raw confidence (V2: database-aware scoring,
+     * CAS +250) — a real label read at low confidence with its CAS intact
+     * is never discarded. */
+    const conf = meta && typeof meta.conf === 'number' ? meta.conf : null;
+    if (conf !== null && conf < MIN_CONFIDENCE && !structured) {
+      return {
+        lowConfidence: true,
+        conf,
+        threshold: MIN_CONFIDENCE,
+        key: 'ocr.rejected.conf',
+        message: 'لم يُستخرج نص موثوق — القراءة منخفضة الثقة.'
+      };
+    }
+    return null;
   }
   async function scan(file, options) {
     const res = await recognize(file, null, options);
     const lines = String(res.text || '').split(/\r?\n/)
       .map(l => l.trim()).filter(Boolean)
       .map(l => ({ text: l, conf: res.confidence }));
-    const rej = rejectedTextReason(res.text);
+    const rej = res.rejected || rejectedTextReason(res.text, {
+      conf: res.confidence,
+      structured: (res.cas && res.cas.length > 0) || !!res.aiRegion
+    });
     if (rej) {
       return {
         engine: 'tesseract-6.0.1',
@@ -954,7 +1002,7 @@
 
   global.OcrModule = {
     recognize, extractCAS, extractCandidates, prefetch, setSearchRef,
-    cancelCurrent, scan, latinRatio, rejectedTextReason,
+    cancelCurrent, scan, latinRatio, rejectedTextReason, MIN_CONFIDENCE,
     OCR, VARIANTS, PSM_LIST, aiRegionFromWords, buildVariant
   };
 })(typeof window !== 'undefined' ? window : globalThis);

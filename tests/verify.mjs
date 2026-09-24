@@ -178,13 +178,13 @@ check('index loads search-core before app', html.indexOf('src/search-core.js') <
  * per-database chips inside the #/data view. The chip ELEMENTS survive with
  * the same ids (tests/app logic depend on them); the OLD assertions about
  * a header statusline no longer apply and were replaced. */
-check('per-DB status chips present', ['db-libya-248', 'db-libya-500', 'db-eu', 'db-epa'].every(id => html.includes(id)));
+check('per-DB status chips present', ['db-libya-248', 'db-libya-500', 'db-eu', 'db-epa', 'db-epa-cancelled'].every(id => html.includes(id)));
 check('six views + hash router targets present',
   ['view-home', 'view-search', 'view-scan', 'view-history', 'view-data', 'view-about'].every(id => html.includes(id)));
 check('bottom nav with 5 items + data route',
   ['data-nav="home"', 'data-nav="search"', 'data-nav="scan"', 'data-nav="history"', 'data-nav="about"'].every(m => html.includes(m))
   && html.includes('href="#/data"'));
-check('home stat cards wired to app.js', ['stat-248', 'stat-500', 'stat-eu', 'stat-epa'].every(id => html.includes(id)) && /statIds\[s\.key\]/.test(fs.readFileSync('src/app.js', 'utf8')));
+check('home stat cards wired to app.js', ['stat-248', 'stat-500', 'stat-eu', 'stat-epa', 'stat-epac'].every(id => html.includes(id)) && /statIds\[s\.key\]/.test(fs.readFileSync('src/app.js', 'utf8')));
 check('local font files exist and are referenced',
   fs.existsSync('assets/fonts/ibm-plex-sans-arabic-regular.woff2')
   && fs.existsSync('assets/fonts/ibm-plex-sans-arabic-bold.woff2')
@@ -227,6 +227,9 @@ const OCR_FILES = [
   'vendor/tesseract/lang/eng.traineddata.gz',
   'vendor/tesseract/lang/ara.traineddata.gz'
 ];
+/* runtime set = eng-only (ara hallucination fix, 2026-09-23); the ara file
+ * stays in the repo as a vendored asset but is never loaded or precached. */
+const OCR_RUNTIME_FILES = OCR_FILES.filter(f => !f.includes('ara.'));
 for (const f of OCR_FILES) {
   const p = path.join(root, f);
   const ok = fs.existsSync(p) && fs.statSync(p).size > 10000;
@@ -245,7 +248,10 @@ check('ocr.js pins self-hosted paths (no CDN at runtime)',
   && ocrMod.includes("new URL(OCR.CORE + '/', appRoot())")
   && ocrMod.includes("new URL(OCR.LANG + '/', appRoot())")
   && !/https:\/\/cdn/.test(ocrMod));
-check('ocr.js supports Arabic + English', ocrMod.includes("'eng+ara'"));
+/* eng-only engine since the Arabic-hallucination round (2026-09-23,
+ * docs/ocr-arabic-hallucination-diagnosis.md): ara must never load again. */
+check('ocr.js is eng-only (ara removed from engine init)',
+  ocrMod.includes("createWorker(\n        'eng'") && !ocrMod.includes("'eng+ara'"));
 check('ocr.js preprocessing pipeline present',
   ['createImageBitmap', 'imageOrientation', 'MAX_DIM', 'getImageData'].every(t => ocrMod.includes(t)));
 check('ocr.js extracts CAS first', /extractCAS/.test(ocrMod) && /\\d\{2,7\}-\\d\{2\}-\\d/.test(ocrMod));
@@ -271,9 +277,10 @@ check('app.js allows manual edit + re-search of OCR text',
 check('first-use OCR size notice shown in Arabic',
   fs.readFileSync('src/i18n.js', 'utf8').includes('ميجابايت') && fs.readFileSync('src/i18n.js', 'utf8').includes('دون إنترنت'));
 const sw5 = fs.readFileSync('sw.js', 'utf8');
-check('sw is v10 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v10'")
+check('sw is v16 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v16'")
   && sw5.includes("OCR_CACHE = 'mustashar-ocr'")
-  && OCR_FILES.every(f => sw5.includes(f.replace('./', ''))));
+  && OCR_RUNTIME_FILES.every(f => sw5.includes(f.replace('./', '')))
+  && !/['\"]\.?\/?vendor\/tesseract\/lang\/ara\.traineddata\.gz['\"]/i.test(sw5));
 check('search input has a clear button (44px target, icon-by-meaning, i18n title)',
   fs.readFileSync('index.html', 'utf8').includes('id="clearQuery"')
   && fs.readFileSync('index.html', 'utf8').includes('data-icon="clear-query"')
@@ -284,9 +291,10 @@ check('80% threshold untouched (SearchCore MIN_SCORE = 80)', SC.MIN_SCORE === 80
 check('source priority untouched',
   JSON.stringify(SC.buildSearch([{ key: 'epa', rows: [] }, { key: 'libya-248', rows: [] }]).sources) === '[]'
   || true); // priority asserted by parity test in section 2
-check('search-core unchanged vs pre-OCR commit',
+check('search-core unchanged since the 2026-09-23 micro-bump (SOURCE_RANK 5 sources)',
   crypto.createHash('sha256').update(fs.readFileSync('src/search-core.js')).digest('hex')
-    === '7171cf59b6aa91e2a6326009c3385e9b873b0e1ab21ba04ad5691775aa910681');
+    === 'd321f8122fcbd9492edc0c5d02d0c69e519bb3447ef981dc180303c6735cbbe0'
+  && /'epa-cancelled': 4/.test(fs.readFileSync('src/search-core.js', 'utf8')));
 
 /* ---------- v5 hardening: index cache, OCR cache isolation, prep panel ---------- */
 check('app caches the search index (rebuild only when sources change)',
@@ -354,9 +362,9 @@ check('V2: search injected for DB-aware scoring (same SearchCore instance, no se
   /setSearchRef/.test(ocrMod) && /opts\.search\) setSearchRef\(opts\.search\)/.test(ocrMod));
 check('V2: canvases released after use (no pixel-buffer leak across scans)',
   /releaseVariants/.test(ocrMod));
-check('V2: still self-hosted, no CDN, eng+ara unchanged',
+check('V2: still self-hosted, no CDN, eng-only engine',
   ocrMod.includes("'vendor/tesseract/worker.min.js'")
-  && ocrMod.includes("'eng+ara'") && !/https:\/\/cdn/.test(ocrMod));
+  && !ocrMod.includes("'eng+ara'") && !/https:\/\/cdn/.test(ocrMod));
 
 /* ---------- summary ---------- */
 console.log('\n==============================');

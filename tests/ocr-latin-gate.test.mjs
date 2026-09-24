@@ -101,8 +101,8 @@ const check = (name, ok, extra = '') => {
 {
   const ocr = readFileSync(join(root, 'src/ocr.js'), 'utf8');
   check('recognized rejection returns empty text/cas/candidates',
-    /rejected \{\s*\n\s*return \{\s*\n\s*text: ''/.test(ocr)
-    || /const rejected = rejectedTextReason\(text\);[\s\S]{0,400}text: ''/.test(ocr));
+    /const rejected = rejectedTextReason\(text, \{[\s\S]{0,500}if \(rejected\) \{\s*\n\s*status\('ocr\.done', 1\);/.test(ocr)
+    || /const rejected = rejectedTextReason\(text[\s\S]{0,500}text: ''/.test(ocr));
   check('the gate is the final barrier of recognize() and runs once',
     (ocr.match(/rejectedTextReason\(/g) || []).length >= 2);
 }
@@ -120,10 +120,10 @@ const check = (name, ok, extra = '') => {
 /* 10) renderer wires the rejection through i18n.t, not the engine string */
 {
   const app = readFileSync(join(root, 'src/app.js'), 'utf8');
-  check('app.js renders the rejection via t(ocr.rejected.mixed)',
-    app.includes("t('ocr.rejected.mixed'"));
-  check('ocr.rejected.mixed is in the engine-message fan-out list',
-    app.includes("'ocr.rotate','ocr.done','ocr.rejected.mixed'"));
+  check('app.js renders the rejection via t(ocr.rejected.*)',
+    /t\(rejKey, /u.test(app) && app.includes("'ocr.rejected.mixed'") && app.includes("'ocr.rejected.conf'"));
+  check('ocr.rejected.* are in the engine-message fan-out list',
+    app.includes("'ocr.rotate','ocr.done','ocr.rejected.mixed','ocr.rejected.conf'"));
 }
 
 console.log('==============================');

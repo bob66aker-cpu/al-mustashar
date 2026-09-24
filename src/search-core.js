@@ -102,7 +102,10 @@
   }
 
   const MIN_SCORE = 80;              // minimum displayed similarity (unchanged)
-  const SOURCE_RANK = { 'libya-248': 0, 'libya-500': 1, eu: 2, epa: 3 };
+  /* EPA (active registry) outranks the all-cancelled archive; the cancelled
+   * file stays above nothing — priority: Libya 248 -> 500 -> EU -> EPA
+   * -> EPA-cancelled (Phase B, 2026-09-23). */
+  const SOURCE_RANK = { 'libya-248': 0, 'libya-500': 1, eu: 2, epa: 3, 'epa-cancelled': 4 };
 
   /*
    * Build a searchable view of one source. rows must be the original

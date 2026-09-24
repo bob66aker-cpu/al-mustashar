@@ -41,7 +41,7 @@ function need(name, finder) {
 }
 
 /* ---------- load the four databases ---------- */
-const KEYS = ['libya-248', 'libya-500', 'eu', 'epa'];
+const KEYS = ['libya-248', 'libya-500', 'eu', 'epa', 'epa-cancelled'];
 const dbs = {};
 for (const k of KEYS) dbs[k] = JSON.parse(fs.readFileSync('data/' + k + '.json', 'utf8')).rows;
 const search = SC.buildSearch(KEYS.map(k => ({ key: k, rows: dbs[k] })));
@@ -82,9 +82,11 @@ if (esf && fen) {
     fenHit ? fenHit.s.v + '%' : 'not listed');
 }
 
-/* 3) chlorpyrifos / chlorpyrifos-methyl — containment pair */
+/* 3) chlorpyrifos / chlorpyrifos-methyl — containment pair.
+ * EPA Master rebuild (2026-09-23): chlorpyrifos-methyl lives in the
+ * all-cancelled archive now (epa-cancelled), chlorpyrifos in epa. */
 const chl = need('chlorpyrifos (epa)', () => dbs.epa.find(r => r.name === 'Chlorpyrifos'));
-const chlm = need('chlorpyrifos-methyl (epa)', () => dbs.epa.find(r => r.name === 'Chlorpyrifos-methyl'));
+const chlm = need('chlorpyrifos-methyl (epa-cancelled)', () => dbs['epa-cancelled'].find(r => r.name === 'Chlorpyrifos-methyl'));
 if (chl && chlm) {
   const res = search('chlorpyrifos', true);
   const mHit = res.find(x => x.r === chlm);
@@ -114,32 +116,24 @@ if (d24db) {
     dbHit ? dbHit.s.v + '% -> ' + CD.classify(dbHit.s.v) : 'not listed');
 }
 
-/* 6) (E)/(Z)-(3,3-Dimethylcyclohexylidene)acetaldehyde — real stereo pair
- *    (EPA): different CAS, one marker apart. Both stay visible; the query
- *    isomer alone is confirmed; the pair is surfaced as an ambiguity group. */
-const eRow = need('(E)-acetaldehyde isomer (epa)',
-  () => dbs.epa.find(r => r.name === '(E)-(3,3-Dimethylcyclohexylidene)acetaldehyde'));
-const zRow = need('(Z)-acetaldehyde isomer (epa)',
-  () => dbs.epa.find(r => r.name === '(Z)-(3,3-Dimethylcyclohexylidene)acetaldehyde'));
-if (eRow && zRow) {
-  const resE = search(eRow.name, true);
-  const eHit = resE.find(x => x.r === eRow), zHit = resE.find(x => x.r === zRow);
-  check('(E) query confirms only the (E) row',
-    eHit && eHit.s.v === 100 && (!zHit || zHit.s.v < 100),
-    'E=' + (eHit ? eHit.s.v + '%' : 'n/a') + ' Z=' + (zHit ? zHit.s.v + '%' : 'n/a'));
-  check('both isomers remain visible with their own CAS (no silent merge)',
-    !!eHit && !!zHit, resE.filter(x => x.r === eRow || x.r === zRow).map(x => x.s.v + '%').join(','));
+/* 6) Esfenvalerate — duplicate-name trap INSIDE EPA Master (two rows, same
+ *    name, different CAS: 66230-04-4 vs 66323-04-4). The engine must confirm
+ *    by name and surface the ambiguity banner (different CAS, same name).
+ *    This replaced the old (E)/(Z)-acetaldehyde pair, which does not exist
+ *    in the rebuilt EPA Master data. */
+const esf1 = need('esfenvalerate #1 (epa)', () => dbs.epa.find(r => r.name === 'Esfenvalerate' && r.cas === '66230-04-4'));
+const esf2 = need('esfenvalerate #2 (epa)', () => dbs.epa.find(r => r.name === 'Esfenvalerate' && r.cas === '66323-04-4'));
+if (esf1 && esf2) {
+  const resE = search('Esfenvalerate', true);
+  const h1 = resE.find(x => x.r === esf1), h2 = resE.find(x => x.r === esf2);
+  check('both Esfenvalerate rows confirmed by exact name (different CAS)',
+    h1 && h2 && h1.s.v === 100 && h2.s.v === 100,
+    'h1=' + (h1 ? h1.s.v + '%' : 'n/a') + ' h2=' + (h2 ? h2.s.v + '%' : 'n/a'));
   const amb = CD.ambiguity(resE);
-  check('stereo pair is flagged as an ambiguity group (different CAS, near tie)',
+  check('duplicate-name EPA pair is flagged as an ambiguity group (different CAS)',
     !!amb && CD.casOf(amb.a) !== CD.casOf(amb.b),
     amb ? CD.casOf(amb.a) + ' vs ' + CD.casOf(amb.b) : 'none');
-  const resZ = search(zRow.name, true);
-  const zTop = resZ.find(x => x.r === zRow), eHit2 = resZ.find(x => x.r === eRow);
-  check('(Z) query confirms only the (Z) row (symmetric)',
-    zTop && zTop.s.v === 100 && (!eHit2 || eHit2.s.v < 100),
-    'Z=' + (zTop ? zTop.s.v + '%' : 'n/a') + ' E=' + (eHit2 ? eHit2.s.v + '%' : 'n/a'));
 }
-
 /* 7) typo stays usable and clearly probable */
 const typo = search('Glphosate', true);
 check('Glphosate -> glyphosate probable (usable, never exact)',

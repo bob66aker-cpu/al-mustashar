@@ -276,8 +276,19 @@ check('app.js allows manual edit + re-search of OCR text',
   app.includes("$('#ocrRerun')") && app.includes("$('#ocrText')"));
 check('first-use OCR size notice shown in Arabic',
   fs.readFileSync('src/i18n.js', 'utf8').includes('ميجابايت') && fs.readFileSync('src/i18n.js', 'utf8').includes('دون إنترنت'));
+check('share button: Web Share + clipboard + vCard fallbacks with i18n notices (المرحلة ج)',
+  app.includes("$('#shareBtn')") && /navigator\.share/.test(app)
+  && /navigator\.clipboard && window\.isSecureContext/.test(app)
+  && /al-mustashar\.vcf/.test(app) && /BEGIN:VCARD/.test(app)
+  && ['share.copied','share.saved','share.fail'].every(k =>
+    (fs.readFileSync('src/i18n.js', 'utf8').match(new RegExp("'" + k + "':", 'g')) || []).length === 4));
+check('OCR structured-evidence exemption is checksum-valid CAS only (narrowed a4)',
+  ocrMod.includes('const structured = hasValidCas(meta && meta.cas)')
+  && /function hasValidCas\(/.test(ocrMod)
+  && /CD\.casChecksum\(c\) === true/.test(ocrMod)
+  && !/meta\.structured/.test(ocrMod));
 const sw5 = fs.readFileSync('sw.js', 'utf8');
-check('sw is v16 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v16'")
+check('sw is v17 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v17'")
   && sw5.includes("OCR_CACHE = 'mustashar-ocr'")
   && OCR_RUNTIME_FILES.every(f => sw5.includes(f.replace('./', '')))
   && !/['\"]\.?\/?vendor\/tesseract\/lang\/ara\.traineddata\.gz['\"]/i.test(sw5));

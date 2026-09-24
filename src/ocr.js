@@ -845,7 +845,7 @@
      * rotate/invert passes themselves (ب). */
     const rejected = rejectedTextReason(text, {
       conf: bestResult.conf,
-      structured: fusionCAS.size > 0 || !!aiRect
+      cas: [...fusionCAS]
     });
     if (rejected) {
       status('ocr.done', 1);
@@ -894,6 +894,21 @@
    * not justified by current evidence. */
   const MIN_CONFIDENCE = 45;
 
+  /* أ4 (مُضيَّق): الأدلة المهيكلة = رقم سجل مستخرج واحد على الأقل اجتاز
+   * فحص رقم التحقق. cas.js يُحمَّل قبل ocr.js في كل السياقات (index.html
+   * والاختبارات)؛ الحارس يبقي الوحدة قابلة للاستيراد منفردة. */
+  function hasValidCas(casList) {
+    if (!Array.isArray(casList) || !casList.length) return false;
+    /* ocr.js's own closure receiver is window in the browser and globalThis
+     * under Node — read CasDissect from the SAME global the module attaches
+     * to, so the browser path sees it (a `global` reference here would be
+     * undefined in the browser and silently disable the exemption). */
+    const g = typeof window !== 'undefined' ? window : globalThis;
+    const CD = g.CasDissect;
+    if (!CD || typeof CD.casChecksum !== 'function') return false;
+    return casList.some(c => CD.casChecksum(c) === true);
+  }
+
   function latinRatio(text) {
     const chars = String(text || '').replace(/\s/g, '');
     if (!chars.length) return { ratio: 1, latin: 0, nonSpace: 0, ok: true };
@@ -902,15 +917,16 @@
     return { ratio, latin, nonSpace: chars.length, ok: ratio >= 0.6 };
   }
   function rejectedTextReason(text, meta) {
-    /* Structured evidence (CAS extracted or an ACTIVE INGREDIENT region)
-     * keeps its documented precedence over BOTH gates: a read that yielded
-     * a valid CAS pattern or a detected AI section is database-bound
-     * evidence, not hallucination material. The original Arabic-leak cases
-     * (blank/noise/logo/barcode stripes) extract NO CAS, so they stay fully
-     * gated. This also keeps CAS-only reads alive: "Contains: CAS 1071-83-6"
-     * is ~58% Latin (digits dilute the ratio) yet is exactly the shape the
-     * engine must never discard (E2E cas_* cases). */
-    const structured = !!(meta && meta.structured);
+    /* Structured evidence (أ4، مُضيَّق بقرار المستخدم 2026-09-23): حصرًا رقم
+     * سجل كيميائي مستخرج **اجتاز فحص رقم التحقق** (CasDissect.casChecksum ===
+     * true) — أي نمط آخر (منطقة المادة الفعالة، أرقام غير صالحة) لا يُعفي
+     * من البوابتين. الرقم الصالح دليل مربوط بقواعد البيانات لا مادة هلوسة؛
+     * حالات الهلوسة الأصلية (blank/noise/logo/شرائط الباركود) لا تستخرج
+     * رقمًا صالحًا فتبقى مرفوضة، و«EPA Reg. No. …» يُستخرج له رقم فاشل
+     * الفحص فقط فيبقى مرفوضًا (E2E). يحقق ذلك أيضًا قراءات CAS-only:
+     * «Contains: CAS 1071-83-6» لاتينيها ≈52% (الأرقام تخفف النسبة) وهي
+     * بالضبط القراءة التي يجب ألا يهدرها المحرك (حالات cas_* في E2E). */
+    const structured = hasValidCas(meta && meta.cas);
     const m = latinRatio(text);
     if (!m.ok && !structured) {
       return {
@@ -950,7 +966,7 @@
       .map(l => ({ text: l, conf: res.confidence }));
     const rej = res.rejected || rejectedTextReason(res.text, {
       conf: res.confidence,
-      structured: (res.cas && res.cas.length > 0) || !!res.aiRegion
+      cas: res.cas
     });
     if (rej) {
       return {
@@ -1003,6 +1019,7 @@
   global.OcrModule = {
     recognize, extractCAS, extractCandidates, prefetch, setSearchRef,
     cancelCurrent, scan, latinRatio, rejectedTextReason, MIN_CONFIDENCE,
+    hasValidCas,
     OCR, VARIANTS, PSM_LIST, aiRegionFromWords, buildVariant
   };
 })(typeof window !== 'undefined' ? window : globalThis);

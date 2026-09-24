@@ -636,11 +636,35 @@
     $('#searchForm').dispatchEvent(new Event('submit', { cancelable: true }));
   });
 
-  /* Share the app (Web Share API when present; clipboard fallback) */
-  $('#shareBtn').addEventListener('click', () => {
-    const data = { title: t('brand.title', 'المستشار الزراعي'), url: location.origin + location.pathname };
-    if (navigator.share) navigator.share(data).catch(() => {});
-    else if (navigator.clipboard) navigator.clipboard.writeText(data.url).catch(() => {});
+  /* مشاركة التطبيق (المرحلة ج): Web Share عند توفره؛ وإلا نسخ الرابط
+   * الحالي كاملًا (root + المسار) إلى الحافظة؛ وأخيرًا التنزيل كملف vCard
+   * (كروم ديسكتوب لا يتيح Web Share إلا عبر HTTPS+مستخدم مفعّل، وفايرفوكس
+   * لا يتيحه أصلًا) — وفي كل الحالات يظهر إشعار بالنتيجة، لا فشل صامت.
+   * navigator.share يُفضَّل عند توفره لأنه يعمل حتى على file:// حيث الحافظة
+   * محجوبة. يُشارَك مجلد صفحة التطبيق الحالي (مكافئ appRoot في ocr.js):
+   * يعمل على الجذر وفي النشر تحت مسار فرعي /<repo>/ على حد سواء. */
+  $('#shareBtn').addEventListener('click', async () => {
+    const url = new URL('.', location.href).href.replace(/\/(?:src|tests)\/$/, '/');
+    const data = { title: t('brand.title', 'المستشار الزراعي'), url };
+    const notify = msg => { ocrMsg.textContent = msg; setTimeout(() => { if (ocrMsg.textContent === msg) ocrMsg.textContent = ''; }, 3000); };
+    if (navigator.share) {
+      try { await navigator.share(data); return; } catch (e) { if (e && e.name === 'AbortError') return; }
+    }
+    if (navigator.clipboard && window.isSecureContext) {
+      try { await navigator.clipboard.writeText(url); notify(t('share.copied', 'نُسخ رابط التطبيق إلى الحافظة.')); return; }
+      catch (e) { /* يمر إلى الملف */ }
+    }
+    try {
+      const vcf = 'BEGIN:VCARD\r\nVERSION:3.0\r\nFN:' + t('brand.title', 'المستشار الزراعي') + '\r\nURL:' + url + '\r\nEND:VCARD\r\n';
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(new Blob([vcf], { type: 'text/vcard' }));
+      a.download = 'al-mustashar.vcf';
+      a.click();
+      setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+      notify(t('share.saved', 'تعذّرت المشاركة المباشرة — حُفظ بطاقة اتصال بالرابط، افتحها من جهازك.'));
+    } catch (e) {
+      notify(t('share.fail', 'تعذّرت المشاركة في هذا المتصفح.'));
+    }
   });
 
   /* Home shortcut: pick an image straight from the gallery flow */

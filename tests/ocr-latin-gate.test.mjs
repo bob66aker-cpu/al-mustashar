@@ -102,7 +102,8 @@ const check = (name, ok, extra = '') => {
   const ocr = readFileSync(join(root, 'src/ocr.js'), 'utf8');
   check('recognized rejection returns empty text/cas/candidates',
     /const rejected = rejectedTextReason\(text, \{[\s\S]{0,500}if \(rejected\) \{\s*\n\s*status\('ocr\.done', 1\);/.test(ocr)
-    || /const rejected = rejectedTextReason\(text[\s\S]{0,500}text: ''/.test(ocr));
+    || (/const rejected = rejectedTextReason\(text, \{[\s\S]{0,300}cas: \[\.\.\.fusionCAS\]/.test(ocr)
+        && /if \(rejected\) \{[\s\S]{0,200}text: ''/.test(ocr)));
   check('the gate is the final barrier of recognize() and runs once',
     (ocr.match(/rejectedTextReason\(/g) || []).length >= 2);
 }

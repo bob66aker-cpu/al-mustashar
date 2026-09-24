@@ -22,6 +22,8 @@ import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
+/* same load order as index.html: cas.js (checksum source) BEFORE ocr.js */
+await import(new URL('../src/cas.js', import.meta.url));
 await import(new URL('../src/ocr.js', import.meta.url));
 const M = globalThis.OcrModule;
 if (!M || typeof M.rejectedTextReason !== 'function') {
@@ -64,11 +66,24 @@ check('no meta at all passes (legacy callers unaffected)', M.rejectedTextReason(
 check('confidence 44 is rejected (boundary)', !!(M.rejectedTextReason(LABELISH, { conf: 44 }) || {}).lowConfidence);
 check('confidence 45 passes (boundary)', M.rejectedTextReason(LABELISH, { conf: 45 }) === null);
 
-/* 5) structured evidence keeps precedence (CAS / AI region) */
-check('low confidence WITH CAS extracted is not gated (CAS outranks confidence)',
-  M.rejectedTextReason(LABELISH, { conf: 24, structured: true }) === null);
-check('low confidence WITH AI region is not gated',
-  M.rejectedTextReason(LABELISH, { conf: 10, structured: true }) === null);
+/* 5) الأدلة المهيكلة حصرًا: رقم CAS اجتاز فحص رقم التحقق (مُضيَّق بقرار
+ *    المستخدم 2026-09-23) — منطقة المادة الفعالة وحدها لا تُعفي، ورقم فاشل
+ *    الفحص لا يُعفي. */
+check('low confidence WITH checksum-VALID CAS is not gated (CAS outranks confidence)',
+  M.rejectedTextReason(LABELISH, { conf: 24, cas: ['1071-83-6'] }) === null);
+check('low confidence with checksum-INVALID CAS only is gated',
+  !!(M.rejectedTextReason(LABELISH, { conf: 24, cas: ['1071-85-6'] }) || {}).lowConfidence);
+check('AI region without a valid CAS no longer exempts (narrowed contract)',
+  !!(M.rejectedTextReason(LABELISH, { conf: 10, cas: [] }) || {}).lowConfidence);
+check('hasValidCas exported and true only for checksum-valid entries',
+  M.hasValidCas(['1071-83-6']) === true && M.hasValidCas(['1071-85-6']) === false
+  && M.hasValidCas([]) === false && M.hasValidCas(undefined) === false);
+check('missing CasDissect (standalone import) defaults to NO exemption (safe)',
+  (() => { const saved = globalThis.CasDissect; globalThis.CasDissect = undefined;
+    const r = M.rejectedTextReason(LABELISH, { conf: 24, cas: ['1071-83-6'] });
+    globalThis.CasDissect = saved; return !!(r || {}).lowConfidence; })());
+check('valid CAS exempts the Latin-ratio gate too (CAS-only reads stay alive)',
+  M.rejectedTextReason('Contains: CAS 1071-83-6', { cas: ['1071-83-6'], conf: null }) === null);
 
 /* 6) Arabic leak still wins first (ratio gate precedes the conf gate) */
 {
@@ -83,11 +98,14 @@ check('low confidence WITH AI region is not gated',
 /* 7) recognize()/scan() wiring (static contract over the real module) */
 {
   const ocr = readFileSync(join(root, 'src/ocr.js'), 'utf8');
-  check('recognize() passes structured evidence to the gate',
-    /rejectedTextReason\(text, \{\s*\n\s*conf: bestResult\.conf,\s*\n\s*structured: fusionCAS\.size > 0 \|\| !!aiRect\s*\n\s*\}\)/.test(ocr));
-  check('scan() re-derives the gate with its own structured evidence',
+  check('recognize() passes the extracted-CAS list to the gate',
+    /rejectedTextReason\(text, \{\s*\n\s*conf: bestResult\.conf,\s*\n\s*cas: \[\.\.\.fusionCAS\]\s*\n\s*\}\)/.test(ocr));
+  check('scan() re-derives the gate with its own CAS list',
     /res\.rejected \|\| rejectedTextReason\(res\.text, \{/.test(ocr)
-    && /structured: \(res\.cas && res\.cas\.length > 0\) \|\| !!res\.aiRegion/.test(ocr));
+    && /cas: res\.cas/.test(ocr));
+  check('exemption is decided by hasValidCas (checksum gate), not by pattern presence',
+    /const structured = hasValidCas\(meta && meta\.cas\)/.test(ocr)
+    && /function hasValidCas\(/.test(ocr));
   check('rejectedTextReason is defined once and gated in recognize() + scan()',
     (ocr.match(/function rejectedTextReason\(/g) || []).length === 1
     && (ocr.match(/const rejected = rejectedTextReason\(/g) || []).length === 1

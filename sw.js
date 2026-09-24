@@ -1,5 +1,10 @@
 /*
- * sw.js — المستشار الزراعي (v16)
+ * sw.js — المستشار الزراعي (v17)
+ *
+ * v17 (2026-09-23): المرحلة ج — إصلاح زر «مشاركة التطبيق» (كان صامتًا على
+ *   المتصفحات بلا Web Share): نسخ الرابط إلى الحافظة ثم بطاقة اتصال vCard
+ *   كحل أخير، مع إشعار بالنتيجة في كل المسارات؛ وتضييق إعفاء «الأدلة
+ *   المهيكلة» في بوابة OCR ليكون حصرًا رقم CAS اجتاز فحص رقم التحقق.
  *
  * v16 (2026-09-23): أ4 — حد الثقة للقراءة غير المهيكلة (MIN_CONFIDENCE = 45)
  *   في مسار OCR الحي: أي نص مدموج تقل ثقة قراءته الكلية عن 45 يُرفض كليًا
@@ -26,7 +31,7 @@
  * Personal data (IndexedDB history, theme, app version note) lives outside
  * the caches and is never touched by this worker.
  */
-const CACHE = 'mustashar-v16';
+const CACHE = 'mustashar-v17';
 const OCR_CACHE = 'mustashar-ocr';
 const SHELL = [
   './',

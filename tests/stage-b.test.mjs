@@ -118,8 +118,8 @@ for (const k of ['live.hint', 'live.capture', 'live.stop', 'live.unavailable',
 }
 
 /* ---------- sw: الكاش رُفع في نفس الإيداع ---------- */
-check('sw: cache bumped to mustashar-v19 with a v19 header comment',
-  sw.includes("const CACHE = 'mustashar-v19'") && sw.includes('v19 (2026'));
+check('sw: cache is mustashar-v19 or later with a matching header comment',
+  /^const CACHE = 'mustashar-v(19|[2-9]\d)';/m.test(sw) && /v(19|[2-9]\d) \(2026/.test(sw));
 check('sw: src/scan-live.js is precached in the shell',
   sw.includes("'./src/scan-live.js'"));
 check('index.html loads src/scan-live.js before app.js',

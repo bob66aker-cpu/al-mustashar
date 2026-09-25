@@ -1,5 +1,13 @@
 /*
- * sw.js — المستشار الزراعي (v19)
+ * sw.js — المستشار الزراعي (v20)
+ *
+ * v20 (2026-09-25): المرحلة أ — إصلاح بطء/فشل القراءة الثابتة (docs/ocr-speed-
+ *   diagnosis.md): قفل مبكر في سلّم ocr.js يحفظ أول تمريرة يؤكدها محرك
+ *   المطابقة (تطابق تام/≥96 أو CAS صالح فحص التحقق) من هدر بوابة المخرج
+ *   النهائية — 4 صور حقيقية كانت تفشل كليًا أصبحت تعمل (Isoprothiolane،
+ *   Spinosad، Soap، Oxadiazon) بلا أي قبول جديد بغير تأكيد قاعدي؛ وحدة
+ *   تشخيص src/ocr-diagnostics.js (خاملة في الإنتاج). تغيّر سلوك الواجهة →
+ *   رفع الكاش.
  *
  * v19 (2026-09-25): المرحلة ب — المعالجة الحية المستمرة من تدفق الكاميرا
  *   (فحص رخيص للإطارات قبل تشغيل المحرك الكامل، التقاط أفضل إطار من عدة
@@ -44,7 +52,7 @@
  * Personal data (IndexedDB history, theme, app version note) lives outside
  * the caches and is never touched by this worker.
  */
-const CACHE = 'mustashar-v19';
+const CACHE = 'mustashar-v20';
 const OCR_CACHE = 'mustashar-ocr';
 const SHELL = [
   './',

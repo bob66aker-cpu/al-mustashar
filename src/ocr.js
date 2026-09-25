@@ -50,6 +50,7 @@
   let searchRef = null;       // injected SearchCore search fn (DB-aware scoring)
   let messages = null;        // injected i18n map for progress/status strings
   let cancelFlag = false;     // cooperative cancellation between passes
+  let diagSink = null;        // أ1: diagnostics sink (null in production — set only by the diag harness via setDiagnosticsSink)
 
   /* status(messageKey) — emits a stable KEY (never a hardcoded UI string);
    * the app maps keys to the current language. Unknown keys pass through.
@@ -520,6 +521,49 @@
    * Candidate extraction V2 — AI-priority, fusion-aware
    * ============================================================ */
 
+  /* أ1 (تشخيص البطء): تسجيل موثّق لكل محاولة قراءة داخل السلّم، بلا أي
+   * أثر على سلوك القراءة — يُفعَّل حصرًا بواسطة أداة التشخيص
+   * (tests/ocr-diag-run.mjs) عبر setDiagnosticsSink؛ في الإنتاج يبقى
+   * sink فارغًا فلا يُسجَّل شيء ولا يتغير أي مسار. */
+  function setDiagnosticsSink(fn) { diagSink = typeof fn === 'function' ? fn : null; }
+  function diagRecord(meta) {
+    if (diagSink) { try { diagSink(meta); } catch (e) { /* logging must never break scanning */ } }
+  }
+
+  /* helper for the ladder loop: per-attempt diagnostics metadata.
+   * pure observation — every value here is already computed by the live
+   * pipeline (extractCAS / latinRatio / rejectedTextReason), nothing is
+   * recomputed or re-decided. */
+  function attemptMeta(item, pass, cas, conf, fusionCASBefore) {
+    const m = latinRatio(pass.text);
+    const validCas = cas.filter(c => hasValidCas([c]));
+    const structured = validCas.length > 0;
+    /* wouldHaveBeenAcceptedByOldRule: would this ATTEMPT have left the
+     * engine accepted under the pre-gate rules? The pre-gate engine
+     * returned the fused read unconditionally, so the question reduces to:
+     * does this pass carry evidence the pipeline itself treats as strong
+     * (exact/≥96 DB match or a checksum-valid CAS)? */
+    const db = dbScorePass(cas, extractCandidates(pass.text, { filterJunk: true }));
+    const legacyWouldAccept = !!(db.exactCAS || db.exactName || db.best >= 96);
+    let gateResult;
+    if (structured) gateResult = 'exempt_cas';
+    else if (!m.ok) gateResult = 'rejected_latin';
+    else if (conf !== null && conf < MIN_CONFIDENCE) gateResult = 'rejected_conf';
+    else gateResult = 'passed';
+    return {
+      variant: item.variant + '/psm' + item.psm,
+      rawText: pass.text,
+      latinRatio: Math.round(m.ratio * 100) / 100,
+      confidence: conf,
+      cas,
+      casValid: validCas.length ? validCas : null,
+      gateResult,
+      legacyWouldAccept,
+      dbBest: db.best,
+      lane: item.lane
+    };
+  }
+
   /* junk vocabulary — never considered active ingredients on its own.
    * These lines/words are filtered OUT unless a DB search confirms them. */
   const JUNK = /epa\s*reg|reg\s*no|batch|lot\s*no|manufactur|address|telephone|tel[:.]|percent|wt\.?|insecticide|herbicide|fungicide|rodenticide|net\s*(weight|contents)|keep\s*out|children|poison|danger|warning|caution|first\s*aid|company|co\.|ltd|inc\.|crop|active\s*ingredient/i;
@@ -685,6 +729,7 @@
     let aiRect = null;            // detected ACTIVE INGREDIENT region (base coords)
     let passCount = 0;
     let exactHit = false;
+    let earlyLock = null;         // أ3: first ladder pass that passes the FINAL gates (or holds a valid CAS) — stops the ladder
 
     const variantCache = new Map();
     const getVariant = name => {
@@ -720,6 +765,7 @@
         const cands = extractCandidates(pass.text, { filterJunk: true });
         const db = dbScorePass(cas, cands);
         const score = passScore(db, pass.conf);
+        if (diagSink) diagRecord(attemptMeta(item, pass, cas, pass.conf, fusionCAS.size));   // lazy: zero overhead in production
         fusionText.push(pass.text);
         for (const c of cas) fusionCAS.add(c);
         for (const c of cands) fusionCandidates.add(c);
@@ -748,6 +794,20 @@
               const rcands = extractCandidates(r1.text, { filterJunk: false });
               const rdb = dbScorePass(rcas, rcands);
               const rscore = passScore(rdb, r1.conf) + 60;   // ROI priority bonus
+              diagRecord({
+                variant: 'ROI/' + item.variant + '/psm6',
+                rawText: r1.text,
+                latinRatio: Math.round(latinRatio(r1.text).ratio * 100) / 100,
+                confidence: r1.conf,
+                cas: rcas,
+                casValid: rcas.filter(c => hasValidCas([c])).length ? rcas.filter(c => hasValidCas([c])) : null,
+                gateResult: hasValidCas(rcas) ? 'exempt_cas'
+                  : (!latinRatio(r1.text).ok ? 'rejected_latin'
+                  : (r1.conf !== null && r1.conf < MIN_CONFIDENCE ? 'rejected_conf' : 'passed')),
+                legacyWouldAccept: !!(rdb.exactCAS || rdb.exactName || rdb.best >= 96),
+                dbBest: rdb.best,
+                lane: 'roi'
+              });
               for (const c of rcas) fusionCAS.add(c);
               for (const c of rcands) fusionCandidates.add(c);
               fusionText.push(r1.text);
@@ -759,6 +819,28 @@
             } catch (e) { /* ROI pass failed: main result stands */ }
           }
         }
+
+        /* ========================================================
+         * أ3 — الدليل الحي (docs/ocr-speed-diagnosis.md): الصور الحقيقية
+         * 101/8/9/images.jpg أنتجت تطابقًا تامًا من قواعد البيانات
+         * (dbBest=100) في محاولات مبكرة (السلّم توقف فعلًا عند exactHit
+         * من المحاولة الأولى)، ثم رُفض المخرج الكامل لاحقًا عند البوابة
+         * النهائية (ثقة 34–38 أو نسبة لاتيني <60%) رغم دليل مهيكل —
+         * صور واضحة تفشل كلها، وتُستنفد أحيانًا 17 محاولة.
+         * إصلاح شجرة القرار (بلا إلغاء البوابتين ولا تغيير المطابقة):
+         * قفل مبكر (earlyLock) عند التأكيد القوي — رقم CAS صالح فحص
+         * التحقق أو exactHit (CAS تام/اسم تام/≥96) — فلا تُهدر قراءة
+         * أكدتها القواعد عند الاستنفاد، ويستمر السلّم لغير المؤكد كما
+         * في الأصل (المحاكاة الحية أثبتت أن قفل "اجتياز البوابتين"
+         * وحده يقفل rotated_90 عند قراءة مشوشة بلا تطابق — انحدار؛
+         * لذا القفل على التأكيد القوي حصرًا). المخرج عند الاستنفاد
+         * يعيد المقفل كما هو؛ غير المقفل يمر بالبوابة النهائية كما
+         * في السابق — لا قبول جديد إطلاقًا.
+         * ======================================================== */
+        if (!earlyLock && (exactHit || hasValidCas([...fusionCAS]))) {
+          earlyLock = { text: fusionText.filter(Boolean).join('\n'), cas: [...fusionCAS], candidates: [...fusionCandidates], conf: bestResult.conf, variant: bestPass.variant, psm: bestPass.psm };
+        }
+        if (earlyLock) break;   // قفل مبكر: ما أكدته القواعد (أو CAS صالح) يوقف السلّم فورًا
         /* stop escalations once the databases confirm an exact active
            ingredient (the whole point of database-aware scoring) */
         if (exactHit) break;
@@ -786,6 +868,7 @@
         const cands = extractCandidates(pass.text, { filterJunk: true });
         const db = dbScorePass(cas, cands);
         const score = passScore(db, pass.conf) - 20;   // slight penalty vs upright
+        if (diagSink) diagRecord(attemptMeta({ variant: 'rot' + (a + 1), psm: 11, lane: 'rot' }, pass, cas, pass.conf, fusionCAS.size));   // lazy
         for (const c of cas) fusionCAS.add(c);
         for (const c of cands) fusionCandidates.add(c);
         fusionText.push(pass.text);
@@ -829,6 +912,25 @@
     if (!bestPass) {
       status('ocr.done', 1);
       return { text: '', cas: [], candidates: [], confidence: null, passes: 0, best: bestDb, aiRegion: false };
+    }
+
+    /* أ3: النص المُقفل مبكرًا يُرجع كما هو عند الاستنفاد (الرفض النهائي
+     * على الدمج لا يهدر ما ثبتت بوابته أثناء السلّم). */
+    if (earlyLock) {
+      status('ocr.done', 1);
+      return {
+        text: earlyLock.text,
+        cas: earlyLock.cas,
+        candidates: earlyLock.candidates.filter(c =>
+          !/^\s*(active\s*ingredients?|ingredients?)\s*$/i.test(c)),
+        confidence: earlyLock.conf,
+        passes: passCount,
+        variant: earlyLock.variant,
+        psm: earlyLock.psm,
+        best: bestDb,
+        aiRegion: !!aiRect,
+        via: 'ladder_confirm'
+      };
     }
 
     /* drop candidates that only echo the AI section header itself */
@@ -1018,6 +1120,7 @@
 
   global.OcrModule = {
     recognize, extractCAS, extractCandidates, prefetch, setSearchRef,
+    setDiagnosticsSink,
     cancelCurrent, scan, latinRatio, rejectedTextReason, MIN_CONFIDENCE,
     hasValidCas,
     OCR, VARIANTS, PSM_LIST, aiRegionFromWords, buildVariant

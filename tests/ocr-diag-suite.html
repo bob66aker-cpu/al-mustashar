@@ -1,0 +1,232 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>OCR speed diagnostics harness (أ2)</title>
+<style>body{font:13px sans-serif}</style>
+</head>
+<body>
+<div id="status">loading…</div>
+<div id="out"></div>
+<script src="/src/search-core.js?v=diag"></script>
+<script src="/src/cas.js?v=diag"></script>
+<script src="/src/ocr-diagnostics.js?v=diag"></script>
+<script src="/vendor/tesseract/tesseract.min.js?v=diag"></script>
+<script src="/src/ocr.js?v=diag"></script>
+<script>
+(function () {
+  /* Same synthetic case set as tests/v2-suite.html (by index/name), PLUS the
+   * real fixture photos in tests/fixtures/labels/. Every scan is wrapped in
+   * OcrDiagnostics.start/finish; the engine records each ladder attempt
+   * through its diagnostics hook (armed here via setDiagnosticsSink). */
+
+  const out = [];
+  const box = document.getElementById('out');
+  function log(name, ok, detail) {
+    out.push({ name, ok, detail: detail || '' });
+    const el = document.createElement('div');
+    el.className = ok ? 'ok' : 'bad';
+    el.textContent = (ok ? 'PASS ' : 'FAIL ') + name + (detail ? ' — ' + detail : '');
+    box.appendChild(el);
+  }
+  window.__log = log;
+  window.__results = { pass: 0, fail: 0, results: out, runs: {}, done: false };   // defined up front (populated by __done)
+  window.__done = () => {
+    const p = out.filter(r => r.ok).length, f = out.length - p;
+    document.getElementById('status').textContent = 'PASS:' + p + ' FAIL:' + f;
+    Object.assign(window.__results, { pass: p, fail: f, done: true });
+  };
+
+  async function loadDBs() {
+    const specs = [
+      ['libya-248', '/data/libya-248.json'], ['libya-500', '/data/libya-500.json'],
+      ['eu', '/data/eu.json'], ['epa', '/data/epa.json'],
+      ['epa-cancelled', '/data/epa-cancelled.json']
+    ];
+    const sources = [];
+    for (const [key, url] of specs) {
+      const data = await (await fetch(url, { cache: 'no-store' })).json();
+      sources.push({ key, rows: data.rows });
+    }
+    window.__search = SearchCore.buildSearch(sources);
+    return sources;
+  }
+
+  /* --- synthetic case canvases: copied verbatim from v2-suite.html --- */
+  function labelCanvas(opts) {
+    const c = document.createElement('canvas');
+    const W = opts.W || 900, H = opts.H || 620;
+    c.width = W; c.height = H;
+    const g = c.getContext('2d');
+    g.fillStyle = opts.bg || '#f2f2ee';
+    g.fillRect(0, 0, W, H);
+    g.fillStyle = opts.fg || '#111';
+    const F = '"DejaVu Sans", "Noto Sans", Arial, sans-serif';
+    const lines = opts.lines || [];
+    let y = 40;
+    for (const L of lines) {
+      g.font = (L.bold ? 'bold ' : '') + (L.size || 26) + 'px ' + F;
+      g.fillText(L.t, L.x || 30, y);
+      y += (L.size || 26) + 14;
+    }
+    if (opts.rotate) {
+      const swap = Math.abs(Math.abs(opts.rotate) % Math.PI - Math.PI / 2) < 1e-6;
+      const r = document.createElement('canvas');
+      r.width = swap ? H : W;
+      r.height = swap ? W : H;
+      const rg = r.getContext('2d');
+      rg.translate(r.width / 2, r.height / 2);
+      rg.rotate(opts.rotate);
+      rg.drawImage(c, -W / 2, -H / 2);
+      return r;
+    }
+    return c;
+  }
+  function canvasToBlob(c) { return new Promise(res => c.toBlob(res, 'image/png')); }
+  function addNoise(c, amount) {
+    const g = c.getContext('2d');
+    const img = g.getImageData(0, 0, c.width, c.height);
+    const d = img.data;
+    for (let i = 0; i < d.length; i += 4) {
+      const n = (Math.random() - 0.5) * amount;
+      d[i] = Math.max(0, Math.min(255, d[i] + n));
+      d[i + 1] = Math.max(0, Math.min(255, d[i + 1] + n));
+      d[i + 2] = Math.max(0, Math.min(255, d[i + 2] + n));
+    }
+    g.putImageData(img, 0, 0);
+    return c;
+  }
+
+  const CASES = [];   // { name, make: async () => canvas }
+  function S(name, make) { CASES.push({ name, make }); }
+
+  const AI = (chem, pct) => [
+    { t: 'MAXXPRO 480 SC', size: 34, bold: true },
+    { t: 'Suspension Concentrate', size: 20 },
+    { t: 'ACTIVE INGREDIENT:', size: 24, bold: true },
+    { t: chem + (pct ? ' ' + pct : ''), size: 26 },
+    { t: 'OTHER INGREDIENTS: 60.0%', size: 22 },
+    { t: 'EPA Reg. No. 264-1152', size: 22 },
+    { t: 'Keep Out of Reach of Children', size: 20 }
+  ];
+
+  S('glyphosate_clear', async () => labelCanvas({ lines: AI('Glyphosate', '48.8%') }));
+  S('bifenthrin_trade', async () => labelCanvas({ lines: AI('Bifenthrin', '7.9%') }));
+  S('ddt_active', async () => labelCanvas({ lines: AI('DDT', '75%') }));
+  S('acetamiprid_small', async () => labelCanvas({ lines: AI('Acetamiprid', '20%'), W: 640, H: 460 }));
+  S('clethodim_lowcontrast', async () => labelCanvas({ lines: AI('Clethodim', '24%'), fg: '#8a8a86', bg: '#e4e4de' }));
+  S('hexa_lightondark', async () => labelCanvas({ lines: AI('Hexachlorobenzene', '10%'), bg: '#1c1c1e', fg: '#e8e8e2' }));
+  S('alum_sulfate', async () => labelCanvas({ lines: AI('Aluminum sulfate', '48%') }));
+  S('cas_exact', async () => labelCanvas({ lines: [{ t: 'Contains:', size: 22 }, { t: 'CAS 1071-83-6', size: 30, bold: true }] }));
+  S('cas_spaces', async () => labelCanvas({ lines: [{ t: 'CAS 1071 - 83 - 6', size: 30, bold: true }] }));
+  S('cas_OI_confusion', async () => labelCanvas({ lines: [{ t: 'CAS IO7I-83-6', size: 30, bold: true }] }));
+  S('cas_S_confusion', async () => labelCanvas({ lines: [{ t: 'CAS 1O7I-8S-6', size: 30, bold: true }] }));
+  S('rotated_90', async () => labelCanvas({ lines: AI('Glyphosate', '41%'), rotate: Math.PI / 2 }));
+  S('rotated_180', async () => labelCanvas({ lines: AI('Bifenthrin', '7.9%'), rotate: Math.PI }));
+  S('rotated_270', async () => labelCanvas({ lines: AI('Paraquat', '27.6%'), rotate: -Math.PI / 2 }));
+  S('tiny_text', async () => labelCanvas({ lines: [{ t: 'ACTIVE INGREDIENT:', size: 13 }, { t: 'Imidacloprid 17.8%', size: 12 }, { t: 'OTHER: 82.2%', size: 12 }], W: 480, H: 300 }));
+  S('noisy_image', async () => addNoise(labelCanvas({ lines: AI('Mancozeb', '80%') }), 90));
+  S('epa_reg_negative', async () => labelCanvas({ lines: [{ t: 'EPA Reg. No. 264-1152', size: 28, bold: true }, { t: 'Batch 2451-02-7', size: 26 }] }));
+  S('noise_no_match', async () => {
+    const c = document.createElement('canvas');
+    c.width = 640; c.height = 480;
+    const g = c.getContext('2d');
+    g.fillStyle = '#777'; g.fillRect(0, 0, 640, 480);
+    for (let i = 0; i < 260; i++) {
+      const shade = 40 + Math.floor(Math.random() * 150);
+      g.strokeStyle = 'rgb(' + shade + ',' + shade + ',' + shade + ')';
+      g.lineWidth = 1 + Math.random() * 5;
+      g.beginPath();
+      const x = Math.random() * 640, y = Math.random() * 480;
+      g.moveTo(x, y);
+      g.lineTo(x + (Math.random() - 0.5) * 260, y + (Math.random() - 0.5) * 200);
+      g.stroke();
+    }
+    return c;
+  });
+  S('trade_name_only', async () => labelCanvas({ lines: [{ t: 'MAXXPRO 480', size: 40, bold: true }] }));
+  S('multi_chemical', async () => labelCanvas({ lines: [
+    { t: 'DUO COMBO', size: 30, bold: true },
+    { t: 'ACTIVE INGREDIENTS:', size: 22, bold: true },
+    { t: 'Chlorpyrifos 30%', size: 24 },
+    { t: 'Cypermethrin 10%', size: 24 }
+  ] }));
+
+  /* real fixture photos (file list injected by the runner AFTER load —
+   * read inside __run, never at script-parse time) */
+
+  window.__run = async function () {
+    const FIXTURES = window.__FIXTURES || [];
+    console.log('[diag] fixtures=' + FIXTURES.length);
+    await loadDBs();
+    OcrModule.setSearchRef(window.__search);
+
+    /* arm the engine diagnostics hook (أ1) */
+    const runs = {};
+    let currentName = null;
+    OcrModule.setDiagnosticsSink(meta => {
+      if (currentName && runs[currentName]) runs[currentName].attempts.push(meta);
+    });
+
+    const qs = new URLSearchParams(location.search);
+    const FROM = parseInt(qs.get('from') || '1', 10);
+    const TO = parseInt(qs.get('to') || '99', 10);
+    let idx = 0;
+
+    async function diagCase(name, blobPromise, expectedHint) {
+      idx++;
+      if (idx < FROM || idx > TO) return;
+      console.log('[diag] START ' + name);
+      let blob;
+      try { blob = await blobPromise; }
+      catch (e) { log(name, false, 'blob failed: ' + e.message); return; }
+      const file = new File([blob], name + '.png', { type: 'image/png' });
+      const t0 = performance.now();
+      const run = OcrDiagnostics.start(name);
+      runs[name] = run;
+      currentName = name;
+      let res;
+      try { res = await OcrModule.recognize(file, null, { search: window.__search }); }
+      catch (e) {
+        currentName = null;
+        log(name, false, 'exception: ' + e.message);
+        runs[name] = null;
+        return;
+      }
+      currentName = null;
+      const ms = Math.round(performance.now() - t0);
+      run.totalMs = run.totalMs ?? ms;   // engine never calls finish() itself; close it here
+      run.outcome = res.rejected ? 'rejected' : (res.candidates.length || res.cas.length ? 'accepted' : 'exhausted');
+      run.passes = res.passes;
+      run.confidence = res.confidence;
+      run.rejected = res.rejected || null;
+      run.topMatch = (() => {
+        const rank = { 'libya-248': 0, 'libya-500': 1, eu: 2, epa: 3, 'epa-cancelled': 4 };
+        const byRow = new Map();
+        const pushAll = list => (list || []).forEach(x => {
+          const prev = byRow.get(x.r);
+          if (!prev || x.s.v > prev.s.v) byRow.set(x.r, x);
+        });
+        for (const casn of res.cas) pushAll(window.__search(casn, true));
+        for (const c of res.candidates) pushAll(window.__search(c, false));
+        const merged = [...byRow.values()];
+        merged.sort((a, b) => (rank[a.k] - rank[b.k]) || (b.s.v - a.s.v));
+        return merged[0] ? { db: merged[0].k, v: merged[0].s.v, name: merged[0].r.name } : null;
+      })();
+      log(name, true, 'ms=' + ms + ' attempts=' + run.attempts.length + ' outcome=' + run.outcome);
+      window.__results.runs = window.__results.runs || {};
+      window.__results.runs[name] = run;
+    }
+
+    for (const c of CASES) await diagCase(c.name, c.make().then(canvasToBlob));
+    for (const f of FIXTURES) {
+      await diagCase('fixture:' + f,
+        fetch('/tests/fixtures/labels/' + encodeURIComponent(f), { cache: 'no-store' }).then(r => r.blob()));
+    }
+
+    window.__done();
+  };
+})();
+</script>
+</body>
+</html>

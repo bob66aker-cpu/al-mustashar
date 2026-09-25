@@ -288,7 +288,18 @@ check('OCR structured-evidence exemption is checksum-valid CAS only (narrowed a4
   && /CD\.casChecksum\(c\) === true/.test(ocrMod)
   && !/meta\.structured/.test(ocrMod));
 const sw5 = fs.readFileSync('sw.js', 'utf8');
-check('sw is v19 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v19'")
+/* diagnostics module: present as a file, wired into the OCR cache plan only
+ * if the shell lists it (it must NOT enter the precache unless added to
+ * SHELL — keeping it out of the app shell is intentional: dev-only). */
+check('ocr-diagnostics module exists and stays out of the precache shell',
+  fs.existsSync('src/ocr-diagnostics.js') && !sw5.includes('./src/ocr-diagnostics.js'));
+check('OCR engine carries the a3 early-confirm lock (DB-confirmed reads survive the final gate)',
+  (() => { const o = fs.readFileSync('src/ocr.js', 'utf8');
+    return o.includes('let earlyLock = null')
+      && o.includes("via: 'ladder_confirm'")
+      && o.includes('if (earlyLock) break;')
+      && o.includes('if (!earlyLock && (exactHit || hasValidCas([...fusionCAS])))'); })());
+check('sw is v20 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v20'")
   && sw5.includes("'./src/scan-live.js'")
   && sw5.includes("OCR_CACHE = 'mustashar-ocr'")
   && OCR_RUNTIME_FILES.every(f => sw5.includes(f.replace('./', '')))

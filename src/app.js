@@ -395,10 +395,22 @@
     return { text: phrase + extra, tone: d.tone, raw: d.raw, chip, explainKey: ek || null };
   }
 
-  function render(results, q) {
-    const box = $('#results');
-    lastResults = results || [];
-    $('#resultTitle').textContent = t('results.title2', 'نتائج الفحص') + (q ? t('results.for', ' لـ «{q}»').replace('{q}', q) : '');
+  /* أ3 — render(results, target): the SAME decision-layer card renderer for
+   * BOTH the manual search view (#results) and the scan view (#scanResults).
+   * target defaults to '#results' so every existing caller behaves exactly as
+   * before (manual search, mode/lang re-renders). The scan automation passes
+   * '#scanResults' — search/matching logic itself is untouched. */
+  function render(results, q, target) {
+    const box = typeof target === 'string' ? $(target) : target || $('#results');
+    if (!box) { lastResults = results || []; return; }
+    if (target !== undefined && target !== '#results') {
+      /* scan-path render: do not overwrite manual-search state */
+      lastScanResults = results || [];
+    } else {
+      lastResults = results || [];
+    }
+    const title = $('#resultTitle');
+    if (title) title.textContent = t('results.title2', 'نتائج الفحص') + (q ? t('results.for', ' لـ «{q}»').replace('{q}', q) : '');
     if (!results.length) {
       box.innerHTML = '<div class="notice warn"><b>' + t('results.none.t', 'لم يتم العثور على تطابق موثوق') + '</b><br>'
         + t('results.none.b', 'عدم العثور على المادة لا يعني أنها مسموحة.') + '</div>';
@@ -544,7 +556,8 @@
    * ============================================================ */
   const DB = {};   // key -> validated data object (or absent if unavailable)
   let searchFn = null;
-  let lastResults = [];   // most recent rendered results (for live mode re-render)
+  let lastResults = [];       // most recent manual-search results (for live re-render)
+  let lastScanResults = [];   // most recent scan-path results (for live re-render)
 
   /*
    * The search index is rebuilt ONLY when the set of loaded databases
@@ -566,14 +579,36 @@
     cachedIndexSig = sig;
   }
 
-  /* Clear-query button: empty #query, refocus for typing or paste (UI round) */
+  /* Clear-query button: empty #query, refocus for typing or paste (UI round).
+   * أ1 — any query-source change clears ALL previously displayed results
+   * BEFORE anything new runs: typing/deleting in the search box hides stale
+   * manual-search results instantly. */
   const clearBtn = $('#clearQuery');
   const queryInput = $('#query');
+  function clearResultsBox(boxSel) {
+    const box = $(boxSel);
+    if (!box) return;
+    box.innerHTML = '<div class="empty">'
+      + '<span class="big" data-icon="search"></span>'
+      + '<p>' + t('results.hint', 'اكتب اسم المادة أو رقم CAS ثم اضغط «فحص المادة».') + '</p>'
+      + '</div>';
+    if (window.UIIcons) UIIcons.paint(box);
+  }
+  function clearSearchResults() {
+    lastResults = [];
+    clearResultsBox('#results');
+    const title = $('#resultTitle');
+    if (title) title.textContent = t('results.title2', 'نتائج الفحص');
+  }
   const syncClear = () => { clearBtn.style.display = queryInput.value ? 'inline-flex' : 'none'; };
-  queryInput.addEventListener('input', syncClear);
+  queryInput.addEventListener('input', () => {
+    syncClear();
+    clearSearchResults();   /* أ1: instant, unconditional, no exceptions */
+  });
   clearBtn.addEventListener('click', () => {
     queryInput.value = '';
     syncClear();
+    clearSearchResults();   /* أ1: deleting the text also clears the old results */
     queryInput.focus();
   });
   syncClear();
@@ -604,9 +639,13 @@
   if (modeSel) modeSel.addEventListener('change', () => {
     syncModeLabel();
     /* Re-render the current results so the detail level switches live
-     * (farmer = simplified verdict, professional = full evidence). */
+     * (farmer = simplified verdict, professional = full evidence).
+     * أ3: the scan view now hosts its own results — re-render BOTH paths,
+     * each only when it actually holds results. */
     const first = $('#results .result') || $('#results .prohibited');
     if (first && lastResults.length) render(lastResults, $('#query').value.trim());
+    const scanFirst = $('#scanResults .result') || $('#scanResults .prohibited');
+    if (scanFirst && lastScanResults.length) render(lastScanResults, '', '#scanResults');
   });
 
   window.addEventListener('online', renderDbStatus);
@@ -620,6 +659,7 @@
     updateOnlineBadge();
     syncModeLabel();
     if (lastResults.length) render(lastResults, $('#query').value.trim());
+    if (lastScanResults.length) render(lastScanResults, '', '#scanResults');
     updatePrepPanel();
   });
 
@@ -678,21 +718,49 @@
      The 80% threshold and source priority live in SearchCore and are not
      touched here; this only feeds candidate text into the same search(). */
   const camera = $('#camera'), preview = $('#preview'), ocrMsg = $('#ocrMsg');
+  const previewRow = $('#previewRow');
   let ocrBusy = false;
   let previewUrl = null;   // revoke old blob URLs so repeated scans don't leak memory
+  /* أ1 — query-source generation counter: bumped on EVERY change of the scan
+   * query source (new image picked, image removed, new scan started). A run
+   * of the engine belongs to the generation it started in; when the counter
+   * has moved on, that run's UI updates are all suppressed (no stale result
+   * can ever be painted for a source that is no longer current). */
+  let scanSeq = 0;
+  let activeScanSeq = 0;
 
   function showPreview(file) {
     if (previewUrl) { try { URL.revokeObjectURL(previewUrl); } catch (e) {} }
     previewUrl = URL.createObjectURL(file);
     preview.src = previewUrl;
-    preview.hidden = false;
+    previewRow.hidden = false;
     if (location.hash !== '#/scan') location.hash = '#/scan';   // show the preview in the scan view
   }
+
+  /* أ2 — remove/swap the captured image: clears the image AND every result
+   * linked to it (أ1 rule), returns the scan view to its ready state, no
+   * page reload. A read still running in the background is cancelled and
+   * its results are discarded (superseded by the generation bump). */
+  function resetScanUI() {
+    scanSeq++;                                   // أ1: any result from older runs is now stale
+    if (ocrBusy && typeof OcrModule !== 'undefined') OcrModule.cancelCurrent();
+    if (previewUrl) { try { URL.revokeObjectURL(previewUrl); } catch (e) {} previewUrl = null; }
+    preview.removeAttribute('src');
+    previewRow.hidden = true;
+    camera.value = '';
+    gallery.value = '';
+    ocrMsg.textContent = '';
+    $('#cancelOcrBtn').hidden = true;
+    clearScanResults();
+  }
+  $('#cancelImageBtn').addEventListener('click', resetScanUI);
 
   $('#cameraBtn').addEventListener('click', () => camera.click());
   camera.addEventListener('change', () => {
     const f = camera.files && camera.files[0];
     if (!f) return;
+    scanSeq++;            // أ1: new query source — old results die NOW
+    clearScanResults();
     showPreview(f);
     runOcr(f);
   });
@@ -703,9 +771,36 @@
   gallery.addEventListener('change', () => {
     const f = gallery.files && gallery.files[0];
     if (!f) return;
+    scanSeq++;            // أ1: new query source — old results die NOW
+    clearScanResults();
     showPreview(f);
     runOcr(f);
   });
+
+  /* ----------------------------------------------------------------
+   * أ1 — instant result clearing (scan path). Same empty-state as the
+   * search view so nothing stale ever survives a query-source change.
+   * ---------------------------------------------------------------- */
+  function clearScanResults() {
+    lastScanResults = [];
+    clearResultsBox('#scanResults');
+    $('#ocrActions').hidden = true;
+    $('#ocrText').value = '';
+  }
+
+  /* أ3 — scan results render INSIDE the scan view (#scanResults), using
+   * the exact same decision-layer renderer as manual search. Multi-substance
+   * reads: every candidate's results are shown automatically (per-row best
+   * kept); the candidates stay available as optional manual re-search chips
+   * via the (editable) #ocrText + «بحث من النص». */
+  function showOcrResults(merged, noneMsg) {
+    $('#resultTitle').textContent = t('ocr.title', 'نتائج المسح البصري');
+    if (merged.length) {
+      render(merged, '', '#scanResults');
+    } else {
+      render([], '', '#scanResults');
+    }
+  }
 
   /* Run candidate text through the existing search and merge results. */
   function searchCandidates(casList, candList) {
@@ -727,15 +822,6 @@
     return merged.slice(0, 24);
   }
 
-  function showOcrResults(merged, noneMsg) {
-    $('#resultTitle').textContent = t('ocr.title', 'نتائج المسح البصري');
-    if (merged.length) {
-      render(merged, '');
-    } else {
-      $('#results').innerHTML = '<div class="notice warn"><b>' + noneMsg
-        + '</b><br>' + t('ocr.none.b', 'عدّل النص المكتشف أو اكتب الاسم/CAS يدويًا في حقل البحث.') + '</div>';
-    }
-  }
 
   /* د4 — image quality probe BEFORE reading: sharpness (Laplacian-ish
    * gradient energy), glare (blown-out highlights ratio) and light level.
@@ -798,63 +884,40 @@
     } catch (e) {}
   }
 
-  /* د4 — confirmation step: after OCR, the user confirms/edits the extracted
-   * active-ingredient candidates BEFORE any search is run or saved. */
-  let pendingScan = null;   // { res, tips }
-  function showConfirmPanel(res, tips) {
-    const sel = $('#aiConfirm');
-    if (!sel) { proceedWithScan(res); return; }
-    pendingScan = { res, tips };
-    sel.innerHTML = '';
-    const opts = (res.candidates || []).filter(c => /^[A-Za-z\u0600-\u06FF]/.test(c)).slice(0, 8);
-    if (!opts.length) { proceedWithScan(res); return; }
-    opts.forEach((c, i) => {
-      const o = document.createElement('option');
-      o.value = c; o.textContent = c;
-      sel.appendChild(o);
-    });
-    $('#confirmPanel').hidden = false;
-    $('#ocrActions').hidden = false;
+  /* ----------------------------------------------------------------
+   * أ3 — full automation: NO confirmation panel. As soon as the read
+   * passes the engine's own gates (Latin ratio / confidence floor /
+   * valid-CAS-checksum exemption — all unchanged in src/ocr.js), the
+   * extracted text is fed straight into the EXISTING search and the
+   * results are shown right here in the scan view. Multi-substance
+   * reads display every candidate's results automatically; the raw
+   * text stays available as an OPTIONAL manual re-search (#ocrText +
+   * «بحث من النص»), never as a mandatory first step.
+   * ---------------------------------------------------------------- */
+  function proceedWithScan(res, tips) {
+    const merged = searchCandidates(res.cas, res.candidates);
+    showOcrResults(merged);
     $('#ocrText').value = res.text || '';
-    ocrMsg.textContent = tips.length
-      ? t('ocr.tips', 'ملاحظات على الصورة:') + ' ' + tips.map(k => t(k, k)).join(' · ')
-      : t('ocr.confirm', 'راجع المادة الفعالة المقروءة ثم اضغط «بحث».');
+    $('#ocrActions').hidden = false;
+    if (merged.length) {
+      ocrMsg.textContent = tips && tips.length
+        ? t('ocr.tips', 'ملاحظات على الصورة:') + ' ' + tips.map(k => t(k, k)).join(' · ')
+        : t('ocr.auto', 'اكتملت القراءة — هذه نتائج المطابقة تلقائيًا.');
+    }
   }
-  function proceedWithScan(res) {
-    showOcrResults(
-      searchCandidates(res.cas, res.candidates),
-      t('ocr.none.t', 'لم يتم العثور على تطابق موثوق من النص المكتشف'));
-  }
-  $('#aiConfirmBtn').addEventListener('click', () => {
-    if (!pendingScan) return;
-    const chosen = $('#aiConfirm').value;
-    const res = pendingScan.res;
-    pendingScan = null;
-    $('#confirmPanel').hidden = true;
-    const cands = chosen ? [chosen, ...res.candidates.filter(c => c !== chosen)] : res.candidates;
-    diagAdd({ at: Date.now(), confirmed: chosen, passes: res.passes, conf: res.confidence,
-      variant: res.variant, psm: res.psm, top: (res.best || {}).name || '', cas: res.cas.join(',') });
-    showOcrResults(searchCandidates(res.cas, cands),
-      t('ocr.none.t', 'لم يتم العثور على تطابق موثوق من النص المكتشف'));
-  });
-  $('#aiConfirmSkip').addEventListener('click', () => {
-    if (!pendingScan) return;
-    const res = pendingScan.res; pendingScan = null;
-    $('#confirmPanel').hidden = true;
-    diagAdd({ at: Date.now(), confirmed: '(skipped)', passes: res.passes, conf: res.confidence });
-    proceedWithScan(res);
-  });
   $('#diagBtn').addEventListener('click', diagExport);
 
   async function runOcr(file) {
     if (ocrBusy || typeof OcrModule === 'undefined') return;
     ocrBusy = true;
+    activeScanSeq = scanSeq;   // this run belongs to the current query-source
     $('#cancelOcrBtn').hidden = false;
     ocrMsg.textContent = t('ocr.prep', 'جارٍ تجهيز الصورة…');
     const t0 = performance.now();
     const tips = await probeImage(file);
+    if (scanSeq !== activeScanSeq) return;   // source changed while probing
     try {
-      rebuildSearch();   // ensure the 4-DB index is current before DB-aware OCR scoring
+      rebuildSearch();   // ensure the index is current before DB-aware OCR scoring
       const msgs = {};
       for (const k of ['ocr.prep','ocr.init','ocr.loading','ocr.pass','ocr.roi','ocr.rotate','ocr.done','ocr.rejected.mixed','ocr.rejected.conf']) msgs[k] = t(k, k);
       const res = await OcrModule.recognize(file, p => {
@@ -867,6 +930,14 @@
         }
       }, { search: searchFn, messages: msgs });   // DB-aware pass scoring + i18n keys
       const ms = Math.round(performance.now() - t0);
+      /* أ1 — a superseded scan (new image chosen / image cleared mid-read)
+       * must never paint results: the engine may keep running in the
+       * background, but EVERY UI update below is gated on the source
+       * staying current (scanSeq). No stale result can ever appear. */
+      if (scanSeq !== activeScanSeq) {
+        diagAdd({ at: Date.now(), outcome: 'superseded', ms, passes: res.passes });
+        return;
+      }
       /* Rejection (ج Latin-ratio + أ4 confidence floor): the engine refused
        * the merged text. Show the matching literal message via i18n and keep
        * the editor empty — nothing from a rejected text is surfaced. */
@@ -875,7 +946,6 @@
         ocrMsg.textContent = t(rejKey, 'لم يُستخرج نص موثوق');
         $('#ocrText').value = '';
         $('#ocrActions').hidden = false;
-        $('#cancelOcrBtn').hidden = true;
         diagAdd({ at: Date.now(), outcome: 'rejected', ms, passes: res.passes,
                   reason: res.rejected.lowConfidence ? res.rejected.conf : res.rejected.ratio });
         return;
@@ -883,22 +953,25 @@
       const textLen = (res.text || '').replace(/\s/g, '').length;
       const weak = textLen < 6 || (res.confidence !== null && res.confidence < 40);
       if (weak) {
-        /* د4 safe failure: no guessing — ask for manual entry */
+        /* safe failure: no guessing — point to manual entry */
         ocrMsg.textContent = t('ocr.weak.manual', 'لم أستطع القراءة بثقة كافية — أدخل الاسم يدويًا في حقل البحث، أو عدّل النص أدناه.');
         $('#ocrText').value = res.text || '';
         $('#ocrActions').hidden = false;
-        $('#cancelOcrBtn').hidden = true;
         diagAdd({ at: Date.now(), outcome: 'weak', ms, passes: res.passes });
         return;
       }
       diagAdd({ at: Date.now(), outcome: 'scanned', ms, passes: res.passes, conf: res.confidence, variant: res.variant });
-      showConfirmPanel(res, tips);   // confirmation step before any search
+      /* أ3 — full automation: gate-passing text goes straight into the
+       * existing search; results render in the scan view with no manual step. */
+      proceedWithScan(res, tips);
     } catch (e) {
       const cancelled = e && String(e.message || e).indexOf('ocr.cancelled') === 0;
-      ocrMsg.textContent = cancelled
-        ? t('ocr.cancelled', 'أُلغي المسح.')
-        : t('ocr.fail', 'تعذّر تشغيل محرك القراءة.');
-      diagAdd({ at: Date.now(), outcome: cancelled ? 'cancelled' : 'error', ms: Math.round(performance.now() - t0) });
+      if (scanSeq === activeScanSeq) {   // أ1: superseded runs stay silent
+        ocrMsg.textContent = cancelled
+          ? t('ocr.cancelled', 'أُلغي المسح.')
+          : t('ocr.fail', 'تعذّر تشغيل محرك القراءة.');
+        diagAdd({ at: Date.now(), outcome: cancelled ? 'cancelled' : 'error', ms: Math.round(performance.now() - t0) });
+      }
     } finally {
       ocrBusy = false;
       $('#cancelOcrBtn').hidden = true;

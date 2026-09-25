@@ -479,6 +479,19 @@
     }
     #ocrActions { margin-top: 12px; }
     #ocrText { min-height: 110px; }
+    /* أ2 — معاينة الصورة الملتقطة مع زر إزالة عائم فوقها */
+    .preview-row { position: relative; display: inline-block; max-width: 100%; margin-top: 12px; }
+    .preview-row .preview { margin-top: 0; }
+    .preview-cancel {
+      position: absolute; top: 6px; inset-inline-end: 6px;
+      width: 44px; height: 44px;
+      display: inline-flex; align-items: center; justify-content: center;
+      background: rgba(0, 0, 0, 0.62); color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.55); border-radius: 50%;
+      cursor: pointer; padding: 0;
+    }
+    .preview-cancel .ic { width: 18px; height: 18px; }
+    .preview-cancel:focus-visible { outline: 3px solid var(--primary-strong); outline-offset: 1px; }
     input[type="file"] { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 
     /* ============ history view ============ */
@@ -864,21 +877,21 @@
 
       <input id="camera" type="file" accept="image/*" capture="environment">
       <input id="gallery" type="file" accept="image/*">
-      <img id="preview" class="preview" hidden alt="">
+      <div id="previewRow" class="preview-row" hidden>
+        <img id="preview" class="preview" alt="">
+        <button class="preview-cancel" type="button" id="cancelImageBtn" data-i18n-title="scan.cancelImage" aria-label="إزالة الصورة والنتائج">
+          <span data-icon="close"></span>
+        </button>
+      </div>
       <p id="ocrMsg" class="scan-note"></p>
 
       <div class="tools">
         <button class="btn-outline" type="button" id="cancelOcrBtn" hidden data-i18n="ocr.cancel">إلغاء</button>
       </div>
 
-      <div id="confirmPanel" hidden class="confirm-panel">
-        <p class="scan-note" data-i18n="ocr.confirm.title">المادة الفعالة المقروءة — أكّدها قبل البحث:</p>
-        <select id="aiConfirm" class="input" dir="auto" style="width:100%"></select>
-        <div class="tools">
-          <button class="btn-primary" type="button" id="aiConfirmBtn" data-i18n="ocr.confirm.ok">بحث</button>
-          <button class="btn-outline" type="button" id="aiConfirmSkip" data-i18n="ocr.confirm.skip">البحث بالنص الكامل</button>
-        </div>
-      </div>
+      <!-- أ3 — نتائج المسح تُعرض هنا مباشرة بعد القراءة الناجحة (أتمتة كاملة، بلا لوحة تأكيد) -->
+      <div class="results-title"><h2 data-i18n="results.title2">نتائج الفحص</h2></div>
+      <section class="results" id="scanResults" aria-live="polite"></section>
 
       <div id="ocrActions" hidden>
         <textarea id="ocrText" class="query" rows="4" dir="auto" data-i18n-placeholder="scan.placeholder" placeholder="النص المكتشف من الصورة — يمكن تعديله ثم إعادة البحث"></textarea>

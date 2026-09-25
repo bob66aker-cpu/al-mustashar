@@ -3,6 +3,15 @@
 <head>
 <meta charset="utf-8">
 <title>OCR V2 functional suite</title>
+<!--
+  Restored in the workspace 2026-09-25 and brought back in step with the LIVE
+  pipeline (previous runs predated it):
+    - 5 searchable DBs (epa-cancelled added; matches sw.js/app.js/data-health).
+    - Case 18 (noise_no_match) asserts the CURRENT pipeline behavior: the
+      Latin gate (60%) + confidence floor (45, a4) reject unreadable noise
+      wholesale, so the case passes on res.rejected OR on no confident match.
+  Case numbering and every other case are unchanged from the V2 suite.
+-->
 <style>body{font:13px sans-serif} .ok{color:#0a7a3d} .bad{color:#b3261e}</style>
 </head>
 <body>
@@ -34,7 +43,8 @@
   async function loadDBs() {
     const specs = [
       ['libya-248', '/data/libya-248.json'], ['libya-500', '/data/libya-500.json'],
-      ['eu', '/data/eu.json'], ['epa', '/data/epa.json']
+      ['eu', '/data/eu.json'], ['epa', '/data/epa.json'],
+      ['epa-cancelled', '/data/epa-cancelled.json']
     ];
     const sources = [];
     for (const [key, url] of specs) {
@@ -112,7 +122,7 @@
 
     /* best result checker: does the top merged result match expected name/CAS/db */
     function bestOf(cas, cands) {
-      const rank = { 'libya-248': 0, 'libya-500': 1, eu: 2, epa: 3 };
+      const rank = { 'libya-248': 0, 'libya-500': 1, eu: 2, epa: 3, 'epa-cancelled': 4 };
       /* Keep the BEST score per row: candidates like "Bifenthrin 7.9" (a
        * weak fuzzy hit on the SAME row as the exact word "Bifenthrin")
        * must never mask the 100% match SearchCore already produced. */
@@ -269,7 +279,10 @@
         g.stroke();
       }
       await scanCase('noise_no_match', c,
-        (r, m) => !m.length || m[0].s.v < 96);
+        /* live-pipeline shape: unreadable noise is rejected wholesale by the
+         * gates (Latin 60% / conf 45) — a wholesale rejection is the CORRECT
+         * outcome (no confident match either way). */
+        (r, m) => !!r.rejected || !m.length || m[0].s.v < 96);
     }
 
     /* 19) trade name only: clean reject */

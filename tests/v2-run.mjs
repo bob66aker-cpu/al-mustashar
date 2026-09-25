@@ -1,8 +1,10 @@
-/* V2 browser E2E runner — real Chromium via puppeteer-core (background-safe) */
+/* V2 browser E2E runner — real Chromium via puppeteer-core (background-safe).
+ * CHROME and BASE_URL are honored so the runner can also point at a deployed
+ * instance (same convention as tests/probe-ocr-blank.mjs). */
 import puppeteer from 'puppeteer-core';
 import fs from 'node:fs';
 
-const CHROME = '/home/daytona/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome';
+const CHROME = process.env.CHROME || '/home/daytona/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome';
 const BASE = process.env.BASE_URL || 'http://localhost:8080';
 /* optional case window ?from=N&to=M (short CI chunks) */
 const WINDOW = (process.env.CASE_FROM || process.env.CASE_TO)

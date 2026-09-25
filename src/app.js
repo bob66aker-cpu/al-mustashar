@@ -424,8 +424,37 @@
     /* Prohibited-list warning (Libya decree 248): rendered only when a row
      * from that database actually matched (≥80%, enforced by SearchCore) —
      * it is never assumed or invented. Merged from the Base44 exploration. */
-    const prohibited = results.filter(x => x.k === 'libya-248');
+    /* ج — فصل الوضعين (مواصفة برومبت البطء، غير قابلة للتفاوض):
+     * disclaimerStrip وabsoluteBanBanner يظهران في الوضعين دائمًا.
+     * المتباين بين الوضعين: نتائج الدول الأخرى + رقم CAS + شرح الرمز
+     * (وضع المحترف فقط)؛ والحالة الليبية والتصنيف الوظيفي في الوضعين.
+     * disclaimerStrip: كان ثابتًا في index.html تحت نتائج البحث فقط —
+     * صار ترويسة مُصيَّرة مع كل دفعة نتائج في المسارين (بحث/مسح) فلا
+     * يغيب أبدًا عن أي عرض، وبنص data-i18n نفسه دون تغيير. */
+    /* فلترة وضع المزارع: نتائج الدول الأخرى (غير الليبية) في المحترف فقط —
+     * فلترة عرضية في render لا في محرك المطابقة (SearchCore لا يُمس).
+     * بطاقات ليبيا (248/500) تُعرض في الوضعين. مثبت بالاختبار: بنفس
+     * النتيجة، المزارع يرى بطاقات ليبيا فقط، والمحترف يرى ليبيا + غيرها. */
     const showDetails = $('#mode').value === 'pro';
+    const shownResults = showDetails
+      ? results
+      : results.filter(x => x.k === 'libya-248' || x.k === 'libya-500');
+    const prohibited = shownResults.filter(x => x.k === 'libya-248');
+    const disclaimerHtml = '<div class="disclaimer-strip" data-i18n="disclaimer.strip">'
+      + t('disclaimer.strip', 'هذه الأداة مساندة وليست حكمًا قانونيًا — المرجع قرارات وزارة الزراعة والجهات الرسمية.')
+      + '</div>';
+    /* absoluteBanBanner: حظر ليبيا 248 بتطابق تام (100%) قطعي — يُعرض
+     * في الوضعين بلا استثناء حتى مع تبسيط بطاقة المزارع. الحظر الاحتمالي
+     * (≥80%) يبقى مرئيًا في بطاقته بوضعيه (نفس المصدر) لكن الشريط
+     * القطعي الأعلى لا يُبنى إلا على تطابق تام. */
+    const banExact = prohibited.find(x => window.CasDissect && CasDissect.classify(x.s.v) === 'exact');
+    const banHtml = banExact
+      ? '<div class="prohibited prohibited-absolute" data-ban-banner="exact"><span data-icon="ban"></span><span>'
+        + tf('results.ban.absolute',
+          'حظر قطعي: هذه المادة مدرجة في قرار ليبيا 248 بتطابق تام — ممنوع تداولها أو استخدامها. ({name})',
+          { name: esc(String(banExact.r.name || '')).replace(/\n/g, ' · ') })
+        + '</span></div>'
+      : '';
     /* Ambiguity banner (decision layer): two different substances (different
      * CAS) in a near tie with no confirmed winner → both are shown and the
      * user is told to check the full name. Never auto-picked. */
@@ -437,13 +466,13 @@
             b: esc(String(amb.b.r.name || '').split('\n')[0]), vb: amb.b.s.v })
         + '</span></div>'
       : '';
-    box.innerHTML = ambHtml + (prohibited.length
+    box.innerHTML = disclaimerHtml + banHtml + ambHtml + (prohibited.length
       ? '<div class="prohibited"><span data-icon="ban"></span><span>' + tf('results.prohibited',
           'تحذير: هذه المادة مدرجة ضمن قائمة المبيدات المحظورة في ليبيا (قرار 248) — {name}',
           { name: esc(String(prohibited[0].r.name || '')).replace(/\n/g, ' · ') })
         + '</span></div>'
       : '')
-      + results.map(x => {
+      + shownResults.map(x => {
       /* --- decision layer: per-source status, verdict class, CAS checks --- */
       const sd = statusDisplay(x.r, x.k, showDetails);
       const stClass = sd.tone === 'banned' ? 'bad' : (sd.tone === 'amber' ? 'review' : 'neutral');

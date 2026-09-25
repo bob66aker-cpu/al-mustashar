@@ -133,9 +133,9 @@ check('sw: src/scan-live.js is precached in the shell',
 check('index.html loads src/scan-live.js before app.js',
   html.indexOf('src/scan-live.js') > -1
   && html.indexOf('src/scan-live.js') < html.indexOf('src/app.js'));
-check('version: 1.5.0 in version.json + package.json',
-  JSON.parse(readFileSync(join(root, 'version.json'), 'utf8')).version === '1.5.0'
-  && JSON.parse(readFileSync(join(root, 'package.json'), 'utf8')).version === '1.5.0');
+check('version: 1.6.0 in version.json + package.json',
+  JSON.parse(readFileSync(join(root, 'version.json'), 'utf8')).version === '1.6.0'
+  && JSON.parse(readFileSync(join(root, 'package.json'), 'utf8')).version === '1.6.0');
 
 console.log('==============================');
 console.log(`PASS: ${pass}   FAIL: ${fail}`);

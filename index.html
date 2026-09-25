@@ -399,6 +399,9 @@
       border-radius: 10px; padding: 8px 12px; margin: 10px 0; font-size: 12px;
     }
     .support-btn { margin-inline-start: 8px; }
+    /* ج — شريط الحظر القطعي (تطابق تام 100% في قرار 248): أقوى من الشريط
+     * الاحتمالي العادي — يُعرض في الوضعين بلا استثناء (اختبار mode-split) */
+    .prohibited-absolute { border-width: 3px; font-size: 15px; }
     .prohibited {
       border: 2px solid var(--ban);
       color: var(--ban);
@@ -866,8 +869,9 @@
         </div>
       </section>
 
-      <!-- The standing disclaimer strip stays with the results (unchanged text) -->
-      <div class="disclaimer-strip" data-i18n="disclaimer.strip">هذه الأداة مساندة وليست حكمًا قانونيًا — المرجع قرارات وزارة الزراعة والجهات الرسمية.</div>
+      <!-- ج: the disclaimer strip is now rendered with every results batch
+           inside render() (search + scan views), with the same i18n key, so it
+           can never go missing from any results display -->
     </section>
 
     <!-- ================= SCAN ================= -->

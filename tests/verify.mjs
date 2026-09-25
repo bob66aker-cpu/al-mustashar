@@ -299,7 +299,7 @@ check('OCR engine carries the a3 early-confirm lock (DB-confirmed reads survive 
       && o.includes("via: 'ladder_confirm'")
       && o.includes('if (earlyLock) break;')
       && o.includes('if (!earlyLock && (exactHit || hasValidCas([...fusionCAS])))'); })());
-check('sw is v20 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v20'")
+check('sw is v21 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v21'")
   && sw5.includes("'./src/scan-live.js'")
   && sw5.includes("OCR_CACHE = 'mustashar-ocr'")
   && OCR_RUNTIME_FILES.every(f => sw5.includes(f.replace('./', '')))

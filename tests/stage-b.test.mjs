@@ -120,6 +120,14 @@ for (const k of ['live.hint', 'live.capture', 'live.stop', 'live.unavailable',
 /* ---------- sw: الكاش رُفع في نفس الإيداع ---------- */
 check('sw: cache is mustashar-v19 or later with a matching header comment',
   /^const CACHE = 'mustashar-v(19|[2-9]\d)';/m.test(sw) && /v(19|[2-9]\d) \(2026/.test(sw));
+check('history clear: permanent store first, re-render from fresh read, notified both paths',
+  (() => { const a = readFileSync(join(root, 'src/app.js'), 'utf8');
+    return a.includes('idbClear(STORE_HISTORY)')
+      && a.includes("openHistory()")
+      && a.includes('data-history-toast')
+      && a.includes("t('history.cleared'")
+      && a.includes("t('history.clearFail'")
+      && /function openHistory\(\) \{\s*\n\s*return idbGetAll/.test(a); })());
 check('sw: src/scan-live.js is precached in the shell',
   sw.includes("'./src/scan-live.js'"));
 check('index.html loads src/scan-live.js before app.js',

@@ -1,5 +1,10 @@
 /*
- * sw.js — المستشار الزراعي (v20)
+ * sw.js — المستشار الزراعي (v21)
+ *
+ * v21 (2026-09-25): المرحلة ب — مسح سجل البحث: التخزين الدائم أولًا ثم إعادة
+ *   العرض من القراءة الفعلية (لا إفراغ عرض فقط)، مع إشعار بالنتيجة في كل
+ *   المسارات (history.cleared/history.clearFail ×4 قواميس)؛ openHistory
+ *   يعيد Promise. تغيّر سلوك الواجهة → رفع الكاش.
  *
  * v20 (2026-09-25): المرحلة أ — إصلاح بطء/فشل القراءة الثابتة (docs/ocr-speed-
  *   diagnosis.md): قفل مبكر في سلّم ocr.js يحفظ أول تمريرة يؤكدها محرك
@@ -52,7 +57,7 @@
  * Personal data (IndexedDB history, theme, app version note) lives outside
  * the caches and is never touched by this worker.
  */
-const CACHE = 'mustashar-v20';
+const CACHE = 'mustashar-v21';
 const OCR_CACHE = 'mustashar-ocr';
 const SHELL = [
   './',

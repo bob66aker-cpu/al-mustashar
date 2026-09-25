@@ -551,7 +551,7 @@
   }
 
   function openHistory() {
-    idbGetAll(STORE_HISTORY).then(renderHistory).catch(() => {
+    return idbGetAll(STORE_HISTORY).then(renderHistory).catch(() => {
       $('#historyList').innerHTML = '<div class="notice">' + t('history.fail', 'تعذّر قراءة السجل.') + '</div>';
     });
   }
@@ -670,8 +670,22 @@
 
   /* History view: lives at #/history; the close button returns home. */
   $('#historyClose').addEventListener('click', () => { location.hash = '#/'; });
+  /* ب — مسح السجل: التخزين الدائم أولًا (IndexedDB)، ثم إعادة العرض من
+   * القراءة الفعلية الجديدة للمخزن (لا إفراغ يدوي للعرض)، مع إشعار
+   * بالنتيجة في كل المسارات (نجاح/فشل) — لا فشل صامت. الإشعار يُعرض
+   * داخل قائمة السجل نفسها بنمط .notice الموجود. */
   $('#historyClear').addEventListener('click', () => {
-    idbClear(STORE_HISTORY).then(openHistory).catch(() => {});
+    idbClear(STORE_HISTORY)
+      .then(() => openHistory())
+      .then(() => {
+        $('#historyList').insertAdjacentHTML('afterbegin',
+          '<div class="notice" data-history-toast>' + t('history.cleared', 'مُسح السجل من هذا الجهاز.') + '</div>');
+      })
+      .catch(() => {
+        openHistory();
+        $('#historyList').insertAdjacentHTML('afterbegin',
+          '<div class="notice warn" data-history-toast>' + t('history.clearFail', 'تعذّر مسح السجل — حاول مجددًا.') + '</div>');
+      });
   });
   $('#historyList').addEventListener('click', e => {
     const item = e.target.closest('.history-item');

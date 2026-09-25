@@ -98,13 +98,17 @@ check('i18n: scan.cancelImage in 4 languages', (i18n.match(/'scan\.cancelImage':
 check('i18n: ocr.auto in 4 languages', (i18n.match(/'ocr\.auto':/g) || []).length === 4);
 
 /* ---------- sw: الكاش رُفع في نفس الإيداع ---------- */
-check('sw: cache bumped to mustashar-v18 with a v18 header comment',
-  sw.includes("const CACHE = 'mustashar-v18'") && sw.includes('v18 (2026'));
+check('sw: cache at least mustashar-v18 (Stage A bump, superseded by later stages)',
+  parseInt((sw.match(/const CACHE = 'mustashar-v(\d+)'/) || [])[1] || '0', 10) >= 18);
 check('sw: permanent OCR cache untouched',
   sw.includes("OCR_CACHE = 'mustashar-ocr'"));
-check('version: 1.4.2 in version.json + package.json',
-  JSON.parse(readFileSync(join(root, 'version.json'), 'utf8')).version === '1.4.2'
-  && JSON.parse(readFileSync(join(root, 'package.json'), 'utf8')).version === '1.4.2');
+check('version: >= 1.4.2 in version.json + package.json (in lockstep)',
+  (() => {
+    const v = JSON.parse(readFileSync(join(root, 'version.json'), 'utf8')).version;
+    const p = JSON.parse(readFileSync(join(root, 'package.json'), 'utf8')).version;
+    const num = s => parseInt(String(s).split('.').join(''), 10);
+    return v === p && num(v) >= 142;
+  })());
 
 console.log('==============================');
 console.log(`PASS: ${pass}   FAIL: ${fail}`);

@@ -40,6 +40,11 @@
   }
   function applyView() {
     const v = currentView();
+    /* ج — أثناء قراءة فعّالة (مسار الصورة أو الكاميرا الحية) يبقى المستخدم على
+     * شاشة المسح: نتيجة تخص مسحًا جاريًا لا تُعرض لمستخدم غادر الشاشة، ولا تُقتل
+     * القراءة من نقرات تنقل متكررة. التنقل حر تمامًا فور انتهاء القراءة
+     * (نجاحًا أو رفضًا أو إلغاءً). حماية قراءة فقط — لا تغيير في التصميم. */
+    if (v !== 'scan' && ocrBusy) { location.hash = '#/scan'; return; }
     VIEWS.forEach(name => {
       const el = document.querySelector('[data-view="' + name + '"]');
       if (el) el.hidden = (name !== v);
@@ -737,11 +742,26 @@
     if (location.hash !== '#/scan') location.hash = '#/scan';   // show the preview in the scan view
   }
 
+  /* ب — live frames are canvases: the preview/history copy is the FULL
+   * uncropped frame encoded to a blob (revokes the previous URL). */
+  function showPreviewCanvas(canvas) {
+    if (!canvas || !canvas.toBlob) return;
+    canvas.toBlob(b => {
+      if (!b) return;
+      if (previewUrl) { try { URL.revokeObjectURL(previewUrl); } catch (err) {} }
+      previewUrl = URL.createObjectURL(b);
+      preview.src = previewUrl;
+      previewRow.hidden = false;
+      if (location.hash !== '#/scan') location.hash = '#/scan';
+    }, 'image/jpeg', 0.9);
+  }
+
   /* أ2 — remove/swap the captured image: clears the image AND every result
    * linked to it (أ1 rule), returns the scan view to its ready state, no
    * page reload. A read still running in the background is cancelled and
    * its results are discarded (superseded by the generation bump). */
   function resetScanUI() {
+    stopLive(false);                             // ب: tearing down the live camera is part of the reset
     scanSeq++;                                   // أ1: any result from older runs is now stale
     if (ocrBusy && typeof OcrModule !== 'undefined') OcrModule.cancelCurrent();
     if (previewUrl) { try { URL.revokeObjectURL(previewUrl); } catch (e) {} previewUrl = null; }
@@ -755,7 +775,11 @@
   }
   $('#cancelImageBtn').addEventListener('click', resetScanUI);
 
-  $('#cameraBtn').addEventListener('click', () => camera.click());
+  $('#cameraBtn').addEventListener('click', e => {
+    e.preventDefault();
+    if (liveVideo && liveSupported()) startLive();   // ب: live camera is the primary capture path
+    else camera.click();                             // fallback: file capture (live unsupported)
+  });
   camera.addEventListener('change', () => {
     const f = camera.files && camera.files[0];
     if (!f) return;
@@ -775,6 +799,233 @@
     clearScanResults();
     showPreview(f);
     runOcr(f);
+  });
+
+  /* ================================================================
+   * ب — المرحلة ب (2026-09-25): المعالجة الحية المستمرة من تدفق الكاميرا
+   * ب1: فحص رخيص لإطارات مصغّرة على فترات منتظمة؛ أول إطار ناجح يُحلّل
+   *     فورًا بالمحرك الكامل بينما يستمر الفحص (نجاح مبكر بلا تجميد).
+   * ب2: «التقاط أفضل إطار» يأخذ N إطارات متتالية ويختار الأوضح فقط.
+   * ب3: القراءة الكاملة على منطقة الإطار الإرشادي مكبّرة نحو MAX_DIM؛
+   *     الصورة المعروضة/المحفوظة في السجل تبقى كاملة غير مقصوصة.
+   * ب4: الأجهزة الضعيفة (نوى/ذاكرة قليلة) لا تحصل على الوضع الحي إطلاقًا —
+   *     تترك لمسار ب2 فقط؛ الكاميرا الحية متاحة للجهاز اللمسي/المتوسط.
+   * ب5: لا بوابات هنا: كل إطار يمر عبر OcrModule.recognize() نفسه
+   *     (لاتيني 60%، ثقة 45، إعفاء CAS الصالح) — بلا أي استثناء.
+   * أ1: أي مصدر استعلام جديد (التقاط/إيقاف/صورة/إزالة) يمسح كل النتائج فورًا.
+   * ================================================================ */
+  const liveVideo = $('#liveVideo'), liveGuide = $('#liveGuide'),
+        liveSection = $('#liveSection'), liveControls = $('#liveControls'),
+        liveHint = liveSection ? liveSection.querySelector('.live-hint') : null;
+  let liveStream = null, liveTimer = null, liveBusy = false, liveROIBusy = false;
+  let livePassSeq = 0;              // ب1: generation of live full-engine reads
+  let liveLastPass = 0;             // cooldown anchor for AUTO full-engine passes
+  const LIVE_PASS_COOLDOWN = 8000;  // one auto full-engine read at most per 8s
+  const LIVE_BEST_OF = 3;           // ب2: frames per capture (explicit + auto)
+  const LIVE_BEST_GAP = 250;        // ms between best-of-N frames
+
+  function liveSupported() {
+    return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
+  }
+
+  function setLiveHint(key) {
+    if (liveHint) liveHint.textContent = t(key, '');
+  }
+
+  /* ب3 — guide canvas follows the video's real aspect ratio */
+  function liveDrawGuide(pass) {
+    if (!liveGuide || !liveVideo || !liveVideo.videoWidth) return;
+    if (liveGuide.width !== liveVideo.videoWidth || liveGuide.height !== liveVideo.videoHeight) {
+      liveGuide.width = liveVideo.videoWidth;
+      liveGuide.height = liveVideo.videoHeight;
+    }
+    window.ScanLive.drawGuide(liveGuide, { pass: !!pass });
+  }
+
+  /* ب1 — one cheap probe tick: draw a downscaled frame, measure, gate */
+  function liveProbeTick(profile) {
+    if (!liveStream || !liveVideo || !liveVideo.videoWidth || liveROIBusy || liveBusy) return;
+    try {
+      const vw = liveVideo.videoWidth, vh = liveVideo.videoHeight;
+      const pw = profile.probeW, ph = Math.max(1, Math.round(vh * pw / vw));
+      const c = document.createElement('canvas'); c.width = pw; c.height = ph;
+      c.getContext('2d', { willReadFrequently: true }).drawImage(liveVideo, 0, 0, pw, ph);
+      const m = window.ScanLive.frameMetrics(c);
+      const pass = window.ScanLive.cheapPass(m);
+      liveDrawGuide(pass);
+      if (pass && Date.now() - liveLastPass >= LIVE_PASS_COOLDOWN) void liveFullPass('auto');
+    } catch (e) { /* a failed probe must never kill the loop */ }
+  }
+
+  /* ب3 — crop the guided ROI from the CURRENT stream, full-frame saved */
+  function liveROI() {
+    if (!liveVideo || !liveVideo.videoWidth) return null;
+    const roi = window.ScanLive.roiRect();
+    const full = window.ScanLive.grabFull(liveVideo);
+    const roiCanvas = window.ScanLive.cropROI(liveVideo, roi);
+    return { full: full, roi: roiCanvas };
+  }
+
+  /* ب2 — best-of-N: N frames, sharpest local-variance one wins */
+  async function liveBestOf(n) {
+    let best = null, bestScore = -1;
+    for (let i = 0; i < n; i++) {
+      if (!liveStream || !liveVideo || !liveVideo.videoWidth) break;
+      const snap = liveROI();
+      if (snap && snap.roi) {
+        const small = document.createElement('canvas');
+        const vw = snap.roi.width, vh = snap.roi.height;
+        const s = Math.min(1, 480 / Math.max(vw, vh));
+        small.width = Math.max(1, Math.round(vw * s));
+        small.height = Math.max(1, Math.round(vh * s));
+        small.getContext('2d', { willReadFrequently: true }).drawImage(snap.roi, 0, 0, small.width, small.height);
+        const score = window.ScanLive.sharpnessScore(small);
+        if (score > bestScore) { bestScore = score; best = snap; }
+      }
+      if (i < n - 1) await new Promise(r => setTimeout(r, LIVE_BEST_GAP));
+    }
+    return best;
+  }
+
+  /* ب1/b2 — the ONLY path to the engine: a candidate canvas is JPEG-encoded
+   * and handed to the SAME recognize() the photo path uses (b5: no bypass).
+   * Superseded reads (new capture/stop/image while running) never paint. */
+  async function liveFullPass(kind, pre) {
+    const mySeq = ++livePassSeq;
+    if (liveBusy || liveROIBusy) return;
+    const snap = pre || liveROI();
+    if (!snap || !snap.roi) return;
+    liveBusy = true;
+    const msStart = performance.now();
+    if (kind === 'auto') liveLastPass = Date.now();   // cooldown anchor for auto passes
+    try {
+      const blob = await window.ScanLive.canvasToBlob(snap.roi, 0.92);
+      scanSeq++;                 // أ1: this pass is a brand-new query source
+      const myGen = scanSeq;
+      activeScanSeq = scanSeq;
+      clearScanResults();
+      if (livePassSeq === mySeq && snap.full) showPreviewCanvas(snap.full);   // ب3: full frame in the history/preview
+      if (typeof OcrModule !== 'undefined' && ocrBusy) OcrModule.cancelCurrent();
+      ocrBusy = true;
+      $('#cancelOcrBtn').hidden = false;
+      rebuildSearch();
+      const msgs = {};
+      for (const k of ['ocr.prep','ocr.init','ocr.loading','ocr.pass','ocr.roi','ocr.rotate','ocr.done','ocr.rejected.mixed','ocr.rejected.conf']) msgs[k] = t(k, k);
+      const res = await OcrModule.recognize(blob, p => {
+        if (livePassSeq !== mySeq || !p) return;
+        if (p.statusKey) ocrMsg.textContent = (p.status || p.statusKey) + (p.progress ? ' (' + Math.round(p.progress * 100) + '%)' : '');
+        else ocrMsg.textContent = p.status || '';
+      }, { search: searchFn, messages: msgs });
+      const ms = Math.round(performance.now() - msStart);
+      const stale = livePassSeq !== mySeq || scanSeq !== myGen || scanSeq !== activeScanSeq;
+      if (stale) { diagAdd({ at: Date.now(), outcome: 'superseded', src: 'live', ms }); return; }
+      if (res.rejected) {
+        const rejKey = res.rejected.lowConfidence ? 'ocr.rejected.conf' : 'ocr.rejected.mixed';
+        ocrMsg.textContent = t(rejKey, 'لم يُستخرج نص موثوق');
+        diagAdd({ at: Date.now(), outcome: 'rejected', src: 'live', ms, reason: res.rejected.lowConfidence ? res.rejected.conf : res.rejected.ratio });
+        return;
+      }
+      const textLen = (res.text || '').replace(/\s/g, '').length;
+      if (textLen < 6 || (res.confidence !== null && res.confidence < 40)) {
+        ocrMsg.textContent = t('ocr.weak.manual', 'لم أستطع القراءة بثقة كافية — أدخل الاسم يدويًا في حقل البحث، أو عدّل النص أدناه.');
+        $('#ocrText').value = res.text || '';
+        $('#ocrActions').hidden = false;
+        diagAdd({ at: Date.now(), outcome: 'weak', src: 'live', ms });
+        return;
+      }
+      /* ب1 — early success: live processing stops the moment a result is
+       * accepted; the captured full frame stays in the preview/history. */
+      stopLive(false);
+      diagAdd({ at: Date.now(), outcome: 'scanned', src: 'live', ms, conf: res.confidence, kind: kind });
+      proceedWithScan(res, []);
+      ocrMsg.textContent = t('live.result', 'اكتملت القراءة الحية — هذه النتائج من الإطار الملتقط.');
+    } catch (e) {
+      const cancelled = e && String(e.message || e).indexOf('ocr.cancelled') === 0;
+      if (livePassSeq === mySeq && scanSeq === activeScanSeq) {
+        ocrMsg.textContent = cancelled ? t('ocr.cancelled', 'أُلغي المسح.') : t('ocr.fail', 'تعذّر تشغيل محرك القراءة.');
+        diagAdd({ at: Date.now(), outcome: cancelled ? 'cancelled' : 'error', src: 'live' });
+      }
+    } finally {
+      liveBusy = false;
+      ocrBusy = false;
+      if (!liveStream) $('#cancelOcrBtn').hidden = true;
+    }
+  }
+
+  /* ب4 — start/stop the live stream itself (also the أ2/أ1 reset path) */
+  async function startLive() {
+    if (!liveSupported() || liveStream) return;
+    const cls = window.ScanLive.deviceClass();
+    const profile = window.ScanLive.PROFILE[cls] || window.ScanLive.PROFILE.medium;
+    try {
+      liveStream = await navigator.mediaDevices.getUserMedia({
+        video: { facingMode: 'environment', width: { ideal: 1920 }, height: { ideal: 1080 } }, audio: false
+      });
+    } catch (e) {
+      liveStream = null;
+      ocrMsg.textContent = t('live.denied', 'رُفض الوصول إلى الكاميرا. اسمح بالوصول من إعدادات المتصفح أو استخدم المعرض.');
+      return;
+    }
+    /* أ1: a live camera session is a NEW query source — any prior photo and
+     * its results die NOW (and a still-running photo read is superseded). */
+    scanSeq++;
+    if (ocrBusy && typeof OcrModule !== 'undefined') OcrModule.cancelCurrent();
+    clearScanResults();
+    liveVideo.srcObject = liveStream;
+    try { await liveVideo.play(); } catch (e) { /* autoplay policies; muted+playsinline */ }
+    liveVideo.style.display = '';
+    liveSection.hidden = false;
+    liveControls.hidden = false;
+    $('#cameraBtn').hidden = true;
+    $('#galleryBtn').hidden = true;
+    liveVideo.style.minHeight = '220px';
+    liveVideo.style.objectFit = 'cover';
+    if (profile.live) {
+      liveVideo.style.minHeight = '260px';
+      liveTimer = setInterval(() => liveProbeTick(profile), profile.sampleMs);
+      liveProbeTick(profile);
+    }
+    setLiveHint('live.hint');
+  }
+
+  function stopLive(supersede) {
+    livePassSeq++;                 // any pending live read is now stale
+    if (liveTimer) { clearInterval(liveTimer); liveTimer = null; }
+    if (liveStream) {
+      try { liveStream.getTracks().forEach(tr => tr.stop()); } catch (e) {}
+      liveStream = null;
+    }
+    if (liveVideo) { liveVideo.srcObject = null; liveVideo.style.display = 'none'; }
+    if (liveSection) liveSection.hidden = true;
+    if (liveControls) liveControls.hidden = true;
+    const camBtn = $('#cameraBtn'), galBtn = $('#galleryBtn');
+    if (camBtn) { camBtn.hidden = false; camBtn.disabled = false; }
+    if (galBtn) { galBtn.hidden = false; galBtn.disabled = false; }
+    if (supersede) {
+      scanSeq++;                   // أ1: stopping the camera kills live results NOW
+      resetScanUI();
+    }
+  }
+
+  if (liveSupported() && liveVideo) {
+    $('#liveCaptureBtn').addEventListener('click', async () => {
+      if (liveROIBusy || liveBusy || !liveStream) return;
+      liveROIBusy = true;
+      $('#liveCaptureBtn').disabled = true;
+      try {
+        const best = await liveBestOf(LIVE_BEST_OF);   // ب2: explicit capture always best-of-N
+        if (best) await liveFullPass('capture', best);
+      } finally {
+        liveROIBusy = false;
+        $('#liveCaptureBtn').disabled = false;
+      }
+    });
+    $('#liveStopBtn').addEventListener('click', () => stopLive(true));
+    liveVideo.addEventListener('loadedmetadata', () => liveDrawGuide(false));
+  }
+
+  document.addEventListener('langchange', () => {
+    if (liveStream) setLiveHint(liveTimer ? 'live.hint' : 'live.scanning');
   });
 
   /* ----------------------------------------------------------------

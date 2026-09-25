@@ -288,7 +288,8 @@ check('OCR structured-evidence exemption is checksum-valid CAS only (narrowed a4
   && /CD\.casChecksum\(c\) === true/.test(ocrMod)
   && !/meta\.structured/.test(ocrMod));
 const sw5 = fs.readFileSync('sw.js', 'utf8');
-check('sw is v18 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v18'")
+check('sw is v19 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v19'")
+  && sw5.includes("'./src/scan-live.js'")
   && sw5.includes("OCR_CACHE = 'mustashar-ocr'")
   && OCR_RUNTIME_FILES.every(f => sw5.includes(f.replace('./', '')))
   && !/['\"]\.?\/?vendor\/tesseract\/lang\/ara\.traineddata\.gz['\"]/i.test(sw5));

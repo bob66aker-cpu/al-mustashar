@@ -492,6 +492,23 @@
     }
     .preview-cancel .ic { width: 18px; height: 18px; }
     .preview-cancel:focus-visible { outline: 3px solid var(--primary-strong); outline-offset: 1px; }
+    /* ب — الكاميرا الحية: فيديو + إطار إرشادي شفاف فوقه */
+    .live-wrap {
+      position: relative; margin-top: 12px;
+      border-radius: 14px; overflow: hidden; background: #000;
+    }
+    .live-wrap video { display: block; width: 100%; }
+    .live-wrap canvas {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      pointer-events: none;
+    }
+    .live-hint {
+      position: absolute; top: 8px; inset-inline: 8px;
+      text-align: center; font-size: 13px; font-weight: 700;
+      color: #ffffff; background: rgba(0, 0, 0, 0.55);
+      padding: 6px 10px; border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
     input[type="file"] { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 
     /* ============ history view ============ */
@@ -875,6 +892,17 @@
 
       <p class="scan-note"><span data-icon="privacy"></span> <span data-i18n="scan.note">يعمل المسح البصري محليًا دون إنترنت بعد تجهيز ملفات OCR مرة واحدة (من لوحة «تجهيز العمل بدون إنترنت» أعلاه). تتم معالجة الصور على جهازك ولا تُرسل إلى أي خادم.</span></p>
 
+      <!-- ب — المعالجة الحية المستمرة من تدفق الكاميرا (ب1) مع الإطار الإرشادي (ب3) -->
+      <div id="liveSection" class="live-wrap" hidden>
+        <video id="liveVideo" playsinline muted autoplay></video>
+        <canvas id="liveGuide" aria-hidden="true"></canvas>
+        <p class="live-hint" data-i18n="live.hint">وجّه خانة المكونات داخل الإطار</p>
+      </div>
+      <div class="tools" id="liveControls" hidden>
+        <button class="btn-primary" type="button" id="liveCaptureBtn"><span data-icon="scan"></span><span data-i18n="live.capture">التقاط أفضل إطار</span></button>
+        <button class="btn-outline" type="button" id="liveStopBtn"><span data-icon="close"></span><span data-i18n="live.stop">إيقاف الكاميرا</span></button>
+      </div>
+
       <input id="camera" type="file" accept="image/*" capture="environment">
       <input id="gallery" type="file" accept="image/*">
       <div id="previewRow" class="preview-row" hidden>
@@ -1155,6 +1183,7 @@
   <script src="src/intl.js"></script>
   <script src="vendor/tesseract/tesseract.min.js"></script>
   <script src="src/ocr.js"></script>
+  <script src="src/scan-live.js"></script>
   <script src="src/app.js"></script>
 </body>
 </html>

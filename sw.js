@@ -1,5 +1,12 @@
 /*
- * sw.js — المستشار الزراعي (v18)
+ * sw.js — المستشار الزراعي (v19)
+ *
+ * v19 (2026-09-25): المرحلة ب — المعالجة الحية المستمرة من تدفق الكاميرا
+ *   (فحص رخيص للإطارات قبل تشغيل المحرك الكامل، التقاط أفضل إطار من عدة
+ *   إطارات، إطار إرشادي يضيّق منطقة القراءة، أضعف الأجهزة تلتقط يدويًا بلا
+ *   حلقة حية)، والمرحلة ج — حماية قراءة جارية: لا مغادرة لشاشة المسح أثناء
+ *   عمل المحرك. ملف جديد src/scan-live.js في الهيكل المسبق التحميل.
+ *   تغيّر سلوك الواجهة → رفع الكاش.
  *
  * v18 (2026-09-25): المرحلة أ — مسح فوري للنتائج القديمة عند أي تغيّر
  *   لمصدر الاستعلام (كتابة/حذف نص، صورة جديدة، مسح جديد)، زر إزالة/تبديل
@@ -37,7 +44,7 @@
  * Personal data (IndexedDB history, theme, app version note) lives outside
  * the caches and is never touched by this worker.
  */
-const CACHE = 'mustashar-v18';
+const CACHE = 'mustashar-v19';
 const OCR_CACHE = 'mustashar-ocr';
 const SHELL = [
   './',
@@ -45,6 +52,7 @@ const SHELL = [
   './src/search-core.js',
   './src/app.js',
   './src/ocr.js',
+  './src/scan-live.js',
   './src/i18n.js',
   './src/icons.js',
   './src/cas.js',

@@ -84,7 +84,11 @@ try {
       categoryChips: arts.filter(a => a.querySelector('.cat-code')).length,
       rawStatus: arts.filter(a => [...a.querySelectorAll('p.match')].some(p => p.textContent.includes('الحالة كما وردت') || p.textContent.includes('Status as given') || p.textContent.includes('Status as stated'))).length,
       matchType: arts.filter(a => [...a.querySelectorAll('p.match')].some(p => /تطابق|match|اسم مطابق|matches/i.test(p.textContent))).length,
-      matchTypeParagraphs: arts.reduce((n, a) => n + [...a.querySelectorAll('p.match')].length, 0),
+      /* ب: فقرات التفاصيل الخاصة بالمحترف حصرًا = p.match ناقص فقرات
+       * التصنيف (المشتركة الآن في الوضعين) */
+      matchTypeParagraphs: arts.reduce((n, a) => n
+        + [...a.querySelectorAll('p.match')]
+          .filter(p => !p.textContent.includes('التصنيف كما ورد في المصدر')).length, 0),
       explainChips: arts.filter(a => a.querySelector('.st-explain')).length
     };
   });
@@ -97,6 +101,11 @@ try {
   must('farmer: libyaStatus paragraph shown', farmer.statusParagraphs > 0, 'articles=' + farmer.articles);
   must('farmer: exact-ban banner shown (non-negotiable)', farmer.banBannerExact === true);
   must('farmer: prohibited card present', farmer.banAny === true);
+  /* ب (هذه الجولة): التصنيف الوظيفي في وضع المزارع أيضًا — كان محصورًا
+   * بشرط showDetails منذ cf2ff79 فاختفى كليًا بعد فصل الوضعين. صف DDT
+   * يحمل category="I" (حشري) فيقرأه هذا التأكيد كرقاقة في الوضعين. */
+  must('farmer: functional-category chips shown (ب restored)', farmer.categoryChips > 0,
+    'chips=' + farmer.categoryChips);
 
   /* ---------- pro mode, same query ---------- */
   await setMode('pro');
@@ -105,6 +114,7 @@ try {
   must('pro: disclaimerStrip shown', pro.disclaimer === true);
   must('pro: exact-ban banner shown', pro.banBannerExact === true);
   must('pro: CAS paragraphs shown', pro.casParagraphs > 0, 'articles=' + pro.articles);
+  must('pro: functional-category chips shown too', pro.categoryChips > 0, 'chips=' + pro.categoryChips);
   /* pro-only detail: status_raw rows exist only where the source carries a
    * raw field (libya-248 rows do not), so pin the pro-only <p.match> detail
    * paragraphs (category/matchType) — farmer shows none of them. */
@@ -124,7 +134,8 @@ try {
     JSON.stringify(farmer.sources));
 
   /* the exact spec difference table: farmer must NOT show the pro-only
-   * per-card details (raw status / matchType / category chips) */
+   * per-card details (raw status / matchType) — category chips are now
+   * shared (ب) and counted separately above */
   must('farmer: NO per-card match detail paragraphs', farmer.matchTypeParagraphs === 0,
     'matches=' + farmer.matchTypeParagraphs);
 } finally {

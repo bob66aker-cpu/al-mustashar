@@ -1,5 +1,10 @@
 /*
- * sw.js — المستشار الزراعي (v22)
+ * sw.js — المستشار الزراعي (v24)
+ *
+ * v24 (2026-09-26): إصلاح انتكاسة ب — التصنيف الوظيفي (حشري/فطري/…) ظاهر
+ *   في الوضعين دائمًا: كان محصورًا بشرط showDetails منذ إدخال طبقة القرار
+ *   (cf2ff79) فاختفى كليًا عن المزارع بعد فصل الوضعين، مع أن المواصفة
+ *   تلزمه في الوضعين بلا استثناء. تغيّر سلوك الواجهة → رفع الكاش.
  *
  * v22 (2026-09-25): المرحلة ج — فصل وضعي المزارع/المحترف في النتائج:
  *   بطاقات الدول الأخرى + رقم CAS + شرح الرمز في المحترف فقط؛ الحالة
@@ -64,7 +69,7 @@
  * Personal data (IndexedDB history, theme, app version note) lives outside
  * the caches and is never touched by this worker.
  */
-const CACHE = 'mustashar-v22';
+const CACHE = 'mustashar-v24';
 const OCR_CACHE = 'mustashar-ocr';
 const SHELL = [
   './',

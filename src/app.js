@@ -431,12 +431,18 @@
      * disclaimerStrip: كان ثابتًا في index.html تحت نتائج البحث فقط —
      * صار ترويسة مُصيَّرة مع كل دفعة نتائج في المسارين (بحث/مسح) فلا
      * يغيب أبدًا عن أي عرض، وبنص data-i18n نفسه دون تغيير. */
-    /* فلترة وضع المزارع: نتائج الدول الأخرى (غير الليبية) في المحترف فقط —
-     * فلترة عرضية في render لا في محرك المطابقة (SearchCore لا يُمس).
-     * بطاقات ليبيا (248/500) تُعرض في الوضعين. مثبت بالاختبار: بنفس
-     * النتيجة، المزارع يرى بطاقات ليبيا فقط، والمحترف يرى ليبيا + غيرها. */
+    /* فلترة وضع المزارع — نتائج البحث اليدوي فقط (إصلاح انتكاسة أ):
+     * كان الفلتر يُطبَّق على كل استدعاءات render بما فيها عرض نتائج
+     * المسح في شاشة المسح، فتختفي نتائج EPA/EU المسحوبة من الصورة في
+     * وضع المزارع رغم أن القراءة نجحت — وبهذا يبدو المسح "بلا نتيجة"
+     * والأتمتة معطّلة. القرار: البحث اليدوي (/#results) يبقى مفلترًا
+     * في وضع المزارع (المواصفة ج1)، وعرض المسح (#scanResults) يعرض
+     * القائمة الكاملة التي انتجها محرك القراءة في الوضعين — لا يُحجب
+     * منه شيء، لأن حذف نتيجة مطابقة عن المستخدم شكل خطر سلامة. */
     const showDetails = $('#mode').value === 'pro';
-    const shownResults = showDetails
+    const isScanView = typeof target === 'string' ? target === '#scanResults'
+      : (target && target.id === 'scanResults');
+    const shownResults = (showDetails || isScanView)
       ? results
       : results.filter(x => x.k === 'libya-248' || x.k === 'libya-500');
     const prohibited = shownResults.filter(x => x.k === 'libya-248');
@@ -499,7 +505,12 @@
       const raw = x.r.status_raw && showDetails
         ? '<p class="match">' + t('results.source.raw', 'الحالة كما وردت في المصدر:') + ' ' + esc(x.r.status_raw) + '</p>'
         : '';
-      const cat = x.r.category && showDetails
+      /* ب — التصنيف الوظيفي (حشري/فطري/…) في الوضعين دائمًا: كان محصورًا
+       * بشرط showDetails منذ إدخال طبقة القرار (cf2ff79) فاختفى كليًا عن
+       * المزارع في جولة فصل الوضعين. إخراجه من الشرط لا يلمس raw ولا
+       * matchType (يبقيان للمحترف حصرًا)؛ الشيفرة تُغرق كرقاقات قابلة
+       * للنقر بشرحها في الوضعين. */
+      const cat = x.r.category
         ? '<p class="match">' + t('results.source.category', 'التصنيف كما ورد في المصدر:') + ' '
           + String(x.r.category).split(/\n+/).map(function (c) {
               return '<span class="cat-code" tabindex="0" role="button" data-cat="' + esc(c) + '">' + esc(c) + '</span>';
@@ -674,12 +685,14 @@
     syncModeLabel();
     /* Re-render the current results so the detail level switches live
      * (farmer = simplified verdict, professional = full evidence).
-     * أ3: the scan view now hosts its own results — re-render BOTH paths,
-     * each only when it actually holds results. */
-    const first = $('#results .result') || $('#results .prohibited');
-    if (first && lastResults.length) render(lastResults, $('#query').value.trim());
-    const scanFirst = $('#scanResults .result') || $('#scanResults .prohibited');
-    if (scanFirst && lastScanResults.length) render(lastScanResults, '', '#scanResults');
+     * أ3: the scan view now hosts its own results — re-render BOTH paths.
+     * أ — إصلاح جانبي لفلتر المزارع: عندما تكون كل نتائج البحث اليدوي
+     * مخفية بالفلتر (لا بطاقة ظاهرة في DOM) كان تبديل الوضع إلى
+     * المحترف لا يعيد التصيير أبدًا (الشرط القديم يشترط وجود بطاقة
+     * ظاهرة) فيبقى المستخدم أمام صفحة فارغة رغم وجود نتائج. الشرط
+     * الآن على حالة النتائج المحفوظة لا على ظهور بطاقة في الشاشة. */
+    if (lastResults.length) render(lastResults, $('#query').value.trim());
+    if (lastScanResults.length) render(lastScanResults, '', '#scanResults');
   });
 
   window.addEventListener('online', renderDbStatus);
@@ -734,13 +747,34 @@
   $('#shareBtn').addEventListener('click', async () => {
     const url = new URL('.', location.href).href.replace(/\/(?:src|tests)\/$/, '/');
     const data = { title: t('brand.title', 'المستشار الزراعي'), url };
-    const notify = msg => { ocrMsg.textContent = msg; setTimeout(() => { if (ocrMsg.textContent === msg) ocrMsg.textContent = ''; }, 3000); };
+    /* د — الإشعار كان يُكتب في #ocrMsg داخل شاشة المسح (مخفية عند الضغط من
+     * الرئيسية حيث الزر) فبدت المشاركة صامتة كليًا: الإشعار الآن في
+     * dbBanner المرئي في كل الشاشات، وكل استثناء يُسجَّل ولا يُبتلع. */
+    const notify = msg => {
+      const el = $('#dbBanner');
+      if (el) {
+        el.hidden = false;
+        el.className = 'banner banner-info';
+        el.setAttribute('data-share-toast', '1');
+        el.textContent = msg;
+      } else { ocrMsg.textContent = msg; }
+      setTimeout(() => {
+        if (el && el.hasAttribute('data-share-toast')) {
+          el.hidden = true;
+          el.removeAttribute('data-share-toast');
+        } else if (ocrMsg.textContent === msg) { ocrMsg.textContent = ''; }
+      }, 3500);
+    };
+    /* د — لا فشل صامت: أي استثناء في أي مسار يظهر للمستخدم فورًا */
+    const fail = errName => notify(t('share.fail', 'تعذّرت المشاركة في هذا المتصفح.')
+      + ' (' + errName + ')');
     if (navigator.share) {
-      try { await navigator.share(data); return; } catch (e) { if (e && e.name === 'AbortError') return; }
+      try { await navigator.share(data); return; } catch (e) { if (e && e.name === 'AbortError') return; fail(e.name || 'share'); }
     }
     if (navigator.clipboard && window.isSecureContext) {
       try { await navigator.clipboard.writeText(url); notify(t('share.copied', 'نُسخ رابط التطبيق إلى الحافظة.')); return; }
-      catch (e) { /* يمر إلى الملف */ }
+      /* د — استثناء الحافظة يُحفظ ويُذكر في إشعار النتيجة النهائية */
+      catch (e) { window.__shareClipErr = (e && e.name) || 'clipboard'; /* يمر إلى الملف */ }
     }
     try {
       const vcf = 'BEGIN:VCARD\r\nVERSION:3.0\r\nFN:' + t('brand.title', 'المستشار الزراعي') + '\r\nURL:' + url + '\r\nEND:VCARD\r\n';
@@ -749,9 +783,12 @@
       a.download = 'al-mustashar.vcf';
       a.click();
       setTimeout(() => URL.revokeObjectURL(a.href), 2000);
-      notify(t('share.saved', 'تعذّرت المشاركة المباشرة — حُفظ بطاقة اتصال بالرابط، افتحها من جهازك.'));
+      notify(t('share.saved', 'تعذّرت المشاركة المباشرة — حُفظت بطاقة اتصال بالرابط، افتحها من جهازك.')
+        + (window.__shareClipErr ? ' (' + window.__shareClipErr + ')' : ''));
+      window.__shareClipErr = null;
     } catch (e) {
-      notify(t('share.fail', 'تعذّرت المشاركة في هذا المتصفح.'));
+      fail((window.__shareClipErr ? window.__shareClipErr + ' + ' : '') + ((e && e.name) || 'vcard'));
+      window.__shareClipErr = null;
     }
   });
 
@@ -1096,6 +1133,19 @@
     }
   }
 
+  /* أ — test/automation seam: exposes the exact downstream automation path
+   * (searchCandidates → showOcrResults) the way the live scan pipeline calls
+   * it after a successful recognize(). Production flow never uses these;
+   * tests/scan-automation.test.mjs pins the restored automation through them
+   * (the f1058dd farmer-filter relapse broke exactly this path). */
+  window.runScanPipeline = function (q) {
+    const cas = (typeof OcrModule !== 'undefined' && OcrModule.extractCAS) ? OcrModule.extractCAS(q) : [];
+    const cands = (typeof OcrModule !== 'undefined' && OcrModule.extractCandidates) ? OcrModule.extractCandidates(q) : [];
+    return showOcrResults(searchCandidates(cas, cands));
+  };
+  window.showOcrResults = showOcrResults;
+  window.searchCandidates = searchCandidates;
+
   /* Run candidate text through the existing search and merge results. */
   function searchCandidates(casList, candList) {
     rebuildSearch();
@@ -1169,13 +1219,66 @@
   function diagExport() {
     try {
       const list = JSON.parse(localStorage.getItem(DIAG_KEY) || '[]');
-      const blob = new Blob([JSON.stringify(list, null, 1)], { type: 'application/json' });
+      /* ج — تصدير مقروء: كان JSON خامًا بمفاتيح برمجية؛ صار تقرير HTML عربيًا
+       * بعناوين واضحة وحقلًا واحدًا في كل سطر (بلا تقنية، للمزارع/المهندس).
+       * كل نص عبر t() ×4 قواميس؛ يبقى ملفًا محليًا من إجراء يدوي حصرًا —
+       * لا إرسال لأي جهة. */
+      const escX = s => String(s ?? '').replace(/[&<>'"]/g, m => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
+      }[m]));
+      const label = (ar, v) => (v === undefined || v === null || v === '') ? ''
+        : '<div><span class="k">' + escX(ar) + ':</span> ' + escX(v) + '</div>';
+      const OUTCOME = {
+        scanned: 'diag.outcome.scanned', rejected: 'diag.outcome.rejected',
+        weak: 'diag.outcome.weak', superseded: 'diag.outcome.superseded',
+        cancelled: 'diag.outcome.cancelled', error: 'diag.outcome.error'
+      };
+      const rows = list.length ? list.map((e, i) => {
+        const oKey = OUTCOME[e.outcome] || null;
+        const outcome = oKey ? t(oKey, '') : escX(String(e.outcome || '?'));
+        const when = e.at ? new Date(e.at).toLocaleString('ar') : '?';
+        const srcVal = e.src === 'live' ? t('diag.src.live', '')
+          : (e.src ? t('diag.src.photo', '') : '');
+        const kindVal = e.kind === 'auto' ? t('diag.kind.auto', '')
+          : (e.kind === 'capture' ? t('diag.kind.capture', '') : '');
+        return '<details open class="diag-entry">'
+          + '<summary>' + tf('diag.attempt', 'محاولة {n}', { n: i + 1 }) + ' — ' + outcome + ' · ' + escX(when) + '</summary>'
+          + label(t('diag.field.outcome', ''), outcome)
+          + (e.reason !== undefined && e.reason !== null && e.reason !== ''
+            ? label(t('diag.field.reason', ''), e.reason) : '')
+          + label(t('diag.field.ms', ''), e.ms !== undefined ? e.ms + ' ' + t('diag.ms.unit', '') : undefined)
+          + label(t('diag.field.conf', ''), e.conf !== undefined ? Math.round(e.conf * 100) + '%' : undefined)
+          + label(t('diag.field.src', ''), srcVal)
+          + label(t('diag.field.kind', ''), kindVal)
+          + label(t('diag.field.variant', ''), e.variant)
+          + '</details>';
+      }).join('') : '<p class="diag-empty">' + t('diag.file.empty', '') + '</p>';
+      const html = '<!DOCTYPE html>'
+        + '<html lang="ar" dir="rtl"><head><meta charset="utf-8">'
+        + '<title>' + t('diag.title', '') + '</title><style>'
+        + 'body{font:15px/1.7 system-ui,sans-serif;max-width:760px;margin:24px auto;padding:0 16px;color:#1a1a1a}'
+        + 'h1{font-size:20px} .diag-entry{border:1px solid #ddd;border-radius:10px;padding:10px 14px;margin:10px 0;background:#fafafa}'
+        + 'summary{font-weight:700;cursor:pointer}'
+        + '.k{font-weight:700;color:#555;margin-inline-end:6px}'
+        + '</style></head><body>'
+        + '<h1>' + t('diag.title', '') + '</h1>'
+        + '<p>' + tf('diag.created', '', { when: new Date().toLocaleString('ar'), n: list.length }) + '</p>'
+        + '<p>' + t('diag.note', '') + '</p>'
+        + rows + '</body></html>';
+      const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
       const a = document.createElement('a');
       a.href = URL.createObjectURL(blob);
-      a.download = 'mustashar-diagnostics-' + new Date().toISOString().slice(0, 10) + '.json';
+      a.download = 'mustashar-diagnostics-' + new Date().toISOString().slice(0, 10) + '.html';
       a.click();
       setTimeout(() => URL.revokeObjectURL(a.href), 2000);
-    } catch (e) {}
+      if (!list.length) {
+        ocrMsg.textContent = t('diag.empty', 'لا توجد محاولات مسح مسجلة بعد — سجّل مسحًا أولًا ثم صدّر السجل.');
+        setTimeout(() => { if (ocrMsg.textContent === t('diag.empty', '')) ocrMsg.textContent = ''; }, 3000);
+      }
+    } catch (e) {
+      /* قاعدة الجولة: لا فشل صامت في أي مسار */
+      try { ocrMsg.textContent = t('diag.fail', 'تعذّر تصدير سجل التشخيص.'); } catch (e2) {}
+    }
   }
 
   /* ----------------------------------------------------------------

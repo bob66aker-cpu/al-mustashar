@@ -82,14 +82,30 @@
     return k ? t(k, '') : '';
   }
   function catName(code) {
-    const k = LEGEND_CAT_KEYS[String(code || '').trim()];
+    /* 1.2 — compound functional codes (Decree-248 «I/A» and friends) are
+     * resolved to their parts so the tooltip/popover explains EVERY part:
+     * catName('I/A') previously looked up the literal key «I/A» which is not
+     * in the fixed table → the misleading «رمز غير معرّف» hint on real data
+     * (Tetradifon, CAS 116-29-0, carries category "I/A" in libya-248.json). */
+    const c = String(code || '').trim();
+    if (!c) return '';
+    const parts = c.split(/[\/,+]/).map(p => p.trim()).filter(Boolean);
+    if (parts.length > 1) return parts.map(p => catName(p) || '').filter(Boolean).join(' + ');
+    const k = LEGEND_CAT_KEYS[c];
     return k ? t(k, '') : '';
   }
-  /* Category tooltip: known codes get the fixed-table meaning; any other
-   * code gets the literal «رمز غير معرّف في دليل القرار» hint only. */
+  /* Category tooltip: known codes get the fixed-table meaning; a COMPOUND
+   * code like «I/A» is resolved to its parts, each explained, joined with
+   * « + ». A part not in the table yields the literal «رمز غير معرّف في
+   * دليل القرار» hint for that part only. */
   function catTitle(code) {
     const c = String(code || '').trim();
     if (!c) return '';
+    const parts = c.split(/[\/,+]/).map(p => p.trim()).filter(Boolean);
+    if (parts.length > 1) {
+      const unknown = t('legend.cat.unknown', 'رمز غير معرّف في دليل القرار.');
+      return parts.map(p => catName(p) || unknown).join(' + ');
+    }
     return catName(c) || t('legend.cat.unknown', 'رمز غير معرّف في دليل القرار.');
   }
 
@@ -251,10 +267,25 @@
     }
   }
 
+  /* 1.4b — سباق البانر: تحذير الاقتطاع يكتب في #dbBanner ثم يمسحه
+   * renderDbStatus (يخفيه عندما لا قاعدة unavailable). الحالة
+   * تُخزن هنا ويتم إعادة التأكيد من renderDbStatus بعد كل تغير طور. */
+  const shortRows = {};
   function setPhase(key, phase, count) {
     state[key].phase = phase;
     if (typeof count === 'number') state[key].count = count;
     renderDbStatus();
+    const shortInfo = shortRows[key];
+    if (shortInfo && phase === 'ok') {
+      const banner = $('#dbBanner');
+      if (banner) {
+        banner.hidden = false;
+        banner.className = 'banner banner-warn';
+        banner.textContent = tf('db.banner.short',
+          'تحذير: {key} وصل بعدد أقل من الموثق ({got} من {exp}) — قد تكون هناك بيانات مقتطعة.',
+          { key: t(SOURCES.find(s => s.key === key).labelKey, key), got: shortInfo.got, exp: shortInfo.exp });
+      }
+    }
   }
 
   /* ============================================================
@@ -264,7 +295,10 @@
   /* c3: documented row counts (docs/data-provenance.md). A loaded file
    * that arrives SHORTER than documented is a silent-truncation alarm —
  * the banner fires and the count is still shown, nothing is hidden. */
-  const EXPECTED_ROWS = { 'libya-248': 77, 'libya-500': 411, eu: 1483, epa: 2199 };
+  /* 1.4 — epa كانت 2199 (الملف القديم قبل إعادة البناء من EPA_Master):
+   * كل تحميل صحيح كان يشعل بانر «بيانات مقتطعة» المزيف، والمعلمة
+   * epa-cancelled كانت غائبة أصلًا (docs/data-provenance.md). */
+  const EXPECTED_ROWS = { 'libya-248': 77, 'libya-500': 411, eu: 1483, epa: 1361, 'epa-cancelled': 1425 };
 
   function loadSource(src) {
     setPhase(src.key, 'loading');
@@ -286,14 +320,8 @@
         DB[src.key] = data;
         setPhase(src.key, 'ok', data.rows.length);
         if (tooShort(data)) {
-          const banner = $('#dbBanner');
-          if (banner) {
-            banner.hidden = false;
-            banner.className = 'banner banner-warn';
-            banner.textContent = tf('db.banner.short',
-              'تحذير: {key} وصل بعدد أقل من الموثق ({got} من {exp}) — قد تكون هناك بيانات مقتطعة.',
-              { key: t(src.labelKey, src.label), got: data.rows.length, exp: EXPECTED_ROWS[src.key] });
-          }
+          /* 1.4c — يُسجل ليعيد setPhase إظهاره بعد أي إصطلاح للبانر. */
+          shortRows[src.key] = { got: data.rows.length, exp: EXPECTED_ROWS[src.key] };
         }
         // cache after success; never overwrite a valid cache with bad data
         return idbPut(STORE_DB, src.key, data).catch(() => {});
@@ -374,7 +402,11 @@
       'libya-248': t('src.248', 'ليبيا، قرار 248 لسنة 2024'),
       'libya-500': t('src.500', 'ليبيا، قرار 500 لسنة 2026'),
       'eu': t('src.eu', 'الاتحاد الأوروبي'),
-      'epa': t('src.epa', 'USA / EPA')
+      'epa': t('src.epa', 'USA / EPA'),
+      /* 1.3 — أرشيف الملغى كان يعرض المفتاح الخام بدل التسمية:
+       * الجدول بلا مفتاح 'epa-cancelled' فيسقط على || k ويطبع "epa-cancelled"
+       * حرفيًا فوق البطاقة، مع أن 'src.epac' موجود في القواميس الأربعة. */
+      'epa-cancelled': t('src.epac', 'USA / EPA — أرشيف الملغى')
     }[k] || k;
   }
 
@@ -392,8 +424,13 @@
     if (d.rup) extra += ' · ' + t('st.epa.rup.note', 'استخدام مقيد (للمرخّصين فقط)');
     /* Status legend badge (شرح الرموز): a clickable info chip only for
      * Decree-500 statuses that have a verbatim explanation (Approved, REV,
-     * RAR, REV*). Renders as part of the status paragraph. */
-    const ek = LEGEND_STATUS_KEYS[String(d.raw || '').trim()];
+     * RAR, REV*) — bound to the SOURCE KEY, not the raw value alone:
+     * «Approved» is a shared vocabulary word (EU rows carry it too), and
+     * showing Libya-500 decree prose on a European card is wrong
+     * (1.1 — Aclonifen regression proven live in the diagnosis round). */
+    const ek = k === 'libya-500'
+      ? LEGEND_STATUS_KEYS[String(d.raw || '').trim()]
+      : null;
     const chip = ek
       ? ' <button type="button" class="st-explain" data-status="' + esc(String(d.raw).trim()) + '" aria-haspopup="dialog" title="' + esc(t('legend.title', 'شرح الرموز')) + '">' + t('legend.open', 'شرح الرموز') + '</button>'
       : '';
@@ -1449,6 +1486,14 @@
     const st = $('#prepState'), btn = $('#prepBtn');
     if (!st) return;
     if (!window.caches) { st.textContent = t('prep.noStorage', 'المتصفح لا يدعم التخزين المحلي الكامل'); return; }
+    /* 1.7 — عرض الحصة المستخدمة/المتاحة بجانب بنود التجهيز. */
+    try {
+      if (navigator.storage && navigator.storage.estimate) {
+        const est = await navigator.storage.estimate();
+        const q = $('#prepQuotaSize');
+        if (q) q.textContent = fmtMB(est.usage || 0) + ' / ' + fmtMB(est.quota || 0);
+      }
+    } catch (e) { /* estimate unavailable — leave the dash */ }
     const [shell, data, ocr] = await Promise.all([
       measureCached(SHELL_PATHS), measureCached(DATA_PATHS), measureCached(OCR_ASSET_PATHS)
     ]);
@@ -1491,14 +1536,23 @@
     st.textContent = t('prep.working', 'جارٍ التجهيز…');
     requestPersistence();
     ocrMsg.textContent = t('ocr.loading', 'جارٍ تحميل ملفات المسح البصري للاستخدام دون إنترنت…');
+    /* 1.6 — تقدم حقيقي أثناء التجهيز (n/7 + اسم الملف)، وفشل صريح
+     * بأسماء الملفات التي فشلت بعد timeout 60ث + محاولة إعادة واحدة
+     * لكل ملف — لم يعد فشل 3/7 يُعرض كنجاح. */
     try {
-      const n = await OcrModule.prefetch();
+      const n = await OcrModule.prefetch((done, total, name) => {
+        const short = String(name || '').replace(/^vendor\/tesseract\//, 'tesseract/');
+        ocrMsg.textContent = tf('prep.progress',
+          'جارٍ التجهيز: {done}/{total} — {name}',
+          { done: done + 1, total: total, name: short });
+      });
       prepMeasured = false;                 // re-measure with fresh data
       await updatePrepPanel();
       ocrMsg.textContent = tf('ocr.loadDone', 'تم تحميل ملفات OCR ({n}/7). سيعمل المسح البصري دون إنترنت.', { n: n });
     } catch (e) {
       st.textContent = t('prep.fail', 'تعذّر التجهيز الآن — أعد المحاولة أثناء الاتصال');
-      ocrMsg.textContent = t('prep.failNote', 'تعذّر تحميل ملفات OCR الآن. سيُعاد المحاولة تلقائيًا عند أول مسح أثناء الاتصال.');
+      const missingList = (e && e.missing) ? ' (' + e.missing.join(', ') + ')' : '';
+      ocrMsg.textContent = t('prep.failNote', 'تعذّر تحميل ملفات OCR الآن. سيُعاد المحاولة تلقائيًا عند أول مسح أثناء الاتصال.') + missingList;
     }
     btn.disabled = false;
   });

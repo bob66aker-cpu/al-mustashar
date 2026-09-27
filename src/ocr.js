@@ -1096,12 +1096,41 @@
     };
   }
 
-  /* Prefetch all OCR assets into the dedicated OCR cache (offline
-     readiness). 'mustashar-ocr' is permanent: service-worker updates
-     (mustashar-v5, v6, …) never delete it, so a one-time preparation
-     keeps offline OCR working across future app updates. */
-  async function prefetch() {
-    const assets = [
+  /* 1.5+1.6 — FULL offline preparation (the button's own comment finally
+     matches its behavior):
+       (a) OCR assets into the dedicated permanent 'mustashar-ocr' cache
+           (SW updates never delete it).
+       (b) any SHELL/DATA file missing from the app caches (a SW install
+           precache failure is silent: console.warn only) is fetched into
+           the current versioned cache.
+     Real progress: onFile(done, total, name) fires BEFORE each file's
+     fetch so the UI can show «n/7 — اسم الملف» while it runs.
+     Reliability: 60s timeout per file, one retry, and a THROW listing the
+     still-missing files when n < total — the caller's catch branch finally
+     becomes reachable instead of showing تم التحميل (4/7) as success. */
+  const PREFETCH_TIMEOUT_MS = 60000;
+  function fetchWithTimeout(url) {
+    const ctl = new AbortController();
+    const timer = setTimeout(() => ctl.abort(), PREFETCH_TIMEOUT_MS);
+    return fetch(new Request(url, { cache: 'reload', signal: ctl.signal }))
+      .finally(() => clearTimeout(timer));
+  }
+  async function cacheAddResilient(cache, url, tryOcrCacheFirst) {
+    for (let attempt = 0; attempt < 2; attempt++) {
+      try {
+        const res = await fetchWithTimeout(url);
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        await cache.put(new Request(url), res.clone());
+        return true;
+      } catch (e) {
+        if (attempt === 0) continue;   // exactly one retry
+        return false;
+      }
+    }
+    return false;
+  }
+  async function prefetch(onFile) {
+    const ocrAssets = [
       'vendor/tesseract/tesseract.min.js',
       'vendor/tesseract/worker.min.js',
       OCR.CORE + '/tesseract-core-simd-lstm.wasm.js',
@@ -1110,10 +1139,45 @@
       OCR.CORE + '/tesseract-core-lstm.wasm',
       OCR.LANG + '/eng.traineddata.gz'
     ];
-    const cache = await caches.open('mustashar-ocr');
+    const shellData = [
+      'index.html', 'src/search-core.js', 'src/app.js', 'src/ocr.js', 'manifest.json',
+      'data/libya-248.json', 'data/libya-500.json', 'data/eu.json',
+      'data/epa.json', 'data/epa-cancelled.json', 'data/intl-alerts.json'
+    ];
+    const progress = typeof onFile === 'function' ? onFile : function () {};
+    /* (a) OCR assets — always revalidated into the permanent cache */
+    const ocrCache = await caches.open('mustashar-ocr');
+    const missing = [];
     let n = 0;
-    for (const a of assets) {
-      try { await cache.add(new Request(a, { cache: 'reload' })); n++; } catch (e) { /* keep going */ }
+    const total = ocrAssets.length;
+    for (const a of ocrAssets) {
+      progress(n, total, a);
+      const ok = await cacheAddResilient(ocrCache, a);
+      if (ok) n++; else missing.push(a);
+    }
+    /* (b) shell/data — only what the app caches lack (no hidden re-download
+     * of what SW install already stored) */
+    const names = await caches.keys();
+    const appCache = await caches.open((names.filter(nm => /^mustashar-v\d+$/.test(nm)).sort().pop()) || 'mustashar-ocr');
+    for (const p of shellData) {
+      const url = new URL(p, (self && self.location && self.location.href) || location.href).href;
+      let hit = null;
+      for (const nm of names) {
+        const c = await caches.open(nm);
+        hit = await c.match(url);
+        if (hit) break;
+      }
+      if (hit) continue;
+      progress(n, total, p);
+      const ok = await cacheAddResilient(appCache, p);
+      if (ok) n++; else missing.push(p);
+    }
+    if (missing.length) {
+      const err = new Error('prefetch-incomplete: ' + missing.join(', '));
+      err.missing = missing;
+      err.completed = n;
+      err.total = total;
+      throw err;
     }
     return n;
   }

@@ -1,5 +1,23 @@
 /*
- * sw.js — المستشار الزراعي (v24)
+ * sw.js — المستشار الزراعي (v25)
+ *
+ * v25 (2026-09-27) — المرحلة 1: سلامة الحكم على المادة (نسخة العمل، الأصل لم يمس):
+ *   1.1 رقاقة «شرح الرموز» مربوطة بـ libya-500 حصرًا — كانت تطلع على
+ *       بطاقات أوروبية «Approved» بنص قرار ليبي (Aclonifen إثبات حي).
+ *   1.2 فك الرمز الوظيفي المركب (I/A) إلى مكوناته — كان يعرض
+ *       «رمز غير معرّف» على صف Tetradifon الحقيي.
+ *   1.3 شارة مصدر الملغى تعرض التسمية المترجمة (src.epac)
+ *       بدل المفتاح الخام «epa-cancelled».
+ *   1.4 تصحيح EXPECTED_ROWS (epa 2199→1361 + إضافة epa-cancelled 1425)
+ *       — إلغاء البانر المزيف «بيانات مقتطعة»؛ وإصلاح سباق
+ *       إظهار/إخفاء البانر بين tooShort وrenderDbStatus.
+ *   1.5 زر «تجهيز الآن» يجهز أيضًا ملفات shell/data الناقصة
+ *       من الكاش (فشل precache في SW كان صامتًا).
+ *   1.6 تقدم حقيقي (n/7 + اسم الملف) + timeout 60ث/ملف + retry
+ *       واحد + رمي خطأ بأسماء الملفات الفاشلة — لا نجاح زايف.
+ *   1.7 عرض حصة التخزين في لوحة التجهيز (storage.estimate)
+ *       + تغليف كل cache.put في SW بمعالجة QuotaExceeded.
+ *   تغير سلوك الواجهة/SW → رفع الكاش v24→v25.
  *
  * v24 (2026-09-26): إصلاح انتكاسة ب — التصنيف الوظيفي (حشري/فطري/…) ظاهر
  *   في الوضعين دائمًا: كان محصورًا بشرط showDetails منذ إدخال طبقة القرار
@@ -69,8 +87,19 @@
  * Personal data (IndexedDB history, theme, app version note) lives outside
  * the caches and is never touched by this worker.
  */
-const CACHE = 'mustashar-v24';
+const CACHE = 'mustashar-v25';
 const OCR_CACHE = 'mustashar-ocr';
+
+/* 1.7 — safe cache write: a full storage quota (QuotaExceededError) must
+ * never escape as an unhandled rejection inside respondWith — log once and
+ * keep serving; the data still works for this session. */
+async function safePut(cache, req, res) {
+  try { await cache.put(req, res); }
+  catch (err) {
+    const quota = err && (err.name === 'QuotaExceededError' || /quota/i.test(String(err && err.message)));
+    console.warn('[sw] cache.put failed' + (quota ? ' (storage quota full)' : '') + ':', req.url);
+  }
+}
 const SHELL = [
   './',
   './index.html',
@@ -222,7 +251,7 @@ self.addEventListener('fetch', e => {
       const cache = await caches.open(CACHE);
       try {
         const fresh = await fetch(new Request(req, { cache: 'no-store' }));
-        if (fresh.ok) cache.put(req, fresh.clone());
+        if (fresh.ok) await safePut(cache, req, fresh.clone());
         return fresh;
       } catch (err) {
         return (await cache.match(req))
@@ -256,7 +285,7 @@ self.addEventListener('fetch', e => {
       const cache = await caches.open(CACHE);
       const cached = await cache.match(req);
       const network = fetch(new Request(req, { cache: 'no-store' }))
-        .then(res => { if (res.ok) cache.put(req, res.clone()); return res; })
+        .then(res => { if (res.ok) return safePut(cache, req, res.clone()).then(() => res); return res; })
         .catch(() => null);
       return cached || (await network) || new Response(JSON.stringify({ error: 'offline and not cached' }), { status: 504 });
     })());
@@ -270,7 +299,7 @@ self.addEventListener('fetch', e => {
     if (hit) return hit;
     try {
       const fresh = await fetch(req);
-      if (fresh && fresh.ok && url.origin === location.origin) cache.put(req, fresh.clone());
+      if (fresh && fresh.ok && url.origin === location.origin) await safePut(cache, req, fresh.clone());
       return fresh;
     } catch (err) {
       return new Response('offline', { status: 503 });

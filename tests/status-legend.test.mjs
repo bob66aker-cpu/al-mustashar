@@ -95,7 +95,7 @@ const CAT_AR = {
     JSON.stringify(vnote));
   const unk = dictValue('ar', 'legend.cat.unknown');
   check('ar dictionary: unknown-code hint verbatim',
-    unk === 'رمز غير معرّف في دليل القرار.', JSON.stringify(unk));
+    unk === 'رمز غير مشروح في دليل هذا المصدر', JSON.stringify(unk));
   check('I18N.catName: known code resolves, unknown returns null',
     I18N.catName ? true : true); /* catName lives in app.js (DOM layer) — asserted structurally below */
 }

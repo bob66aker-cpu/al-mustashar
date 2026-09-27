@@ -44,9 +44,13 @@ const d5 = JSON.parse(readFileSync('data/libya-500.json', 'utf8'));
 const repairs = d5.rows.filter(r => String(r.cas_corrected || '').trim());
 const missing = d5.rows.filter(r => /[0-9]/.test(String(r.cas || '')) && typeof r.cas_source !== 'string');
 console.log(`\n== libya-500 corrections layer:`);
-console.log(`   documented repairs: ${repairs.length} (expected 6)`);
+console.log(`   documented repairs: ${repairs.length} (expected 8)`);
 repairs.forEach(r => console.log(`   ${r.name.split('\n')[0]}: ${r.cas_raw} → ${r.cas_corrected} [${r.cas_source}]`));
+const badFixed = repairs.filter(r => casChecksum(String(r.cas_corrected).trim()) !== true);
+console.log(`   corrected values failing the check digit: ${badFixed.length} (expected 0)`);
+badFixed.forEach(r => console.log('   FAIL-CORR', r.name.split('\n')[0], r.cas_corrected));
 console.log(`   rows missing cas_source: ${missing.length} (expected 0 of ${d5.rows.length})`);
-const ok = repairs.length === 6 && missing.length === 0 && d5.rows.length === d5.meta.count;
+const ok = repairs.length === 8 && missing.length === 0 && badFixed.length === 0
+  && d5.rows.length === d5.meta.count;
 console.log(ok ? '\nAUDIT OK' : '\nAUDIT FAILED');
 process.exit(ok ? 0 : 1);

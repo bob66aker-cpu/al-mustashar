@@ -448,6 +448,11 @@
     .cas-raw-old { text-decoration: line-through; color: var(--muted); font-size: 12px; }
     .cas-src { color: var(--muted); font-size: 12px; }
     .nocas { color: var(--muted); font-size: 12px; }
+    .cas-note { font-size: 13px; color: var(--muted); margin-top: 6px; }
+    .cas-note.warn { color: var(--caution); }
+    .badge.warn { color: var(--caution); border-color: var(--caution); }
+    .brk { margin: 8px 0 0; font-size: 12px; color: var(--muted); line-height: 1.7; }
+    .brk .brk-line { display: block; }
     .ambgroup {
       background: var(--card); color: var(--caution);
       border: 1px solid var(--caution); border-radius: 12px;
@@ -1086,6 +1091,7 @@
         </summary>
         <div class="body">
           <span class="chip loading-mark" id="db-libya-500" data-i18n="db.loading.500">ليبيا 500: جارٍ التحميل…</span>
+          <p class="brk" id="dbBreak500" hidden></p>
         </div>
       </details>
 

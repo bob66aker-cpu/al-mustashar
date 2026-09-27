@@ -164,7 +164,12 @@
    * The row main CAS field holds the CORRECTED value so search and matching work
    * with valid numbers; the display layer keeps the honesty contract:
    * the raw decree value is always recoverable and the correction is always
-   * labelled. No status/decision field is touched by this layer. */
+   * labelled. No status/decision field is touched by this layer.
+ *
+ *   6. casStereo/casFlag/casSuggested/casReview/casNote/casDuplicateNote —
+ *      accessors for the additive annotation fields (stereo descriptor kept
+ *      apart from the raw string, documented candidate numbers, reviewer
+ *      text, 248 information notes). Values only, no interpretation. */
   function isCorrectedRow(r) {
     return !!(r && String(r.cas_corrected || '').trim());
   }
@@ -180,7 +185,42 @@
     return isCorrectedRow(r) ? String(r.cas_source || '').trim() : '';
   }
 
+  /* ---------- 6) per-row annotation fields (round 2026-09-27, part 2)
+   * Additive, non-interpretive accessors for the annotation fields the data
+   * round wrote next to the CAS triple. Each returns a plain value; NOTHING
+   * here judges a number or a legal status — the UI layer decides how to
+   * label them (i18n keys cas.stereo.*, cas.suggested, cas.note.*).
+   *   cas_stereo   — stereo descriptor kept SEPARATE from the raw decree
+   *                  string (Metalaxyl-M: raw «70630-17-0 (R)» → number
+   *                  70630-17-0 + descriptor "(R)").
+   *   cas_flag     — machine key of a documented ambiguity ('stereo-ambiguous').
+   *   cas_suggested— documented CANDIDATE numbers for rows whose source cell
+   *                  says "No CAS / see remark". Never written into cas.
+   *   cas_review   — free-text reviewer note (no number is asserted).
+   *   cas_note / duplicate_note — 248 information-only notes; the official CAS
+   *                  value of those rows is untouched. */
+  function casStereo(r) {
+    return r && String(r.cas_stereo || '').trim() ? String(r.cas_stereo).trim() : '';
+  }
+  function casFlag(r) {
+    return r && String(r.cas_flag || '').trim() ? String(r.cas_flag).trim() : '';
+  }
+  function casSuggested(r) {
+    const a = r && r.cas_suggested;
+    return Array.isArray(a) ? a.map(s => String(s).trim()).filter(Boolean) : [];
+  }
+  function casReview(r) {
+    return r && String(r.cas_review || '').trim() ? String(r.cas_review).trim() : '';
+  }
+  function casNote(r) {
+    return r && String(r.cas_note || '').trim() ? String(r.cas_note).trim() : '';
+  }
+  function casDuplicateNote(r) {
+    return r && String(r.duplicate_note || '').trim() ? String(r.duplicate_note).trim() : '';
+  }
+
   /* ---------- exports ---------- */
   global.CasDissect = { casChecksum, dissectStatus, classify, ambiguity, casOf,
-    isCorrectedRow, casDisplayRaw, casDisplayCorrected, casSourceKey };
+    isCorrectedRow, casDisplayRaw, casDisplayCorrected, casSourceKey,
+    casStereo, casFlag, casSuggested, casReview, casNote, casDuplicateNote };
 })(typeof window !== 'undefined' ? window : globalThis);

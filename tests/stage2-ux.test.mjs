@@ -102,11 +102,11 @@ const sw = readFileSync(join(root, 'sw.js'), 'utf8');
 
 /* ---------------- version + SW bump ---------------- */
 {
-  must('SW is v27 with the dedicated permanent OCR cache intact',
-    sw.includes("CACHE = 'mustashar-v27'") && sw.includes("OCR_CACHE = 'mustashar-ocr'"));
-  must('version: 1.10.0 in version.json + package.json',
-    JSON.parse(readFileSync(join(root, 'version.json'), 'utf8')).version === '1.10.0'
-    && JSON.parse(readFileSync(join(root, 'package.json'), 'utf8')).version === '1.10.0');
+  must('SW is v28 with the dedicated permanent OCR cache intact',
+    sw.includes("CACHE = 'mustashar-v28'") && sw.includes("OCR_CACHE = 'mustashar-ocr'"));
+  must('version: 1.11.0 in version.json + package.json',
+    JSON.parse(readFileSync(join(root, 'version.json'), 'utf8')).version === '1.11.0'
+    && JSON.parse(readFileSync(join(root, 'package.json'), 'utf8')).version === '1.11.0');
   must('sw.js changelog records stage 2 with today behavior-change note',
     /v26 \(2026-09-27\) — المرحلة 2/.test(sw) && /رفع الكاش v25→v26/.test(sw));
 }

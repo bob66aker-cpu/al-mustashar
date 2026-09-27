@@ -43,8 +43,11 @@ const check = (name, ok, detail) => {
 console.log('\n== provenance vs files ==');
 const prov = fs.readFileSync('docs/data-provenance.md', 'utf8');
 const FILES = {
-  'libya-248': { rows: 77,  sha: 'ca30b94cd12ab43b71d86dd96277b5289cc2252eca0dcaf9971e56f094040a43' },
-  'libya-500': { rows: 411, sha: '987023abb2a06a4fdb591728b6d1176510cc9d927de2cf17bff18b6658bdde8d' },
+  /* 248/500 shas move only on an APPROVED documented data round (this file is
+   * the same round's marker): 2026-09-27 CAS round 2 — see
+   * docs/data-provenance.md change log + tests/data-baseline.json */
+  'libya-248': { rows: 77,  sha: 'b6850e0381fda847b0bc4b30096d35847b91e626587647dd79ef80ea04cbacd5' },
+  'libya-500': { rows: 411, sha: '9a1427e090906c3f84287edfcc4b43415abd22e01136dd54ecca09eb10ac9d2e' },
   'eu':        { rows: 1483, sha: 'ef629525c2dae8f741e1697faaecf2319e1a646e4e011d2754ef66e23844101e' },
   /* EPA Master (PPIS) rebuild (2026-09-23): active registry (1361) +
    * all-cancelled archive (1425), built by tools/build-epa-master.js from

@@ -1494,7 +1494,8 @@
    "row": 117,
    "cas_raw": "244-16-8",
    "cas_corrected": "2244-16-8",
-   "cas_source": "epa-master"
+   "cas_source": "epa-master",
+   "cas_flag": "stereo-ambiguous"
   },
   {
    "name": "Cerevisane",
@@ -2989,7 +2990,12 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 228
+   "row": 228,
+   "cas_suggested": [
+    "7720-78-7 anhydrous",
+    "7782-63-0 heptahydrate"
+   ],
+   "cas_source": "epa"
   },
   {
    "name": "Isaria fumosorosea Apopka strain 97 (formerly Paecilomyces fumosoroseus)",
@@ -3081,7 +3087,8 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 235
+   "row": 235,
+   "cas_review": "مرشح 52-90-4 (حمض أميني) — 52-89-1 هو الهيدروكلوريد فلا يُستخدم"
   },
   {
    "name": "Laminarin",
@@ -3187,7 +3194,11 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 243
+   "row": 243,
+   "cas_suggested": [
+    "94-74-6 acid"
+   ],
+   "cas_source": "eu"
   },
   {
    "name": "MCPB",
@@ -3297,9 +3308,9 @@
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
    "row": 251,
-   "cas_raw": "374726-62-2",
-   "cas_corrected": "",
-   "cas_source": "official-500"
+   "cas_raw": "374726-22-2",
+   "cas_corrected": "374726-62-2",
+   "cas_source": "epa-master"
   },
   {
    "name": "Mecoprop-P",
@@ -3397,7 +3408,8 @@
    "row": 260,
    "cas_raw": "70630-17-0 (R)",
    "cas_corrected": "70630-17-0",
-   "cas_source": "epa-master"
+   "cas_source": "epa-master",
+   "cas_stereo": "(R)"
   },
   {
    "name": "Metaldehyde",
@@ -3408,7 +3420,12 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 261
+   "row": 261,
+   "cas_suggested": [
+    "108-62-3 tetramer",
+    "9002-91-9 homopolymer"
+   ],
+   "cas_source": "eu-remark"
   },
   {
    "name": "Metam (incl. -potassium and -sodium)",
@@ -3539,7 +3556,12 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 271
+   "row": 271,
+   "cas_suggested": [
+    "51596-10-2 A3",
+    "51596-11-3 A4"
+   ],
+   "cas_source": "eu+epa"
   },
   {
    "name": "Mild Pepino Mosaic Virus Isolate VC 1",
@@ -4111,9 +4133,9 @@
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
    "row": 317,
-   "cas_raw": "52888-80-9",
-   "cas_corrected": "",
-   "cas_source": "official-500"
+   "cas_raw": "52888-90-9",
+   "cas_corrected": "52888-80-9",
+   "cas_source": "eu+pubchem"
   },
   {
    "name": "Prosulfuron",
@@ -4475,7 +4497,11 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 347
+   "row": 347,
+   "cas_suggested": [
+    "122931-48-0"
+   ],
+   "cas_source": "eu-2026+epa"
   },
   {
    "name": "Salix spp. cortex",

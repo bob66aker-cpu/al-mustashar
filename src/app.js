@@ -81,17 +81,30 @@
     const k = LEGEND_STATUS_KEYS[String(rawStatus || '').trim()];
     return k ? t(k, '') : '';
   }
-  function catName(code) {
-    /* 1.2 — compound functional codes (Decree-248 «I/A» and friends) are
-     * resolved to their parts so the tooltip/popover explains EVERY part:
-     * catName('I/A') previously looked up the literal key «I/A» which is not
-     * in the fixed table → the misleading «رمز غير معرّف» hint on real data
-     * (Tetradifon, CAS 116-29-0, carries category "I/A" in libya-248.json). */
+  /* 1.2 + round 2026-09-27: compound functional codes (Decree-248 «I/A»
+   * and friends) are resolved to their parts so the tooltip/popover explains
+   * EVERY part. Separator set is now +, «,» and / (all real data forms), plus
+   * '.' under ONE documented condition: a dot separates parts only when EVERY
+   * dot-part is itself a code of the fixed table («F.rep» → F + rep). Dotted
+   * source codes that are not fully explained — S.Ph (35 rows), P.G.R (25),
+   * I.Ph (5), R.S (1) — therefore stay ONE literal code and get the
+   * «رمز غير مشروح» hint instead of being torn into wrong halves. Nothing
+   * is ever guessed: an unknown code is shown verbatim, never interpreted. */
+  const CAT_HARD_SEP = /[\/,+]/;
+  const CAT_DOT_SEP = /\./;
+  function catParts(code) {
     const c = String(code || '').trim();
-    if (!c) return '';
-    const parts = c.split(/[\/,+]/).map(p => p.trim()).filter(Boolean);
+    if (!c) return [];
+    return c.split(CAT_HARD_SEP).map(p => p.trim()).filter(Boolean)
+      .flatMap(p => p.includes('.') && p.split(CAT_DOT_SEP).every(q => LEGEND_CAT_KEYS[q.trim()])
+        ? p.split(CAT_DOT_SEP).map(q => q.trim()).filter(Boolean)
+        : [p]);
+  }
+  function catName(code) {
+    const parts = catParts(code);
+    if (!parts.length) return '';
     if (parts.length > 1) return parts.map(p => catName(p) || '').filter(Boolean).join(' + ');
-    const k = LEGEND_CAT_KEYS[c];
+    const k = LEGEND_CAT_KEYS[parts[0]];
     return k ? t(k, '') : '';
   }
   /* Category tooltip: known codes get the fixed-table meaning; a COMPOUND
@@ -99,14 +112,13 @@
    * « + ». A part not in the table yields the literal «رمز غير معرّف في
    * دليل القرار» hint for that part only. */
   function catTitle(code) {
-    const c = String(code || '').trim();
-    if (!c) return '';
-    const parts = c.split(/[\/,+]/).map(p => p.trim()).filter(Boolean);
+    const parts = catParts(code);
+    if (!parts.length) return '';
     if (parts.length > 1) {
-      const unknown = t('legend.cat.unknown', 'رمز غير معرّف في دليل القرار.');
+      const unknown = t('legend.cat.unknown', 'رمز غير مشروح في دليل هذا المصدر');
       return parts.map(p => catName(p) || unknown).join(' + ');
     }
-    return catName(c) || t('legend.cat.unknown', 'رمز غير معرّف في دليل القرار.');
+    return catName(parts[0]) || t('legend.cat.unknown', 'رمز غير مشروح في دليل هذا المصدر');
   }
 
   /* i18n helpers (src/i18n.js loads before this file). Arabic fallbacks
@@ -221,6 +233,42 @@
     loading: 'db-loading', ok: 'db-ok', cached: 'db-cached', unavailable: 'db-bad'
   };
 
+  /* (هـ4) — العدّ البرمجي لأعمار قرار 500 من عمود status في الملف المحمَّل
+   * (لا رقم مكتوب يدويًا)، مع مجموع التصنيفات بعد فك الرموز المركّبة.
+   * مجموع التصنيفات يتجاوز عدد الصفوف لأن مادة واحدة قد تحمل أكثر من
+   * تصنيف (تعدد الاستخدامات): التصنيف ليس تقسيمًا للصفوف — وهذا مذكور
+   * في النص المعروض، لا مخفي. */
+  function render500Break() {
+    const el = $('#dbBreak500');
+    if (!el) return;
+    const d = DB['libya-500'];
+    if (!d || !Array.isArray(d.rows) || !d.rows.length) { el.hidden = true; return; }
+    const byStatus = {}, byCat = {};
+    d.rows.forEach(r => {
+      const s = String(r.status || '').trim() || '—';
+      byStatus[s] = (byStatus[s] || 0) + 1;
+      catParts(r.category).forEach(p => { byCat[p] = (byCat[p] || 0) + 1; });
+    });
+    const list = o => Object.keys(o).sort((a, b) => o[b] - o[a] || a.localeCompare(b))
+      .map(k => k + ' ' + o[k]).join(' · ');
+    const sum = o => Object.keys(o).reduce((a, k) => a + o[k], 0);
+    const stLine = document.createElement('span');
+    stLine.className = 'brk-line';
+    stLine.textContent = tf('data.500.status',
+      'الحالة — عدّ محسوب من الملف المحمَّل: {list} (مجموع {sum} من {rows} صف).',
+      { list: list(byStatus), sum: sum(byStatus), rows: d.rows.length });
+    const catLine = document.createElement('span');
+    catLine.className = 'brk-line';
+    catLine.textContent = tf('data.500.cat',
+      'التصنيف بعد فك الرموز المركّبة: {list} (مجموع {sum}) — يتجاوز {rows} لأن مادة واحدة قد تحمل أكثر من تصنيف (تعدد الاستخدامات)؛ فالتصنيف ليس تقسيمًا للصفوف.',
+      { list: list(byCat), sum: sum(byCat), rows: d.rows.length });
+    el.textContent = '';
+    el.appendChild(stLine);
+    el.appendChild(document.createElement('br'));
+    el.appendChild(catLine);
+    el.hidden = false;
+  }
+
   function renderDbStatus() {
     const ST = statusText();
     SOURCES.forEach(s => {
@@ -231,6 +279,7 @@
         + (st.count ? ' (' + st.count.toLocaleString('en-US') + ')' : '');
       chip.className = 'chip ' + STATUS_CLASS[st.phase];
     });
+    render500Break();
     const ready = SOURCES.filter(s => state[s.key].phase === 'ok' || state[s.key].phase === 'cached');
     const total = ready.reduce((a, s) => a + state[s.key].count, 0);
     const badge = $('#dbCount');
@@ -542,7 +591,11 @@
           if (corr && casList === corr) {
             const raw = CasDissect.casDisplayRaw(x.r);
             const srcKey = CasDissect.casSourceKey(x.r);
-            casHtml = esc(corr)
+            /* (هـ5) the stereo descriptor lives in its OWN field (cas_stereo)
+             * so normalising the printed «70630-17-0 (R)» to the number alone
+             * can never drop the (R). Shown next to the corrected number. */
+            const stereo = CasDissect.casStereo ? CasDissect.casStereo(x.r) : '';
+            casHtml = esc(corr) + (stereo ? ' ' + esc(stereo) : '')
               + ' <span class="cas-raw-old">' + esc(raw) + '</span>'
               + ' <span class="cas-src">(' + esc(t('cas.source.' + srcKey,
                   srcKey === 'epa-master' ? 'مُصحح من EPA Master' : 'مصحح')) + ')</span>';
@@ -553,6 +606,41 @@
           + ' <span class="nocas">(' + t('cas.nocas', 'بلا رقم في المصدر') + ')</span>';
       } else {
         casHtml = t('cas.missing', 'غير متوفر');
+      }
+      /* Round 2026-09-27 (part 2) — annotation block under the CAS line.
+       * Documented CANDIDATE numbers (never written into the source value),
+       * the documented stereo ambiguity, reviewer text, and the 248
+       * information notes / duplicate marks. Labels are i18n keys; row text is
+       * escaped; nothing here decides a legal status. */
+      const CD = window.CasDissect;
+      let casNotes = '';
+      if (CD) {
+        const sug = CD.casSuggested ? CD.casSuggested(x.r) : [];
+        if (sug.length) {
+          const sugSrc = String(x.r.cas_source || '').trim();
+          casNotes += '<p class="cas-note">' + esc(t('cas.suggested',
+              'قيم مقترحة موثقة المصدر — ليست بديلًا عن قيمة المرسوم:')) + ' '
+            + esc(sug.join(' · '))
+            + (sugSrc ? ' <span class="cas-src">(' + esc(t('cas.source.' + sugSrc, sugSrc)) + ')</span>' : '')
+            + '</p>';
+        }
+        if (CD.casFlag && CD.casFlag(x.r) === 'stereo-ambiguous')
+          casNotes += '<p class="cas-note warn"><span class="badge warn">'
+            + esc(t('cas.stereo.badge', 'الرقم غير محسوم')) + '</span> '
+            + esc(t('cas.stereo.note',
+                'الرقم المصحح يخص (+)-Carvone؛ اسم الصف عام لا يحسم المتماكب (الراسيمي 99-49-0) — الهوية تتطلب مراجعة بشرية'))
+            + '</p>';
+        const rev = CD.casReview ? CD.casReview(x.r) : '';
+        if (rev)
+          casNotes += '<p class="cas-note">' + esc(t('cas.review', 'ملاحظة مراجعة (لا رقم مؤكَّد):')) + ' ' + esc(rev) + '</p>';
+        const cNote = CD.casNote ? CD.casNote(x.r) : '';
+        if (cNote)
+          casNotes += '<p class="cas-note warn"><span class="badge warn">'
+            + esc(t('cas.note.badge', 'تنبيه الرقم')) + '</span> ' + esc(cNote) + '</p>';
+        const dup = CD.casDuplicateNote ? CD.casDuplicateNote(x.r) : '';
+        if (dup)
+          casNotes += '<p class="cas-note"><span class="badge">'
+            + esc(t('cas.dup.badge', 'صف مكرر')) + '</span> ' + esc(dup) + '</p>';
       }
       const strong = x.s.v >= 90;
       const raw = x.r.status_raw && showDetails
@@ -586,7 +674,7 @@
         + bar
         + '<p class="status ' + stClass + '">' + esc(sd.text) + (sd.chip || '') + '</p>'
         + '<p class="meta">' + t('cas.label', 'CAS:') + ' ' + casHtml + '</p>'
-        + cat + raw + matchType
+        + casNotes + cat + raw + matchType
         + (sd.extra && sd.extra.length
           ? '<p class="meta">' + sd.extra.map(e => t(e.key, '')
             + (e.reason ? ' — ' + esc(e.reason) : '')).filter(Boolean).join(' · ') + '</p>'
@@ -1912,7 +2000,7 @@
       const code = cat.getAttribute('data-cat');
       openLegendRaw(catName(code)
         ? code + '\n' + catName(code)
-        : t('legend.cat.unknown', 'رمز غير معرّف في دليل القرار.'), cat);
+        : t('legend.cat.unknown', 'رمز غير مشروح في دليل هذا المصدر'), cat);
       return;
     }
     if (!e.target.closest('#legendPop')) closeLegend();
@@ -1931,7 +2019,7 @@
     const body = pop.querySelector('.lg-content');
     if (!body) return;
     body.innerHTML = '<strong class="lg-code">' + esc(String(text).split('\n')[0]) + '</strong>'
-      + '<p class="lg-body">' + esc(String(text).split('\n').slice(1).join('\n') || t('legend.cat.unknown', 'رمز غير معرّف في دليل القرار.')) + '</p>';
+      + '<p class="lg-body">' + esc(String(text).split('\n').slice(1).join('\n') || t('legend.cat.unknown', 'رمز غير مشروح في دليل هذا المصدر')) + '</p>';
     pop.hidden = false;
     const r = anchor.getBoundingClientRect();
     const pw = Math.min(300, window.innerWidth - 24);

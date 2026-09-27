@@ -62,20 +62,26 @@ const epac = JSON.parse(readFileSync(join(root, 'data/epa-cancelled.json'), 'utf
 /* 1.2 — compound functional code I/A resolves to both parts */
 {
   const app = readFileSync(join(root, 'src/app.js'), 'utf8');
-  must('1.2: catName splits compound codes on /,+',
-    /parts = c\.split\(\/\[\\\/,\+\]\/\)/.test(app) || /split\(\/\[\\\/,\+\]\/\)/.test(app));
+  /* the splitter was generalised in the 2026-09-27 CAS round (catParts:
+   * + , / always split; '.' only when both dot-parts are codes of the table) */
+  must('1.2: catParts splits compound codes on / , + (and conditionally on .)',
+    app.includes('const CAT_HARD_SEP = ') && app.includes('const CAT_DOT_SEP = ')
+    && app.includes('function catParts(code)') && app.includes('.split(CAT_HARD_SEP)')
+    && app.includes('.split(CAT_DOT_SEP)'));
   const l248Tet = l248.rows.find(r => String(r.cas || '').includes('116-29-0'));
   must('1.2: Tetradifon row carries category I/A in libya-248 (precondition)',
     !!l248Tet && l248Tet.category === 'I/A', l248Tet && l248Tet.category);
-  // behavioral check of the split logic (replicated from catName source)
+  /* behavioural check against the SHIPPED splitter: the category block is
+   * sliced out of app.js and executed here (no replicated copy that can drift) */
   const LEGEND = ['I', 'F', 'A', 'N', 'H', 'R', 'M', 'S.ph', 'PGR', 'rep'];
-  const catName = c => {
-    const parts = String(c || '').trim().split(/[\//,+]/).map(p => p.trim()).filter(Boolean);
-    if (parts.length > 1) return parts.map(p => LEGEND.includes(p) ? p : '').filter(Boolean).join(' + ');
-    return LEGEND.includes(String(c).trim()) ? String(c).trim() : '';
-  };
-  must('1.2: I/A resolves to two explained parts', catName('I/A') === 'I + A', catName('I/A'));
-  must('1.2: single codes still resolve', catName('H') === 'H');
+  const start = app.indexOf('const LEGEND_CAT_KEYS = {');
+  const end = app.indexOf('/* i18n helpers');
+  const slice = start >= 0 && end > start ? app.slice(start, end) : '';
+  const catName = slice
+    ? new Function('LEGEND', slice + '\nconst t = (k, fb) => LEGEND.includes(k.split(".").pop()) || k === "legend.cat.unknown" ? k : "";\nreturn catName;')(LEGEND)
+    : () => '';
+  must('1.2: I/A resolves to two explained parts', catName('I/A').split(' + ').length === 2, catName('I/A'));
+  must('1.2: single codes still resolve', catName('H') === 'legend.cat.H', catName('H'));
 }
 
 /* 1.3 — epa-cancelled source label */

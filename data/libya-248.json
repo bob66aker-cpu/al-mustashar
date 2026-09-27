@@ -125,7 +125,8 @@
    "decision": "قرار 248 لسنة 2024",
    "row": 10,
    "cas_source": "official-248",
-   "cas_multi": true
+   "cas_multi": true,
+   "cas_note": "58-89-9 رقم غاما/ليندين؛ ألفا-HCH = 319-84-6"
   },
   {
    "name": "Amitraz",
@@ -221,7 +222,8 @@
    "source": "ليبيا",
    "decision": "قرار 248 لسنة 2024",
    "row": 18,
-   "cas_source": "official-248"
+   "cas_source": "official-248",
+   "cas_note": "34681-10-2 هو رقم Butocarboxim (صف 19)؛ المرجع الدولي لـ Bromoxynil octanoate هو 1689-99-2 [PubChem]"
   },
   {
    "name": "Butocarboxim",
@@ -570,7 +572,8 @@
    "source": "ليبيا",
    "decision": "قرار 248 لسنة 2024",
    "row": 47,
-   "cas_source": "official-248"
+   "cas_source": "official-248",
+   "cas_note": "608-73-1 رقم HCH التقني المزيج؛ غاما = 58-89-9"
   },
   {
    "name": "Heptachlor",
@@ -837,7 +840,8 @@
    "source": "ليبيا",
    "decision": "قرار 248 لسنة 2024",
    "row": 69,
-   "cas_source": "official-248"
+   "cas_source": "official-248",
+   "duplicate_note": "مكرر بنفس الرقم وتصنيفين (I/F)"
   },
   {
    "name": "Procymidon (Procymidone)",
@@ -849,7 +853,8 @@
    "source": "ليبيا",
    "decision": "قرار 248 لسنة 2024",
    "row": 70,
-   "cas_source": "official-248"
+   "cas_source": "official-248",
+   "duplicate_note": "مكرر بنفس الرقم وتصنيفين (I/F)"
   },
   {
    "name": "Propineb",

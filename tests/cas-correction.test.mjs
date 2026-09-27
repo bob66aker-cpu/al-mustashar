@@ -1,6 +1,9 @@
 /*
  * tests/cas-correction.test.mjs — documented CAS-correction layer (2026-09-27)
  * ---------------------------------------------------------------------------
+ * Round 2 (also approved, 2026-09-27) adds two more repairs with their own
+ * documented source key, the binary checksum proof (raw fails / fixed passes)
+ * for every named pair, and searches by the two new corrected numbers.
  * Contract (user-approved round): libya-500 broken decree numbers are stored
  * with a provenance triple (cas_raw / cas_corrected / cas_source); the main
  * `cas` field carries the CORRECTED value so search matches real numbers;
@@ -34,7 +37,7 @@ const d2 = JSON.parse(fs.readFileSync('data/libya-248.json', 'utf8'));
 const app = fs.readFileSync('src/app.js', 'utf8');
 const i18n = fs.readFileSync('src/i18n.js', 'utf8');
 
-/* ---------- 1) the six documented repairs, stored correctly ---------- */
+/* ---------- 1) the eight documented repairs, stored correctly ---------- */
 const EXPECTED = [
   { name: 'Capric acid (CAS 334-48-5)', raw: '334485', fixed: '334-48-5' },
   { name: 'Captan', raw: '133-06-02', fixed: '133-06-2' },
@@ -42,6 +45,10 @@ const EXPECTED = [
   { name: 'Cycloxydim', raw: '101 205-02-1', fixed: '101205-02-1' },
   { name: 'Mesotrione', raw: '104206-8', fixed: '104206-82-8' },
   { name: 'Metalaxyl-M', raw: '70630-17-0 (R)', fixed: '70630-17-0' },
+  /* round 2 — same pattern, own documented source keys (the `cas` value was
+   * already corrected on 2026-09-20; the triple itself was simply missing) */
+  { name: 'Mandipropamid', raw: '374726-22-2', fixed: '374726-62-2', src: 'epa-master' },
+  { name: 'Prosulfocarb', raw: '52888-90-9', fixed: '52888-80-9', src: 'eu+pubchem' },
 ];
 check('libya-500 row count intact (411)', d5.rows.length === 411, String(d5.rows.length));
 check('meta.count matches rows', d5.meta.count === d5.rows.length);
@@ -49,10 +56,10 @@ for (const e of EXPECTED) {
   const r = d5.rows.find(x => x.name === e.name);
   check(`${e.name}: triple + corrected main field`,
     r && r.cas === e.fixed && r.cas_raw === e.raw
-    && r.cas_corrected === e.fixed && r.cas_source === 'epa-master',
+    && r.cas_corrected === e.fixed && r.cas_source === (e.src || 'epa-master'),
     r ? JSON.stringify({ cas: r.cas, raw: r.cas_raw, src: r.cas_source }) : 'row missing');
 }
-check('all six corrected values pass casChecksum',
+check('all eight corrected values pass casChecksum',
   EXPECTED.every(e => CD.casChecksum(e.fixed) === true));
 check('raw decree values are preserved verbatim (never lost)',
   EXPECTED.every(e => (d5.rows.find(x => x.name === e.name) || {}).cas_raw === e.raw));
@@ -66,8 +73,22 @@ check('uncorrected rows: cas_displayRaw == stored value, no corrected flag',
   numeric.filter(r => !String(r.cas_corrected || '').trim())
     .every(r => CD.casDisplayRaw(r) === String(r.cas).trim()
       && CD.casDisplayCorrected(r) === ''));
-check('no row invents a correction without cas_source',
-  numeric.every(r => (String(r.cas_corrected || '').trim() ? r.cas_source === 'epa-master' : true)));
+/* documented source keys only — a correction carrying an unknown key is a bug */
+const DOC_SOURCES = ['epa-master', 'eu+pubchem'];
+check('no row invents a correction without a documented source key',
+  numeric.every(r => (String(r.cas_corrected || '').trim() ? DOC_SOURCES.includes(r.cas_source) : true)));
+
+/* the two round-2 values are corroborated INSIDE the repo, not by us */
+{
+  const epa = JSON.parse(fs.readFileSync('data/epa.json', 'utf8'));
+  const eu = JSON.parse(fs.readFileSync('data/eu.json', 'utf8'));
+  const mp = epa.rows.find(r => r.name === 'Mandipropamide Technical');
+  check('Mandipropamid corrected value exists in EPA Master (PC 036602)',
+    mp && mp.cas === '374726-62-2' && mp.pc_code === '036602', mp ? mp.cas : 'missing');
+  const euPro = eu.rows.find(r => r.name === 'Prosulfocarb');
+  check('Prosulfocarb corrected value exists in the EU file',
+    euPro && euPro.cas === '52888-80-9', euPro ? euPro.cas : 'missing');
+}
 
 /* Carvone is THE documented special case: decree dropped a digit; EU db has
  * the same defect — the correction comes from EPA Master, not from EU. */
@@ -86,6 +107,29 @@ check('casDisplayRaw exposes the decree value (the display honesty contract)',
 check('casSourceKey resolves to the epa-master machine key',
   CD.casSourceKey(cap) === 'epa-master');
 
+/* ---------- 3b) (هـ3) binary checksum proof, computed live ----------
+ * For every pair named by the owner: the raw decree value FAILS the check
+ * digit and the corrected value PASSES it. No hardcoded verdict. */
+const WELL_SHAPE = /^[0-9]{2,7}-[0-9]{2}-[0-9]$/;
+for (const [raw, fixed] of [['133-06-02', '133-06-2'], ['244-16-8', '2244-16-8'],
+  ['104206-8', '104206-82-8']]) {
+  check(`check-digit pair ${raw} (fails) → ${fixed} (passes)`,
+    CD.casChecksum(raw) === false && CD.casChecksum(fixed) === true,
+    `raw=${CD.casChecksum(raw)} fixed=${CD.casChecksum(fixed)}`);
+}
+/* HONEST EXCEPTION, measured not assumed: 334485 does NOT fail the check
+ * digit (33448·5+3344·4… sums to 55 → 55%10 === 5). Its defect is the SHAPE —
+ * it is not a well-formed CAS because the hyphens are missing, which is why
+ * the audit lists it under MALF, not under FAIL. The repair restores the
+ * shape and the value keeps passing the digit. */
+check('334485 is not a well-formed CAS (shape, not digit) while 334-48-5 is',
+  WELL_SHAPE.test('334485') === false && WELL_SHAPE.test('334-48-5') === true
+  && CD.casChecksum('334-48-5') === true && CD.casChecksum('334485') === true,
+  'shape raw=' + WELL_SHAPE.test('334485') + ' digit raw=' + CD.casChecksum('334485'));
+for (const [raw, fixed] of [['374726-22-2', '374726-62-2'], ['52888-90-9', '52888-80-9']])
+  check(`round-2 pair ${raw} (fails) → ${fixed} (passes)`,
+    CD.casChecksum(raw) === false && CD.casChecksum(fixed) === true);
+
 /* ---------- 4) search matches by the corrected number ---------- */
 {
   const search = SC.buildSearch([
@@ -97,6 +141,12 @@ check('casSourceKey resolves to the epa-master machine key',
   const byCarvone = search('2244-16-8', true).filter(x => x.k === 'libya-500');
   check('search finds Carvone by the corrected number 2244-16-8',
     byCarvone.some(x => x.r.name === 'Carvone' && x.s.v === 100));
+  const mand = search('374726-62-2', true).filter(x => x.k === 'libya-500');
+  check('search finds Mandipropamid by the corrected number 374726-62-2',
+    mand.some(x => x.r.name === 'Mandipropamid' && x.s.v === 100));
+  const pro = search('52888-80-9', true).filter(x => x.k === 'libya-500');
+  check('search finds Prosulfocarb by the corrected number 52888-80-9',
+    pro.some(x => x.r.name === 'Prosulfocarb' && x.s.v === 100));
   const glyph = search('1071-83-6', true).filter(x => x.k === 'libya-500');
   check('untouched rows keep matching (Glyphosate regression)',
     glyph.some(x => x.r.name === 'Glyphosate' && x.s.v === 100));

@@ -13,7 +13,8 @@
  *       + طابور أحادي OcrModule.scan() بديل التعامل المتزامن العشوائي.
  *   3.5 الباركود أولًا: BarcodeDetector ثم zxing-wasm المُورَّد داخل Worker —
  *       إشارة قابلة للتفقد لا حكم، صفر شبكة (مُستبعد من CWV شبكة الإقلاع).
- *   3.4 لغة OCR حسب لغة الواجهة: ara+eng للعربية (هالوسة 3.5→0.75) وeng
+ *   3.4 لغة OCR حسب لغة الواجهة: ara+eng للعربية (هالوسة موثقة: 28 محرفًا عربيًا
+ *     على ملصق لاتيني مع eng+ara مقابل 0 مع eng — docs/ocr-baseline.md §lang) وeng
  *       لغيرها — worker واحد لكل تكوين، ولوحة التجهيز بالأحجام الفعلية.
  *   3.2/3.6 توثيق سقف الأبعاد 1600 وبوابات المتغيرات الثقيلة (deep lanes
  *       لا تمس الصور الناجحة) — لا سلسلة معالجة ثقيلة لكل صورة.
@@ -187,7 +188,8 @@ const OCR_ASSETS = [
   './vendor/tesseract/lang/eng.traineddata.gz',
   /* 3.4: ara returns to the RUNTIME set as an on-demand ADDITION, not a
    * default: the engine now initializes ara+eng when the UI language is
-   * Arabic (hallucination measured 3.5→0.75 on baseline set) and eng-only
+   * Arabic (documented hallucination: 28 Arabic glyphs on a Latin label with
+   * eng+ara vs 0 with eng-only — docs/ocr-baseline.md §lang) and eng-only
    * otherwise. The ocr-eng-only guard was updated accordingly (it now
    * asserts ara is NEVER a default). */
   './vendor/tesseract/lang/ara.traineddata.gz',

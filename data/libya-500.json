@@ -14,7 +14,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 1
+   "row": 1,
+   "cas_raw": "33189-72-9",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "(E)-5-Decen-1-ol (SCLP Alcohols)",
@@ -25,7 +28,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 2
+   "row": 2,
+   "cas_raw": "56578-18-8",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "(E)-5-Decen-1-yl acetate (SCLP Acetates)",
@@ -36,7 +42,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 3
+   "row": 3,
+   "cas_raw": "38421-90-8",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "(E)-8-Dodecen-1-yl acetate (SCLP Acetates)",
@@ -47,7 +56,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 4
+   "row": 4,
+   "cas_raw": "38363-29-0",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "(E,E)-7,9-Dodecadien-1-yl acetate (SCLP Acetates)",
@@ -69,7 +81,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 6
+   "row": 6,
+   "cas_raw": "33956-49-9",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "(E,E)-8,10-Dodecadien-1-yl acetate (SCLP Acetates)",
@@ -91,7 +106,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 8
+   "row": 8,
+   "cas_raw": "86252-65-5",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "(E,Z)-3,13-Octadecadien-1-yl acetate (SCLP Acetates)",
@@ -124,7 +142,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 11
+   "row": 11,
+   "cas_raw": "54364-62-4",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "(E,Z,Z)-3,8,11-Tetradecatrien-1-yl acetate (SCLP Acetates)",
@@ -146,7 +167,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 13
+   "row": 13,
+   "cas_raw": "56683-54-6",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "(Z)-11-Hexadecen-1-yl acetate (SCLP Acetates)",
@@ -157,7 +181,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 14
+   "row": 14,
+   "cas_raw": "34010-21-4",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "(Z)-11-Hexadecenal (SCLP Aldehydes)",
@@ -168,7 +195,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 15
+   "row": 15,
+   "cas_raw": "53939-28-9",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "(Z)-11-Tetradecen-1-yl acetate (SCLP Acetates)",
@@ -179,7 +209,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 16
+   "row": 16,
+   "cas_raw": "20711-10-8",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "(Z)-13-Octadecenal (SCLP Aldehydes)",
@@ -190,7 +223,10 @@
    "status": "RAR",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 17
+   "row": 17,
+   "cas_raw": "58594-45-9",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "(Z)-7-Tetradecenal (SCLP Aldehydes)",
@@ -201,7 +237,10 @@
    "status": "RAR",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 18
+   "row": 18,
+   "cas_raw": "65128-96-3",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "(Z)-7-dodecen-1-yl acetate (SCLP Acetates)",
@@ -223,7 +262,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 20
+   "row": 20,
+   "cas_raw": "40642-40-8",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "(Z)-8-Dodecen-1-yl acetate (SCLP Acetates)",
@@ -234,7 +276,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 21
+   "row": 21,
+   "cas_raw": "28079-04-1",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "(Z)-8-Tetradecen-1-ol (SCLP Alcohols)",
@@ -267,7 +312,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 24
+   "row": 24,
+   "cas_raw": "16974-11-1",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "(Z)-9-Hexadecenal (SCLP Aldehydes)",
@@ -278,7 +326,10 @@
    "status": "RAR",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 25
+   "row": 25,
+   "cas_raw": "56219-04-6",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "(Z)-9-Tetradecen-1-ol (SCLP Alcohols)",
@@ -300,7 +351,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 27
+   "row": 27,
+   "cas_raw": "16725-53-4",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "(Z,E)-9,12-Tetradecadien-1-yl acetate (SCLP - Acetates)",
@@ -311,7 +365,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 28
+   "row": 28,
+   "cas_raw": "31654-77-0",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "(Z,Z)-3,13-Octadecadien-1-yl acetate",
@@ -344,7 +401,10 @@
    "status": "RAR",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 31
+   "row": 31,
+   "cas_raw": "571-58-4",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "1-Decanol",
@@ -355,7 +415,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 32
+   "row": 32,
+   "cas_raw": "112-30-1",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "1-Naphthylacetamide (1-NAD)",
@@ -366,7 +429,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 33
+   "row": 33,
+   "cas_raw": "86-86-2",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "1-Naphthylacetic acid (1-NAA)",
@@ -377,7 +443,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 34
+   "row": 34,
+   "cas_raw": "86-87-3",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "1-methylcyclopropene",
@@ -388,7 +457,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 35
+   "row": 35,
+   "cas_raw": "3100-04-7",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "2,4-D",
@@ -399,7 +471,10 @@
    "status": "REV*",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 36
+   "row": 36,
+   "cas_raw": "94-75-7",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "2,4-DB",
@@ -410,7 +485,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 37
+   "row": 37,
+   "cas_raw": "94-82-6",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "2,5-Dichlorobenzoic acid methylester",
@@ -421,7 +499,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 38
+   "row": 38,
+   "cas_raw": "2905-69-3",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "2-Phenylphenol (incl. sodium salt orthophenyl phenol)",
@@ -432,7 +513,10 @@
    "status": "RAR",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 39
+   "row": 39,
+   "cas_raw": "90-43-7",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "24-Epibrassinolide",
@@ -443,7 +527,10 @@
    "status": "RAR",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 40
+   "row": 40,
+   "cas_raw": "78821-43-9",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "6-Benzyladenine",
@@ -454,7 +541,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 41
+   "row": 41,
+   "cas_raw": "1214-39-7",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "ABE-IT 56",
@@ -476,7 +566,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 43
+   "row": 43,
+   "cas_raw": "71751-41-2",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Acequinocyl",
@@ -487,7 +580,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 44
+   "row": 44,
+   "cas_raw": "57960-19-7",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Acetamiprid",
@@ -498,7 +594,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 45
+   "row": 45,
+   "cas_raw": "135410-20-7",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Acetic acid",
@@ -509,7 +608,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 46
+   "row": 46,
+   "cas_raw": "64-19-7",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Aclonifen",
@@ -520,7 +622,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 47
+   "row": 47,
+   "cas_raw": "74070-46-5",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Akanthomyces muscarius Ve6 (formerly Lecanicillium muscarium strain Ve6)",
@@ -564,7 +669,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 51
+   "row": 51,
+   "cas_raw": "7784-26-1",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Aluminium phosphide",
@@ -575,7 +683,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 52
+   "row": 52,
+   "cas_raw": "20859-73-8",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Aluminium silicate (aka kaolin)",
@@ -586,7 +697,10 @@
    "status": "RAR",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 53
+   "row": 53,
+   "cas_raw": "1332-58-7",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Aluminium sulfate",
@@ -597,7 +711,10 @@
    "status": "RAR",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 54
+   "row": 54,
+   "cas_raw": "17927-65-0",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Ametoctradin",
@@ -608,7 +725,10 @@
    "status": "RAR",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 55
+   "row": 55,
+   "cas_raw": "865318-97-4",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Amidosulfuron",
@@ -619,7 +739,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 56
+   "row": 56,
+   "cas_raw": "120923-37-7",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Aminopyralid",
@@ -630,7 +753,10 @@
    "status": "RAR",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 57
+   "row": 57,
+   "cas_raw": "150114-71-9",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Amisulbrom",
@@ -641,7 +767,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 58
+   "row": 58,
+   "cas_raw": "348635-87-0",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Ampelomyces quisqualis strain AQ10",
@@ -685,7 +814,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 62
+   "row": 62,
+   "cas_raw": "11141-17-6",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Azoxystrobin",
@@ -696,7 +828,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 63
+   "row": 63,
+   "cas_raw": "131860-33-8",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Bacillus amyloliquefaciens (formerly subtilis) strain QST 713",
@@ -993,7 +1128,10 @@
    "status": "RAR",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 90
+   "row": 90,
+   "cas_raw": "113614-08-7",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Benalaxyl-M",
@@ -1004,7 +1142,10 @@
    "status": "RAR",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 91
+   "row": 91,
+   "cas_raw": "98243-83-5",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Bensulfuron",
@@ -1015,7 +1156,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 92
+   "row": 92,
+   "cas_raw": "83055-99-6",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Bentazone",
@@ -1026,7 +1170,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 93
+   "row": 93,
+   "cas_raw": "25057-89-0",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Benzoic acid",
@@ -1037,7 +1184,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 94
+   "row": 94,
+   "cas_raw": "65-85-0",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Benzovindiflupyr",
@@ -1048,7 +1198,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 95
+   "row": 95,
+   "cas_raw": "1072957-71-1",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Betabaculovirus phoropcellulae",
@@ -1070,7 +1223,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 97
+   "row": 97,
+   "cas_raw": "149877-41-8",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Bifenox",
@@ -1081,7 +1237,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 98
+   "row": 98,
+   "cas_raw": "42576-02-3",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Bixafen",
@@ -1092,7 +1251,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 99
+   "row": 99,
+   "cas_raw": "581809-46-3",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Bixlozone",
@@ -1103,7 +1265,10 @@
    "status": "RAR",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 100
+   "row": 100,
+   "cas_raw": "81777-95-9",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Blood meal",
@@ -1136,7 +1301,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 103
+   "row": 103,
+   "cas_raw": "188425-85-6",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Bromuconazole",
@@ -1147,7 +1315,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 104
+   "row": 104,
+   "cas_raw": "116255-48-2",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Bupirimate",
@@ -1158,7 +1329,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 105
+   "row": 105,
+   "cas_raw": "41483-43-6",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Buprofezin",
@@ -1169,7 +1343,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 106
+   "row": 106,
+   "cas_raw": "69327-76-0",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "COS-OGA",
@@ -1191,7 +1368,10 @@
    "status": "RAR",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 108
+   "row": 108,
+   "cas_raw": "75-20-7",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Calcium carbonate",
@@ -1202,7 +1382,10 @@
    "status": "RAR",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 109
+   "row": 109,
+   "cas_raw": "471-34-1",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Calcium hydroxide",
@@ -1213,7 +1396,10 @@
    "status": "RAR",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 110
+   "row": 110,
+   "cas_raw": "1305-62-0",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Candida oleophila strain O",
@@ -1229,13 +1415,16 @@
   {
    "name": "Capric acid (CAS 334-48-5)",
    "name_norm": "capric acid (cas 334-48-5)",
-   "cas": "334485",
+   "cas": "334-48-5",
    "cas_norm": "334485",
    "category": "I+A+H",
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 112
+   "row": 112,
+   "cas_raw": "334485",
+   "cas_corrected": "334-48-5",
+   "cas_source": "epa-master"
   },
   {
    "name": "Caprylic acid (CAS 124-07-2)",
@@ -1246,18 +1435,24 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 113
+   "row": 113,
+   "cas_raw": "124-07-2",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Captan",
    "name_norm": "captan",
-   "cas": "133-06-02",
+   "cas": "133-06-2",
    "cas_norm": "1330602",
    "category": "F",
    "status": "REV*",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 114
+   "row": 114,
+   "cas_raw": "133-06-02",
+   "cas_corrected": "133-06-2",
+   "cas_source": "epa-master"
   },
   {
    "name": "Carbon dioxide (active substance)",
@@ -1268,7 +1463,10 @@
    "status": "RAR",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 115
+   "row": 115,
+   "cas_raw": "124-38-9",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Carfentrazone-ethyl",
@@ -1279,18 +1477,24 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 116
+   "row": 116,
+   "cas_raw": "128639-02-1",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Carvone",
    "name_norm": "carvone",
-   "cas": "244-16-8",
+   "cas": "2244-16-8",
    "cas_norm": "244168",
    "category": "F+PGR",
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 117
+   "row": 117,
+   "cas_raw": "244-16-8",
+   "cas_corrected": "2244-16-8",
+   "cas_source": "epa-master"
   },
   {
    "name": "Cerevisane",
@@ -1312,7 +1516,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 119
+   "row": 119,
+   "cas_raw": "9012-76-4",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Chitosan hydrochloride",
@@ -1323,7 +1530,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 120
+   "row": 120,
+   "cas_raw": "9012-76-4",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Chlorantraniliprole",
@@ -1334,7 +1544,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 121
+   "row": 121,
+   "cas_raw": "500008-45-7",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Chlormequat",
@@ -1345,7 +1558,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 122
+   "row": 122,
+   "cas_raw": "7003-89-6",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Chlorotoluron",
@@ -1356,7 +1572,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 123
+   "row": 123,
+   "cas_raw": "15545-48-9",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Clayed charcoal",
@@ -1378,7 +1597,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 125
+   "row": 125,
+   "cas_raw": "99129-21-2",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Clodinafop",
@@ -1389,7 +1611,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 126
+   "row": 126,
+   "cas_raw": "105512-06-9",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Clomazone",
@@ -1400,7 +1625,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 127
+   "row": 127,
+   "cas_raw": "81777-89-1",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Clonostachys rosea strain J1446 (Gliocladium catenulatum strain J1446)",
@@ -1422,7 +1650,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 129
+   "row": 129,
+   "cas_raw": "1702-17-6",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Coniothyrium minitans Strain CON/M/91-08 (DSM 9660)",
@@ -1455,7 +1686,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 133
+   "row": 133,
+   "cas_raw": "20427-59-2",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Copper oxide",
@@ -1466,7 +1700,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 134
+   "row": 134,
+   "cas_raw": "1317-39-1",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Copper oxychloride",
@@ -1477,7 +1714,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 135
+   "row": 135,
+   "cas_raw": "1332-65-6",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Cow Milk",
@@ -1499,7 +1739,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 137
+   "row": 137,
+   "cas_raw": "736994-63-1",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Cyazofamid",
@@ -1510,18 +1753,24 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 138
+   "row": 138,
+   "cas_raw": "120116-88-3",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Cycloxydim",
    "name_norm": "cycloxydim",
-   "cas": "101 205-02-1",
+   "cas": "101205-02-1",
    "cas_norm": "101205021",
    "category": "H",
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 139
+   "row": 139,
+   "cas_raw": "101 205-02-1",
+   "cas_corrected": "101205-02-1",
+   "cas_source": "epa-master"
   },
   {
    "name": "Cydia pomonella Granulovirus (CpGV)",
@@ -1543,7 +1792,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 141
+   "row": 141,
+   "cas_raw": "180409-60-3",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Cyflumetofen",
@@ -1554,7 +1806,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 142
+   "row": 142,
+   "cas_raw": "400882-07-7",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Cyhalofop-butyl",
@@ -1565,7 +1820,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 143
+   "row": 143,
+   "cas_raw": "122008-85-9",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Cymoxanil",
@@ -1576,7 +1834,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 144
+   "row": 144,
+   "cas_raw": "57966-95-7",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Cypermethrin",
@@ -1587,7 +1848,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 145
+   "row": 145,
+   "cas_raw": "52315-07-8",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Cyprodinil",
@@ -1598,7 +1862,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 146
+   "row": 146,
+   "cas_raw": "121552-61-2",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Daminozide",
@@ -1609,7 +1876,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 147
+   "row": 147,
+   "cas_raw": "1596-84-5",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Dazomet",
@@ -1620,7 +1890,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 148
+   "row": 148,
+   "cas_raw": "533-74-4",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Deltamethrin",
@@ -1631,7 +1904,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 149
+   "row": 149,
+   "cas_raw": "52918-63-5",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Diammonium phosphate",
@@ -1642,7 +1918,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 150
+   "row": 150,
+   "cas_raw": "7783-28-0",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Dicamba",
@@ -1653,7 +1932,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 151
+   "row": 151,
+   "cas_raw": "1918-00-9",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Dichlorprop-P",
@@ -1664,7 +1946,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 152
+   "row": 152,
+   "cas_raw": "15165-67-0",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Diclofop",
@@ -1675,7 +1960,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 153
+   "row": 153,
+   "cas_raw": "40843-25-2",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Difenoconazole",
@@ -1686,7 +1974,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 154
+   "row": 154,
+   "cas_raw": "119446-68-3",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Diflufenican",
@@ -1697,7 +1988,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 155
+   "row": 155,
+   "cas_raw": "83164-33-4",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Dimethachlor",
@@ -1708,7 +2002,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 156
+   "row": 156,
+   "cas_raw": "50563-36-5",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Dimethenamid-P",
@@ -1719,7 +2016,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 157
+   "row": 157,
+   "cas_raw": "163515-14-8",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Disodium phosphonate",
@@ -1730,7 +2030,10 @@
    "status": "RAR",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 158
+   "row": 158,
+   "cas_raw": "13708-85-5",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Dithianon",
@@ -1741,7 +2044,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 159
+   "row": 159,
+   "cas_raw": "3347-22-6",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Dodecan-1-ol (SCLP Alcohols)",
@@ -1752,7 +2058,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 160
+   "row": 160,
+   "cas_raw": "112-53-8",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Dodecyl acetate (SCLP Acetates)",
@@ -1763,7 +2072,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 161
+   "row": 161,
+   "cas_raw": "112-66-3",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Dodine",
@@ -1774,7 +2086,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 162
+   "row": 162,
+   "cas_raw": "2439-10-3",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Elemental iron",
@@ -1785,7 +2100,10 @@
    "status": "RAR",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 163
+   "row": 163,
+   "cas_raw": "7439-89-6",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Emamectin (benzoate)",
@@ -1796,7 +2114,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 164
+   "row": 164,
+   "cas_raw": "119791-41-2",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Equisetum arvense L.",
@@ -1818,7 +2139,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 166
+   "row": 166,
+   "cas_raw": "66230-04-4",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Ethephon",
@@ -1829,7 +2153,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 167
+   "row": 167,
+   "cas_raw": "16672-87-0",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Ethofumesate",
@@ -1840,7 +2167,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 168
+   "row": 168,
+   "cas_raw": "26225-79-6",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Ethylene",
@@ -1851,7 +2181,10 @@
    "status": "RAR",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 169
+   "row": 169,
+   "cas_raw": "74-85-1",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Etofenprox",
@@ -1862,7 +2195,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 170
+   "row": 170,
+   "cas_raw": "80844-07-1",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Etoxazole",
@@ -1873,7 +2209,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 171
+   "row": 171,
+   "cas_raw": "153233-91-1",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Eugenol",
@@ -1884,7 +2223,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 172
+   "row": 172,
+   "cas_raw": "97-53-0",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Extract from tea tree",
@@ -1917,7 +2259,10 @@
    "status": "RAR",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 175
+   "row": 175,
+   "cas_raw": "67701-09-1",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Fenazaquin",
@@ -1928,7 +2273,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 176
+   "row": 176,
+   "cas_raw": "120928-09-8",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Fenhexamid",
@@ -1939,7 +2287,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 177
+   "row": 177,
+   "cas_raw": "126833-17-8",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Fenoxaprop-P-ethyl",
@@ -1950,7 +2301,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 178
+   "row": 178,
+   "cas_raw": "71283-80-2",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Fenpicoxamid (formerly: Lyserphenvalpyr)",
@@ -1961,7 +2315,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 179
+   "row": 179,
+   "cas_raw": "517875-34-2",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Fenpropidin",
@@ -1972,7 +2329,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 180
+   "row": 180,
+   "cas_raw": "67306-00-7",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Fenpyroximate",
@@ -1983,7 +2343,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 181
+   "row": 181,
+   "cas_raw": "134098-61-6",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Ferric phosphate",
@@ -1994,7 +2357,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 182
+   "row": 182,
+   "cas_raw": "10045-86-0",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Ferric pyrophosphate",
@@ -2005,7 +2371,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 183
+   "row": 183,
+   "cas_raw": "10058-44-3",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Flazasulfuron",
@@ -2016,7 +2385,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 184
+   "row": 184,
+   "cas_raw": "104040-78-0",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Flonicamid (IKI-220)",
@@ -2027,7 +2399,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 185
+   "row": 185,
+   "cas_raw": "158062-67-0",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Florasulam",
@@ -2038,7 +2413,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 186
+   "row": 186,
+   "cas_raw": "145701-23-1",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Florpyrauxifen-benzyl",
@@ -2049,7 +2427,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 187
+   "row": 187,
+   "cas_raw": "139066-12-9",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Fluazifop-P",
@@ -2060,7 +2441,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 188
+   "row": 188,
+   "cas_raw": "83066-88-0",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Fluazinam",
@@ -2071,7 +2455,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 189
+   "row": 189,
+   "cas_raw": "79622-59-6",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Fludioxonil",
@@ -2082,7 +2469,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 190
+   "row": 190,
+   "cas_raw": "131341-86-1",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Flumioxazin",
@@ -2093,7 +2483,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 191
+   "row": 191,
+   "cas_raw": "103361-09-7",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Fluometuron",
@@ -2104,7 +2497,10 @@
    "status": "RAR",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 192
+   "row": 192,
+   "cas_raw": "2164-17-2",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Fluopicolide",
@@ -2115,7 +2511,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 193
+   "row": 193,
+   "cas_raw": "239110-15-7",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Fluopyram",
@@ -2126,7 +2525,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 194
+   "row": 194,
+   "cas_raw": "658066-35-4",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Fluoxastrobin",
@@ -2137,7 +2539,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 195
+   "row": 195,
+   "cas_raw": "361377-29-9",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Flupyradifurone",
@@ -2148,7 +2553,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 196
+   "row": 196,
+   "cas_raw": "951659-40-8",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Flurochloridone",
@@ -2159,7 +2567,10 @@
    "status": "RAR",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 197
+   "row": 197,
+   "cas_raw": "61213-25-0",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Fluroxypyr",
@@ -2170,7 +2581,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 198
+   "row": 198,
+   "cas_raw": "69377-81-7",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Flutianil",
@@ -2181,7 +2595,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 199
+   "row": 199,
+   "cas_raw": "958647-10-4",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Flutolanil",
@@ -2192,7 +2609,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 200
+   "row": 200,
+   "cas_raw": "66332-96-5",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Fluxapyroxad",
@@ -2203,7 +2623,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 201
+   "row": 201,
+   "cas_raw": "907204-31-3",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Folpet",
@@ -2214,7 +2637,10 @@
    "status": "REV*",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 202
+   "row": 202,
+   "cas_raw": "133-07-3",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Foramsulfuron",
@@ -2225,7 +2651,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 203
+   "row": 203,
+   "cas_raw": "173159-57-4",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Forchlorfenuron",
@@ -2236,7 +2665,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 204
+   "row": 204,
+   "cas_raw": "68157-60-8",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Formetanate",
@@ -2247,7 +2679,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 205
+   "row": 205,
+   "cas_raw": "23422-53-9",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Fosetyl",
@@ -2258,7 +2693,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 206
+   "row": 206,
+   "cas_raw": "15845-66-6",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Fosthiazate",
@@ -2269,7 +2707,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 207
+   "row": 207,
+   "cas_raw": "98886-44-3",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Fructose",
@@ -2280,7 +2721,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 208
+   "row": 208,
+   "cas_raw": "57-48-7",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Garlic extract",
@@ -2302,7 +2746,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 210
+   "row": 210,
+   "cas_raw": "106-24-1",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Gibberellic acid",
@@ -2313,7 +2760,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 211
+   "row": 211,
+   "cas_raw": "77-06-5",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Gibberellins",
@@ -2335,7 +2785,10 @@
    "status": "REV*",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 213
+   "row": 213,
+   "cas_raw": "1071-83-6",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Halauxifen-methyl",
@@ -2346,7 +2799,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 214
+   "row": 214,
+   "cas_raw": "943831-98-9",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Halosulfuron-methyl",
@@ -2357,7 +2813,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 215
+   "row": 215,
+   "cas_raw": "100784-20-1",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Helicoverpa armigera nucleopolyhedrovirus (HearNPV)",
@@ -2379,7 +2838,10 @@
    "status": "RAR",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 217
+   "row": 217,
+   "cas_raw": "870721-81-6",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Hexadecyl acetate (SCLP Acetates)",
@@ -2390,7 +2852,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 218
+   "row": 218,
+   "cas_raw": "629-70-9",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Hexythiazox",
@@ -2401,7 +2866,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 219
+   "row": 219,
+   "cas_raw": "78587-05-0",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Hydrogen peroxide",
@@ -2412,7 +2880,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 220
+   "row": 220,
+   "cas_raw": "7722-84-1",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Hydrolysed proteins",
@@ -2434,7 +2905,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 222
+   "row": 222,
+   "cas_raw": "10004-44-1",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Imazalil (aka enilconazole)",
@@ -2445,7 +2919,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 223
+   "row": 223,
+   "cas_raw": "35554-44-0",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Imazamox",
@@ -2456,7 +2933,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 224
+   "row": 224,
+   "cas_raw": "114311-32-9",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Indolylbutyric acid",
@@ -2467,7 +2947,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 225
+   "row": 225,
+   "cas_raw": "133-32-4",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Iodosulfuron",
@@ -2478,7 +2961,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 226
+   "row": 226,
+   "cas_raw": "185119-76-0",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Iprovalicarb",
@@ -2489,7 +2975,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 227
+   "row": 227,
+   "cas_raw": "140923-17-7",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Iron sulphate (EPA Ferrous Sulfate)",
@@ -2522,7 +3011,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 230
+   "row": 230,
+   "cas_raw": "875915-78-9",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Isoxaben",
@@ -2533,7 +3025,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 231
+   "row": 231,
+   "cas_raw": "82558-50-7",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Isoxaflutole",
@@ -2544,7 +3039,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 232
+   "row": 232,
+   "cas_raw": "141112-29-0",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Kieselgur (diatomaceous earth)",
@@ -2555,7 +3053,10 @@
    "status": "RAR",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 233
+   "row": 233,
+   "cas_raw": "61790-53-2",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Kresoxim-methyl",
@@ -2566,7 +3067,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 234
+   "row": 234,
+   "cas_raw": "143390-89-0",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "L-cysteine",
@@ -2588,7 +3092,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 236
+   "row": 236,
+   "cas_raw": "9008-22-4",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Lavandulyl senecioate",
@@ -2599,7 +3106,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 237
+   "row": 237,
+   "cas_raw": "23960-07-8",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Lecithins (basic substance)",
@@ -2610,7 +3120,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 238
+   "row": 238,
+   "cas_raw": "8002-43-5",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Lenacil",
@@ -2621,7 +3134,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 239
+   "row": 239,
+   "cas_raw": "2164-08-1",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Lime sulphur (calcium polysulphid)",
@@ -2632,7 +3148,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 240
+   "row": 240,
+   "cas_raw": "1344-81-6",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Limestone",
@@ -2643,7 +3162,10 @@
    "status": "RAR",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 241
+   "row": 241,
+   "cas_raw": "1317-65-3",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Lysate of Willaertia magna",
@@ -2676,7 +3198,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 244
+   "row": 244,
+   "cas_raw": "94-81-5",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Magnesium hydroxide E528",
@@ -2687,7 +3212,10 @@
    "status": "RAR",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 245
+   "row": 245,
+   "cas_raw": "1309-42-8",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Magnesium phosphide",
@@ -2698,7 +3226,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 246
+   "row": 246,
+   "cas_raw": "12057-74-8",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Malathion",
@@ -2709,7 +3240,10 @@
    "status": "REV*",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 247
+   "row": 247,
+   "cas_raw": "121-75-5",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Maleic hydrazide",
@@ -2720,7 +3254,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 248
+   "row": 248,
+   "cas_raw": "123-33-1",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Maltodextrin",
@@ -2731,7 +3268,10 @@
    "status": "RAR",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 249
+   "row": 249,
+   "cas_raw": "9050-36-6",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Mandestrobin",
@@ -2742,7 +3282,10 @@
    "status": "RAR",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 250
+   "row": 250,
+   "cas_raw": "173662-97-0",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Mandipropamid",
@@ -2753,7 +3296,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 251
+   "row": 251,
+   "cas_raw": "374726-62-2",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Mecoprop-P",
@@ -2764,7 +3310,10 @@
    "status": "RAR",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 252
+   "row": 252,
+   "cas_raw": "16484-77-8",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Mefentrifluconazole",
@@ -2775,7 +3324,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 253
+   "row": 253,
+   "cas_raw": "1417782-03-6",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Mepiquat",
@@ -2786,7 +3338,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 256
+   "row": 256,
+   "cas_raw": "15302-91-7",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Mesosulfuron",
@@ -2797,18 +3352,24 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 257
+   "row": 257,
+   "cas_raw": "400852-66-6",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Mesotrione",
    "name_norm": "mesotrione",
-   "cas": "104206-8",
+   "cas": "104206-82-8",
    "cas_norm": "1042068",
    "category": "H",
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 258
+   "row": 258,
+   "cas_raw": "104206-8",
+   "cas_corrected": "104206-82-8",
+   "cas_source": "epa-master"
   },
   {
    "name": "Metalaxyl",
@@ -2819,18 +3380,24 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 259
+   "row": 259,
+   "cas_raw": "57837-19-1",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Metalaxyl-M",
    "name_norm": "metalaxyl-m",
-   "cas": "70630-17-0 (R)",
+   "cas": "70630-17-0",
    "cas_norm": "70630170",
    "category": "F",
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 260
+   "row": 260,
+   "cas_raw": "70630-17-0 (R)",
+   "cas_corrected": "70630-17-0",
+   "cas_source": "epa-master"
   },
   {
    "name": "Metaldehyde",
@@ -2852,7 +3419,10 @@
    "status": "RAR",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 262
+   "row": 262,
+   "cas_raw": "144-54-7",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Metamitron",
@@ -2863,7 +3433,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 263
+   "row": 263,
+   "cas_raw": "41394-05-2",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Metarhizium brunneum strain Ma 43 (formerly Metarhizium anisopliae var anisopliae)",
@@ -2885,7 +3458,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 265
+   "row": 265,
+   "cas_raw": "67129-08-2",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Metconazole",
@@ -2896,7 +3472,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 266
+   "row": 266,
+   "cas_raw": "125116-23-6",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Metobromuron",
@@ -2907,7 +3486,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 267
+   "row": 267,
+   "cas_raw": "3060-89-7",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Metrafenone",
@@ -2918,7 +3500,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 268
+   "row": 268,
+   "cas_raw": "220899-03-6",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Metschnikowia fruticola strain NRRL Y-27328",
@@ -2940,7 +3525,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 270
+   "row": 270,
+   "cas_raw": "74223-64-6",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Milbemectin",
@@ -2995,7 +3583,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 275
+   "row": 275,
+   "cas_raw": "15299-99-7",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Nicosulfuron",
@@ -3006,7 +3597,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 276
+   "row": 276,
+   "cas_raw": "111991-09-4",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Onion oil",
@@ -3050,7 +3644,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 280
+   "row": 280,
+   "cas_raw": "1003318-67-9",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Oxyfluorfen",
@@ -3061,7 +3658,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 281
+   "row": 281,
+   "cas_raw": "42874-03-3",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Paclobutrazol",
@@ -3072,7 +3672,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 282
+   "row": 282,
+   "cas_raw": "76738-62-0",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Paraffin oil/(CAS 72623-86-0)",
@@ -3083,7 +3686,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 283
+   "row": 283,
+   "cas_raw": "72623-86-0",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Paraffin oil/(CAS 8042-47-5)",
@@ -3094,7 +3700,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 284
+   "row": 284,
+   "cas_raw": "8042-47-5",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Paraffin oil/(CAS 97862-82-3)",
@@ -3105,7 +3714,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 285
+   "row": 285,
+   "cas_raw": "97862-82-3",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Pasteuria nishizawae Pn1",
@@ -3127,7 +3739,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 287
+   "row": 287,
+   "cas_raw": "112-05-0",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Penconazole",
@@ -3138,7 +3753,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 288
+   "row": 288,
+   "cas_raw": "66246-88-6",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Pendimethalin",
@@ -3149,7 +3767,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 289
+   "row": 289,
+   "cas_raw": "40487-42-1",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Penoxsulam",
@@ -3160,7 +3781,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 290
+   "row": 290,
+   "cas_raw": "219714-96-2",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Pepino mosaic virus (PepMV) Chilean (CH2) strain, mild isolate Abp2 (PEPMVO)",
@@ -3204,7 +3828,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 294
+   "row": 294,
+   "cas_raw": "106700-29-2",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Phenmedipham",
@@ -3215,7 +3842,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 296
+   "row": 296,
+   "cas_raw": "13684-63-4",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Phlebiopsis gigantea strain FOC PG 410.3",
@@ -3259,7 +3889,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 300
+   "row": 300,
+   "cas_raw": "7803-51-2",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Picloram",
@@ -3270,7 +3903,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 301
+   "row": 301,
+   "cas_raw": "1918-02-1",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Picolinafen",
@@ -3281,7 +3917,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 302
+   "row": 302,
+   "cas_raw": "137641-05-5",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Pinoxaden",
@@ -3292,7 +3931,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 303
+   "row": 303,
+   "cas_raw": "243973-20-8",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Pirimicarb",
@@ -3303,7 +3945,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 304
+   "row": 304,
+   "cas_raw": "23103-98-2",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Pirimiphos-methyl",
@@ -3314,7 +3959,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 305
+   "row": 305,
+   "cas_raw": "29232-93-7",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Plant oils / Clove oil",
@@ -3325,7 +3973,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 306
+   "row": 306,
+   "cas_raw": "84961-50-2",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Plant oils / Spear mint oil",
@@ -3336,7 +3987,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 307
+   "row": 307,
+   "cas_raw": "8008-79-5",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Potassium hydrogen carbonate",
@@ -3347,7 +4001,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 308
+   "row": 308,
+   "cas_raw": "298-14-6",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Potassium phosphonates (formerly potassium phosphite)",
@@ -3369,7 +4026,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 310
+   "row": 310,
+   "cas_raw": "127277-53-6",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Propamocarb",
@@ -3380,7 +4040,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 311
+   "row": 311,
+   "cas_raw": "24579-73-5",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Propaquizafop",
@@ -3391,7 +4054,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 313
+   "row": 313,
+   "cas_raw": "111479-05-1",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Propoxycarbazone",
@@ -3402,7 +4068,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 314
+   "row": 314,
+   "cas_raw": "145026-81-9",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Propyzamide",
@@ -3413,7 +4082,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 315
+   "row": 315,
+   "cas_raw": "23950-58-5",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Proquinazid",
@@ -3424,7 +4096,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 316
+   "row": 316,
+   "cas_raw": "189278-12-4",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Prosulfocarb",
@@ -3435,7 +4110,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 317
+   "row": 317,
+   "cas_raw": "52888-80-9",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Prosulfuron",
@@ -3446,7 +4124,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 318
+   "row": 318,
+   "cas_raw": "94125-34-5",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Prothioconazole",
@@ -3457,7 +4138,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 319
+   "row": 319,
+   "cas_raw": "178928-70-6",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Pseudomonas chlororaphis strain MA342",
@@ -3512,7 +4196,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 325
+   "row": 325,
+   "cas_raw": "175013-18-0",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Pyraflufen-ethyl",
@@ -3523,7 +4210,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 326
+   "row": 326,
+   "cas_raw": "129630-19-9",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Pyrethrins",
@@ -3534,7 +4224,10 @@
    "status": "REV*",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 327
+   "row": 327,
+   "cas_raw": "8003-34-7",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Pyridaben",
@@ -3545,7 +4238,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 328
+   "row": 328,
+   "cas_raw": "96489-71-3",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Pyridate",
@@ -3556,7 +4252,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 329
+   "row": 329,
+   "cas_raw": "55512-33-9",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Pyrimethanil",
@@ -3567,7 +4266,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 330
+   "row": 330,
+   "cas_raw": "53112-28-0",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Pyriofenone",
@@ -3578,7 +4280,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 331
+   "row": 331,
+   "cas_raw": "688046-61-9",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Pyriproxyfen",
@@ -3589,7 +4294,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 332
+   "row": 332,
+   "cas_raw": "95737-68-1",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Pyroxsulam",
@@ -3600,7 +4308,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 334
+   "row": 334,
+   "cas_raw": "422556-08-9",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Pythium oligandrum strain B301",
@@ -3644,7 +4355,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 338
+   "row": 338,
+   "cas_raw": "90717-03-6",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Quinolin-8-ol",
@@ -3655,7 +4369,10 @@
    "status": "RAR",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 339
+   "row": 339,
+   "cas_raw": "148-24-3",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Quizalofop-P",
@@ -3677,7 +4394,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 341
+   "row": 341,
+   "cas_raw": "100646-51-3",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Quizalofop-P-tefuryl",
@@ -3699,7 +4419,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 343
+   "row": 343,
+   "cas_raw": "8002-13-9",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Repellents by smell of animal or plant origin/ fish oil",
@@ -3710,7 +4433,10 @@
    "status": "RAR",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 344
+   "row": 344,
+   "cas_raw": "8016-13-5",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Repellents by smell of animal or plant origin/ sheep fat",
@@ -3721,7 +4447,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 345
+   "row": 345,
+   "cas_raw": "98999-15-6",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Rescalure",
@@ -3732,7 +4461,10 @@
    "status": "RAR",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 346
+   "row": 346,
+   "cas_raw": "67601-06-3",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Rimsulfuron (aka renriduron)",
@@ -3765,7 +4497,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 349
+   "row": 349,
+   "cas_raw": "874967-67-6",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Silthiofam",
@@ -3776,7 +4511,10 @@
    "status": "RAR",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 350
+   "row": 350,
+   "cas_raw": "175217-20-6",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Sintofen (aka Cintofen)",
@@ -3787,7 +4525,10 @@
    "status": "RAR",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 351
+   "row": 351,
+   "cas_raw": "130561-48-7",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Sodium 5-nitroguaiacolate",
@@ -3798,7 +4539,10 @@
    "status": "RAR",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 352
+   "row": 352,
+   "cas_raw": "67233-85-6",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Sodium chloride",
@@ -3809,7 +4553,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 353
+   "row": 353,
+   "cas_raw": "7647-14-5",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Sodium hydrogen carbonate (basic substance)",
@@ -3820,7 +4567,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 354
+   "row": 354,
+   "cas_raw": "144-55-8",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Sodium hydrogen carbonate (low risk active substance)",
@@ -3831,7 +4581,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 355
+   "row": 355,
+   "cas_raw": "144-55-8",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Sodium o-nitrophenolate",
@@ -3842,7 +4595,10 @@
    "status": "RAR",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 356
+   "row": 356,
+   "cas_raw": "824-39-5",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Sodium p-nitrophenolate",
@@ -3853,7 +4609,10 @@
    "status": "RAR",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 357
+   "row": 357,
+   "cas_raw": "824-78-2",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Sodium silver thiosulfate",
@@ -3875,7 +4634,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 359
+   "row": 359,
+   "cas_raw": "168316-95-8",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Spiroxamine",
@@ -3886,7 +4648,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 360
+   "row": 360,
+   "cas_raw": "118134-30-8",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Spodoptera exigua multicapsid nucleopolyhedrovirus (SeMNPV), Isolate BV-0004",
@@ -3974,7 +4739,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 369
+   "row": 369,
+   "cas_raw": "57-50-1",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Sulcotrione",
@@ -3985,7 +4753,10 @@
    "status": "RAR",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 370
+   "row": 370,
+   "cas_raw": "99105-77-8",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Sulfosulfuron",
@@ -3996,7 +4767,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 371
+   "row": 371,
+   "cas_raw": "141776-32-1",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Sulfoxaflor",
@@ -4007,7 +4781,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 372
+   "row": 372,
+   "cas_raw": "946578-00-3",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Sulfuryl fluoride",
@@ -4018,7 +4795,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 373
+   "row": 373,
+   "cas_raw": "2699-79-8",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Sulphur",
@@ -4051,7 +4831,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 376
+   "row": 376,
+   "cas_raw": "14807-96-6",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Tebuconazole",
@@ -4062,7 +4845,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 377
+   "row": 377,
+   "cas_raw": "107534-96-3",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Tebufenozide",
@@ -4073,7 +4859,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 378
+   "row": 378,
+   "cas_raw": "112410-23-8",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Tembotrione",
@@ -4084,7 +4873,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 379
+   "row": 379,
+   "cas_raw": "335104-84-2",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Terbuthylazine",
@@ -4095,7 +4887,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 380
+   "row": 380,
+   "cas_raw": "5915-41-3",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Tetraconazole",
@@ -4106,7 +4901,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 381
+   "row": 381,
+   "cas_raw": "112281-77-3",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Tetradecan-1-ol (SCLP Alcohols)",
@@ -4117,7 +4915,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 382
+   "row": 382,
+   "cas_raw": "63393-82-8",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Thiabendazole",
@@ -4128,7 +4929,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 383
+   "row": 383,
+   "cas_raw": "148-79-8",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Thiencarbazone-methyl",
@@ -4139,7 +4943,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 384
+   "row": 384,
+   "cas_raw": "317815-83-1",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Thifensulfuron-methyl",
@@ -4150,7 +4957,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 385
+   "row": 385,
+   "cas_raw": "79277-27-3",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Thymol",
@@ -4161,7 +4971,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 386
+   "row": 386,
+   "cas_raw": "89-83-8",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Tolclofos-methyl",
@@ -4172,7 +4985,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 387
+   "row": 387,
+   "cas_raw": "57018-04-9",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Tri-allate",
@@ -4183,7 +4999,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 388
+   "row": 388,
+   "cas_raw": "2303-17-5",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Tribasic copper sulphate",
@@ -4194,7 +5013,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 389
+   "row": 389,
+   "cas_raw": "12527-76-3",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Tribenuron (aka metometuron)",
@@ -4205,7 +5027,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 390
+   "row": 390,
+   "cas_raw": "106040-48-6",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Trichoderma afroharzianum (formerly T. harzianum) strain T-22",
@@ -4370,7 +5195,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 405
+   "row": 405,
+   "cas_raw": "55335-06-3",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Trifloxystrobin",
@@ -4381,7 +5209,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 406
+   "row": 406,
+   "cas_raw": "141517-21-7",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Trinexapac (aka cimetacarb)",
@@ -4392,7 +5223,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 407
+   "row": 407,
+   "cas_raw": "104273-73-6",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Triticonazole",
@@ -4403,7 +5237,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 408
+   "row": 408,
+   "cas_raw": "131983-72-7",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Valifenalate (formerly Valiphenal)",
@@ -4414,7 +5251,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 409
+   "row": 409,
+   "cas_raw": "283159-90-0",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Verticillium albo-atrum (formerly Verticillium dahliae) strain WCS850",
@@ -4436,7 +5276,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 411
+   "row": 411,
+   "cas_raw": "64-19-7",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Vitis vinifera L. seed extract (grape seed extract)",
@@ -4469,7 +5312,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 414
+   "row": 414,
+   "cas_raw": "1314-84-7",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Ziram",
@@ -4480,7 +5326,10 @@
    "status": "REV*",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 415
+   "row": 415,
+   "cas_raw": "137-30-4",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "Zoxamide",
@@ -4491,7 +5340,10 @@
    "status": "Approved",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 416
+   "row": 416,
+   "cas_raw": "156052-68-5",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "lambda-Cyhalothrin",
@@ -4502,7 +5354,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 417
+   "row": 417,
+   "cas_raw": "91465-08-6",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   },
   {
    "name": "n-Tetradecylacetate (SCLP Acetates)",
@@ -4524,7 +5379,10 @@
    "status": "REV",
    "source": "ليبيا",
    "decision": "قرار 500 لسنة 2026",
-   "row": 419
+   "row": 419,
+   "cas_raw": "102851-06-9",
+   "cas_corrected": "",
+   "cas_source": "official-500"
   }
  ]
 }

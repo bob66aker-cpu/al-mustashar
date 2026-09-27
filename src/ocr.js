@@ -283,9 +283,12 @@
       }
       resolve(Tesseract.createWorker(
         /* 3.4: langs follow the UI language — 'ara+eng' when the user reads
-         * Arabic, 'eng' otherwise (docs/ocr-baseline.md §lang: hallucination
-         * 3.5→0.75 on the 17-image set). Default stays 'eng': ara is NEVER
-         * the default (updated ocr-eng-only guard). */
+         * Arabic, 'eng' otherwise. Evidence (docs/ocr-baseline.md §lang, from
+         * docs/ocr-arabic-hallucination-diagnosis.md): eng+ara hallucinated
+         * 28 Arabic glyphs on a Latin label and stray glyphs on a blank
+         * page; eng-only read 0 Arabic chars on all three probe cases.
+         * Default stays 'eng': ara is NEVER the default (updated
+         * ocr-eng-only guard). */
         lang,
         1,                               // OEM: LSTM only (matches the vendored core)
         {

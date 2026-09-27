@@ -534,6 +534,20 @@
           CasDissect.casChecksum(c) === false
             ? '<span class="cas-bad" title="' + t('cas.badsum', 'رقم التحقق غير صحيح في بيانات المصدر') + '">' + esc(c) + '</span>'
             : esc(c)).join(' · ');
+        /* documented CAS-correction layer (libya-500): when the decree value
+         * was repaired, show corrected + struck-through raw + source label.
+         * Never silent: the raw official value stays visible. */
+        if (CasDissect.casDisplayCorrected) {
+          const corr = CasDissect.casDisplayCorrected(x.r);
+          if (corr && casList === corr) {
+            const raw = CasDissect.casDisplayRaw(x.r);
+            const srcKey = CasDissect.casSourceKey(x.r);
+            casHtml = esc(corr)
+              + ' <span class="cas-raw-old">' + esc(raw) + '</span>'
+              + ' <span class="cas-src">(' + esc(t('cas.source.' + srcKey,
+                  srcKey === 'epa-master' ? 'مُصحح من EPA Master' : 'مصحح')) + ')</span>';
+          }
+        }
       } else if (x.r.cas) {
         casHtml = esc(String(x.r.cas).replace(/\n/g, ' · '))
           + ' <span class="nocas">(' + t('cas.nocas', 'بلا رقم في المصدر') + ')</span>';

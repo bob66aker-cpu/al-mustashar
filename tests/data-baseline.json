@@ -1,12 +1,12 @@
 {
-  "_comment": "Immutable baseline of the database files. tests/verify.mjs recomputes SHA-256 and row counts and fails if anything changed. Do not edit these values unless the user deliberately replaces a source file. epa.json + epa-cancelled.json rebuilt 2026-09-23 by tools/build-epa-master.js from sources/EPA_Master/EPA_Master.xlsx (EPA Master / PPIS, 5 official EPA files, full reads) — see docs/data-provenance.md sections 4-5.",
+  "_comment": "Immutable baseline of the database files. tests/verify.mjs recomputes SHA-256 and row counts and fails if anything changed. Do not edit these values unless the user deliberately replaces a source file. epa.json + epa-cancelled.json rebuilt 2026-09-23 by tools/build-epa-master.js from sources/EPA_Master/EPA_Master.xlsx (EPA Master / PPIS, 5 official EPA files, full reads) — see docs/data-provenance.md sections 4-5. | 2026-09-27: libya-248/500 resha after the approved documented CAS-correction round (cas_raw/cas_corrected/cas_source; docs/data-provenance.md).",
   "files": {
     "data/libya-248.json": {
-      "sha256": "764108e27ca0fd412792a2979f86a1d7496df2e693dcbb246f9bfa8979ceb65d",
+      "sha256": "ca30b94cd12ab43b71d86dd96277b5289cc2252eca0dcaf9971e56f094040a43",
       "rows": 77
     },
     "data/libya-500.json": {
-      "sha256": "0c9c475534b5606d49449da2e31da14e37a61dec64d250dba5d81469d2c4936e",
+      "sha256": "987023abb2a06a4fdb591728b6d1176510cc9d927de2cf17bff18b6658bdde8d",
       "rows": 411
     },
     "data/eu.json": {

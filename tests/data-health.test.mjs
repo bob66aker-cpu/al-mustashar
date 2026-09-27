@@ -27,8 +27,12 @@ const CD = globalThis.CasDissect;
 /* Regression baselines recomputed after the EPA Master (PPIS) rebuild
  * (2026-09-23). They are allowed to grow only via a deliberate data round:
  * an unexplained change here is a data-integrity signal, not noise. */
-const DUP_KNOWN = 282;      /* same normalized name, different CAS signature */
-const CAS_FAIL_KNOWN = 12;  /* CAS numbers failing the check digit (report-only) */
+const DUP_KNOWN = 285;      /* same normalized name, different CAS signature
+   * (2026-09-27: +3 — the six corrected libya-500 CAS values now differ from
+   * their still-broken EU twins by a valid-vs-broken CAS signature) */
+const CAS_FAIL_KNOWN = 9;   /* CAS numbers failing the check digit (report-only).
+   * 2026-09-27: 12→9 — the six documented libya-500 defects were corrected
+   * (cas_raw/cas_corrected layer); eu/epa failures stay report-only. */
 
 let pass = 0, fail = 0;
 const check = (name, ok, detail) => {
@@ -39,8 +43,8 @@ const check = (name, ok, detail) => {
 console.log('\n== provenance vs files ==');
 const prov = fs.readFileSync('docs/data-provenance.md', 'utf8');
 const FILES = {
-  'libya-248': { rows: 77,  sha: '764108e27ca0fd412792a2979f86a1d7496df2e693dcbb246f9bfa8979ceb65d' },
-  'libya-500': { rows: 411, sha: '0c9c475534b5606d49449da2e31da14e37a61dec64d250dba5d81469d2c4936e' },
+  'libya-248': { rows: 77,  sha: 'ca30b94cd12ab43b71d86dd96277b5289cc2252eca0dcaf9971e56f094040a43' },
+  'libya-500': { rows: 411, sha: '987023abb2a06a4fdb591728b6d1176510cc9d927de2cf17bff18b6658bdde8d' },
   'eu':        { rows: 1483, sha: 'ef629525c2dae8f741e1697faaecf2319e1a646e4e011d2754ef66e23844101e' },
   /* EPA Master (PPIS) rebuild (2026-09-23): active registry (1361) +
    * all-cancelled archive (1425), built by tools/build-epa-master.js from

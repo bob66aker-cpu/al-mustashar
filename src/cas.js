@@ -14,6 +14,11 @@
  *                        معًا ولا يُحكم بأحدها. الحد ≥ 90 يمنع تعليم ذيل
  *                        القائمة الاحتمالي البعيد كملتبس (موثق في docs).
  *
+ *   5. casDisplayRaw/Corrected + casSourceKey — طبقة التصحيح الموثق لأرقام
+ *                        قرار 500 (cas_raw/cas_corrected/cas_source): الرقم
+ *                        المصحح يُعرض مع قيمة المرسوم الخام دائمًا وتأشير
+ *                        المصدر المصحح. لا تصحيح صامت إطلاقًا.
+ *
  * لا تُخترع حالة قانونية: كل نص عرض يأتي من قاموس i18n، وقيمة المصدر
  * الخام تبقى معروضة بجانب الترجمة في الوضع المحترف.
  */
@@ -150,6 +155,32 @@
     return null;
   }
 
+  /* ---------- 5) documented CAS-correction layer (user round 2026-09-27)
+   * libya-500 rows now carry three provenance fields written by the data
+   * round (tools + docs/data-provenance.md):
+   *   cas_raw        — the value exactly as printed in the official decree,
+   *   cas_corrected  — the corrected value ('' = nothing to correct),
+   *   cas_source     — machine key of the correcting authority ('epa-master')
+   * The row main CAS field holds the CORRECTED value so search and matching work
+   * with valid numbers; the display layer keeps the honesty contract:
+   * the raw decree value is always recoverable and the correction is always
+   * labelled. No status/decision field is touched by this layer. */
+  function isCorrectedRow(r) {
+    return !!(r && String(r.cas_corrected || '').trim());
+  }
+  function casDisplayRaw(r) {
+    if (!r) return '';
+    if (isCorrectedRow(r)) return String(r.cas_raw || '').trim();
+    return String(r.cas || '').trim();   // uncorrected rows: verbatim value
+  }
+  function casDisplayCorrected(r) {
+    return isCorrectedRow(r) ? String(r.cas_corrected || '').trim() : '';
+  }
+  function casSourceKey(r) {
+    return isCorrectedRow(r) ? String(r.cas_source || '').trim() : '';
+  }
+
   /* ---------- exports ---------- */
-  global.CasDissect = { casChecksum, dissectStatus, classify, ambiguity, casOf };
+  global.CasDissect = { casChecksum, dissectStatus, classify, ambiguity, casOf,
+    isCorrectedRow, casDisplayRaw, casDisplayCorrected, casSourceKey };
 })(typeof window !== 'undefined' ? window : globalThis);

@@ -745,6 +745,7 @@
     if (lastResults.length) render(lastResults, $('#query').value.trim());
     if (lastScanResults.length) render(lastScanResults, '', '#scanResults');
     updatePrepPanel();
+    refreshInstallCard();
   });
 
   /* History view: lives at #/history; the close button returns home. */
@@ -829,12 +830,90 @@
     }
   });
 
-  /* Home shortcut: pick an image straight from the gallery flow */
-  const galShortcut = document.querySelector('[data-icon-action="gallery"]');
-  const galleryInput0 = $('#gallery');
-  if (galShortcut && galleryInput0) {
-    galShortcut.addEventListener('click', e => { e.preventDefault(); galleryInput0.click(); });
+  /* ================================================================
+   * 2.1 — التثبيت الداخلي (PWA): زر يظهر فقط عند إطلاق المتصفح حدث
+   * beforeinstallprompt (كروم/أندرويد). التقاط الحدث نفسه مبكر
+   * ومخزَّن في window.__install من سكربت <head> حتى لا يُفوَّت أبدًا.
+   * appinstalled → إخفاء الزر فورًا (بلا إعادة تحميل). لا رسائل
+   * مزيفة: إن رفض المتصفح الوعد أظهرنا سبب الخطأ في السطر نفسه.
+   * ================================================================ */
+  const installCard = $('#installCard'), installBtn = $('#installBtn'),
+        installNote = $('#installNote');
+  function hideInstallCard() { if (installCard) installCard.hidden = true; }
+  function refreshInstallCard() {
+    if (!installCard || !installBtn) return;
+    const st = window.__install;
+    if (st && st.available) {
+      installCard.hidden = false;
+      installNote.textContent = '';
+    } else {
+      hideInstallCard();
+    }
   }
+  if (installBtn) {
+    installBtn.addEventListener('click', async () => {
+      const st = window.__install;
+      const promptEvent = st ? st.pick() : null;
+      if (!promptEvent) { hideInstallCard(); return; }   // already used
+      installBtn.disabled = true;
+      try {
+        promptEvent.prompt();
+        const choice = await promptEvent.userChoice;
+        if (choice && choice.outcome === 'accepted') {
+          hideInstallCard();                              // appinstalled hides it too
+        } else {
+          installBtn.disabled = false;
+          if (installNote) installNote.textContent = t('install.dismissed', 'يمكنك التثبيت لاحقًا من هذا الزر.');
+        }
+      } catch (e) {
+        installBtn.disabled = false;
+        if (installNote) {
+          installNote.textContent = t('install.fail', 'تعذّر بدء التثبيت في هذا المتصفح.') + ' (' + ((e && e.name) || 'install') + ')';
+        }
+      }
+    });
+  }
+  /* 2.4 — optional local QR share: app URL only, rendered fully offline.
+   * Fails visibly (no silent path) if the encoder/canvas is unavailable. */
+  $('#qrBtn').addEventListener('click', () => {
+    if (window.ShowQR) window.ShowQR.show();
+    else {
+      const b = $('#dbBanner');
+      if (b) {
+        b.hidden = false;
+        b.className = 'banner banner-warn';
+        b.textContent = t('qr.fail', 'تعذّر إنشاء الرمز في هذا المتصفح.');
+        setTimeout(() => { b.hidden = true; }, 3500);
+      }
+    }
+  });
+
+  window.addEventListener('appinstalled', () => {
+    hideInstallCard();
+    const b = $('#dbBanner');
+    if (b) {
+      b.hidden = false;
+      b.className = 'banner banner-info';
+      b.setAttribute('data-share-toast', '1');
+      b.textContent = t('install.done', 'تم تثبيت التطبيق على هذا الجهاز.');
+      setTimeout(() => {
+        if (b && b.hasAttribute('data-share-toast')) { b.hidden = true; b.removeAttribute('data-share-toast'); }
+      }, 3500);
+    }
+  });
+  document.addEventListener('langchange', refreshInstallCard);
+  /* 2.1 — the prompt usually fires AFTER boot (SW-ready, ~seconds in);
+   * install-capture.js re-notifies via this bridge so the card shows then. */
+  window.addEventListener('installavailable', refreshInstallCard);
+
+  /* ================================================================
+   * 2.2 — توحيد مداخل الكاميرا: مسار واحد لالتقاط الملصق. كانت هناك
+   * ثلاثة مداخل متداخلة (اختصار المعرض في الرئيسية + #cameraBtn +
+   * #galleryBtn مع ملفّي input مختلفين). الآن: بطاقة «تصوير الملصق»
+   * تدخل الكاميرا الحية (أو ملف capture=environment عند عدم الدعم)،
+   * وبطاقة المعرض (index.html) هي المدخل الوحيد لاختيار صورة. كلا
+   * المدخلين يمران عبر camera.change/gallery.change نفسهما → runOcr.
+   * ================================================================ */
 
   /* Camera / gallery -> offline OCR (src/ocr.js) -> EXISTING search engine.
      The 80% threshold and source priority live in SearchCore and are not
@@ -850,6 +929,9 @@
    * can ever be painted for a source that is no longer current). */
   let scanSeq = 0;
   let activeScanSeq = 0;
+
+  /* 2.2 — retake: clears results and re-opens the same capture flow */
+  function showRetake(on) { const b = $('#retakeBtn'); if (b) b.hidden = !on; }
 
   function showPreview(file) {
     if (previewUrl) { try { URL.revokeObjectURL(previewUrl); } catch (e) {} }
@@ -888,10 +970,20 @@
     gallery.value = '';
     ocrMsg.textContent = '';
     $('#cancelOcrBtn').hidden = true;
+    showRetake(false);
     clearScanResults();
   }
   $('#cancelImageBtn').addEventListener('click', resetScanUI);
+  /* 2.2 — retake = full reset, then straight back into the live camera
+   * (or the file capture fallback where getUserMedia is unsupported). */
+  $('#retakeBtn').addEventListener('click', () => {
+    resetScanUI();
+    if (liveVideo && liveSupported()) startLive();
+    else camera.click();
+  });
 
+  /* 2.2 — single label-photo entry: live camera when supported, else the
+   * capture=environment file input (same fallback as before, one handler). */
   $('#cameraBtn').addEventListener('click', e => {
     e.preventDefault();
     if (liveVideo && liveSupported()) startLive();   // ب: live camera is the primary capture path
@@ -1097,6 +1189,7 @@
     $('#galleryBtn').hidden = true;
     liveVideo.style.minHeight = '220px';
     liveVideo.style.objectFit = 'cover';
+    showRetake(false);         // 2.2: a new capture session is starting
     if (profile.live) {
       liveVideo.style.minHeight = '260px';
       liveTimer = setInterval(() => liveProbeTick(profile), profile.sampleMs);
@@ -1120,7 +1213,9 @@
     if (galBtn) { galBtn.hidden = false; galBtn.disabled = false; }
     if (supersede) {
       scanSeq++;                   // أ1: stopping the camera kills live results NOW
-      resetScanUI();
+      resetScanUI();               // 2.2: manual stop = ready state; the camera card is the entry (retake hidden)
+    } else {
+      showRetake(true);            // 2.2: early success — results stay, retake offered
     }
   }
 
@@ -1342,10 +1437,24 @@
   $('#diagBtn').addEventListener('click', diagExport);
 
   async function runOcr(file) {
-    if (ocrBusy || typeof OcrModule === 'undefined') return;
+    if (ocrBusy || typeof OcrModule === 'undefined') {
+      /* 2.3 — لا توقف صامت: رسالة واضحة دائمًا. وإن كان هناك مصدر جديد
+       * مرحَّل (scanSeq تقدّم عن القراءة الجارية) نُلغي القراءة القديمة
+       * وننتظر تراجعها ثم نمضي بالقراءة الجديدة — تبديل الصورة أثناء
+       * المسح يعمل بدل أن يُهمل بصمت. */
+      if (ocrBusy && typeof OcrModule !== 'undefined' && scanSeq !== activeScanSeq) {
+        OcrModule.cancelCurrent();
+        for (let i = 0; i < 100 && ocrBusy; i++) await new Promise(r => setTimeout(r, 50));
+      }
+      if (ocrBusy || typeof OcrModule === 'undefined') {
+        if (ocrBusy && ocrMsg) ocrMsg.textContent = t('ocr.busy', 'مسح جارٍ — انتظر اكتمال العملية أو ألغِها ثم حاول مجددًا.');
+        return;
+      }
+    }
     ocrBusy = true;
     activeScanSeq = scanSeq;   // this run belongs to the current query-source
     $('#cancelOcrBtn').hidden = false;
+    showRetake(false);         // 2.2: retake appears only when a read finishes
     ocrMsg.textContent = t('ocr.prep', 'جارٍ تجهيز الصورة…');
     const t0 = performance.now();
     const tips = await probeImage(file);
@@ -1409,6 +1518,7 @@
     } finally {
       ocrBusy = false;
       $('#cancelOcrBtn').hidden = true;
+      showRetake(true);        // 2.2: one visible way back to the camera
     }
   }
   $('#cancelOcrBtn').addEventListener('click', () => {
@@ -1739,4 +1849,5 @@
   checkVersion();
   fillAboutMeta();
   updatePrepPanel();          // works even if the SW is still installing
+  refreshInstallCard();       // 2.1: show/hide the install card on boot too
 })();

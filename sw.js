@@ -1,5 +1,20 @@
 /*
- * sw.js — المستشار الزراعي (v25)
+ * sw.js — المستشار الزراعي (v26)
+ *
+ * v26 (2026-09-27) — المرحلة 2: تجربة الهاتف (نسخة العمل، الأصل لم يمس):
+ *   2.1 زر تثبيت داخلي: التقاط beforeinstallprompt من سكربت <head> مبكر
+ *       (كان الحدث يُفوَّت كليًا — grep exit=1) + بطاقة «ثبّت التطبيق»
+ *       تظهر فقط عند توفر التثبيت، وإخفاء فوري عند appinstalled مع إشعار.
+ *   2.2 توحيد مداخل الكاميرا: حذف اختصار المعرض المكرر من الرئيسية
+ *       (كان يستدعي input المعرض من شاشة أخرى — تدفق مزدوج)، تدفق واحد:
+ *       تصوير → معالجة تلقائية → النتائج + زر «إعادة التصوير» الوحيد
+ *       للعودة إلى الكاميرا. درجة ثقة القراءة تظهر في سجل التشخيص (conf).
+ *   2.3 إلغاء التوقف الصامت: بوابة ocrBusy تعرض «مسح جارٍ…» بدل الإرجاع
+ *       الصامت، وتُلغي القراءة القديمة تلقائيًا عند اختيار مصدر جديد
+ *       (تبديل الصورة أثناء المسح يعمل بدل أن يُهمل).
+ *   2.4 مشاركة QR اختيارية: رمز QR محلي (Nayuki MIT، مُورَّد) يعرض رابط
+ *       التطبيق فقط — لا بيانات ولا إرسال. فشل الرمز يظهر بصريًا.
+ *   تغير سلوك الواجهة/SW → رفع الكاش v25→v26.
  *
  * v25 (2026-09-27) — المرحلة 1: سلامة الحكم على المادة (نسخة العمل، الأصل لم يمس):
  *   1.1 رقاقة «شرح الرموز» مربوطة بـ libya-500 حصرًا — كانت تطلع على
@@ -87,7 +102,7 @@
  * Personal data (IndexedDB history, theme, app version note) lives outside
  * the caches and is never touched by this worker.
  */
-const CACHE = 'mustashar-v25';
+const CACHE = 'mustashar-v26';
 const OCR_CACHE = 'mustashar-ocr';
 
 /* 1.7 — safe cache write: a full storage quota (QuotaExceededError) must
@@ -105,8 +120,11 @@ const SHELL = [
   './index.html',
   './src/search-core.js',
   './src/app.js',
+  './src/install-capture.js',
   './src/ocr.js',
   './src/scan-live.js',
+  './src/vendor/qrcodegen.js',
+  './src/qr.js',
   './src/i18n.js',
   './src/icons.js',
   './src/cas.js',

@@ -17,6 +17,11 @@
   <meta name="apple-mobile-web-app-title" content="المستشار الزراعي">
   <title>المستشار الزراعي - فحص المبيدات</title>
 
+  <!-- 2.1 — capture beforeinstallprompt the moment it fires (it may arrive
+       before app.js executes; a tiny same-origin store in <head> guarantees
+       the event is never missed). CSP-safe: external file, 'self' only. -->
+  <script src="src/install-capture.js"></script>
+
   <!-- Local font: IBM Plex Sans Arabic (OFL 1.1) — see assets/fonts/LICENSE-OFL-IBM-Plex-Sans-Arabic.txt -->
   <style>
     @font-face {
@@ -155,6 +160,11 @@
     .banner-info  { background: var(--card); color: var(--info);    border-inline-start-color: var(--info); }
 
     /* ============ views ============ */
+    /* 2.2 — hidden must ALWAYS win: author display classes (.btn-outline,
+     * .live-wrap, …) were overriding the UA [hidden]{display:none} rule,
+     * leaving ghost buttons visible (cancel/retake). One global rule fixes
+     * every element; the per-component [hidden] rules below stay harmless. */
+    [hidden] { display: none !important; }
     .view { display: block; }
     .view[hidden] { display: none; }
     .page-head { margin: 4px 0 14px; }
@@ -272,6 +282,40 @@
     .prep-mini .ready { display: flex; align-items: center; gap: 8px; color: var(--primary-strong); font-size: 14px; font-weight: 700; }
     .prep-mini .ready .ic { width: 18px; height: 18px; }
     .prep-mini[hidden] { display: none; }
+
+    /* 2.1 — install card (home): matches .btn-outline, primary tint only */
+    #installCard[hidden] { display: none; }
+    #installCard { margin-top: 10px; }
+    #installCard .install-btn { color: var(--primary-strong); border-color: var(--primary-strong); }
+    #installCard .install-btn .ic { color: var(--primary-strong); }
+    #installNote { font-size: 12px; color: var(--muted); }
+
+    /* 2.4 — optional local QR share (app URL only, fully offline) */
+    #qrBtn { margin-top: 10px; }
+    #qrModal {
+      position: fixed; inset: 0; z-index: 70;
+      background: rgba(0, 0, 0, .55);
+      display: flex; align-items: center; justify-content: center;
+      padding: 16px;
+    }
+    #qrModal[hidden] { display: none; }
+    #qrModal .qr-card {
+      position: relative;
+      background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+      padding: 20px 18px 14px; text-align: center; max-width: 320px; width: 100%;
+    }
+    #qrModal h3 { font-size: 17px; font-weight: 700; margin-bottom: 10px; }
+    #qrModal canvas { display: block; margin: 0 auto; border-radius: 8px; }
+    #qrModal .qr-url {
+      direction: ltr; unicode-bidi: embed;
+      font-size: 11px; color: var(--muted);
+      word-break: break-all; margin-top: 8px;
+    }
+    #qrModal .qr-err { color: var(--caution); font-size: 13px; margin-top: 8px; }
+    #qrModal .qr-close {
+      position: absolute; top: 6px; inset-inline-end: 6px;
+      background: none; border: 0; color: var(--muted); cursor: pointer; padding: 6px;
+    }
 
     /* ============ forms ============ */
     .field-wrap { position: relative; margin-top: 12px; }
@@ -800,9 +844,6 @@
       </a>
 
       <div class="shortcuts">
-        <a class="shortcut" href="#/scan" data-icon-action="gallery">
-          <span data-icon="gallery"></span><span class="t" data-i18n="scan.gallery">اختيار صورة من المعرض</span>
-        </a>
         <a class="shortcut" href="#/search">
           <span data-icon="search"></span><span class="t" data-i18n="home.q.search">البحث اليدوي</span>
         </a>
@@ -820,6 +861,18 @@
       <div class="card">
         <button class="btn-outline" id="shareBtn" type="button">
           <span data-icon="share"></span><span data-i18n="home.share">مشاركة التطبيق</span>
+        </button>
+        <!-- 2.1 — internal install button: appears only when the browser
+             fires beforeinstallprompt (hidden attribute = display:none). -->
+        <div id="installCard" hidden>
+          <button class="btn-outline install-btn" id="installBtn" type="button">
+            <span data-icon="download"></span><span data-i18n="install.cta">تثبيت التطبيق على هذا الجهاز</span>
+          </button>
+          <div id="installNote" class="conn-line"></div>
+        </div>
+        <!-- 2.4 — OPTIONAL local QR share: shows the app URL only. -->
+        <button class="btn-outline" id="qrBtn" type="button">
+          <span data-icon="qr"></span><span data-i18n="qr.btn">إظهار رمز QR للمشاركة</span>
         </button>
         <div class="conn-line">
           <span id="connIcon" data-icon="online"></span>
@@ -885,7 +938,7 @@
           <span class="disc" data-icon="scan"></span>
           <span>
             <b data-i18n="tool.camera">تصوير الملصق</b>
-            <span class="sub" data-i18n="scan.msg">صوّر اسم المادة الفعالة بوضوح، أو اختر صورة من المعرض. سيبدأ التعرف الضوئي تلقائيًا.</span>
+            <span class="sub" data-i18n="scan.msg">صوّر اسم المادة الفعالة بوضوح — يبدأ التعرف الضوئي تلقائيًا، ويمكنك إعادة التصوير أو تعديل النص بعد كل قراءة.</span>
           </span>
         </button>
         <button class="scan-card small" id="galleryBtn" type="button">
@@ -919,6 +972,8 @@
 
       <div class="tools">
         <button class="btn-outline" type="button" id="cancelOcrBtn" hidden data-i18n="ocr.cancel">إلغاء</button>
+        <!-- 2.2 — single-flow retake: the one way back to the live camera. -->
+        <button class="btn-outline" type="button" id="retakeBtn" hidden data-i18n="scan.retake">إعادة التصوير</button>
       </div>
 
       <!-- أ3 — نتائج المسح تُعرض هنا مباشرة بعد القراءة الناجحة (أتمتة كاملة، بلا لوحة تأكيد) -->
@@ -1189,6 +1244,8 @@
   <script src="vendor/tesseract/tesseract.min.js"></script>
   <script src="src/ocr.js"></script>
   <script src="src/scan-live.js"></script>
+  <script src="src/vendor/qrcodegen.js"></script>
+  <script src="src/qr.js"></script>
   <script src="src/app.js"></script>
 </body>
 </html>

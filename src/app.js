@@ -260,7 +260,9 @@
         banner.hidden = false;
         banner.className = 'banner banner-warn';
         banner.textContent = tf('db.banner.warn', 'تعذّر تحميل: {names}.',
-          { names: bad.map(s => t(s.labelKey, s.label)).join(t('list.sep', '، ')) });
+          { names: bad.map(s => t(s.labelKey, s.label))
+              .flatMap(x => x.split(/،/)).map(s => s.trim()).filter(Boolean)
+              .join(t('list.sep', '، ')) });
       } else {
         banner.hidden = true;
       }
@@ -1052,6 +1054,28 @@
   }
 
   /* ب1 — one cheap probe tick: draw a downscaled frame, measure, gate */
+  /* 3.0a — live sharpness gauge: a calibrated RELATIVE score mapped onto
+   * the SAME thresholds cheapPass already uses (lap≥14, edges≥2%). Green
+   * ≈ «this frame would pass the cheap gate»; amber = close; red = far.
+   * Advisory only — it never blocks a capture, and the displayed % is a
+   * heuristic, not an OCR-accuracy guarantee. DOM writes throttled to
+   * ~5 Hz (the probe runs at 2 Hz per ب4, so effectively every tick). */
+  let liveSharpLastRender = 0;
+  function liveSharpRender(m, pass) {
+    const now = Date.now();
+    if (now - liveSharpLastRender < 200) return;
+    liveSharpLastRender = now;
+    const el = document.getElementById('liveSharp');
+    if (!el) return;
+    /* map: lap 14 + edges 2% ⇒ 100% (linear, floored at 0, capped) */
+    const score = Math.max(0, Math.min(100,
+      Math.round(((m.lap / 14) * 0.7 + (m.edges / 0.02) * 0.3) * 100)));
+    const cls = pass ? 'lv-green' : (m.lap >= 9 && m.edges >= 0.012 ? 'lv-amber' : 'lv-red');
+    el.classList.remove('lv-red', 'lv-amber', 'lv-green');
+    el.classList.add(cls);
+    const v = document.getElementById('liveSharpVal');
+    if (v) v.textContent = score + '%';
+  }
   function liveProbeTick(profile) {
     if (!liveStream || !liveVideo || !liveVideo.videoWidth || liveROIBusy || liveBusy) return;
     try {
@@ -1062,6 +1086,7 @@
       const m = window.ScanLive.frameMetrics(c);
       const pass = window.ScanLive.cheapPass(m);
       liveDrawGuide(pass);
+      liveSharpRender(m, pass);
       if (pass && Date.now() - liveLastPass >= LIVE_PASS_COOLDOWN) void liveFullPass('auto');
     } catch (e) { /* a failed probe must never kill the loop */ }
   }
@@ -1109,6 +1134,11 @@
     if (kind === 'auto') liveLastPass = Date.now();   // cooldown anchor for auto passes
     try {
       const blob = await window.ScanLive.canvasToBlob(snap.roi, 0.92);
+      /* 3.5 — same cheap barcode probe for live captures (advisory chip). */
+      try {
+        const bc = await window.BarcodeModule.detect(snap.roi);
+        if (bc && bc.codes.length) showBarcodeChip(bc);
+      } catch (e) { /* advisory only */ }
       scanSeq++;                 // أ1: this pass is a brand-new query source
       const myGen = scanSeq;
       activeScanSeq = scanSeq;
@@ -1124,7 +1154,7 @@
         if (livePassSeq !== mySeq || !p) return;
         if (p.statusKey) ocrMsg.textContent = (p.status || p.statusKey) + (p.progress ? ' (' + Math.round(p.progress * 100) + '%)' : '');
         else ocrMsg.textContent = p.status || '';
-      }, { search: searchFn, messages: msgs });
+      }, { search: searchFn, messages: msgs, uiLang: document.documentElement.lang || 'en' });
       const ms = Math.round(performance.now() - msStart);
       const stale = livePassSeq !== mySeq || scanSeq !== myGen || scanSeq !== activeScanSeq;
       if (stale) { diagAdd({ at: Date.now(), outcome: 'superseded', src: 'live', ms }); return; }
@@ -1249,6 +1279,8 @@
     clearResultsBox('#scanResults');
     $('#ocrActions').hidden = true;
     $('#ocrText').value = '';
+    $('#ocrConf').textContent = '';
+    hideBarcodeChip();
   }
 
   /* أ3 — scan results render INSIDE the scan view (#scanResults), using
@@ -1277,6 +1309,39 @@
   };
   window.showOcrResults = showOcrResults;
   window.searchCandidates = searchCandidates;
+
+  /* 3.5 — barcode signal chip: read-only, textContent-only rendering
+   * (CSP-safe, XSS-safe). A code is a lead the user inspects, never a
+   * decision; «إزالة» clears it. No data leaves the device. */
+  let barcodeChipTimer = null;
+  function showBarcodeChip(bc) {
+    const box = document.getElementById('barcodeChip');
+    if (!box) return;
+    const first = bc.codes.find(c => c.safe) || bc.codes[0];
+    if (!first) return;
+    box.hidden = false;
+    const txt = document.getElementById('barcodeChipText');
+    if (txt) {
+      txt.textContent = (first.gs1
+        ? 'GS1 · ' + first.text
+        : first.format + ' · ' + first.text) + '  (' + [bc.engine, bc.ms + 'ms'].join(' · ') + ')';
+    }
+    const meta = document.getElementById('barcodeChipMeta');
+    if (meta) {
+      const chipLang = document.documentElement.lang || 'en';
+      meta.textContent = (chipLang === 'ar')
+        ? t('scan.barcode.found', 'رمز مُكتشف — إشارة للتفقد، ليست نتيجة.')
+        : t('scan.barcode.found', 'Code detected — a hint to inspect, not a result.');
+    }
+    if (barcodeChipTimer) clearTimeout(barcodeChipTimer);
+    barcodeChipTimer = setTimeout(hideBarcodeChip, 12000);
+  }
+  function hideBarcodeChip() {
+    const box = document.getElementById('barcodeChip');
+    if (box) box.hidden = true;
+    if (barcodeChipTimer) { clearTimeout(barcodeChipTimer); barcodeChipTimer = null; }
+  }
+  $('#barcodeChipClear').addEventListener('click', hideBarcodeChip);
 
   /* Run candidate text through the existing search and merge results. */
   function searchCandidates(casList, candList) {
@@ -1423,10 +1488,16 @@
    * text stays available as an OPTIONAL manual re-search (#ocrText +
    * «بحث من النص»), never as a mandatory first step.
    * ---------------------------------------------------------------- */
+  /* 3.0b — results WITH the read confidence: the text stays editable and
+   * «بحث من النص» re-runs it (already the case); the confidence badge is
+   * pure display (no decision path reads it). */
   function proceedWithScan(res, tips) {
     const merged = searchCandidates(res.cas, res.candidates);
     showOcrResults(merged);
     $('#ocrText').value = res.text || '';
+    $('#ocrConf').textContent = (res.confidence !== null && res.confidence !== undefined)
+      ? tf('scan.confidence', 'درجة الثقة: {n}%', { n: res.confidence })
+      : '';
     $('#ocrActions').hidden = false;
     if (merged.length) {
       ocrMsg.textContent = tips && tips.length
@@ -1456,6 +1527,15 @@
     $('#cancelOcrBtn').hidden = false;
     showRetake(false);         // 2.2: retake appears only when a read finishes
     ocrMsg.textContent = t('ocr.prep', 'جارٍ تجهيز الصورة…');
+    /* 3.5 — barcode FIRST (signal, not a verdict): a cheap attempt before
+     * the heavy OCR ladder; its result is shown as a chip the user can
+     * inspect — it never creates or filters results by itself. Zero
+     * network: BarcodeDetector is local, the zxing fallback runs on the
+     * vendored wasm inside a Blob worker. */
+    try {
+      const bc = await window.BarcodeModule.detect(file);
+      if (bc && bc.codes.length) showBarcodeChip(bc);
+    } catch (e) { /* never block the scan on the barcode layer */ }
     const t0 = performance.now();
     const tips = await probeImage(file);
     if (scanSeq !== activeScanSeq) return;   // source changed while probing
@@ -1471,7 +1551,7 @@
           const pct = Math.round((p.progress || 0) * 100);
           ocrMsg.textContent = p.status + (pct ? ' (' + pct + '%)' : '');
         }
-      }, { search: searchFn, messages: msgs });   // DB-aware pass scoring + i18n keys
+      }, { search: searchFn, messages: msgs, uiLang: document.documentElement.lang || 'en' });   // DB-aware scoring + i18n + 3.4 OCR lang
       const ms = Math.round(performance.now() - t0);
       /* أ1 — a superseded scan (new image chosen / image cleared mid-read)
        * must never paint results: the engine may keep running in the
@@ -1611,6 +1691,14 @@
     setPrepItem('#prepShell', '#prepShellSize', shell);
     setPrepItem('#prepData', '#prepDataSize', data);
     setPrepItem('#prepOcr', '#prepOcrSize', ocr);
+    /* 3.4 — per-language OCR footprint: the runtime engine loads ara+eng
+     * for the Arabic UI and eng-only otherwise; show what the CURRENT
+     * language actually needs (eng measurements already computed above). */
+    const ocrLangs = (document.documentElement.lang === 'ar')
+      ? OCR_ASSET_PATHS.concat(['vendor/tesseract/lang/ara.traineddata.gz'])
+      : OCR_ASSET_PATHS;
+    const ocrShown = await measureCached(ocrLangs);
+    setPrepItem('#prepOcr', '#prepOcrSize', ocrShown);
     /* Home mini card: visible only while preparation is incomplete */
     const mini = $('#homePrepCard');
     if (mini) {

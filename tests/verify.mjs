@@ -250,8 +250,11 @@ check('ocr.js pins self-hosted paths (no CDN at runtime)',
   && !/https:\/\/cdn/.test(ocrMod));
 /* eng-only engine since the Arabic-hallucination round (2026-09-23,
  * docs/ocr-arabic-hallucination-diagnosis.md): ara must never load again. */
-check('ocr.js is eng-only (ara removed from engine init)',
-  ocrMod.includes("createWorker(\n        'eng'") && !ocrMod.includes("'eng+ara'"));
+/* 3.4: langs follow the UI language — 'ara+eng' for an Arabic UI, 'eng'
+ * otherwise (docs/ocr-baseline.md §lang). ara must never be a DEFAULT. */
+check('ocr.js lang gate: eng-only fallback, ara only via UI-language gate',
+  ocrMod.includes("const lang = lang2 || 'eng'")
+  && /opts\.ocrLang = \(opts\.uiLang === 'ar'\) \? 'ara\+eng' : 'eng'/.test(ocrMod));
 check('ocr.js preprocessing pipeline present',
   ['createImageBitmap', 'imageOrientation', 'MAX_DIM', 'getImageData'].every(t => ocrMod.includes(t)));
 check('ocr.js extracts CAS first', /extractCAS/.test(ocrMod) && /\\d\{2,7\}-\\d\{2\}-\\d/.test(ocrMod));
@@ -299,11 +302,14 @@ check('OCR engine carries the a3 early-confirm lock (DB-confirmed reads survive 
       && o.includes("via: 'ladder_confirm'")
       && o.includes('if (earlyLock) break;')
       && o.includes('if (!earlyLock && (exactHit || hasValidCas([...fusionCAS])))'); })());
-check('sw is v26 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v26'")
+check('sw is v27 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v27'")
   && sw5.includes("'./src/scan-live.js'")
   && sw5.includes("OCR_CACHE = 'mustashar-ocr'")
   && OCR_RUNTIME_FILES.every(f => sw5.includes(f.replace('./', '')))
-  && !/['\"]\.?\/?vendor\/tesseract\/lang\/ara\.traineddata\.gz['\"]/i.test(sw5));
+  /* 3.4: ara returned to the runtime set as a UI-gated addition (no longer a
+     hard exclusion) and the zxing wasm joined the permanent OCR assets. */
+  && sw5.includes('./vendor/tesseract/lang/ara.traineddata.gz')
+  && sw5.includes('./src/vendor/zxing_reader.wasm'));
 check('search input has a clear button (44px target, icon-by-meaning, i18n title)',
   fs.readFileSync('index.html', 'utf8').includes('id="clearQuery"')
   && fs.readFileSync('index.html', 'utf8').includes('data-icon="clear-query"')

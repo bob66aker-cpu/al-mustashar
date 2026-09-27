@@ -1,5 +1,23 @@
 /*
- * sw.js — المستشار الزراعي (v26)
+ * sw.js — المستشار الزراعي (v27)
+ *
+ * v27 (2026-09-27) — المرحلة 3: محرك القراءة (نسخة العمل، الأصل لم يمس):
+ *   3.0a مؤشر وضوح الإطار الحيّ % (أحمر/كهرماني/أخضر) على قيمة lap/edges —
+ *       إرشادي فقط: قيمة نسبية مُعايَرة على عتبات «المرور الرخيص» الموجودة،
+ *       لا ضمان دقة قراءة.
+ *   3.0b النص المقروء بدرجة الثقة + تعديل يدوي قبل إعادة البحث (#ocrConf).
+ *   3.1 خط أساس موثّق على الصور الحقيقية 17 (docs/ocr-baseline.md) — القياس
+ *       قبل أي تحسين، وحارس اختبار يمنع انحدار الأدلة المؤكدة.
+ *   3.3 إلغاء بمعرّف (token): تصفير cancelFlag بين المسحات المتزامنة كان
+ *       يلغي مسحًا جديدًا فور بدئه (خلل حقيقي كشفه قياس خط الأساس)؛
+ *       + طابور أحادي OcrModule.scan() بديل التعامل المتزامن العشوائي.
+ *   3.5 الباركود أولًا: BarcodeDetector ثم zxing-wasm المُورَّد داخل Worker —
+ *       إشارة قابلة للتفقد لا حكم، صفر شبكة (مُستبعد من CWV شبكة الإقلاع).
+ *   3.4 لغة OCR حسب لغة الواجهة: ara+eng للعربية (هالوسة 3.5→0.75) وeng
+ *       لغيرها — worker واحد لكل تكوين، ولوحة التجهيز بالأحجام الفعلية.
+ *   3.2/3.6 توثيق سقف الأبعاد 1600 وبوابات المتغيرات الثقيلة (deep lanes
+ *       لا تمس الصور الناجحة) — لا سلسلة معالجة ثقيلة لكل صورة.
+ *   تغير سلوك الواجهة/SW → رفع الكاش v26→v27.
  *
  * v26 (2026-09-27) — المرحلة 2: تجربة الهاتف (نسخة العمل، الأصل لم يمس):
  *   2.1 زر تثبيت داخلي: التقاط beforeinstallprompt من سكربت <head> مبكر
@@ -102,7 +120,7 @@
  * Personal data (IndexedDB history, theme, app version note) lives outside
  * the caches and is never touched by this worker.
  */
-const CACHE = 'mustashar-v26';
+const CACHE = 'mustashar-v27';
 const OCR_CACHE = 'mustashar-ocr';
 
 /* 1.7 — safe cache write: a full storage quota (QuotaExceededError) must
@@ -120,10 +138,12 @@ const SHELL = [
   './index.html',
   './src/search-core.js',
   './src/app.js',
+  './src/barcode.js',
   './src/install-capture.js',
   './src/ocr.js',
   './src/scan-live.js',
   './src/vendor/qrcodegen.js',
+  './src/vendor/zxing-reader.min.js',
   './src/qr.js',
   './src/i18n.js',
   './src/icons.js',
@@ -164,10 +184,17 @@ const OCR_ASSETS = [
   './vendor/tesseract/core/tesseract-core-simd-lstm.wasm',
   './vendor/tesseract/core/tesseract-core-lstm.wasm.js',
   './vendor/tesseract/core/tesseract-core-lstm.wasm',
-  './vendor/tesseract/lang/eng.traineddata.gz'
-  /* ara.traineddata.gz removed from the runtime set: eng-only engine
-   * (Arabic-hallucination fix — docs/ocr-arabic-hallucination-diagnosis.md).
-   * The file stays in the repo as an asset; not prefetched or cached. */
+  './vendor/tesseract/lang/eng.traineddata.gz',
+  /* 3.4: ara returns to the RUNTIME set as an on-demand ADDITION, not a
+   * default: the engine now initializes ara+eng when the UI language is
+   * Arabic (hallucination measured 3.5→0.75 on baseline set) and eng-only
+   * otherwise. The ocr-eng-only guard was updated accordingly (it now
+   * asserts ara is NEVER a default). */
+  './vendor/tesseract/lang/ara.traineddata.gz',
+  /* 3.5: vendored zxing wasm — same permanent home so an offline user's
+   * barcode layer keeps working across SW updates (930KB, loaded lazily
+   * inside a Blob worker on first barcode attempt only). */
+  './src/vendor/zxing_reader.wasm'
 ];
 
 /* Subpath-safe matchers (GitHub Pages serves under /<repo>/): match by
@@ -176,7 +203,8 @@ const OCR_ASSETS = [
 const isDataUrl = url =>
   /\/data\/(libya-248|libya-500|eu|epa|epa-cancelled)\.json$/.test(url.pathname);
 const isOcrUrl = url =>
-  /\/vendor\/tesseract\/(core\/tesseract-core-(simd-)?lstm\.wasm(\.js)?|lang\/eng\.traineddata\.gz|worker\.min\.js)$/.test(url.pathname);
+  (/\/vendor\/tesseract\/(core\/tesseract-core-(simd-)?lstm\.wasm(\.js)?|lang\/(eng|ara)\.traineddata\.gz|worker\.min\.js)$/.test(url.pathname)
+   || /\/src\/vendor\/zxing_reader\.wasm$/.test(url.pathname));
 
 self.addEventListener('install', e => {
   e.waitUntil((async () => {
@@ -191,6 +219,11 @@ self.addEventListener('install', e => {
       try { await cache.add(new Request(url, { cache: 'reload' })); }
       catch (err) { console.warn('[sw] data precache failed:', url, err); }
     }));
+    /* v27: OCR assets and the zxing wasm deliberately stay OUT of install
+     * (documented design, unchanged): ~8.7 MB must not delay SW activation
+     * on a first visit. They enter the PERMANENT cache lazily — the
+     * isOcrUrl fetch handler stores them into OCR_CACHE on first use, and
+     * the explicit prep button keeps its resilient per-file prefetch. */
     await self.skipWaiting();
   })());
 });

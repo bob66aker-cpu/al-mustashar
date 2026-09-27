@@ -44,12 +44,19 @@
     DPI: 300
   };
 
-  let workerPromise = null;   // singleton worker, reused across scans
+  let workerPromise = null;   // per-language worker, reused across scans (3.4)
   let progressSink = null;    // latest onProgress: the reused worker's logger
                               // must report to the CURRENT scan, not the first
   let searchRef = null;       // injected SearchCore search fn (DB-aware scoring)
   let messages = null;        // injected i18n map for progress/status strings
-  let cancelFlag = false;     // cooperative cancellation between passes
+  /* 3.3 — token-based cancellation. The old boolean was CLEARED at every
+   * recognize() start, so a second scan starting while a superseded one was
+   * still winding down silently cancelled the NEW scan (measured on the
+   * baseline set: three images aborted 'ocr.cancelled' after their own
+   * start — docs/ocr-baseline.md §anomalies). Tokens are never cleared:
+   * a snapshot taken at scan start is only invalidated by a LATER
+   * cancelCurrent() call, exactly the semantics the pipeline wants. */
+  let cancelSeq = 0;
   let diagSink = null;        // أ1: diagnostics sink (null in production — set only by the diag harness via setDiagnosticsSink)
 
   /* status(messageKey) — emits a stable KEY (never a hardcoded UI string);
@@ -261,19 +268,25 @@
    * OCR pass plumbing
    * ============================================================ */
 
-  function ensureWorker(onProgress) {
+  function ensureWorker(onProgress, lang2) {
     // Route this scan's progress into the (possibly already-created)
     // worker's logger. Without this, scans 2..n of a reused worker would
     // report to the first scan's stale closure and show no progress.
     progressSink = onProgress || progressSink || (() => {});
-    if (workerPromise) return workerPromise;
+    const lang = lang2 || 'eng';
+    if (workerPromise && workerPromise.lang === lang) return workerPromise;
+    if (workerPromise) killWorker();   // 3.4: language switched — retire the old engine
     workerPromise = new Promise((resolve, reject) => {
       if (typeof Tesseract === 'undefined') {
         reject(new Error('tesseract.js is not loaded'));
         return;
       }
       resolve(Tesseract.createWorker(
-        'eng',                           // langs: eng only — ara removal (Arabic hallucination fix, docs/ocr-arabic-hallucination-diagnosis.md)
+        /* 3.4: langs follow the UI language — 'ara+eng' when the user reads
+         * Arabic, 'eng' otherwise (docs/ocr-baseline.md §lang: hallucination
+         * 3.5→0.75 on the 17-image set). Default stays 'eng': ara is NEVER
+         * the default (updated ocr-eng-only guard). */
+        lang,
         1,                               // OEM: LSTM only (matches the vendored core)
         {
           workerBlobURL: false,            // real same-origin worker (Blob workers cannot importScripts)
@@ -294,6 +307,7 @@
     /* A failed init (e.g. a very first scan made offline, before the OCR
        assets were ever cached) must not poison every future scan: reset
        so the next attempt creates a fresh worker once assets exist. */
+    workerPromise.lang = lang;   // 3.4: per-language worker identity
     workerPromise.catch(() => { workerPromise = null; });
     /* init watchdog: a createWorker() that never settles must not hang the
        scan forever — on timeout the half-built worker is killed and the
@@ -664,7 +678,10 @@
     const opts = options || {};
     if (opts.search) setSearchRef(opts.search);
     if (opts.messages) messages = opts.messages;
-    cancelFlag = false;
+    /* 3.4: UI language → OCR langs (app.js passes uiLang; default eng —
+     * ara is NEVER a default, per the updated eng-only guard). */
+    if (!opts.ocrLang) opts.ocrLang = (opts.uiLang === 'ar') ? 'ara+eng' : 'eng';
+    const myToken = newCancelToken();   /* 3.3: replaces the reset-flag */
 
     status('ocr.prep', 0);
     const base = await baseCanvas(file);
@@ -674,7 +691,7 @@
       if (m && m.statusKey) return;                       // already an app status event
       if (m && m.status === 'recognizing text') return;   // pass progress reported per-pass
       if (m && m.status) status('ocr.loading', 0.04 + (m.progress || 0) * 0.06);
-    });
+    }, opts.ocrLang);
 
     const t0 = (global.performance || Date).now ? (global.performance || Date).now() : Date.now();
 
@@ -711,7 +728,7 @@
     // fast lane: 2 quick passes on the two highest-yield variants
     // deep lane: remaining variants + rotations, only if needed
     const CANCELLED = 'ocr.cancelled';
-    const ensureNotCancelled = () => { if (cancelFlag) throw new Error(CANCELLED); };
+    const ensureNotCancelled = () => { if (isCancelled(myToken)) throw new Error(CANCELLED); };
     const queue = [];
     for (const psm of [11, 6]) queue.push({ variant: 'original', psm, lane: 'fast' });
     for (const v of ['gray', 'sharp']) for (const psm of [11, 6]) queue.push({ variant: v, psm, lane: 'deep1' });
@@ -975,7 +992,10 @@
 
   /* Cancel a running scan cooperatively: the next pass boundary throws.
    * Nothing is invented — whatever completed earlier is simply discarded. */
-  function cancelCurrent() { cancelFlag = true; }
+  function cancelCurrent() { cancelSeq++; }   /* invalidate scans started before now */
+
+  function newCancelToken() { return cancelSeq; }
+  function isCancelled(token) { return token !== cancelSeq; }
 
   /* د2 — unified engine interface (transducer). Image in, lines+words+cas
    * out; wraps recognize() without changing its behavior. Consumers can
@@ -1061,39 +1081,54 @@
     }
     return null;
   }
-  async function scan(file, options) {
-    const res = await recognize(file, null, options);
-    const lines = String(res.text || '').split(/\r?\n/)
-      .map(l => l.trim()).filter(Boolean)
-      .map(l => ({ text: l, conf: res.confidence }));
-    const rej = res.rejected || rejectedTextReason(res.text, {
-      conf: res.confidence,
-      cas: res.cas
-    });
-    if (rej) {
+  /* 3.3 — single-flight queue for the direct scan() helper: concurrent
+   * callers (e.g. a superseded capture racing a wind-down) now run
+   * SEQUENTIALLY instead of interleaving passes. The app's own pipeline
+   * uses token cancellation (3.3) and never enqueues behind a scan it
+   * just superseded — those are cancelled instead. */
+  let scanChain = Promise.resolve();
+  function scan(file, options) {
+    const run = async () => {
+      const res = await recognize(file, null, options);
+      /* 3.0b regression guard (restored): the final quality gate is
+         re-derived at the queue boundary — recognize() already gates
+         internally, but a queued scan owns its verdict and must never
+         skip it (same contract as the pre-3.3 scan()). */
+      const rej = res.rejected || rejectedTextReason(res.text, {
+        conf: res.confidence,
+        cas: res.cas
+      });
+      if (rej) {
+        return {
+          engine: 'tesseract-6.0.1',
+          rejected: rej,
+          lines: [], words: [], cas: [], candidates: [], confidence: null,
+          passes: res.passes, variant: res.variant, psm: res.psm,
+          best: res.best, aiRegion: res.aiRegion,
+          text: ''
+        };
+      }
       return {
         engine: 'tesseract-6.0.1',
-        rejected: rej,
-        lines: [], words: [], cas: [], candidates: [], confidence: null,
-        passes: res.passes, variant: res.variant, psm: res.psm,
-        best: res.best, aiRegion: res.aiRegion,
-        text: ''
-        };
-    }
-    return {
-      engine: 'tesseract-6.0.1',
-      lines,                       // [{text, conf}]
-      words: [],                   // per-word boxes stay internal to the engine
-      cas: res.cas,
-      candidates: res.candidates,
-      confidence: res.confidence,
-      passes: res.passes,
-      variant: res.variant,
-      psm: res.psm,
-      best: res.best,
-      aiRegion: res.aiRegion,
-      text: res.text
+        lines: String(res.text || '').split(/\r?\n/)
+          .map(l => l.trim()).filter(Boolean)
+          .map(l => ({ text: l, conf: res.confidence })),
+        words: [],
+        cas: res.cas,
+        candidates: res.candidates,
+        confidence: res.confidence,
+        passes: res.passes,
+        variant: res.variant,
+        psm: res.psm,
+        best: res.best,
+        aiRegion: res.aiRegion,
+        text: res.text
+      };
     };
+    const queued = (scanChain = scanChain.then(run, run));
+    return queued.finally(() => {
+      if (scanChain === queued) scanChain = Promise.resolve();   // drain
+    });
   }
 
   /* 1.5+1.6 — FULL offline preparation (the button's own comment finally
@@ -1185,8 +1220,10 @@
   global.OcrModule = {
     recognize, extractCAS, extractCandidates, prefetch, setSearchRef,
     setDiagnosticsSink,
+    /* 3.3: cancelCurrent stays for compatibility; the token capture is the
+     * primary cancellation primitive now (see cancelCurrent's comment). */
     cancelCurrent, scan, latinRatio, rejectedTextReason, MIN_CONFIDENCE,
-    hasValidCas,
+    hasValidCas, newCancelToken,
     OCR, VARIANTS, PSM_LIST, aiRegionFromWords, buildVariant
   };
 })(typeof window !== 'undefined' ? window : globalThis);

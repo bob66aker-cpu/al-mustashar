@@ -159,6 +159,22 @@
     .banner-error { background: var(--card); color: var(--ban);     border-inline-start-color: var(--ban); }
     .banner-info  { background: var(--card); color: var(--info);    border-inline-start-color: var(--info); }
 
+    /* 2.1 — بطاقة التثبيت: تظهر فقط عند توفر beforeinstallprompt (مُلتقط
+     * من install-capture.js في <head>)، وتختفي فورًا عند appinstalled.
+     * لا تُعرض إطلاقًا على متصفحات بلا دعم التثبيت الداخلي. */
+    #installCard {
+      display: flex; align-items: center; gap: 12px;
+      padding: 14px 16px; margin-top: 12px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    }
+    #installCard .ic { flex: 0 0 auto; }
+    #installCard .ic svg { width: 24px; height: 24px; }
+    #installCard .body { flex: 1 1 auto; min-width: 0; }
+    #installCard h3 { font-size: 16px; margin: 0 0 2px; }
+    #installCard p { font-size: 13px; color: var(--muted); margin: 0; }
+
     /* ============ views ============ */
     /* 2.2 — hidden must ALWAYS win: author display classes (.btn-outline,
      * .live-wrap, …) were overriding the UA [hidden]{display:none} rule,
@@ -556,6 +572,21 @@
       padding: 6px 10px; border-radius: 10px;
       border: 1px solid rgba(255, 255, 255, 0.25);
     }
+    /* 3.0a — مؤشر وضوح الإطار %: قيمة إرشادية مُعايَرة على عتبات «المرور
+     * الرخيص» الموجودة (ScanLive.cheapPass: lap≥14، edges≥2%) — ليست
+     * ضمان دقة قراءة، بل توجيه فوري قبل التصوير. ثلاث حالات لونية فقط. */
+    #liveSharp {
+      position: absolute; bottom: 10px; inset-inline-start: 10px;
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 4px 10px; border-radius: 999px;
+      font-size: 12px; font-weight: 700; color: #fff;
+      background: rgba(0, 0, 0, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+    #liveSharp .dot { width: 9px; height: 9px; border-radius: 50%; background: #9ca3af; }
+    #liveSharp.lv-red    .dot { background: #ef4444; }
+    #liveSharp.lv-amber  .dot { background: #f59e0b; }
+    #liveSharp.lv-green  .dot { background: #22c55e; }
     input[type="file"] { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 
     /* ============ history view ============ */
@@ -796,7 +827,18 @@
   </header>
 
   <main id="appMain">
-    <div class="banner banner-warn" id="dbBanner" hidden></div>
+    <div id="dbBanner" class="banner" hidden></div>
+
+    <!-- 2.1 — زر التثبيت الداخلي: بطاقة واحدة، تظهر عند توفر التثبيت فقط
+         (beforeinstallprompt) وتختفي عند appinstalled. -->
+    <div id="installCard" hidden>
+      <span class="ic" data-icon="download"></span>
+      <div class="body">
+        <h3 data-i18n="install.title">ثبّت التطبيق على هاتفك</h3>
+        <p data-i18n="install.desc">يعمل بدون إنترنت بعد أول تشغيل — أسرع في كل مرة تفتحها.</p>
+      </div>
+      <button class="btn-primary" type="button" id="installBtn"><span data-i18n="install.cta">تثبيت</span></button>
+    </div>
 
     <!-- ================= HOME ================= -->
     <section class="view" id="view-home" data-view="home">
@@ -954,6 +996,7 @@
         <video id="liveVideo" playsinline muted autoplay></video>
         <canvas id="liveGuide" aria-hidden="true"></canvas>
         <p class="live-hint" data-i18n="live.hint">وجّه خانة المكونات داخل الإطار</p>
+        <span id="liveSharp" aria-live="off"><span class="dot"></span><b id="liveSharpVal">—</b><span data-i18n="live.sharp.label">وضوح</span></span>
       </div>
       <div class="tools" id="liveControls" hidden>
         <button class="btn-primary" type="button" id="liveCaptureBtn"><span data-icon="scan"></span><span data-i18n="live.capture">التقاط أفضل إطار</span></button>
@@ -968,6 +1011,13 @@
           <span data-icon="close"></span>
         </button>
       </div>
+      <!-- 3.5 — barcode signal chip: advisory only, textContent-rendered -->
+      <div id="barcodeChip" class="banner banner-info" hidden>
+        <span data-icon="scan"></span>
+        <span id="barcodeChipText" style="flex:1 1 auto; min-width:0; overflow-wrap:anywhere;"></span>
+        <span id="barcodeChipMeta" style="flex:0 0 auto;"></span>
+        <button class="btn-outline" type="button" id="barcodeChipClear" style="flex:0 0 auto;"><span data-i18n="scan.barcode.clear">إزالة</span></button>
+      </div>
       <p id="ocrMsg" class="scan-note"></p>
 
       <div class="tools">
@@ -981,6 +1031,8 @@
       <section class="results" id="scanResults" aria-live="polite"></section>
 
       <div id="ocrActions" hidden>
+        <!-- 3.0b — درجة الثقة: عرض فقط؛ لا يقرأها أي مسار قرار -->
+        <p id="ocrConf" class="scan-note" style="margin:0 0 6px; font-weight:700;"></p>
         <textarea id="ocrText" class="query" rows="4" dir="auto" data-i18n-placeholder="scan.placeholder" placeholder="النص المكتشف من الصورة — يمكن تعديله ثم إعادة البحث"></textarea>
         <div class="tools">
           <button class="btn-outline" type="button" id="ocrRerun"><span data-icon="search"></span><span data-i18n="scan.rerun">بحث من النص</span></button>
@@ -1243,6 +1295,7 @@
   <script src="src/intl.js"></script>
   <script src="vendor/tesseract/tesseract.min.js"></script>
   <script src="src/ocr.js"></script>
+  <script src="src/barcode.js"></script>
   <script src="src/scan-live.js"></script>
   <script src="src/vendor/qrcodegen.js"></script>
   <script src="src/qr.js"></script>

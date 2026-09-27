@@ -1,0 +1,33 @@
+{
+  "measuredAt": "2026-09-27",
+  "engine": "tesseract-6.0.1 eng-only ladder (v27 worktree; 3.3/3.4 structural changes are behavior-preserving: default eng, sequential scans — see docs/ocr-baseline.md §methodology)",
+  "set": "tests/fixtures/labels/ — 17 real images; ground-truth.csv has NO data rows (user-owned)",
+  "classifier": {
+    "ACCEPT": "a CAS with a valid check digit was extracted OR the top match had v>=96",
+    "REJECT": "non-empty raw text that failed the final gates (latin/conf)",
+    "EMPTY": "gate-rejected with no usable text (safe no-read)",
+    "HANG": "timeout / unresolved"
+  },
+  "summary": { "ACCEPT": 7, "REJECT": 5, "EMPTY": 5, "HANG": 0, "avgMs": 18495, "maxMs": 74936, "avgPasses": 8.5 },
+  "rows": [
+    { "img": "5.jpg", "outcome": "REJECT", "ms": 12226, "passes": 14, "conf": 50 },
+    { "img": "6.jpg", "outcome": "REJECT", "ms": 6796, "passes": 14, "conf": 47 },
+    { "img": "7.jpg", "outcome": "EMPTY", "ms": 66359, "passes": 14, "conf": 0 },
+    { "img": "8.jpg", "outcome": "ACCEPT", "ms": 3917, "passes": 1, "conf": 38, "top": "libya-500:100 Spinosad" },
+    { "img": "9.jpg", "outcome": "ACCEPT", "ms": 2168, "passes": 6, "conf": 36, "top": "epa:100 Soap" },
+    { "img": "100.jpg", "outcome": "ACCEPT", "ms": 806, "passes": 1, "conf": 65, "top": "libya-248:100 Zineb ; libya-500:100 Tebuconazole" },
+    { "img": "101.jpg", "outcome": "ACCEPT", "ms": 3484, "passes": 1, "conf": 34, "top": "eu:100 Isoprothiolane" },
+    { "img": "103.jpg", "outcome": "ACCEPT", "ms": 997, "passes": 1, "conf": 56, "top": "libya-500:100 Acetamiprid" },
+    { "img": "105.jpg", "outcome": "REJECT", "ms": 12350, "passes": 14, "conf": 63 },
+    { "img": "106.jpg", "outcome": "ACCEPT", "ms": 3012, "passes": 1, "conf": 53, "top": "libya-500:100 Clethodim" },
+    { "img": "images.jpg", "outcome": "ACCEPT", "ms": 23495, "passes": 7, "conf": 35, "top": "libya-248:100 Oxadiazon" },
+    { "img": "images (1).jpg", "outcome": "EMPTY", "ms": 17831, "passes": 14, "conf": 0 },
+    { "img": "images (2).jpg", "outcome": "REJECT", "ms": 10761, "passes": 1, "conf": 44 },
+    { "img": "images (3).jpg", "outcome": "REJECT", "ms": 11520, "passes": 14, "conf": 59 },
+    { "img": "pesticide_test_level1_ideal.png", "outcome": "EMPTY", "ms": 34868, "passes": 14, "conf": 0 },
+    { "img": "pesticide_test_level3_damaged.png", "outcome": "EMPTY", "ms": 74936, "passes": 14, "conf": 0 },
+    { "img": "pesticide_test_level4_lowlight.png", "outcome": "EMPTY", "ms": 28897, "passes": 14, "conf": 0 }
+  ],
+  "hangAnomaly": "none in this run; the 3.3 token-cancel fix still applies to the concurrent-supersede path which this harness does not exercise",
+  "langAnomaly": null
+}

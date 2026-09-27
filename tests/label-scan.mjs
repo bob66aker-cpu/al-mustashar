@@ -29,6 +29,7 @@ const LABELS = [
 const browser = await puppeteer.launch({
   executablePath: CHROME,
   headless: 'new',
+  protocolTimeout: 900000,   /* 17 real-label OCR ladder >> 180s default */
   args: ['--no-sandbox', '--disable-dev-shm-usage', '--disable-gpu']
 });
 try {

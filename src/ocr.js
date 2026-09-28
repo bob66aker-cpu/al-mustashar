@@ -367,20 +367,58 @@
    * never sees an error and never has to press anything twice. */
   function resetEngine() { killWorker(); }
 
+  /* ================================================================
+   * 3.x — طبقة الضبط: كل تحسين في هذه الجولة يُنفَّذ خلف علم هنا،
+   * والافتراضي = السلوك قبل الجولة تماماً. بوابات الثقة القائمة
+   * (MIN_CONFIDENCE ونسبة اللاتيني وإعفاء CAS) لا تُعدَّل إطلاقاً.
+   * ================================================================ */
+  const TUNING_DEFAULT = {
+    /* تهيئة Tesseract الداخلية — مقسّمة إلى عِلمين مستقلّين ليُقاس كل
+     * واحد وحده على مجموعة الاختبار:
+     *   tesseractOem  : LSTM حصراً (1) بدل الوضع المدمج
+     *   wordFilter    : حذف الكلمات التي ثقة المحرك فيها أقل من القيمة
+     *                   (0 = معطّل). لا تمسّ بوابة القبول نفسها. */
+    tesseractOem: false,
+    wordFilter: 0,
+    /* عتبة حدة ما قبل القبول (تباين Laplacian) — 0 = معطّلة */
+    sharpGate: 0,
+    /* تحسين الإضاءة عبر Canvas خلف علم تجريبي */
+    clahe: false,
+    /* تصويت متعدد الإطارات — الكاميرا الحية فقط */
+    frameVote: false
+  };
+  let tuning = Object.assign({}, TUNING_DEFAULT);
+  function setTuning(patch) {
+    tuning = Object.assign({}, TUNING_DEFAULT, patch || {});
+    return getTuning();
+  }
+  function getTuning() { return Object.assign({}, tuning); }
+
   function killWorker() {
     if (workerPromise) workerPromise.then(w => w.terminate()).catch(() => {});
     workerPromise = null;            // next scan builds a fresh worker
   }
 
   async function runPass(worker, canvas, psm) {
+    /* 3.4 — الضبط الداخلي لا يراه المزارع ولا يمسّ بوابة قبول واحدة:
+     *   OEM 1 = LSTM فقط (يحذف محرك Tesseract القديم الأبطأ بلا فائدة
+     *   لمطبوعة الملصق)
+     *   PSM 6 = «كتلة نص واحدة موحّدة» — شكل الملصق. السلّم 11/6/12
+     *   القائم لم يتغيّر، بل استُحضر 6 مبكراً أكثر (انظر PSM_LIST). */
+    const params = { tessedit_pageseg_mode: String(psm), user_defined_dpi: String(OCR.DPI) };
+    if (tuning.tesseractOem) params.tessedit_oem = '1';   // LSTM only
     try {
-      await withTimeout(
-        worker.setParameters({ tessedit_pageseg_mode: String(psm), user_defined_dpi: String(OCR.DPI) }),
-        PASS_TIMEOUT_MS, 'setParameters');
+      await withTimeout(worker.setParameters(params), PASS_TIMEOUT_MS, "setParameters");
     } catch (e) { /* older builds may not support setParameters; defaults apply */ }
     let res;
     try {
-      res = await withTimeout(worker.recognize(canvas), PASS_TIMEOUT_MS, 'recognize');
+      /* Tesseract v6 ships `blocks: false` in its default output set, so a
+         bare recognize() returns NO word boxes at all — the ingredient-region
+         detector and the confidence filter below were reading an empty list.
+         Ask for the structure explicitly; `text` stays on. */
+      res = await withTimeout(
+        worker.recognize(canvas, {}, { blocks: true, text: true }),
+        PASS_TIMEOUT_MS, 'recognize');
     } catch (e) {
       killWorker();                  // wedged or failed worker: self-heal
       throw e;
@@ -392,6 +430,11 @@
     // older builds expose a flat d.words. Recursively collect every word
     // that carries a bbox so AI-region detection works on either shape.
     const words = [];
+    /* 3.4 — الكلمة التي المحرك نفسه غير واثق منها تُحذف قبل أن تصل إلى
+     * المطابقة. هذا لا يخلق رقم CAS خاطئاً أبداً: الحذف ينقص النصوص
+     * المرشحة فقط، وبوابة MIN_CONFIDENCE ما زالت تحكم النتيجة. */
+    const wordOk = w => !tuning.wordFilter
+      || typeof w.confidence !== 'number' || w.confidence >= tuning.wordFilter;
     const visit = node => {
       if (!node || typeof node !== 'object') return;
       if (Array.isArray(node)) { node.forEach(visit); return; }
@@ -404,7 +447,13 @@
       }
     };
     visit(d.blocks || d.words || []);
-    return { text, conf, words };
+    /* the low-confidence words are dropped from BOTH the box list (used for
+     * the ingredient region) and the text handed to the matcher */
+    const kept = tuning.wordFilter ? words.filter(wordOk) : words;
+    const outText = tuning.wordFilter
+      ? kept.map(w => w.text).join(' ').replace(/\s+/g, ' ').trim()
+      : text;
+    return { text: outText, conf, words: kept };
   }
 
   /* ============================================================
@@ -706,6 +755,42 @@
    * Main recognize() — progressive multi-pass with early exit
    * ============================================================ */
 
+  /* ------------------------------------------------------------
+   * 3.2 — حدة الصورة قبل إنفاق ثوانٍ على القراءة.
+   * مقياس بسيط ومستقر: تباين تدرّج Laplacian على نسخة رمادية صغيرة.
+   * لا يحدّد بوابة قبول (القرار من المحرك)، بل يمنع القراءة الطويلة
+   * على صورة مموّهةمحكوم عليها مسبقاً. العتبة تُقاس من الصور الموجودة،
+   * ولا تُخترع رقماً. */
+  const SHARP_SIDE = 256;
+  async function sharpness(blobOrCanvas) {
+    try {
+      const cv = await baseCanvas(blobOrCanvas, SHARP_SIDE);
+      if (!cv) return null;
+      const ctx = cv.getContext("2d", { willReadFrequently: true });
+      const d = ctx.getImageData(0, 0, cv.width, cv.height).data;
+      const w = cv.width, h = cv.height;
+      const gray = new Float32Array(w * h);
+      for (let i = 0, p = 0; i < d.length; i += 4, p++) {
+        gray[p] = 0.299 * d[i] + 0.587 * d[i + 1] + 0.114 * d[i + 2];
+      }
+      /* kernel [-1 1 -1; 2 -4 2; -1 1 -1] — the second derivative: it
+         responds to edges and ignores brightness */
+      let sum = 0, sum2 = 0, n = 0;
+      for (let y = 1; y < h - 1; y++) {
+        for (let x = 1; x < w - 1; x++) {
+          const i = y * w + x;
+          const l = -gray[i - w - 1] + gray[i - w + 1]
+            - 2 * gray[i - 1] + 4 * gray[i] - 2 * gray[i + 1]
+            - gray[i + w - 1] + gray[i + w + 1];
+          sum += l; sum2 += l * l; n++;
+        }
+      }
+      if (!n) return null;
+      const mean = sum / n;
+      return Math.max(0, sum2 / n - mean * mean);
+    } catch (e) { return null; }
+  }
+
   async function recognize(file, onProgress, options) {
     const progress = onProgress || (() => {});
     const opts = options || {};
@@ -765,6 +850,19 @@
     } finally { finishScan(); }
 
     async function recognizeInner() {      /* ---------- pass queue ---------- */
+      /* 3.2 — عتبة الحدة: تُقاس قبل أي تمريرة. إن كانت الصورة أضعف من
+         العتبة المعايَرة، يُعاد سبب واضح بلا أي نتيجة مختلقة. المسار
+         الحيّ يعرض رسالة المزارع; المسار الثابت (المعرض) يعرض نفس
+         الرسالة نصياً. لا يوجد أي رقمacceptance يتغيّر هنا. */
+      if (tuning.sharpGate > 0) {
+        const v = await sharpness(base);   /* the canvas is already decoded — no second decode */
+        if (v !== null && v < tuning.sharpGate) {
+          if (diagSink) { try { diagSink({ at: Date.now(), outcome: "sharp-gate", value: Math.round(v), threshold: tuning.sharpGate }); } catch (e) {} }
+          return { text: "", confidence: 0, cas: [], candidates: [], passes: 0,
+                   blockedBy: "sharp", sharpness: Math.round(v),
+                   gateReason: "sharp", confidenceFloor: MIN_CONFIDENCE };
+        }
+      }
     // fast lane: 2 quick passes on the two highest-yield variants
     // deep lane: remaining variants + rotations, only if needed
     const CANCELLED = 'ocr.cancelled';
@@ -1280,6 +1378,11 @@
     memoryRung, maxDimFor,
     /* 3.3: cancelCurrent stays for compatibility; the token capture is the
      * primary cancellation primitive now (see cancelCurrent's comment). */
+    /* 3.x: the tuning layer is public so the app and the measurement
+     * harness can turn ONE improvement on and compare it against the
+     * same fixed label set — nothing here changes a quality gate. */
+    setTuning, getTuning, TUNING_DEFAULT,
+    sharpness, SHARP_SIDE,
     cancelCurrent, scan, latinRatio, rejectedTextReason, MIN_CONFIDENCE,
     hasValidCas, newCancelToken, resetEngine,
     OCR, VARIANTS, PSM_LIST, aiRegionFromWords, buildVariant

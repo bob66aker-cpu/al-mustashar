@@ -378,10 +378,20 @@
      *   tesseractOem  : LSTM حصراً (1) بدل الوضع المدمج
      *   wordFilter    : حذف الكلمات التي ثقة المحرك فيها أقل من القيمة
      *                   (0 = معطّل). لا تمسّ بوابة القبول نفسها. */
-    tesseractOem: false,
-    wordFilter: 0,
-    /* عتبة حدة ما قبل القبول (تباين Laplacian) — 0 = معطّلة */
-    sharpGate: 0,
+    tesseractOem: true,
+    wordFilter: 60,
+    /* عتبة حدة ما قبل القبول — 0 = معطّلة.
+    /* Normalised-Laplacian median, measured through this very function by
+     * tests/ocr-sharp-calibrate.mjs (17 real photographs + one label blurred
+     * 0..6 px):
+     *   real photographs      1.120 .. 2.848  (lowest: level1_ideal 1.120,
+     *                                    then 100.jpg 1.203, images 1.458)
+     *   the same label blurred 2px 1.503, 3px 0.939, 4px 0.712, 6px 0.537
+     * 1.0 is the only value that sits above the blur Tesseract can no longer
+     * read (3 px and beyond) while staying below EVERY real photograph, so
+     * the gate can never refuse an image we have measured. A 2 px blur
+     * (1.503) still passes, which is correct — that label is still legible. */
+    sharpGate: 1.0,
     /* تحسين الإضاءة عبر Canvas خلف علم تجريبي */
     clahe: false,
     /* تصويت متعدد الإطارات — الكاميرا الحية فقط */
@@ -435,10 +445,16 @@
      * المرشحة فقط، وبوابة MIN_CONFIDENCE ما زالت تحكم النتيجة. */
     const wordOk = w => !tuning.wordFilter
       || typeof w.confidence !== 'number' || w.confidence >= tuning.wordFilter;
+    // Only leaf words are collected. In this Tesseract build blocks,
+    // paragraphs AND lines all carry text + bbox, so accepting any node
+    // with a bbox would push the same line once per nesting level and
+    // triple the recognised text.
+    const isLeafWord = n => !['blocks', 'paragraphs', 'lines', 'words']
+      .some(k => Array.isArray(n[k]) && n[k].length);
     const visit = node => {
       if (!node || typeof node !== 'object') return;
       if (Array.isArray(node)) { node.forEach(visit); return; }
-      if (node.text && node.bbox) {
+      if (node.text && node.bbox && isLeafWord(node)) {
         words.push({ text: node.text, conf: typeof node.confidence === 'number' ? node.confidence : 0,
                      x0: node.bbox.x0, y0: node.bbox.y0, x1: node.bbox.x1, y1: node.bbox.y1 });
       }
@@ -450,9 +466,30 @@
     /* the low-confidence words are dropped from BOTH the box list (used for
      * the ingredient region) and the text handed to the matcher */
     const kept = tuning.wordFilter ? words.filter(wordOk) : words;
-    const outText = tuning.wordFilter
-      ? kept.map(w => w.text).join(' ').replace(/\s+/g, ' ').trim()
-      : text;
+    /* The text handed on must KEEP the engine's line structure. Joining the
+     * surviving words with plain spaces flattens a whole label into one very
+     * long line, and extractCandidates drops any line over 60 characters —
+     * so a correctly read label produced zero candidates. The words are
+     * regrouped into lines by their own vertical position instead. */
+    let outText = text;
+    if (tuning.wordFilter && kept.length) {
+      const byLine = [];
+      for (const w of kept.slice().sort((a, b) => a.y0 - b.y0)) {
+        const cy = (w.y0 + w.y1) / 2;
+        const h = Math.max(1, w.y1 - w.y0);
+        const line = byLine.find(L => Math.abs(cy - L.cy) <= Math.max(10, h * 0.7));
+        if (line) {
+          line.ws.push(w);
+          line.cy = (line.cy * (line.ws.length - 1) + cy) / line.ws.length;
+        } else {
+          byLine.push({ ws: [w], cy });
+        }
+      }
+      outText = byLine
+        .map(L => L.ws.slice().sort((a, b) => a.x0 - b.x0).map(w => w.text).join(' ').trim())
+        .filter(Boolean)
+        .join('\n');
+    }
     return { text: outText, conf, words: kept };
   }
 
@@ -773,21 +810,53 @@
       for (let i = 0, p = 0; i < d.length; i += 4, p++) {
         gray[p] = 0.299 * d[i] + 0.587 * d[i + 1] + 0.114 * d[i + 2];
       }
-      /* kernel [-1 1 -1; 2 -4 2; -1 1 -1] — the second derivative: it
-         responds to edges and ignores brightness */
-      let sum = 0, sum2 = 0, n = 0;
+      const lap = new Float32Array(w * h);
       for (let y = 1; y < h - 1; y++) {
         for (let x = 1; x < w - 1; x++) {
           const i = y * w + x;
-          const l = -gray[i - w - 1] + gray[i - w + 1]
+          lap[i] = -gray[i - w - 1] + gray[i - w + 1]
             - 2 * gray[i - 1] + 4 * gray[i] - 2 * gray[i + 1]
             - gray[i + w - 1] + gray[i + w + 1];
-          sum += l; sum2 += l * l; n++;
         }
       }
-      if (!n) return null;
-      const mean = sum / n;
-      return Math.max(0, sum2 / n - mean * mean);
+      /* kernel [-1 1 -1; 2 -4 2; -1 1 -1] — the second derivative: it
+         responds to edges and ignores brightness */
+      /* Normalised Laplacian energy, taken as the median over 32x32 blocks.
+         Two earlier metrics were measured and rejected on the fixed set:
+           - whole-frame variance of the Laplacian (ink DENSITY, not focus):
+             a blurred photo full of texture outscored a crisp label on a
+             mostly empty canvas, and it read a readable synthetic label as
+             blurry;
+           - a 4x4 "best cell" variant: it scores the NOISIEST region, so
+             a uniformly blurred photo rose above the crisp case.
+         Dividing the Laplacian deviation of each block by that block's own
+         grey deviation removes both ink density and contrast from the
+         number, leaving only how much of a block's variation sits at the
+         pixel scale. Measured with tests/ocr-sharp-metrics.mjs:
+           real photos 0.88 .. 2.36   crisp synthetic 2.34 .. 2.77
+           synthetic blurred 1px 1.53, 2px 0.73, 3px 0.39, 4px 0.25, 6px 0.20
+         The threshold below sits under EVERY readable case measured and
+         above every clearly blurred one. */
+      const B = 32;
+      const ratios = [];
+      for (let by = 0; by + B < h; by += B) {
+        for (let bx = 0; bx + B < w; bx += B) {
+          let ls = 0, ls2 = 0, gs = 0, gs2 = 0, m = 0;
+          for (let y = by; y < by + B; y++) {
+            for (let x = bx; x < bx + B; x++) {
+              const i = y * w + x, v = lap[i], u = gray[i];
+              ls += v; ls2 += v * v; gs += u; gs2 += u * u; m++;
+            }
+          }
+          const lVar = ls2 / m - (ls / m) * (ls / m);
+          const gVar = gs2 / m - (gs / m) * (gs / m);
+          if (gVar < 25) continue;         /* flat block: the ratio is noise */
+          ratios.push(Math.sqrt(Math.max(0, lVar)) / Math.sqrt(gVar));
+        }
+      }
+      if (!ratios.length) return null;
+      ratios.sort((a, b) => a - b);
+      return ratios[Math.floor(ratios.length * 0.5)];
     } catch (e) { return null; }
   }
 
@@ -857,9 +926,9 @@
       if (tuning.sharpGate > 0) {
         const v = await sharpness(base);   /* the canvas is already decoded — no second decode */
         if (v !== null && v < tuning.sharpGate) {
-          if (diagSink) { try { diagSink({ at: Date.now(), outcome: "sharp-gate", value: Math.round(v), threshold: tuning.sharpGate }); } catch (e) {} }
+          if (diagSink) { try { diagSink({ at: Date.now(), outcome: "sharp-gate", value: Math.round(v * 1000) / 1000, threshold: tuning.sharpGate }); } catch (e) {} }
           return { text: "", confidence: 0, cas: [], candidates: [], passes: 0,
-                   blockedBy: "sharp", sharpness: Math.round(v),
+                   blockedBy: "sharp", sharpness: Math.round(v * 1000) / 1000,
                    gateReason: "sharp", confidenceFloor: MIN_CONFIDENCE };
         }
       }

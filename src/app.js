@@ -1429,6 +1429,13 @@
         diagAdd({ at: Date.now(), outcome: 'rejected', src: 'live', ms, reason: res.rejected.lowConfidence ? res.rejected.conf : res.rejected.ratio });
         return;
       }
+      if (res.blockedBy === 'sharp') {
+        /* 3.2 — the image is too blurry to read. One short sentence, no
+           numbers, no settings: the farmer only ever points the camera. */
+        ocrMsg.textContent = t('ocr.sharp.retake', 'الصورة غير واضحة — أعد التصوير.');
+        diagAdd({ at: Date.now(), outcome: 'sharp', src: 'live', ms, v: res.sharpness });
+        return;
+      }
       const textLen = (res.text || '').replace(/\s/g, '').length;
       if (textLen < 6 || (res.confidence !== null && res.confidence < 40)) {
         ocrMsg.textContent = t('ocr.weak.manual', 'لم أستطع القراءة بثقة كافية — أدخل الاسم يدويًا في حقل البحث، أو عدّل النص أدناه.');
@@ -1992,6 +1999,14 @@
         $('#ocrActions').hidden = false;
         diagAdd({ at: Date.now(), outcome: 'rejected', ms, passes: res.passes,
                   reason: res.rejected.lowConfidence ? res.rejected.conf : res.rejected.ratio });
+        return;
+      }
+      if (res.blockedBy === 'sharp') {
+        /* 3.2 — same short sentence as the live path, in the picked
+           language; the editor stays empty because nothing was read. */
+        ocrMsg.textContent = t('ocr.sharp.retake', 'الصورة غير واضحة — أعد التصوير.');
+        $('#ocrActions').hidden = false;
+        diagAdd({ at: Date.now(), outcome: 'sharp', ms, v: res.sharpness });
         return;
       }
       const textLen = (res.text || '').replace(/\s/g, '').length;

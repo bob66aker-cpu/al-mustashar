@@ -1,0 +1,205 @@
+{
+ "measuredAt": "2026-09-28",
+ "deviceMemory": 32,
+ "rung": {
+  "dim": 2560,
+  "rung": "4gb+",
+  "gb": 32
+ },
+ "beforeDim": 1600,
+ "afterDim": 2560,
+ "before": {
+  "n": 17,
+  "avgMs": 24741,
+  "maxMs": 90404,
+  "avgPasses": 7.76,
+  "ACCEPT": 1,
+  "REJECT": 11,
+  "EMPTY": 5,
+  "HANG": 0
+ },
+ "after": {
+  "n": 17,
+  "avgMs": 22540,
+  "maxMs": 90790,
+  "avgPasses": 7.76,
+  "ACCEPT": 1,
+  "REJECT": 11,
+  "EMPTY": 5,
+  "HANG": 0
+ },
+ "avgMsDelta": "-8.9%",
+ "verdict": "ACCEPT-NOT-LOWERED",
+ "rows": [
+  {
+   "n": 1,
+   "name": "5.jpg",
+   "beforeMs": 14566,
+   "afterMs": 14093,
+   "beforeGrade": "REJECT",
+   "afterGrade": "REJECT",
+   "beforeTop": "",
+   "afterTop": ""
+  },
+  {
+   "n": 2,
+   "name": "6.jpg",
+   "beforeMs": 7460,
+   "afterMs": 7390,
+   "beforeGrade": "REJECT",
+   "afterGrade": "REJECT",
+   "beforeTop": "",
+   "afterTop": ""
+  },
+  {
+   "n": 3,
+   "name": "7.jpg",
+   "beforeMs": 89340,
+   "afterMs": 88347,
+   "beforeGrade": "EMPTY",
+   "afterGrade": "EMPTY",
+   "beforeTop": "",
+   "afterTop": ""
+  },
+  {
+   "n": 4,
+   "name": "8.jpg",
+   "beforeMs": 5603,
+   "afterMs": 5608,
+   "beforeGrade": "REJECT",
+   "afterGrade": "REJECT",
+   "beforeTop": "",
+   "afterTop": ""
+  },
+  {
+   "n": 5,
+   "name": "9.jpg",
+   "beforeMs": 2595,
+   "afterMs": 2555,
+   "beforeGrade": "REJECT",
+   "afterGrade": "REJECT",
+   "beforeTop": "",
+   "afterTop": ""
+  },
+  {
+   "n": 6,
+   "name": "100.jpg",
+   "beforeMs": 1220,
+   "afterMs": 1047,
+   "beforeGrade": "REJECT",
+   "afterGrade": "REJECT",
+   "beforeTop": "",
+   "afterTop": ""
+  },
+  {
+   "n": 7,
+   "name": "101.jpg",
+   "beforeMs": 2558,
+   "afterMs": 2570,
+   "beforeGrade": "REJECT",
+   "afterGrade": "REJECT",
+   "beforeTop": "",
+   "afterTop": ""
+  },
+  {
+   "n": 8,
+   "name": "103.jpg",
+   "beforeMs": 1194,
+   "afterMs": 1225,
+   "beforeGrade": "REJECT",
+   "afterGrade": "REJECT",
+   "beforeTop": "",
+   "afterTop": ""
+  },
+  {
+   "n": 9,
+   "name": "105.jpg",
+   "beforeMs": 34482,
+   "afterMs": 16892,
+   "beforeGrade": "REJECT",
+   "afterGrade": "REJECT",
+   "beforeTop": "",
+   "afterTop": ""
+  },
+  {
+   "n": 10,
+   "name": "106.jpg",
+   "beforeMs": 8807,
+   "afterMs": 4200,
+   "beforeGrade": "REJECT",
+   "afterGrade": "REJECT",
+   "beforeTop": "",
+   "afterTop": ""
+  },
+  {
+   "n": 11,
+   "name": "images.jpg",
+   "beforeMs": 48652,
+   "afterMs": 34374,
+   "beforeGrade": "REJECT",
+   "afterGrade": "REJECT",
+   "beforeTop": "",
+   "afterTop": ""
+  },
+  {
+   "n": 12,
+   "name": "images (1).jpg",
+   "beforeMs": 25834,
+   "afterMs": 24950,
+   "beforeGrade": "EMPTY",
+   "afterGrade": "EMPTY",
+   "beforeTop": "",
+   "afterTop": ""
+  },
+  {
+   "n": 13,
+   "name": "images (2).jpg",
+   "beforeMs": 4805,
+   "afterMs": 4663,
+   "beforeGrade": "ACCEPT",
+   "afterGrade": "ACCEPT",
+   "beforeTop": "",
+   "afterTop": ""
+  },
+  {
+   "n": 14,
+   "name": "images (3).jpg",
+   "beforeMs": 2894,
+   "afterMs": 1442,
+   "beforeGrade": "REJECT",
+   "afterGrade": "REJECT",
+   "beforeTop": "",
+   "afterTop": ""
+  },
+  {
+   "n": 15,
+   "name": "pesticide_test_level1_ideal.png",
+   "beforeMs": 47303,
+   "afterMs": 48751,
+   "beforeGrade": "EMPTY",
+   "afterGrade": "EMPTY",
+   "beforeTop": "",
+   "afterTop": ""
+  },
+  {
+   "n": 16,
+   "name": "pesticide_test_level3_damaged.png",
+   "beforeMs": 90404,
+   "afterMs": 90790,
+   "beforeGrade": "EMPTY",
+   "afterGrade": "EMPTY",
+   "beforeTop": "",
+   "afterTop": ""
+  },
+  {
+   "n": 17,
+   "name": "pesticide_test_level4_lowlight.png",
+   "beforeMs": 32872,
+   "afterMs": 34278,
+   "beforeGrade": "EMPTY",
+   "afterGrade": "EMPTY",
+   "beforeTop": "",
+   "afterTop": ""
+  }
+ ]
+}

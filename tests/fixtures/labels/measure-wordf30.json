@@ -1,0 +1,89 @@
+{
+ "tag": "wordf30",
+ "flags": {
+  "wordFilter": 30
+ },
+ "tuning": {
+  "tesseractOem": false,
+  "wordFilter": 30,
+  "sharpGate": 0,
+  "clahe": false,
+  "frameVote": false
+ },
+ "rung": {
+  "dim": 2560,
+  "rung": "4gb+",
+  "gb": 32
+ },
+ "measuredAt": "2026-09-28",
+ "n": 6,
+ "ACCEPT": 0,
+ "REJECT": 0,
+ "EMPTY": 6,
+ "HANG": 0,
+ "avgMs": 10788,
+ "maxMs": 32623,
+ "avgPasses": 14,
+ "rows": [
+  {
+   "n": 1,
+   "name": "5.jpg",
+   "ms": 6962,
+   "passes": 14,
+   "cas": 0,
+   "grade": "EMPTY",
+   "gate": "",
+   "error": ""
+  },
+  {
+   "n": 2,
+   "name": "6.jpg",
+   "ms": 4883,
+   "passes": 14,
+   "cas": 0,
+   "grade": "EMPTY",
+   "gate": "",
+   "error": ""
+  },
+  {
+   "n": 3,
+   "name": "7.jpg",
+   "ms": 32623,
+   "passes": 14,
+   "cas": 0,
+   "grade": "EMPTY",
+   "gate": "",
+   "error": ""
+  },
+  {
+   "n": 4,
+   "name": "8.jpg",
+   "ms": 9130,
+   "passes": 14,
+   "cas": 0,
+   "grade": "EMPTY",
+   "gate": "",
+   "error": ""
+  },
+  {
+   "n": 5,
+   "name": "9.jpg",
+   "ms": 4777,
+   "passes": 14,
+   "cas": 0,
+   "grade": "EMPTY",
+   "gate": "",
+   "error": ""
+  },
+  {
+   "n": 6,
+   "name": "100.jpg",
+   "ms": 6353,
+   "passes": 14,
+   "cas": 0,
+   "grade": "EMPTY",
+   "gate": "",
+   "error": ""
+  }
+ ]
+}

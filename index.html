@@ -451,6 +451,55 @@
     }
     .badge.strong   { color: var(--primary-strong); border-color: var(--primary-strong); }
     .badge.possible { color: var(--info); border-color: var(--info); }
+    /* ---------- shared result components (src/cards.js) ---------- */
+    .status { display: flex; align-items: flex-start; gap: 8px; }
+    .status .st-ic { margin-top: 2px; }
+    .status.tone-ban    { color: var(--st-ban); font-weight: 700; }
+    .status.tone-review { color: var(--st-review); font-weight: 700; }
+    .status.tone-neutral{ color: var(--st-ok); font-weight: 700; }
+    .st-explain-full {
+      font-size: var(--fs-base); color: var(--text);
+      margin: 4px 0 2px; line-height: var(--lh);
+    }
+    .cat-block { margin-top: 10px; }
+    .cat-list { display: flex; flex-direction: column; gap: 6px; margin: 4px 0 2px; }
+    .cat-line { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+    .cat-meaning {
+      font-size: var(--fs-farmer);   /* the farmer reads this line, not a popover */
+      font-weight: 700; color: var(--text); line-height: var(--lh);
+    }
+    .mt-line { font-size: var(--fs-base); }
+    .mt-value { font-weight: 700; color: var(--primary-strong); }
+    .cas-note.inline { display: inline; }
+    .prov-line { color: var(--muted); font-size: 13px; }
+    .caveat-jur {
+      margin-top: 8px; padding: 8px 10px; font-size: 13px;
+      color: var(--st-info); background: var(--st-info-soft);
+      border-inline-start: 3px solid var(--st-info); border-radius: var(--radius-sm);
+    }
+    .farmer-alert {
+      display: flex; align-items: flex-start; gap: 8px;
+      margin: 10px 0 4px; padding: 12px; border-radius: var(--radius);
+      font-size: var(--fs-farmer); font-weight: 700; line-height: var(--lh);
+    }
+    .farmer-alert.is-banned { color: var(--st-ban); background: var(--st-ban-soft);
+      border: 2px solid var(--st-ban); }
+    .farmer-alert.is-listed { color: var(--st-info); background: var(--st-info-soft);
+      border: 2px solid var(--st-info); }
+    .jur-card { margin-bottom: var(--sp-3); }
+    .jur-sub { color: var(--muted); margin: 4px 0 10px; }
+    .jur-row { display: flex; flex-wrap: wrap; gap: 8px; }
+    .jur-chip {
+      display: inline-flex; align-items: center; gap: 6px;
+      min-height: var(--tap); padding: 8px 12px; cursor: pointer;
+      border: 1px solid var(--control); border-radius: var(--radius);
+      background: var(--field); color: var(--text); font-weight: 700;
+      transition: background-color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
+    }
+    .jur-chip.is-on { border-color: var(--primary-strong); background: var(--primary-soft); }
+    .jur-chip:focus-visible { outline: 3px solid var(--primary-strong); outline-offset: 2px; }
+    .jur-note { display: flex; gap: 8px; align-items: flex-start; margin-top: 10px;
+      color: var(--muted); font-size: 13px; }
     .scorebar {
       height: 6px; border-radius: 999px; background: var(--border);
       overflow: hidden; margin: 8px 0 8px;
@@ -898,6 +947,10 @@
         <p data-i18n="intro.p">ابحث بالاسم أو رقم CAS. ليبيا هي المرجع الأول، والمصادر الدولية للمقارنة فقط. لا تعرض النتيجة موافقة قانونية إذا لم يكن التطابق موثوقًا.</p>
       </div>
 
+      <!-- 2026-09-28: the English farmer picks the jurisdiction BEFORE
+           searching; the Arabic farmer does not need it (Libya first). -->
+      <div id="jurMount"></div>
+
       <form id="searchForm">
         <div class="field-wrap">
           <span class="lead-ic" data-icon="search"></span>
@@ -1250,6 +1303,7 @@
   <script src="src/icons.js"></script>
   <script src="src/search-core.js"></script>
   <script src="src/cas.js"></script>
+  <script src="src/cards.js"></script>
   <script src="src/intl.js"></script>
   <script src="vendor/tesseract/tesseract.min.js"></script>
   <script src="src/ocr.js"></script>

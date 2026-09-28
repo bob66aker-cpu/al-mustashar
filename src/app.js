@@ -55,6 +55,7 @@
       if (on) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
     });
     if (v === 'history') openHistory();
+    if (v === 'search') mountJurisdiction();
   }
   window.addEventListener('hashchange', applyView);
 
@@ -370,6 +371,7 @@
       .then(data => {
         DB[src.key] = data;
         setPhase(src.key, 'ok', data.rows.length);
+        if (cards && cards.buildCasIndex) cards.buildCasIndex(DB);
         if (tooShort(data)) {
           /* 1.4c — يُسجل ليعيد setPhase إظهاره بعد أي إصطلاح للبانر. */
           shortRows[src.key] = { got: data.rows.length, exp: EXPECTED_ROWS[src.key] };
@@ -381,12 +383,14 @@
         .then(data => {
           DB[src.key] = data;
           setPhase(src.key, 'ok', data.rows.length);
+          if (cards && cards.buildCasIndex) cards.buildCasIndex(DB);
           return idbPut(STORE_DB, src.key, data).catch(() => {});
         })
         .catch(() =>
           // fall back to the cached copy (any version) if present
           idbGet(STORE_DB, src.key).then(cached => {
             if (looksValid(cached)) {
+            if (cards && cards.buildCasIndex) cards.buildCasIndex(cached);
               DB[src.key] = cached;
               setPhase(src.key, 'cached', cached.rows.length);
             } else {
@@ -493,6 +497,60 @@
    * target defaults to '#results' so every existing caller behaves exactly as
    * before (manual search, mode/lang re-renders). The scan automation passes
    * '#scanResults' — search/matching logic itself is untouched. */
+  /* ============================================================
+   * Shared result components (src/cards.js) — one structure that
+   * branches by language × mode × jurisdiction. render() below only
+   * assembles the context and hands the rows over.
+   * ============================================================ */
+  function dataVersionOf(key) {
+    const d = DB[key];
+    if (!d || !d.meta) return '';
+    if (d.meta.built) return d.meta.built;
+    return '';
+  }
+  function activeJurisdiction() {
+    try { return localStorage.getItem('mustashar-jurisdiction') || 'libya-500'; }
+    catch (e) { return 'libya-500'; }
+  }
+  function cardContext() {
+    const lang = (document.documentElement.lang || 'ar');
+    const mode = ($('#mode') && $('#mode').value === 'pro') ? 'pro' : 'farmer';
+    return { lang: lang, mode: mode, jurisdiction: activeJurisdiction() };
+  }
+  const cards = window.Cards
+    ? Cards.create({
+        t: t, tf: tf, esc: esc,
+        catTitle: catTitle, statusDisplay: statusDisplay, sourceLabel: sourceLabel,
+        statusExplain: statusExplain, casApi: window.CasDissect,
+        dataVersion: dataVersionOf,
+        sourceKeys: SOURCES.map(function (x) { return x.key; })
+      })
+    : null;
+
+  /* Jurisdiction picker: only the English farmer gets it — the Arabic
+   * farmer always sees Libya first, and the professional sees every source. */
+  function mountJurisdiction() {
+    const host = $('#jurMount');
+    if (!host || !cards) return;
+    const lang = document.documentElement.lang || 'ar';
+    if (lang !== 'en') { host.innerHTML = ''; return; }
+    const ctx = cardContext();
+    if (ctx.mode === 'pro') { host.innerHTML = ''; return; }
+    host.innerHTML = cards.jurisdictionPicker(ctx);
+    if (window.UIIcons) UIIcons.paint(host);
+  }
+  document.addEventListener('click', e => {
+    const chip = e.target.closest && e.target.closest('.jur-chip');
+    if (!chip) return;
+    const key = chip.getAttribute('data-jur');
+    if (!key) return;
+    try { localStorage.setItem('mustashar-jurisdiction', key); } catch (err) {}
+    mountJurisdiction();
+    const q = ($('#query') ? $('#query').value.trim() : '');
+    if (q) runSearch(q);                       /* re-run so the filter applies */
+    else if (lastResults.length) render(lastResults, q);
+  });
+
   function render(results, q, target) {
     const box = typeof target === 'string' ? $(target) : target || $('#results');
     if (!box) { lastResults = results || []; return; }
@@ -527,13 +585,18 @@
      * في وضع المزارع (المواصفة ج1)، وعرض المسح (#scanResults) يعرض
      * القائمة الكاملة التي انتجها محرك القراءة في الوضعين — لا يُحجب
      * منه شيء، لأن حذف نتيجة مطابقة عن المستخدم شكل خطر سلامة. */
-    const showDetails = $('#mode').value === 'pro';
-    const isScanView = typeof target === 'string' ? target === '#scanResults'
-      : (target && target.id === 'scanResults');
-    const shownResults = (showDetails || isScanView)
-      ? results
-      : results.filter(x => x.k === 'libya-248' || x.k === 'libya-500');
-    const prohibited = shownResults.filter(x => x.k === 'libya-248');
+    /* 2026-09-28 — the scan view and the manual search disagreed: search was
+     * filtered to Libya in farmer mode while the scan showed everything, so a
+     * photo read looked "useless" next to a manual search of the same term.
+     * One rule now, for both views: farmer mode = Libyan sources only.
+     * The exact-ban banner and the prohibited strip below are computed from
+     * the UNFILTERED list, so narrowing the list can never hide a ban. */
+    const ctx = cardContext();
+    const showDetails = ctx.mode === 'pro';
+    const shownResults = cards
+      ? cards.applyContext(results, ctx)
+      : (showDetails ? results : results.filter(x => x.k === 'libya-248' || x.k === 'libya-500'));
+    const prohibited = results.filter(x => x.k === 'libya-248');
     const disclaimerHtml = '<div class="disclaimer-strip" data-i18n="disclaimer.strip">'
       + t('disclaimer.strip', 'هذه الأداة مساندة وليست حكمًا قانونيًا — المرجع قرارات وزارة الزراعة والجهات الرسمية.')
       + '</div>';
@@ -566,122 +629,9 @@
           { name: esc(String(prohibited[0].r.name || '')).replace(/\n/g, ' · ') })
         + '</span></div>'
       : '')
-      + shownResults.map(x => {
-      /* --- decision layer: per-source status, verdict class, CAS checks --- */
-      const sd = statusDisplay(x.r, x.k, showDetails);
-      const stClass = sd.tone === 'banned' ? 'bad' : (sd.tone === 'amber' ? 'review' : 'neutral');
-      const isExact = window.CasDissect && CasDissect.classify(x.s.v) === 'exact';
-      const verdict = isExact
-        ? '<span class="verdict exact">' + t('verdict.exact', 'تطابق تام') + '</span>'
-        : '<span class="verdict probable">' + t('verdict.probable', 'احتمالي — تحقق من الاسم الكامل') + '</span>';
-      /* CAS display: every listed CAS is checksum-validated for display
-       * (failed ones are marked, never corrected); no-CAS rows are labelled. */
-      const casList = window.CasDissect ? CasDissect.casOf(x) : '';
-      let casHtml;
-      if (casList) {
-        casHtml = casList.split(',').map(c =>
-          CasDissect.casChecksum(c) === false
-            ? '<span class="cas-bad" title="' + t('cas.badsum', 'رقم التحقق غير صحيح في بيانات المصدر') + '">' + esc(c) + '</span>'
-            : esc(c)).join(' · ');
-        /* documented CAS-correction layer (libya-500): when the decree value
-         * was repaired, show corrected + struck-through raw + source label.
-         * Never silent: the raw official value stays visible. */
-        if (CasDissect.casDisplayCorrected) {
-          const corr = CasDissect.casDisplayCorrected(x.r);
-          if (corr && casList === corr) {
-            const raw = CasDissect.casDisplayRaw(x.r);
-            const srcKey = CasDissect.casSourceKey(x.r);
-            /* (هـ5) the stereo descriptor lives in its OWN field (cas_stereo)
-             * so normalising the printed «70630-17-0 (R)» to the number alone
-             * can never drop the (R). Shown next to the corrected number. */
-            const stereo = CasDissect.casStereo ? CasDissect.casStereo(x.r) : '';
-            casHtml = esc(corr) + (stereo ? ' ' + esc(stereo) : '')
-              + ' <span class="cas-raw-old">' + esc(raw) + '</span>'
-              + ' <span class="cas-src">(' + esc(t('cas.source.' + srcKey,
-                  srcKey === 'epa-master' ? 'مُصحح من EPA Master' : 'مصحح')) + ')</span>';
-          }
-        }
-      } else if (x.r.cas) {
-        casHtml = esc(String(x.r.cas).replace(/\n/g, ' · '))
-          + ' <span class="nocas">(' + t('cas.nocas', 'بلا رقم في المصدر') + ')</span>';
-      } else {
-        casHtml = t('cas.missing', 'غير متوفر');
-      }
-      /* Round 2026-09-27 (part 2) — annotation block under the CAS line.
-       * Documented CANDIDATE numbers (never written into the source value),
-       * the documented stereo ambiguity, reviewer text, and the 248
-       * information notes / duplicate marks. Labels are i18n keys; row text is
-       * escaped; nothing here decides a legal status. */
-      const CD = window.CasDissect;
-      let casNotes = '';
-      if (CD) {
-        const sug = CD.casSuggested ? CD.casSuggested(x.r) : [];
-        if (sug.length) {
-          const sugSrc = String(x.r.cas_source || '').trim();
-          casNotes += '<p class="cas-note">' + esc(t('cas.suggested',
-              'قيم مقترحة موثقة المصدر — ليست بديلًا عن قيمة المرسوم:')) + ' '
-            + esc(sug.join(' · '))
-            + (sugSrc ? ' <span class="cas-src">(' + esc(t('cas.source.' + sugSrc, sugSrc)) + ')</span>' : '')
-            + '</p>';
-        }
-        if (CD.casFlag && CD.casFlag(x.r) === 'stereo-ambiguous')
-          casNotes += '<p class="cas-note warn"><span class="badge warn">'
-            + esc(t('cas.stereo.badge', 'الرقم غير محسوم')) + '</span> '
-            + esc(t('cas.stereo.note',
-                'الرقم المصحح يخص (+)-Carvone؛ اسم الصف عام لا يحسم المتماكب (الراسيمي 99-49-0) — الهوية تتطلب مراجعة بشرية'))
-            + '</p>';
-        const rev = CD.casReview ? CD.casReview(x.r) : '';
-        if (rev)
-          casNotes += '<p class="cas-note">' + esc(t('cas.review', 'ملاحظة مراجعة (لا رقم مؤكَّد):')) + ' ' + esc(rev) + '</p>';
-        const cNote = CD.casNote ? CD.casNote(x.r) : '';
-        if (cNote)
-          casNotes += '<p class="cas-note warn"><span class="badge warn">'
-            + esc(t('cas.note.badge', 'تنبيه الرقم')) + '</span> ' + esc(cNote) + '</p>';
-        const dup = CD.casDuplicateNote ? CD.casDuplicateNote(x.r) : '';
-        if (dup)
-          casNotes += '<p class="cas-note"><span class="badge">'
-            + esc(t('cas.dup.badge', 'صف مكرر')) + '</span> ' + esc(dup) + '</p>';
-      }
-      const strong = x.s.v >= 90;
-      const raw = x.r.status_raw && showDetails
-        ? '<p class="match">' + t('results.source.raw', 'الحالة كما وردت في المصدر:') + ' ' + esc(x.r.status_raw) + '</p>'
-        : '';
-      /* ب — التصنيف الوظيفي (حشري/فطري/…) في الوضعين دائمًا: كان محصورًا
-       * بشرط showDetails منذ إدخال طبقة القرار (cf2ff79) فاختفى كليًا عن
-       * المزارع في جولة فصل الوضعين. إخراجه من الشرط لا يلمس raw ولا
-       * matchType (يبقيان للمحترف حصرًا)؛ الشيفرة تُغرق كرقاقات قابلة
-       * للنقر بشرحها في الوضعين. */
-      const cat = x.r.category
-        ? '<p class="match">' + t('results.source.category', 'التصنيف كما ورد في المصدر:') + ' '
-          + String(x.r.category).split(/\n+/).map(function (c) {
-              return '<span class="cat-code" tabindex="0" role="button" data-cat="' + esc(c) + '">' + esc(c) + '</span>';
-            }).join(' · ')
-          + '</p>'
-        : '';
-      const matchType = showDetails
-        ? '<p class="match">' + esc(x.s.type) + ': ' + esc(x.s.field) + '</p>'
-        : '';
-      const badge = '<span class="badge ' + (strong
-        ? 'strong">' + t('results.badge.strong', 'تطابق قوي')
-        : 'possible">' + t('results.badge.possible', 'تطابق محتمل')) + '</span>';
-      const bar = '<div class="scorebar" aria-hidden="true"><i style="width:'
-        + Math.min(100, x.s.v) + '%"></i></div>';
-      return '<article class="result ' + (strong ? '' : 'possible') + '">'
-        + '<div class="result-top"><div><span class="source">' + esc(sourceLabel(x.k)) + '</span>'
-        + '<h3>' + esc(x.r.name || t('results.noname', 'بدون اسم')).replace(/\n/g, ' · ') + '</h3>'
-        + badge + verdict + '</div>'
-        + '<strong>' + x.s.v + '%</strong></div>'
-        + bar
-        + '<p class="status ' + stClass + '">' + esc(sd.text) + (sd.chip || '') + '</p>'
-        + '<p class="meta">' + t('cas.label', 'CAS:') + ' ' + casHtml + '</p>'
-        + casNotes + cat + raw + matchType
-        + (sd.extra && sd.extra.length
-          ? '<p class="meta">' + sd.extra.map(e => t(e.key, '')
-            + (e.reason ? ' — ' + esc(e.reason) : '')).filter(Boolean).join(' · ') + '</p>'
-          : '')
-        + (!strong ? '<p class="caution">' + t('results.caution', 'تطابق محتمل، راجع الاسم والملصق قبل الاستخدام.') + '</p>' : '')
-        + '</article>';
-    }).join('');
+      + (cards ? shownResults.map(function (x) { return cards.card(x, q, ctx); }).join('')
+        : '');
+
     /* Paint inline icons inside freshly rendered result markup */
     if (window.UIIcons) UIIcons.paint(box);
     /* Legend tooltips: fill each category chip's title once, from the fixed
@@ -799,9 +749,8 @@
   });
   syncClear();
 
-  $('#searchForm').addEventListener('submit', e => {
-    e.preventDefault();
-    const q = $('#query').value.trim();
+  /* extracted so the jurisdiction picker can re-run the SAME search */
+  function runSearch(q) {
     if (!q) return;
     rebuildSearch();                       // include newly arrived databases
     if (!searchFn || !searchFn.sources.length) {
@@ -814,6 +763,10 @@
     const results = searchFn(q, pro);
     render(results, q);
     if (results.length) addHistory(q, results.length);
+  }
+  $('#searchForm').addEventListener('submit', e => {
+    e.preventDefault();
+    runSearch($('#query').value.trim());
   });
 
   const modeSel = $('#mode');

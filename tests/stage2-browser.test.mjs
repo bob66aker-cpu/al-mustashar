@@ -228,7 +228,9 @@ try {
     must('2.4: modal opens with canvas rendered',
       st.open === true && st.w > 0 && st.square === true, JSON.stringify(st));
     must('2.4: QR has real dark modules (not blank)', st.dark > 200, String(st.dark));
-    must('2.4: modal shows the app URL only', /^http:\/\/127\.0\.0\.1:8080\/$/.test(st.url), st.url);
+    /* the expected origin follows BASE_URL, not a hardcoded port */
+    const ORIGIN = new URL(BASE).origin;
+    must('2.4: modal shows the app URL only', st.url === ORIGIN + '/', st.url + ' expected ' + ORIGIN + '/');
     must('2.4: no error line shown', st.err === false);
     await page.keyboard.press('Escape');
     await sleep(200);

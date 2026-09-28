@@ -451,6 +451,23 @@
     }
     .badge.strong   { color: var(--primary-strong); border-color: var(--primary-strong); }
     .badge.possible { color: var(--info); border-color: var(--info); }
+    /* ---------- safety net banner (one, non-blocking) ---------- */
+    .safety-banner { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .safety-banner span { flex: 1 1 240px; }
+
+    /* ---------- reading stages (semantic, never a fake %) ---------- */
+    .stages { list-style: none; display: flex; gap: 6px; margin: 8px 0; }
+    .stages li {
+      flex: 1 1 0; min-height: var(--tap); display: flex; align-items: center;
+      justify-content: center; text-align: center; padding: 6px 8px;
+      font-size: 14px; font-weight: 700; color: var(--muted);
+      background: var(--field); border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      transition: color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
+    }
+    .stages li.is-now { color: var(--st-info); border-color: var(--st-info); background: var(--st-info-soft); }
+    .stages li.is-done { color: var(--st-ok); border-color: var(--st-ok-ink); }
+
     /* ---------- shared result components (src/cards.js) ---------- */
     .status { display: flex; align-items: flex-start; gap: 8px; }
     .status .st-ic { margin-top: 2px; }
@@ -833,6 +850,8 @@
   </header>
 
   <main id="appMain">
+    <!-- 2026-09-28: بانر واحد غير معيق لخطأ غير متوقع (انظر safetyNet). -->
+    <div id="safetyBanner" class="banner banner-warn safety-banner" hidden></div>
     <div id="dbBanner" class="banner" hidden></div>
 
     <!-- 2.1 — زر التثبيت الداخلي: بطاقة واحدة، تظهر عند توفر التثبيت فقط
@@ -1028,6 +1047,12 @@
         <span id="barcodeChipMeta" style="flex:0 0 auto;"></span>
         <button class="btn-outline" type="button" id="barcodeChipClear" style="flex:0 0 auto;"><span data-i18n="scan.barcode.clear">إزالة</span></button>
       </div>
+      <!-- 2026-09-28: ثلاث مراحل دلالية بدل شريط نسبة وهمي. -->
+      <ol class="stages" id="ocrStages" aria-label="مراحل القراءة">
+        <li data-stage="1" data-i18n="ocr.stage.read">نقرأ الصورة…</li>
+        <li data-stage="2" data-i18n="ocr.stage.extract">نستخرج النصوص…</li>
+        <li data-stage="3" data-i18n="ocr.stage.match">نطابق القواعد…</li>
+      </ol>
       <p id="ocrMsg" class="scan-note"></p>
 
       <div class="tools">

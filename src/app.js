@@ -157,6 +157,9 @@
     return dbPromise;
   }
 
+  function isQuotaError(err) {
+    return !!(err && (err.name === 'QuotaExceededError' || /quota/i.test(String(err.message || err))));
+  }
   function idbPut(store, key, value) {
     return openDB().then(db => new Promise((resolve, reject) => {
       const tx = db.transaction(store, 'readwrite');
@@ -164,7 +167,14 @@
       tx.oncomplete = resolve;
       tx.onerror = () => reject(tx.error);
       tx.onabort = () => reject(tx.error);
-    }));
+    })).catch(err => {
+      if (isQuotaError(err)) {
+        /* the app still WORKS from the cache; only the copy is lost — say so */
+        showSafetyBanner(false, t('quota.hint',
+          'لا توجد مساحة تخزين كافية لحفظ نسخة إضافية. احذف سجل البحث أو ملفات الموقع من إعدادات المتصفح ثم أعد التجهيز — التطبيق يعمل الآن من الذاكرة المؤقتة.'));
+      }
+      throw err;
+    });
   }
 
   function idbGet(store, key) {
@@ -550,6 +560,88 @@
     if (q) runSearch(q);                       /* re-run so the filter applies */
     else if (lastResults.length) render(lastResults, q);
   });
+
+  /* ============================================================
+   * Reading pace — SEMANTIC stages, not a fake percentage.
+   * The engine emits keys (ocr.prep … ocr.rotate); the user sees three
+   * named steps and which one is running. No number is ever invented:
+   * no quality gate, no confidence threshold and no pass count changed —
+   * this is DISPLAY ONLY.
+   * ============================================================ */
+  const OCR_STAGE_OF = {
+    'ocr.prep': 1, 'ocr.init': 1, 'ocr.loading': 1,
+    'ocr.pass': 2, 'ocr.roi': 2, 'ocr.rotate': 2,
+    'ocr.done': 3
+  };
+  function setOcrStage(n) {
+    const list = document.getElementById('ocrStages');
+    if (!list) return;
+    list.querySelectorAll('li').forEach(li => {
+      const v = Number(li.getAttribute('data-stage')) || 0;
+      li.classList.toggle('is-now', v === n);
+      if (v === n) li.setAttribute('aria-current', 'step');
+      else li.removeAttribute('aria-current');
+      li.classList.toggle('is-done', v < n);
+    });
+  }
+  function ocrStatusText(p) {
+    if (!p) return '';
+    if (p.statusKey) {
+      setOcrStage(OCR_STAGE_OF[p.statusKey] || 1);
+      return p.status || p.statusKey;
+    }
+    if (p.status === 'done') { setOcrStage(3); return t('ocr.done', 'اكتملت القراءة.'); }
+    setOcrStage(2);
+    return p.status || '';
+  }
+
+  /* ============================================================
+   * Resilience — degradation ladders (never an invented result)
+   * ============================================================ */
+  function memoryRung() {
+    if (window.OcrModule && OcrModule.memoryRung) return OcrModule.memoryRung();
+    const gb = navigator.deviceMemory;
+    if (typeof gb !== 'number' || !isFinite(gb) || gb <= 0) return { dim: 1280, rung: 'unknown', gb: null };
+    if (gb <= 1) return { dim: 1280, rung: 'le1gb', gb: gb };
+    if (gb < 4) return { dim: 1920, rung: '2gb', gb: gb };
+    return { dim: 2560, rung: '4gb+', gb: gb };
+  }
+  /* Camera constraint ladder: 1080p → 720p → device default. A permission
+   * or missing-device error stops the ladder immediately (re-asking would
+   * only repeat it); the file input stays visible as the working path. */
+  const CAMERA_LADDER = [
+    { width: { ideal: 1920 }, height: { ideal: 1080 } },
+    { width: { ideal: 1280 }, height: { ideal: 720 } },
+    {}
+  ];
+  function cameraErrorKey(e) {
+    const n = (e && e.name) || '';
+    if (n === 'NotAllowedError' || n === 'SecurityError') return 'live.err.denied';
+    if (n === 'NotFoundError' || n === 'OverconstrainedError') return 'live.err.nodevice';
+    if (n === 'NotReadableError' || n === 'TrackStartError') return 'live.err.busy';
+    return 'live.err.generic';
+  }
+  function cameraErrorText(e) {
+    return t(cameraErrorKey(e), '')
+      + ' ' + t('live.err.fallback', 'يمكنك التقاط صورة من المعرض أو الكاميرا اليدوية بدلًا من ذلك.');
+  }
+  /* One low-memory retry: the first read runs at the device rung; if the
+   * engine dies (a WASM allocation failure shows up as a thrown/rejected
+   * read, or as an out-of-memory error), we retry ONCE at ~1000px. If that
+   * fails too, the user gets a clear message and NO result at all. */
+  async function recognizeWithRetry(blob, onProgress, opts) {
+    const first = memoryRung();
+    try {
+      return { res: await OcrModule.recognize(blob, onProgress, opts), retried: false, dim: first.dim };
+    } catch (err) {
+      const oom = /memory|alloc|wasm|heap|RangeError|out of memory/i
+        .test(String((err && err.message) || err) + ' ' + ((err && err.name) || ''));
+      if (!oom) throw err;
+      diagAdd({ at: Date.now(), outcome: 'ocr-oom', src: 'scan', dim: first.dim, rung: first.rung });
+      onProgress({ statusKey: 'ocr.retry.small', status: t('ocr.retry.small', 'الذاكرة ضيقة — نعيد القراءة بأبعاد أصغر…') });
+      return { res: await OcrModule.recognize(blob, onProgress, Object.assign({}, opts, { maxDim: 1000 })), retried: true, dim: 1000 };
+    }
+  }
 
   function render(results, q, target) {
     const box = typeof target === 'string' ? $(target) : target || $('#results');
@@ -1205,12 +1297,12 @@
       rebuildSearch();
       const msgs = {};
       for (const k of ['ocr.prep','ocr.init','ocr.loading','ocr.pass','ocr.roi','ocr.rotate','ocr.done','ocr.rejected.mixed','ocr.rejected.conf']) msgs[k] = t(k, k);
-      const res = await OcrModule.recognize(blob, p => {
+      const { res, retried, dim } = await recognizeWithRetry(blob, p => {
         if (livePassSeq !== mySeq || !p) return;
-        if (p.statusKey) ocrMsg.textContent = (p.status || p.statusKey) + (p.progress ? ' (' + Math.round(p.progress * 100) + '%)' : '');
-        else ocrMsg.textContent = p.status || '';
+        ocrMsg.textContent = ocrStatusText(p);
       }, { search: searchFn, messages: msgs, uiLang: document.documentElement.lang || 'en' });
       const ms = Math.round(performance.now() - msStart);
+      if (retried) diagAdd({ at: Date.now(), outcome: 'ocr-retry', src: 'live', ms, dim: dim });
       const stale = livePassSeq !== mySeq || scanSeq !== myGen || scanSeq !== activeScanSeq;
       if (stale) { diagAdd({ at: Date.now(), outcome: 'superseded', src: 'live', ms }); return; }
       if (res.rejected) {
@@ -1236,8 +1328,11 @@
     } catch (e) {
       const cancelled = e && String(e.message || e).indexOf('ocr.cancelled') === 0;
       if (livePassSeq === mySeq && scanSeq === activeScanSeq) {
-        ocrMsg.textContent = cancelled ? t('ocr.cancelled', 'أُلغي المسح.') : t('ocr.fail', 'تعذّر تشغيل محرك القراءة.');
-        diagAdd({ at: Date.now(), outcome: cancelled ? 'cancelled' : 'error', src: 'live' });
+        ocrMsg.textContent = cancelled
+          ? t('ocr.cancelled', 'أُلغي المسح.')
+          : t('ocr.fail.image', 'تعذّر تحليل الصورة — جرّب صورة أوضح أو أصغر.');
+        diagAdd({ at: Date.now(), outcome: cancelled ? 'cancelled' : 'error', src: 'live',
+          name: (e && e.name) || 'unknown', message: String((e && e.message) || e).slice(0, 120) });
       }
     } finally {
       liveBusy = false;
@@ -1251,13 +1346,26 @@
     if (!liveSupported() || liveStream) return;
     const cls = window.ScanLive.deviceClass();
     const profile = window.ScanLive.PROFILE[cls] || window.ScanLive.PROFILE.medium;
-    try {
-      liveStream = await navigator.mediaDevices.getUserMedia({
-        video: { facingMode: 'environment', width: { ideal: 1920 }, height: { ideal: 1080 } }, audio: false
-      });
-    } catch (e) {
+    let camErr = null, got = false;
+    for (let i = 0; i < CAMERA_LADDER.length; i++) {
+      try {
+        liveStream = await navigator.mediaDevices.getUserMedia({
+          video: Object.assign({ facingMode: 'environment' }, CAMERA_LADDER[i]), audio: false
+        });
+        got = true;
+        break;
+      } catch (e) {
+        camErr = e;
+        /* permission / no device / camera busy: another try cannot help */
+        if (e && (e.name === 'NotAllowedError' || e.name === 'SecurityError'
+          || e.name === 'NotFoundError' || e.name === 'NotReadableError')) break;
+      }
+    }
+    if (!got) {
       liveStream = null;
-      ocrMsg.textContent = t('live.denied', 'رُفض الوصول إلى الكاميرا. اسمح بالوصول من إعدادات المتصفح أو استخدم المعرض.');
+      ocrMsg.textContent = cameraErrorText(camErr);
+      diagAdd({ at: Date.now(), outcome: 'camera-error', src: 'live', name: (camErr && camErr.name) || 'unknown' });
+      $('#galleryBtn').hidden = false;   /* the manual path is always available */
       return;
     }
     /* أ1: a live camera session is a NEW query source — any prior photo and
@@ -1468,6 +1576,55 @@
       localStorage.setItem(DIAG_KEY, JSON.stringify(list));
     } catch (e) { /* storage may be unavailable */ }
   }
+  /* ============================================================
+   * Safety net — window error / unhandledrejection
+   * Every uncaught error goes into the SAME diagnostics log the field
+   * export already reads, and the user gets ONE non-blocking banner
+   * (never a modal, never a reload without consent). If three errors
+   * land inside ten seconds of each other the banner offers a SAFE
+   * reload instead of leaving a broken screen.
+   * ============================================================ */
+  const errLog = [];
+  function safetyNet(kind, message, source) {
+    const entry = { at: Date.now(), outcome: 'safety-net', kind: kind,
+      message: String(message || '').slice(0, 200) };
+    if (source) entry.source = String(source).slice(0, 200);
+    errLog.push(entry);
+    diagAdd(entry);
+    const now = Date.now();
+    const burst = errLog.filter(function (e) { return now - e.at < 10000; }).length;
+    showSafetyBanner(burst >= 3);
+  }
+  function showSafetyBanner(offerReload, custom) {
+    const b = $('#safetyBanner');
+    if (!b) return;
+    b.textContent = '';
+    const txt = document.createElement('span');
+    txt.textContent = custom || (offerReload
+      ? t('safety.net', 'حدث خطأ غير متوقع أكثر من مرة — سُجل في سجل التشخيص. يُنصح بإعادة تحميل الصفحة بأمان.')
+      : t('safety.net.once', 'حدث خطأ غير متوقع — سُجل في سجل التشخيص.'));
+    b.appendChild(txt);
+    if (custom) { b.hidden = false; return; }   /* storage hint: no reload button */
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'btn-outline';
+    btn.textContent = t('safety.reload', 'إعادة تحميل آمنة');
+    btn.addEventListener('click', function () {
+      /* SAFE reload: databases (IndexedDB) and prepared caches survive; only
+       * in-memory state is discarded. No data is deleted. */
+      try { location.reload(); } catch (e) {}
+    });
+    b.appendChild(btn);
+    b.hidden = false;
+  }
+  window.addEventListener('error', function (e) {
+    safetyNet('error', (e && e.message) || 'error', (e && e.filename) + ':' + (e && e.lineno));
+  });
+  window.addEventListener('unhandledrejection', function (e) {
+    const r = e && e.reason;
+    safetyNet('unhandledrejection', (r && (r.message || r)) || 'rejection');
+  });
+
   function diagExport() {
     try {
       const list = JSON.parse(localStorage.getItem(DIAG_KEY) || '[]');
@@ -1582,6 +1739,7 @@
     $('#cancelOcrBtn').hidden = false;
     showRetake(false);         // 2.2: retake appears only when a read finishes
     ocrMsg.textContent = t('ocr.prep', 'جارٍ تجهيز الصورة…');
+    setOcrStage(1);
     /* 3.5 — barcode FIRST (signal, not a verdict): a cheap attempt before
      * the heavy OCR ladder; its result is shown as a chip the user can
      * inspect — it never creates or filters results by itself. Zero
@@ -1594,19 +1752,17 @@
     const t0 = performance.now();
     const tips = await probeImage(file);
     if (scanSeq !== activeScanSeq) return;   // source changed while probing
+    /* declared out here so the finally block below can log a low-memory retry */
+    let retried = false, dim = 0, res;
     try {
       rebuildSearch();   // ensure the index is current before DB-aware OCR scoring
       const msgs = {};
       for (const k of ['ocr.prep','ocr.init','ocr.loading','ocr.pass','ocr.roi','ocr.rotate','ocr.done','ocr.rejected.mixed','ocr.rejected.conf']) msgs[k] = t(k, k);
-      const res = await OcrModule.recognize(file, p => {
+      const out = await recognizeWithRetry(file, p => {
         if (!p) return;
-        if (p.statusKey) ocrMsg.textContent = (p.status || p.statusKey) + (p.progress ? ' (' + Math.round(p.progress * 100) + '%)' : '');
-        else if (p.status === 'done') ocrMsg.textContent = t('ocr.done', 'اكتملت القراءة.');
-        else {
-          const pct = Math.round((p.progress || 0) * 100);
-          ocrMsg.textContent = p.status + (pct ? ' (' + pct + '%)' : '');
-        }
+        ocrMsg.textContent = ocrStatusText(p);
       }, { search: searchFn, messages: msgs, uiLang: document.documentElement.lang || 'en' });   // DB-aware scoring + i18n + 3.4 OCR lang
+      res = out.res; retried = out.retried; dim = out.dim;
       const ms = Math.round(performance.now() - t0);
       /* أ1 — a superseded scan (new image chosen / image cleared mid-read)
        * must never paint results: the engine may keep running in the
@@ -1647,11 +1803,13 @@
       if (scanSeq === activeScanSeq) {   // أ1: superseded runs stay silent
         ocrMsg.textContent = cancelled
           ? t('ocr.cancelled', 'أُلغي المسح.')
-          : t('ocr.fail', 'تعذّر تشغيل محرك القراءة.');
-        diagAdd({ at: Date.now(), outcome: cancelled ? 'cancelled' : 'error', ms: Math.round(performance.now() - t0) });
+          : t('ocr.fail.image', 'تعذّر تحليل الصورة — جرّب صورة أوضح أو أصغر.');
+        diagAdd({ at: Date.now(), outcome: cancelled ? 'cancelled' : 'error', ms: Math.round(performance.now() - t0),
+          name: (e && e.name) || 'unknown', message: String((e && e.message) || e).slice(0, 120) });
       }
     } finally {
       ocrBusy = false;
+      if (retried) diagAdd({ at: Date.now(), outcome: 'ocr-retry', src: 'file', dim: dim });
       $('#cancelOcrBtn').hidden = true;
       showRetake(true);        // 2.2: one visible way back to the camera
     }

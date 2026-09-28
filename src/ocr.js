@@ -33,7 +33,10 @@
   const OCR = {
     CORE: 'vendor/tesseract/core',
     LANG: 'vendor/tesseract/lang',
-    // max dimension of the image handed to the engine (memory safety)
+    /* max dimension of the image handed to the engine (memory safety).
+     * 2026-09-28 — the fixed 1600 became a ladder driven by
+     * navigator.deviceMemory (see memoryRung below); this value stays as the
+     * documented default for callers that pass no explicit dimension. */
     MAX_DIM: 1600,
     // below this, small text is upscaled to improve recognition
     UPSCALE_MIN: 1100,
@@ -43,6 +46,25 @@
     // analyzer with upscaled phone photos)
     DPI: 300
   };
+
+  /* ---------- 0) memory ladder (deviceMemory → max image side) ----------
+   * navigator.deviceMemory is reported in GiB and is missing on several
+   * browsers (iOS Safari, older WebViews) → the CONSERVATIVE rung is used,
+   * never a guess upward:
+   *   undefined → 1280 (treated like a 1 GB phone)
+   *   ≤1 GB     → 1280
+   *   2 GB      → 1920
+   *   ≥4 GB     → 2560
+   * Returns the dimension AND the rung name so the diagnostics log can say
+   * why a device was treated as weak. Never throws. */
+  function memoryRung() {
+    const gb = (typeof navigator !== 'undefined') ? navigator.deviceMemory : undefined;
+    if (typeof gb !== 'number' || !isFinite(gb) || gb <= 0) return { dim: 1280, rung: 'unknown', gb: null };
+    if (gb <= 1) return { dim: 1280, rung: 'le1gb', gb: gb };
+    if (gb < 4) return { dim: 1920, rung: '2gb', gb: gb };
+    return { dim: 2560, rung: '4gb+', gb: gb };
+  }
+  function maxDimFor(rung) { return (rung && rung.dim) || memoryRung().dim; }
 
   let workerPromise = null;   // per-language worker, reused across scans (3.4)
   let progressSink = null;    // latest onProgress: the reused worker's logger
@@ -106,10 +128,11 @@
   }
 
   /* Base canvas: EXIF-orientation-safe resize with small-image upscale. */
-  async function baseCanvas(file) {
+  async function baseCanvas(file, maxDim) {
     const bitmap = await decodeImage(file);
     const w = bitmap.width, h = bitmap.height;
-    const scale = Math.min(1, OCR.MAX_DIM / Math.max(w, h));
+    const limit = maxDim || OCR.MAX_DIM;
+    const scale = Math.min(1, limit / Math.max(w, h));
     let target = scale;
     if (scale === 1 && Math.min(w, h) < OCR.UPSCALE_MIN) {
       target = Math.min(OCR.UPSCALE_MAX / Math.max(w, h), OCR.UPSCALE_MIN / Math.min(w, h));
@@ -687,7 +710,14 @@
     const myToken = newCancelToken();   /* 3.3: replaces the reset-flag */
 
     status('ocr.prep', 0);
-    const base = await baseCanvas(file);
+    /* 2026-09-28: the image side is chosen by the device-memory ladder unless
+     * the caller passes maxDim (the out-of-memory retry uses 1000). */
+    const rung = memoryRung();
+    const maxDim = opts.maxDim || rung.dim;
+    if (diagSink) {
+      try { diagSink({ at: Date.now(), outcome: 'rung', dim: maxDim, rung: rung.rung, gb: rung.gb }); } catch (e) {}
+    }
+    const base = await baseCanvas(file, maxDim);
 
     status('ocr.init', 0.04);
     const worker = await ensureWorker(m => {
@@ -1223,6 +1253,9 @@
   global.OcrModule = {
     recognize, extractCAS, extractCandidates, prefetch, setSearchRef,
     setDiagnosticsSink,
+    /* 2026-09-28: the degradation ladder is public so the app can log the
+     * rung and the tests can assert it on real devices. */
+    memoryRung, maxDimFor,
     /* 3.3: cancelCurrent stays for compatibility; the token capture is the
      * primary cancellation primitive now (see cancelCurrent's comment). */
     cancelCurrent, scan, latinRatio, rejectedTextReason, MIN_CONFIDENCE,

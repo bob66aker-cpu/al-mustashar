@@ -117,11 +117,18 @@ for (const st of ['ban', 'review', 'ok', 'info']) {
 {
   const forbidden = [];
   /* no dictionary value may claim safety as a verdict */
+  /* "safe" is banned when it describes a SUBSTANCE. A safe RELOAD, a safe
+   * cache write and a safely-served file are a different claim and stay. */
+  const claimsSafe = v => {
+    if (/\bآمن\b|\bمؤمّن\b|\bمضمون\b/.test(v)) return true;
+    if (!/\bsafe\b/i.test(v)) return false;
+    return !/safe\s*(reload|write|cache|load)|recharger sans risque|recharg|安全重载|ذاكرة|تخزين/i.test(v);
+  };
   for (const m of i18n.matchAll(/'([a-z0-9._-]+)':\s*'((?:[^'\\]|\\.)*)'/gi)) {
-    if (/\bآمن\b|\bsafe\b|\bمؤمّن\b|\bمضمون\b/i.test(m[2])) forbidden.push(m[1] + ' = ' + m[2]);
+    if (claimsSafe(m[2])) forbidden.push(m[1] + ' = ' + m[2]);
   }
   for (const m of app.matchAll(/t\('([a-z0-9._-]+)',\s*'((?:[^'\\]|\\.)*)'/gi)) {
-    if (/\bآمن\b|\bsafe\b|\bمضمون\b/i.test(m[2])) forbidden.push('fallback ' + m[1] + ' = ' + m[2]);
+    if (claimsSafe(m[2])) forbidden.push('fallback ' + m[1] + ' = ' + m[2]);
   }
   check('no UI string claims a substance is «safe»', forbidden.length === 0, forbidden.slice(0, 3).join(' | '));
 }

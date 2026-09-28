@@ -170,8 +170,87 @@
     return new Promise(res => canvas.toBlob(b => res(b), 'image/jpeg', q || 0.92));
   }
 
+  /* ============================================================
+   * 3.1 — تصويت متعدد الإطارات (الكاميرا الحية فقط، صامت تماماً)
+   * ============================================================
+   * دروس ANPR: قراءة واحدة من إطار واحد تُخطئ كثيراً لأن يد المزارع
+   * تتحرك، بينما عدة إطارات من نفس الملصق تتفق. فتُجمَّع القراءات
+   * خلال نافذة قصيرة وتُختار القراءة الأكفأ ثقةً مجمّعة.
+   *
+   * ثلاث قيود مُلزِمة:
+   *   1) صامت تماماً: لا زر، ولا مؤشر، ولا خطوة جديدة للمزارع.
+   *   2) لا يُعدَّل أي عتبة ثقة قائمة ولا بوابة قبول — التصويت يختار
+   *      بين نتائج اجتازت بالفعل، ولا يخترع نتيجة جديدة.
+   *   3) الكاميرا الحية فقط: المسار الثابت (المعرض) لا يتغير
+   *      سلوكه إطلاقاً، فلا يُستدعى هذا منه.
+   *
+   * الدالة خالصة: تأخذ القراءات وتعيد الفائز، تُختبَر بلا كاميرا.
+   */
+
+  /* هوية القراءة هي ما تطابقه قواعد البيانات: أرقام CAS وأسماء
+   * المرشحين، مُطبَّعة. تتفق قراءتان إذا تشتركا في مُعرِّف واحد. */
+  function readKey(res) {
+    const cas = (res && res.cas) || [];
+    const cands = (res && res.candidates) || [];
+    const norm = t => String(t || '').toLowerCase().replace(/[^a-z0-9\u0600-\u06ff]+/g, ' ').trim();
+    return {
+      cas: cas.map(norm).filter(Boolean),
+      names: cands.map(norm).filter(Boolean)
+    };
+  }
+
+  function agree(a, b) {
+    if (a.cas.length && b.cas.length) {
+      for (const x of a.cas) if (b.cas.includes(x)) return true;
+      return false;              /* قرأتاهما رقمين مختلفين */
+    }
+    for (const x of a.names) if (b.names.includes(x)) return true;
+    for (const x of a.names) for (const y of b.names) {
+      if (x.length >= 6 && y.length >= 6 && (x.includes(y) || y.includes(x))) return true;
+    }
+    return false;
+  }
+
+  /* الثقة المجمّعة: ثقة المحرك نفسها، مرفوعة بعدد الإطارات التي
+   * قرأت الشيء نفسه. المعامل محدود سقفاً حتى لا تساوي مجموعة
+   * إطارات متفقة يوماً_match في قواعد البيانات — التصويت يعيد
+   * الترتيب ولا يرقّي نتيجة. */
+  const VOTE_CAP = 12;
+  function pooledConfidence(res, votes) {
+    const base = (res && typeof res.confidence === 'number') ? res.confidence : 0;
+    return base * Math.min(votes, VOTE_CAP);
+  }
+
+  /* النافذة: 1-2 ثانية كما في الخطة، وعدد قراءات محدود. */
+  const VOTE_WINDOW_MS = 1600;
+  const VOTE_MAX_READS = 4;
+
+  /* الفائز من قائمة قراءات مقبولة. تُعيد { winner, ranked }،
+   * ورتبة لأغراض التشخيص فقط. */
+  function vote(reads) {
+    const list = (reads || []).filter(r => r && r.res);
+    if (!list.length) return { winner: null, ranked: [] };
+    if (list.length === 1) {
+      return { winner: list[0], ranked: [{ res: list[0].res, votes: 1, pooled: pooledConfidence(list[0].res, 1) }] };
+    }
+    const keys = list.map(r => readKey(r.res));
+    const counts = list.map((_, i) =>
+      keys.reduce((n, k, j) => n + (i === j || agree(keys[i], k) ? 1 : 0), 0));
+    const ranked = list
+      .map((r, i) => ({ res: r.res, votes: counts[i], pooled: pooledConfidence(r.res, counts[i]) }))
+      .sort((a, b) => (b.votes - a.votes) || (b.pooled - a.pooled));
+    /* التعادل يعني أن الإطارات تختلف فعلاً: تبقى أول قراءة مقبولة،
+     * وهي المعروضة أصلاً — ولا تُدمج قراءتان أبداً. */
+    const topVotes = ranked[0].votes;
+    const tied = ranked.filter(r => r.votes === topVotes);
+    const winner = list.find(r => r.res === tied[0].res);
+    return { winner, ranked };
+  }
+
   global.ScanLive = {
     deviceClass, PROFILE, frameMetrics, cheapPass, sharpnessScore,
-    cropROI, drawGuide, roiRect, grabFull, canvasToBlob
+    cropROI, drawGuide, roiRect, grabFull, canvasToBlob,
+    /* 3.1 — silent multi-frame vote (camera live only) */
+    vote, readKey, agree, pooledConfidence, VOTE_WINDOW_MS, VOTE_MAX_READS
   };
 })(typeof window !== 'undefined' ? window : globalThis);

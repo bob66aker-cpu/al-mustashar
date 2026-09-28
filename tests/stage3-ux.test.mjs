@@ -79,8 +79,17 @@ check('3.4: per-language worker identity — a different lang retires the old en
   /workerPromise && workerPromise\.lang === lang/.test(ocr)
   && /if \(workerPromise\) killWorker\(\);/.test(ocr)
   && /workerPromise\.lang = lang;/.test(ocr));
-check('3.4: app passes uiLang (document.documentElement.lang) on both recognize call sites',
-  (app.match(/uiLang: document\.documentElement\.lang/g) || []).length === 2);
+/* the guard is "every recognize() call passes the UI language", not a
+ * fixed count: the 3.1 frame-vote added a third call site, and it must
+ * carry uiLang too or Arabic labels would be read with the English model. */
+const uiLangSites = (app.match(/uiLang: document\.documentElement\.lang/g) || []).length;
+/* the three places a scan is actually launched: the live camera, the
+ * 3.1 frame-vote follow-up frames, and the static file path. Comments and
+ * the retry helper are not call sites. */
+const recognizeCalls = (app.match(/await recognizeWithRetry\(/g) || []).length;
+check('3.4: app passes uiLang (document.documentElement.lang) on every recognize call site',
+  uiLangSites === recognizeCalls && recognizeCalls >= 3,
+  uiLangSites + ' uiLang sites vs ' + recognizeCalls + ' call sites');
 check('3.4: ara+eng ONLY for the Arabic UI — eng is the hardcoded fallback elsewhere',
   /opts\.uiLang === 'ar'\) \? 'ara\+eng' : 'eng'/.test(ocr));
 check('3.4: prep panel shows per-language OCR footprint (ara added only for ar)',

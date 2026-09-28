@@ -1386,6 +1386,49 @@
     return best;
   }
 
+  /* 3.1 — silent multi-frame vote, CAMERA LIVE ONLY.
+   * A read that passed every existing gate does not end the scan on the
+   * spot: the camera keeps running for a short window and up to
+   * VOTE_MAX_READS more frames are read, then ScanLive.vote() picks the
+   * reading the frames agree on. Nothing is shown, no control appears,
+   * and the static gallery path never calls this — the farmer’s single
+   * capture-and-point flow is unchanged.
+   * The vote reorders ALREADY-ACCEPTED results; it can never create one
+   * and never touches MIN_CONFIDENCE or any other threshold. */
+  async function collectVoteFrames(firstRes, mySeq) {
+    const SL = window.ScanLive;
+    if (!SL || typeof SL.vote !== 'function') return firstRes;
+    const reads = [{ res: firstRes, at: Date.now() }];
+    const deadline = Date.now() + SL.VOTE_WINDOW_MS;
+    while (reads.length < SL.VOTE_MAX_READS && Date.now() < deadline) {
+      if (!liveStream || !liveVideo || !liveVideo.videoWidth) break;
+      if (livePassSeq !== mySeq) break;              // superseded: stop voting
+      const snap = liveROI();
+      if (snap && snap.roi) {
+        try {
+          const blob = await window.ScanLive.canvasToBlob(snap.roi, 0.92);
+          const { res } = await recognizeWithRetry(blob, null,
+            { search: searchFn, messages: {}, uiLang: document.documentElement.lang || 'en' });
+          /* only reads that already passed the existing gates may vote —
+           * a rejected or weak read has no say, exactly as before. */
+          if (res && !res.rejected && !res.blockedBy
+            && String(res.text || '').replace(/\s/g, '').length >= 6) {
+            reads.push({ res, at: Date.now() });
+          }
+        } catch (e) { /* a failed extra frame simply does not vote */ }
+      }
+      await new Promise(r => setTimeout(r, 260));
+    }
+    const v = SL.vote(reads);
+    try {
+      diagAdd({ at: Date.now(), outcome: 'frame-vote', src: 'live',
+        reads: reads.length,
+        votes: v.ranked.map(r => r.votes).join('|'),
+        changed: !!(v.winner && v.winner.res !== firstRes) });
+    } catch (e) {}
+    return (v.winner && v.winner.res) || firstRes;
+  }
+
   /* ب1/b2 — the ONLY path to the engine: a candidate canvas is JPEG-encoded
    * and handed to the SAME recognize() the photo path uses (b5: no bypass).
    * Superseded reads (new capture/stop/image while running) never paint. */
@@ -1446,9 +1489,14 @@
       }
       /* ب1 — early success: live processing stops the moment a result is
        * accepted; the captured full frame stays in the preview/history. */
+      /* 3.1 — vote between the frames that already passed, silently */
+      const voted = await collectVoteFrames(res, mySeq);
+      if (livePassSeq !== mySeq || scanSeq !== myGen || scanSeq !== activeScanSeq) {
+        diagAdd({ at: Date.now(), outcome: 'superseded', src: 'live', ms }); return;
+      }
       stopLive(false);
-      diagAdd({ at: Date.now(), outcome: 'scanned', src: 'live', ms, conf: res.confidence, kind: kind });
-      proceedWithScan(res, []);
+      diagAdd({ at: Date.now(), outcome: 'scanned', src: 'live', ms, conf: voted.confidence, kind: kind });
+      proceedWithScan(voted, []);
       ocrMsg.textContent = t('live.result', 'اكتملت القراءة الحية — هذه النتائج من الإطار الملتقط.');
     } catch (e) {
       const cancelled = e && String(e.message || e).indexOf('ocr.cancelled') === 0;

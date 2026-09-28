@@ -60,8 +60,17 @@ check('أ1: superseded scan failure stays silent (generation guard in catch)',
     && body.includes("gallery.value = ''"));
   check('أ2: resetScanUI clears the linked results (أ1 rule)',
     i0 >= 0 && body.includes('clearScanResults()'));
+  /* the rule is about the RESET path: resetting the scan must never reload
+     * the page. The one reload the app is allowed to do is the explicit,
+     * user-clicked "safe reload" button in the safety-net banner (4) — it is
+     * never automatic, so a scan reset can still not be interrupted. */
+  const resetPath = app.slice(app.indexOf('function resetScanUI'), app.indexOf('function resetScanUI') + 4000);
   check('أ2: no page reload anywhere in the scan reset path',
-    !/location\.reload/.test(app));
+    !/location\.reload/.test(resetPath) && !/location\.reload/.test(app.slice(app.indexOf('function clearScanResults'), app.indexOf('function clearScanResults') + 4000)));
+  check('أ2: the only reload is the user-clicked safe-reload button (never automatic)',
+    (app.match(/location\.reload/g) || []).length === 1
+    && /btn\.addEventListener\('click',[\s\S]{0,240}location\.reload/.test(app)
+    && !/setTimeout\([^)]*location\.reload/.test(app));
 }
 
 /* ---------- أ3: الأتمتة الكاملة ---------- */

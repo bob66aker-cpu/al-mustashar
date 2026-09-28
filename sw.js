@@ -19,7 +19,9 @@
  *   - عدّ برمجي لأعمار قرار 500 من عمود status يُعرض تحت بطاقة القاعدة،
  *     مع توضيح أن مجموع التصنيفات يتجاوز 411 لتعدد الاستخدامات.
  *   تغيّر ملفات الواجهة (app.js/i18n.js/index.html/cas.js) وبيانات القواعد ⇒
- *   رفع الكاش v27→v28 والإصدار 1.10.0→1.11.0.
+ *   رفع الكاش v28→v29 والإصدار 1.11.0→1.12.0 (جولة الواجهة والمرونة:
+ *   طبقة رموز تصميمية src/tokens.css، بطاقات مشتركة src/cards.js، سلّم ذاكرة
+ *   OCR، شبكة أمان الأخطاء، تقرير المحترف، الوضع الداكن ولمس 44px).
  *
  * v27 (2026-09-27) — المرحلة 3: محرك القراءة (نسخة العمل، الأصل لم يمس):
  *   3.0a مؤشر وضوح الإطار الحيّ % (أحمر/كهرماني/أخضر) على قيمة lap/edges —
@@ -141,7 +143,7 @@
  * Personal data (IndexedDB history, theme, app version note) lives outside
  * the caches and is never touched by this worker.
  */
-const CACHE = 'mustashar-v28';
+const CACHE = 'mustashar-v29';
 const OCR_CACHE = 'mustashar-ocr';
 
 /* 1.7 — safe cache write: a full storage quota (QuotaExceededError) must
@@ -171,8 +173,6 @@ const SHELL = [
   './src/i18n.js',
   './src/icons.js',
   './src/cas.js',
-  './assets/fonts/ibm-plex-sans-arabic-regular.woff2',
-  './assets/fonts/ibm-plex-sans-arabic-bold.woff2',
   './assets/fonts/LICENSE-OFL-IBM-Plex-Sans-Arabic.txt',
   './assets/icons/LICENSE-LUCIDE-ISC.txt',
   './assets/developer.jpg',

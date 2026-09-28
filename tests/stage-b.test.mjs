@@ -70,7 +70,12 @@ check('ب4: touch/mobile/desktop get live mode with a conservative 500ms cadence
 
 /* ---------- ب5: لا بوابات جديدة ولا تجاوز ---------- */
 check('ب5: every live frame goes through the SAME recognize() the photo path uses',
-  /OcrModule\.recognize\(blob, p => \{/.test(app)
+  /* since 4) both paths call the SAME shared wrapper recognizeWithRetry(),
+   * which calls OcrModule.recognize() — one engine, one set of gates */
+  /async function recognizeWithRetry\(blob, onProgress, opts\)/.test(app)
+  && /OcrModule\.recognize\(blob, onProgress, opts\)/.test(app)
+  && /OcrModule\.recognize\(blob, onProgress, Object\.assign\(\{\}, opts, \{ maxDim: 1000 \}\)\)/.test(app)
+  && (app.match(/recognizeWithRetry\(/g) || []).length >= 3
   && /async function liveFullPass\(kind, pre\)/.test(app));
 check('ب5: scan-live.js adds no engine of its own (no OCR libraries inside)',
   !/import\s/.test(live) && !/XMLHttpRequest|fetch\(/.test(live)
@@ -85,7 +90,8 @@ check('ب5: OCR gates untouched (Latin 60%, conf floor 45, valid-CAS exemption)'
 
 /* ---------- أ1: كل تغيّر لمصدر الاستعلام يمسح النتائج ---------- */
 check('أ1: starting the live camera bumps the generation and clears old results',
-  /function startLive\(\)[\s\S]{0,900}scanSeq\+\+;[\s\S]{0,200}clearScanResults\(\);/.test(app));
+  /* the camera ladder (4) sits between the function head and these two lines */
+  /function startLive\(\)[\s\S]{0,2600}scanSeq\+\+;[\s\S]{0,400}clearScanResults\(\);/.test(app));
 check('أ1: a photo read still running is cancelled when the live camera starts',
   /if \(ocrBusy && typeof OcrModule !== 'undefined'\) OcrModule\.cancelCurrent\(\);/.test(app));
 check('أ1: stop/cancel button kills live results immediately (stopLive(true) → resetScanUI)',
@@ -133,9 +139,9 @@ check('sw: src/scan-live.js is precached in the shell',
 check('index.html loads src/scan-live.js before app.js',
   html.indexOf('src/scan-live.js') > -1
   && html.indexOf('src/scan-live.js') < html.indexOf('src/app.js'));
-check('version: 1.11.0 in version.json + package.json',
-  JSON.parse(readFileSync(join(root, 'version.json'), 'utf8')).version === '1.11.0'
-  && JSON.parse(readFileSync(join(root, 'package.json'), 'utf8')).version === '1.11.0');
+check('version: 1.12.0 in version.json + package.json',
+  JSON.parse(readFileSync(join(root, 'version.json'), 'utf8')).version === '1.12.0'
+  && JSON.parse(readFileSync(join(root, 'package.json'), 'utf8')).version === '1.12.0');
 
 console.log('==============================');
 console.log(`PASS: ${pass}   FAIL: ${fail}`);

@@ -34,6 +34,10 @@ const check = (name, ok, extra = '') => {
 const d5 = JSON.parse(fs.readFileSync('data/libya-500.json', 'utf8'));
 const d2 = JSON.parse(fs.readFileSync('data/libya-248.json', 'utf8'));
 const app = fs.readFileSync('src/app.js', 'utf8');
+/* the result card is rendered by src/cards.js since the shared-component
+   round; the CAS rendering rules are guarded against BOTH files, so moving
+   the markup between them can never silently drop a rule. */
+const render = app + '\n' + fs.readFileSync('src/cards.js', 'utf8');
 const i18n = fs.readFileSync('src/i18n.js', 'utf8');
 const byRow = (d, n) => d.rows.find(r => r.row === n);
 const dictCount = key => (i18n.match(new RegExp("'" + key.replace(/[.+]/g, '\\$&') + "':", 'g')) || []).length;
@@ -58,8 +62,8 @@ const dictValue = (key, n = 1) => {
     'racemate mentions=' + (i18n.match(/99-49-0/g) || []).length);
   check('the stereo note ends with a human-review sentence in all 4 dictionaries',
     ['cas.stereo.note'].every(k => dictCount(k) === 4) && dictCount('cas.stereo.badge') === 4);
-  check('app.js renders the stereo block from casFlag (not from a hardcoded name)',
-    /CD\.casFlag\(x\.r\) === 'stereo-ambiguous'/.test(app) && /cas\.stereo\.note/.test(app));
+  check('the card renders the stereo block from casFlag (not from a hardcoded name)',
+    /casApi\.casFlag\(x\.r\) === 'stereo-ambiguous'/.test(render) && /cas\.stereo\.note/.test(render));
   check('the ambiguity text is NOT stored in the data file (labels live in i18n)',
     !JSON.stringify(d5.rows.find(x => x.row === 117)).includes('Carvone؛'));
 }
@@ -71,8 +75,8 @@ const dictValue = (key, n = 1) => {
   check('the raw decree string still carries (R) verbatim', r.cas_raw === '70630-17-0 (R)', r.cas_raw);
   check('the (R) descriptor lives in its own field cas_stereo', r.cas_stereo === '(R)', String(r.cas_stereo));
   check('CasDissect.casStereo returns it', CD.casStereo(r) === '(R)');
-  check('app.js appends the descriptor next to the corrected number',
-    /casStereo\(x\.r\)/.test(app) && /esc\(corr\) \+ \(stereo \? ' ' \+ esc\(stereo\)/.test(app));
+  check('the card appends the descriptor next to the corrected number',
+    /casStereo\(x\.r\)/.test(render) && /esc\(corr\) \+ \(stereo \? ' ' \+ esc\(stereo\)/.test(render));
   check('no other 500 row carries a stereo descriptor (single documented case)',
     d5.rows.filter(x => x.cas_stereo).length === 1);
 }
@@ -110,8 +114,8 @@ const dictValue = (key, n = 1) => {
       .every(k => dictCount('cas.source.' + k) === 4),
     ['eu', 'epa', 'eu+epa', 'eu-remark', 'eu-2026+epa', 'eu+pubchem']
       .filter(k => dictCount('cas.source.' + k) !== 4).join(',') || 'all 6 keys ×4');
-  check('app.js renders candidates as a labelled hint (cas.suggested), not as the CAS value',
-    /CD\.casSuggested/.test(app) && /cas\.suggested/.test(app) && /esc\(sug\.join/.test(app));
+  check('the card renders candidates as a labelled hint (cas.suggested), not as the CAS value',
+    /casApi\.casSuggested/.test(render) && /cas\.suggested/.test(render) && /esc\(sug\.join/.test(render));
   check('Rimsulfuron candidate is corroborated inside the repo (EU + EPA PC 129009)',
     (() => {
       const eu = JSON.parse(fs.readFileSync('data/eu.json', 'utf8')).rows.find(r => r.name === 'Rimsulfuron (aka renriduron)');
@@ -148,9 +152,9 @@ const dictValue = (key, n = 1) => {
     })());
   check('badge labels are translated in all 4 dictionaries (not locked in data)',
     dictCount('cas.note.badge') === 4 && dictCount('cas.dup.badge') === 4);
-  check('app.js renders both badges from the row fields',
-    /CD\.casNote\(x\.r\)/.test(app) && /CD\.casDuplicateNote\(x\.r\)/.test(app)
-    && /cas\.note\.badge/.test(app) && /cas\.dup\.badge/.test(app));
+  check('the card renders both badges from the row fields',
+    /casApi\.casNote\(x\.r\)/.test(render) && /casApi\.casDuplicateNote\(x\.r\)/.test(render)
+    && /cas\.note\.badge/.test(render) && /cas\.dup\.badge/.test(render));
 }
 
 /* ---------- (هـ1)+(هـ2) فك الرموز المركّبة والرموز غير المشروحة ----------
@@ -203,8 +207,8 @@ const dictValue = (key, n = 1) => {
   check('the five unexplained codes are never given a meaning in the dictionaries',
     ['I.Ph', 'B', 'Igr', 'R.S', 'gr'].every(c => dictCount('legend.cat.' + c) === 0));
   check('the chip itself prints the raw source string verbatim (only the tooltip is resolved)',
-    /String\(x\.r\.category\)\.split\(\/\\n\+\/\)/.test(app)
-    && /data-cat="' \+ esc\(c\)/.test(app));
+    /String\(x\.r\.category\)\.split\(\/\\n\+\/\)/.test(render)
+    && /data-cat="' \+ esc\(c\)/.test(render));
   /* judge.js must keep the same no-guessing rule for its own table */
   const judge = fs.readFileSync('src/judge.js', 'utf8');
   check('judge.js still pushes an `unknown` marker instead of guessing',

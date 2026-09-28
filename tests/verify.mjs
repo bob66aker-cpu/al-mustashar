@@ -185,12 +185,19 @@ check('bottom nav with 5 items + data route',
   ['data-nav="home"', 'data-nav="search"', 'data-nav="scan"', 'data-nav="history"', 'data-nav="about"'].every(m => html.includes(m))
   && html.includes('href="#/data"'));
 check('home stat cards wired to app.js', ['stat-248', 'stat-500', 'stat-eu', 'stat-epa', 'stat-epac'].every(id => html.includes(id)) && /statIds\[s\.key\]/.test(fs.readFileSync('src/app.js', 'utf8')));
-check('local font files exist and are referenced',
-  fs.existsSync('assets/fonts/ibm-plex-sans-arabic-regular.woff2')
-  && fs.existsSync('assets/fonts/ibm-plex-sans-arabic-bold.woff2')
-  && html.includes('assets/fonts/ibm-plex-sans-arabic-regular.woff2')
-  && fs.statSync('assets/fonts/ibm-plex-sans-arabic-regular.woff2').size < 100000
-  && (fs.statSync('assets/fonts/ibm-plex-sans-arabic-regular.woff2').size + fs.statSync('assets/fonts/ibm-plex-sans-arabic-bold.woff2').size) < 200000);
+check('system fonts only — no @font-face and no font download in the shell',
+  !/@font-face/.test(html.replace(/[\s\S]*?<!--/, '').replace(/-->[\s\S]*/, ''))
+  && !/@font-face/.test(fs.readFileSync('src/tokens.css', 'utf8').replace(/\/\*[\s\S]*?\*\//g, ''))
+  && !html.includes('assets/fonts/')
+  && /font-family/.test(fs.readFileSync('src/tokens.css', 'utf8'))
+  /* the tokens must name a system Latin stack AND a system Arabic stack */
+  && /Segoe UI/.test(fs.readFileSync('src/tokens.css', 'utf8'))
+  && /Tahoma/.test(fs.readFileSync('src/tokens.css', 'utf8'))
+  && /Arial|sans-serif/.test(fs.readFileSync('src/tokens.css', 'utf8')));
+check('the unused webfont files stay as fixture input only (not in the shell cache)',
+  !sw.includes('assets/fonts/ibm-plex')
+  && fs.existsSync('assets/fonts/ibm-plex-sans-arabic-regular.woff2')
+  && fs.readFileSync('tests/fixtures/synthetic-labels.mjs', 'utf8').includes('assets/fonts/ibm-plex-sans-arabic-regular.woff2'));
 check('font licenses + icon license files present',
   fs.existsSync('assets/fonts/LICENSE-OFL-IBM-Plex-Sans-Arabic.txt')
   && fs.existsSync('assets/icons/LICENSE-LUCIDE-ISC.txt'));
@@ -200,8 +207,7 @@ check('no emoji anywhere in displayed UI/code/data',
     const re = /[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{2B00}-\u{2BFF}\u{FE0F}]/u;
     return !re.test(html) && !re.test(appSrc) && !re.test(i18nSrc); })());
 check('SW precaches new UI assets',
-  sw.includes('src/icons.js') && sw.includes('assets/fonts/ibm-plex-sans-arabic-regular.woff2')
-  && sw.includes('assets/fonts/ibm-plex-sans-arabic-bold.woff2'));
+  sw.includes('src/icons.js') && sw.includes('src/tokens.css'));
 check('about page: app info card reads real version file',
   html.includes('aboutVersion') && /fillAboutMeta/.test(fs.readFileSync('src/app.js', 'utf8')));
 check('about page: developer card with optional photo fallback',
@@ -302,7 +308,7 @@ check('OCR engine carries the a3 early-confirm lock (DB-confirmed reads survive 
       && o.includes("via: 'ladder_confirm'")
       && o.includes('if (earlyLock) break;')
       && o.includes('if (!earlyLock && (exactHit || hasValidCas([...fusionCAS])))'); })());
-check('sw is v28 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v28'")
+check('sw is v29 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v29'")
   && sw5.includes("'./src/scan-live.js'")
   && sw5.includes("OCR_CACHE = 'mustashar-ocr'")
   && OCR_RUNTIME_FILES.every(f => sw5.includes(f.replace('./', '')))

@@ -433,6 +433,7 @@
       .then(r => (r.ok ? r.json() : null))
       .then(info => {
         if (!info || !info.version) return;
+        window.__appVersion = info.version;   /* printed in the pro report */
         $('#dbState') && ($('#dbState').title = t('ver.title', 'الإصدار: {v} — بيانات: {d}')
           .replace('{v}', info.version)
           .replace('{d}', info.data_updated || t('ver.data.unknown', 'غير محدد')));
@@ -855,6 +856,7 @@
     const results = searchFn(q, pro);
     render(results, q);
     if (results.length) addHistory(q, results.length);
+    syncProTools();
   }
   $('#searchForm').addEventListener('submit', e => {
     e.preventDefault();
@@ -867,8 +869,17 @@
     if (ml && modeSel) ml.textContent = modeSel.value === 'pro'
       ? t('mode.pro', 'المحترف') : t('mode.farmer', 'المزارع');
   }
+  /* the professional report button appears in professional mode only, and
+   * only once there is something to report. */
+  function syncProTools() {
+    const box = $('#proTools');
+    if (!box) return;
+    const pro = modeSel && modeSel.value === 'pro';
+    box.hidden = !(pro && lastResults.length);
+  }
   if (modeSel) modeSel.addEventListener('change', () => {
     syncModeLabel();
+    syncProTools();
     /* Re-render the current results so the detail level switches live
      * (farmer = simplified verdict, professional = full evidence).
      * أ3: the scan view now hosts its own results — re-render BOTH paths.
@@ -879,6 +890,22 @@
      * الآن على حالة النتائج المحفوظة لا على ظهور بطاقة في الشاشة. */
     if (lastResults.length) render(lastResults, $('#query').value.trim());
     if (lastScanResults.length) render(lastScanResults, '', '#scanResults');
+    syncProTools();
+  });
+  $('#proReportBtn').addEventListener('click', () => {
+    exportProReport($('#query').value.trim(), lastResults);
+  });
+
+  /* Switching the language re-renders everything the language touches:
+   * the jurisdiction picker (English farmer only), the result cards, the
+   * database chips and the professional tools row. Without this the user
+   * kept reading cards in the previous language. */
+  document.addEventListener('langchange', function () {
+    mountJurisdiction();
+    if (lastResults.length) render(lastResults, $('#query').value.trim());
+    if (lastScanResults.length) render(lastScanResults, '', '#scanResults');
+    renderDbStatus();
+    syncProTools();
   });
 
   window.addEventListener('online', renderDbStatus);
@@ -1624,6 +1651,93 @@
     const r = e && e.reason;
     safetyNet('unhandledrejection', (r && (r.message || r)) || 'rejection');
   });
+
+  /* ============================================================
+   * Professional report (professional mode only) — a real HTML FILE
+   * the user keeps: substance name, CAS (corrected / raw / source), one
+   * row per source with ITS data version, ITS status code and what that
+   * code means in that source, the match type, the jurisdiction
+   * disclaimer, a timestamp and the app version.
+   * It is generated from the results the app already holds — it never
+   * re-searches, never invents a status and never leaves the device.
+   * ============================================================ */
+  function reportFileName(q) {
+    const slug = String(q || 'report').trim().replace(/[^\p{L}\p{N}]+/gu, '-').replace(/^-+|-+$/g, '').slice(0, 40) || 'report';
+    return 'mustashar-report-' + slug + '-' + new Date().toISOString().slice(0, 10) + '.html';
+  }
+  function exportProReport(q, results) {
+    try {
+      const rows = (results || []).slice().sort(function (a, b) { return b.s.v - a.s.v; });
+      if (!rows.length) {
+        ocrMsg.textContent = t('pro.report.empty', 'لا توجد نتائج لتصديرها — ابحث عن المادة أولًا.');
+        setTimeout(function () { if (ocrMsg.textContent === t('pro.report.empty', '')) ocrMsg.textContent = ''; }, 3000);
+        return;
+      }
+      const escX = s => String(s === undefined || s === null ? '' : s).replace(/[&<>'"]/g, m => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
+      }[m]));
+      const CD = window.CasDissect;
+      const head = rows[0].r;
+      const corrected = CD && CD.casDisplayCorrected ? CD.casDisplayCorrected(head) : '';
+      const raw = CD && CD.casDisplayRaw ? CD.casDisplayRaw(head) : String(head.cas || '');
+      const srcKey = CD && CD.casSourceKey ? CD.casSourceKey(head) : '';
+      const appVersion = window.__appVersion || '';
+      /* built synchronously so the printed file is complete when it opens */
+      const body = rows.map(function (x) {
+        const sd = statusDisplay(x.r, x.k, true);
+        const m = cards ? cards.matchKind(x, q) : { key: 'mt.partial' };
+        const v = dataVersionOf(x.k) || '';
+        return '<tr>'
+          + '<td>' + escX(sourceLabel(x.k)) + '</td>'
+          + '<td>' + escX(v || '—') + '</td>'
+          + '<td>' + escX(sd.text) + '</td>'
+          + '<td>' + escX(String(x.r.status_raw || sd.raw || '')) + '</td>'
+          + '<td>' + escX(t(m.key, 'تطابق جزئي — مرشح')) + '</td>'
+          + '<td>' + escX(CD ? CD.casOf(x) : String(x.r.cas || '')) + '</td>'
+          + '</tr>';
+      }).join('');
+      const html = '<!DOCTYPE html><html lang="' + escX(document.documentElement.lang || 'ar') + '" dir="'
+        + (document.documentElement.dir || 'rtl') + '"><head><meta charset="utf-8">'
+        + '<title>' + escX(t('pro.report.title', 'تقرير المادة')) + '</title><style>'
+        + 'body{font:15px/1.7 "Segoe UI",Tahoma,system-ui,sans-serif;max-width:820px;margin:24px auto;padding:0 16px;color:#1a1a1a}'
+        + 'h1{font-size:20px}table{border-collapse:collapse;width:100%;margin:12px 0}'
+        + 'th,td{border:1px solid #ccc;padding:6px 8px;text-align:start;font-size:14px;vertical-align:top}'
+        + 'th{background:#f2f2f2}.k{font-weight:700;color:#444;margin-inline-end:6px}'
+        + '.disclaimer{margin-top:14px;padding:10px;border:1px solid #999;background:#fafafa}'
+        + '</style></head><body>'
+        + '<h1>' + escX(t('pro.report.title', 'تقرير المادة')) + '</h1>'
+        + '<div><span class="k">' + escX(t('pro.report.query', 'المادة')) + ':</span> ' + escX(q) + '</div>'
+        + '<div><span class="k">' + escX(t('pro.report.name', 'الاسم')) + ':</span> ' + escX(head.name || '') + '</div>'
+        + '<div><span class="k">' + escX(t('cas.label', 'CAS')) + ':</span> ' + escX(corrected || raw)
+        + (corrected ? ' <s>' + escX(raw) + '</s> (' + escX(t('cas.source.' + srcKey, srcKey)) + ')' : '') + '</div>'
+        + '<table><thead><tr>'
+        + '<th>' + escX(t('pro.report.col.source', 'المصدر')) + '</th>'
+        + '<th>' + escX(t('pro.report.col.version', 'نسخة البيانات')) + '</th>'
+        + '<th>' + escX(t('pro.report.col.status', 'رمز الحالة')) + '</th>'
+        + '<th>' + escX(t('pro.report.col.meaning', 'معناه في ذاك المصدر')) + '</th>'
+        + '<th>' + escX(t('pro.report.col.match', 'نوع المطابقة')) + '</th>'
+        + '<th>' + escX(t('pro.report.col.cas', 'CAS')) + '</th>'
+        + '</tr></thead><tbody>' + body + '</tbody></table>'
+        + '<p class="disclaimer">' + escX(t('pro.report.disclaimer',
+          'الولاية القانونية تختلف بين المصادر — هذا التقرير توثيق للمصدر ولا يُعد حكمًا قانونيًا.')) + '</p>'
+        + '<div><span class="k">' + escX(t('pro.report.time', 'الطابع الزمني')) + ':</span> '
+        + escX(new Date().toString()) + '</div>'
+        + '<div><span class="k">' + escX(t('pro.report.app', 'إصدار التطبيق')) + ':</span> ' + escX(appVersion) + '</div>'
+        + '</body></html>';
+      const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = reportFileName(q);
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      setTimeout(() => URL.revokeObjectURL(link.href), 4000);
+      diagAdd({ at: Date.now(), outcome: 'report', version: appVersion, q: String(q), rows: rows.length });
+      ocrMsg.textContent = t('pro.report.done', 'تم إنشاء التقرير — ابحث عن «التنزيلات» في الهاتف.');
+    } catch (e) {
+      ocrMsg.textContent = t('pro.report.fail', 'تعذّر إنشاء التقرير.');
+    }
+  }
 
   function diagExport() {
     try {

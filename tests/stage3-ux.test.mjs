@@ -113,8 +113,13 @@ check('3.5: barcode failure can never block the scan (try/catch advisory)',
   /try \{\s*const bc = await window\.BarcodeModule\.detect\(file\);\s*if \(bc && bc\.codes\.length\) showBarcodeChip\(bc\);\s*\} catch \(e\) \{ \/\* never block/.test(app));
 
 /* ---------- 3.2 / 3.6 heavy-pipeline discipline ---------- */
-check('3.2: MAX_DIM stays 1600 (12MP memory ceiling) and baseCanvas scales DOWN beyond it',
-  ocr.includes('MAX_DIM: 1600') && /const scale = Math\.min\(1, OCR\.MAX_DIM \/ Math\.max\(w, h\)\);/.test(ocr));
+check('3.2: MAX_DIM 1600 is only the fallback — the memory ladder decides — and baseCanvas scales DOWN to it',
+  ocr.includes('MAX_DIM: 1600')
+  && /const limit = maxDim \|\| OCR\.MAX_DIM;/.test(ocr)
+  && /const scale = Math\.min\(1, limit \/ Math\.max\(w, h\)\);/.test(ocr)
+  /* 4) the ladder itself: \u22641GB\u21921280, 2GB\u21921920, \u22654GB\u21922560, undefined\u21921280 */
+  && /rung: 'unknown'/.test(ocr) && /rung: 'le1gb'/.test(ocr) && /rung: '2gb'/.test(ocr) && /rung: '4gb\+'/.test(ocr) && /dim: 1280/.test(ocr) && /dim: 1920/.test(ocr) && /dim: 2560/.test(ocr)
+  && /function memoryRung/.test(ocr) && /rung\.dim/.test(ocr));
 check('3.6: heavy variants stay gated — early lock on rule confirmation, exact-hit break, deep lanes only when needed',
   ocr.includes('if (earlyLock) break;') && ocr.includes('if (exactHit) break;')
   && /lane: 'deep/.test(ocr));

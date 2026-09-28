@@ -41,6 +41,7 @@ const browser = await puppeteer.launch({
   headless: 'new',
   args: ['--no-sandbox', '--disable-dev-shm-usage'],
 });
+const sleep = ms => new Promise(r => setTimeout(r, ms));
 try {
   const page = await browser.newPage();
   const consoleErrors = [];
@@ -62,6 +63,10 @@ try {
   /* Direct renderer drive with the EXACT shape proceedWithScan feeds it:
    * searchCandidates() output ({k, r, s}) — i.e. the true automation path
    * downstream of the OCR gates, no mocking of app code. */
+  /* 2) since this round the SCAN view obeys the SAME filter as the manual
+   * search: a farmer sees Libyan sources only, in any language, and the
+   * non-Libya cards appear in professional mode. */
+  await setMode('pro');
   await page.evaluate(q => window.runScanPipeline(q), QUERY);
   await page.waitForFunction(() =>
     document.querySelectorAll('#scanResults article.result, #scanResults .prohibited').length > 0,
@@ -75,19 +80,37 @@ try {
     };
   });
 
-  await setMode('farmer');
-  const farmerScan = await readScan();
-  must('أ: scan results visible in FARMER mode (full list, no manual step)',
-    farmerScan.articles > 0, 'articles=' + farmerScan.articles + ' sources=' + farmerScan.sources.join(','));
-
-  await setMode('pro');
   const proScan = await readScan();
-  must('أ: scan results visible in PRO mode too',
-    proScan.articles > 0 && proScan.articles === farmerScan.articles,
-    'articles=' + proScan.articles);
+  must('أ: scan results visible in PRO mode (no manual step)',
+    proScan.articles > 0, 'articles=' + proScan.articles + ' sources=' + proScan.sources.join(','));
 
-  must('أ: scan view shows the non-Libya source card (the case that regressed)',
-    farmerScan.sources.some(s => /EPA/.test(s)), farmerScan.sources.join(','));
+  /* Warfarin is in the foreign lists only: a farmer must see NOTHING for it —
+   * that is exactly the filter the manual search already applied (the mismatch
+   * between the two paths WAS the bug fixed in this round). */
+  await setMode('farmer');
+  const farmerForeign = await readScan();
+  must('أ: FARMER scan hides a substance that exists only in foreign sources',
+    farmerForeign.articles === 0,
+    'farmer articles=' + farmerForeign.articles + ' sources=' + farmerForeign.sources.join(','));
+  must('أ: no foreign source card survives in the FARMER scan container',
+    farmerForeign.sources.every(s => /Libya|ليبيا/i.test(s)), farmerForeign.sources.join(','));
+
+  /* and a substance that IS in the Libyan lists must reach the farmer through
+   * the very same scan path */
+  await setMode('pro');
+  await page.evaluate(q => window.runScanPipeline(q), 'Chlorpyrifos');
+  await sleep(500);
+  const proLibya = await readScan();
+  await setMode('farmer');
+  const farmerLibya = await readScan();
+  must('أ: FARMER scan shows the Libyan rows of a Libyan substance',
+    farmerLibya.articles > 0 && farmerLibya.articles <= proLibya.articles,
+    'farmer=' + farmerLibya.articles + ' pro=' + proLibya.articles);
+  must('أ: every FARMER scan source is Libyan (unified with the manual search)',
+    farmerLibya.sources.length > 0 && farmerLibya.sources.every(s => /Libya|ليبيا/i.test(s)),
+    farmerLibya.sources.join(','));
+  must('أ: the non-Libya source card appears in PRO scan (the case that regressed)',
+    proScan.sources.some(s => /EPA/.test(s)), proScan.sources.join(','));
 
   /* ---------- manual search keeps the farmer filter (spec C1 intact) ---------- */
   await setMode('farmer');

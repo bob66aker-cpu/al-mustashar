@@ -36,7 +36,7 @@
       font-size: var(--fs-base);
       line-height: var(--lh);
       -webkit-tap-highlight-color: transparent;
-      transition: background-color 0.2s ease, color 0.2s ease;
+      transition: background-color var(--dur) var(--ease), color var(--dur) var(--ease);
     }
 
     .ic { width: 24px; height: 24px; display: block; }
@@ -451,6 +451,9 @@
     }
     .badge.strong   { color: var(--primary-strong); border-color: var(--primary-strong); }
     .badge.possible { color: var(--info); border-color: var(--info); }
+    /* ---------- professional tools row ---------- */
+    .results-tools { display: flex; gap: 8px; margin-bottom: 10px; }
+
     /* ---------- safety net banner (one, non-blocking) ---------- */
     .safety-banner { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
     .safety-banner span { flex: 1 1 240px; }
@@ -985,6 +988,13 @@
       <p class="hint" data-i18n="hint">البحث يعمل محليًا بعد أول تشغيل. نتيجة غير مؤكدة تعني ضرورة مراجعة الاسم والملصق.</p>
 
       <div class="results-title"><h2 id="resultTitle" data-i18n="results.title2">نتائج الفحص</h2></div>
+
+      <div class="results-tools" id="proTools" hidden>
+        <button class="btn-outline" type="button" id="proReportBtn">
+          <span data-icon="report"></span>
+          <span data-i18n="pro.report.btn">تصدير تقرير المادة</span>
+        </button>
+      </div>
 
       <section class="results" id="results">
         <div class="empty">

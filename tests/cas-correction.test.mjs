@@ -35,6 +35,9 @@ const check = (name, ok, extra = '') => {
 const d5 = JSON.parse(fs.readFileSync('data/libya-500.json', 'utf8'));
 const d2 = JSON.parse(fs.readFileSync('data/libya-248.json', 'utf8'));
 const app = fs.readFileSync('src/app.js', 'utf8');
+/* the CAS block is rendered by src/cards.js since the shared-component
+   round — guard the pair so the rule cannot be dropped by a move */
+const render = app + '\n' + fs.readFileSync('src/cards.js', 'utf8');
 const i18n = fs.readFileSync('src/i18n.js', 'utf8');
 
 /* ---------- 1) the eight documented repairs, stored correctly ---------- */
@@ -153,11 +156,11 @@ for (const [raw, fixed] of [['374726-22-2', '374726-62-2'], ['52888-90-9', '5288
 }
 
 /* ---------- 5) display wiring + i18n ×4 + no silent correction ---------- */
-check('app.js renders corrected + struck raw + source label',
-  /casDisplayCorrected/.test(app) && /cas-raw-old/.test(app) && /cas-src/.test(app)
-  && /cas\.source\.' \+ srcKey/.test(app));
-check('app.js keeps the report-only badsum marking',
-  /cas\.badsum/.test(app) && /casChecksum\(c\) === false/.test(app));
+check('the card renders corrected + struck raw + source label',
+  /casDisplayCorrected/.test(render) && /cas-raw-old/.test(render) && /cas-src/.test(render)
+  && /cas\.source\.' \+ srcKey/.test(render));
+check('the card keeps the report-only badsum marking',
+  /cas\.badsum/.test(render) && /casChecksum\(c\) === false/.test(render));
 {
   const keys = ['cas.source.epa-master', 'cas.source.official-500',
     'cas.source.official-248', 'cas.corrected'];

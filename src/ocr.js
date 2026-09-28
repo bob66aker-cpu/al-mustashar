@@ -495,7 +495,11 @@
      * both ways). Numbers: docs/ocr-ab-experiment.md */
     clahe: false,
     /* تصويت متعدد الإطارات — الكاميرا الحية فقط */
-    frameVote: false
+    frameVote: false,
+    /* 3.9 — PP-OCRv5 كحزمة اختيارية. OFF، وحتى وهو off لا يلمس
+     * الشبكة: لا سكربت في index.html ولا إدخال في كاش عامل الخدمة.
+     * التفعيل بـ setTuning({ ppocr: true }) ثم src/ppocr.js (غير مستورد افتراضياً). الحجم المُثبت: docs/ocr-ab-experiment.md §PP-OCRv5 */
+    ppocr: false
   };
   let tuning = Object.assign({}, TUNING_DEFAULT);
   function setTuning(patch) {

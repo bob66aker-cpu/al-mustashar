@@ -169,6 +169,16 @@
       req.onsuccess = () => resolve(req.result);
       req.onerror = () => reject(req.error);
       req.onblocked = () => reject(new Error('indexeddb blocked'));
+      /* A version change cannot proceed while this page still holds the old
+       * connection open — the upgrade would sit blocked forever and the app
+       * would keep reading a stale schema. So the connection closes itself
+       * and the cached promise is dropped, letting the next call reopen at
+       * the new version. Losing the handle is safe: nothing here keeps
+       * in-memory state that only exists on the connection. */
+      req.onversionchange = () => {
+        try { req.result.close(); } catch (e) { /* already closing */ }
+        dbPromise = null;
+      };
     }).catch(err => { dbPromise = null; throw err; });
     return dbPromise;
   }
@@ -838,7 +848,13 @@
     const list = activeSources();
     const sig = list.map(s => s.key + ':' + (DB[s.key] ? (DB[s.key].rows || []).length : 'x')).join('|');
     if (cachedSearch && sig === cachedIndexSig) { searchFn = cachedSearch; return; }
-    const sources = list.map(s => ({ key: s.key, rows: (DB[s.key] || {}).rows || null }));
+    /* a pack whose manifest says it carries no CAS numbers must not be
+     * matched by name similarity — the engine needs to know that up front */
+    const sources = list.map(s => ({
+      key: s.key,
+      rows: (DB[s.key] || {}).rows || null,
+      noCas: !!(DB[s.key] && DB[s.key].meta && DB[s.key].meta.cas_present === 0)
+    }));
     searchFn = SearchCore.buildSearch(sources);
     cachedSearch = searchFn;
     cachedIndexSig = sig;

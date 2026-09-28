@@ -138,7 +138,11 @@
     const searchables = [];
     for (const src of sources) {
       if (src && Array.isArray(src.rows) && src.rows.length) {
-        searchables.push(makeSearchable(src.key, src.rows));
+        const s = makeSearchable(src.key, src.rows);
+        /* the descriptor's flags must survive into the index, or the no-CAS
+         * rule below would never see them */
+        s.noCas = !!src.noCas;
+        searchables.push(s);
       }
     }
 
@@ -151,6 +155,12 @@
       const qc = qIsCas ? compact(query) : null;
 
       for (const S of searchables) {
+        /* A registry that publishes NO CAS numbers cannot be reasoned about by
+         * name similarity: "GLYPHOSATE SODIUM" and "GLYPHOSATE" are different
+         * chemicals with different approvals. For such a source only an exact,
+         * fully-normalised name match is decisive; every looser hit is emitted
+         * as a CANDIDATE and the card says so in words. */
+        const noCas = !!S.noCas;
         for (const e of S.entries) {
           let best = { v: 0, type: '', field: '' };
 
@@ -170,7 +180,7 @@
           /* -- name field (normalized once at index time) -- */
           if (e.name) {
             if (nq === e.name) {
-              out.push({ k: S.key, r: e.r, s: { v: 100, type: 'اسم مطابق', field: e.r.name } });
+              out.push({ k: S.key, r: e.r, s: { v: 100, type: 'اسم مطابق', field: e.r.name, decisive: true } });
               continue;
             }
             if (nq.length >= 4 && e.name.length >= 4 && (e.name.includes(nq) || nq.includes(e.name))) {
@@ -203,7 +213,7 @@
             }
           }
 
-          if (best.v >= MIN_SCORE) out.push({ k: S.key, r: e.r, s: best });
+          if (best.v >= MIN_SCORE) out.push({ k: S.key, r: e.r, s: (noCas ? { v: best.v, type: best.type, field: best.field, candidate: true } : best) });
         }
       }
 

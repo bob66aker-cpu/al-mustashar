@@ -330,10 +330,15 @@ check('80% threshold untouched (SearchCore MIN_SCORE = 80)', SC.MIN_SCORE === 80
 check('source priority untouched',
   JSON.stringify(SC.buildSearch([{ key: 'epa', rows: [] }, { key: 'libya-248', rows: [] }]).sources) === '[]'
   || true); // priority asserted by parity test in section 2
-check('search-core unchanged since the 2026-09-23 micro-bump (SOURCE_RANK 5 sources)',
+/* the 2026-09-23 micro-bump fingerprint, extended by the no-CAS rule of the
+ * Canada/Australia packs: a registry that publishes no CAS numbers may only
+ * answer decisively on an exact normalised name. The SOURCE_RANK order is
+ * still asserted separately, so the ranking cannot drift with this bump. */
+check('search-core fingerprint (2026-09-23 micro-bump + the no-CAS candidate rule)',
   crypto.createHash('sha256').update(fs.readFileSync('src/search-core.js')).digest('hex')
-    === 'd321f8122fcbd9492edc0c5d02d0c69e519bb3447ef981dc180303c6735cbbe0'
-  && /'epa-cancelled': 4/.test(fs.readFileSync('src/search-core.js', 'utf8')));
+    === '904409ace0a86643dfcf3cacdd95855e14f99cab3697535186f79ea22df4daf2'
+  && /'epa-cancelled': 4/.test(fs.readFileSync('src/search-core.js', 'utf8'))
+  && /const noCas = !!S\.noCas;/.test(fs.readFileSync('src/search-core.js', 'utf8')));
 
 /* ---------- v5 hardening: index cache, OCR cache isolation, prep panel ---------- */
 check('app caches the search index (rebuild only when sources change)',

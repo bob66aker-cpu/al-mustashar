@@ -64,6 +64,10 @@
       return String(s || '').toLowerCase().replace(/[^a-z0-9؀-ۿ]+/g, ' ').trim();
     }
     function matchKind(x, q) {
+      /* a source with no CAS numbers can only answer "this exact name is
+       * registered there"; anything looser is a candidate, and the card says
+       * so instead of implying a regulatory verdict */
+      if (x.s && x.s.candidate) return { key: 'mt.candidate', shared: false };
       var type = String((x.s && x.s.type) || '');
       var isCas = /CAS/.test(type);
       var isExact = /مطابق/.test(type) && !/جزئي|حرفي/.test(type);
@@ -93,14 +97,22 @@
      * (farmer mode used to leave it to a popover — a phone user never opens it) */
     function statusBlock(x, ctx) {
       var sd = statusDisplay(x.r, x.k, ctx.mode === 'pro');
-      var tone = sd.tone === 'banned' ? 'ban' : (sd.tone === 'amber' ? 'review' : 'neutral');
+      var candidate = !!(x.s && x.s.candidate);
+      /* a candidate gets the review tone and a caution icon — never the check
+       * mark, which would read as "this source says it is fine" */
+      var tone = candidate ? 'review' : (sd.tone === 'banned' ? 'ban' : (sd.tone === 'amber' ? 'review' : 'neutral'));
       var icon = tone === 'ban' ? 'ban' : (tone === 'review' ? 'caution' : 'check');
       var explain = '';
       if (x.k === 'libya-500') explain = statusExplain(x.r.status) || '';
       else if (x.k === 'libya-248') explain = t('card.status.banned.248', 'مدرجة في قائمة المواد المحظورة (قرار ليبيا 248).');
       if (!explain && ctx.mode === 'pro' && x.r.status_raw) explain = String(x.r.status_raw);
+      var candidateLine = candidate
+        ? '<p class="st-explain-full candidate-note">' + esc(t('mt.candidate.note',
+          'الاسم لم يُطابق بالكامل — هذه نتيجة مرشّحة تتطلب تأكيد الاسم، وليست حكماً تنظيمياً.')) + '</p>'
+        : '';
       return '<p class="status tone-' + tone + '"><span class="st-ic" data-icon="' + icon + '"></span>'
         + '<span class="st-txt">' + esc(sd.text) + '</span></p>'
+        + candidateLine
         + (explain ? '<p class="st-explain-full">' + esc(explain) + '</p>' : '')
         + (ctx.mode === 'pro' && sd.chip ? sd.chip : '');
     }

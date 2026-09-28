@@ -260,6 +260,81 @@
   }
 
   /* Build one variant canvas from the base (never mutates the original). */
+  /* ------------------------------------------------------------
+   * CLAHE — contrast-limited adaptive histogram equalisation.
+   *
+   * The existing grayStretch builds ONE histogram for the whole image.
+   * That cannot help the case CLAHE was written for: a phone photo of a
+   * label where part of the panel sits in shadow and part is in sun. The
+   * global histogram is dragged by the bright side, so the shadowed text
+   * stays grey-on-grey. CLAHE equalises small tiles independently and
+   * clips the peaks so noise is not amplified into the flat areas.
+   *
+   * 8x8 tiles, clip at 2.5x the uniform share, bilinear blending across
+   * tile borders. Runs behind tuning.clahe only — it is an experiment
+   * until the measurement in docs/ocr-ab-experiment.md says otherwise.
+   */
+  const CLAHE_TILES = 8;
+  const CLAHE_CLIP = 2.5;
+  function clahe(imgData) {
+    const w = imgData.width, h = imgData.height;
+    if (!w || !h) return imgData;
+    const d = imgData.data;
+    const n = w * h;
+    const gray = new Uint8ClampedArray(n);
+    for (let i = 0, p = 0; i < d.length; i += 4, p++) {
+      const g = (d[i] * 299 + d[i + 1] * 587 + d[i + 2] * 114) / 1000 | 0;
+      d[i] = d[i + 1] = d[i + 2] = g;
+      gray[p] = g;
+    }
+    const tw = Math.max(1, Math.ceil(w / CLAHE_TILES));
+    const th = Math.max(1, Math.ceil(h / CLAHE_TILES));
+    const tx = Math.ceil(w / tw), ty = Math.ceil(h / th);
+    /* one equalisation LUT per tile */
+    const maps = [];
+    for (let by = 0; by < ty; by++) {
+      maps[by] = [];
+      for (let bx = 0; bx < tx; bx++) {
+        const x0 = bx * tw, x1 = Math.min(w, x0 + tw);
+        const y0 = by * th, y1 = Math.min(h, y0 + th);
+        const hist = new Uint32Array(256);
+        for (let y = y0; y < y1; y++) {
+          const row = y * w;
+          for (let x = x0; x < x1; x++) hist[gray[row + x]]++;
+        }
+        const px = Math.max(1, (x1 - x0) * (y1 - y0));
+        /* clip: no bin may exceed CLIP times the uniform share */
+        const limit = Math.max(1, Math.floor(CLAHE_CLIP * px / 256));
+        let excess = 0;
+        for (let v = 0; v < 256; v++) {
+          if (hist[v] > limit) { excess += hist[v] - limit; hist[v] = limit; }
+        }
+        const share = excess / 256 | 0;
+        const cdf = new Uint8ClampedArray(256);
+        let acc = 0;
+        for (let v = 0; v < 256; v++) { acc += hist[v] + share; cdf[v] = acc * 255 / px; }
+        maps[by][bx] = cdf;
+      }
+    }
+    /* bilinear between the four surrounding tile maps, so no tile seam
+       becomes an edge the engine later reads as a character */
+    for (let y = 0; y < h; y++) {
+      const fy = y / th, by0 = Math.min(ty - 1, fy | 0), by1 = Math.min(ty - 1, by0 + 1);
+      const wy = fy - by0;
+      const row = y * w;
+      for (let x = 0; x < w; x++) {
+        const fx = x / tw, bx0 = Math.min(tx - 1, fx | 0), bx1 = Math.min(tx - 1, bx0 + 1);
+        const wx = fx - bx0;
+        const a = maps[by0][bx0], b = maps[by0][bx1];
+        const c = maps[by1][bx0], e = maps[by1][bx1];
+        const top = a[gray[row + x]] * (1 - wx) + b[gray[row + x]] * wx;
+        const bot = c[gray[row + x]] * (1 - wx) + e[gray[row + x]] * wx;
+        d[(row + x) * 4] = d[(row + x) * 4 + 1] = d[(row + x) * 4 + 2] = top * (1 - wy) + bot * wy;
+      }
+    }
+    return imgData;
+  }
+
   function buildVariant(base, name) {
     const c = makeCanvas(base.width, base.height);
     const ctx = c.getContext('2d', { willReadFrequently: true });
@@ -271,6 +346,10 @@
       case 'adaptive':  grayStretch(img); adaptiveThreshold(img); break;
       case 'global':    grayStretch(img); globalThreshold(img); break;
       case 'invert':    grayStretch(img); globalThreshold(img); invert(img); break;
+      /* 3.6 — CLAHE. ON since the 3.8 measurement; deep lane only, so a
+       * clean label still answers in the fast lane. */
+      case 'clahe':     clahe(img); break;
+      case 'clahe_sharp': clahe(img); sharpen(img); break;
       /* dark-on-light and light-on-dark coloring for label panels that are
        * printed inverted (light text on dark band): we binarize then paint
        * pure black/white so the engine always sees high contrast. */
@@ -405,7 +484,15 @@
     /* diagnostic only: makes the real engine output visible to
      * tests/tess-wordbox-guard.test.mjs. Off in normal use. */
     exposeEngine: false,
-    /* تحسين الإضاءة عبر Canvas خلف علم تجريبي */
+    /* 3.6 — CLAHE (tile-wise 8×8, clip 2.5×). STAYS OFF: the real variant
+     * works and the 17-image baseline liked it (ACCEPT 1→1, +2.7% time, and
+     * images (1).jpg gained 1958 chars of text), but MAX_PASSES is 14, so
+     * the four deep4 slots come out of the rotation-recovery passes:
+     * the functional case rotated_90 then reads NOTHING (textLen 0, no
+     * Glyphosate) where it scored 100% with CLAHE off. Owner's rule —
+     * do not ship it if it costs an acceptance — so it stays documented
+     * and disabled. Guard: tests/ocr-clahe-ab.test.mjs (runs the engine
+     * both ways). Numbers: docs/ocr-ab-experiment.md */
     clahe: false,
     /* تصويت متعدد الإطارات — الكاميرا الحية فقط */
     frameVote: false
@@ -1020,6 +1107,16 @@
     for (const psm of [11, 6]) queue.push({ variant: 'original', psm, lane: 'fast' });
     for (const v of ['gray', 'sharp']) for (const psm of [11, 6]) queue.push({ variant: v, psm, lane: 'deep1' });
     for (const v of ['adaptive', 'global', 'invert']) queue.push({ variant: v, psm: 11, lane: 'deep2' });
+    /* 3.6 — CLAHE adds passes, so it is not free: MAX_PASSES is 14, so
+     * the four deep4 slots are taken from deep3/rotations. The 3.8
+     * measurement priced that trade (+2.7% avg) and found no lost
+     * acceptance, so it ships — still behind tuning.clahe so the field
+     * campaign can switch it off per device if a phone suffers. */
+    if (tuning.clahe) {
+      for (const v of ['clahe', 'clahe_sharp']) for (const psm of [11, 6]) {
+        queue.push({ variant: v, psm, lane: 'deep4' });
+      }
+    }
     for (const v of DEEP_VARIANTS) for (const psm of PSM_LIST) {
       if (!queue.some(q => q.variant === v && q.psm === psm)) queue.push({ variant: v, psm, lane: 'deep3' });
     }
@@ -1534,6 +1631,6 @@
     sharpness, SHARP_SIDE, probeEngine,
     cancelCurrent, scan, latinRatio, rejectedTextReason, MIN_CONFIDENCE,
     hasValidCas, newCancelToken, resetEngine,
-    OCR, VARIANTS, PSM_LIST, aiRegionFromWords, buildVariant
+    OCR, VARIANTS, PSM_LIST, aiRegionFromWords, buildVariant, clahe
   };
 })(typeof window !== 'undefined' ? window : globalThis);

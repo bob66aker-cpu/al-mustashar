@@ -1,0 +1,203 @@
+{
+ "tag": "3.8-clahe-control",
+ "flags": {
+  "wordFilter": 0,
+  "sharpGate": 0,
+  "clahe": false
+ },
+ "tuning": {
+  "tesseractOem": true,
+  "wordFilter": 0,
+  "sharpGate": 0,
+  "sharpGateFinal": false,
+  "exposeEngine": false,
+  "clahe": false,
+  "frameVote": false
+ },
+ "rung": {
+  "dim": 2560,
+  "rung": "4gb+",
+  "gb": 32
+ },
+ "measuredAt": "2026-09-28",
+ "n": 17,
+ "ACCEPT": 1,
+ "REJECT": 9,
+ "EMPTY": 7,
+ "HANG": 0,
+ "avgMs": 20372,
+ "maxMs": 81533,
+ "avgPasses": 8.76,
+ "rows": [
+  {
+   "n": 1,
+   "name": "5.jpg",
+   "ms": 14491,
+   "passes": 15,
+   "cas": 0,
+   "grade": "EMPTY",
+   "gate": "",
+   "error": ""
+  },
+  {
+   "n": 2,
+   "name": "6.jpg",
+   "ms": 6810,
+   "passes": 14,
+   "cas": 0,
+   "grade": "REJECT",
+   "gate": "",
+   "error": ""
+  },
+  {
+   "n": 3,
+   "name": "7.jpg",
+   "ms": 72308,
+   "passes": 14,
+   "cas": 0,
+   "grade": "EMPTY",
+   "gate": "",
+   "error": ""
+  },
+  {
+   "n": 4,
+   "name": "8.jpg",
+   "ms": 4098,
+   "passes": 1,
+   "cas": 0,
+   "grade": "REJECT",
+   "gate": "",
+   "error": ""
+  },
+  {
+   "n": 5,
+   "name": "9.jpg",
+   "ms": 2352,
+   "passes": 6,
+   "cas": 0,
+   "grade": "REJECT",
+   "gate": "",
+   "error": ""
+  },
+  {
+   "n": 6,
+   "name": "100.jpg",
+   "ms": 872,
+   "passes": 1,
+   "cas": 0,
+   "grade": "REJECT",
+   "gate": "",
+   "error": ""
+  },
+  {
+   "n": 7,
+   "name": "101.jpg",
+   "ms": 4359,
+   "passes": 2,
+   "cas": 0,
+   "grade": "REJECT",
+   "gate": "",
+   "error": ""
+  },
+  {
+   "n": 8,
+   "name": "103.jpg",
+   "ms": 1008,
+   "passes": 1,
+   "cas": 0,
+   "grade": "REJECT",
+   "gate": "",
+   "error": ""
+  },
+  {
+   "n": 9,
+   "name": "105.jpg",
+   "ms": 15832,
+   "passes": 15,
+   "cas": 0,
+   "grade": "EMPTY",
+   "gate": "",
+   "error": ""
+  },
+  {
+   "n": 10,
+   "name": "106.jpg",
+   "ms": 4968,
+   "passes": 2,
+   "cas": 0,
+   "grade": "REJECT",
+   "gate": "",
+   "error": ""
+  },
+  {
+   "n": 11,
+   "name": "images.jpg",
+   "ms": 26132,
+   "passes": 7,
+   "cas": 0,
+   "grade": "REJECT",
+   "gate": "",
+   "error": ""
+  },
+  {
+   "n": 12,
+   "name": "images (1).jpg",
+   "ms": 20033,
+   "passes": 14,
+   "cas": 0,
+   "grade": "EMPTY",
+   "gate": "",
+   "error": ""
+  },
+  {
+   "n": 13,
+   "name": "images (2).jpg",
+   "ms": 11354,
+   "passes": 1,
+   "cas": 1,
+   "grade": "ACCEPT",
+   "gate": "",
+   "error": ""
+  },
+  {
+   "n": 14,
+   "name": "images (3).jpg",
+   "ms": 11542,
+   "passes": 14,
+   "cas": 0,
+   "grade": "REJECT",
+   "gate": "",
+   "error": ""
+  },
+  {
+   "n": 15,
+   "name": "pesticide_test_level1_ideal.png",
+   "ms": 37899,
+   "passes": 14,
+   "cas": 0,
+   "grade": "EMPTY",
+   "gate": "",
+   "error": ""
+  },
+  {
+   "n": 16,
+   "name": "pesticide_test_level3_damaged.png",
+   "ms": 81533,
+   "passes": 14,
+   "cas": 0,
+   "grade": "EMPTY",
+   "gate": "",
+   "error": ""
+  },
+  {
+   "n": 17,
+   "name": "pesticide_test_level4_lowlight.png",
+   "ms": 30731,
+   "passes": 14,
+   "cas": 0,
+   "grade": "EMPTY",
+   "gate": "",
+   "error": ""
+  }
+ ]
+}

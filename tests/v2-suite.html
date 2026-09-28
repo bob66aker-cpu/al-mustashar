@@ -108,6 +108,11 @@
     return c;
   }
 
+  /* dev harness exports: the A/B probes (tests/ocr-clahe-ab.test.mjs) must
+   * build the SAME synthetic label the functional cases build, otherwise an
+   * "improvement" would be measured on a different picture. */
+  window.__labelCanvas = labelCanvas;
+
   window.__run = async function () {
     await loadDBs();
     OcrModule.setSearchRef(window.__search);

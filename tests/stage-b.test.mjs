@@ -107,7 +107,9 @@ check('أ2: stopLive restores the capture/gallery buttons (no page reload needed
   /if \(camBtn\) \{ camBtn\.hidden = false; camBtn\.disabled = false; \}/.test(app)
   && /if \(galBtn\) \{ galBtn\.hidden = false; galBtn\.disabled = false; \}/.test(app));
 check('أ3: live results render through the SAME decision renderer in the scan view',
-  /proceedWithScan\(res, \[\]\);/.test(app) && /render\(merged, '', '#scanResults'\)/.test(app));
+  /* the live pass hands proceedWithScan the voted winner (a real read, one
+     of the frames) — the guard checks the RENDERER, not the variable name */
+  /proceedWithScan\((voted|res), \[\]\);/.test(app) && /render\(merged, '', '#scanResults'\)/.test(app));
 
 /* ---------- ج: حماية القراءة الجارية ---------- */
 check('ج: leaving the scan view is blocked ONLY while a read is active',

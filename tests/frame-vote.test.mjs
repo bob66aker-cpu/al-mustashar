@@ -91,5 +91,60 @@ ok(gallery === 0 || !app.slice(gallery, gallery + 4000).includes('collectVoteFra
 ok(/MIN_CONFIDENCE\s*=\s*45/.test(readFileSync('src/ocr.js', 'utf8')),
   'MIN_CONFIDENCE is still 45 — the vote changed no threshold');
 
+/* ---- 6) the owner's condition: a repeated WRONG read is never promoted ----
+ * Two separate failure modes, each with its own case below.
+ */
+const wrongRead = { text: 'ACTIVE INGREDIENT: Bromacil 80%',
+                    cas: ['1689-99-2'], candidates: ['Bromacil'], confidence: 42 };
+const goodRead = { text: 'ACTIVE INGREDIENT: Chlorpyrifos 480 SC',
+                   cas: ['29232-93-7'], candidates: ['Chlorpyrifos'], confidence: 88 };
+
+/* case one: four frames agree on the same WRONG read.
+   The winner is that read — and it is returned byte for byte as the engine
+   produced it. The pooled number used for ranking is 42 x 4 = 168, but it
+   is never written back onto the result, so nothing downstream sees 168
+   and the app's own MIN_CONFIDENCE still judges 42. */
+const wrong4 = SL.vote([{ res: wrongRead }, { res: wrongRead }, { res: wrongRead }, { res: wrongRead }]);
+ok(wrong4.winner.res === wrongRead, 'four agreeing frames return that very read object');
+ok(wrong4.winner.res.confidence === 42,
+  'the returned confidence is still the engine\'s own 42 — the vote did not raise it');
+ok(wrong4.ranked[0].pooled === 168,
+  'the pooled 168 exists for ranking only and is never returned — ' + wrong4.ranked[0].pooled);
+ok(!('pooled' in wrong4.winner.res) && !('votes' in wrongRead),
+  'the vote writes nothing back onto the result object');
+ok(wrongRead.confidence < 45,
+  'and 42 is still below MIN_CONFIDENCE 45, so the read stays a rejection — ' + wrongRead.confidence);
+
+/* case two: three frames repeat a read the existing gates REJECTED.
+   The rejected flag lives on the read; the vote refuses it, so unanimous
+   repetition of a rejected reading yields no winner at all. The call site
+   then falls back to the first read, which is still the rejected one and
+   is handled by the pre-existing rejected branch. */
+const rejected = { text: 'ACTIVE INGREDIENT: Diuron 80%', cas: ['330-18-1'],
+                   candidates: ['Diuron'], confidence: 18,
+                   rejected: { lowConfidence: true, conf: 18 } };
+const rej3 = SL.vote([{ res: rejected }, { res: rejected }, { res: rejected }]);
+ok(rej3.winner === null,
+  'three frames repeating a REJECTED read still produce no winner — ' + JSON.stringify(rej3.winner));
+ok(rej3.ranked.length === 0, 'and they are not even ranked');
+
+/* the same rule for a sharpness-blocked frame */
+const blocked = { text: '', confidence: 0, cas: [], candidates: [], blockedBy: 'sharp' };
+ok(SL.vote([{ res: blocked }, { res: blocked }, { res: blocked }, { res: blocked }]).winner === null,
+  'a gate-blocked frame has no say however many frames repeat it');
+
+/* mixed: a rejected majority cannot outvote the one good read either */
+const mixed = SL.vote([{ res: rejected }, { res: rejected }, { res: rejected }, { res: goodRead }]);
+ok(mixed.winner && mixed.winner.res === goodRead,
+  'a rejected majority does not outvote the single good read');
+
+/* and the honest limitation, stated: among ACCEPTED reads the majority
+   does win, so the vote is a reordering tool, not a correctness tool. */
+const maj = SL.vote([{ res: goodRead }, { res: wrongRead }, { res: wrongRead }]);
+ok(maj.winner.res === wrongRead,
+  'among accepted reads the majority wins — the vote reorders, it does not verify');
+ok(maj.winner.res.confidence === 42,
+  'and even then the winner keeps its own confidence of 42, not the pooled one');
+
 console.log('\nFRAME-VOTE: PASS ' + pass + '  FAIL ' + fail);
 process.exit(fail ? 1 : 0);

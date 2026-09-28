@@ -1473,10 +1473,20 @@
         return;
       }
       if (res.blockedBy === 'sharp') {
-        /* 3.2 — the image is too blurry to read. One short sentence, no
-           numbers, no settings: the farmer only ever points the camera. */
+        /* 3.2 — the image reads as too soft. One short sentence, no
+           numbers, no settings: the farmer only ever points the camera.
+           While the gate is advisory (OcrModule TUNING sharpGateFinal
+           is false) the manual-entry field is opened too, so a threshold
+           that is still being calibrated can never become a dead end
+           with a real photo on screen. The measured value goes to the
+           diagnostics log — that log is the field campaign's
+           recalibration input. */
         ocrMsg.textContent = t('ocr.sharp.retake', 'الصورة غير واضحة — أعد التصوير.');
-        diagAdd({ at: Date.now(), outcome: 'sharp', src: 'live', ms, v: res.sharpness });
+        if (res.advisory) { $('#ocrActions').hidden = false; }
+        diagAdd({ at: Date.now(), outcome: 'sharp', src: 'live', ms, v: res.sharpness,
+                  advisory: !!res.advisory,
+                  gate: (window.OcrModule && window.OcrModule.getTuning)
+                    ? window.OcrModule.getTuning().sharpGate : null });
         return;
       }
       const textLen = (res.text || '').replace(/\s/g, '').length;

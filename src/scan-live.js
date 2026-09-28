@@ -228,7 +228,16 @@
   /* الفائز من قائمة قراءات مقبولة. تُعيد { winner, ranked }،
    * ورتبة لأغراض التشخيص فقط. */
   function vote(reads) {
-    const list = (reads || []).filter(r => r && r.res);
+    /* The safety rule lives HERE, not only at the call site: a read the
+     * existing gates rejected (low confidence, mixed CAS) or that the
+     * sharpness gate blocked has no say in the vote. Had this lived only
+     * in the caller, one future call site without the filter could let a
+     * repeated WRONG reading outvote a good one and be returned as if it
+     * had been agreed upon. Consensus on an error does not make it true —
+     * a rejected read can never become a winner, however many frames
+     * repeat it. */
+    const list = (reads || []).filter(r => r && r.res
+      && !r.res.rejected && !r.res.blockedBy);
     if (!list.length) return { winner: null, ranked: [] };
     if (list.length === 1) {
       return { winner: list[0], ranked: [{ res: list[0].res, votes: 1, pooled: pooledConfidence(list[0].res, 1) }] };

@@ -392,6 +392,19 @@
      * the gate can never refuse an image we have measured. A 2 px blur
      * (1.503) still passes, which is correct — that label is still legible. */
     sharpGate: 1.0,
+    /* The gate is an ADVISORY, not a final refusal. It was calibrated on
+     * 17 fixed labels plus a blur curve — about five measurement points,
+     * which is thin, and a threshold that refuses a legible photo is
+     * worse than a slow one. Until the field campaign recalibrates it on
+     * real phone and camera photographs (docs/field-campaign.md), every
+     * block is written to the diagnostics log with its measured value,
+     * the farmer is pointed at manual entry instead of a dead end, and
+     * this flag is the one line that turns the same measurement into a
+     * final barrier. Read-only for now. */
+    sharpGateFinal: false,
+    /* diagnostic only: makes the real engine output visible to
+     * tests/tess-wordbox-guard.test.mjs. Off in normal use. */
+    exposeEngine: false,
     /* تحسين الإضاءة عبر Canvas خلف علم تجريبي */
     clahe: false,
     /* تصويت متعدد الإطارات — الكاميرا الحية فقط */
@@ -409,7 +422,7 @@
     workerPromise = null;            // next scan builds a fresh worker
   }
 
-  async function runPass(worker, canvas, psm) {
+  async function runPass(worker, canvas, psm, diagSink) {
     /* 3.4 — الضبط الداخلي لا يراه المزارع ولا يمسّ بوابة قبول واحدة:
      *   OEM 1 = LSTM فقط (يحذف محرك Tesseract القديم الأبطأ بلا فائدة
      *   لمطبوعة الملصق)
@@ -434,6 +447,7 @@
       throw e;
     }
     const d = (res && res.data) || {};
+    let rawShape = null;
     const text = d.text || '';
     const conf = typeof d.confidence === 'number' ? d.confidence : null;
     // TSV words (boxes) — v6 nests them blocks→paragraphs→lines→words;
@@ -463,6 +477,31 @@
       }
     };
     visit(d.blocks || d.words || []);
+    /* The permanent guard must see what the ENGINE really returned, not
+     * what this module decided to keep. The shape is recorded when
+     * exposeEngine is on so a test can assert real boxes, real
+     * confidences and the leaf-word invariant on live output. */
+    if (tuning.exposeEngine) {
+      rawShape = {
+        blocksIsNull: !Array.isArray(d.blocks),
+        blockCount: Array.isArray(d.blocks) ? d.blocks.length : 0,
+        collected: words.length,
+        confidences: words.slice(0, 6).map(w => w.conf),
+        firstBox: words[0] ? { t: words[0].text, x0: words[0].x0, y0: words[0].y0, x1: words[0].x1, y1: words[0].y1 } : null,
+        /* nodes carrying text+bbox at each nesting level — the
+           "three copies of one line" shape that tripled a label */
+        nodes: { blocks: 0, paragraphs: 0, lines: 0, words: 0 }
+      };
+      for (const b of (d.blocks || [])) {
+        for (const pa of (b.paragraphs || [])) {
+          rawShape.nodes.blocks++; rawShape.nodes.paragraphs++;
+          for (const li of (pa.lines || [])) {
+            rawShape.nodes.lines++;
+            rawShape.nodes.words += (li.words || []).length;
+          }
+        }
+      }
+    }
     /* the low-confidence words are dropped from BOTH the box list (used for
      * the ingredient region) and the text handed to the matcher */
     const kept = tuning.wordFilter ? words.filter(wordOk) : words;
@@ -490,7 +529,45 @@
         .filter(Boolean)
         .join('\n');
     }
-    return { text: outText, conf, words: kept };
+    return { text: outText, conf, words: kept, raw: rawShape };
+  }
+
+  /* ------------------------------------------------------------
+   * 3.5 — a permanent guard, not a smoke test.
+   * The blocks:null discovery proved a test can pass while the real path
+   * never runs: the code looked right and the word boxes were still an
+   * empty list. This probe therefore runs the ENGINE on a real image,
+   * through the very collector the app uses, and returns the raw shape
+   * so a test can assert on live output:
+   *   - Tesseract's default output set really does hand back null blocks
+   *     here, otherwise the guard would prove nothing;
+   *   - asking for blocks produces real leaf words with real geometry;
+   *   - the collector returns each word ONCE, not once per nesting level;
+   *   - confidences are numbers, not placeholders.
+   * tests/tess-wordbox-guard.test.mjs asserts all four.
+   */
+  async function probeEngine(blobOrFile) {
+    const worker = await ensureWorker(null, 'eng');
+    const canvas = await baseCanvas(blobOrFile, OCR.MAX_DIM);
+    const bare = await withTimeout(worker.recognize(canvas, {}, { text: true }),
+                                   PASS_TIMEOUT_MS, 'probe-default');
+    const asked = await withTimeout(worker.recognize(canvas, {}, { blocks: true, text: true }),
+                                    PASS_TIMEOUT_MS, 'probe-blocks');
+    const d = (asked && asked.data) || {};
+    const collected = await runPass(worker, canvas, 11, null);
+    return {
+      version: (typeof Tesseract !== 'undefined' && Tesseract.version) ? Tesseract.version : null,
+      /* proof the guard is meaningful: the default output set is empty here */
+      defaultBlocksIsNull: !(bare && bare.data && Array.isArray(bare.data.blocks)),
+      askedBlocksIsArray: Array.isArray(d.blocks),
+      blockCount: Array.isArray(d.blocks) ? d.blocks.length : 0,
+      engineConfidence: typeof d.confidence === 'number' ? d.confidence : null,
+      /* what the app's own collector made of it */
+      collected: collected.words.length,
+      firstWords: collected.words.slice(0, 5),
+      text: collected.text,
+      raw: collected.raw
+    };
   }
 
   /* ============================================================
@@ -794,10 +871,11 @@
 
   /* ------------------------------------------------------------
    * 3.2 — حدة الصورة قبل إنفاق ثوانٍ على القراءة.
-   * مقياس بسيط ومستقر: تباين تدرّج Laplacian على نسخة رمادية صغيرة.
+   * المقياس: وسيط نسبة انحراف تدرّج Laplacian إلى انحراف الرمادي داخل
+   * كل بلوك 32×32 — انظر الشرح الطويل أدناه لسبب رفض مقياسين سبقه.
    * لا يحدّد بوابة قبول (القرار من المحرك)، بل يمنع القراءة الطويلة
-   * على صورة مموّهةمحكوم عليها مسبقاً. العتبة تُقاس من الصور الموجودة،
-   * ولا تُخترع رقماً. */
+   * على صورة مموّهة محكوم عليها مسبقاً. العتبة مقيسة من الصور
+   * الموجودة عبر هذه الدالة نفسها، ولا تُخترع رقماً. */
   const SHARP_SIDE = 256;
   async function sharpness(blobOrCanvas) {
     try {
@@ -929,7 +1007,9 @@
           if (diagSink) { try { diagSink({ at: Date.now(), outcome: "sharp-gate", value: Math.round(v * 1000) / 1000, threshold: tuning.sharpGate }); } catch (e) {} }
           return { text: "", confidence: 0, cas: [], candidates: [], passes: 0,
                    blockedBy: "sharp", sharpness: Math.round(v * 1000) / 1000,
-                   gateReason: "sharp", confidenceFloor: MIN_CONFIDENCE };
+                   gateReason: "sharp", confidenceFloor: MIN_CONFIDENCE,
+                   /* advisory, not final — see sharpGateFinal above */
+                   advisory: !tuning.sharpGateFinal };
         }
       }
     // fast lane: 2 quick passes on the two highest-yield variants
@@ -1451,7 +1531,7 @@
      * harness can turn ONE improvement on and compare it against the
      * same fixed label set — nothing here changes a quality gate. */
     setTuning, getTuning, TUNING_DEFAULT,
-    sharpness, SHARP_SIDE,
+    sharpness, SHARP_SIDE, probeEngine,
     cancelCurrent, scan, latinRatio, rejectedTextReason, MIN_CONFIDENCE,
     hasValidCas, newCancelToken, resetEngine,
     OCR, VARIANTS, PSM_LIST, aiRegionFromWords, buildVariant

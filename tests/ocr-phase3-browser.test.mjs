@@ -8,6 +8,7 @@
  *   4) الرسالة موجودة بأربع لغات، بلا رقم ولا عتبة ولا إعداد.
  *   5) لا حارس قبول جديد: MIN_CONFIDENCE تبقى 45.
  */
+import fs from 'fs';
 import puppeteer from 'puppeteer-core';
 
 const CHROME = process.env.CHROME || '/home/daytona/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome';
@@ -85,6 +86,62 @@ try {
   for (const r of realPhotos) {
     ok(r.v > t.sharpGate, 'a real photograph is not called blurry — ' + r.nm + ' ' + r.v + ' > ' + t.sharpGate);
   }
+
+  /* ---- 2c) 6.jpg is ACCEPTED end to end, not merely scored.
+   * The owner named this image specifically: an earlier metric read it as
+   * blurry and it was wrongly refused. A score comparison is not enough —
+   * the image must survive the real gate and come back as a read. ---- */
+  const six = await page.evaluate(async () => {
+    const blob = await (await fetch('/tests/fixtures/labels/6.jpg')).blob();
+    const file = new File([blob], '6.jpg', { type: blob.type || 'image/jpeg' });
+    const v = await OcrModule.sharpness(blob);
+    const r = await OcrModule.recognize(file, () => {}, { search: null });
+    return {
+      v: Math.round(v * 1000) / 1000,
+      blockedBy: r.blockedBy || null,
+      passes: r.passes,
+      textLen: String(r.text || '').replace(/\s/g, '').length,
+      rejected: !!r.rejected,
+      cas: (r.cas || []).length
+    };
+  });
+  ok(six.blockedBy === null,
+    '6.jpg is ACCEPTED — the real gate does not block it (' + JSON.stringify(six) + ')');
+  ok(six.v > t.sharpGate, 'and its measured sharpness clears the gate — ' + six.v + ' > ' + t.sharpGate);
+  ok(six.passes > 0, 'it actually went through the engine — ' + six.passes + ' passes');
+  ok(six.textLen > 0, 'it produced text — ' + six.textLen + ' characters');
+
+  /* ---- 2d) the gate is ADVISORY until the field campaign ----
+   * The owner is explicit: a threshold calibrated on five points of one
+   * fixed set must not become a final barrier before it is recalibrated
+   * on real phone photographs. */
+  ok(t.sharpGateFinal === false,
+    'the shipped gate is advisory, not a final barrier — sharpGateFinal=' + t.sharpGateFinal);
+  const advisoryRes = await page.evaluate(async () => {
+    const c = document.createElement('canvas');
+    c.width = 900; c.height = 620;
+    const g = c.getContext('2d');
+    g.fillStyle = '#f2f2ee'; g.fillRect(0, 0, 900, 620);
+    g.fillStyle = '#111'; g.font = 'bold 34px "DejaVu Sans", Arial, sans-serif';
+    g.fillText('MAXXPRO 480 SC', 40, 120);
+    const sharp = document.createElement('canvas');
+    sharp.width = 900; sharp.height = 620;
+    sharp.getContext('2d').filter = 'blur(6px)';
+    sharp.getContext('2d').drawImage(c, 0, 0);
+    const blob = await new Promise(r => sharp.toBlob(r, 'image/png'));
+    const r = await OcrModule.recognize(blob, () => {}, { search: null });
+    return { blockedBy: r.blockedBy || null, advisory: r.advisory, v: r.sharpness,
+             floor: r.confidenceFloor };
+  });
+  ok(advisoryRes.blockedBy === 'sharp' && advisoryRes.advisory === true,
+    'a blocked read is flagged advisory — ' + JSON.stringify(advisoryRes));
+  ok(advisoryRes.floor === 45,
+    'and it carries the untouched confidence floor, so the gate changed no gate — ' + advisoryRes.floor);
+  /* the farmer must not be stranded: an advisory refusal opens the manual
+     entry field instead of leaving a dead end */
+  const appSrc = fs.readFileSync('tests/../src/app.js', 'utf8');
+  ok(/if \(res\.advisory\) \{ \$\('#ocrActions'\)\.hidden = false; \}/.test(appSrc),
+    'the live path opens the manual-entry field on an advisory refusal — the farmer is not stranded');
 
   /* ---- 3) the one ACCEPT label is NOT refused (no false rejection) ---- */
   const good = await page.evaluate(async () => {

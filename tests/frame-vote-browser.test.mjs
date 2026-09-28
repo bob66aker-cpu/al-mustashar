@@ -82,6 +82,72 @@ try {
   ok(t.sharpGate === 1 && t.wordFilter === 60,
     'the shipped calibration is unchanged by the vote — gate ' + t.sharpGate + ', wordFilter ' + t.wordFilter);
 
+  /* ---- 2b) the FULL silence audit, re-run on the farmers page and the
+   * pro page, in all four languages. The first pass only looked at the
+   * default landing page in one language, so it could not have caught a
+   * control that only appears in pro mode or only in Chinese. */
+  const langs = ['ar', 'en', 'fr', 'zh'];
+  const modes = ['farmer', 'pro'];
+  const audit = [];
+  for (const lang of langs) {
+    for (const mode of modes) {
+      await page.evaluate((l, m) => {
+        window.I18N.setLang(l);
+        const sel = document.getElementById('mode');
+        if (sel) { sel.value = m; sel.dispatchEvent(new Event('change', { bubbles: true })); }
+        location.hash = '#/scan';
+      }, lang, mode);
+      await new Promise(r => setTimeout(r, 700));
+      const row = await page.evaluate((l, m) => {
+        const scope = document.querySelector('#scan, .scan-view, #view-scan') || document.body;
+        const nodes = [...scope.querySelectorAll('button, a, [role="button"], label, summary')];
+        const texts = nodes.map(e => (e.textContent || '').trim()).filter(Boolean);
+        /* the words that would betray a new affordance, in the four
+           shipped languages plus their English source terms */
+        const WORDS = ['vote', 'votest', 'frames', 'majority', 'consensus',
+          'agreement', 'scrutin', 'majorit', 'multi-frame',
+          'تصويت', 'أغلبية', 'إجماع', 'إطار', 'إطارات',
+          '投票', '多数', '一致', '帧'];
+        const flagged = texts.filter(t =>
+          WORDS.some(w => t.toLowerCase().indexOf(w.toLowerCase()) > -1));
+        /* an element that exists ONLY because of the vote would be a new
+           affordance; the capture path must stay a single entry point */
+        const capture = ['scanBtn', 'cameraBtn', 'fileInput', 'galleryInput']
+          .filter(id => document.getElementById(id));
+        return { lang: l, mode: m, total: texts.length, flagged, capture,
+                 hash: location.hash };
+      }, lang, mode);
+      audit.push(row);
+    }
+  }
+  for (const row of audit) {
+    ok(row.hash.indexOf('scan') > 0,
+      'the scan view is showing for ' + row.lang + '/' + row.mode + ' — ' + row.hash);
+    ok(row.flagged.length === 0,
+      'no control in ' + row.mode + ' / ' + row.lang + ' mentions the vote (' + row.flagged.length + ') ' +
+      JSON.stringify(row.flagged).slice(0, 160));
+    ok(row.capture.length > 0,
+      'the capture entry points are still the pre-existing ones in ' + row.lang + '/' + row.mode +
+      ' — ' + row.capture.join(','));
+  }
+  ok(audit.length === 8, 'the audit covered both modes in all four languages — ' + audit.length + ' passes');
+  /* and the per-pass control count must not have grown because of the vote */
+  const counts = audit.map(r => r.total);
+  ok(Math.max(...counts) - Math.min(...counts) < 12,
+    'the control count stays flat across modes and languages — ' + JSON.stringify(counts));
+
+  /* the vote is a pure function on the shipped page: a rejected read
+     repeated three times produces no winner there either */
+  const liveGuard = await page.evaluate(() => {
+    const SL = window.ScanLive;
+    const r = { text: 'Diuron 80%', cas: ['330-18-1'], candidates: ['Diuron'],
+                confidence: 18, rejected: { lowConfidence: true, conf: 18 } };
+    return { three: SL.vote([{ res: r }, { res: r }, { res: r }]).winner,
+             blocked: SL.vote([{ res: { blockedBy: 'sharp' } }, { res: { blockedBy: 'sharp' } }]).winner };
+  });
+  ok(liveGuard.three === null, 'on the shipped page a repeated rejected read has no winner');
+  ok(liveGuard.blocked === null, 'and a repeated gate-blocked frame has no winner');
+
   ok(errors.length === 0, 'zero console errors — ' + JSON.stringify(errors).slice(0, 200));
 } finally {
   await browser.close();

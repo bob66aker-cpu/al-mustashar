@@ -21,8 +21,21 @@
     { key: 'epa-cancelled', url: 'data/epa-cancelled.json', labelKey: 'db.src.epac', label: 'USA / EPA — ملغى' }
   ];
 
+  /* قواعد إضافية اختيارية: تدخل SOURCES بعد تنزيلها فقط — لا قبله.
+   * الفارق بينها وبين القواعد الأساسية: لا تعمل إلا إن طلبها المزارع. */
+  const PACK_SOURCES = {
+    canada: { key: 'canada', labelKey: 'db.src.canada', label: 'كندا — PMRA', attr: 'attr.canada' },
+    australia: { key: 'australia', labelKey: 'db.src.australia', label: 'أستراليا — APVMA', attr: 'attr.australia' }
+  };
+  function activeSources() {
+    return SOURCES.concat(
+      Object.keys(PACK_SOURCES).filter(function (k) { return !!DB[k]; })
+        .map(function (k) { return PACK_SOURCES[k]; }));
+  }
+
+  const DB = {};   // key -> validated data object (or absent if unavailable)
   const DB_NAME = 'mustashar-local';
-  const DB_VERSION = 2;           // v1 = "db" store; v2 adds "history"
+  const DB_VERSION = 3;           // v1 = "db"; v2 adds "history"; v3 adds "pack" (optional databases)
   const STORE_DB = 'db';
   const STORE_HISTORY = 'history';
 
@@ -146,6 +159,9 @@
           db.createObjectStore(STORE_DB);
         }
         // v2 store: search history
+        /* the optional-pack store lives in the same schema version, so whichever
+         * module opens the database first creates it */
+        if (!db.objectStoreNames.contains('pack')) db.createObjectStore('pack');
         if (!db.objectStoreNames.contains(STORE_HISTORY)) {
           db.createObjectStore(STORE_HISTORY);
         }
@@ -472,8 +488,19 @@
       /* 1.3 — أرشيف الملغى كان يعرض المفتاح الخام بدل التسمية:
        * الجدول بلا مفتاح 'epa-cancelled' فيسقط على || k ويطبع "epa-cancelled"
        * حرفيًا فوق البطاقة، مع أن 'src.epac' موجود في القواميس الأربعة. */
-      'epa-cancelled': t('src.epac', 'USA / EPA — أرشيف الملغى')
+      'epa-cancelled': t('src.epac', 'USA / EPA — أرشيف الملغى'),
+      /* القواعد الإضافية: التسمية من القاميس، لا المفتاح الخام */
+      'canada': t('src.canada', 'كندا — سجل المبيدات الوطني (PMRA)'),
+      'australia': t('src.australia', 'أستراليا — APVMA')
     }[k] || k;
+  }
+
+  /* الإسناد الإلزامي يظهر على كل بطاقة من حزمة خارجية، لا في صفحة منفصلة:
+     ترخيص OGL-Canada و CC-BY 3.0 Australia يشترطان ذكره مع الاستخدام. */
+  function packAttribution(k) {
+    if (k === 'canada') return t('attr.canada', 'Contains information licensed under the Open Government Licence – Canada.');
+    if (k === 'australia') return t('attr.australia', 'Contains information licensed under the Creative Commons Attribution 3.0 Australia licence.');
+    return '';
   }
 
   /* Per-source status display via the decision layer (src/cas.js):
@@ -534,7 +561,10 @@
         catTitle: catTitle, statusDisplay: statusDisplay, sourceLabel: sourceLabel,
         statusExplain: statusExplain, casApi: window.CasDissect,
         dataVersion: dataVersionOf,
-        sourceKeys: SOURCES.map(function (x) { return x.key; })
+        packAttribution: packAttribution,
+        /* an installed pack becomes a first-class source: the jurisdiction
+           picker and the source filter must see it too */
+        sourceKeys: activeSources().map(function (x) { return x.key; })
       })
     : null;
 
@@ -789,7 +819,6 @@
   /*
    * Wiring
    * ============================================================ */
-  const DB = {};   // key -> validated data object (or absent if unavailable)
   let searchFn = null;
   let lastResults = [];       // most recent manual-search results (for live re-render)
   let lastScanResults = [];   // most recent scan-path results (for live re-render)
@@ -806,9 +835,10 @@
   let cachedSearch = null;
 
   function rebuildSearch() {
-    const sig = SOURCES.map(s => s.key + ':' + state[s.key].phase + ':' + state[s.key].count).join('|');
+    const list = activeSources();
+    const sig = list.map(s => s.key + ':' + (DB[s.key] ? (DB[s.key].rows || []).length : 'x')).join('|');
     if (cachedSearch && sig === cachedIndexSig) { searchFn = cachedSearch; return; }
-    const sources = SOURCES.map(s => ({ key: s.key, rows: (DB[s.key] || {}).rows || null }));
+    const sources = list.map(s => ({ key: s.key, rows: (DB[s.key] || {}).rows || null }));
     searchFn = SearchCore.buildSearch(sources);
     cachedSearch = searchFn;
     cachedIndexSig = sig;
@@ -2040,6 +2070,14 @@
   }
 
   const fmtMB = b => (b / 1048576).toFixed(1) + ' ' + t('prep.mb', 'ميجابايت');
+  /* the pack downloader counts BYTES, so the progress line needs a byte
+     formatter; a fake percentage would be exactly what this app must not show */
+  const fmtBytes = b => {
+    const n = Number(b) || 0;
+    if (n >= 1048576) return (n / 1048576).toFixed(1) + ' MB';
+    if (n >= 1024) return Math.round(n / 1024) + ' KB';
+    return n + ' B';
+  };
 
   function setPrepItem(liId, sizeId, info) {
     const li = $(liId), sz = $(sizeId);
@@ -2140,6 +2178,109 @@
     }
     btn.disabled = false;
   });
+
+  /* ================================================================
+   * المرحلة الثانية — قواعد إضافية اختيارية (كندا / أستراليا)
+   * زر واحد لكل حزمة داخل شاشة القواعد فقط. لا تثبيت تلقائي، ولا خطوة
+   * في مسار المزارع: التنزيل والتحقق والحذف كله صامت ما لم يُطلب.
+   * ================================================================ */
+  (function initPacks() {
+    const box = $('#packList');
+    if (!box || typeof PacksModule === 'undefined') return;
+    const status = {};   /* key -> element */
+
+    function stateLine(key) {
+      const el = status[key];
+      if (!el) return;
+      const pack = PacksModule.byKey(key);
+      const meta = DB[key] && DB[key].meta;
+      if (meta) {
+        el.className = 'pack-state ok';
+        el.textContent = tf('packs.ready', 'جاهزة: {n} مادة · {d}',
+          { n: meta.count, d: meta.retrieved_date }) + ' · ' + meta.license;
+      } else {
+        el.className = 'pack-state';
+        el.textContent = pack ? t('packs.idle', 'غير منزَّلة') : '';
+      }
+    }
+
+    function row(pack) {
+      const el = document.createElement('div');
+      el.className = 'pack-row';
+      el.id = 'pack-' + pack.key;
+      const main = document.createElement('div');
+      main.className = 'pack-main';
+      const b = document.createElement('b');
+      b.textContent = t('packs.name.' + pack.key, PACK_SOURCES[pack.key].label);
+      const why = document.createElement('span');
+      why.className = 'pack-why';
+      why.textContent = t('packs.why.' + pack.key, '');
+      const st = document.createElement('span');
+      st.className = 'pack-state';
+      status[pack.key] = st;
+      const attr = document.createElement('span');
+      attr.className = 'pack-attr';
+      attr.lang = 'en';
+      /* الإسناد الإلزامي: يظهر مع زر الحزمة نفسها، لا في صفحة منفصلة */
+      attr.textContent = pack.key === 'canada'
+        ? 'Contains information licensed under the Open Government Licence – Canada.'
+        : 'Contains information licensed under the Creative Commons Attribution 3.0 Australia licence.';
+      main.appendChild(b); main.appendChild(why); main.appendChild(st); main.appendChild(attr);
+
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'btn-outline pack-btn';
+      const setBtn = () => {
+        btn.textContent = DB[pack.key]
+          ? t('packs.remove', 'حذف القاعدة')
+          : t('packs.download', 'تنزيل قاعدة إضافية');
+      };
+      btn.addEventListener('click', async () => {
+        if (DB[pack.key]) {
+          await PacksModule.remove(pack.key);
+          delete DB[pack.key];
+          stateLine(pack.key); setBtn(); rebuildSearch();
+          diagAdd({ at: Date.now(), outcome: 'pack-removed', src: pack.key });
+          return;
+        }
+        btn.disabled = true;
+        stateLine(pack.key);
+        status[pack.key].className = 'pack-state';
+        status[pack.key].textContent = t('packs.start', 'جارٍ التنزيل…');
+        try {
+          const res = await PacksModule.install(pack.key, (got, total) => {
+            status[pack.key].textContent = tf('packs.progress', 'جارٍ التنزيل: {n} من {total}',
+              { n: fmtBytes(got), total: total ? fmtBytes(total) : '—' });
+          });
+          DB[pack.key] = { meta: res.meta, rows: res.rows };
+          stateLine(pack.key); setBtn(); rebuildSearch();
+          diagAdd({ at: Date.now(), outcome: 'pack-installed', src: pack.key, count: res.meta.count, sha256: String(res.manifest.sha256 || '').slice(0, 12) });
+        } catch (e) {
+          status[pack.key].className = 'pack-state err';
+          status[pack.key].textContent = t('packs.fail', 'تعذّر التنزيل — تحقق من الاتصال وحاول مرة أخرى');
+          diagAdd({ at: Date.now(), outcome: 'pack-failed', src: pack.key, err: String((e && e.message) || e) });
+        }
+        btn.disabled = false;
+      });
+      setBtn();
+      el.appendChild(main); el.appendChild(btn);
+      return el;
+    }
+
+    PacksModule.PACKS.forEach(p => box.appendChild(row(p)));
+    /* a pack installed in a previous session comes back on its own — the
+       farmer does not re-download it every time the app opens */
+    PacksModule.list().then(keys => keys.forEach(k => {
+      PacksModule.restore(k).then(v => {
+        if (!v || !v.rows) return;
+        DB[k] = { meta: v.meta, rows: v.rows };
+        stateLine(k);
+        const btn = box.querySelector('#pack-' + k + ' .pack-btn');
+        if (btn) btn.textContent = t('packs.remove', 'حذف القاعدة');
+        rebuildSearch();
+      });
+    })).catch(() => {});
+  })();
 
   /* Support/contact button: reads config/support.json; hidden when empty.
    * No payment integration by design (user decision 5). */

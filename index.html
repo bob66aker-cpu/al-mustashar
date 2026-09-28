@@ -121,6 +121,23 @@
     /* 2.1 — بطاقة التثبيت: تظهر فقط عند توفر beforeinstallprompt (مُلتقط
      * من install-capture.js في <head>)، وتختفي فورًا عند appinstalled.
      * لا تُعرض إطلاقًا على متصفحات بلا دعم التثبيت الداخلي. */
+    /* قواعد إضافية: صف واحد لكل حزمة — زر + فائدة + حالة + حذف */
+    .pack-row {
+      display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+      padding: 10px 0; border-top: 1px solid var(--border);
+    }
+    .pack-row:first-child { border-top: none; }
+    .pack-main { flex: 1 1 200px; min-width: 0; }
+    .pack-main b { display: block; font-size: 15px; }
+    .pack-why { display: block; font-size: 13px; color: var(--muted); line-height: 1.5; }
+    .pack-state { font-size: 12px; color: var(--muted); }
+    .pack-state.ok { color: var(--st-ok-ink); }
+    .pack-state.err { color: var(--st-ban-ink); }
+    .pack-btn { min-height: 44px; }
+    .pack-attr { font-size: 12px; color: var(--muted); line-height: 1.5; margin-top: 4px; }
+    .privacy-lead { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .attr { font-size: 12px; color: var(--muted); line-height: 1.5; margin-top: 6px; }
+
     #installCard {
       display: flex; align-items: center; gap: 12px;
       padding: 14px 16px; margin-top: 12px;
@@ -1156,6 +1173,22 @@
         <p><span id="dbState" data-i18n="db.initial">جاري تجهيز القواعد</span> · <span id="dbCount">...</span></p>
       </div>
 
+      <!-- قواعد إضافية اختيارية: لا تُحمَّل ولا تدخل نتائج البحث قبل الضغط عليها.
+           الزر واحد لكل حزمة، بصياغة مزارع، وفائدتها في سطر واحد. بلا تثبيت
+           تلقائي وبلا خطوة إضافية في مسار المسح. -->
+      <details class="card fold" id="packsCard">
+        <summary>
+          <span data-icon="download"></span>
+          <span class="ttl" data-i18n="packs.title">قواعد إضافية اختيارية</span>
+          <span class="cv down" data-icon="chevron"></span>
+          <span class="cv up" data-icon="chevron-open"></span>
+        </summary>
+        <div class="body">
+          <p class="pack-intro" data-i18n="packs.intro">اختر ما تحتاجه فقط. القواعد الإضافية لا تدخل نتائج البحث إلا بعد تنزيلها.</p>
+          <div id="packList"></div>
+        </div>
+      </details>
+
       <details class="card fold db-card" id="dbCard-libya-248">
         <summary>
           <span data-icon="ban"></span>
@@ -1264,7 +1297,9 @@
           <span class="cv down" data-icon="chevron"></span>
           <span class="cv up" data-icon="chevron-open"></span>
         </summary>
-        <div class="body" data-i18n="about.privacy">الخصوصية: يعمل التطبيق على جهازك دون إنترنت بعد أول تحميل. الصور والبحث والسجل لا يغادرون هاتفك إطلاقًا، ولا يُرفع أي شيء لأي خادم.</div>
+        <div class="body">
+          <p class="privacy-lead" data-i18n="about.privacy.lead">صورك وبحثك لا يغادران جهازك أبداً.</p>
+          <p data-i18n="about.privacy">الخصوصية: يعمل التطبيق على جهازك دون إنترنت بعد أول تحميل. الصور والبحث والسجل لا يغادرون هاتفك إطلاقًا، ولا يُرفع أي شيء لأي خادم.</div>
       </details>
 
       <details class="card fold" id="aboutSourcesCard">
@@ -1274,7 +1309,10 @@
           <span class="cv down" data-icon="chevron"></span>
           <span class="cv up" data-icon="chevron-open"></span>
         </summary>
-        <div class="body" data-i18n="about.sources">المصادر: قرارا وزارة الزراعة الليبية 248/2024 و500/2026 (المرجع الأول)، قاعدة بيانات المبيدات الأوروبية، وبيانات وكالة حماية البيئة الأمريكية — التفاصيل في docs/data-provenance.md. بيانات الاتحاد الأوروبي لا قيمة قانونية لها، وهذه الأداة لا تحمل شعار أي جهة ولا تنسب إليها اعتمادًا.</div>
+        <div class="body" data-i18n="about.sources">المصادر: قرارا وزارة الزراعة الليبية 248/2024 و500/2026 (المرجع الأول)، قاعدة بيانات المبيدات الأوروبية، وبيانات وكالة حماية البيئة الأمريكية — التفاصيل في docs/data-provenance.md. بيانات الاتحاد الأوروبي لا قيمة قانونية لها، وهذه الأداة لا تحمل شعار أي جهة ولا تنسب إليها اعتمادًا.</p>
+          <p class="attr" lang="en">Contains information licensed under the Open Government Licence – Canada.</p>
+          <p class="attr" lang="en">Contains information licensed under the Creative Commons Attribution 3.0 Australia licence.</p>
+        </div>
       </details>
 
       <details class="card fold dev-card" id="aboutDevCard" open>
@@ -1391,6 +1429,7 @@
   <script src="vendor/tesseract/tesseract.min.js"></script>
   <script src="src/ocr.js"></script>
   <script src="src/barcode.js"></script>
+  <script src="src/packs.js"></script>
   <script src="src/scan-live.js"></script>
   <script src="src/vendor/qrcodegen.js"></script>
   <script src="src/qr.js"></script>

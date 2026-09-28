@@ -21,6 +21,10 @@ import fs from 'node:fs';
 
 const CHROME = process.env.CHROME || '/home/daytona/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome';
 const BASE = process.env.BASE_URL || 'http://localhost:8080';
+/* the app owns the schema version (it moved to 3 with the optional-pack
+ * store); reading it here means this test never rots on the next bump */
+const SCHEMA_VERSION = (fs.readFileSync(new URL('../src/app.js', import.meta.url), 'utf8')
+  .match(/DB_VERSION = (\d+)/) || [, '2'])[1];
 
 let pass = 0, fail = 0;
 const must = (name, ok, detail) => {
@@ -39,13 +43,14 @@ try {
   await page.waitForFunction(() => window.__appReady === true || document.querySelector('#historyList'), { timeout: 30000 });
 
   /* 1) seed the store through the app's own DB layer (bypasses nothing) */
-  const seeded = await page.evaluate(async () => {
+  const seeded = await page.evaluate(async (SCHEMA_VERSION) => {
     const open = () => new Promise((res, rej) => {
-      const rq = indexedDB.open('mustashar-local', 2);
+      const rq = indexedDB.open('mustashar-local', SCHEMA_VERSION);
       rq.onupgradeneeded = () => {
         const db = rq.result;
         if (!db.objectStoreNames.contains('db')) db.createObjectStore('db');
         if (!db.objectStoreNames.contains('history')) db.createObjectStore('history');
+        if (!db.objectStoreNames.contains('pack')) db.createObjectStore('pack');
       };
       rq.onsuccess = () => res(rq.result);
       rq.onerror = () => rej(rq.error);
@@ -60,7 +65,7 @@ try {
     });
     db.close();
     return true;
-  });
+  }, SCHEMA_VERSION);
   must('seeded 2 history entries into real IndexedDB', seeded === true);
 
   /* 2) full reload: history must SURVIVE (permanent storage) */
@@ -81,9 +86,9 @@ try {
   must('result notification is shown (no silent path)', !!toast, toast || 'no toast');
 
   /* direct store probe: is PERMANENT storage actually empty? */
-  const storeEmpty = await page.evaluate(async () => {
+  const storeEmpty = await page.evaluate(async (SCHEMA_VERSION) => {
     const open = () => new Promise((res, rej) => {
-      const rq = indexedDB.open('mustashar-local', 2);
+      const rq = indexedDB.open('mustashar-local', SCHEMA_VERSION);
       rq.onsuccess = () => res(rq.result); rq.onerror = () => rej(rq.error);
     });
     const db = await open();
@@ -94,7 +99,7 @@ try {
     });
     db.close();
     return keys;
-  });
+  }, SCHEMA_VERSION);
   must('IndexedDB history store is empty right after clear', storeEmpty.length === 0,
     'keys=' + JSON.stringify(storeEmpty));
 

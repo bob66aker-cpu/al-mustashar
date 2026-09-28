@@ -9,7 +9,7 @@
  *       worker لكل تكوين؛ لوحة التجهيز بالأحجام الفعلية.
  *   3.5 الباركود: طبقة محلية بلا شبكة + zxing مُورَّد + إشارة لا حكم.
  *   3.2/3.6 سقف الأبعاد 1600 + لا سلسلة ثقيلة إلا بالبوابات (توثيق حي).
- *   SW v30 + 1.13.0 + سجل التغييرات.
+ *   SW v31 + 1.13.0 + سجل التغييرات.
  * تشغيل: node tests/stage3-ux.test.mjs
  */
 import { readFileSync } from 'node:fs';
@@ -99,9 +99,11 @@ check('3.5: native BarcodeDetector first, zxing fallback second',
   && barcode.includes('engine = \'native\'') && barcode.includes('engine = \'zxing\''));
 check('3.5: zxing wasm is in the PERMANENT OCR cache set (survives SW updates)',
   sw.includes("'./src/vendor/zxing_reader.wasm'") && /isOcrUrl[\s\S]*zxing_reader/.test(sw));
-check('3.5: barcode.js is in SW SHELL and loaded as a classic script between ocr.js and scan-live.js',
+check('3.5: barcode.js is in SW SHELL and loaded as a classic script before scan-live.js',
   sw.includes("'./src/barcode.js'")
-  && /<script src="src\/ocr\.js"><\/script>\s*<script src="src\/barcode\.js"><\/script>\s*<script src="src\/scan-live\.js"><\/script>/.test(html));
+  /* packs.js was added after barcode.js in this round, so the assertion is
+   * "barcode before scan-live", not "these three are adjacent" */
+  && /<script src="src\/ocr\.js"><\/script>[\s\S]*?<script src="src\/barcode\.js"><\/script>[\s\S]*?<script src="src\/scan-live\.js"><\/script>/.test(html));
 check('3.5: signal-not-verdict — chip renders via textContent, cleared, auto-hides, never calls search',
   app.includes('function showBarcodeChip(bc)') && app.includes("txt.textContent =")
   && app.includes('setTimeout(hideBarcodeChip, 12000)')
@@ -137,8 +139,8 @@ for (const k of ['scan.barcode.found', 'scan.barcode.clear', 'live.sharp.label',
 }
 
 /* ---------- sw/version ---------- */
-check('sw is v30 and keeps the permanent OCR cache name',
-  sw.includes("CACHE = 'mustashar-v30'") && sw.includes("OCR_CACHE = 'mustashar-ocr'"));
+check('sw is v31 and keeps the permanent OCR cache name',
+  sw.includes("CACHE = 'mustashar-v31'") && sw.includes("OCR_CACHE = 'mustashar-ocr'"));
 check('sw changelog has a v27 entry mentioning the stage-3 items',
   sw.includes('* v27 (2026-09-27)') && sw.includes('3.3') && sw.includes('3.5'));
 check('OCR assets include ara + zxing wasm (3.4/3.5) and BOTH langs of traineddata are matched by isOcrUrl',
@@ -146,9 +148,9 @@ check('OCR assets include ara + zxing wasm (3.4/3.5) and BOTH langs of trainedda
   && /lang\\\/\(eng\|ara\)\\.traineddata/.test(sw));
 check('ara must NOT be a default engine language (default worker is eng)',
   !/createWorker\(\s*['"]ara/.test(ocr) && !/createWorker\(\s*['"]eng\+ara['"]/.test(ocr));
-check('version 1.13.0 in version.json + package.json',
-  JSON.parse(readFileSync(join(root, 'version.json'), 'utf8')).version === '1.13.0'
-  && JSON.parse(readFileSync(join(root, 'package.json'), 'utf8')).version === '1.13.0');
+check('version 1.14.0 in version.json + package.json',
+  JSON.parse(readFileSync(join(root, 'version.json'), 'utf8')).version === '1.14.0'
+  && JSON.parse(readFileSync(join(root, 'package.json'), 'utf8')).version === '1.14.0');
 
 /* ---------- baseline + A/B docs (3.1/3.7) ---------- */
 check('3.1: baseline doc exists with the measured columns and hang-anomaly note',

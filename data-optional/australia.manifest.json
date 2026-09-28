@@ -1,0 +1,12 @@
+{
+ "file": "australia.json",
+ "source": "Australian Pesticides and Veterinary Medicines Authority (APVMA) — PUBCRIS",
+ "source_url": "https://permits.apvma.gov.au/pubcris.zip",
+ "license": "CC-BY-3.0-AU",
+ "license_url": "https://creativecommons.org/licenses/by/3.0/au/",
+ "attribution_en": "Contains information licensed under the Creative Commons Attribution 3.0 Australia licence.",
+ "retrieved_date": "2026-09-28",
+ "count": 2695,
+ "sha256": "656210f09ca7258baaa2c99b805982c09712c582006865b66946446002024be6",
+ "built_with": "scripts/build-australia.mjs"
+}

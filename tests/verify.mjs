@@ -216,7 +216,11 @@ check('result cards keep source + CAS as LTR chips', html.includes('source-chip'
 check('history panel present', html.includes('historyPanel') && html.includes('historyList'));
 check('RTL preserved', html.includes('dir="rtl"') && html.includes('lang="ar"'));
 const app = fs.readFileSync('src/app.js', 'utf8');
-check('IndexedDB upgraded to v2 (db + history)', app.includes('DB_VERSION = 2') && app.includes("STORE_HISTORY = 'history'"));
+check('IndexedDB upgraded to v3 (db + history + optional packs)',
+  app.includes('DB_VERSION = 3') && app.includes("STORE_HISTORY = 'history'")
+  && app.includes("createObjectStore('pack')")
+  /* the pack module must open the SAME version, or its upgrade blocks forever */
+  && fs.readFileSync('src/packs.js', 'utf8').includes('DB_VERSION = 3'));
 check('persistent storage requested', app.includes('navigator.storage.persist'));
 check('fail-soft per-source loading', /SOURCES\.forEach\(loadSource\)/.test(app));
 check('no auto-delete of user data', !/deleteDatabase/.test(app));
@@ -308,7 +312,7 @@ check('OCR engine carries the a3 early-confirm lock (DB-confirmed reads survive 
       && o.includes("via: 'ladder_confirm'")
       && o.includes('if (earlyLock) break;')
       && o.includes('if (!earlyLock && (exactHit || hasValidCas([...fusionCAS])))'); })());
-check('sw is v30 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v30'")
+check('sw is v31 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v31'")
   && sw5.includes("'./src/scan-live.js'")
   && sw5.includes("OCR_CACHE = 'mustashar-ocr'")
   && OCR_RUNTIME_FILES.every(f => sw5.includes(f.replace('./', '')))

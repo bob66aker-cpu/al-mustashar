@@ -1,0 +1,12 @@
+{
+ "file": "canada.json",
+ "source": "Pest Management Regulatory Agency (Health Canada)",
+ "source_url": "https://pest-control.canada.ca/pesticide-registry-api/api/extract/ingredient",
+ "license": "OGL-Canada",
+ "license_url": "https://open.canada.ca/en/open-government-licence-canada",
+ "attribution_en": "Contains information licensed under the Open Government Licence – Canada.",
+ "retrieved_date": "2026-09-28",
+ "count": 1311,
+ "sha256": "4410805b075df6a3a2e74a819dab0944c5abad89fd5094d8e7dfd67b4bc72d17",
+ "built_with": "scripts/build-canada.mjs"
+}

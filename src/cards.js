@@ -79,8 +79,12 @@
 
     /* ---------- blocks ---------- */
     function head(x, ctx) {
+      /* an optional foreign pack must carry its licence ON THE CARD — the
+         attribution is a condition of use, not a footnote elsewhere */
+      var attr = deps.packAttribution ? deps.packAttribution(x.k) : '';
       return '<div class="result-top"><div>'
         + '<span class="source">' + esc(sourceLabel(x.k)) + '</span>'
+        + (attr ? '<span class="pack-attr" lang="en">' + esc(attr) + '</span>' : '')
         + '<h3>' + esc(x.r.name || t('results.noname', 'بدون اسم')).replace(/\n/g, ' · ') + '</h3>'
         + '</div></div>';
     }

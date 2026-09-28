@@ -104,8 +104,14 @@ ok(totalNow === totalBefore, 'default preparation size is byte-for-byte unchange
 
 /* the package itself must be invisible to every default surface */
 const html = now.html;
-ok(!/ppocr|paddle/i.test(html), 'index.html never mentions the optional package');
-ok(!/ppocr|paddle/i.test(now.sw), 'the service worker never mentions the optional package');
+/* comments are allowed to NAME the package (that is how the next engineer
+ * learns it exists); CODE may not touch it */
+const codeOnly = src => src.split('\n')
+  .filter(l => !/^\s*(\*|\/\/|\/\*)/.test(l))
+  .join('\n');
+ok(!/ppocr|paddle/i.test(codeOnly(html)), 'index.html code never mentions the optional package');
+ok(!/ppocr|paddle/i.test(codeOnly(now.sw)), 'the service worker code never mentions the optional package',
+  'only the release note names it');
 const prepPaths = Object.values(setsNow).flat().join(' ');
 ok(!/ppocr|paddle/i.test(prepPaths), 'no optional-package path is in any prepared list');
 ok(!existsSync('vendor/ppocr') && !existsSync('vendor/paddle'), 'no optional package bytes are vendored into the repo');

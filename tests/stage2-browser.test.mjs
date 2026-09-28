@@ -118,8 +118,12 @@ try {
     await sleep(1200);
     await page.evaluate(() => {
       const real = OcrModule.recognize;
+      /* the stub must answer with the ENGINE's real contract: cas is an
+       * ARRAY of strings (the live path pools cas.map(...) since the
+       * frame-vote of phase 3). A bare string here fails inside the app,
+       * not inside the engine — that is what broke this guard. */
       OcrModule.recognize = async () => ({
-        text: 'Glyphosate', cas: '1071-83-6', candidates: ['Glyphosate'],
+        text: 'Glyphosate', cas: ['1071-83-6'], candidates: ['Glyphosate'],
         confidence: 95, passes: [], rejected: null
       });
       window.__restoreRecognize = () => { OcrModule.recognize = real; };

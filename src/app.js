@@ -1883,8 +1883,11 @@
     }
   }
   try {
+    /* 2026-09-28: when the user never chose a theme, follow the operating
+     * system (prefers-color-scheme). An explicit choice still wins. */
     const saved = localStorage.getItem('mustashar-theme');
-    document.documentElement.dataset.theme = (saved === 'light') ? 'light' : 'dark';
+    const osLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+    document.documentElement.dataset.theme = (saved === 'light' || (!saved && osLight)) ? 'light' : 'dark';
   } catch (e) { document.documentElement.dataset.theme = 'dark'; }
   if (themeBtn) themeBtn.addEventListener('click', () => {
     const next = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';

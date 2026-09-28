@@ -166,6 +166,7 @@ const SHELL = [
   './src/vendor/qrcodegen.js',
   './src/vendor/zxing-reader.min.js',
   './src/qr.js',
+  './src/tokens.css',
   './src/i18n.js',
   './src/icons.js',
   './src/cas.js',

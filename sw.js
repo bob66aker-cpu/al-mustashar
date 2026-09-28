@@ -19,6 +19,9 @@
  *   - عدّ برمجي لأعمار قرار 500 من عمود status يُعرض تحت بطاقة القاعدة،
  *     مع توضيح أن مجموع التصنيفات يتجاوز 411 لتعدد الاستخدامات.
  *   تغيّر ملفات الواجهة (app.js/i18n.js/index.html/cas.js) وبيانات القواعد ⇒
+ *   رفع الكاش v29→v30 والإصدار 1.12.0→1.13.0 (المرحلة الأولى: توافق iPhone —
+ *   أيقونة 180px، المنطقة الآمنة، سُلّم الكاميرا المثالي، بطاقة تثبيت iOS
+ *   بخطوتين، إعادة تهيئة العامل عند pageshow، ومعالج الحصة). سجل سابق:
  *   رفع الكاش v28→v29 والإصدار 1.11.0→1.12.0 (جولة الواجهة والمرونة:
  *   طبقة رموز تصميمية src/tokens.css، بطاقات مشتركة src/cards.js، سلّم ذاكرة
  *   OCR، شبكة أمان الأخطاء، تقرير المحترف، الوضع الداكن ولمس 44px).
@@ -143,7 +146,7 @@
  * Personal data (IndexedDB history, theme, app version note) lives outside
  * the caches and is never touched by this worker.
  */
-const CACHE = 'mustashar-v29';
+const CACHE = 'mustashar-v30';
 const OCR_CACHE = 'mustashar-ocr';
 
 /* 1.7 — safe cache write: a full storage quota (QuotaExceededError) must
@@ -181,6 +184,7 @@ const SHELL = [
   './version.json',
   './config/support.json',
   './icons/icon-192.png',
+  './icons/icon-180.png',   /* iOS reads this one for the home screen */
   './icons/icon-512.png',
   './icons/maskable-512.png',
   './icons/favicon.svg'

@@ -79,6 +79,7 @@
    * a snapshot taken at scan start is only invalidated by a LATER
    * cancelCurrent() call, exactly the semantics the pipeline wants. */
   let cancelSeq = 0;
+  let quotaSink = null;       // iOS: a full disk is reported to the app, which shows the free-up-space hint
   let diagSink = null;        // أ1: diagnostics sink (null in production — set only by the diag harness via setDiagnosticsSink)
 
   /* status(messageKey) — emits a stable KEY (never a hardcoded UI string);
@@ -361,6 +362,11 @@
     return Promise.race([promise, guard]).finally(() => clearTimeout(timer));
   }
 
+  /* iOS: a tab restored from the app switcher can hold a dead worker.
+   * Dropping it is silent — the next scan builds a fresh one — so the farmer
+   * never sees an error and never has to press anything twice. */
+  function resetEngine() { killWorker(); }
+
   function killWorker() {
     if (workerPromise) workerPromise.then(w => w.terminate()).catch(() => {});
     workerPromise = null;            // next scan builds a fresh worker
@@ -566,6 +572,7 @@
    * (tests/ocr-diag-run.mjs) عبر setDiagnosticsSink؛ في الإنتاج يبقى
    * sink فارغًا فلا يُسجَّل شيء ولا يتغير أي مسار. */
   function setDiagnosticsSink(fn) { diagSink = typeof fn === 'function' ? fn : null; }
+  function setQuotaSink(fn) { quotaSink = typeof fn === 'function' ? fn : null; }
   function diagRecord(meta) {
     if (diagSink) { try { diagSink(meta); } catch (e) { /* logging must never break scanning */ } }
   }
@@ -1183,6 +1190,14 @@
     return fetch(new Request(url, { cache: 'reload', signal: ctl.signal }))
       .finally(() => clearTimeout(timer));
   }
+  /* A full disk on an old iPhone shows up as a QuotaExceededError from
+   * cache.put — a retry cannot fix that, it can only delay the message. It is
+   * reported through its own sink so the farmer gets the "free up space" hint
+   * instead of a bare "try again while online". */
+  function isQuotaError(e) {
+    return !!(e && (e.name === 'QuotaExceededError' || /quota/i.test(String(e.message || e))));
+  }
+
   async function cacheAddResilient(cache, url, tryOcrCacheFirst) {
     for (let attempt = 0; attempt < 2; attempt++) {
       try {
@@ -1191,6 +1206,7 @@
         await cache.put(new Request(url), res.clone());
         return true;
       } catch (e) {
+        if (isQuotaError(e)) { if (quotaSink) { try { quotaSink(e, url); } catch (x) {} } return false; }
         if (attempt === 0) continue;   // exactly one retry
         return false;
       }
@@ -1253,13 +1269,19 @@
   global.OcrModule = {
     recognize, extractCAS, extractCandidates, prefetch, setSearchRef,
     setDiagnosticsSink,
+    /* iOS/old-Android: a full disk must reach the farmer as a hint, not as a
+     * silent "preparation failed" */
+    setQuotaSink,
+    /* iOS/old-Android: a full disk must reach the farmer as a hint, not as a
+     * silent "preparation failed" */
+    setQuotaSink,
     /* 2026-09-28: the degradation ladder is public so the app can log the
      * rung and the tests can assert it on real devices. */
     memoryRung, maxDimFor,
     /* 3.3: cancelCurrent stays for compatibility; the token capture is the
      * primary cancellation primitive now (see cancelCurrent's comment). */
     cancelCurrent, scan, latinRatio, rejectedTextReason, MIN_CONFIDENCE,
-    hasValidCas, newCancelToken,
+    hasValidCas, newCancelToken, resetEngine,
     OCR, VARIANTS, PSM_LIST, aiRegionFromWords, buildVariant
   };
 })(typeof window !== 'undefined' ? window : globalThis);

@@ -10,7 +10,12 @@
   <meta name="referrer" content="no-referrer">
   <link rel="manifest" href="manifest.json">
   <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
-  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <!-- iOS reads the 180px file for the home-screen icon; it does not
+       rescale the 192 (iPad looks for 152/167). Kept as its own file so the
+       home screen never shows a scaled-up raster. -->
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/icon-180.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="المستشار الزراعي">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-web-app-status-bar-style" content="black-translucent">
@@ -50,12 +55,16 @@
     }
 
     /* ============ header (fixed height 56) ============ */
+    /* iPhone: the notch/Dynamic Island sits inside the fixed header and the
+       home indicator inside the fixed bottom nav, so BOTH get the insets.
+       env() is 0 everywhere else, so nothing else changes. */
     header {
       position: fixed; top: 0; inset-inline: 0; z-index: 30;
-      height: 56px;
+      height: calc(56px + env(safe-area-inset-top, 0px));
+      padding-top: env(safe-area-inset-top, 0px);
       display: flex; align-items: center; justify-content: space-between;
       gap: 8px;
-      padding: 0 12px;
+      padding-inline: 12px;
       background: var(--nav);
       border-bottom: 1px solid var(--border);
     }
@@ -93,7 +102,7 @@
     main {
       max-width: 448px;
       margin: 0 auto;
-      padding: 68px 16px 96px;
+      padding: calc(68px + env(safe-area-inset-top, 0px)) 16px 96px;
     }
 
     .banner {
@@ -122,6 +131,26 @@
     #installCard .ic { flex: 0 0 auto; }
     #installCard .ic svg { width: 24px; height: 24px; }
     #installCard .body { flex: 1 1 auto; min-width: 0; }
+    #iosInstallCard {
+      padding: 14px 16px; margin-top: 12px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    }
+    #iosInstallCard h3 { font-size: 16px; margin: 0 0 8px; }
+    .ios-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+    .ios-steps li {
+      display: flex; align-items: center; gap: 10px;
+      min-height: 44px;                 /* tap-size row even though it is text */
+      font-size: 15px; line-height: 1.5;
+    }
+    .ios-steps .ios-step-ic {
+      flex: 0 0 auto;
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 32px; height: 32px; border-radius: 10px;
+      background: var(--primary-soft); color: var(--primary-ink);
+    }
+    .ios-steps .ios-step-ic svg { width: 18px; height: 18px; }
     #installCard h3 { font-size: 16px; margin: 0 0 2px; }
     #installCard p { font-size: 13px; color: var(--muted); margin: 0; }
 
@@ -824,7 +853,7 @@
       * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
     }
     @media (min-width: 480px) {
-      main { padding-top: 72px; }
+      main { padding-top: calc(72px + env(safe-area-inset-top, 0px)); }
     }
   </style>
 </head>
@@ -859,6 +888,25 @@
 
     <!-- 2.1 — زر التثبيت الداخلي: بطاقة واحدة، تظهر عند توفر التثبيت فقط
          (beforeinstallprompt) وتختفي عند appinstalled. -->
+    <!-- iOS has no beforeinstallprompt: the app is added from the share
+         sheet. The card shows two drawn steps (share → add to home screen)
+         and never appears once the app already runs standalone. -->
+    <div id="iosInstallCard" hidden>
+      <div class="body">
+        <h3 data-i18n="iosinstall.title">ثبّت التطبيق على هاتفك</h3>
+        <ol class="ios-steps">
+          <li>
+            <span class="ios-step-ic" data-icon="share"></span>
+            <span data-i18n="iosinstall.step1">اضغط زر المشاركة في المتصفح</span>
+          </li>
+          <li>
+            <span class="ios-step-ic" data-icon="home"></span>
+            <span data-i18n="iosinstall.step2">اختر «إضافة إلى الشاشة الرئيسية»</span>
+          </li>
+        </ol>
+      </div>
+    </div>
+
     <div id="installCard" hidden>
       <span class="ic" data-icon="download"></span>
       <div class="body">

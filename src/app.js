@@ -610,9 +610,15 @@
   /* Camera constraint ladder: 1080p → 720p → device default. A permission
    * or missing-device error stops the ladder immediately (re-asking would
    * only repeat it); the file input stays visible as the working path. */
+  /* Safari/iOS rejects an `exact` constraint outright and is fussy about
+   * 1080p on older devices, so every rung is an `ideal` the browser may
+   * refuse to honour — and the ladder steps DOWN, never up: 720p is the
+   * starting point because the OCR engine downscales to its own ceiling
+   * anyway and a smaller live frame costs the phone less. */
   const CAMERA_LADDER = [
-    { width: { ideal: 1920 }, height: { ideal: 1080 } },
     { width: { ideal: 1280 }, height: { ideal: 720 } },
+    { width: { ideal: 960 }, height: { ideal: 540 } },
+    { width: { ideal: 640 }, height: { ideal: 480 } },
     {}
   ];
   function cameraErrorKey(e) {
@@ -1066,6 +1072,10 @@
 
   window.addEventListener('appinstalled', () => {
     hideInstallCard();
+    refreshIosCard();          // the two-step card is meaningless once installed
+    /* installed = the farmer intends to keep this on the phone: ask the
+     * browser to protect the offline copy from automatic eviction */
+    requestPersistence();
     const b = $('#dbBanner');
     if (b) {
       b.hidden = false;
@@ -1078,6 +1088,28 @@
     }
   });
   document.addEventListener('langchange', refreshInstallCard);
+
+  /* ---- iOS: the install card has no prompt event, only a UA + display-mode ---- */
+  const iosCard = $('#iosInstallCard');
+  function isStandalone() {
+    return !!(navigator.standalone
+      || (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches));
+  }
+  function isIOS() {
+    const a = navigator.userAgent || '';
+    /* iPadOS 13+ reports itself as a Mac; the touch-point count gives it away */
+    return /iPad|iPhone|iPod/.test(a)
+      || (/Macintosh/.test(a) && typeof navigator.maxTouchPoints === 'number' && navigator.maxTouchPoints > 1);
+  }
+  function refreshIosCard() {
+    if (!iosCard) return;
+    /* never in a browser that can install itself, never when already installed */
+    const st = window.__install;
+    iosCard.hidden = !(isIOS() && !isStandalone() && !(st && st.available));
+  }
+  refreshIosCard();
+  window.addEventListener('installavailable', refreshIosCard);
+  window.addEventListener('appinstalled', refreshIosCard);
   /* 2.1 — the prompt usually fires AFTER boot (SW-ready, ~seconds in);
    * install-capture.js re-notifies via this bridge so the card shows then. */
   window.addEventListener('installavailable', refreshInstallCard);
@@ -1105,6 +1137,19 @@
    * can ever be painted for a source that is no longer current). */
   let scanSeq = 0;
   let activeScanSeq = 0;
+
+  /* iOS freezes a backgrounded tab: when the farmer comes back from a call
+   * the OCR worker can be dead while the page is alive. Rebuilding it here is
+   * silent and cheap — no message, no extra step for the farmer. */
+  window.addEventListener('pageshow', ev => {
+    if (!ev.persisted) return;
+    try {
+      /* the barcode layer builds a fresh worker per detection, so only the
+         * OCR engine (a long-lived worker) can be dead here */
+      if (typeof OcrModule !== 'undefined' && OcrModule.resetEngine) OcrModule.resetEngine();
+    } catch (e) { /* the next scan rebuilds them anyway */ }
+    refreshIosCard();
+  });
 
   /* 2.2 — retake: clears results and re-opens the same capture flow */
   function showRetake(on) { const b = $('#retakeBtn'); if (b) b.hidden = !on; }
@@ -1389,10 +1434,15 @@
       }
     }
     if (!got) {
+      /* iOS Safari refuses getUserMedia outside a user gesture, in Low Power
+       * Mode, or when the user picked "ask next time". The farmer must NOT read
+       * an error: the SAME single capture path opens the system camera, and if
+       * that works the farmer only ever sees "the photo was taken". The
+       * technical reason goes to the diagnostics log, not to the screen. */
       liveStream = null;
-      ocrMsg.textContent = cameraErrorText(camErr);
-      diagAdd({ at: Date.now(), outcome: 'camera-error', src: 'live', name: (camErr && camErr.name) || 'unknown' });
+      diagAdd({ at: Date.now(), outcome: 'camera-error', src: 'live', name: (camErr && camErr.name) || 'unknown', fallback: 'capture-input' });
       $('#galleryBtn').hidden = false;   /* the manual path is always available */
+      if (camera) { try { camera.value = ''; camera.click(); } catch (e) {} }
       return;
     }
     /* أ1: a live camera session is a NEW query source — any prior photo and
@@ -2056,6 +2106,15 @@
      databases/OCR are protected from eviction. */
   $('#prepBtn').addEventListener('click', async () => {
     if (typeof OcrModule === 'undefined') return;
+    /* the same message as an IndexedDB quota failure: the app still works from
+     * cache, the farmer only has to free space for the offline copy */
+    if (typeof OcrModule.setQuotaSink === 'function') {
+      OcrModule.setQuotaSink((err, url) => {
+        diagAdd({ at: Date.now(), outcome: 'quota', src: 'cache', url: String(url || '') });
+        showSafetyBanner(false, t('quota.hint',
+          'لا توجد مساحة تخزين كافية لحفظ نسخة إضافية. احذف سجل البحث أو ملفات الموقع من إعدادات المتصفح ثم أعد التجهيز — التطبيق يعمل الآن من الذاكرة المؤقتة.'));
+      });
+    }
     const btn = $('#prepBtn'), st = $('#prepState');
     btn.disabled = true;
     st.textContent = t('prep.working', 'جارٍ التجهيز…');

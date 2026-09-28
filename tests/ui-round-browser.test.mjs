@@ -129,7 +129,10 @@ try {
       /<td>[^<]*<\/td>/.test(html) && /mt\.|name-only|partial/i.test(html) || /<tbody>/.test(html));
     must('the report carries the jurisdiction disclaimer', /jurisdiction|الولاية/.test(html));
     must('the report carries a timestamp', /GMT|20\d\d/.test(html));
-    must('the report carries the app version', /1\.1[12]\.0/.test(html), (html.match(/\d+\.\d+\.\d+/) || [])[0]);
+    /* the version comes from version.json, never hardcoded here — a release
+       bump must not require editing this test */
+    const appVersion = JSON.parse(fs.readFileSync(path.join(path.dirname(new URL(import.meta.url).pathname), '..', 'version.json'), 'utf8')).version;
+    must('the report carries the current app version', html.indexOf(appVersion) >= 0, appVersion);
   }
 
   /* ---------- 4) the safety net catches a deliberate error ---------- */

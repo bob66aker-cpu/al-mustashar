@@ -1,8 +1,9 @@
 /*
  * scripts/generate-icons.cjs
  * ---------------------------------------------------------------
- * Generates the PWA icons (icons/icon-192.png, icons/icon-512.png,
- * icons/maskable-512.png) and icons/favicon.svg WITHOUT any external
+ * Generates the PWA icons (icons/icon-180.png, icons/icon-192.png,
+ * icons/icon-512.png, icons/maskable-512.png) and icons/favicon.svg
+ * WITHOUT any external
  * dependency: PNGs are rasterized in pure JS and encoded with Node's
  * zlib. The design matches the app identity: rounded dark-green
  * square (#1F6F52) with a light leaf (#E9F2EB) — the same leaf motif
@@ -125,6 +126,9 @@ function renderIcon(size, maskable) {
   return encodePNG(size, size, buf);
 }
 
+/* 180px is what iOS puts on the home screen — it does NOT scale the 192 down
+   * at request time, it reads this file, so it has to exist. */
+fs.writeFileSync(path.join(OUT, 'icon-180.png'), renderIcon(180, false));
 fs.writeFileSync(path.join(OUT, 'icon-192.png'), renderIcon(192, false));
 fs.writeFileSync(path.join(OUT, 'icon-512.png'), renderIcon(512, false));
 fs.writeFileSync(path.join(OUT, 'maskable-512.png'), renderIcon(512, true));

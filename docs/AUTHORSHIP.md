@@ -1,0 +1,68 @@
+# المؤلفية والنطاق — المستشار الزراعي (al-mustashar)
+
+> الوثيقة التي يشير إليها ملف `LICENSE`. تحدّد **من كتب ماذا**، و**ما نطاق
+> الترخيص**، و**ما الذي ليس تحت الترخيص إطلاقاً**.
+> آخر تحديث: 2026-09-29.
+
+## 1) المؤلف
+
+| | |
+|---|---|
+| **الاسم** | م. أبوبكر عبدالقادر الطشاني |
+| **بالإنجليزية** | Eng. Abubaker Abdulkader Al-Tashani |
+| **الصفة** | مهندس بقطاع الزراعة والثروة الحيوانية — درنة، ليبيا |
+| **الحقوق** | (C) 2026 — جميع الحقوق محفوظة لمؤلفه الأصلي |
+| **العامة** | https://github.com/bob66aker-cpu |
+| **المساهمون الخارجيون** | **لا يوجدون.** تحقّقتُ آلياً: `git log --format='%an <%ae>' \| sort -u` ⇒ **اسم واحد** (`bob66aker-cpu`) بصفتَي بريد: `323711225+bob66aker-cpu@users.noreply.github.com` (79 إيداعاً) و`bob66aker@gmail.com` (11 إيداعاً، آخرها 2026-09-23). **الاسمان لمؤلف واحد** |
+
+## 2) النطاق — ما يشمله ترخيص AGPLv3
+
+| داخل الترخيص | خارج الترخيص |
+|---|---|
+| `index.html` · `sw.js` · `manifest.json` | `data/*.json` (القواعد الأربع) |
+| `src/*.js` **ما عدا** `src/vendor/` | `src/vendor/*` و`vendor/*` (مكوّنات طرف ثالث) |
+| `tests/**` · `tools/**` · `scripts/**` | `assets/fonts/**` · `assets/icons/**` (رخص OFL وISC) |
+| ملفات التوثيق `docs/**` · `README.md` · `CONTRIBUTING.md` | `data/optional/**` (الحزم الاختيارية بتراخيصها) |
+
+## 3) مكوّنات الطرف الثالث — تراخيصها وإشعاراتها
+
+> **لا يُطبَّق ترخيص المشروع على أي صفّ أدناه.** كل صف يحمل ترخيصه الخاص،
+> وملف إشعاره **مرفق داخل المستودع** كما يقتضي شرطه.
+
+| المكوّن | الملفات | الإصدار | الترخيص | ملف الإشعار |
+|---|---|---|---|---|
+| tesseract.js | `vendor/tesseract/tesseract.min.js` · `worker.min.js` | 6.0.1 | Apache-2.0 | `vendor/tesseract/tesseract.min.js.LICENSE.txt` |
+| Tesseract WASM core | `vendor/tesseract/core/tesseract-core-{,simd-}lstm.wasm{,.js}` | متزامن مع 6.0.1 | Apache-2.0 | في `docs/THIRD_PARTY.md` |
+| نماذج اللغة | `vendor/tesseract/lang/{eng,ara}.traineddata.gz` | من `@tesseract.js-data` | Apache-2.0 | `docs/THIRD_PARTY.md` |
+| zxing-wasm | `src/vendor/zxing_reader.wasm` · `zxing-reader.min.js` | 3.1.4 | Apache-2.0 (مع انعكاس في المكتبة) | `docs/THIRD_PARTY.md` |
+| qrcodegen (Nayuki) | `src/vendor/qrcodegen.js` | 1.8.0 (غير منشور مُصرَّفاً) | **MIT** | ترويسة MIT داخل الملف نفسه |
+| خط IBM Plex Sans Arabic | `assets/fonts/*.woff2` | v15 | **SIL OFL 1.1** | `assets/fonts/LICENSE-OFL-IBM-Plex-Sans-Arabic.txt` |
+| أيقونات Lucide | `src/icons.js` (وسوم داخلية) | 0.462.0 | **ISC** | `assets/icons/LICENSE-LUCIDE-ISC.txt` |
+
+**توقيعات البصمات:** كل الأصول الخارجية الاثنا عشر متحقَّق منها بايت-ببايت
+مع مصادرها الرسمية — الجدول الكامل في `docs/security-audit.md` §4.
+
+## 4) البيانات — تراخيص المصادر لا ترخيص المشروع
+
+| القاعدة | الترخيص | البيان |
+|---|---|---|
+| **ليبيا — قرار 248 لسنة 2024** | مرجع أولي، **لا يُكتب آلياً** | `docs/data-provenance.md` §1 |
+| **ليبيا — قرار 500 لسنة 2026** | مرجع أولي، **لا يُكتب آلياً** | `docs/data-provenance.md` §2 |
+| **الاتحاد الأوروبي (ECHA)** | مصدره الأصلي | `docs/data-provenance.md` §3 |
+| **USA / EPA** | **ملك عام** (وثيقة حكومية أمريكية) | `docs/data-provenance.md` §4 |
+| كندا (اختيارية) | **OGL-Canada** | `docs/data-provenance.md` |
+| أستراليا (اختيارية) | **CC BY 4.0** | `docs/data-provenance.md` |
+
+**قاعدة حاكمة:** تعديل أي ملف في `data/` الأولية (ليبيا) **ممنوع** إلا بطلب
+صريح من المالك. البصمات في `tests/data-health.test.mjs` قفل على المحتوى.
+
+## 5) المساهمة
+
+لا تُقبل شيفرة خارجية إلا بعد **توقيع CLA** — انظر `CONTRIBUTING.md`. الغرض:
+**حفظ الترخيص المزدوج** (AGPLv3 + تجاري)؛ فبلا تنازل صريح، أي مساهمة تمنح
+المساهم حصة في الشيفرة التي لا يستطيع المالك بيعها كمنتج مغلق.
+
+## 6) تاريخ التصحيح
+
+**2026-09-29** — كان `LICENSE` يعلن CC BY-NC-SA 4.0. التصحيح إلى AGPLv3
+موثّق في `LICENSE` §6. **لا مساهمين خارجيين** ⇒ لا طرف متضرّر.

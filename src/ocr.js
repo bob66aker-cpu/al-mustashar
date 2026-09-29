@@ -1620,9 +1620,6 @@
     /* iOS/old-Android: a full disk must reach the farmer as a hint, not as a
      * silent "preparation failed" */
     setQuotaSink,
-    /* iOS/old-Android: a full disk must reach the farmer as a hint, not as a
-     * silent "preparation failed" */
-    setQuotaSink,
     /* 2026-09-28: the degradation ladder is public so the app can log the
      * rung and the tests can assert it on real devices. */
     memoryRung, maxDimFor,

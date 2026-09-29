@@ -1,0 +1,32 @@
+# Cloudflare Pages — ترويسات HTTP
+# Advisory / Agricultural Advisor
+# Cloudflare Pages reads this file verbatim and serves the headers below.
+# Format: "<path pattern>" then indented "Name: value" lines. Blank lines separate blocks.
+#
+# The Content-Security-Policy here is the SAME policy the page already declares
+# in its <meta http-equiv> (index.html:9). The most restrictive of the two
+# applies, so this header tightens nothing and breaks nothing: it exists so the
+# policy is enforced even before the document body is parsed.
+#
+# NOTE ON DIRECTORIES: Cloudflare Pages serves _headers as a static asset; that is
+# intentional. It contains no secrets — only public policy.
+
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data:; font-src 'self'; connect-src 'self'; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: no-referrer
+  X-Frame-Options: DENY
+  Permissions-Policy: camera=(self), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Resource-Policy: same-origin
+
+# The service worker must never be cached, or a stale worker outlives a release.
+/sw.js
+  Cache-Control: no-cache, no-store, must-revalidate
+  X-Content-Type-Options: nosniff
+
+# The reference data is content-addressed by the app's own checksums; the browser
+# must not keep a stale copy of it.
+/data/*
+  Cache-Control: public, max-age=3600
+  X-Content-Type-Options: nosniff

@@ -388,10 +388,50 @@
    * epa-cancelled كانت غائبة أصلًا (docs/data-provenance.md). */
   const EXPECTED_ROWS = { 'libya-248': 77, 'libya-500': 411, eu: 1483, epa: 1361, 'epa-cancelled': 1425 };
 
+  /* 2026-09-29 — سلامة البيانات عند التحميل.
+   * EXPECTED_ROWS يثبت العدد فقط؛ هذا يثبت المحتوى. البصمة تُحسب على BYTES
+   * الخام قبل JSON.parse، فالملف التالف أو المبتور يُرفض ولو كان يحوي
+   * JSON صالحاً. نفس قيم tests/data-health.test.mjs — والحارس
+   * tests/data-integrity.test.mjs يمنع انفصال أيٍّ منهما عن الآخر.
+   *
+   * مبدأ الفشل: fail-soft كسائر مسارات البيانات. إن غاب crypto.subtle
+   * (سياق غير آمن) يُتخطى التحقق بدل أن يُعطَّل التطبيق — تماماً كـ packs.js. */
+  const DATA_SHA256 = {
+    'data/libya-248.json':     'b6850e0381fda847b0bc4b30096d35847b91e626587647dd79ef80ea04cbacd5',
+    'data/libya-500.json':     '9a1427e090906c3f84287edfcc4b43415abd22e01136dd54ecca09eb10ac9d2e',
+    'data/eu.json':            'ef629525c2dae8f741e1697faaecf2319e1a646e4e011d2754ef66e23844101e',
+    'data/epa.json':           'b24d7c3e3a8dbd7e84ef7b1a59bbfb98674b5c8ad44ff7f7a3dbe0d90d7775f3',
+    'data/epa-cancelled.json': 'c2b5b38e4bfe07dc466c45d4f18518691a57de17b078822e2e6fab00de58fde7'
+  };
+
+  /* يُرجع null حين لا تتوفّر Web Crypto (سياق غير آمن) — لا يُرجع false أبداً،
+   * لأن false يعني «فشل تحقق»، وهو حكم لا يجوز إسقاته بلا دليل. */
+  function sha256Hex(buf) {
+    if (!globalThis.crypto || !globalThis.crypto.subtle) return Promise.resolve(null);
+    return globalThis.crypto.subtle.digest('SHA-256', buf).then(function (d) {
+      return Array.from(new Uint8Array(d)).map(b => b.toString(16).padStart(2, '0')).join('');
+    });
+  }
+
   function loadSource(src) {
     setPhase(src.key, 'loading');
     const attemptFetch = () => fetch(src.url, { cache: 'no-store' }).then(async res => {
       if (!res.ok) throw new Error('HTTP ' + res.status);
+      /* البصمة على البايتات الخام: لو اختلف الملف عن المبنيّ رُفض قبل
+       * JSON.parse، فيرتدّ إلى إعادة المحاولة ثم إلى النسخة المخزّنة —
+       * نفس مسار الضعف: لا كود جديد، لا مسار فشل خاص. */
+      const want = DATA_SHA256[src.url];
+      if (want) {
+        const buf = await res.arrayBuffer();
+        const got = await sha256Hex(buf);
+        if (got && got !== want) {
+          throw new Error('data integrity: ' + src.key + ' sha256 ' +
+            String(got).slice(0, 12) + ' ≠ ' + String(want).slice(0, 12));
+        }
+        const parsed = JSON.parse(new TextDecoder().decode(buf));
+        if (!looksValid(parsed)) throw new Error('invalid payload');
+        return parsed;
+      }
       const data = await res.json();
       if (!looksValid(data)) throw new Error('invalid payload');
       return data;

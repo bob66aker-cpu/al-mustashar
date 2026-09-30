@@ -39,7 +39,7 @@ try {
 
   const resp = await page.goto(BASE + '/index.html', { waitUntil: 'networkidle0', timeout: 45000 });
   must('the preview URL answers over the network', resp && resp.status() === 200, 'HTTP ' + (resp && resp.status()));
-  must('the served page is the work-branch build (SW v31, version 1.11.0)',
+  must('the served page is the work-branch build (cache mustashar-v33, version 1.16.0)',
     await page.evaluate(async () => {
       const [sw, v] = await Promise.all([fetch('./sw.js').then(r => r.text()), fetch('./version.json').then(r => r.json())]);
       return sw.includes("mustashar-v33") && v.version === '1.16.0';
@@ -84,7 +84,7 @@ try {
     const keys = await c.keys();
     return { n: keys.length, sample: keys.slice(0, 6).map(r => new URL(r.url).pathname) };
   });
-  must('the v28 cache holds the app shell and the databases', cached.n >= 20, cached.n + ' entries e.g. ' + JSON.stringify(cached.sample));
+  must('the mustashar-v33 cache holds the app shell and the databases', cached.n >= 20, cached.n + ' entries e.g. ' + JSON.stringify(cached.sample));
 
   /* the app itself works over the link: databases loaded + a real search */
   await sleep(1500);

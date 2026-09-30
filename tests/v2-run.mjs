@@ -23,9 +23,68 @@ page.on('console', m => {
   const t = m.text();
   if (t.startsWith('[case]') || /PAGE-ERROR|FAIL/.test(t)) console.log(t.slice(0, 300));
 });
-console.log('[runner] goto', BASE + '/tests/v2-suite.html');
-await page.goto(BASE + '/tests/v2-suite.html' + WINDOW, { waitUntil: 'domcontentloaded', timeout: 30000 });
-console.log('[runner] page loaded');
+/* Cloudflare Pages serves "pretty URLs": a request for a .html path answers
+ * 308 to the extension-less path. Chasing that redirect lands on the SPA
+ * fallback (index.html), which loads the app globals but NOT the suite, so
+ * window.__run stays undefined and the run would abort for a reason that has
+ * nothing to do with the code under test. Both spellings are therefore
+ * probed and the first one that really exposes the suite is used. */
+const SUITE_PATHS = ['/tests/v2-suite', '/tests/v2-suite.html'];
+
+/* The suite ships its driver as an INLINE <script>, and the deployed CSP is
+ * script-src 'self' 'wasm-unsafe-eval' with no 'unsafe-inline'. On the real
+ * Pages deployment that block is therefore REFUSED — which is the correct and
+ * intended outcome, not a defect: index.html contains zero inline scripts
+ * (verified by grep), so the farmer app is unaffected, and the refusal is
+ * itself fresh proof that the header is enforced by the real edge rather than
+ * only by our local injection. To still run the assertions against the
+ * deployed build, the runner re-delivers the suite's own code over the
+ * debugger channel (Runtime.evaluate), which CSP does not govern. The code is
+ * fetched from the host under test, not from the local disk, and not one
+ * assertion is altered. */
+/* Both spellings are tried: Pages answers the extension-less one, a plain
+ * static preview server answers the .html one. */
+let suiteHtml = '';
+for (const p of SUITE_PATHS) {
+  const r = await fetch(BASE + p).catch(() => null);
+  if (r && r.ok) { suiteHtml = await r.text(); console.log('[runner] driver source: ' + p); break; }
+}
+const inlineBlocks = [...suiteHtml.matchAll(/<script(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>/gi)]
+  .map(m => m[1]).filter(code => code.includes('__run'));
+const inlineCode = inlineBlocks.length ? inlineBlocks[inlineBlocks.length - 1] : '';
+if (!inlineCode) {
+  console.error('[runner] could not find the suite driver under ' + BASE + SUITE_PATHS.join(' or '));
+  await browser.close();
+  process.exit(1);
+}
+console.log('[runner] suite driver recovered over HTTP: ' + inlineCode.length + ' bytes');
+
+let suitePath = null;
+for (const p of SUITE_PATHS) {
+  console.log('[runner] goto', BASE + p + WINDOW);
+  const resp = await page.goto(BASE + p + WINDOW, { waitUntil: 'domcontentloaded', timeout: 30000 });
+  const isSuite = await page.evaluate(() =>
+    document.title === 'OCR V2 functional suite' && !!document.getElementById('out')
+  ).catch(() => false);
+  if (!isSuite) {
+    console.log('[runner] ' + p + ' answered HTTP ' + (resp && resp.status()) +
+                ' but is NOT the suite document — skipping');
+    continue;
+  }
+  let ready = await page.evaluate(() => typeof window.__run === 'function').catch(() => false);
+  if (!ready) {
+    await page.evaluate(inlineCode);
+    ready = await page.evaluate(() => typeof window.__run === 'function').catch(() => false);
+    console.log('[runner] inline driver re-delivered into the suite page: __run=' + ready);
+  }
+  if (ready) { suitePath = p; console.log('[runner] suite exposed at', p); break; }
+  console.log('[runner] suite page at ' + p + ' refused the driver — trying the next spelling');
+}
+if (!suitePath) {
+  console.error('[runner] the E2E suite never exposed window.__run at ' + BASE);
+  await browser.close();
+  process.exit(1);
+}
 const globals = await page.evaluate(() => ({
   SearchCore: typeof window.SearchCore,
   Tesseract: typeof window.Tesseract,

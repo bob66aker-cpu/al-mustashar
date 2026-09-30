@@ -104,9 +104,12 @@ console.log('=== 3) لا نتائج قبل الضغط ===');
 console.log('=== 4) سطر الخصوصية ===');
 {
   check('the exact privacy sentence is on the About page',
-    html.indexOf('صورك وبحثك لا يغادران جهازك أبداً.') >= 0);
+    html.indexOf('التطبيق لا يرفع صور الملصقات أو نصوص البحث.') >= 0);
+  check('the old "never leaves the device" sentence is gone from the page (2026-09-30)',
+    html.indexOf('صورك وبحثك لا يغادران جهازك أبداً.') < 0
+    && i18n.indexOf('صورك وبحثك لا يغادران جهازك أبداً.') < 0);
   check('it is translated in all four dictionaries',
-    (i18n.match(/'about\.privacy\.lead':/g) || []).length === 4);
+    (i18n.match(/['"]about\.privacy\.lead['"]:/g) || []).length === 4);
   check('the older, longer privacy paragraph is still there (nothing lost)',
     /about\.privacy"/.test(html) || /'about\.privacy':/.test(i18n));
 }

@@ -6,7 +6,7 @@
  *   1) استجابة الرابط + تحميل index.html بلا أخطاء شبكة.
  *   2) المانيفست صالح ومربوط بالصفحة.
  *   3) عامل الخدمة مسجَّل فعلًا (navigator.serviceWorker) ويفعّل التحكم.
- *   4) كاش mustashar-v34 موجود بعد التثبيت.
+ *   4) كاش mustashar-v35 موجود بعد التثبيت.
  *   5) القواعد الخمس محمَّلة (عبر واجهة الاستخدام) وبحث فعلي يجد نتيجة.
  *   6) عرض طبقة CAS يعمل على الرابط (Captan 133-06-2 + الخام مشطوبًا).
  * تشغيل: PREVIEW_URL=https://… node tests/preview-live.test.mjs
@@ -39,10 +39,10 @@ try {
 
   const resp = await page.goto(BASE + '/index.html', { waitUntil: 'networkidle0', timeout: 45000 });
   must('the preview URL answers over the network', resp && resp.status() === 200, 'HTTP ' + (resp && resp.status()));
-  must('the served page is the work-branch build (cache mustashar-v34, version 1.17.0)',
+  must('the served page is the work-branch build (cache mustashar-v35, version 1.18.0)',
     await page.evaluate(async () => {
       const [sw, v] = await Promise.all([fetch('./sw.js').then(r => r.text()), fetch('./version.json').then(r => r.json())]);
-      return sw.includes("mustashar-v34") && v.version === '1.17.0';
+      return sw.includes("mustashar-v35") && v.version === '1.18.0';
     }));
   must('no failed network responses', netFails.length === 0, netFails.slice(0, 3).join(' | '));
 
@@ -75,16 +75,16 @@ try {
   let caches = [];
   for (let i = 0; i < 12; i++) {
     caches = await page.evaluate(() => caches.keys());
-    if (caches.includes('mustashar-v34')) break;
+    if (caches.includes('mustashar-v35')) break;
     await sleep(1500);
   }
-  must('the mustashar-v34 cache exists after install', caches.includes('mustashar-v34'), JSON.stringify(caches));
+  must('the mustashar-v35 cache exists after install', caches.includes('mustashar-v35'), JSON.stringify(caches));
   const cached = await page.evaluate(async () => {
-    const c = await caches.open('mustashar-v34');
+    const c = await caches.open('mustashar-v35');
     const keys = await c.keys();
     return { n: keys.length, sample: keys.slice(0, 6).map(r => new URL(r.url).pathname) };
   });
-  must('the mustashar-v34 cache holds the app shell and the databases', cached.n >= 20, cached.n + ' entries e.g. ' + JSON.stringify(cached.sample));
+  must('the mustashar-v35 cache holds the app shell and the databases', cached.n >= 20, cached.n + ' entries e.g. ' + JSON.stringify(cached.sample));
 
   /* the app itself works over the link: databases loaded + a real search */
   await sleep(1500);

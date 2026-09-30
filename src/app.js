@@ -500,6 +500,15 @@
       .then(info => {
         if (!info || !info.version) return;
         window.__appVersion = info.version;   /* printed in the pro report */
+        /* خريطة «آخر تحقق» تُحفظ هنا وتُقرأها dataVersionOf؛ البطاقات
+         * المعروضة قبل وصولها تُعاد رسمها مرة واحدة حتى لا تبقى بلا تاريخ. */
+        if (info.dataCheck) {
+          window.__dataCheck = info.dataCheck;
+          try {
+            if (lastResults.length) render(lastResults, $('#query').value.trim());
+            if (lastScanResults.length) render(lastScanResults, '', '#scanResults');
+          } catch (e) { /* a failed repaint never breaks the version check */ }
+        }
         $('#dbState') && ($('#dbState').title = t('ver.title', 'الإصدار: {v} — بيانات: {d}')
           .replace('{v}', info.version)
           .replace('{d}', info.data_updated || t('ver.data.unknown', 'غير محدد')));
@@ -550,7 +559,16 @@
   function packAttribution(k) {
     if (k === 'canada') return t('attr.canada', 'Contains information licensed under the Open Government Licence – Canada.');
     if (k === 'australia') return t('attr.australia', 'Contains information licensed under the Creative Commons Attribution 3.0 Australia licence.');
+    if (k === 'eu') return t('attr.eu', '© European Union — Reuse is permitted under the European Commission reuse policy (Decision 2011/833/EU). EU export date: 2026-09-09. Comparative reference only, not the legal status in Libya. The European Commission does not endorse this application.');
     return '';
+  }
+
+  /* لغة نص الإسناد نفسه: نصوص كندا/أستراليا إنجليزية بحكم الترخيص،
+     أما إسناد الاتحاد الأوروبي فمترجم في القواميس ⇒ lang يتبع الواجهة
+     وإلا عُلِّمت العربيةُ على أنها إنجليزية. */
+  function packAttributionLang(k) {
+    if (k === 'canada' || k === 'australia') return 'en';
+    return (document.documentElement.lang || 'ar');
   }
 
   /* Per-source status display via the decision layer (src/cas.js):
@@ -590,11 +608,15 @@
    * branches by language × mode × jurisdiction. render() below only
    * assembles the context and hands the rows over.
    * ============================================================ */
+  /* تاريخ آخر تحقق لكل قاعدة. مصدر التواريخ ملف version.json (خريطة
+   * dataCheck) — لأن القواعد نفسها في data/ لا تُلمس قواها، والبيانات
+   * نفسها لا تحمل تاريخ تصديرها. أولوية meta.built إن وُجدت (EPA)، ثم
+   * الخريطة. تُخزَّن الخريطة لحظة جلب version.json وتُعاد الرسمة فورها. */
   function dataVersionOf(key) {
     const d = DB[key];
-    if (!d || !d.meta) return '';
-    if (d.meta.built) return d.meta.built;
-    return '';
+    if (d && d.meta && d.meta.built) return d.meta.built;
+    const map = window.__dataCheck;
+    return (map && map[key]) || '';
   }
   function activeJurisdiction() {
     try { return localStorage.getItem('mustashar-jurisdiction') || 'libya-500'; }
@@ -612,6 +634,7 @@
         statusExplain: statusExplain, casApi: window.CasDissect,
         dataVersion: dataVersionOf,
         packAttribution: packAttribution,
+        packAttributionLang: packAttributionLang,
         /* an installed pack becomes a first-class source: the jurisdiction
            picker and the source filter must see it too */
         sourceKeys: activeSources().map(function (x) { return x.key; })

@@ -756,6 +756,8 @@
     .info-rows .r:last-child { border-bottom: 0; }
     .info-rows .k { color: var(--muted); }
     .info-rows .v { font-weight: 700; overflow-wrap: anywhere; }
+    /* رابط الشيفرة هدف لمس لا نصّ: 44px كحدّ أدنى مثل بقية العناصر التفاعلية */
+    .info-rows .v a { display: inline-flex; align-items: center; min-height: 44px; color: var(--primary-strong); }
     .fold summary {
       list-style: none; cursor: pointer; user-select: none;
       display: flex; align-items: center; gap: 10px; min-height: 48px;
@@ -1296,6 +1298,7 @@
         <h2 data-i18n="about.info.title">معلومات التطبيق</h2>
         <div class="info-rows" style="margin-top:6px">
           <div class="r"><span class="k" data-i18n="about.info.version">الإصدار</span><span class="v" id="aboutVersion">—</span></div>
+          <div class="r"><span class="k" data-i18n="about.info.source">شيفرة هذا الإصدار</span><span class="v"><a id="aboutSourceLink" href="https://github.com/bob66aker-cpu/al-mustashar/tree/work-branch" target="_blank" rel="noopener noreferrer" data-i18n="about.info.source.link">github.com/bob66aker-cpu/al-mustashar</a></span></div>
           <div class="r"><span class="k" data-i18n="about.info.date">تاريخ الإصدار</span><span class="v" id="aboutDate">—</span></div>
           <div class="r"><span class="k" data-i18n="about.info.type">النوع</span><span class="v" data-i18n="about.type.value">تطبيق معلومات زراعية وتحقق تنظيمي</span></div>
         </div>
@@ -1309,8 +1312,8 @@
           <span class="cv up" data-icon="chevron-open"></span>
         </summary>
         <div class="body">
-          <p class="privacy-lead" data-i18n="about.privacy.lead">صورك وبحثك لا يغادران جهازك أبداً.</p>
-          <p data-i18n="about.privacy">الخصوصية: يعمل التطبيق على جهازك دون إنترنت بعد أول تحميل. الصور والبحث والسجل لا يغادرون هاتفك إطلاقًا، ولا يُرفع أي شيء لأي خادم.</div>
+          <p class="privacy-lead" data-i18n="about.privacy.lead">التطبيق لا يرفع صور الملصقات أو نصوص البحث. قد يعالج مزوّد الاستضافة بيانات اتصال لازمة لتقديم الموقع (كعنوان IP ووقت الطلب). سجل البحث محفوظ محلياً على جهازك ويمكنك مسحه.</p>
+          <p data-i18n="about.privacy">الخصوصية: يعمل التطبيق على جهازك دون إنترنت بعد أول تحميل. الصور والبحث والسجل لا يغادرون هاتفك إطلاقًا، ولا يُرفع أي شيء لأي خادم.</p>
       </details>
 
       <details class="card fold" id="aboutSourcesCard">
@@ -1320,9 +1323,11 @@
           <span class="cv down" data-icon="chevron"></span>
           <span class="cv up" data-icon="chevron-open"></span>
         </summary>
-        <div class="body" data-i18n="about.sources">المصادر: قرارا وزارة الزراعة الليبية 248/2024 و500/2026 (المرجع الأول)، قاعدة بيانات المبيدات الأوروبية، وبيانات وكالة حماية البيئة الأمريكية — التفاصيل في docs/data-provenance.md. بيانات الاتحاد الأوروبي لا قيمة قانونية لها، وهذه الأداة لا تحمل شعار أي جهة ولا تنسب إليها اعتمادًا.</p>
-          <p class="attr" lang="en">Contains information licensed under the Open Government Licence – Canada.</p>
-          <p class="attr" lang="en">Contains information licensed under the Creative Commons Attribution 3.0 Australia licence.</p>
+        <div class="body">
+          <p data-i18n="about.sources">المصادر: قرارا وزارة الزراعة الليبية 248/2024 و500/2026 (المرجع الأول)، قاعدة بيانات المبيدات الأوروبية، وبيانات وكالة حماية البيئة الأمريكية — التفاصيل في docs/data-provenance.md. بيانات الاتحاد الأوروبي لا قيمة قانونية لها، وهذه الأداة لا تحمل شعار أي جهة ولا تنسب إليها اعتمادًا.</p>
+          <p class="attr" lang="en" data-i18n="attr.canada">Contains information licensed under the Open Government Licence – Canada.</p>
+          <p class="attr" lang="en" data-i18n="attr.australia">Contains information licensed under the Creative Commons Attribution 3.0 Australia licence.</p>
+          <p class="attr" id="aboutEuAttr" data-i18n="attr.eu">© الاتحاد الأوروبي — إعادة الاستخدام بموجب سياسة إعادة الاستخدام لمعلومات المفضية (قرار 2011/833/EU). تاريخ تصدير القاعدة: 2026-09-09. مرجع مقارن لا الحالة القانونية الليبية. المفوضية الأوروبية لا تروج لهذا التطبيق.</p>
         </div>
       </details>
 

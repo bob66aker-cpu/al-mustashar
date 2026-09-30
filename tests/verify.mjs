@@ -312,7 +312,7 @@ check('OCR engine carries the a3 early-confirm lock (DB-confirmed reads survive 
       && o.includes("via: 'ladder_confirm'")
       && o.includes('if (earlyLock) break;')
       && o.includes('if (!earlyLock && (exactHit || hasValidCas([...fusionCAS])))'); })());
-check('sw is v34 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v34'")
+check('sw is v35 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v35'")
   && sw5.includes("'./src/scan-live.js'")
   && sw5.includes("OCR_CACHE = 'mustashar-ocr'")
   && OCR_RUNTIME_FILES.every(f => sw5.includes(f.replace('./', '')))
@@ -409,6 +409,77 @@ check('V2: canvases released after use (no pixel-buffer leak across scans)',
 check('V2: still self-hosted, no CDN, eng-only engine',
   ocrMod.includes("'vendor/tesseract/worker.min.js'")
   && !ocrMod.includes("'eng+ara'") && !/https:\/\/cdn/.test(ocrMod));
+
+/* ---------- 1.18.0 «جولة الصدق»: نصوص وإسناد وتواريخ (أوامر المدير) ---------- */
+const i18nSrc = fs.readFileSync('src/i18n.js', 'utf8');
+const appSrc = fs.readFileSync('src/app.js', 'utf8');
+const htmlSrc = fs.readFileSync('index.html', 'utf8');
+const vjson = JSON.parse(fs.readFileSync('version.json', 'utf8'));
+const pickAll = (src, key) => (src.match(new RegExp("['\"]" + key + "['\"]:\\s*(['\"])([\\s\\S]*?)\\1,", 'g')) || []);
+const valAll = (src, key) => pickAll(src, key).map(v => v.replace(new RegExp("^['\"]" + key + "['\"]:\\s*['\"]"), '').replace(/['"],$/, ''));
+
+/* (1) جملة الخصوصية: النص الجديد بأربع لغات، والكلمات القديمة ممنوعة العودة */
+const leads = valAll(i18nSrc, 'about.privacy.lead');
+check('privacy lead exists in all 4 dictionaries', leads.length === 4, 'found=' + leads.length);
+const leadMarks = [['مزوّد الاستضافة', 'سجل البحث'], ['hosting provider', 'search history'],
+  ['hébergeur', 'historique de recherche'], ['托管服务商', '搜索记录']];
+check('privacy lead: each language names the hosting provider AND the local search history',
+  leadMarks.every((marks, i) => marks.every(m => (leads[i] || '').includes(m))),
+  leads.map(l => l.slice(0, 28)).join(' | '));
+const oldWording = ['أبداً', 'أبدًا', 'never leave', 'ne quittent jamais', '永远不会离开', 'لا يغادران جهازك'];
+check('privacy lead: the old "never leaves the device" wording is gone everywhere',
+  !oldWording.some(w => leads.some(l => l.includes(w))),
+  oldWording.filter(w => leads.some(l => l.includes(w))).join(','));
+
+/* (2) إسناد الاتحاد الأوروبي: فرع في packAttribution + نص معتمد بأربع لغات */
+const euAttrs = valAll(i18nSrc, 'attr.eu');
+check('EU attribution exists in all 4 dictionaries', euAttrs.length === 4, 'found=' + euAttrs.length);
+check('EU attribution carries the reuse decision + the export date',
+  euAttrs.every(a => a.includes('2011/833') && a.includes('2026-09-09')),
+  euAttrs.map(a => a.slice(0, 24)).join(' | '));
+const euMarks = [['مرجع مقارن', 'المفوضية الأوروبية لا تروج'], ['Comparative reference', 'does not endorse'],
+  ['Référence comparative', "n'endosse"], ['比较参考', '不为本应用背书']];
+check('EU attribution states "comparative reference, not the Libyan legal status" and the non-endorsement',
+  euMarks.every((marks, i) => marks.every(m => (euAttrs[i] || '').includes(m))),
+  euMarks.map((m, i) => m.join('+') + '=' + euAttrs[i]).join(' | ').slice(0, 160));
+check('packAttribution has an eu branch (EU cards carry the licence like the other packs)',
+  /if \(k === 'eu'\) return t\('attr\.eu'/.test(appSrc) && /packAttributionLang: packAttributionLang/.test(appSrc));
+
+/* (3) تواريخ آخر تحقق: خريطة dataCheck في version.json، وصفر لمس data/ */
+const needKeys = ['libya-248', 'libya-500', 'eu', 'epa', 'epa-cancelled', 'canada', 'australia'];
+const map = vjson.dataCheck || {};
+check('version.json carries a dataCheck date for every database',
+  needKeys.every(k => /^\d{4}-\d{2}-\d{2}$/.test(map[k] || '')), JSON.stringify(map));
+check('dataVersionOf reads the dataCheck map (the data files are never edited)',
+  /window\.__dataCheck/.test(appSrc) && /window\.__dataCheck = info\.dataCheck/.test(appSrc));
+check('data_updated equals the newest dataCheck date',
+  vjson.data_updated === Object.values(map).sort().pop(), vjson.data_updated);
+
+/* (4) عيوب صفحة «حول» */
+check('about.privacy paragraph is closed with </p> (it was closed with </div>)',
+  /<p data-i18n="about\.privacy">[\s\S]{0,400}?<\/p>/.test(htmlSrc)
+  && !/<p data-i18n="about\.privacy">[\s\S]{0,400}?<\/div>/.test(htmlSrc));
+check('about.sources key sits on its own <p>, not on the attribution container',
+  /<p data-i18n="about\.sources">/.test(htmlSrc) && !/<div class="body" data-i18n="about\.sources"/.test(htmlSrc));
+check('about.sources lists three attributions: Canada, Australia, EU',
+  (htmlSrc.match(/class="attr"/g) || []).length === 3, 'found=' + (htmlSrc.match(/class="attr"/g) || []).length);
+
+/* (5) رابط شيفرة هذا الإصدار */
+check('about shows the source link of this version, next to the version row',
+  /id="aboutSourceLink"/.test(htmlSrc)
+  && htmlSrc.includes('href="https://github.com/bob66aker-cpu/al-mustashar/tree/work-branch"')
+  && htmlSrc.indexOf('id="aboutSourceLink"') > htmlSrc.indexOf('id="aboutVersion"')
+  && /rel="noopener noreferrer"/.test(htmlSrc));
+check('the source-link label exists in all 4 dictionaries',
+  (i18nSrc.match(/'about\.info\.source\.link':/g) || []).length === 4);
+
+/* (6) شارة البيتا: لم تُمَس — داخل «حول» وحدها */
+const badgePos = htmlSrc.indexOf('id="betaBadge"');
+const aboutPos = htmlSrc.indexOf('id="view-about"');
+const nextView = htmlSrc.indexOf('class="view" id="view-', aboutPos + 10);
+check('the beta badge still exists exactly once, inside the about view only',
+  badgePos > aboutPos && (htmlSrc.match(/id="betaBadge"/g) || []).length === 1
+  && (nextView < 0 || badgePos < nextView), 'badge=' + badgePos + ' about=' + aboutPos);
 
 /* ---------- summary ---------- */
 console.log('\n==============================');

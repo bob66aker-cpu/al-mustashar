@@ -210,6 +210,40 @@ for (const theme of ['dark', 'light']) {
   check('exactly one avatar circle visible when photo fails', bad.circles === 1, JSON.stringify(bad));
 }
 
+/* جولة الصدق 1.18.0: إسناد المصادر يجب أن يبقى مرئيًا بعد كل ترجمة.
+ * المفتاح كان على الحاوية نفسها فـtextContent كان يلتهم فقرات الإسناد
+ * الشقيقة — القياس هنا على DOM حيّ بعد تبديل اللغة فعليًا. */
+{
+  await page.goto(BASE + '/index.html#/about', { waitUntil: 'networkidle0', timeout: 30000 });
+  for (const lang of ['ar', 'en', 'fr', 'zh']) {
+    const r = await page.evaluate(async (lg) => {
+      const sel = document.getElementById('langSelect');
+      if (sel) { sel.value = lg; sel.dispatchEvent(new Event('change', { bubbles: true })); }
+      await new Promise(res => setTimeout(res, 300));
+      const attrs = [...document.querySelectorAll('#aboutSourcesCard .attr')].map(e => e.textContent.trim());
+      return {
+        n: attrs.length,
+        eu: attrs.some(a => a.indexOf('2011/833') >= 0),
+        short: attrs.some(a => a.length < 20),
+        lead: (document.querySelector('[data-i18n="about.privacy.lead"]') || {}).textContent || ''
+      };
+    }, lang);
+    check(`about keeps its attributions after switching to ${lang} (>= 2, EU included, none emptied)`,
+      r.n >= 2 && r.eu && !r.short, JSON.stringify(r));
+    check(`privacy lead in ${lang} names the hosting provider or the local history`,
+      /مزوّد الاستضافة|hosting provider|hébergeur|托管服务商/.test(r.lead)
+      && !/أبداً|never leave|ne quittent jamais|永远不会离开/.test(r.lead), r.lead.slice(0, 40));
+  }
+  /* الشارة داخل «حول» وحدها — يُقاس على DOM حيّ لا على نصّ الملف */
+  const badge = await page.evaluate(() => ({
+    total: document.querySelectorAll('#betaBadge').length,
+    inAbout: document.querySelectorAll('#view-about #betaBadge').length,
+    outside: [...document.querySelectorAll('#betaBadge')].filter(e => !e.closest('#view-about')).length
+  }));
+  check('the beta badge is inside the about view only', badge.total === 1 && badge.inAbout === 1 && badge.outside === 0,
+    JSON.stringify(badge));
+}
+
 await browser.close();
 console.log('==============================');
 console.log(`PASS: ${pass}   FAIL: ${fail}`);

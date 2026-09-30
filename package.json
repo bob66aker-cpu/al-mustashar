@@ -5,7 +5,8 @@
   "description": "المستشار الزراعي — Agricultural Advisor. Static dependency-free PWA; this manifest exists only for the dev/test tooling (browser UI tests).",
   "scripts": {
     "test:static": "node tests/ui-icons.test.mjs && node tests/no-hardcoded-arabic.test.mjs && node tests/data-health.test.mjs && node tests/judge.test.mjs && node tests/namepairs.test.mjs && node tests/nearpairs-regression.test.mjs && node tests/ocr-eng-only.test.mjs && node tests/ocr-latin-gate.test.mjs && node tests/ocr-conf-gate.test.mjs && node tests/stage-a.test.mjs && node tests/stage-b.test.mjs",
-    "test:browser": "node tests/ui-browser.test.mjs && node tests/network-isolation.test.mjs"
+    "test:browser": "node tests/ui-browser.test.mjs && node tests/network-isolation.test.mjs && node tests/cas-sweep.test.mjs",
+    "test:cas": "node tests/cas-sweep.test.mjs"
   },
   "devDependencies": {
     "@napi-rs/canvas": "^1.0.9",

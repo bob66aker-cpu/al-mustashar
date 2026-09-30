@@ -1024,6 +1024,7 @@
    * database chips and the professional tools row. Without this the user
    * kept reading cards in the previous language. */
   document.addEventListener('langchange', function () {
+    wireAboutFeedback();
     mountJurisdiction();
     if (lastResults.length) render(lastResults, $('#query').value.trim());
     if (lastScanResults.length) render(lastScanResults, '', '#scanResults');
@@ -2494,6 +2495,37 @@
     }
   }
 
+  /* قناة الملاحظات — docs/FEEDBACK.md.
+   * صفر تحليلات وصفر إرسال تلقائي: هذه الروابط تفتح برنامج البريد أو واتساب
+   * ويكتب المستخدم بنفسه. ما يُبنى هنا هو العنوان فقط: وسم + الإصدار + رمز
+   * اللغة + سطر موضوع ثابت من القاموس. لا يدخل في أي رابط نصّ بحث المستخدم ولا
+   * صورة ولا سجل — والغرض من الحارس أن يثبت ذلك. */
+  function wireAboutFeedback() {
+    const mail = $('#aboutFeedbackMail'), org = $('#aboutOrgLink'), wa = $('#aboutWaLink');
+    if (!mail && !org && !wa) return;
+    const addr = (($('#aboutEmail') || {}).textContent || '').trim();
+    if (!addr) return;
+    const ver = window.__appVersion || ((window.__versionInfo || {}).version) || '';
+    const lang = document.documentElement.lang || 'ar';
+    if (mail) {
+      mail.href = 'mailto:' + addr + '?subject=' + encodeURIComponent(
+        t('about.feedback.mail.tag', '[ملاحظة]') + ' ' + ver + ' · ' + lang + ' — ' +
+        t('about.feedback.mail.subject', 'ملاحظة على التطبيق'));
+    }
+    if (org) {
+      org.href = 'mailto:' + addr + '?subject=' + encodeURIComponent(
+        t('about.feedback.org.tag', '[جهة]') + ' ' + ver + ' · ' + lang + ' — ' +
+        t('about.feedback.org.subject', 'طلب من جهة'));
+    }
+    if (wa) {
+      const appUrl = (wa.getAttribute('data-app-url') || '').trim();
+      if (appUrl) {
+        wa.href = 'https://wa.me/?text=' + encodeURIComponent(
+          t('about.feedback.wa.text', 'المستشار الزراعي — تطبيق للتحقق من المبيدات.') + ' ' + appUrl);
+      }
+    }
+  }
+
   /* About page: version + release date come from the real version file */
   function fillAboutMeta() {
     fetch('version.json', { cache: 'no-store' })
@@ -2503,6 +2535,8 @@
         const v = $('#aboutVersion'), d = $('#aboutDate');
         if (v && info.version) v.textContent = info.version;
         if (d && info.released) d.textContent = info.released;
+        window.__versionInfo = info;
+        wireAboutFeedback();   /* الإصدار داخل موضوع الرسالة، فيُبنى بعد الجلب */
       }).catch(() => {});
   }
 
@@ -2626,6 +2660,7 @@
   loadAll();
   checkVersion();
   fillAboutMeta();
+  wireAboutFeedback();   /* الروابط تُبنى فوراً، وتُعاد بناؤها بعد جلب الإصدار */
   updatePrepPanel();          // works even if the SW is still installing
   refreshInstallCard();       // 2.1: show/hide the install card on boot too
 })();

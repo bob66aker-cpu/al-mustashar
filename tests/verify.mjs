@@ -312,7 +312,7 @@ check('OCR engine carries the a3 early-confirm lock (DB-confirmed reads survive 
       && o.includes("via: 'ladder_confirm'")
       && o.includes('if (earlyLock) break;')
       && o.includes('if (!earlyLock && (exactHit || hasValidCas([...fusionCAS])))'); })());
-check('sw is v35 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v35'")
+check('sw is v36 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v36'")
   && sw5.includes("'./src/scan-live.js'")
   && sw5.includes("OCR_CACHE = 'mustashar-ocr'")
   && OCR_RUNTIME_FILES.every(f => sw5.includes(f.replace('./', '')))
@@ -410,7 +410,7 @@ check('V2: still self-hosted, no CDN, eng-only engine',
   ocrMod.includes("'vendor/tesseract/worker.min.js'")
   && !ocrMod.includes("'eng+ara'") && !/https:\/\/cdn/.test(ocrMod));
 
-/* ---------- 1.18.0 «جولة الصدق»: نصوص وإسناد وتواريخ (أوامر المدير) ---------- */
+/* ---------- 1.19.0 «جولة الصدق»: نصوص وإسناد وتواريخ (أوامر المدير) ---------- */
 const i18nSrc = fs.readFileSync('src/i18n.js', 'utf8');
 const appSrc = fs.readFileSync('src/app.js', 'utf8');
 const htmlSrc = fs.readFileSync('index.html', 'utf8');
@@ -480,6 +480,57 @@ const nextView = htmlSrc.indexOf('class="view" id="view-', aboutPos + 10);
 check('the beta badge still exists exactly once, inside the about view only',
   badgePos > aboutPos && (htmlSrc.match(/id="betaBadge"/g) || []).length === 1
   && (nextView < 0 || badgePos < nextView), 'badge=' + badgePos + ' about=' + aboutPos);
+
+/* ---------- 1.19.0 قناة الملاحظات: الأزرار والنصوص وثبات الروابط ---------- */
+const fbKeys = ['about.feedback.title', 'about.feedback.lead', 'about.feedback.mail', 'about.feedback.wa',
+  'about.feedback.addr', 'about.feedback.org', 'about.feedback.org.link', 'about.feedback.mail.tag',
+  'about.feedback.org.tag', 'about.feedback.mail.subject', 'about.feedback.org.subject', 'about.feedback.wa.text'];
+const missing = fbKeys.filter(k => valAll(i18nSrc, k).length !== 4);
+check('every feedback string exists in all 4 dictionaries (no Arabic hardcoded in markup)',
+  missing.length === 0, missing.join(','));
+check('the feedback card lives inside the about view with three stable controls',
+  /id="aboutFeedbackCard"/.test(htmlSrc) && /id="aboutFeedbackMail"/.test(htmlSrc)
+  && /id="aboutWaLink"/.test(htmlSrc) && /id="aboutOrgLink"/.test(htmlSrc)
+  && /id="aboutEmail"/.test(htmlSrc)
+  && htmlSrc.indexOf('id="aboutFeedbackCard"') > htmlSrc.indexOf('id="view-about"'));
+check('the address is shown as selectable TEXT beside the buttons (mailto alone is not enough)',
+  /user-select:\s*all/.test(htmlSrc) && /<span class="addr" id="aboutEmail"[^>]*>bob66aker@gmail.com<\/span>/.test(htmlSrc));
+/* wa.me: الرابط يسكن رابط التطبيق فقط — لا بحث ولا صورة ولا سجل */
+const waTxt = valAll(i18nSrc, 'about.feedback.wa.text');
+check('the WhatsApp intro is static in every language and carries no link or payload of its own',
+  waTxt.length === 4 && waTxt.every(x => !/https?:|data:|\{\{|\$\{/.test(x)), waTxt.map(x => x.slice(0, 20)).join(' | '));
+check('the WhatsApp link is built from that static text + the app URL only (no user data)',
+  /wa\.href = 'https:\/\/wa\.me\/\?text=' \+ encodeURIComponent\(/.test(appSrc)
+  && /t\('about\.feedback\.wa\.text'/.test(appSrc)
+  && /wa\.getAttribute\('data-app-url'\)/.test(appSrc)
+  && !/query|scanText|lastResults|localStorage/.test(
+    appSrc.slice(appSrc.indexOf('function wireAboutFeedback'), appSrc.indexOf('function fillAboutMeta'))),
+  'wireAboutFeedback body');
+check('the WhatsApp link is external and safe: wa.me + rel=noopener + the app URL is the live one',
+  /href="https:\/\/wa\.me\/\?text=/.test(htmlSrc) && /rel="noopener noreferrer"/.test(htmlSrc)
+  && /data-app-url="https:\/\/al-mustashar\.pages\.dev"/.test(htmlSrc));
+/* mailto: الموضوع يحمل الإصدار واللغة، ووسم [جهة] يميّز طلب الجهة */
+check('both mailto subjects are built from tag + version + current language + a dictionary subject',
+  /mailto:' \+ addr \+ '\?subject=' \+ encodeURIComponent\(/.test(appSrc)
+  && /const ver = window\.__appVersion/.test(appSrc) && /const lang = document\.documentElement\.lang/.test(appSrc)
+  && (appSrc.match(/t\('about\.feedback\.(mail|org)\.tag'/g) || []).length === 2);
+const orgTags = valAll(i18nSrc, 'about.feedback.org.tag');
+check('the organisation subject starts with the [جهة] marker in all 4 dictionaries',
+  orgTags.length === 4 && orgTags.every(x => x.trim().indexOf('[جهة]') === 0), orgTags.join(' '));
+check('the organisation line promises nothing and claims no official endorsement',
+  /^(?!.*(معتمد|معتمدة|رسمي|رسمية)).*$/s.test(valAll(i18nSrc, 'about.feedback.org')[0] + valAll(i18nSrc, 'about.feedback.org.link')[0]),
+  valAll(i18nSrc, 'about.feedback.org')[0]);
+/* صفر تحليلات وصفر إرسال تلقائي */
+check('the address lives in exactly three places: two mailto hrefs and the copyable text (no beacon, no auto-send)',
+  (appSrc.match(/bob66aker@gmail\.com/g) || []).length === 0
+  && (htmlSrc.match(/mailto:bob66aker@gmail\.com/g) || []).length === 2
+  && (htmlSrc.match(/>bob66aker@gmail\.com</g) || []).length === 1
+  && !/sendBeacon|gtag|analytics|fetch\('mailto/.test(appSrc));
+check('docs/FEEDBACK.md exists and states the privacy and priority rules',
+  fs.existsSync('docs/FEEDBACK.md')
+  && /bob66aker@gmail\.com/.test(fs.readFileSync('docs/FEEDBACK.md', 'utf8'))
+  && /أولوية مطلقة/.test(fs.readFileSync('docs/FEEDBACK.md', 'utf8'))
+  && /لا كلمات مرور/.test(fs.readFileSync('docs/FEEDBACK.md', 'utf8')));
 
 /* ---------- summary ---------- */
 console.log('\n==============================');

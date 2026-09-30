@@ -758,6 +758,14 @@
     .info-rows .v { font-weight: 700; overflow-wrap: anywhere; }
     /* رابط الشيفرة هدف لمس لا نصّ: 44px كحدّ أدنى مثل بقية العناصر التفاعلية */
     .info-rows .v a { display: inline-flex; align-items: center; min-height: 44px; color: var(--primary-strong); }
+    /* قناة الملاحظات: صفّ إجراءات + عنوان بريد قابل للنسخ (فتح mailto
+       لا يضمن وجود تطبيق بريد مهيّأ على الجهاز) */
+    .feedback-actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 10px 0 4px; }
+    .feedback-actions a { display: inline-flex; align-items: center; min-height: 44px; }
+    .feedback-addr { margin: 6px 0 0; font-size: 14px; color: var(--muted); }
+    .feedback-addr .addr { user-select: all; direction: ltr; unicode-bidi: isolate; color: var(--text); font-weight: 700; }
+    .feedback-org { margin: 10px 0 0; font-size: 14px; }
+    .feedback-org a { min-height: 44px; display: inline-flex; align-items: center; }
     .fold summary {
       list-style: none; cursor: pointer; user-select: none;
       display: flex; align-items: center; gap: 10px; min-height: 48px;
@@ -1359,6 +1367,24 @@
       </a>
 
       <button id="supportBtn" class="btn-outline support-btn" hidden></button>
+
+      <details class="card fold" id="aboutFeedbackCard" open>
+        <summary>
+          <span data-icon="report"></span>
+          <span class="ttl" data-i18n="about.feedback.title">الملاحظات والمشاكل</span>
+          <span class="cv down" data-icon="chevron"></span>
+          <span class="cv up" data-icon="chevron-open"></span>
+        </summary>
+        <div class="body">
+          <p data-i18n="about.feedback.lead">ما خطأ في حالة مادة أو سلامة نتيجة؟ أرسله أولاً — يُعالَج قبل أي طلب آخر.</p>
+          <div class="feedback-actions">
+            <a class="btn-outline" id="aboutFeedbackMail" href="mailto:bob66aker@gmail.com"><span data-icon="report"></span><span data-i18n="about.feedback.mail">أرسل ملاحظاتك</span></a>
+            <a class="btn-outline" id="aboutWaLink" data-app-url="https://al-mustashar.pages.dev" href="https://wa.me/?text=https%3A%2F%2Fal-mustashar.pages.dev" target="_blank" rel="noopener noreferrer"><span data-icon="share"></span><span data-i18n="about.feedback.wa">شارك عبر واتساب</span></a>
+          </div>
+          <p class="feedback-addr"><span data-i18n="about.feedback.addr">البريد الإلكتروني:</span> <span class="addr" id="aboutEmail" dir="ltr">bob66aker@gmail.com</span></p>
+          <p class="feedback-org"><span data-i18n="about.feedback.org">تدير مؤسسة أو جهة؟</span> <a id="aboutOrgLink" href="mailto:bob66aker@gmail.com" data-i18n="about.feedback.org.link">تواصل معنا</a></p>
+        </div>
+      </details>
 
       <div class="alert-box">
         <span data-icon="neutral"></span>

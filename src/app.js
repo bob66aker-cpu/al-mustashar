@@ -741,11 +741,7 @@
     }
     const title = $('#resultTitle');
     if (title) title.textContent = t('results.title2', 'نتائج الفحص') + (q ? t('results.for', ' لـ «{q}»').replace('{q}', q) : '');
-    if (!results.length) {
-      box.innerHTML = '<div class="notice warn"><b>' + t('results.none.t', 'لم يتم العثور على تطابق موثوق') + '</b><br>'
-        + t('results.none.b', 'عدم العثور على المادة لا يعني أنها مسموحة.') + '</div>';
-      return;
-    }
+
     /* Prohibited-list warning (Libya decree 248): rendered only when a row
      * from that database actually matched (≥80%, enforced by SearchCore) —
      * it is never assumed or invented. Merged from the Base44 exploration. */
@@ -776,6 +772,18 @@
       ? cards.applyContext(results, ctx)
       : (showDetails ? results : results.filter(x => x.k === 'libya-248' || x.k === 'libya-500'));
     const prohibited = results.filter(x => x.k === 'libya-248');
+    /* The notice is owed to the farmer whenever the DISPLAYED list is empty —
+     * whether the engine matched nothing, or farmer-mode context removed every
+     * row it matched (an EU/EPA-only substance). The second case used to
+     * leave a bare box, and a bare box is the one thing that can be read as
+     * "nothing to worry about"; the sentence below is what rules that out.
+     * The engine's own result and every ban banner are computed from the
+     * UNFILTERED list above and below, so this can only ever add a message. */
+    if (!shownResults.length) {
+      box.innerHTML = '<div class="notice warn"><b>' + t('results.none.t', 'لم يتم العثور على تطابق موثوق') + '</b><br>'
+        + t('results.none.b', 'عدم العثور على المادة لا يعني أنها مسموحة.') + '</div>';
+      return;
+    }
     const disclaimerHtml = '<div class="disclaimer-strip" data-i18n="disclaimer.strip">'
       + t('disclaimer.strip', 'هذه الأداة مساندة وليست حكمًا قانونيًا — المرجع قرارات وزارة الزراعة والجهات الرسمية.')
       + '</div>';

@@ -259,7 +259,7 @@
           + '<span>' + esc(sourceLabel(k)) + '</span></button>';
       }).join('');
       return '<section class="card jur-card" id="jurCard">'
-        + '<h3>' + esc(t('jur.title', 'اختر الجهة التنظيمية')) + '</h3>'
+        + '<h2>' + esc(t('jur.title', 'اختر الجهة التنظيمية')) + '</h2>'
         + '<p class="jur-sub">' + esc(t('jur.sub', 'ستظهر النتائج من هذه الجهة وحدها.')) + '</p>'
         + '<div class="jur-row" id="jurRow" role="group" aria-label="' + esc(t('jur.title', 'اختر الجهة التنظيمية')) + '">' + opts + '</div>'
         + '<p class="jur-note"><span data-icon="info"></span> ' + esc(t('jur.note',

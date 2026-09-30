@@ -180,7 +180,7 @@
     .view { display: block; }
     .view[hidden] { display: none; }
     .page-head { margin: 4px 0 14px; }
-    .page-head h2 { font-size: 22px; font-weight: 700; letter-spacing: -0.01em; }
+    .page-head h1 { font-size: 22px; font-weight: 700; letter-spacing: -0.01em; }
     .page-head p { color: var(--muted); font-size: 14px; margin-top: 4px; }
 
     /* ============ cards ============ */
@@ -192,6 +192,15 @@
       margin-top: 12px;
     }
     .card h3 { font-size: 17px; font-weight: 700; }
+    /* Section titles promoted to h1 (2026-09-30): the routed views and the
+       legend carried no level-one heading, which axe reported on each of
+       them, and the about view stepped h1 -> h3. Only the tag moved; these
+       three rules hold the size the h3 rule above gives them, so nothing
+       on screen changes. */
+    .jur-card h2 { font-size: 17px; font-weight: 700; }
+    #prepPanel h2 { font-size: 17px; font-weight: 700; }
+    #view-about .card h2 { font-size: 17px; font-weight: 700; }
+    #view-legend .card h2 { font-size: 17px; font-weight: 700; }
 
     /* ============ home: hero ============ */
     .hero {
@@ -666,7 +675,7 @@
       display: flex; justify-content: space-between; align-items: center;
       gap: 8px; margin: 0 0 8px;
     }
-    .history-head h2 { font-size: 20px; font-weight: 700; }
+    .history-head h1 { font-size: 20px; font-weight: 700; }
     .history-item {
       display: flex; justify-content: space-between; align-items: center; gap: 8px;
       padding: 12px; min-height: 44px;
@@ -1030,7 +1039,7 @@
     <!-- ================= SEARCH ================= -->
     <section class="view" id="view-search" data-view="search" hidden>
       <div class="page-head">
-        <h2 data-i18n="intro.h2">اعرف المادة قبل أن تستخدمها.</h2>
+        <h1 data-i18n="intro.h2">اعرف المادة قبل أن تستخدمها.</h1>
         <p data-i18n="intro.p">ابحث بالاسم أو رقم CAS. ليبيا هي المرجع الأول، والمصادر الدولية للمقارنة فقط. لا تعرض النتيجة موافقة قانونية إذا لم يكن التطابق موثوقًا.</p>
       </div>
 
@@ -1076,7 +1085,7 @@
     <!-- ================= SCAN ================= -->
     <section class="view" id="view-scan" data-view="scan" hidden>
       <div class="page-head">
-        <h2 data-i18n="scan.page">المسح الذكي</h2>
+        <h1 data-i18n="scan.page">المسح الذكي</h1>
       </div>
 
       <div class="scan-cards">
@@ -1156,7 +1165,7 @@
     <section class="view" id="view-history" data-view="history" hidden>
       <section class="history-panel" id="historyPanel">
         <div class="history-head">
-          <h2 data-i18n="history.h2">سجل البحث</h2>
+          <h1 data-i18n="history.h2">سجل البحث</h1>
           <button class="icon-btn" id="historyClose" type="button" data-i18n-title="history.close">
             <span data-icon="close"></span>
           </button>
@@ -1171,7 +1180,7 @@
     <!-- ================= DATA ================= -->
     <section class="view" id="view-data" data-view="data" hidden>
       <div class="page-head">
-        <h2 data-i18n="data.title">القواعد</h2>
+        <h1 data-i18n="data.title">القواعد</h1>
         <p><span id="dbState" data-i18n="db.initial">جاري تجهيز القواعد</span> · <span id="dbCount">...</span></p>
       </div>
 
@@ -1254,7 +1263,7 @@
 
       <section class="card" id="prepPanel" aria-label="تجهيز العمل بدون إنترنت">
         <div class="history-head">
-          <h3 data-i18n="prep.h2">تجهيز العمل بدون إنترنت</h3>
+          <h2 data-i18n="prep.h2">تجهيز العمل بدون إنترنت</h2>
           <span class="chip prep-state" id="prepState" data-i18n="prep.checking">جارٍ الفحص…</span>
         </div>
         <ul class="prep-list">
@@ -1284,7 +1293,7 @@
 
       <div class="card">
         <span class="beta-badge" id="betaBadge" data-i18n="badge.beta">تجريبي للمراجعة الميدانية</span>
-        <h3 data-i18n="about.info.title">معلومات التطبيق</h3>
+        <h2 data-i18n="about.info.title">معلومات التطبيق</h2>
         <div class="info-rows" style="margin-top:6px">
           <div class="r"><span class="k" data-i18n="about.info.version">الإصدار</span><span class="v" id="aboutVersion">—</span></div>
           <div class="r"><span class="k" data-i18n="about.info.date">تاريخ الإصدار</span><span class="v" id="aboutDate">—</span></div>
@@ -1357,12 +1366,12 @@
     <!-- ================= LEGEND — شرح الرموز ================= -->
     <section class="view" id="view-legend" data-view="legend" hidden>
       <div class="page-head">
-        <h2 data-i18n="legend.title">شرح الرموز</h2>
+        <h1 data-i18n="legend.title">شرح الرموز</h1>
         <p><a href="#/about" data-i18n="legend.back">عودة إلى حول</a></p>
       </div>
 
       <div class="card">
-        <h3 data-i18n="legend.h.status">رموز الحالة (قرار 500 لسنة 2026)</h3>
+        <h2 data-i18n="legend.h.status">رموز الحالة (قرار 500 لسنة 2026)</h3>
         <div class="lg-row">
           <strong class="lg-code">Approved</strong>
           <p class="lg-body" data-i18n="st.500.approved.explain"></p>
@@ -1384,7 +1393,7 @@
       </div>
 
       <div class="card">
-        <h3 data-i18n="legend.h.category">رموز التصنيف الوظيفي</h3>
+        <h2 data-i18n="legend.h.category">رموز التصنيف الوظيفي</h3>
         <table class="legend-table">
           <thead><tr><th data-i18n="legend.col.code">الرمز</th><th data-i18n="legend.col.meaning">المعنى</th></tr></thead>
           <tbody>

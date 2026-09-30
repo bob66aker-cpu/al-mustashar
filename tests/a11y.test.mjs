@@ -9,10 +9,12 @@
  * accessible name of their own. axe called that critical, and it is the kind
  * of thing a screen reader announces as an unlabelled field.
  *
- * Moderate findings are reported but do not fail the gate, because the gate
- * is stated as critical-only. They are printed so a later round can see them
- * rather than discover them: a level-one heading is present on the document
- * but not on every routed view, and the about view steps h1 -> h3.
+ * The second round (2026-09-30) closed the two heading findings as well: the
+ * routed views carried no level-one heading and the about view stepped
+ * h1 -> h3. They are no longer printed notes but part of the gate — exactly
+ * one VISIBLE h1 per view and no level that skips a step, measured on the
+ * rendered page across all seven views. Other moderate findings stay notes,
+ * because the stated gate is the heading structure and the critical set.
  */
 import puppeteer from 'puppeteer-core';
 import { readFileSync } from 'node:fs';
@@ -21,7 +23,7 @@ const CHROME = process.env.CHROME || '/home/daytona/.cache/ms-playwright/chromiu
 const BASE = process.env.BASE_URL || 'http://127.0.0.1:8080';
 const AXE_PATH = process.env.AXE_PATH || '/home/daytona/lh/node_modules/axe-core/axe.min.js';
 const AXE = readFileSync(AXE_PATH, 'utf8');
-const VIEWS = ['home', 'search', 'scan', 'history', 'data', 'about'];
+const VIEWS = ['home', 'search', 'scan', 'history', 'data', 'about', 'legend'];
 
 let pass = 0, fail = 0;
 const check = (name, ok, detail) => {
@@ -58,6 +60,31 @@ try {
     const crit = res.filter(x => x.impact === 'critical');
     check('view ' + v + ': zero critical violations', crit.length === 0,
       crit.map(c => c.id + ' (' + c.nodes + ' nodes) ' + c.sample.join(' / ')).join(' | '));
+
+    /* The heading structure of the page as it is actually rendered — an
+     * element that exists but is hidden is not a heading the farmer can
+     * reach, so visibility is part of the measurement, not the DOM alone. */
+    const head = await page.evaluate(() => {
+      const vis = el => {
+        const r = el.getBoundingClientRect();
+        const cs = getComputedStyle(el);
+        return r.width > 0 && r.height > 0 && cs.display !== 'none' && cs.visibility !== 'hidden';
+      };
+      const levels = [...document.querySelectorAll('h1,h2,h3,h4,h5,h6')].filter(vis)
+        .map(h => Number(h.tagName[1]));
+      const jumps = [];
+      for (let i = 1; i < levels.length; i++) {
+        if (levels[i] - levels[i - 1] > 1) jumps.push(levels[i - 1] + '->' + levels[i]);
+      }
+      return { h1: levels.filter(l => l === 1).length, levels, jumps };
+    });
+    check('view ' + v + ': exactly one visible level-one heading', head.h1 === 1,
+      'h1=' + head.h1 + ' levels=' + head.levels.join(','));
+    check('view ' + v + ': no heading level skips a step', head.jumps.length === 0,
+      'jumps=' + (head.jumps.join(' ') || 'none'));
+    const headingRules = res.filter(x => x.id === 'page-has-heading-one' || x.id === 'heading-order');
+    check('view ' + v + ': axe reports no heading violation', headingRules.length === 0,
+      headingRules.map(x => x.id).join(' '));
     for (const x of res.filter(c => c.impact !== 'critical')) {
       console.log('       note [' + x.impact + '] ' + v + ': ' + x.id + ' — ' + x.help + ' (' + x.nodes + ')');
     }

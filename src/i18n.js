@@ -1500,6 +1500,16 @@
       var v = dict[el.getAttribute('data-i18n-title')];
       if (v != null) el.setAttribute('title', v);
     });
+    /* Accessible names for controls that are triggered programmatically.
+     * The two file inputs are 1px and clipped, and are opened by the visible
+     * scan buttons; without a name they are still in the accessibility tree
+     * as unnamed form controls, which axe reports as a critical violation and
+     * which a screen reader announces as an unlabelled field. The same
+     * mechanism as data-i18n-title, so the name follows the language. */
+    document.querySelectorAll('[data-i18n-aria-label]').forEach(function (el) {
+      var v = dict[el.getAttribute('data-i18n-aria-label')];
+      if (v != null) el.setAttribute('aria-label', v);
+    });
     var sel = document.getElementById('langSelect');
     if (sel && sel.value !== current) sel.value = current;
   }

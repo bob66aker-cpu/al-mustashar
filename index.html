@@ -1107,8 +1107,10 @@
         <button class="btn-outline" type="button" id="liveStopBtn"><span data-icon="close"></span><span data-i18n="live.stop">إيقاف الكاميرا</span></button>
       </div>
 
-      <input id="camera" type="file" accept="image/*" capture="environment">
-      <input id="gallery" type="file" accept="image/*">
+      <input id="camera" type="file" accept="image/*" capture="environment"
+             data-i18n-aria-label="tool.camera" aria-label="تصوير الملصق">
+      <input id="gallery" type="file" accept="image/*"
+             data-i18n-aria-label="scan.gallery" aria-label="اختيار صورة من المعرض">
       <div id="previewRow" class="preview-row" hidden>
         <img id="preview" class="preview" alt="">
         <button class="preview-cancel" type="button" id="cancelImageBtn" data-i18n-title="scan.cancelImage" aria-label="إزالة الصورة والنتائج">

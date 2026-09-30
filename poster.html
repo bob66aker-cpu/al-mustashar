@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>بوستر — المستشار الزراعي</title>
+<meta name="description" content="ورقة طباعة A4 تحمل رمز QR للتطبيق ورابطه.">
+<link rel="icon" href="icons/icon-192.png" type="image/png">
+<style>
+  /* A4 = 210×297mm. الهوامش مقصودة للطابعة المنزلية. */
+  @page { size: A4 portrait; margin: 12mm; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "IBM Plex Sans Arabic", "Segoe UI", Tahoma, system-ui, sans-serif;
+    background: #eef2ef; color: #121e18; print-color-adjust: exact; -webkit-print-color-adjust: exact;
+  }
+  .sheet {
+    width: 186mm; min-height: 273mm; margin: 10mm auto; background: #ffffff;
+    border: 1px solid #d6ded9; border-radius: 4mm; padding: 16mm 14mm;
+    display: flex; flex-direction: column; gap: 6mm; text-align: center;
+  }
+  .mark { width: 26mm; height: 26mm; margin: 0 auto; border-radius: 50%;
+          background: #1f6b45; color: #ffffff; display: flex; align-items: center;
+          justify-content: center; font-size: 15mm; line-height: 1; }
+  h1 { font-size: 30pt; line-height: 1.25; color: #14512f; }
+  .latin { font-size: 11pt; letter-spacing: .18em; color: #5a6b62; direction: ltr; }
+  .lead { font-size: 16pt; line-height: 1.6; color: #1d2a23; font-weight: 600; }
+  .qr { width: 108mm; height: 108mm; margin: 2mm auto 0; }
+  .qr svg { width: 100%; height: 100%; }
+  .url { font-size: 11pt; color: #3c4a43; direction: ltr; letter-spacing: .02em;
+         border-top: 1px dashed #c3cdc7; padding-top: 4mm; word-break: break-all; }
+  .langs { display: flex; justify-content: center; gap: 6mm; flex-wrap: wrap;
+           font-size: 11pt; color: #37463e; border-top: 1px solid #e2e9e5; padding-top: 4mm; }
+  .langs span { padding: 1mm 3mm; border: 1px solid #cfdad3; border-radius: 2mm; }
+  .foot { margin-top: auto; font-size: 9pt; color: #55635b; line-height: 1.7;
+          border-top: 1px solid #e2e9e5; padding-top: 4mm; direction: ltr; }
+  .foot a { color: #1f6b45; word-break: break-all; }
+  .note { font-size: 8.5pt; color: #6b7970; }
+  .screen-hint { width: 186mm; margin: 0 auto 8mm; font-size: 9pt; color: #5a6b62; }
+  @media print {
+    body { background: #ffffff; }
+    .screen-hint { display: none; }
+    .sheet { margin: 0; border: 0; width: auto; min-height: auto; }
+  }
+</style>
+</head>
+<body>
+<p class="screen-hint">للطباعة: Ctrl/Cmd + P ثم اختر A4 بلا هوامش متصفح. لاScaling.</p>
+<div class="sheet">
+  <div class="mark" aria-hidden="true">&#9679;</div>
+  <h1>المستشار الزراعي</h1>
+  <p class="latin">AGRICULTURAL ADVISOR</p>
+  <p class="lead">صوّر ملصق المبيد فاعرف حكمه — يعمل دون إنترنت</p>
+  <div class="qr"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 37 37" shape-rendering="crispEdges" role="img" aria-label="QR"><rect width="37" height="37" fill="#ffffff"/><path d="M4 4h7v1h-7zM13 4h1v1h-1zM15 4h1v1h-1zM18 4h7v1h-7zM26 4h7v1h-7zM4 5h1v1h-1zM10 5h1v1h-1zM12 5h1v1h-1zM15 5h4v1h-4zM21 5h2v1h-2zM24 5h1v1h-1zM26 5h1v1h-1zM32 5h1v1h-1zM4 6h1v1h-1zM6 6h3v1h-3zM10 6h1v1h-1zM12 6h3v1h-3zM16 6h3v1h-3zM22 6h1v1h-1zM24 6h1v1h-1zM26 6h1v1h-1zM28 6h3v1h-3zM32 6h1v1h-1zM4 7h1v1h-1zM6 7h3v1h-3zM10 7h1v1h-1zM14 7h4v1h-4zM21 7h1v1h-1zM23 7h1v1h-1zM26 7h1v1h-1zM28 7h3v1h-3zM32 7h1v1h-1zM4 8h1v1h-1zM6 8h3v1h-3zM10 8h1v1h-1zM13 8h2v1h-2zM16 8h1v1h-1zM20 8h2v1h-2zM23 8h2v1h-2zM26 8h1v1h-1zM28 8h3v1h-3zM32 8h1v1h-1zM4 9h1v1h-1zM10 9h1v1h-1zM13 9h1v1h-1zM20 9h1v1h-1zM22 9h2v1h-2zM26 9h1v1h-1zM32 9h1v1h-1zM4 10h7v1h-7zM12 10h1v1h-1zM14 10h1v1h-1zM16 10h1v1h-1zM18 10h1v1h-1zM20 10h1v1h-1zM22 10h1v1h-1zM24 10h1v1h-1zM26 10h7v1h-7zM13 11h2v1h-2zM19 11h3v1h-3zM5 12h3v1h-3zM9 12h2v1h-2zM13 12h1v1h-1zM15 12h8v1h-8zM30 12h2v1h-2zM5 13h2v1h-2zM8 13h1v1h-1zM11 13h2v1h-2zM14 13h2v1h-2zM18 13h2v1h-2zM21 13h3v1h-3zM25 13h4v1h-4zM30 13h1v1h-1zM32 13h1v1h-1zM4 14h1v1h-1zM6 14h2v1h-2zM9 14h2v1h-2zM14 14h3v1h-3zM18 14h1v1h-1zM21 14h2v1h-2zM26 14h2v1h-2zM30 14h2v1h-2zM5 15h1v1h-1zM8 15h2v1h-2zM13 15h1v1h-1zM15 15h1v1h-1zM20 15h1v1h-1zM22 15h1v1h-1zM32 15h1v1h-1zM4 16h1v1h-1zM6 16h2v1h-2zM10 16h2v1h-2zM13 16h1v1h-1zM17 16h1v1h-1zM19 16h1v1h-1zM21 16h1v1h-1zM25 16h1v1h-1zM27 16h1v1h-1zM30 16h3v1h-3zM4 17h3v1h-3zM8 17h1v1h-1zM11 17h1v1h-1zM14 17h1v1h-1zM16 17h2v1h-2zM21 17h3v1h-3zM26 17h2v1h-2zM29 17h2v1h-2zM32 17h1v1h-1zM5 18h2v1h-2zM9 18h2v1h-2zM13 18h1v1h-1zM15 18h4v1h-4zM22 18h3v1h-3zM26 18h4v1h-4zM31 18h2v1h-2zM6 19h1v1h-1zM11 19h3v1h-3zM15 19h2v1h-2zM20 19h1v1h-1zM28 19h2v1h-2zM32 19h1v1h-1zM5 20h1v1h-1zM10 20h1v1h-1zM13 20h5v1h-5zM20 20h1v1h-1zM22 20h1v1h-1zM25 20h1v1h-1zM28 20h2v1h-2zM5 21h2v1h-2zM8 21h1v1h-1zM11 21h1v1h-1zM13 21h2v1h-2zM18 21h1v1h-1zM20 21h1v1h-1zM22 21h1v1h-1zM24 21h1v1h-1zM27 21h1v1h-1zM29 21h1v1h-1zM4 22h1v1h-1zM6 22h2v1h-2zM10 22h1v1h-1zM12 22h1v1h-1zM15 22h1v1h-1zM19 22h2v1h-2zM24 22h1v1h-1zM26 22h1v1h-1zM29 22h1v1h-1zM6 23h1v1h-1zM9 23h1v1h-1zM11 23h1v1h-1zM13 23h1v1h-1zM15 23h1v1h-1zM17 23h2v1h-2zM21 23h2v1h-2zM25 23h2v1h-2zM28 23h3v1h-3zM32 23h1v1h-1zM5 24h1v1h-1zM8 24h1v1h-1zM10 24h1v1h-1zM17 24h1v1h-1zM20 24h9v1h-9zM30 24h2v1h-2zM12 25h2v1h-2zM15 25h1v1h-1zM17 25h2v1h-2zM20 25h1v1h-1zM24 25h1v1h-1zM28 25h2v1h-2zM32 25h1v1h-1zM4 26h7v1h-7zM14 26h1v1h-1zM16 26h2v1h-2zM22 26h3v1h-3zM26 26h1v1h-1zM28 26h1v1h-1zM30 26h2v1h-2zM4 27h1v1h-1zM10 27h1v1h-1zM12 27h1v1h-1zM17 27h2v1h-2zM24 27h1v1h-1zM28 27h1v1h-1zM31 27h2v1h-2zM4 28h1v1h-1zM6 28h3v1h-3zM10 28h1v1h-1zM14 28h1v1h-1zM17 28h1v1h-1zM19 28h1v1h-1zM22 28h1v1h-1zM24 28h8v1h-8zM4 29h1v1h-1zM6 29h3v1h-3zM10 29h1v1h-1zM12 29h1v1h-1zM15 29h2v1h-2zM20 29h2v1h-2zM23 29h1v1h-1zM28 29h1v1h-1zM30 29h2v1h-2zM4 30h1v1h-1zM6 30h3v1h-3zM10 30h1v1h-1zM12 30h6v1h-6zM19 30h3v1h-3zM24 30h1v1h-1zM27 30h1v1h-1zM29 30h2v1h-2zM32 30h1v1h-1zM4 31h1v1h-1zM10 31h1v1h-1zM12 31h2v1h-2zM17 31h1v1h-1zM20 31h1v1h-1zM24 31h1v1h-1zM28 31h1v1h-1zM31 31h1v1h-1zM4 32h7v1h-7zM14 32h7v1h-7zM22 32h6v1h-6zM31 32h1v1h-1z" fill="#121e18"/></svg></div>
+  <p class="url">https://al-mustashar.pages.dev</p>
+  <p class="langs" aria-label="languages">
+    <span>العربية</span><span>English</span><span>Français</span><span>中文</span>
+  </p>
+  <div class="foot">
+    <p>رخصة برمجيات حرّة: GNU AGPLv3</p>
+    <p>شيفرة هذا الإصدار: <a href="https://github.com/bob66aker-cpu/al-mustashar/tree/work-branch">https://github.com/bob66aker-cpu/al-mustashar/tree/work-branch</a></p>
+    <p class="note">مساندة معلوماتية — الحكم الملزم هو نص القرار الرسمي.</p>
+  </div>
+</div>
+</body>
+</html>

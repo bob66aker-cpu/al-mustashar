@@ -532,6 +532,55 @@ check('docs/FEEDBACK.md exists and states the privacy and priority rules',
   && /أولوية مطلقة/.test(fs.readFileSync('docs/FEEDBACK.md', 'utf8'))
   && /لا كلمات مرور/.test(fs.readFileSync('docs/FEEDBACK.md', 'utf8')));
 
+/* ---------- 1.19.0 مواد الوصول: بوستر + صفحة هبوط + خطة توزيع ---------- */
+const landingSrc = fs.existsSync('landing.html') ? fs.readFileSync('landing.html', 'utf8') : '';
+const posterSrc = fs.existsSync('poster.html') ? fs.readFileSync('poster.html', 'utf8') : '';
+const posterGen = fs.readFileSync('scripts/build-poster.cjs', 'utf8');
+
+check('landing.html exists and ships ZERO javascript (a static document survives any reader)',
+  landingSrc.length > 0 && !/<script/i.test(landingSrc) && !/\son\w+=/i.test(landingSrc));
+check('landing.html carries the social and language metadata',
+  /property="og:title"/.test(landingSrc) && /name="twitter:card"/.test(landingSrc)
+  && ['ar', 'en', 'fr', 'zh'].every(l => landingSrc.includes('hreflang="' + l + '"'))
+  && /hreflang="x-default"/.test(landingSrc) && /rel="canonical"/.test(landingSrc));
+const landingFlat = landingSrc.replace(/\s+/g, ' ');
+check('landing.html has a visible button to the app, the approved privacy line and the licence footer',
+  /<a class="cta" href="\.\/"/.test(landingSrc)
+  && landingFlat.includes('التطبيق لا يرفع صور الملصقات أو نصوص البحث')
+  && landingFlat.includes('The app does not upload label photos or search text')
+  && landingFlat.includes('AGPLv3') && /github\.com\/bob66aker-cpu\/al-mustashar/.test(landingSrc));
+check('landing.html leaks nothing from the running files (no databases, no CAS, no address, no internal paths)',
+  !/data\/[a-z]+\.json|cas_source|meta\.built|@[a-z0-9.-]+\.(com|ly|org)/i.test(landingSrc)
+  && !/src\/app\.js|version\.json|sw\.js/.test(landingSrc));
+check('the poster exists, is script-free and its QR is an inline SVG',
+  posterSrc.length > 0 && !/<script/i.test(posterSrc) && /<svg[^>]*viewBox/.test(posterSrc)
+  && !/<img\b/i.test(posterSrc));
+check('the poster shows the name, the one line, the four languages, the licence and the source link',
+  posterSrc.includes('المستشار الزراعي') && posterSrc.includes('صوّر ملصق المبيد فاعرف حكمه — يعمل دون إنترنت')
+  && ['العربية', 'English', 'Français', '中文'].every(x => posterSrc.includes(x))
+  && posterSrc.includes('AGPLv3') && posterSrc.includes('github.com/bob66aker-cpu/al-mustashar'));
+check('the poster carries no private operational data (no address, no channel, no counters)',
+  !/mailto:|wa\.me|whatsapp|tel:/i.test(posterSrc));
+check('the poster generator encodes offline with the vendored encoder (no CDN, no network call)',
+  /src',\s*'vendor',\s*'qrcodegen\.js'/.test(posterGen) && /vm\.runInContext/.test(posterGen)
+  && !/require\('(https?|node:https)'\)|fetch\(|cdn\./i.test(posterGen));
+check('the poster payload is the live publication URL only',
+  /APP_URL = arg\('--url', 'https:\/\/al-mustashar\.pages\.dev'\)/.test(posterGen)
+  && /QrCode\.encodeText\(text, qrcodegen\.QrCode\.Ecc\.MEDIUM\)/.test(posterGen));
+check('the real decoder test exists and compares the decoded text to the live URL',
+  fs.existsSync('tests/poster-qr.test.mjs')
+  && /zxing-reader\.min\.js/.test(fs.readFileSync('tests/poster-qr.test.mjs', 'utf8'))
+  && /text === LIVE_URL/.test(fs.readFileSync('tests/poster-qr.test.mjs', 'utf8')));
+check('the service worker does not hijack the two documents: they stay out of the shell and navigation is network-first',
+  !/landing\.html|poster\.html/.test(sw5.slice(sw5.indexOf('const SHELL'), sw5.indexOf('const DATA')))
+  && /req\.mode === 'navigate'/.test(sw5)
+  && /const preload = await e\.preloadResponse;[\s\S]{0,120}return await fetch\(req\)/.test(sw5));
+check('docs/DISTRIBUTION.md separates done-in-code from owner-steps and states the four-language caveat',
+  fs.existsSync('docs/DISTRIBUTION.md')
+  && /منجز برمجياً/.test(fs.readFileSync('docs/DISTRIBUTION.md', 'utf8'))
+  && /خطوة مالك يدوية/.test(fs.readFileSync('docs/DISTRIBUTION.md', 'utf8'))
+  && /أربع لغات في الواجهة لا تعني دعم ملاحظات/.test(fs.readFileSync('docs/DISTRIBUTION.md', 'utf8')));
+
 /* ---------- summary ---------- */
 console.log('\n==============================');
 console.log('PASS: ' + pass + '   FAIL: ' + fail);

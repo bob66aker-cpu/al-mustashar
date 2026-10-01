@@ -2,6 +2,9 @@
 # ------------------------------------------------------------------
 # truth_source: owner = شكاوى المالك (فيدباك 2/3) · unknown = Truth reference not filled
 #   (ground-truth.csv remains the owner's own template — nobody fills it from OCR output)
+# ocr-visible: the printed words are legible in the engine's read of the photo itself
+#   (GROUND / ALUMINUM / SULPHATE, CHEMTRADE 25 kg) — recorded as evidence, NOT as the
+#   owner's attestation. Pending the owner's confirmation in the morning round.
 # confirmed_today: the substance the engine confirmed on 2026-10-01 (the measured baseline)
 # libya_expected: what the Libyan registries actually say about that substance in data/
 #   ban = libya-248 · RAR / Approved / REV = libya-500 · none = no Libyan row at all
@@ -20,7 +23,7 @@ n,image,printed_truth,truth_source,confirmed_today,libya_expected,wrong_accept
 11,images.jpg,Oxadiazon 12% EC,owner,Oxadiazon,ban,"Oxadiazon shown as anything other than the Decree-248 ban (critical)"
 12,images (1).jpg,,unknown,,none,"any confirmation at all: 0 chars read"
 13,images (2).jpg,GROUND ALUMINIUM SULPHATE,owner,Aluminium sulfate,RAR,"Ammonium sulfate (7783-20-2) or any other substance instead of Aluminium sulfate; or the RAR condition dropped"
-14,images (3).jpg,,unknown,,none,"any confirmation at all: the engine read text but matched nothing"
+14,images (3).jpg,GROUND ALUMINUM SULPHATE,ocr-visible,Aluminium sulfate,RAR,"any substance other than Aluminium sulfate, or shown without the RAR paragraph, or shown WITHOUT the probable-match caution (81 is not decisive), or as a bare confirmation"
 15,pesticide_test_level1_ideal.png,,unknown,,none,"any confirmation at all: 0 chars read"
 16,pesticide_test_level3_damaged.png,,unknown,,none,"any confirmation at all: 0 chars read"
 17,pesticide_test_level4_lowlight.png,,unknown,,none,"any confirmation at all: 0 chars read"

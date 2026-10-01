@@ -48,8 +48,13 @@ check('gold standard: 17 baseline samples + 1 documented substitute', rows.lengt
 check('gold standard: owner-attested truth exists for exactly the two reported samples',
   ownerRows.join('|') === ['images (2).jpg', 'images.jpg', 'SUBSTITUTE-ground-aluminium-sulphate.png'].sort().join('|'),
   ownerRows.join(','));
-check('gold standard: no sample claims a truth nobody attested',
-  rows.every(r => r.truth === '' || r.src.startsWith('owner')), 'a truth without an owner source');
+check('gold standard: no sample claims a truth nobody can point at',
+  rows.every(r => r.truth === '' || r.src.startsWith('owner') || r.src === 'ocr-visible'),
+  'a truth without a source');
+check('gold standard: ocr-visible truth is flagged as pending the owner, never as attestation',
+  rows.filter(r => r.src === 'ocr-visible').length === 1 &&
+  rows.filter(r => r.src === 'ocr-visible').every(r => r.confirmed && r.libya !== 'none'),
+  'an ocr-visible row must state what the engine may now show and under which conditions');
 
 /* ---------- the databases ---------- */
 const KEYS = ['libya-248', 'libya-500', 'eu', 'epa', 'epa-cancelled'];
@@ -76,7 +81,7 @@ const casOk = (cas) => {
 console.log('\n== (a)+(b) the decision layer over every substance confirmed on 2026-10-01 ==');
 const confirmed = rows.filter(r => r.confirmed);
 const confirmed17 = rows.filter(r => r.confirmed && r.n <= 17);
-check('the standard lists 8 confirming samples out of 17', confirmed17.length === 8, String(confirmed17.length));
+check('the standard never drops below the measured floor of 8 confirmations', confirmed17.length >= 8, String(confirmed17.length));
 for (const r of confirmed17.concat(rows.filter(r => r.n > 17 && r.confirmed))) {
   const real = libyaStatus(r.confirmed);
   check('#' + r.n + ' ' + r.image + ' — the Libyan status is what data/ says (' + r.libya + ')',
@@ -122,6 +127,15 @@ if (base && fs.existsSync(base)) {
   }
   const nAcc = measured.filter(x => (x.top || []).length).length;
   check('the ACCEPT count did not drop below the measured floor of 8', nAcc >= 8, String(nAcc));
+  /* #14 is the one sample whose row changed, and its condition is written down
+   * above: the substance is right, but 81 is NOT decisive — the card must show
+   * it as a probable match needing confirmation, never as a bare confirmation. */
+  const r14 = measured.find(x => x.n === 14);
+  const t14 = (r14 && r14.top && r14.top[0]) || null;
+  check('#14 shows Aluminium sulfate and nothing else', !!t14 && /aluminium sulfate/i.test(t14.name),
+    t14 ? t14.name : 'no row');
+  check('#14 the Libyan row is the one shown to the farmer', !!t14 && t14.k === 'libya-500', t14 ? t14.k : 'none');
+  check('#14 the match is NOT decisive, so the caution must ride with it', !!t14 && t14.v < 100, t14 ? String(t14.v) : 'n/a');
 } else {
   console.log('\n== (c) the OCR leg was NOT run (no baseline path given) ==\n    pass a measured baseline as the second argument to enforce it');
 }

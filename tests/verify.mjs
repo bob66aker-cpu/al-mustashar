@@ -312,7 +312,7 @@ check('OCR engine carries the a3 early-confirm lock (DB-confirmed reads survive 
       && o.includes("via: 'ladder_confirm'")
       && o.includes('if (earlyLock) break;')
       && o.includes('if (!earlyLock && (exactHit || hasValidCas([...fusionCAS])))'); })());
-check('sw is v37 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v39'")
+check('sw is v37 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v40'")
   && sw5.includes("'./src/scan-live.js'")
   && sw5.includes("OCR_CACHE = 'mustashar-ocr'")
   && OCR_RUNTIME_FILES.every(f => sw5.includes(f.replace('./', '')))
@@ -707,6 +707,34 @@ check('read-fail: a browser test drives a real unreadable photo through the ship
   && /5\.jpg/.test(fs.readFileSync('tests/read-fail-gate.test.mjs', 'utf8'))
   && /ocr\.read\.fail|ocrMsg/.test(fs.readFileSync('tests/read-fail-gate.test.mjs', 'utf8'))
   && JSON.parse(fs.readFileSync('package.json', 'utf8')).scripts['test:browser'].includes('read-fail-gate.test.mjs'));
+
+/* ---------- 1.19.4 فيدباك 2: عبور الأسطر محسوب، والتسوية الإملائية مرفوضة بالأرقام ---------- */
+/* القاعدة: حارس المصدر يحرس القاعدة نفسها (نافذة ≤3 كلمات، لا عبور إلى سطر
+ * ضجيج، لا استبدال إملائي مدمج)، وحارس المعيار الذهبي يحرس النتيجة. */
+const ocrSrc2 = fs.readFileSync('src/ocr.js', 'utf8');
+check('cross-line: the window is bounded at three words (no four-word candidate is built)',
+  /a\[a\.length - 1\] \+ ' ' \+ b\[0\] \+ ' ' \+ c\[0\]/.test(ocrSrc2)
+  && !/a\[a\.length - 2\].*b\[1\]/.test(ocrSrc2));
+check('cross-line: the join walks adjacent lines only (no index skip)',
+  /for \(let i = 0; i \+ 1 < seq\.length; i\+\+\)/.test(ocrSrc2)
+  && /for \(let i = 0; i \+ 2 < seq\.length; i\+\+\)/.test(ocrSrc2));
+check('cross-line: a junk line is never crossed into (the junk gate runs before the join)',
+  ocrSrc2.indexOf('const junkOk') < ocrSrc2.indexOf('const seq ='));
+check('the rejected spelling expansion stays out of the engine',
+  ['sulphate\\/gi', 'sulphur\\/gi', 'aluminium\\/gi', 'SPELL_FOLD'].every(m => !ocrSrc2.includes(m)));
+check('feedback 2 has a fixed gate of its own',
+  fs.existsSync('tests/ocr-crossline-gate.test.mjs')
+  && /ALUMINIUM SULPHATE/.test(fs.readFileSync('tests/ocr-crossline-gate.test.mjs', 'utf8')));
+check('the substitutes are labelled as substitutes, never as the owner photo',
+  /بديل لا الصورة الأصلية/.test(fs.readFileSync('tests/fixtures/substitute-ground-aluminium.mjs', 'utf8'))
+  && fs.existsSync('tests/fixtures/labels/SUBSTITUTE-ground-aluminium-sulphate.png')
+  && fs.existsSync('tests/fixtures/labels/SUBSTITUTE-ground-aluminum-sulfate.png')
+  && fs.existsSync('tests/fixtures/labels/SUBSTITUTE-ground-aluminum-sulfate-nocas.png'));
+check('the 17-label baseline set is untouched by the substitutes (hard-coded list)',
+  (fs.readFileSync('tests/label-scan.mjs', 'utf8').match(/\.png'/g) || []).length === 3
+  && !/SUBSTITUTE/.test(fs.readFileSync('tests/label-scan.mjs', 'utf8')));
+check('the gold standard records #14 as engine-visible evidence, never as owner attestation',
+  /14,images \(3\)\.jpg,GROUND ALUMINUM SULPHATE,ocr-visible/.test(fs.readFileSync('tests/fixtures/labels/night-gold-standard.csv', 'utf8')));
 
 /* ---------- summary ---------- */
 console.log('\n==============================');

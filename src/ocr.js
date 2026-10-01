@@ -897,13 +897,16 @@
     const ctxOf = new Map();
     lines.forEach((l, i) => { if (!ctxOf.has(l)) ctxOf.set(l, lineCtx[i]); });
     const ordered = [...prio, ...lines.filter(l => !prio.has(l))];
-    const cands = new Set();
-    for (const line of ordered) {
-      const ai = !!ctxOf.get(line);
+    /* فيدباك 2 — الاسم المطبوع على ثلاثة أسطر (GROUND / ALUMINIUM /
+     * SULPHATE) كان يصمت تماماً: كل سطر كان يُعامَل مستقلاً فلم يُصنع
+     * المرشح «ALUMINIUM SULPHATE» أبداً. نجمع الآن كلمات السطرين
+     * المتجاورين بنافذة ≤3 كلمات، بترتيب القراءة، وبنفس مرشّحات الكلمة
+     * نفسها. الحدّ ضروري: نافذة أعرض أو قفز فوق سطر يُدخل ضجيج السطر
+     * التالي (رقم تشغيل، نسبة مئوية) إلى الاسم. */
+    const wordList = (line, ai) => {
       const min = ai ? 3 : 4;
-      if (opts.filterJunk && !ai && JUNK.test(line)) continue;   // V2: junk gate
       const clean = line.replace(/[^\w\s\u0600-\u06FF.-]/g, ' ').replace(/\s+/g, ' ').trim();
-      if (clean.length >= min) cands.add(clean);
+      if (clean.length < min) return { clean, words: [] };
       const words = clean.split(' ').filter(w =>
         w.length >= min &&
         /[A-Za-z\u0600-\u06FF]/.test(w) &&
@@ -911,9 +914,40 @@
         /* In AI context only pure alphabetic words qualify for the 3-char
            floor — no digits or punctuation fragments ("75%", "wt."). */
         (ai ? /^[A-Za-z\u0600-\u06FF]+$/.test(w) : true));
+      return { clean, words };
+    };
+    const junkOk = (line, ai) => !(opts.filterJunk && !ai && JUNK.test(line));
+    const cands = new Set();
+    for (const line of ordered) {
+      const ai = !!ctxOf.get(line);
+      if (!junkOk(line, ai)) continue;                             // V2: junk gate
+      const { clean, words } = wordList(line, ai);
+      if (clean.length >= (ai ? 3 : 4)) cands.add(clean);
       for (const w of words) cands.add(w);
       for (let i = 0; i + 1 < words.length; i++) cands.add(words[i] + ' ' + words[i + 1]);
       for (let i = 0; i + 2 < words.length; i++) cands.add(words[i] + ' ' + words[i + 1] + ' ' + words[i + 2]);
+    }
+    /* عبور الأسطر: مرشّحات ممتدّة على الحدّ الفاصل بين سطرين متجاورين
+     * بترتيب القراءة كما رُكّبت، لا بترتيب الأولوية. */
+    const seq = lines.map((l, i) => ({ l, ai: lineCtx[i] })).filter(x => junkOk(x.l, x.ai));
+    for (let i = 0; i + 1 < seq.length; i++) {
+      const a = wordList(seq[i].l, seq[i].ai).words;
+      const b = wordList(seq[i + 1].l, seq[i + 1].ai).words;
+      if (!a.length || !b.length) continue;
+      const last1 = a[a.length - 1], last2 = a.length > 1 ? a[a.length - 2] : null;
+      const first1 = b[0], first2 = b.length > 1 ? b[1] : null;
+      cands.add(last1 + ' ' + first1);
+      if (last2) cands.add(last2 + ' ' + last1 + ' ' + first1);
+      if (first2) cands.add(last1 + ' ' + first1 + ' ' + first2);
+    }
+    /* الاسم المنشور على ثلاثة أسطر كلٌّ منها كلمة واحدة: نافذة ثلاث كلمات
+     * تمتد على حدّين. أضيق ما يمكن: ثلاث كلمات متجاورة فقط. */
+    for (let i = 0; i + 2 < seq.length; i++) {
+      const a = wordList(seq[i].l, seq[i].ai).words;
+      const b = wordList(seq[i + 1].l, seq[i + 1].ai).words;
+      const c = wordList(seq[i + 2].l, seq[i + 2].ai).words;
+      if (!a.length || !b.length || !c.length) continue;
+      cands.add(a[a.length - 1] + ' ' + b[0] + ' ' + c[0]);
     }
     /* V2: a generous pool is fine — the database-aware scorer sorts the
        candidates by what the four databases actually confirm, and the

@@ -312,7 +312,7 @@ check('OCR engine carries the a3 early-confirm lock (DB-confirmed reads survive 
       && o.includes("via: 'ladder_confirm'")
       && o.includes('if (earlyLock) break;')
       && o.includes('if (!earlyLock && (exactHit || hasValidCas([...fusionCAS])))'); })());
-check('sw is v36 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v36'")
+check('sw is v37 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v37'")
   && sw5.includes("'./src/scan-live.js'")
   && sw5.includes("OCR_CACHE = 'mustashar-ocr'")
   && OCR_RUNTIME_FILES.every(f => sw5.includes(f.replace('./', '')))
@@ -580,6 +580,70 @@ check('docs/DISTRIBUTION.md separates done-in-code from owner-steps and states t
   && /منجز برمجياً/.test(fs.readFileSync('docs/DISTRIBUTION.md', 'utf8'))
   && /خطوة مالك يدوية/.test(fs.readFileSync('docs/DISTRIBUTION.md', 'utf8'))
   && /أربع لغات في الواجهة لا تعني دعم ملاحظات/.test(fs.readFileSync('docs/DISTRIBUTION.md', 'utf8')));
+
+/* ---------- 1.19.1 كشف المتصفح الداخلي: الأنماط × اللغات الأربع + بطاقة التوجيه ---------- */
+/* قاعدة هذا الحارس: لا نصّ عربي مكتوب فيه. النصوص تُقرأ من القواميس نفسها
+ * وتُقارن بأنماط يونيكود، حتى لا يتحوّل الحارس إلى مصدر نصّ ثابت. */
+const inappKeys = ['inapp.lead', 'inapp.name.fb', 'inapp.name.ig', 'inapp.name.wa',
+  'inapp.name.line', 'inapp.name.other', 'inapp.text', 'inapp.ios',
+  'inapp.copy', 'inapp.copied', 'inapp.manual'];
+const inappVals = {};
+const inappMissing = [];
+for (const k of inappKeys) {
+  const v = valAll(i18nSrc, k);
+  inappVals[k] = v;
+  if (v.length !== 4 || v.some(x => !x || !x.trim())) inappMissing.push(k + '=' + v.length);
+}
+check('in-app: every card key exists, non-empty, in all 4 dictionaries',
+  inappMissing.length === 0, inappMissing.join(','));
+const inappScript = (str) => /[\u0600-\u06FF]/.test(str) ? 'ar' : /[\u4E00-\u9FFF]/.test(str) ? 'zh' : 'lat';
+const inappTexts = inappVals['inapp.text'];
+check('in-app: the four card texts are four different writings (ar, en, fr, zh)',
+  new Set(inappTexts).size === 4
+  && ['ar', 'lat', 'lat', 'zh'].every((s, i) => inappScript(inappTexts[i]) === s),
+  inappTexts.map(inappScript).join(','));
+check('in-app: the iPhone route is a separate line from the generic install line, in 4 languages',
+  inappVals['inapp.ios'].length === 4 && new Set(inappVals['inapp.ios']).size === 4
+  && inappVals['inapp.ios'].every((v, i) => v !== inappTexts[i]));
+check('in-app: the browser name is injected through a placeholder, never typed into the sentence',
+  inappVals['inapp.lead'].length === 4 && inappVals['inapp.lead'].every(v => v.includes('{app}')));
+check('in-app: the copy label is not the confirmation, and the manual fallback is its own sentence',
+  inappVals['inapp.copy'].every((v, i) => v !== inappVals['inapp.copied'][i] && v !== inappVals['inapp.manual'][i])
+  && new Set(inappVals['inapp.copied']).size === 4 && new Set(inappVals['inapp.manual']).size === 4);
+const inappPatterns = ['FBAN', 'FBAV', 'FB_IAB', 'Instagram', 'WhatsApp', 'Line'];
+check('in-app: every required user-agent pattern is in the detector',
+  inappPatterns.every(p => appSrc.includes(p)), inappPatterns.filter(p => !appSrc.includes(p)).join(','));
+const inappBlock = appSrc.slice(appSrc.indexOf('const INAPP_RULES'), appSrc.indexOf("renderInAppNotice();\n  document.addEventListener('langchange'"));
+check('in-app: the detector is plain text on the user agent — no library, no request, no storage',
+  inappBlock.length > 0 && /navigator\.userAgent/.test(inappBlock)
+  && !/require\(|\bimport\s|fetch\(|XMLHttpRequest|localStorage|sessionStorage|indexedDB/.test(inappBlock));
+check('in-app: the card is a wide block at the top of the home view, hidden until a browser hits',
+  /<div class="card" id="inappNotice" hidden>/.test(htmlSrc)
+  && htmlSrc.indexOf('id="inappNotice"') > htmlSrc.indexOf('id="view-home"')
+  && htmlSrc.indexOf('id="inappNotice"') < htmlSrc.indexOf('class="stats"'));
+check('in-app: the card text comes from the dictionary and the heading is filled at runtime',
+  /id="inappTitle"><\/h2>/.test(htmlSrc) && !/id="inappTitle"[^>]*data-i18n/.test(htmlSrc)
+  && ['inapp.text', 'inapp.ios', 'inapp.copy'].every(k => htmlSrc.includes('data-i18n="' + k + '"'))
+  && /id="inappCopy"/.test(htmlSrc) && /id="inappNote" hidden/.test(htmlSrc));
+check('in-app: the card shows only on a hit and never touches the farmer view otherwise',
+  /if \(!hit\) \{ inappCard\.hidden = true; return; \}/.test(appSrc) && /inappCard\.hidden = false/.test(appSrc));
+check('in-app: the button hides only after a real clipboard write, and the fallback selects the text',
+  /await navigator\.clipboard\.writeText/.test(appSrc)
+  && /if \(copied\) \{[\s\S]{0,160}inappCopyBtn\.hidden = true/.test(appSrc)
+  && /selectNodeContents/.test(appSrc) && /inapp\.manual/.test(appSrc));
+check('in-app: the iPhone route is driven by the iOS test, not by the browser name',
+  /if \(inappIos\) inappIos\.hidden = !isIOS\(\);/.test(appSrc));
+check('in-app: the card follows the interface language (langchange) instead of caching one string',
+  /addEventListener\('langchange', renderInAppNotice\)/.test(appSrc)
+  && /tf\('inapp\.lead'/.test(appSrc));
+const inappTestSrc = fs.existsSync('tests/inapp-notice.test.mjs')
+  ? fs.readFileSync('tests/inapp-notice.test.mjs', 'utf8') : '';
+check('in-app: a real browser test simulates the Facebook user agent and is wired into test:browser',
+  inappTestSrc.length > 0 && /FB_IAB/.test(inappTestSrc)
+  && JSON.parse(fs.readFileSync('package.json', 'utf8')).scripts['test:browser'].includes('inapp-notice.test.mjs'));
+check('in-app: the simulation covers the card, the real copy, the iPhone line and a clean Chrome',
+  ['UA_FB_ANDROID', 'UA_FB_IOS', 'UA_CHROME_ANDROID', 'UA_LINE', 'clipboard.readText',
+    'inapp-notice.test.mjs'].every(k => inappTestSrc.includes(k)));
 
 /* ---------- summary ---------- */
 console.log('\n==============================');

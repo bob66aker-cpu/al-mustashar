@@ -171,6 +171,24 @@
     #installCard h3 { font-size: 16px; margin: 0 0 2px; }
     #installCard p { font-size: 13px; color: var(--muted); margin: 0; }
 
+    /* فيدباك إطلاق 1 — بطاقة المتصفح الداخلي: لا تظهر إلا عند الفتح من
+       متصفح تطبيق، حيث لا يمكن التثبيت. عريضة على عرض الرئيسية. */
+    #inappNotice {
+      padding: 14px 16px; margin-bottom: 12px;
+      border-inline-start: 4px solid var(--st-review);
+    }
+    #inappNotice .inapp-head { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+    #inappNotice .inapp-head .ic { flex: 0 0 auto; color: var(--st-review-ink); }
+    #inappNotice .inapp-head .ic svg { width: 22px; height: 22px; }
+    #inappNotice h2 { font-size: 16px; margin: 0; }
+    #inappNotice p { font-size: 14px; line-height: 1.6; margin: 0 0 6px; color: var(--muted); }
+    #inappNotice p.inapp-note { color: var(--st-ok); margin: 6px 0 0; }
+    #inappNotice .inapp-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+    #inappNotice .inapp-url {
+      flex: 1 1 180px; min-width: 0; font-family: var(--font-latin);
+      font-size: 13px; color: var(--text); word-break: break-all;
+    }
+
     /* ============ views ============ */
     /* 2.2 — hidden must ALWAYS win: author display classes (.btn-outline,
      * .live-wrap, …) were overriding the UA [hidden]{display:none} rule,
@@ -959,6 +977,25 @@
         <h1 data-i18n="brand.title">المستشار الزراعي</h1>
         <p class="latin" data-i18n="brand.latin">AGRICULTURAL ADVISOR</p>
         <p class="welcome" data-i18n="intro.h2">اعرف المادة قبل أن تستخدمها.</p>
+      </div>
+
+      <!-- فيدباك إطلاق 1 — متصفح داخلي: البطاقة تظهر في الرئيسية عند الفتح من متصفح تطبيق فقط. -->
+      <!-- النص من القاموس فيتبدّل مع اللغة، والعنوان يملؤه app.js باسم المتصفح. -->
+      <!-- مخفية افتراضياً: لا يظهر زر النسخ إلا معها. -->
+      <div class="card" id="inappNotice" hidden>
+        <div class="inapp-head">
+          <span class="ic" data-icon="caution"></span>
+          <h2 id="inappTitle"></h2>
+        </div>
+        <p data-i18n="inapp.text">التثبيت غير متاح هنا. انسخ الرابط وافتحه في كروم، ثم أضفه إلى الشاشة الرئيسية.</p>
+        <p id="inappIos" data-i18n="inapp.ios" hidden>على آيفون: افتح الرابط في سفاري، ثم المشاركة ← «إضافة إلى الشاشة الرئيسية».</p>
+        <div class="inapp-row">
+          <code class="inapp-url" id="inappUrl"></code>
+          <button class="btn-outline" type="button" id="inappCopy">
+            <span data-icon="copy"></span><span data-i18n="inapp.copy">نسخ الرابط</span>
+          </button>
+        </div>
+        <p class="inapp-note" id="inappNote" hidden></p>
       </div>
 
       <div class="stats">

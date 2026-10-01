@@ -1233,6 +1233,71 @@
   window.addEventListener('installavailable', refreshInstallCard);
 
   /* ================================================================
+   * فيدباك إطلاق 1 — المتصفح الداخلي.
+   * يصل المستخدم إلى الرابط من متصفّح تطبيق (فيسبوك/انستغرام/واتساب/
+   * لاين وغيرها): الموقع يعمل، لكن التثبيت غير متاح ولا يظهر زرّ
+   * التثبيت ولا بطاقة آيفون، فيظنّ المستخدم أن التطبيق معطوب. الفحص
+   * نصّي على navigator.userAgent فقط: بلا مكتبة، وبلا طلب شبكة، وبلا
+   * تخزين — القرار محلي بالكامل. البطاقة تقوده إلى الطريق الصحيح:
+   * كروم على أندرويد، وسفاري ← المشاركة ← إضافة للشاشة على آيفون.
+   * ================================================================ */
+  const INAPP_RULES = [
+    { re: /FBAN|FBAV|FB_IAB|FBIOS|Messenger/i, key: 'inapp.name.fb', fb: t('inapp.name.fb', 'فيسبوك') },
+    { re: /Instagram/i, key: 'inapp.name.ig', fb: t('inapp.name.ig', 'انستغرام') },
+    { re: /WhatsApp/i, key: 'inapp.name.wa', fb: t('inapp.name.wa', 'واتساب') },
+    { re: /Line\//i, key: 'inapp.name.line', fb: t('inapp.name.line', 'لاين') },
+    { re: /TikTok|Twitter|Telegram|MicroMessenger|Snapchat|LinkedInApp/i,
+      key: 'inapp.name.other', fb: t('inapp.name.other', 'تطبيق آخر') }
+  ];
+  function detectInAppBrowser(ua) {
+    const a = ua || navigator.userAgent || '';
+    for (let i = 0; i < INAPP_RULES.length; i++) {
+      if (INAPP_RULES[i].re.test(a)) return INAPP_RULES[i];
+    }
+    return null;
+  }
+  const inappCard = $('#inappNotice'), inappTitle = $('#inappTitle'),
+        inappUrl = $('#inappUrl'), inappIos = $('#inappIos'),
+        inappCopyBtn = $('#inappCopy'), inappNote = $('#inappNote');
+  function inappLink() { return String((location && location.href) || '').split('#')[0]; }
+  function renderInAppNotice() {
+    if (!inappCard) return;
+    const hit = detectInAppBrowser();
+    if (!hit) { inappCard.hidden = true; return; }
+    /* اسم المتصفح من القاموس، لا من نص مكتوب هنا */
+    if (inappTitle) inappTitle.textContent = tf('inapp.lead', 'أنت داخل {app}', { app: t(hit.key, hit.fb) });
+    if (inappUrl) inappUrl.textContent = inappLink();
+    if (inappIos) inappIos.hidden = !isIOS();   /* آيفون: الطريق عبر سفاري */
+    inappCard.hidden = false;
+  }
+  if (inappCopyBtn) {
+    inappCopyBtn.addEventListener('click', async () => {
+      let copied = false;
+      if (navigator.clipboard && window.isSecureContext) {
+        try { await navigator.clipboard.writeText(inappLink()); copied = true; } catch (e) { copied = false; }
+      }
+      if (copied) {
+        /* الزر يختفي بعد نسخ ناجح فقط — لا نجاح بلا نسخ */
+        inappCopyBtn.hidden = true;
+        if (inappNote) { inappNote.hidden = false; inappNote.textContent = t('inapp.copied', 'نُسخ الرابط إلى الحافظة.'); }
+        return;
+      }
+      /* بديل تحديد نصي: الزر يبقى ظاهراً ويُحدَّد الرابط ليُنسخ يدوياً */
+      if (inappUrl) {
+        try {
+          const r = document.createRange();
+          r.selectNodeContents(inappUrl);
+          const sel = window.getSelection();
+          if (sel) { sel.removeAllRanges(); sel.addRange(r); }
+        } catch (e) { /* التحديد غير متاح في هذا المتصفح */ }
+      }
+      if (inappNote) { inappNote.hidden = false; inappNote.textContent = t('inapp.manual', 'تعذّر النسخ التلقائي — الرابط محدَّد أدناه، انسخه بالضغط المطوّل عليه.'); }
+    });
+  }
+  renderInAppNotice();
+  document.addEventListener('langchange', renderInAppNotice);
+
+  /* ================================================================
    * 2.2 — توحيد مداخل الكاميرا: مسار واحد لالتقاط الملصق. كانت هناك
    * ثلاثة مداخل متداخلة (اختصار المعرض في الرئيسية + #cameraBtn +
    * #galleryBtn مع ملفّي input مختلفين). الآن: بطاقة «تصوير الملصق»

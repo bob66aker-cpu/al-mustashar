@@ -312,7 +312,7 @@ check('OCR engine carries the a3 early-confirm lock (DB-confirmed reads survive 
       && o.includes("via: 'ladder_confirm'")
       && o.includes('if (earlyLock) break;')
       && o.includes('if (!earlyLock && (exactHit || hasValidCas([...fusionCAS])))'); })());
-check('sw is v37 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v37'")
+check('sw is v37 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v39'")
   && sw5.includes("'./src/scan-live.js'")
   && sw5.includes("OCR_CACHE = 'mustashar-ocr'")
   && OCR_RUNTIME_FILES.every(f => sw5.includes(f.replace('./', '')))
@@ -581,7 +581,7 @@ check('docs/DISTRIBUTION.md separates done-in-code from owner-steps and states t
   && /خطوة مالك يدوية/.test(fs.readFileSync('docs/DISTRIBUTION.md', 'utf8'))
   && /أربع لغات في الواجهة لا تعني دعم ملاحظات/.test(fs.readFileSync('docs/DISTRIBUTION.md', 'utf8')));
 
-/* ---------- 1.19.1 كشف المتصفح الداخلي: الأنماط × اللغات الأربع + بطاقة التوجيه ---------- */
+/* ---------- 1.19.3 كشف المتصفح الداخلي: الأنماط × اللغات الأربع + بطاقة التوجيه ---------- */
 /* قاعدة هذا الحارس: لا نصّ عربي مكتوب فيه. النصوص تُقرأ من القواميس نفسها
  * وتُقارن بأنماط يونيكود، حتى لا يتحوّل الحارس إلى مصدر نصّ ثابت. */
 const inappKeys = ['inapp.lead', 'inapp.name.fb', 'inapp.name.ig', 'inapp.name.wa',
@@ -644,6 +644,69 @@ check('in-app: a real browser test simulates the Facebook user agent and is wire
 check('in-app: the simulation covers the card, the real copy, the iPhone line and a clean Chrome',
   ['UA_FB_ANDROID', 'UA_FB_IOS', 'UA_CHROME_ANDROID', 'UA_LINE', 'clipboard.readText',
     'inapp-notice.test.mjs'].every(k => inappTestSrc.includes(k)));
+
+/* ---------- 1.19.3 فيدباك 3: بوابة «لم أستطع القراءة» + لا مساس بالعتبات ---------- */
+/* لا نصّ عربي مكتوب في هذا الحارس: النصوص تُقرأ من القواميس وتُقارن
+ * بأنماط يونيكود وبالعلاقة بين قيمة وقيمة، لا بكتابة عربية ثابتة. */
+const failVals = valAll(i18nSrc, 'ocr.read.fail');
+const manualVals = valAll(i18nSrc, 'ocr.read.manual');
+const scriptOf3 = (str) => /[\u0600-\u06FF]/.test(str) ? 'ar' : /[\u4E00-\u9FFF]/.test(str) ? 'zh' : 'lat';
+check('read-fail: the sentence and the manual button exist in all 4 dictionaries',
+  failVals.length === 4 && manualVals.length === 4
+  && failVals.every(v => v && v.trim()) && manualVals.every(v => v && v.trim()));
+check('read-fail: the four sentences are four different writings (ar, en, fr, zh)',
+  new Set(failVals).size === 4
+  && ['ar', 'lat', 'lat', 'zh'].every((sc, i) => scriptOf3(failVals[i]) === sc),
+  failVals.map(scriptOf3).join(','));
+/* the old bare wording is still in the dictionaries (other code may read it),
+ * so the new sentence is measured AGAINST it instead of being retyped here */
+const bareVals = valAll(i18nSrc, 'ocr.rejected.mixed');
+check('read-fail: the new sentence is strictly longer than the bare wording in every language',
+  bareVals.length === 4 && failVals.every((v, i) => v.length > bareVals[i].length * 1.5),
+  failVals.map((v, i) => v.length + '>' + bareVals[i].length).join(' '));
+check('read-fail: the manual button label differs from the sentence in 4 languages',
+  new Set(manualVals).size === 4 && manualVals.every((v, i) => v !== failVals[i]));
+
+const failSites = (appSrc.match(/showReadFailure\(\);/g) || []).length;
+check('read-fail: all six read-failure sites (live + still x rejected/sharp/error) share one sentence',
+  failSites === 6
+  && !/ocrMsg\.textContent = t\('ocr\.sharp\.retake'/.test(appSrc)
+  && !/ocrMsg\.textContent = cancelled/.test(appSrc)
+  && /function showReadFailure\(\) \{[\s\S]{0,220}ocrMsg\.textContent = t\('ocr\.read\.fail'/.test(appSrc)
+  && /function showReadFailure\(\) \{[\s\S]{0,260}\$\('#ocrActions'\)\.hidden = false;/.test(appSrc),
+  'sites=' + failSites);
+check('read-fail: the specific reason stays in the diagnostics log, not on the screen',
+  /outcome: 'rejected', src: 'live', ms, reason:/.test(appSrc)
+  && /outcome: 'sharp', src: 'live', ms, v: res\.sharpness/.test(appSrc)
+  && /outcome: cancelled \? 'cancelled' : 'error', src: 'live'/.test(appSrc));
+const ocrActionsAt = htmlSrc.indexOf('<div id="ocrActions"');
+const manualBtnAt = htmlSrc.indexOf('id="ocrManualBtn"');
+const ocrActionsEnd = htmlSrc.indexOf('<section class="view" id="view-history"');
+check('read-fail: the manual-search button lives inside the manual panel (no new step in the farmer path)',
+  ocrActionsAt > 0 && manualBtnAt > ocrActionsAt && manualBtnAt < ocrActionsEnd
+  && /id="ocrManualBtn"[^>]*data-i18n="ocr\.read\.manual"|data-i18n="ocr\.read\.manual"/.test(htmlSrc)
+  && /id="ocrManualBtn"/.test(htmlSrc));
+check('read-fail: one tap closes the camera, goes to search and puts the caret in the box',
+  /ocrManualBtn\.addEventListener\('click'/.test(appSrc)
+  && /if \(liveStream\) stopLive\(false\);/.test(appSrc)
+  && /location\.hash = '#\/search'/.test(appSrc)
+  && /q\.focus\(\)/.test(appSrc));
+/* ---- the red line: no quality gate moved, and the 2x scan is NOT in the source ---- */
+const ocrSrc3 = fs.readFileSync('src/ocr.js', 'utf8');
+check('read-fail RED LINE: every quality constant is exactly where the measurement left it',
+  /MAX_DIM: 1600,/.test(ocrSrc3) && /UPSCALE_MIN: 1100,/.test(ocrSrc3)
+  && /UPSCALE_MAX: 2000,/.test(ocrSrc3) && /wordFilter: 60,/.test(ocrSrc3)
+  && /sharpGate: 1\.0,/.test(ocrSrc3) && /const MIN_CONFIDENCE = 45;/.test(ocrSrc3)
+  && /const MAX_PASSES = 14;/.test(ocrSrc3));
+check('read-fail RED LINE: the 2x pass was measured and refused, so no bigger scan size ships',
+  !/maxDim: 3200|maxDim: 2 \*|UPSCALE_MAX: 4000/.test(ocrSrc3)
+  && fs.readFileSync('docs/ocr-ab-experiment.md', 'utf8').includes('2x')
+  && /D22/.test(fs.readFileSync('docs/ocr-ab-experiment.md', 'utf8')));
+check('read-fail: a browser test drives a real unreadable photo through the shipped UI',
+  fs.existsSync('tests/read-fail-gate.test.mjs')
+  && /5\.jpg/.test(fs.readFileSync('tests/read-fail-gate.test.mjs', 'utf8'))
+  && /ocr\.read\.fail|ocrMsg/.test(fs.readFileSync('tests/read-fail-gate.test.mjs', 'utf8'))
+  && JSON.parse(fs.readFileSync('package.json', 'utf8')).scripts['test:browser'].includes('read-fail-gate.test.mjs'));
 
 /* ---------- summary ---------- */
 console.log('\n==============================');

@@ -140,8 +140,14 @@ try {
   /* the farmer must not be stranded: an advisory refusal opens the manual
      entry field instead of leaving a dead end */
   const appSrc = fs.readFileSync('tests/../src/app.js', 'utf8');
-  ok(/if \(res\.advisory\) \{ \$\('#ocrActions'\)\.hidden = false; \}/.test(appSrc),
-    'the live path opens the manual-entry field on an advisory refusal — the farmer is not stranded');
+  /* feedback 3 made this STRONGER, not weaker: the manual entry now opens on
+     every read failure (soft image included), through the one shared helper,
+     instead of only when the block was flagged advisory. The invariant this
+     guard protects — the farmer is never stranded — is asserted in the new
+     form, and the helper must be the one that opens the field. */
+  ok(/if \(res\.blockedBy === 'sharp'\) \{[\s\S]{0,400}showReadFailure\(\);/.test(appSrc)
+    && /function showReadFailure\(\) \{[\s\S]{0,260}\$\('#ocrActions'\)\.hidden = false;/.test(appSrc),
+    'the live path opens the manual-entry field on a refusal — the farmer is not stranded');
 
   /* ---- 3) the one ACCEPT label is NOT refused (no false rejection) ---- */
   const good = await page.evaluate(async () => {
@@ -176,21 +182,28 @@ try {
   ok(crisp.text.length > 0, 'that sharp label is still read — "' + crisp.text.slice(0, 30) + '"');
 
   /* ---- 4) the sentence is short, plain, and translated in all four ---- */
+  /* the sentence the farmer now reads on a soft photo (feedback 3) carries
+     the three things that work in the field, so it is longer than the old
+     two-word "retake" line — but every property this guard protects is kept:
+     it is translated, it is one short paragraph, and it carries no number,
+     no threshold and no setting. */
   const dicts = await page.evaluate(() => {
     const out = {};
     for (const l of ['ar', 'en', 'fr', 'zh']) {
       window.I18N.setLang(l);
-      out[l] = window.I18N.t('ocr.sharp.retake', '');
+      out[l] = window.I18N.t('ocr.read.fail', '');
     }
     window.I18N.setLang('ar');
     return out;
   });
   for (const l of ['ar', 'en', 'fr', 'zh']) {
-    ok(dicts[l] && dicts[l].length > 0 && dicts[l].length < 60,
-      'the retake sentence is short and translated in ' + l + ' — "' + dicts[l] + '"');
+    ok(dicts[l] && dicts[l].length > 0 && dicts[l].length < 200,
+      'the read-failure sentence is plain and translated in ' + l + ' — "' + String(dicts[l]).slice(0, 48) + '"');
   }
   ok(!Object.values(dicts).some(v => /\d/.test(v)), 'no number, no threshold, no setting in any language');
   ok(new Set(Object.values(dicts)).size === 4, 'the four languages carry four different sentences');
+  ok(!/\b(threshold|confidence|ratio|psm|ocr)\b/i.test(Object.values(dicts).join(' ')),
+    'no engine vocabulary leaks into the sentence the farmer reads');
 
   /* ---- 5) no new acceptance threshold ---- */
   const conf = await page.evaluate(() => OcrModule.MIN_CONFIDENCE);

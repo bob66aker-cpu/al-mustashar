@@ -1604,8 +1604,7 @@
       const stale = livePassSeq !== mySeq || scanSeq !== myGen || scanSeq !== activeScanSeq;
       if (stale) { diagAdd({ at: Date.now(), outcome: 'superseded', src: 'live', ms }); return; }
       if (res.rejected) {
-        const rejKey = res.rejected.lowConfidence ? 'ocr.rejected.conf' : 'ocr.rejected.mixed';
-        ocrMsg.textContent = t(rejKey, 'لم يُستخرج نص موثوق');
+        showReadFailure();
         diagAdd({ at: Date.now(), outcome: 'rejected', src: 'live', ms, reason: res.rejected.lowConfidence ? res.rejected.conf : res.rejected.ratio });
         return;
       }
@@ -1618,8 +1617,7 @@
            with a real photo on screen. The measured value goes to the
            diagnostics log — that log is the field campaign's
            recalibration input. */
-        ocrMsg.textContent = t('ocr.sharp.retake', 'الصورة غير واضحة — أعد التصوير.');
-        if (res.advisory) { $('#ocrActions').hidden = false; }
+        showReadFailure();
         diagAdd({ at: Date.now(), outcome: 'sharp', src: 'live', ms, v: res.sharpness,
                   advisory: !!res.advisory,
                   gate: (window.OcrModule && window.OcrModule.getTuning)
@@ -1648,9 +1646,8 @@
     } catch (e) {
       const cancelled = e && String(e.message || e).indexOf('ocr.cancelled') === 0;
       if (livePassSeq === mySeq && scanSeq === activeScanSeq) {
-        ocrMsg.textContent = cancelled
-          ? t('ocr.cancelled', 'أُلغي المسح.')
-          : t('ocr.fail.image', 'تعذّر تحليل الصورة — جرّب صورة أوضح أو أصغر.');
+        if (!cancelled) showReadFailure();
+        else ocrMsg.textContent = t('ocr.cancelled', 'أُلغي المسح.');
         diagAdd({ at: Date.now(), outcome: cancelled ? 'cancelled' : 'error', src: 'live',
           name: (e && e.name) || 'unknown', message: String((e && e.message) || e).slice(0, 120) });
       }
@@ -1770,6 +1767,29 @@
     $('#ocrConf').textContent = '';
     hideBarcodeChip();
   }
+
+  /* فيدباك 3 — بوابة «لم أستطع القراءة».
+   * جملة واحدة للمزارع: ماذا يفعل الآن، بالترتيب الذي ينجح في الحقل
+   * (إضاءة، ثم قرب، ثم كتابة الاسم). السبب المحدد — رفض لنسبة الحروف،
+   * أو رفض لضعف الثقة، أو blur، أو خطأ في المحرك — يبقى في سجل
+   * التشخيص الذي هو مدخل حملة الحقل، ولا يظهر في جملة الشاشة. هذا تغذية
+   * راجعة فقط: لا عتبة تُرفع ولا تمريرة تُفرض في هذا الموضع. */
+  function showReadFailure() {
+    ocrMsg.textContent = t('ocr.read.fail', 'لم نستطع قراءة الملصق بوضوح — جرّب: إضاءة أفضل، أو تقريب أكبر من العنوان، أو البحث اليدوي باسم المادة.');
+    $('#ocrActions').hidden = false;
+  }
+  /* الطريق اليدوي بزر واحد: تُغلق الكاميرا إن كانت تعمل، ثم ينتقل إلى
+   * البحث ويضع المؤشر في الحقل — بلا خطوة وسطى وبلا فتح لوحة جديدة. */
+  const ocrManualBtn = $('#ocrManualBtn');
+  if (ocrManualBtn) {
+    ocrManualBtn.addEventListener('click', () => {
+      if (ocrBusy) return;                    /* قراءة جارية: لا تُختطف */
+      if (liveStream) stopLive(false);
+      location.hash = '#/search';
+      setTimeout(() => { const q = $('#query'); if (q) { try { q.focus(); } catch (e) {} } }, 60);
+    });
+  }
+
 
   /* أ3 — scan results render INSIDE the scan view (#scanResults), using
    * the exact same decision-layer renderer as manual search. Multi-substance
@@ -2188,10 +2208,8 @@
        * the merged text. Show the matching literal message via i18n and keep
        * the editor empty — nothing from a rejected text is surfaced. */
       if (res.rejected) {
-        const rejKey = res.rejected.lowConfidence ? 'ocr.rejected.conf' : 'ocr.rejected.mixed';
-        ocrMsg.textContent = t(rejKey, 'لم يُستخرج نص موثوق');
         $('#ocrText').value = '';
-        $('#ocrActions').hidden = false;
+        showReadFailure();
         diagAdd({ at: Date.now(), outcome: 'rejected', ms, passes: res.passes,
                   reason: res.rejected.lowConfidence ? res.rejected.conf : res.rejected.ratio });
         return;
@@ -2199,8 +2217,7 @@
       if (res.blockedBy === 'sharp') {
         /* 3.2 — same short sentence as the live path, in the picked
            language; the editor stays empty because nothing was read. */
-        ocrMsg.textContent = t('ocr.sharp.retake', 'الصورة غير واضحة — أعد التصوير.');
-        $('#ocrActions').hidden = false;
+        showReadFailure();
         diagAdd({ at: Date.now(), outcome: 'sharp', ms, v: res.sharpness });
         return;
       }
@@ -2221,9 +2238,8 @@
     } catch (e) {
       const cancelled = e && String(e.message || e).indexOf('ocr.cancelled') === 0;
       if (scanSeq === activeScanSeq) {   // أ1: superseded runs stay silent
-        ocrMsg.textContent = cancelled
-          ? t('ocr.cancelled', 'أُلغي المسح.')
-          : t('ocr.fail.image', 'تعذّر تحليل الصورة — جرّب صورة أوضح أو أصغر.');
+        if (!cancelled) showReadFailure();
+        else ocrMsg.textContent = t('ocr.cancelled', 'أُلغي المسح.');
         diagAdd({ at: Date.now(), outcome: cancelled ? 'cancelled' : 'error', ms: Math.round(performance.now() - t0),
           name: (e && e.name) || 'unknown', message: String((e && e.message) || e).slice(0, 120) });
       }

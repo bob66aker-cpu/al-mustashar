@@ -121,8 +121,16 @@ const check = (name, ok, extra = '') => {
 /* 10) renderer wires the rejection through i18n.t, not the engine string */
 {
   const app = readFileSync(join(root, 'src/app.js'), 'utf8');
-  check('app.js renders the rejection via t(ocr.rejected.*)',
-    /t\(rejKey, /u.test(app) && app.includes("'ocr.rejected.mixed'") && app.includes("'ocr.rejected.conf'"));
+  /* feedback 3 changed WHICH key the rejection renders with, not HOW it is
+     rendered: the farmer now gets one sentence with the three things that
+     work in the field, in all four languages. The invariant this guard
+     protects is unchanged and is stated in its stronger form: the screen
+     text comes from a dictionary key through t(), never from the engine's
+     own string, and the engine's rejection keys stay in the fan-out list. */
+  check('app.js renders the rejection through a dictionary key, never the engine string',
+    /function showReadFailure\(\) \{[\s\S]{0,200}t\('ocr\.read\.fail'/.test(app)
+    && !/textContent = res\.rejected\.(message|text)/.test(app)
+    && (app.match(/showReadFailure\(\);/g) || []).length === 6);
   check('ocr.rejected.* are in the engine-message fan-out list',
     app.includes("'ocr.rotate','ocr.done','ocr.rejected.mixed','ocr.rejected.conf'"));
 }

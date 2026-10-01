@@ -1204,6 +1204,9 @@
         <textarea id="ocrText" class="query" rows="4" dir="auto" data-i18n-placeholder="scan.placeholder" placeholder="النص المكتشف من الصورة — يمكن تعديله ثم إعادة البحث"></textarea>
         <div class="tools">
           <button class="btn-outline" type="button" id="ocrRerun"><span data-icon="search"></span><span data-i18n="scan.rerun">بحث من النص</span></button>
+          <!-- فيدباك 3: الطريق اليدوي بزر واحد. يظهر مع المحرّر فقط، أي عند
+               عدم وجود نتيجة جاهزة — لا خطوة جديدة في طريق المزارع. -->
+          <button class="btn-outline" type="button" id="ocrManualBtn"><span data-icon="language"></span><span data-i18n="ocr.read.manual">البحث اليدوي</span></button>
         </div>
       </div>
     </section>

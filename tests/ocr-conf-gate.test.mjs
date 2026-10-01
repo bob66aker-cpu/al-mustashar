@@ -129,8 +129,15 @@ check('valid CAS exempts the Latin-ratio gate too (CAS-only reads stay alive)',
 /* 9) renderer wires both rejection messages through i18n */
 {
   const app = readFileSync(join(root, 'src/app.js'), 'utf8');
-  check('app.js picks the message by rejection type',
-    app.includes("res.rejected.lowConfidence ? 'ocr.rejected.conf' : 'ocr.rejected.mixed'"));
+  /* feedback 3 replaced the two screen messages with ONE sentence that tells
+     the farmer what to do next (the technical distinction between "too few
+     latin letters" and "too low confidence" is not something a farmer can
+     act on). The distinction is NOT lost: it is still read and written to
+     the diagnostics log on both paths, which is what the field campaign
+     recalibrates against. This check now pins that, not the old wording. */
+  check('app.js still tells the two rejection reasons apart in the diagnostics log',
+    (app.match(/reason: res\.rejected\.lowConfidence \? res\.rejected\.conf : res\.rejected\.ratio/g) || []).length === 2
+    && /function showReadFailure\(\) \{[\s\S]{0,200}t\('ocr\.read\.fail'/.test(app));
   check('ocr.rejected.conf is in the engine-message fan-out list',
     app.includes("'ocr.rejected.mixed','ocr.rejected.conf'"));
 }

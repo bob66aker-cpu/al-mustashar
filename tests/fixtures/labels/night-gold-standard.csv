@@ -1,0 +1,28 @@
+# المعيار الذهبي لليلة 2026-10-01 — يُكتب قبل تشغيل أي اختبار قبول
+# ------------------------------------------------------------------
+# truth_source: owner = شكاوى المالك (فيدباك 2/3) · unknown = Truth reference not filled
+#   (ground-truth.csv remains the owner's own template — nobody fills it from OCR output)
+# confirmed_today: the substance the engine confirmed on 2026-10-01 (the measured baseline)
+# libya_expected: what the Libyan registries actually say about that substance in data/
+#   ban = libya-248 · RAR / Approved / REV = libya-500 · none = no Libyan row at all
+# wrong_accept: the condition that makes THIS sample a false accept (the stop rule)
+n,image,printed_truth,truth_source,confirmed_today,libya_expected,wrong_accept
+1,5.jpg,,unknown,,none,"any confirmation at all: the engine read 0 chars (ratio gate)"
+2,6.jpg,,unknown,,none,"any confirmation from this noise text (16-ML SHAKE ...)"
+3,7.jpg,,unknown,,none,"any confirmation at all: 0 chars read"
+4,8.jpg,,unknown,Spinosad,Approved,"any other substance, or Spinosad shown without the libya-500 temporary-approval condition"
+5,9.jpg,,unknown,Soap,none,"Soap shown with a Libyan ruling — data has no Libyan row for it"
+6,100.jpg,,unknown,Zineb,ban,"Zineb shown as anything other than the Decree-248 ban (critical)"
+7,101.jpg,,unknown,Isoprothiolane,none,"Isoprothiolane shown with a Libyan ruling — data has no Libyan row"
+8,103.jpg,,unknown,Acetamiprid,Approved,"any other substance, or Acetamiprid shown without the libya-500 condition"
+9,105.jpg,,unknown,,none,"any confirmation at all: 0 chars read"
+10,106.jpg,,unknown,Clethodim,Approved,"any other substance, or Clethodim shown without the libya-500 condition"
+11,images.jpg,Oxadiazon 12% EC,owner,Oxadiazon,ban,"Oxadiazon shown as anything other than the Decree-248 ban (critical)"
+12,images (1).jpg,,unknown,,none,"any confirmation at all: 0 chars read"
+13,images (2).jpg,GROUND ALUMINIUM SULPHATE,owner,Aluminium sulfate,RAR,"Ammonium sulfate (7783-20-2) or any other substance instead of Aluminium sulfate; or the RAR condition dropped"
+14,images (3).jpg,,unknown,,none,"any confirmation at all: the engine read text but matched nothing"
+15,pesticide_test_level1_ideal.png,,unknown,,none,"any confirmation at all: 0 chars read"
+16,pesticide_test_level3_damaged.png,,unknown,,none,"any confirmation at all: 0 chars read"
+17,pesticide_test_level4_lowlight.png,,unknown,,none,"any confirmation at all: 0 chars read"
+# substitute sample for feedback 2 — the owner's own photo is not in this environment
+18,SUBSTITUTE-ground-aluminium-sulphate.png,GROUND ALUMINIUM SULPHATE,owner-substitute,Aluminium sulfate,RAR,"Ammonium sulfate or any other substance; or an Arabic hallucination (U+0600-06FF) on a Latin label"

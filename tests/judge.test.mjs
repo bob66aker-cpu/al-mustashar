@@ -196,7 +196,21 @@ P('248 tone is ban (only red)', judge.STATUSES['libya-248'].tone === 'ban');
 P('no green/safe tone anywhere', Object.values(judge.STATUSES).every(s => s.tone !== 'good' && s.tone !== 'safe'));
 P('500 has no "مسجلة" wording', JSON.stringify(judge.STATUSES['libya-500']).includes('مسجلة') === false);
 P('REV* star note present', judge.STATUSES['libya-500'].map['REV*'].includes('النجمة'));
-P('V code marked digital-only', (judge.CODES['V'].note || '').includes('الرسمي'));
+/* V — corrected 2026-10-02. The 500 guide's summary table explains it, so it
+ * is a source-explained code, not a digital-file invention. The assertion that
+ * used to sit here required the very note that was wrong; now it requires the
+ * guide's own wording in both languages, and requires the digital-only note to
+ * be gone. What makes a code explained is the source guide, not our note. */
+P('V carries the 500 guide wording, not a digital-file note',
+  (judge.CODES['V'].note || '') === ''
+  && judge.CODES['V'].en === 'Viruses / Microbials'
+  && judge.CODES['V'].ar === '\u0641\u064a\u0631\u0648\u0633\u0627\u062a\u0020\u0623\u0648\u0020\u0643\u0627\u0626\u0646\u0627\u062a\u0020\u062f\u0642\u064a\u0642\u0629\u0020\u0645\u0643\u0627\u0641\u062d\u0629');
+P('V resolves through describeCodes with its meaning attached',
+  judge.describeCodes('V').length === 1 && !judge.describeCodes('V')[0].unknown
+  && judge.describeCodes('V')[0].ar === '\u0641\u064a\u0631\u0648\u0633\u0627\u062a\u0020\u0623\u0648\u0020\u0643\u0627\u0626\u0646\u0627\u062a\u0020\u062f\u0642\u064a\u0642\u0629\u0020\u0645\u0643\u0627\u0641\u062d\u0629');
+P('a code no guide explains is still reported unknown',
+  judge.describeCodes('Igr')[0].unknown === true
+  && judge.describeCodes('R.S')[0].unknown === true);
 
 console.log('\njudge.test: PASS ' + pass + '  FAIL ' + fail);
 process.exit(fail ? 1 : 0);

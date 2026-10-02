@@ -82,17 +82,27 @@ const CAT_AR = {
   'legend.cat.M': 'مبيد قواقع (نواعم)',
   'legend.cat.S.ph': 'فرمون جنسي',
   'legend.cat.PGR': 'منظم نمو نبات',
-  'legend.cat.rep': 'طارد'
+  'legend.cat.rep': 'طارد',
+  'legend.cat.V': 'فيروسات أو كائنات دقيقة مكافحة'
 };
 {
   for (const [key, expected] of Object.entries(CAT_AR)) {
     const v = dictValue('ar', key);
     check(`ar dictionary: ${key} verbatim`, v === expected, JSON.stringify(v));
   }
-  const vnote = dictValue('ar', 'legend.cat.vnote');
-  check('ar dictionary: V-note verbatim',
-    vnote === 'الرمز V (فيروسات وكائنات دقيقة) أضافه الملف الرقمي، وليس في الدليل الرسمي للقرار.',
-    JSON.stringify(vnote));
+  /* V — corrected this round. It was annotated as "added by the digital file,
+   * not in the official guide"; that annotation was our own judgement, and
+   * the 500 guide's summary table does explain V. So the note is gone and the
+   * code carries a plain guide meaning instead. The value is compared against
+   * judge.js rather than retyped here, so the two can never drift apart. */
+  const judgeSrc = readFileSync(join(root, 'src/judge.js'), 'utf8');
+  const vAr = (judgeSrc.match(/'V':\s*\{[^}]*ar: '([^']+)'/) || [])[1] || null;
+  check('ar dictionary: legend.cat.V carries the 500 guide wording',
+    vAr !== null && dictValue('ar', 'legend.cat.V') === vAr,
+    'i18n=' + JSON.stringify(dictValue('ar', 'legend.cat.V')) + ' judge=' + JSON.stringify(vAr));
+  check('the stale "V is not in the official guide" note is gone from all four dictionaries',
+    !/legend\.cat\.vnote/.test(readFileSync(join(root, 'src/i18n.js'), 'utf8'))
+    && !/legend\.cat\.vnote/.test(readFileSync(join(root, 'index.html'), 'utf8')));
   const unk = dictValue('ar', 'legend.cat.unknown');
   check('ar dictionary: unknown-code hint verbatim',
     unk === 'رمز غير مشروح في دليل هذا المصدر', JSON.stringify(unk));

@@ -10,6 +10,13 @@
  *   9012-76-4   Chitosan             F+N+PGR   a compound code
  *   17804-35-2    Benomyl (F/Mi)      Mi        NO source explains it
  *
+ *   2026-10-02 — V added after the correction: the 500 guide's summary table
+ *   explains it, and it must now show its meaning in both modes.
+ *   The sample is a REAL row of data/libya-500.json, reached BY NAME because
+ *   all six V rows store cas = "No CAS allocated" — inventing a CAS number for
+ *   them is exactly the wrong-control mistake this file already learned once.
+ *   Row: "Mild Pepino Mosaic Virus Isolate VC 1", category V, status Approved.
+ *
  * Rule under test: a code the guide explains must show its meaning in both
  * modes; a code no guide explains must keep the existing fallback sentence.
  *
@@ -34,7 +41,12 @@ const SAMPLES = [
     hit: /\u0645\u0628\u064a\u062f \u0641\u0637\u0631\u064a|\u0645\u0628\u064a\u062f \u0646\u064a\u0645\u0627\u062a\u0648\u062f\u064a|\u0645\u0646\u0638\u0645 \u0646\u0645\u0648 \u0646\u0628\u0627\u062a|Fungicide|Nematicide/i,
     label: 'F+N+PGR \u2014 a compound code' },
   { cas: '17804-35-2', mustExplain: false, hit: /$^/,
-    label: 'Mi \u2014 no guide explains it, fallback must stay' }
+    label: 'Mi \u2014 no guide explains it, fallback must stay' },
+  /* a real V row, searched BY NAME: the data stores no CAS number for it */
+  { cas: 'Mild Pepino Mosaic Virus Isolate VC 1', mustExplain: true,
+    /* the zh wording is written as escapes so no CJK literal lands in this file */
+    hit: /\u0641\u064a\u0631\u0648\u0633\u0627\u062a\u0020\u0623\u0648\u0020\u0643\u0627\u0626\u0646\u0627\u062a\u0020\u062f\u0642\u064a\u0642\u0629\u0020\u0645\u0643\u0627\u0641\u062d\u0629|Viruses \/ Microbials|Virus \/ Micro-organismes|\u75c5\u6bd2\u0020\u002f\u0020\u5fae\u751f\u7269/i,
+    label: 'V \u2014 explained by the 500 guide summary table (real row, searched by name)' }
 ];
 
 let pass = 0, fail = 0;

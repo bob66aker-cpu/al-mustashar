@@ -224,8 +224,9 @@
     }
   };
 
-  /* b9 — classification codes: 10 from the official decree legend +
-   * V (digital-file definition only) */
+  /* b9 — classification codes: 11 from the official decree legends, each
+   * carrying the guide's own wording (V included — the 500 guide's summary
+   * table explains it) */
   const CODES = {
     'I':    { en: 'Insecticide',        ar: 'مبيد حشري' },
     'F':    { en: 'Fungicide',          ar: 'مبيد فطري' },
@@ -241,7 +242,10 @@
     'P.G.R': { en: 'Plant Growth Regulator', ar: 'منظم نمو نباتات' },
     'Rep':   { en: 'Repellent',          ar: 'طارد' },
     'rep':  { en: 'Repellent',          ar: 'طارد' },
-    'V':    { en: 'Viruses / Microbials', ar: 'فيروسات أو كائنات دقيقة مكافحة', note: 'تعريف الملف الرقمي (غير وارد في الدليل الرسمي)' }
+    /* V — the 500 guide's own summary table explains it, and its wording is
+     * ours verbatim: «V | Viruses / Microbials | فيروسات أو كائنات دقيقة مكافحة»
+     * (6 rows of libya-500 carry the code). Nothing here is invented. */
+    'V':    { en: 'Viruses / Microbials', ar: 'فيروسات أو كائنات دقيقة مكافحة' }
   };
 
   function describeCodes(cell) {

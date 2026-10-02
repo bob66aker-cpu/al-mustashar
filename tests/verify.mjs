@@ -312,7 +312,7 @@ check('OCR engine carries the a3 early-confirm lock (DB-confirmed reads survive 
       && o.includes("via: 'ladder_confirm'")
       && o.includes('if (earlyLock) break;')
       && o.includes('if (!earlyLock && (exactHit || hasValidCas([...fusionCAS])))'); })());
-check('sw is v37 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v42'")
+check('sw is v37 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v43'")
   && sw5.includes("'./src/scan-live.js'")
   && sw5.includes("OCR_CACHE = 'mustashar-ocr'")
   && OCR_RUNTIME_FILES.every(f => sw5.includes(f.replace('./', '')))
@@ -765,7 +765,7 @@ check('feedback 5: the data digests and row pins are still in force',
   app.includes('const DATA_SHA256 = {') && app.includes('const EXPECTED_ROWS = {')
   && !/collapseToDecisive[^]*?DATA_SHA256/.test(collapseBlock));
 
-/* ---------- 1.19.6 فيدباك 6: رموز التصنيف والتعديل ---------- */
+/* ---------- 1.19.7 فيدباك 6: رموز التصنيف والتعديل ---------- */
 const fb6I18n = fs.readFileSync('src/i18n.js', 'utf8');
 /* البلاغ هنا: التسوية نها عند بحث الطلب — والمحرك يقولاً ما لا يصل، ولا عثرً معنى.
  * القاعدة: النقطة/المسافة/بلا فاصل تساوي عند بحث القاموس وحده لا يمسّ العتبارة ولا منطق قبول.
@@ -779,7 +779,7 @@ check('feedback 6 RED LINE: a code no source explains still gets no meaning',
   && !/legend\.cat\.(B|I\\.Ph|Igr|R\\.S|Mi|RP)'/.test(app + fb6I18n));
 check('feedback 6: no invented meaning was added to any dictionary',
   !/legend\.cat\.(P\\.G\\.R|Rep)'/.test(fb6I18n)
-  && ['legend.cat.S.ph', 'legend.cat.PGR', 'legend.cat.rep', 'legend.cat.unknown']
+  && ['legend.cat.S.ph', 'legend.cat.PGR', 'legend.cat.rep', 'legend.cat.V', 'legend.cat.unknown']
      .every(k => (fb6I18n.match(new RegExp("'" + k.replace(/\./g, '\\.') + "':", 'g')) || []).length === 4));
 check('feedback 6: the gate reads the data itself and allows only two states',
   fs.existsSync('tests/cat-legend-gate.test.mjs')
@@ -791,6 +791,36 @@ check('feedback 6: the reported card is reproduced in both modes',
   && /53939-28-9/.test(fs.readFileSync('tests/fb6-cat-legend.mjs', 'utf8'))
   && /farmer/.test(fs.readFileSync('tests/fb6-cat-legend.mjs', 'utf8'))
   && /pro/.test(fs.readFileSync('tests/fb6-cat-legend.mjs', 'utf8')));
+
+/* ---------- 1.19.7 CORRECTION: V is explained by the 500 guide itself ----------
+ * The previous round put V on the declared-unexplained list, on the strength
+ * of judge.js's own note saying it came from the digital file. That note was
+ * our own judgement about the source, and it was wrong: the 500 guide's
+ * summary table carries the row
+ *   «V | Viruses / Microbials | \u0641\u064a\u0631\u0648\u0633\u0627\u062a\u0020\u0623\u0648\u0020\u0643\u0627\u0626\u0646\u0627\u062a\u0020\u062f\u0642\u064a\u0642\u0629\u0020\u0645\u0643\u0627\u0641\u062d\u0629»
+ * and 6 rows of data/libya-500.json actually carry the code.
+ * The measure of "explained" is the source guide, never a self-assessment. */
+check('feedback 6 CORRECTION: V is in the explained legend, not the unexplained list',
+  /'V': 'legend\.cat\.V'/.test(app)
+  && !/legend\.cat\.vnote/.test(fb6I18n)
+  && !/legend\.cat\.vnote/.test(fs.readFileSync('index.html', 'utf8')));
+check('feedback 6 CORRECTION: the V meaning is the guide wording, verbatim, in all four dictionaries',
+  (fb6I18n.match(/'legend\.cat\.V':/g) || []).length === 4
+  && /'legend\.cat\.V': '\u0641\u064a\u0631\u0648\u0633\u0627\u062a\u0020\u0623\u0648\u0020\u0643\u0627\u0626\u0646\u0627\u062a\u0020\u062f\u0642\u064a\u0642\u0629\u0020\u0645\u0643\u0627\u0641\u062d\u0629'/.test(fb6I18n)
+  && (function () {   /* the ar value must be the SAME string judge.js carries */
+    const v = (fb6I18n.match(/'legend\.cat\.V': '([^']+)'/) || [])[1] || '';
+    const j = (fs.readFileSync('src/judge.js', 'utf8').match(/'V':\s*\{[^}]*ar: '([^']+)'/) || [])[1] || '';
+    return v !== '' && v === j; })());
+check('feedback 6 CORRECTION: judge.js no longer annotates V as absent from the official guide',
+  !/note: '\u062a\u0639\u0631\u064a\u0641\u0020\u0627\u0644\u0645\u0644\u0641\u0020\u0627\u0644\u0631\u0642\u0645\u064a/.test(fs.readFileSync('src/judge.js', 'utf8')));
+check('feedback 6 CORRECTION: the 248 guide gets no V key, because it defines no V',
+  !JSON.parse(fs.readFileSync('data/libya-248.json', 'utf8')).rows
+    .some(r => String(r.category || '').split(/[\/,+]/).map(x => x.trim()).includes('V'))
+  && JSON.parse(fs.readFileSync('data/libya-500.json', 'utf8')).rows
+    .filter(r => r.category === 'V').length === 6);
+check('feedback 6 CORRECTION: the gate pins the new state, and the live sample is a real row by NAME',
+  /V is explained in the 500 legend table/.test(fs.readFileSync('tests/cat-legend-gate.test.mjs', 'utf8'))
+  && /Mild Pepino Mosaic Virus Isolate VC 1/.test(fs.readFileSync('tests/fb6-cat-legend.mjs', 'utf8')));
 
 /* ---------- summary ---------- */
 console.log('\n==============================');

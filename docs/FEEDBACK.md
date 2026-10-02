@@ -98,3 +98,31 @@ either explained or named, and there is no third state.**
 **المقياس الحيّ:** `tests/fb6-cat-legend.mjs` على الرابط المنشور، الوضعان، أربع
 عينات (الثلاث التي سمّاها المالك + رمز واحد لا يشرحه أي مصدر) ⇒ **10/10**،
 وصفر خطأ console.
+
+### The V correction (1.19.7 / mustashar-v43)
+
+Feedback 6 shipped with `V` on the **declared-unexplained** list. That decision
+rested on `judge.js`'s own note, which called V a digital-file definition
+"not in the official decree guide". That note was **our own judgement about
+the source, and it was wrong**: the decree-500 guide's summary table carries the
+row `V | Viruses / Microbials | فيروسات أو كائنات دقيقة مكافحة` — stored verbatim in
+`src/i18n.js` as `legend.cat.V` and asserted verbatim by two tests., and **6 rows of `data/libya-500.json` actually carry the code**
+(Mild Pepino Mosaic Virus Isolate VC 1 / VX 1, Mustard seeds powder, and three
+PepMV strains).
+
+So the measure that made `V` "unexplained" was a note, not the guide. **The
+guide is the measure.** This round:
+
+- moved `V` out of `DECLARED_UNEXPLAINED` in `tests/cat-legend-gate.test.mjs`;
+- added `legend.cat.V` to **all four dictionaries** with the guide's own
+  wording, and added `V` to `LEGEND_CAT_KEYS` (app.js) and `CODES` (judge.js);
+- **deleted** the `legend.cat.vnote` string and its row in `index.html`, which
+  asserted the opposite of the source;
+- added **no** `V` key for decree 248 — that guide defines no `V`, and the gate
+  now asserts exactly that;
+- replaced the live sample with a **real row reached BY NAME** (`Mild Pepino
+  Mosaic Virus Isolate VC 1`): all six V rows store `cas = "No CAS allocated"`,
+  so a made-up CAS would have been the wrong control this file already learned
+  about once.
+- bumped 1.19.6 → **1.19.7** and `mustashar-v42` → **`mustashar-v43`**
+  (`src/i18n.js` is a precached shell file, so a cache bump is mandatory).

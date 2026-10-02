@@ -93,7 +93,13 @@
     /* P.G.R — the spelling the 500 guide itself uses (25 rows). Same meaning
      * as PGR, which 9 rows use. The source guide explains both, so both are
      * explained; neither is an invented reading. */
-    'P.G.R': 'legend.cat.PGR'
+    'P.G.R': 'legend.cat.PGR',
+    /* V — the 500 guide's own summary table explains it and 6 rows of
+     * libya-500 carry it, so it is an explained code. Its meaning is the
+     * guide's wording verbatim:
+     * «V | Viruses / Microbials | فيروسات أو كائنات دقيقة مكافحة».
+     * Nothing here is invented. */
+    'V': 'legend.cat.V'
   };
   /* فيدباك 6 — تسوية الفواصل عند البحث في قاموس التصنيف وحده.
    *

@@ -283,8 +283,8 @@ check('app.js wires camera+gallery to OCR -> existing search',
   && /searchCandidates\(res\.cas, res\.candidates\)/.test(app)
   && /OcrModule\.extractCAS/.test(app));
 check('app.js OCR uses searchFn (no second search algorithm)',
-  /for \(const cas of casList\) pushAll\(searchFn\(cas, true\)\);/.test(app)
-  && /for \(const cand of candList\) pushAll\(searchFn\(cand, false\)\);/.test(app));
+  /for \(const cas of casList\) pushAll\(searchFn\(cas, true\), /.test(app)
+  && /for \(const cand of candList\) pushAll\(searchFn\(cand, false\), String\(cand\)\);/.test(app));
 check('app.js allows manual edit + re-search of OCR text',
   app.includes("$('#ocrRerun')") && app.includes("$('#ocrText')"));
 check('first-use OCR size notice shown in Arabic',
@@ -312,7 +312,7 @@ check('OCR engine carries the a3 early-confirm lock (DB-confirmed reads survive 
       && o.includes("via: 'ladder_confirm'")
       && o.includes('if (earlyLock) break;')
       && o.includes('if (!earlyLock && (exactHit || hasValidCas([...fusionCAS])))'); })());
-check('sw is v37 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v40'")
+check('sw is v37 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v41'")
   && sw5.includes("'./src/scan-live.js'")
   && sw5.includes("OCR_CACHE = 'mustashar-ocr'")
   && OCR_RUNTIME_FILES.every(f => sw5.includes(f.replace('./', '')))
@@ -735,6 +735,35 @@ check('the 17-label baseline set is untouched by the substitutes (hard-coded lis
   && !/SUBSTITUTE/.test(fs.readFileSync('tests/label-scan.mjs', 'utf8')));
 check('the gold standard records #14 as engine-visible evidence, never as owner attestation',
   /14,images \(3\)\.jpg,GROUND ALUMINUM SULPHATE,ocr-visible/.test(fs.readFileSync('tests/fixtures/labels/night-gold-standard.csv', 'utf8')));
+
+/* ---------- 1.19.5 فيدباك 5: قاعدة عرض أقل من يقي/أدنى يختفي ---------- */
+/* القاعدة تعمل المعروض فقط: الحارب والترتيب والبيانات تبقي حاسمة،
+ * ولا سيل ان يُحذف من قاعدة أخرى. الموازن: علم، أن الاختفاء يحدّد المصدر ولا يختفي إلا إذا لما لم يُقرأ. */
+check('feedback 5: the collapse keeps every row while nothing is decisive',
+  /if \(!decisive\.length\) return rows;/.test(app));
+check('feedback 5: the ban banner is still built from the unfiltered list',
+  /const prohibited = results\.filter\(x => x\.k === 'libya-248'\)/.test(app));
+check('feedback 5: the ambiguity banner follows the displayed list',
+  /CasDissect\.ambiguity\(displayResults\)/.test(app));
+check('feedback 5: substance identity is name+CAS, never CAS alone',
+  /const substance = x => String\(\(x\.r && x\.r\.name\)/.test(app) && /\+ '\|' \+ String\(\(x\.r && x\.r\.cas\)/.test(app));
+check('feedback 5: a fragment of the decisive read is not treated as another read',
+  /const sameRead = v => \{/.test(app) && /d\.indexOf\(t\) >= 0/.test(app));
+check('feedback 5: every result row records the read that produced it',
+  /x\.via = via; byRow\.set\(x\.r, x\)/.test(app));
+check('feedback 5: the display rule has a fixed gate of its own',
+  fs.existsSync('tests/decisive-display-gate.test.mjs')
+  && /the rule keeps every row when nothing is decisive/.test(fs.readFileSync('tests/decisive-display-gate.test.mjs', 'utf8'))
+  && /scan view \(88, not decisive\)/.test(fs.readFileSync('tests/decisive-display-gate.test.mjs', 'utf8')));
+/* الداينة: القاعدة تقرأ وتعرض — فقط على القائمة المذكورة
+ * (العدادات والبصمات). الحارس الذي يثبت عدد الصفوف ولا يُحذف من أي قاعدة. */
+const collapseBlock = app.slice(app.indexOf('function collapseToDecisive'), app.indexOf('function render(results'));
+check('feedback 5: the display rule writes nothing and loads nothing',
+  !/fetch\(|XMLHttpRequest|localStorage|\.push\(|\.splice\(|\.remove\(|delete /.test(collapseBlock),
+  collapseBlock.slice(0, 120));
+check('feedback 5: the data digests and row pins are still in force',
+  app.includes('const DATA_SHA256 = {') && app.includes('const EXPECTED_ROWS = {')
+  && !/collapseToDecisive[^]*?DATA_SHA256/.test(collapseBlock));
 
 /* ---------- summary ---------- */
 console.log('\n==============================');

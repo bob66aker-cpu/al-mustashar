@@ -753,6 +753,43 @@
     }
   }
 
+  /* فيدباك 5 — قاعدة العرض الحاسمة: «الأعلى يبقى والأدنى يختفي».
+   * تُطبَّق على القائمة المعروضة فقط: لا مساس بمنطق القبول، ولا بترتيب
+   * المصادر تحت الغطاء، ولا بحذف أي صفّ من أي قاعدة.
+   *
+   * ما تحتمله القاعدة: متى — صفّ واحد مطابق الاسم تماماً
+   * (decisive) من نفس القراءة. عندها:
+   *   • سجلّات المادة الحاسمة نفسها من كل المصادر تبقى كلها ظاهرة بحالاتها؛
+   *   • اقتراح مادة أخرى أضعف ومن القراءة نفسها يختفي؛
+   *   • ما جاء من قراءة أخرى (منتج متعدّد المواد) يبقى — لأن الفاصل هو
+   *     معرّف المادة لا رقم CAS وحده.
+   * وما لا تحتمله: 80–99 بلا حاسم ⇒ لا يُخفى شيء إطلاقاً، ويبقى التحذير.
+   * لذلك الإظهار لا يفصل ولا يقرّر: يخفي ما لم يقرأه أحد. */
+  function collapseToDecisive(list) {
+    const rows = Array.isArray(list) ? list : [];
+    const decisive = rows.filter(x => x && x.s && x.s.decisive);
+    if (!decisive.length) return rows;            /* 80-99: لا إخفاء إطلاقاً */
+    /* معرّف المادة: الاسم + الرقم معاً. الرقم وحده لا يفصل — هناك أرقام
+     * CAS مشتركة مسجَّلة، واسم واحد قد يحمل رقمَين في مصدرين. */
+    const substance = x => String((x.r && x.r.name) || '').trim().toLowerCase()
+      + '|' + String((x.r && x.r.cas) || '').trim();
+    const via = x => String(x.via == null ? '' : x.via);
+    const keepGroups = new Set(decisive.map(substance));
+    /* مقطع من نفس القراءة ليس قراءة أخرى. الاسم المنشور على ثلاثة أسطر
+     * GROUND / ALUMINIUM / SULPHATE يولّد مرشّحات: GROUND · ALUMINIUM ·
+     * SULPHATE · ALUMINIUM SULPHATE. والمقطع ALUMINIUM المنفرد كان يولّد
+     * اقتراح مادة أخرى (Aluminum 7429-90-5). الحكم بالكلمات: ما كلماتها داخل كلمات القراءة الحاسمة فهي نفسها. */
+    const wordsOf = v => String(v).toLowerCase().split(/[^a-z0-9\u0600-\u06ff]+/).filter(Boolean);
+    const decisiveReads = [...new Set(decisive.map(via))].filter(Boolean).map(wordsOf);
+    const sameRead = v => {
+      /* بلا مصدر قراءة (البحث اليدوي) فالقراءة واحدة بالضرورة. */
+      if (!v) return true;
+      const w = wordsOf(v);
+      return decisiveReads.some(d => w.every(t => d.indexOf(t) >= 0));
+    };
+    return rows.filter(x => keepGroups.has(substance(x)) || !sameRead(via(x)));
+  }
+
   function render(results, q, target) {
     const box = typeof target === 'string' ? $(target) : target || $('#results');
     if (!box) { lastResults = results || []; return; }
@@ -791,9 +828,13 @@
      * the UNFILTERED list, so narrowing the list can never hide a ban. */
     const ctx = cardContext();
     const showDetails = ctx.mode === 'pro';
+    /* فيدباك 5: القاعدة تعمل على ما سيُعرض. الحظر يبقى محسوباً من القائمة
+     * الخام أدناه حتى لا يُخفي أي تحذير. */
+    const displayResults = collapseToDecisive(results);
     const shownResults = cards
-      ? cards.applyContext(results, ctx)
-      : (showDetails ? results : results.filter(x => x.k === 'libya-248' || x.k === 'libya-500'));
+      ? cards.applyContext(displayResults, ctx)
+      : (showDetails ? displayResults
+                    : displayResults.filter(x => x.k === 'libya-248' || x.k === 'libya-500'));
     const prohibited = results.filter(x => x.k === 'libya-248');
     /* The notice is owed to the farmer whenever the DISPLAYED list is empty —
      * whether the engine matched nothing, or farmer-mode context removed every
@@ -825,7 +866,10 @@
     /* Ambiguity banner (decision layer): two different substances (different
      * CAS) in a near tie with no confirmed winner → both are shown and the
      * user is told to check the full name. Never auto-picked. */
-    const amb = window.CasDissect ? CasDissect.ambiguity(results) : null;
+     /* فيدباك 5: الالتباس يُحسب من المعروض فقط. اقتراح أضعف
+     * اختفى ⇒ لا داعي لترويسة تندب عن مادة لم تعد معروضة. والمادة
+     * المقروءة فعلاً ما زالت في القائمة ⇒ الترويسة تبقى. */
+    const amb = window.CasDissect ? CasDissect.ambiguity(displayResults) : null;
     const ambHtml = amb
       ? '<div class="ambgroup"><span data-icon="caution"></span><span>' + tf('results.ambiguous',
           'نتيجة ملتبسة: توجد مادة أخرى مشابهة برقم كيميائي مختلف ({a} {va}% مقابل {b} {vb}%). تحقق من الاسم الكامل قبل أي قرار.',
@@ -1860,12 +1904,15 @@
      * "Bifenthrin 7.9" must never mask the exact 100% match for the same
      * row that another candidate ("Bifenthrin") already produced. */
     const byRow = new Map();
-    const pushAll = list => (list || []).forEach(x => {
+    /* `via` = القراءة التي أنتجت الصفّ. قاعدة العرض (أعلى يبقى/أدنى يختفي)
+     * تفصل بالقراءة لا بالنسبة: اقتراح أضعف من نفس القراءة يختفي، وما جاء
+     * من قراءة أخرى (منتج متعدّد المواد) يبقى ظاهراً. */
+    const pushAll = (list, via) => (list || []).forEach(x => {
       const prev = byRow.get(x.r);
-      if (!prev || x.s.v > prev.s.v) byRow.set(x.r, x);
+      if (!prev || x.s.v > prev.s.v) { x.via = via; byRow.set(x.r, x); }
     });
-    for (const cas of casList) pushAll(searchFn(cas, true));   // CAS exact (100%)
-    for (const cand of candList) pushAll(searchFn(cand, false)); // same 80% rule
+    for (const cas of casList) pushAll(searchFn(cas, true), 'CAS:' + cas);      // CAS exact (100%)
+    for (const cand of candList) pushAll(searchFn(cand, false), String(cand)); // same 80% rule
     const merged = [...byRow.values()];
     merged.sort((a, b) => ((rank[a.k] ?? 99) - (rank[b.k] ?? 99)) || (b.s.v - a.s.v));
     return merged.slice(0, 24);

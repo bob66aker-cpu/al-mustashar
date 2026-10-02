@@ -312,7 +312,7 @@ check('OCR engine carries the a3 early-confirm lock (DB-confirmed reads survive 
       && o.includes("via: 'ladder_confirm'")
       && o.includes('if (earlyLock) break;')
       && o.includes('if (!earlyLock && (exactHit || hasValidCas([...fusionCAS])))'); })());
-check('sw is v37 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v43'")
+check('sw is v37 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v44'")
   && sw5.includes("'./src/scan-live.js'")
   && sw5.includes("OCR_CACHE = 'mustashar-ocr'")
   && OCR_RUNTIME_FILES.every(f => sw5.includes(f.replace('./', '')))
@@ -821,6 +821,52 @@ check('feedback 6 CORRECTION: the 248 guide gets no V key, because it defines no
 check('feedback 6 CORRECTION: the gate pins the new state, and the live sample is a real row by NAME',
   /V is explained in the 500 legend table/.test(fs.readFileSync('tests/cat-legend-gate.test.mjs', 'utf8'))
   && /Mild Pepino Mosaic Virus Isolate VC 1/.test(fs.readFileSync('tests/fb6-cat-legend.mjs', 'utf8')));
+
+/* ---------- 1.19.8 فيدباك 7: شرح حالة الاعتماد على البطاقة ----------
+ * البلاغ: «شرح حالة الاعتماد مفقود في بطاقة النتيجة (الوضعان) رغم وجوده في
+ * «حول ← شرح الرموز»».
+ * ما قيس حيّاً قبل التعديل (لا يُعاد قياسه):
+ *   · شارة 500 = «قرار 500: رمز REV (رمز غير مفسَّر) (REV)». القوس الأول نص
+ *     القاموس st.500.rev، والقوس الثاني يضيفه statusDisplay عمداً ليبقى الرمز
+ *     الخام مرئياً ⇒ ليس نصاً مقصوصاً ولا قيمة بيانات ناقصة: يبقى ويوثَّق.
+ *   · Approved و REV و RAR و 248 كانت تحمل سطر الشرح فعلاً في الوضعين.
+ *   · REV* كانت تعرض جملة الربط وحدها «نفس شرح REV، مع إضافة الجملة التالية
+ *     بعدها كسطر منفصل:» ولا تعرض ولا جملة REV ولا ملاحظة النجمة — هذا هو
+ *     «الشرح المفقود في البطاقة» («شرح الرموز» يعرض الثلاث).
+ *   · EU/EPA/EPA-cancelled بلا سطر: دليل كل واحد منها لا يعرّف شرحاً مفصلاً
+ *     ⇒ تبقى رمزاً بلا سطر (D25)، والحارس يمنع اختلاق واحد لاحقاً.
+ * الإصلاح: نص واحد يُبنى مرة واحدة (statusExplainLines) تقرأ منه البطاقة
+ * و«شرح الرموز» معاً — لا صياغة جديدة ولا مساس data/. */
+check('feedback 7: the explanation lines are built once and read by the card and the legend',
+  /function statusExplainLines\(code\)/.test(app)
+  && /function statusExplainFull\(code\)/.test(app)
+  && /const lines = statusExplainLines\(code\);/.test(app)
+  && /statusExplain: statusExplain, statusExplainFull: statusExplainFull,/.test(app));
+check('feedback 7: the card prints the whole explanation, REV* included',
+  /var statusExplainFull = deps\.statusExplainFull \|\| statusExplain;/.test(fs.readFileSync('src/cards.js', 'utf8'))
+  && /if \(x\.k === 'libya-500'\) explain = statusExplainFull\(x\.r\.status\) \|\| '';/.test(fs.readFileSync('src/cards.js', 'utf8'))
+  && /\[body, statusExplain\('REV'\), t\('st\.500\.revstar\.note', ''\)\]/.test(app));
+check('feedback 7: no legend branch assembles its own text any more',
+  !/esc\(statusExplain\('REV'\)\)/.test(app));
+check('feedback 7 RED LINE: the explanation comes from the source dictionary only',
+  !/st\.(eu|epa)[a-z.]*\.explain/.test(fs.readFileSync('src/i18n.js', 'utf8'))
+  && !/explain = '[^']+'/.test(fs.readFileSync('src/cards.js', 'utf8'))
+  && !/st\.500\.[a-z]+\.explain/.test(fs.readFileSync('src/cards.js', 'utf8')));
+const fb7Gate = fs.readFileSync('tests/fb7-status-explain.test.mjs', 'utf8');
+check('feedback 7: the gate covers 4 dictionaries x 2 modes and reads data/ itself',
+  fs.existsSync('tests/fb7-status-explain.test.mjs')
+  && /const LANGS = \['ar', 'en', 'fr', 'zh'\]/.test(fb7Gate)
+  && /const sources = \['libya-500', 'libya-248', 'eu', 'epa', 'epa-cancelled'\]/.test(fb7Gate)
+  && /readFileSync\('data\/' \+ s \+ '\.json'/.test(fb7Gate)
+  && /\['farmer', 'pro'\]/.test(fb7Gate)
+  && /'farmer', 'pro'/.test(fb7Gate));
+/* القوس الغامض بجوار REV: ليس مقصوصاً ولا ناقصاً — القوس الأول نص القاموس
+ * والقوس الثاني إضافة مقصودة من statusDisplay ليبقى الرمز الخام مرئياً. */
+check('feedback 7: the badge keeps its two parentheses on purpose (documented, not clipped)',
+  app.includes("extra = ' (' + d.raw + ')'")
+  && app.includes("extra = ' (' + d.raw + ')';   // code stays visible")
+  && (fb6I18n.match(/'st\.500\.rev':/g) || []).length === 4
+  && !/st\.500\.[a-z]+\.explain':\s*'[^']*\.\.\./.test(fb6I18n));
 
 /* ---------- summary ---------- */
 console.log('\n==============================');

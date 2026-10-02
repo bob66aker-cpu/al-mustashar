@@ -136,6 +136,25 @@
     const k = LEGEND_STATUS_KEYS[String(rawStatus || '').trim()];
     return k ? t(k, '') : '';
   }
+/* FB7 — ONE source of truth for the lines a status code explains to.
+   * Before this, the card and «شرح الرموز» each assembled the text their own
+   * way, and REV* lost the very text it points at: the card showed only the
+   * connective line and never the REV sentence nor the asterisk note that the
+   * guide adds right after it. Nothing here is authored — every line is the
+   * verbatim dictionary entry, and a code no source explains yields no lines
+   * at all (D25). */
+  function statusExplainLines(code) {
+    const c = String(code || '').trim();
+    const body = statusExplain(c);
+    if (!body) return [];
+    if (c === 'REV*') {
+      return [body, statusExplain('REV'), t('st.500.revstar.note', '')].filter(Boolean);
+    }
+    return [body];
+  }
+  function statusExplainFull(code) {
+    return statusExplainLines(code).join(' ');
+  }
   /* 1.2 + round 2026-09-27: compound functional codes (Decree-248 «I/A»
    * and friends) are resolved to their parts so the tooltip/popover explains
    * EVERY part. Separator set is now +, «,» and / (all real data forms), plus
@@ -672,7 +691,8 @@
     ? Cards.create({
         t: t, tf: tf, esc: esc,
         catTitle: catTitle, statusDisplay: statusDisplay, sourceLabel: sourceLabel,
-        statusExplain: statusExplain, casApi: window.CasDissect,
+        statusExplain: statusExplain, statusExplainFull: statusExplainFull,
+        casApi: window.CasDissect,
         dataVersion: dataVersionOf,
         packAttribution: packAttribution,
         packAttributionLang: packAttributionLang,
@@ -2750,18 +2770,16 @@
    * ============================================================ */
   function legendCard(status) {
     const code = String(status || '').trim();
-    const body = statusExplain(code);
-    if (!body) return '';
-    /* REV* is rendered exactly as the prompt structures it: the connective
-     * line, then REV's own text, then the asterisk note as a separate line. */
-    if (code === 'REV*') {
-      return '<strong class="lg-code">' + esc(code) + '</strong>'
-        + '<p class="lg-body">' + esc(body) + '</p>'
-        + '<p class="lg-body">' + esc(statusExplain('REV')) + '</p>'
-        + '<p class="lg-note">' + esc(t('st.500.revstar.note', '')) + '</p>';
-    }
+    const lines = statusExplainLines(code);
+    if (!lines.length) return '';
+    /* one text, one place: the card below and this popover render the SAME
+     * lines (FB7) — REV* keeps the guide's own structure, the connective
+     * line, then REV's sentence, then the asterisk note. */
     return '<strong class="lg-code">' + esc(code) + '</strong>'
-      + '<p class="lg-body">' + esc(body) + '</p>';
+      + lines.map(function (line, i) {
+          return '<p class="' + (code === 'REV*' && i === lines.length - 1 ? 'lg-note' : 'lg-body') + '">'
+            + esc(line) + '</p>';
+        }).join('');
   }
   function openLegend(status, anchor) {
     const pop = $('#legendPop');

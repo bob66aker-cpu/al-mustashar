@@ -25,6 +25,9 @@
     var t = deps.t, tf = deps.tf, esc = deps.esc;
     var catTitle = deps.catTitle, statusDisplay = deps.statusDisplay;
     var sourceLabel = deps.sourceLabel, statusExplain = deps.statusExplain;
+    /* FB7: the FULL explanation, the very text the legend shows — for REV* the
+     * connective line alone pointed at sentences the card never printed. */
+    var statusExplainFull = deps.statusExplainFull || statusExplain;
     var casApi = deps.casApi || null;
     var dataVersion = deps.dataVersion || function () { return ''; };
     var sourceKeys = deps.sourceKeys || [];
@@ -104,7 +107,7 @@
       var tone = candidate ? 'review' : (sd.tone === 'banned' ? 'ban' : (sd.tone === 'amber' ? 'review' : 'neutral'));
       var icon = tone === 'ban' ? 'ban' : (tone === 'review' ? 'caution' : 'check');
       var explain = '';
-      if (x.k === 'libya-500') explain = statusExplain(x.r.status) || '';
+      if (x.k === 'libya-500') explain = statusExplainFull(x.r.status) || '';
       else if (x.k === 'libya-248') explain = t('card.status.banned.248', 'مدرجة في قائمة المواد المحظورة (قرار ليبيا 248).');
       if (!explain && ctx.mode === 'pro' && x.r.status_raw) explain = String(x.r.status_raw);
       var candidateLine = candidate

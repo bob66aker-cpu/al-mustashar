@@ -20,10 +20,30 @@ import { execFileSync } from 'node:child_process';
 
 const BASE_COMMIT = process.env.PPOCR_BASE || 'af61f4f';
 
-let pass = 0, fail = 0;
+let pass = 0, fail = 0, skip = 0;
+/* A declared SKIP is not a tolerated failure (D26): it is printed, counted and
+ * named, and it still leaves the exit code clean. A real regression — bytes
+ * that GIT KNOWS ABOUT — is never skipped, it fails. */
 const ok = (cond, label, extra = '') => {
   if (cond) { pass++; console.log('PASS ' + label + (extra ? ' — ' + extra : '')); }
   else { fail++; console.log('FAIL ' + label + (extra ? ' — ' + extra : '')); }
+};
+const skipOne = (label, reason) => {
+  skip++;
+  console.log('SKIP ' + label + ' — ' + reason);
+};
+/* true only when git itself tracks the path: then it is vendored FOR REAL */
+const tracked = rel => {
+  try {
+    const out = execFileSync('git', ['ls-files', '--error-unmatch', rel], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] });
+    return out.trim().length > 0;
+  } catch (e) { return false; }
+};
+const ignored = rel => {
+  try {
+    const out = execFileSync('git', ['check-ignore', '-q', rel], { stdio: 'ignore' });
+    return true;
+  } catch (e) { return false; }
 };
 
 const read = rel => readFileSync(rel, 'utf8');
@@ -114,7 +134,26 @@ ok(!/ppocr|paddle/i.test(codeOnly(now.sw)), 'the service worker code never menti
   'only the release note names it');
 const prepPaths = Object.values(setsNow).flat().join(' ');
 ok(!/ppocr|paddle/i.test(prepPaths), 'no optional-package path is in any prepared list');
-ok(!existsSync('vendor/ppocr') && !existsSync('vendor/paddle'), 'no optional package bytes are vendored into the repo');
+/* The optional package must cost the farmer nothing — not one byte in the repo.
+ * On a clean checkout both directories are absent and the check simply passes.
+ * On a machine that ran the CLOSED ppocr-lab experiment (branch `ppocr-lab`,
+ * decision D24) the model files are still lying in vendor/ppocr: git IGNORES
+ * them, they were never committed, and they belong to that lab, not to this
+ * repository. Failing there measured the workspace, not the product — so it is
+ * declared as a SKIP with its reason. If git ever TRACKS those bytes, this
+ * becomes a FAIL again, because then the farmer really would carry them. */
+const LAB = ['vendor/ppocr', 'vendor/paddle'].filter(d => existsSync(d));
+const LAB_TRACKED = LAB.filter(tracked);
+if (LAB.length && LAB_TRACKED.length) {
+  ok(false, 'no optional package bytes are vendored into the repo',
+     'TRACKED by git: ' + LAB_TRACKED.join(', '));
+} else if (LAB.length) {
+  skipOne('no optional package bytes are vendored into the repo',
+    'git-ignored leftovers of the closed ppocr-lab experiment (' + LAB.join(', ') +
+    ') — never committed; tracked-by-git bytes would fail here instead');
+} else {
+  ok(true, 'no optional package bytes are vendored into the repo');
+}
 /* comments are allowed to NAME the package; CODE may not touch it */
 const ocrCode = now.ocr.split('\n')
   .filter(l => !/^\s*(\*|\/\/|\/\*)/.test(l))                 /* comments */
@@ -139,5 +178,6 @@ console.log('OPTIONAL PACKAGE  gated=' + gated + ' B  ungated=' + ungated + ' B 
 console.log('DEFAULT PREPARATION (unchanged) = ' + totalNow + ' B across ' +
   Object.values(setsNow).flat().filter(p => p !== './').length + ' files');
 
-console.log('\nPPOCR-SIZE: PASS ' + pass + '  FAIL ' + fail);
+console.log('\nPPOCR-SIZE: PASS ' + pass + '  FAIL ' + fail + '  SKIP ' + skip +
+  (skip ? '  (' + skip + ' declared, see above)' : ''));
 process.exit(fail ? 1 : 0);

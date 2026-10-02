@@ -312,7 +312,7 @@ check('OCR engine carries the a3 early-confirm lock (DB-confirmed reads survive 
       && o.includes("via: 'ladder_confirm'")
       && o.includes('if (earlyLock) break;')
       && o.includes('if (!earlyLock && (exactHit || hasValidCas([...fusionCAS])))'); })());
-check('sw is v37 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v45'")
+check('sw is v37 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v46'")
   && sw5.includes("'./src/scan-live.js'")
   && sw5.includes("OCR_CACHE = 'mustashar-ocr'")
   && OCR_RUNTIME_FILES.every(f => sw5.includes(f.replace('./', '')))
@@ -860,13 +860,21 @@ check('feedback 7: the gate covers 4 dictionaries x 2 modes and reads data/ itse
   && /readFileSync\('data\/' \+ s \+ '\.json'/.test(fb7Gate)
   && /\['farmer', 'pro'\]/.test(fb7Gate)
   && /'farmer', 'pro'/.test(fb7Gate));
-/* القوس الغامض بجوار REV: ليس مقصوصاً ولا ناقصاً — القوس الأول نص القاموس
- * والقوس الثاني إضافة مقصودة من statusDisplay ليبقى الرمز الخام مرئياً. */
-check('feedback 7: the badge keeps its two parentheses on purpose (documented, not clipped)',
-  app.includes("extra = ' (' + d.raw + ')'")
-  && app.includes("extra = ' (' + d.raw + ')';   // code stays visible")
-  && (fb6I18n.match(/'st\.500\.rev':/g) || []).length === 4
-  && !/st\.500\.[a-z]+\.explain':\s*'[^']*\.\.\./.test(fb6I18n));
+/* القوس الغامض بجوار REV — تاريخه مُوثَّق هنا كاملاً:
+ * قيس حيّاً (i18n حيّ + DOM حقيقي) فكان «قرار 500: رمز REV (رمز غير مفسَّر) (REV)»:
+ * القوس الأول نصّ القاموس، والثاني إضافة مقصودة من statusDisplay لبقاء الرمز
+ * الخام مرئياً — أي لا قصّ ولا مفتاح ناقص. ثم的问 فيدباك 7 ختامياً: الشارة كانت
+ * تقول «رمز غير مفسَّر» بينما سطر الشرح الكامل تحتها ⇒ تناقض من نمط FB6.
+ * القاعدة الآن: الرمز الذي له سطر شرح تُNamed الشارةُ.short designationَ من الدليل
+ * («قرار 500: رمز REV»)، والقوس المزدوج يسقط لأن الشارة صارت تنطق الرمز. */
+check('feedback 7: the badge no longer contradicts the explanation printed under it',
+  /'st\.500\.rev':\s*'قرار 500: رمز REV',/.test(fb6I18n)
+  && !/'st\.500\.(rev|rar|revstar|approved)':\s*'[^']*غير مفسَّر/.test(fb6I18n)
+  && /'st\.500\.unknown':\s*'[^']*غير مفسَّر/.test(fb6I18n));
+check('feedback 7: the raw code is appended only when the badge does not already name it',
+  app.includes("const namesCode = !!d.raw && phrase.indexOf(d.raw) !== -1;")
+  && app.includes("&& d.raw && !namesCode) extra = ' (' + d.raw + ')';")
+  && app.includes("&& d.raw !== phrase && !namesCode) extra = ' · ' + d.raw;"));
 
 /* ---------- 1.19.9 D27: سطر الشرح = نصّ دليل مصدره حرفياً، لا جملة من عندنا ----------
  * الجولة الأولى (1.19.8) أصلحت REV*. وده الجولة اكتشفت سطراً ثانياً مكتوباً من
@@ -895,6 +903,27 @@ check('feedback 8: the static gate reads data/ and runs the real renderer in 4 d
   /const LANGS = \['ar', 'en', 'fr', 'zh'\]/.test(fs.readFileSync('tests/fb7-status-explain.test.mjs', 'utf8'))
   && /data\/epa-cancelled\.json/.test(fs.readFileSync('tests/fb7-status-explain.test.mjs', 'utf8')) === false
   && /readFileSync\('data\/' \+ s \+ '\.json'/.test(fs.readFileSync('tests/fb7-status-explain.test.mjs', 'utf8')));
+
+/* ---------- 1.19.10: الشارة لا تناقض شرحها (نمط FB6 على شارة الحالة) ----------
+ * قياس إلزامي حيّاً (i18n حيّ + DOM حقيقي) قبل القرار:
+ *   شارة 1-Decanol = «قرار 500: رمز REV (رمز غير مفسَّر) (REV)» مرئية،
+ *   وتحتها سطر الشرح الكامل مرئي ⇒ التناقض واقع لا خطأ نقل.
+ * الإصلاح: الرموز التي لها سطر شرح تأخذ تسمية الشارة القصيرة من الدليل نفسه،
+ * والقوس المزدوج يسقط (الشارة صارت تنطق الرمز)، ولا يُكتب نصّ مبتدع.
+ * الرمز المجهول وحده يبقي على «رمز غير مفسَّر» — لأنها صادقة هناك. */
+check('the badge for an explained code names the code and claims no ignorance',
+  /'st\.500\.rev':\s*'قرار 500: رمز REV',/.test(fs.readFileSync('src/i18n.js', 'utf8'))
+  && /'st\.500\.revstar':\s*'قرار 500: رمز REV\*',/.test(fs.readFileSync('src/i18n.js', 'utf8')));
+check('no explained decree-500 badge still says "uninterpreted code"',
+  !/'st\.500\.(approved|rar|rev|revstar)':\s*'[^']*(غير مفسَّر|interprété|未解释|interpreted)/.test(fs.readFileSync('src/i18n.js', 'utf8')));
+check('the unknown code keeps the note — it is the only badge entitled to it',
+  (fs.readFileSync('src/i18n.js', 'utf8').match(/'st\.500\.unknown':/g) || []).length === 4);
+check('the ppocr-size gate declares a SKIP instead of failing on the closed lab\'s leftovers',
+  /skipOne\('no optional package bytes are vendored into the repo'/.test(fs.readFileSync('tests/ppocr-size.test.mjs', 'utf8'))
+  && /const tracked = rel =>/.test(fs.readFileSync('tests/ppocr-size.test.mjs', 'utf8'))
+  && /LAB_TRACKED/.test(fs.readFileSync('tests/ppocr-size.test.mjs', 'utf8'))
+  && /SKIP ' \+ skip/.test(fs.readFileSync('tests/ppocr-size.test.mjs', 'utf8')),
+  'a declared skip, never a tolerated failure (D26)');
 
 /* ---------- summary ---------- */
 console.log('\n==============================');

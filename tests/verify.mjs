@@ -312,7 +312,7 @@ check('OCR engine carries the a3 early-confirm lock (DB-confirmed reads survive 
       && o.includes("via: 'ladder_confirm'")
       && o.includes('if (earlyLock) break;')
       && o.includes('if (!earlyLock && (exactHit || hasValidCas([...fusionCAS])))'); })());
-check('sw is v37 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v41'")
+check('sw is v37 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v42'")
   && sw5.includes("'./src/scan-live.js'")
   && sw5.includes("OCR_CACHE = 'mustashar-ocr'")
   && OCR_RUNTIME_FILES.every(f => sw5.includes(f.replace('./', '')))
@@ -764,6 +764,33 @@ check('feedback 5: the display rule writes nothing and loads nothing',
 check('feedback 5: the data digests and row pins are still in force',
   app.includes('const DATA_SHA256 = {') && app.includes('const EXPECTED_ROWS = {')
   && !/collapseToDecisive[^]*?DATA_SHA256/.test(collapseBlock));
+
+/* ---------- 1.19.6 فيدباك 6: رموز التصنيف والتعديل ---------- */
+const fb6I18n = fs.readFileSync('src/i18n.js', 'utf8');
+/* البلاغ هنا: التسوية نها عند بحث الطلب — والمحرك يقولاً ما لا يصل، ولا عثرً معنى.
+ * القاعدة: النقطة/المسافة/بلا فاصل تساوي عند بحث القاموس وحده لا يمسّ العتبارة ولا منطق قبول.
+ * والتقييم نفسه: النقطة في catParts تبقى على الجدول الحرفي — ف«S.Ph» لا تنقسم إلى S + Ph. */
+check('feedback 6: the category lookup folds the separator, at the lookup only',
+  /function catFold\(code\)/.test(app)
+  && /CAT_FOLD_KEYS\[catFold\(parts\[0\]\)\]/.test(app)
+  && /const CAT_FOLD_KEYS = \(\(\) =>/.test(app));
+check('feedback 6 RED LINE: a code no source explains still gets no meaning',
+  /legend\.cat\.unknown/.test(app)
+  && !/legend\.cat\.(B|I\\.Ph|Igr|R\\.S|Mi|RP)'/.test(app + fb6I18n));
+check('feedback 6: no invented meaning was added to any dictionary',
+  !/legend\.cat\.(P\\.G\\.R|Rep)'/.test(fb6I18n)
+  && ['legend.cat.S.ph', 'legend.cat.PGR', 'legend.cat.rep', 'legend.cat.unknown']
+     .every(k => (fb6I18n.match(new RegExp("'" + k.replace(/\./g, '\\.') + "':", 'g')) || []).length === 4));
+check('feedback 6: the gate reads the data itself and allows only two states',
+  fs.existsSync('tests/cat-legend-gate.test.mjs')
+  && /DECLARED_UNEXPLAINED/.test(fs.readFileSync('tests/cat-legend-gate.test.mjs', 'utf8'))
+  && /data\/libya-500\.json/.test(fs.readFileSync('tests/cat-legend-gate.test.mjs', 'utf8'))
+  && /data\/libya-248\.json/.test(fs.readFileSync('tests/cat-legend-gate.test.mjs', 'utf8')));
+check('feedback 6: the reported card is reproduced in both modes',
+  fs.existsSync('tests/fb6-cat-legend.mjs')
+  && /53939-28-9/.test(fs.readFileSync('tests/fb6-cat-legend.mjs', 'utf8'))
+  && /farmer/.test(fs.readFileSync('tests/fb6-cat-legend.mjs', 'utf8'))
+  && /pro/.test(fs.readFileSync('tests/fb6-cat-legend.mjs', 'utf8')));
 
 /* ---------- summary ---------- */
 console.log('\n==============================');

@@ -236,6 +236,10 @@
     'M':    { en: 'Molluscicide',       ar: 'مبيد نواعم / قواقع' },
     'S.Ph': { en: 'Sex Pheromone',      ar: 'فرمون جنسي' },
     'PGR':  { en: 'Plant Growth Regulator', ar: 'منظم نمو نباتات' },
+    /* P.G.R / Rep — the spellings the source guides themselves use. The guide
+     * explains them, so they are explained here too; no reading is invented. */
+    'P.G.R': { en: 'Plant Growth Regulator', ar: 'منظم نمو نباتات' },
+    'Rep':   { en: 'Repellent',          ar: 'طارد' },
     'rep':  { en: 'Repellent',          ar: 'طارد' },
     'V':    { en: 'Viruses / Microbials', ar: 'فيروسات أو كائنات دقيقة مكافحة', note: 'تعريف الملف الرقمي (غير وارد في الدليل الرسمي)' }
   };
@@ -245,7 +249,10 @@
     const out = [];
     const raw = String(cell).split(/[+/,؛;]| و /g).map(x => x.trim()).filter(Boolean);
     for (const token of raw) {
-      const key = Object.keys(CODES).find(k => k.toLowerCase() === token.toLowerCase().replace(/\./g, '.'));
+      /* فيدباك 6: الفاصل (نقطة/مسافة/لا فاصل) لا يغيّر الرمز — S.Ph = S Ph =
+       * SPh. الطي يتم على حروف الرمز وحده، فلا يلمس عتبة ولا منطق قبول. */
+      const fold = x => String(x || '').toLowerCase().replace(/[.\s]/g, '');
+      const key = Object.keys(CODES).find(k => fold(k) === fold(token));
       if (key) out.push({ code: token, ...CODES[key] });
       else out.push({ code: token, ar: 'رمز غير معرّف في دليل القرار', en: '', unknown: true });
     }

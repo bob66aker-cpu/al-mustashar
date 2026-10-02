@@ -1,6 +1,8 @@
 /*
  * sw.js — المستشار الزراعي (v29)
  *
+ * v42 (2026-10-02) — فيدباك 6: رموز التصنيف عرض «غير مشروح» للمزارع معان الدليل: تسوية الفاصل عند بحث الطلب (نقطة / مسافة / بلا فاصل) في بحث القاموس وحده لا يمسّ العتبات ولا منطق قبول؛ وإضافة «P.G.R» و«Rep» بصيغتهما المصدر. حارس ثابت: tests/cat-legend-gate.test.mjs — كل رمز مشروح أو موقف علنه باعدادة، لا ثالث.
+ *
  * v29 (2026-09-28) — المرحلة الثالثة: أتمتة القراءة (نسخة العمل، الأصل لم يمس):
  *   - إصلاح قصور قراءة الملصقات: جمع كلمات الشجرة لا كتلها (Tesseract 6 لا
  *       يُرجع الكتل افتراضياً)، وإعادة بناء الأسطر من هندسة الكلمات،
@@ -167,7 +169,7 @@
  * Personal data (IndexedDB history, theme, app version note) lives outside
  * the caches and is never touched by this worker.
  */
-const CACHE = 'mustashar-v41';
+const CACHE = 'mustashar-v42';
 const OCR_CACHE = 'mustashar-ocr';
 
 /* 1.7 — safe cache write: a full storage quota (QuotaExceededError) must

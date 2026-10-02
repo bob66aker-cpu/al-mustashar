@@ -89,8 +89,43 @@
     'I': 'legend.cat.I', 'F': 'legend.cat.F', 'A': 'legend.cat.A',
     'N': 'legend.cat.N', 'H': 'legend.cat.H', 'R': 'legend.cat.R',
     'M': 'legend.cat.M', 'S.ph': 'legend.cat.S.ph',
-    'PGR': 'legend.cat.PGR', 'rep': 'legend.cat.rep'
+    'PGR': 'legend.cat.PGR', 'rep': 'legend.cat.rep',
+    /* P.G.R — the spelling the 500 guide itself uses (25 rows). Same meaning
+     * as PGR, which 9 rows use. The source guide explains both, so both are
+     * explained; neither is an invented reading. */
+    'P.G.R': 'legend.cat.PGR'
   };
+  /* فيدباك 6 — تسوية الفواصل عند البحث في قاموس التصنيف وحده.
+   *
+   * السبب المقيس: المفتاح كان «S.ph» بينما البيانات تكتب «S.Ph» والبحث
+   * كان مطابقاً حرفياً ⇒ 34 صفاً في قرار 500 تُعرض للمزارع على أنها «رمز غير
+   * مشروح في دليل هذا المصدر» مع أن الدليل يشرحها، ومع أن الدليل المعروض
+   * في أسفل البطاقة يحمل الشرح نفسه. الخلل في مطابقة المفتاح لا في الرمز.
+   *
+   * القاعدة: النقطة والمسافة وغياب الفاصل الثلاثة سواء — S.Ph = S Ph = SPh.
+   * لذلك يُطوى الرمز على حروفه فقط (بلا نقطة ولا فراغ) قبل المقارنة.
+   *
+   * حدود مقيسة لا تُتجاوز:
+   *   - التسوية في «بحث القاموس» وحده. لا تمسّ العتبات ولا منطق القبول ولا
+   *     تقسيم الرموز: شرط النقطة في catParts يبقى على الجدول الحرفي كما هو،
+   *     فـ«S.Ph» لا ينقسم إلى S + Ph (وهو ليس تفكيكاً صحيحاً)، و«F.rep»
+   *     ينقسم كما كان.
+   *   - رمز لا يشرحه أي مصدر يبقى بلا شرح: المطابقة تفشل ⇒ الرسالة
+   *     القائمة «رمز غير مشروح في دليل هذا المصدر» تبقى كما هي. لا يُخترع
+   *     معنى لغرابة ولا لاسم يشبه رمزاً آخر.
+   *   - No new translation without a source. The added spellings are
+   *     «P.G.R» and «Rep» in the guide's own spelling, mapped to the
+   *     existing meaning of PGR / rep. Nothing else was added, and no
+   *     code outside a real guide was given a meaning.
+   */
+  function catFold(code) {
+    return String(code == null ? '' : code).toLowerCase().replace(/[.\s]/g, '');
+  }
+  const CAT_FOLD_KEYS = (() => {
+    const m = Object.create(null);
+    for (const k of Object.keys(LEGEND_CAT_KEYS)) m[catFold(k)] = LEGEND_CAT_KEYS[k];
+    return m;
+  })();
   function statusExplain(rawStatus) {
     const k = LEGEND_STATUS_KEYS[String(rawStatus || '').trim()];
     return k ? t(k, '') : '';
@@ -118,7 +153,7 @@
     const parts = catParts(code);
     if (!parts.length) return '';
     if (parts.length > 1) return parts.map(p => catName(p) || '').filter(Boolean).join(' + ');
-    const k = LEGEND_CAT_KEYS[parts[0]];
+    const k = LEGEND_CAT_KEYS[parts[0]] || CAT_FOLD_KEYS[catFold(parts[0])];
     return k ? t(k, '') : '';
   }
   /* Category tooltip: known codes get the fixed-table meaning; a COMPOUND

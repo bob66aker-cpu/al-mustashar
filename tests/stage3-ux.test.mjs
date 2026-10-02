@@ -149,7 +149,7 @@ for (const k of ['scan.barcode.found', 'scan.barcode.clear', 'live.sharp.label',
 
 /* ---------- sw/version ---------- */
 check('sw is v31 and keeps the permanent OCR cache name',
-  sw.includes("CACHE = 'mustashar-v41'") && sw.includes("OCR_CACHE = 'mustashar-ocr'"));
+  sw.includes("CACHE = 'mustashar-v42'") && sw.includes("OCR_CACHE = 'mustashar-ocr'"));
 check('sw changelog has a v27 entry mentioning the stage-3 items',
   sw.includes('* v27 (2026-09-27)') && sw.includes('3.3') && sw.includes('3.5'));
 check('OCR assets include ara + zxing wasm (3.4/3.5) and BOTH langs of traineddata are matched by isOcrUrl',
@@ -158,8 +158,8 @@ check('OCR assets include ara + zxing wasm (3.4/3.5) and BOTH langs of trainedda
 check('ara must NOT be a default engine language (default worker is eng)',
   !/createWorker\(\s*['"]ara/.test(ocr) && !/createWorker\(\s*['"]eng\+ara['"]/.test(ocr));
 check('version 1.19.5 in version.json + package.json',
-  JSON.parse(readFileSync(join(root, 'version.json'), 'utf8')).version === '1.19.5'
-  && JSON.parse(readFileSync(join(root, 'package.json'), 'utf8')).version === '1.19.5');
+  JSON.parse(readFileSync(join(root, 'version.json'), 'utf8')).version === '1.19.6'
+  && JSON.parse(readFileSync(join(root, 'package.json'), 'utf8')).version === '1.19.6');
 
 /* ---------- baseline + A/B docs (3.1/3.7) ---------- */
 check('3.1: baseline doc exists with the measured columns and hang-anomaly note',

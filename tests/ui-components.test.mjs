@@ -101,7 +101,12 @@ cards.buildCasIndex({
   check('pro card shows an explicit match type, not a score', /mt\.cas-name/.test(html) && !/\d+%/.test(html));
   check('pro card shows the data version line when the source has one', !/prov-line/.test(html));
   check('pro card of an EPA row shows its data version', /prov-line/.test(cards.card(EPAR, 'Captan', ctx)) && /2026-09-23/.test(cards.card(EPAR, 'Captan', ctx)));
-  check('pro card keeps the 248 ban explanation', /banned\.248/.test(cards.card(BANNED, 'DDT', ctx)));
+  /* D27 (1.19.9): the pin is now the RULE, not the old sentence. Decree 248
+   * states nothing beyond its own title and that title IS the badge, so the
+   * card adds no sentence of ours — the old check pinned a string that was
+   * never the guide's. See PROJECT_MEMORY.md D27. */
+  check('pro card adds no invented 248 sentence, and the ban badge stands',
+        !/st-explain-full/.test(cards.card(BANNED, 'DDT', ctx)) && /BANNED/.test(cards.card(BANNED, 'DDT', ctx)));
 }
 
 /* ---------- (ج) English farmer ---------- */

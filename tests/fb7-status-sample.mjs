@@ -64,6 +64,13 @@ function dictOf(lang) {
 }
 const AR = dictOf('ar');
 check('the ar dictionary was read out of i18n.js', AR.size > 200, String(AR.size));
+/* the scan container's samples: the decisive REV* card and a decree-248 row */
+const SCAN_SAMPLES = [
+  { q: '94-75-7', src: 'libya-500', status: 'REV*', key: 'revstar' },
+  { q: String(JSON.parse(readFileSync('data/libya-248.json', 'utf8')).rows.find(r => /benomyl/i.test(r.name)).cas),
+    src: 'libya-248', status: 'محظور', key: '' }
+];
+
 const REVSTAR_LINES = ['st.500.revstar.explain', 'st.500.rev.explain', 'st.500.revstar.note'].map(k => AR.get(k) || '');
 check('the three REV* lines exist in the dictionary', REVSTAR_LINES.every(l => l.length > 20));
 
@@ -136,8 +143,12 @@ for (const mode of ['farmer', 'pro']) {
               got.explain);
       }
     } else if (s.src === 'libya-248') {
-      check(tag + ' — the 248 line is on the card and visible',
-            got.explain === AR.get('card.status.banned.248') && got.visible, JSON.stringify(got).slice(0, 220));
+      /* D27: decree 248 states nothing beyond its title, and the title IS the
+       * badge — so the card adds no sentence of ours (round 8) */
+      check(tag + ' — no invented sentence under the 248 badge',
+            got.explain === '', JSON.stringify(got).slice(0, 220));
+      check(tag + ' — the badge still carries the decree title verbatim',
+            got.badge.includes(AR.get('st.248.banned')), got.badge);
     } else {
       /* no guide defines an explanation here: farmer mode must stay bare,
          pro mode may only repeat the row's own source text */
@@ -148,6 +159,46 @@ for (const mode of ['farmer', 'pro']) {
             JSON.stringify(got).slice(0, 220));
     }
   }
+  /* ---- the second container: #scanResults, through the real pipeline ----
+   * Both containers are painted by the same render(); the scan view is driven
+   * by window.runScanPipeline(q) — the true automation entry point downstream
+   * of the OCR gates, no mocking of app code. */
+  await page.evaluate(() => { location.hash = '#/scan'; });
+  await new Promise(r => setTimeout(r, 400));
+  for (const s of SCAN_SAMPLES) {
+    const got = await page.evaluate(async (q, srcKey) => {
+      await window.runScanPipeline(q);
+      await new Promise(r => setTimeout(r, 2500));
+      const box = document.querySelector('#scanResults');
+      const card = Array.from(box.querySelectorAll('article.result'))
+        .find(c => c.getAttribute('data-src') === srcKey);
+      if (!card) return null;
+      const line = card.querySelector('.st-explain-full');
+      return {
+        explain: line ? line.textContent.trim() : '',
+        visible: line ? !!(line.checkVisibility && line.checkVisibility()) : false,
+        h: line ? Math.round(line.getBoundingClientRect().height) : 0,
+        articles: box.querySelectorAll('article.result').length
+      };
+    }, s.q, s.src);
+    const tag = '[' + mode + '] SCAN ' + s.src + ' ' + s.status;
+    check(tag + ' — the scan card exists', !!got, 'query ' + s.q);
+    if (!got) continue;
+    if (s.src === 'libya-500') {
+      const want = s.status === 'REV*' ? REVSTAR_LINES.join(' ') : AR.get('st.500.' + s.key + '.explain');
+      check(tag + ' — the scan card carries the same explanation, visible',
+            got.explain === want && got.visible && got.h > 20,
+            JSON.stringify(got).slice(0, 200));
+      if (s.status === 'REV*') {
+        check(tag + ' — all three guide lines are printed in the scan card too',
+              REVSTAR_LINES.every(l => got.explain.includes(l)), got.explain);
+      }
+    } else {
+      check(tag + ' — no invented sentence in the scan card either', got.explain === '',
+            JSON.stringify(got).slice(0, 200));
+    }
+  }
+
   check('[' + mode + '] zero page errors', errors.length === 0, errors.join(' | '));
   await page.close();
 }

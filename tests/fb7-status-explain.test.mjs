@@ -102,7 +102,9 @@ function mkCards(lang) {
   return { Cards: Cards.create({
     t, tf: (k, fb, v) => t(k, fb), esc: s => String(s),
     catTitle: () => '', sourceLabel: k => LABELS[k] || k,
-    statusDisplay: (r, k) => ({ text: String(r.status || ''), tone: 'neutral', chip: '', extra: null }),
+    /* the badge carries the guide's own wording — 248's is its decree title */
+    statusDisplay: (r, k) => ({ text: k === 'libya-248' ? t('st.248.banned', '')
+      : String(r.status || ''), tone: 'neutral', chip: '', extra: null }),
     statusExplain: R.statusExplain, statusExplainFull: R.statusExplainFull,
     dataVersion: () => '', sourceKeys: Object.keys(LABELS)
   }), R, t };
@@ -130,16 +132,21 @@ for (const s of sources) {
 
 /* ---------- 2) every code its own guide defines IS explained (D25) -------- */
 /* the guide that defines a code is the one whose rows carry it:
- * libya-500 → LEGEND_STATUS_KEYS · libya-248 → card.status.banned.248 */
+ * libya-500 → LEGEND_STATUS_KEYS (the guide's own sentences) ·
+ * libya-248 → NOTHING: decree 248 states no sentence beyond its own title, and
+ * that title IS the badge (D27, round 8). */
 check('every status in data/libya-500.json has an explanation key in LEGEND_STATUS_KEYS',
       statusesOf['libya-500'].every(([st]) => !!LEGEND_STATUS_KEYS[st]),
       JSON.stringify(statusesOf['libya-500'].map(([st]) => st)));
 check('the 500 status table is exactly the four codes the data carries',
       Object.keys(LEGEND_STATUS_KEYS).length === statusesOf['libya-500'].length
       && statusesOf['libya-500'].every(([st]) => !!LEGEND_STATUS_KEYS[st]));
-check('libya-248 has exactly one status and it has its own dictionary entry',
+check('decree 248 has exactly one status and its badge is the decree title in all four dictionaries',
       statusesOf['libya-248'].length === 1
-      && LANGS.every(l => DICTS[l].has('card.status.banned.248')));
+      && LANGS.every(l => DICTS[l].has('st.248.banned') && DICTS[l].get('st.248.banned').length > 10));
+check('D27: the self-authored 248 sentence is gone from every dictionary and from the card',
+      !/card\.status\.banned\.248/.test(i18n) && !/card\.status\.banned\.248/.test(cardsSrc),
+      'a sentence of ours is not the 248 guide');
 
 /* ---------- 3) the card carries it: 4 dictionaries × 2 modes ------------- */
 for (const lang of LANGS) {
@@ -162,9 +169,10 @@ for (const lang of LANGS) {
     }
     const [st248, row248] = statusesOf['libya-248'][0];
     const html248 = card(C, { k: 'libya-248', r: row248, s: { v: 100, type: 'CAS مطابق تمامًا', field: 'x' } }, ctx);
-    check('[' + lang + '/' + mode + '] 248 card explains its own status',
-          explainLinesOf(html248).join('') === t('card.status.banned.248', ''),
-          JSON.stringify(explainLinesOf(html248)));
+    check('[' + lang + '/' + mode + '] 248 card adds no invented sentence',
+          explainLinesOf(html248).length === 0, JSON.stringify(explainLinesOf(html248)));
+    check('[' + lang + '/' + mode + '] and the 248 badge is still the decree title verbatim',
+          html248.includes(t('st.248.banned', '')));
 
     /* the three foreign sources: no guide defines an explanation, so no line
        in the farmer view — the rule, not an oversight (asserted below) */
@@ -231,9 +239,10 @@ check('the card resolver is the full one, bound by name',
       /statusExplain: statusExplain, statusExplainFull: statusExplainFull,/.test(app)
       && /var statusExplainFull = deps\.statusExplainFull \|\| statusExplain;/.test(cardsSrc)
       && /if \(x\.k === 'libya-500'\) explain = statusExplainFull\(x\.r\.status\) \|\| '';/.test(cardsSrc));
-check('the card has exactly two source-bound explanation branches, and no third',
-      (cardsSrc.match(/explain = /g) || []).length === 4 /* var + two branches + the pro fallback */
-      && /else if \(x\.k === 'libya-248'\) explain = t\('card\.status\.banned\.248'/.test(cardsSrc)
+check('the card has exactly one source-bound explanation branch, and no second',
+      (cardsSrc.match(/explain = /g) || []).length === 3 /* var + the 500 branch + the pro fallback */
+      && /if \(x\.k === 'libya-500'\) explain = statusExplainFull\(x\.r\.status\)/.test(cardsSrc)
+      && !/else if \(x\.k === 'libya-248'\)/.test(cardsSrc)
       && !/explain = '[^']+'/.test(cardsSrc),
       'an authored explanation string would appear here');
 
@@ -248,11 +257,13 @@ for (const s of ['eu', 'epa', 'epa-cancelled']) {
 check('no foreign source is given a decree-500 explanation on its card',
       !/st\.500\.[a-z]+\.explain/.test(cardsSrc),
       'the Aclonifen regression must stay impossible');
-check('libya-500 prose is never shown on a foreign card, and vice versa',
-      /if \(x\.k === 'libya-500'\)/.test(cardsSrc) && /else if \(x\.k === 'libya-248'\)/.test(cardsSrc));
+check('libya-500 prose is never shown on a foreign card, and decree-248 sentences are never invented',
+      /if \(x\.k === 'libya-500'\) explain = statusExplainFull/.test(cardsSrc)
+      && !/else if \(x\.k === 'libya-248'\)/.test(cardsSrc)
+      && !/t\('card\.status\./.test(cardsSrc));
 
 /* ---------- 7) every key the card reads exists in all four dictionaries ---- */
-const used = new Set([...Object.values(LEGEND_STATUS_KEYS), 'card.status.banned.248', 'st.500.revstar.note']);
+const used = new Set([...Object.values(LEGEND_STATUS_KEYS), 'st.500.revstar.note', 'st.248.banned']);
 for (const key of used) {
   const n = LANGS.filter(l => DICTS[l].has(key)).length;
   check(key + ' is defined in all four dictionaries', n === 4, 'found ' + n);

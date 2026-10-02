@@ -106,9 +106,18 @@
        * mark, which would read as "this source says it is fine" */
       var tone = candidate ? 'review' : (sd.tone === 'banned' ? 'ban' : (sd.tone === 'amber' ? 'review' : 'neutral'));
       var icon = tone === 'ban' ? 'ban' : (tone === 'review' ? 'caution' : 'check');
+      /* D27: the explanation line is the SOURCE GUIDE'S own sentences, nothing
+       * else. Decree 500 states what each code permits, so those sentences are
+       * printed verbatim (statusExplainFull). Decree 248 states nothing beyond
+       * its own title — and that title IS the badge (st.248.banned, «محظور
+       * بقرار وزارة الزراعة رقم 248 لسنة 2024»), so the extra line that used
+       * to sit under it («مدرجة في قائمة المواد المحظورة…») was our own
+       * paraphrase repeating the badge, not the guide. It is removed: a guide
+       * that explains nothing leaves a bare code, and the badge already says
+       * everything the 248 guide says. The pro fallback below prints only the
+       * row's own source text (status_raw), never a sentence of ours. */
       var explain = '';
       if (x.k === 'libya-500') explain = statusExplainFull(x.r.status) || '';
-      else if (x.k === 'libya-248') explain = t('card.status.banned.248', 'مدرجة في قائمة المواد المحظورة (قرار ليبيا 248).');
       if (!explain && ctx.mode === 'pro' && x.r.status_raw) explain = String(x.r.status_raw);
       var candidateLine = candidate
         ? '<p class="st-explain-full candidate-note">' + esc(t('mt.candidate.note',

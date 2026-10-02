@@ -312,7 +312,7 @@ check('OCR engine carries the a3 early-confirm lock (DB-confirmed reads survive 
       && o.includes("via: 'ladder_confirm'")
       && o.includes('if (earlyLock) break;')
       && o.includes('if (!earlyLock && (exactHit || hasValidCas([...fusionCAS])))'); })());
-check('sw is v37 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v44'")
+check('sw is v37 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v45'")
   && sw5.includes("'./src/scan-live.js'")
   && sw5.includes("OCR_CACHE = 'mustashar-ocr'")
   && OCR_RUNTIME_FILES.every(f => sw5.includes(f.replace('./', '')))
@@ -867,6 +867,34 @@ check('feedback 7: the badge keeps its two parentheses on purpose (documented, n
   && app.includes("extra = ' (' + d.raw + ')';   // code stays visible")
   && (fb6I18n.match(/'st\.500\.rev':/g) || []).length === 4
   && !/st\.500\.[a-z]+\.explain':\s*'[^']*\.\.\./.test(fb6I18n));
+
+/* ---------- 1.19.9 D27: سطر الشرح = نصّ دليل مصدره حرفياً، لا جملة من عندنا ----------
+ * الجولة الأولى (1.19.8) أصلحت REV*. وده الجولة اكتشفت سطراً ثانياً مكتوباً من
+ * عندنا: «مدرجة في قائمة المواد المحظورة (قرار ليبيا 248).» تحت شارة 248.
+ * وهو ليس من دليل 248 — الذي لا يقول إلا عنوانه، وعنوانه **هو** الشارة نفسها
+ * (st.248.banned). فسطر يشرح ما تقوله الشارة نفسها بصياغتنا ⇒ يُحذف.
+ * ولا يُملأ مكانه بجملة جديدة: دليل لا يشرح يترك رمزاً بلا سطر.
+ * القياس carcass: بطاقات المسح تحمل الأسطر نفسها (حاوية render واحدة) — قيس
+ * بـwindow.runScanPipeline على شاشة #/scan نفسها، لا بالافتراض. */
+check('feedback 8: the 248 guide adds no sentence of ours',
+  !/card\.status\.banned\.248/.test(fs.readFileSync('src/i18n.js', 'utf8'))
+  && !/card\.status\.banned\.248/.test(fs.readFileSync('src/cards.js', 'utf8'))
+  && !/else if \(x\.k === 'libya-248'\)/.test(fs.readFileSync('src/cards.js', 'utf8')));
+check('feedback 8: the 248 badge still carries the decree title in all four dictionaries',
+  (() => { const i = fs.readFileSync('src/i18n.js', 'utf8');
+    return (i.match(/'st\.248\.banned':/g) || []).length === 4; })());
+check('feedback 8: the only explanation branch left is the decree-500 guide',
+  /if \(x\.k === 'libya-500'\) explain = statusExplainFull\(x\.r\.status\) \|\| '';/.test(fs.readFileSync('src/cards.js', 'utf8'))
+  && (fs.readFileSync('src/cards.js', 'utf8').match(/explain = /g) || []).length === 3);
+check('feedback 8: the gates measure BOTH containers — search cards and scan cards',
+  /SCAN_SAMPLES/.test(fs.readFileSync('tests/fb7-status-sample.mjs', 'utf8'))
+  && /window\.runScanPipeline/.test(fs.readFileSync('tests/fb7-status-sample.mjs', 'utf8'))
+  && /#scanResults/.test(fs.readFileSync('tests/fb7-status-sample.mjs', 'utf8'))
+  && /location\.hash = '#\/scan'/.test(fs.readFileSync('tests/fb7-status-sample.mjs', 'utf8')));
+check('feedback 8: the static gate reads data/ and runs the real renderer in 4 dictionaries x 2 modes',
+  /const LANGS = \['ar', 'en', 'fr', 'zh'\]/.test(fs.readFileSync('tests/fb7-status-explain.test.mjs', 'utf8'))
+  && /data\/epa-cancelled\.json/.test(fs.readFileSync('tests/fb7-status-explain.test.mjs', 'utf8')) === false
+  && /readFileSync\('data\/' \+ s \+ '\.json'/.test(fs.readFileSync('tests/fb7-status-explain.test.mjs', 'utf8')));
 
 /* ---------- summary ---------- */
 console.log('\n==============================');

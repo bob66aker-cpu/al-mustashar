@@ -717,3 +717,45 @@ headings compared: 41 | style differences: 0 | tag-only changes: 19
 | العيّنة الحيّة | صفّ **`Mild Pepino Mosaic Virus Isolate VC 1`** حقيقي، يُبحث **بالاسم** لأن كل صفوف V تخزّن `cas = "No CAS allocated"` — لا CAS مخترع |
 | الحزمة | verify **212/212** · cat-legend-gate **26/26** · status-legend **41/41** · judge **40/40** · fb6-cat-legend **12/12** محلياً ⇒ بلا انحدار في stage-b 36 · stage2-ux 27 · stage3-ux 45 · cas-display 23 · mode-split 16 · filtered-empty 21 · stage2 21 · stage3 16 · ui 20 · ui-round 26 |
 | الإصدار | **1.19.7** و`mustashar-v43` — رفع كاش إجباري لأن `src/i18n.js` من ملفات shell المخزَّنة مسبقاً |
+
+### 9) استرداد البوابة الكاملة — الفحص الفاشل الوحيد كان تثبيتاً لشكل قديم (بلا bump)
+
+| الفحص | قبل | الحكم | السبب |
+|---|---|---|---|
+| `tests/ui-components.test.mjs` — «app.js routes BOTH #results and #scanResults through the same context filter» | **فشل** (36/37 ⇒ 36 passed + 1 fail) | **(أ) الاختبار يثبّت شكلاً قديماً** | التأكيد كان يقرأ السلسلة الحرفية `cards.applyContext(results, ctx)`. **الجولة FB5 (إيداع `896e14c`)** أدخلت `collapseToDecisive()` أمام الفلتر — وهو **قرار مالك موثّق** (`docs/night-round-2026-10-01.md` المرحلة 3، بحارسه `decisive-display-gate` 33/33)، فالسلسلة وحدها هي التي تغيّرت |
+
+**التشخيص (مقيس لا مُرجَّح):** الانحراف ظهر في `896e14c` لا في FB6 ولا في `cards.js`.
+`git log -S` يعطي الإيداع نفسه لكلتا الصيغتين: `applyContext(results, ctx)` من
+`6f70a5c` (كروّن المكوّنات المشتركة)، و`applyContext(displayResults, ctx)` من
+`896e14c` (FB5).
+
+**السلوك الحيّ لم يتغيّر، والقاعدة قائمة — بالقياس لا بالنظر:**
+
+| ما قِيس | النتيجة |
+|---|---|
+| `tests/scan-automation.test.mjs` (يشغّل الحاvernين معاً على بيانات حقيقية) | **12/12** — الفلترة واحدة للحاوين: `Warfarin` (أجنبية فقط) تعطي صفر بطاقة في وضع المزارع داخل Buscar و داخل حاوية المسح معاً، و`Chlorpyrifos` الليبية تصل إلى المزارع من المسار نفسه — أي فلترة واحدة للاثنين |
+| `render()` | استدعاء `applyContext` **واحد** لا اثنان، ولا فرع مشروط بالهدف |
+| `#scanResults` | يمرّ على `render()` نفسها |
+
+**الإصلاح:** حُذف تثبيت السلسلة، ووُضع بدله **تثبيت القاعدة** بأربعة فحوص:
+استدعاء الفلتر **مرة واحدة** داخل `render()` · لا فلترة مشروطة بالهدف · الحاvernان
+عبر `render()` نفسها · وترتيب `collapseToDecisive` قبل الفلتر. الفحص الرابع
+**يقيس الشكل الحالي عمداً** ليكون توثيقاً، لا ليشترط إعادة FB5.
+
+**إثبات أن الحارس يقرض (اختباران بالطفرة، لا بالقراءة):**
+
+| الطفرة | النتيجة |
+|---|---|
+| إعادة الانحراف: `#scanResults` يتجاوز الفلتر | **رُفض** — «2 call sites» |
+| الرجوع إلى الشكل قبل FB5 | **رُفض** — الفحص الرابع |
+
+`src/app.js` **لم يُمسّ** (`git status` = `tests/ui-components.test.mjs` وحده) ⇒
+**بلا bump**، وهذا التوثيق يركب مع الدفعة التالية.
+
+**البوابة بعد الاسترداد — صفر استثناء:** ui-components **40/40** · verify **212/212**
+· cat-legend-gate 26/26 · status-legend 41/41 · judge 40/40 · scan-automation 12/12 ·
+decisive-display-gate 33/33 · mode-split 16/16 · filtered-empty 21/21 · stage-b 36 ·
+stage2-ux 27 · stage3-ux 45 · stage2 21 · stage3 16 · cas-display 23 · ui 20 ·
+ui-round 26 · fb6 12/12 · history-clear 6 · network-isolation 12 · nearpairs 400 ·
+data-packs 50 · design-tokens 80 · cas-annotations 70 · cas-correction 41 ·
+ios-phase1 34 · frame-vote 32 · data-integrity 30 · data-health 23 · judge 40.

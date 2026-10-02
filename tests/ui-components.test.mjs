@@ -140,10 +140,29 @@ cards.buildCasIndex({
   const list = cards.applyContext(ALL, ctx);
   check('farmer mode keeps Libyan sources only, for every view', list.every(x => cards.LIBYA.indexOf(x.k) !== -1)
     && list.length === 2, JSON.stringify(list.map(x => x.k)));
-  check('app.js routes BOTH #results and #scanResults through the same context filter',
-    /cards\.applyContext\(results, ctx\)/.test(app)
+  /* THE RULE, not one spelling of it. The old assertion here read the
+   * literal `cards.applyContext(results, ctx)`, so FB5 (896e14c) broke it by
+   * inserting collapseToDecisive() in front of the filter - a documented owner
+   * decision (night-round-2026-10-01.md stage 3), verified by its own guard
+   * tests/decisive-display-gate.test.mjs. The BEHAVIOUR never changed: one
+   * filter, no per-target branch. So the check now pins the rule itself:
+   * exactly one filter call inside render(), no target-conditional filter, and
+   * both containers routed through that same render(). Pinning a spelling
+   * would have broken again on the next harmless refactor; pinning the rule
+   * is what actually guards search and scan staying identical. */
+  const renderBody = app.slice(app.indexOf('function render(results, q, target)'),
+                              app.indexOf('function renderHistory('));
+  check('render() applies the context filter EXACTLY ONCE, so #results and #scanResults cannot diverge',
+    (renderBody.match(/cards\.applyContext\(/g) || []).length === 1,
+    (renderBody.match(/cards\.applyContext\(/g) || []).length + ' call sites');
+  check('that one filter is not conditional on the render target',
+    !/applyContext\([^)]*target/.test(renderBody)
     && !/isScanView[\s\S]{0,400}shownResults = \(showDetails \|\| isScanView\)/.test(app));
-  check('the exact-ban banner is computed from the UNFILTERED list (narrowing can never hide a ban)',
+  check('both containers are rendered by that same render()',
+    /render\([^)]*'#scanResults'\)/.test(app) && /function render\(results, q, target\)/.test(app));
+  check('app.js routes BOTH #results and #scanResults through the same context filter',
+    /cards\.applyContext\(displayResults, ctx\)/.test(renderBody)
+    && renderBody.indexOf('collapseToDecisive(') < renderBody.indexOf('cards.applyContext('));  check('the exact-ban banner is computed from the UNFILTERED list (narrowing can never hide a ban)',
     /const prohibited = results\.filter\(x => x\.k === 'libya-248'\)/.test(app));
 }
 

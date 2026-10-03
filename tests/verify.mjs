@@ -312,7 +312,7 @@ check('OCR engine carries the a3 early-confirm lock (DB-confirmed reads survive 
       && o.includes("via: 'ladder_confirm'")
       && o.includes('if (earlyLock) break;')
       && o.includes('if (!earlyLock && (exactHit || hasValidCas([...fusionCAS])))'); })());
-check('sw is v37 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v48'")
+check('sw is v37 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v49'")
   && sw5.includes("'./src/scan-live.js'")
   && sw5.includes("OCR_CACHE = 'mustashar-ocr'")
   && OCR_RUNTIME_FILES.every(f => sw5.includes(f.replace('./', '')))
@@ -994,6 +994,49 @@ check('feedback 11: the card matrix measures BOTH containers and both modes',
   && /'#scanResults'|#scanResults/.test(fs.readFileSync('tests/fb11-dupes.mjs', 'utf8'))
   && /aliphatic petroleum solvent/.test(fs.readFileSync('tests/fb11-dupes.mjs', 'utf8'))
   && /64-19-7/.test(fs.readFileSync('tests/fb11-dupes.mjs', 'utf8')));
+
+/* ---------- D30-b: a generic name may collapse ONLY under ONE regulatory code -----
+ * Owner ruling: EPA PRN 97-5 Appendix B files «Aliphatic petroleum solvent» under
+ * PC Code 063503 with CAS «Numerous», so 9 rows -> 1 card is organisationally sound
+ * ONLY once the rows prove it. This pins that proof and the two guards:
+ *   1) the nine rows in data/epa.json really share pc_code 063503 and one status;
+ *   2) a name whose rows carry DIFFERENT codes is never collapsed
+ *      (copper ethanolamine complex 024409 / 024410 - measured in the same file);
+ *   3) the surviving card prints all nine CAS numbers and the shared code, in all
+ *      four dictionaries, in both modes and in BOTH containers (search + scan);
+ *   4) name similarity alone never earns a collapse (FB5-b, Captan). */
+{
+  const epa = JSON.parse(fs.readFileSync('data/epa.json', 'utf8')).rows;
+  const grp = epa.filter(r => String(r.name || '').trim().toLowerCase() === 'aliphatic petroleum solvent');
+  const pcs = new Set(grp.map(r => String(r.pc_code || '').trim()));
+  const sts = new Set(grp.map(r => String(r.status || '').trim()));
+  check('D30-b: the nine EPA rows really share ONE regulatory code (063503)',
+     grp.length === 9 && pcs.size === 1 && pcs.has('063503'), JSON.stringify([...pcs]));
+  check('D30-b: and ONE status - nothing is being read away', sts.size === 1, JSON.stringify([...sts]));
+  check('D30-b: nine DISTINCT CAS numbers behind that one name',
+     new Set(grp.map(r => String(r.cas || '').trim())).size === 9);
+  const cu = epa.filter(r => String(r.name || '').trim().toLowerCase() === 'copper ethanolamine complex');
+  check('D30-b: the counter-example is real too (one name, two codes - never collapsed)',
+     cu.length === 2 && new Set(cu.map(r => String(r.pc_code || '').trim())).size === 2);
+  const appD30 = fs.readFileSync('src/app.js', 'utf8');
+  const cardsD30 = fs.readFileSync('src/cards.js', 'utf8');
+  const i18nD30 = fs.readFileSync('src/i18n.js', 'utf8');
+  check('D30-b: the code condition lives in the real collapse (the two-code split)',
+     /const pcs = \[\.\.\.new Set\(list\.map/.test(appD30)
+     && /if \(pcs\.length > 1\) \{ splitCodes\+\+/.test(appD30));
+  check('D30-b: the kept card carries the group CAS list, read from the rows',
+     /merged: \{ cas: casList, pc: pcs\[0\]/.test(appD30)
+     && !/merged: \{ cas: \[/.test(appD30));
+  check('D30-b: the card PRINTS that list in both modes (its own block, not casBlock)',
+     /function groupBlock\(x\)/.test(cardsD30) && /out \+= groupBlock\(x\);/.test(cardsD30)
+     && cardsD30.indexOf('groupBlock(x);') < cardsD30.indexOf('if (!farmer)'));
+  const keyCount = k => (i18nD30.match(new RegExp("'" + k + "'", 'g')) || []).length;
+  check('D30-b: the label + the code label exist in ALL FOUR dictionaries',
+     keyCount('cas.group.badge') === 4 && keyCount('cas.group.code') === 4,
+     keyCount('cas.group.badge') + '/' + keyCount('cas.group.code'));
+  check('D30-b: the new labels come from the dictionary, not from hardcoded Arabic',
+     /t\('cas\.group\.badge'/.test(cardsD30) && /t\('cas\.group\.code'/.test(cardsD30));
+}
 
 /* ---------- summary ---------- */
 console.log('\n==============================');

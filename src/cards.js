@@ -131,6 +131,26 @@
     }
 
     /* functional category: its own line, large type, full meaning */
+    /* D30-b: one card for a name the source files under ONE regulatory code
+     * — so the lower duplicate rows stop being cards, but their chemical
+     * identities must not vanish with them. Every CAS the source lists under
+     * that name is printed here, read from the rows themselves, together with
+     * the one code they share. Hiding the duplicates never hides the
+     * identities, and the line shows in BOTH modes — casBlock is pro-only,
+     * and the farmer is exactly who saw nine cards become one. */
+    function groupBlock(x) {
+      var grp = x.merged;
+      if (!grp || !grp.cas || grp.cas.length < 2) return '';
+      var nums = grp.cas.map(function (c) {
+        return casApi && casApi.casChecksum && casApi.casChecksum(c) === false
+          ? '<span class="cas-bad" title="' + esc(t('cas.badsum', 'رقم التحقق غير صحيح في بيانات المصدر')) + '">' + esc(c) + '</span>'
+          : esc(c);
+      }).join(' · ');
+      return '<p class="cas-note"><span class="badge">' + esc(t('cas.group.badge', 'أرقام CAS للاسم نفسه')) + '</span> ' + nums
+        + (grp.pc ? ' <span class="cas-src">(' + esc(t('cas.group.code', 'رمز المصدر التنظيمي:')) + ' ' + esc(grp.pc) + ')</span>' : '')
+        + '</p>';
+    }
+
     function categoryBlock(x, ctx) {
       if (!x.r.category) return '';
       var chips = String(x.r.category).split(/\n+/).filter(Boolean).map(function (c) {
@@ -226,6 +246,7 @@
       var farmer = ctx.mode !== 'pro';
       var out = head(x, ctx);
       out += statusBlock(x, ctx);
+      out += groupBlock(x);
       out += categoryBlock(x, ctx);
       if (!farmer) {
         out += matchTypeBlock(x, q);

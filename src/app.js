@@ -874,19 +874,45 @@
     }
     const out = [];
     let conflicts = 0;
+    let splitCodes = 0;
     for (const list of groups.values()) {
       if (list.length === 1) { out.push(list[0]); continue; }
       const statuses = new Set(list.map(x => String((x.r || {}).status || '').trim()));
       if (statuses.size > 1) { conflicts++; out.push(...list); continue; }
+      /* D30-b (the owner's permanent control, PROOF from data/epa.json): a
+       * generic name may become ONE card only when the source itself groups
+       * it under ONE regulatory code — EPA carries pc_code on every row, and
+       * «Aliphatic petroleum solvent» is nine rows all of pc_code 063503
+       * (PRN 97-5 Appendix B, CAS «Numerous»). Two rows, one name, TWO codes
+       * mean the source does NOT treat them as one substance (measured live:
+       * «copper ethanolamine complex» 024409 / 024410), so they stay whole.
+       * Name similarity ALONE never earns a collapse — that would be FB5-b
+       * (Captan) all over again. */
+      const pcs = [...new Set(list.map(x => String((x.r || {}).pc_code || '').trim()).filter(Boolean))];
+      if (pcs.length > 1) { splitCodes++; out.push(...list); continue; }
       /* top score wins; a tie is decided by the declared source order, which
        * inside one source is the row's own order in the source file */
       const best = list.slice().sort((a, b) =>
       ((b.s && b.s.v) || 0) - ((a.s && a.s.v) || 0)
       || ((a.r || {}).row || 0) - ((b.r || {}).row || 0))[0];
-      out.push(best);
+      /* D30-b: hiding the lower duplicates must not hide the CHEMICAL
+       * identities behind the name — the kept card carries every CAS number
+       * the source lists under that name, read from the rows themselves, plus
+       * the one code they share. */
+      const casList = [];
+      for (const x of list) {
+        const c = String((x.r || {}).cas || '').split(/[\n[\]]/)[0].trim();
+        if (c && casList.indexOf(c) === -1) casList.push(c);
+      }
+      out.push(casList.length > 1
+        ? Object.assign({}, best, { merged: { cas: casList, pc: pcs[0] || '' } })
+        : best);
     }
     if (conflicts) {
       try { console.warn('[D30] ' + conflicts + ' identity group(s) with conflicting statuses kept whole'); } catch (e) {}
+    }
+    if (splitCodes) {
+      try { console.warn('[D30-b] ' + splitCodes + ' name group(s) with different regulatory codes kept whole'); } catch (e) {}
     }
     return out;
 

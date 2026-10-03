@@ -18,7 +18,6 @@ import { readFileSync } from 'node:fs';
 
 const CHROME = process.env.CHROME || '/home/daytona/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome';
 const BASE = (process.env.BASE_URL || 'http://127.0.0.1:8080').replace(/\/$/, '');
-const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 /* العدّادات المقيسة من الملفَّين نفسهما — لا رقم مكتوب بخط اليد */
 const ca = JSON.parse(readFileSync('data-optional/canada.json', 'utf8'));
@@ -62,9 +61,28 @@ try {
       if (f) f.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
     }, q);
     if (waitCards) {
-      await page.waitForFunction(
-        () => document.querySelectorAll('#results article.result').length > 0,
-        { timeout: 45000, polling: 300 });
+      /* D37: a timeout here used to escape as an unhandled TimeoutError that
+       * killed the process with a stack trace and NO assertion named — which is
+       * why the one 22/23 of the night could never be read. Now the wait is
+       * caught, the page state is captured, and the failure is REPORTED with
+       * the evidence attached instead of crashing the run. */
+      try {
+        await page.waitForFunction(
+          () => document.querySelectorAll('#results article.result').length > 0,
+          { timeout: 45000, polling: 300 });
+      } catch (e) {
+        const why = await page.evaluate(() => ({
+          hash: location.hash,
+          resultsHtml: (document.querySelector('#results') || {}).innerHTML
+            ? (document.querySelector('#results').innerHTML.slice(0, 200)) : '(no #results)',
+          srcs: [...document.querySelectorAll('#results article.result')].map(a => a.getAttribute('data-src')),
+          ready: !!document.querySelector('#results'),
+          pageErrors: (window.__pageErrors || []).length,
+        })).catch(err => ({ collect: String(err) }));
+        must('the search for "' + q + '" rendered cards within 45s (D37 evidence)',
+          false, JSON.stringify(why));
+        throw e;
+      }
     }
   };
 
@@ -106,18 +124,30 @@ try {
 
   console.log('=== 2) التنزيل الحقيقي التلقائي عند دخول المحترف ===');
   {
-    /* no polling loop here: the app's own state line is the signal */
-    await page.evaluate(() => {
+    /* D37: the observer is ATTACHED INSIDE the same evaluate, BEFORE the mode
+     * change is dispatched, and it polls every 5ms.
+     *
+     * Measured on the live link: the progress line exists for only ~0-100ms.
+     * The old harness dispatched the change in one CDP round-trip and started
+     * polling in a SECOND one, at 50ms — so the whole install could begin and
+     * end inside that gap and the assertion would fail on a warm cache. That
+     * is the measured flake, and it is a harness defect, not a product one.
+     * Nothing is dropped: the assertion is unchanged, only its observer now
+     * starts before the event it watches and samples 10x finer. */
+    const sawProgress = await page.evaluate(async () => {
+      const st = document.querySelector('#pack-canada .pack-state');
+      const watching = (async () => {
+        for (let i = 0; i < 24000; i++) {
+          if (/جارٍ التنزيل/.test(st.textContent || '')) return true;
+          if (/جاهزة: /.test(st.textContent || '')) return false;
+          await new Promise(r => setTimeout(r, 5));
+        }
+        return false;
+      })();
       const mode = document.querySelector('#mode');
       mode.value = 'pro';
       mode.dispatchEvent(new Event('change', { bubbles: true }));
-    });
-    const sawProgress = await page.evaluate(async () => {
-      for (let i = 0; i < 1200; i++) {
-        if (/جارٍ التنزيل/.test(document.querySelector('#pack-canada .pack-state').textContent)) return true;
-        await new Promise(r => setTimeout(r, 50));
-      }
-      return false;
+      return await watching;
     });
     /* the two packs land; whichever order, both must reach the measured count */
     await page.waitForFunction(
@@ -196,12 +226,16 @@ try {
      * Navigating + submitting happens explicitly — a hash flip alone never
      * runs a search, and waiting for a card that was never asked for is a
      * harness bug, not a product one. */
-    await page.evaluate(async () => {
+    /* D37: the 400ms fixed sleep is gone — #query is genuinely present within
+     * milliseconds (measured: 8ms), so we wait for the element itself. */
+    await page.evaluate(() => {
       const m = document.querySelector('#mode');
       m.value = 'pro';
       m.dispatchEvent(new Event('change', { bubbles: true }));
       location.hash = '#/search';
-      await new Promise(r => setTimeout(r, 400));
+    });
+    await page.waitForFunction(() => !!document.querySelector('#query'), { timeout: 60000, polling: 20 });
+    await page.evaluate(() => {
       const i = document.querySelector('#query');
       i.value = 'Chlorpyrifos'; i.dispatchEvent(new Event('input', { bubbles: true }));
       document.querySelector('#searchForm').dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));

@@ -181,18 +181,25 @@
     const k = LEGEND_CAT_KEYS[parts[0]] || CAT_FOLD_KEYS[catFold(parts[0])];
     return k ? t(k, '') : '';
   }
-  /* Category tooltip: known codes get the fixed-table meaning; a COMPOUND
-   * code like «I/A» is resolved to its parts, each explained, joined with
-   * « + ». A part not in the table yields the literal «رمز غير معرّف في
-   * دليل القرار» hint for that part only. */
+  /* Category line: known codes get the fixed-table meaning; a COMPOUND cell is
+   * resolved to its parts, each explained, joined with « + ».
+   * D29 (FB9): a part the source guide does NOT explain is NAMED inside the
+   * sentence — «F/Mi» reads «مبيد فطري + Mi: رمز غير مشروح في دليل هذا
+   * المصدر» — never a bare «رمز غير مشروح» that could belong to any code.
+   * The DECLARED order rule: parts are rendered in the cell's own left-to-right
+   * order, one item per part, no re-ordering and no merging; the cell itself
+   * stays ONE block whose heading is the literal cell (the h1 behaviour: a
+   * «/» slice is never torn into separate blocks). */
+  function catPartText(part) {
+    return catName(part) || tf('legend.cat.unknownNamed',
+      part + ': ' + t('legend.cat.unknown', 'رمز غير مشروح في دليل هذا المصدر'),
+      { part: part });
+  }
   function catTitle(code) {
     const parts = catParts(code);
     if (!parts.length) return '';
-    if (parts.length > 1) {
-      const unknown = t('legend.cat.unknown', 'رمز غير مشروح في دليل هذا المصدر');
-      return parts.map(p => catName(p) || unknown).join(' + ');
-    }
-    return catName(parts[0]) || t('legend.cat.unknown', 'رمز غير مشروح في دليل هذا المصدر');
+    if (parts.length > 1) return parts.map(catPartText).join(' + ');
+    return catPartText(parts[0]);
   }
 
   /* i18n helpers (src/i18n.js loads before this file). Arabic fallbacks

@@ -312,7 +312,7 @@ check('OCR engine carries the a3 early-confirm lock (DB-confirmed reads survive 
       && o.includes("via: 'ladder_confirm'")
       && o.includes('if (earlyLock) break;')
       && o.includes('if (!earlyLock && (exactHit || hasValidCas([...fusionCAS])))'); })());
-check('sw is v37 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v46'")
+check('sw is v37 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v47'")
   && sw5.includes("'./src/scan-live.js'")
   && sw5.includes("OCR_CACHE = 'mustashar-ocr'")
   && OCR_RUNTIME_FILES.every(f => sw5.includes(f.replace('./', '')))
@@ -924,6 +924,44 @@ check('the ppocr-size gate declares a SKIP instead of failing on the closed lab\
   && /LAB_TRACKED/.test(fs.readFileSync('tests/ppocr-size.test.mjs', 'utf8'))
   && /SKIP ' \+ skip/.test(fs.readFileSync('tests/ppocr-size.test.mjs', 'utf8')),
   'a declared skip, never a tolerated failure (D26)');
+
+/* ---------- 1.19.11 D29: التصنيف المركّب — كل جزء بشرح من دليله أو باسمه حرفياً ----------
+ * صلة الأثر (بند 0): قِيست على الرابط الحيّ بتعطيل ترجمة المتصفح صراحةً =>
+ * السطر المشوَّش وعنوان التبويب لم يبقيا ⇒ أثر ترجمة خارجية، توثيق بلا إصلاح.
+ * وما بقي من التطبيق: «F/Mi ← مبيد فطري + رمز غير مشروح…» فالجزء «Mi» غير
+ * مشروح كان بلا اسم ⇒ لا يُعرف أيّ جزء يتعذّر شرحه.
+ * الإصلاح: catPartText يسمّي الجزء داخل جملة عدم الشرح نفسها، والأجزاء بترتيب
+ * الفواصل المعلن، والخلية كتلة واحدة بعنوانها («/» لا تُفكّك — سلوك هـ1).
+ * مصفوفة الفشل قِيست قبل الإصلاح حياً: 10 صفوف فاشلة من 34 (gr · Mi · FM في
+ * الوضعين) ⇒ صفر بعدها. */
+check('feedback 9+10: the rendered explanation names every unexplained part',
+  /function catPartText\(part\)/.test(app)
+  && /catName\(part\) \|\| tf\('legend\.cat\.unknownNamed'/.test(app)
+  && /if \(parts\.length > 1\) return parts\.map\(catPartText\)\.join\(' \+ '\);/.test(app));
+check('feedback 9+10: the wrapper exists in all four dictionaries and invents no meaning',
+  (fb6I18n.match(/'legend\.cat\.unknownNamed':/g) || []).length === 4
+  && !/'legend\.cat\.(Mi|FM|gr|Igr|B)'/.test(fb6I18n)
+  && /\{part\}/.test(fb6I18n));
+const fb9cards = fs.readFileSync('src/cards.js', 'utf8');
+check('feedback 9+10: a "/" cell stays ONE block — cards.js never splits the cell',
+  fb9cards.includes('String(x.r.category).split(/\\n+/)')
+  && !fb9cards.includes('split(CAT_HARD_SEP)')
+  && !fb9cards.includes('catParts('));
+check('feedback 9+10: the static gate runs the real renderer over the whole matrix x4 dicts x2 modes x2 containers',
+  fs.existsSync('tests/fb9-cat-parts.test.mjs')
+  && /const LANGS = \['ar', 'en', 'fr', 'zh'\]/.test(fs.readFileSync('tests/fb9-cat-parts.test.mjs', 'utf8'))
+  && /'#results', '#scanResults'/.test(fs.readFileSync('tests/fb9-cat-parts.test.mjs', 'utf8'))
+  && /'F\/Mi'/.test(fs.readFileSync('tests/fb9-cat-parts.test.mjs', 'utf8'))
+  && /'I\/N\/F\/A\/R\/FM'/.test(fs.readFileSync('tests/fb9-cat-parts.test.mjs', 'utf8')));
+check('feedback 9+10: the live matrix measures the real DOM, translation off, both containers',
+  fs.existsSync('tests/fb9-matrix.mjs')
+  && /--disable-features=Translate,TranslateUI/.test(fs.readFileSync('tests/fb9-matrix.mjs', 'utf8'))
+  && /--disable-translate/.test(fs.readFileSync('tests/fb9-matrix.mjs', 'utf8'))
+  && /runScanPipeline/.test(fs.readFileSync('tests/fb9-matrix.mjs', 'utf8'))
+  && /read\(document\.querySelector\('#scanResults'\)\)/.test(fs.readFileSync('tests/fb9-matrix.mjs', 'utf8')));
+check('feedback 9+10: the attribution probe exists and runs with translation disabled too',
+  fs.existsSync('tests/fb9-attr.mjs')
+  && /--disable-translate/.test(fs.readFileSync('tests/fb9-attr.mjs', 'utf8')));
 
 /* ---------- summary ---------- */
 console.log('\n==============================');

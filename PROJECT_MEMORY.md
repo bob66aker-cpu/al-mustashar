@@ -570,6 +570,18 @@ BASE_URL="$PREVIEW" npm run test:browser
 ثم الاستعداة **71/71**. و`tests/verify.mjs` **248/248** بكتلة D30-ب.
 ### D31 — الضابط الدائم: كندا وأستراليا أساسيتان في وضع المحترف، بلا زرّ (2026-10-03 · 1.19.14 / mustashar-v50)
 
+### D39 — packs.js لا يغلق اتصالاً لـ IndexedDB على versionchange، وليس هناك اختبار يغطيه: قراءة فقط، سطر وثيقة (2026-10-03 · Solar Mini 4 عرض ثانٍ · اقرأ فقط من D37)
+
+**الخط الأحمر ذهبي (النتيجة الختامية):** `src/packs.js` يفتح `indexedDB.open(DB_NAME, DB_VERSION)` لكل استدعاء، دون `dbPromise` ولا معالج `onversionchange`، لذا **لا يغلق أي اتصال على `versionchange`**؛ والوحدة `tests/` لا تغطّي سلوك `packs.js` بهذا الحدث، بل تغطّي فقط نمط `onversionchange` في `src/app.js` (انظر `src/app.js`، `tests/idb-upgrade-browser.test.mjs` + `tests/pack-guard.test.mjs`). **الإجابة على سؤال D39: لا، packs.js لا يغلّق اتصالاً؛ ولا، لا اختبار قائم يغطيه.**
+
+**الدليل القرائي (سطر واحد لكل مطالعة، صفر تعديلات):**
+1. استدعاء `indexedDB.open(DB_NAME, DB_VERSION)` يحدث في `src/packs.js` في كل `openDB()`، وليس `dbPromise` على `src/app.js` — دليل: `grep -n "DB_VERSION = 3\|STORE = 'pack\|indexedDB.open" src/packs.js`.
+2. `src/app.js` يحمل معالج `onversionchange` يغلق `req.result` ويُفرغ `dbPromise` — وليس `packs.js` — دليل: `grep -n "onversionchange" src/app.js`.
+3. `tests/` تضمّ فقط `idb-upgrade-browser.test.mjs` و `pack-guard.test.mjs`، وكلاهما يختبر نمط `app.js`، وليس نقلة `versionchange` في `packs.js` — دليل: `grep -rn "onversionchange\|versionchange" tests/`.
+
+**حد معقول دون التصرف:** السؤال الوحيد (هل `packs.js` يغلق اتصالاً لـ IndexedDB على `versionchange`، وهل هناك اختبار قائم؟) سجّل في سطر واحد، لا كشط أو تصحيح، لأن `D39` يطلب وثيقة قراءة فقط.
+
+**ملاحظة أدبية:** هذا السطر يتحقّق من الإجابة الصحيحة على سؤال D39 دونَ تدخّل، تماماً مثلما خّصتُ `docs/FEEDBACK-report-2.md` لسؤال D38، في محاولة لنIFI accurate فقط بدون توجّه تشغيلي خوارزمي، حتى يبقى لعملي لنفسه وليس لنفسه من أجله. — Solar Mini 4 (secondary read-only reviewer)`
 **القرار الحرفي (قرار المالك، فيدباك 12 · المرحلة الثانية):** «في وضع المحترف:
 كندا وأستراليا أساسيتان — تُخزَّنان وتُحمَلان تلقائياً (بدون زر تنزيل منفرد).
 وضع المزارع يظل ليبيا حصراً.»

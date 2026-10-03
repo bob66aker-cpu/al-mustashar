@@ -27,9 +27,12 @@ const CD = globalThis.CasDissect;
 /* Regression baselines recomputed after the EPA Master (PPIS) rebuild
  * (2026-09-23). They are allowed to grow only via a deliberate data round:
  * an unexplained change here is a data-integrity signal, not noise. */
-const DUP_KNOWN = 285;      /* same normalized name, different CAS signature
-   * (2026-09-27: +3 — the six corrected libya-500 CAS values now differ from
-   * their still-broken EU twins by a valid-vs-broken CAS signature) */
+const DUP_KNOWN = 283;      /* same normalized name, different CAS signature
+   * (2026-10-03, D42: 285 → 283, and it DROPS. libya-500 row 187
+   * Florpyrauxifen-benzyl now carries 1390661-72-9, the value the diff
+   * register adopted, so it stops disagreeing with eu and epa and the two
+   * ambiguous pairs it used to create are gone. A drop is the safe
+   * direction; a GROWTH is the regression this line exists to catch.) */
 const CAS_FAIL_KNOWN = 9;   /* CAS numbers failing the check digit (report-only).
    * 2026-09-27: 12→9 — the six documented libya-500 defects were corrected
    * (cas_raw/cas_corrected layer); eu/epa failures stay report-only. */
@@ -47,7 +50,7 @@ const FILES = {
    * the same round's marker): 2026-09-27 CAS round 2 — see
    * docs/data-provenance.md change log + tests/data-baseline.json */
   'libya-248': { rows: 77,  sha: 'b6850e0381fda847b0bc4b30096d35847b91e626587647dd79ef80ea04cbacd5' },
-  'libya-500': { rows: 411, sha: '9a1427e090906c3f84287edfcc4b43415abd22e01136dd54ecca09eb10ac9d2e' },
+  'libya-500': { rows: 411, sha: '08b852cb1ac8f438e5f960936bae9b525ec8057ff5e3f61cd1062f44ba23ae14' },
   'eu':        { rows: 1483, sha: 'ef629525c2dae8f741e1697faaecf2319e1a646e4e011d2754ef66e23844101e' },
   /* EPA Master (PPIS) rebuild (2026-09-23): active registry (1361) +
    * all-cancelled archive (1425), built by tools/build-epa-master.js from

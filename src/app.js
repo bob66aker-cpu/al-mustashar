@@ -465,7 +465,7 @@
    * (سياق غير آمن) يُتخطى التحقق بدل أن يُعطَّل التطبيق — تماماً كـ packs.js. */
   const DATA_SHA256 = {
     'data/libya-248.json':     'b6850e0381fda847b0bc4b30096d35847b91e626587647dd79ef80ea04cbacd5',
-    'data/libya-500.json':     '9a1427e090906c3f84287edfcc4b43415abd22e01136dd54ecca09eb10ac9d2e',
+    'data/libya-500.json':     '08b852cb1ac8f438e5f960936bae9b525ec8057ff5e3f61cd1062f44ba23ae14',
     'data/eu.json':            'ef629525c2dae8f741e1697faaecf2319e1a646e4e011d2754ef66e23844101e',
     'data/epa.json':           'b24d7c3e3a8dbd7e84ef7b1a59bbfb98674b5c8ad44ff7f7a3dbe0d90d7775f3',
     'data/epa-cancelled.json': 'c2b5b38e4bfe07dc466c45d4f18518691a57de17b078822e2e6fab00de58fde7'

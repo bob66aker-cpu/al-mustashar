@@ -2,10 +2,10 @@
  * tests/cas-display-browser.test.mjs — عرض طبقة CAS في كروم حقيقي (2026-09-27)
  * ---------------------------------------------------------------------------
  * يثبت في المتصفح ما طلبه المالك في التحقق الإلزامي:
- *   1) بحث Captan يعرض 133-06-2 (المصحح) + الخام 133-06-02 مشطوبًا + المصدر.
+ *   1) بحث Captan يعرض الرقم المعتمد 133-06-2 وحده (D42: بلا نسخة قديمة).
  *   2) بطاقة صف 18 في قرار 248 تعرض شارة التحذير المترجمة + نص الشرح.
  *   3) Tetradifon (I/A) يُفكّ إلى I و A معًا (tooltip الشريحة).
- *   4) بطاقة Carvone تعرض التباس المتماكب (نص الجولة) والرقم المصحح.
+ *   4) بطاقة Carvone تعرض التباس المتماكب (نص الجولة) والرقم المعتمد.
  *   5) بطاقة Metalaxyl-M تعرض (R) بجوار الرقم المطبَّع.
  *   6) بطاقة قاعدة 500 تعرض العدّ المحسوب من عمود status + توضيح تعدد الاستخدامات.
  *   + صفر أخطاء console في كل الجولة.
@@ -65,18 +65,20 @@ try {
 
   await setMode('pro');
 
-  /* ---------- 1) Captan: corrected + struck raw + source ---------- */
+  /* ---------- 1) Captan: ONE value, the one the register adopts ---------- */
+  /* D42: the old-copy layer (struck raw value + correction source label) was
+     abolished by owner decision. What must stay is the ADOPTED number itself
+     shown once, and the card must no longer pretend a second value exists. */
   await search('Captan');
   {
     const c = await card('Captan');
     must('Captan card exists', !!c);
-    must('corrected number 133-06-2 is the displayed value', c && /\b133-06-2\b/.test(c.meta), c && c.meta);
-    must('raw decree value 133-06-02 is shown struck through', c && c.rawOld === '133-06-02', c && c.rawOld);
-    must('the struck raw value is really struck (line-through)', c && await page.evaluate(() => {
-      const el = document.querySelector('#results .cas-raw-old');
-      return el ? getComputedStyle(el).textDecorationLine.includes('line-through') : false;
+    must('the register-adopted number 133-06-2 is the displayed value', c && /\b133-06-2\b/.test(c.meta), c && c.meta);
+    must('the abolished raw value is nowhere on the card', c && c.rawOld === '' && !/133-06-02/.test(c.text), c && c.rawOld);
+    must('no struck-through old value and no correction-source label are rendered', c && await page.evaluate(() => {
+      return document.querySelectorAll('#results .cas-raw-old').length === 0
+        && document.querySelectorAll('#results .cas-src').length === 0;
     }));
-    must('source label is the translated EPA Master label', c && /EPA Master/.test(c.src), c && c.src);
   }
 
   /* ---------- 4) Carvone: stereo ambiguity is on the card ---------- */
@@ -96,13 +98,15 @@ try {
   }
 
   /* ---------- 5) Metalaxyl-M: (R) next to the normalised number ---------- */
+  /* the descriptor comes from cas_stereo and must survive D42's abolition of
+     the old-copy layer — the decree prints «(R)» and the farmer must see it */
   await search('Metalaxyl-M');
   {
     const c = await card('Metalaxyl-M');
     must('Metalaxyl-M shows 70630-17-0 with the (R) descriptor',
       !!c && /70630-17-0\s*\(R\)/.test(c.meta), c && c.meta);
-    must('the raw decree string (with (R)) is still visible struck through',
-      !!c && /\(R\)/.test(c.rawOld), c && c.rawOld);
+    must('no struck-through duplicate of the number is rendered',
+      !!c && c.rawOld === '' && !/70630-17-0[^\n]*70630-17-0/.test(c.meta), c && c.rawOld);
   }
 
   /* ---------- 2) Decree-248 row 18: translated warning badge + note ---------- */

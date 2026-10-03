@@ -180,12 +180,16 @@
         if (corr && list === corr) {
           var raw = casApi.casDisplayRaw(x.r);
           var srcKey = casApi.casSourceKey(x.r);
-          var stereo = casApi.casStereo ? casApi.casStereo(x.r) : '';
-          html = esc(corr) + (stereo ? ' ' + esc(stereo) : '')
+          html = esc(corr)
             + ' <span class="cas-raw-old">' + esc(raw) + '</span>'
             + ' <span class="cas-src">(' + esc(t('cas.source.' + srcKey, srcKey === 'epa-master' ? 'مُصحح من EPA Master' : 'مصحح')) + ')</span>';
         }
       }
+      /* D42: cas_stereo is NOT part of the abolished old-copy layer — it is its
+         own documented field (Metalaxyl-M prints «(R)» beside its number), so
+         the descriptor is appended to whatever value the card displays. */
+      var stereo = casApi.casStereo ? casApi.casStereo(x.r) : '';
+      if (stereo) html += ' ' + esc(stereo);
       return '<p class="meta">' + esc(t('cas.label', 'CAS:')) + ' ' + html + '</p>' + notesBlock(x);
     }
 

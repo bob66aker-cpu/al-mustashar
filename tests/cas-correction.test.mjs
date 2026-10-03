@@ -40,75 +40,96 @@ const app = fs.readFileSync('src/app.js', 'utf8');
 const render = app + '\n' + fs.readFileSync('src/cards.js', 'utf8');
 const i18n = fs.readFileSync('src/i18n.js', 'utf8');
 
-/* ---------- 1) the eight documented repairs, stored correctly ---------- */
-const EXPECTED = [
-  { name: 'Capric acid (CAS 334-48-5)', raw: '334485', fixed: '334-48-5' },
-  { name: 'Captan', raw: '133-06-02', fixed: '133-06-2' },
-  { name: 'Carvone', raw: '244-16-8', fixed: '2244-16-8' },
-  { name: 'Cycloxydim', raw: '101 205-02-1', fixed: '101205-02-1' },
-  { name: 'Mesotrione', raw: '104206-8', fixed: '104206-82-8' },
-  { name: 'Metalaxyl-M', raw: '70630-17-0 (R)', fixed: '70630-17-0' },
-  /* round 2 — same pattern, own documented source keys (the `cas` value was
-   * already corrected on 2026-09-20; the triple itself was simply missing) */
-  { name: 'Mandipropamid', raw: '374726-22-2', fixed: '374726-62-2', src: 'epa-master' },
-  { name: 'Prosulfocarb', raw: '52888-90-9', fixed: '52888-80-9', src: 'eu+pubchem' },
+/* ===================================================================
+ * D42 (2026-10-03) — the contract changed, and this guard now pins the
+ * state the OWNER adopted, not the state a previous round used to keep.
+ * The provenance triple (cas_raw / cas_corrected / cas_source) is GONE by
+ * owner decision: libya-500 is rebuilt, the corrected value IS the value,
+ * and there is no second copy to disagree with. What must never come back
+ * is a silent correction — so the guard proves the triple is absent and
+ * that each named row carries the number the diff register adopted.
+ * Register of record: docs/libya-500-diff-register.md (deposit 1836934).
+ * =================================================================== */
+const ADOPTED = [
+  { row: 187, name: 'Florpyrauxifen-benzyl', cas: '1390661-72-9',
+    why: 'register §1أ: the printed official page for item 187 settles it' },
+  { row: 114, name: 'Captan', cas: '133-06-2', why: 'register: approved' },
+  { row: 258, name: 'Mesotrione', cas: '104206-82-8', why: 'register: approved' },
+  { row: 117, name: 'Carvone', cas: '2244-16-8', why: 'register: adopted as-is' },
 ];
 check('libya-500 row count intact (411)', d5.rows.length === 411, String(d5.rows.length));
 check('meta.count matches rows', d5.meta.count === d5.rows.length);
-for (const e of EXPECTED) {
+
+/* the adopted numbering, from the register — 8 gaps, one shift region each */
+const NUM = [130, 253, 254, 295, 312, 321, 333, 364];
+const nums = d5.rows.map(r => r.row);
+check('the official numbering has exactly the eight adopted gaps',
+  NUM.every(n => !nums.includes(n)), 'gaps now: ' + JSON.stringify(
+    [...new Set(Array.from({ length: 419 }, (_, i) => i + 1).filter(n => !nums.includes(n)))]));
+const at = n => d5.rows.find(r => r.row === n);
+check('row 255 is Mefentrifluconazole (register §9أ)',
+  at(255) && at(255).name === 'Mefentrifluconazole', at(255) && at(255).name);
+check('row 322 is the DSMZ strain, 323 PL 11, 324 strain 251 (register §9أ)',
+  at(322) && /DSMZ 13134/.test(at(322).name)
+  && at(323) && /PL 11/.test(at(323).name)
+  && at(324) && /strain 251/.test(at(324).name),
+  [at(322) && at(322).name, at(323) && at(323).name, at(324) && at(324).name].join(' / '));
+check('row 350 is Silthiofam and 351 is Sintofen (register §9)',
+  at(350) && at(350).name === 'Silthiofam' && at(351) && /Sintofen/.test(at(351).name),
+  (at(350) && at(350).name) + ' / ' + (at(351) && at(351).name));
+
+/* each adopted number is present AT ITS NAMED ROW, and only there */
+for (const a of ADOPTED) {
+  const r = at(a.row);
+  check(`row ${a.row} ${a.name} carries the adopted number ${a.cas}`,
+    r && r.name === a.name && r.cas === a.cas,
+    r ? JSON.stringify({ name: r.name, cas: r.cas }) : 'row missing');
+}
+
+/* The old-copy layer is gone EVERYWHERE. cas_source survives only as the
+   provenance of a DOCUMENTED CANDIDATE number (src/cards.js:197 labels it),
+   i.e. exactly on the rows that carry cas_suggested — never as a
+   'this value was corrected from x' trace. */
+const OLD_COPY = ['cas_raw', 'cas_corrected'];
+check('no libya-500 row still carries an old-copy field (cas_raw / cas_corrected)',
+  d5.rows.every(r => OLD_COPY.every(k => !(k in r))),
+  String(d5.rows.filter(r => OLD_COPY.some(k => k in r)).length) + ' rows');
+check('cas_source survives only where cas_suggested documents candidate numbers',
+  d5.rows.every(r => ('cas_source' in r) === ('cas_suggested' in r))
+  && d5.rows.filter(r => 'cas_source' in r).map(r => r.row).sort((a, b) => a - b).join(',') === '228,243,261,271,347',
+  d5.rows.filter(r => 'cas_source' in r).map(r => r.row).join(','));
+check('the display layer has no correction and no source to attribute, and shows the single value verbatim',
+  d5.rows.every(r => CD.casDisplayCorrected(r) === '' && CD.casSourceKey(r) === ''
+    && CD.casDisplayRaw(r) === String(r.cas || '').trim()),
+  String(d5.rows.filter(r => CD.casDisplayCorrected(r) !== '' || CD.casSourceKey(r) !== '').length) + ' rows');
+
+/* every adopted number passes the check digit; nothing is invented */
+check('every adopted value passes casChecksum',
+  ADOPTED.every(a => CD.casChecksum(a.cas) === true),
+  ADOPTED.filter(a => CD.casChecksum(a.cas) !== true).map(a => a.cas).join(','));
+
+/* the numbers the previous round repaired still stand, under the same rows */
+const STILL = [
+  { name: 'Capric acid (CAS 334-48-5)', cas: '334-48-5' },
+  { name: 'Cycloxydim', cas: '101205-02-1' },
+  { name: 'Metalaxyl-M', cas: '70630-17-0' },
+  { name: 'Mandipropamid', cas: '374726-62-2' },
+  { name: 'Prosulfocarb', cas: '52888-80-9' },
+];
+for (const e of STILL) {
   const r = d5.rows.find(x => x.name === e.name);
-  check(`${e.name}: triple + corrected main field`,
-    r && r.cas === e.fixed && r.cas_raw === e.raw
-    && r.cas_corrected === e.fixed && r.cas_source === (e.src || 'epa-master'),
-    r ? JSON.stringify({ cas: r.cas, raw: r.cas_raw, src: r.cas_source }) : 'row missing');
-}
-check('all eight corrected values pass casChecksum',
-  EXPECTED.every(e => CD.casChecksum(e.fixed) === true));
-check('raw decree values are preserved verbatim (never lost)',
-  EXPECTED.every(e => (d5.rows.find(x => x.name === e.name) || {}).cas_raw === e.raw));
-
-/* ---------- 2) every other numeric row keeps verbatim + provenance ---------- */
-const numeric = d5.rows.filter(r => /[0-9]/.test(String(r.cas || '')));
-check('all numeric rows carry cas_source provenance',
-  numeric.every(r => typeof r.cas_source === 'string' && r.cas_source.length > 0),
-  String(numeric.filter(r => !r.cas_source).length) + ' missing');
-check('uncorrected rows: cas_displayRaw == stored value, no corrected flag',
-  numeric.filter(r => !String(r.cas_corrected || '').trim())
-    .every(r => CD.casDisplayRaw(r) === String(r.cas).trim()
-      && CD.casDisplayCorrected(r) === ''));
-/* documented source keys only — a correction carrying an unknown key is a bug */
-const DOC_SOURCES = ['epa-master', 'eu+pubchem'];
-check('no row invents a correction without a documented source key',
-  numeric.every(r => (String(r.cas_corrected || '').trim() ? DOC_SOURCES.includes(r.cas_source) : true)));
-
-/* the two round-2 values are corroborated INSIDE the repo, not by us */
-{
-  const epa = JSON.parse(fs.readFileSync('data/epa.json', 'utf8'));
-  const eu = JSON.parse(fs.readFileSync('data/eu.json', 'utf8'));
-  const mp = epa.rows.find(r => r.name === 'Mandipropamide Technical');
-  check('Mandipropamid corrected value exists in EPA Master (PC 036602)',
-    mp && mp.cas === '374726-62-2' && mp.pc_code === '036602', mp ? mp.cas : 'missing');
-  const euPro = eu.rows.find(r => r.name === 'Prosulfocarb');
-  check('Prosulfocarb corrected value exists in the EU file',
-    euPro && euPro.cas === '52888-80-9', euPro ? euPro.cas : 'missing');
+  check(`${e.name} keeps ${e.cas}`, r && r.cas === e.cas,
+    r ? r.cas : 'row missing');
 }
 
-/* Carvone is THE documented special case: decree dropped a digit; EU db has
- * the same defect — the correction comes from EPA Master, not from EU. */
-const eu = JSON.parse(fs.readFileSync('data/eu.json', 'utf8'));
-const euCarv = eu.rows.find(r => r.name === 'Carvone');
-check('Carvone correction is independent of the (equally broken) EU row',
-  euCarv && euCarv.cas === '244-16-8' && CD.casChecksum(euCarv.cas) === false,
-  euCarv ? euCarv.cas : 'missing');
-
-/* ---------- 3) display layer honesty ---------- */
-const cap = d5.rows.find(x => x.name === 'Captan');
-check('casDisplayCorrected exposes the fixed value',
-  CD.casDisplayCorrected(cap) === '133-06-2');
-check('casDisplayRaw exposes the decree value (the display honesty contract)',
-  CD.casDisplayRaw(cap) === '133-06-02');
-check('casSourceKey resolves to the epa-master machine key',
-  CD.casSourceKey(cap) === 'epa-master');
+/* the annotation layer is NOT the old copy and must survive */
+check('the annotation fields survive the rebuild',
+  d5.rows.filter(r => r.cas_suggested).length === 5
+  && d5.rows.filter(r => r.cas_review).length === 1
+  && d5.rows.filter(r => r.cas_stereo).length === 1,
+  'sug=' + d5.rows.filter(r => r.cas_suggested).length
+  + ' rev=' + d5.rows.filter(r => r.cas_review).length
+  + ' stereo=' + d5.rows.filter(r => r.cas_stereo).length);
 
 /* ---------- 3b) (هـ3) binary checksum proof, computed live ----------
  * For every pair named by the owner: the raw decree value FAILS the check

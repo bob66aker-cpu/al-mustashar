@@ -50,9 +50,17 @@ const dictValue = (key, n = 1) => {
 /* ---------- (ب) Carvone: وسم التباس + نص بأربع لغات ---------- */
 {
   const r = byRow(d5, 117);
-  check('Carvone keeps its documented correction untouched',
-    r.cas === '2244-16-8' && r.cas_raw === '244-16-8' && r.cas_source === 'epa-master',
-    JSON.stringify({ cas: r.cas, raw: r.cas_raw }));
+  /* D42: the old-copy layer (cas_raw / cas_corrected and the correction trace
+     in cas_source) was abolished by owner decision, so Carvone now carries the
+     number adopted in docs/libya-500-diff-register.md (#117 = 2244-16-8) and
+     nothing else. */
+  check('Carvone carries the register-adopted number 2244-16-8 and no old-copy trace',
+    r.cas === '2244-16-8' && !('cas_raw' in r) && !('cas_corrected' in r) && !('cas_source' in r),
+    JSON.stringify({ cas: r.cas, raw: r.cas_raw, corrected: r.cas_corrected, src: r.cas_source }));
+  check('no 500 row carries the abolished old-copy layer (cas_raw / cas_corrected)',
+    d5.rows.filter(x => 'cas_raw' in x || 'cas_corrected' in x).length === 0);
+  check('cas_source survives ONLY on the 5 documented-candidate rows (src/cards.js:197)',
+    d5.rows.filter(x => 'cas_source' in x).map(x => x.row).sort((a, b) => a - b).join(',') === '228,243,261,271,347');
   check('Carvone carries cas_flag=stereo-ambiguous', r.cas_flag === 'stereo-ambiguous', String(r.cas_flag));
   check('CasDissect.casFlag exposes the flag', CD.casFlag(r) === 'stereo-ambiguous');
   check('the stereo note names (+)-Carvone and the racemate 99-49-0 in all 4 dictionaries',
@@ -71,12 +79,20 @@ const dictValue = (key, n = 1) => {
 /* ---------- (هـ5) Metalaxyl-M: الواصف (R) في حقل وعرض منفصلين ---------- */
 {
   const r = byRow(d5, 260);
-  check('Metalaxyl-M keeps the normalised number 70630-17-0', r.cas === '70630-17-0' && r.cas_corrected === '70630-17-0');
-  check('the raw decree string still carries (R) verbatim', r.cas_raw === '70630-17-0 (R)', r.cas_raw);
+  /* D42: #260 keeps the printed number as the single CAS value; the (R)
+     descriptor stays in its own field, exactly as before. */
+  check('Metalaxyl-M keeps the normalised number 70630-17-0 with no old-copy trace',
+    r.cas === '70630-17-0' && !('cas_corrected' in r) && !('cas_raw' in r),
+    JSON.stringify({ cas: r.cas, corrected: r.cas_corrected, raw: r.cas_raw }));
+  check('the (R) descriptor is never inside the number cell', !r.cas.includes('(R)'), r.cas);
   check('the (R) descriptor lives in its own field cas_stereo', r.cas_stereo === '(R)', String(r.cas_stereo));
   check('CasDissect.casStereo returns it', CD.casStereo(r) === '(R)');
-  check('the card appends the descriptor next to the corrected number',
-    /casStereo\(x\.r\)/.test(render) && /esc\(corr\) \+ \(stereo \? ' ' \+ esc\(stereo\)/.test(render));
+  /* D42: the (R) descriptor must survive the abolition of the old-copy layer —
+     it is rendered from cas_stereo for ANY row that carries it, not only for
+     rows that still have a corrected/raw pair. */
+  check('the card appends the descriptor from cas_stereo for any row that carries it',
+    /var stereo = casApi\.casStereo \? casApi\.casStereo\(x\.r\) : '';/.test(render)
+    && /if \(stereo\) html \+= ' ' \+ esc\(stereo\);/.test(render));
   check('no other 500 row carries a stereo descriptor (single documented case)',
     d5.rows.filter(x => x.cas_stereo).length === 1);
 }

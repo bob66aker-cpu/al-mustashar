@@ -312,7 +312,7 @@ check('OCR engine carries the a3 early-confirm lock (DB-confirmed reads survive 
       && o.includes("via: 'ladder_confirm'")
       && o.includes('if (earlyLock) break;')
       && o.includes('if (!earlyLock && (exactHit || hasValidCas([...fusionCAS])))'); })());
-check('sw is v37 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v50'")
+check('sw is v37 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v51'")
   && sw5.includes("'./src/scan-live.js'")
   && sw5.includes("OCR_CACHE = 'mustashar-ocr'")
   && OCR_RUNTIME_FILES.every(f => sw5.includes(f.replace('./', '')))
@@ -1038,7 +1038,7 @@ check('feedback 11: the card matrix measures BOTH containers and both modes',
      /t\('cas\.group\.badge'/.test(cardsD30) && /t\('cas\.group\.code'/.test(cardsD30));
 }
 
-/* ---------- D31: Canada / Australia are PRIMARY in professional mode (1.19.14)
+/* ---------- D31: Canada / Australia are PRIMARY in professional mode (1.19.14
  * Owner's ruling: in pro mode they are downloaded, verified and stored
  * automatically, with no individual download button; farmer mode stays Libya
  * only. The Australian candidate caution must survive automation (pack-guard),

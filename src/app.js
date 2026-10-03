@@ -838,6 +838,60 @@
    *     معرّف المادة لا رقم CAS وحده.
    * وما لا تحتمله: 80–99 بلا حاسم ⇒ لا يُخفى شيء إطلاقاً، ويبقى التحذير.
    * لذلك الإظهار لا يفصل ولا يقرّر: يخفي ما لم يقرأه أحد. */
+  /* D30 (feedback 11): the owner's ruling — one card per SOURCE, and inside one
+   * source only the TOP result for a given substance identity; the lower
+   * duplicates of that identity are hidden at every match score. It runs here,
+   * inside the ONE filter render() owns (FB5/D26), never as a second filter.
+   *
+   * identity = what the search engine matched on (search-core), NOT the CAS
+   * alone (that would merge Captan, FB5-b) and NOT name similarity alone: a CAS
+   * match keys on the CAS, a name match keys on the normalized name.
+   *
+   * CONFLICT GUARD (owner's red line, «ج»): if the rows of one identity in one
+   * source disagree on the STATUS, they are NOT collapsed — a silent drop there
+   * would change the legal reading (Acetic acid Approved vs Vinegar REV under
+   * CAS 64-19-7 is a live example), so every one of them stays and the round
+   * reports it. */
+  function collapseSameSource(rows) {
+    const norm = v => String(v == null ? '' : v).toLowerCase().replace(/\s+/g, ' ').trim();
+    const identityOf = x => {
+      const r = x.r || {};
+      const field = String((x.s && x.s.field) || '');
+      const casMatch = /^\d{2,7}-\d{2}-\d$/.test(field.trim());
+      if (casMatch) return 'cas:' + field.trim();
+      const type = String((x.s && x.s.type) || '');
+      if (/CAS/.test(type)) {
+      const first = String(r.cas || '').split(/[\n[\]]/)[0].trim();
+      if (/^\d{2,7}-\d{2}-\d$/.test(first)) return 'cas:' + first;
+      }
+      return 'name:' + norm(r.name);
+    };
+    const groups = new Map();
+    for (const x of rows) {
+      const key = x.k + '\u0000' + identityOf(x);
+      if (!groups.has(key)) groups.set(key, []);
+      groups.get(key).push(x);
+    }
+    const out = [];
+    let conflicts = 0;
+    for (const list of groups.values()) {
+      if (list.length === 1) { out.push(list[0]); continue; }
+      const statuses = new Set(list.map(x => String((x.r || {}).status || '').trim()));
+      if (statuses.size > 1) { conflicts++; out.push(...list); continue; }
+      /* top score wins; a tie is decided by the declared source order, which
+       * inside one source is the row's own order in the source file */
+      const best = list.slice().sort((a, b) =>
+      ((b.s && b.s.v) || 0) - ((a.s && a.s.v) || 0)
+      || ((a.r || {}).row || 0) - ((b.r || {}).row || 0))[0];
+      out.push(best);
+    }
+    if (conflicts) {
+      try { console.warn('[D30] ' + conflicts + ' identity group(s) with conflicting statuses kept whole'); } catch (e) {}
+    }
+    return out;
+
+  }
+
   function collapseToDecisive(list) {
     const rows = Array.isArray(list) ? list : [];
     const decisive = rows.filter(x => x && x.s && x.s.decisive);
@@ -860,7 +914,8 @@
       const w = wordsOf(v);
       return decisiveReads.some(d => w.every(t => d.indexOf(t) >= 0));
     };
-    return rows.filter(x => keepGroups.has(substance(x)) || !sameRead(via(x)));
+    const kept = rows.filter(x => keepGroups.has(substance(x)) || !sameRead(via(x)));
+    return collapseSameSource(kept);
   }
 
   function render(results, q, target) {

@@ -312,7 +312,7 @@ check('OCR engine carries the a3 early-confirm lock (DB-confirmed reads survive 
       && o.includes("via: 'ladder_confirm'")
       && o.includes('if (earlyLock) break;')
       && o.includes('if (!earlyLock && (exactHit || hasValidCas([...fusionCAS])))'); })());
-check('sw is v37 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v47'")
+check('sw is v37 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v48'")
   && sw5.includes("'./src/scan-live.js'")
   && sw5.includes("OCR_CACHE = 'mustashar-ocr'")
   && OCR_RUNTIME_FILES.every(f => sw5.includes(f.replace('./', '')))
@@ -962,6 +962,38 @@ check('feedback 9+10: the live matrix measures the real DOM, translation off, bo
 check('feedback 9+10: the attribution probe exists and runs with translation disabled too',
   fs.existsSync('tests/fb9-attr.mjs')
   && /--disable-translate/.test(fs.readFileSync('tests/fb9-attr.mjs', 'utf8')));
+
+/* ---------- 1.19.12 D30: بطاقة واحدة لكل (مصدر × هوية) — إخفاء التكرارات ----------
+ * قرار المالك الحرفي: البطاقات منفصلة لكل مصدر، وتُعرض أعلى نتيجة فقط لكل
+ * (هوية المادة × مصدر)، وتُخفى الأدنى المكررة لنفس الهوية داخل نفس المصدر.
+ * القياس «قبل» (حيّ، 5 عينات معلنة — بديلة لا لقطة المالك):
+ *   Glyphosate 3 (500=1 eu=1 epa=1) · Captan 3 (رقم مشترك) ·
+ *   aliphatic petroleum solvent ⇒ 9 بطاقات في epa (اسم واحد، 9 أرقام CAS) ·
+ *   64-19-7 ⇒ 5، منها 500=2: «Acetic acid Approved» و«Vinegar REV» —
+ *   تعارض حالة داخل هوية واحدة ⇒ يبقى كلّه سليماً (خط المالك «ج»).
+ * بعد الإصلاح: petroleum solvent = بطاقة واحدة، و64-19-7 كما هو تماماً. */
+check('feedback 11: the collapse runs inside the ONE filter render() owns',
+  /return collapseSameSource\(kept\);/.test(app)
+  && /const kept = rows\.filter/.test(app)
+  && (app.match(/\bcollapseSameSource\(/g) || []).length === 2);
+check('feedback 11 RED LINE: a status conflict inside one identity is never collapsed',
+  /if \(statuses\.size > 1\) \{ conflicts\+\+; out\.push\(\.\.\.list\); continue; \}/.test(app));
+check('feedback 11: identity is the engine\'s match, not the CAS alone and not name similarity',
+  /const identityOf = x => \{/.test(app)
+  && /return 'cas:' \+ field\.trim\(\);/.test(app)
+  && /return 'name:' \+ norm\(r\.name\);/.test(app));
+check('feedback 11: the static gate lifts the REAL function out of src/app.js (no re-typed copy)',
+  fs.existsSync('tests/fb11-d30.test.mjs')
+  && /new Function\('console'/.test(fs.readFileSync('tests/fb11-d30.test.mjs', 'utf8'))
+  && /MUTATION \(a\)/.test(fs.readFileSync('tests/fb11-d30.test.mjs', 'utf8'))
+  && /MUTATION \(b\)/.test(fs.readFileSync('tests/fb11-d30.test.mjs', 'utf8'))
+  && /MUTATION \(c\)/.test(fs.readFileSync('tests/fb11-d30.test.mjs', 'utf8')));
+check('feedback 11: the card matrix measures BOTH containers and both modes',
+  fs.existsSync('tests/fb11-dupes.mjs')
+  && /runScanPipeline/.test(fs.readFileSync('tests/fb11-dupes.mjs', 'utf8'))
+  && /'#scanResults'|#scanResults/.test(fs.readFileSync('tests/fb11-dupes.mjs', 'utf8'))
+  && /aliphatic petroleum solvent/.test(fs.readFileSync('tests/fb11-dupes.mjs', 'utf8'))
+  && /64-19-7/.test(fs.readFileSync('tests/fb11-dupes.mjs', 'utf8')));
 
 /* ---------- summary ---------- */
 console.log('\n==============================');

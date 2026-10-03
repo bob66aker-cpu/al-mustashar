@@ -24,7 +24,7 @@
  * تشغيل: BASE_URL=http://127.0.0.1:8080 node tests/filtered-empty.test.mjs
  */
 import puppeteer from 'puppeteer-core';
-import { readFileSync } from 'node:fs';
+import fs, { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
@@ -35,7 +35,10 @@ const BASE = process.env.BASE_URL || 'http://localhost:8080';
 
 /* ---- ground truth: read the DATA, never assume it ---- */
 const readPack = (key) => {
-  const j = JSON.parse(readFileSync(join(ROOT, 'data', key + '.json'), 'utf8'));
+  /* D31: Canada and Australia live in data-optional/ and are now PRIMARY in
+     professional mode — so their rows are part of what pro mode must show. */
+  const dir = fs.existsSync(join(ROOT, 'data', key + '.json')) ? 'data' : 'data-optional';
+  const j = JSON.parse(readFileSync(join(ROOT, dir, key + '.json'), 'utf8'));
   const rows = Array.isArray(j) ? j : (j.rows || j.data || j.items || Object.values(j)[0]);
   return Array.isArray(rows) ? rows : [];
 };
@@ -44,7 +47,7 @@ const rowsWithCas = (key, cas) => readPack(key)
   .map(r => String(r.n || r.name || r.en || r.common_name || '').trim());
 
 const CAS_EU_ONLY = '50-00-0';
-const FOREIGN = ['eu', 'epa', 'epa-cancelled'];
+const FOREIGN = ['eu', 'epa', 'epa-cancelled', 'canada'];   /* canada: primary in pro since D31 */
 const foreignRows = FOREIGN.flatMap(k => rowsWithCas(k, CAS_EU_ONLY).map(n => ({ k, n })));
 const CAS_LIBYAN = '1071-83-6';
 const libyanRows = ['libya-248', 'libya-500'].flatMap(k => rowsWithCas(k, CAS_LIBYAN).map(n => ({ k, n })));
@@ -182,7 +185,7 @@ try {
     'visible=' + v.cards.filter(c => c.visible).length + '/' + v.cards.length);
   const foreignText = v.cards.map(c => c.text).join(' ').toLowerCase();
   must('the foreign source is named on the card, so the farmer can see it is not Libyan',
-    v.cardCount > 0 && v.cards.every(c => /أوروبا|أوروبي|الاتحاد|epaa?|epa|union|europe/i.test(c.text + c.source)),
+    v.cardCount > 0 && v.cards.every(c => /أوروبا|أوروبي|الاتحاد|epaa?|epa|union|europe|كندا|أستراليا|سجل المبيدات|Apvma|Pmra/i.test(c.text + c.source)),
     v.cards.map(c => c.text.replace(/\s+/g, ' ').slice(0, 60)).join(' || '));
   must('pro mode shows no "not found" notice', v.notice === null,
     v.notice ? v.notice.text.replace(/\n/g, ' ') : 'none');

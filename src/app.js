@@ -1201,6 +1201,9 @@
   if (modeSel) modeSel.addEventListener('change', () => {
     syncModeLabel();
     syncProTools();
+    /* the primary packs (Canada / Australia) install themselves the moment
+     * the professional mode is entered — one event, no second path */
+    document.dispatchEvent(new CustomEvent('modechange', { detail: { mode: modeSel.value } }));
     /* Re-render the current results so the detail level switches live
      * (farmer = simplified verdict, professional = full evidence).
      * أ3: the scan view now hosts its own results — re-render BOTH paths.
@@ -2623,14 +2626,70 @@
   });
 
   /* ================================================================
-   * المرحلة الثانية — قواعد إضافية اختيارية (كندا / أستراليا)
-   * زر واحد لكل حزمة داخل شاشة القواعد فقط. لا تثبيت تلقائي، ولا خطوة
-   * في مسار المزارع: التنزيل والتحقق والحذف كله صامت ما لم يُطلب.
+   * المرحلة الثانية — كندا وأستراليا أساسيتان في وضع المحترف (قرار المالك)
+   * قبل هذه الجولة كانتا «اختياريتين»: زر تنزيل لكل واحدة في شاشة القواعد،
+   * ولا تدخلان البحث إلا بعد الضغط. الآن:
+   *   • في وضع المحترف: تُنزَّل وتُتحقَّق وتُخزَّن تلقائياً عند بدء التشغيل
+   *     وعند التبديل إلى المحترف — بلا زر تنزيل مفرد إطلاقاً.
+   *   • في وضع المزارع: لا تغيير إطلاقاً. ليبيا حصراً، ولا تنزيل تلقائي،
+   *     ولا خطوة جديدة في المسار (القاعدة الحاكمة: لا يُحمَّل ما لا يُستخدم).
+   *   • التسمية التحذيرية المرشّحة في أستراليا تبقى كما هي: التلقائية هنا
+   *     تعني «الحزمة مضمّنة» لا «الحكم مضمّن» (pack-guard).
    * ================================================================ */
   (function initPacks() {
     const box = $('#packList');
     if (!box || typeof PacksModule === 'undefined') return;
-    const status = {};   /* key -> element */
+    const status = {};   /* key -> the state line element */
+    const installing = {};
+
+    function isPro() {
+      const m = $('#mode');
+      return !!(m && m.value === 'pro');
+    }
+
+    /* تحميل تلقائي: صامت، مرة واحدة لكل حزمة، وكل شيء داخل سطر الحالة
+       في شاشة القواعد — لا زر ولا نافذة ولا خطوة في مسار المستخدم. */
+    function ensurePacks() {
+      if (!isPro()) { paintFarmerNote(); return; }
+      PacksModule.PACKS.forEach(pack => {
+        if (DB[pack.key] || installing[pack.key]) return;
+        installing[pack.key] = true;
+        const st = status[pack.key];
+        if (st) {
+          st.className = 'pack-state';
+          st.textContent = t('packs.start', 'جارٍ التنزيل…');
+        }
+        PacksModule.install(pack.key, (got, total) => {
+          if (st && installing[pack.key]) {
+            st.textContent = tf('packs.progress', 'جارٍ التنزيل: {n} من {total}',
+              { n: fmtBytes(got), total: total ? fmtBytes(total) : '—' });
+          }
+        }).then(res => {
+          DB[pack.key] = { meta: res.meta, rows: res.rows };
+          installing[pack.key] = false;
+          stateLine(pack.key);
+          rebuildSearch();
+          diagAdd({ at: Date.now(), outcome: 'pack-auto-installed', src: pack.key, count: res.meta.count, sha256: String(res.manifest.sha256 || '').slice(0, 12) });
+        }).catch(e => {
+          installing[pack.key] = false;
+          if (st) {
+            st.className = 'pack-state err';
+            st.textContent = t('packs.fail', 'تعذّر التنزيل — تحقق من الاتصال وحاول مرة أخرى');
+          }
+          diagAdd({ at: Date.now(), outcome: 'pack-auto-failed', src: pack.key, err: String((e && e.message) || e) });
+        });
+      });
+    }
+
+    function paintFarmerNote() {
+      PacksModule.PACKS.forEach(pack => {
+        if (DB[pack.key]) return;
+        const st = status[pack.key];
+        if (!st) return;
+        st.className = 'pack-state';
+        st.textContent = t('packs.proOnly', 'تتوفّر تلقائياً في وضع المحترف');
+      });
+    }
 
     function stateLine(key) {
       const el = status[key];
@@ -2670,59 +2729,24 @@
         : 'Contains information licensed under the Creative Commons Attribution 3.0 Australia licence.';
       main.appendChild(b); main.appendChild(why); main.appendChild(st); main.appendChild(attr);
 
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'btn-outline pack-btn';
-      const setBtn = () => {
-        btn.textContent = DB[pack.key]
-          ? t('packs.remove', 'حذف القاعدة')
-          : t('packs.download', 'تنزيل قاعدة إضافية');
-      };
-      btn.addEventListener('click', async () => {
-        if (DB[pack.key]) {
-          await PacksModule.remove(pack.key);
-          delete DB[pack.key];
-          stateLine(pack.key); setBtn(); rebuildSearch();
-          diagAdd({ at: Date.now(), outcome: 'pack-removed', src: pack.key });
-          return;
-        }
-        btn.disabled = true;
-        stateLine(pack.key);
-        status[pack.key].className = 'pack-state';
-        status[pack.key].textContent = t('packs.start', 'جارٍ التنزيل…');
-        try {
-          const res = await PacksModule.install(pack.key, (got, total) => {
-            status[pack.key].textContent = tf('packs.progress', 'جارٍ التنزيل: {n} من {total}',
-              { n: fmtBytes(got), total: total ? fmtBytes(total) : '—' });
-          });
-          DB[pack.key] = { meta: res.meta, rows: res.rows };
-          stateLine(pack.key); setBtn(); rebuildSearch();
-          diagAdd({ at: Date.now(), outcome: 'pack-installed', src: pack.key, count: res.meta.count, sha256: String(res.manifest.sha256 || '').slice(0, 12) });
-        } catch (e) {
-          status[pack.key].className = 'pack-state err';
-          status[pack.key].textContent = t('packs.fail', 'تعذّر التنزيل — تحقق من الاتصال وحاول مرة أخرى');
-          diagAdd({ at: Date.now(), outcome: 'pack-failed', src: pack.key, err: String((e && e.message) || e) });
-        }
-        btn.disabled = false;
-      });
-      setBtn();
-      el.appendChild(main); el.appendChild(btn);
+      /* دُفن الزر: الحزمة صارت في وضع المحترف تلقائية، فلا بارِ تنزيل
+         مفرد ولا بارِ حذف — التحقق والتخزين تلقائيان (قرار المالك). */
+      el.appendChild(main);
       return el;
     }
 
     PacksModule.PACKS.forEach(p => box.appendChild(row(p)));
-    /* a pack installed in a previous session comes back on its own — the
-       farmer does not re-download it every time the app opens */
-    PacksModule.list().then(keys => keys.forEach(k => {
-      PacksModule.restore(k).then(v => {
-        if (!v || !v.rows) return;
-        DB[k] = { meta: v.meta, rows: v.rows };
-        stateLine(k);
-        const btn = box.querySelector('#pack-' + k + ' .pack-btn');
-        if (btn) btn.textContent = t('packs.remove', 'حذف القاعدة');
-        rebuildSearch();
-      });
-    })).catch(() => {});
+    /* الحزمة المخزَّنة في جلسة سابقة تعود بنفسها عند فتح التطبيق */
+    PacksModule.list().then(keys => Promise.all(keys.map(k => PacksModule.restore(k).then(v => {
+      if (!v || !v.rows) return null;
+      DB[k] = { meta: v.meta, rows: v.rows };
+      stateLine(k);
+      rebuildSearch();
+      return k;
+    })))).then(() => ensurePacks()).catch(() => {});
+    /* التبديل إلى المحترف يحمّلهما إن لم يكونا موجودين */
+    document.addEventListener('modechange', ensurePacks);
+    if (isPro()) ensurePacks();
   })();
 
   /* Support/contact button: reads config/support.json; hidden when empty.

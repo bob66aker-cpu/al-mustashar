@@ -168,10 +168,18 @@ const dictValue = (key, n = 1) => {
    * unexplained-code hint resolves to its key (non-empty = explained), the hint
    * returns its real Arabic text so the equality check below is meaningful. */
   const HINT = dictValue('legend.cat.unknown');
-  const factory = new Function('HINT', slice
+  /* catPartText calls tf() (D29 names the part inside the sentence), so the
+   * harness must stub BOTH accessors exactly as the shipped code uses them:
+   * tf substitutes {part} into the real dictionary text. Stubbing only t()
+   * left tf undefined and the block threw before a single assertion ran. */
+  const HINT_NAMED = dictValue('legend.cat.unknownNamed');
+  const factory = new Function('HINT', 'HINT_NAMED', slice
     + "\nconst t = (k, fb) => (k === 'legend.cat.unknown' ? HINT : k);"
+    + "\nconst tf = (k, fb, vars) => (k === 'legend.cat.unknownNamed'"
+    + " ? String(HINT_NAMED).replace(/\\{part\\}/g, (vars && vars.part) || '')"
+    + " : String(fb).replace(/\\{part\\}/g, (vars && vars.part) || ''));"
     + '\nreturn { catParts, catName, catTitle };');
-  const { catParts, catName, catTitle } = factory(HINT);
+  const { catParts, catName, catTitle } = factory(HINT, HINT_NAMED);
 
   /* (هـ1) */
 
@@ -196,11 +204,20 @@ const dictValue = (key, n = 1) => {
       .every(c => catParts(c).every(p => p === p.trim() && p.length > 0)));
 
   /* (هـ2) */
+  /* D29: the hint sentence NAMES the part («F/Mi: رمز غير مشروح…»), so the
+   * title is that named sentence for a single code, and the named sentences
+   * joined with ' + ' for a compound one. */
   for (const code of ['I.Ph', 'B', 'Igr', 'R.S', 'gr']) {
     check(`${code} is shown verbatim with the unexplained-code hint (no guessed meaning)`,
-      catParts(code).join('|') === code && catName(code) === '' && catTitle(code) === HINT,
+      catParts(code).join('|') === code && catName(code) === ''
+      && catTitle(code) === code + ': ' + HINT,
       'parts=' + catParts(code).join('|') + ' title=' + catTitle(code));
   }
+  check('the named hint is the dictionary sentence with the part substituted (D29)',
+    HINT_NAMED !== null && /\{part\}/.test(HINT_NAMED) && dictCount('legend.cat.unknownNamed') === 4,
+    JSON.stringify(HINT_NAMED));
+  check('a compound unexplained code names each of its own parts, in order',
+    catTitle('Igr+B') === 'Igr: ' + HINT + ' + B: ' + HINT, catTitle('Igr+B'));
   check('the hint is the reworded one («رمز غير مشروح في دليل هذا المصدر») ×4',
     HINT === 'رمز غير مشروح في دليل هذا المصدر' && dictCount('legend.cat.unknown') === 4,
     JSON.stringify(HINT));

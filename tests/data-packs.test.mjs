@@ -86,9 +86,18 @@ console.log('=== 3) لا نتائج قبل الضغط ===');
     !/loadAll\([^)]*data-optional/.test(app) && !/SOURCES\s*=\s*\[[^\]]*data-optional/.test(app));
   check('a pack enters the source list only when DB[key] exists',
     /Object\.keys\(PACK_SOURCES\)\.filter\(function \(k\) \{ return !!DB\[k\]; \}\)/.test(app));
-  check('the button is the only entry point (one per pack)',
-    (app.match(/t\('packs\.download'/g) || []).length === 1 &&
-    (fs.readFileSync('index.html', 'utf8').match(/id="packList"/g) || []).length === 1);
+  /* D31 (the owner's ruling): the packs became primary in professional mode,
+     so the button is GONE and the automatic install is the only entry point.
+     The guard is rewritten, not deleted — it pins the new rule (D26). */
+  check('the automatic install is the only entry point (no download button, D31)',
+    !/btn\.className = 'btn-outline pack-btn'/.test(app)
+    && (app.match(/t\('packs\.download'/g) || []).length === 0
+    && /function ensurePacks\(\)/.test(app)
+    && /document\.addEventListener\('modechange', ensurePacks\)/.test(app)
+    && /if \(DB\[pack\.key\] \|\| installing\[pack\.key\]\) return;/.test(app));
+  check('the pack list itself is still exactly one (one row per pack, D31)',
+    (fs.readFileSync('index.html', 'utf8').match(/id="packList"/g) || []).length === 1
+    && /PacksModule\.PACKS\.forEach\(p => box\.appendChild\(row\(p\)\)\)/.test(app));
   check('the pack wording is farmer language, not technical',
     /packs\.why\.' \+ pack\.key/.test(app)
     && /ليس نصيبًا ليبيا/.test(i18n) && /not a Libyan ruling/.test(i18n));

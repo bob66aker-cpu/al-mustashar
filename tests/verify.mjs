@@ -312,7 +312,7 @@ check('OCR engine carries the a3 early-confirm lock (DB-confirmed reads survive 
       && o.includes("via: 'ladder_confirm'")
       && o.includes('if (earlyLock) break;')
       && o.includes('if (!earlyLock && (exactHit || hasValidCas([...fusionCAS])))'); })());
-check('sw is v37 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v49'")
+check('sw is v37 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v50'")
   && sw5.includes("'./src/scan-live.js'")
   && sw5.includes("OCR_CACHE = 'mustashar-ocr'")
   && OCR_RUNTIME_FILES.every(f => sw5.includes(f.replace('./', '')))
@@ -1036,6 +1036,52 @@ check('feedback 11: the card matrix measures BOTH containers and both modes',
      keyCount('cas.group.badge') + '/' + keyCount('cas.group.code'));
   check('D30-b: the new labels come from the dictionary, not from hardcoded Arabic',
      /t\('cas\.group\.badge'/.test(cardsD30) && /t\('cas\.group\.code'/.test(cardsD30));
+}
+
+/* ---------- D31: Canada / Australia are PRIMARY in professional mode (1.19.14)
+ * Owner's ruling: in pro mode they are downloaded, verified and stored
+ * automatically, with no individual download button; farmer mode stays Libya
+ * only. The Australian candidate caution must survive automation (pack-guard),
+ * and both licences must stay on their own cards. */
+{
+  const caB = JSON.parse(fs.readFileSync('data-optional/canada.json', 'utf8'));
+  const auB = JSON.parse(fs.readFileSync('data-optional/australia.json', 'utf8'));
+  const dup = rows => {
+    const m = new Map();
+    for (const r of rows) {
+      const n = String(r.name || '').trim().toLowerCase();
+      m.set(n, (m.get(n) || 0) + 1);
+    }
+    return [...m.values()].filter(v => v > 1).length;
+  };
+  check('D31: neither pack publishes the same name twice (so D30 cannot fold them wrongly)',
+        dup(caB.rows) === 0 && dup(auB.rows) === 0, dup(caB.rows) + '/' + dup(auB.rows));
+  check('D31: both packs stay OUT of the base data/ folder (still data-optional)',
+        !fs.existsSync('data/canada.json') && !fs.existsSync('data/australia.json'));
+
+  const appB = fs.readFileSync('src/app.js', 'utf8');
+  check('D31: the pack row has NO download/remove button any more (the owner ruling)',
+        !/btn\.className = 'btn-outline pack-btn'/.test(appB) && !/pack-btn/.test(appB));
+  check('D31: the packs install themselves when professional mode is entered',
+        /function ensurePacks\(\)/.test(appB)
+        && /document\.addEventListener\('modechange', ensurePacks\)/.test(appB)
+        && /if \(isPro\(\)\) ensurePacks\(\);/.test(appB));
+  check('D31: and only in professional mode (the farmer is untouched)',
+        /function isPro\(\)/.test(appB) && /if \(!isPro\(\)\) \{ paintFarmerNote\(\); return; \}/.test(appB));
+  check('D31: an install runs once per pack, never in a loop',
+        /if \(DB\[pack\.key\] \|\| installing\[pack\.key\]\) return;/.test(appB)
+        && /installing\[pack\.key\] = false;/.test(appB));
+  check('D31: farmer mode says where the packs are available instead of offering a button',
+        /t\('packs\.proOnly'/.test(appB));
+  const i18nB = fs.readFileSync('src/i18n.js', 'utf8');
+  check('D31: that wording exists in all four dictionaries',
+        (i18nB.match(/'packs\.proOnly':/g) || []).length === 4);
+  check('D31: the Australian candidate caution is still wired (pack-guard)',
+        /mt\.candidate\.note/.test(fs.readFileSync('src/cards.js', 'utf8'))
+        && /candidate \? 'review'/.test(fs.readFileSync('src/cards.js', 'utf8')));
+  check('D31: both licences still ride on their own cards',
+        /attr\.canada/.test(appB) && /attr\.australia/.test(appB)
+        && /packAttribution: packAttribution/.test(appB));
 }
 
 /* ---------- summary ---------- */

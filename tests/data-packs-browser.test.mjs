@@ -7,6 +7,10 @@
  * 2) دخول المحترف: تنزيل حقيقي من الخادم + تحقق sha256 + سطر جاهزية بالعدّاد
  * 3) بعد التنزيل: النتيجة تظهر وعلى البطاقة إسناد ترخيصها حرفياً
  * 4) البقاء: لا زر حذف، والحزم تعود بعد إعادة التشغيل وتعمل دون اتصال
+ *
+ * لا انتظار بمدة ثابتة في أي نقطة تعتمد على حالة: كل انتظار شرط حقيقي
+ * (ready / عدد بطاقات / إعادة الظهور). التوقيت على رابط CDN غير مضمون،
+ * والنوم بمدة ثابتة يجعل الحارس ينقلب بلا عيب في الشيفرة.
  * التشغيل: BASE_URL=http://127.0.0.1:8080 node tests/data-packs-browser.test.mjs
  */
 import puppeteer from 'puppeteer-core';
@@ -39,9 +43,30 @@ try {
   const errors = [];
   page.on('pageerror', e => errors.push(String((e && e.message) || e)));
   page.on('console', m => { if (m.type() === 'error') errors.push(m.text()); });
+
+  /* the app itself must be up before anything is measured */
   await page.goto(BASE + '/index.html#/data', { waitUntil: 'domcontentloaded', timeout: 90000 });
   await page.waitForFunction(() => window.PacksModule && document.querySelector('#packList'), { timeout: 60000 });
-  await sleep(2500);
+  /* wait for the databases to finish loading, then for the farmer note to print */
+  await page.waitForFunction(
+    () => [...document.querySelectorAll('#packList .pack-state')]
+      .some(e => /المحترف|professional/i.test(e.textContent || '')),
+    { timeout: 90000, polling: 500 });
+
+  const submitSearch = async (q, waitCards) => {
+    await page.evaluate(async (text) => {
+      location.hash = '#/search';
+      const i = document.querySelector('#query');
+      if (i) { i.value = text; i.dispatchEvent(new Event('input', { bubbles: true })); }
+      const f = document.querySelector('#searchForm');
+      if (f) f.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
+    }, q);
+    if (waitCards) {
+      await page.waitForFunction(
+        () => document.querySelectorAll('#results article.result').length > 0,
+        { timeout: 45000, polling: 300 });
+    }
+  };
 
   console.log('=== 1) وضع المزارع: بلا زرّ تنزيل ===');
   {
@@ -67,15 +92,11 @@ try {
     must('the state line points the farmer to professional mode',
       before.rows.every(r => /المحترف|professional/i.test(r.state)), JSON.stringify(before.rows.map(r => r.state)));
 
-    const search = await page.evaluate(async () => {
-      location.hash = '#/search';
-      await new Promise(r => setTimeout(r, 600));
-      document.querySelector('#query').value = 'Chlorpyrifos';
-      document.querySelector('#searchForm').dispatchEvent(new Event('submit', { cancelable: true }));
-      await new Promise(r => setTimeout(r, 1200));
-      const srcs = [...document.querySelectorAll('#results .source')].map(e => e.textContent.trim());
-      return { srcs: [...new Set(srcs)], total: document.querySelectorAll('#results article.result').length };
-    });
+    await submitSearch('Chlorpyrifos', true);
+    const search = await page.evaluate(() => ({
+      srcs: [...new Set([...document.querySelectorAll('#results .source')].map(e => e.textContent.trim()))],
+      total: document.querySelectorAll('#results article.result').length,
+    }));
     must('a farmer search returns only the built-in sources',
       search.total > 0 && !search.srcs.some(s => /كندا|PMRA|APVMA|أستراليا/.test(s)),
       JSON.stringify(search.srcs));
@@ -85,44 +106,50 @@ try {
 
   console.log('=== 2) التنزيل الحقيقي التلقائي عند دخول المحترف ===');
   {
-    const states = await page.evaluate(async () => {
-      const seen = [];
+    /* no polling loop here: the app's own state line is the signal */
+    await page.evaluate(() => {
       const mode = document.querySelector('#mode');
       mode.value = 'pro';
       mode.dispatchEvent(new Event('change', { bubbles: true }));
-      const st = document.querySelector('#pack-canada .pack-state');
-      for (let i = 0; i < 900; i++) {
-        const txt = st.textContent;
-        if (seen[seen.length - 1] !== txt) seen.push(txt);
-        if (/جاهزة: /.test(txt) || /تعذّر/.test(txt)) break;
-        await new Promise(r => setTimeout(r, 200));
-      }
-      return {
-        last: st.textContent,
-        cls: st.className,
-        au: document.querySelector('#pack-australia .pack-state').textContent,
-        samples: seen.length,
-        sawProgress: seen.some(x => /جارٍ التنزيل/.test(x))
-      };
     });
-    must('a real progress line appears while downloading', states.sawProgress);
+    const sawProgress = await page.evaluate(async () => {
+      for (let i = 0; i < 1200; i++) {
+        if (/جارٍ التنزيل/.test(document.querySelector('#pack-canada .pack-state').textContent)) return true;
+        await new Promise(r => setTimeout(r, 50));
+      }
+      return false;
+    });
+    /* the two packs land; whichever order, both must reach the measured count */
+    await page.waitForFunction(
+      () => {
+        const t = [...document.querySelectorAll('#packList .pack-state')].map(e => e.textContent || '');
+        return t.length === 2 && t.every(x => /جاهزة: /.test(x));
+      },
+      { timeout: 300000, polling: 400 });
+    const states = await page.evaluate(() => ({
+      ca: document.querySelector('#pack-canada .pack-state').textContent,
+      caCls: document.querySelector('#pack-canada .pack-state').className,
+      au: document.querySelector('#pack-australia .pack-state').textContent,
+    }));
+    must('a real progress line appears while downloading', sawProgress);
     must('the pack ends ready, with the measured row count and a date',
-      new RegExp('جاهزة: ' + ca.meta.count).test(states.last), states.last);
-    must('the ready state is the success tone, not the error tone', /ok/.test(states.cls), states.cls);
+      new RegExp('جاهزة: ' + ca.meta.count).test(states.ca), states.ca);
+    must('the ready state is the success tone, not the error tone', /ok/.test(states.caCls), states.caCls);
     must('Australia ends ready too, with its own measured count',
       new RegExp('جاهزة: ' + au.meta.count).test(states.au), states.au);
     must('the licence tag rides on the ready line itself',
-      /OGL-Canada/.test(states.last), states.last);
+      /OGL-Canada/.test(states.ca), states.ca);
   }
 
   console.log('=== 3) النتيجة والإسناد على البطاقة ===');
   {
-    const res = await page.evaluate(async () => {
-      location.hash = '#/search';
-      await new Promise(r => setTimeout(r, 500));
-      document.querySelector('#query').value = 'Chlorpyrifos';
-      document.querySelector('#searchForm').dispatchEvent(new Event('submit', { cancelable: true }));
-      await new Promise(r => setTimeout(r, 1400));
+    await submitSearch('Chlorpyrifos', true);
+    /* wait until a Canadian card is actually on screen (the packs feed the index) */
+    await page.waitForFunction(
+      () => [...document.querySelectorAll('#results article.result')]
+        .some(a => /PMRA/.test(a.textContent || '')),
+      { timeout: 45000, polling: 300 });
+    const res = await page.evaluate(() => {
       const cards = [...document.querySelectorAll('#results article.result')];
       const withAttr = cards.filter(c => (c.querySelector('.pack-attr') || {}).textContent
         && c.querySelector('.pack-attr').textContent.indexOf('Open Government Licence') >= 0);
@@ -147,7 +174,13 @@ try {
   {
     await page.reload({ waitUntil: 'domcontentloaded', timeout: 90000 });
     await page.waitForFunction(() => window.PacksModule && document.querySelector('#packList'), { timeout: 60000 });
-    await sleep(3500);
+    /* the stored packs must come back by themselves — that IS the condition */
+    await page.waitForFunction(
+      () => {
+        const t = [...document.querySelectorAll('#packList .pack-state')].map(e => e.textContent || '');
+        return t.length === 2 && t.every(x => /جاهزة: /.test(x));
+      },
+      { timeout: 120000, polling: 400 });
     const back = await page.evaluate(() => ({
       states: [...document.querySelectorAll('#packList .pack-state')].map(e => e.textContent),
       buttons: document.querySelectorAll('#packList button').length,
@@ -159,20 +192,29 @@ try {
     must('the mode is back to its default, farmer — a cold start downloads nothing',
       back.mode === 'farmer', back.mode);
 
-    /* professional mode again; the packs are already stored, so nothing re-downloads */
-    await page.evaluate(() => {
+    /* professional mode again; the packs are already stored, so nothing re-downloads.
+     * Navigating + submitting happens explicitly — a hash flip alone never
+     * runs a search, and waiting for a card that was never asked for is a
+     * harness bug, not a product one. */
+    await page.evaluate(async () => {
       const m = document.querySelector('#mode');
       m.value = 'pro';
       m.dispatchEvent(new Event('change', { bubbles: true }));
-    });
-    await sleep(1500);
-    await page.setOfflineMode(true);
-    const offline = await page.evaluate(async () => {
       location.hash = '#/search';
-      await new Promise(r => setTimeout(r, 500));
-      document.querySelector('#query').value = 'Chlorpyrifos';
-      document.querySelector('#searchForm').dispatchEvent(new Event('submit', { cancelable: true }));
-      await new Promise(r => setTimeout(r, 1400));
+      await new Promise(r => setTimeout(r, 400));
+      const i = document.querySelector('#query');
+      i.value = 'Chlorpyrifos'; i.dispatchEvent(new Event('input', { bubbles: true }));
+      document.querySelector('#searchForm').dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
+    });
+    await page.waitForFunction(
+      () => [...document.querySelectorAll('#results article.result')].some(c => /PMRA/.test(c.textContent || '')),
+      { timeout: 60000, polling: 300 });
+    await page.setOfflineMode(true);
+    await submitSearch('Chlorpyrifos', true);
+    await page.waitForFunction(
+      () => [...document.querySelectorAll('#results article.result')].some(c => /PMRA/.test(c.textContent || '')),
+      { timeout: 60000, polling: 300 });
+    const offline = await page.evaluate(() => {
       const cards = [...document.querySelectorAll('#results article.result')];
       return {
         online: navigator.onLine,

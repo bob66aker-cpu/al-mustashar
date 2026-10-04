@@ -117,15 +117,23 @@ console.log('=== 2) ترقية IndexedDB من v2 ===');
   check('the pack module opens the SAME version (a newer one blocks forever)',
     /DB_VERSION = 3/.test(packs) && /indexedDB\.open\(DB_NAME, DB_VERSION\)/.test(packs));
 
-  /* the old connection must be told to close, or the upgrade hangs */
-  const onversion = app.indexOf('onversionchange');
-  check('the app closes its cached connection on version change', onversion >= 0,
-    onversion < 0 ? 'missing' : 'at ' + onversion);
-  check('the app then drops the cached promise so the next call reopens',
-    /onversionchange[\s\S]{0,400}dbPromise = null/.test(app) &&
-    /onversionchange[\s\S]{0,400}\.close\(\)/.test(app));
+  /* D39/D46: the handler must sit on the CONNECTION (IDBDatabase), because that
+   * is what fires the event — on the open REQUEST it never fires, and the
+   * connection then blocks every later upgrade forever. Both modules, no
+   * exception. */
+  for (const [name, src] of [['the app', app], ['the pack module', packs]]) {
+    check(name + ' attaches onversionchange to the CONNECTION, not to the open request',
+      /\b(?:db|conn|connection)\.onversionchange = (?:function )?\(\)/.test(src) && !/req\.onversionchange/.test(src));
+    check(name + ' closes that connection (close only, never deleteDatabase)',
+      /onversionchange = (?:function )?\(\)[\s\S]{0,200}?\.close\(\)/.test(src) && !/deleteDatabase/.test(src));
+  }
+  check('the app also drops its cached promise so the next call reopens',
+    /onversionchange = (?:function )?\(\)[\s\S]{0,200}?dbPromise = null/.test(app));
   check('the pack module has no cached connection to strand (it opens per call)',
     !/dbPromise/.test(packs));
+  check('the browser guard exercises the packs.js upgrade path (not only app.js)',
+    /D39/.test(fs.readFileSync('tests/idb-upgrade-browser.test.mjs', 'utf8'))
+    && /PacksModule\.install\('canada'/.test(fs.readFileSync('tests/idb-upgrade-browser.test.mjs', 'utf8')));
 
   /* all three stores are created by BOTH modules: an upgrade race must not
    * leave the database with only one of them */

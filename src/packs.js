@@ -58,11 +58,21 @@
         if (!db.objectStoreNames.contains('history')) db.createObjectStore('history');
         if (!db.objectStoreNames.contains(STORE)) db.createObjectStore(STORE);
       };
-      req.onsuccess = function () { resolve(req.result); };
+      req.onsuccess = function () {
+        var db = req.result;
+        /* D39: the event fires on the CONNECTION (IDBDatabase), not on the
+         * open request — so the handler is attached here. Closing is the whole
+         * fix: the upgrade proceeds, and the next idb() call reopens. */
+        db.onversionchange = function () {
+          try { db.close(); } catch (e) { /* already closing */ }
+        };
+        resolve(db);
+      };
       req.onerror = function () { reject(req.error); };
       /* a connection held open by the page at an older version would block the
        * upgrade forever; say so instead of hanging silently */
       req.onblocked = function () { reject(new Error('indexeddb upgrade blocked')); };
+
     });
   }
   function idb(mode, key, value) {

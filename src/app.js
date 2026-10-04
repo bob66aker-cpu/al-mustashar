@@ -268,19 +268,28 @@
           db.createObjectStore(STORE_HISTORY);
         }
       };
-      req.onsuccess = () => resolve(req.result);
+      req.onsuccess = () => {
+        const conn = req.result;
+        /* D39: versionchange fires on the CONNECTION (IDBDatabase), not on the
+         * open request — so the handler lives here, not on `req`. The old
+         * request-level handler never fired, which is why the connection could
+         * stay open and block an upgrade; the existing guard proved only its own
+         * connection closed, never the app's. */
+        conn.onversionchange = () => {
+          try { conn.close(); } catch (e) { /* already closing */ }
+          dbPromise = null;
+        };
+        resolve(conn);
+      };
       req.onerror = () => reject(req.error);
       req.onblocked = () => reject(new Error('indexeddb blocked'));
       /* A version change cannot proceed while this page still holds the old
        * connection open — the upgrade would sit blocked forever and the app
        * would keep reading a stale schema. So the connection closes itself
-       * and the cached promise is dropped, letting the next call reopen at
-       * the new version. Losing the handle is safe: nothing here keeps
-       * in-memory state that only exists on the connection. */
-      req.onversionchange = () => {
-        try { req.result.close(); } catch (e) { /* already closing */ }
-        dbPromise = null;
-      };
+       * (handler attached in onsuccess, on the connection) and the cached
+       * promise is dropped, letting the next call reopen at the new version.
+       * Losing the handle is safe: nothing here keeps in-memory state that
+       * only exists on the connection. */
     }).catch(err => { dbPromise = null; throw err; });
     return dbPromise;
   }

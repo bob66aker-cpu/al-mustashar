@@ -12,6 +12,11 @@
  * التشغيل: BASE_URL=http://127.0.0.1:8080 node tests/idb-upgrade-browser.test.mjs
  */
 import puppeteer from 'puppeteer-core';
+import { readFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import { dirname, join } from 'node:path';
+
+const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 
 const CHROME = process.env.CHROME || '/home/daytona/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome';
 const BASE = process.env.BASE_URL || 'http://127.0.0.1:8080';
@@ -20,7 +25,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
 let pass = 0, fail = 0;
 const must = (name, cond, extra) => {
   if (cond) { pass++; console.log('  PASS ' + name + (extra ? ' — ' + extra : '')); }
-  else { fail(); console.log('  FAIL ' + name + (extra ? ' — ' + extra : '')); }
+  else { fail++; console.log('  FAIL ' + name + (extra ? ' — ' + extra : '')); }
 };
 
 const browser = await puppeteer.launch({
@@ -141,6 +146,81 @@ try {
     }));
     must('after a full reload the database is still v3 with three stores',
       state.version === 3 && state.stores.length === 3, JSON.stringify(state));
+  }
+
+  console.log('=== 5) D39: الترقية أثناء اتصال src/packs.js مفتوح — لا تعلُّق ولا حذف ===');
+  {
+    /* open through the module itself: a pack install leaves packs.js holding a
+       live connection, which is exactly what used to block an upgrade */
+    /* this page is the bare blank harness, so load the SHIPPED module into it —
+       the file under test is src/packs.js, loaded exactly as the app loads it */
+    await page.evaluate(() => new Promise((res, rej) => {
+      /* the harness lives under /tests/, so the module's RELATIVE urls
+         (data-optional/…) must resolve against the app root — exactly as they
+         do on index.html. A <base> is the whole difference. */
+      if (!document.querySelector('base')) document.head.insertAdjacentHTML('afterbegin', '<base href="/">');
+      const sc = document.createElement('script');
+      sc.src = '/src/packs.js';
+      sc.onload = res; sc.onerror = rej;
+      document.head.appendChild(sc);
+    }));
+    const installed = await page.evaluate(async () => {
+      await window.PacksModule.install('canada', () => {});
+      return window.PacksModule.list();
+    });
+    must('packs.js runs and installs a pack (a connection is now held open)', installed.includes('canada'), JSON.stringify(installed));
+    const upgraded = await page.evaluate(() => new Promise((res, rej) => {
+      const t0 = Date.now();
+      const rq = indexedDB.open('mustashar-local', 4);
+      rq.onupgradeneeded = function () {
+        /* the stores already exist at v3 — creating one again aborts the
+           upgrade, which is the test's own bug, not the app's */
+        if (!rq.result.objectStoreNames.contains('pack')) rq.result.createObjectStore('pack');
+      };
+      rq.onsuccess = function () {
+        const db = rq.result; const v = db.version; db.close();
+        res({ version: v, ms: Date.now() - t0 });
+      };
+      rq.onblocked = function () { rej(new Error('blocked — a packs.js connection stayed open')); };
+      rq.onerror = function () { rej(rq.error); };
+      setTimeout(function () { rej(new Error('timeout')); }, 10000);
+    }));
+    must('a version upgrade completes while a packs.js connection is open (it closed itself)',
+      upgraded.version === 4, JSON.stringify(upgraded));
+    must('the upgrade completed promptly — no forced deleteDatabase', upgraded.ms < 6000, upgraded.ms + 'ms');
+    /* the shipped source must not delete the database: closing is the whole fix */
+    const src = readFileSync(join(root, 'src/packs.js'), 'utf8');
+    must('src/packs.js closes the CONNECTION on versionchange and NEVER calls deleteDatabase',
+      /db\.onversionchange = function \(\) \{[\s\S]*?db\.close\(\)/.test(src)
+      && !/req\.onversionchange/.test(src)
+      && !/deleteDatabase/.test(src));
+    /* cleanup for THIS test profile only (the app never does this): drop the v4
+       database so the app — which opens at v3 — can run again, then prove that a
+       later install still works end to end. */
+    await page.evaluate(() => new Promise((res, rej) => {
+      const rq = indexedDB.deleteDatabase('mustashar-local');
+      rq.onsuccess = res; rq.onerror = rej; rq.onblocked = rej;
+    }));
+    await page.reload({ waitUntil: 'networkidle2', timeout: 60000 });
+    await sleep(2500);
+    /* the blank harness carries no scripts of its own — load the module again */
+    await page.evaluate(() => new Promise((res, rej) => {
+      if (!document.querySelector('base')) document.head.insertAdjacentHTML('afterbegin', '<base href="/">');
+      const sc = document.createElement('script');
+      sc.src = '/src/packs.js';
+      sc.onload = res; sc.onerror = rej;
+      document.head.appendChild(sc);
+    }));
+    const after = await page.evaluate(async () => {
+      try {
+        await window.PacksModule.install('australia', () => {});
+        const keys = await window.PacksModule.list();
+        const restored = await window.PacksModule.restore('australia');
+        return { keys: keys, rows: restored && restored.rows ? restored.rows.length : null };
+      } catch (e) { return { err: String(e) }; }
+    });
+    must('a later pack install still works after the upgrade round',
+      after.keys && after.keys.includes('australia') && after.rows > 0, JSON.stringify(after).slice(0, 160));
   }
 
   must('zero page errors during the whole run', errors.length === 0, errors.join(' | '));

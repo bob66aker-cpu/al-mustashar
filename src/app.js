@@ -73,76 +73,79 @@
   window.addEventListener('hashchange', applyView);
 
   /* ============================================================
-   * Legend (شرح الرموز) — status explanations are verbatim decree
-   * texts (i18n keys st.500.*.explain); category names come from the
-   * prompt's fixed table ONLY (I18N.catName / LEGEND_CAT_KEYS below).
-   * Unknown codes are never interpreted — shown verbatim with the
-   * «رمز غير معرّف في دليل القرار» hint.
+   * Legend (شرح الرموز) — every status explanation, every category
+   * name and every printed shape comes from data/reference.json and
+   * from nowhere else (the reference block below). Unknown codes are
+   * never interpreted — shown verbatim with the «رمز غير مشروح في
+   * دليل هذا المصدر» hint.
    * ============================================================ */
-  const LEGEND_STATUS_KEYS = {
-    'Approved': 'st.500.approved.explain',
-    'REV':      'st.500.rev.explain',
-    'RAR':      'st.500.rar.explain',
-    'REV*':     'st.500.revstar.explain'
+  /* ============================================================
+   * data/reference.json — المرجع الموحّد الذي يقرأ منه العرض حصرياً.
+   * ------------------------------------------------------------
+   * لا جدول ترجمة هنا ولا معنى مكتوب في السطر: كل شرح وكل شكل يأتي
+   * من data/reference.json (مُحمَّل قبل القواعد، ببصمة، ومخزَّن مسبقًا
+   * في الكاش). المصدر غائب أو مدخله ناقص ⇒ الجداول فارغة ⇒ السلوك
+   * القائم «رمز غير مشروح في دليل هذا المصدر» هو الوحيد الباقي، ولا
+   * يُخمَّن معنى أبدًا.
+   * الأقسام مستقلة: كل مصدر يُحلّ في قسمه وحده (لا دمج دلالي ولا
+   * استنساخ شرح من مصدر لآخر)؛ والاستثناء الموثَّق الوحيد هو
+   * fallbackSection المُعلَن داخل libya248.
+   * ============================================================ */
+  const REF_BY_SOURCE = {
+    'libya-500': 'libya500', 'libya-248': 'libya248', 'eu': 'eu',
+    'epa': 'epa', 'epa-cancelled': 'epa', 'canada': 'canada', 'australia': 'australia'
   };
-  const LEGEND_CAT_KEYS = {
-    'I': 'legend.cat.I', 'F': 'legend.cat.F', 'A': 'legend.cat.A',
-    'N': 'legend.cat.N', 'H': 'legend.cat.H', 'R': 'legend.cat.R',
-    'M': 'legend.cat.M', 'S.ph': 'legend.cat.S.ph',
-    'PGR': 'legend.cat.PGR', 'rep': 'legend.cat.rep',
-    /* P.G.R — the spelling the 500 guide itself uses (25 rows). Same meaning
-     * as PGR, which 9 rows use. The source guide explains both, so both are
-     * explained; neither is an invented reading. */
-    'P.G.R': 'legend.cat.PGR',
-    /* V — the 500 guide's own summary table explains it and 6 rows of
-     * libya-500 carry it, so it is an explained code. Its meaning is the
-     * guide's wording verbatim:
-     * «V | Viruses / Microbials | فيروسات أو كائنات دقيقة مكافحة».
-     * Nothing here is invented. */
-    'V': 'legend.cat.V'
-  };
-  /* فيدباك 6 — تسوية الفواصل عند البحث في قاموس التصنيف وحده.
-   *
-   * السبب المقيس: المفتاح كان «S.ph» بينما البيانات تكتب «S.Ph» والبحث
-   * كان مطابقاً حرفياً ⇒ 34 صفاً في قرار 500 تُعرض للمزارع على أنها «رمز غير
-   * مشروح في دليل هذا المصدر» مع أن الدليل يشرحها، ومع أن الدليل المعروض
-   * في أسفل البطاقة يحمل الشرح نفسه. الخلل في مطابقة المفتاح لا في الرمز.
-   *
-   * القاعدة: النقطة والمسافة وغياب الفاصل الثلاثة سواء — S.Ph = S Ph = SPh.
-   * لذلك يُطوى الرمز على حروفه فقط (بلا نقطة ولا فراغ) قبل المقارنة.
-   *
-   * حدود مقيسة لا تُتجاوز:
-   *   - التسوية في «بحث القاموس» وحده. لا تمسّ العتبات ولا منطق القبول ولا
-   *     تقسيم الرموز: شرط النقطة في catParts يبقى على الجدول الحرفي كما هو،
-   *     فـ«S.Ph» لا ينقسم إلى S + Ph (وهو ليس تفكيكاً صحيحاً)، و«F.rep»
-   *     ينقسم كما كان.
-   *   - رمز لا يشرحه أي مصدر يبقى بلا شرح: المطابقة تفشل ⇒ الرسالة
-   *     القائمة «رمز غير مشروح في دليل هذا المصدر» تبقى كما هي. لا يُخترع
-   *     معنى لغرابة ولا لاسم يشبه رمزاً آخر.
-   *   - No new translation without a source. The added spellings are
-   *     «P.G.R» and «Rep» in the guide's own spelling, mapped to the
-   *     existing meaning of PGR / rep. Nothing else was added, and no
-   *     code outside a real guide was given a meaning.
-   */
+  let REF = null;                 /* the loaded reference (set by loadReference) */
+  function refSection(key) { return (REF && REF.sections && REF.sections[key]) || null; }
+  function refSectionOf(sourceKey) { return refSection(REF_BY_SOURCE[sourceKey] || ''); }
+
+  /* قاعدة الدمج «fold» كما يوثّقها المرجع: حالة الأحرف سواء، والنقطة
+   * والفراغ محذوفان — S.Ph = S Ph = SPh و Rep = rep. */
   function catFold(code) {
     return String(code == null ? '' : code).toLowerCase().replace(/[.\s]/g, '');
   }
-  const CAT_FOLD_KEYS = (() => {
-    const m = Object.create(null);
-    for (const k of Object.keys(LEGEND_CAT_KEYS)) m[catFold(k)] = LEGEND_CAT_KEYS[k];
-    return m;
-  })();
+  /* مدخل الرمز في قسم واحد: المطابقة الحرفية أولًا، ثم الأشكال
+   * الموثّقة (كل صيغة يطبعها ذلك المصدر فعلًا)، ثم القسم الاحتياطي
+   * إن أعلنه المرجع. لا شيء خارج هذا. */
+  function refCatEntry(sectionKey, code) {
+    const s = refSection(sectionKey);
+    if (!s || !s.categories) return null;
+    const direct = s.categories[code];
+    if (direct) return direct;
+    const fold = catFold(code);
+    const keys = Object.keys(s.categories);
+    for (let i = 0; i < keys.length; i++) {
+      const e = s.categories[keys[i]] || {};
+      const shapes = e.shapes || [];
+      for (let j = 0; j < shapes.length; j++) {
+        if (catFold(shapes[j]) === fold) return e;
+      }
+    }
+    if (s.fallbackSection && s.fallbackSection !== sectionKey) return refCatEntry(s.fallbackSection, code);
+    return null;
+  }
+  function refCatKey(sectionKey, code) {
+    const e = refCatEntry(sectionKey, code);
+    return e && e.i18nKey ? e.i18nKey : '';
+  }
+  /* شرح حالة: من قسم مصدرها وحده. الـbadge نفسه (LEGEND_STATUS equivalent)
+   * يُشتقّ من وجود مدخل statusCodes في قسم قرار 500. */
   function statusExplain(rawStatus) {
-    const k = LEGEND_STATUS_KEYS[String(rawStatus || '').trim()];
-    return k ? t(k, '') : '';
+    const s = refSection('libya500');
+    const e = s && s.statusCodes ? s.statusCodes[String(rawStatus || '').trim()] : null;
+    return e && e.i18nKey ? t(e.i18nKey, '') : '';
+  }
+  function statusHasEntry(rawStatus) {
+    const s = refSection('libya500');
+    return !!(s && s.statusCodes && s.statusCodes[String(rawStatus || '').trim()]);
   }
 /* FB7 — ONE source of truth for the lines a status code explains to.
-   * Before this, the card and «شرح الرموز» each assembled the text their own
-   * way, and REV* lost the very text it points at: the card showed only the
-   * connective line and never the REV sentence nor the asterisk note that the
-   * guide adds right after it. Nothing here is authored — every line is the
-   * verbatim dictionary entry, and a code no source explains yields no lines
-   * at all (D25). */
+   Before this, the card and «شرح الرموز» each assembled the text their own
+   way, and REV* lost the very text it points at: the card showed only the
+   connective line and never the REV sentence nor the asterisk note that the
+   guide adds right after it. Nothing here is authored — every line is the
+   verbatim reference text, and a code no source explains yields no lines
+   at all (D25). */
   function statusExplainLines(code) {
     const c = String(code || '').trim();
     const body = statusExplain(c);
@@ -155,34 +158,35 @@
   function statusExplainFull(code) {
     return statusExplainLines(code).join(' ');
   }
-  /* 1.2 + round 2026-09-27: compound functional codes (Decree-248 «I/A»
-   * and friends) are resolved to their parts so the tooltip/popover explains
-   * EVERY part. Separator set is now +, «,» and / (all real data forms), plus
-   * '.' under ONE documented condition: a dot separates parts only when EVERY
-   * dot-part is itself a code of the fixed table («F.rep» → F + rep). Dotted
-   * source codes that are not fully explained — S.Ph (35 rows), P.G.R (25),
-   * I.Ph (5), R.S (1) — therefore stay ONE literal code and get the
-   * «رمز غير مشروح» hint instead of being torn into wrong halves. Nothing
-   * is ever guessed: an unknown code is shown verbatim, never interpreted. */
+  /* Compound functional codes (Decree-248 «I/A» and friends) are resolved to
+   * their parts so the tooltip/popover explains EVERY part. The separator set
+   * (`,` `/` `+`) and the dot rule are the ones data/reference.json documents:
+   * a dot separates parts only when EVERY dot-part is itself a code of THIS
+   * section («F.rep» → F + rep). Dotted source codes that are not fully
+   * explained — S.Ph, P.G.R, I.Ph, R.S — therefore stay ONE literal code and
+   * get the «رمز غير مشروح» hint instead of being torn into wrong halves.
+   * Nothing is ever guessed: an unknown code is shown verbatim, never
+   * interpreted. */
   const CAT_HARD_SEP = /[\/,+]/;
   const CAT_DOT_SEP = /\./;
-  function catParts(code) {
+  function catParts(code, sectionKey) {
+    const sec = sectionKey || 'libya500';
     const c = String(code || '').trim();
     if (!c) return [];
     return c.split(CAT_HARD_SEP).map(p => p.trim()).filter(Boolean)
-      .flatMap(p => p.includes('.') && p.split(CAT_DOT_SEP).every(q => LEGEND_CAT_KEYS[q.trim()])
+      .flatMap(p => p.includes('.') && p.split(CAT_DOT_SEP).every(q => refCatKey(sec, q.trim()))
         ? p.split(CAT_DOT_SEP).map(q => q.trim()).filter(Boolean)
         : [p]);
   }
-  function catName(code) {
-    const parts = catParts(code);
+  function catName(code, sectionKey) {
+    const sec = sectionKey || 'libya500';
+    const parts = catParts(code, sec);
     if (!parts.length) return '';
-    if (parts.length > 1) return parts.map(p => catName(p) || '').filter(Boolean).join(' + ');
-    const k = LEGEND_CAT_KEYS[parts[0]] || CAT_FOLD_KEYS[catFold(parts[0])];
-    return k ? t(k, '') : '';
+    if (parts.length > 1) return parts.map(p => catName(p, sec) || '').filter(Boolean).join(' + ');
+    return t(refCatKey(sec, parts[0]), '');
   }
-  /* Category line: known codes get the fixed-table meaning; a COMPOUND cell is
-   * resolved to its parts, each explained, joined with « + ».
+  /* Category line: known codes get their own source's meaning; a COMPOUND
+   * cell is resolved to its parts, each explained, joined with « + ».
    * D29 (FB9): a part the source guide does NOT explain is NAMED inside the
    * sentence — «F/Mi» reads «مبيد فطري + Mi: رمز غير مشروح في دليل هذا
    * المصدر» — never a bare «رمز غير مشروح» that could belong to any code.
@@ -190,16 +194,17 @@
    * order, one item per part, no re-ordering and no merging; the cell itself
    * stays ONE block whose heading is the literal cell (the h1 behaviour: a
    * «/» slice is never torn into separate blocks). */
-  function catPartText(part) {
-    return catName(part) || tf('legend.cat.unknownNamed',
+  function catPartText(part, sectionKey) {
+    return catName(part, sectionKey) || tf('legend.cat.unknownNamed',
       part + ': ' + t('legend.cat.unknown', 'رمز غير مشروح في دليل هذا المصدر'),
       { part: part });
   }
-  function catTitle(code) {
-    const parts = catParts(code);
+  function catTitle(code, sourceKey) {
+    const sec = (sourceKey && REF_BY_SOURCE[sourceKey]) || 'libya500';
+    const parts = catParts(code, sec);
     if (!parts.length) return '';
-    if (parts.length > 1) return parts.map(catPartText).join(' + ');
-    return catPartText(parts[0]);
+    if (parts.length > 1) return parts.map(p => catPartText(p, sec)).join(' + ');
+    return catPartText(parts[0], sec);
   }
 
   /* i18n helpers (src/i18n.js loads before this file). Arabic fallbacks
@@ -351,7 +356,7 @@
     d.rows.forEach(r => {
       const s = String(r.status || '').trim() || '—';
       byStatus[s] = (byStatus[s] || 0) + 1;
-      catParts(r.category).forEach(p => { byCat[p] = (byCat[p] || 0) + 1; });
+      catParts(r.category, 'libya500').forEach(p => { byCat[p] = (byCat[p] || 0) + 1; });
     });
     const list = o => Object.keys(o).sort((a, b) => o[b] - o[a] || a.localeCompare(b))
       .map(k => k + ' ' + o[k]).join(' · ');
@@ -468,7 +473,8 @@
     'data/libya-500.json':     '08b852cb1ac8f438e5f960936bae9b525ec8057ff5e3f61cd1062f44ba23ae14',
     'data/eu.json':            'ef629525c2dae8f741e1697faaecf2319e1a646e4e011d2754ef66e23844101e',
     'data/epa.json':           'b24d7c3e3a8dbd7e84ef7b1a59bbfb98674b5c8ad44ff7f7a3dbe0d90d7775f3',
-    'data/epa-cancelled.json': 'c2b5b38e4bfe07dc466c45d4f18518691a57de17b078822e2e6fab00de58fde7'
+    'data/epa-cancelled.json': 'c2b5b38e4bfe07dc466c45d4f18518691a57de17b078822e2e6fab00de58fde7',
+    'data/reference.json':      'e1069ce5ca1a25620b8900b34edeae440e12fce9e28fe815897056f27768ef4d'
   };
 
   /* يُرجع null حين لا تتوفّر Web Crypto (سياق غير آمن) — لا يُرجع false أبداً،
@@ -542,6 +548,45 @@
             }
           }).catch(() => setPhase(src.key, 'unavailable'))
         ));
+  }
+
+  /* data/reference.json — the display's ONLY source of explanations and
+   * shapes. Loaded FIRST and awaited: a card rendered before it would resolve
+   * every code to «غير مشروح», which is the safe failure but a wrong screen.
+   * Same fail-soft rule as the databases — never blocks the app. */
+  function loadReference() {
+    const url = 'data/reference.json';
+    return fetch(url, { cache: 'no-store' }).then(async res => {
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const want = DATA_SHA256[url];
+      if (want) {
+        const buf = await res.arrayBuffer();
+        const got = await sha256Hex(buf);
+        if (got && got !== want) throw new Error('reference integrity sha256 mismatch');
+        REF = JSON.parse(new TextDecoder().decode(buf));
+      } else {
+        REF = await res.json();
+      }
+      return REF;
+    }).then(ref => {
+      /* hand the reference's own texts to the dictionaries — no copy here */
+      const byLang = {};
+      Object.keys(ref.sections || {}).forEach(name => {
+        const texts = ref.sections[name].texts || {};
+        Object.keys(texts).forEach(key => {
+          const entry = texts[key] || {};
+          ['ar', 'en', 'fr', 'zh'].forEach(lang => {
+            if (!entry[lang]) return;
+            (byLang[lang] = byLang[lang] || {})[key] = entry[lang];
+          });
+        });
+      });
+      if (window.I18N && I18N.register) I18N.register(byLang);
+      return ref;
+    }).catch(() => {
+      REF = null;   // no reference ⇒ no explained code, hint only, never a guess
+      return null;
+    });
   }
 
   function loadAll() {
@@ -661,9 +706,7 @@
      * «Approved» is a shared vocabulary word (EU rows carry it too), and
      * showing Libya-500 decree prose on a European card is wrong
      * (1.1 — Aclonifen regression proven live in the diagnosis round). */
-    const ek = k === 'libya-500'
-      ? LEGEND_STATUS_KEYS[String(d.raw || '').trim()]
-      : null;
+    const ek = (k === 'libya-500' && statusHasEntry(d.raw)) ? String(d.raw || '').trim() : null;
     const chip = ek
       ? ' <button type="button" class="st-explain" data-status="' + esc(String(d.raw).trim()) + '" aria-haspopup="dialog" title="' + esc(t('legend.title', 'شرح الرموز')) + '">' + t('legend.open', 'شرح الرموز') + '</button>'
       : '';
@@ -1045,7 +1088,7 @@
     /* Legend tooltips: fill each category chip's title once, from the fixed
      * table (or the unknown-code hint). Pure attributes — no re-decoding. */
     box.querySelectorAll('.cat-code[data-cat]').forEach(el => {
-      const title = catTitle(el.getAttribute('data-cat'));
+      const title = catTitle(el.getAttribute('data-cat'), el.getAttribute('data-cat-src') || undefined);
       if (title) el.setAttribute('title', title);
     });
   }
@@ -2924,8 +2967,9 @@
     const cat = e.target.closest('.cat-code[data-cat]');
     if (cat) {
       const code = cat.getAttribute('data-cat');
-      openLegendRaw(catName(code)
-        ? code + '\n' + catName(code)
+      const sec = REF_BY_SOURCE[cat.getAttribute('data-cat-src') || ''] || 'libya500';
+      openLegendRaw(catName(code, sec)
+        ? code + '\n' + catName(code, sec)
         : t('legend.cat.unknown', 'رمز غير مشروح في دليل هذا المصدر'), cat);
       return;
     }
@@ -2961,7 +3005,10 @@
   syncModeLabel();
   renderDbStatus();
   requestPersistence();
-  loadAll();
+  /* the reference first: the databases may resolve a code the moment a row is
+     drawn, and a missing reference must never be the reason a card says
+     «غير مشروح». Then the databases, in parallel. */
+  loadReference().then(() => loadAll());
   checkVersion();
   fillAboutMeta();
   wireAboutFeedback();   /* الروابط تُبنى فوراً، وتُعاد بناؤها بعد جلب الإصدار */

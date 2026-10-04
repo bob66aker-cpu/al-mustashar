@@ -6,7 +6,7 @@
  *   1) استجابة الرابط + تحميل index.html بلا أخطاء شبكة.
  *   2) المانيفست صالح ومربوط بالصفحة.
  *   3) عامل الخدمة مسجَّل فعلًا (navigator.serviceWorker) ويفعّل التحكم.
- *   4) كاش mustashar-v51 موجود بعد التثبيت.
+ *   4) كاش mustashar-v52 موجود بعد التثبيت.
  *   5) القواعد الخمس محمَّلة (عبر واجهة الاستخدام) وبحث فعلي يجد نتيجة.
  *   6) عرض طبقة CAS يعمل على الرابط (Captan 133-06-2 وحده بعد D42).
  * تشغيل: PREVIEW_URL=https://… node tests/preview-live.test.mjs
@@ -39,10 +39,10 @@ try {
 
   const resp = await page.goto(BASE + '/index.html', { waitUntil: 'networkidle0', timeout: 45000 });
   must('the preview URL answers over the network', resp && resp.status() === 200, 'HTTP ' + (resp && resp.status()));
-  must('the served page is the work-branch build (cache mustashar-v51, version 1.19.15)',
+  must('the served page is the work-branch build (cache mustashar-v52, version 1.19.16)',
     await page.evaluate(async () => {
       const [sw, v] = await Promise.all([fetch('./sw.js').then(r => r.text()), fetch('./version.json').then(r => r.json())]);
-      return sw.includes("mustashar-v51") && v.version === '1.19.15';
+      return sw.includes("mustashar-v52") && v.version === '1.19.16';
     }));
   must('no failed network responses', netFails.length === 0, netFails.slice(0, 3).join(' | '));
 
@@ -57,17 +57,24 @@ try {
   must('manifest is linked and valid JSON over the link', man.ok && !!man.name, JSON.stringify(man));
 
   /* service worker: registration + control + cache */
-  const swState = await page.evaluate(async () => {
-    if (!('serviceWorker' in navigator)) return { secure: window.isSecureContext, supported: false };
-    const reg = await navigator.serviceWorker.getRegistration();
-    return {
-      secure: window.isSecureContext,
-      supported: true,
-      scope: reg ? reg.scope : null,
-      active: !!(reg && reg.active),
-      state: reg && reg.active ? reg.active.state : null
-    };
-  });
+  /* Wait for the worker to become ACTIVE instead of sampling once: a fresh
+     cache name (v52) means a first-visit install, and the install is exactly
+     what this assertion is about. Bounded, and the same claim either way. */
+  let swState = { secure: false, supported: false, scope: null, active: false, state: null };
+  for (let i = 0; i < 12 && !swState.active; i++) {
+    swState = await page.evaluate(async () => {
+      if (!('serviceWorker' in navigator)) return { secure: window.isSecureContext, supported: false };
+      const reg = await navigator.serviceWorker.getRegistration();
+      return {
+        secure: window.isSecureContext,
+        supported: true,
+        scope: reg ? reg.scope : null,
+        active: !!(reg && reg.active),
+        state: reg && reg.active ? reg.active.state : null
+      };
+    });
+    if (!swState.active) await sleep(1500);
+  }
   must('the origin is a secure context (HTTPS)', swState.secure === true, 'isSecureContext=' + swState.secure);
   must('service worker registered and active', swState.supported && swState.active, JSON.stringify(swState));
 
@@ -75,16 +82,16 @@ try {
   let caches = [];
   for (let i = 0; i < 12; i++) {
     caches = await page.evaluate(() => caches.keys());
-    if (caches.includes('mustashar-v51')) break;
+    if (caches.includes('mustashar-v52')) break;
     await sleep(1500);
   }
-  must('the mustashar-v51 cache exists after install', caches.includes('mustashar-v51'), JSON.stringify(caches));
+  must('the mustashar-v52 cache exists after install', caches.includes('mustashar-v52'), JSON.stringify(caches));
   const cached = await page.evaluate(async () => {
-    const c = await caches.open('mustashar-v51');
+    const c = await caches.open('mustashar-v52');
     const keys = await c.keys();
     return { n: keys.length, sample: keys.slice(0, 6).map(r => new URL(r.url).pathname) };
   });
-  must('the mustashar-v51 cache holds the app shell and the databases', cached.n >= 20, cached.n + ' entries e.g. ' + JSON.stringify(cached.sample));
+  must('the mustashar-v52 cache holds the app shell and the databases', cached.n >= 20, cached.n + ' entries e.g. ' + JSON.stringify(cached.sample));
 
   /* the app itself works over the link: databases loaded + a real search */
   await sleep(1500);

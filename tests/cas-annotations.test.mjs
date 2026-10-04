@@ -39,6 +39,7 @@ const app = fs.readFileSync('src/app.js', 'utf8');
    the markup between them can never silently drop a rule. */
 const render = app + '\n' + fs.readFileSync('src/cards.js', 'utf8');
 const i18n = fs.readFileSync('src/i18n.js', 'utf8');
+const REF_DOC = JSON.parse(fs.readFileSync('data/reference.json', 'utf8'));
 const byRow = (d, n) => d.rows.find(r => r.row === n);
 const dictCount = key => (i18n.match(new RegExp("'" + key.replace(/[.+]/g, '\\$&') + "':", 'g')) || []).length;
 const dictValue = (key, n = 1) => {
@@ -176,7 +177,7 @@ const dictValue = (key, n = 1) => {
 /* ---------- (هـ1)+(هـ2) فك الرموز المركّبة والرموز غير المشروحة ----------
  * مقتطف الدالة الحقيقي من src/app.js يُنفَّذ هنا كما هو. */
 {
-  const start = app.indexOf('const LEGEND_CAT_KEYS = {');
+  const start = app.indexOf('  const REF_BY_SOURCE = {');
   const end = app.indexOf('/* i18n helpers');
   if (start < 0 || end < 0 || end <= start) throw new Error('cannot slice the category block out of app.js');
   const slice = app.slice(start, end);
@@ -189,18 +190,33 @@ const dictValue = (key, n = 1) => {
    * tf substitutes {part} into the real dictionary text. Stubbing only t()
    * left tf undefined and the block threw before a single assertion ran. */
   const HINT_NAMED = dictValue('legend.cat.unknownNamed');
-  const factory = new Function('HINT', 'HINT_NAMED', slice
-    + "\nconst t = (k, fb) => (k === 'legend.cat.unknown' ? HINT : k);"
+  const factory = new Function('HINT', 'HINT_NAMED', 'REF_DOC', slice
+    /* D43: the block reads data/reference.json, so the harness injects THE
+       SAME file the app loads — the reference's own Arabic text answers t(),
+       which is what makes "explained" mean "a real meaning exists". */
+    + "\nconst refText = k => {"
+    + "\n  for (const nm of Object.keys(REF.sections)) {"
+    + "\n    const tx = REF.sections[nm].texts[k];"
+    + "\n    if (tx && tx.ar) return tx.ar;"
+    + "\n  }"
+    + "\n  return '';"
+    + "\n};"
+    + "\nconst t = (k, fb) => (k === 'legend.cat.unknown' ? HINT : (refText(k) || k));"
     + "\nconst tf = (k, fb, vars) => (k === 'legend.cat.unknownNamed'"
     + " ? String(HINT_NAMED).replace(/\\{part\\}/g, (vars && vars.part) || '')"
     + " : String(fb).replace(/\\{part\\}/g, (vars && vars.part) || ''));"
-    + '\nreturn { catParts, catName, catTitle };');
-  const { catParts, catName, catTitle } = factory(HINT, HINT_NAMED);
+    + '\nREF = REF_DOC;\nreturn { catParts, catName, catTitle };');
+  const { catParts, catName, catTitle } = factory(HINT, HINT_NAMED, REF_DOC);
 
   /* (هـ1) */
 
+  /* D43: t() now answers with the reference's own Arabic sentence (the old stub
+     returned the key), so "explained" is measured as "a real meaning, not the
+     unexplained-code hint" for BOTH parts. */
   check('Tetradifon (248, "I/A") is split into I + A and BOTH are explained',
-    catParts('I/A').join('|') === 'I|A' && catName('I/A').includes('I') && catName('I/A').includes('A'),
+    catParts('I/A').join('|') === 'I|A'
+    && catName('I/A').split(' + ').length === 2
+    && catName('I/A').split(' + ').every(x => x && x !== HINT && !x.includes(HINT)),
     catParts('I/A').join('|') + ' → ' + catName('I/A'));
   check('comma, plus and slash all split (real data forms)',
     catParts('I+A,rep').join('|') === 'I|A|rep' && catParts('F/I/N').join('|') === 'F|I|N'
@@ -251,9 +267,10 @@ const dictValue = (key, n = 1) => {
 /* ---------- (هـ4) عدّ برمجي لأعمار 500 + مجموع الفئات ---------- */
 {
   const byStatus = {}, byCat = {};
-  const start = app.indexOf('const LEGEND_CAT_KEYS = {');
+  const start = app.indexOf('  const REF_BY_SOURCE = {');
   const end = app.indexOf('/* i18n helpers');
-  const catParts = new Function(app.slice(start, end) + '\nreturn catParts;')();
+  const catParts = new Function('REF_DOC', app.slice(start, end)
+    + '\nconst t = (k, fb) => k;\nREF = REF_DOC;\nreturn catParts;')(REF_DOC);
   d5.rows.forEach(r => {
     const s = String(r.status || '').trim();
     byStatus[s] = (byStatus[s] || 0) + 1;

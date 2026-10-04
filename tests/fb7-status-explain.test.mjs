@@ -67,10 +67,17 @@ function dictOf(lang) {
 const DICTS = Object.fromEntries(LANGS.map(l => [l, dictOf(l)]));
 for (const l of LANGS) check('dictionary ' + l + ' was read out of i18n.js', DICTS[l].size > 200, String(DICTS[l].size));
 
-/* ---------- the status table, read out of src/app.js so it cannot drift --- */
+/* ---------- D43: the reference IS the status table ---------------------- *
+ * data/reference.json now carries the explanation texts, so the dictionaries
+ * parsed above are topped up with them exactly as the app registers them at
+ * boot, and the status table is read out of the reference — not out of app.js. */
+const REF = JSON.parse(readFileSync('data/reference.json', 'utf8'));
+for (const l of LANGS)
+  for (const sec of Object.values(REF.sections))
+    for (const [k, v] of Object.entries(sec.texts || {}))
+      if (v[l]) DICTS[l].set(k, v[l]);
 const LEGEND_STATUS_KEYS = Object.fromEntries(
-  [...app.match(/const LEGEND_STATUS_KEYS = \{([\s\S]*?)\};/)[1]
-    .matchAll(/'([^']+)':\s*'([^']+)'/g)].map(m => [m[1], m[2]]));
+  Object.entries(REF.sections.libya500.statusExplanations).map(([code, e]) => [code, e.i18nKey]));
 
 /* ---------- the resolver under test, with the REAL dictionaries ---------- */
 function mkT(lang) {

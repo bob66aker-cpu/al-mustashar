@@ -23,6 +23,15 @@ const check = (name, ok, extra = '') => {
   ok ? pass++ : fail++;
 };
 
+/* D43: the explained/declared split is no longer a table in app.js — it lives
+ * in data/reference.json per section, which is what the display now reads. The
+ * literal list below stays the PINNED value: if the reference ever changes its
+ * unexplained set, this gate says so instead of following it silently. */
+const REF = JSON.parse(readFileSync('data/reference.json', 'utf8'));
+const refText = (section, key, lang) => {
+  const e = REF.sections[section].texts[key];
+  return e ? e[lang] : '';
+};
 /* the declared list: codes no source guide explains. Kept here so the gate
  * fails if the DATA grows a new unexplained code without a decision. */
 const DECLARED_UNEXPLAINED = [
@@ -38,8 +47,13 @@ const judge = readFileSync('src/judge.js', 'utf8');
 
 /* ---- the split rule, read out of the source so it cannot drift ---- */
 const HARD = /[\/,+]/;
-const keys = [...app.match(/const LEGEND_CAT_KEYS = \{([\s\S]*?)\};/)[1]
-  .matchAll(/'([^']+)':\s*'legend/g)].map(m => m[1]);
+/* the codes AND the printed shapes the 500 section of the reference records */
+const keys = Object.keys(REF.sections.libya500.categories).flatMap(k => {
+  const e = REF.sections.libya500.categories[k];
+  return [k].concat(e.shapes || []);
+});
+const nonExplainedKeys = Object.keys(REF.sections.libya500.categories)
+  .filter(k => !REF.sections.libya500.categories[k].explained).sort();
 const fold = x => String(x == null ? '' : x).toLowerCase().replace(/[.\s]/g, '');
 const foldKeys = new Set(keys.map(fold));
 function catParts(code) {
@@ -85,12 +99,20 @@ check('S.Ph is explained and S.Ph is the code 34 rows actually carry',
  * the row «V | Viruses / Microbials | فيروسات أو كائنات دقيقة مكافحة»
  * and 6 rows of data/libya-500.json actually carry the code. What makes a
  * code explained is the source guide, never our own note about the source. */
+check('the reference explains exactly the codes the old app.js table did',
+      JSON.stringify(nonExplainedKeys) === JSON.stringify(['B', 'F.rep', 'I.Ph', 'Igr', 'R.S', 'gr']),
+      JSON.stringify(nonExplainedKeys));
+check('the reference declares exactly the unexplained codes this gate declared',
+      JSON.stringify([...REF.sections.libya500.unexplainedCodes].sort()) === JSON.stringify(['B', 'I.Ph', 'Igr', 'R.S', 'gr'])
+      && JSON.stringify([...REF.sections.libya248.unexplainedCodes].sort()) === JSON.stringify(['FM', 'FM\n[I', 'FM]\n[I', 'Mi', 'RP', 'R]', 'T']),
+      JSON.stringify([REF.sections.libya500.unexplainedCodes, REF.sections.libya248.unexplainedCodes]));
 check('V is explained in the 500 legend table, not on the unexplained list',
       keys.includes('V') && !DECLARED_UNEXPLAINED.includes('V'),
       'keys has V=' + keys.includes('V') + ' / declared has V=' + DECLARED_UNEXPLAINED.includes('V'));
 check('the legend wording for V is the guide wording, verbatim',
-      /'legend\.cat\.V': 'فيروسات أو كائنات دقيقة مكافحة'/.test(i18n),
-      'the ar dictionary must carry the source sentence, not a paraphrase');
+      refText('libya500', 'legend.cat.V', 'ar') === 'فيروسات أو كائنات دقيقة مكافحة'
+      && !/'legend\.cat\.V':/.test(i18n),
+      'the reference carries the source sentence; i18n keeps no second copy');
 check('V is no longer annotated as absent from the official guide',
       !/تعريف الملف الرقمي/.test(judge) && !/vnote/.test(i18n + app));
 check('V is explained in judge.js CODES too, and 6 rows really carry it',
@@ -105,10 +127,18 @@ for (const form of ['S.Ph', 'S Ph', 'SPh']) {
         foldKeys.has(fold(form)), form);
 }
 /* and it does NOT invent a meaning for a code no guide explains */
-check('a code no source explains still fails the lookup (no invented reading)',
-      !foldKeys.has(fold('Igr')) && !foldKeys.has(fold('Mi')) && !foldKeys.has(fold('R.S'))
+/* a code the guide does NOT explain IS in the reference — recorded explicitly
+   as unexplained — and carries no meaning, so the lookup resolves it to the
+   hint. What must never happen is a meaning appearing for it. */
+check('a code no source explains resolves to NOTHING (no invented reading)',
+      ['Igr', 'R.S'].every(c => {
+        const e = REF.sections.libya500.categories[c];
+        return e && e.explained === false && !e.i18nKey && !e.meaning
+          && REF.sections.libya500.unexplainedCodes.includes(c);
+      })
+      && ['Mi', 'RP'].every(c => !REF.sections.libya500.categories[c])
       /* V is the converse case: the guide DOES explain it, so it must resolve */
-      && foldKeys.has(fold('V')));
+      && foldKeys.has(fold('V')) && REF.sections.libya500.categories.V.explained === true);
 
 /* ---- 5) splitting is untouched: S.Ph is NOT torn into S + Ph ---- */
 const sPhParts = catParts('S.Ph');
@@ -122,8 +152,9 @@ check('F.rep still splits into its two real codes',
 
 /* ---- 6) the normalisation is at the dictionary lookup only ---- */
 check('the fold is applied at the legend lookup, nowhere else',
-      /LEGEND_CAT_KEYS\[parts\[0\]\] \|\| CAT_FOLD_KEYS\[catFold\(parts\[0\]\)\]/.test(app),
-      'the catName lookup must fall back to the folded table');
+      /if \(catFold\(shapes\[j\]\) === fold\) return e;/.test(app)
+      && /return t\(refCatKey\(sec, parts\[0\]\), ''\);/.test(app),
+      'the lookup must go through the reference shapes with the fold, not a local table');
 check('no threshold or accept constant was touched by this round',
       !/catFold[^\n]*\b(THRESH|MIN_|MAX_|ACCEPT|CONF)\b/.test(app));
 check('judge.js folds the same way and adds no new invented code',
@@ -133,10 +164,16 @@ check('judge.js folds the same way and adds no new invented code',
 /* ---- 7) the four dictionaries all carry the meanings used ---- */
 const langBlocks = [...i18n.matchAll(/^\s+(ar|en|fr|zh)\s*:\s*\{/gm)].map(m => m[1]);
 check('all four dictionaries are present', langBlocks.length === 4, langBlocks.join(','));
-for (const key of ['legend.cat.S.ph', 'legend.cat.PGR', 'legend.cat.rep',
-                   'legend.cat.V', 'legend.cat.unknown']) {
+for (const key of ['legend.cat.S.ph', 'legend.cat.PGR', 'legend.cat.rep', 'legend.cat.V']) {
+  check(key + ' is defined in all four reference languages',
+        ['ar', 'en', 'fr', 'zh'].every(l => !!refText('libya500', key, l))
+        && (i18n.match(new RegExp("'" + key.replace(/\./g, '\\.') + "':", 'g')) || []).length === 0,
+        'the reference is the only copy');
+}
+/* the no-guessing hint itself stays display chrome in the dictionaries */
+for (const key of ['legend.cat.unknown', 'legend.cat.unknownNamed']) {
   const n = (i18n.match(new RegExp("'" + key.replace(/\./g, '\\.') + "':", 'g')) || []).length;
-  check(key + ' is defined in all four dictionaries', n === 4, 'found ' + n);
+  check(key + ' (the hint) is defined in all four dictionaries', n === 4, 'found ' + n);
 }
 /* the added spellings borrow an existing key — they add no new translation */
 check('P.G.R and Rep borrow existing meanings and add no new translation string',

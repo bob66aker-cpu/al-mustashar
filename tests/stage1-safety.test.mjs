@@ -33,10 +33,13 @@ const epac = JSON.parse(readFileSync(join(root, 'data/epa-cancelled.json'), 'utf
 {
   const app = readFileSync(join(root, 'src/app.js'), 'utf8');
   must('1.1: statusDisplay gates the legend chip on libya-500',
-    /const ek = k === 'libya-500'/.test(app));
-  must('1.1: LEGEND_STATUS_KEYS stays a Decree-500 table (4 codes)',
-    (app.match(/LEGEND_STATUS_KEYS = \{[\s\S]*?\};/) || [''])[0].includes("'REV*'")
-    && (app.match(/LEGEND_STATUS_KEYS = \{[\s\S]*?\};/) || [''])[0].includes("'Approved'"));
+    /const ek = \(k === 'libya-500' && statusHasEntry\(d\.raw\)\)/.test(app));
+  /* D43: the four-code table is data/reference.json's libya500.statusCodes now */
+  const ref500 = JSON.parse(readFileSync(join(root, 'data/reference.json'), 'utf8')).sections.libya500.statusCodes;
+  must('1.1: the reference keeps a Decree-500 status table (4 codes)',
+    Object.keys(ref500).length === 4 && !!ref500['REV*'] && !!ref500['Approved']
+    && Object.values(ref500).every(e => e.explained === true && e.meaning && e.source)
+    && !/LEGEND_STATUS_KEYS/.test(app));
 }
 /* The raw-value lookup alone must NOT decide the chip anymore:
  * dissectStatus('Approved' EU row) must yield an EU key, not a 500 key. */
@@ -66,22 +69,24 @@ const epac = JSON.parse(readFileSync(join(root, 'data/epa-cancelled.json'), 'utf
    * + , / always split; '.' only when both dot-parts are codes of the table) */
   must('1.2: catParts splits compound codes on / , + (and conditionally on .)',
     app.includes('const CAT_HARD_SEP = ') && app.includes('const CAT_DOT_SEP = ')
-    && app.includes('function catParts(code)') && app.includes('.split(CAT_HARD_SEP)')
+    && app.includes('function catParts(code, sectionKey)') && app.includes('.split(CAT_HARD_SEP)')
     && app.includes('.split(CAT_DOT_SEP)'));
   const l248Tet = l248.rows.find(r => String(r.cas || '').includes('116-29-0'));
   must('1.2: Tetradifon row carries category I/A in libya-248 (precondition)',
     !!l248Tet && l248Tet.category === 'I/A', l248Tet && l248Tet.category);
   /* behavioural check against the SHIPPED splitter: the category block is
    * sliced out of app.js and executed here (no replicated copy that can drift) */
-  const LEGEND = ['I', 'F', 'A', 'N', 'H', 'R', 'M', 'S.ph', 'PGR', 'rep'];
-  const start = app.indexOf('const LEGEND_CAT_KEYS = {');
+  /* D43: the shipped splitter is fed the SAME reference the app loads. */
+  const REF = JSON.parse(readFileSync(join(root, 'data/reference.json'), 'utf8'));
+  const start = app.indexOf('  const REF_BY_SOURCE = {');
   const end = app.indexOf('/* i18n helpers');
   const slice = start >= 0 && end > start ? app.slice(start, end) : '';
   const catName = slice
-    ? new Function('LEGEND', slice + '\nconst t = (k, fb) => LEGEND.includes(k.split(".").pop()) || k === "legend.cat.unknown" ? k : "";\nreturn catName;')(LEGEND)
+    ? new Function('REFDOC', slice + '\nconst t = (k, fb) => k || "";\nREF = REFDOC;\nreturn catName;')(REF)
     : () => '';
   must('1.2: I/A resolves to two explained parts', catName('I/A').split(' + ').length === 2, catName('I/A'));
   must('1.2: single codes still resolve', catName('H') === 'legend.cat.H', catName('H'));
+  must('1.2: the split rule reads the reference, not a local table', !!slice && !/LEGEND_CAT_KEYS/.test(app));
 }
 
 /* 1.3 — epa-cancelled source label */

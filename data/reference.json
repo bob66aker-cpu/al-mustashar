@@ -1,0 +1,2451 @@
+{
+ "meta": {
+  "key": "reference",
+  "version": 1,
+  "built": "2026-10-04",
+  "purpose": "المرجع الموحّد الذي تقرأ منه طبقة العرض الشرح والأشكال حصرًا.",
+  "rule": "لا معنى مبتدع ولا نقل دلالي بين المصادر: كل شرح من دليل مصدره أو من نص تصديره هو؛ وما لا يشرحه مصدره يُسجَّل «غير مشروح» صراحة.",
+  "textProvenance": "نصوص الشرح منقولة حرفيًا من قواميس src/i18n.js الأربعة (نفس الكلمات، لا إعادة صياغة)؛ الأشكال مُشتقّة من ملفات البيانات.",
+  "sections": [
+   "libya500",
+   "libya248",
+   "eu",
+   "epa",
+   "canada",
+   "australia"
+  ]
+ },
+ "sections": {
+  "libya500": {
+   "title": {
+    "ar": "ليبيا — قرار 500 لسنة 2026",
+    "en": "Libya — Decree 500 of 2026",
+    "fr": "Libye — décret 500 de 2026",
+    "zh": "利比亚 — 2026年第500号决定"
+   },
+   "exports": [
+    "data/libya-500.json"
+   ],
+   "rows": 411,
+   "guide": {
+    "ar": "دليل قرار 500 لسنة 2026 — جدول التصنيفات (نص الدليل)",
+    "en": "Decree 500 of 2026 — the classification table of the guide itself."
+   },
+   "categories": {
+    "I": {
+     "shapes": [
+      "I"
+     ],
+     "i18nKey": "legend.cat.I",
+     "explained": true,
+     "source": "دليل قرار 500 لسنة 2026 — جدول التصنيفات (نص الدليل)",
+     "meaning": {
+      "ar": "مبيد حشري",
+      "en": "Insecticide",
+      "fr": "Insecticide",
+      "zh": "杀虫剂"
+     }
+    },
+    "F": {
+     "shapes": [
+      "F"
+     ],
+     "i18nKey": "legend.cat.F",
+     "explained": true,
+     "source": "دليل قرار 500 لسنة 2026 — جدول التصنيفات (نص الدليل)",
+     "meaning": {
+      "ar": "مبيد فطري",
+      "en": "Fungicide",
+      "fr": "Fongicide",
+      "zh": "杀菌剂"
+     }
+    },
+    "A": {
+     "shapes": [
+      "A"
+     ],
+     "i18nKey": "legend.cat.A",
+     "explained": true,
+     "source": "دليل قرار 500 لسنة 2026 — جدول التصنيفات (نص الدليل)",
+     "meaning": {
+      "ar": "مبيد عناكب (أكاروسي)",
+      "en": "Acaricide",
+      "fr": "Acaricide",
+      "zh": "杀螨剂"
+     }
+    },
+    "N": {
+     "shapes": [
+      "N"
+     ],
+     "i18nKey": "legend.cat.N",
+     "explained": true,
+     "source": "دليل قرار 500 لسنة 2026 — جدول التصنيفات (نص الدليل)",
+     "meaning": {
+      "ar": "مبيد نيماتودي",
+      "en": "Nematicide",
+      "fr": "Nématicide",
+      "zh": "杀线虫剂"
+     }
+    },
+    "H": {
+     "shapes": [
+      "H"
+     ],
+     "i18nKey": "legend.cat.H",
+     "explained": true,
+     "source": "دليل قرار 500 لسنة 2026 — جدول التصنيفات (نص الدليل)",
+     "meaning": {
+      "ar": "مبيد أعشاب",
+      "en": "Herbicide",
+      "fr": "Herbicide",
+      "zh": "除草剂"
+     }
+    },
+    "R": {
+     "shapes": [
+      "R"
+     ],
+     "i18nKey": "legend.cat.R",
+     "explained": true,
+     "source": "دليل قرار 500 لسنة 2026 — جدول التصنيفات (نص الدليل)",
+     "meaning": {
+      "ar": "مبيد قوارض",
+      "en": "Rodenticide",
+      "fr": "Rodenticide",
+      "zh": "杀鼠剂"
+     }
+    },
+    "M": {
+     "shapes": [
+      "M"
+     ],
+     "i18nKey": "legend.cat.M",
+     "explained": true,
+     "source": "دليل قرار 500 لسنة 2026 — جدول التصنيفات (نص الدليل)",
+     "meaning": {
+      "ar": "مبيد قواقع (نواعم)",
+      "en": "Molluscicide",
+      "fr": "Molluscicide",
+      "zh": "杀软体动物剂"
+     }
+    },
+    "S.Ph": {
+     "shapes": [
+      "S.Ph"
+     ],
+     "i18nKey": "legend.cat.S.ph",
+     "explained": true,
+     "source": "دليل قرار 500 لسنة 2026 — جدول التصنيفات (نص الدليل)",
+     "meaning": {
+      "ar": "فرمون جنسي",
+      "en": "Sex pheromone",
+      "fr": "Phéromone sexuelle",
+      "zh": "性信息素"
+     },
+     "note": "الرمز مطبوع في الدليل بالصيغة «S.Ph»؛ «S.ph» مطابقة مطوية لا رمز ثانٍ."
+    },
+    "PGR": {
+     "shapes": [
+      "PGR"
+     ],
+     "i18nKey": "legend.cat.PGR",
+     "explained": true,
+     "source": "دليل قرار 500 لسنة 2026 — جدول التصنيفات (نص الدليل)",
+     "meaning": {
+      "ar": "منظم نمو نبات",
+      "en": "Plant growth regulator",
+      "fr": "Régulateur de croissance végétale",
+      "zh": "植物生长调节剂"
+     }
+    },
+    "P.G.R": {
+     "shapes": [
+      "P.G.R"
+     ],
+     "i18nKey": "legend.cat.PGR",
+     "explained": true,
+     "source": "دليل قرار 500 لسنة 2026 — جدول التصنيفات (نص الدليل)",
+     "meaning": {
+      "ar": "منظم نمو نبات",
+      "en": "Plant growth regulator",
+      "fr": "Régulateur de croissance végétale",
+      "zh": "植物生长调节剂"
+     },
+     "note": "صيغة الدليل نفسها؛ المعنى معنى PGR لا معنى جديد."
+    },
+    "rep": {
+     "shapes": [
+      "rep",
+      "Rep"
+     ],
+     "i18nKey": "legend.cat.rep",
+     "explained": true,
+     "source": "دليل قرار 500 لسنة 2026 — جدول التصنيفات (نص الدليل)",
+     "meaning": {
+      "ar": "طارد",
+      "en": "Repellent",
+      "fr": "Répulsif",
+      "zh": "驱避剂"
+     }
+    },
+    "V": {
+     "shapes": [
+      "V"
+     ],
+     "i18nKey": "legend.cat.V",
+     "explained": true,
+     "source": "دليل قرار 500 لسنة 2026 — جدول التصنيفات (نص الدليل)",
+     "meaning": {
+      "ar": "فيروسات أو كائنات دقيقة مكافحة",
+      "en": "Viruses / Microbials",
+      "fr": "Virus / Micro-organismes",
+      "zh": "病毒 / 微生物"
+     }
+    },
+    "F.rep": {
+     "shapes": [
+      "F.rep"
+     ],
+     "explained": false,
+     "source": "دليل قرار 500 لسنة 2026 — جدول التصنيفات (نص الدليل)",
+     "note": "خلية مركّبة بنقطة؛ تُفصل إلى F + rep وفق قاعدة النقطة."
+    },
+    "B": {
+     "shapes": [
+      "B"
+     ],
+     "explained": false,
+     "source": "دليل قرار 500 لسنة 2026 — جدول التصنيفات (نص الدليل)",
+     "note": "الدليل لا يشرح هذا الرمز."
+    },
+    "gr": {
+     "shapes": [
+      "gr"
+     ],
+     "explained": false,
+     "source": "دليل قرار 500 لسنة 2026 — جدول التصنيفات (نص الدليل)",
+     "note": "الدليل لا يشرح هذا الرمز."
+    },
+    "Igr": {
+     "shapes": [
+      "Igr"
+     ],
+     "explained": false,
+     "source": "دليل قرار 500 لسنة 2026 — جدول التصنيفات (نص الدليل)",
+     "note": "الدليل لا يشرح هذا الرمز."
+    },
+    "I.Ph": {
+     "shapes": [
+      "I.Ph"
+     ],
+     "explained": false,
+     "source": "دليل قرار 500 لسنة 2026 — جدول التصنيفات (نص الدليل)",
+     "note": "خلية منقوطة لا يشرحها الدليل؛ تبقى رمزاً واحداً حرفياً."
+    },
+    "R.S": {
+     "shapes": [
+      "R.S"
+     ],
+     "explained": false,
+     "source": "دليل قرار 500 لسنة 2026 — جدول التصنيفات (نص الدليل)",
+     "note": "خلية منقوطة لا يشرحها الدليل؛ تبقى رمزاً واحداً حرفياً."
+    }
+   },
+   "compoundCodes": [
+    "F.rep"
+   ],
+   "unexplainedCodes": [
+    "B",
+    "I.Ph",
+    "Igr",
+    "R.S",
+    "gr"
+   ],
+   "shapes": [
+    "A",
+    "A + I",
+    "F",
+    "F + I",
+    "F+A",
+    "F+A,rep",
+    "F+B",
+    "F+I,rep",
+    "F+N",
+    "F+N+I",
+    "F+N+PGR",
+    "F+PGR",
+    "H",
+    "H+F",
+    "H+I+F",
+    "H+PGR",
+    "I",
+    "I + A",
+    "I + A + N",
+    "I + F",
+    "I + N",
+    "I + R",
+    "I+A",
+    "I+A+F",
+    "I+A+H",
+    "I+A+N",
+    "I+A+R",
+    "I+A,gr",
+    "I+F",
+    "I+F+B",
+    "I+F+H",
+    "I+F+PGR",
+    "I+F.rep",
+    "I+Igr",
+    "I,rep",
+    "I.Ph",
+    "M",
+    "N+F+I",
+    "N+P.G.R",
+    "P.G.R",
+    "R",
+    "R,rep",
+    "R.S",
+    "Rep",
+    "S.Ph",
+    "V"
+   ],
+   "categorylessRows": 0,
+   "mergeRules": {
+    "hardSeparators": [
+     "/",
+     ",",
+     "+"
+    ],
+    "spaceForms": "«I + A» هي الخلية نفسها «I+A»: الفراغ حروف الطباعة لا فاصل.",
+    "dotRule": "النقطة تفصل فقط إذا كان كل جزء نقطي رمزًا في هذا القسم (F.rep ← F + rep)؛ وإلا تبقى الخلية رمزًا واحدًا حرفيًا (S.Ph · P.G.R · I.Ph · R.S).",
+    "foldRule": "مطابقة الرمز تطوي حالة الأحرف وتحذف النقطة والفراغ: S.Ph = S Ph = SPh و Rep = rep.",
+    "orderRule": "الأجزاء تُعرض بترتيب الخلية نفسه، جزءًا جزءًا، بلا دمج ولا إعادة ترتيب.",
+    "unknownRule": "رمز لا مدخل له في هذا القسم يُعرض حرفيًا ويحمل «رمز غير مشروح في دليل هذا المصدر» — لا تخمين."
+   },
+   "statusCodes": {
+    "Approved": {
+     "forms": [
+      "Approved"
+     ],
+     "i18nKey": "st.500.approved",
+     "explained": true,
+     "source": "دليل قرار 500 لسنة 2026 — جدول الحالات",
+     "meaning": {
+      "ar": "قرار 500: رمز Approved",
+      "en": "Decree 500: code Approved",
+      "fr": "Décret 500 : code Approved",
+      "zh": "第500号决议：代码 Approved"
+     }
+    },
+    "REV": {
+     "forms": [
+      "REV"
+     ],
+     "i18nKey": "st.500.rev",
+     "explained": true,
+     "source": "دليل قرار 500 لسنة 2026 — جدول الحالات",
+     "meaning": {
+      "ar": "قرار 500: رمز REV",
+      "en": "Decree 500: code REV",
+      "fr": "Décret 500 : code REV",
+      "zh": "第500号决议：代码 REV"
+     }
+    },
+    "RAR": {
+     "forms": [
+      "RAR"
+     ],
+     "i18nKey": "st.500.rar",
+     "explained": true,
+     "source": "دليل قرار 500 لسنة 2026 — جدول الحالات",
+     "meaning": {
+      "ar": "قرار 500: رمز RAR",
+      "en": "Decree 500: code RAR",
+      "fr": "Décret 500 : code RAR",
+      "zh": "第500号决议：代码 RAR"
+     }
+    },
+    "REV*": {
+     "forms": [
+      "REV*"
+     ],
+     "i18nKey": "st.500.revstar",
+     "explained": true,
+     "source": "دليل قرار 500 لسنة 2026 — جدول الحالات",
+     "meaning": {
+      "ar": "قرار 500: رمز REV*",
+      "en": "Decree 500: code REV*",
+      "fr": "Décret 500 : code REV*",
+      "zh": "第500号决议：代码 REV*"
+     }
+    }
+   },
+   "statusExplanations": {
+    "Approved": {
+     "i18nKey": "st.500.approved.explain",
+     "meaning": {
+      "ar": "يسمح مؤقتًا بتداوله واستيراده لمدة سنة إلى حين صدور القائمة النمطية.",
+      "en": "Temporarily allows trading and import for one year, until the standard list is issued.",
+      "fr": "Autorise temporairement la commercialisation et l\\'importation pendant un an, jusqu\\'à la publication de la liste type.",
+      "zh": "允许临时流通和进口一年，直到标准清单发布。"
+     }
+    },
+    "REV": {
+     "i18nKey": "st.500.rev.explain",
+     "meaning": {
+      "ar": "يسمح مؤقتًا بتداوله في حالة توفر إذن استيراد مسبق، ويتطلب مراجعة علمية قبل منحه إذن استيراد خلال سنة.",
+      "en": "Temporarily allows trading if a prior import permit is available; a scientific review is required before granting an import permit within one year.",
+      "fr": "Autorise temporairement la commercialisation si une autorisation d\\'importation préalable est disponible ; une revue scientifique est requise avant l\\'octroi d\\'une autorisation d\\'importation dans un délai d\\'un an.",
+      "zh": "如有事先进口许可，允许临时流通；一年内发放进口许可前需进行科学审查。"
+     }
+    },
+    "RAR": {
+     "i18nKey": "st.500.rar.explain",
+     "meaning": {
+      "ar": "يسمح مؤقتًا بتداوله إذا توفر إذن استيراد مسبق، ويتطلب تقييم مخاطر محليًا، ولا يُعطى له إذن استيراد قبل صدور القائمة النمطية.",
+      "en": "Temporarily allows trading if a prior import permit is available; a local risk assessment is required, and no import permit is granted before the standard list is issued.",
+      "fr": "Autorise temporairement la commercialisation si une autorisation d\\'importation préalable est disponible ; une évaluation locale des risques est requise, et aucune autorisation d\\'importation n\\'est accordée avant la publication de la liste type.",
+      "zh": "如有事先进口许可，允许临时流通；需进行本地风险评估，标准清单发布前不予发放进口许可。"
+     }
+    },
+    "REV*": {
+     "i18nKey": "st.500.revstar.explain",
+     "meaning": {
+      "ar": "نفس شرح REV، مع إضافة الجملة التالية بعدها كسطر منفصل:",
+      "en": "Same as REV, with the following sentence appended as a separate line:",
+      "fr": "Même explication que REV, avec la phrase suivante ajoutée après, sur une ligne séparée :",
+      "zh": "与 REV 说明相同，并在其后另起一行附加以下句子："
+     }
+    }
+   },
+   "statusExtraTexts": {
+    "st.500.revstar.note": {
+     "ar": "الدليل الرسمي يذكر هذا الرمز بجانب REV دون شرح مستقل لمعنى النجمة.",
+     "en": "The official guide mentions this code alongside REV without an independent explanation of the asterisk.",
+     "fr": "Le guide officiel mentionne ce code à côté de REV sans explication indépendante de l\\'astérisque.",
+     "zh": "官方指南在 REV 旁边提到该代码，未单独解释星号的含义。"
+    }
+   },
+   "statusExplanationNote": "نص الدليل الحرفي؛ REV* يُعرض بتبع شرح REV ثم سطر النجمة.",
+   "texts": {
+    "legend.cat.A": {
+     "ar": "مبيد عناكب (أكاروسي)",
+     "en": "Acaricide",
+     "fr": "Acaricide",
+     "zh": "杀螨剂"
+    },
+    "legend.cat.F": {
+     "ar": "مبيد فطري",
+     "en": "Fungicide",
+     "fr": "Fongicide",
+     "zh": "杀菌剂"
+    },
+    "legend.cat.H": {
+     "ar": "مبيد أعشاب",
+     "en": "Herbicide",
+     "fr": "Herbicide",
+     "zh": "除草剂"
+    },
+    "legend.cat.I": {
+     "ar": "مبيد حشري",
+     "en": "Insecticide",
+     "fr": "Insecticide",
+     "zh": "杀虫剂"
+    },
+    "legend.cat.M": {
+     "ar": "مبيد قواقع (نواعم)",
+     "en": "Molluscicide",
+     "fr": "Molluscicide",
+     "zh": "杀软体动物剂"
+    },
+    "legend.cat.N": {
+     "ar": "مبيد نيماتودي",
+     "en": "Nematicide",
+     "fr": "Nématicide",
+     "zh": "杀线虫剂"
+    },
+    "legend.cat.PGR": {
+     "ar": "منظم نمو نبات",
+     "en": "Plant growth regulator",
+     "fr": "Régulateur de croissance végétale",
+     "zh": "植物生长调节剂"
+    },
+    "legend.cat.R": {
+     "ar": "مبيد قوارض",
+     "en": "Rodenticide",
+     "fr": "Rodenticide",
+     "zh": "杀鼠剂"
+    },
+    "legend.cat.S.ph": {
+     "ar": "فرمون جنسي",
+     "en": "Sex pheromone",
+     "fr": "Phéromone sexuelle",
+     "zh": "性信息素"
+    },
+    "legend.cat.V": {
+     "ar": "فيروسات أو كائنات دقيقة مكافحة",
+     "en": "Viruses / Microbials",
+     "fr": "Virus / Micro-organismes",
+     "zh": "病毒 / 微生物"
+    },
+    "legend.cat.rep": {
+     "ar": "طارد",
+     "en": "Repellent",
+     "fr": "Répulsif",
+     "zh": "驱避剂"
+    },
+    "st.500.approved": {
+     "ar": "قرار 500: رمز Approved",
+     "en": "Decree 500: code Approved",
+     "fr": "Décret 500 : code Approved",
+     "zh": "第500号决议：代码 Approved"
+    },
+    "st.500.approved.explain": {
+     "ar": "يسمح مؤقتًا بتداوله واستيراده لمدة سنة إلى حين صدور القائمة النمطية.",
+     "en": "Temporarily allows trading and import for one year, until the standard list is issued.",
+     "fr": "Autorise temporairement la commercialisation et l\\'importation pendant un an, jusqu\\'à la publication de la liste type.",
+     "zh": "允许临时流通和进口一年，直到标准清单发布。"
+    },
+    "st.500.rar": {
+     "ar": "قرار 500: رمز RAR",
+     "en": "Decree 500: code RAR",
+     "fr": "Décret 500 : code RAR",
+     "zh": "第500号决议：代码 RAR"
+    },
+    "st.500.rar.explain": {
+     "ar": "يسمح مؤقتًا بتداوله إذا توفر إذن استيراد مسبق، ويتطلب تقييم مخاطر محليًا، ولا يُعطى له إذن استيراد قبل صدور القائمة النمطية.",
+     "en": "Temporarily allows trading if a prior import permit is available; a local risk assessment is required, and no import permit is granted before the standard list is issued.",
+     "fr": "Autorise temporairement la commercialisation si une autorisation d\\'importation préalable est disponible ; une évaluation locale des risques est requise, et aucune autorisation d\\'importation n\\'est accordée avant la publication de la liste type.",
+     "zh": "如有事先进口许可，允许临时流通；需进行本地风险评估，标准清单发布前不予发放进口许可。"
+    },
+    "st.500.rev": {
+     "ar": "قرار 500: رمز REV",
+     "en": "Decree 500: code REV",
+     "fr": "Décret 500 : code REV",
+     "zh": "第500号决议：代码 REV"
+    },
+    "st.500.rev.explain": {
+     "ar": "يسمح مؤقتًا بتداوله في حالة توفر إذن استيراد مسبق، ويتطلب مراجعة علمية قبل منحه إذن استيراد خلال سنة.",
+     "en": "Temporarily allows trading if a prior import permit is available; a scientific review is required before granting an import permit within one year.",
+     "fr": "Autorise temporairement la commercialisation si une autorisation d\\'importation préalable est disponible ; une revue scientifique est requise avant l\\'octroi d\\'une autorisation d\\'importation dans un délai d\\'un an.",
+     "zh": "如有事先进口许可，允许临时流通；一年内发放进口许可前需进行科学审查。"
+    },
+    "st.500.revstar": {
+     "ar": "قرار 500: رمز REV*",
+     "en": "Decree 500: code REV*",
+     "fr": "Décret 500 : code REV*",
+     "zh": "第500号决议：代码 REV*"
+    },
+    "st.500.revstar.explain": {
+     "ar": "نفس شرح REV، مع إضافة الجملة التالية بعدها كسطر منفصل:",
+     "en": "Same as REV, with the following sentence appended as a separate line:",
+     "fr": "Même explication que REV, avec la phrase suivante ajoutée après, sur une ligne séparée :",
+     "zh": "与 REV 说明相同，并在其后另起一行附加以下句子："
+    },
+    "st.500.revstar.note": {
+     "ar": "الدليل الرسمي يذكر هذا الرمز بجانب REV دون شرح مستقل لمعنى النجمة.",
+     "en": "The official guide mentions this code alongside REV without an independent explanation of the asterisk.",
+     "fr": "Le guide officiel mentionne ce code à côté de REV sans explication indépendante de l\\'astérisque.",
+     "zh": "官方指南在 REV 旁边提到该代码，未单独解释星号的含义。"
+    }
+   }
+  },
+  "libya248": {
+   "title": {
+    "ar": "ليبيا — القائمة رقم (1) / القرار 248 لسنة 2024",
+    "en": "Libya — List no. (1) / Decree 248 of 2024",
+    "fr": "Libye — liste n° (1) / décret 248 de 2024",
+    "zh": "利比亚 — 名单(1)/ 2024年第248号决定"
+   },
+   "exports": [
+    "data/libya-248.json"
+   ],
+   "rows": 77,
+   "guide": {
+    "ar": "دليل القائمة رقم (1) — القرار 248 لسنة 2024: الدليل يشرح عنوانه فقط (PROJECT_MEMORY D27) ولا ينشر جدول رموز التصنيف؛ المرجع اللبيبي واحد، والشرح منقول عن جدول قرار 500 ومُعلَن هنا كمرجع منقول لا كمعنى مبتدع",
+    "en": "Decree 248 of 2024 — the guide explains its own title only (D27); it publishes no classification table."
+   },
+   "categories": {
+    "A": {
+     "shapes": [
+      "A"
+     ],
+     "i18nKey": "legend.cat.A",
+     "explained": false,
+     "source": "دليل القائمة رقم (1) — القرار 248 لسنة 2024: الدليل يشرح عنوانه فقط (PROJECT_MEMORY D27) ولا ينشر جدول رموز التصنيف؛ المرجع اللبيبي واحد، والشرح منقول عن جدول قرار 500 ومُعلَن هنا كمرجع منقول لا كمعنى مبتدع",
+     "note": "معنى منقول ومُعلَن عن جدول قرار 500 — المرجع اللبيبي واحد ودليل 248 لا ينشر جدول الرموز؛ منقول موثَّق لا معنى مبتدع.",
+     "meaning": {
+      "ar": "مبيد عناكب (أكاروسي)",
+      "en": "Acaricide",
+      "fr": "Acaricide",
+      "zh": "杀螨剂"
+     },
+     "transferredFrom": "libya500"
+    },
+    "F": {
+     "shapes": [
+      "F"
+     ],
+     "i18nKey": "legend.cat.F",
+     "explained": false,
+     "source": "دليل القائمة رقم (1) — القرار 248 لسنة 2024: الدليل يشرح عنوانه فقط (PROJECT_MEMORY D27) ولا ينشر جدول رموز التصنيف؛ المرجع اللبيبي واحد، والشرح منقول عن جدول قرار 500 ومُعلَن هنا كمرجع منقول لا كمعنى مبتدع",
+     "note": "معنى منقول ومُعلَن عن جدول قرار 500 — المرجع اللبيبي واحد ودليل 248 لا ينشر جدول الرموز؛ منقول موثَّق لا معنى مبتدع.",
+     "meaning": {
+      "ar": "مبيد فطري",
+      "en": "Fungicide",
+      "fr": "Fongicide",
+      "zh": "杀菌剂"
+     },
+     "transferredFrom": "libya500"
+    },
+    "FM": {
+     "shapes": [
+      "FM"
+     ],
+     "explained": false,
+     "source": "دليل القائمة رقم (1) — القرار 248 لسنة 2024: الدليل يشرح عنوانه فقط (PROJECT_MEMORY D27) ولا ينشر جدول رموز التصنيف؛ المرجع اللبيبي واحد، والشرح منقول عن جدول قرار 500 ومُعلَن هنا كمرجع منقول لا كمعنى مبتدع",
+     "note": "دليل 248 لا يشرح هذا الرمز."
+    },
+    "FM\n[I": {
+     "shapes": [
+      "FM\n[I"
+     ],
+     "explained": false,
+     "source": "دليل القائمة رقم (1) — القرار 248 لسنة 2024: الدليل يشرح عنوانه فقط (PROJECT_MEMORY D27) ولا ينشر جدول رموز التصنيف؛ المرجع اللبيبي واحد، والشرح منقول عن جدول قرار 500 ومُعلَن هنا كمرجع منقول لا كمعنى مبتدع",
+     "note": "دليل 248 لا يشرح هذا الرمز."
+    },
+    "FM]\n[I": {
+     "shapes": [
+      "FM]\n[I"
+     ],
+     "explained": false,
+     "source": "دليل القائمة رقم (1) — القرار 248 لسنة 2024: الدليل يشرح عنوانه فقط (PROJECT_MEMORY D27) ولا ينشر جدول رموز التصنيف؛ المرجع اللبيبي واحد، والشرح منقول عن جدول قرار 500 ومُعلَن هنا كمرجع منقول لا كمعنى مبتدع",
+     "note": "دليل 248 لا يشرح هذا الرمز."
+    },
+    "H": {
+     "shapes": [
+      "H"
+     ],
+     "i18nKey": "legend.cat.H",
+     "explained": false,
+     "source": "دليل القائمة رقم (1) — القرار 248 لسنة 2024: الدليل يشرح عنوانه فقط (PROJECT_MEMORY D27) ولا ينشر جدول رموز التصنيف؛ المرجع اللبيبي واحد، والشرح منقول عن جدول قرار 500 ومُعلَن هنا كمرجع منقول لا كمعنى مبتدع",
+     "note": "معنى منقول ومُعلَن عن جدول قرار 500 — المرجع اللبيبي واحد ودليل 248 لا ينشر جدول الرموز؛ منقول موثَّق لا معنى مبتدع.",
+     "meaning": {
+      "ar": "مبيد أعشاب",
+      "en": "Herbicide",
+      "fr": "Herbicide",
+      "zh": "除草剂"
+     },
+     "transferredFrom": "libya500"
+    },
+    "I": {
+     "shapes": [
+      "I"
+     ],
+     "i18nKey": "legend.cat.I",
+     "explained": false,
+     "source": "دليل القائمة رقم (1) — القرار 248 لسنة 2024: الدليل يشرح عنوانه فقط (PROJECT_MEMORY D27) ولا ينشر جدول رموز التصنيف؛ المرجع اللبيبي واحد، والشرح منقول عن جدول قرار 500 ومُعلَن هنا كمرجع منقول لا كمعنى مبتدع",
+     "note": "معنى منقول ومُعلَن عن جدول قرار 500 — المرجع اللبيبي واحد ودليل 248 لا ينشر جدول الرموز؛ منقول موثَّق لا معنى مبتدع.",
+     "meaning": {
+      "ar": "مبيد حشري",
+      "en": "Insecticide",
+      "fr": "Insecticide",
+      "zh": "杀虫剂"
+     },
+     "transferredFrom": "libya500"
+    },
+    "Mi": {
+     "shapes": [
+      "Mi"
+     ],
+     "explained": false,
+     "source": "دليل القائمة رقم (1) — القرار 248 لسنة 2024: الدليل يشرح عنوانه فقط (PROJECT_MEMORY D27) ولا ينشر جدول رموز التصنيف؛ المرجع اللبيبي واحد، والشرح منقول عن جدول قرار 500 ومُعلَن هنا كمرجع منقول لا كمعنى مبتدع",
+     "note": "دليل 248 لا يشرح هذا الرمز."
+    },
+    "N": {
+     "shapes": [
+      "N"
+     ],
+     "i18nKey": "legend.cat.N",
+     "explained": false,
+     "source": "دليل القائمة رقم (1) — القرار 248 لسنة 2024: الدليل يشرح عنوانه فقط (PROJECT_MEMORY D27) ولا ينشر جدول رموز التصنيف؛ المرجع اللبيبي واحد، والشرح منقول عن جدول قرار 500 ومُعلَن هنا كمرجع منقول لا كمعنى مبتدع",
+     "note": "معنى منقول ومُعلَن عن جدول قرار 500 — المرجع اللبيبي واحد ودليل 248 لا ينشر جدول الرموز؛ منقول موثَّق لا معنى مبتدع.",
+     "meaning": {
+      "ar": "مبيد نيماتودي",
+      "en": "Nematicide",
+      "fr": "Nématicide",
+      "zh": "杀线虫剂"
+     },
+     "transferredFrom": "libya500"
+    },
+    "PGR": {
+     "shapes": [
+      "PGR"
+     ],
+     "i18nKey": "legend.cat.PGR",
+     "explained": false,
+     "source": "دليل القائمة رقم (1) — القرار 248 لسنة 2024: الدليل يشرح عنوانه فقط (PROJECT_MEMORY D27) ولا ينشر جدول رموز التصنيف؛ المرجع اللبيبي واحد، والشرح منقول عن جدول قرار 500 ومُعلَن هنا كمرجع منقول لا كمعنى مبتدع",
+     "note": "معنى منقول ومُعلَن عن جدول قرار 500 — المرجع اللبيبي واحد ودليل 248 لا ينشر جدول الرموز؛ منقول موثَّق لا معنى مبتدع.",
+     "meaning": {
+      "ar": "منظم نمو نبات",
+      "en": "Plant growth regulator",
+      "fr": "Régulateur de croissance végétale",
+      "zh": "植物生长调节剂"
+     },
+     "transferredFrom": "libya500"
+    },
+    "R": {
+     "shapes": [
+      "R"
+     ],
+     "i18nKey": "legend.cat.R",
+     "explained": false,
+     "source": "دليل القائمة رقم (1) — القرار 248 لسنة 2024: الدليل يشرح عنوانه فقط (PROJECT_MEMORY D27) ولا ينشر جدول رموز التصنيف؛ المرجع اللبيبي واحد، والشرح منقول عن جدول قرار 500 ومُعلَن هنا كمرجع منقول لا كمعنى مبتدع",
+     "note": "معنى منقول ومُعلَن عن جدول قرار 500 — المرجع اللبيبي واحد ودليل 248 لا ينشر جدول الرموز؛ منقول موثَّق لا معنى مبتدع.",
+     "meaning": {
+      "ar": "مبيد قوارض",
+      "en": "Rodenticide",
+      "fr": "Rodenticide",
+      "zh": "杀鼠剂"
+     },
+     "transferredFrom": "libya500"
+    },
+    "RP": {
+     "shapes": [
+      "RP"
+     ],
+     "explained": false,
+     "source": "دليل القائمة رقم (1) — القرار 248 لسنة 2024: الدليل يشرح عنوانه فقط (PROJECT_MEMORY D27) ولا ينشر جدول رموز التصنيف؛ المرجع اللبيبي واحد، والشرح منقول عن جدول قرار 500 ومُعلَن هنا كمرجع منقول لا كمعنى مبتدع",
+     "note": "دليل 248 لا يشرح هذا الرمز."
+    },
+    "R]": {
+     "shapes": [
+      "R]"
+     ],
+     "explained": false,
+     "source": "دليل القائمة رقم (1) — القرار 248 لسنة 2024: الدليل يشرح عنوانه فقط (PROJECT_MEMORY D27) ولا ينشر جدول رموز التصنيف؛ المرجع اللبيبي واحد، والشرح منقول عن جدول قرار 500 ومُعلَن هنا كمرجع منقول لا كمعنى مبتدع",
+     "note": "دليل 248 لا يشرح هذا الرمز."
+    },
+    "T": {
+     "shapes": [
+      "T"
+     ],
+     "explained": false,
+     "source": "دليل القائمة رقم (1) — القرار 248 لسنة 2024: الدليل يشرح عنوانه فقط (PROJECT_MEMORY D27) ولا ينشر جدول رموز التصنيف؛ المرجع اللبيبي واحد، والشرح منقول عن جدول قرار 500 ومُعلَن هنا كمرجع منقول لا كمعنى مبتدع",
+     "note": "دليل 248 لا يشرح هذا الرمز."
+    }
+   },
+   "transferredCodes": [
+    "A",
+    "F",
+    "H",
+    "I",
+    "N",
+    "PGR",
+    "R"
+   ],
+   "unexplainedCodes": [
+    "FM",
+    "FM\n[I",
+    "FM]\n[I",
+    "Mi",
+    "RP",
+    "R]",
+    "T"
+   ],
+   "shapes": [
+    "A",
+    "A/I",
+    "F",
+    "F/I/N",
+    "F/Mi",
+    "F/RP",
+    "H",
+    "H/I",
+    "H/PGR",
+    "I",
+    "I/A",
+    "I/A/F",
+    "I/A/N",
+    "I/A/N/PGR",
+    "I/F/H",
+    "I/N",
+    "I/N/F/A/R/FM",
+    "I/N/FM",
+    "I/N/R/FM",
+    "I/PGR",
+    "I/R/FM\n[I/R/FM]\n[I/R]",
+    "I/T",
+    "N/F/I/H",
+    "N/I/A",
+    "R"
+   ],
+   "categorylessRows": 0,
+   "mergeRules": {
+    "hardSeparators": [
+     "/",
+     ",",
+     "+"
+    ],
+    "spaceForms": "«I + A» هي الخلية نفسها «I+A»: الفراغ حروف الطباعة لا فاصل.",
+    "dotRule": "النقطة تفصل فقط إذا كان كل جزء نقطي رمزًا في هذا القسم (F.rep ← F + rep)؛ وإلا تبقى الخلية رمزًا واحدًا حرفيًا (S.Ph · P.G.R · I.Ph · R.S).",
+    "foldRule": "مطابقة الرمز تطوي حالة الأحرف وتحذف النقطة والفراغ: S.Ph = S Ph = SPh و Rep = rep.",
+    "orderRule": "الأجزاء تُعرض بترتيب الخلية نفسه، جزءًا جزءًا، بلا دمج ولا إعادة ترتيب.",
+    "unknownRule": "رمز لا مدخل له في هذا القسم يُعرض حرفيًا ويحمل «رمز غير مشروح في دليل هذا المصدر» — لا تخمين."
+   },
+   "fallbackSection": "libya500",
+   "statusCodes": {
+    "محظور": {
+     "forms": [],
+     "i18nKey": "st.248.banned",
+     "explained": true,
+     "source": "دليل القائمة رقم (1) — عنوانه هو الشارة (D27)",
+     "meaning": {
+      "ar": "محظور بقرار وزارة الزراعة رقم 248 لسنة 2024",
+      "en": "Banned by Ministry of Agriculture Decree 248 of 2024",
+      "fr": "Interdit par le décret n° 248 de 2024 du ministère de l\\u2019Agriculture",
+      "zh": "被农业部第248号决议（2024年）禁用"
+     }
+    }
+   },
+   "statusExplanationNote": "لا سطر شرح إضافي: الشارة هي عنوان الدليل (D27).",
+   "texts": {
+    "st.248.banned": {
+     "ar": "محظور بقرار وزارة الزراعة رقم 248 لسنة 2024",
+     "en": "Banned by Ministry of Agriculture Decree 248 of 2024",
+     "fr": "Interdit par le décret n° 248 de 2024 du ministère de l\\u2019Agriculture",
+     "zh": "被农业部第248号决议（2024年）禁用"
+    }
+   }
+  },
+  "eu": {
+   "title": {
+    "ar": "الاتحاد الأوروبي",
+    "en": "European Union",
+    "fr": "Union européenne",
+    "zh": "欧盟"
+   },
+   "exports": [
+    "data/eu.json"
+   ],
+   "rows": 1483,
+   "guide": {
+    "ar": "تصدير الاتحاد الأوروبي — عمود Status وعلاماته",
+    "en": "EU export — the Status column and its own flags."
+   },
+   "categories": {},
+   "unexplainedCodes": [],
+   "shapes": [],
+   "categorylessRows": 1483,
+   "categorylessNote": "تصدير الاتحاد الأوروبي لا يحمل عمود تصنيف وظيفي إطلاقًا.",
+   "mergeRules": null,
+   "statusCodes": {
+    "مسموح": {
+     "forms": [
+      "Approved"
+     ],
+     "i18nKey": "st.eu.approved",
+     "explained": true,
+     "source": "تصدير الاتحاد الأوروبي — عمود Status وعلاماته",
+     "meaning": {
+      "ar": "معتمد في الاتحاد الأوروبي",
+      "en": "Approved in the European Union",
+      "fr": "Approuvé dans l\\u2019Union européenne",
+      "zh": "在欧盟获批"
+     },
+     "note": "صفوف «مقيد» تحمل هذه القيمة نفسها؛ التسمية القديمة توثيقية (docs/data-provenance.md)."
+    },
+    "محظور": {
+     "forms": [
+      "Not approved"
+     ],
+     "i18nKey": "st.eu.notapproved",
+     "explained": true,
+     "source": "تصدير الاتحاد الأوروبي — عمود Status وعلاماته",
+     "meaning": {
+      "ar": "غير معتمد في الاتحاد الأوروبي (تنبيه مرجعي — لا يعني حظرًا محليًا)",
+      "en": "Not approved in the EU (reference alert — not a local ban)",
+      "fr": "Non approuvé dans l\\u2019UE (alerte de référence — pas une interdiction locale)",
+      "zh": "未在欧盟获批（参考性警示——并非本地禁令）"
+     }
+    },
+    "قيد المراجعة": {
+     "forms": [
+      "Pending"
+     ],
+     "i18nKey": "st.eu.pending",
+     "explained": true,
+     "source": "تصدير الاتحاد الأوروبي — عمود Status وعلاماته",
+     "meaning": {
+      "ar": "قيد التقييم في الاتحاد الأوروبي",
+      "en": "Under assessment in the European Union",
+      "fr": "En évaluation dans l\\u2019Union européenne",
+      "zh": "欧盟评估中"
+     }
+    },
+    "مقيد": {
+     "forms": [
+      "Approved"
+     ],
+     "explained": false,
+     "source": "تصدير الاتحاد الأوروبي — عمود Status وعلاماته",
+     "note": "تسمية قديمة في تصديرنا لا يفردها عمود Status الأوروبي؛ تُقرأ الصفوف Approved — لا معنى مستقل مختلَق."
+    }
+   },
+   "statusVariants": {
+    "expired": {
+     "forms": [
+      "Approved + expiry_date سابقة"
+     ],
+     "i18nKey": "st.eu.expired",
+     "explained": true,
+     "source": "تصدير الاتحاد الأوروبي — عمود Status وعلاماته — عمود expiry_date",
+     "meaning": {
+      "ar": "انتهت مدة الاعتماد في الاتحاد الأوروبي",
+      "en": "EU approval period has expired",
+      "fr": "La période d\\u2019approbation UE a expiré",
+      "zh": "欧盟批准期已过期"
+     }
+    },
+    "candidate": {
+     "forms": [
+      "Approved + candidate_for_substitution"
+     ],
+     "i18nKey": "st.eu.candidate",
+     "explained": true,
+     "source": "تصدير الاتحاد الأوروبي — عمود Status وعلاماته — عمود candidate_for_substitution وسببه",
+     "meaning": {
+      "ar": "مرشحة للاستبدال في الاتحاد الأوروبي (السبب كما ورد في التصدير)",
+      "en": "Candidate for substitution in the EU (reason as stated in the export)",
+      "fr": "Candidat à la substitution dans l\\'UE (motif tel qu\\'indiqué dans l\\'export)",
+      "zh": "欧盟候补替代物质（原因如导出文件所述）"
+     }
+    },
+    "basic": {
+     "forms": [
+      "Approved + basic_substance"
+     ],
+     "i18nKey": "st.eu.basic",
+     "explained": true,
+     "source": "تصدير الاتحاد الأوروبي — عمود Status وعلاماته — عمود basic_substance",
+     "meaning": {
+      "ar": "مادة أساسية في الاتحاد الأوروبي",
+      "en": "Basic substance in the EU",
+      "fr": "Substance de base dans l\\'UE",
+      "zh": "欧盟基本物质"
+     }
+    },
+    "lowrisk": {
+     "forms": [
+      "Approved + low_risk"
+     ],
+     "i18nKey": "st.eu.lowrisk",
+     "explained": true,
+     "source": "تصدير الاتحاد الأوروبي — عمود Status وعلاماته — عمود low_risk",
+     "meaning": {
+      "ar": "منخفضة المخاطر (تصنيف الاتحاد الأوروبي)",
+      "en": "Low-risk substance (EU classification)",
+      "fr": "Substance à faible risque (classification UE)",
+      "zh": "低风险物质（欧盟分类）"
+     }
+    },
+    "unknown": {
+     "forms": [],
+     "i18nKey": "st.eu.unknown",
+     "explained": true,
+     "source": "تصدير الاتحاد الأوروبي — عمود Status وعلاماته — قيمة لا تفردها الأعمدة",
+     "meaning": {
+      "ar": "حالة الاتحاد الأوروبي: غير محددة",
+      "en": "EU status: undetermined",
+      "fr": "Statut UE : indéterminé",
+      "zh": "欧盟状态：未确定"
+     }
+    }
+   },
+   "statusExplanationNote": "لا دمج بين المصادر: كل نص من عمود التصدير الأوروبي نفسه.",
+   "texts": {
+    "st.eu.approved": {
+     "ar": "معتمد في الاتحاد الأوروبي",
+     "en": "Approved in the European Union",
+     "fr": "Approuvé dans l\\u2019Union européenne",
+     "zh": "在欧盟获批"
+    },
+    "st.eu.basic": {
+     "ar": "مادة أساسية في الاتحاد الأوروبي",
+     "en": "Basic substance in the EU",
+     "fr": "Substance de base dans l\\'UE",
+     "zh": "欧盟基本物质"
+    },
+    "st.eu.candidate": {
+     "ar": "مرشحة للاستبدال في الاتحاد الأوروبي (السبب كما ورد في التصدير)",
+     "en": "Candidate for substitution in the EU (reason as stated in the export)",
+     "fr": "Candidat à la substitution dans l\\'UE (motif tel qu\\'indiqué dans l\\'export)",
+     "zh": "欧盟候补替代物质（原因如导出文件所述）"
+    },
+    "st.eu.expired": {
+     "ar": "انتهت مدة الاعتماد في الاتحاد الأوروبي",
+     "en": "EU approval period has expired",
+     "fr": "La période d\\u2019approbation UE a expiré",
+     "zh": "欧盟批准期已过期"
+    },
+    "st.eu.lowrisk": {
+     "ar": "منخفضة المخاطر (تصنيف الاتحاد الأوروبي)",
+     "en": "Low-risk substance (EU classification)",
+     "fr": "Substance à faible risque (classification UE)",
+     "zh": "低风险物质（欧盟分类）"
+    },
+    "st.eu.notapproved": {
+     "ar": "غير معتمد في الاتحاد الأوروبي (تنبيه مرجعي — لا يعني حظرًا محليًا)",
+     "en": "Not approved in the EU (reference alert — not a local ban)",
+     "fr": "Non approuvé dans l\\u2019UE (alerte de référence — pas une interdiction locale)",
+     "zh": "未在欧盟获批（参考性警示——并非本地禁令）"
+    },
+    "st.eu.pending": {
+     "ar": "قيد التقييم في الاتحاد الأوروبي",
+     "en": "Under assessment in the European Union",
+     "fr": "En évaluation dans l\\u2019Union européenne",
+     "zh": "欧盟评估中"
+    },
+    "st.eu.unknown": {
+     "ar": "حالة الاتحاد الأوروبي: غير محددة",
+     "en": "EU status: undetermined",
+     "fr": "Statut UE : indéterminé",
+     "zh": "欧盟状态：未确定"
+    }
+   }
+  },
+  "epa": {
+   "title": {
+    "ar": "الولايات المتحدة — EPA Master (PPIS)",
+    "en": "United States — EPA Master (PPIS)",
+    "fr": "États-Unis — EPA Master (PPIS)",
+    "zh": "美国 — EPA Master (PPIS)"
+   },
+   "exports": [
+    "data/epa.json",
+    "data/epa-cancelled.json"
+   ],
+   "rows": 2786,
+   "guide": {
+    "ar": "EPA Master (PPIS) — نص ورقة حالة التسجيل",
+    "en": "EPA Master (PPIS) — the registration-state sheet text, verbatim."
+   },
+   "categories": {},
+   "unexplainedCodes": [],
+   "shapes": [],
+   "categorylessRows": 2786,
+   "categorylessNote": "تصدير PPIS لا يحمل عمود تصنيف وظيفي.",
+   "mergeRules": null,
+   "statusCodes": {
+    "مسموح": {
+     "forms": [
+      "له تسجيل نشط واحد على الأقل",
+      "Active"
+     ],
+     "i18nKey": "st.epa.registered",
+     "explained": true,
+     "source": "EPA Master (PPIS) — نص ورقة حالة التسجيل",
+     "meaning": {
+      "ar": "له تسجيل نشط واحد على الأقل لدى الوكالة (EPA Master)",
+      "en": "Has at least one active registration with the US EPA (EPA Master)",
+      "fr": "Au moins une homologation active auprès de l’agence américaine (EPA Master)",
+      "zh": "在美国环保署至少有一项有效注册（EPA Master）"
+     },
+     "note": "عمود status في تصديرنا محسوب من ورقة PPIS: registrations نشطة."
+    },
+    "محظور": {
+     "forms": [
+      "كل تسجيلاته ملغاة",
+      "Inactive"
+     ],
+     "i18nKey": "st.epa.cancelled",
+     "explained": true,
+     "source": "EPA Master (PPIS) — نص ورقة حالة التسجيل",
+     "meaning": {
+      "ar": "ملغى التسجيل لدى الوكالة (قد يكون بطلب الشركة — لا يعني بالضرورة حظرًا)",
+      "en": "Registration cancelled with the EPA (possibly at company request — not necessarily a ban)",
+      "fr": "Homologation annulée (possiblement à la demande de la société — pas nécessairement une interdiction)",
+      "zh": "注册已取消（可能是公司申请——不一定意味着禁用）"
+     },
+     "note": "صفوف أرشيف الإلغاء: كل تسجيلاتها ملغاة (كهرماني لا أحمر)."
+    }
+   },
+   "statusVariants": {
+    "noproduct": {
+     "forms": [],
+     "i18nKey": "st.epa.noproduct",
+     "explained": true,
+     "source": "EPA Master (PPIS) — نص ورقة حالة التسجيل — ورقة «غير مرتبط بأي منتج»",
+     "meaning": {
+      "ar": "مادة ضمن قائمة الوكالة غير مرتبطة بأي منتج مسجّل (لا حالة تسجيل معلنة)",
+      "en": "Listed by the agency but linked to no registered product (no registration state stated)",
+      "fr": "Répertoriée par l’agence mais liée à aucun produit enregistré (aucun état d’homologation déclaré)",
+      "zh": "机构在列但未关联任何注册产品（未声明注册状态）"
+     }
+    },
+    "conditional": {
+     "forms": [
+      "Conditionally"
+     ],
+     "i18nKey": "st.epa.conditional",
+     "explained": true,
+     "source": "EPA Master (PPIS) — نص ورقة حالة التسجيل",
+     "meaning": {
+      "ar": "تسجيل مشروط لدى وكالة حماية البيئة الأمريكية",
+      "en": "Conditionally registered with the US EPA",
+      "fr": "Homologation conditionnelle auprès de l\\u2019agence américaine",
+      "zh": "在美国环保署有条件注册"
+     }
+    },
+    "mixed": {
+     "forms": [],
+     "i18nKey": "st.epa.mixed",
+     "explained": true,
+     "source": "EPA Master (PPIS) — نص ورقة حالة التسجيل — قائمة حالات متعددة في النص",
+     "meaning": {
+      "ar": "تسجيلات متعددة الحالات لدى الوكالة (انظر النص الأصلي)",
+      "en": "Multiple registration states with the EPA (see source text)",
+      "fr": "États d\\u2019homologation multiples (voir le texte source)",
+      "zh": "在环保署存在多种注册状态（见原文）"
+     }
+    },
+    "rup": {
+     "forms": [],
+     "i18nKey": "st.epa.rup.note",
+     "explained": true,
+     "source": "EPA Master (PPIS) — نص ورقة حالة التسجيل — عمود rup_active",
+     "meaning": {
+      "ar": "استخدام مقيد (للمرخّصين فقط)",
+      "en": "Restricted use (certified applicators only)",
+      "fr": "Usage restreint (applicateurs certifiés uniquement)",
+      "zh": "限制使用（仅限持证施药者）"
+     }
+    },
+    "noProductSheet": {
+     "forms": [
+      "غير مرتبط بأي منتج في formula.txt/product.txt"
+     ],
+     "i18nKey": "st.epa.noproduct",
+     "explained": true,
+     "source": "EPA Master (PPIS) — نص ورقة حالة التسجيل — ورقة «غير مرتبط بأي منتج»",
+     "meaning": {
+      "ar": "مادة ضمن قائمة الوكالة غير مرتبطة بأي منتج مسجّل (لا حالة تسجيل معلنة)",
+      "en": "Listed by the agency but linked to no registered product (no registration state stated)",
+      "fr": "Répertoriée par l’agence mais liée à aucun produit enregistré (aucun état d’homologation déclaré)",
+      "zh": "机构在列但未关联任何注册产品（未声明注册状态）"
+     }
+    },
+    "printOnly": {
+     "forms": [
+      "status"
+     ],
+     "explained": false,
+     "source": "EPA Master (PPIS) — نص ورقة حالة التسجيل — عمود status في تصديرنا",
+     "note": "عمود status في تصديرنا محسوب من ورقة التسجيل لا منقول: لا نصّ مستقل له."
+    }
+   },
+   "statusExplanationNote": "كهرماني للإلغاء لا أحمر: الأحمر لقرار 248 وحده.",
+   "texts": {
+    "st.epa.cancelled": {
+     "ar": "ملغى التسجيل لدى الوكالة (قد يكون بطلب الشركة — لا يعني بالضرورة حظرًا)",
+     "en": "Registration cancelled with the EPA (possibly at company request — not necessarily a ban)",
+     "fr": "Homologation annulée (possiblement à la demande de la société — pas nécessairement une interdiction)",
+     "zh": "注册已取消（可能是公司申请——不一定意味着禁用）"
+    },
+    "st.epa.conditional": {
+     "ar": "تسجيل مشروط لدى وكالة حماية البيئة الأمريكية",
+     "en": "Conditionally registered with the US EPA",
+     "fr": "Homologation conditionnelle auprès de l\\u2019agence américaine",
+     "zh": "在美国环保署有条件注册"
+    },
+    "st.epa.mixed": {
+     "ar": "تسجيلات متعددة الحالات لدى الوكالة (انظر النص الأصلي)",
+     "en": "Multiple registration states with the EPA (see source text)",
+     "fr": "États d\\u2019homologation multiples (voir le texte source)",
+     "zh": "在环保署存在多种注册状态（见原文）"
+    },
+    "st.epa.noproduct": {
+     "ar": "مادة ضمن قائمة الوكالة غير مرتبطة بأي منتج مسجّل (لا حالة تسجيل معلنة)",
+     "en": "Listed by the agency but linked to no registered product (no registration state stated)",
+     "fr": "Répertoriée par l’agence mais liée à aucun produit enregistré (aucun état d’homologation déclaré)",
+     "zh": "机构在列但未关联任何注册产品（未声明注册状态）"
+    },
+    "st.epa.registered": {
+     "ar": "له تسجيل نشط واحد على الأقل لدى الوكالة (EPA Master)",
+     "en": "Has at least one active registration with the US EPA (EPA Master)",
+     "fr": "Au moins une homologation active auprès de l’agence américaine (EPA Master)",
+     "zh": "在美国环保署至少有一项有效注册（EPA Master）"
+    },
+    "st.epa.rup.note": {
+     "ar": "استخدام مقيد (للمرخّصين فقط)",
+     "en": "Restricted use (certified applicators only)",
+     "fr": "Usage restreint (applicateurs certifiés uniquement)",
+     "zh": "限制使用（仅限持证施药者）"
+    }
+   }
+  },
+  "canada": {
+   "title": {
+    "ar": "كندا — سجل المبيدات الوطني (PMRA)",
+    "en": "Canada — Pest Management Regulatory Agency (PMRA)",
+    "fr": "Canada — Agence de gestion des pesticides (PMRA)",
+    "zh": "加拿大 — 农药管理管理局 (PMRA)"
+   },
+   "exports": [
+    "data-optional/canada.json"
+   ],
+   "rows": 1311,
+   "guide": {
+    "ar": "واجهة PMRA الرسمية — حقل منطقي YES/NO بلا نص دليل",
+    "en": "PMRA official API — the YES/NO boolean field, no guide prose."
+   },
+   "categories": {},
+   "unexplainedCodes": [],
+   "shapes": [],
+   "categorylessRows": 1311,
+   "categorylessNote": "تصدير PMRA لا يحمل عمود تصنيف وظيفي.",
+   "mergeRules": null,
+   "statusCodes": {
+    "غير مُعاد التقييم": {
+     "forms": [
+      "YES",
+      "NO"
+     ],
+     "explained": false,
+     "source": "واجهة PMRA الرسمية — تقدّم منطقي لا حالة قانونية",
+     "note": "لا نص دليل في المستودع ولا في الواجهة؛ تبقى الحالة القائمة «حالة غير محددة» — لا معنى مختلَق."
+    }
+   },
+   "statusExplanationNote": "بلا شرح: الواجهة تعطي منطقيًا فقط.",
+   "texts": {}
+  },
+  "australia": {
+   "title": {
+    "ar": "أستراليا — APVMA / PUBCRIS",
+    "en": "Australia — APVMA / PUBCRIS",
+    "fr": "Australie — APVMA / PUBCRIS",
+    "zh": "澳大利亚 — APVMA / PUBCRIS"
+   },
+   "exports": [
+    "data-optional/australia.json"
+   ],
+   "rows": 2695,
+   "guide": {
+    "ar": "تصدير PUBCRIS — عمود مجموعات المنتجات وعمود Status",
+    "en": "PUBCRIS export — the product-group column and the Status column."
+   },
+   "categories": {
+    "A - Agricultural": {
+     "shapes": [
+      "A - Agricultural"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "ACTIVE CONSTITUENT": {
+     "shapes": [
+      "ACTIVE CONSTITUENT"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "ADJUVANT": {
+     "shapes": [
+      "ADJUVANT"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "ALGICIDE": {
+     "shapes": [
+      "ALGICIDE"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "ALIMENTARY": {
+     "shapes": [
+      "ALIMENTARY"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "ALIMENTARY SYSTEM": {
+     "shapes": [
+      "ALIMENTARY SYSTEM"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "ANABOLIC HORMONE": {
+     "shapes": [
+      "ANABOLIC HORMONE"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "ANAESTHETICS": {
+     "shapes": [
+      "ANAESTHETICS"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "ANALGESIC": {
+     "shapes": [
+      "ANALGESIC"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "ANALGESICS": {
+     "shapes": [
+      "ANALGESICS"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "ANTI-HISTAMINE": {
+     "shapes": [
+      "ANTI-HISTAMINE"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "ANTI-NEOPLASTIC AGENT": {
+     "shapes": [
+      "ANTI-NEOPLASTIC AGENT"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "ANTIBIOTIC": {
+     "shapes": [
+      "ANTIBIOTIC"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "ANTIBIOTIC & RELATED": {
+     "shapes": [
+      "ANTIBIOTIC & RELATED"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "ANTIDOTES": {
+     "shapes": [
+      "ANTIDOTES"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "ANTIFOULING": {
+     "shapes": [
+      "ANTIFOULING"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "ANTIHISTAMINE": {
+     "shapes": [
+      "ANTIHISTAMINE"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "ANTIHISTAMINES": {
+     "shapes": [
+      "ANTIHISTAMINES"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "ANTIPRURITIC": {
+     "shapes": [
+      "ANTIPRURITIC"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "BRANDING SUBSTANCE": {
+     "shapes": [
+      "BRANDING SUBSTANCE"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "CARDIOVASCULAR SYSTEM": {
+     "shapes": [
+      "CARDIOVASCULAR SYSTEM"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "CENTRAL NERVOUS SYSTEM": {
+     "shapes": [
+      "CENTRAL NERVOUS SYSTEM"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "DAIRY CLEANSER": {
+     "shapes": [
+      "DAIRY CLEANSER"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "DERMAL": {
+     "shapes": [
+      "DERMAL"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "DERMATOLOGICAL PREPS.": {
+     "shapes": [
+      "DERMATOLOGICAL PREPS."
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "DIAGNOSTIC AGENTS": {
+     "shapes": [
+      "DIAGNOSTIC AGENTS"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "DISINFECTANT": {
+     "shapes": [
+      "DISINFECTANT"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "DRESSING)": {
+     "shapes": [
+      "DRESSING)"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "EAR": {
+     "shapes": [
+      "EAR"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "ENDOCRINE": {
+     "shapes": [
+      "ENDOCRINE"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "ENDOCRINE SYSTEM": {
+     "shapes": [
+      "ENDOCRINE SYSTEM"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "EQUIP DISINFECTANT": {
+     "shapes": [
+      "EQUIP DISINFECTANT"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "EUTHANASIATES": {
+     "shapes": [
+      "EUTHANASIATES"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "FUNGICIDE": {
+     "shapes": [
+      "FUNGICIDE"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "GENITOURINARY": {
+     "shapes": [
+      "GENITOURINARY"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "GENITOURINARY SYSTEM": {
+     "shapes": [
+      "GENITOURINARY SYSTEM"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "GROWTH PROMOTER": {
+     "shapes": [
+      "GROWTH PROMOTER"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "GROWTH REGULATOR": {
+     "shapes": [
+      "GROWTH REGULATOR"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "HERBICIDE": {
+     "shapes": [
+      "HERBICIDE"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "HORMONE": {
+     "shapes": [
+      "HORMONE"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "HOUSEHOLD INSECTICIDE": {
+     "shapes": [
+      "HOUSEHOLD INSECTICIDE"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "IMMUNO": {
+     "shapes": [
+      "IMMUNO"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "IMMUNOTHERAPY": {
+     "shapes": [
+      "IMMUNOTHERAPY"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "INSECTICIDE": {
+     "shapes": [
+      "INSECTICIDE"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "LOTION": {
+     "shapes": [
+      "LOTION"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "MARKER": {
+     "shapes": [
+      "MARKER"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "MEDICATED SHAMPOO": {
+     "shapes": [
+      "MEDICATED SHAMPOO"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "MICROBIOCIDE": {
+     "shapes": [
+      "MICROBIOCIDE"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "MISCELLANEOUS": {
+     "shapes": [
+      "MISCELLANEOUS"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "MISCELLANEOUS VETERINARY": {
+     "shapes": [
+      "MISCELLANEOUS VETERINARY"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "MITICIDE": {
+     "shapes": [
+      "MITICIDE"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "MIXED FUNCTION PESTICIDE": {
+     "shapes": [
+      "MIXED FUNCTION PESTICIDE"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "MIXED FUNCTION SEED TREAT": {
+     "shapes": [
+      "MIXED FUNCTION SEED TREAT"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "MOLLUSCICIDE": {
+     "shapes": [
+      "MOLLUSCICIDE"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "MUSCULOSKELETAL": {
+     "shapes": [
+      "MUSCULOSKELETAL"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "MUSCULOSKELETAL SYSTEM": {
+     "shapes": [
+      "MUSCULOSKELETAL SYSTEM"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "NASO PHARYNGEAL": {
+     "shapes": [
+      "NASO PHARYNGEAL"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "NATURAL HEALTH PRODUCT": {
+     "shapes": [
+      "NATURAL HEALTH PRODUCT"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "NEMATICIDE": {
+     "shapes": [
+      "NEMATICIDE"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "NUTRITION": {
+     "shapes": [
+      "NUTRITION"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "NUTRITION & METABOLISM": {
+     "shapes": [
+      "NUTRITION & METABOLISM"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "NUTRITIONAL": {
+     "shapes": [
+      "NUTRITIONAL"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "ORO": {
+     "shapes": [
+      "ORO"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "PARASITE": {
+     "shapes": [
+      "PARASITE"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "PARASITICIDE": {
+     "shapes": [
+      "PARASITICIDE"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "PARASITICIDES": {
+     "shapes": [
+      "PARASITICIDES"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "PASTE": {
+     "shapes": [
+      "PASTE"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "PLANT REGULATOR": {
+     "shapes": [
+      "PLANT REGULATOR"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "POOL ALGICIDE": {
+     "shapes": [
+      "POOL ALGICIDE"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "POOL CHEMICAL": {
+     "shapes": [
+      "POOL CHEMICAL"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "POOL CHLORINE": {
+     "shapes": [
+      "POOL CHLORINE"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "POOL SANITISER": {
+     "shapes": [
+      "POOL SANITISER"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "POOL SURFACTANT": {
+     "shapes": [
+      "POOL SURFACTANT"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "REPELLENT - BIRDS": {
+     "shapes": [
+      "REPELLENT - BIRDS"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "REPELLENT - DOGS ETC": {
+     "shapes": [
+      "REPELLENT - DOGS ETC"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "RESPIRATORY SYSTEM": {
+     "shapes": [
+      "RESPIRATORY SYSTEM"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "SAFENER": {
+     "shapes": [
+      "SAFENER"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "SANITISER": {
+     "shapes": [
+      "SANITISER"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "SUPPOSITORY": {
+     "shapes": [
+      "SUPPOSITORY"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "SURFACTANT": {
+     "shapes": [
+      "SURFACTANT"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "V15C": {
+     "shapes": [
+      "V15C"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "V15F VET SMALL ANI": {
+     "shapes": [
+      "V15F VET SMALL ANI"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "VERTEBRATE POISON": {
+     "shapes": [
+      "VERTEBRATE POISON"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "VM - Veterinary Medicine": {
+     "shapes": [
+      "VM - Veterinary Medicine"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "WEIGHT CONTROL": {
+     "shapes": [
+      "WEIGHT CONTROL"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "WETTING AGENT": {
+     "shapes": [
+      "WETTING AGENT"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    },
+    "WOOD PRESERVATIVE": {
+     "shapes": [
+      "WOOD PRESERVATIVE"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود مجموعة المنتجات",
+     "note": "عمود مجموعة المنتجات في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ يُعرض حرفيًا ولا يُفسَّر."
+    }
+   },
+   "shapes": [
+    "A - Agricultural",
+    "A - Agricultural / ACTIVE CONSTITUENT / FUNGICIDE",
+    "A - Agricultural / ACTIVE CONSTITUENT / HOUSEHOLD INSECTICIDE",
+    "A - Agricultural / ACTIVE CONSTITUENT / MUSCULOSKELETAL SYSTEM",
+    "A - Agricultural / ACTIVE CONSTITUENT / REPELLENT - BIRDS",
+    "A - Agricultural / ALGICIDE / FUNGICIDE",
+    "A - Agricultural / DAIRY CLEANSER / DISINFECTANT",
+    "A - Agricultural / DERMATOLOGICAL PREPS. / DRESSING)",
+    "A - Agricultural / HERBICIDE / REPELLENT - BIRDS",
+    "A - Agricultural / HOUSEHOLD INSECTICIDE",
+    "A - Agricultural / HOUSEHOLD INSECTICIDE / INSECTICIDE",
+    "A - Agricultural / HOUSEHOLD INSECTICIDE / LOTION",
+    "A - Agricultural / MIXED FUNCTION PESTICIDE / NUTRITION & METABOLISM",
+    "A - Agricultural / PASTE",
+    "ACTIVE CONSTITUENT",
+    "ACTIVE CONSTITUENT / ADJUVANT",
+    "ACTIVE CONSTITUENT / ALGICIDE / ANTIFOULING",
+    "ACTIVE CONSTITUENT / ALGICIDE / HERBICIDE",
+    "ACTIVE CONSTITUENT / ALGICIDE / INSECTICIDE",
+    "ACTIVE CONSTITUENT / ALGICIDE / POOL ALGICIDE",
+    "ACTIVE CONSTITUENT / ALIMENTARY + ANTIBIOTIC / ALIMENTARY SYSTEM",
+    "ACTIVE CONSTITUENT / ALIMENTARY SYSTEM",
+    "ACTIVE CONSTITUENT / ALIMENTARY SYSTEM / ANTIBIOTIC & RELATED",
+    "ACTIVE CONSTITUENT / ALIMENTARY SYSTEM / DISINFECTANT",
+    "ACTIVE CONSTITUENT / ALIMENTARY SYSTEM / GENITOURINARY SYSTEM",
+    "ACTIVE CONSTITUENT / ALIMENTARY SYSTEM / NUTRITION & METABOLISM",
+    "ACTIVE CONSTITUENT / ALIMENTARY SYSTEM / VM - Veterinary Medicine",
+    "ACTIVE CONSTITUENT / ANABOLIC HORMONE",
+    "ACTIVE CONSTITUENT / ANAESTHETICS/ANALGESICS",
+    "ACTIVE CONSTITUENT / ANAESTHETICS/ANALGESICS / ANALGESIC+MUSCULOSKELETAL",
+    "ACTIVE CONSTITUENT / ANAESTHETICS/ANALGESICS / ANTIBIOTIC & RELATED",
+    "ACTIVE CONSTITUENT / ANAESTHETICS/ANALGESICS / CENTRAL NERVOUS SYSTEM",
+    "ACTIVE CONSTITUENT / ANAESTHETICS/ANALGESICS / DERMATOLOGICAL PREPS.",
+    "ACTIVE CONSTITUENT / ANAESTHETICS/ANALGESICS / EUTHANASIATES",
+    "ACTIVE CONSTITUENT / ANAESTHETICS/ANALGESICS / HERBICIDE",
+    "ACTIVE CONSTITUENT / ANAESTHETICS/ANALGESICS / ORO/NASO PHARYNGEAL",
+    "ACTIVE CONSTITUENT / ANAESTHETICS/ANALGESICS / PASTE",
+    "ACTIVE CONSTITUENT / ANALGESIC+MUSCULOSKELETAL",
+    "ACTIVE CONSTITUENT / ANALGESIC+MUSCULOSKELETAL / MUSCULOSKELETAL SYSTEM",
+    "ACTIVE CONSTITUENT / ANTI-HISTAMINE / ANTIHISTAMINE + ENDOCRINE",
+    "ACTIVE CONSTITUENT / ANTI-NEOPLASTIC AGENT",
+    "ACTIVE CONSTITUENT / ANTIBIOTIC & RELATED",
+    "ACTIVE CONSTITUENT / ANTIBIOTIC & RELATED / DERMATOLOGICAL PREPS.",
+    "ACTIVE CONSTITUENT / ANTIBIOTIC & RELATED / EAR",
+    "ACTIVE CONSTITUENT / ANTIBIOTIC & RELATED / MUSCULOSKELETAL SYSTEM",
+    "ACTIVE CONSTITUENT / ANTIBIOTIC & RELATED / ORO",
+    "ACTIVE CONSTITUENT / ANTIBIOTIC & RELATED / ORO/NASO PHARYNGEAL",
+    "ACTIVE CONSTITUENT / ANTIBIOTIC & RELATED / PASTE",
+    "ACTIVE CONSTITUENT / ANTIBIOTIC & RELATED / RESPIRATORY SYSTEM",
+    "ACTIVE CONSTITUENT / ANTIBIOTIC & RELATED / VM - Veterinary Medicine",
+    "ACTIVE CONSTITUENT / ANTIBIOTIC+GENITOURINARY",
+    "ACTIVE CONSTITUENT / ANTIDOTES",
+    "ACTIVE CONSTITUENT / ANTIFOULING",
+    "ACTIVE CONSTITUENT / ANTIFOULING / FUNGICIDE",
+    "ACTIVE CONSTITUENT / ANTIFOULING / MIXED FUNCTION PESTICIDE",
+    "ACTIVE CONSTITUENT / ANTIHISTAMINE + ENDOCRINE / DERMATOLOGICAL PREPS.",
+    "ACTIVE CONSTITUENT / ANTIPRURITIC",
+    "ACTIVE CONSTITUENT / CARDIOVASCULAR SYSTEM",
+    "ACTIVE CONSTITUENT / CARDIOVASCULAR SYSTEM / ENDOCRINE + NUTRITIONAL",
+    "ACTIVE CONSTITUENT / CARDIOVASCULAR SYSTEM / HERBICIDE",
+    "ACTIVE CONSTITUENT / CARDIOVASCULAR SYSTEM / NUTRITION & METABOLISM",
+    "ACTIVE CONSTITUENT / CARDIOVASCULAR SYSTEM / VM - Veterinary Medicine",
+    "ACTIVE CONSTITUENT / CENTRAL NERVOUS SYSTEM",
+    "ACTIVE CONSTITUENT / CENTRAL NERVOUS SYSTEM / VM - Veterinary Medicine",
+    "ACTIVE CONSTITUENT / DERMATOLOGICAL PREPS.",
+    "ACTIVE CONSTITUENT / DERMATOLOGICAL PREPS. / DISINFECTANT",
+    "ACTIVE CONSTITUENT / DERMATOLOGICAL PREPS. / DRESSING)",
+    "ACTIVE CONSTITUENT / DERMATOLOGICAL PREPS. / EAR",
+    "ACTIVE CONSTITUENT / DERMATOLOGICAL PREPS. / HERBICIDE",
+    "ACTIVE CONSTITUENT / DERMATOLOGICAL PREPS. / HOUSEHOLD INSECTICIDE",
+    "ACTIVE CONSTITUENT / DERMATOLOGICAL PREPS. / IMMUNOTHERAPY",
+    "ACTIVE CONSTITUENT / DERMATOLOGICAL PREPS. / INSECTICIDE",
+    "ACTIVE CONSTITUENT / DERMATOLOGICAL PREPS. / MUSCULOSKELETAL SYSTEM",
+    "ACTIVE CONSTITUENT / DERMATOLOGICAL PREPS. / ORO",
+    "ACTIVE CONSTITUENT / DERMATOLOGICAL PREPS. / ORO/NASO PHARYNGEAL",
+    "ACTIVE CONSTITUENT / DERMATOLOGICAL PREPS. / PASTE",
+    "ACTIVE CONSTITUENT / DERMATOLOGICAL PREPS. / SURFACTANT",
+    "ACTIVE CONSTITUENT / DRESSING) / HOUSEHOLD INSECTICIDE",
+    "ACTIVE CONSTITUENT / EAR",
+    "ACTIVE CONSTITUENT / EAR / HOUSEHOLD INSECTICIDE",
+    "ACTIVE CONSTITUENT / ENDOCRINE + NUTRITIONAL",
+    "ACTIVE CONSTITUENT / ENDOCRINE + NUTRITIONAL / NUTRITION & METABOLISM",
+    "ACTIVE CONSTITUENT / ENDOCRINE + NUTRITIONAL / VM - Veterinary Medicine",
+    "ACTIVE CONSTITUENT / ENDOCRINE SYSTEM",
+    "ACTIVE CONSTITUENT / ENDOCRINE SYSTEM / IMMUNOTHERAPY",
+    "ACTIVE CONSTITUENT / ENDOCRINE SYSTEM / PASTE",
+    "ACTIVE CONSTITUENT / ENDOCRINE SYSTEM / VM - Veterinary Medicine",
+    "ACTIVE CONSTITUENT / FUNGICIDE",
+    "ACTIVE CONSTITUENT / FUNGICIDE / HERBICIDE",
+    "ACTIVE CONSTITUENT / FUNGICIDE / HOUSEHOLD INSECTICIDE",
+    "ACTIVE CONSTITUENT / FUNGICIDE / INSECTICIDE",
+    "ACTIVE CONSTITUENT / FUNGICIDE / MISCELLANEOUS",
+    "ACTIVE CONSTITUENT / FUNGICIDE / MISCELLANEOUS VETERINARY",
+    "ACTIVE CONSTITUENT / FUNGICIDE / MIXED FUNCTION PESTICIDE",
+    "ACTIVE CONSTITUENT / FUNGICIDE / MIXED FUNCTION SEED TREAT",
+    "ACTIVE CONSTITUENT / FUNGICIDE / NEMATICIDE",
+    "ACTIVE CONSTITUENT / FUNGICIDE / PARASITICIDES",
+    "ACTIVE CONSTITUENT / GENITOURINARY SYSTEM",
+    "ACTIVE CONSTITUENT / GENITOURINARY SYSTEM / MISCELLANEOUS VETERINARY",
+    "ACTIVE CONSTITUENT / GENITOURINARY SYSTEM / RESPIRATORY SYSTEM",
+    "ACTIVE CONSTITUENT / GROWTH PROMOTER / PLANT REGULATOR",
+    "ACTIVE CONSTITUENT / GROWTH REGULATOR",
+    "ACTIVE CONSTITUENT / GROWTH REGULATOR / HERBICIDE",
+    "ACTIVE CONSTITUENT / GROWTH REGULATOR / PLANT REGULATOR",
+    "ACTIVE CONSTITUENT / GROWTH REGULATOR / SUPPOSITORY",
+    "ACTIVE CONSTITUENT / HERBICIDE",
+    "ACTIVE CONSTITUENT / HERBICIDE / INSECTICIDE",
+    "ACTIVE CONSTITUENT / HERBICIDE / PLANT REGULATOR",
+    "ACTIVE CONSTITUENT / HOUSEHOLD INSECTICIDE",
+    "ACTIVE CONSTITUENT / HOUSEHOLD INSECTICIDE / INSECTICIDE",
+    "ACTIVE CONSTITUENT / HOUSEHOLD INSECTICIDE / PARASITICIDES",
+    "ACTIVE CONSTITUENT / IMMUNO+PARASITE+NUTRITION / IMMUNOTHERAPY",
+    "ACTIVE CONSTITUENT / IMMUNO+PARASITE+NUTRITION / PARASITICIDES",
+    "ACTIVE CONSTITUENT / IMMUNOTHERAPY",
+    "ACTIVE CONSTITUENT / IMMUNOTHERAPY / MISCELLANEOUS VETERINARY",
+    "ACTIVE CONSTITUENT / IMMUNOTHERAPY / NUTRITION & METABOLISM",
+    "ACTIVE CONSTITUENT / IMMUNOTHERAPY / ORO/NASO PHARYNGEAL",
+    "ACTIVE CONSTITUENT / IMMUNOTHERAPY / PARASITICIDES",
+    "ACTIVE CONSTITUENT / INSECTICIDE",
+    "ACTIVE CONSTITUENT / INSECTICIDE / MISCELLANEOUS VETERINARY",
+    "ACTIVE CONSTITUENT / INSECTICIDE / MITICIDE",
+    "ACTIVE CONSTITUENT / INSECTICIDE / MIXED FUNCTION PESTICIDE",
+    "ACTIVE CONSTITUENT / INSECTICIDE / MIXED FUNCTION SEED TREAT",
+    "ACTIVE CONSTITUENT / INSECTICIDE / PARASITICIDES",
+    "ACTIVE CONSTITUENT / INSECTICIDE / VM - Veterinary Medicine",
+    "ACTIVE CONSTITUENT / MARKER",
+    "ACTIVE CONSTITUENT / MEDICATED SHAMPOO",
+    "ACTIVE CONSTITUENT / MICROBIOCIDE",
+    "ACTIVE CONSTITUENT / MISCELLANEOUS VETERINARY",
+    "ACTIVE CONSTITUENT / MISCELLANEOUS VETERINARY / PARASITICIDES",
+    "ACTIVE CONSTITUENT / MISCELLANEOUS VETERINARY / PASTE",
+    "ACTIVE CONSTITUENT / MISCELLANEOUS VETERINARY / VM - Veterinary Medicine",
+    "ACTIVE CONSTITUENT / MITICIDE",
+    "ACTIVE CONSTITUENT / MITICIDE / VM - Veterinary Medicine",
+    "ACTIVE CONSTITUENT / MIXED FUNCTION PESTICIDE",
+    "ACTIVE CONSTITUENT / MIXED FUNCTION PESTICIDE / SUPPOSITORY",
+    "ACTIVE CONSTITUENT / MOLLUSCICIDE",
+    "ACTIVE CONSTITUENT / MUSCULOSKELETAL SYSTEM",
+    "ACTIVE CONSTITUENT / MUSCULOSKELETAL SYSTEM / NATURAL HEALTH PRODUCT",
+    "ACTIVE CONSTITUENT / MUSCULOSKELETAL SYSTEM / PASTE",
+    "ACTIVE CONSTITUENT / MUSCULOSKELETAL SYSTEM / VM - Veterinary Medicine",
+    "ACTIVE CONSTITUENT / NEMATICIDE",
+    "ACTIVE CONSTITUENT / NUTRITION & METABOLISM",
+    "ACTIVE CONSTITUENT / NUTRITION & METABOLISM / PARASITICIDES",
+    "ACTIVE CONSTITUENT / NUTRITION & METABOLISM / PLANT REGULATOR",
+    "ACTIVE CONSTITUENT / NUTRITION & METABOLISM / VERTEBRATE POISON",
+    "ACTIVE CONSTITUENT / NUTRITION & METABOLISM / VM - Veterinary Medicine",
+    "ACTIVE CONSTITUENT / ORO",
+    "ACTIVE CONSTITUENT / ORO/NASO PHARYNGEAL",
+    "ACTIVE CONSTITUENT / ORO/NASO PHARYNGEAL / PASTE",
+    "ACTIVE CONSTITUENT / PARASITICIDE+NUTRITIONAL / PARASITICIDES",
+    "ACTIVE CONSTITUENT / PARASITICIDES",
+    "ACTIVE CONSTITUENT / PARASITICIDES / POOL ALGICIDE",
+    "ACTIVE CONSTITUENT / PARASITICIDES / V15C + V15F VET SMALL ANI",
+    "ACTIVE CONSTITUENT / PARASITICIDES / VM - Veterinary Medicine",
+    "ACTIVE CONSTITUENT / PASTE",
+    "ACTIVE CONSTITUENT / PASTE / VM - Veterinary Medicine",
+    "ACTIVE CONSTITUENT / PLANT REGULATOR",
+    "ACTIVE CONSTITUENT / REPELLENT - DOGS ETC",
+    "ACTIVE CONSTITUENT / RESPIRATORY SYSTEM",
+    "ACTIVE CONSTITUENT / RESPIRATORY SYSTEM / VM - Veterinary Medicine",
+    "ACTIVE CONSTITUENT / SAFENER",
+    "ACTIVE CONSTITUENT / SUPPOSITORY / VERTEBRATE POISON",
+    "ACTIVE CONSTITUENT / VERTEBRATE POISON",
+    "ACTIVE CONSTITUENT / VERTEBRATE POISON / WOOD PRESERVATIVE",
+    "ACTIVE CONSTITUENT / VM - Veterinary Medicine",
+    "ACTIVE CONSTITUENT / WEIGHT CONTROL",
+    "ACTIVE CONSTITUENT / WOOD PRESERVATIVE",
+    "ADJUVANT",
+    "ADJUVANT / ANTIFOULING / BRANDING SUBSTANCE",
+    "ADJUVANT / DAIRY CLEANSER / GROWTH REGULATOR",
+    "ADJUVANT / DAIRY CLEANSER / POOL SURFACTANT",
+    "ADJUVANT / DAIRY CLEANSER / WETTING AGENT",
+    "ADJUVANT / DERMATOLOGICAL PREPS. / PASTE",
+    "ADJUVANT / DISINFECTANT / HERBICIDE",
+    "ADJUVANT / GENITOURINARY SYSTEM / NUTRITION & METABOLISM",
+    "ADJUVANT / HERBICIDE / WETTING AGENT",
+    "ADJUVANT / HOUSEHOLD INSECTICIDE / INSECTICIDE",
+    "ADJUVANT / HOUSEHOLD INSECTICIDE / WETTING AGENT",
+    "ADJUVANT / INSECTICIDE / REPELLENT - DOGS ETC",
+    "ADJUVANT / INSECTICIDE / SURFACTANT",
+    "ADJUVANT / INSECTICIDE / WETTING AGENT",
+    "ADJUVANT / MARKER",
+    "ADJUVANT / PASTE",
+    "ADJUVANT / PLANT REGULATOR",
+    "ADJUVANT / SURFACTANT",
+    "ADJUVANT / SURFACTANT / WETTING AGENT",
+    "ADJUVANT / VM - Veterinary Medicine",
+    "ADJUVANT / WETTING AGENT",
+    "ALGICIDE",
+    "ALGICIDE / ANTIBIOTIC & RELATED / DERMATOLOGICAL PREPS.",
+    "ALGICIDE / DAIRY CLEANSER / DERMATOLOGICAL PREPS.",
+    "ALGICIDE / DAIRY CLEANSER / DISINFECTANT",
+    "ALGICIDE / DAIRY CLEANSER / MICROBIOCIDE",
+    "ALGICIDE / DAIRY CLEANSER / POOL ALGICIDE",
+    "ALGICIDE / DERMATOLOGICAL PREPS. / DISINFECTANT",
+    "ALGICIDE / DISINFECTANT",
+    "ALGICIDE / FUNGICIDE",
+    "ALGICIDE / MOLLUSCICIDE / NUTRITION & METABOLISM",
+    "ALGICIDE / POOL ALGICIDE",
+    "ALGICIDE / POOL ALGICIDE / POOL CHLORINE",
+    "ALGICIDE / POOL CHEMICAL / POOL CHLORINE",
+    "ALGICIDE / POOL CHLORINE",
+    "ALGICIDE / POOL CHLORINE / SUPPOSITORY",
+    "ALGICIDE / SUPPOSITORY",
+    "ALIMENTARY + ANTIBIOTIC / ALIMENTARY SYSTEM / ANTIBIOTIC & RELATED",
+    "ALIMENTARY + ANTIBIOTIC / ALIMENTARY SYSTEM / VM - Veterinary Medicine",
+    "ALIMENTARY SYSTEM",
+    "ALIMENTARY SYSTEM / DAIRY CLEANSER",
+    "ALIMENTARY SYSTEM / ENDOCRINE + NUTRITIONAL / NUTRITION & METABOLISM",
+    "ALIMENTARY SYSTEM / MUSCULOSKELETAL SYSTEM / PASTE",
+    "ALIMENTARY SYSTEM / NUTRITION & METABOLISM",
+    "ALIMENTARY SYSTEM / NUTRITION & METABOLISM / VM - Veterinary Medicine",
+    "ALIMENTARY SYSTEM / PASTE / SURFACTANT",
+    "ALIMENTARY SYSTEM / VM - Veterinary Medicine",
+    "ANAESTHETICS/ANALGESICS",
+    "ANAESTHETICS/ANALGESICS / ANALGESIC+MUSCULOSKELETAL",
+    "ANAESTHETICS/ANALGESICS / ANALGESIC+MUSCULOSKELETAL / ANTIBIOTIC & RELATED",
+    "ANAESTHETICS/ANALGESICS / PASTE",
+    "ANALGESIC+MUSCULOSKELETAL / CENTRAL NERVOUS SYSTEM",
+    "ANTIBIOTIC & RELATED",
+    "ANTIBIOTIC & RELATED / DERMATOLOGICAL PREPS. / ORO/NASO PHARYNGEAL",
+    "ANTIBIOTIC & RELATED / DERMATOLOGICAL PREPS. / PARASITICIDES",
+    "ANTIBIOTIC & RELATED / DERMATOLOGICAL PREPS. / VM - Veterinary Medicine",
+    "ANTIBIOTIC & RELATED / ORO/NASO PHARYNGEAL / PASTE",
+    "ANTIBIOTIC & RELATED / VM - Veterinary Medicine",
+    "ANTIBIOTIC+GENITOURINARY",
+    "ANTIFOULING",
+    "ANTIFOULING / FUNGICIDE",
+    "ANTIFOULING / FUNGICIDE / HERBICIDE",
+    "ANTIFOULING / FUNGICIDE / INSECTICIDE",
+    "ANTIFOULING / HERBICIDE / INSECTICIDE",
+    "ANTIFOULING / HERBICIDE / WETTING AGENT",
+    "ANTIHISTAMINES",
+    "ANTIHISTAMINES / ENDOCRINE SYSTEM",
+    "ANTIPRURITIC",
+    "BRANDING SUBSTANCE",
+    "CENTRAL NERVOUS SYSTEM",
+    "CENTRAL NERVOUS SYSTEM / MISCELLANEOUS VETERINARY",
+    "CENTRAL NERVOUS SYSTEM / VM - Veterinary Medicine",
+    "DAIRY CLEANSER",
+    "DAIRY CLEANSER / DERMATOLOGICAL PREPS. / DISINFECTANT",
+    "DAIRY CLEANSER / DISINFECTANT / SUPPOSITORY",
+    "DAIRY CLEANSER / MIXED FUNCTION PESTICIDE / SURFACTANT",
+    "DAIRY CLEANSER / POOL CHEMICAL",
+    "DAIRY CLEANSER / POOL SURFACTANT / SURFACTANT",
+    "DAIRY CLEANSER / SANITISER",
+    "DERMAL+EQUIP DISINFECTANT / DERMATOLOGICAL PREPS. / DISINFECTANT",
+    "DERMAL+EQUIP DISINFECTANT / DERMATOLOGICAL PREPS. / MISCELLANEOUS VETERINARY",
+    "DERMATOLOGICAL PREPS.",
+    "DERMATOLOGICAL PREPS. / DISINFECTANT",
+    "DERMATOLOGICAL PREPS. / DISINFECTANT / FUNGICIDE",
+    "DERMATOLOGICAL PREPS. / DISINFECTANT / IMMUNOTHERAPY",
+    "DERMATOLOGICAL PREPS. / DISINFECTANT / PARASITICIDES",
+    "DERMATOLOGICAL PREPS. / DISINFECTANT / PASTE",
+    "DERMATOLOGICAL PREPS. / EAR / HOUSEHOLD INSECTICIDE",
+    "DERMATOLOGICAL PREPS. / HOUSEHOLD INSECTICIDE / INSECTICIDE",
+    "DERMATOLOGICAL PREPS. / IMMUNOTHERAPY",
+    "DERMATOLOGICAL PREPS. / PARASITICIDES",
+    "DERMATOLOGICAL PREPS. / PASTE",
+    "DERMATOLOGICAL PREPS. / PASTE / SANITISER",
+    "DERMATOLOGICAL PREPS. / VM - Veterinary Medicine",
+    "DIAGNOSTIC AGENTS",
+    "DIAGNOSTIC AGENTS / IMMUNOTHERAPY",
+    "DISINFECTANT",
+    "DISINFECTANT / FUNGICIDE",
+    "DISINFECTANT / FUNGICIDE / MICROBIOCIDE",
+    "DISINFECTANT / FUNGICIDE / MIXED FUNCTION PESTICIDE",
+    "DISINFECTANT / FUNGICIDE / SANITISER",
+    "DISINFECTANT / IMMUNOTHERAPY / PASTE",
+    "DISINFECTANT / INSECTICIDE",
+    "DISINFECTANT / NUTRITION & METABOLISM / PASTE",
+    "DISINFECTANT / ORO / PASTE",
+    "DISINFECTANT / SUPPOSITORY",
+    "DRESSING) / HOUSEHOLD INSECTICIDE / PARASITICIDES",
+    "ENDOCRINE + NUTRITIONAL / NUTRITION & METABOLISM / VERTEBRATE POISON",
+    "ENDOCRINE + NUTRITIONAL / NUTRITION & METABOLISM / VM - Veterinary Medicine",
+    "ENDOCRINE SYSTEM",
+    "ENDOCRINE SYSTEM / IMMUNO+PARASITE+NUTRITION / IMMUNOTHERAPY",
+    "ENDOCRINE SYSTEM / MUSCULOSKELETAL SYSTEM",
+    "ENDOCRINE SYSTEM / VM - Veterinary Medicine",
+    "EUTHANASIATES",
+    "FUNGICIDE",
+    "FUNGICIDE / HERBICIDE",
+    "FUNGICIDE / HERBICIDE / HOUSEHOLD INSECTICIDE",
+    "FUNGICIDE / HERBICIDE / INSECTICIDE",
+    "FUNGICIDE / HERBICIDE / PLANT REGULATOR",
+    "FUNGICIDE / HOUSEHOLD INSECTICIDE / INSECTICIDE",
+    "FUNGICIDE / INSECTICIDE",
+    "FUNGICIDE / MITICIDE",
+    "FUNGICIDE / MIXED FUNCTION PESTICIDE",
+    "FUNGICIDE / MIXED FUNCTION PESTICIDE / VM - Veterinary Medicine",
+    "FUNGICIDE / MOLLUSCICIDE",
+    "FUNGICIDE / PARASITICIDES",
+    "FUNGICIDE / POOL ALGICIDE",
+    "GENITOURINARY SYSTEM",
+    "GENITOURINARY SYSTEM / NUTRITION & METABOLISM",
+    "GENITOURINARY SYSTEM / NUTRITION & METABOLISM / VM - Veterinary Medicine",
+    "GROWTH PROMOTER",
+    "GROWTH PROMOTER / GROWTH REGULATOR",
+    "GROWTH PROMOTER / HORMONE / PLANT REGULATOR",
+    "GROWTH PROMOTER / PLANT REGULATOR",
+    "GROWTH REGULATOR",
+    "GROWTH REGULATOR / HERBICIDE / INSECTICIDE",
+    "GROWTH REGULATOR / PLANT REGULATOR",
+    "HERBICIDE",
+    "HERBICIDE / HOUSEHOLD INSECTICIDE / INSECTICIDE",
+    "HERBICIDE / INSECTICIDE",
+    "HERBICIDE / INSECTICIDE / PASTE",
+    "HERBICIDE / MARKER",
+    "HERBICIDE / MITICIDE",
+    "HERBICIDE / MIXED FUNCTION PESTICIDE / WOOD PRESERVATIVE",
+    "HERBICIDE / PASTE",
+    "HERBICIDE / PLANT REGULATOR",
+    "HERBICIDE / SUPPOSITORY",
+    "HORMONE",
+    "HOUSEHOLD INSECTICIDE",
+    "HOUSEHOLD INSECTICIDE / INSECTICIDE",
+    "HOUSEHOLD INSECTICIDE / INSECTICIDE / MITICIDE",
+    "HOUSEHOLD INSECTICIDE / INSECTICIDE / MIXED FUNCTION PESTICIDE",
+    "HOUSEHOLD INSECTICIDE / INSECTICIDE / PARASITICIDES",
+    "HOUSEHOLD INSECTICIDE / INSECTICIDE / VM - Veterinary Medicine",
+    "HOUSEHOLD INSECTICIDE / PLANT REGULATOR",
+    "HOUSEHOLD INSECTICIDE / REPELLENT - DOGS ETC",
+    "IMMUNO+PARASITE+NUTRITION / IMMUNOTHERAPY",
+    "IMMUNO+PARASITE+NUTRITION / IMMUNOTHERAPY / PARASITICIDES",
+    "IMMUNOTHERAPY",
+    "IMMUNOTHERAPY / MISCELLANEOUS VETERINARY",
+    "IMMUNOTHERAPY / NUTRITION & METABOLISM",
+    "IMMUNOTHERAPY / NUTRITION & METABOLISM / PARASITICIDES",
+    "IMMUNOTHERAPY / ORO/NASO PHARYNGEAL",
+    "IMMUNOTHERAPY / PARASITICIDES",
+    "IMMUNOTHERAPY / VM - Veterinary Medicine",
+    "INSECTICIDE",
+    "INSECTICIDE / MARKER",
+    "INSECTICIDE / MITICIDE",
+    "INSECTICIDE / MIXED FUNCTION PESTICIDE",
+    "INSECTICIDE / MIXED FUNCTION PESTICIDE / SUPPOSITORY",
+    "INSECTICIDE / MIXED FUNCTION PESTICIDE / WOOD PRESERVATIVE",
+    "INSECTICIDE / NEMATICIDE",
+    "INSECTICIDE / NEMATICIDE / NUTRITION & METABOLISM",
+    "INSECTICIDE / PARASITICIDES",
+    "INSECTICIDE / REPELLENT - BIRDS",
+    "INSECTICIDE / REPELLENT - DOGS ETC",
+    "INSECTICIDE / VM - Veterinary Medicine",
+    "INSECTICIDE / WETTING AGENT",
+    "MARKER",
+    "MICROBIOCIDE",
+    "MICROBIOCIDE / POOL CHLORINE",
+    "MISCELLANEOUS",
+    "MISCELLANEOUS VETERINARY",
+    "MITICIDE",
+    "MIXED FUNCTION PESTICIDE",
+    "MIXED FUNCTION PESTICIDE / NUTRITION & METABOLISM / VM - Veterinary Medicine",
+    "MIXED FUNCTION PESTICIDE / POOL ALGICIDE",
+    "MIXED FUNCTION PESTICIDE / SANITISER",
+    "MIXED FUNCTION PESTICIDE / SUPPOSITORY",
+    "MIXED FUNCTION PESTICIDE / WOOD PRESERVATIVE",
+    "MIXED FUNCTION SEED TREAT",
+    "MOLLUSCICIDE",
+    "MOLLUSCICIDE / POOL ALGICIDE",
+    "MUSCULOSKELETAL SYSTEM",
+    "MUSCULOSKELETAL SYSTEM / POOL CHLORINE / SUPPOSITORY",
+    "MUSCULOSKELETAL SYSTEM / VM - Veterinary Medicine",
+    "NUTRITION & METABOLISM",
+    "NUTRITION & METABOLISM / PARASITICIDE+NUTRITIONAL / PARASITICIDES",
+    "NUTRITION & METABOLISM / PARASITICIDES",
+    "NUTRITION & METABOLISM / PARASITICIDES / VM - Veterinary Medicine",
+    "NUTRITION & METABOLISM / VM - Veterinary Medicine",
+    "ORO",
+    "ORO/NASO PHARYNGEAL",
+    "ORO/NASO PHARYNGEAL / PASTE / POOL CHLORINE",
+    "PARASITICIDE+NUTRITIONAL",
+    "PARASITICIDE+NUTRITIONAL / PARASITICIDES",
+    "PARASITICIDES",
+    "PARASITICIDES / POOL CHLORINE",
+    "PARASITICIDES / VM - Veterinary Medicine",
+    "PASTE",
+    "PASTE / VM - Veterinary Medicine",
+    "PLANT REGULATOR",
+    "POOL ALGICIDE",
+    "POOL ALGICIDE / POOL CHEMICAL",
+    "POOL CHEMICAL",
+    "POOL CHEMICAL / POOL CHLORINE / SUPPOSITORY",
+    "POOL CHLORINE",
+    "POOL CHLORINE / SUPPOSITORY",
+    "POOL SANITISER",
+    "REPELLENT - BIRDS",
+    "REPELLENT - DOGS ETC",
+    "RESPIRATORY SYSTEM",
+    "SANITISER",
+    "SUPPOSITORY",
+    "SUPPOSITORY / VERTEBRATE POISON",
+    "SURFACTANT",
+    "SURFACTANT / WETTING AGENT",
+    "VERTEBRATE POISON",
+    "VM - Veterinary Medicine",
+    "WETTING AGENT",
+    "WOOD PRESERVATIVE"
+   ],
+   "categoryColumnNote": "عمود المجموعة في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ كل شكل مذكور حرفيًا أدناه ولا يُفسَّر.",
+   "unexplainedCodes": [
+    "A - Agricultural",
+    "ACTIVE CONSTITUENT",
+    "ADJUVANT",
+    "ALGICIDE",
+    "ALIMENTARY",
+    "ALIMENTARY SYSTEM",
+    "ANABOLIC HORMONE",
+    "ANAESTHETICS",
+    "ANALGESIC",
+    "ANALGESICS",
+    "ANTI-HISTAMINE",
+    "ANTI-NEOPLASTIC AGENT",
+    "ANTIBIOTIC",
+    "ANTIBIOTIC & RELATED",
+    "ANTIDOTES",
+    "ANTIFOULING",
+    "ANTIHISTAMINE",
+    "ANTIHISTAMINES",
+    "ANTIPRURITIC",
+    "BRANDING SUBSTANCE",
+    "CARDIOVASCULAR SYSTEM",
+    "CENTRAL NERVOUS SYSTEM",
+    "DAIRY CLEANSER",
+    "DERMAL",
+    "DERMATOLOGICAL PREPS.",
+    "DIAGNOSTIC AGENTS",
+    "DISINFECTANT",
+    "DRESSING)",
+    "EAR",
+    "ENDOCRINE",
+    "ENDOCRINE SYSTEM",
+    "EQUIP DISINFECTANT",
+    "EUTHANASIATES",
+    "FUNGICIDE",
+    "GENITOURINARY",
+    "GENITOURINARY SYSTEM",
+    "GROWTH PROMOTER",
+    "GROWTH REGULATOR",
+    "HERBICIDE",
+    "HORMONE",
+    "HOUSEHOLD INSECTICIDE",
+    "IMMUNO",
+    "IMMUNOTHERAPY",
+    "INSECTICIDE",
+    "LOTION",
+    "MARKER",
+    "MEDICATED SHAMPOO",
+    "MICROBIOCIDE",
+    "MISCELLANEOUS",
+    "MISCELLANEOUS VETERINARY",
+    "MITICIDE",
+    "MIXED FUNCTION PESTICIDE",
+    "MIXED FUNCTION SEED TREAT",
+    "MOLLUSCICIDE",
+    "MUSCULOSKELETAL",
+    "MUSCULOSKELETAL SYSTEM",
+    "NASO PHARYNGEAL",
+    "NATURAL HEALTH PRODUCT",
+    "NEMATICIDE",
+    "NUTRITION",
+    "NUTRITION & METABOLISM",
+    "NUTRITIONAL",
+    "ORO",
+    "PARASITE",
+    "PARASITICIDE",
+    "PARASITICIDES",
+    "PASTE",
+    "PLANT REGULATOR",
+    "POOL ALGICIDE",
+    "POOL CHEMICAL",
+    "POOL CHLORINE",
+    "POOL SANITISER",
+    "POOL SURFACTANT",
+    "REPELLENT - BIRDS",
+    "REPELLENT - DOGS ETC",
+    "RESPIRATORY SYSTEM",
+    "SAFENER",
+    "SANITISER",
+    "SUPPOSITORY",
+    "SURFACTANT",
+    "V15C",
+    "V15F VET SMALL ANI",
+    "VERTEBRATE POISON",
+    "VM - Veterinary Medicine",
+    "WEIGHT CONTROL",
+    "WETTING AGENT",
+    "WOOD PRESERVATIVE"
+   ],
+   "categorylessRows": 26,
+   "mergeRules": null,
+   "statusCodes": {
+    "مسجَّل": {
+     "forms": [
+      "REGISTERED"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود Status",
+     "note": "تسمية من عمود التصدير؛ لا نص دليل في المستودع — تبقى الحالة القائمة «حالة غير محددة»."
+    },
+    "غير مُسجَّل": {
+     "forms": [
+      "NOT REGISTERED"
+     ],
+     "explained": false,
+     "source": "تصدير PUBCRIS — عمود Status",
+     "note": "تسمية من عمود التصدير؛ لا نص دليل في المستودع — تبقى الحالة القائمة «حالة غير محددة»."
+    }
+   },
+   "statusExplanationNote": "بلا شرح: عمود Status من التصدير بلا دليل نصي في المستودع.",
+   "texts": {}
+  }
+ }
+}

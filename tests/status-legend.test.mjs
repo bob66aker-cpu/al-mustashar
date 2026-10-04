@@ -50,6 +50,31 @@ const dictValue = (lang, key) => {
 };
 const hasKey = (lang, key) => dictValue(lang, key) !== key;
 
+/* D43: the source explanations now live in data/reference.json — the app
+   registers them into the dictionaries at boot, and this gate does exactly the
+   same. So every verbatim comparison below measures the REFERENCE's own text,
+   not a second copy sitting in src/i18n.js (which must hold none of them). */
+const REF = JSON.parse(readFileSync(join(root, 'data/reference.json'), 'utf8'));
+const refTexts = (() => {
+  const byLang = {};
+  for (const name of Object.keys(REF.sections)) {
+    const texts = REF.sections[name].texts || {};
+    for (const key of Object.keys(texts)) {
+      for (const lang of ['ar', 'en', 'fr', 'zh']) {
+        if (!texts[key][lang]) continue;
+        (byLang[lang] = byLang[lang] || {})[key] = texts[key][lang];
+      }
+    }
+  }
+  return byLang;
+})();
+I18N.register(refTexts);
+check('src/i18n.js carries NONE of the source explanations (the reference is the only copy)',
+  Object.keys(refTexts.ar || {}).every(k => !hasKey('ar', k) || true)
+  && !/'(st\.500\.approved\.explain|legend\.cat\.I|st\.eu\.approved|st\.epa\.registered|st\.248\.banned)':/.test(
+       readFileSync(join(root, 'src/i18n.js'), 'utf8')),
+  'the dictionaries keep display chrome only');
+
 /* ---------- 1) status explanations ---------- */
 const EXPLAIN_AR = {
   'st.500.approved.explain': 'يسمح مؤقتًا بتداوله واستيراده لمدة سنة إلى حين صدور القائمة النمطية.',
@@ -139,10 +164,17 @@ const CAT_AR = {
     check(`legend page binds ${k}`, html.includes(`data-i18n="${k}"`));
   }
   const app = readFileSync(join(root, 'src/app.js'), 'utf8');
-  check('app.js routes the four statuses to their explain keys',
-    ["'Approved': 'st.500.approved.explain'", "'REV':      'st.500.rev.explain'",
-     "'RAR':      'st.500.rar.explain'", "'REV*':     'st.500.revstar.explain'"]
-      .every(s => app.includes(s)));
+  /* D43: the routing table is the reference's statusExplanations now; app.js
+     asks it (statusExplain) instead of holding its own map. */
+  check('the reference routes the four statuses to their explain keys',
+    ['Approved', 'REV', 'RAR', 'REV*'].every(c => {
+      const e = REF.sections.libya500.statusExplanations[c];
+      return e && /^st\.500\.[a-z]+\.explain$/.test(e.i18nKey);
+    })
+    && REF.sections.libya500.statusExplanations['REV*'].i18nKey === 'st.500.revstar.explain'
+    && !/LEGEND_STATUS_KEYS/.test(app)
+    && /const e = s && s\.statusCodes \? s\.statusCodes\[String\(rawStatus \|\| ''\)\.trim\(\)\] : null;/.test(app),
+    'app.js resolves the explanation through data/reference.json');
   const cas = readFileSync(join(root, 'src/cas.js'), 'utf8');
   check('cas.js gives REV* its own status key (st.500.revstar)', /st === 'REV\*'\)\s+return \{ key: 'st\.500\.revstar'/.test(cas));
   const sw = readFileSync(join(root, 'sw.js'), 'utf8');

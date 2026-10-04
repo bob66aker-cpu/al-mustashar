@@ -169,7 +169,7 @@
  * Personal data (IndexedDB history, theme, app version note) lives outside
  * the caches and is never touched by this worker.
  */
-const CACHE = 'mustashar-v51';
+const CACHE = 'mustashar-v52';
 const OCR_CACHE = 'mustashar-ocr';
 
 /* 1.7 — safe cache write: a full storage quota (QuotaExceededError) must
@@ -219,7 +219,8 @@ const DATA = [
   './data/eu.json',
   './data/epa.json',
   './data/epa-cancelled.json',
-  './data/intl-alerts.json'
+  './data/intl-alerts.json',
+  './data/reference.json'   /* the display's only source of explanations + shapes */
   /* FAO/Codex removed (c5): publications are CC BY-NC-SA with unclear
    * dataset terms — no FAO/WHO data in this round. The international
    * alert layer (Rotterdam/Stockholm/PAN lists) stores links only. */

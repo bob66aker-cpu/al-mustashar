@@ -312,7 +312,7 @@ check('OCR engine carries the a3 early-confirm lock (DB-confirmed reads survive 
       && o.includes("via: 'ladder_confirm'")
       && o.includes('if (earlyLock) break;')
       && o.includes('if (!earlyLock && (exactHit || hasValidCas([...fusionCAS])))'); })());
-check('sw is v37 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v51'")
+check('sw is v37 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v52'")
   && sw5.includes("'./src/scan-live.js'")
   && sw5.includes("OCR_CACHE = 'mustashar-ocr'")
   && OCR_RUNTIME_FILES.every(f => sw5.includes(f.replace('./', '')))
@@ -767,21 +767,32 @@ check('feedback 5: the data digests and row pins are still in force',
 
 /* ---------- 1.19.7 فيدباك 6: رموز التصنيف والتعديل ---------- */
 const fb6I18n = fs.readFileSync('src/i18n.js', 'utf8');
+/* D43: every source explanation lives in data/reference.json and nowhere else —
+   src/i18n.js no longer carries a single one of them. The claims below are the
+   same claims; only the place they are read from changed. */
+const ref = JSON.parse(fs.readFileSync('data/reference.json', 'utf8'));
+const refText = (section, key, lang) => {
+  const entry = ref.sections[section].texts[key];
+  return entry ? entry[lang] : '';
+};
 /* البلاغ هنا: التسوية نها عند بحث الطلب — والمحرك يقولاً ما لا يصل، ولا عثرً معنى.
  * القاعدة: النقطة/المسافة/بلا فاصل تساوي عند بحث القاموس وحده لا يمسّ العتبارة ولا منطق قبول.
  * والتقييم نفسه: النقطة في catParts تبقى على الجدول الحرفي — ف«S.Ph» لا تنقسم إلى S + Ph. */
 check('feedback 6: the category lookup folds the separator, at the lookup only',
   /function catFold\(code\)/.test(app)
-  && /CAT_FOLD_KEYS\[catFold\(parts\[0\]\)\]/.test(app)
-  && /const CAT_FOLD_KEYS = \(\(\) =>/.test(app));
-check('feedback 6 RED LINE: a code no source explains still gets no meaning',
+  && /if \(catFold\(shapes\[j\]\) === fold\) return e;/.test(app)
+  && !/CAT_FOLD_KEYS/.test(app));check('feedback 6 RED LINE: a code no source explains still gets no meaning',
   /legend\.cat\.unknown/.test(app)
   && !/legend\.cat\.(B|I\\.Ph|Igr|R\\.S|Mi|RP)'/.test(app + fb6I18n));
 check('feedback 6: no invented meaning was added to any dictionary',
-  !/legend\.cat\.(P\\.G\\.R|Rep)'/.test(fb6I18n)
+  !/legend\.cat\.(P\.G\.R|Rep)'/.test(fb6I18n)
+  && Object.keys(ref.sections.libya500.categories).every(k => {
+    const e = ref.sections.libya500.categories[k];
+    return e.explained ? !!(e.meaning && e.source) : !e.meaning;
+  })
   && ['legend.cat.S.ph', 'legend.cat.PGR', 'legend.cat.rep', 'legend.cat.V', 'legend.cat.unknown']
-     .every(k => (fb6I18n.match(new RegExp("'" + k.replace(/\./g, '\\.') + "':", 'g')) || []).length === 4));
-check('feedback 6: the gate reads the data itself and allows only two states',
+     .every(k => (fb6I18n.match(new RegExp("'" + k.replace(/\./g, '\\.') + "':", 'g')) || []).length
+       === (k === 'legend.cat.unknown' ? 4 : 0)));check('feedback 6: the gate reads the data itself and allows only two states',
   fs.existsSync('tests/cat-legend-gate.test.mjs')
   && /DECLARED_UNEXPLAINED/.test(fs.readFileSync('tests/cat-legend-gate.test.mjs', 'utf8'))
   && /data\/libya-500\.json/.test(fs.readFileSync('tests/cat-legend-gate.test.mjs', 'utf8'))
@@ -801,17 +812,16 @@ check('feedback 6: the reported card is reproduced in both modes',
  * and 6 rows of data/libya-500.json actually carry the code.
  * The measure of "explained" is the source guide, never a self-assessment. */
 check('feedback 6 CORRECTION: V is in the explained legend, not the unexplained list',
-  /'V': 'legend\.cat\.V'/.test(app)
+  !!ref.sections.libya500.categories.V && ref.sections.libya500.categories.V.explained === true
+  && ref.sections.libya500.unexplainedCodes.indexOf('V') === -1
   && !/legend\.cat\.vnote/.test(fb6I18n)
-  && !/legend\.cat\.vnote/.test(fs.readFileSync('index.html', 'utf8')));
-check('feedback 6 CORRECTION: the V meaning is the guide wording, verbatim, in all four dictionaries',
-  (fb6I18n.match(/'legend\.cat\.V':/g) || []).length === 4
-  && /'legend\.cat\.V': '\u0641\u064a\u0631\u0648\u0633\u0627\u062a\u0020\u0623\u0648\u0020\u0643\u0627\u0626\u0646\u0627\u062a\u0020\u062f\u0642\u064a\u0642\u0629\u0020\u0645\u0643\u0627\u0641\u062d\u0629'/.test(fb6I18n)
+  && !/legend\.cat\.vnote/.test(fs.readFileSync('index.html', 'utf8')));check('feedback 6 CORRECTION: the V meaning is the guide wording, verbatim, in all four dictionaries',
+  ['ar', 'en', 'fr', 'zh'].every(l => !!refText('libya500', 'legend.cat.V', l))
+  && refText('libya500', 'legend.cat.V', 'ar') === 'فيروسات أو كائنات دقيقة مكافحة'
   && (function () {   /* the ar value must be the SAME string judge.js carries */
-    const v = (fb6I18n.match(/'legend\.cat\.V': '([^']+)'/) || [])[1] || '';
+    const v = refText('libya500', 'legend.cat.V', 'ar');
     const j = (fs.readFileSync('src/judge.js', 'utf8').match(/'V':\s*\{[^}]*ar: '([^']+)'/) || [])[1] || '';
-    return v !== '' && v === j; })());
-check('feedback 6 CORRECTION: judge.js no longer annotates V as absent from the official guide',
+    return v !== '' && v === j; })());check('feedback 6 CORRECTION: judge.js no longer annotates V as absent from the official guide',
   !/note: '\u062a\u0639\u0631\u064a\u0641\u0020\u0627\u0644\u0645\u0644\u0641\u0020\u0627\u0644\u0631\u0642\u0645\u064a/.test(fs.readFileSync('src/judge.js', 'utf8')));
 check('feedback 6 CORRECTION: the 248 guide gets no V key, because it defines no V',
   !JSON.parse(fs.readFileSync('data/libya-248.json', 'utf8')).rows
@@ -868,10 +878,10 @@ check('feedback 7: the gate covers 4 dictionaries x 2 modes and reads data/ itse
  * القاعدة الآن: الرمز الذي له سطر شرح تُNamed الشارةُ.short designationَ من الدليل
  * («قرار 500: رمز REV»)، والقوس المزدوج يسقط لأن الشارة صارت تنطق الرمز. */
 check('feedback 7: the badge no longer contradicts the explanation printed under it',
-  /'st\.500\.rev':\s*'قرار 500: رمز REV',/.test(fb6I18n)
-  && !/'st\.500\.(rev|rar|revstar|approved)':\s*'[^']*غير مفسَّر/.test(fb6I18n)
-  && /'st\.500\.unknown':\s*'[^']*غير مفسَّر/.test(fb6I18n));
-check('feedback 7: the raw code is appended only when the badge does not already name it',
+  refText('libya500', 'st.500.rev', 'ar') === 'قرار 500: رمز REV'
+  && ['st.500.rev', 'st.500.rar', 'st.500.revstar', 'st.500.approved']
+     .every(k => !/غير مفسَّر/.test(refText('libya500', k, 'ar')))
+  && /'st\.500\.unknown':\s*'[^']*غير مفسَّر/.test(fb6I18n));check('feedback 7: the raw code is appended only when the badge does not already name it',
   app.includes("const namesCode = !!d.raw && phrase.indexOf(d.raw) !== -1;")
   && app.includes("&& d.raw && !namesCode) extra = ' (' + d.raw + ')';")
   && app.includes("&& d.raw !== phrase && !namesCode) extra = ' · ' + d.raw;"));
@@ -889,9 +899,8 @@ check('feedback 8: the 248 guide adds no sentence of ours',
   && !/card\.status\.banned\.248/.test(fs.readFileSync('src/cards.js', 'utf8'))
   && !/else if \(x\.k === 'libya-248'\)/.test(fs.readFileSync('src/cards.js', 'utf8')));
 check('feedback 8: the 248 badge still carries the decree title in all four dictionaries',
-  (() => { const i = fs.readFileSync('src/i18n.js', 'utf8');
-    return (i.match(/'st\.248\.banned':/g) || []).length === 4; })());
-check('feedback 8: the only explanation branch left is the decree-500 guide',
+  ['ar', 'en', 'fr', 'zh'].every(l => !!refText('libya248', 'st.248.banned', l))
+  && /'st\.248\.banned':/.test(fb6I18n) === false);check('feedback 8: the only explanation branch left is the decree-500 guide',
   /if \(x\.k === 'libya-500'\) explain = statusExplainFull\(x\.r\.status\) \|\| '';/.test(fs.readFileSync('src/cards.js', 'utf8'))
   && (fs.readFileSync('src/cards.js', 'utf8').match(/explain = /g) || []).length === 3);
 check('feedback 8: the gates measure BOTH containers — search cards and scan cards',
@@ -912,11 +921,11 @@ check('feedback 8: the static gate reads data/ and runs the real renderer in 4 d
  * والقوس المزدوج يسقط (الشارة صارت تنطق الرمز)، ولا يُكتب نصّ مبتدع.
  * الرمز المجهول وحده يبقي على «رمز غير مفسَّر» — لأنها صادقة هناك. */
 check('the badge for an explained code names the code and claims no ignorance',
-  /'st\.500\.rev':\s*'قرار 500: رمز REV',/.test(fs.readFileSync('src/i18n.js', 'utf8'))
-  && /'st\.500\.revstar':\s*'قرار 500: رمز REV\*',/.test(fs.readFileSync('src/i18n.js', 'utf8')));
-check('no explained decree-500 badge still says "uninterpreted code"',
-  !/'st\.500\.(approved|rar|rev|revstar)':\s*'[^']*(غير مفسَّر|interprété|未解释|interpreted)/.test(fs.readFileSync('src/i18n.js', 'utf8')));
-check('the unknown code keeps the note — it is the only badge entitled to it',
+  refText('libya500', 'st.500.rev', 'ar') === 'قرار 500: رمز REV'
+  && refText('libya500', 'st.500.revstar', 'ar') === 'قرار 500: رمز REV*');check('no explained decree-500 badge still says "uninterpreted code"',
+  ['st.500.approved', 'st.500.rar', 'st.500.rev', 'st.500.revstar']
+    .every(k => ['ar', 'en', 'fr', 'zh']
+      .every(l => !/غير مفسَّر|interprété|未解释|interpreted/.test(refText('libya500', k, l)))));check('the unknown code keeps the note — it is the only badge entitled to it',
   (fs.readFileSync('src/i18n.js', 'utf8').match(/'st\.500\.unknown':/g) || []).length === 4);
 check('the ppocr-size gate declares a SKIP instead of failing on the closed lab\'s leftovers',
   /skipOne\('no optional package bytes are vendored into the repo'/.test(fs.readFileSync('tests/ppocr-size.test.mjs', 'utf8'))
@@ -935,10 +944,9 @@ check('the ppocr-size gate declares a SKIP instead of failing on the closed lab\
  * مصفوفة الفشل قِيست قبل الإصلاح حياً: 10 صفوف فاشلة من 34 (gr · Mi · FM في
  * الوضعين) ⇒ صفر بعدها. */
 check('feedback 9+10: the rendered explanation names every unexplained part',
-  /function catPartText\(part\)/.test(app)
-  && /catName\(part\) \|\| tf\('legend\.cat\.unknownNamed'/.test(app)
-  && /if \(parts\.length > 1\) return parts\.map\(catPartText\)\.join\(' \+ '\);/.test(app));
-check('feedback 9+10: the wrapper exists in all four dictionaries and invents no meaning',
+  /function catPartText\(part, sectionKey\)/.test(app)
+  && /catName\(part, sectionKey\) \|\| tf\('legend\.cat\.unknownNamed'/.test(app)
+  && /parts\.map\(p => catPartText\(p, sec\)\)\.join\(' \+ '\)/.test(app));check('feedback 9+10: the wrapper exists in all four dictionaries and invents no meaning',
   (fb6I18n.match(/'legend\.cat\.unknownNamed':/g) || []).length === 4
   && !/'legend\.cat\.(Mi|FM|gr|Igr|B)'/.test(fb6I18n)
   && /\{part\}/.test(fb6I18n));

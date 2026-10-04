@@ -39,7 +39,11 @@ if (tableBlock) {
   let m;
   while ((m = re.exec(tableBlock))) entries.push({ file: m[1], sha: m[2] });
 }
-check('the table parses to 5 entries', entries.length === 5, 'got ' + entries.length);
+/* 5 source databases + data/reference.json (the display's explanation source,
+   loaded and sha-pinned by the same loader — D43). */
+check('the table parses to 6 entries (5 databases + the reference)', entries.length === 6, 'got ' + entries.length);
+check('the reference is pinned by sha like every database',
+  entries.some(e => e.file === 'data/reference.json'));
 
 for (const e of entries) {
   const p = join(root, e.file);

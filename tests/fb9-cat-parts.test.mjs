@@ -60,21 +60,33 @@ function dictOf(lang) {
 const DICTS = Object.fromEntries(LANGS.map(l => [l, dictOf(l)]));
 for (const l of LANGS) check('dictionary ' + l + ' read out of i18n.js', DICTS[l].size > 200, String(DICTS[l].size));
 
-/* ---------- the reference table + the split rule, read out of src/app.js -- */
-const KEYS = [...app.match(/const LEGEND_CAT_KEYS = \{([\s\S]*?)\};/)[1]
-  .matchAll(/'([^']+)':\s*'legend/g)].map(m => m[1]);
+/* ---------- D43: the reference IS the table; the split rule stays pinned ---- */
+const REF = JSON.parse(readFileSync('data/reference.json', 'utf8'));
+for (const l of LANGS)
+  for (const sec of Object.values(REF.sections))
+    for (const [k, v] of Object.entries(sec.texts || {}))
+      if (v[l]) DICTS[l].set(k, v[l]);
+const CATS = REF.sections.libya500.categories;
+const KEYS = Object.keys(CATS);
 const fold = x => String(x || null).toLowerCase().replace(/[.\s]/g, '');
-const FOLDED = new Set(KEYS.map(fold));
-const known = p => KEYS.includes(p.trim()) || FOLDED.has(fold(p));
+/* exact code first, then the printed SHAPES the reference records for it —
+   the same two steps src/app.js takes (S.Ph = S Ph = SPh). */
+const entryOf = p => {
+  const key = String(p == null ? '' : p).trim();
+  if (CATS[key]) return CATS[key];
+  for (const [code, e] of Object.entries(CATS))
+    for (const sh of e.shapes || [])
+      if (fold(sh) === fold(key)) return e;
+  return null;
+};
+const known = p => !!entryOf(p);
 const catParts = c => String(c || '').trim().split(/[\/,+]/).map(p => p.trim()).filter(Boolean)
   .flatMap(p => p.includes('.') && p.split('.').every(q => known(q)) ? p.split('.').map(q => q.trim()) : [p]);
 const catName = (lang, c) => {
   const parts = catParts(c);
   if (parts.length > 1) return parts.map(p => catName(lang, p)).filter(Boolean).join(' + ');
-  const k = KEYS.includes(parts[0]) ? parts[0] : [...FOLDED].find(f => f === fold(parts[0]));
-  if (!k) return '';
-  const key = 'legend.cat.' + (KEYS.includes(parts[0]) ? parts[0] : (Object.keys(KEYS).find(x => fold(x) === fold(parts[0])) || ''));
-  return DICTS[lang].get(key) || '';
+  const e = entryOf(parts[0]);
+  return e && e.i18nKey ? (DICTS[lang].get(e.i18nKey) || '') : '';
 };
 /* the rule under test, mirrored from src/app.js catTitle (pinned below) */
 const named = (lang, part) => catName(lang, part) ||
@@ -196,9 +208,9 @@ for (const lang of LANGS) {
 
 /* ---------- 3) the rules are pinned in the source, not only in the harness */
 check('src/app.js names an unexplained part through legend.cat.unknownNamed',
-  /function catPartText\(part\)/.test(app)
-  && /catName\(part\) \|\| tf\('legend\.cat\.unknownNamed'/.test(app)
-  && /if \(parts\.length > 1\) return parts\.map\(catPartText\)\.join\(' \+ '\);/.test(app));
+  /function catPartText\(part, sectionKey\)/.test(app)
+  && /catName\(part, sectionKey\) \|\| tf\('legend\.cat\.unknownNamed'/.test(app)
+  && /parts\.map\(p => catPartText\(p, sec\)\)\.join\(' \+ '\)/.test(app));
 check('the "/" slice is never torn into separate blocks in the card',
   /* the separator set is read out, never retyped: it must be exactly / + , */
   (() => { const l = (app.match(/const CAT_HARD_SEP = .*/) || [''])[0];

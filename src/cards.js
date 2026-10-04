@@ -153,9 +153,12 @@
 
     function categoryBlock(x, ctx) {
       if (!x.r.category) return '';
+      /* the chip carries its OWN source so the tooltip resolves inside that
+         source's section of data/reference.json — never another source's. */
       var chips = String(x.r.category).split(/\n+/).filter(Boolean).map(function (c) {
-        var meaning = catTitle(c);
-        return '<span class="cat-line"><span class="cat-code" tabindex="0" role="button" data-cat="' + esc(c) + '">'
+        var meaning = catTitle(c, x.k);
+        return '<span class="cat-line"><span class="cat-code" tabindex="0" role="button" data-cat="' + esc(c)
+          + '" data-cat-src="' + esc(x.k || '') + '">'
           + esc(c) + '</span><span class="cat-meaning">' + esc(meaning || t('legend.cat.unknown', 'رمز غير مشروح في دليل هذا المصدر')) + '</span></span>';
       }).join('');
       return '<p class="match cat-block">' + t('results.source.category', 'التصنيف كما ورد في المصدر:') + '</p>'

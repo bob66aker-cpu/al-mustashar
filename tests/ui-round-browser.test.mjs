@@ -123,7 +123,11 @@ try {
     const html = fs.readFileSync(path.join(DL, files[0]), 'utf8');
     must('the report file name carries the substance and the date', /mustashar-report-Captan-\d{4}-\d{2}-\d{2}\.html/.test(files[0]), files[0]);
     must('the report contains the substance name', /Captan/.test(html));
-    must('the report contains the corrected CAS with the raw one struck', /133-06-2/.test(html) && /<s>133-06-02<\/s>/.test(html));
+    /* D42 abolished the old-copy layer, so the report carries the ADOPTED number
+       once and prints no struck copy of a value the register no longer shows. */
+    must('the report contains the adopted CAS alone (no struck old copy)',
+      /133-06-2/.test(html) && !/<s>/.test(html) && !/133-06-02/.test(html),
+      html.match(/CAS[^<]*</) ? html.match(/CAS[^<]*</)[0] : 'no CAS line');
     must('the report has one row per source with its data version', /<table/.test(html) && /2026-09-23/.test(html));
     must('the report states the status code and what it means in that source',
       /<td>[^<]*<\/td>/.test(html) && /mt\.|name-only|partial/i.test(html) || /<tbody>/.test(html));

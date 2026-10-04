@@ -31,6 +31,7 @@
     "ar": "دليل قرار 500 لسنة 2026 — جدول التصنيفات (نص الدليل)",
     "en": "Decree 500 of 2026 — the classification table of the guide itself."
    },
+   "categoryKind": "codes",
    "categories": {
     "I": {
      "shapes": [
@@ -566,6 +567,7 @@
     "ar": "دليل القائمة رقم (1) — القرار 248 لسنة 2024: الدليل يشرح عنوانه فقط (PROJECT_MEMORY D27) ولا ينشر جدول رموز التصنيف؛ المرجع اللبيبي واحد، والشرح منقول عن جدول قرار 500 ومُعلَن هنا كمرجع منقول لا كمعنى مبتدع",
     "en": "Decree 248 of 2024 — the guide explains its own title only (D27); it publishes no classification table."
    },
+   "categoryKind": "codes",
    "categories": {
     "A": {
      "shapes": [
@@ -840,6 +842,7 @@
     "ar": "تصدير الاتحاد الأوروبي — عمود Status وعلاماته",
     "en": "EU export — the Status column and its own flags."
    },
+   "categoryKind": "none",
    "categories": {},
    "unexplainedCodes": [],
    "shapes": [],
@@ -1037,6 +1040,7 @@
     "ar": "EPA Master (PPIS) — نص ورقة حالة التسجيل",
     "en": "EPA Master (PPIS) — the registration-state sheet text, verbatim."
    },
+   "categoryKind": "none",
    "categories": {},
    "unexplainedCodes": [],
    "shapes": [],
@@ -1206,11 +1210,12 @@
     "ar": "واجهة PMRA الرسمية — حقل منطقي YES/NO بلا نص دليل",
     "en": "PMRA official API — the YES/NO boolean field, no guide prose."
    },
+   "categoryKind": "none",
    "categories": {},
    "unexplainedCodes": [],
    "shapes": [],
    "categorylessRows": 1311,
-   "categorylessNote": "تصدير PMRA لا يحمل عمود تصنيف وظيفي.",
+   "categorylessNote": "تصدير PMRA لا يحمل عمود تصنيف وظيفي — قياسُه بالقياس لا بالافتراض (D45).",
    "mergeRules": null,
    "statusCodes": {
     "غير مُعاد التقييم": {
@@ -1241,6 +1246,7 @@
     "ar": "تصدير PUBCRIS — عمود مجموعات المنتجات وعمود Status",
     "en": "PUBCRIS export — the product-group column and the Status column."
    },
+   "categoryKind": "descriptive",
    "categories": {
     "A - Agricultural": {
      "shapes": [
@@ -2340,7 +2346,7 @@
     "WETTING AGENT",
     "WOOD PRESERVATIVE"
    ],
-   "categoryColumnNote": "عمود المجموعة في تصدير PUBCRIS ليس جدول رموز وظيفية كدليل القرار الليبي؛ كل شكل مذكور حرفيًا أدناه ولا يُفسَّر.",
+   "categoryColumnNote": "عمود المجموعة في تصدير PUBCRIS نصٌّ وصفي (مجموعات منتجات) لا رموز وظيفية: يُعرض حرفيًا كما ورد، بلا فصل على الفواصل ولا قالب رموز ولا ترجمة مبتدعة (D45). كل شكل مذكور أدناه.",
    "unexplainedCodes": [
     "A - Agricultural",
     "ACTIVE CONSTITUENT",

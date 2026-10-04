@@ -81,6 +81,21 @@ for (const [name, files] of Object.entries(COVERAGE)) {
     check(`${name}: every printed category CELL of ${f} is a recorded shape`,
       missing.length === 0, 'missing: ' + JSON.stringify(missing.slice(0, 6)));
     cellTotal += cells.length;
+    /* D45: the section declares what its column holds — codes, descriptive
+       text, or none — and the declaration is checked against the DATA, never
+       assumed from the source's name. */
+    const kind = sec.categoryKind;
+    check(`${name}: the section declares its category kind`,
+      ['codes', 'descriptive', 'none'].includes(kind), String(kind));
+    if (kind === 'descriptive') {
+      /* descriptive text is never a code: no splitting, no hint, no lookup */
+      check(`${name}: a descriptive column declares no code-splitting rule`,
+        !sec.mergeRules && sec.categories
+          && Object.values(sec.categories).every(e => e.explained === false && e.note)
+          && sec.unexplainedCodes.length > 0,
+        'descriptive sections explain nothing and split nothing');
+      continue;
+    }
     /* every code the display resolves out of those cells has an entry */
     const codes = [...new Set(cells.flatMap(c => partsOf(c, sec)))].sort();
     const noEntry = codes.filter(c => !entryOf(sec, c));
@@ -195,7 +210,20 @@ console.log(`  (${cellTotal} printed cells · ${codeTotal} resolved codes checke
     /function register\(byLang\)/ .test(i18n) && /register: register/.test(i18n));
   check('the service worker precaches the reference with the data',
     /'\.\/data\/reference\.json'/.test(sw));
-  check('each card resolves its category inside ITS OWN source section',
+  check('the declared kinds match the measurement (libyan codes · australian descriptive · the rest none)',
+  ['libya500', 'libya248'].every(k => SECTIONS[k].categoryKind === 'codes')
+  && SECTIONS.australia.categoryKind === 'descriptive'
+  && ['eu', 'epa', 'canada'].every(k => SECTIONS[k].categoryKind === 'none')
+  && Object.entries(SECTIONS).every(([k, s]) => Object.values(s.categories || {})
+    .every(e => s.categoryKind !== 'codes' || e.transferredFrom
+      || !!e.explained === !!e.i18nKey)),
+  /* a codes section: explained ⇒ keyed, unexplained ⇒ unkeyed; the 248 section's
+     transferred codes carry a key AND a declared fallback — that is the D44 case. */
+  'a codes section explains its codes; a descriptive one explains nothing');
+check('app.js reads the declared kind and never splits a descriptive cell',
+  /function catIsDescriptive\(sourceKey\)/.test(app)
+  && /if \(catIsDescriptive\(sourceKey\)\) return String\(code == null \? '' : code\);/.test(app));
+check('each card resolves its category inside ITS OWN source section',
     /catTitle\(c, x\.k\)/.test(readFileSync(join(root, 'src/cards.js'), 'utf8')));
 }
 

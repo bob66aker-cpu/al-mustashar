@@ -219,7 +219,17 @@
     const lang = (window.I18N && I18N.getLang) ? I18N.getLang() : 'ar';
     return String(sec.attribution[lang] || sec.attribution.ar || '');
   }
+  /* D45: the section DECLARES what its category column holds. A descriptive
+   * column (Australia's product-group text) is not a code cell: it is printed
+   * exactly as the export prints it — never split, never resolved, never
+   * translated, and never dressed in the unexplained-code hint, which belongs
+   * to real codes alone. Measured live (ZIRAM, both containers). */
+  function catIsDescriptive(sourceKey) {
+    const sec = refSection((sourceKey && REF_BY_SOURCE[sourceKey]) || 'libya500');
+    return !!(sec && sec.categoryKind === 'descriptive');
+  }
   function catTitle(code, sourceKey) {
+    if (catIsDescriptive(sourceKey)) return String(code == null ? '' : code);
     const sec = (sourceKey && REF_BY_SOURCE[sourceKey]) || 'libya500';
     const parts = catParts(code, sec);
     if (!parts.length) return '';
@@ -494,7 +504,7 @@
     'data/eu.json':            'ef629525c2dae8f741e1697faaecf2319e1a646e4e011d2754ef66e23844101e',
     'data/epa.json':           'b24d7c3e3a8dbd7e84ef7b1a59bbfb98674b5c8ad44ff7f7a3dbe0d90d7775f3',
     'data/epa-cancelled.json': 'c2b5b38e4bfe07dc466c45d4f18518691a57de17b078822e2e6fab00de58fde7',
-    'data/reference.json':      '3b650e914342da862e1fb3dabc79a885e28d0f78871940032ba1d78aa09e250b'
+    'data/reference.json':      '3e9d32c540c54502005db50e77044b79865b02ada5996d70073905338b6727da'
   };
 
   /* يُرجع null حين لا تتوفّر Web Crypto (سياق غير آمن) — لا يُرجع false أبداً،

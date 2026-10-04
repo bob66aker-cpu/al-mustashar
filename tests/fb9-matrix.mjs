@@ -29,20 +29,40 @@ const SAMPLES = [
   return { src: f, cat: c, q, cas: r.cas };
 }).filter(s => s.q);
 
-/* the reference table — read out of the app, never retyped here */
+/* D43/D45: the reference table lives in data/reference.json — read from it,
+ * never retyped here; D45 adds the declared category kind, so a descriptive
+ * section is measured as "no codes to resolve" instead of "unknown codes". */
 const app = readFileSync('src/app.js', 'utf8');
-const KEYS = [...app.match(/const LEGEND_CAT_KEYS = \{([\s\S]*?)\};/)[1]
-  .matchAll(/'([^']+)':\s*'legend/g)].map(m => m[1]);
+const REF = JSON.parse(readFileSync('data/reference.json', 'utf8'));
+const REF_BY_SOURCE = { 'libya-500': 'libya500', 'libya-248': 'libya248', eu: 'eu', epa: 'epa', canada: 'canada', australia: 'australia' };
+const SECTION = srcKey => REF.sections[REF_BY_SOURCE[srcKey] || 'libya500'];
 const fold = x => String(x || '').toLowerCase().replace(/[.\s]/g, '');
-const FOLDED = new Set(KEYS.map(fold));
-const known = p => KEYS.includes(p.trim()) || FOLDED.has(fold(p));
+const entryOf = (srcKey, code) => {
+  let sec = SECTION(srcKey);
+  if (!sec || !sec.categories) return null;
+  const key = String(code).trim();
+  if (sec.categories[key]) return sec.categories[key];
+  for (const e of Object.values(sec.categories))
+    for (const sh of e.shapes || [])
+      if (fold(sh) === fold(key)) return e;
+  if (sec.fallbackSection && sec.fallbackSection !== sec && REF.sections[sec.fallbackSection]) {
+    sec = REF.sections[sec.fallbackSection];
+    return entryOf(REF_BY_SOURCE[srcKey], code);
+  }
+  return null;
+};
+const known = (p, srcKey = 'libya-500') => !!entryOf(srcKey, p);
+const currentSrc = 'libya-500';
 
 /* FB9's rule, computed from the raw cell: every part is either explained or
  * NAMED verbatim inside the sentence. The `/` slice stays one block. */
-function verdict(cell, meaning) {
+function verdict(cell, meaning, srcKey = currentSrc) {
+  /* D45: a descriptive column has no codes to resolve — the cell IS the text. */
+  if (SECTION(srcKey).categoryKind === 'descriptive')
+    return { parts: [cell], unknowns: [], named: true, ok: meaning.trim() === cell.trim() };
   const parts = cell.split(/[/+,]/).map(p => p.trim()).filter(Boolean)
-    .flatMap(p => p.includes('.') && p.split('.').every(q => known(q)) ? p.split('.').map(q => q.trim()) : [p]);
-  const unknowns = parts.filter(p => !known(p));
+    .flatMap(p => p.includes('.') && p.split('.').every(q => known(q, srcKey)) ? p.split('.').map(q => q.trim()) : [p]);
+  const unknowns = parts.filter(p => !known(p, srcKey));
   const named = unknowns.every(u => meaning.includes(u));
   const blocksKept = 1; /* the card renders the cell as ONE block; checked live */
   return { parts, unknowns, named, ok: named && blocksKept === 1 };
@@ -116,7 +136,7 @@ function sample(s, mode, found, crashed) {
   const meaning = lines[0] ? lines[0].meaning : '';
   const scanLines = found && found.scan ? found.scan.lines : [];
   const scanMeaning = scanLines[0] ? scanLines[0].meaning : '';
-  const v = cell ? verdict(cell, meaning) : null;
+  const v = cell ? verdict(cell, meaning, s.src) : null;
   return {
     src: s.src, cell: s.cat, q: s.q, mode, crashed: !!crashed,
     searchCell: cell, meaning, scanMeaning,

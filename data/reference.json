@@ -795,6 +795,12 @@
     "unknownRule": "رمز لا مدخل له في هذا القسم يُعرض حرفيًا ويحمل «رمز غير مشروح في دليل هذا المصدر» — لا تخمين."
    },
    "fallbackSection": "libya500",
+   "attribution": {
+    "ar": "يُشرح رمز التصنيف في هذا الصف بحسب دليل قرار وزارة الزراعة رقم 500 لسنة 2026 — دليل قرار 248 لا يشرح الرموز.",
+    "en": "This row's category code is explained from Ministry of Agriculture Decree 500 of 2026 — Decree 248 explains no category codes.",
+    "fr": "Le code de catégorie de cette ligne est expliqué par le décret n° 500 de 2026 du ministère de l'Agriculture — le décret 248 n'explique aucun code de catégorie.",
+    "zh": "本行的分类代码依据农业部 2026 年第 500 号决定解释 —— 248 号决定不解释任何分类代码。"
+   },
    "statusCodes": {
     "محظور": {
      "forms": [],

@@ -24,6 +24,7 @@
   function create(deps) {
     var t = deps.t, tf = deps.tf, esc = deps.esc;
     var catTitle = deps.catTitle, statusDisplay = deps.statusDisplay;
+    var catAttribution = deps.catAttribution || function () { return ''; };
     var sourceLabel = deps.sourceLabel, statusExplain = deps.statusExplain;
     /* FB7: the FULL explanation, the very text the legend shows — for REV* the
      * connective line alone pointed at sentences the card never printed. */
@@ -161,8 +162,13 @@
           + '" data-cat-src="' + esc(x.k || '') + '">'
           + esc(c) + '</span><span class="cat-meaning">' + esc(meaning || t('legend.cat.unknown', 'رمز غير مشروح في دليل هذا المصدر')) + '</span></span>';
       }).join('');
+      /* D44: the source attribution, only when a code's meaning really came
+         through the section's declared fallback (see app.js catAttribution). */
+      var cells = String(x.r.category).split(/\n+/).filter(Boolean);
+      var attrib = catAttribution(cells[0], x.k) || (cells.length > 1 ? catAttribution(cells[cells.length - 1], x.k) : '');
       return '<p class="match cat-block">' + t('results.source.category', 'التصنيف كما ورد في المصدر:') + '</p>'
-        + '<div class="cat-list">' + chips + '</div>';
+        + '<div class="cat-list">' + chips + '</div>'
+        + (attrib ? '<p class="cat-attrib">' + esc(attrib) + '</p>' : '');
     }
 
     function casBlock(x) {

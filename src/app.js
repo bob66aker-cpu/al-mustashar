@@ -199,6 +199,26 @@
       part + ': ' + t('legend.cat.unknown', 'رمز غير مشروح في دليل هذا المصدر'),
       { part: part });
   }
+  /* D44: the attribution the section declares, shown ONLY when the meaning was
+   * really taken from the declared fallback (a transferred code). A code the
+   * section cannot explain gets no attribution — it gets the hint, and the
+   * hint must never carry a source line it has no claim to. */
+  function catAttribution(code, sourceKey) {
+    const sec = refSectionOf(sourceKey);
+    if (!sec || !sec.attribution) return '';
+    const parts = catParts(code, (REF_BY_SOURCE[sourceKey] || 'libya500'));
+    const viaFallback = parts.some(p => {
+      const own = sec.categories && sec.categories[p];
+      if (own && own.transferredFrom) return true;
+      if (own) return false;
+      const fold = catFold(p);
+      return Object.values(sec.categories || {}).some(e => e.transferredFrom
+        && (e.shapes || []).some(sh => catFold(sh) === fold));
+    });
+    if (!viaFallback) return '';
+    const lang = (window.I18N && I18N.getLang) ? I18N.getLang() : 'ar';
+    return String(sec.attribution[lang] || sec.attribution.ar || '');
+  }
   function catTitle(code, sourceKey) {
     const sec = (sourceKey && REF_BY_SOURCE[sourceKey]) || 'libya500';
     const parts = catParts(code, sec);
@@ -474,7 +494,7 @@
     'data/eu.json':            'ef629525c2dae8f741e1697faaecf2319e1a646e4e011d2754ef66e23844101e',
     'data/epa.json':           'b24d7c3e3a8dbd7e84ef7b1a59bbfb98674b5c8ad44ff7f7a3dbe0d90d7775f3',
     'data/epa-cancelled.json': 'c2b5b38e4bfe07dc466c45d4f18518691a57de17b078822e2e6fab00de58fde7',
-    'data/reference.json':      'e1069ce5ca1a25620b8900b34edeae440e12fce9e28fe815897056f27768ef4d'
+    'data/reference.json':      '3b650e914342da862e1fb3dabc79a885e28d0f78871940032ba1d78aa09e250b'
   };
 
   /* يُرجع null حين لا تتوفّر Web Crypto (سياق غير آمن) — لا يُرجع false أبداً،
@@ -745,7 +765,8 @@
   const cards = window.Cards
     ? Cards.create({
         t: t, tf: tf, esc: esc,
-        catTitle: catTitle, statusDisplay: statusDisplay, sourceLabel: sourceLabel,
+        catTitle: catTitle, catAttribution: catAttribution,
+        statusDisplay: statusDisplay, sourceLabel: sourceLabel,
         statusExplain: statusExplain, statusExplainFull: statusExplainFull,
         casApi: window.CasDissect,
         dataVersion: dataVersionOf,

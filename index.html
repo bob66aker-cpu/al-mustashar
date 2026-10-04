@@ -561,6 +561,13 @@
       font-size: var(--fs-farmer);   /* the farmer reads this line, not a popover */
       font-weight: 700; color: var(--text); line-height: var(--lh);
     }
+    /* D44 — the source attribution under a borrowed explanation: quieter than
+       the meaning itself, never hidden, and readable in both modes. */
+    .cat-attrib {
+      font-size: 13px; color: var(--muted); line-height: var(--lh);
+      margin: 6px 0 0; padding-inline-start: 8px;
+      border-inline-start: 2px solid var(--border, currentColor);
+    }
     .mt-line { font-size: var(--fs-base); }
     .mt-value { font-weight: 700; color: var(--primary-strong); }
     .cas-note.inline { display: inline; }

@@ -28,7 +28,8 @@
    "status": "closed",
    "ruling": "D47-Q",
    "verifiedFromLiteral": "أداة عربية تنتهي بتطويل + كلمة لاتينية صافية",
-   "reason": "صنف التطويل: الـ (تطويل) + bump. الحكم D47-Q: الصنف منتهٍ."
+   "reason": "صنف التطويل: الـ (تطويل) + bump. الحكم D47-Q: الصنف منتهٍ.",
+   "text": "**انضباط الـbump (مقيس على كل إيداع من `acfc24a` إلى `efa3a84`):**"
   },
   {
    "file": "PROJECT_MEMORY.md",
@@ -38,7 +39,8 @@
    "status": "closed",
    "ruling": "D47-Q",
    "verifiedFromLiteral": "أداة عربية تنتهي بتطويل + كلمة لاتينية صافية",
-   "reason": "صنف التطويل: لـ (تطويل) + PP. الحكم D47-Q: الصنف منتهٍ."
+   "reason": "صنف التطويل: لـ (تطويل) + PP. الحكم D47-Q: الصنف منتهٍ.",
+   "text": "| D4 | **تجربة A/B لـPP-OCR جولة مستقلة بعد الحملة الميدانية** | قرار المالك 2026-09-29 — **مؤجَّل بقرار، لا مفتوح** | هذا الملف |"
   },
   {
    "file": "PROJECT_MEMORY.md",
@@ -48,27 +50,30 @@
    "status": "closed",
    "ruling": "D47-Q",
    "verifiedFromLiteral": "أداة عربية تنتهي بتطويل + كلمة لاتينية صافية",
-   "reason": "صنف التطويل: لـ (تطويل) + CSP. الحكم D47-Q: الصنف منتهٍ."
+   "reason": "صنف التطويل: لـ (تطويل) + CSP. الحكم D47-Q: الصنف منتهٍ.",
+   "text": "| D7 | **لا اتصال بأي نطاق خارجي أثناء التشغيل**، ولا توسيع لـCSP | صفر طلب خارج النطاق مثبَت عملياً في جولة استخدام كاملة | `tests/network-isolation.test.mjs` 12/12 (ضمن `npm run test:browser`) |"
   },
   {
    "file": "PROJECT_MEMORY.md",
-   "line": 430,
+   "line": 431,
    "token": "لـPP",
    "class": "arabic-tatweel-prefix",
    "status": "closed",
    "ruling": "D47-Q",
    "verifiedFromLiteral": "أداة عربية تنتهي بتطويل + كلمة لاتينية صافية",
-   "reason": "صنف التطويل: لـ (تطويل) + PP. الحكم D47-Q: الصنف منتهٍ."
+   "reason": "صنف التطويل: لـ (تطويل) + PP. الحكم D47-Q: الصنف منتهٍ.",
+   "text": "| **تجربة A/B لـPP-OCRv5** | D4 — جولة مستقلة بعد الحملة | `docs/ocr-ab-experiment.md` §9 |"
   },
   {
    "file": "PROJECT_MEMORY.md",
-   "line": 538,
+   "line": 539,
    "token": "aحت",
    "class": "verbatim-owner-decision",
    "status": "closed",
    "ruling": "D47-V",
    "verifiedFromLiteral": "داخل اقتباس حرفي مذكور بنصّه ومصدره (قسم D30-ب)",
-   "reason": "اقتباس حرفي من قرار مالك — لا يُعدَّل. استثناء موثّق دائم."
+   "reason": "اقتباس حرفي من قرار مالك — لا يُعدَّل. استثناء موثّق دائم.",
+   "text": "الرسمي 2aحت رمز تنظيمي واحد مع CAS=Multiple/Numerous ⇒ بطاقة"
   },
   {
    "file": "docs/AGENTS.md",
@@ -78,7 +83,8 @@
    "status": "closed",
    "ruling": "D47-Q",
    "verifiedFromLiteral": "أداة عربية تنتهي بتطويل + كلمة لاتينية صافية",
-   "reason": "صنف التطويل: الـ (تطويل) + workflow. الحكم D47-Q: الصنف منتهٍ."
+   "reason": "صنف التطويل: الـ (تطويل) + workflow. الحكم D47-Q: الصنف منتهٍ.",
+   "text": "| **2 — تشغيل مجدول** | مهمة آلية مجدولة (مثل تحديث القواعد الدولية) | `scripts/update-intl-dbs.mjs` عبر الـworkflow اليدوي/الأسبوعي | الدفع ل main (ينشئ PR فقط)، الكتابة على قواعد ليبيا |"
   },
   {
    "file": "docs/CONTRIBUTING.md",
@@ -88,7 +94,8 @@
    "status": "closed",
    "ruling": "D47-Q",
    "verifiedFromLiteral": "أداة عربية تنتهي بتطويل + كلمة لاتينية صافية",
-   "reason": "صنف التطويل: الـ (تطويل) + PR. الحكم D47-Q: الصنف منتهٍ."
+   "reason": "صنف التطويل: الـ (تطويل) + PR. الحكم D47-Q: الصنف منتهٍ.",
+   "text": "2. **وقّع** [CLA-1.0](https://cla-assistant.io/) في تعليق على الـPR — يغطي:"
   },
   {
    "file": "docs/DISTRIBUTION.md",
@@ -98,7 +105,8 @@
    "status": "closed",
    "ruling": "D47-Q",
    "verifiedFromLiteral": "أداة عربية تنتهي بتطويل + كلمة لاتينية صافية",
-   "reason": "صنف التطويل: الـ (تطويل) + PWA. الحكم D47-Q: الصنف منتهٍ."
+   "reason": "صنف التطويل: الـ (تطويل) + PWA. الحكم D47-Q: الصنف منتهٍ.",
+   "text": "| **متجر Play** | تطبيق مُغلَّف كتطبيق أندرويد (TWA) فوق الـPWA | `docs/play-store-guide.md` كامل: الحساب، الرسوم ومتطلباته (مقروءة من وثائق Google بتاريخ 2026‑09‑30)، التغليف بـPWABuilder، الأصول، نصوص المتجر بأربع لغات · `assetlinks.json` كقالب PLACEHOLDER | فتح الحساب ودفع الرسم · **استخراج البصمة الحقيقية من مفتاح التوقيع** · نشر `assetlinks.json` · رفع AAB · تعبئة البيانات · اختيار المسار (داخلي أولاً) |"
   },
   {
    "file": "docs/DISTRIBUTION.md",
@@ -108,7 +116,8 @@
    "status": "closed",
    "ruling": "D47-Q",
    "verifiedFromLiteral": "أداة عربية تنتهي بتطويل + كلمة لاتينية صافية",
-   "reason": "صنف التطويل: بـ (تطويل) + PWABuilder. الحكم D47-Q: الصنف منتهٍ."
+   "reason": "صنف التطويل: بـ (تطويل) + PWABuilder. الحكم D47-Q: الصنف منتهٍ.",
+   "text": "| **متجر Play** | تطبيق مُغلَّف كتطبيق أندرويد (TWA) فوق الـPWA | `docs/play-store-guide.md` كامل: الحساب، الرسوم ومتطلباته (مقروءة من وثائق Google بتاريخ 2026‑09‑30)، التغليف بـPWABuilder، الأصول، نصوص المتجر بأربع لغات · `assetlinks.json` كقالب PLACEHOLDER | فتح الحساب ودفع الرسم · **استخراج البصمة الحقيقية من مفتاح التوقيع** · نشر `assetlinks.json` · رفع AAB · تعبئة البيانات · اختيار المسار (داخلي أولاً) |"
   },
   {
    "file": "docs/FEEDBACK-report-1.md",
@@ -136,7 +145,8 @@
    "status": "closed",
    "ruling": "D47-Q",
    "verifiedFromLiteral": "أداة عربية تنتهي بتطويل + كلمة لاتينية صافية",
-   "reason": "صنف التطويل: بـ (تطويل) + CSS. الحكم D47-Q: الصنف منتهٍ."
+   "reason": "صنف التطويل: بـ (تطويل) + CSS. الحكم D47-Q: الصنف منتهٍ.",
+   "text": "في الوضعين وفي الحاويتين، لا مكتوباً في HTML ومخفياً بـCSS."
   },
   {
    "file": "docs/PROGRESS.md",
@@ -146,7 +156,8 @@
    "status": "closed",
    "ruling": "D47-Q",
    "verifiedFromLiteral": "أداة عربية تنتهي بتطويل + كلمة لاتينية صافية",
-   "reason": "صنف التطويل: لـ (تطويل) + ara. الحكم D47-Q: الصنف منتهٍ."
+   "reason": "صنف التطويل: لـ (تطويل) + ara. الحكم D47-Q: الصنف منتهٍ.",
+   "text": "  كنطاق معلن (هذا العيب المعروف لـara+eng على نص لاتيني)؛ لا تعليق؛ لا"
   },
   {
    "file": "docs/PROGRESS.md",
@@ -156,7 +167,8 @@
    "status": "closed",
    "ruling": "D47-Q",
    "verifiedFromLiteral": "أداة عربية تنتهي بتطويل + كلمة لاتينية صافية",
-   "reason": "صنف التطويل: الـ (تطويل) + h. الحكم D47-Q: الصنف منتهٍ."
+   "reason": "صنف التطويل: الـ (تطويل) + h. الحكم D47-Q: الصنف منتهٍ.",
+   "text": "search/scan/history/data (الـh1 موجود في المستند لا في كل view)، و`heading-order` في"
   },
   {
    "file": "docs/archive/ocr-conflict-2026-10-03/README.md",
@@ -166,7 +178,8 @@
    "status": "closed",
    "ruling": "D47-Q",
    "verifiedFromLiteral": "أداة عربية تنتهي بتطويل + كلمة لاتينية صافية",
-   "reason": "صنف التطويل: الـ (تطويل) + stash. الحكم D47-Q: الصنف منتهٍ."
+   "reason": "صنف التطويل: الـ (تطويل) + stash. الحكم D47-Q: الصنف منتهٍ.",
+   "text": "| الـstash (`stash@{0}`) | blob `6fc8c051…` | `c57123920821a63202141ee468955e7d67f5dc338e6b01abe0d2fc476f61aaa7` | 325 |"
   },
   {
    "file": "docs/archive/ocr-conflict-2026-10-03/README.md",
@@ -176,7 +189,8 @@
    "status": "closed",
    "ruling": "D47-Q",
    "verifiedFromLiteral": "أداة عربية تنتهي بتطويل + كلمة لاتينية صافية",
-   "reason": "صنف التطويل: الـ (تطويل) + stash. الحكم D47-Q: الصنف منتهٍ."
+   "reason": "صنف التطويل: الـ (تطويل) + stash. الحكم D47-Q: الصنف منتهٍ.",
+   "text": "1. **محتوى الـstash مطابق حرفياً** لما في commit `43d7c05`"
   },
   {
    "file": "docs/archive/ocr-conflict-2026-10-03/README.md",
@@ -186,7 +200,8 @@
    "status": "closed",
    "ruling": "D47-Q",
    "verifiedFromLiteral": "أداة عربية تنتهي بتطويل + كلمة لاتينية صافية",
-   "reason": "صنف التطويل: الـ (تطويل) + stash. الحكم D47-Q: الصنف منتهٍ."
+   "reason": "صنف التطويل: الـ (تطويل) + stash. الحكم D47-Q: الصنف منتهٍ.",
+   "text": "3. **ملخّص الفرق** (`git diff --no-index`، من الـstash إلى الحاكم):"
   },
   {
    "file": "docs/archive/ocr-conflict-2026-10-03/README.md",
@@ -196,7 +211,8 @@
    "status": "closed",
    "ruling": "D47-Q",
    "verifiedFromLiteral": "أداة عربية تنتهي بتطويل + كلمة لاتينية صافية",
-   "reason": "صنف التطويل: الـ (تطويل) + stash. الحكم D47-Q: الصنف منتهٍ."
+   "reason": "صنف التطويل: الـ (تطويل) + stash. الحكم D47-Q: الصنف منتهٍ.",
+   "text": "   `adaptiveThreshold` — كلّها **غائبة تماماً** عن الـstash."
   },
   {
    "file": "docs/archive/ocr-conflict-2026-10-03/README.md",
@@ -206,7 +222,8 @@
    "status": "closed",
    "ruling": "D47-Q",
    "verifiedFromLiteral": "أداة عربية تنتهي بتطويل + كلمة لاتينية صافية",
-   "reason": "صنف التطويل: الـ (تطويل) + stash. الحكم D47-Q: الصنف منتهٍ."
+   "reason": "صنف التطويل: الـ (تطويل) + stash. الحكم D47-Q: الصنف منتهٍ.",
+   "text": "الـstash يصدّر اسماً **غير موجود بالاسم** في النسخة الحالية:"
   },
   {
    "file": "docs/branch-inventory.md",
@@ -216,7 +233,8 @@
    "status": "closed",
    "ruling": "D47-Q",
    "verifiedFromLiteral": "أداة عربية تنتهي بتطويل + كلمة لاتينية صافية",
-   "reason": "صنف التطويل: الـ (تطويل) + stash. الحكم D47-Q: الصنف منتهٍ."
+   "reason": "صنف التطويل: الـ (تطويل) + stash. الحكم D47-Q: الصنف منتهٍ.",
+   "text": "| 7 | `stash@{0}` | stash | ❌ لا — الـstash لا يُنشر قط |"
   },
   {
    "file": "docs/branch-inventory.md",
@@ -226,7 +244,8 @@
    "status": "closed",
    "ruling": "D47-Q",
    "verifiedFromLiteral": "أداة عربية تنتهي بتطويل + كلمة لاتينية صافية",
-   "reason": "صنف التطويل: والـ (تطويل) + stash. الحكم D47-Q: الصنف منتهٍ."
+   "reason": "صنف التطويل: والـ (تطويل) + stash. الحكم D47-Q: الصنف منتهٍ.",
+   "text": "> والـstash يبقون **محلياً** ولا يُرفعون ضمن نشر الإصدار». **الواقع المُقاس:"
   },
   {
    "file": "docs/branch-inventory.md",
@@ -236,7 +255,8 @@
    "status": "closed",
    "ruling": "D47-Q",
    "verifiedFromLiteral": "أداة عربية تنتهي بتطويل + كلمة لاتينية صافية",
-   "reason": "صنف التطويل: بـ (تطويل) + fast. الحكم D47-Q: الصنف منتهٍ."
+   "reason": "صنف التطويل: بـ (تطويل) + fast. الحكم D47-Q: الصنف منتهٍ.",
+   "text": "| `main` | `5fd4e83` | 2026-09-26 | 59 | **29 خلف** · 0 أمام | كامل | 1.7.0 — أقدم بـ29 إيداعاً | **يُدمج بعد الميدان** | `main ^work-branch` = **صفر** ⇒ دمج `work-branch → main` ممكن **بـfast-forward خالص** بلا تعارض |"
   },
   {
    "file": "docs/branch-inventory.md",
@@ -246,7 +266,8 @@
    "status": "closed",
    "ruling": "D47-Q",
    "verifiedFromLiteral": "أداة عربية تنتهي بتطويل + كلمة لاتينية صافية",
-   "reason": "صنف التطويل: بـ (تطويل) + Git. الحكم D47-Q: الصنف منتهٍ."
+   "reason": "صنف التطويل: بـ (تطويل) + Git. الحكم D47-Q: الصنف منتهٍ.",
+   "text": "| **ماذا تقيس** | **هوية كائن Git** (تتحرك لو تغيّر أي بايت، وتعرف هل الملفان نفس الكائن) | **قيمة الملف** (لا صلة لها بـGit) |"
   },
   {
    "file": "docs/branch-inventory.md",
@@ -256,7 +277,8 @@
    "status": "closed",
    "ruling": "D47-Q",
    "verifiedFromLiteral": "أداة عربية تنتهي بتطويل + كلمة لاتينية صافية",
-   "reason": "صنف التطويل: الـ (تطويل) + blob. الحكم D47-Q: الصنف منتهٍ."
+   "reason": "صنف التطويل: الـ (تطويل) + blob. الحكم D47-Q: الصنف منتهٍ.",
+   "text": "**تحقّق من الخلط:** استخرجتُ محتوى الـblob عبر `git cat-file -p` ثم"
   },
   {
    "file": "docs/branch-inventory.md",
@@ -266,7 +288,8 @@
    "status": "closed",
    "ruling": "D47-Q",
    "verifiedFromLiteral": "أداة عربية تنتهي بتطويل + كلمة لاتينية صافية",
-   "reason": "صنف التطويل: الـ (تطويل) + blob. الحكم D47-Q: الصنف منتهٍ."
+   "reason": "صنف التطويل: الـ (تطويل) + blob. الحكم D47-Q: الصنف منتهٍ.",
+   "text": "بالضبط، فمعرّف الـblob هو **Git blob SHA-1 لا غير**. وكذلك SHA-256 للـblob"
   },
   {
    "file": "docs/branch-inventory.md",
@@ -276,7 +299,8 @@
    "status": "closed",
    "ruling": "D47-Q",
    "verifiedFromLiteral": "أداة عربية تنتهي بتطويل + كلمة لاتينية صافية",
-   "reason": "صنف التطويل: للـ (تطويل) + blob. الحكم D47-Q: الصنف منتهٍ."
+   "reason": "صنف التطويل: للـ (تطويل) + blob. الحكم D47-Q: الصنف منتهٍ.",
+   "text": "بالضبط، فمعرّف الـblob هو **Git blob SHA-1 لا غير**. وكذلك SHA-256 للـblob"
   },
   {
    "file": "docs/branch-inventory.md",
@@ -286,7 +310,8 @@
    "status": "closed",
    "ruling": "D47-Q",
    "verifiedFromLiteral": "أداة عربية تنتهي بتطويل + كلمة لاتينية صافية",
-   "reason": "صنف التطويل: والـ (تطويل) + stash. الحكم D47-Q: الصنف منتهٍ."
+   "reason": "صنف التطويل: والـ (تطويل) + stash. الحكم D47-Q: الصنف منتهٍ.",
+   "text": "| **ج** | الوسوم الثلاثة والـstash **يبقون محلياً** ولا يُرفعون ضمن نشر الإصدار/Cloudflare | ⚠️ **غير قابل للتنفيذ بلا فعل: الوسوم الثلاثة منشورة على `origin` سلفاً** (§1). الاختيار بين: (1) حذفها على `origin`، (2) إبقاءها منشورة. **القرار للمالك** |"
   },
   {
    "file": "docs/branch-inventory.md",
@@ -296,7 +321,8 @@
    "status": "closed",
    "ruling": "D47-Q",
    "verifiedFromLiteral": "أداة عربية تنتهي بتطويل + كلمة لاتينية صافية",
-   "reason": "صنف التطويل: بـ (تطويل) + fast. الحكم D47-Q: الصنف منتهٍ."
+   "reason": "صنف التطويل: بـ (تطويل) + fast. الحكم D47-Q: الصنف منتهٍ.",
+   "text": "| 3 | **دمج `work-branch → main` بـfast-forward** | `main` | **(د)** — **بعد الحملة الميدانية** |"
   },
   {
    "file": "docs/night-round-2026-10-01.md",
@@ -306,7 +332,8 @@
    "status": "closed",
    "ruling": "D47-Q",
    "verifiedFromLiteral": "أداة عربية تنتهي بتطويل + كلمة لاتينية صافية",
-   "reason": "صنف التطويل: والـ (تطويل) + RAR. الحكم D47-Q: الصنف منتهٍ."
+   "reason": "صنف التطويل: والـ (تطويل) + RAR. الحكم D47-Q: الصنف منتهٍ.",
+   "text": "| Aluminium sulfate | البديلان اختفيا وترويسة الالتباس معه، والـRAR الليبي باقٍ |"
   },
   {
    "file": "docs/play-store-guide.md",
@@ -316,7 +343,8 @@
    "status": "closed",
    "ruling": "D47-Q",
    "verifiedFromLiteral": "أداة عربية تنتهي بتطويل + كلمة لاتينية صافية",
-   "reason": "صنف التطويل: بـ (تطويل) + TWA. الحكم D47-Q: الصنف منتهٍ."
+   "reason": "صنف التطويل: بـ (تطويل) + TWA. الحكم D47-Q: الصنف منتهٍ.",
+   "text": "## 2) تغليف التطبيق بـTWA (PWABuilder)"
   },
   {
    "file": "docs/play-store-guide.md",
@@ -326,7 +354,8 @@
    "status": "closed",
    "ruling": "D47-Q",
    "verifiedFromLiteral": "أداة عربية تنتهي بتطويل + كلمة لاتينية صافية",
-   "reason": "صنف التطويل: الـ (تطويل) + JSON. الحكم D47-Q: الصنف منتهٍ."
+   "reason": "صنف التطويل: الـ (تطويل) + JSON. الحكم D47-Q: الصنف منتهٍ.",
+   "text": "> يزوّد المالك الـJSON الحقيقي.** إنشاء بصمة من عندنا = ربط ملفنا بمفتاح لا"
   },
   {
    "file": "docs/security-audit.md",
@@ -336,7 +365,8 @@
    "status": "closed",
    "ruling": "D47-Q",
    "verifiedFromLiteral": "أداة عربية تنتهي بتطويل + كلمة لاتينية صافية",
-   "reason": "صنف التطويل: بـ (تطويل) + CSP. الحكم D47-Q: الصنف منتهٍ."
+   "reason": "صنف التطويل: بـ (تطويل) + CSP. الحكم D47-Q: الصنف منتهٍ.",
+   "text": "| `import(` | 1 | `src/ppocr.js:159` (وحدة اختيارية معطّلة؛ محجوبة بـCSP) |"
   },
   {
    "file": "docs/security-audit.md",
@@ -346,7 +376,8 @@
    "status": "closed",
    "ruling": "D47-Q",
    "verifiedFromLiteral": "أداة عربية تنتهي بتطويل + كلمة لاتينية صافية",
-   "reason": "صنف التطويل: الـ (تطويل) + wasm. الحكم D47-Q: الصنف منتهٍ."
+   "reason": "صنف التطويل: الـ (تطويل) + wasm. الحكم D47-Q: الصنف منتهٍ.",
+   "text": "| `src/vendor/zxing-reader.min.js:1` | `https://fastly.jsdelivr.net/npm/zxing-wasm@3.1.4/dist/` | **قيمة افتراضية لمكتبة** في `locateFile` | **معطَّل فعلياً**: `src/barcode.js:67` يكتب `locateFile` فوقه قبل أول قراءة، فيذهب الـwasm إلى النسخة المحلية؛ و`connect-src 'self'` يمنع الأصل الخارجي أصلاً. حاجزان مستقلان (§5) |"
   },
   {
    "file": "docs/security-audit.md",
@@ -356,7 +387,8 @@
    "status": "closed",
    "ruling": "D47-Q",
    "verifiedFromLiteral": "أداة عربية تنتهي بتطويل + كلمة لاتينية صافية",
-   "reason": "صنف التطويل: الـ (تطويل) + IIFE. الحكم D47-Q: الصنف منتهٍ."
+   "reason": "صنف التطويل: الـ (تطويل) + IIFE. الحكم D47-Q: الصنف منتهٍ.",
+   "text": "| 776–777 | `qrcodegen.QrSegment = QrSegment;` ثم إغلاق الـIIFE | آمن-مبرر: الإسناد العام الوحيد الثاني، وهو ما يقرأه `src/qr.js:54` |"
   },
   {
    "file": "docs/security-audit.md",
@@ -366,7 +398,8 @@
    "status": "closed",
    "ruling": "D47-Q",
    "verifiedFromLiteral": "أداة عربية تنتهي بتطويل + كلمة لاتينية صافية",
-   "reason": "صنف التطويل: كـ (تطويل) + HTML. الحكم D47-Q: الصنف منتهٍ."
+   "reason": "صنف التطويل: كـ (تطويل) + HTML. الحكم D47-Q: الصنف منتهٍ.",
+   "text": "| `qr.js` (88) | `31` `innerHTML` نص ثابت · `67` `urlLine.textContent` | مبرر-بوظيفة: الرابط يُعرض كنص لا كـHTML |"
   },
   {
    "file": "docs/security-audit.md",
@@ -376,7 +409,8 @@
    "status": "closed",
    "ruling": "D47-Q",
    "verifiedFromLiteral": "أداة عربية تنتهي بتطويل + كلمة لاتينية صافية",
-   "reason": "صنف التطويل: الـ (تطويل) + DOM. الحكم D47-Q: الصنف منتهٍ."
+   "reason": "صنف التطويل: الـ (تطويل) + DOM. الحكم D47-Q: الصنف منتهٍ.",
+   "text": "| كل مراجع المنصة في ملفات الشحن | `src/*.js` الـ17: كل سطر يلمس الشبكة/التخزين/الـDOM | **قائمة AppCache/SharedArrayBuffer** | غير موجودة | فحص آلي: صفر |"
   }
  ]
 }

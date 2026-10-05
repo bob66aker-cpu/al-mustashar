@@ -6,7 +6,7 @@
  * أمثلة الإصابة الحرفية تعيش هنا (tests/ خارج نطاق الكاشف) ولا
  * تُكتب أبداً داخل ملف خاضع للمسح.
  */
-import { mkdtempSync, writeFileSync, rmSync } from 'node:fs';
+import { mkdtempSync, writeFileSync, readFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { scanText, scanFile, collectScope, loadExclusions, partition } from '../scripts/latin-mix-scan.mjs';
@@ -56,23 +56,47 @@ try {
   /* ---- 7) the declared exclusions cannot rot ---- */
   const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
   const { exclusions } = loadExclusions(root);
-  let stale = 0, orphan = 0, resolvedLive = 0;
+  let stale = 0, orphan = 0, resolvedLive = 0, shiftBroke = 0, returnedAbsorbed = 0, shiftCompared = 0;
   for (const f of collectScope(root)) {
     const rel = f.split(root + '/')[1];
     const hits = scanFile(f);
     const { declared, undeclared } = partition(hits, exclusions, rel);
     stale += undeclared.length;                       // a hit nobody declared => the gate fails
     for (const d of declared) {
-      if (!exclusions.some(e => e.file === rel && e.line === d.line && e.token === d.token
-          && e.reason && e.class)) orphan++;
+      // the matched entry must carry its own reason, class and literal text
+      if (!(d.entry && d.entry.reason && d.entry.class && d.entry.text)) orphan++;
     }
+    // D52: shifting every line number must not eject a sound entry, because
+    // the match key is the literal text and never the position.
+    const shifted = hits.map(h => ({ ...h, line: h.line + 137 }));
+    shiftCompared += hits.length;
+    if (partition(shifted, exclusions, rel).declared.length !== declared.length) shiftBroke++;
     for (const e of exclusions.filter(x => x.resolution)) {
-      if (hits.some(h => h.line === e.line && h.token === e.token)) resolvedLive++;
+      if (hits.some(h => h.text !== undefined && h.token === e.token)) resolvedLive++;
     }
   }
-  check('7. every declared exclusion still matches a real hit with a reason, and a resolved one no longer matches',
-        stale === 0 && orphan === 0 && resolvedLive === 0,
-        'undeclared=' + stale + ' malformed=' + orphan + ' resolved-still-live=' + resolvedLive);
+  // D52 reverse spike: the text a resolved entry recorded as deleted, put back,
+  // must be caught even though the line numbers moved (the entry may not absorb).
+  for (const e of exclusions.filter(x => x.resolution && x.resolution.deletedVerbatim)) {
+    const src = readFileSync(join(root, e.file), 'utf8').split('\n');
+    // the sentence wraps across lines, so the host line is the one whose
+    // bold-stripped form is a prefix of the recorded post-deletion text
+    const host = src.find(l => {
+      const s = l.replace(/\*\*/g, '').trim();
+      return s && e.resolution.after.startsWith(s);
+    });
+    if (!host) { returnedAbsorbed++; continue; }
+    const restored = host.replace(/\*\*/g, '').replace(/\u0627\u0644\u0642\u0627\u0626\u0645\u0629/,
+      '\u0627\u0644\u0642\u0627\u0626\u0645\u0629' + e.resolution.deletedVerbatim);
+    const rHits = scanText(restored + '\n').map(h => ({ ...h, line: e.line + 41 }));
+    if (partition(rHits, exclusions, e.file).declared.length !== 0) returnedAbsorbed++;
+  }
+  check('7. exclusions are keyed by literal text, not by line number: sound ones survive a shift, '
+      + 'a resolved one absorbs nothing, and every entry carries its own reason',
+        stale === 0 && orphan === 0 && resolvedLive === 0 && shiftBroke === 0 && returnedAbsorbed === 0,
+        'undeclared=' + stale + ' malformed=' + orphan + ' resolved-still-live=' + resolvedLive
+        + ' shift-broke=' + shiftBroke + ' returned-absorbed=' + returnedAbsorbed
+        + ' hits-compared=' + shiftCompared);
   const manifest = loadExclusions(root);
   const openBad = manifest.exclusions.filter(e => e.status === 'open' && !(manifest.questions || {})[e.question]);
   const closedBad = manifest.exclusions.filter(e => e.status === 'closed' && !(manifest.rulings || {})[e.ruling]);

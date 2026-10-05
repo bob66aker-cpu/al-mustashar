@@ -42,7 +42,9 @@ export function scanText(text) {
     for (const m of line.matchAll(WORD_RE)) {
       const core = m[0].replace(DIACRITIC_RE, '');
       if (ARABIC_RE.test(core) && LATIN_RE.test(core)) {
-        hits.push({ line: i + 1, token: m[0], col: m.index + 1 });
+        // نص السطر الحرفي جزء من الإصابة: هو مفتاح المطابقة للإعفاء،
+        // لأن رقم السطر يتغيّر بتغيّر الملف ولا يثبت شيثاً (D52).
+        hits.push({ line: i + 1, token: m[0], col: m.index + 1, text: line });
       }
     }
   });
@@ -85,10 +87,22 @@ export function loadExclusions(root = process.cwd()) {
 /** يفصل بين الإصابة المُعلَنة(non pass) والأخرى */
 export function partition(hits, exclusions, relFile) {
   const declared = [], undeclared = [];
-  // an entry carrying a resolution must NOT absorb a live hit: if its defect
+  // An entry carrying a resolution must NOT absorb a live hit: if its defect
   // returns, the hit is undeclared and the gate fails by design.
-  const find = (h) => exclusions.find(e =>
-    !e.resolution && e.file === relFile && e.line === h.line && e.token === h.token);
+  //
+  // The match key is the literal text of the defect, never the line number.
+  // Keying on `line` let any documentation insert shift every later entry and
+  // eject sound entries as undeclared hits (measured: one inserted line
+  // produced 5 false positives). `line` stays display information only.
+  // An entry is consumed once, so two identical lines cannot share it.
+  const taken = new Set();
+  const find = (h) => exclusions.find(e => {
+    if (taken.has(e) || e.resolution) return false;
+    if (e.file !== relFile || e.token !== h.token) return false;
+    if (e.text != null && e.text !== h.text) return false;
+    taken.add(e);
+    return true;
+  });
   for (const h of hits) {
     const m = find(h);
     if (m) declared.push({ ...h, entry: m }); else undeclared.push(h);

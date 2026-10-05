@@ -85,9 +85,12 @@ export function loadExclusions(root = process.cwd()) {
 /** يفصل بين الإصابة المُعلَنة(non pass) والأخرى */
 export function partition(hits, exclusions, relFile) {
   const declared = [], undeclared = [];
-  const match = (h) => exclusions.some(e =>
+  const find = (h) => exclusions.find(e =>
     e.file === relFile && e.line === h.line && e.token === h.token);
-  for (const h of hits) (match(h) ? declared : undeclared).push(h);
+  for (const h of hits) {
+    const m = find(h);
+    if (m) declared.push({ ...h, entry: m }); else undeclared.push(h);
+  }
   return { declared, undeclared };
 }
 
@@ -108,7 +111,7 @@ if (isMain) {
     console.log('نطاق فارغ: لا ملف خاضع للمسح (' + root + ')');
     process.exit(0);
   }
-  const { exclusions, questions } = loadExclusions(root);
+  const { exclusions, questions, rulings } = loadExclusions(root);
   let bad = 0, declaredTotal = 0;
   for (const f of files) {
     const rel = relative(root, f);
@@ -118,8 +121,8 @@ if (isMain) {
       console.log('  ' + rel + ':' + h.line + ':' + h.col + '  ' + JSON.stringify(h.token));
     }
     for (const d of declared) {
-      const meta = exclusions.find(e => e.file === rel && e.line === d.line && e.token === d.token);
-      console.log('  -- ' + rel + ':' + d.line + '  ' + JSON.stringify(d.token) + '  (مُعلن: ' + meta.class + ')');
+      console.log('  -- ' + rel + ':' + d.line + '  ' + JSON.stringify(d.token) +
+        '  (' + d.entry.class + ' · ' + d.entry.status + ')');
     }
     console.log((undeclared.length ? 'FAIL ' : 'ok   ') + rel +
       '  تجاور=' + hits.length + '  مُعلن=' + declared.length);
@@ -128,7 +131,10 @@ if (isMain) {
   }
   console.log('=====');
   console.log('ملفات: ' + files.length + '   اصابات غير معلنة: ' + bad + '   اعفاءات معلنة: ' + declaredTotal);
-  for (const [k, q] of Object.entries(questions || {})) console.log('سؤال للمالك ' + k + ': ' + q);
+  for (const [k, q] of Object.entries(questions || {})) console.log('سؤال مفتوح للمالك ' + k + ': ' + q);
+  for (const [k, r] of Object.entries(rulings || {})) {
+    console.log('حكم مغلق ' + k + ' (' + r.class + '): ' + r.text);
+  }
   console.log(bad ? 'FAIL latin-mix-scan' : 'PASS latin-mix-scan');
   process.exit(bad ? 1 : 0);
 }

@@ -1100,8 +1100,8 @@ check('feedback 11: the card matrix measures BOTH containers and both modes',
   const { scanFile, collectScope, loadExclusions, partition } =
     await import('../scripts/latin-mix-scan.mjs');
   const files = collectScope(root);
-  const { exclusions, questions } = loadExclusions(root);
-  let undeclared = 0, declared = 0, malformed = 0;
+  const { exclusions, questions, rulings } = loadExclusions(root);
+  let undeclared = 0, declared = 0, malformed = 0, openWithoutQuestion = 0, closedWithoutRuling = 0;
   const offenders = [];
   for (const f of files) {
     const rel = path.relative(root, f).split(path.sep).join('/');
@@ -1111,8 +1111,10 @@ check('feedback 11: the card matrix measures BOTH containers and both modes',
     declared += parts.declared.length;
     for (const h of parts.undeclared) offenders.push(rel + ':' + h.line + ' ' + JSON.stringify(h.token));
     for (const d of parts.declared) {
-      const m = exclusions.find(e => e.file === rel && e.line === d.line && e.token === d.token);
-      if (!m || !m.reason || !m.class) malformed++;
+      const m = d.entry;
+      if (!m || !m.reason || !m.class) { malformed++; continue; }
+      if (m.status === 'open' && !(questions || {})[m.question]) openWithoutQuestion++;
+      if (m.status === 'closed' && !(rulings || {})[m.ruling]) closedWithoutRuling++;
     }
   }
   check('D47: the scope is exactly the memory file plus every markdown doc',
@@ -1125,8 +1127,10 @@ check('feedback 11: the card matrix measures BOTH containers and both modes',
         undeclared === 0, offenders.slice(0, 5).join(' | '));
   check('D47: every declared exclusion is still a real hit with a reason',
         malformed === 0, 'declared=' + declared + ' malformed=' + malformed);
-  check('D47: each declared exclusion names the owner question that closes it',
-        Object.keys(questions || {}).length > 0, JSON.stringify(Object.keys(questions || {})));
+  check('D47: every declared exclusion carries its own verdict: open ones name an open question, closed ones a recorded ruling',
+        openWithoutQuestion === 0 && closedWithoutRuling === 0,
+        'open-without-question=' + openWithoutQuestion + ' closed-without-ruling=' + closedWithoutRuling
+        + ' open=' + Object.keys(questions || {}).length + ' rulings=' + Object.keys(rulings || {}).length);
   // non-overlap is a property of the detection code, not of the prose that
   // names the other detector: neither may carry the other's character class.
   const cjkCode = fs.readFileSync('scripts/cjk-scan.mjs', 'utf8').split('*/').pop();

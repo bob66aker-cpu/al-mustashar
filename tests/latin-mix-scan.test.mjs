@@ -69,9 +69,13 @@ try {
   }
   check('7. every declared exclusion still matches a real hit, with a reason',
         stale === 0 && orphan === 0, 'undeclared=' + stale + ' malformed=' + orphan);
-  check('8. the exclusions carry the owner question that closes them',
-        Object.keys(loadExclusions(root).questions || {}).length > 0,
-        JSON.stringify(Object.keys(loadExclusions(root).questions || {})));
+  const manifest = loadExclusions(root);
+  const openBad = manifest.exclusions.filter(e => e.status === 'open' && !(manifest.questions || {})[e.question]);
+  const closedBad = manifest.exclusions.filter(e => e.status === 'closed' && !(manifest.rulings || {})[e.ruling]);
+  check('8. every exclusion carries its verdict: open names an open question, closed names a recorded ruling',
+        openBad.length === 0 && closedBad.length === 0,
+        'open=' + manifest.exclusions.filter(e => e.status === 'open').length
+        + ' closed=' + manifest.exclusions.filter(e => e.status === 'closed').length);
 } finally {
   rmSync(dir, { recursive: true, force: true });
 }

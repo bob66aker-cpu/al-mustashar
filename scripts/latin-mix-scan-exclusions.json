@@ -16,57 +16,89 @@
    "status": "closed",
    "class": "resolved-by-reformulation",
    "text": "الكلمة وُلدت مشوّهة ولا شاهد يستعيدها ⇒ أعيدت الصياغة بغيرها — الحذف موثق لا مخفي."
+  },
+  "D48": {
+   "class": "editorial-correction",
+   "text": "عيب تحريري يثبته سياقه العربي ⇒ أصيغ بأضيق تعديل، ويُسجَّل النصّ المحذوف والبديل حرفياً في المُدخل، ولا يُلمس الاقتباس الحرفي من قرار المالك."
   }
  },
  "questions": {},
  "exclusions": [
   {
    "file": "PROJECT_MEMORY.md",
-   "line": 29,
+   "line": 31,
    "token": "الـbump",
-   "class": "arabic-tatweel-prefix",
+   "class": "editorial-correction",
    "status": "closed",
-   "ruling": "D47-Q",
-   "verifiedFromLiteral": "أداة عربية تنتهي بتطويل + كلمة لاتينية صافية",
-   "reason": "صنف التطويل: الـ (تطويل) + bump. الحكم D47-Q: الصنف منتهٍ.",
-   "text": "**انضباط الـbump (مقيس على كل إيداع من `acfc24a` إلى `efa3a84`):**"
+   "ruling": "D48",
+   "verifiedFromLiteral": "سياق الجملة العربية في الموضع، والنصّ خارج اقتباس قرار المالك.",
+   "reason": "حكم D48: عيب تحريري يثبته السياق العربي ⇒ أُصيغ بأضيق تعديل، والمحذوف والبديل محفوظان تحت resolution.",
+   "text": "**انضباط الرفع (bump) (مقيس على كل إيداع من `acfc24a` إلى `efa3a84`):**",
+   "resolution": {
+    "method": "editorial-correction",
+    "witness": "الجملة عربية، والرمز لاتيني ملتصق بحرف جرّ أو بتطويل؛ وD47-Q حكم على الصنف نفسه فليس هذا نقاشاً جديداً.",
+    "deletedVerbatim": "الـbump",
+    "after": "انضباط الرفع (bump) (مقيس على كل إيداع من `acfc24a` إلى `efa3a84`):",
+    "rule": "أُبقي الرمز اللاتيني في قوس بعد الكلمة العربية، فلم يُحذف معنًى ولا اسم."
+   }
   },
   {
    "file": "PROJECT_MEMORY.md",
-   "line": 45,
+   "line": 47,
    "token": "لـPP",
-   "class": "arabic-tatweel-prefix",
+   "class": "editorial-correction",
    "status": "closed",
-   "ruling": "D47-Q",
-   "verifiedFromLiteral": "أداة عربية تنتهي بتطويل + كلمة لاتينية صافية",
-   "reason": "صنف التطويل: لـ (تطويل) + PP. الحكم D47-Q: الصنف منتهٍ.",
-   "text": "| D4 | **تجربة A/B لـPP-OCR جولة مستقلة بعد الحملة الميدانية** | قرار المالك 2026-09-29 — **مؤجَّل بقرار، لا مفتوح** | هذا الملف |"
+   "ruling": "D48",
+   "verifiedFromLiteral": "سياق الجملة العربية في الموضع، والنصّ خارج اقتباس قرار المالك.",
+   "reason": "حكم D48: عيب تحريري يثبته السياق العربي ⇒ أُصيغ بأضيق تعديل، والمحذوف والبديل محفوظان تحت resolution.",
+   "text": "| D4 | **تجربة A/B على PP-OCR جولة مستقلة بعد الحملة الميدانية** | قرار المالك 2026-09-29 — **مؤجَّل بقرار، لا مفتوح** | هذا الملف |",
+   "resolution": {
+    "method": "editorial-correction",
+    "witness": "الجملة عربية، والرمز لاتيني ملتصق بحرف جرّ أو بتطويل؛ وD47-Q حكم على الصنف نفسه فليس هذا نقاشاً جديداً.",
+    "deletedVerbatim": "لـPP-OCR",
+    "after": "| D4 | تجربة A/B على PP-OCR جولة مستقلة بعد الحملة الميدانية | قرار المالك 2026-09-29 — مؤجَّل بقرار، لا مفتوح | هذا الملف |",
+    "rule": "استُبدل التطويل بحرف جرّ منفصل، فالفارق طباعيّ لا معنوي."
+   }
   },
   {
    "file": "PROJECT_MEMORY.md",
-   "line": 48,
+   "line": 50,
    "token": "لـCSP",
-   "class": "arabic-tatweel-prefix",
+   "class": "editorial-correction",
    "status": "closed",
-   "ruling": "D47-Q",
-   "verifiedFromLiteral": "أداة عربية تنتهي بتطويل + كلمة لاتينية صافية",
-   "reason": "صنف التطويل: لـ (تطويل) + CSP. الحكم D47-Q: الصنف منتهٍ.",
-   "text": "| D7 | **لا اتصال بأي نطاق خارجي أثناء التشغيل**، ولا توسيع لـCSP | صفر طلب خارج النطاق مثبَت عملياً في جولة استخدام كاملة | `tests/network-isolation.test.mjs` 12/12 (ضمن `npm run test:browser`) |"
+   "ruling": "D48",
+   "verifiedFromLiteral": "سياق الجملة العربية في الموضع، والنصّ خارج اقتباس قرار المالك.",
+   "reason": "حكم D48: عيب تحريري يثبته السياق العربي ⇒ أُصيغ بأضيق تعديل، والمحذوف والبديل محفوظان تحت resolution.",
+   "text": "| D7 | **لا اتصال بأي نطاق خارجي أثناء التشغيل**، ولا توسيع سياسة CSP | صفر طلب خارج النطاق مثبَت عملياً في جولة استخدام كاملة | `tests/network-isolation.test.mjs` 12/12 (ضمن `npm run test:browser`) |",
+   "resolution": {
+    "method": "editorial-correction",
+    "witness": "الجملة عربية، والرمز لاتيني ملتصق بحرف جرّ أو بتطويل؛ وD47-Q حكم على الصنف نفسه فليس هذا نقاشاً جديداً.",
+    "deletedVerbatim": "لـCSP",
+    "after": "| D7 | لا اتصال بأي نطاق خارجي أثناء التشغيل، ولا توسيع سياسة CSP | صفر طلب خارج النطاق مثبَت عملياً في جولة استخدام كاملة | `tests/network-isolation.test.mjs` 12/12 (ضمن `npm run test:browser`) |",
+    "rule": "ذُكرت الكلمة العربية للاختصار ثم طلب التوسيع، فأصبح الموضع عربياً خالصاً."
+   }
   },
   {
    "file": "PROJECT_MEMORY.md",
-   "line": 431,
+   "line": 435,
    "token": "لـPP",
-   "class": "arabic-tatweel-prefix",
+   "class": "editorial-correction",
    "status": "closed",
-   "ruling": "D47-Q",
-   "verifiedFromLiteral": "أداة عربية تنتهي بتطويل + كلمة لاتينية صافية",
-   "reason": "صنف التطويل: لـ (تطويل) + PP. الحكم D47-Q: الصنف منتهٍ.",
-   "text": "| **تجربة A/B لـPP-OCRv5** | D4 — جولة مستقلة بعد الحملة | `docs/ocr-ab-experiment.md` §9 |"
+   "ruling": "D48",
+   "verifiedFromLiteral": "سياق الجملة العربية في الموضع، والنصّ خارج اقتباس قرار المالك.",
+   "reason": "حكم D48: عيب تحريري يثبته السياق العربي ⇒ أُصيغ بأضيق تعديل، والمحذوف والبديل محفوظان تحت resolution.",
+   "text": "| **تجربة A/B على PP-OCRv5** | D4 — جولة مستقلة بعد الحملة | `docs/ocr-ab-experiment.md` §9 |",
+   "resolution": {
+    "method": "editorial-correction",
+    "witness": "الجملة عربية، والرمز لاتيني ملتصق بحرف جرّ أو بتطويل؛ وD47-Q حكم على الصنف نفسه فليس هذا نقاشاً جديداً.",
+    "deletedVerbatim": "لـPP-OCRv5",
+    "after": "| تجربة A/B على PP-OCRv5 | D4 — جولة مستقلة بعد الحملة | `docs/ocr-ab-experiment.md` §9 |",
+    "rule": "استُبدل التطويل بحرف جرّ منفصل، فالفارق طباعيّ لا معنوي."
+   }
   },
   {
    "file": "PROJECT_MEMORY.md",
-   "line": 539,
+   "line": 543,
    "token": "aحت",
    "class": "verbatim-owner-decision",
    "status": "closed",
@@ -411,6 +443,25 @@
    "verifiedFromLiteral": "أداة عربية تنتهي بتطويل + كلمة لاتينية صافية",
    "reason": "صنف التطويل: الـ (تطويل) + DOM. الحكم D47-Q: الصنف منتهٍ.",
    "text": "| كل مراجع المنصة في ملفات الشحن | `src/*.js` الـ17: كل سطر يلمس الشبكة/التخزين/الـDOM | **قائمة AppCache/SharedArrayBuffer** | غير موجودة | فحص آلي: صفر |"
+  },
+  {
+   "file": "PROJECT_MEMORY.md",
+   "line": 669,
+   "token": "Поэтому",
+   "class": "editorial-correction",
+   "status": "closed",
+   "ruling": "D48",
+   "reason": "حكم D48: كلمة سيريليّة داخل جملة عربية ⇒ حُذفت إلى مقابلها العربي، والمحذوف والبديل محفوظان تحت resolution.",
+   "verifiedFromLiteral": "الجملة عربية، والكلمة الدخيلة ليست عربية ولا تصلح محلّاً نحوياً، والحرف بعدها «تحقق شرط التفعيل».",
+   "text": "`68e9e83`، وعيبان كتبتهما جولة التنظيف في §597 و§656 — لذلك تحقق",
+   "resolution": {
+    "method": "editorial-correction",
+    "witness": "المستند عربي بحت، والكلمة الدخيلة حرف سيريليّ لا محلّ له في التركيب.",
+    "deletedVerbatim": "Поэтому",
+    "after": "`68e9e83`، وعيبان كتبتهما جولة التنظيف في §597 و§656 — لذلك تحقق",
+    "rule": "استُبدل المقابل العربي الأقرب في المعنى، ولم يُخترع نصّ جديد.",
+    "scannerGap": "لا تلتقط الأداتان الحرف السيريلي، فقي هذا المُدخل توثيقٌ يدوي لا أثرُ آلة."
+   }
   }
  ]
 }

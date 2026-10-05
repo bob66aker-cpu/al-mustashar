@@ -1101,7 +1101,7 @@ check('feedback 11: the card matrix measures BOTH containers and both modes',
     await import('../scripts/latin-mix-scan.mjs');
   const files = collectScope(root);
   const { exclusions, questions, rulings } = loadExclusions(root);
-  let undeclared = 0, declared = 0, malformed = 0, openWithoutQuestion = 0, closedWithoutRuling = 0;
+  let undeclared = 0, declared = 0, malformed = 0, openWithoutQuestion = 0, closedWithoutRuling = 0, resolvedStillLive = 0;
   const offenders = [];
   for (const f of files) {
     const rel = path.relative(root, f).split(path.sep).join('/');
@@ -1116,6 +1116,12 @@ check('feedback 11: the card matrix measures BOTH containers and both modes',
       if (m.status === 'open' && !(questions || {})[m.question]) openWithoutQuestion++;
       if (m.status === 'closed' && !(rulings || {})[m.ruling]) closedWithoutRuling++;
     }
+    // a resolved entry must have stopped matching: if its defect returns, it is
+    // an undeclared hit and this check fails.
+    for (const e of exclusions) {
+      if (!e.resolution) continue;
+      if (hits.some(h => h.line === e.line && h.token === e.token)) resolvedStillLive++;
+    }
   }
   check('D47: the scope is exactly the memory file plus every markdown doc',
         files.includes(path.join(root, 'PROJECT_MEMORY.md'))
@@ -1125,8 +1131,9 @@ check('feedback 11: the card matrix measures BOTH containers and both modes',
         'files=' + files.length);
   check('D47: no undeclared Arabic-Latin adjacency anywhere in the scope',
         undeclared === 0, offenders.slice(0, 5).join(' | '));
-  check('D47: every declared exclusion is still a real hit with a reason',
-        malformed === 0, 'declared=' + declared + ' malformed=' + malformed);
+  check('D47: every declared exclusion carries a reason, and a resolved one has really stopped matching',
+        malformed === 0 && resolvedStillLive === 0,
+        'declared=' + declared + ' malformed=' + malformed + ' resolved-still-live=' + resolvedStillLive);
   check('D47: every declared exclusion carries its own verdict: open ones name an open question, closed ones a recorded ruling',
         openWithoutQuestion === 0 && closedWithoutRuling === 0,
         'open-without-question=' + openWithoutQuestion + ' closed-without-ruling=' + closedWithoutRuling

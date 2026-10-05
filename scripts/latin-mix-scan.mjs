@@ -85,8 +85,10 @@ export function loadExclusions(root = process.cwd()) {
 /** يفصل بين الإصابة المُعلَنة(non pass) والأخرى */
 export function partition(hits, exclusions, relFile) {
   const declared = [], undeclared = [];
+  // an entry carrying a resolution must NOT absorb a live hit: if its defect
+  // returns, the hit is undeclared and the gate fails by design.
   const find = (h) => exclusions.find(e =>
-    e.file === relFile && e.line === h.line && e.token === h.token);
+    !e.resolution && e.file === relFile && e.line === h.line && e.token === h.token);
   for (const h of hits) {
     const m = find(h);
     if (m) declared.push({ ...h, entry: m }); else undeclared.push(h);

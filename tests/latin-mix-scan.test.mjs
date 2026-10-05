@@ -56,7 +56,7 @@ try {
   /* ---- 7) the declared exclusions cannot rot ---- */
   const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
   const { exclusions } = loadExclusions(root);
-  let stale = 0, orphan = 0;
+  let stale = 0, orphan = 0, resolvedLive = 0;
   for (const f of collectScope(root)) {
     const rel = f.split(root + '/')[1];
     const hits = scanFile(f);
@@ -66,9 +66,13 @@ try {
       if (!exclusions.some(e => e.file === rel && e.line === d.line && e.token === d.token
           && e.reason && e.class)) orphan++;
     }
+    for (const e of exclusions.filter(x => x.resolution)) {
+      if (hits.some(h => h.line === e.line && h.token === e.token)) resolvedLive++;
+    }
   }
-  check('7. every declared exclusion still matches a real hit, with a reason',
-        stale === 0 && orphan === 0, 'undeclared=' + stale + ' malformed=' + orphan);
+  check('7. every declared exclusion still matches a real hit with a reason, and a resolved one no longer matches',
+        stale === 0 && orphan === 0 && resolvedLive === 0,
+        'undeclared=' + stale + ' malformed=' + orphan + ' resolved-still-live=' + resolvedLive);
   const manifest = loadExclusions(root);
   const openBad = manifest.exclusions.filter(e => e.status === 'open' && !(manifest.questions || {})[e.question]);
   const closedBad = manifest.exclusions.filter(e => e.status === 'closed' && !(manifest.rulings || {})[e.ruling]);

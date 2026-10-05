@@ -62,8 +62,20 @@ function dictOf(lang) {
   }
   return map;
 }
+/* D53: the explanations the reference registers are no longer in src/i18n.js —
+   D43 moved them to data/reference.json sections.*.texts, which is what the
+   app registers at runtime. Reading only i18n.js made every expectation here
+   `undefined` — a stale test, not a product fault. The expected strings are
+   therefore taken from the same source the app registers: the two dictionaries
+   are merged, i18n.js first (it is still the larger one), reference texts after. */
+const REF = JSON.parse(readFileSync('data/reference.json', 'utf8'));
 const AR = dictOf('ar');
-check('the ar dictionary was read out of i18n.js', AR.size > 200, String(AR.size));
+for (const sec of Object.values(REF.sections || {})) {
+  for (const [k, v] of Object.entries(sec.texts || {})) {
+    if (v && typeof v.ar === 'string' && !AR.has(k)) AR.set(k, v.ar);
+  }
+}
+check('the ar dictionary was read out of i18n.js + reference texts', AR.size > 200, String(AR.size));
 /* the scan container's samples: the decisive REV* card and a decree-248 row */
 const SCAN_SAMPLES = [
   { q: '94-75-7', src: 'libya-500', status: 'REV*', key: 'revstar' },

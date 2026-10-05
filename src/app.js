@@ -129,10 +129,12 @@
     return e && e.i18nKey ? e.i18nKey : '';
   }
   /* شرح حالة: من قسم مصدرها وحده. الـbadge نفسه (LEGEND_STATUS equivalent)
-   * يُشتقّ من وجود مدخل statusCodes في قسم قرار 500. */
+   * يُشتقّ من وجود مدخل statusCodes في قسم قرار 500.
+   * D53: الشرح يُقرأ من statusExplanations (مفاتيح الشرح)، لا من statusCodes
+   * (مفاتيح الشارة) — فكان نص الشارة يطبع مكان الشرح على البطاقة. */
   function statusExplain(rawStatus) {
     const s = refSection('libya500');
-    const e = s && s.statusCodes ? s.statusCodes[String(rawStatus || '').trim()] : null;
+    const e = s && s.statusExplanations ? s.statusExplanations[String(rawStatus || '').trim()] : null;
     return e && e.i18nKey ? t(e.i18nKey, '') : '';
   }
   function statusHasEntry(rawStatus) {

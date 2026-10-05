@@ -165,7 +165,10 @@ const CAT_AR = {
   }
   const app = readFileSync(join(root, 'src/app.js'), 'utf8');
   /* D43: the routing table is the reference's statusExplanations now; app.js
-     asks it (statusExplain) instead of holding its own map. */
+     asks it (statusExplain) instead of holding its own map. D53: the guard
+     itself had pinned the defect — it required app.js to read statusCodes
+     (badge keys) inside statusExplain, so the wrong field looked like a
+     requirement. The requirement is the FIELD that carries the explanations. */
   check('the reference routes the four statuses to their explain keys',
     ['Approved', 'REV', 'RAR', 'REV*'].every(c => {
       const e = REF.sections.libya500.statusExplanations[c];
@@ -173,7 +176,8 @@ const CAT_AR = {
     })
     && REF.sections.libya500.statusExplanations['REV*'].i18nKey === 'st.500.revstar.explain'
     && !/LEGEND_STATUS_KEYS/.test(app)
-    && /const e = s && s\.statusCodes \? s\.statusCodes\[String\(rawStatus \|\| ''\)\.trim\(\)\] : null;/.test(app),
+    && /const e = s && s\.statusExplanations \? s\.statusExplanations\[String\(rawStatus \|\| ''\)\.trim\(\)\] : null;/.test(app)
+    && !/statusExplain\([\s\S]{0,200}?statusCodes/.test(app),
     'app.js resolves the explanation through data/reference.json');
   const cas = readFileSync(join(root, 'src/cas.js'), 'utf8');
   check('cas.js gives REV* its own status key (st.500.revstar)', /st === 'REV\*'\)\s+return \{ key: 'st\.500\.revstar'/.test(cas));

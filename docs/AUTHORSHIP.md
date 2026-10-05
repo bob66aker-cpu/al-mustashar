@@ -21,7 +21,7 @@
 |---|---|
 | `index.html` · `sw.js` · `manifest.json` | `data/*.json` (القواعد الأربع) |
 | `src/*.js` **ما عدا** `src/vendor/` | `src/vendor/*` و`vendor/*` (مكوّنات طرف ثالث) |
-| `tests/**` · `tools/**` · `scripts/**` | `assets/fonts/**` · `assets/icons/**` (رخص OFL وISC) |
+| `tests/**` · `tools/**` · `scripts/**` | `assets/fonts/**` · `assets/icons/**` (رخص OFL و ISC) |
 | ملفات التوثيق `docs/**` · `README.md` · `CONTRIBUTING.md` | `data/optional/**` (الحزم الاختيارية بتراخيصها) |
 
 ## 3) مكوّنات الطرف الثالث — تراخيصها وإشعاراتها

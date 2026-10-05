@@ -1092,6 +1092,52 @@ check('feedback 11: the card matrix measures BOTH containers and both modes',
         && /packAttribution: packAttribution/.test(appB));
 }
 
+/* ---------- D47: كاشف التجاور العربي-اللاتيني ----------
+ * الباب مفتوح بلا حارس = لا باب (درس D26). الفاحص يعمل في العملية نفسها
+ * (بلا fork): نفس ملف النطاق ونفس قاعدة التجاور.
+ */
+{
+  const { scanFile, collectScope, loadExclusions, partition } =
+    await import('../scripts/latin-mix-scan.mjs');
+  const files = collectScope(root);
+  const { exclusions, questions } = loadExclusions(root);
+  let undeclared = 0, declared = 0, malformed = 0;
+  const offenders = [];
+  for (const f of files) {
+    const rel = path.relative(root, f).split(path.sep).join('/');
+    const hits = scanFile(f);
+    const parts = partition(hits, exclusions, rel);
+    undeclared += parts.undeclared.length;
+    declared += parts.declared.length;
+    for (const h of parts.undeclared) offenders.push(rel + ':' + h.line + ' ' + JSON.stringify(h.token));
+    for (const d of parts.declared) {
+      const m = exclusions.find(e => e.file === rel && e.line === d.line && e.token === d.token);
+      if (!m || !m.reason || !m.class) malformed++;
+    }
+  }
+  check('D47: the scope is exactly the memory file plus every markdown doc',
+        files.includes(path.join(root, 'PROJECT_MEMORY.md'))
+        && files.some(f => f.includes(path.join('docs', 'archive')))
+        && !files.some(f => path.relative(root, f).startsWith('src' + path.sep)
+                          || path.relative(root, f).startsWith('tests' + path.sep)),
+        'files=' + files.length);
+  check('D47: no undeclared Arabic-Latin adjacency anywhere in the scope',
+        undeclared === 0, offenders.slice(0, 5).join(' | '));
+  check('D47: every declared exclusion is still a real hit with a reason',
+        malformed === 0, 'declared=' + declared + ' malformed=' + malformed);
+  check('D47: each declared exclusion names the owner question that closes it',
+        Object.keys(questions || {}).length > 0, JSON.stringify(Object.keys(questions || {})));
+  // non-overlap is a property of the detection code, not of the prose that
+  // names the other detector: neither may carry the other's character class.
+  const cjkCode = fs.readFileSync('scripts/cjk-scan.mjs', 'utf8').split('*/').pop();
+  const mixCode = fs.readFileSync('scripts/latin-mix-scan.mjs', 'utf8').split('*/').pop();
+  check('D47: cjk-scan keeps its own scope, the two detectors do not overlap',
+        !/[\u0600-\u06FF]/.test(cjkCode)
+        && !/[\u4E00-\u9FFF\uFFFD]/.test(mixCode),
+        'cjk-code-has-arabic=' + /[\u0600-\u06FF]/.test(cjkCode)
+        + ' mix-code-has-cjk=' + /[\u4E00-\u9FFF\uFFFD]/.test(mixCode));
+}
+
 /* ---------- summary ---------- */
 console.log('\n==============================');
 console.log('PASS: ' + pass + '   FAIL: ' + fail);

@@ -101,7 +101,7 @@
 (بعد إعادة بناء EPA 2026-09-23: ثلاثة في ليبيا، ستة في الاتحاد الأوروبي،
 ثلاثة في EPA — أُضيف `2311-34-9` EDTA مع الملف المبني). بعضها يكشف أخطاء
 إدخال تاريخية واضحة (مثال: Captan الرقم الصحيح `133-06-2` والسجل يحمل
-`133-06-0`؛ وCarvone الصحيح `2244-16-8` والسجل يحمل `244-16-8` — سقطت
+`133-06-0`؛ و Carvone الصحيح `2244-16-8` والسجل يحمل `244-16-8` — سقطت
 خانة). تُعرض هذه الأرقام في الواجهة بتأشير، ولا تُصحَّح تلقائيًا — **تحديث
 2026-09-27:** أرقام ليبيا 500 الستة صُححت فعليًا بطبقة موثقة (cas_raw/cas_corrected/
 cas_source) بقرار مستخدم معتمد، وبيانات eu/epa تبقى تقريرًا بلا تصحيح:
@@ -122,7 +122,7 @@ cas_source) بقرار مستخدم معتمد، وبيانات eu/epa تبقى 
 | epa | 2311-34-9 | Ethylenediaminetetraacetic acid (EDTA) |
 
 > رقمان رسميان إضافيان لا يقبلان الفحص أصلًا (ليسا بصيغة CAS كاملة) ويُستثنيان
-> من العد: Capric acid `334485` وMesotrione `104206-8` في ليبيا 500.
+> من العد: Capric acid `334485` و Mesotrione `104206-8` في ليبيا 500.
 
 ## سجل تغييرات القواعد (لا يُعدَّل شيء إلا بسجل هنا)
 
@@ -134,14 +134,14 @@ cas_source) بقرار مستخدم معتمد، وبيانات eu/epa تبقى 
 | 2026-09-23 | libya-500 | Ethylene (74-85-1، بند 169): التصنيف الوظيفي RAR ← صُحح إلى I (خطأ نقل موثّق: الأصل الرسمي المصوَّر يضع التصنيف I والحالة RAR في عمودين منفصلين، والملف الرقمي وضع الرمزين في عمود التصنيف). الحالة RAR بقيت كما هي | الأصل الرسمي المصوَّر، بند 169 |
 | 2026-09-27 | libya-500 | **طبقة تصحيح CAS الموثق** (جولة معتمدة): ستة أرقام رسمية معيوبة صُححت مع الحفاظ على قيمة المرسوم الخام في cas_raw والتصحيح في cas_corrected ومصدر التصحيح في cas_source (EPA Master المبني 2026-09-23، وكل القيم المصححة تمرّ فحص التحقق): Capric acid 334485←334-48-5، Captan 133-06-02←133-06-2، Carvone 244-16-8←2244-16-8، Cycloxydim «101 205-02-1»←101205-02-1 (إزالة مسافة فقط — الرقم كامل)، Mesotrione 104206-8←104206-82-8، Metalaxyl-M «70630-17-0 (R)»←70630-17-0. العرض: المصحح + الخام مشطوبًا + تأشير المصدر (لا تصحيح صامت). وكل صفوف 500 الرقمية تحمل cas_source. | data/epa.json + tools/check-cas-checksums.mjs + tests/cas-correction.test.mjs |
 | 2026-09-27 | libya-248 | شروح بيانات فقط بلا تغيير قيم: كل صف رقمي يحمل cas_source=official-248، و6 صفوف متعددة القوائم موسومة cas_multi (CAS لقوائم مركّبات مرتبطة في صف واحد — عرضها كما هو) | tests/cas-correction.test.mjs |
-| 2026-09-27 | libya-500 | **جولة CAS الثانية (معتمدة)**: إصلاحان جديدان بنفس نمط الستّة صُححا في طبقة التتبع الثلاثية فقط (قيمة cas كانت مصححة فعلًا منذ 2026-09-20 لكن cas_raw/cas_corrected كانتا فارغتين): Mandipropamid 374726-22-2→374726-62-2 (EPA Master، Mandipropamide Technical، PC 036602 — epa.json#854) وProsulfocarb 52888-90-9→52888-80-9 (eu.json#1389 + PubChem). الحقل `cas` لم يتغير في الصفّين | data/epa.json + data/eu.json + tools/check-cas-checksums.mjs |
+| 2026-09-27 | libya-500 | **جولة CAS الثانية (معتمدة)**: إصلاحان جديدان بنفس نمط الستّة صُححا في طبقة التتبع الثلاثية فقط (قيمة cas كانت مصححة فعلًا منذ 2026-09-20 لكن cas_raw/cas_corrected كانتا فارغتين): Mandipropamid 374726-22-2→374726-62-2 (EPA Master، Mandipropamide Technical، PC 036602 — epa.json#854) و Prosulfocarb 52888-90-9→52888-80-9 (eu.json#1389 + PubChem). الحقل `cas` لم يتغير في الصفّين | data/epa.json + data/eu.json + tools/check-cas-checksums.mjs |
 | 2026-09-27 | libya-500 | حقول توضيحية جديدة **لا تغيّر أي قيمة CAS**: Carvone (بند 117) `cas_flag="stereo-ambiguous"` لأن الرقم المصحح يخص (+)-Carvone بينما اسم الصف عام والراسيمي 99-49-0؛ Metalaxyl-M (بند 260) `cas_stereo="(R)"` لواصف المتماكب المحفوظ خارج الرقم المطبَّع 70630-17-0 | src/cas.js + src/app.js + tests/cas-annotations.test.mjs |
-| 2026-09-27 | libya-500 | **استكمالات** لصفوف «No CAS allocated / see remark / See note»: قيم **مقترحة** موثقة المصدر في `cas_suggested` + مفتاح مصدر في `cas_source` (347 Rimsulfuron ← 122931-48-0 من EU#1415 + EPA PC 129009 epa#1136، 261 Metaldehyde، 271 Milbemectin، 243 MCPA ← 94-74-6 من EPA#855، 228 Iron sulphate)، وL-cysteine (235) حقل نصي `cas_review` فقط بلا رقم مؤكَّد. `cas` يبقى نص المرسوم («see remark»/«No CAS allocated») — لا استبدال صامت | data/eu.json + data/epa.json |
+| 2026-09-27 | libya-500 | **استكمالات** لصفوف «No CAS allocated / see remark / See note»: قيم **مقترحة** موثقة المصدر في `cas_suggested` + مفتاح مصدر في `cas_source` (347 Rimsulfuron ← 122931-48-0 من EU#1415 + EPA PC 129009 epa#1136، 261 Metaldehyde، 271 Milbemectin، 243 MCPA ← 94-74-6 من EPA#855، 228 Iron sulphate)، و L-cysteine (235) حقل نصي `cas_review` فقط بلا رقم مؤكَّد. `cas` يبقى نص المرسوم («see remark»/«No CAS allocated») — لا استبدال صامت | data/eu.json + data/epa.json |
 | 2026-09-27 | libya-248 | **شروح إخبارية فقط — لا قيمة CAS رسمية تتغير**: `cas_note` على البنود 18 (34681-10-2 رقم Butocarboxim لا Bromoxynil octanoate؛ المرجع الدولي 1689-99-2 — epa.json#409)، 10 (58-89-9 غاما/ليندين؛ ألفا-HCH = 319-84-6) و47 (608-73-1 HCH التقني؛ غاما = 58-89-9)، و`duplicate_note` على 69/70 (مكرر 32809-16-8 بتصنيفين I/F). الشارات مترجمة في القواميس الأربعة وتظهر على بطاقة النتيجة | src/i18n.js + tests/cas-annotations.test.mjs |
 | 2026-09-23 | epa + epa-cancelled | إعادة بناء كاملة من EPA Master (PPIS): `epa.json` صار 1,361 سجلًا (السجل النشط، بصمة `b24d7c3e…`) و`epa-cancelled.json` جديد بـ 1,425 سجلًا (أرشيف الملغى، بصمة `c2b5b38e…`)؛ حقل `row` تسلسلي، و`status_raw` نص الدفتر العربي الحرفي، وسبب الإلغاء الرسمي للملغى | `tools/build-epa-master.js` + الدفتر 2026-09-22 |
 
 > **حالة أعطال الفحص بعد الجولة الثانية (2026-09-27):** libya-500 = **0**
-> وlibya-248 = **0** (قاعدتا ليبيا)، وepa-cancelled = 0؛ وتبقى eu = 4 وepa = 3
+> و libya-248 = **0** (قاعدتا ليبيا)،و epaa-cancelled = 0؛ وتبقى eu = و epapa = 3
 > **تقريرًا فقط** لأنها نسخ مرجعية لجهات خارجية (قرار موثّق: لا تصحيح تلقائي
 > لقاعدة غير ليبية). كل القيم المصححة الثمانية في ليبيا 500 تجتاز فحص التحقق
 > (`node tools/check-cas-checksums.mjs` → `corrected values failing the check digit: 0`).

@@ -1,0 +1,289 @@
+{
+ "declaredBy": "قرار المالك 4.10.2026 · D47 · جولة توثيقية",
+ "note": "كل مُدخل إصابة قائمة ومعلنة بموضعها. ليست قائمة سماح في الكاشف: الكاشف يكتشفها كلها، وهذا الملف يعلن فقط أيها محالة إلى قرار المالك. أي مُدخل لا يقابل إصابة قائمة فهو مُدخل متقادم يُرفض.",
+ "questions": {
+  "D47-Q": "في الأسلوب المعتمد للأداة والضبط مع الكلمة اللاتينية: أبقى التطويل ملتصقا، أم أفصل بمسافة، أم استبدل الصيغ بمفردة عربية؟ والحكم يفرض إصلاح الإحدى والثلاثين إصابة من هذا الصنف."
+ },
+ "exclusions": [
+  {
+   "file": "PROJECT_MEMORY.md",
+   "line": 29,
+   "token": "الـbump",
+   "reason": "أصل عربي صحيح: أداة أو حرف جر يليه تطويل تليه كلمة لاتينية. حذف التطويل أو فصله قرار أسلوب لا يفرضه السياق وحده — سؤال للمالك.",
+   "class": "arabic-tatweel-prefix",
+   "ownerQuestion": "D47-Q"
+  },
+  {
+   "file": "PROJECT_MEMORY.md",
+   "line": 45,
+   "token": "لـPP",
+   "reason": "أصل عربي صحيح: أداة أو حرف جر يليه تطويل تليه كلمة لاتينية. حذف التطويل أو فصله قرار أسلوب لا يفرضه السياق وحده — سؤال للمالك.",
+   "class": "arabic-tatweel-prefix",
+   "ownerQuestion": "D47-Q"
+  },
+  {
+   "file": "PROJECT_MEMORY.md",
+   "line": 48,
+   "token": "لـCSP",
+   "reason": "أصل عربي صحيح: أداة أو حرف جر يليه تطويل تليه كلمة لاتينية. حذف التطويل أو فصله قرار أسلوب لا يفرضه السياق وحده — سؤال للمالك.",
+   "class": "arabic-tatweel-prefix",
+   "ownerQuestion": "D47-Q"
+  },
+  {
+   "file": "PROJECT_MEMORY.md",
+   "line": 429,
+   "token": "لـPP",
+   "reason": "أصل عربي صحيح: أداة أو حرف جر يليه تطويل تليه كلمة لاتينية. حذف التطويل أو فصله قرار أسلوب لا يفرضه السياق وحده — سؤال للمالك.",
+   "class": "arabic-tatweel-prefix",
+   "ownerQuestion": "D47-Q"
+  },
+  {
+   "file": "PROJECT_MEMORY.md",
+   "line": 537,
+   "token": "aحت",
+   "reason": "نص داخل اقتباس حرفي لقرار المالك: لا يجوز إعادة صياغة كلام المالك بلا مرجعه، والقرينة لا ترده إلى صيغة واحدة — سؤال للمالك.",
+   "class": "undecidable",
+   "ownerQuestion": "D47-Q"
+  },
+  {
+   "file": "docs/AGENTS.md",
+   "line": 12,
+   "token": "الـworkflow",
+   "reason": "أصل عربي صحيح: أداة أو حرف جر يليه تطويل تليه كلمة لاتينية. حذف التطويل أو فصله قرار أسلوب لا يفرضه السياق وحده — سؤال للمالك.",
+   "class": "arabic-tatweel-prefix",
+   "ownerQuestion": "D47-Q"
+  },
+  {
+   "file": "docs/CONTRIBUTING.md",
+   "line": 16,
+   "token": "الـPR",
+   "reason": "أصل عربي صحيح: أداة أو حرف جر يليه تطويل تليه كلمة لاتينية. حذف التطويل أو فصله قرار أسلوب لا يفرضه السياق وحده — سؤال للمالك.",
+   "class": "arabic-tatweel-prefix",
+   "ownerQuestion": "D47-Q"
+  },
+  {
+   "file": "docs/DISTRIBUTION.md",
+   "line": 11,
+   "token": "الـPWA",
+   "reason": "أصل عربي صحيح: أداة أو حرف جر يليه تطويل تليه كلمة لاتينية. حذف التطويل أو فصله قرار أسلوب لا يفرضه السياق وحده — سؤال للمالك.",
+   "class": "arabic-tatweel-prefix",
+   "ownerQuestion": "D47-Q"
+  },
+  {
+   "file": "docs/DISTRIBUTION.md",
+   "line": 11,
+   "token": "بـPWABuilder",
+   "reason": "أصل عربي صحيح: أداة أو حرف جر يليه تطويل تليه كلمة لاتينية. حذف التطويل أو فصله قرار أسلوب لا يفرضه السياق وحده — سؤال للمالك.",
+   "class": "arabic-tatweel-prefix",
+   "ownerQuestion": "D47-Q"
+  },
+  {
+   "file": "docs/FEEDBACK-report-1.md",
+   "line": 66,
+   "token": "ومYGIN",
+   "reason": "الكلمة معطوبة بلا قرينة تردها إلى صيغة واحدة، وبقاياها تحريف محتمل لمفردة إنجليزية غير محفوظة في السياق — سؤال للمالك.",
+   "class": "undecidable",
+   "ownerQuestion": "D47-Q"
+  },
+  {
+   "file": "docs/FEEDBACK-report-2.md",
+   "line": 370,
+   "token": "بـCSS",
+   "reason": "أصل عربي صحيح: أداة أو حرف جر يليه تطويل تليه كلمة لاتينية. حذف التطويل أو فصله قرار أسلوب لا يفرضه السياق وحده — سؤال للمالك.",
+   "class": "arabic-tatweel-prefix",
+   "ownerQuestion": "D47-Q"
+  },
+  {
+   "file": "docs/PROGRESS.md",
+   "line": 88,
+   "token": "لـara",
+   "reason": "أصل عربي صحيح: أداة أو حرف جر يليه تطويل تليه كلمة لاتينية. حذف التطويل أو فصله قرار أسلوب لا يفرضه السياق وحده — سؤال للمالك.",
+   "class": "arabic-tatweel-prefix",
+   "ownerQuestion": "D47-Q"
+  },
+  {
+   "file": "docs/PROGRESS.md",
+   "line": 514,
+   "token": "الـh",
+   "reason": "أصل عربي صحيح: أداة أو حرف جر يليه تطويل تليه كلمة لاتينية. حذف التطويل أو فصله قرار أسلوب لا يفرضه السياق وحده — سؤال للمالك.",
+   "class": "arabic-tatweel-prefix",
+   "ownerQuestion": "D47-Q"
+  },
+  {
+   "file": "docs/archive/ocr-conflict-2026-10-03/README.md",
+   "line": 20,
+   "token": "الـstash",
+   "reason": "أصل عربي صحيح: أداة أو حرف جر يليه تطويل تليه كلمة لاتينية. حذف التطويل أو فصله قرار أسلوب لا يفرضه السياق وحده — سؤال للمالك.",
+   "class": "arabic-tatweel-prefix",
+   "ownerQuestion": "D47-Q"
+  },
+  {
+   "file": "docs/archive/ocr-conflict-2026-10-03/README.md",
+   "line": 32,
+   "token": "الـstash",
+   "reason": "أصل عربي صحيح: أداة أو حرف جر يليه تطويل تليه كلمة لاتينية. حذف التطويل أو فصله قرار أسلوب لا يفرضه السياق وحده — سؤال للمالك.",
+   "class": "arabic-tatweel-prefix",
+   "ownerQuestion": "D47-Q"
+  },
+  {
+   "file": "docs/archive/ocr-conflict-2026-10-03/README.md",
+   "line": 39,
+   "token": "الـstash",
+   "reason": "أصل عربي صحيح: أداة أو حرف جر يليه تطويل تليه كلمة لاتينية. حذف التطويل أو فصله قرار أسلوب لا يفرضه السياق وحده — سؤال للمالك.",
+   "class": "arabic-tatweel-prefix",
+   "ownerQuestion": "D47-Q"
+  },
+  {
+   "file": "docs/archive/ocr-conflict-2026-10-03/README.md",
+   "line": 44,
+   "token": "الـstash",
+   "reason": "أصل عربي صحيح: أداة أو حرف جر يليه تطويل تليه كلمة لاتينية. حذف التطويل أو فصله قرار أسلوب لا يفرضه السياق وحده — سؤال للمالك.",
+   "class": "arabic-tatweel-prefix",
+   "ownerQuestion": "D47-Q"
+  },
+  {
+   "file": "docs/archive/ocr-conflict-2026-10-03/README.md",
+   "line": 48,
+   "token": "الـstash",
+   "reason": "أصل عربي صحيح: أداة أو حرف جر يليه تطويل تليه كلمة لاتينية. حذف التطويل أو فصله قرار أسلوب لا يفرضه السياق وحده — سؤال للمالك.",
+   "class": "arabic-tatweel-prefix",
+   "ownerQuestion": "D47-Q"
+  },
+  {
+   "file": "docs/branch-inventory.md",
+   "line": 31,
+   "token": "الـstash",
+   "reason": "أصل عربي صحيح: أداة أو حرف جر يليه تطويل تليه كلمة لاتينية. حذف التطويل أو فصله قرار أسلوب لا يفرضه السياق وحده — سؤال للمالك.",
+   "class": "arabic-tatweel-prefix",
+   "ownerQuestion": "D47-Q"
+  },
+  {
+   "file": "docs/branch-inventory.md",
+   "line": 34,
+   "token": "والـstash",
+   "reason": "أصل عربي صحيح: أداة أو حرف جر يليه تطويل تليه كلمة لاتينية. حذف التطويل أو فصله قرار أسلوب لا يفرضه السياق وحده — سؤال للمالك.",
+   "class": "arabic-tatweel-prefix",
+   "ownerQuestion": "D47-Q"
+  },
+  {
+   "file": "docs/branch-inventory.md",
+   "line": 45,
+   "token": "بـfast",
+   "reason": "أصل عربي صحيح: أداة أو حرف جر يليه تطويل تليه كلمة لاتينية. حذف التطويل أو فصله قرار أسلوب لا يفرضه السياق وحده — سؤال للمالك.",
+   "class": "arabic-tatweel-prefix",
+   "ownerQuestion": "D47-Q"
+  },
+  {
+   "file": "docs/branch-inventory.md",
+   "line": 116,
+   "token": "بـGit",
+   "reason": "أصل عربي صحيح: أداة أو حرف جر يليه تطويل تليه كلمة لاتينية. حذف التطويل أو فصله قرار أسلوب لا يفرضه السياق وحده — سؤال للمالك.",
+   "class": "arabic-tatweel-prefix",
+   "ownerQuestion": "D47-Q"
+  },
+  {
+   "file": "docs/branch-inventory.md",
+   "line": 119,
+   "token": "الـblob",
+   "reason": "أصل عربي صحيح: أداة أو حرف جر يليه تطويل تليه كلمة لاتينية. حذف التطويل أو فصله قرار أسلوب لا يفرضه السياق وحده — سؤال للمالك.",
+   "class": "arabic-tatweel-prefix",
+   "ownerQuestion": "D47-Q"
+  },
+  {
+   "file": "docs/branch-inventory.md",
+   "line": 121,
+   "token": "الـblob",
+   "reason": "أصل عربي صحيح: أداة أو حرف جر يليه تطويل تليه كلمة لاتينية. حذف التطويل أو فصله قرار أسلوب لا يفرضه السياق وحده — سؤال للمالك.",
+   "class": "arabic-tatweel-prefix",
+   "ownerQuestion": "D47-Q"
+  },
+  {
+   "file": "docs/branch-inventory.md",
+   "line": 121,
+   "token": "للـblob",
+   "reason": "أصل عربي صحيح: أداة أو حرف جر يليه تطويل تليه كلمة لاتينية. حذف التطويل أو فصله قرار أسلوب لا يفرضه السياق وحده — سؤال للمالك.",
+   "class": "arabic-tatweel-prefix",
+   "ownerQuestion": "D47-Q"
+  },
+  {
+   "file": "docs/branch-inventory.md",
+   "line": 133,
+   "token": "والـstash",
+   "reason": "أصل عربي صحيح: أداة أو حرف جر يليه تطويل تليه كلمة لاتينية. حذف التطويل أو فصله قرار أسلوب لا يفرضه السياق وحده — سؤال للمالك.",
+   "class": "arabic-tatweel-prefix",
+   "ownerQuestion": "D47-Q"
+  },
+  {
+   "file": "docs/branch-inventory.md",
+   "line": 156,
+   "token": "بـfast",
+   "reason": "أصل عربي صحيح: أداة أو حرف جر يليه تطويل تليه كلمة لاتينية. حذف التطويل أو فصله قرار أسلوب لا يفرضه السياق وحده — سؤال للمالك.",
+   "class": "arabic-tatweel-prefix",
+   "ownerQuestion": "D47-Q"
+  },
+  {
+   "file": "docs/night-round-2026-10-01.md",
+   "line": 240,
+   "token": "والـRAR",
+   "reason": "أصل عربي صحيح: أداة أو حرف جر يليه تطويل تليه كلمة لاتينية. حذف التطويل أو فصله قرار أسلوب لا يفرضه السياق وحده — سؤال للمالك.",
+   "class": "arabic-tatweel-prefix",
+   "ownerQuestion": "D47-Q"
+  },
+  {
+   "file": "docs/play-store-guide.md",
+   "line": 35,
+   "token": "بـTWA",
+   "reason": "أصل عربي صحيح: أداة أو حرف جر يليه تطويل تليه كلمة لاتينية. حذف التطويل أو فصله قرار أسلوب لا يفرضه السياق وحده — سؤال للمالك.",
+   "class": "arabic-tatweel-prefix",
+   "ownerQuestion": "D47-Q"
+  },
+  {
+   "file": "docs/play-store-guide.md",
+   "line": 68,
+   "token": "الـJSON",
+   "reason": "أصل عربي صحيح: أداة أو حرف جر يليه تطويل تليه كلمة لاتينية. حذف التطويل أو فصله قرار أسلوب لا يفرضه السياق وحده — سؤال للمالك.",
+   "class": "arabic-tatweel-prefix",
+   "ownerQuestion": "D47-Q"
+  },
+  {
+   "file": "docs/security-audit.md",
+   "line": 58,
+   "token": "بـCSP",
+   "reason": "أصل عربي صحيح: أداة أو حرف جر يليه تطويل تليه كلمة لاتينية. حذف التطويل أو فصله قرار أسلوب لا يفرضه السياق وحده — سؤال للمالك.",
+   "class": "arabic-tatweel-prefix",
+   "ownerQuestion": "D47-Q"
+  },
+  {
+   "file": "docs/security-audit.md",
+   "line": 93,
+   "token": "الـwasm",
+   "reason": "أصل عربي صحيح: أداة أو حرف جر يليه تطويل تليه كلمة لاتينية. حذف التطويل أو فصله قرار أسلوب لا يفرضه السياق وحده — سؤال للمالك.",
+   "class": "arabic-tatweel-prefix",
+   "ownerQuestion": "D47-Q"
+  },
+  {
+   "file": "docs/security-audit.md",
+   "line": 167,
+   "token": "الـIIFE",
+   "reason": "أصل عربي صحيح: أداة أو حرف جر يليه تطويل تليه كلمة لاتينية. حذف التطويل أو فصله قرار أسلوب لا يفرضه السياق وحده — سؤال للمالك.",
+   "class": "arabic-tatweel-prefix",
+   "ownerQuestion": "D47-Q"
+  },
+  {
+   "file": "docs/security-audit.md",
+   "line": 232,
+   "token": "كـHTML",
+   "reason": "أصل عربي صحيح: أداة أو حرف جر يليه تطويل تليه كلمة لاتينية. حذف التطويل أو فصله قرار أسلوب لا يفرضه السياق وحده — سؤال للمالك.",
+   "class": "arabic-tatweel-prefix",
+   "ownerQuestion": "D47-Q"
+  },
+  {
+   "file": "docs/security-audit.md",
+   "line": 330,
+   "token": "الـDOM",
+   "reason": "أصل عربي صحيح: أداة أو حرف جر يليه تطويل تليه كلمة لاتينية. حذف التطويل أو فصله قرار أسلوب لا يفرضه السياق وحده — سؤال للمالك.",
+   "class": "arabic-tatweel-prefix",
+   "ownerQuestion": "D47-Q"
+  }
+ ]
+}

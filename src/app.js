@@ -515,7 +515,7 @@
     'data/eu.json':            'ef629525c2dae8f741e1697faaecf2319e1a646e4e011d2754ef66e23844101e',
     'data/epa.json':           'b24d7c3e3a8dbd7e84ef7b1a59bbfb98674b5c8ad44ff7f7a3dbe0d90d7775f3',
     'data/epa-cancelled.json': 'c2b5b38e4bfe07dc466c45d4f18518691a57de17b078822e2e6fab00de58fde7',
-    'data/reference.json':      '3e9d32c540c54502005db50e77044b79865b02ada5996d70073905338b6727da'
+    'data/reference.json':      '08482958be19b9e6dd85f784707249c0f31fc0c92626a0bef34944a5235373e6'
   };
 
   /* يُرجع null حين لا تتوفّر Web Crypto (سياق غير آمن) — لا يُرجع false أبداً،
@@ -1090,6 +1090,16 @@
     const disclaimerHtml = '<div class="disclaimer-strip" data-i18n="disclaimer.strip">'
       + t('disclaimer.strip', 'هذه الأداة مساندة وليست حكمًا قانونيًا — المرجع قرارات وزارة الزراعة والجهات الرسمية.')
       + '</div>';
+    /* D50 — إخلاء المسؤولية: النص يُقرأ من data/reference.json حصراً
+     * (meta.disclaimer) وباللغة الحالية للواجهة، ويُدرج مرة واحدة قرب
+     * النتائج عبر render() نفسها — أي في وضعي البحث (#results) والمسح
+     * (#scanResults) معاً. غياب المفتاح أو غياب المرجع ⇒ سلسلة فارغة أي
+     * لا عنصر إطلاقاً: لا نص بديل، ولا مفتاح في src/i18n.js. */
+    const refLang = (window.I18N && I18N.getLang) ? I18N.getLang() : 'ar';
+    const refDisclaimer = (REF && REF.meta && REF.meta.disclaimer && REF.meta.disclaimer[refLang]) || '';
+    const refDisclaimerHtml = refDisclaimer
+      ? '<div class="disclaimer-strip" data-ref-disclaimer="' + refLang + '">' + esc(refDisclaimer) + '</div>'
+      : '';
     /* absoluteBanBanner: حظر ليبيا 248 بتطابق تام (100%) قطعي — يُعرض
      * في الوضعين بلا استثناء حتى مع تبسيط بطاقة المزارع. الحظر الاحتمالي
      * (≥80%) يبقى مرئيًا في بطاقته بوضعيه (نفس المصدر) لكن الشريط
@@ -1116,7 +1126,7 @@
             b: esc(String(amb.b.r.name || '').split('\n')[0]), vb: amb.b.s.v })
         + '</span></div>'
       : '';
-    box.innerHTML = disclaimerHtml + banHtml + ambHtml + (prohibited.length
+    box.innerHTML = refDisclaimerHtml + disclaimerHtml + banHtml + ambHtml + (prohibited.length
       ? '<div class="prohibited"><span data-icon="ban"></span><span>' + tf('results.prohibited',
           'تحذير: هذه المادة مدرجة ضمن قائمة المبيدات المحظورة في ليبيا (قرار 248) — {name}',
           { name: esc(String(prohibited[0].r.name || '')).replace(/\n/g, ' · ') })

@@ -6,6 +6,12 @@
   "purpose": "المرجع الموحّد الذي تقرأ منه طبقة العرض الشرح والأشكال حصرًا.",
   "rule": "لا معنى مبتدع ولا نقل دلالي بين المصادر: كل شرح من دليل مصدره أو من نص تصديره هو؛ وما لا يشرحه مصدره يُسجَّل «غير مشروح» صراحة.",
   "textProvenance": "نصوص الشرح منقولة حرفيًا من قواميس src/i18n.js الأربعة (نفس الكلمات، لا إعادة صياغة)؛ الأشكال مُشتقّة من ملفات البيانات.",
+  "disclaimer": {
+   "ar": "هذه معلومات إرشادية عامة، وليست استشارة قانونية أو بديلاً عن الجهات الرسمية. المرجع الملزم هو القرارات الرسمية لوزارة الزراعة الليبية ونصوصها الرسمية.",
+   "en": "This is general guidance only; it is not legal advice and does not replace the official authorities. The authoritative reference is the official decisions of Libya's Ministry of Agriculture and their official texts.",
+   "fr": "Ces informations sont fournies à titre indicatif général ; elles ne constituent pas un conseil juridique et ne remplacent pas les autorités officielles. La référence faisant foi est constituée par les décisions officielles du ministère libyen de l'Agriculture et leurs textes officiels.",
+   "zh": "这些信息仅供一般参考，不构成法律意见，也不能替代官方主管部门。具有约束力的依据是利比亚农业部的正式决定及其官方文本。"
+  },
   "sections": [
    "libya500",
    "libya248",

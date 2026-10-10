@@ -14,7 +14,7 @@ const BASE = process.env.BASE_URL || 'http://localhost:8080';
 const OUT = process.argv[2] || path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'docs', 'ui-screenshots');
 fs.mkdirSync(OUT, { recursive: true });
 
-const VIEWS = ['home', 'search', 'scan', 'history', 'data', 'about'];
+const VIEWS = ['home', 'search', 'scan', 'history', 'data', 'about', 'stats'];
 const browser = await puppeteer.launch({
   executablePath: CHROME,
   headless: 'new',

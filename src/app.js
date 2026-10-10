@@ -46,7 +46,7 @@
    * Same-document navigation (back button + GitHub Pages subpath safe).
    * No business logic here — only show/hide + active nav state.
    * ============================================================ */
-  const VIEWS = ['home', 'search', 'scan', 'history', 'data', 'about', 'legend'];
+  const VIEWS = ['home', 'search', 'scan', 'history', 'data', 'about', 'legend', 'stats'];
   function currentView() {
     const h = (location.hash || '').replace(/^#\/?/, '');
     return VIEWS.indexOf(h) >= 0 ? h : 'home';
@@ -69,6 +69,7 @@
     });
     if (v === 'history') openHistory();
     if (v === 'search') mountJurisdiction();
+    if (v === 'stats') renderStats();
   }
   window.addEventListener('hashchange', applyView);
 
@@ -1271,6 +1272,11 @@
     const pro = $('#mode').value === 'pro';
     const results = searchFn(q, pro);
     render(results, q);
+    /* usage measurement (local only): every search counts, hit or miss */
+    if (window.Stats) {
+      Stats.count('search');
+      Stats.count(results.length ? 'searchHit' : 'searchMiss');
+    }
     if (results.length) addHistory(q, results.length);
     syncProTools();
   }
@@ -1296,6 +1302,7 @@
   if (modeSel) modeSel.addEventListener('change', () => {
     syncModeLabel();
     syncProTools();
+    if (window.Stats) Stats.count(modeSel.value === 'pro' ? 'modePro' : 'modeFarmer');
     /* the primary packs (Canada / Australia) install themselves the moment
      * the professional mode is entered — one event, no second path */
     document.dispatchEvent(new CustomEvent('modechange', { detail: { mode: modeSel.value } }));
@@ -1319,6 +1326,9 @@
    * the jurisdiction picker (English farmer only), the result cards, the
    * database chips and the professional tools row. Without this the user
    * kept reading cards in the previous language. */
+  /* usage measurement (local only): a language switch is itself a signal */
+  document.addEventListener('langchange', () => { if (window.Stats) Stats.count('langSwitch'); });
+
   document.addEventListener('langchange', function () {
     wireAboutFeedback();
     mountJurisdiction();
@@ -2093,6 +2103,11 @@
    * kept); the candidates stay available as optional manual re-search chips
    * via the (editable) #ocrText + «بحث من النص». */
   function showOcrResults(merged, noneMsg) {
+    /* usage measurement (local only): one completed read = one scan */
+    if (window.Stats) {
+      Stats.count('scan');
+      Stats.count(merged.length ? 'scanHit' : 'scanMiss');
+    }
     $('#resultTitle').textContent = t('ocr.title', 'نتائج المسح البصري');
     if (merged.length) {
       render(merged, '', '#scanResults');
@@ -2685,6 +2700,7 @@
      databases/OCR are protected from eviction. */
   $('#prepBtn').addEventListener('click', async () => {
     if (typeof OcrModule === 'undefined') return;
+    if (window.Stats) Stats.count('prep');
     /* the same message as an IndexedDB quota failure: the app still works from
      * cache, the farmer only has to free space for the offline copy */
     if (typeof OcrModule.setQuotaSink === 'function') {
@@ -2711,8 +2727,10 @@
       });
       prepMeasured = false;                 // re-measure with fresh data
       await updatePrepPanel();
+      if (window.Stats) Stats.count('prepOk');
       ocrMsg.textContent = tf('ocr.loadDone', 'تم تحميل ملفات OCR ({n}/7). سيعمل المسح البصري دون إنترنت.', { n: n });
     } catch (e) {
+      if (window.Stats) Stats.count('prepFail');
       st.textContent = t('prep.fail', 'تعذّر التجهيز الآن — أعد المحاولة أثناء الاتصال');
       const missingList = (e && e.missing) ? ' (' + e.missing.join(', ') + ')' : '';
       ocrMsg.textContent = t('prep.failNote', 'تعذّر تحميل ملفات OCR الآن. سيُعاد المحاولة تلقائيًا عند أول مسح أثناء الاتصال.') + missingList;
@@ -3051,8 +3069,76 @@
     if (btn) btn.focus();
   }
   /* ============================================================
+   * #/stats — usage statistics (local measurement only).
+   * Numbers are rendered via textContent/DOM builders (CSP-safe);
+   * window.Stats is fail-soft and nothing here reaches the network.
+   * ============================================================ */
+  function renderStats() {
+    const s = window.Stats && Stats.snapshot();
+    if (!s) return;
+    const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = String(v); };
+    const T = s.total || {};
+    set('statsOpen', T.open || 0);
+    set('statsSearch', T.search || 0);
+    set('statsHitRate', T.search ? Math.round(((T.searchHit || 0) * 100) / T.search) + '%' : '\u2014');
+    set('statsMiss', T.searchMiss || 0);
+    set('statsScan', T.scan || 0);
+    set('statsPrep', T.prepOk || 0);
+    set('statsModeFarmer', T.modeFarmer || 0);
+    set('statsModePro', T.modePro || 0);
+    const langBox = document.getElementById('statLangs');
+    if (langBox) {
+      while (langBox.firstChild) langBox.removeChild(langBox.firstChild);
+      ['ar', 'en', 'fr', 'zh'].forEach(code => {
+        const row = document.createElement('div'); row.className = 'r';
+        const k = document.createElement('span'); k.className = 'k';
+        k.textContent = t('stats.lang.' + code, code.toUpperCase());
+        const v = document.createElement('span'); v.className = 'v';
+        v.textContent = String((s.lang && s.lang[code]) || 0);
+        row.appendChild(k); row.appendChild(v);
+        langBox.appendChild(row);
+      });
+    }
+    const bars = document.getElementById('statBars');
+    if (bars) {
+      while (bars.firstChild) bars.removeChild(bars.firstChild);
+      const days = Object.keys(s.days || {}).sort().slice(-14);
+      const counts = days.map(d => {
+        const b = s.days[d];
+        return (b.search || 0) + (b.scan || 0) + (b.open || 0);
+      });
+      let max = 1;
+      counts.forEach(v => { if (v > max) max = v; });
+      days.forEach((d, i) => {
+        const row = document.createElement('div'); row.className = 'stats-bar-row';
+        const lab = document.createElement('span'); lab.className = 'stats-bar-day';
+        lab.textContent = d.slice(5);
+        const track = document.createElement('div'); track.className = 'stats-bar-track';
+        const fill = document.createElement('div'); fill.className = 'stats-bar-fill';
+        fill.style.width = Math.round((counts[i] * 100) / max) + '%';
+        track.appendChild(fill);
+        const num = document.createElement('span'); num.className = 'stats-bar-n';
+        num.textContent = String(counts[i]);
+        row.appendChild(lab); row.appendChild(track); row.appendChild(num);
+        bars.appendChild(row);
+      });
+    }
+  }
+  const statsResetBtn = document.getElementById('statsReset');
+  if (statsResetBtn) statsResetBtn.addEventListener('click', () => {
+    if (window.Stats) Stats.reset();
+    const note = document.getElementById('statsResetNote');
+    if (note) note.hidden = false;
+    renderStats();
+  });
+
+  /* ============================================================
    * Boot
    * ============================================================ */
+  if (window.Stats) {
+    Stats.count('open');
+    Stats.setLang(document.documentElement.lang || 'ar');
+  }
   applyView();
   syncModeLabel();
   renderDbStatus();

@@ -13,7 +13,7 @@
  * routed views carried no level-one heading and the about view stepped
  * h1 -> h3. They are no longer printed notes but part of the gate — exactly
  * one VISIBLE h1 per view and no level that skips a step, measured on the
- * rendered page across all seven views. Other moderate findings stay notes,
+ * rendered page across all eight views. Other moderate findings stay notes,
  * because the stated gate is the heading structure and the critical set.
  */
 import puppeteer from 'puppeteer-core';
@@ -23,7 +23,7 @@ const CHROME = process.env.CHROME || '/home/daytona/.cache/ms-playwright/chromiu
 const BASE = process.env.BASE_URL || 'http://127.0.0.1:8080';
 const AXE_PATH = process.env.AXE_PATH || '/home/daytona/lh/node_modules/axe-core/axe.min.js';
 const AXE = readFileSync(AXE_PATH, 'utf8');
-const VIEWS = ['home', 'search', 'scan', 'history', 'data', 'about', 'legend'];
+const VIEWS = ['home', 'search', 'scan', 'history', 'data', 'about', 'legend', 'stats'];
 
 let pass = 0, fail = 0;
 const check = (name, ok, detail) => {

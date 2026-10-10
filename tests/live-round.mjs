@@ -16,7 +16,7 @@ import path from 'node:path';
 fs.mkdirSync(OUT, { recursive: true });
 
 const LANGS = ['ar', 'en', 'fr', 'zh'];   // the app's four dictionaries (i18n.js DICTS keys)
-const VIEWS = ['home', 'search', 'scan', 'history', 'data', 'about'];
+const VIEWS = ['home', 'search', 'scan', 'history', 'data', 'about', 'stats'];
 const browser = await puppeteer.launch({
   executablePath: CHROME, headless: 'new',
   args: ['--no-sandbox', '--disable-dev-shm-usage', '--lang=ar',

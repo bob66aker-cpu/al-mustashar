@@ -179,8 +179,8 @@ check('index loads search-core before app', html.indexOf('src/search-core.js') <
  * the same ids (tests/app logic depend on them); the OLD assertions about
  * a header statusline no longer apply and were replaced. */
 check('per-DB status chips present', ['db-libya-248', 'db-libya-500', 'db-eu', 'db-epa', 'db-epa-cancelled'].every(id => html.includes(id)));
-check('six views + hash router targets present',
-  ['view-home', 'view-search', 'view-scan', 'view-history', 'view-data', 'view-about'].every(id => html.includes(id)));
+check('seven views + hash router targets present',
+  ['view-home', 'view-search', 'view-scan', 'view-history', 'view-data', 'view-about', 'view-stats'].every(id => html.includes(id)));
 check('bottom nav with 5 items + data route',
   ['data-nav="home"', 'data-nav="search"', 'data-nav="scan"', 'data-nav="history"', 'data-nav="about"'].every(m => html.includes(m))
   && html.includes('href="#/data"'));
@@ -312,7 +312,7 @@ check('OCR engine carries the a3 early-confirm lock (DB-confirmed reads survive 
       && o.includes("via: 'ladder_confirm'")
       && o.includes('if (earlyLock) break;')
       && o.includes('if (!earlyLock && (exactHit || hasValidCas([...fusionCAS])))'); })());
-check('sw is v37 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v57'")
+check('sw is v37 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v58'")
   && sw5.includes("'./src/scan-live.js'")
   && sw5.includes("OCR_CACHE = 'mustashar-ocr'")
   && OCR_RUNTIME_FILES.every(f => sw5.includes(f.replace('./', '')))

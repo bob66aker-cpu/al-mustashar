@@ -201,6 +201,13 @@
     .page-head h1 { font-size: 22px; font-weight: 700; letter-spacing: -0.01em; }
     .page-head p { color: var(--muted); font-size: 14px; margin-top: 4px; }
 
+    /* #/stats — local usage-measurement view (bars reuse the design tokens) */
+    .stats-bar-row { display: grid; grid-template-columns: 42px 1fr 34px; gap: 8px; align-items: center; font-size: 12px; color: var(--muted); }
+    .stats-bar-track { height: 10px; background: var(--field); border: 1px solid var(--control); border-radius: 5px; overflow: hidden; }
+    .stats-bar-fill { height: 100%; background: var(--primary); border-radius: 5px; }
+    .stats-bar-n { font-variant-numeric: tabular-nums; text-align: end; }
+    .stats-note { color: var(--muted); font-size: 13px; margin-top: 8px; }
+
     /* ============ cards ============ */
     .card {
       background: var(--card);
@@ -1356,6 +1363,7 @@
           <div class="r"><span class="k" data-i18n="about.info.source">شيفرة هذا الإصدار</span><span class="v"><a id="aboutSourceLink" href="https://github.com/bob66aker-cpu/al-mustashar/tree/work-branch" target="_blank" rel="noopener noreferrer" data-i18n="about.info.source.link">github.com/bob66aker-cpu/al-mustashar</a></span></div>
           <div class="r"><span class="k" data-i18n="about.info.date">تاريخ الإصدار</span><span class="v" id="aboutDate">—</span></div>
           <div class="r"><span class="k" data-i18n="about.info.type">النوع</span><span class="v" data-i18n="about.type.value">تطبيق معلومات زراعية وتحقق تنظيمي</span></div>
+          <div class="r"><span class="k" data-i18n="stats.entry.k">إحصاءات الاستخدام</span><span class="v"><a href="#/stats" data-i18n="stats.entry">عرض على هذا الجهاز</a></span></div>
         </div>
       </div>
 
@@ -1490,6 +1498,46 @@
         </table>
       </div>
     </section>
+
+    <!-- ================= USAGE STATS — إحصاءات الاستخدام (قياس محلي فقط، لا شبكة) ================= -->
+    <section class="view" id="view-stats" data-view="stats" hidden>
+      <div class="page-head">
+        <h1 data-i18n="stats.title">إحصاءات الاستخدام</h1>
+        <p><a href="#/about" data-i18n="legend.back">عودة إلى حول</a></p>
+        <p data-i18n="stats.lead">تُحتسب هذه الأرقام من هذا الجهاز فقط ولا تُرسل إلى أي خادم.</p>
+      </div>
+
+      <div class="card">
+        <h2 data-i18n="stats.h.totals">الإجماليات</h2>
+        <div class="info-rows" style="margin-top:6px">
+          <div class="r"><span class="k" data-i18n="stats.opens">مرات فتح التطبيق</span><span class="v" id="statsOpen">0</span></div>
+          <div class="r"><span class="k" data-i18n="stats.searches">عمليات البحث</span><span class="v" id="statsSearch">0</span></div>
+          <div class="r"><span class="k" data-i18n="stats.hitRate">نسبة البحث الذي أرجع نتائج</span><span class="v" id="statsHitRate">&#8212;</span></div>
+          <div class="r"><span class="k" data-i18n="stats.searchMiss">بحث بلا نتائج</span><span class="v" id="statsMiss">0</span></div>
+          <div class="r"><span class="k" data-i18n="stats.scans">عمليات المسح البصري</span><span class="v" id="statsScan">0</span></div>
+          <div class="r"><span class="k" data-i18n="stats.preps">التجهيز دون إنترنت</span><span class="v" id="statsPrep">0</span></div>
+          <div class="r"><span class="k" data-i18n="stats.modeFarmer">الوضع: المزارع</span><span class="v" id="statsModeFarmer">0</span></div>
+          <div class="r"><span class="k" data-i18n="stats.modePro">الوضع: المحترف</span><span class="v" id="statsModePro">0</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 data-i18n="stats.days">نشاط آخر ١٤ يوماً (فتح + بحث + مسح)</h2>
+        <div class="bars" id="statBars"></div>
+      </div>
+
+      <div class="card">
+        <h2 data-i18n="stats.langs">جلسات حسب اللغة</h2>
+        <div class="info-rows" id="statLangs"></div>
+      </div>
+
+      <div class="card">
+        <h2 data-i18n="stats.privacy.title">الخصوصية</h2>
+        <p data-i18n="stats.privacy">هذه الإحصاءات محفوظة في هذا المتصفح على جهازك فقط: لا تتضمن نصوص البحث ولا الصور ولا أي معرّف، ولا تغادر جهازك. زر التصفير يمحوها نهائياً.</p>
+        <button class="btn-outline" type="button" id="statsReset"><span data-i18n="stats.reset">تصفير الإحصاءات</span></button>
+        <p class="stats-note" id="statsResetNote" hidden data-i18n="stats.resetDone">تم تصفير الإحصاءات على هذا الجهاز.</p>
+      </div>
+    </section>
   </main>
 
   <nav class="bottom" id="bottomNav" aria-label="main">
@@ -1522,6 +1570,7 @@
   <script src="src/scan-live.js"></script>
   <script src="src/vendor/qrcodegen.js"></script>
   <script src="src/qr.js"></script>
+  <script src="src/stats.js"></script>
   <script src="src/app.js"></script>
 </body>
 </html>

@@ -101,10 +101,27 @@ const before = { sw: at(BASE_COMMIT, 'sw.js'), ocr: at(BASE_COMMIT, 'src/ocr.js'
 
 const setsNow = prep(now), setsBefore = prep(before);
 
+/* ONE declared delta is allowed since the baseline: D43 (6362b67) added
+ * './data/reference.json' to DATA — the unified reference the display reads
+ * (a product decision by the owner, measured + documented in PROJECT_MEMORY).
+ * The gate stays strict: exactly these entries may be ADDED, nothing may be
+ * removed, and any second addition fails. */
+const DECLARED_ADDED = {
+  DATA: ['./data/reference.json']
+};
 for (const key of Object.keys(setsNow)) {
-  ok(!!setsBefore[key] && setsNow[key].length === setsBefore[key].length,
-    key + ' list is unchanged since ' + BASE_COMMIT,
-    (setsBefore[key] || []).length + ' → ' + setsNow[key].length);
+  const before = setsBefore[key] || [];
+  const now = setsNow[key] || [];
+  const allowed = DECLARED_ADDED[key] || [];
+  const added = now.filter(p => !before.includes(p));
+  const removed = before.filter(p => !now.includes(p));
+  ok(!!setsBefore[key] && removed.length === 0
+     && added.length === allowed.length
+     && added.every(p => allowed.includes(p)),
+    key + ' list is unchanged since ' + BASE_COMMIT + ' (declared delta: ' + (allowed.join(', ') || 'none') + ')',
+    before.length + ' → ' + now.length
+      + (added.length ? ' | added: ' + added.join(', ') : '')
+      + (removed.length ? ' | REMOVED: ' + removed.join(', ') : ''));
 }
 
 const total = sets => Object.values(sets).flat().reduce((a, p) => a + Math.max(0, onDisk(norm(p))), 0);
@@ -119,8 +136,14 @@ ok(!!prefetchNow && prefetchNow === prefetchBefore,
 const totalNow = total(setsNow), totalBefore = total(setsBefore);
 ok(missing(setsNow).length === 0, 'every default-prepared file exists on disk',
   missing(setsNow).join(', ') || 'all present');
-ok(totalNow === totalBefore, 'default preparation size is byte-for-byte unchanged',
-  totalBefore + ' → ' + totalNow + ' bytes' + (totalNow === totalBefore ? '' : ' (Δ' + (totalNow - totalBefore) + ')'));
+/* the declared added files are measured on disk, so the expected total is
+ * baseline + exactly those bytes — a second addition shows as a non-zero Δ */
+const declaredBytes = Object.values(DECLARED_ADDED).flat()
+  .reduce((a, p) => a + Math.max(0, onDisk(norm(p))), 0);
+ok(totalNow === totalBefore + declaredBytes,
+  'default preparation size is byte-for-byte unchanged outside the declared delta',
+  totalBefore + ' → ' + totalNow + ' bytes (declared Δ' + declaredBytes + ')'
+    + (totalNow === totalBefore + declaredBytes ? '' : ' — UNDECLARED Δ' + (totalNow - totalBefore - declaredBytes)));
 
 /* the package itself must be invisible to every default surface */
 const html = now.html;

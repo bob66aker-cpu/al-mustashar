@@ -47,7 +47,7 @@ check('every section declares its category kind, and the kinds match the data',
 check('the canadian column is declared `none` BY MEASUREMENT (every row empty), not by name',
   d248 && au && JSON.parse(readFileSync(join(root, 'data-optional/canada.json'), 'utf8')).rows
     .every(r => !String(r.category || '').trim())
-  && REF.sections.canada.categorylessRows === 1311);
+  && REF.sections.canada.categorylessRows === 1313);
 check('app.js reads the declared kind and prints a descriptive cell verbatim',
   /function catIsDescriptive\(sourceKey\)/.test(app)
   && /if \(catIsDescriptive\(sourceKey\)\) return String\(code == null \? '' : code\);/.test(app));

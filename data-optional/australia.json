@@ -7,7 +7,7 @@
   "license": "CC-BY-3.0-AU",
   "license_url": "https://creativecommons.org/licenses/by/3.0/au/",
   "attribution_en": "Contains information licensed under the Creative Commons Attribution 3.0 Australia licence.",
-  "retrieved_date": "2026-09-28",
+  "retrieved_date": "2026-10-11",
   "count": 2695,
   "registered": 2469,
   "cas_present": 0,
@@ -15,7 +15,7 @@
   "optional": true,
   "built_with": "scripts/build-australia.mjs",
   "schema": "name,name_norm,cas,cas_norm,status,status_raw,category,source,products,registered_products,row",
-  "sha256": "d7111c8d0639a914dd6ef9af01903d93e754a60b59b8dd2adf75069136797db8"
+  "sha256": "807c6edda72fafb36c67b52e525aa380870b9c37d0b1f6296305911a84f6c769"
  },
  "rows": [
   {
@@ -154,8 +154,8 @@
    "status_raw": "REGISTERED",
    "category": "ACTIVE CONSTITUENT / GROWTH REGULATOR / HERBICIDE",
    "source": "australia",
-   "products": 283,
-   "registered_products": 220,
+   "products": 292,
+   "registered_products": 226,
    "row": 10
   },
   {
@@ -406,8 +406,8 @@
    "status_raw": "REGISTERED",
    "category": "ACTIVE CONSTITUENT / HOUSEHOLD INSECTICIDE / INSECTICIDE",
    "source": "australia",
-   "products": 222,
-   "registered_products": 185,
+   "products": 223,
+   "registered_products": 186,
    "row": 28
   },
   {
@@ -1331,7 +1331,7 @@
    "category": "ACTIVE CONSTITUENT / INSECTICIDE / PARASITICIDES",
    "source": "australia",
    "products": 88,
-   "registered_products": 75,
+   "registered_products": 74,
    "row": 94
   },
   {
@@ -1695,7 +1695,7 @@
    "category": "HERBICIDE",
    "source": "australia",
    "products": 12,
-   "registered_products": 9,
+   "registered_products": 8,
    "row": 120
   },
   {
@@ -1876,7 +1876,7 @@
    "status_raw": "REGISTERED",
    "category": "ADJUVANT / VM - Veterinary Medicine",
    "source": "australia",
-   "products": 30,
+   "products": 31,
    "registered_products": 17,
    "row": 133
   },
@@ -1988,7 +1988,7 @@
    "status_raw": "REGISTERED",
    "category": "ANTIBIOTIC & RELATED / VM - Veterinary Medicine",
    "source": "australia",
-   "products": 46,
+   "products": 47,
    "registered_products": 41,
    "row": 141
   },
@@ -2562,7 +2562,7 @@
    "status_raw": "REGISTERED",
    "category": "ACTIVE CONSTITUENT / HERBICIDE",
    "source": "australia",
-   "products": 105,
+   "products": 107,
    "registered_products": 81,
    "row": 182
   },
@@ -2829,7 +2829,7 @@
    "category": "ACTIVE CONSTITUENT / FUNGICIDE",
    "source": "australia",
    "products": 155,
-   "registered_products": 128,
+   "registered_products": 127,
    "row": 201
   },
   {
@@ -3556,8 +3556,8 @@
    "status_raw": "REGISTERED",
    "category": "ALGICIDE / DAIRY CLEANSER / DERMATOLOGICAL PREPS.",
    "source": "australia",
-   "products": 140,
-   "registered_products": 105,
+   "products": 141,
+   "registered_products": 106,
    "row": 253
   },
   {
@@ -3920,8 +3920,8 @@
    "status_raw": "REGISTERED",
    "category": "A - Agricultural / ACTIVE CONSTITUENT / HOUSEHOLD INSECTICIDE",
    "source": "australia",
-   "products": 295,
-   "registered_products": 251,
+   "products": 298,
+   "registered_products": 254,
    "row": 279
   },
   {
@@ -4424,8 +4424,8 @@
    "status_raw": "REGISTERED",
    "category": "MIXED FUNCTION PESTICIDE / WOOD PRESERVATIVE",
    "source": "australia",
-   "products": 20,
-   "registered_products": 18,
+   "products": 21,
+   "registered_products": 19,
    "row": 315
   },
   {
@@ -4677,7 +4677,7 @@
    "category": "ACTIVE CONSTITUENT / VERTEBRATE POISON",
    "source": "australia",
    "products": 88,
-   "registered_products": 48,
+   "registered_products": 49,
    "row": 333
   },
   {
@@ -4747,7 +4747,7 @@
    "category": "ACTIVE CONSTITUENT / VERTEBRATE POISON",
    "source": "australia",
    "products": 40,
-   "registered_products": 13,
+   "registered_products": 15,
    "row": 338
   },
   {
@@ -5054,8 +5054,8 @@
    "status_raw": "REGISTERED",
    "category": "HERBICIDE",
    "source": "australia",
-   "products": 48,
-   "registered_products": 40,
+   "products": 50,
+   "registered_products": 42,
    "row": 360
   },
   {
@@ -5069,7 +5069,7 @@
    "category": "HERBICIDE",
    "source": "australia",
    "products": 43,
-   "registered_products": 31,
+   "registered_products": 30,
    "row": 361
   },
   {
@@ -6287,7 +6287,7 @@
    "category": "ACTIVE CONSTITUENT / FUNGICIDE",
    "source": "australia",
    "products": 42,
-   "registered_products": 35,
+   "registered_products": 34,
    "row": 448
   },
   {
@@ -6315,7 +6315,7 @@
    "category": "ACTIVE CONSTITUENT / FUNGICIDE / MIXED FUNCTION PESTICIDE",
    "source": "australia",
    "products": 39,
-   "registered_products": 29,
+   "registered_products": 28,
    "row": 450
   },
   {
@@ -6482,8 +6482,8 @@
    "status_raw": "REGISTERED",
    "category": "ACTIVE CONSTITUENT / HERBICIDE",
    "source": "australia",
-   "products": 67,
-   "registered_products": 55,
+   "products": 68,
+   "registered_products": 56,
    "row": 462
   },
   {
@@ -7070,8 +7070,8 @@
    "status_raw": "REGISTERED",
    "category": "ACTIVE CONSTITUENT / INSECTICIDE",
    "source": "australia",
-   "products": 98,
-   "registered_products": 79,
+   "products": 99,
+   "registered_products": 80,
    "row": 504
   },
   {
@@ -7560,8 +7560,8 @@
    "status_raw": "REGISTERED",
    "category": "ACTIVE CONSTITUENT / FUNGICIDE",
    "source": "australia",
-   "products": 112,
-   "registered_products": 87,
+   "products": 113,
+   "registered_products": 88,
    "row": 539
   },
   {
@@ -8260,7 +8260,7 @@
    "status_raw": "NOT REGISTERED",
    "category": "ANTIBIOTIC & RELATED",
    "source": "australia",
-   "products": 3,
+   "products": 4,
    "registered_products": 0,
    "row": 589
   },
@@ -8330,8 +8330,8 @@
    "status_raw": "REGISTERED",
    "category": "ACTIVE CONSTITUENT / HERBICIDE",
    "source": "australia",
-   "products": 133,
-   "registered_products": 108,
+   "products": 134,
+   "registered_products": 109,
    "row": 594
   },
   {
@@ -8414,8 +8414,8 @@
    "status_raw": "REGISTERED",
    "category": "ACTIVE CONSTITUENT / HERBICIDE",
    "source": "australia",
-   "products": 37,
-   "registered_products": 32,
+   "products": 38,
+   "registered_products": 33,
    "row": 600
   },
   {
@@ -8470,8 +8470,8 @@
    "status_raw": "REGISTERED",
    "category": "ACTIVE CONSTITUENT / HERBICIDE",
    "source": "australia",
-   "products": 21,
-   "registered_products": 20,
+   "products": 22,
+   "registered_products": 21,
    "row": 604
   },
   {
@@ -8652,8 +8652,8 @@
    "status_raw": "REGISTERED",
    "category": "HERBICIDE",
    "source": "australia",
-   "products": 48,
-   "registered_products": 38,
+   "products": 49,
+   "registered_products": 39,
    "row": 617
   },
   {
@@ -8694,8 +8694,8 @@
    "status_raw": "REGISTERED",
    "category": "ACTIVE CONSTITUENT / HERBICIDE",
    "source": "australia",
-   "products": 84,
-   "registered_products": 71,
+   "products": 85,
+   "registered_products": 72,
    "row": 620
   },
   {
@@ -10445,7 +10445,7 @@
    "category": "ANTIFOULING / FUNGICIDE",
    "source": "australia",
    "products": 105,
-   "registered_products": 41,
+   "registered_products": 39,
    "row": 745
   },
   {
@@ -10487,7 +10487,7 @@
    "category": "ACTIVE CONSTITUENT / ANTIFOULING",
    "source": "australia",
    "products": 47,
-   "registered_products": 21,
+   "registered_products": 20,
    "row": 748
   },
   {
@@ -10850,8 +10850,8 @@
    "status_raw": "REGISTERED",
    "category": "ANTIFOULING",
    "source": "australia",
-   "products": 32,
-   "registered_products": 4,
+   "products": 34,
+   "registered_products": 2,
    "row": 774
   },
   {
@@ -11424,8 +11424,8 @@
    "status_raw": "REGISTERED",
    "category": "ACTIVE CONSTITUENT / HOUSEHOLD INSECTICIDE / INSECTICIDE",
    "source": "australia",
-   "products": 102,
-   "registered_products": 80,
+   "products": 103,
+   "registered_products": 81,
    "row": 815
   },
   {
@@ -11900,8 +11900,8 @@
    "status_raw": "REGISTERED",
    "category": "ACTIVE CONSTITUENT / HERBICIDE",
    "source": "australia",
-   "products": 34,
-   "registered_products": 33,
+   "products": 35,
+   "registered_products": 34,
    "row": 849
   },
   {
@@ -11929,7 +11929,7 @@
    "category": "HERBICIDE",
    "source": "australia",
    "products": 2,
-   "registered_products": 2,
+   "registered_products": 1,
    "row": 851
   },
   {
@@ -12209,7 +12209,7 @@
    "category": "ACTIVE CONSTITUENT / HOUSEHOLD INSECTICIDE / INSECTICIDE",
    "source": "australia",
    "products": 10,
-   "registered_products": 6,
+   "registered_products": 5,
    "row": 871
   },
   {
@@ -12460,8 +12460,8 @@
    "status_raw": "REGISTERED",
    "category": "ACTIVE CONSTITUENT / HERBICIDE",
    "source": "australia",
-   "products": 166,
-   "registered_products": 138,
+   "products": 167,
+   "registered_products": 137,
    "row": 889
   },
   {
@@ -12936,7 +12936,7 @@
    "status_raw": "REGISTERED",
    "category": "HERBICIDE",
    "source": "australia",
-   "products": 33,
+   "products": 34,
    "registered_products": 28,
    "row": 923
   },
@@ -13175,7 +13175,7 @@
    "category": "ACTIVE CONSTITUENT / ALGICIDE / ANTIFOULING",
    "source": "australia",
    "products": 112,
-   "registered_products": 93,
+   "registered_products": 91,
    "row": 940
   },
   {
@@ -14560,8 +14560,8 @@
    "status_raw": "REGISTERED",
    "category": "ACTIVE CONSTITUENT / GROWTH REGULATOR / PLANT REGULATOR",
    "source": "australia",
-   "products": 37,
-   "registered_products": 29,
+   "products": 38,
+   "registered_products": 30,
    "row": 1039
   },
   {
@@ -14756,7 +14756,7 @@
    "status_raw": "REGISTERED",
    "category": "ADJUVANT",
    "source": "australia",
-   "products": 8,
+   "products": 9,
    "registered_products": 6,
    "row": 1053
   },
@@ -14883,7 +14883,7 @@
    "category": "FUNGICIDE / HERBICIDE / INSECTICIDE",
    "source": "australia",
    "products": 51,
-   "registered_products": 43,
+   "registered_products": 42,
    "row": 1062
   },
   {
@@ -15596,8 +15596,8 @@
    "status_raw": "REGISTERED",
    "category": "A - Agricultural / ACTIVE CONSTITUENT / HOUSEHOLD INSECTICIDE",
    "source": "australia",
-   "products": 185,
-   "registered_products": 152,
+   "products": 186,
+   "registered_products": 153,
    "row": 1113
   },
   {
@@ -16002,8 +16002,8 @@
    "status_raw": "REGISTERED",
    "category": "ACTIVE CONSTITUENT / HERBICIDE",
    "source": "australia",
-   "products": 44,
-   "registered_products": 33,
+   "products": 46,
+   "registered_products": 35,
    "row": 1142
   },
   {
@@ -16297,7 +16297,7 @@
    "category": "HERBICIDE",
    "source": "australia",
    "products": 78,
-   "registered_products": 68,
+   "registered_products": 66,
    "row": 1163
   },
   {
@@ -16338,8 +16338,8 @@
    "status_raw": "REGISTERED",
    "category": "ACTIVE CONSTITUENT / FUNGICIDE / INSECTICIDE",
    "source": "australia",
-   "products": 79,
-   "registered_products": 65,
+   "products": 80,
+   "registered_products": 64,
    "row": 1166
   },
   {
@@ -17347,7 +17347,7 @@
    "category": "HERBICIDE",
    "source": "australia",
    "products": 2,
-   "registered_products": 2,
+   "registered_products": 1,
    "row": 1238
   },
   {
@@ -17430,8 +17430,8 @@
    "status_raw": "REGISTERED",
    "category": "HERBICIDE",
    "source": "australia",
-   "products": 5,
-   "registered_products": 2,
+   "products": 6,
+   "registered_products": 3,
    "row": 1244
   },
   {
@@ -17472,8 +17472,8 @@
    "status_raw": "REGISTERED",
    "category": "HERBICIDE",
    "source": "australia",
-   "products": 273,
-   "registered_products": 227,
+   "products": 275,
+   "registered_products": 221,
    "row": 1247
   },
   {
@@ -17556,8 +17556,8 @@
    "status_raw": "REGISTERED",
    "category": "HERBICIDE",
    "source": "australia",
-   "products": 92,
-   "registered_products": 77,
+   "products": 96,
+   "registered_products": 78,
    "row": 1253
   },
   {
@@ -18886,8 +18886,8 @@
    "status_raw": "REGISTERED",
    "category": "HERBICIDE",
    "source": "australia",
-   "products": 17,
-   "registered_products": 11,
+   "products": 20,
+   "registered_products": 14,
    "row": 1348
   },
   {
@@ -18970,8 +18970,8 @@
    "status_raw": "REGISTERED",
    "category": "HERBICIDE",
    "source": "australia",
-   "products": 14,
-   "registered_products": 8,
+   "products": 17,
+   "registered_products": 11,
    "row": 1354
   },
   {
@@ -19040,7 +19040,7 @@
    "status_raw": "REGISTERED",
    "category": "ACTIVE CONSTITUENT / FUNGICIDE / HOUSEHOLD INSECTICIDE",
    "source": "australia",
-   "products": 340,
+   "products": 342,
    "registered_products": 268,
    "row": 1359
   },
@@ -21546,8 +21546,8 @@
    "status_raw": "REGISTERED",
    "category": "ADJUVANT / ANTIFOULING / BRANDING SUBSTANCE",
    "source": "australia",
-   "products": 1328,
-   "registered_products": 1005,
+   "products": 1338,
+   "registered_products": 1007,
    "row": 1538
   },
   {
@@ -21575,7 +21575,7 @@
    "category": "HERBICIDE / INSECTICIDE",
    "source": "australia",
    "products": 5,
-   "registered_products": 5,
+   "registered_products": 4,
    "row": 1540
   },
   {
@@ -22289,7 +22289,7 @@
    "category": "ACTIVE CONSTITUENT / FUNGICIDE",
    "source": "australia",
    "products": 89,
-   "registered_products": 81,
+   "registered_products": 80,
    "row": 1591
   },
   {
@@ -22695,7 +22695,7 @@
    "category": "ACTIVE CONSTITUENT / HERBICIDE",
    "source": "australia",
    "products": 17,
-   "registered_products": 15,
+   "registered_products": 14,
    "row": 1620
   },
   {
@@ -22792,8 +22792,8 @@
    "status_raw": "REGISTERED",
    "category": "ACTIVE CONSTITUENT / HERBICIDE",
    "source": "australia",
-   "products": 55,
-   "registered_products": 43,
+   "products": 57,
+   "registered_products": 44,
    "row": 1627
   },
   {
@@ -22820,7 +22820,7 @@
    "status_raw": "REGISTERED",
    "category": "HERBICIDE",
    "source": "australia",
-   "products": 140,
+   "products": 141,
    "registered_products": 122,
    "row": 1629
   },
@@ -22834,8 +22834,8 @@
    "status_raw": "REGISTERED",
    "category": "HERBICIDE",
    "source": "australia",
-   "products": 78,
-   "registered_products": 64,
+   "products": 80,
+   "registered_products": 66,
    "row": 1630
   },
   {
@@ -22876,8 +22876,8 @@
    "status_raw": "REGISTERED",
    "category": "HERBICIDE",
    "source": "australia",
-   "products": 74,
-   "registered_products": 62,
+   "products": 75,
+   "registered_products": 63,
    "row": 1633
   },
   {
@@ -22960,8 +22960,8 @@
    "status_raw": "REGISTERED",
    "category": "ACTIVE CONSTITUENT / HERBICIDE",
    "source": "australia",
-   "products": 3,
-   "registered_products": 3,
+   "products": 4,
+   "registered_products": 4,
    "row": 1639
   },
   {
@@ -23339,7 +23339,7 @@
    "category": "ACTIVE CONSTITUENT / FUNGICIDE",
    "source": "australia",
    "products": 42,
-   "registered_products": 38,
+   "registered_products": 36,
    "row": 1666
   },
   {
@@ -23366,8 +23366,8 @@
    "status_raw": "REGISTERED",
    "category": "ACTIVE CONSTITUENT / MOLLUSCICIDE",
    "source": "australia",
-   "products": 43,
-   "registered_products": 34,
+   "products": 44,
+   "registered_products": 35,
    "row": 1668
   },
   {
@@ -24291,7 +24291,7 @@
    "category": "ACTIVE CONSTITUENT / HERBICIDE",
    "source": "australia",
    "products": 75,
-   "registered_products": 64,
+   "registered_products": 63,
    "row": 1734
   },
   {
@@ -24598,8 +24598,8 @@
    "status_raw": "REGISTERED",
    "category": "HERBICIDE / MIXED FUNCTION PESTICIDE / WOOD PRESERVATIVE",
    "source": "australia",
-   "products": 17,
-   "registered_products": 12,
+   "products": 18,
+   "registered_products": 13,
    "row": 1756
   },
   {
@@ -25074,7 +25074,7 @@
    "status_raw": "REGISTERED",
    "category": "FUNGICIDE / HERBICIDE / INSECTICIDE",
    "source": "australia",
-   "products": 312,
+   "products": 315,
    "registered_products": 247,
    "row": 1790
   },
@@ -25830,7 +25830,7 @@
    "status_raw": "REGISTERED",
    "category": "ADJUVANT / SURFACTANT / WETTING AGENT",
    "source": "australia",
-   "products": 21,
+   "products": 22,
    "registered_products": 16,
    "row": 1844
   },
@@ -26936,8 +26936,8 @@
    "status_raw": "REGISTERED",
    "category": "ACTIVE CONSTITUENT / HERBICIDE",
    "source": "australia",
-   "products": 72,
-   "registered_products": 60,
+   "products": 74,
+   "registered_products": 62,
    "row": 1923
   },
   {
@@ -27048,8 +27048,8 @@
    "status_raw": "REGISTERED",
    "category": "ACTIVE CONSTITUENT / GROWTH REGULATOR / HERBICIDE",
    "source": "australia",
-   "products": 48,
-   "registered_products": 43,
+   "products": 49,
+   "registered_products": 44,
    "row": 1931
   },
   {
@@ -27370,8 +27370,8 @@
    "status_raw": "REGISTERED",
    "category": "HERBICIDE",
    "source": "australia",
-   "products": 119,
-   "registered_products": 95,
+   "products": 126,
+   "registered_products": 99,
    "row": 1954
   },
   {
@@ -27524,8 +27524,8 @@
    "status_raw": "REGISTERED",
    "category": "ACTIVE CONSTITUENT / HERBICIDE",
    "source": "australia",
-   "products": 58,
-   "registered_products": 45,
+   "products": 59,
+   "registered_products": 46,
    "row": 1965
   },
   {
@@ -28603,7 +28603,7 @@
    "category": "HERBICIDE",
    "source": "australia",
    "products": 36,
-   "registered_products": 28,
+   "registered_products": 27,
    "row": 2042
   },
   {
@@ -29036,8 +29036,8 @@
    "status_raw": "REGISTERED",
    "category": "HERBICIDE",
    "source": "australia",
-   "products": 53,
-   "registered_products": 44,
+   "products": 55,
+   "registered_products": 43,
    "row": 2073
   },
   {
@@ -30338,8 +30338,8 @@
    "status_raw": "REGISTERED",
    "category": "ADJUVANT / DERMATOLOGICAL PREPS. / PASTE",
    "source": "australia",
-   "products": 47,
-   "registered_products": 35,
+   "products": 48,
+   "registered_products": 36,
    "row": 2166
   },
   {
@@ -30408,7 +30408,7 @@
    "status_raw": "REGISTERED",
    "category": "ACTIVE CONSTITUENT / HERBICIDE",
    "source": "australia",
-   "products": 105,
+   "products": 106,
    "registered_products": 78,
    "row": 2171
   },
@@ -30437,7 +30437,7 @@
    "category": "ACTIVE CONSTITUENT / HERBICIDE",
    "source": "australia",
    "products": 60,
-   "registered_products": 45,
+   "registered_products": 44,
    "row": 2173
   },
   {
@@ -30492,7 +30492,7 @@
    "status_raw": "REGISTERED",
    "category": "ACTIVE CONSTITUENT / FUNGICIDE",
    "source": "australia",
-   "products": 85,
+   "products": 86,
    "registered_products": 69,
    "row": 2177
   },
@@ -30856,8 +30856,8 @@
    "status_raw": "REGISTERED",
    "category": "ACTIVE CONSTITUENT / HERBICIDE",
    "source": "australia",
-   "products": 114,
-   "registered_products": 90,
+   "products": 118,
+   "registered_products": 92,
    "row": 2203
   },
   {
@@ -31053,7 +31053,7 @@
    "category": "ACTIVE CONSTITUENT / HERBICIDE",
    "source": "australia",
    "products": 49,
-   "registered_products": 40,
+   "registered_products": 39,
    "row": 2217
   },
   {
@@ -32214,8 +32214,8 @@
    "status_raw": "REGISTERED",
    "category": "ACTIVE CONSTITUENT / ALGICIDE / HERBICIDE",
    "source": "australia",
-   "products": 97,
-   "registered_products": 77,
+   "products": 99,
+   "registered_products": 78,
    "row": 2300
   },
   {
@@ -33124,8 +33124,8 @@
    "status_raw": "REGISTERED",
    "category": "ADJUVANT / SURFACTANT / WETTING AGENT",
    "source": "australia",
-   "products": 46,
-   "registered_products": 35,
+   "products": 47,
+   "registered_products": 36,
    "row": 2365
   },
   {
@@ -33306,7 +33306,7 @@
    "status_raw": "REGISTERED",
    "category": "ACTIVE CONSTITUENT / INSECTICIDE",
    "source": "australia",
-   "products": 29,
+   "products": 30,
    "registered_products": 20,
    "row": 2378
   },
@@ -33895,7 +33895,7 @@
    "category": "FUNGICIDE / MITICIDE",
    "source": "australia",
    "products": 14,
-   "registered_products": 11,
+   "registered_products": 10,
    "row": 2420
   },
   {
@@ -34328,8 +34328,8 @@
    "status_raw": "REGISTERED",
    "category": "ACTIVE CONSTITUENT / FUNGICIDE / MIXED FUNCTION PESTICIDE",
    "source": "australia",
-   "products": 188,
-   "registered_products": 150,
+   "products": 189,
+   "registered_products": 149,
    "row": 2451
   },
   {
@@ -34511,7 +34511,7 @@
    "category": "ACTIVE CONSTITUENT / HERBICIDE",
    "source": "australia",
    "products": 46,
-   "registered_products": 36,
+   "registered_products": 35,
    "row": 2464
   },
   {
@@ -34930,7 +34930,7 @@
    "status_raw": "REGISTERED",
    "category": "ACTIVE CONSTITUENT / FUNGICIDE / HERBICIDE",
    "source": "australia",
-   "products": 68,
+   "products": 69,
    "registered_products": 62,
    "row": 2494
   },
@@ -34972,8 +34972,8 @@
    "status_raw": "REGISTERED",
    "category": "ACTIVE CONSTITUENT / GROWTH REGULATOR / HERBICIDE",
    "source": "australia",
-   "products": 44,
-   "registered_products": 35,
+   "products": 45,
+   "registered_products": 36,
    "row": 2497
   },
   {
@@ -35854,7 +35854,7 @@
    "status_raw": "REGISTERED",
    "category": "HERBICIDE",
    "source": "australia",
-   "products": 103,
+   "products": 104,
    "registered_products": 81,
    "row": 2560
   },
@@ -36008,8 +36008,8 @@
    "status_raw": "REGISTERED",
    "category": "ACTIVE CONSTITUENT / HERBICIDE",
    "source": "australia",
-   "products": 115,
-   "registered_products": 93,
+   "products": 119,
+   "registered_products": 95,
    "row": 2571
   },
   {
@@ -37325,7 +37325,7 @@
    "category": "ANTIFOULING / FUNGICIDE / INSECTICIDE",
    "source": "australia",
    "products": 42,
-   "registered_products": 21,
+   "registered_products": 20,
    "row": 2665
   },
   {
@@ -37632,7 +37632,7 @@
    "status_raw": "REGISTERED",
    "category": "ACTIVE CONSTITUENT / ANTIFOULING",
    "source": "australia",
-   "products": 45,
+   "products": 47,
    "registered_products": 11,
    "row": 2687
   },

@@ -61,11 +61,11 @@ node scripts/build-canada.mjs --out /tmp # تجربة بلا لمس المستو
 
 ```
 CANADA build — source: PMRA / Health Canada (no login)
-  ingredients: 1311 unique (duplicates collapsed: 2)
-  products in registry: 21786
-  CAS present: 968 | empty: 343 | non-standard (kept verbatim, reported): 0
+  ingredients: 1313 unique (duplicates collapsed: 2)
+  products in registry: 21811
+  CAS present: 970 | empty: 343 | non-standard (kept verbatim, reported): 0
 WROTE data-optional/canada.json
-  count=1311  sha256=…
+  count=1313  sha256=…
 ```
 
 - **مراجعة الفروق:** `count` ينقص أو يزيد بأكثر من ~2%؟ اطبع الصفوف

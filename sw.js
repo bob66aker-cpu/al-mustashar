@@ -1,6 +1,9 @@
 /*
  * sw.js — المستشار الزراعي (v29)
  *
+ * v59 (2026-10-11) — جولة مزامنة دولية: تجديد حزمتَي canada (1313 مادة) و
+ *   australia (2695 نشِطاً) من مصدريهما الرسميين، وموافقة عدّاد قسم canada في
+ *   reference.json على القياس (1311←1313) مع بصمة جديدة للمرجع في DATA_SHA256.
  * v58 (2026-10-07) — جولة قياس الاستخدام: شاشة #/stats + وحدة src/stats.js
  *   عدّادات محلية على الجهاز فقط (صفر شبكة — docs/usage-analytics.md)،
  *   والقوائم SHELL/DATA/OCR_ASSETS لم تُمس (حارس ppocr-size).
@@ -172,7 +175,7 @@
  * Personal data (IndexedDB history, theme, app version note) lives outside
  * the caches and is never touched by this worker.
  */
-const CACHE = 'mustashar-v58';
+const CACHE = 'mustashar-v59';
 const OCR_CACHE = 'mustashar-ocr';
 
 /* 1.7 — safe cache write: a full storage quota (QuotaExceededError) must

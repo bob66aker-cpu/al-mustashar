@@ -29,8 +29,12 @@
 > **D50 (2026-10-06)** — إخلاء المسؤولية: أُضيف `meta.disclaimer` بأربع لغات
 > (ar · en · fr · zh) يقرأ منه العرض حصراً قرب النتائج في وضعي البحث والمسح،
 > بلا نسخة في `src/i18n.js` وبقراءة بلغة الواجهة؛ ولا تغيير في `sections`
-> ولا في بيانات أي قرار. البصمة الحالية بعد D50:
-> `08482958be19b9e6dd85f784707249c0f31fc0c92626a0bef34944a5235373e6`.
+> ولا في بيانات أي قرار. (أعلاه: البصمة بعد D50 — تبقى موثّقة لسياقها التاريخي.)
+>
+> **تحديث 2026-10-11 (جولة مزامنة دولية)** — قسم `canada` يعدّ 1313 صفاً بعد
+> تجديد الحزمة الاختيارية من سجل PMRA الرسمي (مادتان جديدتان: FENEPTAMIDOQUIN
+> و ISOFLUCYPRAM)، فتغيّرت بصمة المرجع. البصمة الحالية:
+> `3aded96431a14664f71d58595a3fd3703023bdba9dd1f087e683504cfd40e053`.
 
 ## 1) ليبيا — قائمة المحظورات «القائمة رقم (1)» (`data/libya-248.json`)
 
@@ -146,6 +150,7 @@ cas_source) بقرار مستخدم معتمد، وبيانات eu/epa تبقى 
 | 2026-09-27 | libya-500 | حقول توضيحية جديدة **لا تغيّر أي قيمة CAS**: Carvone (بند 117) `cas_flag="stereo-ambiguous"` لأن الرقم المصحح يخص (+)-Carvone بينما اسم الصف عام والراسيمي 99-49-0؛ Metalaxyl-M (بند 260) `cas_stereo="(R)"` لواصف المتماكب المحفوظ خارج الرقم المطبَّع 70630-17-0 | src/cas.js + src/app.js + tests/cas-annotations.test.mjs |
 | 2026-09-27 | libya-500 | **استكمالات** لصفوف «No CAS allocated / see remark / See note»: قيم **مقترحة** موثقة المصدر في `cas_suggested` + مفتاح مصدر في `cas_source` (347 Rimsulfuron ← 122931-48-0 من EU#1415 + EPA PC 129009 epa#1136، 261 Metaldehyde، 271 Milbemectin، 243 MCPA ← 94-74-6 من EPA#855، 228 Iron sulphate)، و L-cysteine (235) حقل نصي `cas_review` فقط بلا رقم مؤكَّد. `cas` يبقى نص المرسوم («see remark»/«No CAS allocated») — لا استبدال صامت | data/eu.json + data/epa.json |
 | 2026-09-27 | libya-248 | **شروح إخبارية فقط — لا قيمة CAS رسمية تتغير**: `cas_note` على البنود 18 (34681-10-2 رقم Butocarboxim لا Bromoxynil octanoate؛ المرجع الدولي 1689-99-2 — epa.json#409)، 10 (58-89-9 غاما/ليندين؛ ألفا-HCH = 319-84-6) و47 (608-73-1 HCH التقني؛ غاما = 58-89-9)، و`duplicate_note` على 69/70 (مكرر 32809-16-8 بتصنيفين I/F). الشارات مترجمة في القواميس الأربعة وتظهر على بطاقة النتيجة | src/i18n.js + tests/cas-annotations.test.mjs |
+| 2026-10-11 | canada + australia | تجديد الحزمتين الاختياريتين من مصدريهما الرسميين: canada 1311←1313 مادة (مادتان جديدتان من PMRA: FENEPTAMIDOQUIN · ISOFLUCYPRAM؛ البصمة `44a54f09…`) · australia 2695 نشِطاً بلا تغيير في العدد (حزمة PUBCRIS الأسبوعية؛ البصمة `5ea44ddc…`)؛ وعدّاد قسم canada في reference.json وافق القياس مع بصمة جديدة للمرجع | scripts/build-canada.mjs + scripts/build-australia.mjs |
 | 2026-09-23 | epa + epa-cancelled | إعادة بناء كاملة من EPA Master (PPIS): `epa.json` صار 1,361 سجلًا (السجل النشط، بصمة `b24d7c3e…`) و`epa-cancelled.json` جديد بـ 1,425 سجلًا (أرشيف الملغى، بصمة `c2b5b38e…`)؛ حقل `row` تسلسلي، و`status_raw` نص الدفتر العربي الحرفي، وسبب الإلغاء الرسمي للملغى | `tools/build-epa-master.js` + الدفتر 2026-09-22 |
 
 > **حالة أعطال الفحص بعد الجولة الثانية (2026-09-27):** libya-500 = **0**

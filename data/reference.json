@@ -1211,7 +1211,7 @@
    "exports": [
     "data-optional/canada.json"
    ],
-   "rows": 1311,
+   "rows": 1313,
    "guide": {
     "ar": "واجهة PMRA الرسمية — حقل منطقي YES/NO بلا نص دليل",
     "en": "PMRA official API — the YES/NO boolean field, no guide prose."
@@ -1220,7 +1220,7 @@
    "categories": {},
    "unexplainedCodes": [],
    "shapes": [],
-   "categorylessRows": 1311,
+   "categorylessRows": 1313,
    "categorylessNote": "تصدير PMRA لا يحمل عمود تصنيف وظيفي — قياسُه بالقياس لا بالافتراض (D45).",
    "mergeRules": null,
    "statusCodes": {

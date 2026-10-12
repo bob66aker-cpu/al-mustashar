@@ -1,6 +1,12 @@
 /*
  * sw.js — المستشار الزراعي (v29)
  *
+ * v61 (2026-10-12) — جولة «نفّذ كل الاقتراحات»: النواة غير الداعمة لـSIMD
+ *   غادرت حزمة التجهيز الافتراضية (‎−6.5MB؛ تُحمَّل عند الطلب ثم تُحفظ في
+ *   كاش OCR الدائم عبر isOcrUrl)، والمصدر الوحيد للنسخة صار
+ *   version.json.shell (الاختبارات تقرأ ولا تثبّت)، إزالة lang_alternates
+ *   غير القياسي من manifest، وتوحيد لون ثيمة landing مع manifest.
+ *   الحارس ppocr-size مُحدَّث بفارق مُعلَن (D58) لا بصمت.
  * v60 (2026-10-11) — جولة تحسين الإصدار التجريبي: وسوم مشاركة اجتماعية
  *   (Open Graph/Twitter) وdescription وcanonical لجذر التطبيق، robots.txt +
  *   sitemap.xml (كانت الفحّاصات تقرأ HTML من وضع SPA بدل قواعد حقيقية)،
@@ -181,7 +187,7 @@
  * Personal data (IndexedDB history, theme, app version note) lives outside
  * the caches and is never touched by this worker.
  */
-const CACHE = 'mustashar-v60';
+const CACHE = 'mustashar-v61';
 const OCR_CACHE = 'mustashar-ocr';
 
 /* 1.7 — safe cache write: a full storage quota (QuotaExceededError) must
@@ -246,8 +252,12 @@ const OCR_ASSETS = [
   './vendor/tesseract/worker.min.js',
   './vendor/tesseract/core/tesseract-core-simd-lstm.wasm.js',
   './vendor/tesseract/core/tesseract-core-simd-lstm.wasm',
-  './vendor/tesseract/core/tesseract-core-lstm.wasm.js',
-  './vendor/tesseract/core/tesseract-core-lstm.wasm',
+  /* D58: the NON-simd core (tesseract-core-lstm.wasm.js + .wasm, ~6.5MB)
+   * left the DEFAULT set: corePath is a DIRECTORY, so tesseract.js picks
+   * simd vs non-simd by itself, and every browser since ~2019 supports
+   * WASM SIMD. A rare non-simd device fetches its two files on its first
+   * ONLINE scan — the isOcrUrl handler below stores them into OCR_CACHE,
+   * so the fallback is offline-ready from the second scan onward. */
   './vendor/tesseract/lang/eng.traineddata.gz',
   /* 3.4: ara returns to the RUNTIME set as an on-demand ADDITION, not a
    * default: the engine now initializes ara+eng when the UI language is

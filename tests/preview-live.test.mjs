@@ -6,12 +6,17 @@
  *   1) استجابة الرابط + تحميل index.html بلا أخطاء شبكة.
  *   2) المانيفست صالح ومربوط بالصفحة.
  *   3) عامل الخدمة مسجَّل فعلًا (navigator.serviceWorker) ويفعّل التحكم.
- *   4) كاش mustashar-v60 موجود بعد التثبيت.
+ *   4) كاش الإصدار (version.json.shell) موجود بعد التثبيت.
  *   5) القواعد الخمس محمَّلة (عبر واجهة الاستخدام) وبحث فعلي يجد نتيجة.
  *   6) عرض طبقة CAS يعمل على الرابط (Captan 133-06-2 وحده بعد D42).
  * تشغيل: PREVIEW_URL=https://… node tests/preview-live.test.mjs
  */
 import puppeteer from 'puppeteer-core';
+import { readFileSync } from 'node:fs';
+/* D58: الإصدار المتوقّع يُشتق من version.json/shell محلياً — لا صياغة يدوية */
+const LOCAL = JSON.parse(readFileSync(new URL('../version.json', import.meta.url), 'utf8'));
+const EXPECT_CACHE = LOCAL.shell;
+const EXPECT_VER = LOCAL.version;
 
 const CHROME = process.env.CHROME || '/home/daytona/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome';
 const BASE = process.env.PREVIEW_URL || process.env.BASE_URL;
@@ -39,11 +44,11 @@ try {
 
   const resp = await page.goto(BASE + '/index.html', { waitUntil: 'networkidle0', timeout: 45000 });
   must('the preview URL answers over the network', resp && resp.status() === 200, 'HTTP ' + (resp && resp.status()));
-  must('the served page is the work-branch build (cache mustashar-v60, version 1.19.24)',
-    await page.evaluate(async () => {
+  must('the served page is the work-branch build (cache ' + EXPECT_CACHE + ', version ' + EXPECT_VER + ')',
+    await page.evaluate(async (expCache, expVer) => {
       const [sw, v] = await Promise.all([fetch('./sw.js').then(r => r.text()), fetch('./version.json').then(r => r.json())]);
-      return sw.includes("mustashar-v60") && v.version === '1.19.24';
-    }));
+      return sw.includes("CACHE = '" + expCache + "'") && v.version === expVer && v.shell === expCache;
+    }, EXPECT_CACHE, EXPECT_VER));
   must('no failed network responses', netFails.length === 0, netFails.slice(0, 3).join(' | '));
 
   /* manifest */
@@ -82,16 +87,16 @@ try {
   let caches = [];
   for (let i = 0; i < 12; i++) {
     caches = await page.evaluate(() => caches.keys());
-    if (caches.includes('mustashar-v60')) break;
+    if (caches.includes(EXPECT_CACHE)) break;
     await sleep(1500);
   }
-  must('the mustashar-v60 cache exists after install', caches.includes('mustashar-v60'), JSON.stringify(caches));
-  const cached = await page.evaluate(async () => {
-    const c = await caches.open('mustashar-v60');
+  must('the ' + EXPECT_CACHE + ' cache exists after install', caches.includes(EXPECT_CACHE), JSON.stringify(caches));
+  const cached = await page.evaluate(async (cacheName) => {
+    const c = await caches.open(cacheName);
     const keys = await c.keys();
     return { n: keys.length, sample: keys.slice(0, 6).map(r => new URL(r.url).pathname) };
-  });
-  must('the mustashar-v60 cache holds the app shell and the databases', cached.n >= 20, cached.n + ' entries e.g. ' + JSON.stringify(cached.sample));
+  }, EXPECT_CACHE);
+  must('the ' + EXPECT_CACHE + ' cache holds the app shell and the databases', cached.n >= 20, cached.n + ' entries e.g. ' + JSON.stringify(cached.sample));
 
   /* the app itself works over the link: databases loaded + a real search */
   await sleep(1500);

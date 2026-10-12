@@ -110,11 +110,12 @@ check('every stats string exists in all 4 dictionaries (' + allKeys.length + ' k
 check('the dynamic renderer asks i18n for the language names',
   app.includes("t('stats.lang.' + code,"));
 
-/* 8 — release consistency after the v57→v58 bump */
+/* 8 — release consistency (D58: version.json is the single source) */
 const cache = (sw.match(/const CACHE = '(mustashar-v\d+)'/) || [])[1];
-check('sw cache is mustashar-v60', cache === 'mustashar-v60', String(cache));
-check('version.json and package.json agree (1.19.24)',
-  /"version": "1\.19\.24"/.test(version) && /"version": "1\.19\.24"/.test(pkg));
+const vj = JSON.parse(version);
+check('sw.js CACHE matches version.json.shell', cache === vj.shell, cache + ' vs ' + vj.shell);
+check('version.json and package.json agree', JSON.parse(pkg).version === vj.version,
+  JSON.parse(pkg).version + ' vs ' + vj.version);
 check('the default preparation payload is untouched — stats.js stays out of SHELL/DATA (ppocr-size contract)',
   !/stats\.js/.test(sw.slice(sw.indexOf('const SHELL'), sw.indexOf('const DATA'))));
 

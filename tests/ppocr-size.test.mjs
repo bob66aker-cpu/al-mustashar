@@ -109,19 +109,33 @@ const setsNow = prep(now), setsBefore = prep(before);
 const DECLARED_ADDED = {
   DATA: ['./data/reference.json']
 };
+/* D58 (2026-10-12, owner-authorized «نفّذ كل الاقتراحات»): the NON-simd
+ * tesseract core left the DEFAULT preparation — corePath is a directory so
+ * the engine picks simd vs non-simd itself, every browser since ~2019 has
+ * WASM SIMD, and a rare non-simd device fetches its two files on its first
+ * ONLINE scan where the isOcrUrl handler caches them permanently. Exactly
+ * these two files may be REMOVED; a third removal fails the gate. */
+const DECLARED_REMOVED = {
+  OCR_ASSETS: ['./vendor/tesseract/core/tesseract-core-lstm.wasm.js',
+               './vendor/tesseract/core/tesseract-core-lstm.wasm']
+};
 for (const key of Object.keys(setsNow)) {
   const before = setsBefore[key] || [];
   const now = setsNow[key] || [];
   const allowed = DECLARED_ADDED[key] || [];
   const added = now.filter(p => !before.includes(p));
   const removed = before.filter(p => !now.includes(p));
-  ok(!!setsBefore[key] && removed.length === 0
+  const allowedRemoved = DECLARED_REMOVED[key] || [];
+  ok(!!setsBefore[key]
+     && removed.length === allowedRemoved.length
+     && removed.every(p => allowedRemoved.includes(p))
      && added.length === allowed.length
      && added.every(p => allowed.includes(p)),
-    key + ' list is unchanged since ' + BASE_COMMIT + ' (declared delta: ' + (allowed.join(', ') || 'none') + ')',
+    key + ' list differs from ' + BASE_COMMIT + ' by EXACTLY the declared deltas (added: '
+      + (allowed.join(', ') || 'none') + ' — removed: ' + (allowedRemoved.join(', ') || 'none') + ')',
     before.length + ' → ' + now.length
       + (added.length ? ' | added: ' + added.join(', ') : '')
-      + (removed.length ? ' | REMOVED: ' + removed.join(', ') : ''));
+      + (removed.length ? ' | removed (declared): ' + removed.join(', ') : ''));
 }
 
 const total = sets => Object.values(sets).flat().reduce((a, p) => a + Math.max(0, onDisk(norm(p))), 0);
@@ -129,21 +143,40 @@ const missing = sets => Object.values(sets).flat().filter(p => p !== './' && !ex
 
 const prefetchNow = blockOf(now.ocr, 'const ocrAssets = [');
 const prefetchBefore = blockOf(before.ocr, 'const ocrAssets = [');
-ok(!!prefetchNow && prefetchNow === prefetchBefore,
-  'OcrModule.prefetch() prepares the same list as ' + BASE_COMMIT,
-  prefetchNow ? prefetchNow.length + ' chars, identical' : 'block not found');
+/* D58 declared removal: the non-simd core also left the default prefetch */
+const PREFETCH_REMOVED = [
+  "OCR.CORE + '/tesseract-core-lstm.wasm.js',",
+  "OCR.CORE + '/tesseract-core-lstm.wasm',"
+];
+const PREFETCH_COMMENT = "      /* D58: non-simd core loads on demand (see sw.js OCR_ASSETS) */";
+const stripPrefetch = b => b == null ? b
+  : PREFETCH_REMOVED.concat(PREFETCH_COMMENT).reduce((s, line) => s.split(line).join(''), b);
+/* المقارنة على مستوى الصفوف غير الفارغة: الفراغات ليست محتوى القائمة */
+const normLines = b => stripPrefetch(b).split('\n').map(l => l.trim()).filter(l => l.length).join('\n');
+ok(!!prefetchNow && normLines(prefetchNow) === normLines(prefetchBefore)
+   && PREFETCH_REMOVED.every(l => !prefetchNow.includes(l)),
+  'OcrModule.prefetch() = ' + BASE_COMMIT + ' list minus the declared D58 fallback',
+  prefetchNow ? PREFETCH_REMOVED.length + ' declared lines removed, rest identical' : 'block not found');
 
 const totalNow = total(setsNow), totalBefore = total(setsBefore);
 ok(missing(setsNow).length === 0, 'every default-prepared file exists on disk',
   missing(setsNow).join(', ') || 'all present');
+/* D58: what LEFT the default set must still be cacheable by the SW, so a
+   non-simd device's first ONLINE scan makes its fallback offline-ready */
+const isOcrBlock = now.sw.slice(now.sw.indexOf('const isOcrUrl'), now.sw.indexOf('self.addEventListener'));
+ok(isOcrBlock.includes('(simd-)?lstm'),
+  'isOcrUrl still matches the on-demand non-simd fallback cores');
 /* the declared added files are measured on disk, so the expected total is
  * baseline + exactly those bytes — a second addition shows as a non-zero Δ */
 const declaredBytes = Object.values(DECLARED_ADDED).flat()
   .reduce((a, p) => a + Math.max(0, onDisk(norm(p))), 0);
-ok(totalNow === totalBefore + declaredBytes,
-  'default preparation size is byte-for-byte unchanged outside the declared delta',
-  totalBefore + ' → ' + totalNow + ' bytes (declared Δ' + declaredBytes + ')'
-    + (totalNow === totalBefore + declaredBytes ? '' : ' — UNDECLARED Δ' + (totalNow - totalBefore - declaredBytes)));
+const removedBytes = Object.values(DECLARED_REMOVED).flat()
+  .reduce((a, p) => a + Math.max(0, onDisk(norm(p))), 0);
+ok(totalNow === totalBefore + declaredBytes - removedBytes,
+  'default preparation size changed by EXACTLY the declared D58 delta (non-simd core out)',
+  totalBefore + ' → ' + totalNow + ' bytes (declared Δ+' + declaredBytes + ' −' + removedBytes + ')'
+    + (totalNow === totalBefore + declaredBytes - removedBytes
+       ? '' : ' — UNDECLARED Δ' + (totalNow - totalBefore - declaredBytes + removedBytes)));
 
 /* the package itself must be invisible to every default surface */
 const html = now.html;

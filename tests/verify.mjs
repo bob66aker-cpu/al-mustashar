@@ -312,10 +312,15 @@ check('OCR engine carries the a3 early-confirm lock (DB-confirmed reads survive 
       && o.includes("via: 'ladder_confirm'")
       && o.includes('if (earlyLock) break;')
       && o.includes('if (!earlyLock && (exactHit || hasValidCas([...fusionCAS])))'); })());
-check('sw is v37 with dedicated permanent OCR cache (update-proof)', sw5.includes("CACHE = 'mustashar-v60'")
+/* D58: النواة غير الداعمة لـSIMD خرجت من القوائم؛ تغطيتها في السياسة الآن
+   هي مطابِق isOcrUrl (corePath مجلّد — المحرك يجلبها عند الطلب) */
+const isOcrSrc = sw5.slice(sw5.indexOf('const isOcrUrl'), sw5.indexOf('self.addEventListener'));
+const swCovers = f => sw5.includes(f.replace('./', ''))
+  || (f.includes('tesseract-core-lstm.') && isOcrSrc.includes('(simd-)?lstm'));
+check('sw shell matches version.json.shell with permanent OCR cache (update-proof)', sw5.includes("CACHE = '" + JSON.parse(fs.readFileSync('version.json', 'utf8')).shell + "'")
   && sw5.includes("'./src/scan-live.js'")
   && sw5.includes("OCR_CACHE = 'mustashar-ocr'")
-  && OCR_RUNTIME_FILES.every(f => sw5.includes(f.replace('./', '')))
+  && OCR_RUNTIME_FILES.every(swCovers)
   /* 3.4: ara returned to the runtime set as a UI-gated addition (no longer a
      hard exclusion) and the zxing wasm joined the permanent OCR assets. */
   && sw5.includes('./vendor/tesseract/lang/ara.traineddata.gz')

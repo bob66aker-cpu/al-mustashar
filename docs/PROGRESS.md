@@ -923,3 +923,27 @@ verify 228/228 · fb7 ثابت 212/212 · fb7 حيّ 42/42 · بلا انحدا�
   العدّاد المقيس · العودة · دون اتصال)، و`data-packs` و`filtered-empty` قُيّدا
   بالقاعدة لا بصمت، و`cas-sweep` وُسّع ادّعاءه لا أنقص مطابقته.
 - **بلا لمس:** `data/` و`data-optional/` صفر تغيير · لا دمج `main` · صفر وسوم.
+---
+
+## D58 — 2026-10-12 — جولة «نفّذ كل الاقتراحات» · 1.19.25 / mustashar-v61
+
+- **تجهيز OCR أنحف بـ6.5MB:** النواة غير الداعمة لمعمارية WASM SIMD
+  (`tesseract-core-lstm.wasm.js` + `.wasm`) غادرت القائمتين الافتراضيتين
+  (`sw.js OCR_ASSETS` و`src/ocr.js` ocrAssets). corePath مجلّد، فمحرك
+  tesseract.js يختار simd/plain بنفسه، وكل متصفح منذ ~2019 يدعم SIMD.
+  جهاز قديم بلا SIMD يحمّل نوّته على أول مسح متصل — معالج `isOcrUrl`
+  يحفظها في `mustashar-ocr` الدائم فيصبح جاهزاً دون إنترنت من المسح
+  الثاني. الحارس `ppocr-size` مُحدَّث بفارق **مُعلَن** (DECLARED_REMOVED
+  + PREFETCH_REMOVED + صيغة total الجديدة) لا بصمت، ويضيف فحصاً جديداً
+  يثبت أن isOcrUrl لا يزال يطابق النواة البديلة.
+- **مصدر وحيد للنسخة:** `version.json.shell` (حقل جديد) + `version.json.version`
+  يقودان كل الأبواب: stats-local/stage-b/stage2/stage3/verify/preview-live
+  تقرأ ولا تثبّت — 9 ملفات تحرير لكل إصدار صارت3 (version.json ·
+  package.json · sw.js CACHE+changelog). حارس التوافق الثلاثي بقي.
+- **عدّاد التجهيز ديناميكي:** رسالة الإنجاز صارت `{n}/{total}` بدل `/7`
+  الثابتة (ocr-latin-gate مُحدَّث: لا أرقام ملفات محفورة في أي قاموس).
+- **تنظيف:** `lang_alternates` غير القياسي حُذف من manifest (لا كود
+  يستخدمه)، لون ثيمة landing وحّد على `#1f6f52` (4 مواضع)، README أعاد
+  ذكر `src/ppocr.js` بصياغته الصحيحة و~15MB بدل ~21.
+- **بوابات:** ppocr-size 16/0/1 (الجديدة) · static كامل · verify ·
+  headers-injection · packs · browser10 · a11y — كلها خضراء قبل الإيداع.

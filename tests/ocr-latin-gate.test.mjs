@@ -113,9 +113,9 @@ const check = (name, ok, extra = '') => {
   const i18n = readFileSync(join(root, 'src/i18n.js'), 'utf8');
   check('ocr.rejected.mixed exists in all 4 dictionaries',
     (i18n.match(/'ocr\.rejected\.mixed':/g) || []).length === 4);
-  check('ocr.loadDone says /7 files (eng-only asset count, 4 dicts)',
-    (i18n.match(/\{n\}\/7/g) || []).length === 4);
-  check('no dictionary still advertises /8 files', !/\/8\)/.test(i18n));
+  check('ocr.loadDone uses the dynamic {n}/{total} count (all 4 dictionaries)',
+    (i18n.match(/\{n\}\/\{total\}/g) || []).length === 4);
+  check('no dictionary still advertises a hardcoded file count', !/\/[78]\)/.test(i18n));
 }
 
 /* 10) renderer wires the rejection through i18n.t, not the engine string */

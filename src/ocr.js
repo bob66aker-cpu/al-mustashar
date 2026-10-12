@@ -402,7 +402,7 @@
              origin root. 'vendor/tesseract/...' literal is pinned by the
              static suite (tests/verify.mjs). */
           workerPath: new URL('vendor/tesseract/worker.min.js', appRoot()).href,
-          corePath: new URL(OCR.CORE + '/', appRoot()).href,
+          corePath: new URL(OCR.CORE + '/', appRoot()).href, /* directory: tesseract picks simd vs plain — D58: plain is on-demand */
           langPath: new URL(OCR.LANG + '/', appRoot()).href,
           gzip: true,
           cacheMethod: 'none',           // SW owns caching (no refreshCost)
@@ -1601,8 +1601,7 @@
       'vendor/tesseract/worker.min.js',
       OCR.CORE + '/tesseract-core-simd-lstm.wasm.js',
       OCR.CORE + '/tesseract-core-simd-lstm.wasm',
-      OCR.CORE + '/tesseract-core-lstm.wasm.js',
-      OCR.CORE + '/tesseract-core-lstm.wasm',
+      /* D58: non-simd core loads on demand (see sw.js OCR_ASSETS) */
       OCR.LANG + '/eng.traineddata.gz'
     ];
     const shellData = [

@@ -2696,7 +2696,7 @@
   /* One explicit preparation action (OCR assets + missing shell/data).
      Persistence is re-requested here: a user gesture is the strongest
      signal an engine can get, so asking at the exact moment the user
-     opts into ~19 MB of local data maximizes the chance the stored
+     opts into ~15 MB of local data maximizes the chance the stored
      databases/OCR are protected from eviction. */
   $('#prepBtn').addEventListener('click', async () => {
     if (typeof OcrModule === 'undefined') return;
@@ -2719,7 +2719,9 @@
      * بأسماء الملفات التي فشلت بعد timeout 60ث + محاولة إعادة واحدة
      * لكل ملف — لم يعد فشل 3/7 يُعرض كنجاح. */
     try {
+      let ocrTotal = 0;
       const n = await OcrModule.prefetch((done, total, name) => {
+        ocrTotal = total;
         const short = String(name || '').replace(/^vendor\/tesseract\//, 'tesseract/');
         ocrMsg.textContent = tf('prep.progress',
           'جارٍ التجهيز: {done}/{total} — {name}',
@@ -2728,7 +2730,7 @@
       prepMeasured = false;                 // re-measure with fresh data
       await updatePrepPanel();
       if (window.Stats) Stats.count('prepOk');
-      ocrMsg.textContent = tf('ocr.loadDone', 'تم تحميل ملفات OCR ({n}/7). سيعمل المسح البصري دون إنترنت.', { n: n });
+      ocrMsg.textContent = tf('ocr.loadDone', 'تم تحميل ملفات OCR ({n}/{total}). سيعمل المسح البصري دون إنترنت.', { n: n, total: ocrTotal || n });
     } catch (e) {
       if (window.Stats) Stats.count('prepFail');
       st.textContent = t('prep.fail', 'تعذّر التجهيز الآن — أعد المحاولة أثناء الاتصال');

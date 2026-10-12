@@ -1,0 +1,22 @@
+# المستشار الزراعي — robots.txt
+# Cloudflare Pages يعمل في وضع SPA: أي مسار غير موجود يُرجع واجهة التطبيق
+# بحالة 200، وكان فحّاص البحث يقرأها كـ robots.txt. هذا الملف يجعل القواعد
+# حقيقية. المحتوى الداخلي (اختبارات/وثائق/أدوات) وملفات البيانات الضخمة
+# مُنع من الزحف — تحميل التطبيق نفسه لا يتأثر بقواعد الزحف إطلاقاً.
+User-agent: *
+Allow: /
+Disallow: /src/
+Disallow: /vendor/
+Disallow: /data/
+Disallow: /data-optional/
+Disallow: /tests/
+Disallow: /tools/
+Disallow: /scripts/
+Disallow: /docs/
+Disallow: /dev-notes/
+Disallow: /sources/
+Disallow: /config/
+Disallow: /tmp/
+Disallow: /archive/
+
+Sitemap: https://al-mustashar.pages.dev/sitemap.xml

@@ -4,9 +4,13 @@
 # Format: "<path pattern>" then indented "Name: value" lines. Blank lines separate blocks.
 #
 # The Content-Security-Policy here is the SAME policy the page already declares
-# in its <meta http-equiv> (index.html:9). The most restrictive of the two
-# applies, so this header tightens nothing and breaks nothing: it exists so the
-# policy is enforced even before the document body is parsed.
+# in its <meta http-equiv>. The most restrictive of the two applies, so this
+# header tightens nothing and breaks nothing: it exists so the policy is
+# enforced even before the document body is parsed. (Framing defense stays
+# X-Frame-Options: DENY — CSP cannot carry frame-ancestors from <meta>, and
+# the single-source-of-truth guard in tests/headers-injection.test.mjs keeps
+# header == meta on purpose.)
+# HSTS is safe and correct: the site is HTTPS-only on its own domain.
 #
 # NOTE ON DIRECTORIES: Cloudflare Pages serves _headers as a static asset; that is
 # intentional. It contains no secrets — only public policy.
@@ -14,6 +18,7 @@
 /*
   Content-Security-Policy: default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data:; font-src 'self'; connect-src 'self'; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'
   X-Content-Type-Options: nosniff
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
   Referrer-Policy: no-referrer
   X-Frame-Options: DENY
   Permissions-Policy: camera=(self), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()

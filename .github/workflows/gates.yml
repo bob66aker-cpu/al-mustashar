@@ -1,0 +1,20 @@
+# بوابة CI — تُشغَّل البوابة الثابتة على كل دفع/طلب دمج إلى work-branch.
+# بوابات المتصفح (test:browser/a11y) تبقى محلياً لأنها تحتاج Chrome بنظام؛
+# هذه البوابة تلتقط انكسار البنية والقواعد قبل النشر.
+name: gates
+on:
+  push:
+    branches: ["work-branch"]
+  pull_request:
+    branches: ["work-branch"]
+jobs:
+  static:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install
+      - run: npm run test:static

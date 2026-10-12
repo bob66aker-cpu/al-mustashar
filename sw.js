@@ -1,6 +1,12 @@
 /*
  * sw.js — المستشار الزراعي (v29)
  *
+ * v60 (2026-10-11) — جولة تحسين الإصدار التجريبي: وسوم مشاركة اجتماعية
+ *   (Open Graph/Twitter) وdescription وcanonical لجذر التطبيق، robots.txt +
+ *   sitemap.xml (كانت الفحّاصات تقرأ HTML من وضع SPA بدل قواعد حقيقية)،
+ *   HSTS في _headers (دفاع الإطار يبقى X-Frame-Options: DENY لتبقى سياسة
+ *   الترويسة = سياسة meta كما يفرض حارس headers-injection)، وتحديث README.
+ *   البيانات لم تُمس والقوائم SHELL/DATA/OCR_ASSETS ثابتة (حراس ppocr-size).
  * v59 (2026-10-11) — جولة مزامنة دولية: تجديد حزمتَي canada (1313 مادة) و
  *   australia (2695 نشِطاً) من مصدريهما الرسميين، وموافقة عدّاد قسم canada في
  *   reference.json على القياس (1311←1313) مع بصمة جديدة للمرجع في DATA_SHA256.
@@ -175,7 +181,7 @@
  * Personal data (IndexedDB history, theme, app version note) lives outside
  * the caches and is never touched by this worker.
  */
-const CACHE = 'mustashar-v59';
+const CACHE = 'mustashar-v60';
 const OCR_CACHE = 'mustashar-ocr';
 
 /* 1.7 — safe cache write: a full storage quota (QuotaExceededError) must

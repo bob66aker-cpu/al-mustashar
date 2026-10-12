@@ -112,9 +112,9 @@ check('the dynamic renderer asks i18n for the language names',
 
 /* 8 — release consistency after the v57→v58 bump */
 const cache = (sw.match(/const CACHE = '(mustashar-v\d+)'/) || [])[1];
-check('sw cache is mustashar-v59', cache === 'mustashar-v59', String(cache));
-check('version.json and package.json agree (1.19.23)',
-  /"version": "1\.19\.23"/.test(version) && /"version": "1\.19\.23"/.test(pkg));
+check('sw cache is mustashar-v60', cache === 'mustashar-v60', String(cache));
+check('version.json and package.json agree (1.19.24)',
+  /"version": "1\.19\.24"/.test(version) && /"version": "1\.19\.24"/.test(pkg));
 check('the default preparation payload is untouched — stats.js stays out of SHELL/DATA (ppocr-size contract)',
   !/stats\.js/.test(sw.slice(sw.indexOf('const SHELL'), sw.indexOf('const DATA'))));
 

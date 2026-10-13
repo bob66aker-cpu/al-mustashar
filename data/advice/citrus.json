@@ -1,0 +1,191 @@
+{
+  "schema": 1,
+  "crop_id": "citrus",
+  "crop_name_ar": "الحمضيات",
+  "cards": [
+    {
+      "id": "citrus-copper-deficiency",
+      "crop_id": "citrus",
+      "problem": {
+        "name_ar": "الموت الرجعي (ذبول الأطراف) المرتبط بنقص النحاس",
+        "type": "nutrient_disorder",
+        "aliases_ar": [
+          "التأمين",
+          "الطفح الصمغي",
+          "ذبول الأغصان"
+        ]
+      },
+      "status": "draft",
+      "reviewed_by": null,
+      "reviewed_on": null,
+      "review_by": "2027-10-12",
+      "version": 1,
+      "local_status": {
+        "libya": "unverified",
+        "note_ar": "لم يُوثَّق حضورها في دراسات ليبية ضمن ما راجعناه؛ يحدده المراجع."
+      },
+      "confirm_first": {
+        "intro_ar": "هذه البطاقة تخص ذبول الأطراف المرتبط بنقص النحاس في الحمضيات. قد تتشابه أعراضه مع أمراض وآفات أخرى، ولا يشخّص التطبيق المشكلة. تأكد من التشخيص عبر مهندس زراعي وتحليل الورقة والتربة قبل أي معاملة.",
+        "signs_ar": [
+          "أوراق كبيرة داكنة الخضرة على أفرع طويلة طرية زاويّة الشكل، وقد تتقوس الأفرع الفتية على شكل حرف S.",
+          "فقاعات أو جيوب من صمغ شفاف عند العقد، وقطرات صمغ بنية محمرة على الأغصان.",
+          "بقع بنية من صمغ متصلب على قشرة الثمرة (وقد تسبق ظهور أعراض الورقة والغصن).",
+          "موت الأغصان من الأطراف مع نمو براعم متعددة (مكنسة الساحرة) في الحالات الشديدة."
+        ],
+        "lookalikes": [
+          {
+            "name_ar": "نقص الزنك أو المغنيسيوم",
+            "note_ar": "عند اقتران نقص النحاس بنقص الزنك أو المغنيسيوم قد لا تظهر أعراض الورقة والغصن بوضوح بسبب قلة النمو، لكن أعراض الثمار النموذجية تبقى.",
+            "evidence": "A",
+            "source_ids": [
+              "s1"
+            ]
+          },
+          {
+            "name_ar": "أسباب أخرى لموت الأفرع (القشرية الحمراء، الري غير المناسب، الفيتوفثورا، الأرميلاريا)",
+            "note_ar": "تتسبب أيضًا في أفرع عارية وأوراق شاحبة وموت رجعي؛ لا تعالج بالنحاس قبل استبعادها.",
+            "evidence": "A",
+            "source_ids": [
+              "s4"
+            ]
+          },
+          {
+            "name_ar": "سمّية النحاس",
+            "note_ar": "قد تظهر كتقلص في تاج الشجرة وضعف النمو وأعراض نقص الحديد. وقد صارت سمّية النحاس أكثر شيوعًا من نقصه في بساتين الحمضيات التي تكرر فيها استعمال المبيدات النحاسية.",
+            "evidence": "B",
+            "source_ids": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "lab_tests_ar": [
+          "تحليل أنسجة الورقة (مستوى النحاس).",
+          "تحليل التربة (النحاس القابل للاستخلاص ودرجة الحموضة pH). تنبه المراجع إلى فحص نحاس التربة في الأراضي القديمة للحمضيات."
+        ]
+      },
+      "cultural": [
+        {
+          "id": "c1",
+          "text_ar": "تُظهر المراجع ارتباط الحالة بالإفراط في التسميد الآزوتي (ومن هنا اسم «التأمين»). راجع برنامج الآزوت وتجنب الإفراط.",
+          "evidence": "B",
+          "source_ids": [
+            "s1"
+          ],
+          "applies_if": null
+        },
+        {
+          "id": "c2",
+          "text_ar": "في التربة الجيرية مرتفعة الـ pH تقل إتاحة بعض العناصر الدقيقة (الحديد والزنك والمنغنيز والنحاس)، وقد تتزامن أعراض نقصها في الشجرة نفسها. وتعالج حالات نقص النحاس الناتجة عن ارتفاع الـ pH بخفضه، بإشراف مختص.",
+          "evidence": "B",
+          "source_ids": [
+            "s2",
+            "s3"
+          ],
+          "applies_if": {
+            "soil": [
+              "calcareous"
+            ]
+          }
+        }
+      ],
+      "nutrition": [
+        {
+          "id": "n1",
+          "text_ar": "لا تُضف النحاس دون تحليل. فالنحاس الزائد ساموم للأشجار.",
+          "evidence": "A",
+          "source_ids": [
+            "s3"
+          ],
+          "applies_if": null
+        },
+        {
+          "id": "n2",
+          "text_ar": "عند تأكد النقص: الإضافة الأرضية بكبريتات النحاس هي الطريقة الأكثر شيوعًا لتصحيحه، والرش الورقي بالنحاس للعلاج السريع، وتُنفَّذ بإشراف مختص وبحسب التحليل.",
+          "evidence": "B",
+          "source_ids": [
+            "s1",
+            "s2"
+          ],
+          "applies_if": null
+        }
+      ],
+      "chemical": {
+        "note_ar": "هذه حالة اضطراب غذائي: لا يلزم مبيد. إن كان سبب المشكلة مرضًا فطريًا فاختر بطاقته المناسبة.",
+        "options": []
+      },
+      "non_chemical": [
+        {
+          "id": "b1",
+          "text_ar": "أزِل الأغصان الميتة بتشذيب نظيف وأدوات معقّمة، ولا تترك كسوراً مفتوحة؛ فالجروح مكان لتداخل الأمراض فوق أي خلل غذائي.",
+          "evidence": "B",
+          "source_ids": [
+            "s4"
+          ],
+          "applies_if": null
+        },
+        {
+          "id": "b2",
+          "text_ar": "أوقف المبيدات النحاسية الوقائية المتكررة حتى يؤكد التحليل نقص النحاس؛ فالرش بلا حاجة يُحمّل التربة نحاساً ويقترب من عتبة السمّية.",
+          "evidence": "A",
+          "source_ids": [
+            "s2",
+            "s3"
+          ],
+          "applies_if": null
+        }
+      ],
+      "prevention": [
+        {
+          "id": "p1",
+          "text_ar": "تحليل دوري للورقة والتربة، وتجنب الإفراط في الآزوت، ومراقبة النموات الجديدة والثمار.",
+          "evidence": "B",
+          "source_ids": [
+            "s1",
+            "s3"
+          ],
+          "applies_if": null
+        }
+      ],
+      "see_expert_when_ar": [
+        "إذا لم تتحسن الأعراض بعد موسم من المعالجة الصحيحة.",
+        "إذا ظهر صمغ على الجذع أو قاعدته (قد يكون تعفن الفيتوفثورا).",
+        "إذا ماتت الأفرع بسرعة أو بدت الشجرة كلها شاحبة."
+      ],
+      "sources": [
+        {
+          "id": "s1",
+          "title": "Iron (Fe) and Copper (Cu) for Citrus Trees (SS617)",
+          "publisher": "UF/IFAS Extension",
+          "url": "https://ask.ifas.ufl.edu/publication/SS617",
+          "type": "extension",
+          "retrieved": "2026-10-12"
+        },
+        {
+          "id": "s2",
+          "title": "Copper deficiency of plants (Plant Pathology Circular No. 241)",
+          "publisher": "Florida Dept. of Agriculture & Consumer Services",
+          "url": "https://ccmedia.fdacs.gov/content/download/4675/file/copperdeficiencyofplants.pdf",
+          "type": "government",
+          "retrieved": "2026-10-12"
+        },
+        {
+          "id": "s3",
+          "title": "A Guide to Citrus Nutritional Deficiency and Toxicity Identification (HS-797)",
+          "publisher": "University of Florida IFAS (نسخة مستضافة)",
+          "url": "https://my.ucanr.edu/sites/nm/files/76681.pdf",
+          "type": "extension",
+          "retrieved": "2026-10-12"
+        },
+        {
+          "id": "s4",
+          "title": "Citrus: Identifying Diseases and Disorders of Leaves and Twigs",
+          "publisher": "UC IPM (University of California)",
+          "url": "https://ipm.ucanr.edu/PMG/C107/m107bpleaftwigdis.html",
+          "type": "extension",
+          "retrieved": "2026-10-12"
+        }
+      ]
+    }
+  ]
+}

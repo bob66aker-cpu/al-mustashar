@@ -1,0 +1,167 @@
+{
+  "schema": 1,
+  "crop_id": "barley",
+  "crop_name_ar": "الشعير",
+  "cards": [
+    {
+      "id": "barley-scald",
+      "crop_id": "barley",
+      "problem": {
+        "name_ar": "القمة المشقوقة (Rhynchosporium commune)",
+        "type": "fungal",
+        "aliases_ar": [
+          "القمة المشقوقة",
+          "scald",
+          "Rhynchosporium"
+        ]
+      },
+      "status": "draft",
+      "reviewed_by": null,
+      "reviewed_on": null,
+      "review_by": "2027-10-12",
+      "version": 1,
+      "local_status": {
+        "libya": "unverified",
+        "note_ar": "مرض ينتشر في الأجواء الباردة الرطبة على الشعير؛ التوثيق المحلي يحدده المراجع."
+      },
+      "confirm_first": {
+        "intro_ar": "هذه البطاقة تخص مرض القمة المشقوقة (فطر Rhynchosporium commune) على الشعير. لا يشخّص التطبيق. راجع مختصاً لتمييزه عن شبقة الشعير أو الفيروسات.",
+        "signs_ar": [
+          "بقع بيضاوية رمادية محاطة بحافة بنية داكنة على الأوراق والسنابل.",
+          "في الرطوبة تكبر البقع وتمتد مع اصفرار حولها.",
+          "الإصابة الشديدة تُضعف النمو وتخفض المحصول."
+        ],
+        "lookalikes": [
+          {
+            "name_ar": "شبقة الشعير (Net blotch)",
+            "note_ar": "بقع شبكية بنية صغيرة على الأوراق؛ تختلف المعالجة.",
+            "evidence": "B",
+            "source_ids": [
+              "s1"
+            ]
+          }
+        ],
+        "lab_tests_ar": []
+      },
+      "cultural": [
+        {
+          "id": "c1",
+          "text_ar": "ازرع أصنافاً مقاومة وبذوراً سليمة حسب إرشادات منطقتك؛ وفي سنوات الأمطار الكثيفة يؤخَّر موعد الزراعة حيث تسمح الجدولة، لأن الضرر يشتد في الموسم المبكر المطير.",
+          "evidence": "A",
+          "source_ids": [
+            "s1",
+            "s2"
+          ],
+          "applies_if": null
+        },
+        {
+          "id": "c2",
+          "text_ar": "ابدأ البرنامج الوقائي قبل فترات الأمطار والرطوبة الطويلة المتوقعة؛ فالمضاد الوقائي يسبق العدوى.",
+          "evidence": "B",
+          "source_ids": [
+            "s1"
+          ],
+          "applies_if": {
+            "water": [
+              "rainfed"
+            ]
+          }
+        },
+        {
+          "id": "c3",
+          "text_ar": "أزِل نباتات الشعير الطوعية والأعشاب الحبوبية المضيفة حول الحقل؛ الفطر ينتقل إليها ويعود منها.",
+          "evidence": "B",
+          "source_ids": [
+            "s2"
+          ],
+          "applies_if": {
+            "irrigation_method": [
+              "sprinkler"
+            ]
+          }
+        }
+      ],
+      "nutrition": [
+        {
+          "id": "n1",
+          "text_ar": "تفادي الإفراط الآزوتي؛ النمو الطرية يزيد القابلية للإصابة.",
+          "evidence": "B",
+          "source_ids": [
+            "s1"
+          ],
+          "applies_if": null
+        }
+      ],
+      "chemical": {
+        "note_ar": "الفطرية الثلاثية الأزولية فعّالة، مع مقاومة موثقة لبعض العزلات؛ التناوب والتوقيت المبكر أساس النجاح. والجرعة من الملصق فقط.",
+        "options": [
+          {
+            "id": "o1",
+            "group_ar": "فطرية من مجموعة الثلاثية الأزولات",
+            "moa_scheme": "FRAC",
+            "moa": "3",
+            "moa_note_ar": "مقاومة موثقة لبعض العزلات؛ لا يتكرر أكثر من مرة في الموسم.",
+            "ingredients": [
+              {
+                "ar": "بروبيكونازول",
+                "en": "propiconazole",
+                "alt_names": []
+              }
+            ],
+            "timing_ar": "وقائي أو مبكر عند بداية الظروف المرضية في الموسم الرطب.",
+            "caution_ar": "تحقق من التسجيل الليبي وحدود الاستعمال.",
+            "evidence": "B",
+            "source_ids": [
+              "s1"
+            ]
+          }
+        ]
+      },
+      "non_chemical": [
+        {
+          "id": "b1",
+          "text_ar": "نظّف الحقل بعد الحصاد: أزِل بقايا الشعير وبقايا نباتاته الطوعية من سطح التربة؛ بين المواسم يعيش الفطر أساساً فيها، فبها تبدأ العدوى في الموسم التالي.",
+          "evidence": "B",
+          "source_ids": [
+            "s2"
+          ],
+          "applies_if": null
+        }
+      ],
+      "prevention": [
+        {
+          "id": "p1",
+          "text_ar": "مراقبة الأوراق السفلية في الفترات الرطبة، وتدوير المحاصيل خارج أسرة الحبوب.",
+          "evidence": "B",
+          "source_ids": [
+            "s1"
+          ],
+          "applies_if": null
+        }
+      ],
+      "see_expert_when_ar": [
+        "إذا انتشرت البقع المحاطة بحافة داكنة بسرعة بعد أمطار.",
+        "إذا لم تنجح الفطرية المعتادة (مقاومة محتملة).",
+        "إذا ظهرت أعراض مختلفة على السنابل."
+      ],
+      "sources": [
+        {
+          "id": "s1",
+          "title": "Rhynchosporium graminicola (RHYNGR) datasheet",
+          "publisher": "EPPO Global Database",
+          "url": "https://gd.eppo.int/taxon/RHYNGR/datasheet",
+          "type": "org",
+          "retrieved": "2026-10-13"
+        },
+        {
+          "id": "s2",
+          "title": "Leaf Scald of Barley — Agriculture: Pest Management Guidelines",
+          "publisher": "UC IPM (University of California)",
+          "url": "https://ipm.ucanr.edu/agriculture/small-grains/leaf-scald-of-barley/",
+          "type": "extension",
+          "retrieved": "2026-10-13"
+        }
+      ]
+    }
+  ]
+}

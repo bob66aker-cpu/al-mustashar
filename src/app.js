@@ -46,7 +46,7 @@
    * Same-document navigation (back button + GitHub Pages subpath safe).
    * No business logic here — only show/hide + active nav state.
    * ============================================================ */
-  const VIEWS = ['home', 'search', 'scan', 'history', 'data', 'about', 'legend', 'stats'];
+  const VIEWS = ['home', 'search', 'scan', 'history', 'data', 'advice', 'about', 'legend', 'stats'];
   function currentView() {
     const h = (location.hash || '').replace(/^#\/?/, '');
     return VIEWS.indexOf(h) >= 0 ? h : 'home';
@@ -70,6 +70,7 @@
     if (v === 'history') openHistory();
     if (v === 'search') mountJurisdiction();
     if (v === 'stats') renderStats();
+    if (v === 'advice' && window.Irsheed) Irsheed.mount();
   }
   window.addEventListener('hashchange', applyView);
 
@@ -645,6 +646,36 @@
   }
 
   /* ============================================================
+   * D59 — تنبيه صوتي عند توفّر تحديث: WebAudio بلا ملفات، ثلاث نغمات
+   * قصيرة + اهتزاز إن توفر. إن منع المتصفح الصوت يبقى صامتاً ولا يكسر
+   * شيئاً (كل شيء داخل try). يُشغَّل مع ظهور شريط التحديث فقط.
+   * ============================================================ */
+  function playUpdateChime() {
+    try {
+      const AC = window.AudioContext || window.webkitAudioContext;
+      if (AC) {
+        const ac = new AC();
+        if (ac.state === 'suspended' && ac.resume) ac.resume().catch(() => {});
+        [523.25, 659.25, 783.99].forEach((freq, i) => {
+          const osc = ac.createOscillator(), gain = ac.createGain();
+          osc.type = 'triangle';
+          osc.frequency.value = freq;
+          const at = ac.currentTime + i * 0.13;
+          gain.gain.setValueAtTime(0.0001, at);
+          gain.gain.exponentialRampToValueAtTime(0.12, at + 0.02);
+          gain.gain.exponentialRampToValueAtTime(0.0001, at + 0.16);
+          osc.connect(gain);
+          gain.connect(ac.destination);
+          osc.start(at);
+          osc.stop(at + 0.18);
+        });
+        setTimeout(() => { try { ac.close(); } catch (e) {} }, 900);
+      }
+      if (navigator.vibrate) navigator.vibrate([120, 60, 120]);
+    } catch (e) { /* صامت إن منع المتصفح الصوت */ }
+  }
+
+  /* ============================================================
    * Version / update detection (informational only; never deletes)
    * ============================================================ */
   function checkVersion() {
@@ -674,6 +705,7 @@
               banner.className = 'banner banner-info';
               banner.textContent = tf('update.banner', 'يتوفر إصدار جديد من التطبيق ({a} → {b}).',
                 { a: prev, b: info.version });
+              playUpdateChime();
             }
           }
           idbPut(STORE_DB, 'app-version', info.version).catch(() => {});
@@ -753,6 +785,44 @@
       ? ' <button type="button" class="st-explain" data-status="' + esc(String(d.raw).trim()) + '" aria-haspopup="dialog" title="' + esc(t('legend.title', 'شرح الرموز')) + '">' + t('legend.open', 'شرح الرموز') + '</button>'
       : '';
     return { text: phrase + extra, tone: d.tone, raw: d.raw, chip, explainKey: ek || null };
+  }
+
+  /* ============================================================
+   * D59 — «إرشاد»: حالة المادة الفعّالة في القواعد النشطة.
+   * إعادة استخدام نفس دالة الحكم وصيغة البطاقات: بحث الاسم بتطابق
+   * تام (≥95) ثم statusDisplay يطبع العبارة والصوتة. الحظر يُشتق من
+   * الصيغة الخام للمصدر لا من ترجمة العرض: «محظور»، «Not approved»،
+   * «Cancelled»، ومفتاح epa-cancelled بذنه حكم ملغى. النتيجة تغذّي
+   * شرائح البطاقة وعدّاد الاستبعاد في src/irsheed.js.
+   * ============================================================ */
+  function adviceIngredientStatus(ing) {
+    try {
+      rebuildSearch();
+      if (!searchFn) return null;
+      const q = String((ing && (ing.en || ing.ar)) || '').trim();
+      if (q.length < 3) return null;
+      const hits = searchFn(q, false) || [];
+      let best = null;
+      for (const h of hits) {
+        if (!h || !h.r || !h.s) continue;
+        if (h.s.v < 95) continue;
+        if (!best || h.s.v > best.s.v) best = h;
+      }
+      if (!best) return null;
+      const sd = statusDisplay(best.r, best.k, false);
+      const raw = String(best.r.status || sd.raw || '');
+      const banned = best.k === 'epa-cancelled'
+        || /محظور|not approved|non-approved|cancelled/i.test(raw);
+      return { source: sourceLabel(best.k), text: sd.text, tone: sd.tone, banned: banned };
+    } catch (e) { return null; }
+  }
+
+  if (window.Irsheed) {
+    Irsheed.init({
+      t: t,
+      lang: function () { return document.documentElement.lang || 'ar'; },
+      lookupIngredient: adviceIngredientStatus
+    });
   }
 
   /* أ3 — render(results, target): the SAME decision-layer card renderer for
@@ -2989,6 +3059,7 @@
               banner.hidden = false;
               banner.className = 'banner banner-info';
               banner.textContent = t('sw.update', 'يتوفر تحديث للتطبيق. أعد تحميل الصفحة للتحديث — لن يتم حذف أي بيانات محفوظة.');
+              playUpdateChime();
             }
           }
         });

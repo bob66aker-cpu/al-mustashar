@@ -1,0 +1,171 @@
+{
+  "schema": 1,
+  "crop_id": "alfalfa",
+  "crop_name_ar": "البرسيم",
+  "cards": [
+    {
+      "id": "alfalfa-weevil",
+      "crop_id": "alfalfa",
+      "problem": {
+        "name_ar": "سوسة البرسيم الحجازي (Hypera postica)",
+        "type": "insect",
+        "aliases_ar": [
+          "سوسة البرسيم",
+          "alfalfa weevil",
+          "Hypera postica"
+        ]
+      },
+      "status": "draft",
+      "reviewed_by": null,
+      "reviewed_on": null,
+      "review_by": "2027-10-13",
+      "version": 1,
+      "local_status": {
+        "libya": "unverified",
+        "note_ar": "آفة معروفة على البرسيم في مناطق عديدة؛ التوثيق المحلي يحدده المراجع."
+      },
+      "confirm_first": {
+        "intro_ar": "هذه البطاقة تخص سوسة البرسيم: يرقات تعشّش في قمم النمو. لا يشخّص التطبيق؛ يُميّزها المختص عن السوسة المصرية وآفات أخرى قبل أي قرار.",
+        "signs_ar": [
+          "نقحرة صغيرة على الأوراق وثقوب متّجهة تجعل الورقة تبدو مشطوفة أو شبكية.",
+          "كيس حريري صغير داخل قمة النبتة حيث تعشّش اليرقات.",
+          "تلويح وذبول قمم النمو في الربيع مع تراكم فضلات خضراء.",
+          "تعافٍ متأخّر بعد القصّة الأولى مع بقاء الضرر في النمو الجديد."
+        ],
+        "lookalikes": [
+          {
+            "name_ar": "سوسة البرسيم المصرية (Bruchophorus roddi)",
+            "note_ar": "تختلف بشدة موسمياً وحجمها؛ التمييز بفحص اليرقات والبالغات.",
+            "evidence": "B",
+            "source_ids": [
+              "s1"
+            ]
+          }
+        ],
+        "lab_tests_ar": []
+      },
+      "cultural": [
+        {
+          "id": "c1",
+          "text_ar": "اقطع البرسيم مبكراً عند أول ضرر ظاهر في القمم قبل التورّي؛ القصّة المبكرة تُزيل معظم الجمهرة وتُبقي الإنتاج — وهي أصل البرنامج في إرشادات جامعة كاليفورنيا.",
+          "evidence": "A",
+          "source_ids": [
+            "s1"
+          ],
+          "applies_if": null
+        }
+      ],
+      "nutrition": [
+        {
+          "id": "n1",
+          "text_ar": "لا يوجد تسميد يعالج إصابة السوسة؛ التغذية تُضبط بحسب التحليل لتعويض ما تنتجه القصّات المتكرّرة، لا لمواجهة الحشرة.",
+          "evidence": "B",
+          "source_ids": [
+            "s1"
+          ],
+          "applies_if": null
+        }
+      ],
+      "chemical": {
+        "note_ar": "القصّة المبكرة تُلغي الحاجة كثيراً؛ والرشّة عند أول ضرر فقط وفق عتبات الإرشادات. البرسيم مرعى: فاصل ما قبل الحصاد للألبان شرط أمان، والجرعة من الملصق فقط.",
+        "options": [
+          {
+            "id": "o1",
+            "group_ar": "بيريترويد للرشّة عند الحاجة",
+            "moa_scheme": "IRAC",
+            "moa": "3A",
+            "moa_note_ar": "لا يُكرّر بمفرده؛ يُدمج في تناوب المجموعات.",
+            "ingredients": [
+              {
+                "ar": "لامدا سيهالوترين",
+                "en": "lambda-cyhalothrin",
+                "alt_names": []
+              }
+            ],
+            "timing_ar": "على النمو النشط قبل القصّة عند تجاوز العتبات المحلية.",
+            "caution_ar": "الفاصل قبل الحصاد للألبان إلزامي؛ تحقّق من التسجيل الليبي.",
+            "evidence": "B",
+            "source_ids": [
+              "s1"
+            ]
+          },
+          {
+            "id": "o2",
+            "group_ar": "مبيد حيوي انتقائي (بتركيبته المعتمدة للاستعمال العضوي)",
+            "moa_scheme": "IRAC",
+            "moa": "5",
+            "moa_note_ar": "بديل ضمن التناوب؛ الحشرات تتطور مقاومته إن كرّر.",
+            "ingredients": [
+              {
+                "ar": "إسبينوساد",
+                "en": "spinosad",
+                "alt_names": []
+              }
+            ],
+            "timing_ar": "عند الحاجة على اليرقات النشطة ضمن برنامج التناوب.",
+            "caution_ar": "حساس للنحل النشط؛ راعِ فاصل ما قبل الحصاد للألبان.",
+            "evidence": "B",
+            "source_ids": [
+              "s1"
+            ]
+          }
+        ]
+      },
+      "non_chemical": [
+        {
+          "id": "b1",
+          "text_ar": "العدوى الفطرية الطبيعية تُكبح الجمهرات في سنوات التربة الرطبة المستمرة؛ مساعدة ضمن البرنامج لا بديل عن الرصد والقصّ.",
+          "evidence": "B",
+          "source_ids": [
+            "s1"
+          ],
+          "applies_if": null
+        }
+      ],
+      "prevention": [
+        {
+          "id": "p1",
+          "text_ar": "افحص قمم النمو أسبوعياً منذ بداية الربيع، وابدأ التحكم عند أول ضرر واضح قبل التورّي.",
+          "evidence": "B",
+          "source_ids": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "applies_if": null
+        }
+      ],
+      "see_expert_when_ar": [
+        "الضرر يمتدّ رغم القصّة المبكرة.",
+        "اشتباه بسوسة مصرية: ضرر في القصّة الثانية وجنين مختلف.",
+        "الحاجة لرشّة قرب موعد الحصاد للألبان — يلزم مختص لفاصل الأمان."
+      ],
+      "sources": [
+        {
+          "id": "s1",
+          "title": "Weevils (Alfalfa and Egyptian Alfalfa) — Agriculture: Pest Management Guidelines",
+          "publisher": "UC IPM (University of California)",
+          "url": "https://ipm.ucanr.edu/agriculture/alfalfa/weevils-alfalfa-and-egyptian-alfalfa/",
+          "type": "extension",
+          "retrieved": "2026-10-13"
+        },
+        {
+          "id": "s2",
+          "title": "Alfalfa Weevil",
+          "publisher": "Penn State Extension",
+          "url": "https://extension.psu.edu/alfalfa-weevil",
+          "type": "extension",
+          "retrieved": "2026-10-13"
+        },
+        {
+          "id": "s3",
+          "title": "Hypera postica (HYPRPO) datasheet",
+          "publisher": "EPPO Global Database",
+          "url": "https://gd.eppo.int/taxon/HYPRPO/datasheet",
+          "type": "org",
+          "retrieved": "2026-10-13"
+        }
+      ]
+    }
+  ]
+}

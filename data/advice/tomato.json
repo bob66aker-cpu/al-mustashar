@@ -1,0 +1,397 @@
+{
+  "schema": 1,
+  "crop_id": "tomato",
+  "crop_name_ar": "الطماطم",
+  "cards": [
+    {
+      "id": "tomato-tuta-absoluta",
+      "crop_id": "tomato",
+      "problem": {
+        "name_ar": "عثة طماطم أمريكية (توتا أبسولوتا)",
+        "type": "insect",
+        "aliases_ar": [
+          "توتا",
+          "العثة الحفار للورق",
+          "منقار الطماطم",
+          "Tuta absoluta"
+        ]
+      },
+      "status": "draft",
+      "reviewed_by": null,
+      "reviewed_on": null,
+      "review_by": "2027-10-12",
+      "version": 1,
+      "local_status": {
+        "libya": "unverified",
+        "note_ar": "آفة غازية وصلت المتوسط وتوسعت بسرعة؛ حضورها في ليبيا يحتاج توثيقاً ميدانياً من المراجع."
+      },
+      "confirm_first": {
+        "intro_ar": "هذه البطاقة تخص آفة توتا أبسولوتا (عثة تُتالف أوراق وثمار الطماطم من الداخل). لا يشخّص التطبيق. تأكد من الآفة عبر مختص قبل أي معاملة — فالمناورات الدائرية على الأوراق قد تكون من آفات أخرى.",
+        "signs_ar": [
+          "مناورات (جيوب مجوّفة) داخل ورق الطماطم مع براز داكن داخلها، وأوراق شفافة تتحول لاحقاً إلى بنية.",
+          "ثمار مخترقة بفتحات دائرية صغيرة مع براز داخلها.",
+          "العثة البالغة صغيرة بنية رمادية ببقع فاتحة على الأجنحة؛ تنشط في المساء."
+        ],
+        "lookalikes": [
+          {
+            "name_ar": "مناور الأوراق الأخرى (ليتيرنيا وأشباهها)",
+            "note_ar": "تعيش على السطح الخارجي للورقة بخلاف توتا التي تنقر داخل اللحاء؛ والمعالجة تختلف.",
+            "evidence": "B",
+            "source_ids": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "lab_tests_ar": [
+          "يمكن تأكيد الهوية بالمصائد الفرمونية ومراجعة العثة بالعدسة المكبرة."
+        ]
+      },
+      "cultural": [
+        {
+          "id": "c1",
+          "text_ar": "أبعد النباتات المصابة والثمار المتساقطة من البستان وأتلفها خارجه؛ فالمخلفات مصدر إصابة.",
+          "evidence": "A",
+          "source_ids": [
+            "s1",
+            "s2"
+          ],
+          "applies_if": null
+        },
+        {
+          "id": "c2",
+          "text_ar": "استخدم شبكات دقيقة على فتحات الصوبة لمنع دخول العثة من الخارج.",
+          "evidence": "B",
+          "source_ids": [
+            "s2"
+          ],
+          "applies_if": {
+            "system": [
+              "greenhouse"
+            ]
+          }
+        },
+        {
+          "id": "c3",
+          "text_ar": "استخدم المصائد الفرمونية لرصد الطيران وتحديد لحظة التدخل — لا تُعد وحدها وسيلة مكافحة.",
+          "evidence": "A",
+          "source_ids": [
+            "s1",
+            "s2"
+          ],
+          "applies_if": null
+        },
+        {
+          "id": "c4",
+          "text_ar": "أزل الأعشاب الضارة المضيفة المجاورة، فالزراعة المبكرة نسبياً تقلل الضغط في بداية الموسم.",
+          "evidence": "B",
+          "source_ids": [
+            "s1"
+          ],
+          "applies_if": null
+        }
+      ],
+      "nutrition": [
+        {
+          "id": "n1",
+          "text_ar": "الآزوت الزائد يولّد نمواً طرياً يسهّل الإصابة ويسرّع تطورها؛ حافظ على تسميد متوازن.",
+          "evidence": "B",
+          "source_ids": [
+            "s1"
+          ],
+          "applies_if": null
+        }
+      ],
+      "chemical": {
+        "note_ar": "التدخل المبكر قبل نفاذ العتاد إلى الثمار هو أقوى رافعة؛ بعدها تقل فعالية الرشّ. تدوير مجموعات آلية العمل إلزامي — وتُظهر الميزة حالة كل مادة في ليبيا. والجرعة من الملصق فقط.",
+        "options": [
+          {
+            "id": "o1",
+            "group_ar": "مبيد حيوي (عامل ممرض للحشرات)",
+            "moa_scheme": "IRAC",
+            "moa": "11A",
+            "moa_note_ar": null,
+            "ingredients": [
+              {
+                "ar": "باسيالوس ثورنجينسيس",
+                "en": "Bacillus thuringiensis",
+                "alt_names": [
+                  "Bt",
+                  "Bacillus thuringiensis var. kurstaki"
+                ]
+              }
+            ],
+            "timing_ar": "وقائي: على اليرقات الصغيرة قبل اختبائها في الثمار، مع تغطية جيدة للوجه السفلي للورقة.",
+            "caution_ar": "لا يقتل البالغات؛ فعاليته تنخفض مع تقدّم حجم اليرقة، ولا يُخلط مع مواد شديدة القلوية.",
+            "evidence": "A",
+            "source_ids": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "id": "o2",
+            "group_ar": "مبيدات من مجموعة السبينويديات (بعد 11A في التناوب)",
+            "moa_scheme": "IRAC",
+            "moa": "5",
+            "moa_note_ar": null,
+            "ingredients": [
+              {
+                "ar": "سبينوساد",
+                "en": "spinosad",
+                "alt_names": []
+              }
+            ],
+            "timing_ar": "على اليرقات الصغيرة؛ يُستعمل ضمن تناوب المجموعات لا بديلاً عن البرنامج المتكامل.",
+            "caution_ar": "حساس للنحل؛ لا يُرشّ أثناء تواجد النحلات، وتحقق من تسجيله في ليبيا.",
+            "evidence": "A",
+            "source_ids": [
+              "s1",
+              "s2"
+            ]
+          }
+        ]
+      },
+      "non_chemical": [
+        {
+          "id": "b1",
+          "text_ar": "المكافحة الحيوية بمفصليات الأرجل النافعة (Encarsia و Eretmocerus) موثقة ضمن برامج توتا في البيت المحمي؛ تُطبَّق مبكراً وبإشراف مختص.",
+          "evidence": "B",
+          "source_ids": [
+            "s2"
+          ],
+          "applies_if": {
+            "system": [
+              "greenhouse"
+            ]
+          }
+        }
+      ],
+      "prevention": [
+        {
+          "id": "p1",
+          "text_ar": "الفحص الدوري الأسبوعي للورق والثمار، والتدوير خارج أسرة القرعيات.",
+          "evidence": "A",
+          "source_ids": [
+            "s1",
+            "s2"
+          ],
+          "applies_if": null
+        }
+      ],
+      "see_expert_when_ar": [
+        "عند أول إصابة موثقة في البستان — التدخل المبكر يحدّ الخسارة.",
+        "إذا ظهرت مناور على أوراق محاصيل أخرى داخل البستان (آفات مختلفة تماماً).",
+        "إذا تكررت الإصابات رغم برنامج منظم (احتمال مقاومة أو إعادة إصابة من حدود مجاورة)."
+      ],
+      "sources": [
+        {
+          "id": "s1",
+          "title": "Phthorimaea absoluta (GNORAB) datasheet",
+          "publisher": "EPPO Global Database",
+          "url": "https://gd.eppo.int/taxon/GNORAB/datasheet",
+          "type": "org",
+          "retrieved": "2026-10-13"
+        },
+        {
+          "id": "s2",
+          "title": "Developing an IPM and Biorational Program for Control and Containment of the Invasive Pest of Tomato (Tuta absoluta) in Nigeria",
+          "publisher": "FAO",
+          "url": "https://openknowledge.fao.org/handle/20.500.14283/cd5512en",
+          "type": "org",
+          "retrieved": "2026-10-13"
+        }
+      ]
+    },
+    {
+      "id": "tomato-whitefly",
+      "crop_id": "tomato",
+      "problem": {
+        "name_ar": "ذبابة بيضاء (بيميسيا تاباتسي) على الطماطم",
+        "type": "insect",
+        "aliases_ar": [
+          "الذبابة البيضاء",
+          "البَيَاض",
+          "whitefly",
+          "Bemisia tabaci"
+        ]
+      },
+      "status": "draft",
+      "reviewed_by": null,
+      "reviewed_on": null,
+      "review_by": "2027-10-12",
+      "version": 1,
+      "local_status": {
+        "libya": "unverified",
+        "note_ar": "آفة شائعة في بيئات الحماية الحارة؛ التوثيق المحلي يحدده المراجع."
+      },
+      "confirm_first": {
+        "intro_ar": "هذه البطاقة تخص الذبابة البيضاء (حشرات بيضاء صغيرة على الوجه السفلي للورقة). لا يشخّص التطبيق. لا تخلط بينها وبين الذبابة الوردية — الفرق بين الجنسين يهم في اختيار المبيد لأن المقاومة تختلف.",
+        "signs_ar": [
+          "حشرات بيضاء صغيرة تقفز عند إزعاج النبات، وعلى الوجه السفلي للورقة بيض صفراء ويرقات شفافة.",
+          "اصفرار ورق مع مادة لزجة (قطر العسل) ثم عفن أسود (الفطريات الدخانية).",
+          "في البيت المحمي الإصابة مستمرة طوال الموسم؛ وقد تنقل فيروسات تسبب تجعّد واصفرار الأوراق."
+        ],
+        "lookalikes": [
+          {
+            "name_ar": "الذبابة الوردية (Trialeurodes)",
+            "note_ar": "أكبر قليلاً وبيضها موزّع على شكل قوس على الورقة؛ والمقاومة تختلف بين الجنسين.",
+            "evidence": "B",
+            "source_ids": [
+              "s1"
+            ]
+          },
+          {
+            "name_ar": "فيروسات تجعّد الأوراق",
+            "note_ar": "الاصفرار والتجعّد قد يكون فيروساً منقلاً بالذبابة نفسها؛ راجع المختص لتمييزه.",
+            "evidence": "B",
+            "source_ids": [
+              "s1"
+            ]
+          }
+        ],
+        "lab_tests_ar": []
+      },
+      "cultural": [
+        {
+          "id": "c1",
+          "text_ar": "أزل الأعشاب المضيفة (البطاطا والباذنجان البري والشامية) من حول البستان.",
+          "evidence": "A",
+          "source_ids": [
+            "s1",
+            "s2"
+          ],
+          "applies_if": null
+        },
+        {
+          "id": "c2",
+          "text_ar": "الأغطية العاكسة (الفضية) تحت النباتات تربك الذبابة وتخفّض الإصابة في الحقل المكشوف.",
+          "evidence": "B",
+          "source_ids": [
+            "s2"
+          ],
+          "applies_if": {
+            "system": [
+              "open_field"
+            ]
+          }
+        },
+        {
+          "id": "c3",
+          "text_ar": "الشبكات على فتحات الصوبة تبطئ وصولها من الخارج.",
+          "evidence": "B",
+          "source_ids": [
+            "s1"
+          ],
+          "applies_if": {
+            "system": [
+              "greenhouse"
+            ]
+          }
+        }
+      ],
+      "nutrition": [
+        {
+          "id": "n1",
+          "text_ar": "تفادي الإفراط في الآزوت يقلّل قابلية الإصابة ويحدّ سرعة التكاثر.",
+          "evidence": "B",
+          "source_ids": [
+            "s1"
+          ],
+          "applies_if": null
+        }
+      ],
+      "chemical": {
+        "note_ar": "المقاومة واسعة الانتشار في مجموعات متعددة؛ التناوب الإلزامي والفحص قبل كل رشّة. والجرعة من الملصق فقط.",
+        "options": [
+          {
+            "id": "o1",
+            "group_ar": "مبيدات من مجموعة النيونيكوتينويد (استعمال محسوب)",
+            "moa_scheme": "IRAC",
+            "moa": "4A",
+            "moa_note_ar": "مقاومة موثقة على نطاق واسع في بيميسيا؛ لا يُستعمل كخيار وحيد ولا يتكرر في الموسم.",
+            "ingredients": [
+              {
+                "ar": "إميداكلوبريد",
+                "en": "imidacloprid",
+                "alt_names": []
+              }
+            ],
+            "timing_ar": "على اليرقات الصغيرة ضمن تناوب المجموعات.",
+            "caution_ar": "أضرار للنحل عند الاستعمال أثناء الإزهار؛ تحقق من تسجيله في ليبيا.",
+            "evidence": "B",
+            "source_ids": [
+              "s1"
+            ]
+          },
+          {
+            "id": "o2",
+            "group_ar": "مواد تنظيم نمو النسل",
+            "moa_scheme": "IRAC",
+            "moa": "7C",
+            "moa_note_ar": null,
+            "ingredients": [
+              {
+                "ar": "بيريبروكسيفين",
+                "en": "pyriproxyfen",
+                "alt_names": []
+              }
+            ],
+            "timing_ar": "على البيض واليرقات الصغيرة؛ يُستعمل ضمن برنامج تناوب لا بمفرده.",
+            "caution_ar": "لا يُخلط مع مبيدات يافعة أخرى في الخزان نفسه، وتحقق من تسجيله في ليبيا.",
+            "evidence": "B",
+            "source_ids": [
+              "s1"
+            ]
+          }
+        ]
+      },
+      "non_chemical": [
+        {
+          "id": "b1",
+          "text_ar": "مصائد لاصقة صفراء للمراقبة وخفض الطيران، ومكافحة بيولوجية بمفصليات الأرجل (Encarsia و Eretmocerus) فعّالة في الصوب بإشراف متخصص.",
+          "evidence": "A",
+          "source_ids": [
+            "s1"
+          ],
+          "applies_if": null
+        }
+      ],
+      "prevention": [
+        {
+          "id": "p1",
+          "text_ar": "فخاخ صفراء أسبوعية منذ بداية الموسم، ونظافة الصوبة من بقايا النباتات.",
+          "evidence": "B",
+          "source_ids": [
+            "s1",
+            "s2"
+          ],
+          "applies_if": null
+        }
+      ],
+      "see_expert_when_ar": [
+        "إذا ظهرت أعراض تجعّد واصفرار قد تكون فيروساً منقلاً.",
+        "إذا تعقّدت المكافحة رغم التناوب (مقاومة محتملة).",
+        "إذا كانت الإصابة واسعة في الحقل المكشوف."
+      ],
+      "sources": [
+        {
+          "id": "s1",
+          "title": "Whiteflies — Agriculture: Pest Management Guidelines",
+          "publisher": "UC IPM (University of California)",
+          "url": "https://ipm.ucanr.edu/agriculture/tomato/whiteflies/",
+          "type": "extension",
+          "retrieved": "2026-10-13"
+        },
+        {
+          "id": "s2",
+          "title": "Bemisia tabaci (BEMITA) datasheet",
+          "publisher": "EPPO Global Database",
+          "url": "https://gd.eppo.int/taxon/BEMITA/datasheet",
+          "type": "org",
+          "retrieved": "2026-10-13"
+        }
+      ]
+    }
+  ]
+}

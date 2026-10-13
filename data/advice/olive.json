@@ -1,0 +1,274 @@
+{
+  "schema": 1,
+  "crop_id": "olive",
+  "crop_name_ar": "الزيتون",
+  "cards": [
+    {
+      "id": "olive-peacock-spot",
+      "crop_id": "olive",
+      "problem": {
+        "name_ar": "عين الطاووس (تبقع أوراق الزيتون)",
+        "type": "fungal",
+        "aliases_ar": [
+          "عين الطاووس",
+          "التبقع الدائري على الزيتون"
+        ]
+      },
+      "status": "draft",
+      "reviewed_by": null,
+      "reviewed_on": null,
+      "review_by": "2027-10-12",
+      "version": 1,
+      "local_status": {
+        "libya": "unverified",
+        "note_ar": "لم يُعثر على توثيق ليبي مباشر؛ المرض واسع الانتشار في الدول المنتجة للزيتون. يحدد المراجع الحالة المحلية."
+      },
+      "confirm_first": {
+        "intro_ar": "هذه البطاقة تخص مرض عين الطاووس (فطر Venturia oleaginea / Spilocaea oleagina). لا يشخّص التطبيق المرض. تأكد من التشخيص عبر مختص قبل أي معاملة.",
+        "signs_ar": [
+          "بقع دائرية بنية صغيرة على الأوراق، ثم حلقات متحدة المركز بألوان خضراء زيتونية ورمادية وبنية داكنة، يحيط بها هالة صفراء.",
+          "تزداد الأعراض غالبًا على الأوراق السفلية من التاج، وقد تتساقط الأوراق وتجف بعض الأفرع.",
+          "قد تظهر البقع على أعناق الثمار وعلى الثمار نفسها، فتتساقط الثمار."
+        ],
+        "lookalikes": [
+          {
+            "name_ar": "مرض السيركوسبورا (Mycocentrospora cladosporioides)",
+            "note_ar": "مرض ورقي آخر يصيب الزيتون ويحتاج إدارة معه؛ وقد وُصف بأنه أصعب مكافحة من عين الطاووس.",
+            "evidence": "A",
+            "source_ids": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "lab_tests_ar": []
+      },
+      "cultural": [
+        {
+          "id": "c1",
+          "text_ar": "اختر مواقع جيدة التهوية وأقل رطوبة نسبية. فالمرض أشد في المواقع المنخفضة وحيث الندى الكثيف والضباب والرطوبة العالية وقلة الإضاءة والتاج المغلق.",
+          "evidence": "A",
+          "source_ids": [
+            "s2",
+            "s3"
+          ],
+          "applies_if": null
+        },
+        {
+          "id": "c2",
+          "text_ar": "استعمل التقليم والري بما يخفض الرطوبة داخل التاج (تقليم يفتح التاج ويحسن التهوية).",
+          "evidence": "A",
+          "source_ids": [
+            "s3"
+          ],
+          "applies_if": null
+        },
+        {
+          "id": "c3",
+          "text_ar": "قلّل الري بالرش الذي يُبقي الأوراق مبتلة لفترات طويلة؛ فالإفراط في الري بالرش يزيد الإصابة.",
+          "evidence": "B",
+          "source_ids": [
+            "s2"
+          ],
+          "applies_if": {
+            "irrigation_method": [
+              "sprinkler"
+            ]
+          }
+        },
+        {
+          "id": "c4",
+          "text_ar": "في البساتين المطرية تنتشر العدوى مع أمطار الخريف والشتاء (وتبلغ ذروتها شتاءً)، فكلما زاد المطر زادت الإصابة؛ لذا تُرصد الأعراض ويُنفَّذ البرنامج الوقائي قبل الأمطار الكبيرة.",
+          "evidence": "B",
+          "source_ids": [
+            "s1",
+            "s3"
+          ],
+          "applies_if": {
+            "irrigation_method": [
+              "rainfed"
+            ]
+          }
+        },
+        {
+          "id": "c5",
+          "text_ar": "تتفاوت الأصناف في القابلية؛ وتُذكر الأربيكينا بين الأصناف المقاومة. ولا يوجد صنف محصّن تمامًا.",
+          "evidence": "B",
+          "source_ids": [
+            "s3",
+            "s1"
+          ],
+          "applies_if": null
+        },
+        {
+          "id": "c6",
+          "text_ar": "تجنب التقليم قبل مطر قريب؛ فجروح التقليم تعرّض الشجرة للإصابة ببكتيريا عقدة الزيتون إذا تبعها مطر.",
+          "evidence": "B",
+          "source_ids": [
+            "s6"
+          ],
+          "applies_if": null
+        }
+      ],
+      "nutrition": [
+        {
+          "id": "n1",
+          "text_ar": "تجنب الإفراط في التسميد الآزوتي.",
+          "evidence": "B",
+          "source_ids": [
+            "s3"
+          ],
+          "applies_if": null
+        }
+      ],
+      "chemical": {
+        "note_ar": "المكافحة الكيميائية وقائية بالدرجة الأولى. يتصدر النحاس الثابت خيارات إرشادات جامعة كاليفورنيا لعين الطاووس. والجرعة من الملصق فقط.",
+        "options": [
+          {
+            "id": "o1",
+            "group_ar": "النحاس الثابت",
+            "moa_scheme": "FRAC",
+            "moa": "M1",
+            "moa_note_ar": null,
+            "ingredients": [
+              {
+                "ar": "هيدروكسيد النحاس",
+                "en": "copper hydroxide",
+                "alt_names": [
+                  "Cu(OH)2"
+                ]
+              },
+              {
+                "ar": "أوكسي كلوريد النحاس",
+                "en": "copper oxychloride",
+                "alt_names": []
+              },
+              {
+                "ar": "كبريتات النحاس",
+                "en": "copper sulfate",
+                "alt_names": [
+                  "copper sulphate",
+                  "tribasic copper sulfate"
+                ]
+              }
+            ],
+            "timing_ar": "وقائي: بعد الحصاد مبكرًا وقبل أمطار الخريف والشتاء الكبيرة، وتُنفّذ رشة أخرى في نهاية الشتاء أو الربيع في المواقع شديدة الإصابة.",
+            "caution_ar": "لا يُرش النحاس على الثمار قرب الحصاد لتجنب بقايا النحاس في الزيت.",
+            "evidence": "A",
+            "source_ids": [
+              "s1",
+              "s2",
+              "s4"
+            ]
+          },
+          {
+            "id": "o2",
+            "group_ar": "بديل عن النحاس في الحالات الشديدة (تجربة منشورة)",
+            "moa_scheme": "FRAC",
+            "moa": null,
+            "moa_note_ar": "رمز آلية العمل يحدده المراجع.",
+            "ingredients": [
+              {
+                "ar": "دودين",
+                "en": "dodine",
+                "alt_names": []
+              }
+            ],
+            "timing_ar": "قُيّم في تجربة منشورة بتطبيقات خريفية وربيعية كبديل عن النحاس.",
+            "caution_ar": "بيانات من تجربة واحدة. تحقق من تسجيله في ليبيا قبل أي استعمال.",
+            "evidence": "B",
+            "source_ids": [
+              "s7"
+            ]
+          }
+        ]
+      },
+      "non_chemical": [
+        {
+          "id": "b1",
+          "text_ar": "بحثت دراسات مكافحة حيوية بالبكتيريا المضادة للفطر، وإشارت نتائجها إلى إمكان استعمالها، لكنها قيد البحث ولا تُعد بديلًا مثبتًا بعد.",
+          "evidence": "B",
+          "source_ids": [
+            "s8"
+          ],
+          "applies_if": null
+        }
+      ],
+      "prevention": [
+        {
+          "id": "p1",
+          "text_ar": "رصد مبكر للأعراض على الأوراق السفلية قبل موسم الأمطار.",
+          "evidence": "B",
+          "source_ids": [
+            "s1",
+            "s2"
+          ],
+          "applies_if": null
+        }
+      ],
+      "see_expert_when_ar": [
+        "إذا استمر تساقط الأوراق رغم البرنامج الوقائي.",
+        "إذا ظهرت أعراض على الثمار أو الأفرع.",
+        "إذا شككت أن المشكلة مرض آخر."
+      ],
+      "sources": [
+        {
+          "id": "s1",
+          "title": "Olive Pest Management Guidelines: Peacock Spot",
+          "publisher": "UC IPM (University of California)",
+          "url": "https://ipm.ucanr.edu/agriculture/olive/peacock-spot",
+          "type": "extension",
+          "retrieved": "2026-10-12"
+        },
+        {
+          "id": "s2",
+          "title": "Peacock Spot and Cercospora Foliar Diseases on Olive",
+          "publisher": "UC Cooperative Extension",
+          "url": "https://class.ucanr.edu/sites/default/files/2010-07/27173.pdf",
+          "type": "extension",
+          "retrieved": "2026-10-12"
+        },
+        {
+          "id": "s3",
+          "title": "Olive Leaf Spot (Peacock Spot) – PNW Plant Disease Management Handbook",
+          "publisher": "Pacific Northwest Handbooks",
+          "url": "https://pnwhandbooks.org/node/31431",
+          "type": "extension",
+          "retrieved": "2026-10-12"
+        },
+        {
+          "id": "s4",
+          "title": "Mycocentrospora (Cercospora) – Olive Pest Management Guidelines",
+          "publisher": "UC IPM",
+          "url": "https://ipm.ucanr.edu/agriculture/olive/mycocentrospora",
+          "type": "extension",
+          "retrieved": "2026-10-12"
+        },
+        {
+          "id": "s6",
+          "title": "Olive Knot — Agriculture: Pest Management Guidelines",
+          "publisher": "UC IPM (University of California)",
+          "url": "https://ipm.ucanr.edu/agriculture/olive/olive-knot",
+          "type": "extension",
+          "retrieved": "2026-10-13"
+        },
+        {
+          "id": "s7",
+          "title": "Dodine as an alternative to copper for controlling Venturia oleaginea",
+          "publisher": "Frontiers in Plant Science",
+          "url": "https://www.frontiersin.org/journals/plant-science/articles/10.3389/fpls.2024.1369048/full",
+          "type": "journal",
+          "retrieved": "2026-10-12"
+        },
+        {
+          "id": "s8",
+          "title": "Biological control of peacock spot on olive using bacteria",
+          "publisher": "Palestine Technical University Research Journal",
+          "url": "https://rj.ptuk.edu.ps/index.php/pturj/article/download/84/77/368",
+          "type": "journal",
+          "retrieved": "2026-10-12"
+        }
+      ]
+    }
+  ]
+}

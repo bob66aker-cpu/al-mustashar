@@ -1,0 +1,139 @@
+{
+  "schema": 1,
+  "generated": "2026-10-13",
+  "generator": "scripts/validate-advice.mjs",
+  "license_policy": "cite_and_paraphrase — اللصق الحرفي غير مخوّل؛ التلخيص العلمي مع نسب المصدر ورابطه. الأذونات الواردة تُدار باسم صاحب المشروع.",
+  "coverage": {
+    "crops": 10,
+    "cards": 12,
+    "per_crop": {
+      "alfalfa": 1,
+      "barley": 1,
+      "citrus": 1,
+      "dates": 1,
+      "grape": 1,
+      "olive": 1,
+      "pepper": 1,
+      "potato": 2,
+      "tomato": 2,
+      "wheat": 1
+    },
+    "cards_min_per_crop": 1
+  },
+  "completeness": {
+    "required_sections": [
+      "confirm_first",
+      "cultural",
+      "non_chemical",
+      "chemical",
+      "prevention",
+      "see_expert_when_ar",
+      "sources"
+    ],
+    "complete_cards": 12,
+    "violations": 0
+  },
+  "evidence": {
+    "A": 30,
+    "B": 84,
+    "C": 0
+  },
+  "sources": {
+    "total": 35,
+    "by_type": {
+      "extension": 20,
+      "org": 11,
+      "government": 1,
+      "journal": 3
+    },
+    "by_license": {
+      "open": 0,
+      "cite_only": 35
+    }
+  },
+  "actives": {
+    "total": 17,
+    "eu_crosscheck": [
+      {
+        "active": "azoxystrobin",
+        "eu_status": "مسموح"
+      },
+      {
+        "active": "bacillus thuringiensis",
+        "eu_status": "محظور"
+      },
+      {
+        "active": "bacillus thuringiensis var. tenebrionis",
+        "eu_status": "غير مدرجة"
+      },
+      {
+        "active": "copper hydroxide",
+        "eu_status": "مقيد"
+      },
+      {
+        "active": "copper oxychloride",
+        "eu_status": "مقيد"
+      },
+      {
+        "active": "copper sulfate",
+        "eu_status": "غير مدرجة"
+      },
+      {
+        "active": "dodine",
+        "eu_status": "مسموح"
+      },
+      {
+        "active": "flonicamid",
+        "eu_status": "مسموح"
+      },
+      {
+        "active": "imidacloprid",
+        "eu_status": "محظور"
+      },
+      {
+        "active": "lambda-cyhalothrin",
+        "eu_status": "مقيد"
+      },
+      {
+        "active": "mefenoxam",
+        "eu_status": "غير مدرجة"
+      },
+      {
+        "active": "mineral oil",
+        "eu_status": "غير مدرجة"
+      },
+      {
+        "active": "propiconazole",
+        "eu_status": "محظور"
+      },
+      {
+        "active": "pyriproxyfen",
+        "eu_status": "مسموح"
+      },
+      {
+        "active": "spinosad",
+        "eu_status": "مسموح"
+      },
+      {
+        "active": "sulfur",
+        "eu_status": "محظور"
+      },
+      {
+        "active": "tebuconazole",
+        "eu_status": "مقيد"
+      }
+    ]
+  },
+  "dose_gate": {
+    "pattern_hits": 0,
+    "policy": "الجرعة من الملصق حصراً"
+  },
+  "applies_if_usage": {
+    "water": 1,
+    "irrigation_method": 4,
+    "soil": 1,
+    "fertilization": 1,
+    "system": 5
+  },
+  "warnings": []
+}

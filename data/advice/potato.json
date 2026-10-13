@@ -1,0 +1,381 @@
+{
+  "schema": 1,
+  "crop_id": "potato",
+  "crop_name_ar": "البطاطا",
+  "cards": [
+    {
+      "id": "potato-late-blight",
+      "crop_id": "potato",
+      "problem": {
+        "name_ar": "اللفحة المتأخرة (Phytophthora infestans)",
+        "type": "fungal",
+        "aliases_ar": [
+          "اللفحة المتأخرة",
+          "عفن البطاطا",
+          "late blight"
+        ]
+      },
+      "status": "draft",
+      "reviewed_by": null,
+      "reviewed_on": null,
+      "review_by": "2027-10-12",
+      "version": 1,
+      "local_status": {
+        "libya": "unverified",
+        "note_ar": "مرض مدمر عالمياً على البطاطا؛ التوثيق المحلي يحدده المراجع."
+      },
+      "confirm_first": {
+        "intro_ar": "هذه البطاقة تخص اللفحة المتأخرة (فطر Phytophthora infestans). لا يشخّص التطبيق. التشخيص المبكر حاسم — بقع سريعة الانتشار تشبه أضراراً أخرى، وراجع مختصاً عند الشك.",
+        "signs_ar": [
+          "بقع بنية مائية على الأوراق تتسع سريعاً مع حافة باهتة، وتصفرار سريع حولها.",
+          "نمو أبيض بديهي على ظهر الورقة في صباحات رطبة.",
+          "سواد وتحمّل عند البطاطا المصابة في التربة أو بعد الحصاد."
+        ],
+        "lookalikes": [
+          {
+            "name_ar": "اللفحة المبكرة (Alternaria)",
+            "note_ar": "بقع دائرية محددة بحلقة وتنتشر ببطء؛ تحتاج برنامجاً مختلفاً.",
+            "evidence": "B",
+            "source_ids": [
+              "s1"
+            ]
+          },
+          {
+            "name_ar": "نقص البوتاسيوم أو ضغط ري",
+            "note_ar": "يسبب اصفرار أطراف الأوراق دون بقع مائية سريعة.",
+            "evidence": "B",
+            "source_ids": [
+              "s1"
+            ]
+          }
+        ],
+        "lab_tests_ar": []
+      },
+      "cultural": [
+        {
+          "id": "c1",
+          "text_ar": "أتلف النباتات والجذور المصابة وأخرجها من الحقل؛ وبقايا المحصول السابق مصدر للإصابة.",
+          "evidence": "A",
+          "source_ids": [
+            "s1",
+            "s2"
+          ],
+          "applies_if": null
+        },
+        {
+          "id": "c2",
+          "text_ar": "استخدم بذوراً/بطاطا مغزولة صحية وسجلية مُختبرة، وتباعد أفرع يحسّن الجفاف بعد المطر.",
+          "evidence": "A",
+          "source_ids": [
+            "s1"
+          ],
+          "applies_if": null
+        },
+        {
+          "id": "c3",
+          "text_ar": "أرشفة البطاطا في التربة (تعريشة) تقلّل ملامسة الثمار بالماء وتخفض عدوى الثمار.",
+          "evidence": "B",
+          "source_ids": [
+            "s1"
+          ],
+          "applies_if": null
+        },
+        {
+          "id": "c4",
+          "text_ar": "في رياح المطر تنتقل العدوى بسرعة شديدة؛ ركّز الفحص اليومي والتدخل الوقائي في هذه الفترات.",
+          "evidence": "B",
+          "source_ids": [
+            "s2"
+          ],
+          "applies_if": {
+            "irrigation_method": [
+              "rainfed",
+              "sprinkler"
+            ]
+          }
+        }
+      ],
+      "nutrition": [
+        {
+          "id": "n1",
+          "text_ar": "التسميد المتوازن بالبوتاسيوم يقوّي النبات أمام المرض؛ الإفراط الآزوتي يزيد القابلية.",
+          "evidence": "B",
+          "source_ids": [
+            "s1"
+          ],
+          "applies_if": null
+        }
+      ],
+      "chemical": {
+        "note_ar": "البرنامج الوقائي قبل دخول عوامل اللفحة (رطوبة طويلة + حرارة معتدلة) هو الأساس، والرشّة العلاجية بعد ظهور الأعراض قد تتأخر. مقاومة المبيدات النظامية موثقة على نطاق واسع. والجرعة من الملصق فقط.",
+        "options": [
+          {
+            "id": "o1",
+            "group_ar": "النحاس الثابت (في البرامج العضوية والوقائية)",
+            "moa_scheme": "FRAC",
+            "moa": "M1",
+            "moa_note_ar": null,
+            "ingredients": [
+              {
+                "ar": "هيدروكسيد النحاس",
+                "en": "copper hydroxide",
+                "alt_names": [
+                  "Cu(OH)2"
+                ]
+              },
+              {
+                "ar": "أوكسي كلوريد النحاس",
+                "en": "copper oxychloride",
+                "alt_names": []
+              }
+            ],
+            "timing_ar": "وقائي قبل فترات العدوى ويتكرر بحسب الضغط والهطول.",
+            "caution_ar": "الملموس المتكرر للنحاس يرفع المخلفات في التربة؛ راجع حدود الاستعمال في الملصق.",
+            "evidence": "A",
+            "source_ids": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "id": "o2",
+            "group_ar": "فطرية نظامية (عائلة phenylamides وما يليها في التناوب)",
+            "moa_scheme": "FRAC",
+            "moa": "4",
+            "moa_note_ar": "مقاومة واسعة الانتشار لمجموعة FRAC4؛ لا يُستعمل وحده ولا يتكرر.",
+            "ingredients": [
+              {
+                "ar": "ميفينوكسام",
+                "en": "mefenoxam",
+                "alt_names": [
+                  "metalaxyl-M",
+                  "mefenoxame"
+                ]
+              }
+            ],
+            "timing_ar": "وقائي مبكر قبل الإصابة؛ يُستبدل بمجموعات أخرى (مثل 49) ضمن تناوب صارم.",
+            "caution_ar": "مقاومة موثقة على نطاق واسع في مناطق عديدة؛ تحقق من التسجيل الليبي والحالة المحلية.",
+            "evidence": "B",
+            "source_ids": [
+              "s1"
+            ]
+          }
+        ]
+      },
+      "non_chemical": [
+        {
+          "id": "b1",
+          "text_ar": "مبيدات نحاسية بديلة وأحماض موزّعة نحاساً ضمن البرامج المتكاملة، وتقنيات تقليل رطوبة التاج.",
+          "evidence": "B",
+          "source_ids": [
+            "s1"
+          ],
+          "applies_if": null
+        }
+      ],
+      "prevention": [
+        {
+          "id": "p1",
+          "text_ar": "نظام مبادلة المحاصيل خارج أسرة القرعيات، وإزالة مصادر العدوى، ومراقبة يومية في الفترات الرطبة.",
+          "evidence": "A",
+          "source_ids": [
+            "s1",
+            "s2"
+          ],
+          "applies_if": null
+        }
+      ],
+      "see_expert_when_ar": [
+        "عند أول بقعة مشبوهة سريعة الانتشار — التدخل الفوري ينقذ الموسم.",
+        "إذا انتشر المرض رغم البرنامج (احتمال سلالة مقاومة).",
+        "إذا ظهر التحمّل في الثمار قبل الحصاد."
+      ],
+      "sources": [
+        {
+          "id": "s1",
+          "title": "Late Blight — Agriculture: Pest Management Guidelines",
+          "publisher": "UC IPM (University of California)",
+          "url": "https://ipm.ucanr.edu/agriculture/potato/late-blight/",
+          "type": "extension",
+          "retrieved": "2026-10-13"
+        },
+        {
+          "id": "s2",
+          "title": "Phytophthora infestans (PHYTIN) datasheet",
+          "publisher": "EPPO Global Database",
+          "url": "https://gd.eppo.int/taxon/PHYTIN/datasheet",
+          "type": "org",
+          "retrieved": "2026-10-13"
+        }
+      ]
+    },
+    {
+      "id": "potato-colorado-beetle",
+      "crop_id": "potato",
+      "problem": {
+        "name_ar": "خنفساء كولورادو على البطاطا",
+        "type": "insect",
+        "aliases_ar": [
+          "خنفساء كولورادو",
+          "الخنفساء المخططة",
+          "Colorado potato beetle",
+          "Leptinotarsa decemlineata"
+        ]
+      },
+      "status": "draft",
+      "reviewed_by": null,
+      "reviewed_on": null,
+      "review_by": "2027-10-12",
+      "version": 1,
+      "local_status": {
+        "libya": "unverified",
+        "note_ar": "آفة معروفة على أسرة القرعيات؛ التوثيق المحلي يحدده المراجع."
+      },
+      "confirm_first": {
+        "intro_ar": "هذه البطاقة تخص خنفساء كولورادو (بالغة مخططة ويرقات برتقالية على أوراق البطاطا). لا يشخّص التطبيق. تأكد عبر مختص — فمن يشبهها من الخنافس لا يُكافح بنفس الوسائل.",
+        "signs_ar": [
+          "ثقوب كبيرة في الأوراق ويرقات برتقالية بجوانب سوداء متراصّة تحت الأوراق.",
+          "بيض برتقالي مصفوف صفوفياً أسفل الأوراق.",
+          "خنفساء بالغة بيضاء مشرشرة بخطوط سوداء طولية."
+        ],
+        "lookalikes": [
+          {
+            "name_ar": "خنافس أخرى على القرعيات (مثل الحرة)",
+            "note_ar": "تختلف في الشكل والسلوك؛ برنامج المكافحة غير مطابق.",
+            "evidence": "B",
+            "source_ids": [
+              "s1"
+            ]
+          }
+        ],
+        "lab_tests_ar": []
+      },
+      "cultural": [
+        {
+          "id": "c1",
+          "text_ar": "التباعد خارج أسرة البطاطا يبطئ وصولها من الحقول المصابة، وأزيل بقايا المحصول السابق.",
+          "evidence": "A",
+          "source_ids": [
+            "s1",
+            "s2"
+          ],
+          "applies_if": null
+        },
+        {
+          "id": "c2",
+          "text_ar": "الالتقاط اليدوي لليرقات الصغيرة فعّال في المساحات الصغيرة والحدائق.",
+          "evidence": "B",
+          "source_ids": [
+            "s1"
+          ],
+          "applies_if": null
+        },
+        {
+          "id": "c3",
+          "text_ar": "أزيل حشائش ليليان مضيفة (البطاطا البرية والطلحم) حول الحقل فهي مورد لتكاثرها.",
+          "evidence": "B",
+          "source_ids": [
+            "s1"
+          ],
+          "applies_if": null
+        }
+      ],
+      "nutrition": [],
+      "chemical": {
+        "note_ar": "المقاومة معروفة في مجموعات متعددة على نطاق واسع؛ التناوب والفحص قبل كل رشّة أساس البقاء الفعّال. والجرعة من الملصق فقط.",
+        "options": [
+          {
+            "id": "o1",
+            "group_ar": "مبيد حيوي (عامل ممرض خنافس)",
+            "moa_scheme": "IRAC",
+            "moa": "11A",
+            "moa_note_ar": null,
+            "ingredients": [
+              {
+                "ar": "باسيالوس ثورنجينسيس متغير تنبريونيس",
+                "en": "Bacillus thuringiensis var. tenebrionis",
+                "alt_names": [
+                  "Bt tenebrionis"
+                ]
+              }
+            ],
+            "timing_ar": "على اليرقات الصغيرة قبل أكل جسيم؛ لا فعالية على البيض والبالغات.",
+            "caution_ar": "لا يُخلط مع مواد شديدة القلوية، وتحقق من التسجيل الليبي.",
+            "evidence": "A",
+            "source_ids": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "id": "o2",
+            "group_ar": "مبيدات من مجموعة السبينويديات",
+            "moa_scheme": "IRAC",
+            "moa": "5",
+            "moa_note_ar": null,
+            "ingredients": [
+              {
+                "ar": "سبينوساد",
+                "en": "spinosad",
+                "alt_names": []
+              }
+            ],
+            "timing_ar": "على اليرقات الصغيرة؛ ضمن تناوب مع المجموعات الأخرى.",
+            "caution_ar": "حساس للنحل؛ تحقق من تسجيله في ليبيا.",
+            "evidence": "A",
+            "source_ids": [
+              "s1"
+            ]
+          }
+        ]
+      },
+      "non_chemical": [
+        {
+          "id": "b1",
+          "text_ar": "العفن البيوفوري (Beauveria bassiana) والطفيلي الشرسوب Habrobracon موثقان كعناصر في برامج متكاملة؛ يُطبَّق بإشراف متخصص.",
+          "evidence": "B",
+          "source_ids": [
+            "s1",
+            "s2"
+          ],
+          "applies_if": null
+        }
+      ],
+      "prevention": [
+        {
+          "id": "p1",
+          "text_ar": "الفحص الأسبوعي للبيض واليرقات منذ بداية الموسم، والتباعد، وإزالة مصادر التغذية الشتوية.",
+          "evidence": "B",
+          "source_ids": [
+            "s1",
+            "s2"
+          ],
+          "applies_if": null
+        }
+      ],
+      "see_expert_when_ar": [
+        "إذا انتشرت اليرقات رغم برنامج التناوب (مقاومة محتملة).",
+        "إذا ظهرت في محصول لم تُرصد فيه من قبل.",
+        "إذا شككت في تحديد الهوية."
+      ],
+      "sources": [
+        {
+          "id": "s1",
+          "title": "Colorado Potato Beetle",
+          "publisher": "Michigan State University Extension",
+          "url": "https://www.canr.msu.edu/pests/colorado_potato_beetle",
+          "type": "extension",
+          "retrieved": "2026-10-13"
+        },
+        {
+          "id": "s2",
+          "title": "Leptinotarsa decemlineata (LPTNDE) datasheet",
+          "publisher": "EPPO Global Database",
+          "url": "https://gd.eppo.int/taxon/LPTNDE/datasheet",
+          "type": "org",
+          "retrieved": "2026-10-13"
+        }
+      ]
+    }
+  ]
+}

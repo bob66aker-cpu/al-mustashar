@@ -934,6 +934,114 @@
     @media (min-width: 480px) {
       main { padding-top: calc(72px + env(safe-area-inset-top, 0px)); }
     }
+
+    /* ============ D59 · الإرشاد الزراعي (إرشاد) ============ */
+    .cta-advice .sq { background: linear-gradient(135deg, var(--primary) 0%, #17614a 100%); }
+    .advice-disclaimer { color: var(--muted); font-size: 13px; }
+    .step-n {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 26px; height: 26px; padding: 0 6px; border-radius: 999px;
+      background: var(--primary-soft); color: var(--primary-strong);
+      font-size: 13px; font-weight: 800; margin-inline-end: 6px;
+    }
+    .advice-step .hint { color: var(--muted); font-size: 14px; }
+    .advice-fields { display: grid; gap: 10px; margin-top: 10px; }
+    .af-row { display: grid; gap: 4px; }
+    .af-label { font-size: 13px; color: var(--muted); font-weight: 700; }
+    .af-select { min-height: 44px; }
+    .advice-farm-actions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-top: 12px; }
+    .advice-saved { color: var(--st-ok-ink); font-size: 13px; font-weight: 700; opacity: 0; transition: opacity .3s ease; }
+    .advice-saved.show { opacity: 1; }
+    .advice-crops {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(94px, 1fr));
+      gap: 8px; margin-top: 10px;
+    }
+    .crop-chip {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 6px; min-height: 76px; padding: 10px 6px; border-radius: 14px;
+      border: 1px solid var(--control); background: var(--field); color: var(--text);
+      font-size: 14px; font-weight: 700; cursor: pointer; text-align: center;
+      transition: transform .15s ease, border-color .15s ease, background .15s ease;
+    }
+    .crop-chip [data-icon] .ic { width: 22px; height: 22px; color: var(--primary-strong); }
+    .crop-chip:hover { transform: translateY(-2px); border-color: var(--primary-ink); }
+    .crop-chip.active { background: var(--primary-soft); border-color: var(--primary-ink); color: var(--primary-strong); }
+    .advice-list { margin-top: 14px; display: grid; gap: 14px; }
+    .advice-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--primary-ink);
+      border-radius: 16px; padding: 14px; animation: view-in .2s ease both;
+    }
+    .ac-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+    .ac-name { font-size: 17px; margin: 0; }
+    .loc-chip {
+      font-size: 12px; font-weight: 700; padding: 3px 9px; border-radius: 999px;
+      background: var(--st-review-soft); color: var(--st-review-ink);
+    }
+    .loc-chip.ok { background: var(--st-ok-soft); color: var(--st-ok-ink); }
+    .ac-confirm { background: var(--primary-soft); border-radius: 12px; padding: 8px 12px 10px; margin-top: 8px; }
+    .ac-sec-title { font-size: 14px; margin: 12px 0 6px; color: var(--primary-strong); }
+    .ac-confirm .ac-sec-title { margin-top: 2px; }
+    .ac-sub { font-size: 13px; color: var(--muted); margin: 8px 0 2px; font-weight: 700; }
+    .ac-intro { font-size: 15px; margin: 4px 0 2px; }
+    .ac-list { margin: 0; padding-inline-start: 18px; display: grid; gap: 6px; }
+    .adv-item { font-size: 15px; }
+    .lookalike { display: grid; gap: 2px; }
+    .lk-row { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+    .lk-name { font-size: 14px; }
+    .ev {
+      display: inline-block; font-size: 12px; font-weight: 800; line-height: 1.5;
+      padding: 1px 7px; border-radius: 6px; margin-inline-start: 6px; white-space: nowrap;
+    }
+    .ev-A { background: var(--st-ok-soft); color: var(--st-ok-ink); }
+    .ev-B { background: var(--st-info-soft); color: var(--st-info-ink); }
+    .ev-C { background: var(--st-review-soft); color: var(--st-review-ink); }
+    .ac-sec.licensed { border-inline-start: 3px solid var(--st-info-ink); padding-inline-start: 9px; margin-top: 6px; }
+    .ac-note { font-size: 13px; color: var(--muted); }
+    .chem-opt { border: 1px dashed var(--control); border-radius: 12px; padding: 10px; margin-top: 8px; }
+    .chem-group { font-weight: 800; font-size: 14px; }
+    .chem-ing { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-top: 4px; }
+    .chem-ing-names { font-size: 14px; }
+    .frac-badge {
+      font-size: 12px; font-weight: 800; padding: 2px 7px; border-radius: 6px;
+      background: var(--field); border: 1px solid var(--control); color: var(--muted);
+    }
+    .reg-chips { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px; }
+    .reg-chip {
+      font-size: 12px; font-weight: 700; padding: 3px 9px; border-radius: 999px;
+      border: 1px solid var(--control);
+    }
+    .reg-chip.tone-ban { color: var(--st-ban); background: var(--st-ban-soft); border-color: var(--st-ban); }
+    .reg-chip.tone-review { color: var(--st-review-ink); background: var(--st-review-soft); border-color: var(--st-review); }
+    .reg-chip.tone-info { color: var(--st-info-ink); background: var(--st-info-soft); border-color: var(--st-info); }
+    .reg-chip.tone-ok, .reg-chip.tone-neutral { color: var(--st-ok-ink); background: var(--st-ok-soft); border-color: var(--st-ok); }
+    .chem-row { font-size: 14px; margin-top: 6px; }
+    .chem-caution { font-size: 13px; color: var(--st-review-ink); margin-top: 4px; font-weight: 600; }
+    .chem-meta { margin-top: 6px; }
+    .blocked-banner {
+      margin-top: 8px; background: var(--st-ban-soft); color: var(--st-ban);
+      border: 1px solid var(--st-ban); border-radius: 10px; padding: 8px 10px;
+      font-size: 13px; font-weight: 700;
+    }
+    .ctx-banner {
+      margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
+      background: var(--st-info-soft); border-radius: 10px; padding: 8px 10px;
+      font-size: 13px; color: var(--st-info-ink);
+    }
+    .ac-expert { background: var(--st-review-soft); border-radius: 12px; padding: 6px 12px 10px; margin-top: 12px; }
+    .ac-expert .ac-sec-title { color: var(--st-review-ink); }
+    .ac-sources { margin-top: 12px; border-top: 1px solid var(--border); padding-top: 4px; }
+    .src-item { display: grid; gap: 1px; margin-top: 6px; }
+    .src-link { color: var(--st-info-ink); font-size: 14px; font-weight: 700; }
+    .src-meta { font-size: 12px; color: var(--muted); }
+    .langnote, .advice-error { font-size: 13px; color: var(--muted); margin-top: 10px; }
+    .advice-error { color: var(--st-ban); }
+    .adv-loading { color: var(--muted); font-size: 14px; }
+    .advice-step.pulse { animation: advpulse 1.2s ease; }
+    @keyframes advpulse {
+      0% { box-shadow: 0 0 0 0 var(--primary-ink); }
+      100% { box-shadow: 0 0 0 16px rgba(0, 0, 0, 0); }
+    }
   </style>
 </head>
 <body>
@@ -1022,6 +1130,14 @@
         </div>
         <p class="inapp-note" id="inappNote" hidden></p>
       </div>
+
+      <a class="cta-scan cta-advice" href="#/advice" id="homeAdviceCta">
+        <span class="sq" data-icon="mode-farmer"></span>
+        <span>
+          <b data-i18n="advice.cta.title">الإرشاد الزراعي</b>
+          <span class="sub" data-i18n="advice.cta.sub">بطاقات كاملة لكل محصول: تأكيد أول، إرشاد زراعي، مواد مرخّصة، بدائل غير كيميائية، ومتى تطلب مختصاً — بلا تشخيص وبلا جرعات.</span>
+        </span>
+      </a>
 
       <div class="stats">
         <div class="stat ban">
@@ -1549,6 +1665,33 @@
         <p class="stats-note" id="statsResetNote" hidden data-i18n="stats.resetDone">تم تصفير الإحصاءات على هذا الجهاز.</p>
       </div>
     </section>
+    <!-- ================= الإرشاد الزراعي (D59) ================= -->
+    <section class="view" id="view-advice" data-view="advice" hidden>
+      <div class="page-head advice-head">
+        <h1 data-i18n="advice.title">الإرشاد الزراعي</h1>
+        <p data-i18n="advice.lead">من ملف مزرعتك إلى بطاقة عملية: تأكيد العرض أولاً، ثم الإرشاد الزراعي، والمواد المرخّصة، والبدائل غير الكيميائية، ومتى تطلب مختصاً.</p>
+        <p class="advice-disclaimer" data-i18n="advice.disclaimer">هذا التطبيق لا يشخّص ولا يصف جرعات: الجرعة والتسجيل يقيسهما الملصق المحلي دائماً.</p>
+      </div>
+
+      <div class="card advice-step" id="adviceFarmCard">
+        <h2><span class="step-n" data-i18n="advice.step.farm">١</span><span data-i18n="advice.farm.title">ملف مزرعتك</span></h2>
+        <p class="hint" data-i18n="advice.farm.hint">اضبط ملفك مرة واحدة؛ يُحفظ في جهازك ولا يُرسل إلى أي خادم، ويُظهر الإرشاد الذي ينطبق عليك فقط.</p>
+        <div class="advice-fields" id="adviceFarmFields"></div>
+        <div class="advice-farm-actions">
+          <button class="btn-primary" type="button" id="adviceFarmSave"><span data-i18n="advice.farm.save">احفظ الملف</span></button>
+          <button class="btn-outline" type="button" id="adviceFarmReset"><span data-i18n="advice.farm.reset">إعادة ضبط</span></button>
+          <span class="advice-saved" id="adviceFarmState" data-i18n="advice.farm.saved">محفوظ على جهازك</span>
+        </div>
+      </div>
+
+      <div class="card advice-step" id="adviceCropsCard">
+        <h2><span class="step-n" data-i18n="advice.step.crops">٢</span><span data-i18n="advice.crops.title">اختر محصولك</span></h2>
+        <div class="advice-crops" id="adviceCrops"></div>
+      </div>
+
+      <div class="advice-list" id="adviceCards"></div>
+      <p class="hint" id="adviceEmpty" data-i18n="advice.cards.hint">اختر محصولاً من الأعلى لتظهر بطاقاته كاملة.</p>
+    </section>
   </main>
 
   <nav class="bottom" id="bottomNav" aria-label="main">
@@ -1556,6 +1699,7 @@
       <a class="nav-item" href="#/" data-nav="home"><span class="nav-ic" data-icon="home"></span><span data-i18n="nav.home">الرئيسية</span></a>
       <a class="nav-item" href="#/search" data-nav="search"><span class="nav-ic" data-icon="search"></span><span data-i18n="nav.search">البحث</span></a>
       <a class="nav-item" href="#/scan" data-nav="scan"><span class="nav-ic" data-icon="scan"></span><span data-i18n="nav.scan">المسح</span></a>
+      <a class="nav-item" href="#/advice" data-nav="advice"><span class="nav-ic" data-icon="mode-farmer"></span><span data-i18n="nav.advice">الإرشاد</span></a>
       <a class="nav-item" href="#/history" data-nav="history"><span class="nav-ic" data-icon="history"></span><span data-i18n="nav.history">السجل</span></a>
       <a class="nav-item" href="#/about" data-nav="about"><span class="nav-ic" data-icon="about"></span><span data-i18n="nav.about">حول</span></a>
     </div>
@@ -1582,6 +1726,7 @@
   <script src="src/vendor/qrcodegen.js"></script>
   <script src="src/qr.js"></script>
   <script src="src/stats.js"></script>
+  <script src="src/irsheed.js"></script>
   <script src="src/app.js"></script>
 </body>
 </html>

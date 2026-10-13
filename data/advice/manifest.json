@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "built": "2026-10-13",
+  "feature": "irsheed",
+  "note_ar": "حزمة الإرشاد الزراعي: بطاقات مستندة إلى مصادر موثّقة (استشهاد ولخص علمي) — لا تشخيص ولا جرعات ولا منتجات تجارية.",
+  "modifiers_file": "data/advice/modifiers.json",
+  "report_file": "data/advice/advice-registry-report.json",
+  "license_policy": {
+    "mode": "cite_and_paraphrase",
+    "note_ar": "إعادة نشر النصوص الأصلية للمصادر غير مخوّلة؛ البطاقات تلخّص علماً عاماً مع نسب المصدر ورابطه. الأذونات الواردة (EPPO/PPDB/FAO) تُدار باسم صاحب المشروع.",
+    "open_licensed": ["ICARDA (CC BY-SA 4.0)", "FAO Open Knowledge (بحسب بطاقة كل عمل)"]
+  },
+  "crops": [
+    { "id": "citrus",  "file": "data/advice/citrus.json",  "name_ar": "الحمضيات", "name_en": "Citrus",       "name_fr": "Agrumes" },
+    { "id": "olive",   "file": "data/advice/olive.json",   "name_ar": "الزيتون",   "name_en": "Olive",        "name_fr": "Olivier" },
+    { "id": "grape",   "file": "data/advice/grape.json",   "name_ar": "العنب",     "name_en": "Grape",        "name_fr": "Vigne" },
+    { "id": "tomato",  "file": "data/advice/tomato.json",  "name_ar": "الطماطم",   "name_en": "Tomato",       "name_fr": "Tomate" },
+    { "id": "pepper",  "file": "data/advice/pepper.json",  "name_ar": "الفلفل",    "name_en": "Pepper",       "name_fr": "Poivron" },
+    { "id": "potato",  "file": "data/advice/potato.json",  "name_ar": "البطاطا",   "name_en": "Potato",       "name_fr": "Pomme de terre" },
+    { "id": "wheat",   "file": "data/advice/wheat.json",   "name_ar": "القمح",     "name_en": "Wheat",        "name_fr": "Blé" },
+    { "id": "barley",  "file": "data/advice/barley.json",  "name_ar": "الشعير",    "name_en": "Barley",       "name_fr": "Orge" },
+    { "id": "dates",   "file": "data/advice/dates.json",   "name_ar": "التمور",    "name_en": "Dates",        "name_fr": "Dattier" },
+    { "id": "alfalfa", "file": "data/advice/alfalfa.json", "name_ar": "البرسيم",   "name_en": "Alfalfa",      "name_fr": "Luzerne" }
+  ],
+  "owner_initial_cards": ["citrus-copper-deficiency", "olive-peacock-spot", "grape-powdery-mildew"]
+}

@@ -1,0 +1,191 @@
+{
+  "schema": 1,
+  "crop_id": "wheat",
+  "crop_name_ar": "القمح",
+  "cards": [
+    {
+      "id": "wheat-stripe-rust",
+      "crop_id": "wheat",
+      "problem": {
+        "name_ar": "صدأ الشريط الأصفر (Puccinia striiformis)",
+        "type": "fungal",
+        "aliases_ar": [
+          "الصدأ الأصفر",
+          "صدأ الأوراق الشريطي",
+          "yellow rust"
+        ]
+      },
+      "status": "draft",
+      "reviewed_by": null,
+      "reviewed_on": null,
+      "review_by": "2027-10-12",
+      "version": 1,
+      "local_status": {
+        "libya": "unverified",
+        "note_ar": "المرض عالمي موثق على القمح؛ التوثيق المحلي يحدده المراجع."
+      },
+      "confirm_first": {
+        "intro_ar": "هذه البطاقة تخص صدأ الشريط الأصفر (فطر Puccinia striiformis). لا يشخّص التطبيق. تميّزه عن الصدأ البنّي مهم لاختيار المبيد والقرار، فراجع مختصاً عند الشك.",
+        "signs_ar": [
+          "بثورات صدأية صفراء مصفوفة على شكل أشرطة موازية لعصب الورقة.",
+          "اصفرار أوراق مع تشقق الورقة في الإصابة الشديدة.",
+          "قد تظهر على السنابل فيتحول الرحيق إلى لون أصفر باهت."
+        ],
+        "lookalikes": [
+          {
+            "name_ar": "الصدأ البنّي (Puccinia triticina)",
+            "note_ar": "بثورات بنّة موزّعة عشوائياً لا على شكل أشرطة؛ البرنامج يختلف قليلاً.",
+            "evidence": "B",
+            "source_ids": [
+              "s1"
+            ]
+          },
+          {
+            "name_ar": "اللفحة السبعية (Septoria)",
+            "note_ar": "بقع بنية بحواف صفراء مع بقايا أسود (أبواغ) داخلها؛ تحتاج برنامجاً مختلفاً.",
+            "evidence": "B",
+            "source_ids": [
+              "s2"
+            ]
+          }
+        ],
+        "lab_tests_ar": []
+      },
+      "cultural": [
+        {
+          "id": "c1",
+          "text_ar": "ازرع أصنافاً مقاومة معروفة في إرشادات منطقتك؛ فهي أرخص وسيلة وأكثر أماناً.",
+          "evidence": "A",
+          "source_ids": [
+            "s1"
+          ],
+          "applies_if": null
+        },
+        {
+          "id": "c2",
+          "text_ar": "تجنب الزراعة المتأخرة التي تجعل المحصول في مرحلة الإشمام أثناء أبرد فترات الرطب، وتشتت مواعيد الزراعة يقلّل المخاطر.",
+          "evidence": "B",
+          "source_ids": [
+            "s1"
+          ],
+          "applies_if": null
+        },
+        {
+          "id": "c3",
+          "text_ar": "أزيل بقايا الأعشاب المضيفة (أوكالبتوس القمح الشوكي وأشباهها) حول الحقل.",
+          "evidence": "B",
+          "source_ids": [
+            "s1"
+          ],
+          "applies_if": null
+        }
+      ],
+      "nutrition": [
+        {
+          "id": "n1",
+          "text_ar": "الآزوت الزائد يطوّل النمو ويزيد الإصابة في نهاية الموسم؛ اضبط الجرعات حسب التحليل والتوصية المحلية.",
+          "evidence": "B",
+          "source_ids": [
+            "s1"
+          ],
+          "applies_if": null
+        }
+      ],
+      "chemical": {
+        "note_ar": "المكافحة تستند إلى رصد الأصناف والعزلات المحلية — الصدأ يتطوّر بسرعة. الفطرية الثلاثية الأزولية الفعّالة، مع مقاومة موثقة في عزلات عديدة؛ تناوب المجموعات إلزامي. والجرعة من الملصق فقط.",
+        "options": [
+          {
+            "id": "o1",
+            "group_ar": "فطرية من مجموعة الثلاثية الأزولات",
+            "moa_scheme": "FRAC",
+            "moa": "3",
+            "moa_note_ar": "مقاومة موثقة لبعض العزلات؛ لا يُكرر أكثر من مرة في الموسم.",
+            "ingredients": [
+              {
+                "ar": "تبيوكونازول",
+                "en": "tebuconazole",
+                "alt_names": []
+              },
+              {
+                "ar": "بروبيكونازول",
+                "en": "propiconazole",
+                "alt_names": []
+              }
+            ],
+            "timing_ar": "عند بداية الظهور على السنابل أو عند رصد الإصابة في مرحلة الإشمام حسب التوصيات المحلية.",
+            "caution_ar": "تحقّق من التسجيل الليبي وحدود الاستعمال والفاصل قبل الحصاد.",
+            "evidence": "A",
+            "source_ids": [
+              "s1"
+            ]
+          },
+          {
+            "id": "o2",
+            "group_ar": "فطرية من مجموعة الكينون أوكسي-ميثيل (QoI) ضمن التناوب",
+            "moa_scheme": "FRAC",
+            "moa": "11",
+            "moa_note_ar": "مقاومة موجودة في مناطق عديدة؛ يُستعمل ضمن تناوب مع FRAC3 لا بمفرده.",
+            "ingredients": [
+              {
+                "ar": "أزوسيستروبين",
+                "en": "azoxystrobin",
+                "alt_names": []
+              }
+            ],
+            "timing_ar": "وقائي في فترات الانتشار وفق برنامج مناطقك.",
+            "caution_ar": "حساس للنحل؛ تحقق من تسجيله في ليبيا.",
+            "evidence": "B",
+            "source_ids": [
+              "s1"
+            ]
+          }
+        ]
+      },
+      "non_chemical": [
+        {
+          "id": "b1",
+          "text_ar": "الأصناف المقاومة والتوريد السليم للبذور وأزالة الأعشاب المضيفة أساس الوقاية طويلة الأمد.",
+          "evidence": "A",
+          "source_ids": [
+            "s1"
+          ],
+          "applies_if": null
+        }
+      ],
+      "prevention": [
+        {
+          "id": "p1",
+          "text_ar": "مراقبة أسبوعية للحقل منذ مرحلة الاستطال، ورصد الأصناف المقاومة قبل الموسم.",
+          "evidence": "B",
+          "source_ids": [
+            "s1"
+          ],
+          "applies_if": null
+        }
+      ],
+      "see_expert_when_ar": [
+        "عند أول ظهور للبثورات الصفراء على شكل أشرطة.",
+        "إذا انتشر المرض رغم رشّات فطرية منتظمة (مقاومة محتملة — قد يحتاج تحليل عزلة).",
+        "إذا ظهر صدأ بنّي موازٍ للشريطي في نفس الحقل."
+      ],
+      "sources": [
+        {
+          "id": "s1",
+          "title": "Stripe Rusts of Wheat and Barley — Agriculture: Pest Management Guidelines",
+          "publisher": "UC IPM (University of California)",
+          "url": "https://ipm.ucanr.edu/agriculture/small-grains/stripe-rusts-of-wheat-and-barley/",
+          "type": "extension",
+          "retrieved": "2026-10-13"
+        },
+        {
+          "id": "s2",
+          "title": "Zymoseptoria tritici (SEPTTR) datasheet",
+          "publisher": "EPPO Global Database",
+          "url": "https://gd.eppo.int/taxon/SEPTTR/datasheet",
+          "type": "org",
+          "retrieved": "2026-10-13"
+        }
+      ]
+    }
+  ]
+}

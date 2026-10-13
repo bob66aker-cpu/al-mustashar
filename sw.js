@@ -187,7 +187,7 @@
  * Personal data (IndexedDB history, theme, app version note) lives outside
  * the caches and is never touched by this worker.
  */
-const CACHE = 'mustashar-v61';
+const CACHE = 'mustashar-v62';
 const OCR_CACHE = 'mustashar-ocr';
 
 /* 1.7 — safe cache write: a full storage quota (QuotaExceededError) must
@@ -218,6 +218,20 @@ const SHELL = [
   './src/i18n.js',
   './src/icons.js',
   './src/cas.js',
+  /* D59 — حزمة الإرشاد: تُجهَّز مع القشرة ليعمل الإرشاد دون إنترنت من أول تشغيل */
+  './src/irsheed.js',
+  './data/advice/manifest.json',
+  './data/advice/modifiers.json',
+  './data/advice/citrus.json',
+  './data/advice/olive.json',
+  './data/advice/grape.json',
+  './data/advice/tomato.json',
+  './data/advice/pepper.json',
+  './data/advice/potato.json',
+  './data/advice/wheat.json',
+  './data/advice/barley.json',
+  './data/advice/dates.json',
+  './data/advice/alfalfa.json',
   './assets/fonts/LICENSE-OFL-IBM-Plex-Sans-Arabic.txt',
   './assets/icons/LICENSE-LUCIDE-ISC.txt',
   './assets/developer.jpg',

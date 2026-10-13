@@ -1,0 +1,204 @@
+{
+  "schema": 1,
+  "modifiers": {
+    "soil": {
+      "label_ar": "نوع التربة",
+      "values": [
+        {
+          "id": "sandy",
+          "ar": "رملية",
+          "en": "Sandy",
+          "fr": "Sableuse"
+        },
+        {
+          "id": "loamy",
+          "ar": "طميية خصبة",
+          "en": "Loamy",
+          "fr": "Franche"
+        },
+        {
+          "id": "clay",
+          "ar": "طينية",
+          "en": "Clay",
+          "fr": "Argileuse"
+        },
+        {
+          "id": "calcareous",
+          "ar": "جيرية (مرتفعة الكلس)",
+          "en": "Calcareous (high lime)",
+          "fr": "Calcaire (forte teneur en chaux)"
+        },
+        {
+          "id": "saline",
+          "ar": "ملحية",
+          "en": "Saline",
+          "fr": "Saline"
+        }
+      ],
+      "label_en": "Soil type",
+      "label_fr": "Type de sol"
+    },
+    "water": {
+      "label_ar": "نوع مياه الري",
+      "values": [
+        {
+          "id": "fresh",
+          "ar": "عذبة (منخفضة الملوحة)",
+          "en": "Fresh (low salinity)",
+          "fr": "Douce (faible salinité)"
+        },
+        {
+          "id": "brackish",
+          "ar": "متوسطة الملوحة",
+          "en": "Brackish",
+          "fr": "Saumâtre"
+        },
+        {
+          "id": "saline_high",
+          "ar": "عالية الملوحة",
+          "en": "High salinity",
+          "fr": "Élevée salinité"
+        },
+        {
+          "id": "treated_wastewater",
+          "ar": "صرف معالج",
+          "en": "Treated wastewater",
+          "fr": "Eaux usées traitées"
+        },
+        {
+          "id": "rainfed",
+          "ar": "مطرية (بعلية)",
+          "en": "Rainfed (dryland)",
+          "fr": "Pluviale (sec)"
+        }
+      ],
+      "label_en": "Irrigation water quality",
+      "label_fr": "Qualité de l’eau d’irrigation"
+    },
+    "fertilization": {
+      "label_ar": "طريقة التسميد",
+      "values": [
+        {
+          "id": "mineral_high_N",
+          "ar": "معدني بآزوت مرتفع",
+          "en": "Mineral, high nitrogen",
+          "fr": "Minéral, azote élevé"
+        },
+        {
+          "id": "balanced_npk",
+          "ar": "معدني متوازن",
+          "en": "Balanced NPK",
+          "fr": "Équilibré NPK"
+        },
+        {
+          "id": "organic",
+          "ar": "عضوي",
+          "en": "Organic",
+          "fr": "Biologique"
+        },
+        {
+          "id": "fertigation",
+          "ar": "تسميد مع مياه الري",
+          "en": "Fertigation",
+          "fr": "Fertigation"
+        },
+        {
+          "id": "minimal",
+          "ar": "قليل أو بلا تسميد",
+          "en": "Minimal or none",
+          "fr": "Minimale ou aucune"
+        }
+      ],
+      "label_en": "Fertilization method",
+      "label_fr": "Mode de fertilisation"
+    },
+    "irrigation_method": {
+      "label_ar": "طريقة الري",
+      "values": [
+        {
+          "id": "drip",
+          "ar": "تنقيط",
+          "en": "Drip",
+          "fr": "Goutte à goutte"
+        },
+        {
+          "id": "sprinkler",
+          "ar": "رش",
+          "en": "Sprinkler",
+          "fr": "Aspersion"
+        },
+        {
+          "id": "flood",
+          "ar": "غمر",
+          "en": "Flood",
+          "fr": "Inondation"
+        },
+        {
+          "id": "rainfed",
+          "ar": "مطري (بلا ري اصطناعي)",
+          "en": "Rainfed (dryland)",
+          "fr": "Pluviale (sec)"
+        }
+      ],
+      "label_en": "Irrigation method",
+      "label_fr": "Méthode d’irrigation"
+    },
+    "system": {
+      "label_ar": "نظام الزراعة",
+      "values": [
+        {
+          "id": "open_field",
+          "ar": "حقل مكشوف",
+          "en": "Open field",
+          "fr": "Champ ouvert"
+        },
+        {
+          "id": "greenhouse",
+          "ar": "بيت محمي (صوبة)",
+          "en": "Greenhouse (polytunnel)",
+          "fr": "Serre"
+        }
+      ],
+      "label_en": "Growing system",
+      "label_fr": "Système de culture"
+    },
+    "growth_stage": {
+      "label_ar": "مرحلة النمو",
+      "values": [
+        {
+          "id": "seedling",
+          "ar": "بادرات وتغريس",
+          "en": "Seedling",
+          "fr": "Plantule"
+        },
+        {
+          "id": "vegetative",
+          "ar": "نمو خضري",
+          "en": "Vegetative",
+          "fr": "Végétatif"
+        },
+        {
+          "id": "flowering",
+          "ar": "إزهرار",
+          "en": "Flowering",
+          "fr": "Floraison"
+        },
+        {
+          "id": "fruiting",
+          "ar": "إثمار ونضج",
+          "en": "Fruiting",
+          "fr": "Fructification"
+        },
+        {
+          "id": "pre_harvest",
+          "ar": "قرب الحصاد",
+          "en": "Pre-harvest",
+          "fr": "Pré-récolte"
+        }
+      ],
+      "label_en": "Growth stage",
+      "label_fr": "Stade de croissance"
+    }
+  },
+  "unknown_label_ar": "غير محدد"
+}

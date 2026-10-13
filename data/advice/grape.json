@@ -1,0 +1,237 @@
+{
+  "schema": 1,
+  "crop_id": "grape",
+  "crop_name_ar": "العنب",
+  "cards": [
+    {
+      "id": "grape-powdery-mildew",
+      "crop_id": "grape",
+      "problem": {
+        "name_ar": "البياض الدقيقي في العنب",
+        "type": "fungal",
+        "aliases_ar": [
+          "البياض الدقيقي",
+          "الأوديوم",
+          "مرض الدقيق الأبيض"
+        ]
+      },
+      "status": "draft",
+      "reviewed_by": null,
+      "reviewed_on": null,
+      "review_by": "2027-10-12",
+      "version": 1,
+      "local_status": {
+        "libya": "unverified",
+        "note_ar": "لم يُعثر على توثيق ليبي مباشر على العنب؛ البياض الدقيقي موثق في ليبيا على القرعيات. يحدد المراجع الحالة المحلية للعنب."
+      },
+      "confirm_first": {
+        "intro_ar": "هذه البطاقة تخص البياض الدقيقي في العنب (فطر Erysiphe necator). لا يشخّص التطبيق المرض. تأكد من التشخيص عبر مختص قبل أي معاملة. ولا تفترض أن الجو الجاف يمنع المرض؛ فالمناخ داخل التاج هو المهم.",
+        "signs_ar": [
+          "غبار أبيض رمادي على الأوراق والأفرع والعناقيد.",
+          "في الإصابة الشديدة تتأثر حبات العنب والعنقود وتقل قيمته التسويقية."
+        ],
+        "lookalikes": [
+          {
+            "name_ar": "البياض الزغبي والعفن الرمادي",
+            "note_ar": "مرضان شائعان آخران في العنب وتختلف معاملتهما. ولا تتبع هذه البطاقة معهما.",
+            "evidence": "B",
+            "source_ids": [
+              "s1"
+            ]
+          }
+        ],
+        "lab_tests_ar": []
+      },
+      "cultural": [
+        {
+          "id": "c1",
+          "text_ar": "أدِر التاج لتحسين التهوية والإضاءة: إزالة الأوراق وتخفيف الأفرع في الموسم تحسن نفاذ الضوء وحركة الهواء وتقلل المرض.",
+          "evidence": "B",
+          "source_ids": [
+            "s2",
+            "s3"
+          ],
+          "applies_if": null
+        },
+        {
+          "id": "c2",
+          "text_ar": "النمو الخضري المفرط يزيد القابلية للإصابة؛ خفّف الآزوت لتقليل قوة النمو.",
+          "evidence": "B",
+          "source_ids": [
+            "s2",
+            "s3"
+          ],
+          "applies_if": {
+            "fertilization": [
+              "mineral_high_N"
+            ]
+          }
+        },
+        {
+          "id": "c3",
+          "text_ar": "دورات العدوى تتكرر كل 5 إلى 7 أيام تقريبًا عند حرارة تاج في نحو 21–29 °م، فتزداد الحاجة للمتابعة المنتظمة في هذه الأجواء.",
+          "evidence": "B",
+          "source_ids": [
+            "s2"
+          ],
+          "applies_if": null
+        }
+      ],
+      "nutrition": [],
+      "chemical": {
+        "note_ar": "المكافحة وقائية طوال الموسم، وتبدأ مبكرًا حين تبلغ الأفرع نحو 8–25 سم وقبل ظهور العناقيد، وتتكرر بحسب ضغط المرض. وتوجد مقاومة موثقة لبعض المجموعات الصناعية (مثل DMI في أوروبا، و QoI في مناطق)؛ لا تعتمد على مجموعة واحدة، ولا تكرر المجموعة نفسها أكثر من مرتين في الموسم باستثناء مجموعات M. والجرعة من الملصق فقط.",
+        "options": [
+          {
+            "id": "o1",
+            "group_ar": "الكبريت",
+            "moa_scheme": "FRAC",
+            "moa": "M2",
+            "moa_note_ar": null,
+            "ingredients": [
+              {
+                "ar": "الكبريت",
+                "en": "sulfur",
+                "alt_names": [
+                  "sulphur",
+                  "wettable sulfur",
+                  "elemental sulfur"
+                ]
+              }
+            ],
+            "timing_ar": "يعمل جيدًا قبل استطالة محور العنقود ويُعد عماد البرنامج الوقائي.",
+            "caution_ar": "لا يُخلط مع الزيوت المعدنية ولا يُستعمل خلال 14 يومًا منها.",
+            "evidence": "B",
+            "source_ids": [
+              "s2",
+              "s4",
+              "s5"
+            ]
+          },
+          {
+            "id": "o2",
+            "group_ar": "النحاس الثابت (أقل فعالية قليلًا من الكبريت)",
+            "moa_scheme": "FRAC",
+            "moa": "M1",
+            "moa_note_ar": null,
+            "ingredients": [
+              {
+                "ar": "هيدروكسيد النحاس",
+                "en": "copper hydroxide",
+                "alt_names": [
+                  "Cu(OH)2"
+                ]
+              },
+              {
+                "ar": "أوكسي كلوريد النحاس",
+                "en": "copper oxychloride",
+                "alt_names": []
+              }
+            ],
+            "timing_ar": "خيار عند تفشٍّ يصعب إيقافه، مع الكبريت.",
+            "caution_ar": "تحقق من ملصق المنتج لحدود الاستعمال.",
+            "evidence": "B",
+            "source_ids": [
+              "s4",
+              "s5"
+            ]
+          },
+          {
+            "id": "o3",
+            "group_ar": "الزيت المعدني الزراعي",
+            "moa_scheme": "FRAC",
+            "moa": "M",
+            "moa_note_ar": "الزيوت المعدنية ضمن مجموعات M متعددة المواقع؛ لا تُخلط مع الكبريت.",
+            "ingredients": [
+              {
+                "ar": "زيت معدني",
+                "en": "mineral oil",
+                "alt_names": [
+                  "horticultural oil",
+                  "petroleum oil",
+                  "paraffinic oil"
+                ]
+              }
+            ],
+            "timing_ar": "قبل استطالة محور العنقود يمكن للكبريت أو الزيوت أن يُبقي المرض منخفضًا.",
+            "caution_ar": "لا يُخلط مع الكبريت ولا يُستعمل خلال 14 يومًا منه.",
+            "evidence": "B",
+            "source_ids": [
+              "s2",
+              "s5"
+            ]
+          }
+        ]
+      },
+      "non_chemical": [
+        {
+          "id": "b1",
+          "text_ar": "أزِل أوراق القاعدة المحيطة بالعناقيد: وسيلة فيزيائية بحدّ ذاتها خفّضت الإصابة إلى نحو النصف في تجارب جامعة كاليفورنيا، وتُحسّن تغطية الرشّة الوقائية.",
+          "evidence": "A",
+          "source_ids": [
+            "s2"
+          ],
+          "applies_if": null
+        }
+      ],
+      "prevention": [
+        {
+          "id": "p1",
+          "text_ar": "الإدارة المبكرة للتاج، ومراقبة العناقيد قبل استطالة المحور، وبدء البرنامج الوقائي قبل ظهور العناقيد.",
+          "evidence": "B",
+          "source_ids": [
+            "s2",
+            "s3"
+          ],
+          "applies_if": null
+        }
+      ],
+      "see_expert_when_ar": [
+        "إذا استمر المرض رغم برنامج وقائي منتظم.",
+        "إذا ظهرت أعراض تختلف عن غبار أبيض رمادي (قد تكون أمراضًا أخرى).",
+        "إذا شككت في مقاومة المرض لمجموعة المبيد المستعملة."
+      ],
+      "sources": [
+        {
+          "id": "s1",
+          "title": "Current Trends and Perspectives on Predictive Models for Mildew Diseases in Vineyards",
+          "publisher": "Microorganisms (MDPI)",
+          "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9866057/",
+          "type": "journal",
+          "retrieved": "2026-10-12"
+        },
+        {
+          "id": "s2",
+          "title": "Powdery Mildew — Agriculture: Pest Management Guidelines",
+          "publisher": "UC IPM (University of California)",
+          "url": "https://ipm.ucanr.edu/agriculture/grape/powdery-mildew/",
+          "type": "extension",
+          "retrieved": "2026-10-13"
+        },
+        {
+          "id": "s3",
+          "title": "Grape Powdery Mildew (Guide H-329)",
+          "publisher": "New Mexico State University Cooperative Extension",
+          "url": "https://agritech.tnau.ac.in/horticulture/pdf/tech_bulletin/Grape%20Powdery%20Mildew.pdf",
+          "type": "extension",
+          "retrieved": "2026-10-12"
+        },
+        {
+          "id": "s4",
+          "title": "Grape disease management (NC 2022)",
+          "publisher": "Grape Pathology Extension (Nita)",
+          "url": "https://ext.grapepathology.org/wp-content/uploads/2022/02/Nita-Grape-disease-management-NC-2022-Final.pdf",
+          "type": "extension",
+          "retrieved": "2026-10-12"
+        },
+        {
+          "id": "s5",
+          "title": "A quick reminder about powdery mildew",
+          "publisher": "Grape Pathology Extension (Virginia)",
+          "url": "https://ext.grapepathology.org/?p=57",
+          "type": "extension",
+          "retrieved": "2026-10-12"
+        }
+      ]
+    }
+  ]
+}

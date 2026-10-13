@@ -107,7 +107,17 @@ const setsNow = prep(now), setsBefore = prep(before);
  * The gate stays strict: exactly these entries may be ADDED, nothing may be
  * removed, and any second addition fails. */
 const DECLARED_ADDED = {
-  DATA: ['./data/reference.json']
+  DATA: ['./data/reference.json'],
+  /* D59 (2026-10-13, «اوافق علي 4 معا»): حزمة الإرشاد الزراعي + محركها
+   * تُجهَّز مع القشرة حتى يعمل الإرشاد دون إنترنت من أول تشغيل (قرار
+   * المالك: الأأساس قبل الإضافة، والتغطية الكاملة لعشرة محاصيل). */
+  SHELL: ['./src/irsheed.js',
+          './data/advice/manifest.json', './data/advice/modifiers.json',
+          './data/advice/citrus.json', './data/advice/olive.json',
+          './data/advice/grape.json', './data/advice/tomato.json',
+          './data/advice/pepper.json', './data/advice/potato.json',
+          './data/advice/wheat.json', './data/advice/barley.json',
+          './data/advice/dates.json', './data/advice/alfalfa.json']
 };
 /* D58 (2026-10-12, owner-authorized «نفّذ كل الاقتراحات»): the NON-simd
  * tesseract core left the DEFAULT preparation — corePath is a directory so

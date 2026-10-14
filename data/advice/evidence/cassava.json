@@ -1,0 +1,342 @@
+{
+  "schema": 1,
+  "crop_id": "cassava",
+  "generated_by": "scripts/advice-harvest.mjs",
+  "fetched_at": "2026-10-14",
+  "candidate": {
+    "ar": "المانيوكا",
+    "en": "Cassava",
+    "fr": "Manioc",
+    "sci_expected": "Manihot esculenta"
+  },
+  "eppo": {
+    "code": "MANES",
+    "overview_url": "https://gd.eppo.int/taxon/MANES",
+    "overview_title": "Manihot esculenta (MANES)",
+    "pests_url": "https://gd.eppo.int/taxon/MANES/pests",
+    "http_status": 200,
+    "pests_total_rows": 61,
+    "by_type": {
+      "Host": 44,
+      "Major host": 17
+    },
+    "pests": [
+      {
+        "code": "ALEDDI",
+        "name": "Aleurodicus dispersus (ALEDDI)",
+        "type": "Major host"
+      },
+      {
+        "code": "AONMAL",
+        "name": "Aonidomytilus albus (AONMAL)",
+        "type": "Major host"
+      },
+      {
+        "code": "ACMV00",
+        "name": "Begomovirus manihotis (ACMV00)",
+        "type": "Major host"
+      },
+      {
+        "code": "BEMITA",
+        "name": "Bemisia tabaci (BEMITA)",
+        "type": "Major host"
+      },
+      {
+        "code": "CALHMA",
+        "name": "Caliothrips masculinus (CALHMA)",
+        "type": "Major host"
+      },
+      {
+        "code": "CVFS00",
+        "name": "Cassava frogskin agent (CVFS00)",
+        "type": "Major host"
+      },
+      {
+        "code": "CVWB00",
+        "name": "Cassava witches' broom agent (CVWB00)",
+        "type": "Major host"
+      },
+      {
+        "code": "CBSAV0",
+        "name": "Ipomovirus brunusmanihotis (CBSAV0)",
+        "type": "Major host"
+      },
+      {
+        "code": "MONNTA",
+        "name": "Mononychellus tanajoa (MONNTA)",
+        "type": "Major host"
+      },
+      {
+        "code": "OLIGPE",
+        "name": "Oligonychus peruvianus (OLIGPE)",
+        "type": "Major host"
+      },
+      {
+        "code": "CERCCB",
+        "name": "Passalora manihotis (CERCCB)",
+        "type": "Major host"
+      },
+      {
+        "code": "PHENMA",
+        "name": "Phenacoccus manihoti (PHENMA)",
+        "type": "Major host"
+      },
+      {
+        "code": "CSCMV0",
+        "name": "Potexvirus marmormanihotis (CSCMV0)",
+        "type": "Major host"
+      },
+      {
+        "code": "PSPHBA",
+        "name": "Pseudophaeolus baudonii (PSPHBA)",
+        "type": "Major host"
+      },
+      {
+        "code": "PSDTDE",
+        "name": "Pseudotheraptus devastans (PSDTDE)",
+        "type": "Major host"
+      },
+      {
+        "code": "ONCOTH",
+        "name": "Rhizoctonia theobromae (ONCOTH)",
+        "type": "Major host"
+      },
+      {
+        "code": "XANTMN",
+        "name": "Xanthomonas phaseoli pv. manihotis (XANTMN)",
+        "type": "Major host"
+      },
+      {
+        "code": "ALECSN",
+        "name": "Aleurocanthus spiniferus (ALECSN)",
+        "type": "Host"
+      },
+      {
+        "code": "AMBPCO",
+        "name": "Amblypelta cocophaga (AMBPCO)",
+        "type": "Host"
+      },
+      {
+        "code": "AMBPLU",
+        "name": "Amblypelta lutescens (AMBPLU)",
+        "type": "Host"
+      },
+      {
+        "code": "AUACAB",
+        "name": "Aulacophora abdominalis (AUACAB)",
+        "type": "Host"
+      },
+      {
+        "code": "COLLFC",
+        "name": "Colletotrichum fructicola (COLLFC)",
+        "type": "Host"
+      },
+      {
+        "code": "CYLAFO",
+        "name": "Cylas formicarius (CYLAFO)",
+        "type": "Host"
+      },
+      {
+        "code": "ROSLBU",
+        "name": "Dematophora bunodes (ROSLBU)",
+        "type": "Host"
+      },
+      {
+        "code": "ROSLPE",
+        "name": "Dematophora pepo (ROSLPE)",
+        "type": "Host"
+      },
+      {
+        "code": "DPREAB",
+        "name": "Diaprepes abbreviatus (DPREAB)",
+        "type": "Host"
+      },
+      {
+        "code": "DITYDI",
+        "name": "Ditylenchus dipsaci (DITYDI)",
+        "type": "Host"
+      },
+      {
+        "code": "EURHBR",
+        "name": "Eurhizococcus brasiliensis (EURHBR)",
+        "type": "Host"
+      },
+      {
+        "code": "EUTEBA",
+        "name": "Eutetranychus banksi (EUTEBA)",
+        "type": "Host"
+      },
+      {
+        "code": "EUTEOR",
+        "name": "Eutetranychus orientalis (EUTEOR)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLBFO",
+        "name": "Euwallacea fornicatus sensu lato (XYLBFO)",
+        "type": "Host"
+      },
+      {
+        "code": "EUWAWH",
+        "name": "Euwallacea fornicatus sensu stricto (EUWAWH)",
+        "type": "Host"
+      },
+      {
+        "code": "HELOBE",
+        "name": "Helopeltis bergrothi (HELOBE)",
+        "type": "Host"
+      },
+      {
+        "code": "HELOSC",
+        "name": "Helopeltis schoutedeni (HELOSC)",
+        "type": "Host"
+      },
+      {
+        "code": "LEPLAU",
+        "name": "Leptoglossus australis (LEPLAU)",
+        "type": "Host"
+      },
+      {
+        "code": "ACHAFU",
+        "name": "Lissachatina fulica (ACHAFU)",
+        "type": "Host"
+      },
+      {
+        "code": "PHENHI",
+        "name": "Maconellicoccus hirsutus (PHENHI)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGMY",
+        "name": "Meloidogyne enterolobii (MELGMY)",
+        "type": "Host"
+      },
+      {
+        "code": "METAHE",
+        "name": "Metamasius hemipterus (METAHE)",
+        "type": "Host"
+      },
+      {
+        "code": "PARYMI",
+        "name": "Paraleyrodes minei (PARYMI)",
+        "type": "Host"
+      },
+      {
+        "code": "INESLE",
+        "name": "Phryneta leprosa (as Manihot) (INESLE)",
+        "type": "Host"
+      },
+      {
+        "code": "PHMPOM",
+        "name": "Phymatotrichopsis omnivora (PHMPOM)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYTNP",
+        "name": "Phytophthora nicotianae (PHYTNP)",
+        "type": "Host"
+      },
+      {
+        "code": "PROETR",
+        "name": "Prostephanus truncatus (PROETR)",
+        "type": "Host"
+      },
+      {
+        "code": "PSEAPE",
+        "name": "Pseudaulacaspis pentagona (PSEAPE)",
+        "type": "Host"
+      },
+      {
+        "code": "PSEAPE",
+        "name": "Pseudaulacaspis pentagona (as Manihot) (PSEAPE)",
+        "type": "Host"
+      },
+      {
+        "code": "RALSPS",
+        "name": "Ralstonia pseudosolanacearum (RALSPS)",
+        "type": "Host"
+      },
+      {
+        "code": "PSDMS1",
+        "name": "Ralstonia solanacearum race 1 (no longer in use) (PSDMS1)",
+        "type": "Host"
+      },
+      {
+        "code": "RALSSO",
+        "name": "Ralstonia solanacearum species complex (RALSSO)",
+        "type": "Host"
+      },
+      {
+        "code": "ROTYRE",
+        "name": "Rotylenchulus reniformis (ROTYRE)",
+        "type": "Host"
+      },
+      {
+        "code": "SCITDO",
+        "name": "Scirtothrips dorsalis (SCITDO)",
+        "type": "Host"
+      },
+      {
+        "code": "SINOCO",
+        "name": "Sinoxylon unidentatum (SINOCO)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODER",
+        "name": "Spodoptera eridania (PRODER)",
+        "type": "Host"
+      },
+      {
+        "code": "LAPHFR",
+        "name": "Spodoptera frugiperda (LAPHFR)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODOR",
+        "name": "Spodoptera ornithogalli (PRODOR)",
+        "type": "Host"
+      },
+      {
+        "code": "TETRME",
+        "name": "Tetranychus mexicanus (TETRME)",
+        "type": "Host"
+      },
+      {
+        "code": "THRIPL",
+        "name": "Thrips palmi (THRIPL)",
+        "type": "Host"
+      },
+      {
+        "code": "TIRAPL",
+        "name": "Tiracola plagiata (TIRAPL)",
+        "type": "Host"
+      },
+      {
+        "code": "TRIAAB",
+        "name": "Trialeurodes abutiloneus (TRIAAB)",
+        "type": "Host"
+      },
+      {
+        "code": "XANTPN",
+        "name": "Xanthomonas axonopodis pv. poinsettiicola (XANTPN)",
+        "type": "Host"
+      },
+      {
+        "code": "ZEUZCO",
+        "name": "Zeuzera coffeae (ZEUZCO)",
+        "type": "Host"
+      }
+    ]
+  },
+  "gbif": {
+    "key": 3060998,
+    "url": "https://www.gbif.org/species/3060998",
+    "scientificName": "Manihot esculenta Crantz",
+    "canonicalName": "Manihot esculenta",
+    "family": "Euphorbiaceae",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "matchType": "EXACT",
+    "confidence": 100
+  }
+}

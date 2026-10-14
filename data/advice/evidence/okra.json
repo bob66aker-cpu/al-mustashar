@@ -1,0 +1,353 @@
+{
+  "schema": 1,
+  "crop_id": "okra",
+  "generated_by": "scripts/advice-harvest.mjs",
+  "fetched_at": "2026-10-14",
+  "candidate": {
+    "ar": "البامية",
+    "en": "Okra",
+    "fr": "Gombo",
+    "sci_expected": "Abelmoschus esculentus"
+  },
+  "eppo": {
+    "code": "ABMES",
+    "overview_url": "https://gd.eppo.int/taxon/ABMES",
+    "overview_title": "Abelmoschus esculentus (ABMES)",
+    "pests_url": "https://gd.eppo.int/taxon/ABMES/pests",
+    "http_status": 200,
+    "pests_total_rows": 65,
+    "by_type": {
+      "Experimental": 2,
+      "Host": 59,
+      "Major host": 4
+    },
+    "pests": [
+      {
+        "code": "EMPOBI",
+        "name": "Amrasca biguttula (EMPOBI)",
+        "type": "Major host"
+      },
+      {
+        "code": "BYVMV0",
+        "name": "Begomovirus abelmoschusflavi (BYVMV0)",
+        "type": "Major host"
+      },
+      {
+        "code": "TOLCND",
+        "name": "Begomovirus solanumdelhiense (TOLCND)",
+        "type": "Major host"
+      },
+      {
+        "code": "EARIIN",
+        "name": "Earias insulana (EARIIN)",
+        "type": "Major host"
+      },
+      {
+        "code": "ALEDDI",
+        "name": "Aleurodicus dispersus (ALEDDI)",
+        "type": "Host"
+      },
+      {
+        "code": "COSPFL",
+        "name": "Anomis flava (COSPFL)",
+        "type": "Host"
+      },
+      {
+        "code": "ANOMIL",
+        "name": "Anomis illita (ANOMIL)",
+        "type": "Host"
+      },
+      {
+        "code": "APLOBE",
+        "name": "Aphelenchoides besseyi (APLOBE)",
+        "type": "Host"
+      },
+      {
+        "code": "DACUDO",
+        "name": "Bactrocera dorsalis (DACUDO)",
+        "type": "Host"
+      },
+      {
+        "code": "DACUZO",
+        "name": "Bactrocera zonata (DACUZO)",
+        "type": "Host"
+      },
+      {
+        "code": "CLCUGV",
+        "name": "Begomovirus gossypigeziraense (CLCUGV)",
+        "type": "Host"
+      },
+      {
+        "code": "CLCUMV",
+        "name": "Begomovirus gossypimultanense (CLCUMV)",
+        "type": "Host"
+      },
+      {
+        "code": "BEMITA",
+        "name": "Bemisia tabaci (BEMITA)",
+        "type": "Host"
+      },
+      {
+        "code": "BRVPYO",
+        "name": "Brevipalpus yothersi (BRVPYO)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYPAS",
+        "name": "'Candidatus Phytoplasma asteris' (PHYPAS)",
+        "type": "Host"
+      },
+      {
+        "code": "HELIVI",
+        "name": "Chloridea virescens (HELIVI)",
+        "type": "Host"
+      },
+      {
+        "code": "CAV000",
+        "name": "Cotton anthocyanosis virus (CAV000)",
+        "type": "Host"
+      },
+      {
+        "code": "TOCV00",
+        "name": "Crinivirus tomatichlorosis (TOCV00)",
+        "type": "Host"
+      },
+      {
+        "code": "CUERCO",
+        "name": "Cuerna costalis (CUERCO)",
+        "type": "Host"
+      },
+      {
+        "code": "CYLAPU",
+        "name": "Cylas puncticollis (CYLAPU)",
+        "type": "Host"
+      },
+      {
+        "code": "DYSDCI",
+        "name": "Dysdercus cingulatus (DYSDCI)",
+        "type": "Host"
+      },
+      {
+        "code": "DYSDPE",
+        "name": "Dysdercus peruvianus (DYSDPE)",
+        "type": "Host"
+      },
+      {
+        "code": "HALYHA",
+        "name": "Halyomorpha halys (HALYHA)",
+        "type": "Host"
+      },
+      {
+        "code": "HELIAR",
+        "name": "Helicoverpa armigera (HELIAR)",
+        "type": "Host"
+      },
+      {
+        "code": "HELIZE",
+        "name": "Helicoverpa zea (HELIZE)",
+        "type": "Host"
+      },
+      {
+        "code": "HOMLTR",
+        "name": "Homalodisca vitripennis (HOMLTR)",
+        "type": "Host"
+      },
+      {
+        "code": "STEHHA",
+        "name": "Hypothenemus hampei (STEHHA)",
+        "type": "Host"
+      },
+      {
+        "code": "EMPOLY",
+        "name": "Jacobiasca lybica (EMPOLY)",
+        "type": "Host"
+      },
+      {
+        "code": "LAGRVL",
+        "name": "Lagria villosa (LAGRVL)",
+        "type": "Host"
+      },
+      {
+        "code": "LEUIOR",
+        "name": "Leucinodes orbonalis (LEUIOR)",
+        "type": "Host"
+      },
+      {
+        "code": "LIRIHU",
+        "name": "Liriomyza huidobrensis (LIRIHU)",
+        "type": "Host"
+      },
+      {
+        "code": "LIRISA",
+        "name": "Liriomyza sativae (LIRISA)",
+        "type": "Host"
+      },
+      {
+        "code": "LIRITR",
+        "name": "Liriomyza trifolii (LIRITR)",
+        "type": "Host"
+      },
+      {
+        "code": "PHENHI",
+        "name": "Maconellicoccus hirsutus (PHENHI)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGCH",
+        "name": "Meloidogyne chitwoodi (MELGCH)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGMY",
+        "name": "Meloidogyne enterolobii (MELGMY)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGGC",
+        "name": "Meloidogyne graminicola (MELGGC)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGLC",
+        "name": "Meloidogyne luci (MELGLC)",
+        "type": "Host"
+      },
+      {
+        "code": "GRAGLE",
+        "name": "Naupactus leucoloma (GRAGLE)",
+        "type": "Host"
+      },
+      {
+        "code": "OKYLC0",
+        "name": "Okra yellow leaf curl agent (OKYLC0)",
+        "type": "Host"
+      },
+      {
+        "code": "ONCMNI",
+        "name": "Oncometopia nigricans (ONCMNI)",
+        "type": "Host"
+      },
+      {
+        "code": "ONCMUN",
+        "name": "Oncometopia orbona (ONCMUN)",
+        "type": "Host"
+      },
+      {
+        "code": "PECTGO",
+        "name": "Pectinophora gossypiella (PECTGO)",
+        "type": "Host"
+      },
+      {
+        "code": "PHENSO",
+        "name": "Phenacoccus solenopsis (PHENSO)",
+        "type": "Host"
+      },
+      {
+        "code": "PHMPOM",
+        "name": "Phymatotrichopsis omnivora (PHMPOM)",
+        "type": "Host"
+      },
+      {
+        "code": "PSEAPE",
+        "name": "Pseudaulacaspis pentagona (PSEAPE)",
+        "type": "Host"
+      },
+      {
+        "code": "PHAIGR",
+        "name": "Pseudocercospora griseola (PHAIGR)",
+        "type": "Host"
+      },
+      {
+        "code": "PSDMCI",
+        "name": "Pseudomonas cichorii (PSDMCI)",
+        "type": "Host"
+      },
+      {
+        "code": "SCITDO",
+        "name": "Scirtothrips dorsalis (SCITDO)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODER",
+        "name": "Spodoptera eridania (PRODER)",
+        "type": "Host"
+      },
+      {
+        "code": "LAPHFR",
+        "name": "Spodoptera frugiperda (LAPHFR)",
+        "type": "Host"
+      },
+      {
+        "code": "SPODLI",
+        "name": "Spodoptera littoralis (SPODLI)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODLI",
+        "name": "Spodoptera litura (PRODLI)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODOR",
+        "name": "Spodoptera ornithogalli (PRODOR)",
+        "type": "Host"
+      },
+      {
+        "code": "TETREV",
+        "name": "Tetranychus evansi (TETREV)",
+        "type": "Host"
+      },
+      {
+        "code": "TETRME",
+        "name": "Tetranychus mexicanus (TETRME)",
+        "type": "Host"
+      },
+      {
+        "code": "ARGPLE",
+        "name": "Thaumatotibia leucotreta (ARGPLE)",
+        "type": "Host"
+      },
+      {
+        "code": "THRIPL",
+        "name": "Thrips palmi (THRIPL)",
+        "type": "Host"
+      },
+      {
+        "code": "THRIPV",
+        "name": "Thrips parvispinus (THRIPV)",
+        "type": "Host"
+      },
+      {
+        "code": "OKMV00",
+        "name": "Tymovirus abelmoschi (OKMV00)",
+        "type": "Host"
+      },
+      {
+        "code": "VERTDA",
+        "name": "Verticillium dahliae (VERTDA)",
+        "type": "Host"
+      },
+      {
+        "code": "DACUCU",
+        "name": "Zeugodacus cucurbitae (DACUCU)",
+        "type": "Host"
+      },
+      {
+        "code": "ZEUZCO",
+        "name": "Zeuzera coffeae (ZEUZCO)",
+        "type": "Host"
+      }
+    ]
+  },
+  "gbif": {
+    "key": 3152707,
+    "url": "https://www.gbif.org/species/3152707",
+    "scientificName": "Abelmoschus esculentus (L.) Moench",
+    "canonicalName": "Abelmoschus esculentus",
+    "family": "Malvaceae",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "matchType": "EXACT",
+    "confidence": 100
+  }
+}

@@ -1,0 +1,219 @@
+{
+  "schema": 1,
+  "crop_id": "oat",
+  "generated_by": "scripts/advice-harvest.mjs",
+  "fetched_at": "2026-10-14",
+  "candidate": {
+    "ar": "الشوفان",
+    "en": "Oat",
+    "fr": "Avoine",
+    "sci_expected": "Avena sativa"
+  },
+  "eppo": {
+    "code": "AVESA",
+    "overview_url": "https://gd.eppo.int/taxon/AVESA",
+    "overview_title": "Avena sativa (AVESA)",
+    "pests_url": "https://gd.eppo.int/taxon/AVESA/pests",
+    "http_status": 200,
+    "pests_total_rows": 39,
+    "by_type": {
+      "Doubtful host": 2,
+      "Experimental": 1,
+      "Host": 31,
+      "Major host": 5
+    },
+    "pests": [
+      {
+        "code": "COCHVI",
+        "name": "Bipolaris victoriae (COCHVI)",
+        "type": "Major host"
+      },
+      {
+        "code": "OSDV00",
+        "name": "Fijivirus avenae (OSDV00)",
+        "type": "Major host"
+      },
+      {
+        "code": "LIMOCF",
+        "name": "Limonius californicus (LIMOCF)",
+        "type": "Major host"
+      },
+      {
+        "code": "MELGNA",
+        "name": "Meloidogyne naasi (MELGNA)",
+        "type": "Major host"
+      },
+      {
+        "code": "ORSMV0",
+        "name": "Oat red streak mosaic virus (ORSMV0)",
+        "type": "Major host"
+      },
+      {
+        "code": "ANGUTR",
+        "name": "Anguina tritici (ANGUTR)",
+        "type": "Host"
+      },
+      {
+        "code": "APLOFR",
+        "name": "Aphelenchoides fragariae (APLOFR)",
+        "type": "Host"
+      },
+      {
+        "code": "CORBFL",
+        "name": "Curtobacterium flaccumfaciens pv. flaccumfaciens (CORBFL)",
+        "type": "Host"
+      },
+      {
+        "code": "HYLECO",
+        "name": "Delia coarctata (HYLECO)",
+        "type": "Host"
+      },
+      {
+        "code": "DIABUH",
+        "name": "Diabrotica undecimpunctata howardi (DIABUH)",
+        "type": "Host"
+      },
+      {
+        "code": "DITYDI",
+        "name": "Ditylenchus dipsaci (DITYDI)",
+        "type": "Host"
+      },
+      {
+        "code": "BRAYNO",
+        "name": "Diuraphis noxia (BRAYNO)",
+        "type": "Host"
+      },
+      {
+        "code": "DRAEMI",
+        "name": "Draeculacephala minerva (DRAEMI)",
+        "type": "Host"
+      },
+      {
+        "code": "ELASLI",
+        "name": "Elasmopalpus lignosellus (ELASLI)",
+        "type": "Host"
+      },
+      {
+        "code": "WHPV00",
+        "name": "Emaravirus tritici (WHPV00)",
+        "type": "Host"
+      },
+      {
+        "code": "MRCV00",
+        "name": "Fijivirus cuartoense (MRCV00)",
+        "type": "Host"
+      },
+      {
+        "code": "HELIAR",
+        "name": "Helicoverpa armigera (HELIAR)",
+        "type": "Host"
+      },
+      {
+        "code": "HELIZE",
+        "name": "Helicoverpa zea (HELIZE)",
+        "type": "Host"
+      },
+      {
+        "code": "HETDZE",
+        "name": "Heterodera zeae (HETDZE)",
+        "type": "Host"
+      },
+      {
+        "code": "CALGMA",
+        "name": "Laodelphax striatellus (CALGMA)",
+        "type": "Host"
+      },
+      {
+        "code": "HYROBO",
+        "name": "Listronotus bonariensis (HYROBO)",
+        "type": "Host"
+      },
+      {
+        "code": "MSV000",
+        "name": "Mastrevirus storeyi (MSV000)",
+        "type": "Host"
+      },
+      {
+        "code": "MELNCO",
+        "name": "Melanotus communis (MELNCO)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGCH",
+        "name": "Meloidogyne chitwoodi (MELGCH)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGET",
+        "name": "Meloidogyne ethiopica (MELGET)",
+        "type": "Host"
+      },
+      {
+        "code": "NYSIHU",
+        "name": "Nysius huttoni (NYSIHU)",
+        "type": "Host"
+      },
+      {
+        "code": "PLSOMO",
+        "name": "Plesiommata mollicella (PLSOMO)",
+        "type": "Host"
+      },
+      {
+        "code": "PSDMCO",
+        "name": "Pseudomonas syringae pv. coronafaciens (PSDMCO)",
+        "type": "Host"
+      },
+      {
+        "code": "PUCCCO",
+        "name": "Puccinia coronata (PUCCCO)",
+        "type": "Host"
+      },
+      {
+        "code": "SITDMO",
+        "name": "Sitodiplosis mosellana (SITDMO)",
+        "type": "Host"
+      },
+      {
+        "code": "LAPHFR",
+        "name": "Spodoptera frugiperda (LAPHFR)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODOR",
+        "name": "Spodoptera ornithogalli (PRODOR)",
+        "type": "Host"
+      },
+      {
+        "code": "TAPARU",
+        "name": "Tapajosa rubromarginata (TAPARU)",
+        "type": "Host"
+      },
+      {
+        "code": "MSPV00",
+        "name": "Tenuivirus zeae (MSPV00)",
+        "type": "Host"
+      },
+      {
+        "code": "THRIAN",
+        "name": "Thrips angusticeps (THRIAN)",
+        "type": "Host"
+      },
+      {
+        "code": "TROGGA",
+        "name": "Trogoderma granarium (TROGGA)",
+        "type": "Host"
+      }
+    ]
+  },
+  "gbif": {
+    "key": 2705290,
+    "url": "https://www.gbif.org/species/2705290",
+    "scientificName": "Avena sativa L.",
+    "canonicalName": "Avena sativa",
+    "family": "Poaceae",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "matchType": "EXACT",
+    "confidence": 100
+  }
+}

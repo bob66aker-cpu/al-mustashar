@@ -18,7 +18,8 @@
   'use strict';
 
   var deps = null;
-  var S = { mf: null, mod: null, crops: {}, ctx: null, crop: null, wired: false };
+  var S = { mf: null, mod: null, crops: {}, ctx: null, crop: null, wired: false,
+    doss: null, inf: {}, ref: {}, type: '', searchWired: false };
   var LS_CTX = 'mustashar-advice-ctx';
   var LS_CROP = 'mustashar-advice-crop';
 
@@ -66,12 +67,15 @@
     });
   }
   function ensureBase() {
-    if (S.mf && S.mod) return Promise.resolve(S.mf);
+    if (S.mf && S.mod && S.doss) return Promise.resolve(S.mf);
     return Promise.all([
       loadJSON('data/advice/manifest.json'),
       loadJSON('data/advice/modifiers.json')
     ]).then(function (pair) {
       S.mf = pair[0]; S.mod = pair[1];
+      return loadJSON((S.mf.infections && S.mf.infections.dossiers_file) || 'data/advice/dossiers.json');
+    }).then(function (doss) {
+      S.doss = doss;
       S.ctx = store(function () { return JSON.parse(localStorage.getItem(LS_CTX)); }, null) || {};
       S.crop = store(function () { return localStorage.getItem(LS_CROP); }, '') || '';
       return S.mf;
@@ -81,7 +85,23 @@
     if (S.crops[id]) return Promise.resolve(S.crops[id]);
     var entry = (S.mf.crops || []).filter(function (c) { return c.id === id; })[0];
     if (!entry) return Promise.reject(new Error('crop:' + id));
+    if (!entry.file) { S.crops[id] = { cards: [] }; return Promise.resolve(S.crops[id]); }
     return loadJSON(entry.file).then(function (d) { S.crops[id] = d; return d; });
+  }
+  function cropEntry(id) {
+    return (S.mf.crops || []).filter(function (c) { return c.id === id; })[0] || null;
+  }
+  function loadInf(id) {
+    if (S.inf[id]) return Promise.resolve(S.inf[id]);
+    var e = cropEntry(id);
+    if (!e || !e.inf) return Promise.resolve(null);
+    return loadJSON(e.inf).then(function (d) { S.inf[id] = d; return d; });
+  }
+  function loadRef(id) {
+    if (S.ref[id]) return Promise.resolve(S.ref[id]);
+    var e = cropEntry(id);
+    if (!e || !e.inf) return Promise.resolve(null);
+    return loadJSON(e.inf.replace(/\.json$/, '.ref.json')).then(function (d) { S.ref[id] = d; return d; });
   }
 
   /* ---------- قواعد التطبيق ---------- */
@@ -154,6 +174,31 @@
   }
 
   /* ---------- رسم شبكة المحاصيل ---------- */
+  function normQ(x) {
+    return String(x || '').toLowerCase()
+      .replace(/[\u064B-\u0652\u0640]/g, '')
+      .replace(/[أإآ]/g, 'ا').replace(/ى/g, 'ي').replace(/ة/g, 'ه')
+      .replace(/\s+/g, ' ').trim();
+  }
+  function filterCrops() {
+    var qEl = document.getElementById('adviceCropSearch');
+    var q = normQ(qEl ? qEl.value : '');
+    var box = document.getElementById('adviceCrops');
+    if (!box) return;
+    var shown = 0;
+    Array.prototype.forEach.call(box.children, function (b) {
+      var ok = !q || normQ(b.getAttribute('data-label')).indexOf(q) >= 0;
+      b.hidden = !ok;
+      if (ok) shown++;
+    });
+  }
+  function wireCropSearch() {
+    if (S.searchWired) return;
+    var qEl = document.getElementById('adviceCropSearch');
+    if (!qEl) return;
+    qEl.addEventListener('input', filterCrops);
+    S.searchWired = true;
+  }
   function renderCrops() {
     var box = document.getElementById('adviceCrops');
     if (!box) return;
@@ -161,17 +206,26 @@
     (S.mf.crops || []).forEach(function (c) {
       var b = btn('crop-chip' + (S.crop === c.id ? ' active' : ''), cropLabel(c), function () {
         S.crop = c.id;
+        S.type = '';
         store(function () { localStorage.setItem(LS_CROP, c.id); });
         renderCrops();
         showCards();
       });
       b.setAttribute('data-crop', c.id);
+      b.setAttribute('data-label',
+        [c.name_ar, c.name_en, c.name_fr].filter(Boolean).join(' '));
       var ic = el('span', 'crop-ic');
       ic.setAttribute('data-icon', 'mode-farmer');
       b.insertBefore(ic, b.firstChild);
       box.appendChild(b);
     });
     if (global.UIIcons) global.UIIcons.paint(box);
+    var qEl = document.getElementById('adviceCropSearch');
+    if (qEl) {
+      qEl.hidden = (S.mf.crops || []).length <= 24;
+      wireCropSearch();
+      filterCrops();
+    }
   }
 
   /* ---------- مكوّنات البطاقة ---------- */
@@ -337,6 +391,152 @@
     return art;
   }
 
+  /* ---------- خطوة النوع + بطاقات الإصابات المرقّمة (D61) ---------- */
+  var TYPE_I18N = {
+    insect: 'advice.type.insect', mite: 'advice.type.mite', fungus: 'advice.type.fungus',
+    pseudo_fungus: 'advice.type.pseudo_fungus', bacterium: 'advice.type.bacterium',
+    virus: 'advice.type.virus', nematode: 'advice.type.nematode', weed: 'advice.type.weed',
+    mollusc: 'advice.type.mollusc', other: 'advice.type.other'
+  };
+  var TYPE_FB = {
+    insect: 'إصابة حشرية', mite: 'إصابة عناكب', fungus: 'إصابة فطرية',
+    pseudo_fungus: 'إصابة فطرية كاذبة', bacterium: 'إصابة بكتيرية',
+    virus: 'إصابة فيروسية', nematode: 'إصابة نيماتودية', weed: 'أعشاب ضارة',
+    mollusc: 'بزاقات وحلزونات', other: 'أخرى'
+  };
+  function typeLabel(id) { return t(TYPE_I18N[id] || TYPE_I18N.other, TYPE_FB[id] || TYPE_FB.other); }
+
+  function renderTypes(inf) {
+    var box = document.getElementById('adviceTypes');
+    var card = document.getElementById('adviceTypesCard');
+    if (!box || !card) return;
+    box.textContent = '';
+    if (!inf || !(inf.types || []).length) { card.hidden = true; return; }
+    card.hidden = false;
+    var mk = function (id, label, count) {
+      var b = btn('type-chip' + (S.type === id ? ' active' : ''), '', function () {
+        S.type = id;
+        renderTypes(S.inf[S.crop]);
+        showInfections();
+      });
+      b.setAttribute('data-type', id);
+      b.appendChild(el('span', 'tt', label));
+      if (count != null) b.appendChild(el('span', 'tn', String(count)));
+      return b;
+    };
+    box.appendChild(mk('', t('advice.types.all', 'الكل'), (inf.cards || []).length));
+    (inf.types || []).forEach(function (ty) {
+      box.appendChild(mk(ty.id, typeLabel(ty.id), ty.cards));
+    });
+  }
+
+  function infectionNode(c) {
+    var art = el('article', 'inf-card');
+    var head = el('div', 'inf-head');
+    head.appendChild(el('span', 'inf-num', String(c.n)));
+    var titles = el('div', 'inf-titles');
+    titles.appendChild(el('div', 'inf-name', c.name_ar));
+    titles.appendChild(el('div', 'inf-sci', c.sci + (c.family ? ' · ' + c.family : '')));
+    head.appendChild(titles);
+    art.appendChild(head);
+
+    var d = (S.doss && S.doss.dossiers) ? S.doss.dossiers[c.dossier] : null;
+    var badges = el('div', 'inf-badges');
+    var major = c.host === 'Major host';
+    badges.appendChild(el('span', 'host-chip' + (major ? ' major' : ''),
+      t(major ? 'advice.host.major' : 'advice.host.host', major ? 'مضيف رئيسي' : 'مضيف')));
+    if (!S.type) badges.appendChild(el('span', 'host-chip', typeLabel(c.type)));
+    if (d) badges.appendChild(evBadge(d.evidence));
+    art.appendChild(badges);
+
+    if (d) {
+      var s1 = el('section', 'inf-sec');
+      s1.appendChild(el('h4', '', t('advice.inf.symptoms', 'مظاهر الإصابة')));
+      var u1 = el('ul', '');
+      d.symptoms_ar.forEach(function (x) { u1.appendChild(el('li', '', x)); });
+      s1.appendChild(u1);
+      art.appendChild(s1);
+
+      var s2 = el('section', 'inf-sec');
+      s2.appendChild(el('h4', '', t('advice.inf.treatment', 'العلاج والتدبير')));
+      var u2 = el('ul', '');
+      d.management_ar.forEach(function (x) { u2.appendChild(el('li', '', x)); });
+      s2.appendChild(u2);
+      art.appendChild(s2);
+
+      var src = el('footer', 'inf-src');
+      var a = el('a', '', d.source.title);
+      a.href = d.source.url; a.target = '_blank'; a.rel = 'noopener noreferrer';
+      src.appendChild(a);
+      src.appendChild(el('span', '', ' — ' + d.source.publisher));
+      art.appendChild(src);
+    }
+    if (lang() !== 'ar') art.appendChild(el('p', 'langnote', t('advice.langnote', 'نص الإرشاد العلمي متاح حالياً بالعربية، والأسماء العلمية دولية لاتينية في كل اللغات، والمصادر مرفقة بروابطها بلغتها الأصلية.')));
+    return art;
+  }
+
+  function fillRefList(ul, r, type) {
+    ul.textContent = '';
+    ((r && r.others) || []).forEach(function (o) {
+      if (type && o.type !== type) return;
+      var li = el('li', '');
+      var nm = el('span', 'latin', o.name);
+      li.appendChild(nm);
+      var right = el('span', '');
+      var major = o.host === 'Major host';
+      right.appendChild(el('span', 'host-chip' + (major ? ' major' : ''),
+        t(major ? 'advice.host.major' : 'advice.host.host', major ? 'مضيف رئيسي' : 'مضيف')));
+      var a = el('a', 'src-link', 'EPPO');
+      a.href = 'https://gd.eppo.int/taxon/' + o.code;
+      a.target = '_blank'; a.rel = 'noopener noreferrer';
+      right.appendChild(a);
+      li.appendChild(right);
+      ul.appendChild(li);
+    });
+  }
+
+  function refSection(inf) {
+    var type = S.type || null;
+    var n = 0;
+    (inf.types || []).forEach(function (ty) { if (!type || ty.id === type) n += ty.others; });
+    if (!n) return null;
+    var det = el('details', 'inf-ref');
+    det.appendChild(el('summary', '',
+      t('advice.inf.ref', 'قائمة مرجعية من دليل EPPO ({n})').replace('{n}', String(n))));
+    det.appendChild(el('p', 'refhint', t('advice.inf.refhint', 'هويّات مسجّلة في دليل EPPO دون بطاقة مصادر بعد — بلا مظاهر أو علاج مخترع.')));
+    var ul = el('ul', 'inf-ref-list');
+    det.appendChild(ul);
+    var fill = function () {
+      if (S.ref[S.crop]) { fillRefList(ul, S.ref[S.crop], type); return; }
+      loadRef(S.crop).then(function (r) {
+        if (det.contains(ul)) fillRefList(ul, r, type);
+      }).catch(function () {
+        det.appendChild(el('p', 'refhint', t('advice.loadfail', 'تعذّر تحميل حزمة الإرشاد — تحقق من الاتصال ثم أعد المحاولة.')));
+      });
+    };
+    det.addEventListener('toggle', function () { if (det.open) fill(); });
+    if (S.ref[S.crop]) fillRefList(ul, S.ref[S.crop], type);
+    else fill();   /* يُحمَّل الآن: الملف صغير ويُخزَّن في الكاش ليعمل لاحقاً دون إنترنت */
+    return det;
+  }
+
+  function showInfections() {
+    var box = document.getElementById('adviceInfections');
+    var empty = document.getElementById('adviceInfEmpty');
+    if (!box) return;
+    box.textContent = '';
+    var inf = S.inf[S.crop];
+    if (!inf) {
+      if (empty) empty.hidden = true;
+      return;
+    }
+    var cards = (inf.cards || []).filter(function (c) { return !S.type || c.type === S.type; });
+    cards.forEach(function (c) { box.appendChild(infectionNode(c)); });
+    var ref = refSection(inf);
+    if (ref) box.appendChild(ref);
+    if (empty) empty.hidden = cards.length > 0;
+  }
+
   /* ---------- عرض البطاقات ---------- */
   function showEmpty(on) {
     var e = document.getElementById('adviceEmpty');
@@ -351,14 +551,34 @@
   }
   function showCards() {
     var list = document.getElementById('adviceCards');
-    if (!list || !S.crop) { showEmpty(true); return; }
-    list.textContent = '';
-    list.appendChild(el('p', 'adv-loading', t('advice.loading', '…جاري تحميل البطاقات')));
+    var typesCard = document.getElementById('adviceTypesCard');
+    var infBox = document.getElementById('adviceInfections');
+    var infEmpty = document.getElementById('adviceInfEmpty');
+    if (!list) return;
+    if (!S.crop) {
+      list.textContent = '';
+      if (typesCard) typesCard.hidden = true;
+      if (infBox) infBox.textContent = '';
+      if (infEmpty) infEmpty.hidden = true;
+      showEmpty(true);
+      return;
+    }
     showEmpty(false);
+    list.textContent = '';
+    if (infBox) {
+      infBox.textContent = '';
+      infBox.appendChild(el('p', 'adv-loading', t('advice.loading', '…جاري تحميل البطاقات')));
+    }
     loadCrop(S.crop).then(function (d) {
       list.textContent = '';
       (d.cards || []).forEach(function (c) { list.appendChild(cardNode(prepare(c))); });
-      if (!(d.cards || []).length) showEmpty(true);
+      return loadInf(S.crop);
+    }).then(function (inf) {
+      renderTypes(inf);
+      showInfections();
+      var anyHand = list.childNodes.length > 0;
+      var anyInf = !!(inf && ((inf.cards || []).length || (inf.types || []).length));
+      if (!anyHand && !anyInf) showEmpty(true);
     }).catch(showFail);
   }
 

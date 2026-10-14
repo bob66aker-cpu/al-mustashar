@@ -1,0 +1,410 @@
+{
+  "schema": 1,
+  "crop_id": "walnut",
+  "generated_by": "scripts/advice-harvest.mjs",
+  "fetched_at": "2026-10-14",
+  "candidate": {
+    "ar": "الجوز",
+    "en": "Walnut",
+    "fr": "Noyer",
+    "sci_expected": "Juglans regia"
+  },
+  "eppo": {
+    "code": "IUGRE",
+    "overview_url": "https://gd.eppo.int/taxon/IUGRE",
+    "overview_title": "Juglans regia (IUGRE)",
+    "pests_url": "https://gd.eppo.int/taxon/IUGRE/pests",
+    "http_status": 200,
+    "pests_total_rows": 78,
+    "by_type": {
+      "Doubtful host": 1,
+      "Experimental": 2,
+      "Host": 67,
+      "Major host": 7,
+      "Non-host": 1
+    },
+    "pests": [
+      {
+        "code": "DRYOHI",
+        "name": "Dryocoetes himalayensis (DRYOHI)",
+        "type": "Major host"
+      },
+      {
+        "code": "ERSHMU",
+        "name": "Garella musculana (ERSHMU)",
+        "type": "Major host"
+      },
+      {
+        "code": "NECTGA",
+        "name": "Neonectria ditissima (NECTGA)",
+        "type": "Major host"
+      },
+      {
+        "code": "PSECOB",
+        "name": "Pseudococcus viburni (PSECOB)",
+        "type": "Major host"
+      },
+      {
+        "code": "AELSSA",
+        "name": "Trirachys sartus (AELSSA)",
+        "type": "Major host"
+      },
+      {
+        "code": "XANTJU",
+        "name": "Xanthomonas arboricola pv. juglandis (XANTJU)",
+        "type": "Major host"
+      },
+      {
+        "code": "XYLONM",
+        "name": "Xylotrechus namanganensis (XYLONM)",
+        "type": "Major host"
+      },
+      {
+        "code": "AGRBTU",
+        "name": "Agrobacterium tumefaciens (AGRBTU)",
+        "type": "Host"
+      },
+      {
+        "code": "ANSTFR",
+        "name": "Anastrepha fraterculus (ANSTFR)",
+        "type": "Host"
+      },
+      {
+        "code": "ANOLCN",
+        "name": "Anoplophora chinensis (as Juglans) (ANOLCN)",
+        "type": "Host"
+      },
+      {
+        "code": "APRIGE",
+        "name": "Apriona germari (APRIGE)",
+        "type": "Host"
+      },
+      {
+        "code": "APRIGE",
+        "name": "Apriona germari (as Juglans) (APRIGE)",
+        "type": "Host"
+      },
+      {
+        "code": "AROMBU",
+        "name": "Aromia bungii (AROMBU)",
+        "type": "Host"
+      },
+      {
+        "code": "DACUDO",
+        "name": "Bactrocera dorsalis (DACUDO)",
+        "type": "Host"
+      },
+      {
+        "code": "DACUTR",
+        "name": "Bactrocera tryoni (DACUTR)",
+        "type": "Host"
+      },
+      {
+        "code": "BATCHO",
+        "name": "Batocera horsfieldi (BATCHO)",
+        "type": "Host"
+      },
+      {
+        "code": "BRVPYO",
+        "name": "Brevipalpus yothersi (BRVPYO)",
+        "type": "Host"
+      },
+      {
+        "code": "CERTCA",
+        "name": "Ceratitis capitata (CERTCA)",
+        "type": "Host"
+      },
+      {
+        "code": "CHRBMA",
+        "name": "Chrysobothris mali (CHRBMA)",
+        "type": "Host"
+      },
+      {
+        "code": "COLLFC",
+        "name": "Colletotrichum fructicola (COLLFC)",
+        "type": "Host"
+      },
+      {
+        "code": "QUADPE",
+        "name": "Comstockaspis perniciosa (QUADPE)",
+        "type": "Host"
+      },
+      {
+        "code": "CARPPO",
+        "name": "Cydia pomonella (CARPPO)",
+        "type": "Host"
+      },
+      {
+        "code": "DIABUN",
+        "name": "Diabrotica undecimpunctata undecimpunctata (DIABUN)",
+        "type": "Host"
+      },
+      {
+        "code": "EURHBR",
+        "name": "Eurhizococcus brasiliensis (EURHBR)",
+        "type": "Host"
+      },
+      {
+        "code": "EUTEOR",
+        "name": "Eutetranychus orientalis (EUTEOR)",
+        "type": "Host"
+      },
+      {
+        "code": "EUTYLA",
+        "name": "Eutypa lata (EUTYLA)",
+        "type": "Host"
+      },
+      {
+        "code": "EUWAWH",
+        "name": "Euwallacea fornicatus sensu stricto (EUWAWH)",
+        "type": "Host"
+      },
+      {
+        "code": "EUWAKU",
+        "name": "Euwallacea kuroshio (as Juglans) (EUWAKU)",
+        "type": "Host"
+      },
+      {
+        "code": "EUZOSE",
+        "name": "Euzophera semifuneralis (EUZOSE)",
+        "type": "Host"
+      },
+      {
+        "code": "GEOHMO",
+        "name": "Geosmithia morbida (GEOHMO)",
+        "type": "Host"
+      },
+      {
+        "code": "GEOHMO",
+        "name": "Geosmithia morbida (as Juglans) (GEOHMO)",
+        "type": "Host"
+      },
+      {
+        "code": "GIBSQU",
+        "name": "Gibbsiella quercinecans (GIBSQU)",
+        "type": "Host"
+      },
+      {
+        "code": "GRCPAT",
+        "name": "Graphocephala atropunctata (GRCPAT)",
+        "type": "Host"
+      },
+      {
+        "code": "LASPFU",
+        "name": "Grapholita funebrana (as Juglans) (LASPFU)",
+        "type": "Host"
+      },
+      {
+        "code": "HALYHA",
+        "name": "Halyomorpha halys (HALYHA)",
+        "type": "Host"
+      },
+      {
+        "code": "HOMLTR",
+        "name": "Homalodisca vitripennis (HOMLTR)",
+        "type": "Host"
+      },
+      {
+        "code": "HYPHCU",
+        "name": "Hyphantria cunea (HYPHCU)",
+        "type": "Host"
+      },
+      {
+        "code": "LOPLJA",
+        "name": "Lopholeucaspis japonica (LOPLJA)",
+        "type": "Host"
+      },
+      {
+        "code": "MALAPA",
+        "name": "Malacosoma parallela (MALAPA)",
+        "type": "Host"
+      },
+      {
+        "code": "PLTPMU",
+        "name": "Megaplatypus mutatus (PLTPMU)",
+        "type": "Host"
+      },
+      {
+        "code": "CNIDFL",
+        "name": "Monema flavescens (CNIDFL)",
+        "type": "Host"
+      },
+      {
+        "code": "NAUPXA",
+        "name": "Naupactus xanthographus (NAUPXA)",
+        "type": "Host"
+      },
+      {
+        "code": "CLRV00",
+        "name": "Nepovirus avii (CLRV00)",
+        "type": "Host"
+      },
+      {
+        "code": "OEMOHI",
+        "name": "Oemona hirta (OEMOHI)",
+        "type": "Host"
+      },
+      {
+        "code": "OLIGPA",
+        "name": "Oligonychus perseae (OLIGPA)",
+        "type": "Host"
+      },
+      {
+        "code": "OLIGPU",
+        "name": "Oligonychus punicae (OLIGPU)",
+        "type": "Host"
+      },
+      {
+        "code": "CHEIBR",
+        "name": "Operophtera brumata (CHEIBR)",
+        "type": "Host"
+      },
+      {
+        "code": "HEMELE",
+        "name": "Orgyia leucostigma (HEMELE)",
+        "type": "Host"
+      },
+      {
+        "code": "ORIEIS",
+        "name": "Orientus ishidae (ORIEIS)",
+        "type": "Host"
+      },
+      {
+        "code": "PHMPOM",
+        "name": "Phymatotrichopsis omnivora (PHMPOM)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYTCC",
+        "name": "Phytophthora cactorum (PHYTCC)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYTCN",
+        "name": "Phytophthora cinnamomi (PHYTCN)",
+        "type": "Host"
+      },
+      {
+        "code": "PITOJU",
+        "name": "Pityophthorus juglandis (PITOJU)",
+        "type": "Host"
+      },
+      {
+        "code": "PITOJU",
+        "name": "Pityophthorus juglandis (as Juglans) (PITOJU)",
+        "type": "Host"
+      },
+      {
+        "code": "PLAAST",
+        "name": "Platynota stultana (PLAAST)",
+        "type": "Host"
+      },
+      {
+        "code": "POCZSH",
+        "name": "Pochazia shantungensis (POCZSH)",
+        "type": "Host"
+      },
+      {
+        "code": "PSEAPE",
+        "name": "Pseudaulacaspis pentagona (PSEAPE)",
+        "type": "Host"
+      },
+      {
+        "code": "PSEAPE",
+        "name": "Pseudaulacaspis pentagona (as Juglans) (PSEAPE)",
+        "type": "Host"
+      },
+      {
+        "code": "RHAGCO",
+        "name": "Rhagoletis completa (RHAGCO)",
+        "type": "Host"
+      },
+      {
+        "code": "RHAGCO",
+        "name": "Rhagoletis completa (as Juglans) (RHAGCO)",
+        "type": "Host"
+      },
+      {
+        "code": "RHAGSU",
+        "name": "Rhagoletis suavis (RHAGSU)",
+        "type": "Host"
+      },
+      {
+        "code": "RHAGSU",
+        "name": "Rhagoletis suavis (as Juglans) (RHAGSU)",
+        "type": "Host"
+      },
+      {
+        "code": "RHAGZO",
+        "name": "Rhagoletis zoqui (RHAGZO)",
+        "type": "Host"
+      },
+      {
+        "code": "LAPHFR",
+        "name": "Spodoptera frugiperda (LAPHFR)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODPR",
+        "name": "Spodoptera praefica (as Juglans) (PRODPR)",
+        "type": "Host"
+      },
+      {
+        "code": "THAUPR",
+        "name": "Thaumetopoea processionea (as Juglans) (THAUPR)",
+        "type": "Host"
+      },
+      {
+        "code": "HESOCA",
+        "name": "Trichoferus campestris (HESOCA)",
+        "type": "Host"
+      },
+      {
+        "code": "HESOCA",
+        "name": "Trichoferus campestris (as Juglans) (HESOCA)",
+        "type": "Host"
+      },
+      {
+        "code": "TROGGA",
+        "name": "Trogoderma granarium (TROGGA)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLEFA",
+        "name": "Xylella fastidiosa (XYLEFA)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLEFF",
+        "name": "Xylella fastidiosa subsp. fastidiosa (XYLEFF)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLEFM",
+        "name": "Xylella fastidiosa subsp. multiplex (XYLEFM)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLBGE",
+        "name": "Xylosandrus germanus (XYLBGE)",
+        "type": "Host"
+      },
+      {
+        "code": "ZAPRTU",
+        "name": "Zaprionus tuberculatus (ZAPRTU)",
+        "type": "Host"
+      }
+    ]
+  },
+  "gbif": {
+    "key": 3054368,
+    "url": "https://www.gbif.org/species/3054368",
+    "scientificName": "Juglans regia L.",
+    "canonicalName": "Juglans regia",
+    "family": "Juglandaceae",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "matchType": "EXACT",
+    "confidence": 100
+  }
+}

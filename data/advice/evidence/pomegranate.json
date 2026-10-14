@@ -1,0 +1,363 @@
+{
+  "schema": 1,
+  "crop_id": "pomegranate",
+  "generated_by": "scripts/advice-harvest.mjs",
+  "fetched_at": "2026-10-14",
+  "candidate": {
+    "ar": "الرمان",
+    "en": "Pomegranate",
+    "fr": "Grenadier",
+    "sci_expected": "Punica granatum"
+  },
+  "eppo": {
+    "code": "PUNGR",
+    "overview_url": "https://gd.eppo.int/taxon/PUNGR",
+    "overview_title": "Punica granatum (PUNGR)",
+    "pests_url": "https://gd.eppo.int/taxon/PUNGR/pests",
+    "http_status": 200,
+    "pests_total_rows": 66,
+    "by_type": {
+      "Doubtful host": 1,
+      "Host": 61,
+      "Major host": 4
+    },
+    "pests": [
+      {
+        "code": "DACULA",
+        "name": "Bactrocera latifrons (DACULA)",
+        "type": "Major host"
+      },
+      {
+        "code": "PLAAST",
+        "name": "Platynota stultana (PLAAST)",
+        "type": "Major host"
+      },
+      {
+        "code": "PSECOB",
+        "name": "Pseudococcus viburni (PSECOB)",
+        "type": "Major host"
+      },
+      {
+        "code": "ARGPLE",
+        "name": "Thaumatotibia leucotreta (ARGPLE)",
+        "type": "Major host"
+      },
+      {
+        "code": "ALECSN",
+        "name": "Aleurocanthus spiniferus (ALECSN)",
+        "type": "Host"
+      },
+      {
+        "code": "ALECWO",
+        "name": "Aleurocanthus woglumi (ALECWO)",
+        "type": "Host"
+      },
+      {
+        "code": "ALEDDI",
+        "name": "Aleurodicus dispersus (ALEDDI)",
+        "type": "Host"
+      },
+      {
+        "code": "ANSTFR",
+        "name": "Anastrepha fraterculus (ANSTFR)",
+        "type": "Host"
+      },
+      {
+        "code": "ANSTLU",
+        "name": "Anastrepha ludens (ANSTLU)",
+        "type": "Host"
+      },
+      {
+        "code": "ANSTSU",
+        "name": "Anastrepha suspensa (ANSTSU)",
+        "type": "Host"
+      },
+      {
+        "code": "ANOLCN",
+        "name": "Anoplophora chinensis (ANOLCN)",
+        "type": "Host"
+      },
+      {
+        "code": "AONDOR",
+        "name": "Aonidiella orientalis (AONDOR)",
+        "type": "Host"
+      },
+      {
+        "code": "APRIGE",
+        "name": "Apriona germari (APRIGE)",
+        "type": "Host"
+      },
+      {
+        "code": "BCTRCB",
+        "name": "Bactrocera carambolae (BCTRCB)",
+        "type": "Host"
+      },
+      {
+        "code": "DACUDO",
+        "name": "Bactrocera dorsalis (DACUDO)",
+        "type": "Host"
+      },
+      {
+        "code": "BCTRKA",
+        "name": "Bactrocera kandiensis (BCTRKA)",
+        "type": "Host"
+      },
+      {
+        "code": "BCTRPA",
+        "name": "Bactrocera passiflorae (BCTRPA)",
+        "type": "Host"
+      },
+      {
+        "code": "DACUTR",
+        "name": "Bactrocera tryoni (DACUTR)",
+        "type": "Host"
+      },
+      {
+        "code": "DACUZO",
+        "name": "Bactrocera zonata (DACUZO)",
+        "type": "Host"
+      },
+      {
+        "code": "BRVPYO",
+        "name": "Brevipalpus yothersi (BRVPYO)",
+        "type": "Host"
+      },
+      {
+        "code": "TORTPR",
+        "name": "Cacoecimorpha pronubana (TORTPR)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYPMA",
+        "name": "'Candidatus Phytoplasma mali' (PHYPMA)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYPSO",
+        "name": "'Candidatus Phytoplasma solani' (PHYPSO)",
+        "type": "Host"
+      },
+      {
+        "code": "CARSSA",
+        "name": "Carposina sasakii (CARSSA)",
+        "type": "Host"
+      },
+      {
+        "code": "CERTCA",
+        "name": "Ceratitis capitata (CERTCA)",
+        "type": "Host"
+      },
+      {
+        "code": "CERPCE",
+        "name": "Ceroplastes ceriferus (CERPCE)",
+        "type": "Host"
+      },
+      {
+        "code": "COLLFC",
+        "name": "Colletotrichum fructicola (COLLFC)",
+        "type": "Host"
+      },
+      {
+        "code": "CONLGR",
+        "name": "Coniella granati (CONLGR)",
+        "type": "Host"
+      },
+      {
+        "code": "CRYBGN",
+        "name": "Cryptoblabes gnidiella (CRYBGN)",
+        "type": "Host"
+      },
+      {
+        "code": "DICHPU",
+        "name": "Dichocrocis punctiferalis (DICHPU)",
+        "type": "Host"
+      },
+      {
+        "code": "ERTNFU",
+        "name": "Erthesina fullo (ERTNFU)",
+        "type": "Host"
+      },
+      {
+        "code": "PLTPPA",
+        "name": "Euplatypus parallelus (PLTPPA)",
+        "type": "Host"
+      },
+      {
+        "code": "EURHBR",
+        "name": "Eurhizococcus brasiliensis (EURHBR)",
+        "type": "Host"
+      },
+      {
+        "code": "EUTEOR",
+        "name": "Eutetranychus orientalis (EUTEOR)",
+        "type": "Host"
+      },
+      {
+        "code": "EUTYLA",
+        "name": "Eutypa lata (EUTYLA)",
+        "type": "Host"
+      },
+      {
+        "code": "EUZOSE",
+        "name": "Euzophera semifuneralis (EUZOSE)",
+        "type": "Host"
+      },
+      {
+        "code": "ECDYAU",
+        "name": "Gymnandrosoma aurantianum (ECDYAU)",
+        "type": "Host"
+      },
+      {
+        "code": "HELOAN",
+        "name": "Helopeltis antonii (HELOAN)",
+        "type": "Host"
+      },
+      {
+        "code": "HSVD00",
+        "name": "Hostuviroid impedihumuli (HSVD00)",
+        "type": "Host"
+      },
+      {
+        "code": "ICERPU",
+        "name": "Icerya purchasi (ICERPU)",
+        "type": "Host"
+      },
+      {
+        "code": "LOPLJA",
+        "name": "Lopholeucaspis japonica (LOPLJA)",
+        "type": "Host"
+      },
+      {
+        "code": "LYCMDE",
+        "name": "Lycorma delicatula (LYCMDE)",
+        "type": "Host"
+      },
+      {
+        "code": "PHENHI",
+        "name": "Maconellicoccus hirsutus (PHENHI)",
+        "type": "Host"
+      },
+      {
+        "code": "CNIDFL",
+        "name": "Monema flavescens (CNIDFL)",
+        "type": "Host"
+      },
+      {
+        "code": "NPESRS",
+        "name": "Neopestalotiopsis rosae (NPESRS)",
+        "type": "Host"
+      },
+      {
+        "code": "TORSV0",
+        "name": "Nepovirus lycopersici (TORSV0)",
+        "type": "Host"
+      },
+      {
+        "code": "OEMOHI",
+        "name": "Oemona hirta (OEMOHI)",
+        "type": "Host"
+      },
+      {
+        "code": "OLIGPU",
+        "name": "Oligonychus punicae (OLIGPU)",
+        "type": "Host"
+      },
+      {
+        "code": "HEMELE",
+        "name": "Orgyia leucostigma (HEMELE)",
+        "type": "Host"
+      },
+      {
+        "code": "ERWIAN",
+        "name": "Pantoea ananatis (ERWIAN)",
+        "type": "Host"
+      },
+      {
+        "code": "PARYMI",
+        "name": "Paraleyrodes minei (PARYMI)",
+        "type": "Host"
+      },
+      {
+        "code": "SAISNI",
+        "name": "Parasaissetia nigra (SAISNI)",
+        "type": "Host"
+      },
+      {
+        "code": "PHENSO",
+        "name": "Phenacoccus solenopsis (PHENSO)",
+        "type": "Host"
+      },
+      {
+        "code": "PHMPOM",
+        "name": "Phymatotrichopsis omnivora (PHMPOM)",
+        "type": "Host"
+      },
+      {
+        "code": "PLANLI",
+        "name": "Planococcus lilacinus (PLANLI)",
+        "type": "Host"
+      },
+      {
+        "code": "POCZSH",
+        "name": "Pochazia shantungensis (POCZSH)",
+        "type": "Host"
+      },
+      {
+        "code": "PSECCO",
+        "name": "Pseudococcus comstocki (PSECCO)",
+        "type": "Host"
+      },
+      {
+        "code": "RHIOHI",
+        "name": "Ripersiella hibisci (RHIOHI)",
+        "type": "Host"
+      },
+      {
+        "code": "SCITAU",
+        "name": "Scirtothrips aurantii (SCITAU)",
+        "type": "Host"
+      },
+      {
+        "code": "SCITDO",
+        "name": "Scirtothrips dorsalis (SCITDO)",
+        "type": "Host"
+      },
+      {
+        "code": "THRIHA",
+        "name": "Thrips hawaiiensis (THRIHA)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLEFA",
+        "name": "Xylella fastidiosa (XYLEFA)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLSCO",
+        "name": "Xylosandrus compactus (XYLSCO)",
+        "type": "Host"
+      },
+      {
+        "code": "ZAPRIN",
+        "name": "Zaprionus indianus (ZAPRIN)",
+        "type": "Host"
+      },
+      {
+        "code": "ZAPRTU",
+        "name": "Zaprionus tuberculatus (ZAPRTU)",
+        "type": "Host"
+      }
+    ]
+  },
+  "gbif": {
+    "key": 5420901,
+    "url": "https://www.gbif.org/species/5420901",
+    "scientificName": "Punica granatum L.",
+    "canonicalName": "Punica granatum",
+    "family": "Lythraceae",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "matchType": "EXACT",
+    "confidence": 100
+  }
+}

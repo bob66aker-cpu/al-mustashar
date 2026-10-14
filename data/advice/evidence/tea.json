@@ -1,0 +1,303 @@
+{
+  "schema": 1,
+  "crop_id": "tea",
+  "generated_by": "scripts/advice-harvest.mjs",
+  "fetched_at": "2026-10-14",
+  "candidate": {
+    "ar": "الشاي",
+    "en": "Tea",
+    "fr": "Thé",
+    "sci_expected": "Camellia sinensis"
+  },
+  "eppo": {
+    "code": "CAHSI",
+    "overview_url": "https://gd.eppo.int/taxon/CAHSI",
+    "overview_title": "Camellia sinensis (CAHSI)",
+    "pests_url": "https://gd.eppo.int/taxon/CAHSI/pests",
+    "http_status": 200,
+    "pests_total_rows": 54,
+    "by_type": {
+      "Doubtful host": 1,
+      "Host": 40,
+      "Major host": 13
+    },
+    "pests": [
+      {
+        "code": "PHOPTH",
+        "name": "Diaporthe theae (PHOPTH)",
+        "type": "Major host"
+      },
+      {
+        "code": "EXOBRE",
+        "name": "Exobasidium reticulatum (EXOBRE)",
+        "type": "Major host"
+      },
+      {
+        "code": "EXOBVE",
+        "name": "Exobasidium vexans (EXOBVE)",
+        "type": "Major host"
+      },
+      {
+        "code": "HELOAN",
+        "name": "Helopeltis antonii (HELOAN)",
+        "type": "Major host"
+      },
+      {
+        "code": "HELOBR",
+        "name": "Helopeltis bradyi (HELOBR)",
+        "type": "Major host"
+      },
+      {
+        "code": "HELOTH",
+        "name": "Helopeltis theivora (HELOTH)",
+        "type": "Major host"
+      },
+      {
+        "code": "HOMOCO",
+        "name": "Homona coffearia (HOMOCO)",
+        "type": "Major host"
+      },
+      {
+        "code": "ICERAE",
+        "name": "Icerya aegyptiaca (ICERAE)",
+        "type": "Major host"
+      },
+      {
+        "code": "OLIGCO",
+        "name": "Oligonychus coffeae (OLIGCO)",
+        "type": "Major host"
+      },
+      {
+        "code": "SCITDO",
+        "name": "Scirtothrips dorsalis (SCITDO)",
+        "type": "Major host"
+      },
+      {
+        "code": "TEPN00",
+        "name": "Tea phloem necrosis agent (TEPN00)",
+        "type": "Major host"
+      },
+      {
+        "code": "XYLSCO",
+        "name": "Xylosandrus compactus (XYLSCO)",
+        "type": "Major host"
+      },
+      {
+        "code": "XYLSMO",
+        "name": "Xylosandrus morigerus (XYLSMO)",
+        "type": "Major host"
+      },
+      {
+        "code": "PSDMAV",
+        "name": "Acidovorax avenae (PSDMAV)",
+        "type": "Host"
+      },
+      {
+        "code": "CAPURE",
+        "name": "Adoxophyes orana (CAPURE)",
+        "type": "Host"
+      },
+      {
+        "code": "ALECCA",
+        "name": "Aleurocanthus camelliae (ALECCA)",
+        "type": "Host"
+      },
+      {
+        "code": "ANOLCN",
+        "name": "Anoplophora chinensis (as Camellia) (ANOLCN)",
+        "type": "Host"
+      },
+      {
+        "code": "ANOLHO",
+        "name": "Anoplophora horsfieldii (ANOLHO)",
+        "type": "Host"
+      },
+      {
+        "code": "AONDCI",
+        "name": "Aonidiella citrina (AONDCI)",
+        "type": "Host"
+      },
+      {
+        "code": "AONDCI",
+        "name": "Aonidiella citrina (as Camellia) (AONDCI)",
+        "type": "Host"
+      },
+      {
+        "code": "TETTFE",
+        "name": "Bothrogonia ferruginea (TETTFE)",
+        "type": "Host"
+      },
+      {
+        "code": "BRVPPA",
+        "name": "Brevipalpus papayensis (BRVPPA)",
+        "type": "Host"
+      },
+      {
+        "code": "BRVPYO",
+        "name": "Brevipalpus yothersi (BRVPYO)",
+        "type": "Host"
+      },
+      {
+        "code": "CEPOHY",
+        "name": "Cephonodes hylas (CEPOHY)",
+        "type": "Host"
+      },
+      {
+        "code": "CRTZBR",
+        "name": "Ceratothripoides brunneus (CRTZBR)",
+        "type": "Host"
+      },
+      {
+        "code": "SCLECA",
+        "name": "Ciborinia camelliae (as Camellia) (SCLECA)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLSMU",
+        "name": "Cnestus mutilatus (as Camellia) (XYLSMU)",
+        "type": "Host"
+      },
+      {
+        "code": "COCCVI",
+        "name": "Coccus viridis (COCCVI)",
+        "type": "Host"
+      },
+      {
+        "code": "COLLAC",
+        "name": "Colletotrichum acutatum sensu lato (as Camellia) (COLLAC)",
+        "type": "Host"
+      },
+      {
+        "code": "COLLFC",
+        "name": "Colletotrichum fructicola (COLLFC)",
+        "type": "Host"
+      },
+      {
+        "code": "QUADPE",
+        "name": "Comstockaspis perniciosa (QUADPE)",
+        "type": "Host"
+      },
+      {
+        "code": "ROSLBU",
+        "name": "Dematophora bunodes (ROSLBU)",
+        "type": "Host"
+      },
+      {
+        "code": "EUWAFO",
+        "name": "Euwallacea fornicatior (EUWAFO)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLBFO",
+        "name": "Euwallacea fornicatus sensu lato (XYLBFO)",
+        "type": "Host"
+      },
+      {
+        "code": "EUWAPE",
+        "name": "Euwallacea perbrevis (EUWAPE)",
+        "type": "Host"
+      },
+      {
+        "code": "FUSAAM",
+        "name": "Fusarium ambrosium (FUSAAM)",
+        "type": "Host"
+      },
+      {
+        "code": "GIBBFU",
+        "name": "Fusarium fujikuroi (GIBBFU)",
+        "type": "Host"
+      },
+      {
+        "code": "HELOBE",
+        "name": "Helopeltis bergrothi (HELOBE)",
+        "type": "Host"
+      },
+      {
+        "code": "HETBAE",
+        "name": "Heterobostrychus aequalis (HETBAE)",
+        "type": "Host"
+      },
+      {
+        "code": "LOPLJA",
+        "name": "Lopholeucaspis japonica (LOPLJA)",
+        "type": "Host"
+      },
+      {
+        "code": "LYCMDE",
+        "name": "Lycorma delicatula (LYCMDE)",
+        "type": "Host"
+      },
+      {
+        "code": "HEMELE",
+        "name": "Orgyia leucostigma (as Camellia) (HEMELE)",
+        "type": "Host"
+      },
+      {
+        "code": "PRABMY",
+        "name": "Parabemisia myricae (PRABMY)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYTRA",
+        "name": "Phytophthora ramorum (as Camellia) (PHYTRA)",
+        "type": "Host"
+      },
+      {
+        "code": "POCZSH",
+        "name": "Pochazia shantungensis (POCZSH)",
+        "type": "Host"
+      },
+      {
+        "code": "PSEAPE",
+        "name": "Pseudaulacaspis pentagona (as Camellia) (PSEAPE)",
+        "type": "Host"
+      },
+      {
+        "code": "RICASC",
+        "name": "Ricania speculum (RICASC)",
+        "type": "Host"
+      },
+      {
+        "code": "RHIOHI",
+        "name": "Ripersiella hibisci (RHIOHI)",
+        "type": "Host"
+      },
+      {
+        "code": "HELYBU",
+        "name": "Rotylenchus buxophilus (HELYBU)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODLI",
+        "name": "Spodoptera litura (PRODLI)",
+        "type": "Host"
+      },
+      {
+        "code": "TIRAPL",
+        "name": "Tiracola plagiata (TIRAPL)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLBCR",
+        "name": "Xylosandrus crassiusculus (XYLBCR)",
+        "type": "Host"
+      },
+      {
+        "code": "ZEUZCO",
+        "name": "Zeuzera coffeae (ZEUZCO)",
+        "type": "Host"
+      }
+    ]
+  },
+  "gbif": {
+    "key": 3189635,
+    "url": "https://www.gbif.org/species/3189635",
+    "scientificName": "Camellia sinensis (L.) Kuntze",
+    "canonicalName": "Camellia sinensis",
+    "family": "Theaceae",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "matchType": "EXACT",
+    "confidence": 100
+  }
+}

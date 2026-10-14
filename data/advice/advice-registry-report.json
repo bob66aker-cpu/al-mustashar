@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generated": "2026-10-13",
+  "generated": "2026-10-14",
   "generator": "scripts/validate-advice.mjs",
   "license_policy": "cite_and_paraphrase — اللصق الحرفي غير مخوّل؛ التلخيص العلمي مع نسب المصدر ورابطه. الأذونات الواردة تُدار باسم صاحب المشروع.",
   "coverage": {
@@ -34,8 +34,8 @@
     "violations": 0
   },
   "evidence": {
-    "A": 30,
-    "B": 84,
+    "A": 37,
+    "B": 107,
     "C": 0
   },
   "sources": {
@@ -134,6 +134,12 @@
     "soil": 1,
     "fertilization": 1,
     "system": 5
+  },
+  "infections": {
+    "crops": 68,
+    "cards": 766,
+    "others": 4634,
+    "dossiers": 30
   },
   "warnings": []
 }

@@ -1,0 +1,590 @@
+{
+  "schema": 1,
+  "crop_id": "avocado",
+  "generated_by": "scripts/advice-generate.mjs",
+  "built": "2026-10-14",
+  "others": [
+    {
+      "type": "insect",
+      "code": "ALTRTR",
+      "name": "Aleurothrixus trachoides",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "AMBPLU",
+      "name": "Amblypelta lutescens",
+      "host": "Major host"
+    },
+    {
+      "type": "virus",
+      "code": "ASBVD0",
+      "name": "Avsunviroid albamaculaperseae",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "CONHAG",
+      "name": "Conotrachelus aguacatae",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "CONHPE",
+      "name": "Conotrachelus perseae",
+      "host": "Major host"
+    },
+    {
+      "type": "fungus",
+      "code": "FUSAEW",
+      "name": "Fusarium euwallaceae",
+      "host": "Major host"
+    },
+    {
+      "type": "fungus",
+      "code": "RAFFLA",
+      "name": "Harringtonia lauricola",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "HEILLA",
+      "name": "Heilipus lauri",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "COPUAG",
+      "name": "Macrocopturus aguacatae",
+      "host": "Major host"
+    },
+    {
+      "type": "mite",
+      "code": "OLIGPA",
+      "name": "Oligonychus perseae",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "PRABMY",
+      "name": "Parabemisia myricae",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "PARYMI",
+      "name": "Paraleyrodes minei",
+      "host": "Major host"
+    },
+    {
+      "type": "pseudo_fungus",
+      "code": "PHYTCN",
+      "name": "Phytophthora cinnamomi",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "PSEYPE",
+      "name": "Pseudacysta perseae",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "SCITPE",
+      "name": "Scirtothrips perseae",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "SLENRU",
+      "name": "Selenothrips rubrocinctus",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "STENCA",
+      "name": "Stenoma catenifer",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "TETLPE",
+      "name": "Tetraleurodes perseae",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "XYLSMO",
+      "name": "Xylosandrus morigerus",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "ALECSN",
+      "name": "Aleurocanthus spiniferus",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "ALECWO",
+      "name": "Aleurocanthus woglumi",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "ALEDDI",
+      "name": "Aleurodicus dispersus (as Prunus)",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "ALEDDU",
+      "name": "Aleurodicus dugesii (as Musa)",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "ANSTFR",
+      "name": "Anastrepha fraterculus",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "ANSTLU",
+      "name": "Anastrepha ludens",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "ANSTSE",
+      "name": "Anastrepha serpentina",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "ANSTSU",
+      "name": "Anastrepha suspensa",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "ANOLCN",
+      "name": "Anoplophora chinensis (as Prunus)",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "ATHEOR",
+      "name": "Atherigona orientalis",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "BCTRCB",
+      "name": "Bactrocera carambolae",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "BCTRCR",
+      "name": "Bactrocera caryeae",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "BCTRKA",
+      "name": "Bactrocera kandiensis",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "DACULA",
+      "name": "Bactrocera latifrons",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "BCTRPA",
+      "name": "Bactrocera passiflorae",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "DACUTR",
+      "name": "Bactrocera tryoni",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "DACUZO",
+      "name": "Bactrocera zonata",
+      "host": "Host"
+    },
+    {
+      "type": "mite",
+      "code": "BRVPYO",
+      "name": "Brevipalpus yothersi (as Musa)",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "TORTPR",
+      "name": "Cacoecimorpha pronubana",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "CERTAN",
+      "name": "Ceratitis anonae",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "CERTCO",
+      "name": "Ceratitis cosyra",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "CERTFA",
+      "name": "Ceratitis fasciventris",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "CERTMA",
+      "name": "Ceratitis malgassa",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "CERTQI",
+      "name": "Ceratitis quilicii",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "CERTRO",
+      "name": "Ceratitis rosa",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "CRTZBR",
+      "name": "Ceratothripoides brunneus",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "CERPCE",
+      "name": "Ceroplastes ceriferus",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "CERPDE",
+      "name": "Ceroplastes destructor",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "VINSST",
+      "name": "Ceroplastes stellifer",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "CHRYFI",
+      "name": "Chrysomphalus aonidum",
+      "host": "Host"
+    },
+    {
+      "type": "fungus",
+      "code": "COLLAC",
+      "name": "Colletotrichum acutatum sensu lato",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "CRYBGN",
+      "name": "Cryptoblabes gnidiella",
+      "host": "Host"
+    },
+    {
+      "type": "fungus",
+      "code": "ROSLNE",
+      "name": "Dematophora necatrix",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "DIABUN",
+      "name": "Diabrotica undecimpunctata undecimpunctata",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "DPREAB",
+      "name": "Diaprepes abbreviatus",
+      "host": "Host"
+    },
+    {
+      "type": "fungus",
+      "code": "SPHAPE",
+      "name": "Elsinoë perseae",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "PLTPPA",
+      "name": "Euplatypus parallelus",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "EURHCO",
+      "name": "Eurhizococcus colombianus",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "XYLBFO",
+      "name": "Euwallacea fornicatus sensu lato",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "EUWAWH",
+      "name": "Euwallacea fornicatus sensu stricto",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "EUWAKU",
+      "name": "Euwallacea kuroshio (as Persea)",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "EUWAPE",
+      "name": "Euwallacea perbrevis",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "ECDYAU",
+      "name": "Gymnandrosoma aurantianum",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "HELOAN",
+      "name": "Helopeltis antonii",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "ICERPU",
+      "name": "Icerya purchasi",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "ICERSE",
+      "name": "Icerya seychellarum",
+      "host": "Host"
+    },
+    {
+      "type": "fungus",
+      "code": "PHYORH",
+      "name": "Lasiodiplodia theobromae",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "PLTPMU",
+      "name": "Megaplatypus mutatus",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "NAUPXA",
+      "name": "Naupactus xanthographus",
+      "host": "Host"
+    },
+    {
+      "type": "fungus",
+      "code": "NPESRS",
+      "name": "Neopestalotiopsis rosae",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "NSILGL",
+      "name": "Neosilba glaberrima",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "NSILZA",
+      "name": "Neosilba zadolicha",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "OEMOHI",
+      "name": "Oemona hirta",
+      "host": "Host"
+    },
+    {
+      "type": "mite",
+      "code": "OLIGPU",
+      "name": "Oligonychus punicae",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "SAISNI",
+      "name": "Parasaissetia nigra",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "PETHBE",
+      "name": "Penthimiola bella",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "PLAAST",
+      "name": "Platynota stultana",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "PLSOCO",
+      "name": "Plesiommata corniculata",
+      "host": "Host"
+    },
+    {
+      "type": "virus",
+      "code": "PSTVD0",
+      "name": "Pospiviroid fusituberis",
+      "host": "Host"
+    },
+    {
+      "type": "virus",
+      "code": "PAPMV0",
+      "name": "Potexvirus papayae",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "PRDILO",
+      "name": "Prodiplosis longifila",
+      "host": "Host"
+    },
+    {
+      "type": "nematode",
+      "code": "RADOSI",
+      "name": "Radopholus similis",
+      "host": "Host"
+    },
+    {
+      "type": "nematode",
+      "code": "RADOCI",
+      "name": "Radopholus similis citrus race",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "SCITAU",
+      "name": "Scirtothrips aurantii",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "PRODER",
+      "name": "Spodoptera eridania",
+      "host": "Host"
+    },
+    {
+      "type": "mite",
+      "code": "TETRME",
+      "name": "Tetranychus mexicanus",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "ARGPLE",
+      "name": "Thaumatotibia leucotreta",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "THRIHA",
+      "name": "Thrips hawaiiensis",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "UNASCI",
+      "name": "Unaspis citri",
+      "host": "Host"
+    },
+    {
+      "type": "nematode",
+      "code": "XIPHCA",
+      "name": "Xiphinema californicum",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "XYLBGR",
+      "name": "Xyleborus glabratus",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "XYLBNE",
+      "name": "Xyleborus neivai",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "XYLBPE",
+      "name": "Xyleborus perforans",
+      "host": "Host"
+    },
+    {
+      "type": "bacterium",
+      "code": "XYLEFA",
+      "name": "Xylella fastidiosa",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "XYLSCO",
+      "name": "Xylosandrus compactus",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "XYLBCR",
+      "name": "Xylosandrus crassiusculus",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "ZAPRIN",
+      "name": "Zaprionus indianus",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "ZEUZCO",
+      "name": "Zeuzera coffeae",
+      "host": "Host"
+    }
+  ]
+}

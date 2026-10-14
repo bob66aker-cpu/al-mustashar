@@ -1,0 +1,340 @@
+{
+  "schema": 1,
+  "crop_id": "groundnut",
+  "generated_by": "scripts/advice-harvest.mjs",
+  "fetched_at": "2026-10-14",
+  "candidate": {
+    "ar": "الفول السوداني",
+    "en": "Groundnut",
+    "fr": "Cacahuète",
+    "sci_expected": "Arachis hypogaea"
+  },
+  "eppo": {
+    "code": "ARHHY",
+    "overview_url": "https://gd.eppo.int/taxon/ARHHY",
+    "overview_title": "Arachis hypogaea (ARHHY)",
+    "pests_url": "https://gd.eppo.int/taxon/ARHHY/pests",
+    "http_status": 200,
+    "pests_total_rows": 64,
+    "by_type": {
+      "Doubtful host": 1,
+      "Experimental": 2,
+      "Host": 49,
+      "Major host": 11,
+      "Wild/Weed": 1
+    },
+    "pests": [
+      {
+        "code": "CPMMV0",
+        "name": "Carlavirus vignae (CPMMV0)",
+        "type": "Major host"
+      },
+      {
+        "code": "DIABUH",
+        "name": "Diabrotica undecimpunctata howardi (DIABUH)",
+        "type": "Major host"
+      },
+      {
+        "code": "GCSV00",
+        "name": "Groundnut chlorotic spot virus (GCSV00)",
+        "type": "Major host"
+      },
+      {
+        "code": "GBNV00",
+        "name": "Orthotospovirus arachinecrosis (GBNV00)",
+        "type": "Major host"
+      },
+      {
+        "code": "GRAV00",
+        "name": "Polerovirus GRAV (GRAV00)",
+        "type": "Major host"
+      },
+      {
+        "code": "BCMV00",
+        "name": "Potyvirus phaseovulgaris (BCMV00)",
+        "type": "Major host"
+      },
+      {
+        "code": "RALSPS",
+        "name": "Ralstonia pseudosolanacearum (RALSPS)",
+        "type": "Major host"
+      },
+      {
+        "code": "RALSSL",
+        "name": "Ralstonia solanacearum (RALSSL)",
+        "type": "Major host"
+      },
+      {
+        "code": "RALSSO",
+        "name": "Ralstonia solanacearum species complex (RALSSO)",
+        "type": "Major host"
+      },
+      {
+        "code": "TROGGA",
+        "name": "Trogoderma granarium (TROGGA)",
+        "type": "Major host"
+      },
+      {
+        "code": "GRV000",
+        "name": "Umbravirus arachidis (GRV000)",
+        "type": "Major host"
+      },
+      {
+        "code": "ALEDDI",
+        "name": "Aleurodicus dispersus (ALEDDI)",
+        "type": "Host"
+      },
+      {
+        "code": "EMPOBI",
+        "name": "Amrasca biguttula (EMPOBI)",
+        "type": "Host"
+      },
+      {
+        "code": "BEMITA",
+        "name": "Bemisia tabaci (BEMITA)",
+        "type": "Host"
+      },
+      {
+        "code": "HELIVI",
+        "name": "Chloridea virescens (HELIVI)",
+        "type": "Host"
+      },
+      {
+        "code": "COLLFC",
+        "name": "Colletotrichum fructicola (COLLFC)",
+        "type": "Host"
+      },
+      {
+        "code": "DIABSC",
+        "name": "Diabrotica speciosa (DIABSC)",
+        "type": "Host"
+      },
+      {
+        "code": "DIABUN",
+        "name": "Diabrotica undecimpunctata undecimpunctata (DIABUN)",
+        "type": "Host"
+      },
+      {
+        "code": "DPREAB",
+        "name": "Diaprepes abbreviatus (DPREAB)",
+        "type": "Host"
+      },
+      {
+        "code": "DITYDE",
+        "name": "Ditylenchus destructor (DITYDE)",
+        "type": "Host"
+      },
+      {
+        "code": "ELASLI",
+        "name": "Elasmopalpus lignosellus (ELASLI)",
+        "type": "Host"
+      },
+      {
+        "code": "SPHAAR",
+        "name": "Elsinoë arachidis (SPHAAR)",
+        "type": "Host"
+      },
+      {
+        "code": "EURHBR",
+        "name": "Eurhizococcus brasiliensis (EURHBR)",
+        "type": "Host"
+      },
+      {
+        "code": "EUTEBA",
+        "name": "Eutetranychus banksi (EUTEBA)",
+        "type": "Host"
+      },
+      {
+        "code": "EUTEOR",
+        "name": "Eutetranychus orientalis (EUTEOR)",
+        "type": "Host"
+      },
+      {
+        "code": "HELIAR",
+        "name": "Helicoverpa armigera (HELIAR)",
+        "type": "Host"
+      },
+      {
+        "code": "HELIZE",
+        "name": "Helicoverpa zea (HELIZE)",
+        "type": "Host"
+      },
+      {
+        "code": "STEHHA",
+        "name": "Hypothenemus hampei (STEHHA)",
+        "type": "Host"
+      },
+      {
+        "code": "TSV000",
+        "name": "Ilarvirus TSV (TSV000)",
+        "type": "Host"
+      },
+      {
+        "code": "LAGRVL",
+        "name": "Lagria villosa (LAGRVL)",
+        "type": "Host"
+      },
+      {
+        "code": "LEPLAU",
+        "name": "Leptoglossus australis (LEPLAU)",
+        "type": "Host"
+      },
+      {
+        "code": "LIRITR",
+        "name": "Liriomyza trifolii (LIRITR)",
+        "type": "Host"
+      },
+      {
+        "code": "ACHAFU",
+        "name": "Lissachatina fulica (ACHAFU)",
+        "type": "Host"
+      },
+      {
+        "code": "PHENHI",
+        "name": "Maconellicoccus hirsutus (PHENHI)",
+        "type": "Host"
+      },
+      {
+        "code": "MEGTUS",
+        "name": "Megalurothrips usitatus (MEGTUS)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGCH",
+        "name": "Meloidogyne chitwoodi (MELGCH)",
+        "type": "Host"
+      },
+      {
+        "code": "GRAGLE",
+        "name": "Naupactus leucoloma (GRAGLE)",
+        "type": "Host"
+      },
+      {
+        "code": "GRSV00",
+        "name": "Orthotospovirus arachianuli (GRSV00)",
+        "type": "Host"
+      },
+      {
+        "code": "WMSMOV",
+        "name": "Orthotospovirus citrullomaculosi (WMSMOV)",
+        "type": "Host"
+      },
+      {
+        "code": "INSV00",
+        "name": "Orthotospovirus impatiensnecromaculae (INSV00)",
+        "type": "Host"
+      },
+      {
+        "code": "TCSV00",
+        "name": "Orthotospovirus tomatoflavi (TCSV00)",
+        "type": "Host"
+      },
+      {
+        "code": "TSWV00",
+        "name": "Orthotospovirus tomatomaculae (TSWV00)",
+        "type": "Host"
+      },
+      {
+        "code": "PCV000",
+        "name": "Pecluvirus arachidis (PCV000)",
+        "type": "Host"
+      },
+      {
+        "code": "IPCV00",
+        "name": "Pecluvirus indicum (IPCV00)",
+        "type": "Host"
+      },
+      {
+        "code": "PHMPOM",
+        "name": "Phymatotrichopsis omnivora (PHMPOM)",
+        "type": "Host"
+      },
+      {
+        "code": "PVY000",
+        "name": "Potyvirus yituberosi (PVY000)",
+        "type": "Host"
+      },
+      {
+        "code": "PROETR",
+        "name": "Prostephanus truncatus (PROETR)",
+        "type": "Host"
+      },
+      {
+        "code": "PYTHMY",
+        "name": "Pythium myriotylum (PYTHMY)",
+        "type": "Host"
+      },
+      {
+        "code": "PSDMS1",
+        "name": "Ralstonia solanacearum race 1 (no longer in use) (PSDMS1)",
+        "type": "Host"
+      },
+      {
+        "code": "SCITAU",
+        "name": "Scirtothrips aurantii (SCITAU)",
+        "type": "Host"
+      },
+      {
+        "code": "SCITDO",
+        "name": "Scirtothrips dorsalis (SCITDO)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODER",
+        "name": "Spodoptera eridania (PRODER)",
+        "type": "Host"
+      },
+      {
+        "code": "LAPHFR",
+        "name": "Spodoptera frugiperda (LAPHFR)",
+        "type": "Host"
+      },
+      {
+        "code": "SPODLI",
+        "name": "Spodoptera littoralis (SPODLI)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODLI",
+        "name": "Spodoptera litura (PRODLI)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODOR",
+        "name": "Spodoptera ornithogalli (PRODOR)",
+        "type": "Host"
+      },
+      {
+        "code": "TETREV",
+        "name": "Tetranychus evansi (TETREV)",
+        "type": "Host"
+      },
+      {
+        "code": "TETRME",
+        "name": "Tetranychus mexicanus (TETRME)",
+        "type": "Host"
+      },
+      {
+        "code": "THRIPL",
+        "name": "Thrips palmi (THRIPL)",
+        "type": "Host"
+      },
+      {
+        "code": "VERTDA",
+        "name": "Verticillium dahliae (VERTDA)",
+        "type": "Host"
+      }
+    ]
+  },
+  "gbif": {
+    "key": 5353770,
+    "url": "https://www.gbif.org/species/5353770",
+    "scientificName": "Arachis hypogaea L.",
+    "canonicalName": "Arachis hypogaea",
+    "family": "Fabaceae",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "matchType": "EXACT",
+    "confidence": 100
+  }
+}

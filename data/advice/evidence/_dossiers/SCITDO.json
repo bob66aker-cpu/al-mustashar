@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "pest_code": "SCITDO",
+  "name_ar": "تربس الفلفل",
+  "pest_name_en": "Scirtothrips dorsalis",
+  "source": {
+    "title": "ENY2076/IN1346: Chilli Thrips, Scirtothrips dorsalis Hood (Thysanoptera: Thripidae) Management Practices for Florida Strawberry Crops",
+    "publisher": "University of Florida IFAS Extension",
+    "url": "https://ask.ifas.ufl.edu/publication/IN1346",
+    "type": "extension",
+    "retrieved": "2026-10-14"
+  },
+  "symptoms_ar": [
+    "تسبب جروح التغذي على الأوراق الفتية نَخَراً واسوداداً أو اسمراراً في الأنسجة.",
+    "في الفراولة، يؤدي التغذي الشديد إلى احمرار عروق الأوراق وأعناقها وتغميقها.",
+    "قد تصبح الأوراق داكنة ومجعدة ومشوهة عند اشتداد الإصابة.",
+    "قد يسبب التغذي على الأوراق والأزهار والثمار تشوه الأوراق وبرونزتها وتشقق الثمار وانخفاض المحصول."
+  ],
+  "management_ar": [
+    "يُستكشف الحقل مبكراً بحثاً عن أعراض الضرر، ويمكن جمع وريقات الفراولة وعد اليرقات لتقدير الإصابة.",
+    "تشمل الممارسات الثقافية إزالة العوائل البديلة والأعشاب التي قد تأوي الآفة.",
+    "يمكن استخدام المفترسات Orius spp. والعث المفترس Neoseiulus cucumeris ونوع Amblyseius swirskii ضمن برامج المكافحة الحيوية.",
+    "عند استخدام المبيدات، يوصي المصدر بتناوبها لتقليل خطر تطور المقاومة ودمجها مع استراتيجيات المكافحة الأخرى."
+  ],
+  "evidence": "B"
+}

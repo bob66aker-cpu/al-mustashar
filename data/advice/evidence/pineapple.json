@@ -1,0 +1,174 @@
+{
+  "schema": 1,
+  "crop_id": "pineapple",
+  "generated_by": "scripts/advice-harvest.mjs",
+  "fetched_at": "2026-10-14",
+  "candidate": {
+    "ar": "الأناناس",
+    "en": "Pineapple",
+    "fr": "Ananas",
+    "sci_expected": "Ananas comosus"
+  },
+  "eppo": {
+    "code": "ANHCO",
+    "overview_url": "https://gd.eppo.int/taxon/ANHCO",
+    "overview_title": "Ananas comosus (ANHCO)",
+    "pests_url": "https://gd.eppo.int/taxon/ANHCO/pests",
+    "http_status": 200,
+    "pests_total_rows": 29,
+    "by_type": {
+      "Doubtful host": 1,
+      "Experimental": 1,
+      "Host": 20,
+      "Major host": 7
+    },
+    "pests": [
+      {
+        "code": "PMWAV2",
+        "name": "Ampelovirus duananas (PMWAV2)",
+        "type": "Major host"
+      },
+      {
+        "code": "PMWAV3",
+        "name": "Ampelovirus triananas (PMWAV3)",
+        "type": "Major host"
+      },
+      {
+        "code": "PMWAV1",
+        "name": "Ampelovirus unananas (PMWAV1)",
+        "type": "Major host"
+      },
+      {
+        "code": "PBCOV0",
+        "name": "Badnavirus alphananas (PBCOV0)",
+        "type": "Major host"
+      },
+      {
+        "code": "ANMLOR",
+        "name": "Exomala orientalis (ANMLOR)",
+        "type": "Major host"
+      },
+      {
+        "code": "LAGRVL",
+        "name": "Lagria villosa (LAGRVL)",
+        "type": "Major host"
+      },
+      {
+        "code": "PHYTCN",
+        "name": "Phytophthora cinnamomi (PHYTCN)",
+        "type": "Major host"
+      },
+      {
+        "code": "DACUDO",
+        "name": "Bactrocera dorsalis (DACUDO)",
+        "type": "Host"
+      },
+      {
+        "code": "CERAFI",
+        "name": "Ceratocystis fimbriata (CERAFI)",
+        "type": "Host"
+      },
+      {
+        "code": "COLLFC",
+        "name": "Colletotrichum fructicola (COLLFC)",
+        "type": "Host"
+      },
+      {
+        "code": "ERWICH",
+        "name": "Erwinia chrysanthemi (ERWICH)",
+        "type": "Host"
+      },
+      {
+        "code": "GIBBFU",
+        "name": "Fusarium fujikuroi (as Ananas) (GIBBFU)",
+        "type": "Host"
+      },
+      {
+        "code": "HOLPAN",
+        "name": "Holopothrips ananasi (HOLPAN)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYORH",
+        "name": "Lasiodiplodia theobromae (PHYORH)",
+        "type": "Host"
+      },
+      {
+        "code": "PHENHI",
+        "name": "Maconellicoccus hirsutus (PHENHI)",
+        "type": "Host"
+      },
+      {
+        "code": "METAHE",
+        "name": "Metamasius hemipterus (METAHE)",
+        "type": "Host"
+      },
+      {
+        "code": "OPOGSC",
+        "name": "Opogona sacchari (OPOGSC)",
+        "type": "Host"
+      },
+      {
+        "code": "OPOGSC",
+        "name": "Opogona sacchari (as Bromeliaceae) (OPOGSC)",
+        "type": "Host"
+      },
+      {
+        "code": "TSWV00",
+        "name": "Orthotospovirus tomatomaculae (TSWV00)",
+        "type": "Host"
+      },
+      {
+        "code": "ERWIAN",
+        "name": "Pantoea ananatis (ERWIAN)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYTNP",
+        "name": "Phytophthora nicotianae (PHYTNP)",
+        "type": "Host"
+      },
+      {
+        "code": "RADOSI",
+        "name": "Radopholus similis (RADOSI)",
+        "type": "Host"
+      },
+      {
+        "code": "ROTYRE",
+        "name": "Rotylenchulus reniformis (ROTYRE)",
+        "type": "Host"
+      },
+      {
+        "code": "RHIEIN",
+        "name": "Schedorhinotermes intermedius (RHIEIN)",
+        "type": "Host"
+      },
+      {
+        "code": "THECBA",
+        "name": "Strymon megarus (THECBA)",
+        "type": "Host"
+      },
+      {
+        "code": "THECEC",
+        "name": "Tmolus echion (THECEC)",
+        "type": "Host"
+      },
+      {
+        "code": "UNASCI",
+        "name": "Unaspis citri (UNASCI)",
+        "type": "Host"
+      }
+    ]
+  },
+  "gbif": {
+    "key": 5288819,
+    "url": "https://www.gbif.org/species/5288819",
+    "scientificName": "Ananas comosus (L.) Merr.",
+    "canonicalName": "Ananas comosus",
+    "family": "Bromeliaceae",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "matchType": "EXACT",
+    "confidence": 99
+  }
+}

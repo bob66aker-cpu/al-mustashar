@@ -1,0 +1,210 @@
+{
+  "schema": 1,
+  "crop_id": "spinach",
+  "generated_by": "scripts/advice-harvest.mjs",
+  "fetched_at": "2026-10-14",
+  "candidate": {
+    "ar": "السبانخ",
+    "en": "Spinach",
+    "fr": "Épinard",
+    "sci_expected": "Spinacia oleracea"
+  },
+  "eppo": {
+    "code": "SPQOL",
+    "overview_url": "https://gd.eppo.int/taxon/SPQOL",
+    "overview_title": "Spinacia oleracea (SPQOL)",
+    "pests_url": "https://gd.eppo.int/taxon/SPQOL/pests",
+    "http_status": 200,
+    "pests_total_rows": 47,
+    "by_type": {
+      "Doubtful host": 2,
+      "Experimental": 9,
+      "Host": 34,
+      "Non-host": 1,
+      "Wild/Weed": 1
+    },
+    "pests": [
+      {
+        "code": "ALEDDI",
+        "name": "Aleurodicus dispersus (ALEDDI)",
+        "type": "Host"
+      },
+      {
+        "code": "CLCUMV",
+        "name": "Begomovirus gossypimultanense (CLCUMV)",
+        "type": "Host"
+      },
+      {
+        "code": "BNYVV0",
+        "name": "Benyvirus necrobetae (BNYVV0)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYPSO",
+        "name": "'Candidatus Phytoplasma solani' (PHYPSO)",
+        "type": "Host"
+      },
+      {
+        "code": "CIRCTE",
+        "name": "Circulifer tenellus (CIRCTE)",
+        "type": "Host"
+      },
+      {
+        "code": "BCTV00",
+        "name": "Curtovirus betae (BCTV00)",
+        "type": "Host"
+      },
+      {
+        "code": "DIABUH",
+        "name": "Diabrotica undecimpunctata howardi (DIABUH)",
+        "type": "Host"
+      },
+      {
+        "code": "DIABUN",
+        "name": "Diabrotica undecimpunctata undecimpunctata (DIABUN)",
+        "type": "Host"
+      },
+      {
+        "code": "EPIXTU",
+        "name": "Epitrix tuberis (EPIXTU)",
+        "type": "Host"
+      },
+      {
+        "code": "HELIAR",
+        "name": "Helicoverpa armigera (HELIAR)",
+        "type": "Host"
+      },
+      {
+        "code": "HELIZE",
+        "name": "Helicoverpa zea (HELIZE)",
+        "type": "Host"
+      },
+      {
+        "code": "LIRIHU",
+        "name": "Liriomyza huidobrensis (LIRIHU)",
+        "type": "Host"
+      },
+      {
+        "code": "LIRISA",
+        "name": "Liriomyza sativae (LIRISA)",
+        "type": "Host"
+      },
+      {
+        "code": "LIRITR",
+        "name": "Liriomyza trifolii (LIRITR)",
+        "type": "Host"
+      },
+      {
+        "code": "LIXUJU",
+        "name": "Lixus juncii (LIXUJU)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGCH",
+        "name": "Meloidogyne chitwoodi (MELGCH)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGGC",
+        "name": "Meloidogyne graminicola (MELGGC)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGLC",
+        "name": "Meloidogyne luci (MELGLC)",
+        "type": "Host"
+      },
+      {
+        "code": "NACOBA",
+        "name": "Nacobbus aberrans sensu lato (NACOBA)",
+        "type": "Host"
+      },
+      {
+        "code": "PLEOBJ",
+        "name": "Neocamarosporium betae (PLEOBJ)",
+        "type": "Host"
+      },
+      {
+        "code": "INSV00",
+        "name": "Orthotospovirus impatiensnecromaculae (INSV00)",
+        "type": "Host"
+      },
+      {
+        "code": "TSWV00",
+        "name": "Orthotospovirus tomatomaculae (TSWV00)",
+        "type": "Host"
+      },
+      {
+        "code": "PHMPOM",
+        "name": "Phymatotrichopsis omnivora (PHMPOM)",
+        "type": "Host"
+      },
+      {
+        "code": "SPFMV0",
+        "name": "Potyvirus batataplumei (SPFMV0)",
+        "type": "Host"
+      },
+      {
+        "code": "PRDILO",
+        "name": "Prodiplosis longifila (PRDILO)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODER",
+        "name": "Spodoptera eridania (PRODER)",
+        "type": "Host"
+      },
+      {
+        "code": "LAPHFR",
+        "name": "Spodoptera frugiperda (LAPHFR)",
+        "type": "Host"
+      },
+      {
+        "code": "SPODLI",
+        "name": "Spodoptera littoralis (SPODLI)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODLI",
+        "name": "Spodoptera litura (PRODLI)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODOR",
+        "name": "Spodoptera ornithogalli (PRODOR)",
+        "type": "Host"
+      },
+      {
+        "code": "THRIPL",
+        "name": "Thrips palmi (THRIPL)",
+        "type": "Host"
+      },
+      {
+        "code": "TRV000",
+        "name": "Tobravirus tabaci (TRV000)",
+        "type": "Host"
+      },
+      {
+        "code": "VERTDA",
+        "name": "Verticillium dahliae (VERTDA)",
+        "type": "Host"
+      },
+      {
+        "code": "VERTNO",
+        "name": "Verticillium nonalfalfae (VERTNO)",
+        "type": "Host"
+      }
+    ]
+  },
+  "gbif": {
+    "key": 3083647,
+    "url": "https://www.gbif.org/species/3083647",
+    "scientificName": "Spinacia oleracea L.",
+    "canonicalName": "Spinacia oleracea",
+    "family": "Amaranthaceae",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "matchType": "EXACT",
+    "confidence": 100
+  }
+}

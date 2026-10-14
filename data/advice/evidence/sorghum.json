@@ -1,0 +1,365 @@
+{
+  "schema": 1,
+  "crop_id": "sorghum",
+  "generated_by": "scripts/advice-harvest.mjs",
+  "fetched_at": "2026-10-14",
+  "candidate": {
+    "ar": "السورغوم",
+    "en": "Sorghum",
+    "fr": "Sorgho",
+    "sci_expected": "Sorghum bicolor"
+  },
+  "eppo": {
+    "code": "SORVU",
+    "overview_url": "https://gd.eppo.int/taxon/SORVU",
+    "overview_title": "Sorghum bicolor (SORVU)",
+    "pests_url": "https://gd.eppo.int/taxon/SORVU/pests",
+    "http_status": 200,
+    "pests_total_rows": 70,
+    "by_type": {
+      "Doubtful host": 1,
+      "Experimental": 3,
+      "Host": 57,
+      "Major host": 8,
+      "Non-host": 1
+    },
+    "pests": [
+      {
+        "code": "CHILZO",
+        "name": "Chilo partellus (CHILZO)",
+        "type": "Major host"
+      },
+      {
+        "code": "EORELO",
+        "name": "Eoreuma loftini (EORELO)",
+        "type": "Major host"
+      },
+      {
+        "code": "HELIZE",
+        "name": "Helicoverpa zea (HELIZE)",
+        "type": "Major host"
+      },
+      {
+        "code": "MELGNA",
+        "name": "Meloidogyne naasi (MELGNA)",
+        "type": "Major host"
+      },
+      {
+        "code": "PRSCSO",
+        "name": "Peronosclerospora sorghi (PRSCSO)",
+        "type": "Major host"
+      },
+      {
+        "code": "SESACR",
+        "name": "Sesamia cretica (SESACR)",
+        "type": "Major host"
+      },
+      {
+        "code": "LAPHFR",
+        "name": "Spodoptera frugiperda (LAPHFR)",
+        "type": "Major host"
+      },
+      {
+        "code": "CONTSO",
+        "name": "Stenodiplosis sorghicola (CONTSO)",
+        "type": "Major host"
+      },
+      {
+        "code": "ATHEOZ",
+        "name": "Atherigona oryzae (ATHEOZ)",
+        "type": "Host"
+      },
+      {
+        "code": "ATHEOZ",
+        "name": "Atherigona oryzae (as Sorghum) (ATHEOZ)",
+        "type": "Host"
+      },
+      {
+        "code": "ATHERE",
+        "name": "Atherigona reversura (ATHERE)",
+        "type": "Host"
+      },
+      {
+        "code": "BAGRHI",
+        "name": "Bagrada hilaris (as Sorghum) (BAGRHI)",
+        "type": "Host"
+      },
+      {
+        "code": "BUSSFU",
+        "name": "Busseola fusca (BUSSFU)",
+        "type": "Host"
+      },
+      {
+        "code": "BUSSFU",
+        "name": "Busseola fusca (as Sorghum) (BUSSFU)",
+        "type": "Host"
+      },
+      {
+        "code": "DIATAU",
+        "name": "Chilo auricilius (DIATAU)",
+        "type": "Host"
+      },
+      {
+        "code": "DIATIN",
+        "name": "Chilo infuscatellus (DIATIN)",
+        "type": "Host"
+      },
+      {
+        "code": "CHILSU",
+        "name": "Chilo suppressalis (CHILSU)",
+        "type": "Host"
+      },
+      {
+        "code": "CORBNE",
+        "name": "Clavibacter nebraskensis (CORBNE)",
+        "type": "Host"
+      },
+      {
+        "code": "COLLFC",
+        "name": "Colletotrichum fructicola (COLLFC)",
+        "type": "Host"
+      },
+      {
+        "code": "CRYBGN",
+        "name": "Cryptoblabes gnidiella (CRYBGN)",
+        "type": "Host"
+      },
+      {
+        "code": "DIABUH",
+        "name": "Diabrotica undecimpunctata howardi (DIABUH)",
+        "type": "Host"
+      },
+      {
+        "code": "DIABVZ",
+        "name": "Diabrotica virgifera zeae (as Sorghum) (DIABVZ)",
+        "type": "Host"
+      },
+      {
+        "code": "DPREAB",
+        "name": "Diaprepes abbreviatus (DPREAB)",
+        "type": "Host"
+      },
+      {
+        "code": "DIATSA",
+        "name": "Diatraea saccharalis (DIATSA)",
+        "type": "Host"
+      },
+      {
+        "code": "DICHPU",
+        "name": "Dichocrocis punctiferalis (DICHPU)",
+        "type": "Host"
+      },
+      {
+        "code": "BRAYNO",
+        "name": "Diuraphis noxia (BRAYNO)",
+        "type": "Host"
+      },
+      {
+        "code": "ELASLI",
+        "name": "Elasmopalpus lignosellus (ELASLI)",
+        "type": "Host"
+      },
+      {
+        "code": "ELDASA",
+        "name": "Eldana saccharina (ELDASA)",
+        "type": "Host"
+      },
+      {
+        "code": "ERWICH",
+        "name": "Erwinia chrysanthemi (ERWICH)",
+        "type": "Host"
+      },
+      {
+        "code": "MRCV00",
+        "name": "Fijivirus cuartoense (MRCV00)",
+        "type": "Host"
+      },
+      {
+        "code": "HELIAR",
+        "name": "Helicoverpa armigera (HELIAR)",
+        "type": "Host"
+      },
+      {
+        "code": "HETDZE",
+        "name": "Heterodera zeae (HETDZE)",
+        "type": "Host"
+      },
+      {
+        "code": "HOMLTR",
+        "name": "Homalodisca vitripennis (HOMLTR)",
+        "type": "Host"
+      },
+      {
+        "code": "LAGRVL",
+        "name": "Lagria villosa (LAGRVL)",
+        "type": "Host"
+      },
+      {
+        "code": "LIRISA",
+        "name": "Liriomyza sativae (LIRISA)",
+        "type": "Host"
+      },
+      {
+        "code": "MSV000",
+        "name": "Mastrevirus storeyi (MSV000)",
+        "type": "Host"
+      },
+      {
+        "code": "MELNCO",
+        "name": "Melanotus communis (MELNCO)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGCH",
+        "name": "Meloidogyne chitwoodi (MELGCH)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGFL",
+        "name": "Meloidogyne floridensis (MELGFL)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGGC",
+        "name": "Meloidogyne graminicola (MELGGC)",
+        "type": "Host"
+      },
+      {
+        "code": "METAHE",
+        "name": "Metamasius hemipterus (METAHE)",
+        "type": "Host"
+      },
+      {
+        "code": "PSEDSE",
+        "name": "Mythimna separata (PSEDSE)",
+        "type": "Host"
+      },
+      {
+        "code": "PYRUNU",
+        "name": "Ostrinia nubilalis (PYRUNU)",
+        "type": "Host"
+      },
+      {
+        "code": "PERCCI",
+        "name": "Periconia circinata (PERCCI)",
+        "type": "Host"
+      },
+      {
+        "code": "PRSCPH",
+        "name": "Peronosclerospora philippinensis (PRSCPH)",
+        "type": "Host"
+      },
+      {
+        "code": "PHENSO",
+        "name": "Phenacoccus solenopsis (PHENSO)",
+        "type": "Host"
+      },
+      {
+        "code": "PLAAST",
+        "name": "Platynota stultana (PLAAST)",
+        "type": "Host"
+      },
+      {
+        "code": "PLSOMO",
+        "name": "Plesiommata mollicella (PLSOMO)",
+        "type": "Host"
+      },
+      {
+        "code": "POOPCO",
+        "name": "Poophilus costalis (POOPCO)",
+        "type": "Host"
+      },
+      {
+        "code": "SCMV00",
+        "name": "Potyvirus sacchari (SCMV00)",
+        "type": "Host"
+      },
+      {
+        "code": "SRMV00",
+        "name": "Potyvirus sorghitessellati (SRMV00)",
+        "type": "Host"
+      },
+      {
+        "code": "PRATCO",
+        "name": "Pratylenchus coffeae (PRATCO)",
+        "type": "Host"
+      },
+      {
+        "code": "RICASC",
+        "name": "Ricania speculum (RICASC)",
+        "type": "Host"
+      },
+      {
+        "code": "PSDMAD",
+        "name": "Robbsia andropogonis (PSDMAD)",
+        "type": "Host"
+      },
+      {
+        "code": "SESACA",
+        "name": "Sesamia calamistis (SESACA)",
+        "type": "Host"
+      },
+      {
+        "code": "LAPHEX",
+        "name": "Spodoptera exempta (LAPHEX)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODLI",
+        "name": "Spodoptera litura (PRODLI)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODOR",
+        "name": "Spodoptera ornithogalli (PRODOR)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODPR",
+        "name": "Spodoptera praefica (PRODPR)",
+        "type": "Host"
+      },
+      {
+        "code": "CONTSO",
+        "name": "Stenodiplosis sorghicola (as Sorghum) (CONTSO)",
+        "type": "Host"
+      },
+      {
+        "code": "TAPARU",
+        "name": "Tapajosa rubromarginata (TAPARU)",
+        "type": "Host"
+      },
+      {
+        "code": "ARGPLE",
+        "name": "Thaumatotibia leucotreta (as Sorghum) (ARGPLE)",
+        "type": "Host"
+      },
+      {
+        "code": "TROGGA",
+        "name": "Trogoderma granarium (TROGGA)",
+        "type": "Host"
+      },
+      {
+        "code": "XANTHO",
+        "name": "Xanthomonas vasicola pv. holcicola (XANTHO)",
+        "type": "Host"
+      },
+      {
+        "code": "XIPHRI",
+        "name": "Xiphinema rivesi (XIPHRI)",
+        "type": "Host"
+      }
+    ]
+  },
+  "gbif": {
+    "key": 2705181,
+    "url": "https://www.gbif.org/species/2705181",
+    "scientificName": "Sorghum bicolor (L.) Moench",
+    "canonicalName": "Sorghum bicolor",
+    "family": "Poaceae",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "matchType": "EXACT",
+    "confidence": 99
+  }
+}

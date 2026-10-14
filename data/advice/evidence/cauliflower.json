@@ -1,0 +1,409 @@
+{
+  "schema": 1,
+  "crop_id": "cauliflower",
+  "generated_by": "scripts/advice-harvest.mjs",
+  "fetched_at": "2026-10-14",
+  "candidate": {
+    "ar": "القرنبيط",
+    "en": "Cauliflower",
+    "fr": "Chou-fleur",
+    "sci_expected": "Brassica oleracea botrytis"
+  },
+  "eppo": {
+    "code": "BRSOX",
+    "overview_url": "https://gd.eppo.int/taxon/BRSOX",
+    "overview_title": "Brassica oleracea (BRSOX)",
+    "pests_url": "https://gd.eppo.int/taxon/BRSOX/pests",
+    "http_status": 200,
+    "pests_total_rows": 76,
+    "by_type": {
+      "Experimental": 1,
+      "Host": 65,
+      "Major host": 9,
+      "Wild/Weed": 1
+    },
+    "pests": [
+      {
+        "code": "BAGRHI",
+        "name": "Bagrada hilaris (as Brassica) (BAGRHI)",
+        "type": "Major host"
+      },
+      {
+        "code": "HYLEFL",
+        "name": "Delia floralis (HYLEFL)",
+        "type": "Major host"
+      },
+      {
+        "code": "LIRIBO",
+        "name": "Liriomyza bryoniae (LIRIBO)",
+        "type": "Major host"
+      },
+      {
+        "code": "BARABR",
+        "name": "Mamestra brassicae (BARABR)",
+        "type": "Major host"
+      },
+      {
+        "code": "MELGET",
+        "name": "Meloidogyne ethiopica (MELGET)",
+        "type": "Major host"
+      },
+      {
+        "code": "PHYECR",
+        "name": "Phyllotreta cruciferae (PHYECR)",
+        "type": "Major host"
+      },
+      {
+        "code": "PIERBR",
+        "name": "Pieris brassicae (PIERBR)",
+        "type": "Major host"
+      },
+      {
+        "code": "LEPTMA",
+        "name": "Plenodomus lingam (LEPTMA)",
+        "type": "Major host"
+      },
+      {
+        "code": "SPODLI",
+        "name": "Spodoptera littoralis (SPODLI)",
+        "type": "Major host"
+      },
+      {
+        "code": "ADORSI",
+        "name": "Adoretus sinicus (as Brassica) (ADORSI)",
+        "type": "Host"
+      },
+      {
+        "code": "AGRBTU",
+        "name": "Agrobacterium tumefaciens (as Brassica) (AGRBTU)",
+        "type": "Host"
+      },
+      {
+        "code": "AGROSE",
+        "name": "Agrotis segetum (as Brassicaceae) (AGROSE)",
+        "type": "Host"
+      },
+      {
+        "code": "ALEDDI",
+        "name": "Aleurodicus dispersus (ALEDDI)",
+        "type": "Host"
+      },
+      {
+        "code": "ALEUPR",
+        "name": "Aleyrodes proletella (as Brassica) (ALEUPR)",
+        "type": "Host"
+      },
+      {
+        "code": "ATALCO",
+        "name": "Athalia rosae (as Brassicaceae) (ATALCO)",
+        "type": "Host"
+      },
+      {
+        "code": "ATHEOR",
+        "name": "Atherigona orientalis (ATHEOR)",
+        "type": "Host"
+      },
+      {
+        "code": "BEMITA",
+        "name": "Bemisia tabaci (BEMITA)",
+        "type": "Host"
+      },
+      {
+        "code": "BEMITA",
+        "name": "Bemisia tabaci (as Brassicaceae) (BEMITA)",
+        "type": "Host"
+      },
+      {
+        "code": "TORTPR",
+        "name": "Cacoecimorpha pronubana (TORTPR)",
+        "type": "Host"
+      },
+      {
+        "code": "CEUTPL",
+        "name": "Ceutorhynchus assimilis (as Brassicaceae) (CEUTPL)",
+        "type": "Host"
+      },
+      {
+        "code": "CEUTSL",
+        "name": "Ceutorhynchus sulcicollis (as Brassicaceae) (CEUTSL)",
+        "type": "Host"
+      },
+      {
+        "code": "HELIVI",
+        "name": "Chloridea virescens (HELIVI)",
+        "type": "Host"
+      },
+      {
+        "code": "CHRXER",
+        "name": "Chrysodeixis eriosoma (CHRXER)",
+        "type": "Host"
+      },
+      {
+        "code": "CONTNA",
+        "name": "Contarinia nasturtii (as Brassicaceae) (CONTNA)",
+        "type": "Host"
+      },
+      {
+        "code": "TOCV00",
+        "name": "Crinivirus tomatichlorosis (as Brassica) (TOCV00)",
+        "type": "Host"
+      },
+      {
+        "code": "HYLEFL",
+        "name": "Delia floralis (as Brassica) (HYLEFL)",
+        "type": "Host"
+      },
+      {
+        "code": "HYLEFL",
+        "name": "Delia floralis (as Brassicaceae) (HYLEFL)",
+        "type": "Host"
+      },
+      {
+        "code": "HYLEFG",
+        "name": "Delia florilega (as Brassicaceae) (HYLEFG)",
+        "type": "Host"
+      },
+      {
+        "code": "HYLEPL",
+        "name": "Delia platura (as Brassicaceae) (HYLEPL)",
+        "type": "Host"
+      },
+      {
+        "code": "DIABUN",
+        "name": "Diabrotica undecimpunctata undecimpunctata (DIABUN)",
+        "type": "Host"
+      },
+      {
+        "code": "DITYDI",
+        "name": "Ditylenchus dipsaci (DITYDI)",
+        "type": "Host"
+      },
+      {
+        "code": "EPIXTU",
+        "name": "Epitrix tuberis (EPIXTU)",
+        "type": "Host"
+      },
+      {
+        "code": "EURDOL",
+        "name": "Eurydema oleraceum (as Brassicaceae) (EURDOL)",
+        "type": "Host"
+      },
+      {
+        "code": "EURDOR",
+        "name": "Eurydema ornata (as Brassicaceae) (EURDOR)",
+        "type": "Host"
+      },
+      {
+        "code": "FRANCS",
+        "name": "Frankliniella australis (as Brassicaceae) (FRANCS)",
+        "type": "Host"
+      },
+      {
+        "code": "HALYHA",
+        "name": "Halyomorpha halys (HALYHA)",
+        "type": "Host"
+      },
+      {
+        "code": "HELIAR",
+        "name": "Helicoverpa armigera (HELIAR)",
+        "type": "Host"
+      },
+      {
+        "code": "HELIZE",
+        "name": "Helicoverpa zea (HELIZE)",
+        "type": "Host"
+      },
+      {
+        "code": "HELPRU",
+        "name": "Helophorus rufipes (as Brassicaceae) (HELPRU)",
+        "type": "Host"
+      },
+      {
+        "code": "HETDSC",
+        "name": "Heterodera schachtii (as Brassica) (HETDSC)",
+        "type": "Host"
+      },
+      {
+        "code": "LIRIHU",
+        "name": "Liriomyza huidobrensis (LIRIHU)",
+        "type": "Host"
+      },
+      {
+        "code": "LIRITR",
+        "name": "Liriomyza trifolii (as Brassica) (LIRITR)",
+        "type": "Host"
+      },
+      {
+        "code": "LISTCO",
+        "name": "Listroderes costirostris (LISTCO)",
+        "type": "Host"
+      },
+      {
+        "code": "LISTDI",
+        "name": "Listroderes difficilis (LISTDI)",
+        "type": "Host"
+      },
+      {
+        "code": "BARABR",
+        "name": "Mamestra brassicae (as Brassica) (BARABR)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGGC",
+        "name": "Meloidogyne graminicola (MELGGC)",
+        "type": "Host"
+      },
+      {
+        "code": "NACOBA",
+        "name": "Nacobbus aberrans sensu lato (NACOBA)",
+        "type": "Host"
+      },
+      {
+        "code": "PALEMA",
+        "name": "Nephrotoma appendiculata (as Brassicaceae) (PALEMA)",
+        "type": "Host"
+      },
+      {
+        "code": "TBRV00",
+        "name": "Nepovirus nigranuli (TBRV00)",
+        "type": "Host"
+      },
+      {
+        "code": "NYSIHU",
+        "name": "Nysius huttoni (as Brassica) (NYSIHU)",
+        "type": "Host"
+      },
+      {
+        "code": "OMOPLE",
+        "name": "Omophlus lepturoides (as Brassica) (OMOPLE)",
+        "type": "Host"
+      },
+      {
+        "code": "TSWV00",
+        "name": "Orthotospovirus tomatomaculae (TSWV00)",
+        "type": "Host"
+      },
+      {
+        "code": "OTALLA",
+        "name": "Otala lactea (as Brassicaceae) (OTALLA)",
+        "type": "Host"
+      },
+      {
+        "code": "PECBPO",
+        "name": "Pectobacterium polaris (PECBPO)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYEAT",
+        "name": "Phyllotreta atra (as Brassicaceae) (PHYEAT)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYECR",
+        "name": "Phyllotreta cruciferae (as Brassicaceae) (PHYECR)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYYRU",
+        "name": "Phytomyza rufipes (as Brassicaceae) (PHYYRU)",
+        "type": "Host"
+      },
+      {
+        "code": "PIERBR",
+        "name": "Pieris brassicae (as Brassica) (PIERBR)",
+        "type": "Host"
+      },
+      {
+        "code": "PIERBR",
+        "name": "Pieris brassicae (as Brassicaceae) (PIERBR)",
+        "type": "Host"
+      },
+      {
+        "code": "PLADBR",
+        "name": "Plasmodiophora brassicae (as Brassica) (PLADBR)",
+        "type": "Host"
+      },
+      {
+        "code": "PLADBR",
+        "name": "Plasmodiophora brassicae (as Brassicaceae) (PLADBR)",
+        "type": "Host"
+      },
+      {
+        "code": "LEPTMA",
+        "name": "Plenodomus lingam (as Brassicaceae) (LEPTMA)",
+        "type": "Host"
+      },
+      {
+        "code": "PRDILO",
+        "name": "Prodiplosis longifila (PRDILO)",
+        "type": "Host"
+      },
+      {
+        "code": "PSYICH",
+        "name": "Psylliodes chrysocephala (as Brassicaceae) (PSYICH)",
+        "type": "Host"
+      },
+      {
+        "code": "RALSPS",
+        "name": "Ralstonia pseudosolanacearum (RALSPS)",
+        "type": "Host"
+      },
+      {
+        "code": "RALSSO",
+        "name": "Ralstonia solanacearum species complex (RALSSO)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODLI",
+        "name": "Spodoptera litura (PRODLI)",
+        "type": "Host"
+      },
+      {
+        "code": "SPODMA",
+        "name": "Spodoptera mauritia (as Brassicaceae) (SPODMA)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODOR",
+        "name": "Spodoptera ornithogalli (PRODOR)",
+        "type": "Host"
+      },
+      {
+        "code": "TATOAU",
+        "name": "Tatochila autodice (as Brassicaceae) (TATOAU)",
+        "type": "Host"
+      },
+      {
+        "code": "THRIPL",
+        "name": "Thrips palmi (THRIPL)",
+        "type": "Host"
+      },
+      {
+        "code": "THRISE",
+        "name": "Thrips setosus (THRISE)",
+        "type": "Host"
+      },
+      {
+        "code": "TYLOBR",
+        "name": "Tyloderma brassicae (as Brassicaceae) (TYLOBR)",
+        "type": "Host"
+      },
+      {
+        "code": "VERTDA",
+        "name": "Verticillium dahliae (VERTDA)",
+        "type": "Host"
+      }
+    ]
+  },
+  "gbif": {
+    "key": 3042845,
+    "url": "https://www.gbif.org/species/3042845",
+    "scientificName": "Brassica oleracea L.",
+    "canonicalName": "Brassica oleracea",
+    "family": "Brassicaceae",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "matchType": "EXACT",
+    "confidence": 99
+  }
+}

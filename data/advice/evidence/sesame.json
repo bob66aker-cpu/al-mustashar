@@ -1,0 +1,122 @@
+{
+  "schema": 1,
+  "crop_id": "sesame",
+  "generated_by": "scripts/advice-harvest.mjs",
+  "fetched_at": "2026-10-14",
+  "candidate": {
+    "ar": "السمسم",
+    "en": "Sesame",
+    "fr": "Sésame",
+    "sci_expected": "Sesamum indicum"
+  },
+  "eppo": {
+    "code": "SEGIN",
+    "overview_url": "https://gd.eppo.int/taxon/SEGIN",
+    "overview_title": "Sesamum indicum (SEGIN)",
+    "pests_url": "https://gd.eppo.int/taxon/SEGIN/pests",
+    "http_status": 200,
+    "pests_total_rows": 20,
+    "by_type": {
+      "Experimental": 3,
+      "Host": 17
+    },
+    "pests": [
+      {
+        "code": "EMPOBI",
+        "name": "Amrasca biguttula (EMPOBI)",
+        "type": "Host"
+      },
+      {
+        "code": "HELIVI",
+        "name": "Chloridea virescens (HELIVI)",
+        "type": "Host"
+      },
+      {
+        "code": "HELIAR",
+        "name": "Helicoverpa armigera (HELIAR)",
+        "type": "Host"
+      },
+      {
+        "code": "HISHPH",
+        "name": "Hishimonus phycitis (HISHPH)",
+        "type": "Host"
+      },
+      {
+        "code": "LAGRVL",
+        "name": "Lagria villosa (LAGRVL)",
+        "type": "Host"
+      },
+      {
+        "code": "NEOAHA",
+        "name": "Neoaliturus haematoceps (NEOAHA)",
+        "type": "Host"
+      },
+      {
+        "code": "TSWV00",
+        "name": "Orthotospovirus tomatomaculae (TSWV00)",
+        "type": "Host"
+      },
+      {
+        "code": "PHENSO",
+        "name": "Phenacoccus solenopsis (PHENSO)",
+        "type": "Host"
+      },
+      {
+        "code": "ZYMV00",
+        "name": "Potyvirus cucurbitaflavitesselati (ZYMV00)",
+        "type": "Host"
+      },
+      {
+        "code": "PRATCO",
+        "name": "Pratylenchus coffeae (PRATCO)",
+        "type": "Host"
+      },
+      {
+        "code": "RALSPS",
+        "name": "Ralstonia pseudosolanacearum (RALSPS)",
+        "type": "Host"
+      },
+      {
+        "code": "RALSSO",
+        "name": "Ralstonia solanacearum species complex (RALSSO)",
+        "type": "Host"
+      },
+      {
+        "code": "SPIRCI",
+        "name": "Spiroplasma citri (SPIRCI)",
+        "type": "Host"
+      },
+      {
+        "code": "LAPHFR",
+        "name": "Spodoptera frugiperda (LAPHFR)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODOR",
+        "name": "Spodoptera ornithogalli (PRODOR)",
+        "type": "Host"
+      },
+      {
+        "code": "THRIPL",
+        "name": "Thrips palmi (THRIPL)",
+        "type": "Host"
+      },
+      {
+        "code": "THRISE",
+        "name": "Thrips setosus (THRISE)",
+        "type": "Host"
+      }
+    ]
+  },
+  "gbif": {
+    "key": 3172622,
+    "url": "https://www.gbif.org/species/3172622",
+    "scientificName": "Sesamum indicum L.",
+    "canonicalName": "Sesamum indicum",
+    "family": "Pedaliaceae",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "matchType": "EXACT",
+    "confidence": 100
+  }
+}

@@ -1,0 +1,554 @@
+{
+  "schema": 1,
+  "crop_id": "sugarcane",
+  "generated_by": "scripts/advice-harvest.mjs",
+  "fetched_at": "2026-10-14",
+  "candidate": {
+    "ar": "قصب السكر",
+    "en": "Sugarcane",
+    "fr": "Canne à sucre",
+    "sci_expected": "Saccharum officinarum"
+  },
+  "eppo": {
+    "code": "SACOF",
+    "overview_url": "https://gd.eppo.int/taxon/SACOF",
+    "overview_title": "Saccharum officinarum (SACOF)",
+    "pests_url": "https://gd.eppo.int/taxon/SACOF/pests",
+    "http_status": 200,
+    "pests_total_rows": 106,
+    "by_type": {
+      "Doubtful host": 1,
+      "Experimental": 2,
+      "Host": 67,
+      "Major host": 36
+    },
+    "pests": [
+      {
+        "code": "CHIOTE",
+        "name": "Aulacaspis tegalensis (CHIOTE)",
+        "type": "Major host"
+      },
+      {
+        "code": "BLAAGR",
+        "name": "Blastobasis graminea (BLAAGR)",
+        "type": "Major host"
+      },
+      {
+        "code": "BUSSFU",
+        "name": "Busseola fusca (BUSSFU)",
+        "type": "Major host"
+      },
+      {
+        "code": "PHYPSA",
+        "name": "'Candidatus Phytoplasma sacchari' (PHYPSA)",
+        "type": "Major host"
+      },
+      {
+        "code": "DIATAU",
+        "name": "Chilo auricilius (DIATAU)",
+        "type": "Major host"
+      },
+      {
+        "code": "DIATIN",
+        "name": "Chilo infuscatellus (DIATIN)",
+        "type": "Major host"
+      },
+      {
+        "code": "CHILZO",
+        "name": "Chilo partellus (CHILZO)",
+        "type": "Major host"
+      },
+      {
+        "code": "PROSSA",
+        "name": "Chilo sacchariphagus (PROSSA)",
+        "type": "Major host"
+      },
+      {
+        "code": "CINTPU",
+        "name": "Cintractia pulverulenta (CINTPU)",
+        "type": "Major host"
+      },
+      {
+        "code": "DIATSA",
+        "name": "Diatraea saccharalis (DIATSA)",
+        "type": "Major host"
+      },
+      {
+        "code": "EORELO",
+        "name": "Eoreuma loftini (EORELO)",
+        "type": "Major host"
+      },
+      {
+        "code": "EUMGLA",
+        "name": "Eumargarodes laingi (EUMGLA)",
+        "type": "Major host"
+      },
+      {
+        "code": "ANMLOR",
+        "name": "Exomala orientalis (ANMLOR)",
+        "type": "Major host"
+      },
+      {
+        "code": "FDV000",
+        "name": "Fijivirus fijiense (FDV000)",
+        "type": "Major host"
+      },
+      {
+        "code": "CLABXY",
+        "name": "Leifsonia xyli subsp. xyli (CLABXY)",
+        "type": "Major host"
+      },
+      {
+        "code": "MSV000",
+        "name": "Mastrevirus storeyi (MSV000)",
+        "type": "Major host"
+      },
+      {
+        "code": "MELNCO",
+        "name": "Melanotus communis (MELNCO)",
+        "type": "Major host"
+      },
+      {
+        "code": "METAHE",
+        "name": "Metamasius hemipterus (METAHE)",
+        "type": "Major host"
+      },
+      {
+        "code": "PERKSA",
+        "name": "Perkinsiella saccharicida (PERKSA)",
+        "type": "Major host"
+      },
+      {
+        "code": "PRSCSA",
+        "name": "Peronosclerospora sacchari (PRSCSA)",
+        "type": "Major host"
+      },
+      {
+        "code": "PHYGSM",
+        "name": "Phyllophaga smithi (PHYGSM)",
+        "type": "Major host"
+      },
+      {
+        "code": "SCMV00",
+        "name": "Potyvirus sacchari (SCMV00)",
+        "type": "Major host"
+      },
+      {
+        "code": "PUCCKU",
+        "name": "Puccinia kuehnii (PUCCKU)",
+        "type": "Major host"
+      },
+      {
+        "code": "PYRLPE",
+        "name": "Pyrilla perpusilla (PYRLPE)",
+        "type": "Major host"
+      },
+      {
+        "code": "SPPHOB",
+        "name": "Rhabdoscelus obscurus (SPPHOB)",
+        "type": "Major host"
+      },
+      {
+        "code": "RHYCPA",
+        "name": "Rhynchophorus palmarum (RHYCPA)",
+        "type": "Major host"
+      },
+      {
+        "code": "LAPHFR",
+        "name": "Spodoptera frugiperda (LAPHFR)",
+        "type": "Major host"
+      },
+      {
+        "code": "SGCST0",
+        "name": "Sugarcane chlorotic streak agent (SGCST0)",
+        "type": "Major host"
+      },
+      {
+        "code": "SGD000",
+        "name": "Sugarcane dwarf agent (SGD000)",
+        "type": "Major host"
+      },
+      {
+        "code": "SCMVA0",
+        "name": "Sugarcane mosaic virus abaca mosaic strain (SCMVA0)",
+        "type": "Major host"
+      },
+      {
+        "code": "SRSV00",
+        "name": "Sugarcane Ramu stunt phytoplasma (SRSV00)",
+        "type": "Major host"
+      },
+      {
+        "code": "PHYP47",
+        "name": "Sugarcane white leaf phytoplasma (PHYP47)",
+        "type": "Major host"
+      },
+      {
+        "code": "TAPARU",
+        "name": "Tapajosa rubromarginata (TAPARU)",
+        "type": "Major host"
+      },
+      {
+        "code": "CASTLI",
+        "name": "Telchin licus (CASTLI)",
+        "type": "Major host"
+      },
+      {
+        "code": "XANTAB",
+        "name": "Xanthomonas albilineans (XANTAB)",
+        "type": "Major host"
+      },
+      {
+        "code": "XANTVA",
+        "name": "Xanthomonas axonopodis pv. vasculorum (XANTVA)",
+        "type": "Major host"
+      },
+      {
+        "code": "PSDMAV",
+        "name": "Acidovorax avenae (PSDMAV)",
+        "type": "Host"
+      },
+      {
+        "code": "ADORSI",
+        "name": "Adoretus sinicus (ADORSI)",
+        "type": "Host"
+      },
+      {
+        "code": "TOMAPO",
+        "name": "Aeneolamia contigua (TOMAPO)",
+        "type": "Host"
+      },
+      {
+        "code": "AMBPCO",
+        "name": "Amblypelta cocophaga (AMBPCO)",
+        "type": "Host"
+      },
+      {
+        "code": "PHRGTR",
+        "name": "Bathytricha truncata (PHRGTR)",
+        "type": "Host"
+      },
+      {
+        "code": "TETTFE",
+        "name": "Bothrogonia ferruginea (TETTFE)",
+        "type": "Host"
+      },
+      {
+        "code": "BRAPSU",
+        "name": "Brachyplatys subaeneus (BRAPSU)",
+        "type": "Host"
+      },
+      {
+        "code": "CHILAG",
+        "name": "Chilo agamemnon (CHILAG)",
+        "type": "Host"
+      },
+      {
+        "code": "PROSIN",
+        "name": "Chilo sacchariphagus indicus (PROSIN)",
+        "type": "Host"
+      },
+      {
+        "code": "CICDMB",
+        "name": "Cicadulina mbila (CICDMB)",
+        "type": "Host"
+      },
+      {
+        "code": "CORBNE",
+        "name": "Clavibacter nebraskensis (CORBNE)",
+        "type": "Host"
+      },
+      {
+        "code": "COLAHY",
+        "name": "Colaspis hypochlora (COLAHY)",
+        "type": "Host"
+      },
+      {
+        "code": "DIABUH",
+        "name": "Diabrotica undecimpunctata howardi (DIABUH)",
+        "type": "Host"
+      },
+      {
+        "code": "DPREAB",
+        "name": "Diaprepes abbreviatus (DPREAB)",
+        "type": "Host"
+      },
+      {
+        "code": "DIATSA",
+        "name": "Diatraea saccharalis (as Saccharum) (DIATSA)",
+        "type": "Host"
+      },
+      {
+        "code": "DITYDI",
+        "name": "Ditylenchus dipsaci (DITYDI)",
+        "type": "Host"
+      },
+      {
+        "code": "EARIIN",
+        "name": "Earias insulana (EARIIN)",
+        "type": "Host"
+      },
+      {
+        "code": "ELASLI",
+        "name": "Elasmopalpus lignosellus (ELASLI)",
+        "type": "Host"
+      },
+      {
+        "code": "ELDASA",
+        "name": "Eldana saccharina (ELDASA)",
+        "type": "Host"
+      },
+      {
+        "code": "EORELO",
+        "name": "Eoreuma loftini (as Saccharum) (EORELO)",
+        "type": "Host"
+      },
+      {
+        "code": "ERTNFU",
+        "name": "Erthesina fullo (ERTNFU)",
+        "type": "Host"
+      },
+      {
+        "code": "ERWICH",
+        "name": "Erwinia chrysanthemi (ERWICH)",
+        "type": "Host"
+      },
+      {
+        "code": "EURHBR",
+        "name": "Eurhizococcus brasiliensis (EURHBR)",
+        "type": "Host"
+      },
+      {
+        "code": "GIBBFU",
+        "name": "Fusarium fujikuroi (GIBBFU)",
+        "type": "Host"
+      },
+      {
+        "code": "MYNDCR",
+        "name": "Haplaxius crudus (MYNDCR)",
+        "type": "Host"
+      },
+      {
+        "code": "HELIZE",
+        "name": "Helicoverpa zea (HELIZE)",
+        "type": "Host"
+      },
+      {
+        "code": "HISHPH",
+        "name": "Hishimonus phycitis (HISHPH)",
+        "type": "Host"
+      },
+      {
+        "code": "LIGNVA",
+        "name": "Ligniera vasculorum (LIGNVA)",
+        "type": "Host"
+      },
+      {
+        "code": "MAGOCA",
+        "name": "Macugonalia cavifrons (MAGOCA)",
+        "type": "Host"
+      },
+      {
+        "code": "MEGTUS",
+        "name": "Megalurothrips usitatus (MEGTUS)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGET",
+        "name": "Meloidogyne ethiopica (MELGET)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGEX",
+        "name": "Meloidogyne exigua (MELGEX)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGGC",
+        "name": "Meloidogyne graminicola (MELGGC)",
+        "type": "Host"
+      },
+      {
+        "code": "PSEDSE",
+        "name": "Mythimna separata (PSEDSE)",
+        "type": "Host"
+      },
+      {
+        "code": "NEOMBE",
+        "name": "Neomaskellia bergii (NEOMBE)",
+        "type": "Host"
+      },
+      {
+        "code": "NILALU",
+        "name": "Nilaparvata lugens (NILALU)",
+        "type": "Host"
+      },
+      {
+        "code": "OPOGSC",
+        "name": "Opogona sacchari (OPOGSC)",
+        "type": "Host"
+      },
+      {
+        "code": "ERWIST",
+        "name": "Pantoea stewartii subsp. stewartii (ERWIST)",
+        "type": "Host"
+      },
+      {
+        "code": "PARYMI",
+        "name": "Paraleyrodes minei (PARYMI)",
+        "type": "Host"
+      },
+      {
+        "code": "PCV000",
+        "name": "Pecluvirus arachidis (PCV000)",
+        "type": "Host"
+      },
+      {
+        "code": "PRSCPH",
+        "name": "Peronosclerospora philippinensis (PRSCPH)",
+        "type": "Host"
+      },
+      {
+        "code": "SCLPST",
+        "name": "Peronosclerospora spontanea (SCLPST)",
+        "type": "Host"
+      },
+      {
+        "code": "PLANKE",
+        "name": "Planococcus kenyae (PLANKE)",
+        "type": "Host"
+      },
+      {
+        "code": "POOPCO",
+        "name": "Poophilus costalis (POOPCO)",
+        "type": "Host"
+      },
+      {
+        "code": "SRMV00",
+        "name": "Potyvirus sorghitessellati (SRMV00)",
+        "type": "Host"
+      },
+      {
+        "code": "PSCAMI",
+        "name": "Pseudacanthotermes militaris (PSCAMI)",
+        "type": "Host"
+      },
+      {
+        "code": "PUCCML",
+        "name": "Puccinia melanocephala (PUCCML)",
+        "type": "Host"
+      },
+      {
+        "code": "RHYCFE",
+        "name": "Rhynchophorus ferrugineus (RHYCFE)",
+        "type": "Host"
+      },
+      {
+        "code": "RICASC",
+        "name": "Ricania speculum (RICASC)",
+        "type": "Host"
+      },
+      {
+        "code": "ROOEX",
+        "name": "Rottboellia cochinchinensis (ROOEX)",
+        "type": "Host"
+      },
+      {
+        "code": "HELYBU",
+        "name": "Rotylenchus buxophilus (HELYBU)",
+        "type": "Host"
+      },
+      {
+        "code": "SCIPAU",
+        "name": "Scirpophaga nivella (SCIPAU)",
+        "type": "Host"
+      },
+      {
+        "code": "SESACA",
+        "name": "Sesamia calamistis (SESACA)",
+        "type": "Host"
+      },
+      {
+        "code": "SESACR",
+        "name": "Sesamia cretica (SESACR)",
+        "type": "Host"
+      },
+      {
+        "code": "SESAIN",
+        "name": "Sesamia inferens (SESAIN)",
+        "type": "Host"
+      },
+      {
+        "code": "SOROIN",
+        "name": "Sorosporium indicum (SOROIN)",
+        "type": "Host"
+      },
+      {
+        "code": "SPHTER",
+        "name": "Sphacelotheca erianthi (SPHTER)",
+        "type": "Host"
+      },
+      {
+        "code": "SPHTMA",
+        "name": "Sphacelotheca macrospora (SPHTMA)",
+        "type": "Host"
+      },
+      {
+        "code": "SPODMA",
+        "name": "Spodoptera mauritia (SPODMA)",
+        "type": "Host"
+      },
+      {
+        "code": "USTISC",
+        "name": "Sporisorium scitamineum (USTISC)",
+        "type": "Host"
+      },
+      {
+        "code": "STAGSA",
+        "name": "Stagonospora sacchari (STAGSA)",
+        "type": "Host"
+      },
+      {
+        "code": "THRIOR",
+        "name": "Stenchaetothrips biformis (THRIOR)",
+        "type": "Host"
+      },
+      {
+        "code": "STRLU",
+        "name": "Striga asiatica (STRLU)",
+        "type": "Host"
+      },
+      {
+        "code": "SGS000",
+        "name": "Sugarcane sereh agent (SGS000)",
+        "type": "Host"
+      },
+      {
+        "code": "MSPV00",
+        "name": "Tenuivirus zeae (MSPV00)",
+        "type": "Host"
+      },
+      {
+        "code": "TYLRCL",
+        "name": "Tylenchorhynchus claytoni (TYLRCL)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLBCR",
+        "name": "Xylosandrus crassiusculus (XYLBCR)",
+        "type": "Host"
+      }
+    ]
+  },
+  "gbif": {
+    "key": 2703912,
+    "url": "https://www.gbif.org/species/2703912",
+    "scientificName": "Saccharum officinarum L.",
+    "canonicalName": "Saccharum officinarum",
+    "family": "Poaceae",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "matchType": "EXACT",
+    "confidence": 100
+  }
+}

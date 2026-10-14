@@ -1,0 +1,428 @@
+{
+  "schema": 1,
+  "crop_id": "coconut",
+  "generated_by": "scripts/advice-harvest.mjs",
+  "fetched_at": "2026-10-14",
+  "candidate": {
+    "ar": "جوز الهند",
+    "en": "Coconut",
+    "fr": "Cocoier",
+    "sci_expected": "Cocos nucifera"
+  },
+  "eppo": {
+    "code": "CCNNU",
+    "overview_url": "https://gd.eppo.int/taxon/CCNNU",
+    "overview_title": "Cocos nucifera (CCNNU)",
+    "pests_url": "https://gd.eppo.int/taxon/CCNNU/pests",
+    "http_status": 200,
+    "pests_total_rows": 79,
+    "by_type": {
+      "Host": 41,
+      "Major host": 37,
+      "Wild/Weed": 1
+    },
+    "pests": [
+      {
+        "code": "ACEIGU",
+        "name": "Aceria guerreronis (ACEIGU)",
+        "type": "Major host"
+      },
+      {
+        "code": "ALEDDE",
+        "name": "Aleurodicus destructor (ALEDDE)",
+        "type": "Major host"
+      },
+      {
+        "code": "ARTOCA",
+        "name": "Artona catoxantha (ARTOCA)",
+        "type": "Major host"
+      },
+      {
+        "code": "DRECIN",
+        "name": "Bipolaris incurvata (DRECIN)",
+        "type": "Major host"
+      },
+      {
+        "code": "BRONLO",
+        "name": "Brontispa longissima (BRONLO)",
+        "type": "Major host"
+      },
+      {
+        "code": "RHAACO",
+        "name": "Bursaphelenchus cocophilus (RHAACO)",
+        "type": "Major host"
+      },
+      {
+        "code": "PHYPCT",
+        "name": "'Candidatus Phytoplasma cocostanzaniae’ (PHYPCT)",
+        "type": "Major host"
+      },
+      {
+        "code": "PHYPHI",
+        "name": "'Candidatus Phytoplasma hispanola' (PHYPHI)",
+        "type": "Major host"
+      },
+      {
+        "code": "PHYPKA",
+        "name": "‘Candidatus Phytoplasma katsepyensis’ (PHYPKA)",
+        "type": "Major host"
+      },
+      {
+        "code": "PHYPNO",
+        "name": "'Candidatus Phytoplasma noviguineense' (PHYPNO)",
+        "type": "Major host"
+      },
+      {
+        "code": "PHYPPA",
+        "name": "'Candidatus Phytoplasma palmae' (PHYPPA)",
+        "type": "Major host"
+      },
+      {
+        "code": "PHYPPL",
+        "name": "‘Candidatus Phytoplasma palmicola’ (PHYPPL)",
+        "type": "Major host"
+      },
+      {
+        "code": "CEATVA",
+        "name": "Cerataphis brasiliensis (CEATVA)",
+        "type": "Major host"
+      },
+      {
+        "code": "CCCVD0",
+        "name": "Cocadviroid cadangi (CCCVD0)",
+        "type": "Major host"
+      },
+      {
+        "code": "CKW000",
+        "name": "Coconut wilt agent (CKW000)",
+        "type": "Major host"
+      },
+      {
+        "code": "CFDV00",
+        "name": "Cofodevirus kokonas (CFDV00)",
+        "type": "Major host"
+      },
+      {
+        "code": "DIOCFR",
+        "name": "Diocalandra frumenti (DIOCFR)",
+        "type": "Major host"
+      },
+      {
+        "code": "CASTDA",
+        "name": "Eupalamides cyparissias (CASTDA)",
+        "type": "Major host"
+      },
+      {
+        "code": "FURCOC",
+        "name": "Furcaspis oceanica (FURCOC)",
+        "type": "Major host"
+      },
+      {
+        "code": "MARLCO",
+        "name": "Marasmiellus cocophilus (MARLCO)",
+        "type": "Major host"
+      },
+      {
+        "code": "MEITIN",
+        "name": "Melittomma insulare (MEITIN)",
+        "type": "Major host"
+      },
+      {
+        "code": "NETMRA",
+        "name": "Neotermes rainbowi (NETMRA)",
+        "type": "Major host"
+      },
+      {
+        "code": "NEPASE",
+        "name": "Opisina arenosella (NEPASE)",
+        "type": "Major host"
+      },
+      {
+        "code": "ORYCBO",
+        "name": "Oryctes boas (ORYCBO)",
+        "type": "Major host"
+      },
+      {
+        "code": "ORYCMO",
+        "name": "Oryctes monoceros (ORYCMO)",
+        "type": "Major host"
+      },
+      {
+        "code": "ORYCRH",
+        "name": "Oryctes rhinoceros (ORYCRH)",
+        "type": "Major host"
+      },
+      {
+        "code": "PACMNU",
+        "name": "Pachymerus nucleorum (PACMNU)",
+        "type": "Major host"
+      },
+      {
+        "code": "PHYP56",
+        "name": "Palm lethal yellowing type syndromes (PHYP56)",
+        "type": "Major host"
+      },
+      {
+        "code": "PHMNST",
+        "name": "Phytomonas staheli (PHMNST)",
+        "type": "Major host"
+      },
+      {
+        "code": "PROHCU",
+        "name": "Promecotheca cumingi (PROHCU)",
+        "type": "Major host"
+      },
+      {
+        "code": "PSDTDE",
+        "name": "Pseudotheraptus devastans (PSDTDE)",
+        "type": "Major host"
+      },
+      {
+        "code": "PSDTWA",
+        "name": "Pseudotheraptus wayi (PSDTWA)",
+        "type": "Major host"
+      },
+      {
+        "code": "RAOIIN",
+        "name": "Raoiella indica (RAOIIN)",
+        "type": "Major host"
+      },
+      {
+        "code": "RHYCBI",
+        "name": "Rhynchophorus bilineatus (RHYCBI)",
+        "type": "Major host"
+      },
+      {
+        "code": "RHYCFE",
+        "name": "Rhynchophorus ferrugineus (RHYCFE)",
+        "type": "Major host"
+      },
+      {
+        "code": "RHYCPA",
+        "name": "Rhynchophorus palmarum (RHYCPA)",
+        "type": "Major host"
+      },
+      {
+        "code": "RHYCPH",
+        "name": "Rhynchophorus phoenicis (RHYCPH)",
+        "type": "Major host"
+      },
+      {
+        "code": "ALECSN",
+        "name": "Aleurocanthus spiniferus (ALECSN)",
+        "type": "Host"
+      },
+      {
+        "code": "ALEDDI",
+        "name": "Aleurodicus dispersus (ALEDDI)",
+        "type": "Host"
+      },
+      {
+        "code": "ALTRTR",
+        "name": "Aleurothrixus trachoides (ALTRTR)",
+        "type": "Host"
+      },
+      {
+        "code": "AMBPCO",
+        "name": "Amblypelta cocophaga (AMBPCO)",
+        "type": "Host"
+      },
+      {
+        "code": "AMBPLU",
+        "name": "Amblypelta lutescens (AMBPLU)",
+        "type": "Host"
+      },
+      {
+        "code": "AONDOR",
+        "name": "Aonidiella orientalis (AONDOR)",
+        "type": "Host"
+      },
+      {
+        "code": "THIEBA",
+        "name": "Berkeleyomyces basicola (THIEBA)",
+        "type": "Host"
+      },
+      {
+        "code": "BRVPYO",
+        "name": "Brevipalpus yothersi (BRVPYO)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYPDY",
+        "name": "'Candidatus Phytoplasma dypsidis' (PHYPDY)",
+        "type": "Host"
+      },
+      {
+        "code": "VINSST",
+        "name": "Ceroplastes stellifer (VINSST)",
+        "type": "Host"
+      },
+      {
+        "code": "CHRYFI",
+        "name": "Chrysomphalus aonidum (CHRYFI)",
+        "type": "Host"
+      },
+      {
+        "code": "COELEL",
+        "name": "Coelaenomenodera minuta (COELEL)",
+        "type": "Host"
+      },
+      {
+        "code": "DYNMBO",
+        "name": "Dynamis borassi (DYNMBO)",
+        "type": "Host"
+      },
+      {
+        "code": "ERNTTH",
+        "name": "Erionota thrax (ERNTTH)",
+        "type": "Host"
+      },
+      {
+        "code": "PLTPPA",
+        "name": "Euplatypus parallelus (PLTPPA)",
+        "type": "Host"
+      },
+      {
+        "code": "FIORCO",
+        "name": "Fiorinia phantasma (FIORCO)",
+        "type": "Host"
+      },
+      {
+        "code": "MYNDCR",
+        "name": "Haplaxius crudus (MYNDCR)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYORH",
+        "name": "Lasiodiplodia theobromae (PHYORH)",
+        "type": "Host"
+      },
+      {
+        "code": "LEPLAU",
+        "name": "Leptoglossus australis (LEPLAU)",
+        "type": "Host"
+      },
+      {
+        "code": "PHENHI",
+        "name": "Maconellicoccus hirsutus (PHENHI)",
+        "type": "Host"
+      },
+      {
+        "code": "METAHE",
+        "name": "Metamasius hemipterus (METAHE)",
+        "type": "Host"
+      },
+      {
+        "code": "NAROCO",
+        "name": "Narosa conspersa (NAROCO)",
+        "type": "Host"
+      },
+      {
+        "code": "OCTDNI",
+        "name": "Octodonta nipae (OCTDNI)",
+        "type": "Host"
+      },
+      {
+        "code": "OLIGPU",
+        "name": "Oligonychus punicae (OLIGPU)",
+        "type": "Host"
+      },
+      {
+        "code": "OPOGSC",
+        "name": "Opogona sacchari (OPOGSC)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYP56",
+        "name": "Palm lethal yellowing type syndromes (as Cocos) (PHYP56)",
+        "type": "Host"
+      },
+      {
+        "code": "PARYMI",
+        "name": "Paraleyrodes minei (PARYMI)",
+        "type": "Host"
+      },
+      {
+        "code": "PIMAGH",
+        "name": "Pimelephila ghesquierei (PIMAGH)",
+        "type": "Host"
+      },
+      {
+        "code": "PLEPRE",
+        "name": "Plesispa reichei (PLEPRE)",
+        "type": "Host"
+      },
+      {
+        "code": "PROHCO",
+        "name": "Promecotheca caeruleipennis (PROHCO)",
+        "type": "Host"
+      },
+      {
+        "code": "RADOSI",
+        "name": "Radopholus similis (RADOSI)",
+        "type": "Host"
+      },
+      {
+        "code": "SPPHOB",
+        "name": "Rhabdoscelus obscurus (SPPHOB)",
+        "type": "Host"
+      },
+      {
+        "code": "LAPHFR",
+        "name": "Spodoptera frugiperda (LAPHFR)",
+        "type": "Host"
+      },
+      {
+        "code": "STEPTY",
+        "name": "Stephanitis typica (STEPTY)",
+        "type": "Host"
+      },
+      {
+        "code": "TETRFI",
+        "name": "Tetranychus fijiensis (TETRFI)",
+        "type": "Host"
+      },
+      {
+        "code": "TETRME",
+        "name": "Tetranychus mexicanus (TETRME)",
+        "type": "Host"
+      },
+      {
+        "code": "TROGGA",
+        "name": "Trogoderma granarium (TROGGA)",
+        "type": "Host"
+      },
+      {
+        "code": "UNASCI",
+        "name": "Unaspis citri (UNASCI)",
+        "type": "Host"
+      },
+      {
+        "code": "XIPHCA",
+        "name": "Xiphinema californicum (XIPHCA)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLBFE",
+        "name": "Xyleborus ferrugineus (XYLBFE)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLBCR",
+        "name": "Xylosandrus crassiusculus (XYLBCR)",
+        "type": "Host"
+      }
+    ]
+  },
+  "gbif": {
+    "key": 2735117,
+    "url": "https://www.gbif.org/species/2735117",
+    "scientificName": "Cocos nucifera L.",
+    "canonicalName": "Cocos nucifera",
+    "family": "Arecaceae",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "matchType": "EXACT",
+    "confidence": 100
+  }
+}

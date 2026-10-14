@@ -1,0 +1,309 @@
+{
+  "schema": 1,
+  "crop_id": "banana",
+  "generated_by": "scripts/advice-harvest.mjs",
+  "fetched_at": "2026-10-14",
+  "candidate": {
+    "ar": "الموز",
+    "en": "Banana",
+    "fr": "Bananier",
+    "sci_expected": "Musa acuminata"
+  },
+  "eppo": {
+    "code": "MUBAC",
+    "overview_url": "https://gd.eppo.int/taxon/MUBAC",
+    "overview_title": "Musa acuminata (MUBAC)",
+    "pests_url": "https://gd.eppo.int/taxon/MUBAC/pests",
+    "http_status": 200,
+    "pests_total_rows": 57,
+    "by_type": {
+      "Experimental": 2,
+      "Host": 47,
+      "Major host": 7,
+      "Non-host": 1
+    },
+    "pests": [
+      {
+        "code": "PHYPNO",
+        "name": "'Candidatus Phytoplasma noviguineense' (as Musa) (PHYPNO)",
+        "type": "Major host"
+      },
+      {
+        "code": "FUSAC4",
+        "name": "Fusarium oxysporum f. sp. cubense Tropical race 4 (FUSAC4)",
+        "type": "Major host"
+      },
+      {
+        "code": "OPOGSC",
+        "name": "Opogona sacchari (OPOGSC)",
+        "type": "Major host"
+      },
+      {
+        "code": "RALSSO",
+        "name": "Ralstonia solanacearum species complex (as Musa) (RALSSO)",
+        "type": "Major host"
+      },
+      {
+        "code": "RALSSY",
+        "name": "Ralstonia syzygii (as Musa) (RALSSY)",
+        "type": "Major host"
+      },
+      {
+        "code": "RALSSC",
+        "name": "Ralstonia syzygii subsp. celebesensis (as Musa) (RALSSC)",
+        "type": "Major host"
+      },
+      {
+        "code": "XANTMU",
+        "name": "Xanthomonas vasicola pv. musacearum (as Musa) (XANTMU)",
+        "type": "Major host"
+      },
+      {
+        "code": "ALEDDU",
+        "name": "Aleurodicus dugesii (as Musa) (ALEDDU)",
+        "type": "Host"
+      },
+      {
+        "code": "AMBPLU",
+        "name": "Amblypelta lutescens (as Musa) (AMBPLU)",
+        "type": "Host"
+      },
+      {
+        "code": "BBTV00",
+        "name": "Babuvirus musae (BBTV00)",
+        "type": "Host"
+      },
+      {
+        "code": "BBTV00",
+        "name": "Babuvirus musae (as Musa) (BBTV00)",
+        "type": "Host"
+      },
+      {
+        "code": "BCTRCO",
+        "name": "Bactrocera correcta (BCTRCO)",
+        "type": "Host"
+      },
+      {
+        "code": "DACUDO",
+        "name": "Bactrocera dorsalis (DACUDO)",
+        "type": "Host"
+      },
+      {
+        "code": "BRVPAZ",
+        "name": "Brevipalpus azores (as Musa) (BRVPAZ)",
+        "type": "Host"
+      },
+      {
+        "code": "BRVPYO",
+        "name": "Brevipalpus yothersi (as Musa) (BRVPYO)",
+        "type": "Host"
+      },
+      {
+        "code": "CERTAN",
+        "name": "Ceratitis anonae (CERTAN)",
+        "type": "Host"
+      },
+      {
+        "code": "CERTCA",
+        "name": "Ceratitis capitata (CERTCA)",
+        "type": "Host"
+      },
+      {
+        "code": "VINSST",
+        "name": "Ceroplastes stellifer (as Musa) (VINSST)",
+        "type": "Host"
+      },
+      {
+        "code": "SCITSI",
+        "name": "Chaetanaphothrips signipennis (as Musa) (SCITSI)",
+        "type": "Host"
+      },
+      {
+        "code": "CHRYFI",
+        "name": "Chrysomphalus aonidum (as Musa) (CHRYFI)",
+        "type": "Host"
+      },
+      {
+        "code": "COLAHY",
+        "name": "Colaspis hypochlora (as Musa) (COLAHY)",
+        "type": "Host"
+      },
+      {
+        "code": "COLLFC",
+        "name": "Colletotrichum fructicola (COLLFC)",
+        "type": "Host"
+      },
+      {
+        "code": "COTMAY",
+        "name": "Corythauma ayyari (as Musa) (COTMAY)",
+        "type": "Host"
+      },
+      {
+        "code": "FRANOC",
+        "name": "Frankliniella occidentalis (as Musa) (FRANOC)",
+        "type": "Host"
+      },
+      {
+        "code": "GIBBCI",
+        "name": "Fusarium circinatum (GIBBCI)",
+        "type": "Host"
+      },
+      {
+        "code": "GIBBFU",
+        "name": "Fusarium fujikuroi (as Musa) (GIBBFU)",
+        "type": "Host"
+      },
+      {
+        "code": "FUSACB",
+        "name": "Fusarium oxysporum f. sp. cubense (as Musa) (FUSACB)",
+        "type": "Host"
+      },
+      {
+        "code": "HERCBI",
+        "name": "Hercinothrips bicinctus (as Musa) (HERCBI)",
+        "type": "Host"
+      },
+      {
+        "code": "LACPCA",
+        "name": "Lachnopus campechianus (as Musa) (LACPCA)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYORH",
+        "name": "Lasiodiplodia theobromae (PHYORH)",
+        "type": "Host"
+      },
+      {
+        "code": "ACHAFU",
+        "name": "Lissachatina fulica (as Musa) (ACHAFU)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGEX",
+        "name": "Meloidogyne exigua (as Musa) (MELGEX)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGGC",
+        "name": "Meloidogyne graminicola (MELGGC)",
+        "type": "Host"
+      },
+      {
+        "code": "METAHE",
+        "name": "Metamasius hemipterus (as Musa) (METAHE)",
+        "type": "Host"
+      },
+      {
+        "code": "MCCTAB",
+        "name": "Microcephalothrips abdominalis (as Musa) (MCCTAB)",
+        "type": "Host"
+      },
+      {
+        "code": "HEDYOC",
+        "name": "Nacoleia octasema (as Musa) (HEDYOC)",
+        "type": "Host"
+      },
+      {
+        "code": "ODOILO",
+        "name": "Odoiporus longicollis (as Musa) (ODOILO)",
+        "type": "Host"
+      },
+      {
+        "code": "PAPUIN",
+        "name": "Papuana inermis (as Musa) (PAPUIN)",
+        "type": "Host"
+      },
+      {
+        "code": "PAPUSE",
+        "name": "Papuana woodlarckiana (as Musa) (PAPUSE)",
+        "type": "Host"
+      },
+      {
+        "code": "PARYMI",
+        "name": "Paraleyrodes minei (as Musa) (PARYMI)",
+        "type": "Host"
+      },
+      {
+        "code": "PRATCO",
+        "name": "Pratylenchus coffeae (as Musa) (PRATCO)",
+        "type": "Host"
+      },
+      {
+        "code": "MYCOFI",
+        "name": "Pseudocercospora fijiensis (as Musa) (MYCOFI)",
+        "type": "Host"
+      },
+      {
+        "code": "PYRIOR",
+        "name": "Pyricularia oryzae (as Musa) (PYRIOR)",
+        "type": "Host"
+      },
+      {
+        "code": "RADOSI",
+        "name": "Radopholus similis (as Musaceae) (RADOSI)",
+        "type": "Host"
+      },
+      {
+        "code": "PSDMS2",
+        "name": "Ralstonia solanacearum race 2 (no longer in use) (as Musa) (PSDMS2)",
+        "type": "Host"
+      },
+      {
+        "code": "RALSSY",
+        "name": "Ralstonia syzygii (RALSSY)",
+        "type": "Host"
+      },
+      {
+        "code": "RALSSC",
+        "name": "Ralstonia syzygii subsp. celebesensis (RALSSC)",
+        "type": "Host"
+      },
+      {
+        "code": "RAOIIN",
+        "name": "Raoiella indica (RAOIIN)",
+        "type": "Host"
+      },
+      {
+        "code": "RAOIIN",
+        "name": "Raoiella indica (as Musa) (RAOIIN)",
+        "type": "Host"
+      },
+      {
+        "code": "ROTYRE",
+        "name": "Rotylenchulus reniformis (as Musa) (ROTYRE)",
+        "type": "Host"
+      },
+      {
+        "code": "TETRME",
+        "name": "Tetranychus mexicanus (as Musa) (TETRME)",
+        "type": "Host"
+      },
+      {
+        "code": "THRIHA",
+        "name": "Thrips hawaiiensis (as Musa) (THRIHA)",
+        "type": "Host"
+      },
+      {
+        "code": "TIRAPL",
+        "name": "Tiracola plagiata (as Musa) (TIRAPL)",
+        "type": "Host"
+      },
+      {
+        "code": "ZAPRIN",
+        "name": "Zaprionus indianus (as Musa) (ZAPRIN)",
+        "type": "Host"
+      }
+    ]
+  },
+  "gbif": {
+    "key": 2762680,
+    "url": "https://www.gbif.org/species/2762680",
+    "scientificName": "Musa acuminata Colla",
+    "canonicalName": "Musa acuminata",
+    "family": "Musaceae",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "matchType": "EXACT",
+    "confidence": 100
+  }
+}

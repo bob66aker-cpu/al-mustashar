@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "pest_code": "FRANOC",
+  "name_ar": "تربس الأزهار الغربي",
+  "pest_name_en": "Frankliniella occidentalis",
+  "source": {
+    "title": "Thrips (Description of the Pest, Damage, Management)",
+    "publisher": "UC IPM — University of California Agriculture and Natural Resources",
+    "url": "https://ipm.ucanr.edu/agriculture/floriculture-and-ornamental-nurseries/thrips/",
+    "type": "extension",
+    "retrieved": "2026-10-13"
+  },
+  "symptoms_ar": [
+    "أضرار خفيفة قد تظهر كتخشين أو تقزم للنبات.",
+    " البراعم المتضررة قبل افتحائها تنمو نسيجاً مشوّهاً وميتاً."
+  ],
+  "management_ar": [
+    "تحديد الهوية أولاً: الحشرات دقيقة جداً، وجمع عينات وفحصها يفرّع الأنواع القابلة للضرر عن غيرها.",
+    "الدورة الحياتية تكمل في التربة أو وسط النمو تحت النباتات المصابة؛ نظافة المحيط والتخلص من النباتات المعزولة يقلّل مخزون الإصابة."
+  ],
+  "evidence": "A"
+}

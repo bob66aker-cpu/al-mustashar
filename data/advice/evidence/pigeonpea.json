@@ -1,0 +1,309 @@
+{
+  "schema": 1,
+  "crop_id": "pigeonpea",
+  "generated_by": "scripts/advice-harvest.mjs",
+  "fetched_at": "2026-10-14",
+  "candidate": {
+    "ar": "الحمص الهندی",
+    "en": "Pigeon pea",
+    "fr": "Pois d’Angole",
+    "sci_expected": "Cajanus cajan"
+  },
+  "eppo": {
+    "code": "CAJCA",
+    "overview_url": "https://gd.eppo.int/taxon/CAJCA",
+    "overview_title": "Cajanus cajan (CAJCA)",
+    "pests_url": "https://gd.eppo.int/taxon/CAJCA/pests",
+    "http_status": 200,
+    "pests_total_rows": 58,
+    "by_type": {
+      "Doubtful host": 2,
+      "Experimental": 2,
+      "Host": 44,
+      "Major host": 10
+    },
+    "pests": [
+      {
+        "code": "ACEICJ",
+        "name": "Aceria cajani (ACEICJ)",
+        "type": "Major host"
+      },
+      {
+        "code": "CLAGEL",
+        "name": "Clavigralla elongata (CLAGEL)",
+        "type": "Major host"
+      },
+      {
+        "code": "CLAGGI",
+        "name": "Clavigralla gibbosa (CLAGGI)",
+        "type": "Major host"
+      },
+      {
+        "code": "ACAMHO",
+        "name": "Clavigralla horrida (ACAMHO)",
+        "type": "Major host"
+      },
+      {
+        "code": "ACAMBR",
+        "name": "Clavigralla scutellaris (ACAMBR)",
+        "type": "Major host"
+      },
+      {
+        "code": "CLAGSH",
+        "name": "Clavigralla shadabi (CLAGSH)",
+        "type": "Major host"
+      },
+      {
+        "code": "DIPDCJ",
+        "name": "Diplodia cajani (DIPDCJ)",
+        "type": "Major host"
+      },
+      {
+        "code": "HETDCJ",
+        "name": "Heterodera cajani (HETDCJ)",
+        "type": "Major host"
+      },
+      {
+        "code": "MEAGOP",
+        "name": "Melanagromyza obtusa (MEAGOP)",
+        "type": "Major host"
+      },
+      {
+        "code": "PYTHIR",
+        "name": "Pythium irregulare (PYTHIR)",
+        "type": "Major host"
+      },
+      {
+        "code": "ALEDDI",
+        "name": "Aleurodicus dispersus (ALEDDI)",
+        "type": "Host"
+      },
+      {
+        "code": "EMPOBI",
+        "name": "Amrasca biguttula (EMPOBI)",
+        "type": "Host"
+      },
+      {
+        "code": "ANOLCN",
+        "name": "Anoplophora chinensis (ANOLCN)",
+        "type": "Host"
+      },
+      {
+        "code": "ANOLCN",
+        "name": "Anoplophora chinensis (as Cajanus) (ANOLCN)",
+        "type": "Host"
+      },
+      {
+        "code": "ANOLGL",
+        "name": "Anoplophora glabripennis (ANOLGL)",
+        "type": "Host"
+      },
+      {
+        "code": "APRIGE",
+        "name": "Apriona germari (APRIGE)",
+        "type": "Host"
+      },
+      {
+        "code": "APRIGE",
+        "name": "Apriona germari (as Cajanus) (APRIGE)",
+        "type": "Host"
+      },
+      {
+        "code": "BRAPSU",
+        "name": "Brachyplatys subaeneus (BRAPSU)",
+        "type": "Host"
+      },
+      {
+        "code": "HELIVI",
+        "name": "Chloridea virescens (HELIVI)",
+        "type": "Host"
+      },
+      {
+        "code": "ACAMTO",
+        "name": "Clavigralla tomentosicollis (ACAMTO)",
+        "type": "Host"
+      },
+      {
+        "code": "DPREAB",
+        "name": "Diaprepes abbreviatus (DPREAB)",
+        "type": "Host"
+      },
+      {
+        "code": "PPSMV0",
+        "name": "Emaravirus cajani (PPSMV0)",
+        "type": "Host"
+      },
+      {
+        "code": "EUTEBA",
+        "name": "Eutetranychus banksi (EUTEBA)",
+        "type": "Host"
+      },
+      {
+        "code": "EXELAT",
+        "name": "Exelastis atomosa (EXELAT)",
+        "type": "Host"
+      },
+      {
+        "code": "FUSAUD",
+        "name": "Fusarium udum (FUSAUD)",
+        "type": "Host"
+      },
+      {
+        "code": "HELIAR",
+        "name": "Helicoverpa armigera (HELIAR)",
+        "type": "Host"
+      },
+      {
+        "code": "HELIZE",
+        "name": "Helicoverpa zea (HELIZE)",
+        "type": "Host"
+      },
+      {
+        "code": "HETDGL",
+        "name": "Heterodera glycines (HETDGL)",
+        "type": "Host"
+      },
+      {
+        "code": "STEHHA",
+        "name": "Hypothenemus hampei (STEHHA)",
+        "type": "Host"
+      },
+      {
+        "code": "TSV000",
+        "name": "Ilarvirus TSV (TSV000)",
+        "type": "Host"
+      },
+      {
+        "code": "LAGRVL",
+        "name": "Lagria villosa (LAGRVL)",
+        "type": "Host"
+      },
+      {
+        "code": "LAMDBO",
+        "name": "Lampides boeticus (LAMDBO)",
+        "type": "Host"
+      },
+      {
+        "code": "LIRISA",
+        "name": "Liriomyza sativae (LIRISA)",
+        "type": "Host"
+      },
+      {
+        "code": "PHENHI",
+        "name": "Maconellicoccus hirsutus (PHENHI)",
+        "type": "Host"
+      },
+      {
+        "code": "MARUTE",
+        "name": "Maruca vitrata (MARUTE)",
+        "type": "Host"
+      },
+      {
+        "code": "COPSCR",
+        "name": "Megacopta cribraria (COPSCR)",
+        "type": "Host"
+      },
+      {
+        "code": "MEGTUS",
+        "name": "Megalurothrips usitatus (MEGTUS)",
+        "type": "Host"
+      },
+      {
+        "code": "MEAGCH",
+        "name": "Melanagromyza chalcosoma (MEAGCH)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGET",
+        "name": "Meloidogyne ethiopica (MELGET)",
+        "type": "Host"
+      },
+      {
+        "code": "MYCVIN",
+        "name": "Mycovellosiella cajani var. indica (MYCVIN)",
+        "type": "Host"
+      },
+      {
+        "code": "MYCVTR",
+        "name": "Mycovellosiella cajani var. trichophila (MYCVTR)",
+        "type": "Host"
+      },
+      {
+        "code": "GRAGLE",
+        "name": "Naupactus leucoloma (GRAGLE)",
+        "type": "Host"
+      },
+      {
+        "code": "MEAGPH",
+        "name": "Ophiomyia phaseoli (MEAGPH)",
+        "type": "Host"
+      },
+      {
+        "code": "TSWV00",
+        "name": "Orthotospovirus tomatomaculae (TSWV00)",
+        "type": "Host"
+      },
+      {
+        "code": "PHAKPA",
+        "name": "Phakopsora pachyrhizi (PHAKPA)",
+        "type": "Host"
+      },
+      {
+        "code": "PHENSO",
+        "name": "Phenacoccus solenopsis (PHENSO)",
+        "type": "Host"
+      },
+      {
+        "code": "PHOMCJ",
+        "name": "Phoma cajani (PHOMCJ)",
+        "type": "Host"
+      },
+      {
+        "code": "PHMPOM",
+        "name": "Phymatotrichopsis omnivora (PHMPOM)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYTNP",
+        "name": "Phytophthora nicotianae (PHYTNP)",
+        "type": "Host"
+      },
+      {
+        "code": "PLANKE",
+        "name": "Planococcus kenyae (PLANKE)",
+        "type": "Host"
+      },
+      {
+        "code": "PSEAPE",
+        "name": "Pseudaulacaspis pentagona (PSEAPE)",
+        "type": "Host"
+      },
+      {
+        "code": "ROTYRE",
+        "name": "Rotylenchulus reniformis (ROTYRE)",
+        "type": "Host"
+      },
+      {
+        "code": "LAPHFR",
+        "name": "Spodoptera frugiperda (LAPHFR)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLSCO",
+        "name": "Xylosandrus compactus (XYLSCO)",
+        "type": "Host"
+      }
+    ]
+  },
+  "gbif": {
+    "key": 7587087,
+    "url": "https://www.gbif.org/species/7587087",
+    "scientificName": "Cajanus cajan (L.) Huth",
+    "canonicalName": "Cajanus cajan",
+    "family": "Fabaceae",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "matchType": "EXACT",
+    "confidence": 99
+  }
+}

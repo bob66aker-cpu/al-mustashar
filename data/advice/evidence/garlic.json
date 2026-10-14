@@ -1,0 +1,239 @@
+{
+  "schema": 1,
+  "crop_id": "garlic",
+  "generated_by": "scripts/advice-harvest.mjs",
+  "fetched_at": "2026-10-14",
+  "candidate": {
+    "ar": "الثوم",
+    "en": "Garlic",
+    "fr": "Ail",
+    "sci_expected": "Allium sativum"
+  },
+  "eppo": {
+    "code": "ALLSA",
+    "overview_url": "https://gd.eppo.int/taxon/ALLSA",
+    "overview_title": "Allium sativum (ALLSA)",
+    "pests_url": "https://gd.eppo.int/taxon/ALLSA/pests",
+    "http_status": 200,
+    "pests_total_rows": 44,
+    "by_type": {
+      "Doubtful host": 3,
+      "Experimental": 1,
+      "Host": 34,
+      "Major host": 6
+    },
+    "pests": [
+      {
+        "code": "ACROAS",
+        "name": "Acrolepiopsis assectella (ACROAS)",
+        "type": "Major host"
+      },
+      {
+        "code": "BRCCAB",
+        "name": "Brachycerus albidentatus (BRCCAB)",
+        "type": "Major host"
+      },
+      {
+        "code": "BRCCAL",
+        "name": "Brachycerus muricatus (BRCCAL)",
+        "type": "Major host"
+      },
+      {
+        "code": "BRCCUN",
+        "name": "Brachycerus undatus (BRCCUN)",
+        "type": "Major host"
+      },
+      {
+        "code": "DYSPUL",
+        "name": "Dyspessa ulula (DYSPUL)",
+        "type": "Major host"
+      },
+      {
+        "code": "NEOTFO",
+        "name": "Neotoxoptera formosana (NEOTFO)",
+        "type": "Major host"
+      },
+      {
+        "code": "ACROAS",
+        "name": "Acrolepiopsis assectella (as Allium) (ACROAS)",
+        "type": "Host"
+      },
+      {
+        "code": "SCLESQ",
+        "name": "Botryotinia squamosa (as Allium) (SCLESQ)",
+        "type": "Host"
+      },
+      {
+        "code": "BOTRBY",
+        "name": "Ciborinia allii (as Allium) (BOTRBY)",
+        "type": "Host"
+      },
+      {
+        "code": "HYLEAN",
+        "name": "Delia antiqua (HYLEAN)",
+        "type": "Host"
+      },
+      {
+        "code": "HYLEAN",
+        "name": "Delia antiqua (as Allium) (HYLEAN)",
+        "type": "Host"
+      },
+      {
+        "code": "DELIHI",
+        "name": "Delia hirticrura (as Allium) (DELIHI)",
+        "type": "Host"
+      },
+      {
+        "code": "HYLEPL",
+        "name": "Delia platura (as Allium) (HYLEPL)",
+        "type": "Host"
+      },
+      {
+        "code": "DITYDE",
+        "name": "Ditylenchus destructor (DITYDE)",
+        "type": "Host"
+      },
+      {
+        "code": "DITYDI",
+        "name": "Ditylenchus dipsaci (DITYDI)",
+        "type": "Host"
+      },
+      {
+        "code": "DYSPUL",
+        "name": "Dyspessa ulula (as Allium) (DYSPUL)",
+        "type": "Host"
+      },
+      {
+        "code": "ERWIRH",
+        "name": "Erwinia rhapontici (ERWIRH)",
+        "type": "Host"
+      },
+      {
+        "code": "FRANOC",
+        "name": "Frankliniella occidentalis (as Allium) (FRANOC)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYORH",
+        "name": "Lasiodiplodia theobromae (as Allium) (PHYORH)",
+        "type": "Host"
+      },
+      {
+        "code": "LIRIHU",
+        "name": "Liriomyza huidobrensis (LIRIHU)",
+        "type": "Host"
+      },
+      {
+        "code": "LIRITR",
+        "name": "Liriomyza trifolii (LIRITR)",
+        "type": "Host"
+      },
+      {
+        "code": "TBRV00",
+        "name": "Nepovirus nigranuli (as Allium) (TBRV00)",
+        "type": "Host"
+      },
+      {
+        "code": "INSV00",
+        "name": "Orthotospovirus impatiensnecromaculae (INSV00)",
+        "type": "Host"
+      },
+      {
+        "code": "IYSV00",
+        "name": "Orthotospovirus iridimaculaflavi (IYSV00)",
+        "type": "Host"
+      },
+      {
+        "code": "TSWV00",
+        "name": "Orthotospovirus tomatomaculae (TSWV00)",
+        "type": "Host"
+      },
+      {
+        "code": "NAPOGY",
+        "name": "Phytomyza gymnostoma (NAPOGY)",
+        "type": "Host"
+      },
+      {
+        "code": "LYSV00",
+        "name": "Potyvirus ampeloprasi (LYSV00)",
+        "type": "Host"
+      },
+      {
+        "code": "OYDV00",
+        "name": "Potyvirus cepae (OYDV00)",
+        "type": "Host"
+      },
+      {
+        "code": "OYDV00",
+        "name": "Potyvirus cepae (as Allium) (OYDV00)",
+        "type": "Host"
+      },
+      {
+        "code": "PUCCAL",
+        "name": "Puccinia allii (PUCCAL)",
+        "type": "Host"
+      },
+      {
+        "code": "PUCCAL",
+        "name": "Puccinia allii (as Allium) (PUCCAL)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODER",
+        "name": "Spodoptera eridania (PRODER)",
+        "type": "Host"
+      },
+      {
+        "code": "LAPHFR",
+        "name": "Spodoptera frugiperda (LAPHFR)",
+        "type": "Host"
+      },
+      {
+        "code": "SCLOCE",
+        "name": "Stromatinia cepivora (as Allium) (SCLOCE)",
+        "type": "Host"
+      },
+      {
+        "code": "TAPARU",
+        "name": "Tapajosa rubromarginata (TAPARU)",
+        "type": "Host"
+      },
+      {
+        "code": "UROCCE",
+        "name": "Urocystis magica (as Allium) (UROCCE)",
+        "type": "Host"
+      },
+      {
+        "code": "USTIAL",
+        "name": "Ustilago allii (as Allium) (USTIAL)",
+        "type": "Host"
+      },
+      {
+        "code": "XANTAA",
+        "name": "Xanthomonas euvesicatoria pv. allii (XANTAA)",
+        "type": "Host"
+      },
+      {
+        "code": "XANTAA",
+        "name": "Xanthomonas euvesicatoria pv. allii (as Allium) (XANTAA)",
+        "type": "Host"
+      },
+      {
+        "code": "XIPHRI",
+        "name": "Xiphinema rivesi (XIPHRI)",
+        "type": "Host"
+      }
+    ]
+  },
+  "gbif": {
+    "key": 2856681,
+    "url": "https://www.gbif.org/species/2856681",
+    "scientificName": "Allium sativum L.",
+    "canonicalName": "Allium sativum",
+    "family": "Amaryllidaceae",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "matchType": "EXACT",
+    "confidence": 100
+  }
+}

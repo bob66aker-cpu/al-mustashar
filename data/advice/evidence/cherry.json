@@ -1,0 +1,735 @@
+{
+  "schema": 1,
+  "crop_id": "cherry",
+  "generated_by": "scripts/advice-harvest.mjs",
+  "fetched_at": "2026-10-14",
+  "candidate": {
+    "ar": "الكرز",
+    "en": "Sweet cherry",
+    "fr": "Cerisier",
+    "sci_expected": "Prunus avium"
+  },
+  "eppo": {
+    "code": "PRNAV",
+    "overview_url": "https://gd.eppo.int/taxon/PRNAV",
+    "overview_title": "Prunus avium (PRNAV)",
+    "pests_url": "https://gd.eppo.int/taxon/PRNAV/pests",
+    "http_status": 200,
+    "pests_total_rows": 142,
+    "by_type": {
+      "Alternate": 1,
+      "Doubtful host": 1,
+      "Experimental": 1,
+      "Host": 115,
+      "Major host": 24
+    },
+    "pests": [
+      {
+        "code": "ANOLCN",
+        "name": "Anoplophora chinensis (as Prunus) (ANOLCN)",
+        "type": "Major host"
+      },
+      {
+        "code": "AROMBU",
+        "name": "Aromia bungii (AROMBU)",
+        "type": "Major host"
+      },
+      {
+        "code": "CRLV00",
+        "name": "Cheravirus avii (CRLV00)",
+        "type": "Major host"
+      },
+      {
+        "code": "CRERMO",
+        "name": "Cherry European rusty mottle agent (CRERMO)",
+        "type": "Major host"
+      },
+      {
+        "code": "CRV000",
+        "name": "Cherry rosette virus (CRV000)",
+        "type": "Major host"
+      },
+      {
+        "code": "DROSSU",
+        "name": "Drosophila suzukii (DROSSU)",
+        "type": "Major host"
+      },
+      {
+        "code": "LASPPA",
+        "name": "Grapholita packardi (LASPPA)",
+        "type": "Major host"
+      },
+      {
+        "code": "LASPPR",
+        "name": "Grapholita prunivora (LASPPR)",
+        "type": "Major host"
+      },
+      {
+        "code": "HYPHCU",
+        "name": "Hyphantria cunea (HYPHCU)",
+        "type": "Major host"
+      },
+      {
+        "code": "PNRSV0",
+        "name": "Ilarvirus PNRSV (PNRSV0)",
+        "type": "Major host"
+      },
+      {
+        "code": "MONIFC",
+        "name": "Monilinia fructicola (MONIFC)",
+        "type": "Major host"
+      },
+      {
+        "code": "CLRV00",
+        "name": "Nepovirus avii (CLRV00)",
+        "type": "Major host"
+      },
+      {
+        "code": "POPIJA",
+        "name": "Popillia japonica (POPIJA)",
+        "type": "Major host"
+      },
+      {
+        "code": "PSECOB",
+        "name": "Pseudococcus viburni (as Prunus) (PSECOB)",
+        "type": "Major host"
+      },
+      {
+        "code": "RHAGCE",
+        "name": "Rhagoletis cerasi (RHAGCE)",
+        "type": "Major host"
+      },
+      {
+        "code": "RHAGCI",
+        "name": "Rhagoletis cingulata (RHAGCI)",
+        "type": "Major host"
+      },
+      {
+        "code": "RHAGFA",
+        "name": "Rhagoletis fausta (RHAGFA)",
+        "type": "Major host"
+      },
+      {
+        "code": "RHAGIN",
+        "name": "Rhagoletis indifferens (RHAGIN)",
+        "type": "Major host"
+      },
+      {
+        "code": "CRNRM0",
+        "name": "Robigovirus necroavii (CRNRM0)",
+        "type": "Major host"
+      },
+      {
+        "code": "CRMAV0",
+        "name": "Robigovirus robigomaculae (CRMAV0)",
+        "type": "Major host"
+      },
+      {
+        "code": "CTLAV0",
+        "name": "Robigovirus tortifoliae (CTLAV0)",
+        "type": "Major host"
+      },
+      {
+        "code": "CMLV00",
+        "name": "Trichovirus maculavii (CMLV00)",
+        "type": "Major host"
+      },
+      {
+        "code": "LCHV10",
+        "name": "Velarivirus nanoavii (LCHV10)",
+        "type": "Major host"
+      },
+      {
+        "code": "XYLONM",
+        "name": "Xylotrechus namanganensis (XYLONM)",
+        "type": "Major host"
+      },
+      {
+        "code": "CAPURE",
+        "name": "Adoxophyes orana (CAPURE)",
+        "type": "Host"
+      },
+      {
+        "code": "AGRBTU",
+        "name": "Agrobacterium tumefaciens (AGRBTU)",
+        "type": "Host"
+      },
+      {
+        "code": "ALECSN",
+        "name": "Aleurocanthus spiniferus (ALECSN)",
+        "type": "Host"
+      },
+      {
+        "code": "ALEDDI",
+        "name": "Aleurodicus dispersus (as Prunus) (ALEDDI)",
+        "type": "Host"
+      },
+      {
+        "code": "ANARLI",
+        "name": "Anarsia lineatella (as Prunus) (ANARLI)",
+        "type": "Host"
+      },
+      {
+        "code": "ANSTFR",
+        "name": "Anastrepha fraterculus (ANSTFR)",
+        "type": "Host"
+      },
+      {
+        "code": "DIBOMO",
+        "name": "Apiosporina morbosa (as Prunus) (DIBOMO)",
+        "type": "Host"
+      },
+      {
+        "code": "APRICI",
+        "name": "Apriona cinerea (as Prunus) (APRICI)",
+        "type": "Host"
+      },
+      {
+        "code": "DACUDO",
+        "name": "Bactrocera dorsalis (DACUDO)",
+        "type": "Host"
+      },
+      {
+        "code": "DACUTR",
+        "name": "Bactrocera tryoni (DACUTR)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYPMA",
+        "name": "'Candidatus Phytoplasma mali' (PHYPMA)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYPPN",
+        "name": "'Candidatus Phytoplasma pruni' (PHYPPN)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYPPR",
+        "name": "'Candidatus Phytoplasma prunorum' (PHYPPR)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYPPY",
+        "name": "'Candidatus Phytoplasma pyri' (PHYPPY)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYPSO",
+        "name": "'Candidatus Phytoplasma solani' (PHYPSO)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYPZI",
+        "name": "'Candidatus Phytoplasma ziziphi' (PHYPZI)",
+        "type": "Host"
+      },
+      {
+        "code": "CAPNTE",
+        "name": "Capnodis tenebrionis (CAPNTE)",
+        "type": "Host"
+      },
+      {
+        "code": "CARSSA",
+        "name": "Carposina sasakii (as Prunus) (CARSSA)",
+        "type": "Host"
+      },
+      {
+        "code": "CERTCA",
+        "name": "Ceratitis capitata (CERTCA)",
+        "type": "Host"
+      },
+      {
+        "code": "CERTCA",
+        "name": "Ceratitis capitata (as Prunus) (CERTCA)",
+        "type": "Host"
+      },
+      {
+        "code": "STERPU",
+        "name": "Chondrostereum purpureum (STERPU)",
+        "type": "Host"
+      },
+      {
+        "code": "CHONRO",
+        "name": "Choristoneura rosaceana (CHONRO)",
+        "type": "Host"
+      },
+      {
+        "code": "CHRBFE",
+        "name": "Chrysobothris femorata (CHRBFE)",
+        "type": "Host"
+      },
+      {
+        "code": "CHRBMA",
+        "name": "Chrysobothris mali (CHRBMA)",
+        "type": "Host"
+      },
+      {
+        "code": "CLBV00",
+        "name": "Citrivirus citri (CLBV00)",
+        "type": "Host"
+      },
+      {
+        "code": "QUADPE",
+        "name": "Comstockaspis perniciosa (QUADPE)",
+        "type": "Host"
+      },
+      {
+        "code": "CONHNE",
+        "name": "Conotrachelus nenuphar (CONHNE)",
+        "type": "Host"
+      },
+      {
+        "code": "VALSMA",
+        "name": "Cytospora mali (VALSMA)",
+        "type": "Host"
+      },
+      {
+        "code": "DIABSC",
+        "name": "Diabrotica speciosa (as Prunus) (DIABSC)",
+        "type": "Host"
+      },
+      {
+        "code": "EPIOIO",
+        "name": "Epichoristodes acerbella (as Prunus) (EPIOIO)",
+        "type": "Host"
+      },
+      {
+        "code": "TORTPO",
+        "name": "Epiphyas postvittana (as Prunus) (TORTPO)",
+        "type": "Host"
+      },
+      {
+        "code": "RHACJA",
+        "name": "Euphranta japonica (RHACJA)",
+        "type": "Host"
+      },
+      {
+        "code": "EUPRCH",
+        "name": "Euproctis chrysorrhoea (as Prunus) (EUPRCH)",
+        "type": "Host"
+      },
+      {
+        "code": "EUTYLA",
+        "name": "Eutypa lata (EUTYLA)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLBFO",
+        "name": "Euwallacea fornicatus sensu lato (XYLBFO)",
+        "type": "Host"
+      },
+      {
+        "code": "EUWAWH",
+        "name": "Euwallacea fornicatus sensu stricto (EUWAWH)",
+        "type": "Host"
+      },
+      {
+        "code": "EUZOSE",
+        "name": "Euzophera semifuneralis (EUZOSE)",
+        "type": "Host"
+      },
+      {
+        "code": "LASPFU",
+        "name": "Grapholita funebrana (LASPFU)",
+        "type": "Host"
+      },
+      {
+        "code": "LASPFU",
+        "name": "Grapholita funebrana (as Prunus) (LASPFU)",
+        "type": "Host"
+      },
+      {
+        "code": "LASPMO",
+        "name": "Grapholita molesta (LASPMO)",
+        "type": "Host"
+      },
+      {
+        "code": "LASPMO",
+        "name": "Grapholita molesta (as Prunus) (LASPMO)",
+        "type": "Host"
+      },
+      {
+        "code": "LASPPA",
+        "name": "Grapholita packardi (as Prunus) (LASPPA)",
+        "type": "Host"
+      },
+      {
+        "code": "LASPPR",
+        "name": "Grapholita prunivora (as Prunus) (LASPPR)",
+        "type": "Host"
+      },
+      {
+        "code": "HALYHA",
+        "name": "Halyomorpha halys (HALYHA)",
+        "type": "Host"
+      },
+      {
+        "code": "HELIZE",
+        "name": "Helicoverpa zea (as Prunus) (HELIZE)",
+        "type": "Host"
+      },
+      {
+        "code": "HSVD00",
+        "name": "Hostuviroid impedihumuli (HSVD00)",
+        "type": "Host"
+      },
+      {
+        "code": "HYPHCU",
+        "name": "Hyphantria cunea (as Prunus) (HYPHCU)",
+        "type": "Host"
+      },
+      {
+        "code": "RBDV00",
+        "name": "Idaeovirus rubi (RBDV00)",
+        "type": "Host"
+      },
+      {
+        "code": "APLPV0",
+        "name": "Ilarvirus APLPV (APLPV0)",
+        "type": "Host"
+      },
+      {
+        "code": "APLPV0",
+        "name": "Ilarvirus APLPV (as Prunus) (APLPV0)",
+        "type": "Host"
+      },
+      {
+        "code": "APMV00",
+        "name": "Ilarvirus ApMV (APMV00)",
+        "type": "Host"
+      },
+      {
+        "code": "PDV000",
+        "name": "Ilarvirus PDV (PDV000)",
+        "type": "Host"
+      },
+      {
+        "code": "LEUCSC",
+        "name": "Leucoptera malifoliella (LEUCSC)",
+        "type": "Host"
+      },
+      {
+        "code": "LOPLJA",
+        "name": "Lopholeucaspis japonica (LOPLJA)",
+        "type": "Host"
+      },
+      {
+        "code": "LYCMDE",
+        "name": "Lycorma delicatula (LYCMDE)",
+        "type": "Host"
+      },
+      {
+        "code": "LYMADI",
+        "name": "Lymantria dispar (as Prunus) (LYMADI)",
+        "type": "Host"
+      },
+      {
+        "code": "MALAAM",
+        "name": "Malacosoma americanum (as Prunus) (MALAAM)",
+        "type": "Host"
+      },
+      {
+        "code": "MALADI",
+        "name": "Malacosoma disstria (as Prunus) (MALADI)",
+        "type": "Host"
+      },
+      {
+        "code": "MALAPA",
+        "name": "Malacosoma parallela (MALAPA)",
+        "type": "Host"
+      },
+      {
+        "code": "MALAPA",
+        "name": "Malacosoma parallela (as Prunus) (MALAPA)",
+        "type": "Host"
+      },
+      {
+        "code": "PLTPMU",
+        "name": "Megaplatypus mutatus (PLTPMU)",
+        "type": "Host"
+      },
+      {
+        "code": "CNIDFL",
+        "name": "Monema flavescens (CNIDFL)",
+        "type": "Host"
+      },
+      {
+        "code": "MONIFC",
+        "name": "Monilinia fructicola (as Prunus) (MONIFC)",
+        "type": "Host"
+      },
+      {
+        "code": "MONIFG",
+        "name": "Monilinia fructigena (as Prunus) (MONIFG)",
+        "type": "Host"
+      },
+      {
+        "code": "MONIPO",
+        "name": "Monilinia polystroma (MONIPO)",
+        "type": "Host"
+      },
+      {
+        "code": "NAUPXA",
+        "name": "Naupactus xanthographus (NAUPXA)",
+        "type": "Host"
+      },
+      {
+        "code": "ARMV00",
+        "name": "Nepovirus arabis (ARMV00)",
+        "type": "Host"
+      },
+      {
+        "code": "TORSV0",
+        "name": "Nepovirus lycopersici (TORSV0)",
+        "type": "Host"
+      },
+      {
+        "code": "TRSV00",
+        "name": "Nepovirus nicotianae (TRSV00)",
+        "type": "Host"
+      },
+      {
+        "code": "TBRV00",
+        "name": "Nepovirus nigranuli (TBRV00)",
+        "type": "Host"
+      },
+      {
+        "code": "TBRV00",
+        "name": "Nepovirus nigranuli (as Prunus) (TBRV00)",
+        "type": "Host"
+      },
+      {
+        "code": "RPRSV0",
+        "name": "Nepovirus rubi (RPRSV0)",
+        "type": "Host"
+      },
+      {
+        "code": "OEMOHI",
+        "name": "Oemona hirta (OEMOHI)",
+        "type": "Host"
+      },
+      {
+        "code": "OLIGPA",
+        "name": "Oligonychus perseae (OLIGPA)",
+        "type": "Host"
+      },
+      {
+        "code": "OMOPLE",
+        "name": "Omophlus lepturoides (as Prunus) (OMOPLE)",
+        "type": "Host"
+      },
+      {
+        "code": "CHEIBR",
+        "name": "Operophtera brumata (CHEIBR)",
+        "type": "Host"
+      },
+      {
+        "code": "HEMELE",
+        "name": "Orgyia leucostigma (as Prunus) (HEMELE)",
+        "type": "Host"
+      },
+      {
+        "code": "PRABMY",
+        "name": "Parabemisia myricae (PRABMY)",
+        "type": "Host"
+      },
+      {
+        "code": "PRABMY",
+        "name": "Parabemisia myricae (as Prunus) (PRABMY)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYP30",
+        "name": "Peach rosette phytoplasma (PHYP30)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYP29",
+        "name": "Peach yellows phytoplasma (as Prunus) (PHYP29)",
+        "type": "Host"
+      },
+      {
+        "code": "PLMVD0",
+        "name": "Pelamoviroid latenspruni (PLMVD0)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYTCC",
+        "name": "Phytophthora cactorum (as Prunus) (PHYTCC)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYTCR",
+        "name": "Phytophthora cryptogea (PHYTCR)",
+        "type": "Host"
+      },
+      {
+        "code": "POCZSH",
+        "name": "Pochazia shantungensis (POCZSH)",
+        "type": "Host"
+      },
+      {
+        "code": "PPV000",
+        "name": "Potyvirus plumpoxi (PPV000)",
+        "type": "Host"
+      },
+      {
+        "code": "PSEAPE",
+        "name": "Pseudaulacaspis pentagona (as Prunus) (PSEAPE)",
+        "type": "Host"
+      },
+      {
+        "code": "PSECGA",
+        "name": "Pseudococcus calceolariae (as Prunus) (PSECGA)",
+        "type": "Host"
+      },
+      {
+        "code": "PSECCO",
+        "name": "Pseudococcus comstocki (as Prunus) (PSECCO)",
+        "type": "Host"
+      },
+      {
+        "code": "PSDMMP",
+        "name": "Pseudomonas syringae pv. morsprunorum (as Prunus) (PSDMMP)",
+        "type": "Host"
+      },
+      {
+        "code": "REPTPA",
+        "name": "Reptalus panzeri (as Prunus) (REPTPA)",
+        "type": "Host"
+      },
+      {
+        "code": "RHAGCI",
+        "name": "Rhagoletis cingulata (as Prunus) (RHAGCI)",
+        "type": "Host"
+      },
+      {
+        "code": "RHAGFA",
+        "name": "Rhagoletis fausta (as Prunus) (RHAGFA)",
+        "type": "Host"
+      },
+      {
+        "code": "RHAGPO",
+        "name": "Rhagoletis pomonella (RHAGPO)",
+        "type": "Host"
+      },
+      {
+        "code": "AGRBRH",
+        "name": "Rhizobium rhizogenes (AGRBRH)",
+        "type": "Host"
+      },
+      {
+        "code": "SAPECN",
+        "name": "Saperda candida (SAPECN)",
+        "type": "Host"
+      },
+      {
+        "code": "SCOLMU",
+        "name": "Scolytus multistriatus (as Prunus) (SCOLMU)",
+        "type": "Host"
+      },
+      {
+        "code": "SCOLSH",
+        "name": "Scolytus schevyrewi (as Prunus) (SCOLSH)",
+        "type": "Host"
+      },
+      {
+        "code": "SLRSV0",
+        "name": "Stralarivirus fragariae (SLRSV0)",
+        "type": "Host"
+      },
+      {
+        "code": "HESOCA",
+        "name": "Trichoferus campestris (HESOCA)",
+        "type": "Host"
+      },
+      {
+        "code": "ACLSV0",
+        "name": "Trichovirus mali (ACLSV0)",
+        "type": "Host"
+      },
+      {
+        "code": "LCHV10",
+        "name": "Velarivirus nanoavii (as Prunus) (LCHV10)",
+        "type": "Host"
+      },
+      {
+        "code": "XANTPR",
+        "name": "Xanthomonas arboricola pv. pruni (XANTPR)",
+        "type": "Host"
+      },
+      {
+        "code": "XIPHAA",
+        "name": "Xiphinema americanum sensu stricto (XIPHAA)",
+        "type": "Host"
+      },
+      {
+        "code": "XIPHAA",
+        "name": "Xiphinema americanum sensu stricto (as Prunus) (XIPHAA)",
+        "type": "Host"
+      },
+      {
+        "code": "XIPHRI",
+        "name": "Xiphinema rivesi (XIPHRI)",
+        "type": "Host"
+      },
+      {
+        "code": "XYBIAL",
+        "name": "Xyleborinus attenuatus (XYBIAL)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLEFA",
+        "name": "Xylella fastidiosa (XYLEFA)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLEFF",
+        "name": "Xylella fastidiosa subsp. fastidiosa (XYLEFF)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLEFM",
+        "name": "Xylella fastidiosa subsp. multiplex (XYLEFM)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLEFP",
+        "name": "Xylella fastidiosa subsp. pauca (XYLEFP)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLSCO",
+        "name": "Xylosandrus compactus (XYLSCO)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLBCR",
+        "name": "Xylosandrus crassiusculus (XYLBCR)",
+        "type": "Host"
+      },
+      {
+        "code": "ZAPRIN",
+        "name": "Zaprionus indianus (ZAPRIN)",
+        "type": "Host"
+      },
+      {
+        "code": "ZAPRTU",
+        "name": "Zaprionus tuberculatus (ZAPRTU)",
+        "type": "Host"
+      }
+    ]
+  },
+  "gbif": {
+    "key": 3020791,
+    "url": "https://www.gbif.org/species/3020791",
+    "scientificName": "Prunus avium (L.) L.",
+    "canonicalName": "Prunus avium",
+    "family": "Rosaceae",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "matchType": "EXACT",
+    "confidence": 99
+  }
+}

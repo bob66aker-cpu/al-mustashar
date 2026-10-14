@@ -1,0 +1,438 @@
+{
+  "schema": 1,
+  "crop_id": "cocoa",
+  "generated_by": "scripts/advice-harvest.mjs",
+  "fetched_at": "2026-10-14",
+  "candidate": {
+    "ar": "الكاكاو",
+    "en": "Cocoa",
+    "fr": "Cacaoyer",
+    "sci_expected": "Theobroma cacao"
+  },
+  "eppo": {
+    "code": "THOCA",
+    "overview_url": "https://gd.eppo.int/taxon/THOCA",
+    "overview_title": "Theobroma cacao (THOCA)",
+    "pests_url": "https://gd.eppo.int/taxon/THOCA/pests",
+    "http_status": 200,
+    "pests_total_rows": 81,
+    "by_type": {
+      "Experimental": 1,
+      "Host": 46,
+      "Major host": 34
+    },
+    "pests": [
+      {
+        "code": "BATHTA",
+        "name": "Bathycoelia thalassina (BATHTA)",
+        "type": "Major host"
+      },
+      {
+        "code": "BRYPLA",
+        "name": "Bryocoropsis laticollis (BRYPLA)",
+        "type": "Major host"
+      },
+      {
+        "code": "CCRMO0",
+        "name": "Cacao red mottle agent (CCRMO0)",
+        "type": "Major host"
+      },
+      {
+        "code": "CSSV00",
+        "name": "Cacao swollen shoot disease (CSSV00)",
+        "type": "Major host"
+      },
+      {
+        "code": "CCVC00",
+        "name": "Cacao vein-clearing agent (CCVC00)",
+        "type": "Major host"
+      },
+      {
+        "code": "CCYVB0",
+        "name": "Cacao yellow vein banding agent (CCYVB0)",
+        "type": "Major host"
+      },
+      {
+        "code": "COCCVI",
+        "name": "Coccus viridis (COCCVI)",
+        "type": "Major host"
+      },
+      {
+        "code": "AROCCR",
+        "name": "Conopomorpha cramerella (AROCCR)",
+        "type": "Major host"
+      },
+      {
+        "code": "DISTTH",
+        "name": "Distantiella theobroma (DISTTH)",
+        "type": "Major host"
+      },
+      {
+        "code": "EUWAPE",
+        "name": "Euwallacea perbrevis (EUWAPE)",
+        "type": "Major host"
+      },
+      {
+        "code": "ECDYAU",
+        "name": "Gymnandrosoma aurantianum (ECDYAU)",
+        "type": "Major host"
+      },
+      {
+        "code": "HELOBE",
+        "name": "Helopeltis bergrothi (HELOBE)",
+        "type": "Major host"
+      },
+      {
+        "code": "HELOBR",
+        "name": "Helopeltis bradyi (HELOBR)",
+        "type": "Major host"
+      },
+      {
+        "code": "HELOTH",
+        "name": "Helopeltis theivora (HELOTH)",
+        "type": "Major host"
+      },
+      {
+        "code": "MONAAN",
+        "name": "Monalonion annulipes (MONAAN)",
+        "type": "Major host"
+      },
+      {
+        "code": "MONAAT",
+        "name": "Monalonion  atratum (MONAAT)",
+        "type": "Major host"
+      },
+      {
+        "code": "MONABO",
+        "name": "Monalonion bondari (MONABO)",
+        "type": "Major host"
+      },
+      {
+        "code": "CRNPPE",
+        "name": "Moniliophthora perniciosa (CRNPPE)",
+        "type": "Major host"
+      },
+      {
+        "code": "MONPRO",
+        "name": "Moniliophthora roreri (MONPRO)",
+        "type": "Major host"
+      },
+      {
+        "code": "MUSSNV",
+        "name": "Mussidia nigrivenella (MUSSNV)",
+        "type": "Major host"
+      },
+      {
+        "code": "CONV00",
+        "name": "Nepovirus theobromatis (CONV00)",
+        "type": "Major host"
+      },
+      {
+        "code": "PSECNJ",
+        "name": "Planococcoides njalensis (PSECNJ)",
+        "type": "Major host"
+      },
+      {
+        "code": "PLANKE",
+        "name": "Planococcus kenyae (PLANKE)",
+        "type": "Major host"
+      },
+      {
+        "code": "PLANLI",
+        "name": "Planococcus lilacinus (PLANLI)",
+        "type": "Major host"
+      },
+      {
+        "code": "ONCOTH",
+        "name": "Rhizoctonia theobromae (ONCOTH)",
+        "type": "Major host"
+      },
+      {
+        "code": "SAHLSI",
+        "name": "Sahlbergella singularis (SAHLSI)",
+        "type": "Major host"
+      },
+      {
+        "code": "SLENRU",
+        "name": "Selenothrips rubrocinctus (SLENRU)",
+        "type": "Major host"
+      },
+      {
+        "code": "STENDE",
+        "name": "Stenoma decora (STENDE)",
+        "type": "Major host"
+      },
+      {
+        "code": "TIRAPL",
+        "name": "Tiracola plagiata (TIRAPL)",
+        "type": "Major host"
+      },
+      {
+        "code": "TRACFR",
+        "name": "Trachysphaera fructigena (TRACFR)",
+        "type": "Major host"
+      },
+      {
+        "code": "CYMV00",
+        "name": "Tymovirus theobromatis (CYMV00)",
+        "type": "Major host"
+      },
+      {
+        "code": "XYLBFE",
+        "name": "Xyleborus ferrugineus (XYLBFE)",
+        "type": "Major host"
+      },
+      {
+        "code": "XYLSCO",
+        "name": "Xylosandrus compactus (XYLSCO)",
+        "type": "Major host"
+      },
+      {
+        "code": "XYLSMO",
+        "name": "Xylosandrus morigerus (XYLSMO)",
+        "type": "Major host"
+      },
+      {
+        "code": "ALEDDI",
+        "name": "Aleurodicus dispersus (ALEDDI)",
+        "type": "Host"
+      },
+      {
+        "code": "ALTRTR",
+        "name": "Aleurothrixus trachoides (ALTRTR)",
+        "type": "Host"
+      },
+      {
+        "code": "AMBPCO",
+        "name": "Amblypelta cocophaga (AMBPCO)",
+        "type": "Host"
+      },
+      {
+        "code": "ANSTFR",
+        "name": "Anastrepha fraterculus (ANSTFR)",
+        "type": "Host"
+      },
+      {
+        "code": "APOGCR",
+        "name": "Apogonia cribricollis (APOGCR)",
+        "type": "Host"
+      },
+      {
+        "code": "DACUDO",
+        "name": "Bactrocera dorsalis (DACUDO)",
+        "type": "Host"
+      },
+      {
+        "code": "BCTRPA",
+        "name": "Bactrocera passiflorae (BCTRPA)",
+        "type": "Host"
+      },
+      {
+        "code": "BRVPYO",
+        "name": "Brevipalpus yothersi (BRVPYO)",
+        "type": "Host"
+      },
+      {
+        "code": "CERTAN",
+        "name": "Ceratitis anonae (CERTAN)",
+        "type": "Host"
+      },
+      {
+        "code": "CERTCA",
+        "name": "Ceratitis capitata (CERTCA)",
+        "type": "Host"
+      },
+      {
+        "code": "CERTFA",
+        "name": "Ceratitis fasciventris (CERTFA)",
+        "type": "Host"
+      },
+      {
+        "code": "CERAFI",
+        "name": "Ceratocystis fimbriata (CERAFI)",
+        "type": "Host"
+      },
+      {
+        "code": "CRTZBR",
+        "name": "Ceratothripoides brunneus (CRTZBR)",
+        "type": "Host"
+      },
+      {
+        "code": "CHCMST",
+        "name": "Characoma stictigrapta (CHCMST)",
+        "type": "Host"
+      },
+      {
+        "code": "COLLFC",
+        "name": "Colletotrichum fructicola (COLLFC)",
+        "type": "Host"
+      },
+      {
+        "code": "ROSLBU",
+        "name": "Dematophora bunodes (ROSLBU)",
+        "type": "Host"
+      },
+      {
+        "code": "ROSLPE",
+        "name": "Dematophora pepo (ROSLPE)",
+        "type": "Host"
+      },
+      {
+        "code": "DICHPU",
+        "name": "Dichocrocis punctiferalis (DICHPU)",
+        "type": "Host"
+      },
+      {
+        "code": "EARIBI",
+        "name": "Earias biplaga (EARIBI)",
+        "type": "Host"
+      },
+      {
+        "code": "PLTPPA",
+        "name": "Euplatypus parallelus (PLTPPA)",
+        "type": "Host"
+      },
+      {
+        "code": "EUTEBA",
+        "name": "Eutetranychus banksi (EUTEBA)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLBFO",
+        "name": "Euwallacea fornicatus sensu lato (XYLBFO)",
+        "type": "Host"
+      },
+      {
+        "code": "EUWAPE",
+        "name": "Euwallacea perbrevis (as Theobroma) (EUWAPE)",
+        "type": "Host"
+      },
+      {
+        "code": "HELOAN",
+        "name": "Helopeltis antonii (HELOAN)",
+        "type": "Host"
+      },
+      {
+        "code": "STEHHA",
+        "name": "Hypothenemus hampei (STEHHA)",
+        "type": "Host"
+      },
+      {
+        "code": "LAGRVL",
+        "name": "Lagria villosa (LAGRVL)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYORH",
+        "name": "Lasiodiplodia theobromae (PHYORH)",
+        "type": "Host"
+      },
+      {
+        "code": "LEPLAU",
+        "name": "Leptoglossus australis (LEPLAU)",
+        "type": "Host"
+      },
+      {
+        "code": "PHENHI",
+        "name": "Maconellicoccus hirsutus (PHENHI)",
+        "type": "Host"
+      },
+      {
+        "code": "MALNDO",
+        "name": "Mallodon downesi (MALNDO)",
+        "type": "Host"
+      },
+      {
+        "code": "CORTSA",
+        "name": "Necator salmonicolor (CORTSA)",
+        "type": "Host"
+      },
+      {
+        "code": "OOTHMU",
+        "name": "Ootheca mutabilis (OOTHMU)",
+        "type": "Host"
+      },
+      {
+        "code": "PANYPL",
+        "name": "Pantorhytes plutus (PANYPL)",
+        "type": "Host"
+      },
+      {
+        "code": "PHENSO",
+        "name": "Phenacoccus solenopsis (PHENSO)",
+        "type": "Host"
+      },
+      {
+        "code": "PSEAPE",
+        "name": "Pseudaulacaspis pentagona (as Theobroma) (PSEAPE)",
+        "type": "Host"
+      },
+      {
+        "code": "PSDTDE",
+        "name": "Pseudotheraptus devastans (PSDTDE)",
+        "type": "Host"
+      },
+      {
+        "code": "PSDTWA",
+        "name": "Pseudotheraptus wayi (PSDTWA)",
+        "type": "Host"
+      },
+      {
+        "code": "RICASC",
+        "name": "Ricania speculum (RICASC)",
+        "type": "Host"
+      },
+      {
+        "code": "SCITDO",
+        "name": "Scirtothrips dorsalis (SCITDO)",
+        "type": "Host"
+      },
+      {
+        "code": "LAPHFR",
+        "name": "Spodoptera frugiperda (LAPHFR)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODLI",
+        "name": "Spodoptera litura (PRODLI)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODOR",
+        "name": "Spodoptera ornithogalli (PRODOR)",
+        "type": "Host"
+      },
+      {
+        "code": "TETRME",
+        "name": "Tetranychus mexicanus (TETRME)",
+        "type": "Host"
+      },
+      {
+        "code": "ARGPLE",
+        "name": "Thaumatotibia leucotreta (ARGPLE)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLBCR",
+        "name": "Xylosandrus crassiusculus (XYLBCR)",
+        "type": "Host"
+      },
+      {
+        "code": "ZEUZCO",
+        "name": "Zeuzera coffeae (ZEUZCO)",
+        "type": "Host"
+      }
+    ]
+  },
+  "gbif": {
+    "key": 3152205,
+    "url": "https://www.gbif.org/species/3152205",
+    "scientificName": "Theobroma cacao L.",
+    "canonicalName": "Theobroma cacao",
+    "family": "Malvaceae",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "matchType": "EXACT",
+    "confidence": 100
+  }
+}

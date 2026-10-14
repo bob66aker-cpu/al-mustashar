@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "pest_code": "HELIAR",
+  "name_ar": "دودة الحشّاشة (البقّاحة)",
+  "pest_name_en": "Helicoverpa armigera",
+  "source": {
+    "title": "Helicoverpa armigera (EPPO datasheet — Symptoms)",
+    "publisher": "EPPO — European and Mediterranean Plant Protection Organization",
+    "url": "https://gd.eppo.int/taxon/HELIAR/datasheet",
+    "type": "org",
+    "retrieved": "2026-10-13"
+  },
+  "symptoms_ar": [
+    "على القطن: ثقوب حفر عند قاعدة البراعم الزهرية وتفرغها من محتواها، مع انتشار الكؤوس لأسفل وتقويسها، واستهلاك الأوراق والسيقان باليرقات.",
+    "على الطماطم: اجتياح الثمار الصغيرة وسقوطها، ثم إصابات ثانوية بأحياء أخرى تسبب التحلل.",
+    "على الذرة: اجتياح الكزائن واستهلاك الحبوب النامية، مع إصابات بكتيرية ثانوية شائعة."
+  ],
+  "management_ar": [
+    "تدبير يبدأ بتحديد الهوية ومراقبة الحقل؛ والمراقبة تحدّد التوقيت، والترشيد يعتمد قواعد التسجيل الوطنية وتبديل مجموعات الآلية عند أي رش مسموح (IRAC)."
+  ],
+  "evidence": "A"
+}

@@ -1,0 +1,1224 @@
+{
+  "schema": 1,
+  "crop_id": "potato",
+  "generated_by": "scripts/advice-harvest.mjs",
+  "fetched_at": "2026-10-14",
+  "candidate": {
+    "ar": "البطاطا",
+    "en": "Potato",
+    "fr": "Pomme de terre",
+    "sci_expected": "Solanum tuberosum"
+  },
+  "eppo": {
+    "code": "SOLTU",
+    "overview_url": "https://gd.eppo.int/taxon/SOLTU",
+    "overview_title": "Solanum tuberosum (SOLTU)",
+    "pests_url": "https://gd.eppo.int/taxon/SOLTU/pests",
+    "http_status": 200,
+    "pests_total_rows": 249,
+    "by_type": {
+      "Experimental": 7,
+      "Host": 136,
+      "Major host": 101,
+      "Wild/Weed": 5
+    },
+    "pests": [
+      {
+        "code": "AECICT",
+        "name": "Aecidium cantense (AECICT)",
+        "type": "Major host"
+      },
+      {
+        "code": "EMDV00",
+        "name": "Alphanucleorhabdovirus melongenae (EMDV00)",
+        "type": "Major host"
+      },
+      {
+        "code": "PYDV00",
+        "name": "Alphanucleorhabdovirus tuberosum (PYDV00)",
+        "type": "Major host"
+      },
+      {
+        "code": "ALTESP",
+        "name": "Alternaria sp. (ALTESP)",
+        "type": "Major host"
+      },
+      {
+        "code": "SCLORO",
+        "name": "Athelia rolfsii (SCLORO)",
+        "type": "Major host"
+      },
+      {
+        "code": "PARZCO",
+        "name": "Bactericera cockerelli (PARZCO)",
+        "type": "Major host"
+      },
+      {
+        "code": "TOLCND",
+        "name": "Begomovirus solanumdelhiense (TOLCND)",
+        "type": "Major host"
+      },
+      {
+        "code": "TOYVSV",
+        "name": "Begomovirus solanumflavusvenae (TOYVSV)",
+        "type": "Major host"
+      },
+      {
+        "code": "PHOMEF",
+        "name": "Boeremia foveata (PHOMEF)",
+        "type": "Major host"
+      },
+      {
+        "code": "LIBEPS",
+        "name": "'Candidatus Liberibacter solanacearum' (LIBEPS)",
+        "type": "Major host"
+      },
+      {
+        "code": "PHYPAE",
+        "name": "'Candidatus Phytoplasma americanum' (PHYPAE)",
+        "type": "Major host"
+      },
+      {
+        "code": "PHYPSO",
+        "name": "'Candidatus Phytoplasma solani' (PHYPSO)",
+        "type": "Major host"
+      },
+      {
+        "code": "PVH000",
+        "name": "Carlavirus chisolani (PVH000)",
+        "type": "Major host"
+      },
+      {
+        "code": "POTLV0",
+        "name": "Carlavirus latensolani (POTLV0)",
+        "type": "Major host"
+      },
+      {
+        "code": "PVS000",
+        "name": "Carlavirus sigmasolani (PVS000)",
+        "type": "Major host"
+      },
+      {
+        "code": "AVBO00",
+        "name": "Cheravirus arracaciae oca strain (AVBO00)",
+        "type": "Major host"
+      },
+      {
+        "code": "CORBSE",
+        "name": "Clavibacter sepedonicus (CORBSE)",
+        "type": "Major host"
+      },
+      {
+        "code": "COLLCC",
+        "name": "Colletotrichum coccodes (COLLCC)",
+        "type": "Major host"
+      },
+      {
+        "code": "APMOV0",
+        "name": "Comovirus andesense (APMOV0)",
+        "type": "Major host"
+      },
+      {
+        "code": "PYVV00",
+        "name": "Crinivirus flavisolani (PYVV00)",
+        "type": "Major host"
+      },
+      {
+        "code": "TOCV00",
+        "name": "Crinivirus tomatichlorosis (TOCV00)",
+        "type": "Major host"
+      },
+      {
+        "code": "DIABSC",
+        "name": "Diabrotica speciosa (DIABSC)",
+        "type": "Major host"
+      },
+      {
+        "code": "ERWICD",
+        "name": "Dickeya dianthicola (ERWICD)",
+        "type": "Major host"
+      },
+      {
+        "code": "DICKSP",
+        "name": "Dickeya sp. (DICKSP)",
+        "type": "Major host"
+      },
+      {
+        "code": "DITYDE",
+        "name": "Ditylenchus destructor (DITYDE)",
+        "type": "Major host"
+      },
+      {
+        "code": "EPILVI",
+        "name": "Epilachna vigintioctomaculata (EPILVI)",
+        "type": "Major host"
+      },
+      {
+        "code": "EPIXCU",
+        "name": "Epitrix cucumeris (EPIXCU)",
+        "type": "Major host"
+      },
+      {
+        "code": "EPIXPP",
+        "name": "Epitrix papa (EPIXPP)",
+        "type": "Major host"
+      },
+      {
+        "code": "EPIXSI",
+        "name": "Epitrix similaris (EPIXSI)",
+        "type": "Major host"
+      },
+      {
+        "code": "EPIXSU",
+        "name": "Epitrix subcrinita (EPIXSU)",
+        "type": "Major host"
+      },
+      {
+        "code": "EPIXTU",
+        "name": "Epitrix tuberis (EPIXTU)",
+        "type": "Major host"
+      },
+      {
+        "code": "FUSASP",
+        "name": "Fusarium sp. (FUSASP)",
+        "type": "Major host"
+      },
+      {
+        "code": "GEOTCA",
+        "name": "Geotrichum candidum (GEOTCA)",
+        "type": "Major host"
+      },
+      {
+        "code": "HETDPA",
+        "name": "Globodera pallida (HETDPA)",
+        "type": "Major host"
+      },
+      {
+        "code": "HETDRO",
+        "name": "Globodera rostochiensis (HETDRO)",
+        "type": "Major host"
+      },
+      {
+        "code": "HELMSO",
+        "name": "Helminthosporium solani (HELMSO)",
+        "type": "Major host"
+      },
+      {
+        "code": "HETRAR",
+        "name": "Heteronychus arator (HETRAR)",
+        "type": "Major host"
+      },
+      {
+        "code": "LPTNDE",
+        "name": "Leptinotarsa decemlineata (LPTNDE)",
+        "type": "Major host"
+      },
+      {
+        "code": "LIMOCF",
+        "name": "Limonius californicus (LIMOCF)",
+        "type": "Major host"
+      },
+      {
+        "code": "LIRISA",
+        "name": "Liriomyza sativae (LIRISA)",
+        "type": "Major host"
+      },
+      {
+        "code": "MELNCO",
+        "name": "Melanotus communis (MELNCO)",
+        "type": "Major host"
+      },
+      {
+        "code": "MELGCH",
+        "name": "Meloidogyne chitwoodi (MELGCH)",
+        "type": "Major host"
+      },
+      {
+        "code": "MELGET",
+        "name": "Meloidogyne ethiopica (MELGET)",
+        "type": "Major host"
+      },
+      {
+        "code": "MELGFA",
+        "name": "Meloidogyne fallax (MELGFA)",
+        "type": "Major host"
+      },
+      {
+        "code": "MELGLC",
+        "name": "Meloidogyne luci (MELGLC)",
+        "type": "Major host"
+      },
+      {
+        "code": "NACOBA",
+        "name": "Nacobbus aberrans sensu lato (NACOBA)",
+        "type": "Major host"
+      },
+      {
+        "code": "PBRSV0",
+        "name": "Nepovirus solani (PBRSV0)",
+        "type": "Major host"
+      },
+      {
+        "code": "OMOPLE",
+        "name": "Omophlus lepturoides (OMOPLE)",
+        "type": "Major host"
+      },
+      {
+        "code": "TSWV00",
+        "name": "Orthotospovirus tomatomaculae (TSWV00)",
+        "type": "Major host"
+      },
+      {
+        "code": "PECBPO",
+        "name": "Pectobacterium polaris (PECBPO)",
+        "type": "Major host"
+      },
+      {
+        "code": "PECGSP",
+        "name": "Pectobacterium sp. (PECGSP)",
+        "type": "Major host"
+      },
+      {
+        "code": "PHTOOP",
+        "name": "Phthorimaea operculella (PHTOOP)",
+        "type": "Major host"
+      },
+      {
+        "code": "PHYTER",
+        "name": "Phytophthora erythroseptica (PHYTER)",
+        "type": "Major host"
+      },
+      {
+        "code": "PHYTIN",
+        "name": "Phytophthora infestans (PHYTIN)",
+        "type": "Major host"
+      },
+      {
+        "code": "PLRV00",
+        "name": "Polerovirus PLRV (PLRV00)",
+        "type": "Major host"
+      },
+      {
+        "code": "PLSCPU",
+        "name": "Polyscytalum pustulans (PLSCPU)",
+        "type": "Major host"
+      },
+      {
+        "code": "PSTVD0",
+        "name": "Pospiviroid fusituberis (PSTVD0)",
+        "type": "Major host"
+      },
+      {
+        "code": "PDMV00",
+        "name": "Potato deforming mosaic virus (Argentina) (PDMV00)",
+        "type": "Major host"
+      },
+      {
+        "code": "POMF00",
+        "name": "Potato marginal flavescence agent (POMF00)",
+        "type": "Major host"
+      },
+      {
+        "code": "PVYN00",
+        "name": "Potato virus Y tobacco veinal necrosis strain (PVYN00)",
+        "type": "Major host"
+      },
+      {
+        "code": "PVYNTN",
+        "name": "Potato virus Y tuber necrosis strain (PVYNTN)",
+        "type": "Major host"
+      },
+      {
+        "code": "PYV000",
+        "name": "Potato yellowing virus (PYV000)",
+        "type": "Major host"
+      },
+      {
+        "code": "PVX000",
+        "name": "Potexvirus ecspotati (PVX000)",
+        "type": "Major host"
+      },
+      {
+        "code": "PVA000",
+        "name": "Potyvirus atuberosi (PVA000)",
+        "type": "Major host"
+      },
+      {
+        "code": "PVV000",
+        "name": "Potyvirus vetuberosi (PVV000)",
+        "type": "Major host"
+      },
+      {
+        "code": "PVY000",
+        "name": "Potyvirus yituberosi (PVY000)",
+        "type": "Major host"
+      },
+      {
+        "code": "PREMLA",
+        "name": "Premnotrypes latithorax (PREMLA)",
+        "type": "Major host"
+      },
+      {
+        "code": "PREMSA",
+        "name": "Premnotrypes sanfordi (PREMSA)",
+        "type": "Major host"
+      },
+      {
+        "code": "PREMSO",
+        "name": "Premnotrypes solani (PREMSO)",
+        "type": "Major host"
+      },
+      {
+        "code": "PREMSU",
+        "name": "Premnotrypes suturicallus (PREMSU)",
+        "type": "Major host"
+      },
+      {
+        "code": "PREMVO",
+        "name": "Premnotrypes vorax (PREMVO)",
+        "type": "Major host"
+      },
+      {
+        "code": "PSECOB",
+        "name": "Pseudococcus viburni (PSECOB)",
+        "type": "Major host"
+      },
+      {
+        "code": "PUCCPT",
+        "name": "Puccinia pittieriana (PUCCPT)",
+        "type": "Major host"
+      },
+      {
+        "code": "PYTHSP",
+        "name": "Pythium sp. (PYTHSP)",
+        "type": "Major host"
+      },
+      {
+        "code": "RALSPS",
+        "name": "Ralstonia pseudosolanacearum (RALSPS)",
+        "type": "Major host"
+      },
+      {
+        "code": "RALSSL",
+        "name": "Ralstonia solanacearum (RALSSL)",
+        "type": "Major host"
+      },
+      {
+        "code": "PSDMS1",
+        "name": "Ralstonia solanacearum race 1 (no longer in use) (PSDMS1)",
+        "type": "Major host"
+      },
+      {
+        "code": "PSDMS3",
+        "name": "Ralstonia solanacearum race 3 (no longer in use) (PSDMS3)",
+        "type": "Major host"
+      },
+      {
+        "code": "RALSSO",
+        "name": "Ralstonia solanacearum species complex (RALSSO)",
+        "type": "Major host"
+      },
+      {
+        "code": "RALSSY",
+        "name": "Ralstonia syzygii (RALSSY)",
+        "type": "Major host"
+      },
+      {
+        "code": "RALSSI",
+        "name": "Ralstonia syzygii subsp. indonesiensis (RALSSI)",
+        "type": "Major host"
+      },
+      {
+        "code": "RHIZSO",
+        "name": "Rhizoctonia solani (RHIZSO)",
+        "type": "Major host"
+      },
+      {
+        "code": "RUSLSO",
+        "name": "Russelliana solanicola (RUSLSO)",
+        "type": "Major host"
+      },
+      {
+        "code": "SCLEMI",
+        "name": "Sclerotinia minor (SCLEMI)",
+        "type": "Major host"
+      },
+      {
+        "code": "SCLESC",
+        "name": "Sclerotinia sclerotiorum (SCLESC)",
+        "type": "Major host"
+      },
+      {
+        "code": "SEPTLM",
+        "name": "Septoria malagutii (SEPTLM)",
+        "type": "Major host"
+      },
+      {
+        "code": "SPODLI",
+        "name": "Spodoptera littoralis (SPODLI)",
+        "type": "Major host"
+      },
+      {
+        "code": "SPONSU",
+        "name": "Spongospora subterranea (SPONSU)",
+        "type": "Major host"
+      },
+      {
+        "code": "PHOMAN",
+        "name": "Stagonosporopsis andigena (PHOMAN)",
+        "type": "Major host"
+      },
+      {
+        "code": "STRESP",
+        "name": "Streptomyces sp. (STRESP)",
+        "type": "Major host"
+      },
+      {
+        "code": "SYNCEN",
+        "name": "Synchytrium endobioticum (SYNCEN)",
+        "type": "Major host"
+      },
+      {
+        "code": "TECASO",
+        "name": "Tecia solanivora (TECASO)",
+        "type": "Major host"
+      },
+      {
+        "code": "PVT000",
+        "name": "Tepovirus tafsolani (PVT000)",
+        "type": "Major host"
+      },
+      {
+        "code": "TETREV",
+        "name": "Tetranychus evansi (TETREV)",
+        "type": "Major host"
+      },
+      {
+        "code": "THPHSO",
+        "name": "Thecaphora solani (THPHSO)",
+        "type": "Major host"
+      },
+      {
+        "code": "TSVP00",
+        "name": "Tobacco streak ilarvirus potato strain (TSVP00)",
+        "type": "Major host"
+      },
+      {
+        "code": "TRV000",
+        "name": "Tobravirus tabaci (TRV000)",
+        "type": "Major host"
+      },
+      {
+        "code": "POTRSV",
+        "name": "Torradovirus nanorugosum (POTRSV)",
+        "type": "Major host"
+      },
+      {
+        "code": "DUMV00",
+        "name": "Tymovirus dulcamarae (DUMV00)",
+        "type": "Major host"
+      },
+      {
+        "code": "APLV00",
+        "name": "Tymovirus latandigenum (APLV00)",
+        "type": "Major host"
+      },
+      {
+        "code": "APMMV0",
+        "name": "Tymovirus mosandigenum (APMMV0)",
+        "type": "Major host"
+      },
+      {
+        "code": "VASALY",
+        "name": "Aculops lycopersici (VASALY)",
+        "type": "Host"
+      },
+      {
+        "code": "VASALY",
+        "name": "Aculops lycopersici (as Solanaceae) (VASALY)",
+        "type": "Host"
+      },
+      {
+        "code": "HERSCO",
+        "name": "Agrius convolvuli (HERSCO)",
+        "type": "Host"
+      },
+      {
+        "code": "AGROSE",
+        "name": "Agrotis segetum (AGROSE)",
+        "type": "Host"
+      },
+      {
+        "code": "AMV000",
+        "name": "Alfamovirus AMV (AMV000)",
+        "type": "Host"
+      },
+      {
+        "code": "EMPOBI",
+        "name": "Amrasca biguttula (EMPOBI)",
+        "type": "Host"
+      },
+      {
+        "code": "ANTHEU",
+        "name": "Anthonomus eugenii (as Solanum) (ANTHEU)",
+        "type": "Host"
+      },
+      {
+        "code": "AONMAL",
+        "name": "Aonidomytilus albus (as Solanum) (AONMAL)",
+        "type": "Host"
+      },
+      {
+        "code": "CLEOPU",
+        "name": "Asproparthenis punctiventris (CLEOPU)",
+        "type": "Host"
+      },
+      {
+        "code": "BAGRHI",
+        "name": "Bagrada hilaris (BAGRHI)",
+        "type": "Host"
+      },
+      {
+        "code": "CHILCU",
+        "name": "Begomovirus chillicapsici (CHILCU)",
+        "type": "Host"
+      },
+      {
+        "code": "TYLCV0",
+        "name": "Begomovirus coheni (TYLCV0)",
+        "type": "Host"
+      },
+      {
+        "code": "TOSRV0",
+        "name": "Begomovirus solanumseverugosi (TOSRV0)",
+        "type": "Host"
+      },
+      {
+        "code": "TOMOTV",
+        "name": "Begomovirus solanumtainoense (TOMOTV)",
+        "type": "Host"
+      },
+      {
+        "code": "PYMV00",
+        "name": "Begomovirus tuberosi (PYMV00)",
+        "type": "Host"
+      },
+      {
+        "code": "BEMITA",
+        "name": "Bemisia tabaci (as Solanaceae) (BEMITA)",
+        "type": "Host"
+      },
+      {
+        "code": "BRAPSU",
+        "name": "Brachyplatys subaeneus (BRAPSU)",
+        "type": "Host"
+      },
+      {
+        "code": "TORTPR",
+        "name": "Cacoecimorpha pronubana (TORTPR)",
+        "type": "Host"
+      },
+      {
+        "code": "ARSEPH",
+        "name": "'Candidatus Arsenophonus phytopathogenicus' (ARSEPH)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYPAU",
+        "name": "'Candidatus Phytoplasma australiense' (PHYPAU)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYPFG",
+        "name": "'Candidatus Phytoplasma fragariae' (PHYPFG)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYPFR",
+        "name": "'Candidatus Phytoplasma fraxini' (PHYPFR)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYPTR",
+        "name": "'Candidatus Phytoplasma trifolii' (PHYPTR)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYPTR",
+        "name": "'Candidatus Phytoplasma trifolii' (as Solanum) (PHYPTR)",
+        "type": "Host"
+      },
+      {
+        "code": "PVP000",
+        "name": "Carlavirus pisolani (PVP000)",
+        "type": "Host"
+      },
+      {
+        "code": "CRTZBR",
+        "name": "Ceratothripoides brunneus (CRTZBR)",
+        "type": "Host"
+      },
+      {
+        "code": "AVBO00",
+        "name": "Cheravirus arracaciae oca strain (as Solanum) (AVBO00)",
+        "type": "Host"
+      },
+      {
+        "code": "CRLV00",
+        "name": "Cheravirus avii (CRLV00)",
+        "type": "Host"
+      },
+      {
+        "code": "HELIVI",
+        "name": "Chloridea virescens (HELIVI)",
+        "type": "Host"
+      },
+      {
+        "code": "CHRXER",
+        "name": "Chrysodeixis eriosoma (CHRXER)",
+        "type": "Host"
+      },
+      {
+        "code": "CIRCTE",
+        "name": "Circulifer tenellus (CIRCTE)",
+        "type": "Host"
+      },
+      {
+        "code": "CORBMI",
+        "name": "Clavibacter michiganensis (CORBMI)",
+        "type": "Host"
+      },
+      {
+        "code": "ACAMTO",
+        "name": "Clavigralla tomentosicollis (ACAMTO)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYP19",
+        "name": "Clover yellow edge phytoplasma (PHYP19)",
+        "type": "Host"
+      },
+      {
+        "code": "CONORU",
+        "name": "Conoderus rufangulus (CONORU)",
+        "type": "Host"
+      },
+      {
+        "code": "CYSDV0",
+        "name": "Crinivirus cucurbitae (CYSDV0)",
+        "type": "Host"
+      },
+      {
+        "code": "PYVV00",
+        "name": "Crinivirus flavisolani (as Solanum) (PYVV00)",
+        "type": "Host"
+      },
+      {
+        "code": "CMV000",
+        "name": "Cucumovirus CMV (CMV000)",
+        "type": "Host"
+      },
+      {
+        "code": "BCTV00",
+        "name": "Curtovirus betae (BCTV00)",
+        "type": "Host"
+      },
+      {
+        "code": "DACUBI",
+        "name": "Dacus bivittatus (DACUBI)",
+        "type": "Host"
+      },
+      {
+        "code": "ONCMMI",
+        "name": "Dechacona missionum (ONCMMI)",
+        "type": "Host"
+      },
+      {
+        "code": "ROSLBU",
+        "name": "Dematophora bunodes (ROSLBU)",
+        "type": "Host"
+      },
+      {
+        "code": "DIABUH",
+        "name": "Diabrotica undecimpunctata howardi (DIABUH)",
+        "type": "Host"
+      },
+      {
+        "code": "DIABUN",
+        "name": "Diabrotica undecimpunctata undecimpunctata (DIABUN)",
+        "type": "Host"
+      },
+      {
+        "code": "DIABVZ",
+        "name": "Diabrotica virgifera zeae (as Solanum) (DIABVZ)",
+        "type": "Host"
+      },
+      {
+        "code": "DITYDI",
+        "name": "Ditylenchus dipsaci (DITYDI)",
+        "type": "Host"
+      },
+      {
+        "code": "EPIECO",
+        "name": "Epicaerus cognatus (EPIECO)",
+        "type": "Host"
+      },
+      {
+        "code": "EPILVI",
+        "name": "Epilachna vigintioctomaculata (as Solanaceae) (EPILVI)",
+        "type": "Host"
+      },
+      {
+        "code": "TORTPO",
+        "name": "Epiphyas postvittana (TORTPO)",
+        "type": "Host"
+      },
+      {
+        "code": "EPIXPA",
+        "name": "Epitrix hirtipennis (EPIXPA)",
+        "type": "Host"
+      },
+      {
+        "code": "ERWICH",
+        "name": "Erwinia chrysanthemi (ERWICH)",
+        "type": "Host"
+      },
+      {
+        "code": "FRANCS",
+        "name": "Frankliniella australis (as Solanaceae) (FRANCS)",
+        "type": "Host"
+      },
+      {
+        "code": "FUSAFO",
+        "name": "Fusarium foetens (FUSAFO)",
+        "type": "Host"
+      },
+      {
+        "code": "HLCBBR",
+        "name": "Helicobasidium brebissonii (HLCBBR)",
+        "type": "Host"
+      },
+      {
+        "code": "HELIAR",
+        "name": "Helicoverpa armigera (HELIAR)",
+        "type": "Host"
+      },
+      {
+        "code": "HELIZE",
+        "name": "Helicoverpa zea (HELIZE)",
+        "type": "Host"
+      },
+      {
+        "code": "TSV000",
+        "name": "Ilarvirus TSV (TSV000)",
+        "type": "Host"
+      },
+      {
+        "code": "EMPOLY",
+        "name": "Jacobiasca lybica (EMPOLY)",
+        "type": "Host"
+      },
+      {
+        "code": "GNORLY",
+        "name": "Keiferia lycopersicella (GNORLY)",
+        "type": "Host"
+      },
+      {
+        "code": "LAGRVL",
+        "name": "Lagria villosa (LAGRVL)",
+        "type": "Host"
+      },
+      {
+        "code": "LEUIOR",
+        "name": "Leucinodes orbonalis (LEUIOR)",
+        "type": "Host"
+      },
+      {
+        "code": "LEUIUG",
+        "name": "Leucinodes ugandensis (as Solanum) (LEUIUG)",
+        "type": "Host"
+      },
+      {
+        "code": "LIRIBO",
+        "name": "Liriomyza bryoniae (LIRIBO)",
+        "type": "Host"
+      },
+      {
+        "code": "LIRIHU",
+        "name": "Liriomyza huidobrensis (LIRIHU)",
+        "type": "Host"
+      },
+      {
+        "code": "LIRITR",
+        "name": "Liriomyza trifolii (LIRITR)",
+        "type": "Host"
+      },
+      {
+        "code": "LISTCO",
+        "name": "Listroderes costirostris (LISTCO)",
+        "type": "Host"
+      },
+      {
+        "code": "LISTDI",
+        "name": "Listroderes difficilis (LISTDI)",
+        "type": "Host"
+      },
+      {
+        "code": "POLYBO",
+        "name": "Lobesia botrana (POLYBO)",
+        "type": "Host"
+      },
+      {
+        "code": "LEV000",
+        "name": "Lucerne enation virus (LEV000)",
+        "type": "Host"
+      },
+      {
+        "code": "MEGTUS",
+        "name": "Megalurothrips usitatus (MEGTUS)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGMY",
+        "name": "Meloidogyne enterolobii (MELGMY)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGGC",
+        "name": "Meloidogyne graminicola (MELGGC)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGMI",
+        "name": "Meloidogyne minor (MELGMI)",
+        "type": "Host"
+      },
+      {
+        "code": "GRAGLE",
+        "name": "Naupactus leucoloma (GRAGLE)",
+        "type": "Host"
+      },
+      {
+        "code": "NAUPXA",
+        "name": "Naupactus xanthographus (NAUPXA)",
+        "type": "Host"
+      },
+      {
+        "code": "CERTCY",
+        "name": "Neoceratitis cyanescens (CERTCY)",
+        "type": "Host"
+      },
+      {
+        "code": "ARMV00",
+        "name": "Nepovirus arabis (ARMV00)",
+        "type": "Host"
+      },
+      {
+        "code": "PVB000",
+        "name": "Nepovirus betasolani (PVB000)",
+        "type": "Host"
+      },
+      {
+        "code": "TORSV0",
+        "name": "Nepovirus lycopersici (TORSV0)",
+        "type": "Host"
+      },
+      {
+        "code": "TBRV00",
+        "name": "Nepovirus nigranuli (TBRV00)",
+        "type": "Host"
+      },
+      {
+        "code": "TBRV00",
+        "name": "Nepovirus nigranuli (as Solanum) (TBRV00)",
+        "type": "Host"
+      },
+      {
+        "code": "OPOGSC",
+        "name": "Opogona sacchari (OPOGSC)",
+        "type": "Host"
+      },
+      {
+        "code": "GRSV00",
+        "name": "Orthotospovirus arachianuli (GRSV00)",
+        "type": "Host"
+      },
+      {
+        "code": "GBNV00",
+        "name": "Orthotospovirus arachinecrosis (GBNV00)",
+        "type": "Host"
+      },
+      {
+        "code": "INSV00",
+        "name": "Orthotospovirus impatiensnecromaculae (INSV00)",
+        "type": "Host"
+      },
+      {
+        "code": "TZSV00",
+        "name": "Orthotospovirus tomatozonae (TZSV00)",
+        "type": "Host"
+      },
+      {
+        "code": "PNSTLE",
+        "name": "Pentastiridius leporinus (PNSTLE)",
+        "type": "Host"
+      },
+      {
+        "code": "PHENPR",
+        "name": "Phenacoccus peruvianus (PHENPR)",
+        "type": "Host"
+      },
+      {
+        "code": "PHENSO",
+        "name": "Phenacoccus solenopsis (PHENSO)",
+        "type": "Host"
+      },
+      {
+        "code": "GNORAB",
+        "name": "Phthorimaea absoluta (GNORAB)",
+        "type": "Host"
+      },
+      {
+        "code": "PHMPOM",
+        "name": "Phymatotrichopsis omnivora (PHMPOM)",
+        "type": "Host"
+      },
+      {
+        "code": "PHRDMU",
+        "name": "Phyrdenus muriceus (PHRDMU)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYTCR",
+        "name": "Phytophthora cryptogea (PHYTCR)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYTNP",
+        "name": "Phytophthora nicotianae (PHYTNP)",
+        "type": "Host"
+      },
+      {
+        "code": "PMTV00",
+        "name": "Pomovirus solani (PMTV00)",
+        "type": "Host"
+      },
+      {
+        "code": "PMTV00",
+        "name": "Pomovirus solani (as Solanum) (PMTV00)",
+        "type": "Host"
+      },
+      {
+        "code": "CSVD00",
+        "name": "Pospiviroid impedichrysanthemi (CSVD00)",
+        "type": "Host"
+      },
+      {
+        "code": "PDMV00",
+        "name": "Potato deforming mosaic virus (Argentina) (as Solanum) (PDMV00)",
+        "type": "Host"
+      },
+      {
+        "code": "POLS00",
+        "name": "Potato leaflet stunt agent (POLS00)",
+        "type": "Host"
+      },
+      {
+        "code": "POLS00",
+        "name": "Potato leaflet stunt agent (as Solanum) (POLS00)",
+        "type": "Host"
+      },
+      {
+        "code": "POPTR0",
+        "name": "Potato purple-top roll agent (POPTR0)",
+        "type": "Host"
+      },
+      {
+        "code": "POPTR0",
+        "name": "Potato purple-top roll agent (as Solanum) (POPTR0)",
+        "type": "Host"
+      },
+      {
+        "code": "PVYN00",
+        "name": "Potato virus Y tobacco veinal necrosis strain (as Solanum) (PVYN00)",
+        "type": "Host"
+      },
+      {
+        "code": "PAMV00",
+        "name": "Potexvirus marmoraucuba (PAMV00)",
+        "type": "Host"
+      },
+      {
+        "code": "PEPMV0",
+        "name": "Potexvirus pepini (PEPMV0)",
+        "type": "Host"
+      },
+      {
+        "code": "PREMLA",
+        "name": "Premnotrypes latithorax (as Solanum) (PREMLA)",
+        "type": "Host"
+      },
+      {
+        "code": "PREMSA",
+        "name": "Premnotrypes sanfordi (as Solanum) (PREMSA)",
+        "type": "Host"
+      },
+      {
+        "code": "PREMSO",
+        "name": "Premnotrypes solani (as Solanum) (PREMSO)",
+        "type": "Host"
+      },
+      {
+        "code": "PREMVO",
+        "name": "Premnotrypes vorax (as Solanum) (PREMVO)",
+        "type": "Host"
+      },
+      {
+        "code": "PRDILO",
+        "name": "Prodiplosis longifila (PRDILO)",
+        "type": "Host"
+      },
+      {
+        "code": "PSEAPE",
+        "name": "Pseudaulacaspis pentagona (as Solanum) (PSEAPE)",
+        "type": "Host"
+      },
+      {
+        "code": "RHGPTU",
+        "name": "Rhigopsidius tucumanus (RHGPTU)",
+        "type": "Host"
+      },
+      {
+        "code": "HELYBU",
+        "name": "Rotylenchus buxophilus (HELYBU)",
+        "type": "Host"
+      },
+      {
+        "code": "SCITDO",
+        "name": "Scirtothrips dorsalis (SCITDO)",
+        "type": "Host"
+      },
+      {
+        "code": "SEPTLM",
+        "name": "Septoria malagutii (as Solanum) (SEPTLM)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODER",
+        "name": "Spodoptera eridania (PRODER)",
+        "type": "Host"
+      },
+      {
+        "code": "LAPHFR",
+        "name": "Spodoptera frugiperda (LAPHFR)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODLI",
+        "name": "Spodoptera litura (PRODLI)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODOR",
+        "name": "Spodoptera ornithogalli (PRODOR)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODPR",
+        "name": "Spodoptera praefica (PRODPR)",
+        "type": "Host"
+      },
+      {
+        "code": "STGSCR",
+        "name": "Stagonosporopsis crystalliniformis (STGSCR)",
+        "type": "Host"
+      },
+      {
+        "code": "SYNCEN",
+        "name": "Synchytrium endobioticum (as Solanum) (SYNCEN)",
+        "type": "Host"
+      },
+      {
+        "code": "THRIAN",
+        "name": "Thrips angusticeps (THRIAN)",
+        "type": "Host"
+      },
+      {
+        "code": "THRIPL",
+        "name": "Thrips palmi (THRIPL)",
+        "type": "Host"
+      },
+      {
+        "code": "THRIPV",
+        "name": "Thrips parvispinus (THRIPV)",
+        "type": "Host"
+      },
+      {
+        "code": "THRISE",
+        "name": "Thrips setosus (THRISE)",
+        "type": "Host"
+      },
+      {
+        "code": "TNV000",
+        "name": "Tobacco necrosis virus (TNV000)",
+        "type": "Host"
+      },
+      {
+        "code": "TMV000",
+        "name": "Tobamovirus tabaci (TMV000)",
+        "type": "Host"
+      },
+      {
+        "code": "PEPRSV",
+        "name": "Tobravirus capsici (PEPRSV)",
+        "type": "Host"
+      },
+      {
+        "code": "TRIARI",
+        "name": "Trialeurodes ricini (TRIARI)",
+        "type": "Host"
+      },
+      {
+        "code": "TRIHVI",
+        "name": "Trichodorus viruliferus (TRIHVI)",
+        "type": "Host"
+      },
+      {
+        "code": "DUMV00",
+        "name": "Tymovirus dulcamarae (as Solanum) (DUMV00)",
+        "type": "Host"
+      },
+      {
+        "code": "VERTDA",
+        "name": "Verticillium dahliae (VERTDA)",
+        "type": "Host"
+      },
+      {
+        "code": "VERTNO",
+        "name": "Verticillium nonalfalfae (VERTNO)",
+        "type": "Host"
+      },
+      {
+        "code": "XIPHAA",
+        "name": "Xiphinema americanum sensu stricto (XIPHAA)",
+        "type": "Host"
+      },
+      {
+        "code": "XIPHRI",
+        "name": "Xiphinema rivesi (XIPHRI)",
+        "type": "Host"
+      }
+    ]
+  },
+  "gbif": {
+    "key": 2930262,
+    "url": "https://www.gbif.org/species/2930262",
+    "scientificName": "Solanum tuberosum L.",
+    "canonicalName": "Solanum tuberosum",
+    "family": "Solanaceae",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "matchType": "EXACT",
+    "confidence": 99
+  }
+}

@@ -1,0 +1,234 @@
+{
+  "schema": 1,
+  "crop_id": "barley",
+  "generated_by": "scripts/advice-harvest.mjs",
+  "fetched_at": "2026-10-14",
+  "candidate": {
+    "ar": "الشعير",
+    "en": "Barley",
+    "fr": "Orge",
+    "sci_expected": "Hordeum vulgare"
+  },
+  "eppo": {
+    "code": "HORVX",
+    "overview_url": "https://gd.eppo.int/taxon/HORVX",
+    "overview_title": "Hordeum vulgare (HORVX)",
+    "pests_url": "https://gd.eppo.int/taxon/HORVX/pests",
+    "http_status": 200,
+    "pests_total_rows": 41,
+    "by_type": {
+      "Doubtful host": 1,
+      "Experimental": 1,
+      "Host": 29,
+      "Major host": 10
+    },
+    "pests": [
+      {
+        "code": "BYSMV0",
+        "name": "Betacytorhabdovirus hordei (BYSMV0)",
+        "type": "Major host"
+      },
+      {
+        "code": "BAYMV0",
+        "name": "Bymovirus hordeiluteum (BAYMV0)",
+        "type": "Major host"
+      },
+      {
+        "code": "HYLECO",
+        "name": "Delia coarctata (HYLECO)",
+        "type": "Major host"
+      },
+      {
+        "code": "HETDHO",
+        "name": "Heterodera hordecalis (HETDHO)",
+        "type": "Major host"
+      },
+      {
+        "code": "BSMV00",
+        "name": "Hordeivirus hordei (BSMV00)",
+        "type": "Major host"
+      },
+      {
+        "code": "LIMOCF",
+        "name": "Limonius californicus (LIMOCF)",
+        "type": "Major host"
+      },
+      {
+        "code": "MELGFA",
+        "name": "Meloidogyne fallax (MELGFA)",
+        "type": "Major host"
+      },
+      {
+        "code": "MELGNA",
+        "name": "Meloidogyne naasi (MELGNA)",
+        "type": "Major host"
+      },
+      {
+        "code": "TROGGA",
+        "name": "Trogoderma granarium (TROGGA)",
+        "type": "Major host"
+      },
+      {
+        "code": "XANTTR",
+        "name": "Xanthomonas translucens pv. translucens (XANTTR)",
+        "type": "Major host"
+      },
+      {
+        "code": "COCHCA",
+        "name": "Bipolaris zeicola (COCHCA)",
+        "type": "Host"
+      },
+      {
+        "code": "CONTTR",
+        "name": "Contarinia tritici (CONTTR)",
+        "type": "Host"
+      },
+      {
+        "code": "CORBFL",
+        "name": "Curtobacterium flaccumfaciens pv. flaccumfaciens (CORBFL)",
+        "type": "Host"
+      },
+      {
+        "code": "DIABLO",
+        "name": "Diabrotica barberi (DIABLO)",
+        "type": "Host"
+      },
+      {
+        "code": "DIABUH",
+        "name": "Diabrotica undecimpunctata howardi (DIABUH)",
+        "type": "Host"
+      },
+      {
+        "code": "DITYDI",
+        "name": "Ditylenchus dipsaci (DITYDI)",
+        "type": "Host"
+      },
+      {
+        "code": "BRAYNO",
+        "name": "Diuraphis noxia (BRAYNO)",
+        "type": "Host"
+      },
+      {
+        "code": "ELASLI",
+        "name": "Elasmopalpus lignosellus (ELASLI)",
+        "type": "Host"
+      },
+      {
+        "code": "WHPV00",
+        "name": "Emaravirus tritici (WHPV00)",
+        "type": "Host"
+      },
+      {
+        "code": "MRCV00",
+        "name": "Fijivirus cuartoense (MRCV00)",
+        "type": "Host"
+      },
+      {
+        "code": "WCHMV0",
+        "name": "Furovirus chinense (WCHMV0)",
+        "type": "Host"
+      },
+      {
+        "code": "HETDZE",
+        "name": "Heterodera zeae (HETDZE)",
+        "type": "Host"
+      },
+      {
+        "code": "LIRIHU",
+        "name": "Liriomyza huidobrensis (LIRIHU)",
+        "type": "Host"
+      },
+      {
+        "code": "HYROBO",
+        "name": "Listronotus bonariensis (HYROBO)",
+        "type": "Host"
+      },
+      {
+        "code": "MAYEDE",
+        "name": "Mayetiola destructor (MAYEDE)",
+        "type": "Host"
+      },
+      {
+        "code": "MELNCO",
+        "name": "Melanotus communis (MELNCO)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGCH",
+        "name": "Meloidogyne chitwoodi (MELGCH)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGGC",
+        "name": "Meloidogyne graminicola (MELGGC)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGLC",
+        "name": "Meloidogyne luci (MELGLC)",
+        "type": "Host"
+      },
+      {
+        "code": "NYSIHU",
+        "name": "Nysius huttoni (NYSIHU)",
+        "type": "Host"
+      },
+      {
+        "code": "PORPTR",
+        "name": "Porphyrophora tritici (PORPTR)",
+        "type": "Host"
+      },
+      {
+        "code": "PYRIOR",
+        "name": "Pyricularia oryzae (PYRIOR)",
+        "type": "Host"
+      },
+      {
+        "code": "PYRIOT",
+        "name": "Pyricularia oryzae Triticum lineage (PYRIOT)",
+        "type": "Host"
+      },
+      {
+        "code": "SITDMO",
+        "name": "Sitodiplosis mosellana (SITDMO)",
+        "type": "Host"
+      },
+      {
+        "code": "LAPHFR",
+        "name": "Spodoptera frugiperda (LAPHFR)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODOR",
+        "name": "Spodoptera ornithogalli (PRODOR)",
+        "type": "Host"
+      },
+      {
+        "code": "TILLCO",
+        "name": "Tilletia controversa (TILLCO)",
+        "type": "Host"
+      },
+      {
+        "code": "TRIHVI",
+        "name": "Trichodorus viruliferus (TRIHVI)",
+        "type": "Host"
+      },
+      {
+        "code": "XANTTU",
+        "name": "Xanthomonas translucens pv. undulosa (XANTTU)",
+        "type": "Host"
+      }
+    ]
+  },
+  "gbif": {
+    "key": 2706056,
+    "url": "https://www.gbif.org/species/2706056",
+    "scientificName": "Hordeum vulgare L.",
+    "canonicalName": "Hordeum vulgare",
+    "family": "Poaceae",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "matchType": "EXACT",
+    "confidence": 100
+  }
+}

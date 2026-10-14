@@ -1,0 +1,440 @@
+{
+  "schema": 1,
+  "crop_id": "coconut",
+  "generated_by": "scripts/advice-generate.mjs",
+  "built": "2026-10-14",
+  "others": [
+    {
+      "type": "bacterium",
+      "code": "PHYPCT",
+      "name": "'Candidatus Phytoplasma cocostanzaniae’",
+      "host": "Major host"
+    },
+    {
+      "type": "bacterium",
+      "code": "PHYPHI",
+      "name": "'Candidatus Phytoplasma hispanola'",
+      "host": "Major host"
+    },
+    {
+      "type": "bacterium",
+      "code": "PHYPKA",
+      "name": "‘Candidatus Phytoplasma katsepyensis’",
+      "host": "Major host"
+    },
+    {
+      "type": "bacterium",
+      "code": "PHYPNO",
+      "name": "'Candidatus Phytoplasma noviguineense' (as Musa)",
+      "host": "Major host"
+    },
+    {
+      "type": "bacterium",
+      "code": "PHYPPA",
+      "name": "'Candidatus Phytoplasma palmae'",
+      "host": "Major host"
+    },
+    {
+      "type": "bacterium",
+      "code": "PHYPPL",
+      "name": "‘Candidatus Phytoplasma palmicola’",
+      "host": "Major host"
+    },
+    {
+      "type": "mite",
+      "code": "ACEIGU",
+      "name": "Aceria guerreronis",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "ALEDDE",
+      "name": "Aleurodicus destructor",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "ARTOCA",
+      "name": "Artona catoxantha",
+      "host": "Major host"
+    },
+    {
+      "type": "fungus",
+      "code": "DRECIN",
+      "name": "Bipolaris incurvata",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "BRONLO",
+      "name": "Brontispa longissima",
+      "host": "Major host"
+    },
+    {
+      "type": "nematode",
+      "code": "RHAACO",
+      "name": "Bursaphelenchus cocophilus",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "CEATVA",
+      "name": "Cerataphis brasiliensis",
+      "host": "Major host"
+    },
+    {
+      "type": "virus",
+      "code": "CCCVD0",
+      "name": "Cocadviroid cadangi",
+      "host": "Major host"
+    },
+    {
+      "type": "virus",
+      "code": "CFDV00",
+      "name": "Cofodevirus kokonas",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "DIOCFR",
+      "name": "Diocalandra frumenti",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "CASTDA",
+      "name": "Eupalamides cyparissias",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "FURCOC",
+      "name": "Furcaspis oceanica",
+      "host": "Major host"
+    },
+    {
+      "type": "fungus",
+      "code": "MARLCO",
+      "name": "Marasmiellus cocophilus",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "MEITIN",
+      "name": "Melittomma insulare",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "NETMRA",
+      "name": "Neotermes rainbowi",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "NEPASE",
+      "name": "Opisina arenosella",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "ORYCBO",
+      "name": "Oryctes boas",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "ORYCMO",
+      "name": "Oryctes monoceros",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "ORYCRH",
+      "name": "Oryctes rhinoceros",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "PACMNU",
+      "name": "Pachymerus nucleorum",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "PROHCU",
+      "name": "Promecotheca cumingi",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "PSDTDE",
+      "name": "Pseudotheraptus devastans",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "PSDTWA",
+      "name": "Pseudotheraptus wayi",
+      "host": "Major host"
+    },
+    {
+      "type": "mite",
+      "code": "RAOIIN",
+      "name": "Raoiella indica",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "RHYCBI",
+      "name": "Rhynchophorus bilineatus",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "RHYCFE",
+      "name": "Rhynchophorus ferrugineus",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "RHYCPA",
+      "name": "Rhynchophorus palmarum",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "RHYCPH",
+      "name": "Rhynchophorus phoenicis",
+      "host": "Major host"
+    },
+    {
+      "type": "bacterium",
+      "code": "PHYPDY",
+      "name": "'Candidatus Phytoplasma dypsidis'",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "ALECSN",
+      "name": "Aleurocanthus spiniferus",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "ALEDDI",
+      "name": "Aleurodicus dispersus (as Prunus)",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "ALTRTR",
+      "name": "Aleurothrixus trachoides",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "AMBPCO",
+      "name": "Amblypelta cocophaga",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "AMBPLU",
+      "name": "Amblypelta lutescens",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "AONDOR",
+      "name": "Aonidiella orientalis",
+      "host": "Host"
+    },
+    {
+      "type": "fungus",
+      "code": "THIEBA",
+      "name": "Berkeleyomyces basicola",
+      "host": "Host"
+    },
+    {
+      "type": "mite",
+      "code": "BRVPYO",
+      "name": "Brevipalpus yothersi (as Musa)",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "VINSST",
+      "name": "Ceroplastes stellifer",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "CHRYFI",
+      "name": "Chrysomphalus aonidum",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "COELEL",
+      "name": "Coelaenomenodera minuta",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "DYNMBO",
+      "name": "Dynamis borassi",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "ERNTTH",
+      "name": "Erionota thrax",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "PLTPPA",
+      "name": "Euplatypus parallelus",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "FIORCO",
+      "name": "Fiorinia phantasma",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "MYNDCR",
+      "name": "Haplaxius crudus",
+      "host": "Host"
+    },
+    {
+      "type": "fungus",
+      "code": "PHYORH",
+      "name": "Lasiodiplodia theobromae",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "LEPLAU",
+      "name": "Leptoglossus australis",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "METAHE",
+      "name": "Metamasius hemipterus (as Musa)",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "NAROCO",
+      "name": "Narosa conspersa",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "OCTDNI",
+      "name": "Octodonta nipae",
+      "host": "Host"
+    },
+    {
+      "type": "mite",
+      "code": "OLIGPU",
+      "name": "Oligonychus punicae",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "OPOGSC",
+      "name": "Opogona sacchari",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "PARYMI",
+      "name": "Paraleyrodes minei",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "PIMAGH",
+      "name": "Pimelephila ghesquierei",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "PLEPRE",
+      "name": "Plesispa reichei",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "PROHCO",
+      "name": "Promecotheca caeruleipennis",
+      "host": "Host"
+    },
+    {
+      "type": "nematode",
+      "code": "RADOSI",
+      "name": "Radopholus similis",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "SPPHOB",
+      "name": "Rhabdoscelus obscurus",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "STEPTY",
+      "name": "Stephanitis typica",
+      "host": "Host"
+    },
+    {
+      "type": "mite",
+      "code": "TETRFI",
+      "name": "Tetranychus fijiensis",
+      "host": "Host"
+    },
+    {
+      "type": "mite",
+      "code": "TETRME",
+      "name": "Tetranychus mexicanus",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "TROGGA",
+      "name": "Trogoderma granarium",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "UNASCI",
+      "name": "Unaspis citri",
+      "host": "Host"
+    },
+    {
+      "type": "nematode",
+      "code": "XIPHCA",
+      "name": "Xiphinema californicum",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "XYLBFE",
+      "name": "Xyleborus ferrugineus",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "XYLBCR",
+      "name": "Xylosandrus crassiusculus",
+      "host": "Host"
+    }
+  ]
+}

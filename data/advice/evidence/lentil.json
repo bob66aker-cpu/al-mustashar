@@ -1,0 +1,93 @@
+{
+  "schema": 1,
+  "crop_id": "lentil",
+  "generated_by": "scripts/advice-harvest.mjs",
+  "fetched_at": "2026-10-14",
+  "candidate": {
+    "ar": "العدس",
+    "en": "Lentil",
+    "fr": "Lentille",
+    "sci_expected": "Lens culinaris"
+  },
+  "eppo": {
+    "code": "LENCU",
+    "overview_url": "https://gd.eppo.int/taxon/LENCU",
+    "overview_title": "Vicia lens (LENCU)",
+    "pests_url": "https://gd.eppo.int/taxon/LENCU/pests",
+    "http_status": 200,
+    "pests_total_rows": 13,
+    "by_type": {
+      "Experimental": 1,
+      "Host": 11,
+      "Wild/Weed": 1
+    },
+    "pests": [
+      {
+        "code": "HELIVI",
+        "name": "Chloridea virescens (HELIVI)",
+        "type": "Host"
+      },
+      {
+        "code": "CORBFL",
+        "name": "Curtobacterium flaccumfaciens pv. flaccumfaciens (CORBFL)",
+        "type": "Host"
+      },
+      {
+        "code": "DITYDI",
+        "name": "Ditylenchus dipsaci (DITYDI)",
+        "type": "Host"
+      },
+      {
+        "code": "ERWIRH",
+        "name": "Erwinia rhapontici (ERWIRH)",
+        "type": "Host"
+      },
+      {
+        "code": "STEHHA",
+        "name": "Hypothenemus hampei (STEHHA)",
+        "type": "Host"
+      },
+      {
+        "code": "TSWV00",
+        "name": "Orthotospovirus tomatomaculae (TSWV00)",
+        "type": "Host"
+      },
+      {
+        "code": "PRDILO",
+        "name": "Prodiplosis longifila (PRDILO)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODOR",
+        "name": "Spodoptera ornithogalli (PRODOR)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODPR",
+        "name": "Spodoptera praefica (PRODPR)",
+        "type": "Host"
+      },
+      {
+        "code": "TROGGA",
+        "name": "Trogoderma granarium (TROGGA)",
+        "type": "Host"
+      },
+      {
+        "code": "UROMVF",
+        "name": "Uromyces viciae-fabae (UROMVF)",
+        "type": "Host"
+      }
+    ]
+  },
+  "gbif": {
+    "key": 3973001,
+    "url": "https://www.gbif.org/species/3973001",
+    "scientificName": "Vicia lens (L.) Coss. & Germ.",
+    "canonicalName": "Vicia lens",
+    "family": "Fabaceae",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "matchType": "EXACT",
+    "confidence": 100
+  }
+}

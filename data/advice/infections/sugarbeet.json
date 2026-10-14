@@ -1,0 +1,195 @@
+{
+  "schema": 1,
+  "crop_id": "sugarbeet",
+  "generated_by": "scripts/advice-generate.mjs",
+  "built": "2026-10-14",
+  "crop": {
+    "ar": "شمندر السكر",
+    "en": "Sugar beet",
+    "fr": "Betterave sucrière",
+    "sci": "Beta vulgaris",
+    "family": "Amaranthaceae"
+  },
+  "eppo": {
+    "code": "BEAVX",
+    "overview_url": "https://gd.eppo.int/taxon/BEAVX",
+    "pests_url": "https://gd.eppo.int/taxon/BEAVX/pests",
+    "pests_total_rows": 77
+  },
+  "types": [
+    {
+      "id": "insect",
+      "cards": 8,
+      "others": 26,
+      "count": 34
+    },
+    {
+      "id": "mite",
+      "cards": 0,
+      "others": 1,
+      "count": 1
+    },
+    {
+      "id": "fungus",
+      "cards": 1,
+      "others": 1,
+      "count": 2
+    },
+    {
+      "id": "pseudo_fungus",
+      "cards": 0,
+      "others": 1,
+      "count": 1
+    },
+    {
+      "id": "bacterium",
+      "cards": 1,
+      "others": 3,
+      "count": 4
+    },
+    {
+      "id": "virus",
+      "cards": 2,
+      "others": 9,
+      "count": 11
+    },
+    {
+      "id": "nematode",
+      "cards": 1,
+      "others": 10,
+      "count": 11
+    }
+  ],
+  "cards": [
+    {
+      "type": "insect",
+      "code": "LAPHFR",
+      "host": "Host",
+      "name_ar": "سوسة الذرة الأمريكية",
+      "sci": "Spodoptera frugiperda",
+      "family": "Noctuidae",
+      "dossier": "LAPHFR",
+      "n": 1
+    },
+    {
+      "type": "fungus",
+      "code": "PHMPOM",
+      "host": "Host",
+      "name_ar": "تعفّن وذبول جذور النباتات",
+      "sci": "Phymatotrichopsis omnivora",
+      "family": "Rhizinaceae",
+      "dossier": "PHMPOM",
+      "n": 1
+    },
+    {
+      "type": "insect",
+      "code": "HELIAR",
+      "host": "Host",
+      "name_ar": "دودة الحشّاشة (البقّاحة)",
+      "sci": "Helicoverpa armigera",
+      "family": "Noctuidae",
+      "dossier": "HELIAR",
+      "n": 2
+    },
+    {
+      "type": "insect",
+      "code": "PHENHI",
+      "host": "Host",
+      "name_ar": "المن الوردي",
+      "sci": "Maconellicoccus hirsutus",
+      "family": "Pseudococcidae",
+      "dossier": "PHENHI",
+      "n": 3
+    },
+    {
+      "type": "virus",
+      "code": "TSWV00",
+      "host": "Host",
+      "name_ar": "فيروس ذبول الطماطم المرقط",
+      "sci": "Orthotospovirus tomatomaculae",
+      "family": "Tospoviridae",
+      "dossier": "TSWV00",
+      "n": 1
+    },
+    {
+      "type": "insect",
+      "code": "LIRIHU",
+      "host": "Host",
+      "name_ar": "حافرة الأوراق (Liriomyza huidobrensis)",
+      "sci": "Liriomyza huidobrensis",
+      "family": "Agromyzidae",
+      "dossier": "LIRIHU",
+      "n": 4
+    },
+    {
+      "type": "insect",
+      "code": "SPODLI",
+      "host": "Host",
+      "name_ar": "سوسة الأوراق المتوسطية",
+      "sci": "Spodoptera littoralis",
+      "family": "Noctuidae",
+      "dossier": "SPODLI",
+      "n": 5
+    },
+    {
+      "type": "bacterium",
+      "code": "PHYPSO",
+      "host": "Host",
+      "name_ar": "مرض الشاحبة (فتوبلازما solani)",
+      "sci": "'Candidatus Phytoplasma solani'",
+      "family": "Acholeplasmataceae",
+      "dossier": "PHYPSO",
+      "n": 1
+    },
+    {
+      "type": "nematode",
+      "code": "DITYDI",
+      "host": "Host",
+      "name_ar": "نيماتودا السيقان والأبصال",
+      "sci": "Ditylenchus dipsaci",
+      "family": "Anguinidae",
+      "dossier": "DITYDI",
+      "n": 1
+    },
+    {
+      "type": "insect",
+      "code": "LIRITR",
+      "host": "Host",
+      "name_ar": "حافرة الأوراق المتعرجة الأمريكية",
+      "sci": "Liriomyza trifolii",
+      "family": "Agromyzidae",
+      "dossier": "LIRITR",
+      "n": 6
+    },
+    {
+      "type": "insect",
+      "code": "DIABUH",
+      "host": "Host",
+      "name_ar": "خنفساء الخيار المرقطة",
+      "sci": "Diabrotica undecimpunctata howardi",
+      "family": "Chrysomelidae",
+      "dossier": "DIABUH",
+      "n": 7
+    },
+    {
+      "type": "virus",
+      "code": "TBRV00",
+      "host": "Host",
+      "name_ar": "فيروس الحلقات السوداء على الطماطم",
+      "sci": "Nepovirus nigranuli",
+      "family": "Secoviridae",
+      "dossier": "TBRV00",
+      "n": 2
+    },
+    {
+      "type": "insect",
+      "code": "FRANOC",
+      "host": "Host",
+      "name_ar": "تربس الأزهار الغربي",
+      "sci": "Frankliniella occidentalis",
+      "family": "Thripidae",
+      "dossier": "FRANOC",
+      "n": 8
+    }
+  ]
+}

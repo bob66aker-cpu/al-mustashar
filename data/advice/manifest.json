@@ -8,19 +8,524 @@
   "license_policy": {
     "mode": "cite_and_paraphrase",
     "note_ar": "إعادة نشر النصوص الأصلية للمصادر غير مخوّلة؛ البطاقات تلخّص علماً عاماً مع نسب المصدر ورابطه. الأذونات الواردة (EPPO/PPDB/FAO) تُدار باسم صاحب المشروع.",
-    "open_licensed": ["ICARDA (CC BY-SA 4.0)", "FAO Open Knowledge (بحسب بطاقة كل عمل)"]
+    "open_licensed": [
+      "ICARDA (CC BY-SA 4.0)",
+      "FAO Open Knowledge (بحسب بطاقة كل عمل)"
+    ]
   },
   "crops": [
-    { "id": "citrus",  "file": "data/advice/citrus.json",  "name_ar": "الحمضيات", "name_en": "Citrus",       "name_fr": "Agrumes" },
-    { "id": "olive",   "file": "data/advice/olive.json",   "name_ar": "الزيتون",   "name_en": "Olive",        "name_fr": "Olivier" },
-    { "id": "grape",   "file": "data/advice/grape.json",   "name_ar": "العنب",     "name_en": "Grape",        "name_fr": "Vigne" },
-    { "id": "tomato",  "file": "data/advice/tomato.json",  "name_ar": "الطماطم",   "name_en": "Tomato",       "name_fr": "Tomate" },
-    { "id": "pepper",  "file": "data/advice/pepper.json",  "name_ar": "الفلفل",    "name_en": "Pepper",       "name_fr": "Poivron" },
-    { "id": "potato",  "file": "data/advice/potato.json",  "name_ar": "البطاطا",   "name_en": "Potato",       "name_fr": "Pomme de terre" },
-    { "id": "wheat",   "file": "data/advice/wheat.json",   "name_ar": "القمح",     "name_en": "Wheat",        "name_fr": "Blé" },
-    { "id": "barley",  "file": "data/advice/barley.json",  "name_ar": "الشعير",    "name_en": "Barley",       "name_fr": "Orge" },
-    { "id": "dates",   "file": "data/advice/dates.json",   "name_ar": "التمور",    "name_en": "Dates",        "name_fr": "Dattier" },
-    { "id": "alfalfa", "file": "data/advice/alfalfa.json", "name_ar": "البرسيم",   "name_en": "Alfalfa",      "name_fr": "Luzerne" }
+    {
+      "id": "citrus",
+      "file": "data/advice/citrus.json",
+      "inf": "data/advice/infections/citrus.json",
+      "name_ar": "الحمضيات",
+      "name_en": "Citrus",
+      "name_fr": "Agrumes"
+    },
+    {
+      "id": "olive",
+      "file": "data/advice/olive.json",
+      "inf": "data/advice/infections/olive.json",
+      "name_ar": "الزيتون",
+      "name_en": "Olive",
+      "name_fr": "Olivier"
+    },
+    {
+      "id": "grape",
+      "file": "data/advice/grape.json",
+      "inf": "data/advice/infections/grape.json",
+      "name_ar": "العنب",
+      "name_en": "Grape",
+      "name_fr": "Vigne"
+    },
+    {
+      "id": "tomato",
+      "file": "data/advice/tomato.json",
+      "inf": "data/advice/infections/tomato.json",
+      "name_ar": "الطماطم",
+      "name_en": "Tomato",
+      "name_fr": "Tomate"
+    },
+    {
+      "id": "pepper",
+      "file": "data/advice/pepper.json",
+      "inf": "data/advice/infections/pepper.json",
+      "name_ar": "الفلفل",
+      "name_en": "Pepper",
+      "name_fr": "Poivron"
+    },
+    {
+      "id": "potato",
+      "file": "data/advice/potato.json",
+      "inf": "data/advice/infections/potato.json",
+      "name_ar": "البطاطا",
+      "name_en": "Potato",
+      "name_fr": "Pomme de terre"
+    },
+    {
+      "id": "wheat",
+      "file": "data/advice/wheat.json",
+      "inf": "data/advice/infections/wheat.json",
+      "name_ar": "القمح",
+      "name_en": "Wheat",
+      "name_fr": "Blé"
+    },
+    {
+      "id": "barley",
+      "file": "data/advice/barley.json",
+      "inf": "data/advice/infections/barley.json",
+      "name_ar": "الشعير",
+      "name_en": "Barley",
+      "name_fr": "Orge"
+    },
+    {
+      "id": "dates",
+      "file": "data/advice/dates.json",
+      "inf": "data/advice/infections/dates.json",
+      "name_ar": "التمور",
+      "name_en": "Dates",
+      "name_fr": "Dattier"
+    },
+    {
+      "id": "alfalfa",
+      "file": "data/advice/alfalfa.json",
+      "inf": "data/advice/infections/alfalfa.json",
+      "name_ar": "البرسيم",
+      "name_en": "Alfalfa",
+      "name_fr": "Luzerne"
+    },
+    {
+      "id": "rice",
+      "inf": "data/advice/infections/rice.json",
+      "name_ar": "الأرز",
+      "name_en": "Rice",
+      "name_fr": "Riz"
+    },
+    {
+      "id": "avocado",
+      "inf": "data/advice/infections/avocado.json",
+      "name_ar": "الأفوكادو",
+      "name_en": "Avocado",
+      "name_fr": "Avocat"
+    },
+    {
+      "id": "pineapple",
+      "inf": "data/advice/infections/pineapple.json",
+      "name_ar": "الأناناس",
+      "name_en": "Pineapple",
+      "name_fr": "Ananas"
+    },
+    {
+      "id": "papaya",
+      "inf": "data/advice/infections/papaya.json",
+      "name_ar": "البابايا",
+      "name_en": "Papaya",
+      "name_fr": "Papayer"
+    },
+    {
+      "id": "eggplant",
+      "inf": "data/advice/infections/eggplant.json",
+      "name_ar": "الباذنجان",
+      "name_en": "Eggplant",
+      "name_fr": "Aubergine"
+    },
+    {
+      "id": "pea",
+      "inf": "data/advice/infections/pea.json",
+      "name_ar": "البازلاء",
+      "name_en": "Pea",
+      "name_fr": "Pois"
+    },
+    {
+      "id": "okra",
+      "inf": "data/advice/infections/okra.json",
+      "name_ar": "البامية",
+      "name_en": "Okra",
+      "name_fr": "Gombo"
+    },
+    {
+      "id": "plum",
+      "inf": "data/advice/infections/plum.json",
+      "name_ar": "البرقوق",
+      "name_en": "Plum",
+      "name_fr": "Prunier"
+    },
+    {
+      "id": "onion",
+      "inf": "data/advice/infections/onion.json",
+      "name_ar": "البصل",
+      "name_en": "Onion",
+      "name_fr": "Oignon"
+    },
+    {
+      "id": "sweetpotato",
+      "inf": "data/advice/infections/sweetpotato.json",
+      "name_ar": "البطاطا الحلوة",
+      "name_en": "Sweet potato",
+      "name_fr": "Patate douce"
+    },
+    {
+      "id": "watermelon",
+      "inf": "data/advice/infections/watermelon.json",
+      "name_ar": "البطيخ",
+      "name_en": "Watermelon",
+      "name_fr": "Pastèque"
+    },
+    {
+      "id": "tobacco",
+      "inf": "data/advice/infections/tobacco.json",
+      "name_ar": "التبغ",
+      "name_en": "Tobacco",
+      "name_fr": "Tabac"
+    },
+    {
+      "id": "apple",
+      "inf": "data/advice/infections/apple.json",
+      "name_ar": "التفاح",
+      "name_en": "Apple",
+      "name_fr": "Pomier"
+    },
+    {
+      "id": "fig",
+      "inf": "data/advice/infections/fig.json",
+      "name_ar": "التين",
+      "name_en": "Fig",
+      "name_fr": "Figue"
+    },
+    {
+      "id": "garlic",
+      "inf": "data/advice/infections/garlic.json",
+      "name_ar": "الثوم",
+      "name_en": "Garlic",
+      "name_fr": "Ail"
+    },
+    {
+      "id": "rye",
+      "inf": "data/advice/infections/rye.json",
+      "name_ar": "الجاودار",
+      "name_en": "Rye",
+      "name_fr": "Seigle"
+    },
+    {
+      "id": "carrot",
+      "inf": "data/advice/infections/carrot.json",
+      "name_ar": "الجزر",
+      "name_en": "Carrot",
+      "name_fr": "Carotte"
+    },
+    {
+      "id": "walnut",
+      "inf": "data/advice/infections/walnut.json",
+      "name_ar": "الجوز",
+      "name_en": "Walnut",
+      "name_fr": "Noyer"
+    },
+    {
+      "id": "chickpea",
+      "inf": "data/advice/infections/chickpea.json",
+      "name_ar": "الحمص",
+      "name_en": "Chickpea",
+      "name_fr": "Pois chiche"
+    },
+    {
+      "id": "pigeonpea",
+      "inf": "data/advice/infections/pigeonpea.json",
+      "name_ar": "الحمص الهندی",
+      "name_en": "Pigeon pea",
+      "name_fr": "Pois d’Angole"
+    },
+    {
+      "id": "lettuce",
+      "inf": "data/advice/infections/lettuce.json",
+      "name_ar": "الخس",
+      "name_en": "Lettuce",
+      "name_fr": "Laitue"
+    },
+    {
+      "id": "peach",
+      "inf": "data/advice/infections/peach.json",
+      "name_ar": "الخوخ",
+      "name_en": "Peach",
+      "name_fr": "Pêcher"
+    },
+    {
+      "id": "cucumber",
+      "inf": "data/advice/infections/cucumber.json",
+      "name_ar": "الخيار",
+      "name_en": "Cucumber",
+      "name_fr": "Concombre"
+    },
+    {
+      "id": "millet",
+      "inf": "data/advice/infections/millet.json",
+      "name_ar": "الدخن",
+      "name_en": "Pearl millet",
+      "name_fr": "Millet perlé"
+    },
+    {
+      "id": "maize",
+      "inf": "data/advice/infections/maize.json",
+      "name_ar": "الذرة الصفراء",
+      "name_en": "Maize",
+      "name_fr": "Maïs"
+    },
+    {
+      "id": "pomegranate",
+      "inf": "data/advice/infections/pomegranate.json",
+      "name_ar": "الرمان",
+      "name_en": "Pomegranate",
+      "name_fr": "Grenadier"
+    },
+    {
+      "id": "spinach",
+      "inf": "data/advice/infections/spinach.json",
+      "name_ar": "السبانخ",
+      "name_en": "Spinach",
+      "name_fr": "Épinard"
+    },
+    {
+      "id": "sesame",
+      "inf": "data/advice/infections/sesame.json",
+      "name_ar": "السمسم",
+      "name_en": "Sesame",
+      "name_fr": "Sésame"
+    },
+    {
+      "id": "sorghum",
+      "inf": "data/advice/infections/sorghum.json",
+      "name_ar": "السورغوم",
+      "name_en": "Sorghum",
+      "name_fr": "Sorgho"
+    },
+    {
+      "id": "tea",
+      "inf": "data/advice/infections/tea.json",
+      "name_ar": "الشاي",
+      "name_en": "Tea",
+      "name_fr": "Thé"
+    },
+    {
+      "id": "melon",
+      "inf": "data/advice/infections/melon.json",
+      "name_ar": "الشمام",
+      "name_en": "Melon",
+      "name_fr": "Melon"
+    },
+    {
+      "id": "oat",
+      "inf": "data/advice/infections/oat.json",
+      "name_ar": "الشوفان",
+      "name_en": "Oat",
+      "name_fr": "Avoine"
+    },
+    {
+      "id": "lentil",
+      "inf": "data/advice/infections/lentil.json",
+      "name_ar": "العدس",
+      "name_en": "Lentil",
+      "name_fr": "Lentille"
+    },
+    {
+      "id": "bean",
+      "inf": "data/advice/infections/bean.json",
+      "name_ar": "الفاصولياء",
+      "name_en": "Common bean",
+      "name_fr": "Haricot commun"
+    },
+    {
+      "id": "strawberry",
+      "inf": "data/advice/infections/strawberry.json",
+      "name_ar": "الفراولة",
+      "name_en": "Strawberry",
+      "name_fr": "Fragoyer"
+    },
+    {
+      "id": "pistachio",
+      "inf": "data/advice/infections/pistachio.json",
+      "name_ar": "الفستق الحلبي",
+      "name_en": "Pistachio",
+      "name_fr": "Pistache"
+    },
+    {
+      "id": "groundnut",
+      "inf": "data/advice/infections/groundnut.json",
+      "name_ar": "الفول السوداني",
+      "name_en": "Groundnut",
+      "name_fr": "Cacahuète"
+    },
+    {
+      "id": "soybean",
+      "inf": "data/advice/infections/soybean.json",
+      "name_ar": "الفول الصويا",
+      "name_en": "Soybean",
+      "name_fr": "Soja"
+    },
+    {
+      "id": "pumpkin",
+      "inf": "data/advice/infections/pumpkin.json",
+      "name_ar": "القرع",
+      "name_en": "Pumpkin",
+      "name_fr": "Courge"
+    },
+    {
+      "id": "cauliflower",
+      "inf": "data/advice/infections/cauliflower.json",
+      "name_ar": "القرنبيط",
+      "name_en": "Cauliflower",
+      "name_fr": "Chou-fleur"
+    },
+    {
+      "id": "cotton",
+      "inf": "data/advice/infections/cotton.json",
+      "name_ar": "القطن",
+      "name_en": "Cotton",
+      "name_fr": "Coton"
+    },
+    {
+      "id": "coffee",
+      "inf": "data/advice/infections/coffee.json",
+      "name_ar": "القهوة",
+      "name_en": "Coffee",
+      "name_fr": "Caféier"
+    },
+    {
+      "id": "cocoa",
+      "inf": "data/advice/infections/cocoa.json",
+      "name_ar": "الكاكاو",
+      "name_en": "Cocoa",
+      "name_fr": "Cacaoyer"
+    },
+    {
+      "id": "cherry",
+      "inf": "data/advice/infections/cherry.json",
+      "name_ar": "الكرز",
+      "name_en": "Sweet cherry",
+      "name_fr": "Cerisier"
+    },
+    {
+      "id": "pear",
+      "inf": "data/advice/infections/pear.json",
+      "name_ar": "الكمثرى",
+      "name_en": "Pear",
+      "name_fr": "Poirier"
+    },
+    {
+      "id": "rapeseed",
+      "inf": "data/advice/infections/rapeseed.json",
+      "name_ar": "الكولزا",
+      "name_en": "Rapeseed",
+      "name_fr": "Colza"
+    },
+    {
+      "id": "cowpea",
+      "inf": "data/advice/infections/cowpea.json",
+      "name_ar": "اللوبيا",
+      "name_en": "Cowpea",
+      "name_fr": "Niébé"
+    },
+    {
+      "id": "almond",
+      "inf": "data/advice/infections/almond.json",
+      "name_ar": "اللوز",
+      "name_en": "Almond",
+      "name_fr": "Amandier"
+    },
+    {
+      "id": "mango",
+      "inf": "data/advice/infections/mango.json",
+      "name_ar": "المانجو",
+      "name_en": "Mango",
+      "name_fr": "Mangue"
+    },
+    {
+      "id": "cassava",
+      "inf": "data/advice/infections/cassava.json",
+      "name_ar": "المانيوكا",
+      "name_en": "Cassava",
+      "name_fr": "Manioc"
+    },
+    {
+      "id": "apricot",
+      "inf": "data/advice/infections/apricot.json",
+      "name_ar": "المشمش",
+      "name_en": "Apricot",
+      "name_fr": "Abricotier"
+    },
+    {
+      "id": "cabbage",
+      "inf": "data/advice/infections/cabbage.json",
+      "name_ar": "الملفوف",
+      "name_en": "Cabbage",
+      "name_fr": "Chou"
+    },
+    {
+      "id": "banana",
+      "inf": "data/advice/infections/banana.json",
+      "name_ar": "الموز",
+      "name_en": "Banana",
+      "name_fr": "Bananier"
+    },
+    {
+      "id": "coconut",
+      "inf": "data/advice/infections/coconut.json",
+      "name_ar": "جوز الهند",
+      "name_en": "Coconut",
+      "name_fr": "Cocoier"
+    },
+    {
+      "id": "sunflower",
+      "inf": "data/advice/infections/sunflower.json",
+      "name_ar": "دوار الشمس",
+      "name_en": "Sunflower",
+      "name_fr": "Tournesol"
+    },
+    {
+      "id": "sugarbeet",
+      "inf": "data/advice/infections/sugarbeet.json",
+      "name_ar": "شمندر السكر",
+      "name_en": "Sugar beet",
+      "name_fr": "Betterave sucrière"
+    },
+    {
+      "id": "sugarcane",
+      "inf": "data/advice/infections/sugarcane.json",
+      "name_ar": "قصب السكر",
+      "name_en": "Sugarcane",
+      "name_fr": "Canne à sucre"
+    },
+    {
+      "id": "oilpalm",
+      "inf": "data/advice/infections/oilpalm.json",
+      "name_ar": "نخيل الزيت",
+      "name_en": "Oil palm",
+      "name_fr": "Palmier à huile"
+    }
   ],
-  "owner_initial_cards": ["citrus-copper-deficiency", "olive-peacock-spot", "grape-powdery-mildew"]
+  "owner_initial_cards": [
+    "citrus-copper-deficiency",
+    "olive-peacock-spot",
+    "grape-powdery-mildew"
+  ],
+  "infections": {
+    "dir": "data/advice/infections/",
+    "ref_suffix": ".ref",
+    "dossiers_file": "data/advice/dossiers.json",
+    "types": [
+      "insect",
+      "mite",
+      "fungus",
+      "pseudo_fungus",
+      "bacterium",
+      "virus",
+      "nematode",
+      "weed",
+      "mollusc",
+      "other"
+    ],
+    "built": "2026-10-14",
+    "crops": 68,
+    "cards_total": 766,
+    "others_total": 4634,
+    "note_ar": "بطاقات مرقّمة (مظاهر + علاج) من دواوين مسندة؛ وقائمة مرجعية لبقية آفات EPPO بلا اختراع. الآفات غير المصنَّفة لا تُعرض."
+  }
 }

@@ -1,0 +1,694 @@
+{
+  "schema": 1,
+  "crop_id": "coffee",
+  "generated_by": "scripts/advice-harvest.mjs",
+  "fetched_at": "2026-10-14",
+  "candidate": {
+    "ar": "القهوة",
+    "en": "Coffee",
+    "fr": "Caféier",
+    "sci_expected": "Coffea arabica"
+  },
+  "eppo": {
+    "code": "COFAR",
+    "overview_url": "https://gd.eppo.int/taxon/COFAR",
+    "overview_title": "Coffea arabica (COFAR)",
+    "pests_url": "https://gd.eppo.int/taxon/COFAR/pests",
+    "http_status": 200,
+    "pests_total_rows": 135,
+    "by_type": {
+      "Doubtful host": 1,
+      "Experimental": 3,
+      "Host": 95,
+      "Major host": 36
+    },
+    "pests": [
+      {
+        "code": "ANTEIN",
+        "name": "Antestiopsis intricata (ANTEIN)",
+        "type": "Major host"
+      },
+      {
+        "code": "ANTEOR",
+        "name": "Antestiopsis thunbergii (ANTEOR)",
+        "type": "Major host"
+      },
+      {
+        "code": "ANHOLE",
+        "name": "Anthores leuconotus (ANHOLE)",
+        "type": "Major host"
+      },
+      {
+        "code": "ASTLCF",
+        "name": "Asterolecanium coffeae (ASTLCF)",
+        "type": "Major host"
+      },
+      {
+        "code": "DACUTR",
+        "name": "Bactrocera tryoni (DACUTR)",
+        "type": "Major host"
+      },
+      {
+        "code": "BIXASI",
+        "name": "Bixadus sierricola (BIXASI)",
+        "type": "Major host"
+      },
+      {
+        "code": "BRABSI",
+        "name": "Bradybaena similaris (BRABSI)",
+        "type": "Major host"
+      },
+      {
+        "code": "CEPOHY",
+        "name": "Cephonodes hylas (CEPOHY)",
+        "type": "Major host"
+      },
+      {
+        "code": "CERPDE",
+        "name": "Ceroplastes destructor (CERPDE)",
+        "type": "Major host"
+      },
+      {
+        "code": "COCCVI",
+        "name": "Coccus viridis (COCCVI)",
+        "type": "Major host"
+      },
+      {
+        "code": "CFBS00",
+        "name": "Coffee blister spot agent (CFBS00)",
+        "type": "Major host"
+      },
+      {
+        "code": "CFOS00",
+        "name": "Coffee oil spot agent (CFOS00)",
+        "type": "Major host"
+      },
+      {
+        "code": "COLLCO",
+        "name": "Colletotrichum coffeanum (COLLCO)",
+        "type": "Major host"
+      },
+      {
+        "code": "CORSV0",
+        "name": "Dichorhavirus coffeae (CORSV0)",
+        "type": "Major host"
+      },
+      {
+        "code": "GIBBXY",
+        "name": "Fusarium xylarioides (GIBBXY)",
+        "type": "Major host"
+      },
+      {
+        "code": "GLOMCC",
+        "name": "Glomerella cingulata Central American coffee strains (GLOMCC)",
+        "type": "Major host"
+      },
+      {
+        "code": "GONAAC",
+        "name": "Gonocephalum acutangulum (GONAAC)",
+        "type": "Major host"
+      },
+      {
+        "code": "GONADE",
+        "name": "Gonocephalum depressum (GONADE)",
+        "type": "Major host"
+      },
+      {
+        "code": "GONASI",
+        "name": "Gonocephalum simplex (GONASI)",
+        "type": "Major host"
+      },
+      {
+        "code": "HEMICO",
+        "name": "Hemileia coffeicola (HEMICO)",
+        "type": "Major host"
+      },
+      {
+        "code": "HEMIVA",
+        "name": "Hemileia vastatrix (HEMIVA)",
+        "type": "Major host"
+      },
+      {
+        "code": "ICERAE",
+        "name": "Icerya aegyptiaca (ICERAE)",
+        "type": "Major host"
+      },
+      {
+        "code": "LEUCCA",
+        "name": "Leucoptera caffeina (LEUCCA)",
+        "type": "Major host"
+      },
+      {
+        "code": "LEUCME",
+        "name": "Leucoptera meyricki (LEUCME)",
+        "type": "Major host"
+      },
+      {
+        "code": "MELGMY",
+        "name": "Meloidogyne enterolobii (MELGMY)",
+        "type": "Major host"
+      },
+      {
+        "code": "MELGEX",
+        "name": "Meloidogyne exigua (MELGEX)",
+        "type": "Major host"
+      },
+      {
+        "code": "MYCECI",
+        "name": "Mycena citricolor (MYCECI)",
+        "type": "Major host"
+      },
+      {
+        "code": "OLIGCO",
+        "name": "Oligonychus coffeae (OLIGCO)",
+        "type": "Major host"
+      },
+      {
+        "code": "LEUCCO",
+        "name": "Perileucoptera coffeella (LEUCCO)",
+        "type": "Major host"
+      },
+      {
+        "code": "PSECNJ",
+        "name": "Planococcoides njalensis (PSECNJ)",
+        "type": "Major host"
+      },
+      {
+        "code": "PLANKE",
+        "name": "Planococcus kenyae (PLANKE)",
+        "type": "Major host"
+      },
+      {
+        "code": "SOPCVE",
+        "name": "Sophronica ventralis (SOPCVE)",
+        "type": "Major host"
+      },
+      {
+        "code": "TRACFR",
+        "name": "Trachysphaera fructigena (TRACFR)",
+        "type": "Major host"
+      },
+      {
+        "code": "XYLEFA",
+        "name": "Xylella fastidiosa (XYLEFA)",
+        "type": "Major host"
+      },
+      {
+        "code": "XYLSCO",
+        "name": "Xylosandrus compactus (XYLSCO)",
+        "type": "Major host"
+      },
+      {
+        "code": "XYLSMO",
+        "name": "Xylosandrus morigerus (XYLSMO)",
+        "type": "Major host"
+      },
+      {
+        "code": "ALECWO",
+        "name": "Aleurocanthus woglumi (ALECWO)",
+        "type": "Host"
+      },
+      {
+        "code": "ANSTBA",
+        "name": "Anastrepha bahiensis (ANSTBA)",
+        "type": "Host"
+      },
+      {
+        "code": "ANSTFR",
+        "name": "Anastrepha fraterculus (ANSTFR)",
+        "type": "Host"
+      },
+      {
+        "code": "ANSTLU",
+        "name": "Anastrepha ludens (ANSTLU)",
+        "type": "Host"
+      },
+      {
+        "code": "ANTEIN",
+        "name": "Antestiopsis intricata (as Coffea) (ANTEIN)",
+        "type": "Host"
+      },
+      {
+        "code": "ANTEOR",
+        "name": "Antestiopsis thunbergii (as Coffea) (ANTEOR)",
+        "type": "Host"
+      },
+      {
+        "code": "ANHOLE",
+        "name": "Anthores leuconotus (as Coffea) (ANHOLE)",
+        "type": "Host"
+      },
+      {
+        "code": "AONDOR",
+        "name": "Aonidiella orientalis (AONDOR)",
+        "type": "Host"
+      },
+      {
+        "code": "TOXOCI",
+        "name": "Aphis citricidus (TOXOCI)",
+        "type": "Host"
+      },
+      {
+        "code": "APOGCR",
+        "name": "Apogonia cribricollis (as Coffea) (APOGCR)",
+        "type": "Host"
+      },
+      {
+        "code": "DACUCR",
+        "name": "Bactrocera curvipennis (DACUCR)",
+        "type": "Host"
+      },
+      {
+        "code": "DACUDO",
+        "name": "Bactrocera dorsalis (DACUDO)",
+        "type": "Host"
+      },
+      {
+        "code": "DACULA",
+        "name": "Bactrocera latifrons (DACULA)",
+        "type": "Host"
+      },
+      {
+        "code": "BCTRPA",
+        "name": "Bactrocera passiflorae (BCTRPA)",
+        "type": "Host"
+      },
+      {
+        "code": "BIXASI",
+        "name": "Bixadus sierricola (as Coffea) (BIXASI)",
+        "type": "Host"
+      },
+      {
+        "code": "BRVPAZ",
+        "name": "Brevipalpus azores (BRVPAZ)",
+        "type": "Host"
+      },
+      {
+        "code": "BRVPAU",
+        "name": "Brevipalpus californicus (BRVPAU)",
+        "type": "Host"
+      },
+      {
+        "code": "BRVPFE",
+        "name": "Brevipalpus feresi (BRVPFE)",
+        "type": "Host"
+      },
+      {
+        "code": "BRVPPA",
+        "name": "Brevipalpus papayensis (BRVPPA)",
+        "type": "Host"
+      },
+      {
+        "code": "BRVPYO",
+        "name": "Brevipalpus yothersi (BRVPYO)",
+        "type": "Host"
+      },
+      {
+        "code": "BRVPYO",
+        "name": "Brevipalpus yothersi (as Coffea) (BRVPYO)",
+        "type": "Host"
+      },
+      {
+        "code": "CEPOHY",
+        "name": "Cephonodes hylas (as Coffea) (CEPOHY)",
+        "type": "Host"
+      },
+      {
+        "code": "CEPOHY",
+        "name": "Cephonodes hylas (as Rubiaceae) (CEPOHY)",
+        "type": "Host"
+      },
+      {
+        "code": "CERTCA",
+        "name": "Ceratitis capitata (CERTCA)",
+        "type": "Host"
+      },
+      {
+        "code": "CERTFA",
+        "name": "Ceratitis fasciventris (CERTFA)",
+        "type": "Host"
+      },
+      {
+        "code": "CERTQI",
+        "name": "Ceratitis quilicii (CERTQI)",
+        "type": "Host"
+      },
+      {
+        "code": "CERAFI",
+        "name": "Ceratocystis fimbriata (as Coffea) (CERAFI)",
+        "type": "Host"
+      },
+      {
+        "code": "CRTZBR",
+        "name": "Ceratothripoides brunneus (CRTZBR)",
+        "type": "Host"
+      },
+      {
+        "code": "CERPDE",
+        "name": "Ceroplastes destructor (as Coffea) (CERPDE)",
+        "type": "Host"
+      },
+      {
+        "code": "COCCVI",
+        "name": "Coccus viridis (as Coffea) (COCCVI)",
+        "type": "Host"
+      },
+      {
+        "code": "CFOS00",
+        "name": "Coffee oil spot agent (as Coffea) (CFOS00)",
+        "type": "Host"
+      },
+      {
+        "code": "COLLAC",
+        "name": "Colletotrichum acutatum sensu lato (COLLAC)",
+        "type": "Host"
+      },
+      {
+        "code": "COLLCO",
+        "name": "Colletotrichum coffeanum (as Coffea) (COLLCO)",
+        "type": "Host"
+      },
+      {
+        "code": "COLLFC",
+        "name": "Colletotrichum fructicola (COLLFC)",
+        "type": "Host"
+      },
+      {
+        "code": "ROSLBU",
+        "name": "Dematophora bunodes (ROSLBU)",
+        "type": "Host"
+      },
+      {
+        "code": "ROSLBU",
+        "name": "Dematophora bunodes (as Coffea) (ROSLBU)",
+        "type": "Host"
+      },
+      {
+        "code": "DPREAB",
+        "name": "Diaprepes abbreviatus (as Coffea) (DPREAB)",
+        "type": "Host"
+      },
+      {
+        "code": "DTHOCO",
+        "name": "Diarthrothrips coffeae (DTHOCO)",
+        "type": "Host"
+      },
+      {
+        "code": "DTHOCO",
+        "name": "Diarthrothrips coffeae (as Coffea) (DTHOCO)",
+        "type": "Host"
+      },
+      {
+        "code": "DICHCR",
+        "name": "Dichocrocis crocodora (as Coffea) (DICHCR)",
+        "type": "Host"
+      },
+      {
+        "code": "CORSV0",
+        "name": "Dichorhavirus coffeae (as Coffea) (CORSV0)",
+        "type": "Host"
+      },
+      {
+        "code": "EPIMMA",
+        "name": "Epicampoptera marantica (EPIMMA)",
+        "type": "Host"
+      },
+      {
+        "code": "EPIMMA",
+        "name": "Epicampoptera marantica (as Coffea) (EPIMMA)",
+        "type": "Host"
+      },
+      {
+        "code": "EUTEBA",
+        "name": "Eutetranychus banksi (EUTEBA)",
+        "type": "Host"
+      },
+      {
+        "code": "GASDBR",
+        "name": "Gascardia brevicauda (as Coffea) (GASDBR)",
+        "type": "Host"
+      },
+      {
+        "code": "HABRGH",
+        "name": "Habrochila ghesquierei (as Coffea) (HABRGH)",
+        "type": "Host"
+      },
+      {
+        "code": "HABRPL",
+        "name": "Habrochila placida (as Coffea) (HABRPL)",
+        "type": "Host"
+      },
+      {
+        "code": "HELIAR",
+        "name": "Helicoverpa armigera (HELIAR)",
+        "type": "Host"
+      },
+      {
+        "code": "HEMICO",
+        "name": "Hemileia coffeicola (as Coffea) (HEMICO)",
+        "type": "Host"
+      },
+      {
+        "code": "HOMOCO",
+        "name": "Homona coffearia (as Coffea) (HOMOCO)",
+        "type": "Host"
+      },
+      {
+        "code": "STEHHA",
+        "name": "Hypothenemus hampei (STEHHA)",
+        "type": "Host"
+      },
+      {
+        "code": "LAGRVL",
+        "name": "Lagria villosa (LAGRVL)",
+        "type": "Host"
+      },
+      {
+        "code": "LYGUCO",
+        "name": "Lamprocapsidea coffeae (as Coffea) (LYGUCO)",
+        "type": "Host"
+      },
+      {
+        "code": "LEPLAU",
+        "name": "Leptoglossus australis (as Coffea) (LEPLAU)",
+        "type": "Host"
+      },
+      {
+        "code": "LEUCCA",
+        "name": "Leucoptera caffeina (as Coffea) (LEUCCA)",
+        "type": "Host"
+      },
+      {
+        "code": "LEUCCM",
+        "name": "Leucoptera coma (as Coffea) (LEUCCM)",
+        "type": "Host"
+      },
+      {
+        "code": "LEUCME",
+        "name": "Leucoptera meyricki (as Coffea) (LEUCME)",
+        "type": "Host"
+      },
+      {
+        "code": "LIRITR",
+        "name": "Liriomyza trifolii (LIRITR)",
+        "type": "Host"
+      },
+      {
+        "code": "ACHAFU",
+        "name": "Lissachatina fulica (as Coffea) (ACHAFU)",
+        "type": "Host"
+      },
+      {
+        "code": "PHENHI",
+        "name": "Maconellicoccus hirsutus (PHENHI)",
+        "type": "Host"
+      },
+      {
+        "code": "MEGTUS",
+        "name": "Megalurothrips usitatus (MEGTUS)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGCO",
+        "name": "Meloidogyne coffeicola (as Coffea) (MELGCO)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGEX",
+        "name": "Meloidogyne exigua (as Coffea) (MELGEX)",
+        "type": "Host"
+      },
+      {
+        "code": "MYCECI",
+        "name": "Mycena citricolor (as Coffea) (MYCECI)",
+        "type": "Host"
+      },
+      {
+        "code": "CORTSA",
+        "name": "Necator salmonicolor (as Coffea) (CORTSA)",
+        "type": "Host"
+      },
+      {
+        "code": "CERTCY",
+        "name": "Neoceratitis cyanescens (CERTCY)",
+        "type": "Host"
+      },
+      {
+        "code": "OLIGCO",
+        "name": "Oligonychus coffeae (as Coffea) (OLIGCO)",
+        "type": "Host"
+      },
+      {
+        "code": "OLIGPU",
+        "name": "Oligonychus punicae (OLIGPU)",
+        "type": "Host"
+      },
+      {
+        "code": "OPOGSC",
+        "name": "Opogona sacchari (OPOGSC)",
+        "type": "Host"
+      },
+      {
+        "code": "HEMELE",
+        "name": "Orgyia leucostigma (HEMELE)",
+        "type": "Host"
+      },
+      {
+        "code": "TSWV00",
+        "name": "Orthotospovirus tomatomaculae (TSWV00)",
+        "type": "Host"
+      },
+      {
+        "code": "PACNAZ",
+        "name": "Pachnaeus azurescens (as Coffea) (PACNAZ)",
+        "type": "Host"
+      },
+      {
+        "code": "PRABMY",
+        "name": "Parabemisia myricae (as Coffea) (PRABMY)",
+        "type": "Host"
+      },
+      {
+        "code": "SAISNI",
+        "name": "Parasaissetia nigra (SAISNI)",
+        "type": "Host"
+      },
+      {
+        "code": "PARSVI",
+        "name": "Parasa vivida (as Coffea) (PARSVI)",
+        "type": "Host"
+      },
+      {
+        "code": "LEUCCO",
+        "name": "Perileucoptera coffeella (as Coffea) (LEUCCO)",
+        "type": "Host"
+      },
+      {
+        "code": "PLANKE",
+        "name": "Planococcus kenyae (as Coffea) (PLANKE)",
+        "type": "Host"
+      },
+      {
+        "code": "PLANLI",
+        "name": "Planococcus lilacinus (PLANLI)",
+        "type": "Host"
+      },
+      {
+        "code": "PLSOCO",
+        "name": "Plesiommata corniculata (PLSOCO)",
+        "type": "Host"
+      },
+      {
+        "code": "PRATCO",
+        "name": "Pratylenchus coffeae (as Coffea) (PRATCO)",
+        "type": "Host"
+      },
+      {
+        "code": "PSECCO",
+        "name": "Pseudococcus comstocki (as Coffea) (PSECCO)",
+        "type": "Host"
+      },
+      {
+        "code": "RICASC",
+        "name": "Ricania speculum (as Coffea) (RICASC)",
+        "type": "Host"
+      },
+      {
+        "code": "SCITCI",
+        "name": "Scirtothrips citri (SCITCI)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODER",
+        "name": "Spodoptera eridania (PRODER)",
+        "type": "Host"
+      },
+      {
+        "code": "LAPHFR",
+        "name": "Spodoptera frugiperda (LAPHFR)",
+        "type": "Host"
+      },
+      {
+        "code": "ARGPLE",
+        "name": "Thaumatotibia leucotreta (ARGPLE)",
+        "type": "Host"
+      },
+      {
+        "code": "THRIHA",
+        "name": "Thrips hawaiiensis (as Coffea) (THRIHA)",
+        "type": "Host"
+      },
+      {
+        "code": "TIRAPL",
+        "name": "Tiracola plagiata (TIRAPL)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLEFF",
+        "name": "Xylella fastidiosa subsp. fastidiosa (XYLEFF)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLEFP",
+        "name": "Xylella fastidiosa subsp. pauca (XYLEFP)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLEFS",
+        "name": "Xylella fastidiosa subsp. sandyi (XYLEFS)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLBCR",
+        "name": "Xylosandrus crassiusculus (XYLBCR)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLSMO",
+        "name": "Xylosandrus morigerus (as Coffea) (XYLSMO)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLOQP",
+        "name": "Xylotrechus quadripes (as Coffea) (XYLOQP)",
+        "type": "Host"
+      },
+      {
+        "code": "ZEUZCO",
+        "name": "Zeuzera coffeae (as Coffea) (ZEUZCO)",
+        "type": "Host"
+      }
+    ]
+  },
+  "gbif": {
+    "key": 2895345,
+    "url": "https://www.gbif.org/species/2895345",
+    "scientificName": "Coffea arabica L.",
+    "canonicalName": "Coffea arabica",
+    "family": "Rubiaceae",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "matchType": "EXACT",
+    "confidence": 99
+  }
+}

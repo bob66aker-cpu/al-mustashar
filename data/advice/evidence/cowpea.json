@@ -1,0 +1,311 @@
+{
+  "schema": 1,
+  "crop_id": "cowpea",
+  "generated_by": "scripts/advice-harvest.mjs",
+  "fetched_at": "2026-10-14",
+  "candidate": {
+    "ar": "اللوبيا",
+    "en": "Cowpea",
+    "fr": "Niébé",
+    "sci_expected": "Vigna unguiculata"
+  },
+  "eppo": {
+    "code": "VIGSI",
+    "overview_url": "https://gd.eppo.int/taxon/VIGSI",
+    "overview_title": "Vigna unguiculata (VIGSI)",
+    "pests_url": "https://gd.eppo.int/taxon/VIGSI/pests",
+    "http_status": 200,
+    "pests_total_rows": 69,
+    "by_type": {
+      "Doubtful host": 4,
+      "Experimental": 9,
+      "Host": 53,
+      "Major host": 1,
+      "Non-host": 1,
+      "Wild/Weed": 1
+    },
+    "pests": [
+      {
+        "code": "MARUTE",
+        "name": "Maruca vitrata (MARUTE)",
+        "type": "Major host"
+      },
+      {
+        "code": "ALEDDI",
+        "name": "Aleurodicus dispersus (ALEDDI)",
+        "type": "Host"
+      },
+      {
+        "code": "AMV000",
+        "name": "Alfamovirus AMV (AMV000)",
+        "type": "Host"
+      },
+      {
+        "code": "EMPOBI",
+        "name": "Amrasca biguttula (EMPOBI)",
+        "type": "Host"
+      },
+      {
+        "code": "APLOBE",
+        "name": "Aphelenchoides besseyi (APLOBE)",
+        "type": "Host"
+      },
+      {
+        "code": "TYLCV0",
+        "name": "Begomovirus coheni (TYLCV0)",
+        "type": "Host"
+      },
+      {
+        "code": "BEMITA",
+        "name": "Bemisia tabaci (BEMITA)",
+        "type": "Host"
+      },
+      {
+        "code": "CPMMV0",
+        "name": "Carlavirus vignae (CPMMV0)",
+        "type": "Host"
+      },
+      {
+        "code": "CRTZBR",
+        "name": "Ceratothripoides brunneus (CRTZBR)",
+        "type": "Host"
+      },
+      {
+        "code": "CRTZCL",
+        "name": "Ceratothripoides claratris (CRTZCL)",
+        "type": "Host"
+      },
+      {
+        "code": "TOCV00",
+        "name": "Crinivirus tomatichlorosis (TOCV00)",
+        "type": "Host"
+      },
+      {
+        "code": "CUERCO",
+        "name": "Cuerna costalis (CUERCO)",
+        "type": "Host"
+      },
+      {
+        "code": "CORBFL",
+        "name": "Curtobacterium flaccumfaciens pv. flaccumfaciens (CORBFL)",
+        "type": "Host"
+      },
+      {
+        "code": "DACUCI",
+        "name": "Dacus ciliatus (DACUCI)",
+        "type": "Host"
+      },
+      {
+        "code": "DIABUH",
+        "name": "Diabrotica undecimpunctata howardi (DIABUH)",
+        "type": "Host"
+      },
+      {
+        "code": "DIAPPS",
+        "name": "Diaporthe sojae (DIAPPS)",
+        "type": "Host"
+      },
+      {
+        "code": "ELASLI",
+        "name": "Elasmopalpus lignosellus (ELASLI)",
+        "type": "Host"
+      },
+      {
+        "code": "GARGTO",
+        "name": "Gargaphia torresi (GARGTO)",
+        "type": "Host"
+      },
+      {
+        "code": "HELIAR",
+        "name": "Helicoverpa armigera (HELIAR)",
+        "type": "Host"
+      },
+      {
+        "code": "HELIZE",
+        "name": "Helicoverpa zea (HELIZE)",
+        "type": "Host"
+      },
+      {
+        "code": "HELOTH",
+        "name": "Helopeltis theivora (HELOTH)",
+        "type": "Host"
+      },
+      {
+        "code": "HOMLTR",
+        "name": "Homalodisca vitripennis (HOMLTR)",
+        "type": "Host"
+      },
+      {
+        "code": "TSV000",
+        "name": "Ilarvirus TSV (TSV000)",
+        "type": "Host"
+      },
+      {
+        "code": "LAGRVL",
+        "name": "Lagria villosa (LAGRVL)",
+        "type": "Host"
+      },
+      {
+        "code": "LAMDBO",
+        "name": "Lampides boeticus (LAMDBO)",
+        "type": "Host"
+      },
+      {
+        "code": "LIRIHU",
+        "name": "Liriomyza huidobrensis (LIRIHU)",
+        "type": "Host"
+      },
+      {
+        "code": "LIRISA",
+        "name": "Liriomyza sativae (LIRISA)",
+        "type": "Host"
+      },
+      {
+        "code": "LIRITR",
+        "name": "Liriomyza trifolii (LIRITR)",
+        "type": "Host"
+      },
+      {
+        "code": "LIRITR",
+        "name": "Liriomyza trifolii (as Vigna) (LIRITR)",
+        "type": "Host"
+      },
+      {
+        "code": "COPSCR",
+        "name": "Megacopta cribraria (COPSCR)",
+        "type": "Host"
+      },
+      {
+        "code": "MEGTUS",
+        "name": "Megalurothrips usitatus (MEGTUS)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGCH",
+        "name": "Meloidogyne chitwoodi (MELGCH)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGET",
+        "name": "Meloidogyne ethiopica (MELGET)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGFL",
+        "name": "Meloidogyne floridensis (MELGFL)",
+        "type": "Host"
+      },
+      {
+        "code": "GRAGLE",
+        "name": "Naupactus leucoloma (GRAGLE)",
+        "type": "Host"
+      },
+      {
+        "code": "GBNV00",
+        "name": "Orthotospovirus arachinecrosis (GBNV00)",
+        "type": "Host"
+      },
+      {
+        "code": "TSWV00",
+        "name": "Orthotospovirus tomatomaculae (TSWV00)",
+        "type": "Host"
+      },
+      {
+        "code": "PLAAST",
+        "name": "Platynota stultana (PLAAST)",
+        "type": "Host"
+      },
+      {
+        "code": "PVX000",
+        "name": "Potexvirus ecspotati (PVX000)",
+        "type": "Host"
+      },
+      {
+        "code": "BCMV00",
+        "name": "Potyvirus phaseovulgaris (BCMV00)",
+        "type": "Host"
+      },
+      {
+        "code": "CABMV0",
+        "name": "Potyvirus vignae (CABMV0)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODER",
+        "name": "Spodoptera eridania (PRODER)",
+        "type": "Host"
+      },
+      {
+        "code": "LAPHFR",
+        "name": "Spodoptera frugiperda (LAPHFR)",
+        "type": "Host"
+      },
+      {
+        "code": "SPODLI",
+        "name": "Spodoptera littoralis (SPODLI)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODLI",
+        "name": "Spodoptera litura (PRODLI)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODOR",
+        "name": "Spodoptera ornithogalli (PRODOR)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODPR",
+        "name": "Spodoptera praefica (PRODPR)",
+        "type": "Host"
+      },
+      {
+        "code": "TAPARU",
+        "name": "Tapajosa rubromarginata (TAPARU)",
+        "type": "Host"
+      },
+      {
+        "code": "THRIHA",
+        "name": "Thrips hawaiiensis (THRIHA)",
+        "type": "Host"
+      },
+      {
+        "code": "THRIPL",
+        "name": "Thrips palmi (THRIPL)",
+        "type": "Host"
+      },
+      {
+        "code": "THRIPV",
+        "name": "Thrips parvispinus (THRIPV)",
+        "type": "Host"
+      },
+      {
+        "code": "TROGGA",
+        "name": "Trogoderma granarium (TROGGA)",
+        "type": "Host"
+      },
+      {
+        "code": "XANTPH",
+        "name": "Xanthomonas phaseoli pv. phaseoli (XANTPH)",
+        "type": "Host"
+      },
+      {
+        "code": "DACUCU",
+        "name": "Zeugodacus cucurbitae (DACUCU)",
+        "type": "Host"
+      }
+    ]
+  },
+  "gbif": {
+    "key": 2982583,
+    "url": "https://www.gbif.org/species/2982583",
+    "scientificName": "Vigna unguiculata (L.) Walp.",
+    "canonicalName": "Vigna unguiculata",
+    "family": "Fabaceae",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "matchType": "EXACT",
+    "confidence": 99
+  }
+}

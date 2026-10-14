@@ -1,0 +1,219 @@
+{
+  "schema": 1,
+  "crop_id": "carrot",
+  "generated_by": "scripts/advice-harvest.mjs",
+  "fetched_at": "2026-10-14",
+  "candidate": {
+    "ar": "الجزر",
+    "en": "Carrot",
+    "fr": "Carotte",
+    "sci_expected": "Daucus carota"
+  },
+  "eppo": {
+    "code": "DAUCA",
+    "overview_url": "https://gd.eppo.int/taxon/DAUCA",
+    "overview_title": "Daucus carota (DAUCA)",
+    "pests_url": "https://gd.eppo.int/taxon/DAUCA/pests",
+    "http_status": 200,
+    "pests_total_rows": 45,
+    "by_type": {
+      "Experimental": 6,
+      "Host": 34,
+      "Major host": 2,
+      "Wild/Weed": 3
+    },
+    "pests": [
+      {
+        "code": "LIBEPS",
+        "name": "'Candidatus Liberibacter solanacearum' (LIBEPS)",
+        "type": "Major host"
+      },
+      {
+        "code": "TRIZAP",
+        "name": "Dyspersa\tapicalis (TRIZAP)",
+        "type": "Major host"
+      },
+      {
+        "code": "TOLCND",
+        "name": "Begomovirus solanumdelhiense (TOLCND)",
+        "type": "Host"
+      },
+      {
+        "code": "TORTPR",
+        "name": "Cacoecimorpha pronubana (TORTPR)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYPSO",
+        "name": "'Candidatus Phytoplasma solani' (PHYPSO)",
+        "type": "Host"
+      },
+      {
+        "code": "CRTZBR",
+        "name": "Ceratothripoides brunneus (CRTZBR)",
+        "type": "Host"
+      },
+      {
+        "code": "CIRCTE",
+        "name": "Circulifer tenellus (CIRCTE)",
+        "type": "Host"
+      },
+      {
+        "code": "LIYV00",
+        "name": "Crinivirus lactucaflavi (LIYV00)",
+        "type": "Host"
+      },
+      {
+        "code": "ERWICD",
+        "name": "Dickeya dianthicola (ERWICD)",
+        "type": "Host"
+      },
+      {
+        "code": "DITYDI",
+        "name": "Ditylenchus dipsaci (DITYDI)",
+        "type": "Host"
+      },
+      {
+        "code": "ERWIRH",
+        "name": "Erwinia rhapontici (ERWIRH)",
+        "type": "Host"
+      },
+      {
+        "code": "EURHBR",
+        "name": "Eurhizococcus brasiliensis (EURHBR)",
+        "type": "Host"
+      },
+      {
+        "code": "HISHPH",
+        "name": "Hishimonus phycitis (HISHPH)",
+        "type": "Host"
+      },
+      {
+        "code": "LIRIHU",
+        "name": "Liriomyza huidobrensis (LIRIHU)",
+        "type": "Host"
+      },
+      {
+        "code": "LIRITR",
+        "name": "Liriomyza trifolii (LIRITR)",
+        "type": "Host"
+      },
+      {
+        "code": "LISTCO",
+        "name": "Listroderes costirostris (LISTCO)",
+        "type": "Host"
+      },
+      {
+        "code": "LISTDI",
+        "name": "Listroderes difficilis (LISTDI)",
+        "type": "Host"
+      },
+      {
+        "code": "MEGTUS",
+        "name": "Megalurothrips usitatus (MEGTUS)",
+        "type": "Host"
+      },
+      {
+        "code": "MELNCO",
+        "name": "Melanotus communis (MELNCO)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGCH",
+        "name": "Meloidogyne chitwoodi (MELGCH)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGMY",
+        "name": "Meloidogyne enterolobii (MELGMY)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGLC",
+        "name": "Meloidogyne luci (MELGLC)",
+        "type": "Host"
+      },
+      {
+        "code": "NACOBA",
+        "name": "Nacobbus aberrans sensu lato (NACOBA)",
+        "type": "Host"
+      },
+      {
+        "code": "GRAGLE",
+        "name": "Naupactus leucoloma (GRAGLE)",
+        "type": "Host"
+      },
+      {
+        "code": "TRSV00",
+        "name": "Nepovirus nicotianae (TRSV00)",
+        "type": "Host"
+      },
+      {
+        "code": "RUSLSO",
+        "name": "Russelliana solanicola (RUSLSO)",
+        "type": "Host"
+      },
+      {
+        "code": "SCITDO",
+        "name": "Scirtothrips dorsalis (SCITDO)",
+        "type": "Host"
+      },
+      {
+        "code": "SPIRCI",
+        "name": "Spiroplasma citri (SPIRCI)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODER",
+        "name": "Spodoptera eridania (PRODER)",
+        "type": "Host"
+      },
+      {
+        "code": "LAPHFR",
+        "name": "Spodoptera frugiperda (LAPHFR)",
+        "type": "Host"
+      },
+      {
+        "code": "SPODLI",
+        "name": "Spodoptera littoralis (SPODLI)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODLI",
+        "name": "Spodoptera litura (PRODLI)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODOR",
+        "name": "Spodoptera ornithogalli (PRODOR)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODPR",
+        "name": "Spodoptera praefica (PRODPR)",
+        "type": "Host"
+      },
+      {
+        "code": "THRIPL",
+        "name": "Thrips palmi (THRIPL)",
+        "type": "Host"
+      },
+      {
+        "code": "THRIPV",
+        "name": "Thrips parvispinus (THRIPV)",
+        "type": "Host"
+      }
+    ]
+  },
+  "gbif": {
+    "key": 3034742,
+    "url": "https://www.gbif.org/species/3034742",
+    "scientificName": "Daucus carota L.",
+    "canonicalName": "Daucus carota",
+    "family": "Apiaceae",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "matchType": "EXACT",
+    "confidence": 99
+  }
+}

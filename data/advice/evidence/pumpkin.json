@@ -1,0 +1,385 @@
+{
+  "schema": 1,
+  "crop_id": "pumpkin",
+  "generated_by": "scripts/advice-harvest.mjs",
+  "fetched_at": "2026-10-14",
+  "candidate": {
+    "ar": "القرع",
+    "en": "Pumpkin",
+    "fr": "Courge",
+    "sci_expected": "Cucurbita maxima"
+  },
+  "eppo": {
+    "code": "CUUMA",
+    "overview_url": "https://gd.eppo.int/taxon/CUUMA",
+    "overview_title": "Cucurbita maxima (CUUMA)",
+    "pests_url": "https://gd.eppo.int/taxon/CUUMA/pests",
+    "http_status": 200,
+    "pests_total_rows": 76,
+    "by_type": {
+      "Doubtful host": 1,
+      "Experimental": 5,
+      "Host": 63,
+      "Major host": 6,
+      "Wild/Weed": 1
+    },
+    "pests": [
+      {
+        "code": "SLCV00",
+        "name": "Begomovirus cucurbitapeponis (SLCV00)",
+        "type": "Major host"
+      },
+      {
+        "code": "TOLCND",
+        "name": "Begomovirus solanumdelhiense (TOLCND)",
+        "type": "Major host"
+      },
+      {
+        "code": "DIABUH",
+        "name": "Diabrotica undecimpunctata howardi (DIABUH)",
+        "type": "Major host"
+      },
+      {
+        "code": "TSWV00",
+        "name": "Orthotospovirus tomatomaculae (TSWV00)",
+        "type": "Major host"
+      },
+      {
+        "code": "ZYMV00",
+        "name": "Potyvirus cucurbitaflavitesselati (ZYMV00)",
+        "type": "Major host"
+      },
+      {
+        "code": "SERRUR",
+        "name": "Serratia ureilytica (SERRUR)",
+        "type": "Major host"
+      },
+      {
+        "code": "AGROSE",
+        "name": "Agrotis segetum (as Cucurbitaceae) (AGROSE)",
+        "type": "Host"
+      },
+      {
+        "code": "ALEDDU",
+        "name": "Aleurodicus dugesii (as Cucurbitaceae) (ALEDDU)",
+        "type": "Host"
+      },
+      {
+        "code": "AMV000",
+        "name": "Alfamovirus AMV (as Cucurbitaceae) (AMV000)",
+        "type": "Host"
+      },
+      {
+        "code": "ANSTGR",
+        "name": "Anastrepha grandis (ANSTGR)",
+        "type": "Host"
+      },
+      {
+        "code": "ANSTGR",
+        "name": "Anastrepha grandis (as Cucurbitaceae) (ANSTGR)",
+        "type": "Host"
+      },
+      {
+        "code": "AONDCI",
+        "name": "Aonidiella citrina (as Cucurbitaceae) (AONDCI)",
+        "type": "Host"
+      },
+      {
+        "code": "APOMBI",
+        "name": "Apomecyna binubila (as Cucurbitaceae) (APOMBI)",
+        "type": "Host"
+      },
+      {
+        "code": "AUACHI",
+        "name": "Aulacophora hilaris (as Cucurbitaceae) (AUACHI)",
+        "type": "Host"
+      },
+      {
+        "code": "DACUDO",
+        "name": "Bactrocera dorsalis (DACUDO)",
+        "type": "Host"
+      },
+      {
+        "code": "BARIGR",
+        "name": "Baris granulipennis (as Cucurbitaceae) (BARIGR)",
+        "type": "Host"
+      },
+      {
+        "code": "WMCSV0",
+        "name": "Begomovirus citrulli (WMCSV0)",
+        "type": "Host"
+      },
+      {
+        "code": "BEMITA",
+        "name": "Bemisia tabaci (as Cucurbitaceae) (BEMITA)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYPAU",
+        "name": "'Candidatus Phytoplasma australiense' (PHYPAU)",
+        "type": "Host"
+      },
+      {
+        "code": "CRTZBR",
+        "name": "Ceratothripoides brunneus (CRTZBR)",
+        "type": "Host"
+      },
+      {
+        "code": "HELIVI",
+        "name": "Chloridea virescens (HELIVI)",
+        "type": "Host"
+      },
+      {
+        "code": "CIRCTE",
+        "name": "Circulifer tenellus (as Cucurbitaceae) (CIRCTE)",
+        "type": "Host"
+      },
+      {
+        "code": "SQMV00",
+        "name": "Comovirus cucurbitae (as Cucurbitaceae) (SQMV00)",
+        "type": "Host"
+      },
+      {
+        "code": "CYSDV0",
+        "name": "Crinivirus cucurbitae (CYSDV0)",
+        "type": "Host"
+      },
+      {
+        "code": "CYSDV0",
+        "name": "Crinivirus cucurbitae (as Cucurbitaceae) (CYSDV0)",
+        "type": "Host"
+      },
+      {
+        "code": "LIYV00",
+        "name": "Crinivirus lactucaflavi (LIYV00)",
+        "type": "Host"
+      },
+      {
+        "code": "CCYV00",
+        "name": "Cucurbit chlorotic yellows virus (CCYV00)",
+        "type": "Host"
+      },
+      {
+        "code": "DACUBI",
+        "name": "Dacus bivittatus (DACUBI)",
+        "type": "Host"
+      },
+      {
+        "code": "DACUBI",
+        "name": "Dacus bivittatus (as Cucurbitaceae) (DACUBI)",
+        "type": "Host"
+      },
+      {
+        "code": "DACUCI",
+        "name": "Dacus ciliatus (DACUCI)",
+        "type": "Host"
+      },
+      {
+        "code": "HYLEPL",
+        "name": "Delia platura (as Cucurbitaceae) (HYLEPL)",
+        "type": "Host"
+      },
+      {
+        "code": "DIABSC",
+        "name": "Diabrotica speciosa (DIABSC)",
+        "type": "Host"
+      },
+      {
+        "code": "DPHNIN",
+        "name": "Diaphania indica (as Cucurbitaceae) (DPHNIN)",
+        "type": "Host"
+      },
+      {
+        "code": "DPHNNI",
+        "name": "Diaphania nitidalis (as Cucurbitaceae) (DPHNNI)",
+        "type": "Host"
+      },
+      {
+        "code": "PHOPSC",
+        "name": "Diaporthe sclerotioides (as Cucurbitaceae) (PHOPSC)",
+        "type": "Host"
+      },
+      {
+        "code": "EPILCH",
+        "name": "Epilachna elaterii (as Cucurbitaceae) (EPILCH)",
+        "type": "Host"
+      },
+      {
+        "code": "EPIXTU",
+        "name": "Epitrix tuberis (EPIXTU)",
+        "type": "Host"
+      },
+      {
+        "code": "EPIXTU",
+        "name": "Epitrix tuberis (as Cucurbita) (EPIXTU)",
+        "type": "Host"
+      },
+      {
+        "code": "FRANOC",
+        "name": "Frankliniella occidentalis (as Cucurbitaceae) (FRANOC)",
+        "type": "Host"
+      },
+      {
+        "code": "HELIAR",
+        "name": "Helicoverpa armigera (HELIAR)",
+        "type": "Host"
+      },
+      {
+        "code": "HETRAR",
+        "name": "Heteronychus arator (as Cucurbita) (HETRAR)",
+        "type": "Host"
+      },
+      {
+        "code": "LEPLAU",
+        "name": "Leptoglossus australis (as Cucurbitaceae) (LEPLAU)",
+        "type": "Host"
+      },
+      {
+        "code": "LIRIHU",
+        "name": "Liriomyza huidobrensis (LIRIHU)",
+        "type": "Host"
+      },
+      {
+        "code": "LIRISA",
+        "name": "Liriomyza sativae (LIRISA)",
+        "type": "Host"
+      },
+      {
+        "code": "ACHAFU",
+        "name": "Lissachatina fulica (as Cucurbita) (ACHAFU)",
+        "type": "Host"
+      },
+      {
+        "code": "PHENHI",
+        "name": "Maconellicoccus hirsutus (PHENHI)",
+        "type": "Host"
+      },
+      {
+        "code": "MEGTUS",
+        "name": "Megalurothrips usitatus (MEGTUS)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGET",
+        "name": "Meloidogyne ethiopica (as Cucurbita) (MELGET)",
+        "type": "Host"
+      },
+      {
+        "code": "CARYPA",
+        "name": "Myiopardalis pardalina (as Cucurbitaceae) (CARYPA)",
+        "type": "Host"
+      },
+      {
+        "code": "NACOBA",
+        "name": "Nacobbus aberrans sensu lato (NACOBA)",
+        "type": "Host"
+      },
+      {
+        "code": "ZLCV00",
+        "name": "Orthotospovirus cucurbichlorosis (ZLCV00)",
+        "type": "Host"
+      },
+      {
+        "code": "MYSVV0",
+        "name": "Orthotospovirus meloflavi (MYSVV0)",
+        "type": "Host"
+      },
+      {
+        "code": "PHMPOM",
+        "name": "Phymatotrichopsis omnivora (PHMPOM)",
+        "type": "Host"
+      },
+      {
+        "code": "SPFMV0",
+        "name": "Potyvirus batataplumei (SPFMV0)",
+        "type": "Host"
+      },
+      {
+        "code": "PRATCO",
+        "name": "Pratylenchus coffeae (as Cucurbitaceae) (PRATCO)",
+        "type": "Host"
+      },
+      {
+        "code": "PSEAPE",
+        "name": "Pseudaulacaspis pentagona (as Cucurbita) (PSEAPE)",
+        "type": "Host"
+      },
+      {
+        "code": "RALSPS",
+        "name": "Ralstonia pseudosolanacearum (RALSPS)",
+        "type": "Host"
+      },
+      {
+        "code": "RALSSL",
+        "name": "Ralstonia solanacearum (RALSSL)",
+        "type": "Host"
+      },
+      {
+        "code": "RALSSO",
+        "name": "Ralstonia solanacearum species complex (RALSSO)",
+        "type": "Host"
+      },
+      {
+        "code": "ROTYRE",
+        "name": "Rotylenchulus reniformis (as Cucurbitaceae) (ROTYRE)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODER",
+        "name": "Spodoptera eridania (PRODER)",
+        "type": "Host"
+      },
+      {
+        "code": "LAPHFR",
+        "name": "Spodoptera frugiperda (LAPHFR)",
+        "type": "Host"
+      },
+      {
+        "code": "SPODLI",
+        "name": "Spodoptera littoralis (SPODLI)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODOR",
+        "name": "Spodoptera ornithogalli (as Cucurbita) (PRODOR)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODPR",
+        "name": "Spodoptera praefica (as Cucurbita) (PRODPR)",
+        "type": "Host"
+      },
+      {
+        "code": "THRIPL",
+        "name": "Thrips palmi (THRIPL)",
+        "type": "Host"
+      },
+      {
+        "code": "TRIARI",
+        "name": "Trialeurodes ricini (TRIARI)",
+        "type": "Host"
+      },
+      {
+        "code": "DACUCU",
+        "name": "Zeugodacus cucurbitae (DACUCU)",
+        "type": "Host"
+      },
+      {
+        "code": "DACUCU",
+        "name": "Zeugodacus cucurbitae (as Cucurbita) (DACUCU)",
+        "type": "Host"
+      }
+    ]
+  },
+  "gbif": {
+    "key": 2874515,
+    "url": "https://www.gbif.org/species/2874515",
+    "scientificName": "Cucurbita maxima Duchesne",
+    "canonicalName": "Cucurbita maxima",
+    "family": "Cucurbitaceae",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "matchType": "EXACT",
+    "confidence": 99
+  }
+}

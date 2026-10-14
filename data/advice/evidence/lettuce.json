@@ -1,0 +1,318 @@
+{
+  "schema": 1,
+  "crop_id": "lettuce",
+  "generated_by": "scripts/advice-harvest.mjs",
+  "fetched_at": "2026-10-14",
+  "candidate": {
+    "ar": "الخس",
+    "en": "Lettuce",
+    "fr": "Laitue",
+    "sci_expected": "Lactuca sativa"
+  },
+  "eppo": {
+    "code": "LACSA",
+    "overview_url": "https://gd.eppo.int/taxon/LACSA",
+    "overview_title": "Lactuca sativa (LACSA)",
+    "pests_url": "https://gd.eppo.int/taxon/LACSA/pests",
+    "http_status": 200,
+    "pests_total_rows": 59,
+    "by_type": {
+      "Experimental": 3,
+      "Host": 47,
+      "Major host": 9
+    },
+    "pests": [
+      {
+        "code": "LCV000",
+        "name": "Crinivirus lactucachlorosi (LCV000)",
+        "type": "Major host"
+      },
+      {
+        "code": "FUSALC",
+        "name": "Fusarium oxysporum f. sp. lactucae (FUSALC)",
+        "type": "Major host"
+      },
+      {
+        "code": "LIRIBO",
+        "name": "Liriomyza bryoniae (LIRIBO)",
+        "type": "Major host"
+      },
+      {
+        "code": "MELGFA",
+        "name": "Meloidogyne fallax (MELGFA)",
+        "type": "Major host"
+      },
+      {
+        "code": "AMAZMA",
+        "name": "Nemorimyza maculosa (AMAZMA)",
+        "type": "Major host"
+      },
+      {
+        "code": "TSWV00",
+        "name": "Orthotospovirus tomatomaculae (TSWV00)",
+        "type": "Major host"
+      },
+      {
+        "code": "LMV000",
+        "name": "Potyvirus lactucae (LMV000)",
+        "type": "Major host"
+      },
+      {
+        "code": "SPODLI",
+        "name": "Spodoptera littoralis (SPODLI)",
+        "type": "Major host"
+      },
+      {
+        "code": "LNLCV0",
+        "name": "Torradovirus lactucae (LNLCV0)",
+        "type": "Major host"
+      },
+      {
+        "code": "BEMITA",
+        "name": "Bemisia tabaci (BEMITA)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYPAS",
+        "name": "'Candidatus Phytoplasma asteris' (PHYPAS)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYPSO",
+        "name": "'Candidatus Phytoplasma solani' (PHYPSO)",
+        "type": "Host"
+      },
+      {
+        "code": "CRTZCL",
+        "name": "Ceratothripoides claratris (CRTZCL)",
+        "type": "Host"
+      },
+      {
+        "code": "HELIVI",
+        "name": "Chloridea virescens (HELIVI)",
+        "type": "Host"
+      },
+      {
+        "code": "TICV00",
+        "name": "Crinivirus contagichlorosis (TICV00)",
+        "type": "Host"
+      },
+      {
+        "code": "CYSDV0",
+        "name": "Crinivirus cucurbitae (CYSDV0)",
+        "type": "Host"
+      },
+      {
+        "code": "LIYV00",
+        "name": "Crinivirus lactucaflavi (LIYV00)",
+        "type": "Host"
+      },
+      {
+        "code": "TOCV00",
+        "name": "Crinivirus tomatichlorosis (TOCV00)",
+        "type": "Host"
+      },
+      {
+        "code": "CCYV00",
+        "name": "Cucurbit chlorotic yellows virus (CCYV00)",
+        "type": "Host"
+      },
+      {
+        "code": "DIABUH",
+        "name": "Diabrotica undecimpunctata howardi (DIABUH)",
+        "type": "Host"
+      },
+      {
+        "code": "EPILCH",
+        "name": "Epilachna elaterii (EPILCH)",
+        "type": "Host"
+      },
+      {
+        "code": "EPIXTU",
+        "name": "Epitrix tuberis (EPIXTU)",
+        "type": "Host"
+      },
+      {
+        "code": "EURHBR",
+        "name": "Eurhizococcus brasiliensis (EURHBR)",
+        "type": "Host"
+      },
+      {
+        "code": "HELIZE",
+        "name": "Helicoverpa zea (HELIZE)",
+        "type": "Host"
+      },
+      {
+        "code": "HETRAR",
+        "name": "Heteronychus arator (HETRAR)",
+        "type": "Host"
+      },
+      {
+        "code": "LAGRVL",
+        "name": "Lagria villosa (LAGRVL)",
+        "type": "Host"
+      },
+      {
+        "code": "LIRIHU",
+        "name": "Liriomyza huidobrensis (LIRIHU)",
+        "type": "Host"
+      },
+      {
+        "code": "LIRISA",
+        "name": "Liriomyza sativae (LIRISA)",
+        "type": "Host"
+      },
+      {
+        "code": "LIRITR",
+        "name": "Liriomyza trifolii (LIRITR)",
+        "type": "Host"
+      },
+      {
+        "code": "ACHAFU",
+        "name": "Lissachatina fulica (ACHAFU)",
+        "type": "Host"
+      },
+      {
+        "code": "PHENHI",
+        "name": "Maconellicoccus hirsutus (PHENHI)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGET",
+        "name": "Meloidogyne ethiopica (MELGET)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGGC",
+        "name": "Meloidogyne graminicola (MELGGC)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGLC",
+        "name": "Meloidogyne luci (MELGLC)",
+        "type": "Host"
+      },
+      {
+        "code": "NACOBA",
+        "name": "Nacobbus aberrans sensu lato (NACOBA)",
+        "type": "Host"
+      },
+      {
+        "code": "GRAGLE",
+        "name": "Naupactus leucoloma (GRAGLE)",
+        "type": "Host"
+      },
+      {
+        "code": "ARMV00",
+        "name": "Nepovirus arabis (ARMV00)",
+        "type": "Host"
+      },
+      {
+        "code": "TBRV00",
+        "name": "Nepovirus nigranuli (TBRV00)",
+        "type": "Host"
+      },
+      {
+        "code": "GRSV00",
+        "name": "Orthotospovirus arachianuli (GRSV00)",
+        "type": "Host"
+      },
+      {
+        "code": "INSV00",
+        "name": "Orthotospovirus impatiensnecromaculae (INSV00)",
+        "type": "Host"
+      },
+      {
+        "code": "TCSV00",
+        "name": "Orthotospovirus tomatoflavi (TCSV00)",
+        "type": "Host"
+      },
+      {
+        "code": "OTALLA",
+        "name": "Otala lactea (OTALLA)",
+        "type": "Host"
+      },
+      {
+        "code": "PHAEBR",
+        "name": "Phaedon brassicae (PHAEBR)",
+        "type": "Host"
+      },
+      {
+        "code": "PHMPOM",
+        "name": "Phymatotrichopsis omnivora (PHMPOM)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYTCR",
+        "name": "Phytophthora cryptogea (PHYTCR)",
+        "type": "Host"
+      },
+      {
+        "code": "CHIVMV",
+        "name": "Potyvirus capsivenamaculae (CHIVMV)",
+        "type": "Host"
+      },
+      {
+        "code": "PSDMCI",
+        "name": "Pseudomonas cichorii (PSDMCI)",
+        "type": "Host"
+      },
+      {
+        "code": "PSDMMS",
+        "name": "Pseudomonas marginalis pv. marginalis (PSDMMS)",
+        "type": "Host"
+      },
+      {
+        "code": "ROTYRE",
+        "name": "Rotylenchulus reniformis (ROTYRE)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODER",
+        "name": "Spodoptera eridania (PRODER)",
+        "type": "Host"
+      },
+      {
+        "code": "LAPHFR",
+        "name": "Spodoptera frugiperda (LAPHFR)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODOR",
+        "name": "Spodoptera ornithogalli (PRODOR)",
+        "type": "Host"
+      },
+      {
+        "code": "MYCOLG",
+        "name": "Stagonosporopsis chrysanthemi (MYCOLG)",
+        "type": "Host"
+      },
+      {
+        "code": "THRIPL",
+        "name": "Thrips palmi (THRIPL)",
+        "type": "Host"
+      },
+      {
+        "code": "THRIPV",
+        "name": "Thrips parvispinus (THRIPV)",
+        "type": "Host"
+      },
+      {
+        "code": "VERTDA",
+        "name": "Verticillium dahliae (VERTDA)",
+        "type": "Host"
+      }
+    ]
+  },
+  "gbif": {
+    "key": 7403263,
+    "url": "https://www.gbif.org/species/7403263",
+    "scientificName": "Lactuca sativa L.",
+    "canonicalName": "Lactuca sativa",
+    "family": "Asteraceae",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "matchType": "EXACT",
+    "confidence": 100
+  }
+}

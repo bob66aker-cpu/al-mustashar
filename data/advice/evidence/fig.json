@@ -1,0 +1,409 @@
+{
+  "schema": 1,
+  "crop_id": "fig",
+  "generated_by": "scripts/advice-harvest.mjs",
+  "fetched_at": "2026-10-14",
+  "candidate": {
+    "ar": "التين",
+    "en": "Fig",
+    "fr": "Figue",
+    "sci_expected": "Ficus carica"
+  },
+  "eppo": {
+    "code": "FIUCA",
+    "overview_url": "https://gd.eppo.int/taxon/FIUCA",
+    "overview_title": "Ficus carica (FIUCA)",
+    "pests_url": "https://gd.eppo.int/taxon/FIUCA/pests",
+    "http_status": 200,
+    "pests_total_rows": 76,
+    "by_type": {
+      "Doubtful host": 1,
+      "Experimental": 1,
+      "Host": 67,
+      "Major host": 7
+    },
+    "pests": [
+      {
+        "code": "APRIGE",
+        "name": "Apriona germari (APRIGE)",
+        "type": "Major host"
+      },
+      {
+        "code": "BATCRB",
+        "name": "Batocera rubus (BATCRB)",
+        "type": "Major host"
+      },
+      {
+        "code": "CERAFC",
+        "name": "Ceratocystis ficicola (CERAFC)",
+        "type": "Major host"
+      },
+      {
+        "code": "GREEFI",
+        "name": "Greenidea ficicola (GREEFI)",
+        "type": "Major host"
+      },
+      {
+        "code": "PSACHI",
+        "name": "Psacothea hilaris (PSACHI)",
+        "type": "Major host"
+      },
+      {
+        "code": "XANTFI",
+        "name": "Xanthomonas campestris pv. fici (XANTFI)",
+        "type": "Major host"
+      },
+      {
+        "code": "ZAPRIN",
+        "name": "Zaprionus indianus (ZAPRIN)",
+        "type": "Major host"
+      },
+      {
+        "code": "ALECSN",
+        "name": "Aleurocanthus spiniferus (ALECSN)",
+        "type": "Host"
+      },
+      {
+        "code": "TETLAU",
+        "name": "Aleuroclava aucubae (TETLAU)",
+        "type": "Host"
+      },
+      {
+        "code": "ANSTFR",
+        "name": "Anastrepha fraterculus (ANSTFR)",
+        "type": "Host"
+      },
+      {
+        "code": "ANSTSU",
+        "name": "Anastrepha suspensa (ANSTSU)",
+        "type": "Host"
+      },
+      {
+        "code": "ANOLCN",
+        "name": "Anoplophora chinensis (ANOLCN)",
+        "type": "Host"
+      },
+      {
+        "code": "ANOLCN",
+        "name": "Anoplophora chinensis (as Ficus) (ANOLCN)",
+        "type": "Host"
+      },
+      {
+        "code": "AONDCI",
+        "name": "Aonidiella citrina (as Ficus) (AONDCI)",
+        "type": "Host"
+      },
+      {
+        "code": "TOXOCI",
+        "name": "Aphis citricidus (TOXOCI)",
+        "type": "Host"
+      },
+      {
+        "code": "APRICI",
+        "name": "Apriona cinerea (APRICI)",
+        "type": "Host"
+      },
+      {
+        "code": "APRICI",
+        "name": "Apriona cinerea (as Ficus) (APRICI)",
+        "type": "Host"
+      },
+      {
+        "code": "APRIJA",
+        "name": "Apriona rugicollis (APRIJA)",
+        "type": "Host"
+      },
+      {
+        "code": "DACUDO",
+        "name": "Bactrocera dorsalis (DACUDO)",
+        "type": "Host"
+      },
+      {
+        "code": "DACUTR",
+        "name": "Bactrocera tryoni (DACUTR)",
+        "type": "Host"
+      },
+      {
+        "code": "DACUZO",
+        "name": "Bactrocera zonata (DACUZO)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYPSO",
+        "name": "'Candidatus Phytoplasma solani' (PHYPSO)",
+        "type": "Host"
+      },
+      {
+        "code": "CERTCA",
+        "name": "Ceratitis capitata (CERTCA)",
+        "type": "Host"
+      },
+      {
+        "code": "CERTQI",
+        "name": "Ceratitis quilicii (CERTQI)",
+        "type": "Host"
+      },
+      {
+        "code": "CERPCE",
+        "name": "Ceroplastes ceriferus (CERPCE)",
+        "type": "Host"
+      },
+      {
+        "code": "CERPCE",
+        "name": "Ceroplastes ceriferus (as Ficus) (CERPCE)",
+        "type": "Host"
+      },
+      {
+        "code": "CERPFL",
+        "name": "Ceroplastes floridensis (as Ficus) (CERPFL)",
+        "type": "Host"
+      },
+      {
+        "code": "CHRBMA",
+        "name": "Chrysobothris mali (CHRBMA)",
+        "type": "Host"
+      },
+      {
+        "code": "COLLFC",
+        "name": "Colletotrichum fructicola (COLLFC)",
+        "type": "Host"
+      },
+      {
+        "code": "QUADPE",
+        "name": "Comstockaspis perniciosa (QUADPE)",
+        "type": "Host"
+      },
+      {
+        "code": "TOCV00",
+        "name": "Crinivirus tomatichlorosis (TOCV00)",
+        "type": "Host"
+      },
+      {
+        "code": "CRYHDI",
+        "name": "Cryphalus dilutus (CRYHDI)",
+        "type": "Host"
+      },
+      {
+        "code": "DIAACI",
+        "name": "Diaphorina citri (DIAACI)",
+        "type": "Host"
+      },
+      {
+        "code": "DROSSU",
+        "name": "Drosophila suzukii (DROSSU)",
+        "type": "Host"
+      },
+      {
+        "code": "EOTELE",
+        "name": "Eotetranychus lewisi (EOTELE)",
+        "type": "Host"
+      },
+      {
+        "code": "ERTNFU",
+        "name": "Erthesina fullo (ERTNFU)",
+        "type": "Host"
+      },
+      {
+        "code": "EUTEBA",
+        "name": "Eutetranychus banksi (EUTEBA)",
+        "type": "Host"
+      },
+      {
+        "code": "EUTEOR",
+        "name": "Eutetranychus orientalis (EUTEOR)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLBFO",
+        "name": "Euwallacea fornicatus sensu lato (XYLBFO)",
+        "type": "Host"
+      },
+      {
+        "code": "EUWAWH",
+        "name": "Euwallacea fornicatus sensu stricto (EUWAWH)",
+        "type": "Host"
+      },
+      {
+        "code": "EUWAKU",
+        "name": "Euwallacea kuroshio (as Ficus) (EUWAKU)",
+        "type": "Host"
+      },
+      {
+        "code": "FIORCO",
+        "name": "Fiorinia phantasma (as Ficus) (FIORCO)",
+        "type": "Host"
+      },
+      {
+        "code": "HALYHA",
+        "name": "Halyomorpha halys (HALYHA)",
+        "type": "Host"
+      },
+      {
+        "code": "HSVD00",
+        "name": "Hostuviroid impedihumuli (HSVD00)",
+        "type": "Host"
+      },
+      {
+        "code": "LOPLJA",
+        "name": "Lopholeucaspis japonica (LOPLJA)",
+        "type": "Host"
+      },
+      {
+        "code": "LYCMDE",
+        "name": "Lycorma delicatula (LYCMDE)",
+        "type": "Host"
+      },
+      {
+        "code": "PHENHI",
+        "name": "Maconellicoccus hirsutus (PHENHI)",
+        "type": "Host"
+      },
+      {
+        "code": "PLTPMU",
+        "name": "Megaplatypus mutatus (PLTPMU)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGMA",
+        "name": "Meloidogyne mali (MELGMA)",
+        "type": "Host"
+      },
+      {
+        "code": "OEMOHI",
+        "name": "Oemona hirta (OEMOHI)",
+        "type": "Host"
+      },
+      {
+        "code": "OLIGPU",
+        "name": "Oligonychus punicae (OLIGPU)",
+        "type": "Host"
+      },
+      {
+        "code": "OPOGSC",
+        "name": "Opogona sacchari (as Ficus) (OPOGSC)",
+        "type": "Host"
+      },
+      {
+        "code": "HEMELE",
+        "name": "Orgyia leucostigma (HEMELE)",
+        "type": "Host"
+      },
+      {
+        "code": "PRABMY",
+        "name": "Parabemisia myricae (PRABMY)",
+        "type": "Host"
+      },
+      {
+        "code": "SAISNI",
+        "name": "Parasaissetia nigra (SAISNI)",
+        "type": "Host"
+      },
+      {
+        "code": "SAISNI",
+        "name": "Parasaissetia nigra (as Ficus) (SAISNI)",
+        "type": "Host"
+      },
+      {
+        "code": "PHMPOM",
+        "name": "Phymatotrichopsis omnivora (PHMPOM)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYTCN",
+        "name": "Phytophthora cinnamomi (PHYTCN)",
+        "type": "Host"
+      },
+      {
+        "code": "POCZSH",
+        "name": "Pochazia shantungensis (POCZSH)",
+        "type": "Host"
+      },
+      {
+        "code": "CEVD00",
+        "name": "Pospiviroid exocortiscitri (CEVD00)",
+        "type": "Host"
+      },
+      {
+        "code": "PSEAPE",
+        "name": "Pseudaulacaspis pentagona (as Ficus) (PSEAPE)",
+        "type": "Host"
+      },
+      {
+        "code": "PSECCO",
+        "name": "Pseudococcus comstocki (PSECCO)",
+        "type": "Host"
+      },
+      {
+        "code": "RALSPS",
+        "name": "Ralstonia pseudosolanacearum (RALSPS)",
+        "type": "Host"
+      },
+      {
+        "code": "RALSSO",
+        "name": "Ralstonia solanacearum species complex (RALSSO)",
+        "type": "Host"
+      },
+      {
+        "code": "RHIOHI",
+        "name": "Ripersiella hibisci (as Ficus) (RHIOHI)",
+        "type": "Host"
+      },
+      {
+        "code": "HELYBU",
+        "name": "Rotylenchus buxophilus (HELYBU)",
+        "type": "Host"
+      },
+      {
+        "code": "SCITAU",
+        "name": "Scirtothrips aurantii (SCITAU)",
+        "type": "Host"
+      },
+      {
+        "code": "LAPHFR",
+        "name": "Spodoptera frugiperda (LAPHFR)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLEFA",
+        "name": "Xylella fastidiosa (XYLEFA)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLEFF",
+        "name": "Xylella fastidiosa subsp. fastidiosa (XYLEFF)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLEFM",
+        "name": "Xylella fastidiosa subsp. multiplex (XYLEFM)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLSCO",
+        "name": "Xylosandrus compactus (XYLSCO)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLBCR",
+        "name": "Xylosandrus crassiusculus (XYLBCR)",
+        "type": "Host"
+      },
+      {
+        "code": "ZAPRTU",
+        "name": "Zaprionus tuberculatus (ZAPRTU)",
+        "type": "Host"
+      }
+    ]
+  },
+  "gbif": {
+    "key": 5361909,
+    "url": "https://www.gbif.org/species/5361909",
+    "scientificName": "Ficus carica L.",
+    "canonicalName": "Ficus carica",
+    "family": "Moraceae",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "matchType": "EXACT",
+    "confidence": 100
+  }
+}

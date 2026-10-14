@@ -82,7 +82,9 @@ export function validatePack(dir) {
     if (mfIds.has(c.id)) err('manifest', 'معرّف محصول مكرر: ' + c.id);
     mfIds.add(c.id);
     if (!c.name_ar || !c.name_en || !c.name_fr) err('manifest.' + c.id, 'اسم ناقص (name_ar/en/fr)');
-    if (!c.file || !existsSync(join(dir, basename(c.file)))) err('manifest.' + c.id, 'ملف مفقود: ' + c.file);
+    if (c.file && !existsSync(join(dir, basename(c.file)))) err('manifest.' + c.id, 'ملف مفقود: ' + c.file);
+    if (!c.file && !c.inf) err('manifest.' + c.id, 'لا بطاقة يدوية ولا ملف إصابات');
+    if (c.inf && !existsSync(join(dir, 'infections', basename(c.inf)))) err('manifest.' + c.id, 'ملف إصابات مفقود: ' + c.inf);
   }
 
   /* ---------- modifiers ---------- */
@@ -137,7 +139,7 @@ export function validatePack(dir) {
   /* ---------- per-file ---------- */
   const allCardIds = new Map();
   const allSources = new Map(); // url -> card (duplicate URL across cards is fine; same id diff content not)
-  const files = readdirSync(dir).filter(f => f.endsWith('.json') && !['manifest.json', 'modifiers.json', 'advice-registry-report.json'].includes(f));
+  const files = readdirSync(dir).filter(f => f.endsWith('.json') && !['manifest.json', 'modifiers.json', 'advice-registry-report.json', 'dossiers.json'].includes(f));
   for (const f of files) {
     const p = join(dir, f);
     let d;
@@ -277,14 +279,164 @@ export function validatePack(dir) {
   }
   /* ---------- coverage ---------- */
   for (const c of mf.crops) {
-    if (!stats.perCrop[c.id]) err('coverage', 'محصول manifest بلا بطاقات: ' + c.id);
+    const hasInf = c.inf && existsSync(join(dir, 'infections', basename(c.inf)));
+    if (!stats.perCrop[c.id] && !hasInf) err('coverage', 'محصول manifest بلا بطاقات ولا إصابات: ' + c.id);
   }
   for (const oid of mf.owner_initial_cards || []) {
     if (!allCardIds.has(oid)) err('manifest.owner_initial_cards', 'بطاقة مالك مفقودة: ' + oid);
   }
+  validateInfections(dir, mf, err, warn, stats);
   stats.sources = { total: allSources.size };
   stats.actives = [...stats.actives].sort();
   return { errors, warnings, stats, mf };
+}
+
+/* ============================================================
+ * D61 — مطابقة أدلّة الإصابات: لا بطاقة مرقّمة بلا دليل EPPO ولا
+ * نوع بلا تصنيف GBIF ولا مظاهر/علاج خارج ديوان مُسنَد.
+ * ============================================================ */
+const INF_TYPES = new Set(['insect', 'mite', 'fungus', 'pseudo_fungus', 'bacterium', 'virus', 'nematode', 'weed', 'mollusc', 'other']);
+function validateInfections(dir, mf, err, warn, stats) {
+  if (!mf.infections) { stats.infections = null; return; }  /* بلا ميتا إصابات = حزمة يدوية فقط */
+  const evDir = join(dir, 'evidence');
+  const dossPath = join(dir, 'dossiers.json');
+  if (!existsSync(dossPath)) return err('infections', 'dossiers.json مفقود');
+  let dj;
+  try { dj = JSON.parse(readFileSync(dossPath, 'utf8')); }
+  catch (e) { return err('infections', 'dossiers.json غير صالح: ' + e.message); }
+  if (dj.schema !== 1) err('dossiers', 'schema يجب أن يساوي 1');
+  const dossiers = dj.dossiers || {};
+  stats.infections = { crops: 0, cards: 0, others: 0, dossiers: Object.keys(dossiers).length };
+
+  /* --- الدواوين: مصدر + نظافة + تطابق مع الملف الأصلي --- */
+  const dossDir = join(evDir, '_dossiers');
+  if (!existsSync(dossDir)) return err('infections', '_dossiers مفقود');
+  for (const [code, d] of Object.entries(dossiers)) {
+    const W = 'dossiers/' + code;
+    if (!d.name_ar) err(W, 'name_ar مفقود');
+    if (!d.pest_name_en) err(W, 'pest_name_en مفقود');
+    if (!d.source || !URL_RE.test(d.source.url || '')) err(W, 'source.url يجب أن يكون https');
+    if (!d.source || !d.source.publisher) err(W, 'source.publisher مفقود');
+    if (!d.source || !/^\d{4}-\d{2}-\d{2}$/.test(d.source.retrieved || '')) err(W, 'source.retrieved بصيغة YYYY-MM-DD');
+    if (!['ucipm', 'extension', 'cabi', 'cgiari', 'eppo', 'government', 'org', 'journal'].includes(d.source && d.source.type))
+      err(W, 'نوع مصدر غير معروف: ' + (d.source && d.source.type));
+    if (!Array.isArray(d.symptoms_ar) || d.symptoms_ar.length < 2) err(W, 'symptoms_ar يجب أن يكون ≥ 2');
+    if (!Array.isArray(d.management_ar) || d.management_ar.length < 1) err(W, 'management_ar فارغ');
+    if (!EVIDENCE.has(d.evidence)) err(W, 'vidence خارج {A,B,C}: ' + d.evidence);
+    else stats.evidence[d.evidence]++;
+    const text = [d.name_ar, ...(d.symptoms_ar || []), ...(d.management_ar || [])].join('\n');
+    const cjk = text.match(CJK_RE);
+    if (cjk) err(W, 'حرف CJK/FFFD: ' + JSON.stringify([...new Set(cjk)]));
+    for (const h of latinMixHits(text)) err(W, 'تجاوز عربي-لاتيني داخل كلمة: ' + h.token);
+    if (DOSE_RE.test(text)) { stats.doseHits++; err(W, 'نمط جرعة داخل نص الديوان: ' + text.match(DOSE_RE)[0]); }
+    const fp = join(dossDir, code + '.json');
+    if (!existsSync(fp)) err(W, 'الملف الأصلي مفقود في _dossiers');
+    else {
+      let o;
+      try { o = JSON.parse(readFileSync(fp, 'utf8')); }
+      catch (e) { err(W, 'الملف الأصلي غير صالح: ' + e.message); continue; }
+      for (const k of ['name_ar', 'pest_name_en', 'evidence']) {
+        if (JSON.stringify(o[k]) !== JSON.stringify(d[k])) err(W, 'يختلف عن الأصلي في ' + k);
+      }
+      if (JSON.stringify(o.symptoms_ar) !== JSON.stringify(d.symptoms_ar)) err(W, 'يختلف عن الأصلي في symptoms_ar');
+      if (JSON.stringify(o.management_ar) !== JSON.stringify(d.management_ar)) err(W, 'يختلف عن الأصلي في management_ar');
+      if (JSON.stringify(o.source) !== JSON.stringify(d.source)) err(W, 'يختلف عن الأصلي في source');
+    }
+  }
+  for (const f of readdirSync(dossDir).filter(x => x.endsWith('.json'))) {
+    const code = f.replace(/\.json$/, '');
+    if (!dossiers[code]) err('dossiers', 'ملف ديوان غير مُصدَّر في dossiers.json: ' + code + ' — أعد التوليد');
+  }
+  const taxPath = join(evDir, '_pest-taxonomy.json');
+  if (!existsSync(taxPath)) return err('infections', '_pest-taxonomy.json مفقود');
+  const tax = JSON.parse(readFileSync(taxPath, 'utf8')).pests;
+
+  /* --- لكل محصول: النواة + المرجع مقابل دليل EPPO والتصنيف --- */
+  const usedDoss = new Set();
+  for (const c of mf.crops) {
+    if (!c.inf) continue;
+    const W = 'infections/' + c.id;
+    const infPath = join(dir, 'infections', basename(c.inf));
+    const refPath = join(dir, 'infections', basename(c.inf).replace(/\.json$/, '.ref.json'));
+    if (!existsSync(infPath)) { err(W, 'ملف النواة مفقود'); continue; }
+    if (!existsSync(refPath)) { err(W, 'ملف القائمة المرجعية مفقود'); continue; }
+    const evPath = join(evDir, c.id + '.json');
+    if (!existsSync(evPath)) { err(W, 'دليل الأدلة مفقود'); continue; }
+    let inf, ref, ev;
+    try {
+      inf = JSON.parse(readFileSync(infPath, 'utf8'));
+      ref = JSON.parse(readFileSync(refPath, 'utf8'));
+      ev = JSON.parse(readFileSync(evPath, 'utf8'));
+    } catch (e) { err(W, 'JSON غير صالح: ' + e.message); continue; }
+    for (const [label, raw] of [[W, JSON.stringify(inf)], [W + '.ref', JSON.stringify(ref)]]) {
+      const cjk = raw.match(CJK_RE);
+      if (cjk) err(label, 'حرف CJK/FFFD');
+      for (const h of latinMixHits(raw)) err(label, 'تجاوز عربي-لاتيني داخل كلمة: ' + h.token);
+    }
+    if (inf.schema !== 1) err(W, 'schema يجب أن يساوي 1');
+    if (inf.crop_id !== c.id) err(W, 'crop_id لا يطابق manifest');
+    if (!inf.crop || inf.crop.ar !== c.name_ar) err(W, 'crop.ar لا يطابق manifest name_ar');
+    if (!inf.eppo || !inf.eppo.pests_url) err(W, 'وسوم eppo ناقصة');
+    const pestByCode = {};
+    const HRANK = { 'Major host': 0, 'Host': 1 };
+    for (const p of (ev.eppo && ev.eppo.pests) || []) {
+      if (!pestByCode[p.code] || (HRANK[p.type] ?? 2) < (HRANK[pestByCode[p.code].type] ?? 2)) pestByCode[p.code] = p;
+    }
+    stats.infections.crops++;
+
+    const seq = {}, typeCards = {}, typeOthers = {};
+    const seenCards = new Set(), seenRef = new Set();
+    for (const card of inf.cards || []) {
+      stats.infections.cards++;
+      const CW = W + '.card[' + card.code + ']';
+      if (seenCards.has(card.code)) err(CW, 'كود مكرر في بطاقات النواة');
+      seenCards.add(card.code);
+      const ep = pestByCode[card.code];
+      if (!ep) err(CW, 'الكود غير موجود في قائمة EPPO لهذا المحصول');
+      else if (ep.type !== card.host) err(CW, 'host لا يطابق الدليل: ' + card.host + ' ≠ ' + ep.type);
+      const tg = tax[card.code];
+      if (!tg || tg.group === 'unknown') err(CW, 'لا تصنيف GBIF صالح — لا بطاقة');
+      else if (tg.group !== card.type) err(CW, 'type لا يطابق التصنيف: ' + card.type + ' ≠ ' + tg.group);
+      if (!INF_TYPES.has(card.type)) err(CW, 'نوع خارج القائمة: ' + card.type);
+      if (card.dossier !== card.code) err(CW, 'dossier يخالف كود البطاقة');
+      if (!dossiers[card.dossier]) err(CW, 'الديوان غير موجود في dossiers.json');
+      else usedDoss.add(card.dossier);
+      if (DOSE_RE.test(card.name_ar || '')) { stats.doseHits++; err(CW, 'نمط جرعة في الاسم'); }
+      seq[card.type] = (seq[card.type] || 0) + 1;
+      if (card.n !== seq[card.type]) err(CW, 'ترقيم غير متسلسل داخل النوع: ' + card.n + ' ≠ ' + seq[card.type]);
+      typeCards[card.type] = (typeCards[card.type] || 0) + 1;
+    }
+    for (const o of ref.others || []) {
+      stats.infections.others++;
+      const OW = W + '.ref[' + o.code + ']';
+      if (seenRef.has(o.code)) err(OW, 'كود مكرر في القائمة المرجعية');
+      seenRef.add(o.code);
+      if (seenCards.has(o.code)) err(OW, 'موجود كبطاقة وفي القائمة معاً');
+      const ep = pestByCode[o.code];
+      if (!ep) err(OW, 'الكود غير موجود في قائمة EPPO لهذا المحصول');
+      else if (ep.type !== o.host) err(OW, 'host لا يطابق الدليل: ' + o.host + ' ≠ ' + ep.type);
+      const tg = tax[o.code];
+      if (!tg || tg.group === 'unknown') err(OW, 'لا تصنيف GBIF صالح — لا قائمة');
+      else if (tg.group !== o.type) err(OW, 'type لا يطابق التصنيف: ' + o.type + ' ≠ ' + tg.group);
+      if (dossiers[o.code]) err(OW, 'لديه ديوان — يجب أن يكون بطاقة مرقّمة لا قائمة مرجعية');
+      typeOthers[o.type] = (typeOthers[o.type] || 0) + 1;
+    }
+    const seenT = new Set();
+    for (const ty of inf.types || []) {
+      const TW = W + '.types[' + ty.id + ']';
+      if (!INF_TYPES.has(ty.id)) err(TW, 'نوع خارج القائمة');
+      if (seenT.has(ty.id)) err(TW, 'نوع مكرر');
+      seenT.add(ty.id);
+      if (ty.cards !== (typeCards[ty.id] || 0)) err(TW, 'عدّاد cards لا يطابق الفعلي: ' + ty.cards + ' ≠ ' + (typeCards[ty.id] || 0));
+      if (ty.others !== (typeOthers[ty.id] || 0)) err(TW, 'عدّاد others لا يطابق الفعلي: ' + ty.others + ' ≠ ' + (typeOthers[ty.id] || 0));
+      if (ty.count !== ty.cards + ty.others) err(TW, 'count ≠ cards+others');
+    }
+    for (const k of Object.keys(typeCards)) if (!seenT.has(k)) err(W, 'نوع بطاقات غير مدرج في types: ' + k);
+    for (const k of Object.keys(typeOthers)) if (!seenT.has(k)) err(W, 'نوع مرجعي غير مدرج في types: ' + k);
+  }
+  for (const code of Object.keys(dossiers)) {
+    if (!usedDoss.has(code)) warn('dossiers/' + code, 'ديوان غير مستخدم في أي محصول — أعد التوليد أو احذفه');
+  }
 }
 
 /* ============================================================
@@ -310,7 +462,7 @@ function buildReport(dir, res) {
     actives.push({ active: en, eu_status: st || 'غير مدرجة' });
   }
   const urls = new Set();
-  const files = readdirSync(dir).filter(f => f.endsWith('.json') && !['manifest.json', 'modifiers.json', 'advice-registry-report.json'].includes(f));
+  const files = readdirSync(dir).filter(f => f.endsWith('.json') && !['manifest.json', 'modifiers.json', 'advice-registry-report.json', 'dossiers.json'].includes(f));
   for (const f of files) {
     const d = JSON.parse(readFileSync(join(dir, f), 'utf8'));
     for (const c of d.cards) for (const s of c.sources) {
@@ -331,6 +483,7 @@ function buildReport(dir, res) {
     actives: { total: actives.length, eu_crosscheck: actives },
     dose_gate: { pattern_hits: res.stats.doseHits, policy: 'الجرعة من الملصق حصراً' },
     applies_if_usage: res.stats.appliesKeys,
+    infections: res.stats.infections || null,
     warnings: res.warnings
   };
 }
@@ -362,6 +515,9 @@ if (isMain) {
       ' complete=' + rep.completeness.complete_cards + ' sources=' + rep.sources.total +
       ' evidence A/B/C=' + [rep.evidence.A, rep.evidence.B, rep.evidence.C].join('/') +
       ' doseHits=' + rep.dose_gate.pattern_hits + ' warnings=' + res.warnings.length);
+    if (rep.infections)
+      console.log('  infections: crops=' + rep.infections.crops + ' cards=' + rep.infections.cards +
+        ' others=' + rep.infections.others + ' dossiers=' + rep.infections.dossiers);
     /* --check-links: فحص حيّ لكل رابط. نطاق openknowledge.fao.org يرفض
      * الفحص الآلي (000/timeout) رغم عمله في المتصفح — تحذير لا فشل،
      * موثّق في أدلة الجولة. باقي النطاقات: أي ≥400 أو تعذّر = فشل. */
@@ -369,7 +525,7 @@ if (isMain) {
       const urls = [...new Set(rep.sources && rep.sources.total
         ? buildReport(dir, res).by_license_urls || [] : [])];
       const all = [];
-      const files2 = readdirSync(dir).filter(x => x.endsWith('.json') && !['manifest.json', 'modifiers.json', 'advice-registry-report.json'].includes(x));
+      const files2 = readdirSync(dir).filter(x => x.endsWith('.json') && !['manifest.json', 'modifiers.json', 'advice-registry-report.json', 'dossiers.json'].includes(x));
       for (const x of files2) {
         const d2 = JSON.parse(readFileSync(join(dir, x), 'utf8'));
         for (const c of d2.cards) for (const s of c.sources) all.push(s.url);

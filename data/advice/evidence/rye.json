@@ -1,0 +1,189 @@
+{
+  "schema": 1,
+  "crop_id": "rye",
+  "generated_by": "scripts/advice-harvest.mjs",
+  "fetched_at": "2026-10-14",
+  "candidate": {
+    "ar": "الجاودار",
+    "en": "Rye",
+    "fr": "Seigle",
+    "sci_expected": "Secale cereale"
+  },
+  "eppo": {
+    "code": "SECCE",
+    "overview_url": "https://gd.eppo.int/taxon/SECCE",
+    "overview_title": "Secale cereale (SECCE)",
+    "pests_url": "https://gd.eppo.int/taxon/SECCE/pests",
+    "http_status": 200,
+    "pests_total_rows": 32,
+    "by_type": {
+      "Doubtful host": 1,
+      "Experimental": 1,
+      "Host": 28,
+      "Major host": 2
+    },
+    "pests": [
+      {
+        "code": "CLAVPU",
+        "name": "Claviceps purpurea (CLAVPU)",
+        "type": "Major host"
+      },
+      {
+        "code": "MELGNA",
+        "name": "Meloidogyne naasi (MELGNA)",
+        "type": "Major host"
+      },
+      {
+        "code": "CONTTR",
+        "name": "Contarinia tritici (CONTTR)",
+        "type": "Host"
+      },
+      {
+        "code": "HYLECO",
+        "name": "Delia coarctata (HYLECO)",
+        "type": "Host"
+      },
+      {
+        "code": "DIABUH",
+        "name": "Diabrotica undecimpunctata howardi (DIABUH)",
+        "type": "Host"
+      },
+      {
+        "code": "DITYDI",
+        "name": "Ditylenchus dipsaci (DITYDI)",
+        "type": "Host"
+      },
+      {
+        "code": "BRAYNO",
+        "name": "Diuraphis noxia (BRAYNO)",
+        "type": "Host"
+      },
+      {
+        "code": "ELASLI",
+        "name": "Elasmopalpus lignosellus (ELASLI)",
+        "type": "Host"
+      },
+      {
+        "code": "WHPV00",
+        "name": "Emaravirus tritici (WHPV00)",
+        "type": "Host"
+      },
+      {
+        "code": "MRCV00",
+        "name": "Fijivirus cuartoense (MRCV00)",
+        "type": "Host"
+      },
+      {
+        "code": "HALYHA",
+        "name": "Halyomorpha halys (HALYHA)",
+        "type": "Host"
+      },
+      {
+        "code": "HAPLTR",
+        "name": "Haplothrips tritici (HAPLTR)",
+        "type": "Host"
+      },
+      {
+        "code": "HELIZE",
+        "name": "Helicoverpa zea (HELIZE)",
+        "type": "Host"
+      },
+      {
+        "code": "HETDHO",
+        "name": "Heterodera hordecalis (HETDHO)",
+        "type": "Host"
+      },
+      {
+        "code": "HYROBO",
+        "name": "Listronotus bonariensis (HYROBO)",
+        "type": "Host"
+      },
+      {
+        "code": "MAYEDE",
+        "name": "Mayetiola destructor (MAYEDE)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGCH",
+        "name": "Meloidogyne chitwoodi (MELGCH)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGET",
+        "name": "Meloidogyne ethiopica (MELGET)",
+        "type": "Host"
+      },
+      {
+        "code": "NYSIHU",
+        "name": "Nysius huttoni (NYSIHU)",
+        "type": "Host"
+      },
+      {
+        "code": "PYRIOT",
+        "name": "Pyricularia oryzae Triticum lineage (PYRIOT)",
+        "type": "Host"
+      },
+      {
+        "code": "CORBRA",
+        "name": "Rathayibacter rathayi (CORBRA)",
+        "type": "Host"
+      },
+      {
+        "code": "HELYBU",
+        "name": "Rotylenchus buxophilus (HELYBU)",
+        "type": "Host"
+      },
+      {
+        "code": "SITDMO",
+        "name": "Sitodiplosis mosellana (SITDMO)",
+        "type": "Host"
+      },
+      {
+        "code": "LAPHFR",
+        "name": "Spodoptera frugiperda (LAPHFR)",
+        "type": "Host"
+      },
+      {
+        "code": "MSPV00",
+        "name": "Tenuivirus zeae (MSPV00)",
+        "type": "Host"
+      },
+      {
+        "code": "TILLCO",
+        "name": "Tilletia controversa (TILLCO)",
+        "type": "Host"
+      },
+      {
+        "code": "NEOVIN",
+        "name": "Tilletia indica (NEOVIN)",
+        "type": "Host"
+      },
+      {
+        "code": "TRIHVI",
+        "name": "Trichodorus viruliferus (TRIHVI)",
+        "type": "Host"
+      },
+      {
+        "code": "TROGGA",
+        "name": "Trogoderma granarium (TROGGA)",
+        "type": "Host"
+      },
+      {
+        "code": "XANTTR",
+        "name": "Xanthomonas translucens pv. translucens (XANTTR)",
+        "type": "Host"
+      }
+    ]
+  },
+  "gbif": {
+    "key": 2705966,
+    "url": "https://www.gbif.org/species/2705966",
+    "scientificName": "Secale cereale L.",
+    "canonicalName": "Secale cereale",
+    "family": "Poaceae",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "matchType": "EXACT",
+    "confidence": 99
+  }
+}

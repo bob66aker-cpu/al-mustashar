@@ -1,0 +1,369 @@
+{
+  "schema": 1,
+  "crop_id": "onion",
+  "generated_by": "scripts/advice-harvest.mjs",
+  "fetched_at": "2026-10-14",
+  "candidate": {
+    "ar": "البصل",
+    "en": "Onion",
+    "fr": "Oignon",
+    "sci_expected": "Allium cepa"
+  },
+  "eppo": {
+    "code": "ALLCE",
+    "overview_url": "https://gd.eppo.int/taxon/ALLCE",
+    "overview_title": "Allium cepa (ALLCE)",
+    "pests_url": "https://gd.eppo.int/taxon/ALLCE/pests",
+    "http_status": 200,
+    "pests_total_rows": 70,
+    "by_type": {
+      "Doubtful host": 2,
+      "Experimental": 2,
+      "Host": 54,
+      "Major host": 12
+    },
+    "pests": [
+      {
+        "code": "ACROAS",
+        "name": "Acrolepiopsis assectella (ACROAS)",
+        "type": "Major host"
+      },
+      {
+        "code": "APLOBE",
+        "name": "Aphelenchoides besseyi (APLOBE)",
+        "type": "Major host"
+      },
+      {
+        "code": "TRIZTE",
+        "name": "Bactericera tremblayi (TRIZTE)",
+        "type": "Major host"
+      },
+      {
+        "code": "BRCCAB",
+        "name": "Brachycerus albidentatus (BRCCAB)",
+        "type": "Major host"
+      },
+      {
+        "code": "BOTRBY",
+        "name": "Ciborinia allii (BOTRBY)",
+        "type": "Major host"
+      },
+      {
+        "code": "HYLEAN",
+        "name": "Delia antiqua (HYLEAN)",
+        "type": "Major host"
+      },
+      {
+        "code": "HYLEPL",
+        "name": "Delia platura (HYLEPL)",
+        "type": "Major host"
+      },
+      {
+        "code": "NEOTFO",
+        "name": "Neotoxoptera formosana (NEOTFO)",
+        "type": "Major host"
+      },
+      {
+        "code": "IYSV00",
+        "name": "Orthotospovirus iridimaculaflavi (IYSV00)",
+        "type": "Major host"
+      },
+      {
+        "code": "SCLOCE",
+        "name": "Stromatinia cepivora (SCLOCE)",
+        "type": "Major host"
+      },
+      {
+        "code": "UROCCE",
+        "name": "Urocystis magica (UROCCE)",
+        "type": "Major host"
+      },
+      {
+        "code": "XANTAA",
+        "name": "Xanthomonas euvesicatoria pv. allii (XANTAA)",
+        "type": "Major host"
+      },
+      {
+        "code": "ACROAS",
+        "name": "Acrolepiopsis assectella (as Allium) (ACROAS)",
+        "type": "Host"
+      },
+      {
+        "code": "ATHEOR",
+        "name": "Atherigona orientalis (ATHEOR)",
+        "type": "Host"
+      },
+      {
+        "code": "SCLESQ",
+        "name": "Botryotinia squamosa (SCLESQ)",
+        "type": "Host"
+      },
+      {
+        "code": "SCLESQ",
+        "name": "Botryotinia squamosa (as Allium) (SCLESQ)",
+        "type": "Host"
+      },
+      {
+        "code": "BOTRBY",
+        "name": "Ciborinia allii (as Allium) (BOTRBY)",
+        "type": "Host"
+      },
+      {
+        "code": "HYLEAN",
+        "name": "Delia antiqua (as Allium) (HYLEAN)",
+        "type": "Host"
+      },
+      {
+        "code": "HYLEFG",
+        "name": "Delia florilega (HYLEFG)",
+        "type": "Host"
+      },
+      {
+        "code": "DELIHI",
+        "name": "Delia hirticrura (as Allium) (DELIHI)",
+        "type": "Host"
+      },
+      {
+        "code": "HYLEPL",
+        "name": "Delia platura (as Allium) (HYLEPL)",
+        "type": "Host"
+      },
+      {
+        "code": "DITYDI",
+        "name": "Ditylenchus dipsaci (DITYDI)",
+        "type": "Host"
+      },
+      {
+        "code": "DYSPUL",
+        "name": "Dyspessa ulula (as Allium) (DYSPUL)",
+        "type": "Host"
+      },
+      {
+        "code": "ERWICH",
+        "name": "Erwinia chrysanthemi (ERWICH)",
+        "type": "Host"
+      },
+      {
+        "code": "ERWIRH",
+        "name": "Erwinia rhapontici (ERWIRH)",
+        "type": "Host"
+      },
+      {
+        "code": "FRANOC",
+        "name": "Frankliniella occidentalis (FRANOC)",
+        "type": "Host"
+      },
+      {
+        "code": "FRANOC",
+        "name": "Frankliniella occidentalis (as Allium) (FRANOC)",
+        "type": "Host"
+      },
+      {
+        "code": "HELIAR",
+        "name": "Helicoverpa armigera (HELIAR)",
+        "type": "Host"
+      },
+      {
+        "code": "TSV000",
+        "name": "Ilarvirus TSV (TSV000)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYORH",
+        "name": "Lasiodiplodia theobromae (as Allium) (PHYORH)",
+        "type": "Host"
+      },
+      {
+        "code": "LIRIHU",
+        "name": "Liriomyza huidobrensis (LIRIHU)",
+        "type": "Host"
+      },
+      {
+        "code": "LIRITR",
+        "name": "Liriomyza trifolii (LIRITR)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGCH",
+        "name": "Meloidogyne chitwoodi (MELGCH)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGMY",
+        "name": "Meloidogyne enterolobii (MELGMY)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGEX",
+        "name": "Meloidogyne exigua (MELGEX)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGGC",
+        "name": "Meloidogyne graminicola (MELGGC)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGLC",
+        "name": "Meloidogyne luci (MELGLC)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGNA",
+        "name": "Meloidogyne naasi (MELGNA)",
+        "type": "Host"
+      },
+      {
+        "code": "GRAGLE",
+        "name": "Naupactus leucoloma (GRAGLE)",
+        "type": "Host"
+      },
+      {
+        "code": "TBRV00",
+        "name": "Nepovirus nigranuli (as Allium) (TBRV00)",
+        "type": "Host"
+      },
+      {
+        "code": "INSV00",
+        "name": "Orthotospovirus impatiensnecromaculae (INSV00)",
+        "type": "Host"
+      },
+      {
+        "code": "TSWV00",
+        "name": "Orthotospovirus tomatomaculae (TSWV00)",
+        "type": "Host"
+      },
+      {
+        "code": "ERWIAN",
+        "name": "Pantoea ananatis (ERWIAN)",
+        "type": "Host"
+      },
+      {
+        "code": "PHAEBR",
+        "name": "Phaedon brassicae (PHAEBR)",
+        "type": "Host"
+      },
+      {
+        "code": "PHLYCA",
+        "name": "Phlyctinus callosus (PHLYCA)",
+        "type": "Host"
+      },
+      {
+        "code": "NAPOGY",
+        "name": "Phytomyza gymnostoma (NAPOGY)",
+        "type": "Host"
+      },
+      {
+        "code": "LYSV00",
+        "name": "Potyvirus ampeloprasi (LYSV00)",
+        "type": "Host"
+      },
+      {
+        "code": "OYDV00",
+        "name": "Potyvirus cepae (OYDV00)",
+        "type": "Host"
+      },
+      {
+        "code": "OYDV00",
+        "name": "Potyvirus cepae (as Allium) (OYDV00)",
+        "type": "Host"
+      },
+      {
+        "code": "PRDILO",
+        "name": "Prodiplosis longifila (PRDILO)",
+        "type": "Host"
+      },
+      {
+        "code": "PUCCAL",
+        "name": "Puccinia allii (PUCCAL)",
+        "type": "Host"
+      },
+      {
+        "code": "PUCCAL",
+        "name": "Puccinia allii (as Allium) (PUCCAL)",
+        "type": "Host"
+      },
+      {
+        "code": "SCITDO",
+        "name": "Scirtothrips dorsalis (SCITDO)",
+        "type": "Host"
+      },
+      {
+        "code": "SERRMA",
+        "name": "Serratia marcescens (SERRMA)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODER",
+        "name": "Spodoptera eridania (PRODER)",
+        "type": "Host"
+      },
+      {
+        "code": "LAPHFR",
+        "name": "Spodoptera frugiperda (LAPHFR)",
+        "type": "Host"
+      },
+      {
+        "code": "SPODLI",
+        "name": "Spodoptera littoralis (SPODLI)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODLI",
+        "name": "Spodoptera litura (PRODLI)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODOR",
+        "name": "Spodoptera ornithogalli (PRODOR)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODPR",
+        "name": "Spodoptera praefica (PRODPR)",
+        "type": "Host"
+      },
+      {
+        "code": "SCLOCE",
+        "name": "Stromatinia cepivora (as Allium) (SCLOCE)",
+        "type": "Host"
+      },
+      {
+        "code": "THRIPL",
+        "name": "Thrips palmi (THRIPL)",
+        "type": "Host"
+      },
+      {
+        "code": "THRIPV",
+        "name": "Thrips parvispinus (THRIPV)",
+        "type": "Host"
+      },
+      {
+        "code": "UROCCE",
+        "name": "Urocystis magica (as Allium) (UROCCE)",
+        "type": "Host"
+      },
+      {
+        "code": "USTIAL",
+        "name": "Ustilago allii (as Allium) (USTIAL)",
+        "type": "Host"
+      },
+      {
+        "code": "XANTAA",
+        "name": "Xanthomonas euvesicatoria pv. allii (as Allium) (XANTAA)",
+        "type": "Host"
+      }
+    ]
+  },
+  "gbif": {
+    "key": 2857697,
+    "url": "https://www.gbif.org/species/2857697",
+    "scientificName": "Allium cepa L.",
+    "canonicalName": "Allium cepa",
+    "family": "Amaryllidaceae",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "matchType": "EXACT",
+    "confidence": 100
+  }
+}

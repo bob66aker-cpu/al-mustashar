@@ -1,0 +1,539 @@
+{
+  "schema": 1,
+  "crop_id": "mango",
+  "generated_by": "scripts/advice-harvest.mjs",
+  "fetched_at": "2026-10-14",
+  "candidate": {
+    "ar": "المانجو",
+    "en": "Mango",
+    "fr": "Mangue",
+    "sci_expected": "Mangifera indica"
+  },
+  "eppo": {
+    "code": "MNGIN",
+    "overview_url": "https://gd.eppo.int/taxon/MNGIN",
+    "overview_title": "Mangifera indica (MNGIN)",
+    "pests_url": "https://gd.eppo.int/taxon/MNGIN/pests",
+    "http_status": 200,
+    "pests_total_rows": 105,
+    "by_type": {
+      "Doubtful host": 2,
+      "Experimental": 3,
+      "Host": 81,
+      "Major host": 19
+    },
+    "pests": [
+      {
+        "code": "ANSTLU",
+        "name": "Anastrepha ludens (ANSTLU)",
+        "type": "Major host"
+      },
+      {
+        "code": "ANSTOB",
+        "name": "Anastrepha obliqua (ANSTOB)",
+        "type": "Major host"
+      },
+      {
+        "code": "BCTRCR",
+        "name": "Bactrocera caryeae (BCTRCR)",
+        "type": "Major host"
+      },
+      {
+        "code": "BCTRJA",
+        "name": "Bactrocera jarvisi (BCTRJA)",
+        "type": "Major host"
+      },
+      {
+        "code": "BCTRKA",
+        "name": "Bactrocera kandiensis (BCTRKA)",
+        "type": "Major host"
+      },
+      {
+        "code": "BCTROC",
+        "name": "Bactrocera occipitalis (BCTROC)",
+        "type": "Major host"
+      },
+      {
+        "code": "DACUTR",
+        "name": "Bactrocera tryoni (DACUTR)",
+        "type": "Major host"
+      },
+      {
+        "code": "DACUZO",
+        "name": "Bactrocera zonata (DACUZO)",
+        "type": "Major host"
+      },
+      {
+        "code": "BATCRB",
+        "name": "Batocera rubus (BATCRB)",
+        "type": "Major host"
+      },
+      {
+        "code": "CERTCO",
+        "name": "Ceratitis cosyra (CERTCO)",
+        "type": "Major host"
+      },
+      {
+        "code": "CERTQU",
+        "name": "Ceratitis quinaria (CERTQU)",
+        "type": "Major host"
+      },
+      {
+        "code": "ICERPU",
+        "name": "Icerya purchasi (ICERPU)",
+        "type": "Major host"
+      },
+      {
+        "code": "ICERSE",
+        "name": "Icerya seychellarum (ICERSE)",
+        "type": "Major host"
+      },
+      {
+        "code": "PTACLO",
+        "name": "Paratachardina silvestri (PTACLO)",
+        "type": "Major host"
+      },
+      {
+        "code": "PLANLI",
+        "name": "Planococcus lilacinus (PLANLI)",
+        "type": "Major host"
+      },
+      {
+        "code": "CRYPGR",
+        "name": "Sternochetus frigidus (CRYPGR)",
+        "type": "Major host"
+      },
+      {
+        "code": "CRYPMA",
+        "name": "Sternochetus mangiferae (CRYPMA)",
+        "type": "Major host"
+      },
+      {
+        "code": "ARGPLE",
+        "name": "Thaumatotibia leucotreta (ARGPLE)",
+        "type": "Major host"
+      },
+      {
+        "code": "THRIPV",
+        "name": "Thrips parvispinus (THRIPV)",
+        "type": "Major host"
+      },
+      {
+        "code": "AGRBTU",
+        "name": "Agrobacterium tumefaciens (AGRBTU)",
+        "type": "Host"
+      },
+      {
+        "code": "ALECWO",
+        "name": "Aleurocanthus woglumi (ALECWO)",
+        "type": "Host"
+      },
+      {
+        "code": "ALEDDI",
+        "name": "Aleurodicus dispersus (ALEDDI)",
+        "type": "Host"
+      },
+      {
+        "code": "ALTHFL",
+        "name": "Aleurothrixus floccosus (ALTHFL)",
+        "type": "Host"
+      },
+      {
+        "code": "AMBPCO",
+        "name": "Amblypelta cocophaga (AMBPCO)",
+        "type": "Host"
+      },
+      {
+        "code": "AMBPLU",
+        "name": "Amblypelta lutescens (AMBPLU)",
+        "type": "Host"
+      },
+      {
+        "code": "ANSTBA",
+        "name": "Anastrepha bahiensis (ANSTBA)",
+        "type": "Host"
+      },
+      {
+        "code": "ANSTFR",
+        "name": "Anastrepha fraterculus (ANSTFR)",
+        "type": "Host"
+      },
+      {
+        "code": "ANSTSE",
+        "name": "Anastrepha serpentina (ANSTSE)",
+        "type": "Host"
+      },
+      {
+        "code": "ANSTST",
+        "name": "Anastrepha striata (ANSTST)",
+        "type": "Host"
+      },
+      {
+        "code": "ANSTSU",
+        "name": "Anastrepha suspensa (ANSTSU)",
+        "type": "Host"
+      },
+      {
+        "code": "ANSTTU",
+        "name": "Anastrepha turpiniae (ANSTTU)",
+        "type": "Host"
+      },
+      {
+        "code": "AONDCI",
+        "name": "Aonidiella citrina (AONDCI)",
+        "type": "Host"
+      },
+      {
+        "code": "AONDOR",
+        "name": "Aonidiella orientalis (AONDOR)",
+        "type": "Host"
+      },
+      {
+        "code": "TOXOCI",
+        "name": "Aphis citricidus (TOXOCI)",
+        "type": "Host"
+      },
+      {
+        "code": "PSYLCI",
+        "name": "Apsylla cistellata (PSYLCI)",
+        "type": "Host"
+      },
+      {
+        "code": "ATHEOR",
+        "name": "Atherigona orientalis (ATHEOR)",
+        "type": "Host"
+      },
+      {
+        "code": "BCTRCB",
+        "name": "Bactrocera carambolae (BCTRCB)",
+        "type": "Host"
+      },
+      {
+        "code": "BCTRCO",
+        "name": "Bactrocera correcta (BCTRCO)",
+        "type": "Host"
+      },
+      {
+        "code": "DACUCR",
+        "name": "Bactrocera curvipennis (DACUCR)",
+        "type": "Host"
+      },
+      {
+        "code": "DACUDO",
+        "name": "Bactrocera dorsalis (DACUDO)",
+        "type": "Host"
+      },
+      {
+        "code": "BCTRPA",
+        "name": "Bactrocera passiflorae (BCTRPA)",
+        "type": "Host"
+      },
+      {
+        "code": "TOLCND",
+        "name": "Begomovirus solanumdelhiense (TOLCND)",
+        "type": "Host"
+      },
+      {
+        "code": "CERTAN",
+        "name": "Ceratitis anonae (CERTAN)",
+        "type": "Host"
+      },
+      {
+        "code": "CERTCA",
+        "name": "Ceratitis capitata (CERTCA)",
+        "type": "Host"
+      },
+      {
+        "code": "CERTFA",
+        "name": "Ceratitis fasciventris (CERTFA)",
+        "type": "Host"
+      },
+      {
+        "code": "CERTMA",
+        "name": "Ceratitis malgassa (CERTMA)",
+        "type": "Host"
+      },
+      {
+        "code": "CERTQI",
+        "name": "Ceratitis quilicii (CERTQI)",
+        "type": "Host"
+      },
+      {
+        "code": "CERTRO",
+        "name": "Ceratitis rosa (CERTRO)",
+        "type": "Host"
+      },
+      {
+        "code": "CERAFI",
+        "name": "Ceratocystis fimbriata (CERAFI)",
+        "type": "Host"
+      },
+      {
+        "code": "CERPFL",
+        "name": "Ceroplastes floridensis (CERPFL)",
+        "type": "Host"
+      },
+      {
+        "code": "VINSST",
+        "name": "Ceroplastes stellifer (VINSST)",
+        "type": "Host"
+      },
+      {
+        "code": "CHRYFI",
+        "name": "Chrysomphalus aonidum (CHRYFI)",
+        "type": "Host"
+      },
+      {
+        "code": "COCCVI",
+        "name": "Coccus viridis (COCCVI)",
+        "type": "Host"
+      },
+      {
+        "code": "COLLFC",
+        "name": "Colletotrichum fructicola (COLLFC)",
+        "type": "Host"
+      },
+      {
+        "code": "CRYHDI",
+        "name": "Cryphalus dilutus (CRYHDI)",
+        "type": "Host"
+      },
+      {
+        "code": "CRYBGN",
+        "name": "Cryptoblabes gnidiella (CRYBGN)",
+        "type": "Host"
+      },
+      {
+        "code": "DACUCI",
+        "name": "Dacus ciliatus (DACUCI)",
+        "type": "Host"
+      },
+      {
+        "code": "DIAPCI",
+        "name": "Diaporthe citri (DIAPCI)",
+        "type": "Host"
+      },
+      {
+        "code": "DICHPU",
+        "name": "Dichocrocis punctiferalis (DICHPU)",
+        "type": "Host"
+      },
+      {
+        "code": "DROCST",
+        "name": "Drosicha stebbingii (DROCST)",
+        "type": "Host"
+      },
+      {
+        "code": "DROSSU",
+        "name": "Drosophila suzukii (DROSSU)",
+        "type": "Host"
+      },
+      {
+        "code": "PLTPPA",
+        "name": "Euplatypus parallelus (PLTPPA)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLBFO",
+        "name": "Euwallacea fornicatus sensu lato (XYLBFO)",
+        "type": "Host"
+      },
+      {
+        "code": "EUWAWH",
+        "name": "Euwallacea fornicatus sensu stricto (EUWAWH)",
+        "type": "Host"
+      },
+      {
+        "code": "EUWAPE",
+        "name": "Euwallacea perbrevis (as Mangifera) (EUWAPE)",
+        "type": "Host"
+      },
+      {
+        "code": "FIORCO",
+        "name": "Fiorinia phantasma (FIORCO)",
+        "type": "Host"
+      },
+      {
+        "code": "FRANOC",
+        "name": "Frankliniella occidentalis (FRANOC)",
+        "type": "Host"
+      },
+      {
+        "code": "ECDYAU",
+        "name": "Gymnandrosoma aurantianum (ECDYAU)",
+        "type": "Host"
+      },
+      {
+        "code": "HELIAR",
+        "name": "Helicoverpa armigera (HELIAR)",
+        "type": "Host"
+      },
+      {
+        "code": "HOMLTR",
+        "name": "Homalodisca vitripennis (HOMLTR)",
+        "type": "Host"
+      },
+      {
+        "code": "IDIOCL",
+        "name": "Idioscopus clypealis (IDIOCL)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYORH",
+        "name": "Lasiodiplodia theobromae (PHYORH)",
+        "type": "Host"
+      },
+      {
+        "code": "LYMAMA",
+        "name": "Lymantria mathura (LYMAMA)",
+        "type": "Host"
+      },
+      {
+        "code": "PHENHI",
+        "name": "Maconellicoccus hirsutus (PHENHI)",
+        "type": "Host"
+      },
+      {
+        "code": "MEGTUS",
+        "name": "Megalurothrips usitatus (MEGTUS)",
+        "type": "Host"
+      },
+      {
+        "code": "PLTPMU",
+        "name": "Megaplatypus mutatus (PLTPMU)",
+        "type": "Host"
+      },
+      {
+        "code": "OLIGPU",
+        "name": "Oligonychus punicae (OLIGPU)",
+        "type": "Host"
+      },
+      {
+        "code": "ONCMUN",
+        "name": "Oncometopia orbona (ONCMUN)",
+        "type": "Host"
+      },
+      {
+        "code": "SAISNI",
+        "name": "Parasaissetia nigra (SAISNI)",
+        "type": "Host"
+      },
+      {
+        "code": "PHENPR",
+        "name": "Phenacoccus peruvianus (PHENPR)",
+        "type": "Host"
+      },
+      {
+        "code": "PHENSO",
+        "name": "Phenacoccus solenopsis (PHENSO)",
+        "type": "Host"
+      },
+      {
+        "code": "PHMPOM",
+        "name": "Phymatotrichopsis omnivora (PHMPOM)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYTNP",
+        "name": "Phytophthora nicotianae (PHYTNP)",
+        "type": "Host"
+      },
+      {
+        "code": "PSEAPE",
+        "name": "Pseudaulacaspis pentagona (as Mangifera) (PSEAPE)",
+        "type": "Host"
+      },
+      {
+        "code": "PSDTWA",
+        "name": "Pseudotheraptus wayi (PSDTWA)",
+        "type": "Host"
+      },
+      {
+        "code": "SCITAU",
+        "name": "Scirtothrips aurantii (SCITAU)",
+        "type": "Host"
+      },
+      {
+        "code": "SCITCI",
+        "name": "Scirtothrips citri (SCITCI)",
+        "type": "Host"
+      },
+      {
+        "code": "SCITDO",
+        "name": "Scirtothrips dorsalis (SCITDO)",
+        "type": "Host"
+      },
+      {
+        "code": "SCITMG",
+        "name": "Scirtothrips mangiferae (SCITMG)",
+        "type": "Host"
+      },
+      {
+        "code": "SLENRU",
+        "name": "Selenothrips rubrocinctus (SLENRU)",
+        "type": "Host"
+      },
+      {
+        "code": "LAPHFR",
+        "name": "Spodoptera frugiperda (LAPHFR)",
+        "type": "Host"
+      },
+      {
+        "code": "THRIHA",
+        "name": "Thrips hawaiiensis (THRIHA)",
+        "type": "Host"
+      },
+      {
+        "code": "THRIPL",
+        "name": "Thrips palmi (THRIPL)",
+        "type": "Host"
+      },
+      {
+        "code": "UNASCI",
+        "name": "Unaspis citri (UNASCI)",
+        "type": "Host"
+      },
+      {
+        "code": "XIPHRI",
+        "name": "Xiphinema rivesi (XIPHRI)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLSCO",
+        "name": "Xylosandrus compactus (XYLSCO)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLBCR",
+        "name": "Xylosandrus crassiusculus (XYLBCR)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLSMO",
+        "name": "Xylosandrus morigerus (XYLSMO)",
+        "type": "Host"
+      },
+      {
+        "code": "ZAPRIN",
+        "name": "Zaprionus indianus (ZAPRIN)",
+        "type": "Host"
+      },
+      {
+        "code": "DACUCU",
+        "name": "Zeugodacus cucurbitae (DACUCU)",
+        "type": "Host"
+      }
+    ]
+  },
+  "gbif": {
+    "key": 3190638,
+    "url": "https://www.gbif.org/species/3190638",
+    "scientificName": "Mangifera indica L.",
+    "canonicalName": "Mangifera indica",
+    "family": "Anacardiaceae",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "matchType": "EXACT",
+    "confidence": 99
+  }
+}

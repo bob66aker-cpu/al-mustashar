@@ -1,0 +1,560 @@
+{
+  "schema": 1,
+  "crop_id": "sugarcane",
+  "generated_by": "scripts/advice-generate.mjs",
+  "built": "2026-10-14",
+  "others": [
+    {
+      "type": "bacterium",
+      "code": "PHYPSA",
+      "name": "'Candidatus Phytoplasma sacchari'",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "CHIOTE",
+      "name": "Aulacaspis tegalensis",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "BLAAGR",
+      "name": "Blastobasis graminea",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "BUSSFU",
+      "name": "Busseola fusca",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "DIATAU",
+      "name": "Chilo auricilius",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "DIATIN",
+      "name": "Chilo infuscatellus",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "CHILZO",
+      "name": "Chilo partellus",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "PROSSA",
+      "name": "Chilo sacchariphagus",
+      "host": "Major host"
+    },
+    {
+      "type": "fungus",
+      "code": "CINTPU",
+      "name": "Cintractia pulverulenta",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "DIATSA",
+      "name": "Diatraea saccharalis",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "EORELO",
+      "name": "Eoreuma loftini",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "EUMGLA",
+      "name": "Eumargarodes laingi",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "ANMLOR",
+      "name": "Exomala orientalis",
+      "host": "Major host"
+    },
+    {
+      "type": "virus",
+      "code": "FDV000",
+      "name": "Fijivirus fijiense",
+      "host": "Major host"
+    },
+    {
+      "type": "bacterium",
+      "code": "CLABXY",
+      "name": "Leifsonia xyli subsp. xyli",
+      "host": "Major host"
+    },
+    {
+      "type": "virus",
+      "code": "MSV000",
+      "name": "Mastrevirus storeyi",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "METAHE",
+      "name": "Metamasius hemipterus (as Musa)",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "PERKSA",
+      "name": "Perkinsiella saccharicida",
+      "host": "Major host"
+    },
+    {
+      "type": "pseudo_fungus",
+      "code": "PRSCSA",
+      "name": "Peronosclerospora sacchari",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "PHYGSM",
+      "name": "Phyllophaga smithi",
+      "host": "Major host"
+    },
+    {
+      "type": "virus",
+      "code": "SCMV00",
+      "name": "Potyvirus sacchari",
+      "host": "Major host"
+    },
+    {
+      "type": "fungus",
+      "code": "PUCCKU",
+      "name": "Puccinia kuehnii",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "PYRLPE",
+      "name": "Pyrilla perpusilla",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "SPPHOB",
+      "name": "Rhabdoscelus obscurus",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "RHYCPA",
+      "name": "Rhynchophorus palmarum",
+      "host": "Major host"
+    },
+    {
+      "type": "virus",
+      "code": "SCMVA0",
+      "name": "Sugarcane mosaic virus abaca mosaic strain",
+      "host": "Major host"
+    },
+    {
+      "type": "bacterium",
+      "code": "SRSV00",
+      "name": "Sugarcane Ramu stunt phytoplasma",
+      "host": "Major host"
+    },
+    {
+      "type": "bacterium",
+      "code": "PHYP47",
+      "name": "Sugarcane white leaf phytoplasma",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "TAPARU",
+      "name": "Tapajosa rubromarginata",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "CASTLI",
+      "name": "Telchin licus",
+      "host": "Major host"
+    },
+    {
+      "type": "bacterium",
+      "code": "XANTAB",
+      "name": "Xanthomonas albilineans",
+      "host": "Major host"
+    },
+    {
+      "type": "bacterium",
+      "code": "XANTVA",
+      "name": "Xanthomonas axonopodis pv. vasculorum",
+      "host": "Major host"
+    },
+    {
+      "type": "bacterium",
+      "code": "PSDMAV",
+      "name": "Acidovorax avenae",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "ADORSI",
+      "name": "Adoretus sinicus (as Brassica)",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "TOMAPO",
+      "name": "Aeneolamia contigua",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "AMBPCO",
+      "name": "Amblypelta cocophaga",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "PHRGTR",
+      "name": "Bathytricha truncata",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "TETTFE",
+      "name": "Bothrogonia ferruginea",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "BRAPSU",
+      "name": "Brachyplatys subaeneus",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "CHILAG",
+      "name": "Chilo agamemnon",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "PROSIN",
+      "name": "Chilo sacchariphagus indicus",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "CICDMB",
+      "name": "Cicadulina mbila",
+      "host": "Host"
+    },
+    {
+      "type": "bacterium",
+      "code": "CORBNE",
+      "name": "Clavibacter nebraskensis",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "COLAHY",
+      "name": "Colaspis hypochlora (as Musa)",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "DPREAB",
+      "name": "Diaprepes abbreviatus",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "EARIIN",
+      "name": "Earias insulana",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "ELASLI",
+      "name": "Elasmopalpus lignosellus",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "ELDASA",
+      "name": "Eldana saccharina",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "ERTNFU",
+      "name": "Erthesina fullo",
+      "host": "Host"
+    },
+    {
+      "type": "bacterium",
+      "code": "ERWICH",
+      "name": "Erwinia chrysanthemi",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "EURHBR",
+      "name": "Eurhizococcus brasiliensis",
+      "host": "Host"
+    },
+    {
+      "type": "fungus",
+      "code": "GIBBFU",
+      "name": "Fusarium fujikuroi (as Ananas)",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "MYNDCR",
+      "name": "Haplaxius crudus",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "HISHPH",
+      "name": "Hishimonus phycitis",
+      "host": "Host"
+    },
+    {
+      "type": "other",
+      "code": "LIGNVA",
+      "name": "Ligniera vasculorum",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "MAGOCA",
+      "name": "Macugonalia cavifrons",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "MEGTUS",
+      "name": "Megalurothrips usitatus",
+      "host": "Host"
+    },
+    {
+      "type": "nematode",
+      "code": "MELGEX",
+      "name": "Meloidogyne exigua (as Musa)",
+      "host": "Host"
+    },
+    {
+      "type": "nematode",
+      "code": "MELGGC",
+      "name": "Meloidogyne graminicola",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "PSEDSE",
+      "name": "Mythimna separata",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "NEOMBE",
+      "name": "Neomaskellia bergii",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "NILALU",
+      "name": "Nilaparvata lugens",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "OPOGSC",
+      "name": "Opogona sacchari",
+      "host": "Host"
+    },
+    {
+      "type": "bacterium",
+      "code": "ERWIST",
+      "name": "Pantoea stewartii subsp. stewartii",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "PARYMI",
+      "name": "Paraleyrodes minei",
+      "host": "Host"
+    },
+    {
+      "type": "virus",
+      "code": "PCV000",
+      "name": "Pecluvirus arachidis",
+      "host": "Host"
+    },
+    {
+      "type": "pseudo_fungus",
+      "code": "PRSCPH",
+      "name": "Peronosclerospora philippinensis",
+      "host": "Host"
+    },
+    {
+      "type": "pseudo_fungus",
+      "code": "SCLPST",
+      "name": "Peronosclerospora spontanea",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "PLANKE",
+      "name": "Planococcus kenyae",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "POOPCO",
+      "name": "Poophilus costalis",
+      "host": "Host"
+    },
+    {
+      "type": "virus",
+      "code": "SRMV00",
+      "name": "Potyvirus sorghitessellati",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "PSCAMI",
+      "name": "Pseudacanthotermes militaris",
+      "host": "Host"
+    },
+    {
+      "type": "fungus",
+      "code": "PUCCML",
+      "name": "Puccinia melanocephala",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "RHYCFE",
+      "name": "Rhynchophorus ferrugineus",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "RICASC",
+      "name": "Ricania speculum",
+      "host": "Host"
+    },
+    {
+      "type": "weed",
+      "code": "ROOEX",
+      "name": "Rottboellia cochinchinensis",
+      "host": "Host"
+    },
+    {
+      "type": "nematode",
+      "code": "HELYBU",
+      "name": "Rotylenchus buxophilus",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "SCIPAU",
+      "name": "Scirpophaga nivella",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "SESACA",
+      "name": "Sesamia calamistis",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "SESACR",
+      "name": "Sesamia cretica",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "SESAIN",
+      "name": "Sesamia inferens",
+      "host": "Host"
+    },
+    {
+      "type": "fungus",
+      "code": "SOROIN",
+      "name": "Sorosporium indicum",
+      "host": "Host"
+    },
+    {
+      "type": "fungus",
+      "code": "SPHTER",
+      "name": "Sphacelotheca erianthi",
+      "host": "Host"
+    },
+    {
+      "type": "fungus",
+      "code": "SPHTMA",
+      "name": "Sphacelotheca macrospora",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "SPODMA",
+      "name": "Spodoptera mauritia (as Brassicaceae)",
+      "host": "Host"
+    },
+    {
+      "type": "fungus",
+      "code": "USTISC",
+      "name": "Sporisorium scitamineum",
+      "host": "Host"
+    },
+    {
+      "type": "fungus",
+      "code": "STAGSA",
+      "name": "Stagonospora sacchari",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "THRIOR",
+      "name": "Stenchaetothrips biformis",
+      "host": "Host"
+    },
+    {
+      "type": "weed",
+      "code": "STRLU",
+      "name": "Striga asiatica",
+      "host": "Host"
+    },
+    {
+      "type": "virus",
+      "code": "MSPV00",
+      "name": "Tenuivirus zeae",
+      "host": "Host"
+    },
+    {
+      "type": "nematode",
+      "code": "TYLRCL",
+      "name": "Tylenchorhynchus claytoni (as Gossypium)",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "XYLBCR",
+      "name": "Xylosandrus crassiusculus",
+      "host": "Host"
+    }
+  ]
+}

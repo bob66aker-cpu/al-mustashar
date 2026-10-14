@@ -1,0 +1,427 @@
+{
+  "schema": 1,
+  "crop_id": "strawberry",
+  "generated_by": "scripts/advice-harvest.mjs",
+  "fetched_at": "2026-10-14",
+  "candidate": {
+    "ar": "الفراولة",
+    "en": "Strawberry",
+    "fr": "Fragoyer",
+    "sci_expected": "Fragaria ananassa"
+  },
+  "eppo": {
+    "code": "FRAAN",
+    "overview_url": "https://gd.eppo.int/taxon/FRAAN",
+    "overview_title": "Fragaria x ananassa (FRAAN)",
+    "pests_url": "https://gd.eppo.int/taxon/FRAAN/pests",
+    "http_status": 200,
+    "pests_total_rows": 78,
+    "by_type": {
+      "Host": 55,
+      "Major host": 23
+    },
+    "pests": [
+      {
+        "code": "SCRV00",
+        "name": "Alphacytorhabdovirus fragariarugosus (SCRV00)",
+        "type": "Major host"
+      },
+      {
+        "code": "ANTHBI",
+        "name": "Anthonomus bisignifer (ANTHBI)",
+        "type": "Major host"
+      },
+      {
+        "code": "ANTHSI",
+        "name": "Anthonomus signatus (ANTHSI)",
+        "type": "Major host"
+      },
+      {
+        "code": "APLOBE",
+        "name": "Aphelenchoides besseyi (APLOBE)",
+        "type": "Major host"
+      },
+      {
+        "code": "APLOFR",
+        "name": "Aphelenchoides fragariae (APLOFR)",
+        "type": "Major host"
+      },
+      {
+        "code": "APLORI",
+        "name": "Aphelenchoides ritzemabosi (APLORI)",
+        "type": "Major host"
+      },
+      {
+        "code": "PHMBFR",
+        "name": "'Candidatus Phlomobacter fragariae' (as Fragaria) (PHMBFR)",
+        "type": "Major host"
+      },
+      {
+        "code": "PHYPAU",
+        "name": "'Candidatus Phytoplasma australiense' (PHYPAU)",
+        "type": "Major host"
+      },
+      {
+        "code": "COLLAC",
+        "name": "Colletotrichum acutatum sensu lato (COLLAC)",
+        "type": "Major host"
+      },
+      {
+        "code": "DROSSU",
+        "name": "Drosophila suzukii (DROSSU)",
+        "type": "Major host"
+      },
+      {
+        "code": "EOTELE",
+        "name": "Eotetranychus lewisi (EOTELE)",
+        "type": "Major host"
+      },
+      {
+        "code": "MELGET",
+        "name": "Meloidogyne ethiopica (MELGET)",
+        "type": "Major host"
+      },
+      {
+        "code": "MELGFA",
+        "name": "Meloidogyne fallax (MELGFA)",
+        "type": "Major host"
+      },
+      {
+        "code": "NPESRS",
+        "name": "Neopestalotiopsis rosae (NPESRS)",
+        "type": "Major host"
+      },
+      {
+        "code": "HEMELE",
+        "name": "Orgyia leucostigma (as Fragaria) (HEMELE)",
+        "type": "Major host"
+      },
+      {
+        "code": "PHYTFR",
+        "name": "Phytophthora fragariae (PHYTFR)",
+        "type": "Major host"
+      },
+      {
+        "code": "SMYEV0",
+        "name": "Potexvirus fragariae (SMYEV0)",
+        "type": "Major host"
+      },
+      {
+        "code": "PSECOB",
+        "name": "Pseudococcus viburni (PSECOB)",
+        "type": "Major host"
+      },
+      {
+        "code": "SLRSV0",
+        "name": "Stralarivirus fragariae (SLRSV0)",
+        "type": "Major host"
+      },
+      {
+        "code": "STLCV0",
+        "name": "Strawberry latent C virus (STLCV0)",
+        "type": "Major host"
+      },
+      {
+        "code": "SYWB00",
+        "name": "Strawberry witches' broom phytoplasma (SYWB00)",
+        "type": "Major host"
+      },
+      {
+        "code": "XANTAF",
+        "name": "Xanthomonas arboricola pv. fragariae (XANTAF)",
+        "type": "Major host"
+      },
+      {
+        "code": "XANTFR",
+        "name": "Xanthomonas fragariae (XANTFR)",
+        "type": "Major host"
+      },
+      {
+        "code": "ANSTFR",
+        "name": "Anastrepha fraterculus (ANSTFR)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYPAE",
+        "name": "'Candidatus Phytoplasma americanum' (PHYPAE)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYPAS",
+        "name": "'Candidatus Phytoplasma asteris' (PHYPAS)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYPFG",
+        "name": "'Candidatus Phytoplasma fragariae' (PHYPFG)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYPFR",
+        "name": "'Candidatus Phytoplasma fraxini' (PHYPFR)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYP07",
+        "name": "'Candidatus Phytoplasma hispanicum' (PHYP07)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYPSO",
+        "name": "'Candidatus Phytoplasma solani' (PHYPSO)",
+        "type": "Host"
+      },
+      {
+        "code": "SVBV00",
+        "name": "Caulimovirus venafragariae (SVBV00)",
+        "type": "Host"
+      },
+      {
+        "code": "CERTCA",
+        "name": "Ceratitis capitata (CERTCA)",
+        "type": "Host"
+      },
+      {
+        "code": "SCFAV0",
+        "name": "Closterovirus fragariae (SCFAV0)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYP19",
+        "name": "Clover yellow edge phytoplasma (PHYP19)",
+        "type": "Host"
+      },
+      {
+        "code": "COLLFC",
+        "name": "Colletotrichum fructicola (COLLFC)",
+        "type": "Host"
+      },
+      {
+        "code": "DITYDI",
+        "name": "Ditylenchus dipsaci (DITYDI)",
+        "type": "Host"
+      },
+      {
+        "code": "EPIOIO",
+        "name": "Epichoristodes acerbella (EPIOIO)",
+        "type": "Host"
+      },
+      {
+        "code": "TORTPO",
+        "name": "Epiphyas postvittana (TORTPO)",
+        "type": "Host"
+      },
+      {
+        "code": "ERWIAM",
+        "name": "Erwinia amylovora (ERWIAM)",
+        "type": "Host"
+      },
+      {
+        "code": "ERWIPY",
+        "name": "Erwinia pyrifoliae (ERWIPY)",
+        "type": "Host"
+      },
+      {
+        "code": "FRANOC",
+        "name": "Frankliniella occidentalis (FRANOC)",
+        "type": "Host"
+      },
+      {
+        "code": "HELIZE",
+        "name": "Helicoverpa zea (HELIZE)",
+        "type": "Host"
+      },
+      {
+        "code": "HETRAR",
+        "name": "Heteronychus arator (HETRAR)",
+        "type": "Host"
+      },
+      {
+        "code": "HSVD00",
+        "name": "Hostuviroid impedihumuli (HSVD00)",
+        "type": "Host"
+      },
+      {
+        "code": "APMV00",
+        "name": "Ilarvirus ApMV (APMV00)",
+        "type": "Host"
+      },
+      {
+        "code": "SNSV00",
+        "name": "Ilarvirus SNSV (SNSV00)",
+        "type": "Host"
+      },
+      {
+        "code": "LAGRVL",
+        "name": "Lagria villosa (LAGRVL)",
+        "type": "Host"
+      },
+      {
+        "code": "GRAGLE",
+        "name": "Naupactus leucoloma (GRAGLE)",
+        "type": "Host"
+      },
+      {
+        "code": "NAUPXA",
+        "name": "Naupactus xanthographus (as Fragaria) (NAUPXA)",
+        "type": "Host"
+      },
+      {
+        "code": "ARMV00",
+        "name": "Nepovirus arabis (ARMV00)",
+        "type": "Host"
+      },
+      {
+        "code": "ARMV00",
+        "name": "Nepovirus arabis (as Fragaria) (ARMV00)",
+        "type": "Host"
+      },
+      {
+        "code": "TORSV0",
+        "name": "Nepovirus lycopersici (TORSV0)",
+        "type": "Host"
+      },
+      {
+        "code": "TBRV00",
+        "name": "Nepovirus nigranuli (TBRV00)",
+        "type": "Host"
+      },
+      {
+        "code": "TBRV00",
+        "name": "Nepovirus nigranuli (as Fragaria) (TBRV00)",
+        "type": "Host"
+      },
+      {
+        "code": "RPRSV0",
+        "name": "Nepovirus rubi (RPRSV0)",
+        "type": "Host"
+      },
+      {
+        "code": "RPRSV0",
+        "name": "Nepovirus rubi (as Fragaria) (RPRSV0)",
+        "type": "Host"
+      },
+      {
+        "code": "OLIGPU",
+        "name": "Oligonychus punicae (OLIGPU)",
+        "type": "Host"
+      },
+      {
+        "code": "OTIOSU",
+        "name": "Otiorhynchus sulcatus (OTIOSU)",
+        "type": "Host"
+      },
+      {
+        "code": "ERWIAN",
+        "name": "Pantoea ananatis (ERWIAN)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYTCC",
+        "name": "Phytophthora cactorum (PHYTCC)",
+        "type": "Host"
+      },
+      {
+        "code": "POCZSH",
+        "name": "Pochazia shantungensis (POCZSH)",
+        "type": "Host"
+      },
+      {
+        "code": "POPIJA",
+        "name": "Popillia japonica (POPIJA)",
+        "type": "Host"
+      },
+      {
+        "code": "RALSPS",
+        "name": "Ralstonia pseudosolanacearum (RALSPS)",
+        "type": "Host"
+      },
+      {
+        "code": "RALSSO",
+        "name": "Ralstonia solanacearum species complex (RALSSO)",
+        "type": "Host"
+      },
+      {
+        "code": "RAOIIN",
+        "name": "Raoiella indica (RAOIIN)",
+        "type": "Host"
+      },
+      {
+        "code": "HELYBU",
+        "name": "Rotylenchus buxophilus (HELYBU)",
+        "type": "Host"
+      },
+      {
+        "code": "SCITAU",
+        "name": "Scirtothrips aurantii (SCITAU)",
+        "type": "Host"
+      },
+      {
+        "code": "SCITDO",
+        "name": "Scirtothrips dorsalis (SCITDO)",
+        "type": "Host"
+      },
+      {
+        "code": "LAPHFR",
+        "name": "Spodoptera frugiperda (LAPHFR)",
+        "type": "Host"
+      },
+      {
+        "code": "SLRSV0",
+        "name": "Stralarivirus fragariae (as Fragaria) (SLRSV0)",
+        "type": "Host"
+      },
+      {
+        "code": "SYWB00",
+        "name": "Strawberry witches' broom phytoplasma (as Fragaria) (SYWB00)",
+        "type": "Host"
+      },
+      {
+        "code": "TETREV",
+        "name": "Tetranychus evansi (TETREV)",
+        "type": "Host"
+      },
+      {
+        "code": "TETRME",
+        "name": "Tetranychus mexicanus (TETRME)",
+        "type": "Host"
+      },
+      {
+        "code": "THRIIM",
+        "name": "Thrips imaginis (THRIIM)",
+        "type": "Host"
+      },
+      {
+        "code": "VERTDA",
+        "name": "Verticillium dahliae (VERTDA)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLEFA",
+        "name": "Xylella fastidiosa (XYLEFA)",
+        "type": "Host"
+      },
+      {
+        "code": "ZAPRIN",
+        "name": "Zaprionus indianus (ZAPRIN)",
+        "type": "Host"
+      },
+      {
+        "code": "ZAPRTU",
+        "name": "Zaprionus tuberculatus (ZAPRTU)",
+        "type": "Host"
+      }
+    ]
+  },
+  "gbif": {
+    "key": 3029912,
+    "url": "https://www.gbif.org/species/3029912",
+    "scientificName": "Fragaria × ananassa (Weston) Rozier",
+    "canonicalName": "Fragaria ananassa",
+    "family": "Rosaceae",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "matchType": "EXACT",
+    "confidence": 99
+  }
+}

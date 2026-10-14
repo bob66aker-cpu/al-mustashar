@@ -1,0 +1,583 @@
+{
+  "schema": 1,
+  "crop_id": "citrus",
+  "generated_by": "scripts/advice-harvest.mjs",
+  "fetched_at": "2026-10-14",
+  "candidate": {
+    "ar": "الحمضيات",
+    "en": "Citrus",
+    "fr": "Agrumes",
+    "sci_expected": "Citrus"
+  },
+  "eppo": {
+    "code": "1CIDG",
+    "overview_url": "https://gd.eppo.int/taxon/1CIDG",
+    "overview_title": "Citrus (1CIDG)",
+    "pests_url": "https://gd.eppo.int/taxon/1CIDG/pests",
+    "http_status": 200,
+    "pests_total_rows": 111,
+    "by_type": {
+      "Doubtful host": 2,
+      "Host": 104,
+      "Major host": 5
+    },
+    "pests": [
+      {
+        "code": "ANOLCN",
+        "name": "Anoplophora chinensis (ANOLCN)",
+        "type": "Major host"
+      },
+      {
+        "code": "PARYMI",
+        "name": "Paraleyrodes minei (PARYMI)",
+        "type": "Major host"
+      },
+      {
+        "code": "PSECOB",
+        "name": "Pseudococcus viburni (PSECOB)",
+        "type": "Major host"
+      },
+      {
+        "code": "TRIZER",
+        "name": "Trioza erytreae (TRIZER)",
+        "type": "Major host"
+      },
+      {
+        "code": "TRIZER",
+        "name": "Trioza erytreae (as Rutaceae) (TRIZER)",
+        "type": "Major host"
+      },
+      {
+        "code": "ALEDDI",
+        "name": "Aleurodicus dispersus (ALEDDI)",
+        "type": "Host"
+      },
+      {
+        "code": "ALEDDU",
+        "name": "Aleurodicus dugesii (ALEDDU)",
+        "type": "Host"
+      },
+      {
+        "code": "ALTHFL",
+        "name": "Aleurothrixus floccosus (ALTHFL)",
+        "type": "Host"
+      },
+      {
+        "code": "ALTECI",
+        "name": "Alternaria citri (ALTECI)",
+        "type": "Host"
+      },
+      {
+        "code": "ANSTLU",
+        "name": "Anastrepha ludens (ANSTLU)",
+        "type": "Host"
+      },
+      {
+        "code": "ANSTOB",
+        "name": "Anastrepha obliqua (ANSTOB)",
+        "type": "Host"
+      },
+      {
+        "code": "ANSTSE",
+        "name": "Anastrepha serpentina (ANSTSE)",
+        "type": "Host"
+      },
+      {
+        "code": "ANSTST",
+        "name": "Anastrepha striata (ANSTST)",
+        "type": "Host"
+      },
+      {
+        "code": "AONDCI",
+        "name": "Aonidiella citrina (AONDCI)",
+        "type": "Host"
+      },
+      {
+        "code": "APRIGE",
+        "name": "Apriona germari (APRIGE)",
+        "type": "Host"
+      },
+      {
+        "code": "BCTRCR",
+        "name": "Bactrocera caryeae (BCTRCR)",
+        "type": "Host"
+      },
+      {
+        "code": "BCTRPA",
+        "name": "Bactrocera passiflorae (BCTRPA)",
+        "type": "Host"
+      },
+      {
+        "code": "CMBV00",
+        "name": "Badnavirus tessellocitri (CMBV00)",
+        "type": "Host"
+      },
+      {
+        "code": "BATHTA",
+        "name": "Bathycoelia thalassina (BATHTA)",
+        "type": "Host"
+      },
+      {
+        "code": "BRVPAZ",
+        "name": "Brevipalpus azores (BRVPAZ)",
+        "type": "Host"
+      },
+      {
+        "code": "BRVPAU",
+        "name": "Brevipalpus californicus (BRVPAU)",
+        "type": "Host"
+      },
+      {
+        "code": "BRVPLE",
+        "name": "Brevipalpus lewisi (BRVPLE)",
+        "type": "Host"
+      },
+      {
+        "code": "LIBEAF",
+        "name": "'Candidatus Liberibacter africanus' (LIBEAF)",
+        "type": "Host"
+      },
+      {
+        "code": "LIBEAF",
+        "name": "'Candidatus Liberibacter africanus' (as Rutaceae) (LIBEAF)",
+        "type": "Host"
+      },
+      {
+        "code": "LIBEAS",
+        "name": "'Candidatus Liberibacter asiaticus' (LIBEAS)",
+        "type": "Host"
+      },
+      {
+        "code": "LIBEAS",
+        "name": "'Candidatus Liberibacter asiaticus' (as Rutaceae) (LIBEAS)",
+        "type": "Host"
+      },
+      {
+        "code": "CERTRO",
+        "name": "Ceratitis rosa (CERTRO)",
+        "type": "Host"
+      },
+      {
+        "code": "CERPCE",
+        "name": "Ceroplastes ceriferus (CERPCE)",
+        "type": "Host"
+      },
+      {
+        "code": "CERPDE",
+        "name": "Ceroplastes destructor (CERPDE)",
+        "type": "Host"
+      },
+      {
+        "code": "CERPFL",
+        "name": "Ceroplastes floridensis (CERPFL)",
+        "type": "Host"
+      },
+      {
+        "code": "SCITSI",
+        "name": "Chaetanaphothrips signipennis (SCITSI)",
+        "type": "Host"
+      },
+      {
+        "code": "CIRCTE",
+        "name": "Circulifer tenellus (CIRCTE)",
+        "type": "Host"
+      },
+      {
+        "code": "CSB000",
+        "name": "Citrus blight agent (CSB000)",
+        "type": "Host"
+      },
+      {
+        "code": "CSI000",
+        "name": "Citrus impietratura agent (CSI000)",
+        "type": "Host"
+      },
+      {
+        "code": "CTV000",
+        "name": "Closterovirus tristezae (CTV000)",
+        "type": "Host"
+      },
+      {
+        "code": "COCCVI",
+        "name": "Coccus viridis (COCCVI)",
+        "type": "Host"
+      },
+      {
+        "code": "CRYBGN",
+        "name": "Cryptoblabes gnidiella (CRYBGN)",
+        "type": "Host"
+      },
+      {
+        "code": "CYPTCI",
+        "name": "Cryptosporiopsis citri (CYPTCI)",
+        "type": "Host"
+      },
+      {
+        "code": "ROSLBU",
+        "name": "Dematophora bunodes (ROSLBU)",
+        "type": "Host"
+      },
+      {
+        "code": "DIABSC",
+        "name": "Diabrotica speciosa (DIABSC)",
+        "type": "Host"
+      },
+      {
+        "code": "DIALCI",
+        "name": "Dialeurodes citri (DIALCI)",
+        "type": "Host"
+      },
+      {
+        "code": "DIAACI",
+        "name": "Diaphorina citri (DIAACI)",
+        "type": "Host"
+      },
+      {
+        "code": "DIAACI",
+        "name": "Diaphorina citri (as Rutaceae) (DIAACI)",
+        "type": "Host"
+      },
+      {
+        "code": "DIAPCI",
+        "name": "Diaporthe citri (DIAPCI)",
+        "type": "Host"
+      },
+      {
+        "code": "DPREAB",
+        "name": "Diaprepes abbreviatus (DPREAB)",
+        "type": "Host"
+      },
+      {
+        "code": "DISTTH",
+        "name": "Distantiella theobroma (DISTTH)",
+        "type": "Host"
+      },
+      {
+        "code": "ELSIFA",
+        "name": "Elsinoë fawcettii (ELSIFA)",
+        "type": "Host"
+      },
+      {
+        "code": "CVEV00",
+        "name": "Enamovirus CVEV (CVEV00)",
+        "type": "Host"
+      },
+      {
+        "code": "EOTELE",
+        "name": "Eotetranychus lewisi (EOTELE)",
+        "type": "Host"
+      },
+      {
+        "code": "TORTPO",
+        "name": "Epiphyas postvittana (TORTPO)",
+        "type": "Host"
+      },
+      {
+        "code": "EUTEOR",
+        "name": "Eutetranychus orientalis (EUTEOR)",
+        "type": "Host"
+      },
+      {
+        "code": "EUWAPE",
+        "name": "Euwallacea perbrevis (EUWAPE)",
+        "type": "Host"
+      },
+      {
+        "code": "EPHEVA",
+        "name": "Euzopherodes vapidella (EPHEVA)",
+        "type": "Host"
+      },
+      {
+        "code": "GASDBR",
+        "name": "Gascardia brevicauda (GASDBR)",
+        "type": "Host"
+      },
+      {
+        "code": "ECDYAU",
+        "name": "Gymnandrosoma aurantianum (ECDYAU)",
+        "type": "Host"
+      },
+      {
+        "code": "ICERAE",
+        "name": "Icerya aegyptiaca (ICERAE)",
+        "type": "Host"
+      },
+      {
+        "code": "ICERPU",
+        "name": "Icerya purchasi (ICERPU)",
+        "type": "Host"
+      },
+      {
+        "code": "EMPOLY",
+        "name": "Jacobiasca lybica (EMPOLY)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYORH",
+        "name": "Lasiodiplodia theobromae (PHYORH)",
+        "type": "Host"
+      },
+      {
+        "code": "LEPLAU",
+        "name": "Leptoglossus australis (LEPLAU)",
+        "type": "Host"
+      },
+      {
+        "code": "ACHAFU",
+        "name": "Lissachatina fulica (ACHAFU)",
+        "type": "Host"
+      },
+      {
+        "code": "LOPLJA",
+        "name": "Lopholeucaspis japonica (LOPLJA)",
+        "type": "Host"
+      },
+      {
+        "code": "LUPMXA",
+        "name": "Luperomorpha xanthodera (LUPMXA)",
+        "type": "Host"
+      },
+      {
+        "code": "PHENHI",
+        "name": "Maconellicoccus hirsutus (PHENHI)",
+        "type": "Host"
+      },
+      {
+        "code": "PLTPMU",
+        "name": "Megaplatypus mutatus (PLTPMU)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGEX",
+        "name": "Meloidogyne exigua (MELGEX)",
+        "type": "Host"
+      },
+      {
+        "code": "CORTSA",
+        "name": "Necator salmonicolor (CORTSA)",
+        "type": "Host"
+      },
+      {
+        "code": "NEOAHA",
+        "name": "Neoaliturus haematoceps (NEOAHA)",
+        "type": "Host"
+      },
+      {
+        "code": "OEMOHI",
+        "name": "Oemona hirta (OEMOHI)",
+        "type": "Host"
+      },
+      {
+        "code": "CPSV00",
+        "name": "Ophiovirus citri (CPSV00)",
+        "type": "Host"
+      },
+      {
+        "code": "ORCMCI",
+        "name": "Orchamoplatus citri (ORCMCI)",
+        "type": "Host"
+      },
+      {
+        "code": "OTALLA",
+        "name": "Otala lactea (OTALLA)",
+        "type": "Host"
+      },
+      {
+        "code": "PACNAZ",
+        "name": "Pachnaeus azurescens (PACNAZ)",
+        "type": "Host"
+      },
+      {
+        "code": "PRABMY",
+        "name": "Parabemisia myricae (PRABMY)",
+        "type": "Host"
+      },
+      {
+        "code": "SAISNI",
+        "name": "Parasaissetia nigra (SAISNI)",
+        "type": "Host"
+      },
+      {
+        "code": "PARLZI",
+        "name": "Parlatoria ziziphi (PARLZI)",
+        "type": "Host"
+      },
+      {
+        "code": "PEZTKE",
+        "name": "Pezothrips kellyanus (PEZTKE)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYNCI",
+        "name": "Phyllocnistis citrella (PHYNCI)",
+        "type": "Host"
+      },
+      {
+        "code": "GUIGCI",
+        "name": "Phyllosticta citricarpa (GUIGCI)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYTCO",
+        "name": "Phytophthora citrophthora (PHYTCO)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYTNP",
+        "name": "Phytophthora nicotianae (PHYTNP)",
+        "type": "Host"
+      },
+      {
+        "code": "PLANKE",
+        "name": "Planococcus kenyae (PLANKE)",
+        "type": "Host"
+      },
+      {
+        "code": "PLANLI",
+        "name": "Planococcus lilacinus (PLANLI)",
+        "type": "Host"
+      },
+      {
+        "code": "POCZSH",
+        "name": "Pochazia shantungensis (POCZSH)",
+        "type": "Host"
+      },
+      {
+        "code": "CEVD00",
+        "name": "Pospiviroid exocortiscitri (CEVD00)",
+        "type": "Host"
+      },
+      {
+        "code": "PRAYEN",
+        "name": "Prays endocarpa (PRAYEN)",
+        "type": "Host"
+      },
+      {
+        "code": "PSEAPE",
+        "name": "Pseudaulacaspis pentagona (PSEAPE)",
+        "type": "Host"
+      },
+      {
+        "code": "CERCAN",
+        "name": "Pseudocercospora angolensis (CERCAN)",
+        "type": "Host"
+      },
+      {
+        "code": "RADOCI",
+        "name": "Radopholus similis citrus race (RADOCI)",
+        "type": "Host"
+      },
+      {
+        "code": "RICASC",
+        "name": "Ricania speculum (RICASC)",
+        "type": "Host"
+      },
+      {
+        "code": "PSDMAD",
+        "name": "Robbsia andropogonis (PSDMAD)",
+        "type": "Host"
+      },
+      {
+        "code": "ROTYRE",
+        "name": "Rotylenchulus reniformis (ROTYRE)",
+        "type": "Host"
+      },
+      {
+        "code": "SCITAU",
+        "name": "Scirtothrips aurantii (SCITAU)",
+        "type": "Host"
+      },
+      {
+        "code": "SCITCI",
+        "name": "Scirtothrips citri (SCITCI)",
+        "type": "Host"
+      },
+      {
+        "code": "SCITDO",
+        "name": "Scirtothrips dorsalis (SCITDO)",
+        "type": "Host"
+      },
+      {
+        "code": "SLENRU",
+        "name": "Selenothrips rubrocinctus (SLENRU)",
+        "type": "Host"
+      },
+      {
+        "code": "SPIRCI",
+        "name": "Spiroplasma citri (SPIRCI)",
+        "type": "Host"
+      },
+      {
+        "code": "TETRFI",
+        "name": "Tetranychus fijiensis (TETRFI)",
+        "type": "Host"
+      },
+      {
+        "code": "TETRME",
+        "name": "Tetranychus mexicanus (TETRME)",
+        "type": "Host"
+      },
+      {
+        "code": "ARGPLE",
+        "name": "Thaumatotibia leucotreta (ARGPLE)",
+        "type": "Host"
+      },
+      {
+        "code": "THEBPI",
+        "name": "Theba pisana (THEBPI)",
+        "type": "Host"
+      },
+      {
+        "code": "THRIHA",
+        "name": "Thrips hawaiiensis (THRIHA)",
+        "type": "Host"
+      },
+      {
+        "code": "THRIIM",
+        "name": "Thrips imaginis (THRIIM)",
+        "type": "Host"
+      },
+      {
+        "code": "THRIPV",
+        "name": "Thrips parvispinus (THRIPV)",
+        "type": "Host"
+      },
+      {
+        "code": "TIRAPL",
+        "name": "Tiracola plagiata (TIRAPL)",
+        "type": "Host"
+      },
+      {
+        "code": "HESOCA",
+        "name": "Trichoferus campestris (HESOCA)",
+        "type": "Host"
+      },
+      {
+        "code": "TYLESE",
+        "name": "Tylenchulus semipenetrans (TYLESE)",
+        "type": "Host"
+      },
+      {
+        "code": "UNASYA",
+        "name": "Unaspis yanonensis (UNASYA)",
+        "type": "Host"
+      },
+      {
+        "code": "ZAPRIN",
+        "name": "Zaprionus indianus (ZAPRIN)",
+        "type": "Host"
+      }
+    ]
+  },
+  "gbif": {
+    "key": 3190155,
+    "url": "https://www.gbif.org/species/3190155",
+    "scientificName": "Citrus L.",
+    "canonicalName": "Citrus",
+    "family": "Rutaceae",
+    "rank": "GENUS",
+    "status": "ACCEPTED",
+    "matchType": "EXACT",
+    "confidence": 96
+  }
+}

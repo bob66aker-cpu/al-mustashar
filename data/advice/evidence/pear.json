@@ -1,0 +1,700 @@
+{
+  "schema": 1,
+  "crop_id": "pear",
+  "generated_by": "scripts/advice-harvest.mjs",
+  "fetched_at": "2026-10-14",
+  "candidate": {
+    "ar": "الكمثرى",
+    "en": "Pear",
+    "fr": "Poirier",
+    "sci_expected": "Pyrus communis"
+  },
+  "eppo": {
+    "code": "PYUCO",
+    "overview_url": "https://gd.eppo.int/taxon/PYUCO",
+    "overview_title": "Pyrus communis (PYUCO)",
+    "pests_url": "https://gd.eppo.int/taxon/PYUCO/pests",
+    "http_status": 200,
+    "pests_total_rows": 138,
+    "by_type": {
+      "Doubtful host": 4,
+      "Experimental": 1,
+      "Host": 114,
+      "Major host": 18,
+      "Non-host": 1
+    },
+    "pests": [
+      {
+        "code": "NUMOPI",
+        "name": "Acrobasis pirivorella (NUMOPI)",
+        "type": "Major host"
+      },
+      {
+        "code": "ANSTFR",
+        "name": "Anastrepha fraterculus (ANSTFR)",
+        "type": "Major host"
+      },
+      {
+        "code": "ANOLCN",
+        "name": "Anoplophora chinensis (as Pyrus) (ANOLCN)",
+        "type": "Major host"
+      },
+      {
+        "code": "ANTHPY",
+        "name": "Anthonomus piri (ANTHPY)",
+        "type": "Major host"
+      },
+      {
+        "code": "APRICI",
+        "name": "Apriona cinerea (APRICI)",
+        "type": "Major host"
+      },
+      {
+        "code": "PBCVD0",
+        "name": "Apscaviroid pustulapyri (PBCVD0)",
+        "type": "Major host"
+      },
+      {
+        "code": "PSYLPI",
+        "name": "Cacopsylla pyri (PSYLPI)",
+        "type": "Major host"
+      },
+      {
+        "code": "PHYPPY",
+        "name": "'Candidatus Phytoplasma pyri' (PHYPPY)",
+        "type": "Major host"
+      },
+      {
+        "code": "VALSCE",
+        "name": "Cytospora ceratosperma (VALSCE)",
+        "type": "Major host"
+      },
+      {
+        "code": "ERWIAM",
+        "name": "Erwinia amylovora (ERWIAM)",
+        "type": "Major host"
+      },
+      {
+        "code": "GYMNFU",
+        "name": "Gymnosporangium sabinae (GYMNFU)",
+        "type": "Major host"
+      },
+      {
+        "code": "HYPHCU",
+        "name": "Hyphantria cunea (HYPHCU)",
+        "type": "Major host"
+      },
+      {
+        "code": "MONIFG",
+        "name": "Monilinia fructigena (MONIFG)",
+        "type": "Major host"
+      },
+      {
+        "code": "PEZIAL",
+        "name": "Neofabraea vagabunda (as Pyrus) (PEZIAL)",
+        "type": "Major host"
+      },
+      {
+        "code": "NECTGA",
+        "name": "Neonectria ditissima (as Pyrus) (NECTGA)",
+        "type": "Major host"
+      },
+      {
+        "code": "HEMELE",
+        "name": "Orgyia leucostigma (HEMELE)",
+        "type": "Major host"
+      },
+      {
+        "code": "PRBD00",
+        "name": "Pear bud drop agent (PRBD00)",
+        "type": "Major host"
+      },
+      {
+        "code": "PSECOB",
+        "name": "Pseudococcus viburni (PSECOB)",
+        "type": "Major host"
+      },
+      {
+        "code": "CAPURE",
+        "name": "Adoxophyes orana (CAPURE)",
+        "type": "Host"
+      },
+      {
+        "code": "AGRBTU",
+        "name": "Agrobacterium tumefaciens (as Pyrus) (AGRBTU)",
+        "type": "Host"
+      },
+      {
+        "code": "ALECSN",
+        "name": "Aleurocanthus spiniferus (ALECSN)",
+        "type": "Host"
+      },
+      {
+        "code": "ALECWO",
+        "name": "Aleurocanthus woglumi (ALECWO)",
+        "type": "Host"
+      },
+      {
+        "code": "ANARLI",
+        "name": "Anarsia lineatella (ANARLI)",
+        "type": "Host"
+      },
+      {
+        "code": "ANARLI",
+        "name": "Anarsia lineatella (as Pyrus) (ANARLI)",
+        "type": "Host"
+      },
+      {
+        "code": "ANSTLU",
+        "name": "Anastrepha ludens (ANSTLU)",
+        "type": "Host"
+      },
+      {
+        "code": "ANSTSU",
+        "name": "Anastrepha suspensa (ANSTSU)",
+        "type": "Host"
+      },
+      {
+        "code": "ANTHPO",
+        "name": "Anthonomus pomorum (ANTHPO)",
+        "type": "Host"
+      },
+      {
+        "code": "TACYQU",
+        "name": "Anthonomus quadrigibbus (TACYQU)",
+        "type": "Host"
+      },
+      {
+        "code": "TOXOCI",
+        "name": "Aphis citricidus (TOXOCI)",
+        "type": "Host"
+      },
+      {
+        "code": "ARW000",
+        "name": "Apple rubbery wood agent (ARW000)",
+        "type": "Host"
+      },
+      {
+        "code": "APRICI",
+        "name": "Apriona cinerea (as Pyrus) (APRICI)",
+        "type": "Host"
+      },
+      {
+        "code": "APRIGE",
+        "name": "Apriona germari (as Pyrus) (APRIGE)",
+        "type": "Host"
+      },
+      {
+        "code": "PBCVD0",
+        "name": "Apscaviroid pustulapyri (as Pyrus) (PBCVD0)",
+        "type": "Host"
+      },
+      {
+        "code": "DACUDO",
+        "name": "Bactrocera dorsalis (DACUDO)",
+        "type": "Host"
+      },
+      {
+        "code": "DACUTR",
+        "name": "Bactrocera tryoni (DACUTR)",
+        "type": "Host"
+      },
+      {
+        "code": "DACUZO",
+        "name": "Bactrocera zonata (DACUZO)",
+        "type": "Host"
+      },
+      {
+        "code": "BISCRO",
+        "name": "Biscogniauxia rosacearum (BISCRO)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYOPI",
+        "name": "Botryosphaeria kuwatsukai (PHYOPI)",
+        "type": "Host"
+      },
+      {
+        "code": "TORTPR",
+        "name": "Cacoecimorpha pronubana (TORTPR)",
+        "type": "Host"
+      },
+      {
+        "code": "CCPSCH",
+        "name": "Cacopsylla chinensis (CCPSCH)",
+        "type": "Host"
+      },
+      {
+        "code": "CCPSCH",
+        "name": "Cacopsylla chinensis (as Pyrus) (CCPSCH)",
+        "type": "Host"
+      },
+      {
+        "code": "LIBEEU",
+        "name": "'Candidatus Liberibacter europaeus' (LIBEEU)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYPAF",
+        "name": "'Candidatus Phytoplasma aurantifolia' (PHYPAF)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYPMA",
+        "name": "'Candidatus Phytoplasma mali' (PHYPMA)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYPSO",
+        "name": "'Candidatus Phytoplasma solani' (PHYPSO)",
+        "type": "Host"
+      },
+      {
+        "code": "ASGV00",
+        "name": "Capillovirus mali (ASGV00)",
+        "type": "Host"
+      },
+      {
+        "code": "CARSSA",
+        "name": "Carposina sasakii (CARSSA)",
+        "type": "Host"
+      },
+      {
+        "code": "CARSSA",
+        "name": "Carposina sasakii (as Pyrus) (CARSSA)",
+        "type": "Host"
+      },
+      {
+        "code": "CERTCA",
+        "name": "Ceratitis capitata (CERTCA)",
+        "type": "Host"
+      },
+      {
+        "code": "CERTMA",
+        "name": "Ceratitis malgassa (CERTMA)",
+        "type": "Host"
+      },
+      {
+        "code": "CERTQI",
+        "name": "Ceratitis quilicii (CERTQI)",
+        "type": "Host"
+      },
+      {
+        "code": "CERPCE",
+        "name": "Ceroplastes ceriferus (CERPCE)",
+        "type": "Host"
+      },
+      {
+        "code": "STERPU",
+        "name": "Chondrostereum purpureum (STERPU)",
+        "type": "Host"
+      },
+      {
+        "code": "CHONRO",
+        "name": "Choristoneura rosaceana (CHONRO)",
+        "type": "Host"
+      },
+      {
+        "code": "CHRBFE",
+        "name": "Chrysobothris femorata (CHRBFE)",
+        "type": "Host"
+      },
+      {
+        "code": "CHRBMA",
+        "name": "Chrysobothris mali (CHRBMA)",
+        "type": "Host"
+      },
+      {
+        "code": "COGUEB",
+        "name": "Coguvirus eburi (COGUEB)",
+        "type": "Host"
+      },
+      {
+        "code": "QUADPE",
+        "name": "Comstockaspis perniciosa (QUADPE)",
+        "type": "Host"
+      },
+      {
+        "code": "CONHNE",
+        "name": "Conotrachelus nenuphar (CONHNE)",
+        "type": "Host"
+      },
+      {
+        "code": "CRTHAR",
+        "name": "Corythucha arcuata (CRTHAR)",
+        "type": "Host"
+      },
+      {
+        "code": "CARPPO",
+        "name": "Cydia pomonella (CARPPO)",
+        "type": "Host"
+      },
+      {
+        "code": "VALSMA",
+        "name": "Cytospora mali (VALSMA)",
+        "type": "Host"
+      },
+      {
+        "code": "DIPBBU",
+        "name": "Diplodia bulgarica (DIPBBU)",
+        "type": "Host"
+      },
+      {
+        "code": "EOTELE",
+        "name": "Eotetranychus lewisi (EOTELE)",
+        "type": "Host"
+      },
+      {
+        "code": "EPIOIO",
+        "name": "Epichoristodes acerbella (EPIOIO)",
+        "type": "Host"
+      },
+      {
+        "code": "TORTPO",
+        "name": "Epiphyas postvittana (TORTPO)",
+        "type": "Host"
+      },
+      {
+        "code": "ERWIAM",
+        "name": "Erwinia amylovora (as Pyrus) (ERWIAM)",
+        "type": "Host"
+      },
+      {
+        "code": "EURHBR",
+        "name": "Eurhizococcus brasiliensis (EURHBR)",
+        "type": "Host"
+      },
+      {
+        "code": "EUTEOR",
+        "name": "Eutetranychus orientalis (EUTEOR)",
+        "type": "Host"
+      },
+      {
+        "code": "EUWAWH",
+        "name": "Euwallacea fornicatus sensu stricto (EUWAWH)",
+        "type": "Host"
+      },
+      {
+        "code": "EUZOSE",
+        "name": "Euzophera semifuneralis (EUZOSE)",
+        "type": "Host"
+      },
+      {
+        "code": "ASPV00",
+        "name": "Foveavirus mali (ASPV00)",
+        "type": "Host"
+      },
+      {
+        "code": "FUSAEW",
+        "name": "Fusarium euwallaceae (FUSAEW)",
+        "type": "Host"
+      },
+      {
+        "code": "CYDIIN",
+        "name": "Grapholita inopinata (CYDIIN)",
+        "type": "Host"
+      },
+      {
+        "code": "CYDIIN",
+        "name": "Grapholita inopinata (as Pyrus) (CYDIIN)",
+        "type": "Host"
+      },
+      {
+        "code": "LASPMO",
+        "name": "Grapholita molesta (LASPMO)",
+        "type": "Host"
+      },
+      {
+        "code": "LASPMO",
+        "name": "Grapholita molesta (as Pyrus) (LASPMO)",
+        "type": "Host"
+      },
+      {
+        "code": "LASPPR",
+        "name": "Grapholita prunivora (as Pyrus) (LASPPR)",
+        "type": "Host"
+      },
+      {
+        "code": "GYMNAS",
+        "name": "Gymnosporangium asiaticum (GYMNAS)",
+        "type": "Host"
+      },
+      {
+        "code": "GYMNGL",
+        "name": "Gymnosporangium globosum (as Pyrus) (GYMNGL)",
+        "type": "Host"
+      },
+      {
+        "code": "HALYHA",
+        "name": "Halyomorpha halys (HALYHA)",
+        "type": "Host"
+      },
+      {
+        "code": "HELIZE",
+        "name": "Helicoverpa zea (HELIZE)",
+        "type": "Host"
+      },
+      {
+        "code": "HOMLTR",
+        "name": "Homalodisca vitripennis (HOMLTR)",
+        "type": "Host"
+      },
+      {
+        "code": "HSVD00",
+        "name": "Hostuviroid impedihumuli (HSVD00)",
+        "type": "Host"
+      },
+      {
+        "code": "HYPHCU",
+        "name": "Hyphantria cunea (as Pyrus) (HYPHCU)",
+        "type": "Host"
+      },
+      {
+        "code": "APMV00",
+        "name": "Ilarvirus ApMV (APMV00)",
+        "type": "Host"
+      },
+      {
+        "code": "LEUCSC",
+        "name": "Leucoptera malifoliella (LEUCSC)",
+        "type": "Host"
+      },
+      {
+        "code": "LEUCSC",
+        "name": "Leucoptera malifoliella (as Pyrus) (LEUCSC)",
+        "type": "Host"
+      },
+      {
+        "code": "LYMADI",
+        "name": "Lymantria dispar (LYMADI)",
+        "type": "Host"
+      },
+      {
+        "code": "PHENHI",
+        "name": "Maconellicoccus hirsutus (PHENHI)",
+        "type": "Host"
+      },
+      {
+        "code": "MALADI",
+        "name": "Malacosoma disstria (as Pyrus) (MALADI)",
+        "type": "Host"
+      },
+      {
+        "code": "MALAPA",
+        "name": "Malacosoma parallela (MALAPA)",
+        "type": "Host"
+      },
+      {
+        "code": "PLTPMU",
+        "name": "Megaplatypus mutatus (PLTPMU)",
+        "type": "Host"
+      },
+      {
+        "code": "PLTPMU",
+        "name": "Megaplatypus mutatus (as Pyrus) (PLTPMU)",
+        "type": "Host"
+      },
+      {
+        "code": "CNIDFL",
+        "name": "Monema flavescens (CNIDFL)",
+        "type": "Host"
+      },
+      {
+        "code": "MONIFC",
+        "name": "Monilinia fructicola (MONIFC)",
+        "type": "Host"
+      },
+      {
+        "code": "MONIFC",
+        "name": "Monilinia fructicola (as Pyrus) (MONIFC)",
+        "type": "Host"
+      },
+      {
+        "code": "MONIPO",
+        "name": "Monilinia polystroma (MONIPO)",
+        "type": "Host"
+      },
+      {
+        "code": "GRAGLE",
+        "name": "Naupactus leucoloma (GRAGLE)",
+        "type": "Host"
+      },
+      {
+        "code": "NAUPXA",
+        "name": "Naupactus xanthographus (NAUPXA)",
+        "type": "Host"
+      },
+      {
+        "code": "PEZIMA",
+        "name": "Neofabraea malicorticis (as Pyrus) (PEZIMA)",
+        "type": "Host"
+      },
+      {
+        "code": "OEMOHI",
+        "name": "Oemona hirta (OEMOHI)",
+        "type": "Host"
+      },
+      {
+        "code": "OLIGPU",
+        "name": "Oligonychus punicae (OLIGPU)",
+        "type": "Host"
+      },
+      {
+        "code": "CHEIBR",
+        "name": "Operophtera brumata (CHEIBR)",
+        "type": "Host"
+      },
+      {
+        "code": "PRABMY",
+        "name": "Parabemisia myricae (PRABMY)",
+        "type": "Host"
+      },
+      {
+        "code": "PRBD00",
+        "name": "Pear bud drop agent (as Pyrus) (PRBD00)",
+        "type": "Host"
+      },
+      {
+        "code": "PLMVD0",
+        "name": "Pelamoviroid latenspruni (PLMVD0)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYSSL",
+        "name": "Phyllosticta solitaria (as Pyrus) (PHYSSL)",
+        "type": "Host"
+      },
+      {
+        "code": "PHMPOM",
+        "name": "Phymatotrichopsis omnivora (PHMPOM)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYTCC",
+        "name": "Phytophthora cactorum (as Pyrus) (PHYTCC)",
+        "type": "Host"
+      },
+      {
+        "code": "PLAAST",
+        "name": "Platynota stultana (PLAAST)",
+        "type": "Host"
+      },
+      {
+        "code": "POCZSH",
+        "name": "Pochazia shantungensis (POCZSH)",
+        "type": "Host"
+      },
+      {
+        "code": "PSECGA",
+        "name": "Pseudococcus calceolariae (PSECGA)",
+        "type": "Host"
+      },
+      {
+        "code": "PSECCO",
+        "name": "Pseudococcus comstocki (PSECCO)",
+        "type": "Host"
+      },
+      {
+        "code": "PSECCO",
+        "name": "Pseudococcus comstocki (as Pyrus) (PSECCO)",
+        "type": "Host"
+      },
+      {
+        "code": "RHAGPO",
+        "name": "Rhagoletis pomonella (RHAGPO)",
+        "type": "Host"
+      },
+      {
+        "code": "SAPECN",
+        "name": "Saperda candida (SAPECN)",
+        "type": "Host"
+      },
+      {
+        "code": "SCITDO",
+        "name": "Scirtothrips dorsalis (SCITDO)",
+        "type": "Host"
+      },
+      {
+        "code": "SCOLSH",
+        "name": "Scolytus schevyrewi (as Pyrus) (SCOLSH)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODER",
+        "name": "Spodoptera eridania (PRODER)",
+        "type": "Host"
+      },
+      {
+        "code": "LAPHFR",
+        "name": "Spodoptera frugiperda (LAPHFR)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODPR",
+        "name": "Spodoptera praefica (PRODPR)",
+        "type": "Host"
+      },
+      {
+        "code": "TAPHBU",
+        "name": "Taphrina bullata (as Pyrus) (TAPHBU)",
+        "type": "Host"
+      },
+      {
+        "code": "TFDAV0",
+        "name": "Temfrudevirus temperatum (TFDAV0)",
+        "type": "Host"
+      },
+      {
+        "code": "TETRFI",
+        "name": "Tetranychus fijiensis (TETRFI)",
+        "type": "Host"
+      },
+      {
+        "code": "TETRME",
+        "name": "Tetranychus mexicanus (TETRME)",
+        "type": "Host"
+      },
+      {
+        "code": "THRIHA",
+        "name": "Thrips hawaiiensis (as Pyrus) (THRIHA)",
+        "type": "Host"
+      },
+      {
+        "code": "THRIIM",
+        "name": "Thrips imaginis (THRIIM)",
+        "type": "Host"
+      },
+      {
+        "code": "THRIPL",
+        "name": "Thrips palmi (THRIPL)",
+        "type": "Host"
+      },
+      {
+        "code": "HESOCA",
+        "name": "Trichoferus campestris (as Pyrus) (HESOCA)",
+        "type": "Host"
+      },
+      {
+        "code": "ACLSV0",
+        "name": "Trichovirus mali (ACLSV0)",
+        "type": "Host"
+      },
+      {
+        "code": "ZAPRTU",
+        "name": "Zaprionus tuberculatus (ZAPRTU)",
+        "type": "Host"
+      }
+    ]
+  },
+  "gbif": {
+    "key": 5362573,
+    "url": "https://www.gbif.org/species/5362573",
+    "scientificName": "Pyrus communis L.",
+    "canonicalName": "Pyrus communis",
+    "family": "Rosaceae",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "matchType": "EXACT",
+    "confidence": 99
+  }
+}

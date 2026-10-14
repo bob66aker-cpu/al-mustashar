@@ -1,0 +1,242 @@
+{
+  "schema": 1,
+  "crop_id": "oilpalm",
+  "generated_by": "scripts/advice-harvest.mjs",
+  "fetched_at": "2026-10-14",
+  "candidate": {
+    "ar": "نخيل الزيت",
+    "en": "Oil palm",
+    "fr": "Palmier à huile",
+    "sci_expected": "Elaeis guineensis"
+  },
+  "eppo": {
+    "code": "EAIGU",
+    "overview_url": "https://gd.eppo.int/taxon/EAIGU",
+    "overview_title": "Elaeis guineensis (EAIGU)",
+    "pests_url": "https://gd.eppo.int/taxon/EAIGU/pests",
+    "http_status": 200,
+    "pests_total_rows": 41,
+    "by_type": {
+      "Host": 27,
+      "Major host": 14
+    },
+    "pests": [
+      {
+        "code": "RHAACO",
+        "name": "Bursaphelenchus cocophilus (RHAACO)",
+        "type": "Major host"
+      },
+      {
+        "code": "COELEL",
+        "name": "Coelaenomenodera minuta (COELEL)",
+        "type": "Major host"
+      },
+      {
+        "code": "DIOCFR",
+        "name": "Diocalandra frumenti (DIOCFR)",
+        "type": "Major host"
+      },
+      {
+        "code": "CASTDA",
+        "name": "Eupalamides cyparissias (CASTDA)",
+        "type": "Major host"
+      },
+      {
+        "code": "FUSAEL",
+        "name": "Fusarium oxysporum f. sp. elaeidis (FUSAEL)",
+        "type": "Major host"
+      },
+      {
+        "code": "OPB000",
+        "name": "Oil palm blast agent (OPB000)",
+        "type": "Major host"
+      },
+      {
+        "code": "PACMCA",
+        "name": "Pachymerus cardo (PACMCA)",
+        "type": "Major host"
+      },
+      {
+        "code": "PACMLA",
+        "name": "Pachymerus lacerdae (PACMLA)",
+        "type": "Major host"
+      },
+      {
+        "code": "PACMNU",
+        "name": "Pachymerus nucleorum (PACMNU)",
+        "type": "Major host"
+      },
+      {
+        "code": "PHMNST",
+        "name": "Phytomonas staheli (PHMNST)",
+        "type": "Major host"
+      },
+      {
+        "code": "PIMAGH",
+        "name": "Pimelephila ghesquierei (PIMAGH)",
+        "type": "Major host"
+      },
+      {
+        "code": "RHYCPA",
+        "name": "Rhynchophorus palmarum (RHYCPA)",
+        "type": "Major host"
+      },
+      {
+        "code": "RHYCPH",
+        "name": "Rhynchophorus phoenicis (RHYCPH)",
+        "type": "Major host"
+      },
+      {
+        "code": "CERCEL",
+        "name": "Uwemyces elaeidis (CERCEL)",
+        "type": "Major host"
+      },
+      {
+        "code": "ACRGVI",
+        "name": "Acrogonia virescens (ACRGVI)",
+        "type": "Host"
+      },
+      {
+        "code": "ALECWO",
+        "name": "Aleurocanthus woglumi (ALECWO)",
+        "type": "Host"
+      },
+      {
+        "code": "BRVPPA",
+        "name": "Brevipalpus papayensis (BRVPPA)",
+        "type": "Host"
+      },
+      {
+        "code": "BRVPST",
+        "name": "Brevipalpus phoenicis sensu stricto (BRVPST)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYPPL",
+        "name": "‘Candidatus Phytoplasma palmicola’ (PHYPPL)",
+        "type": "Host"
+      },
+      {
+        "code": "CCCVD0",
+        "name": "Cocadviroid cadangi (CCCVD0)",
+        "type": "Host"
+      },
+      {
+        "code": "ERNTTH",
+        "name": "Erionota thrax (ERNTTH)",
+        "type": "Host"
+      },
+      {
+        "code": "MYNDCR",
+        "name": "Haplaxius crudus (MYNDCR)",
+        "type": "Host"
+      },
+      {
+        "code": "MARAPA",
+        "name": "Marasmius palmivorus (MARAPA)",
+        "type": "Host"
+      },
+      {
+        "code": "METAHE",
+        "name": "Metamasius hemipterus (METAHE)",
+        "type": "Host"
+      },
+      {
+        "code": "MUSSNV",
+        "name": "Mussidia nigrivenella (MUSSNV)",
+        "type": "Host"
+      },
+      {
+        "code": "OCTDNI",
+        "name": "Octodonta nipae (OCTDNI)",
+        "type": "Host"
+      },
+      {
+        "code": "ORYCBO",
+        "name": "Oryctes boas (ORYCBO)",
+        "type": "Host"
+      },
+      {
+        "code": "ORYCMO",
+        "name": "Oryctes monoceros (ORYCMO)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYP56",
+        "name": "Palm lethal yellowing type syndromes (PHYP56)",
+        "type": "Host"
+      },
+      {
+        "code": "PARYMI",
+        "name": "Paraleyrodes minei (PARYMI)",
+        "type": "Host"
+      },
+      {
+        "code": "PROHCU",
+        "name": "Promecotheca cumingi (PROHCU)",
+        "type": "Host"
+      },
+      {
+        "code": "RADOSI",
+        "name": "Radopholus similis (RADOSI)",
+        "type": "Host"
+      },
+      {
+        "code": "RAOIIN",
+        "name": "Raoiella indica (RAOIIN)",
+        "type": "Host"
+      },
+      {
+        "code": "SPPHOB",
+        "name": "Rhabdoscelus obscurus (SPPHOB)",
+        "type": "Host"
+      },
+      {
+        "code": "RHYCFE",
+        "name": "Rhynchophorus ferrugineus (RHYCFE)",
+        "type": "Host"
+      },
+      {
+        "code": "RICASC",
+        "name": "Ricania speculum (RICASC)",
+        "type": "Host"
+      },
+      {
+        "code": "HELYBU",
+        "name": "Rotylenchus buxophilus (HELYBU)",
+        "type": "Host"
+      },
+      {
+        "code": "LAPHFR",
+        "name": "Spodoptera frugiperda (LAPHFR)",
+        "type": "Host"
+      },
+      {
+        "code": "TETRME",
+        "name": "Tetranychus mexicanus (TETRME)",
+        "type": "Host"
+      },
+      {
+        "code": "THRIHA",
+        "name": "Thrips hawaiiensis (THRIHA)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLSCO",
+        "name": "Xylosandrus compactus (XYLSCO)",
+        "type": "Host"
+      }
+    ]
+  },
+  "gbif": {
+    "key": 2731882,
+    "url": "https://www.gbif.org/species/2731882",
+    "scientificName": "Elaeis guineensis Jacq.",
+    "canonicalName": "Elaeis guineensis",
+    "family": "Arecaceae",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "matchType": "EXACT",
+    "confidence": 99
+  }
+}

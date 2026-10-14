@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "pest_code": "MONIFC",
+  "name_ar": "فطر تعفّن ثمار الحجرية",
+  "pest_name_en": "Monilinia fructicola",
+  "source": {
+    "title": "Brown rot on fruit (Symptoms, Comments on the Disease, Management)",
+    "publisher": "UC IPM — University of California Agriculture and Natural Resources",
+    "url": "https://ipm.ucanr.edu/agriculture/prune/brown-rot-on-fruit/",
+    "type": "extension",
+    "retrieved": "2026-10-13"
+  },
+  "symptoms_ar": [
+    "الثمار المصابة تصطفّ وتطوّى كمّياً وتظهر عليها كتل مسحوقية بلون الكتان الباهت من أبواغ الفطر.",
+    "الثمار المتحالكة تلتصق ببعضها في عناقيد من التحلل، والإصابات الفردية تبدأ غالباً من الإصابات المجاورة.",
+    "الثمار المُجرَّحة والملامسة لبعضها هي الأكثر قابلية للإصابة."
+  ],
+  "management_ar": [
+    "إزالة الثمار المتساقطة ودفنها يقلّل مخزون العدوى، فبقايا الثمار المقطوفة مصدر عدوى للثمار الناضجة خاصة إن لامست ماء الري.",
+    "المواد الفطرية الوقائية تُذكر في الدليل كتدبير وقائي قبل الإصابة لا علاج لما أصيب."
+  ],
+  "evidence": "A"
+}

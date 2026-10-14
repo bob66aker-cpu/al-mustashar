@@ -1,0 +1,338 @@
+{
+  "schema": 1,
+  "crop_id": "sorghum",
+  "generated_by": "scripts/advice-generate.mjs",
+  "built": "2026-10-14",
+  "others": [
+    {
+      "type": "insect",
+      "code": "CHILZO",
+      "name": "Chilo partellus",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "EORELO",
+      "name": "Eoreuma loftini",
+      "host": "Major host"
+    },
+    {
+      "type": "nematode",
+      "code": "MELGNA",
+      "name": "Meloidogyne naasi",
+      "host": "Major host"
+    },
+    {
+      "type": "pseudo_fungus",
+      "code": "PRSCSO",
+      "name": "Peronosclerospora sorghi",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "SESACR",
+      "name": "Sesamia cretica",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "CONTSO",
+      "name": "Stenodiplosis sorghicola",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "ATHEOZ",
+      "name": "Atherigona oryzae",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "ATHERE",
+      "name": "Atherigona reversura",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "BAGRHI",
+      "name": "Bagrada hilaris (as Brassica)",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "BUSSFU",
+      "name": "Busseola fusca",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "DIATAU",
+      "name": "Chilo auricilius",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "DIATIN",
+      "name": "Chilo infuscatellus",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "CHILSU",
+      "name": "Chilo suppressalis",
+      "host": "Host"
+    },
+    {
+      "type": "bacterium",
+      "code": "CORBNE",
+      "name": "Clavibacter nebraskensis",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "CRYBGN",
+      "name": "Cryptoblabes gnidiella",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "DIABVZ",
+      "name": "Diabrotica virgifera zeae",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "DPREAB",
+      "name": "Diaprepes abbreviatus",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "DIATSA",
+      "name": "Diatraea saccharalis",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "DICHPU",
+      "name": "Dichocrocis punctiferalis",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "BRAYNO",
+      "name": "Diuraphis noxia",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "ELASLI",
+      "name": "Elasmopalpus lignosellus",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "ELDASA",
+      "name": "Eldana saccharina",
+      "host": "Host"
+    },
+    {
+      "type": "bacterium",
+      "code": "ERWICH",
+      "name": "Erwinia chrysanthemi",
+      "host": "Host"
+    },
+    {
+      "type": "virus",
+      "code": "MRCV00",
+      "name": "Fijivirus cuartoense",
+      "host": "Host"
+    },
+    {
+      "type": "nematode",
+      "code": "HETDZE",
+      "name": "Heterodera zeae",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "LAGRVL",
+      "name": "Lagria villosa",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "LIRISA",
+      "name": "Liriomyza sativae",
+      "host": "Host"
+    },
+    {
+      "type": "virus",
+      "code": "MSV000",
+      "name": "Mastrevirus storeyi",
+      "host": "Host"
+    },
+    {
+      "type": "nematode",
+      "code": "MELGCH",
+      "name": "Meloidogyne chitwoodi",
+      "host": "Host"
+    },
+    {
+      "type": "nematode",
+      "code": "MELGFL",
+      "name": "Meloidogyne floridensis",
+      "host": "Host"
+    },
+    {
+      "type": "nematode",
+      "code": "MELGGC",
+      "name": "Meloidogyne graminicola",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "METAHE",
+      "name": "Metamasius hemipterus (as Musa)",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "PSEDSE",
+      "name": "Mythimna separata",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "PYRUNU",
+      "name": "Ostrinia nubilalis",
+      "host": "Host"
+    },
+    {
+      "type": "fungus",
+      "code": "PERCCI",
+      "name": "Periconia circinata",
+      "host": "Host"
+    },
+    {
+      "type": "pseudo_fungus",
+      "code": "PRSCPH",
+      "name": "Peronosclerospora philippinensis",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "PHENSO",
+      "name": "Phenacoccus solenopsis",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "PLAAST",
+      "name": "Platynota stultana",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "PLSOMO",
+      "name": "Plesiommata mollicella",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "POOPCO",
+      "name": "Poophilus costalis",
+      "host": "Host"
+    },
+    {
+      "type": "virus",
+      "code": "SCMV00",
+      "name": "Potyvirus sacchari",
+      "host": "Host"
+    },
+    {
+      "type": "virus",
+      "code": "SRMV00",
+      "name": "Potyvirus sorghitessellati",
+      "host": "Host"
+    },
+    {
+      "type": "nematode",
+      "code": "PRATCO",
+      "name": "Pratylenchus coffeae",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "RICASC",
+      "name": "Ricania speculum",
+      "host": "Host"
+    },
+    {
+      "type": "bacterium",
+      "code": "PSDMAD",
+      "name": "Robbsia andropogonis",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "SESACA",
+      "name": "Sesamia calamistis",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "LAPHEX",
+      "name": "Spodoptera exempta",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "PRODLI",
+      "name": "Spodoptera litura",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "PRODOR",
+      "name": "Spodoptera ornithogalli",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "PRODPR",
+      "name": "Spodoptera praefica",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "TAPARU",
+      "name": "Tapajosa rubromarginata",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "ARGPLE",
+      "name": "Thaumatotibia leucotreta",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "TROGGA",
+      "name": "Trogoderma granarium",
+      "host": "Host"
+    },
+    {
+      "type": "bacterium",
+      "code": "XANTHO",
+      "name": "Xanthomonas vasicola pv. holcicola",
+      "host": "Host"
+    },
+    {
+      "type": "nematode",
+      "code": "XIPHRI",
+      "name": "Xiphinema rivesi",
+      "host": "Host"
+    }
+  ]
+}

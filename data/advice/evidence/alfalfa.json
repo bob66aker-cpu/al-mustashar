@@ -1,0 +1,420 @@
+{
+  "schema": 1,
+  "crop_id": "alfalfa",
+  "generated_by": "scripts/advice-harvest.mjs",
+  "fetched_at": "2026-10-14",
+  "candidate": {
+    "ar": "البرسيم",
+    "en": "Alfalfa",
+    "fr": "Luzerne",
+    "sci_expected": "Medicago sativa"
+  },
+  "eppo": {
+    "code": "MEDSA",
+    "overview_url": "https://gd.eppo.int/taxon/MEDSA",
+    "overview_title": "Medicago sativa (MEDSA)",
+    "pests_url": "https://gd.eppo.int/taxon/MEDSA/pests",
+    "http_status": 200,
+    "pests_total_rows": 80,
+    "by_type": {
+      "Doubtful host": 1,
+      "Experimental": 2,
+      "Host": 65,
+      "Major host": 11,
+      "Wild/Weed": 1
+    },
+    "pests": [
+      {
+        "code": "ACYRKO",
+        "name": "Acyrthosiphon kondoi (ACYRKO)",
+        "type": "Major host"
+      },
+      {
+        "code": "CAMSLA",
+        "name": "Camptopus lateralis (CAMSLA)",
+        "type": "Major host"
+      },
+      {
+        "code": "CORBIN",
+        "name": "Clavibacter insidiosus (CORBIN)",
+        "type": "Major host"
+      },
+      {
+        "code": "FRANOC",
+        "name": "Frankliniella occidentalis (FRANOC)",
+        "type": "Major host"
+      },
+      {
+        "code": "GONCFO",
+        "name": "Gonioctena fornicata (GONCFO)",
+        "type": "Major host"
+      },
+      {
+        "code": "LASV00",
+        "name": "Lucerne Australian symptomless virus (LASV00)",
+        "type": "Major host"
+      },
+      {
+        "code": "MELGFA",
+        "name": "Meloidogyne fallax (MELGFA)",
+        "type": "Major host"
+      },
+      {
+        "code": "GRAGLE",
+        "name": "Naupactus leucoloma (GRAGLE)",
+        "type": "Major host"
+      },
+      {
+        "code": "PHMPOM",
+        "name": "Phymatotrichopsis omnivora (PHMPOM)",
+        "type": "Major host"
+      },
+      {
+        "code": "SPODLI",
+        "name": "Spodoptera littoralis (SPODLI)",
+        "type": "Major host"
+      },
+      {
+        "code": "VERTAL",
+        "name": "Verticillium albo-atrum lucerne strains (VERTAL)",
+        "type": "Major host"
+      },
+      {
+        "code": "AGROSE",
+        "name": "Agrotis segetum (AGROSE)",
+        "type": "Host"
+      },
+      {
+        "code": "AMV000",
+        "name": "Alfamovirus AMV (AMV000)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYPFR",
+        "name": "'Candidatus Phytoplasma fraxini' (PHYPFR)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYPSO",
+        "name": "'Candidatus Phytoplasma solani' (PHYPSO)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYPTR",
+        "name": "'Candidatus Phytoplasma trifolii' (PHYPTR)",
+        "type": "Host"
+      },
+      {
+        "code": "HELIVI",
+        "name": "Chloridea virescens (HELIVI)",
+        "type": "Host"
+      },
+      {
+        "code": "CHRXER",
+        "name": "Chrysodeixis eriosoma (CHRXER)",
+        "type": "Host"
+      },
+      {
+        "code": "CYSDV0",
+        "name": "Crinivirus cucurbitae (CYSDV0)",
+        "type": "Host"
+      },
+      {
+        "code": "CORBFL",
+        "name": "Curtobacterium flaccumfaciens pv. flaccumfaciens (CORBFL)",
+        "type": "Host"
+      },
+      {
+        "code": "DIABUH",
+        "name": "Diabrotica undecimpunctata howardi (DIABUH)",
+        "type": "Host"
+      },
+      {
+        "code": "DIABUN",
+        "name": "Diabrotica undecimpunctata undecimpunctata (DIABUN)",
+        "type": "Host"
+      },
+      {
+        "code": "DIABVZ",
+        "name": "Diabrotica virgifera zeae (DIABVZ)",
+        "type": "Host"
+      },
+      {
+        "code": "DITYDI",
+        "name": "Ditylenchus dipsaci (DITYDI)",
+        "type": "Host"
+      },
+      {
+        "code": "ELASLI",
+        "name": "Elasmopalpus lignosellus (ELASLI)",
+        "type": "Host"
+      },
+      {
+        "code": "EPIOIO",
+        "name": "Epichoristodes acerbella (EPIOIO)",
+        "type": "Host"
+      },
+      {
+        "code": "TORTPO",
+        "name": "Epiphyas postvittana (TORTPO)",
+        "type": "Host"
+      },
+      {
+        "code": "EPIXTU",
+        "name": "Epitrix tuberis (EPIXTU)",
+        "type": "Host"
+      },
+      {
+        "code": "ERWICH",
+        "name": "Erwinia chrysanthemi (ERWICH)",
+        "type": "Host"
+      },
+      {
+        "code": "ERWIRH",
+        "name": "Erwinia rhapontici (ERWIRH)",
+        "type": "Host"
+      },
+      {
+        "code": "EURHBR",
+        "name": "Eurhizococcus brasiliensis (EURHBR)",
+        "type": "Host"
+      },
+      {
+        "code": "GIBBFU",
+        "name": "Fusarium fujikuroi (GIBBFU)",
+        "type": "Host"
+      },
+      {
+        "code": "FUSAAL",
+        "name": "Fusarium oxysporum f. sp. albedinis (FUSAAL)",
+        "type": "Host"
+      },
+      {
+        "code": "HLCBBR",
+        "name": "Helicobasidium brebissonii (HLCBBR)",
+        "type": "Host"
+      },
+      {
+        "code": "HELIAR",
+        "name": "Helicoverpa armigera (HELIAR)",
+        "type": "Host"
+      },
+      {
+        "code": "HELIZE",
+        "name": "Helicoverpa zea (HELIZE)",
+        "type": "Host"
+      },
+      {
+        "code": "HETDGL",
+        "name": "Heterodera glycines (HETDGL)",
+        "type": "Host"
+      },
+      {
+        "code": "HISHPH",
+        "name": "Hishimonus phycitis (HISHPH)",
+        "type": "Host"
+      },
+      {
+        "code": "HOMLTR",
+        "name": "Homalodisca vitripennis (HOMLTR)",
+        "type": "Host"
+      },
+      {
+        "code": "HYPRPO",
+        "name": "Hypera postica (HYPRPO)",
+        "type": "Host"
+      },
+      {
+        "code": "TSV000",
+        "name": "Ilarvirus TSV (TSV000)",
+        "type": "Host"
+      },
+      {
+        "code": "LIRIHU",
+        "name": "Liriomyza huidobrensis (LIRIHU)",
+        "type": "Host"
+      },
+      {
+        "code": "LIRISA",
+        "name": "Liriomyza sativae (LIRISA)",
+        "type": "Host"
+      },
+      {
+        "code": "LIRITR",
+        "name": "Liriomyza trifolii (LIRITR)",
+        "type": "Host"
+      },
+      {
+        "code": "HYROBO",
+        "name": "Listronotus bonariensis (HYROBO)",
+        "type": "Host"
+      },
+      {
+        "code": "POLYBO",
+        "name": "Lobesia botrana (POLYBO)",
+        "type": "Host"
+      },
+      {
+        "code": "LEV000",
+        "name": "Lucerne enation virus (LEV000)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGCH",
+        "name": "Meloidogyne chitwoodi (MELGCH)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGET",
+        "name": "Meloidogyne ethiopica (MELGET)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGLC",
+        "name": "Meloidogyne luci (MELGLC)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGNA",
+        "name": "Meloidogyne naasi (MELGNA)",
+        "type": "Host"
+      },
+      {
+        "code": "NAUPXA",
+        "name": "Naupactus xanthographus (NAUPXA)",
+        "type": "Host"
+      },
+      {
+        "code": "NKOLSE",
+        "name": "Neokolla severini (NKOLSE)",
+        "type": "Host"
+      },
+      {
+        "code": "NYSIHU",
+        "name": "Nysius huttoni (NYSIHU)",
+        "type": "Host"
+      },
+      {
+        "code": "OMOPLE",
+        "name": "Omophlus lepturoides (OMOPLE)",
+        "type": "Host"
+      },
+      {
+        "code": "PGARFU",
+        "name": "Pagaronia furcata (PGARFU)",
+        "type": "Host"
+      },
+      {
+        "code": "PHENSO",
+        "name": "Phenacoccus solenopsis (PHENSO)",
+        "type": "Host"
+      },
+      {
+        "code": "PLAAST",
+        "name": "Platynota stultana (PLAAST)",
+        "type": "Host"
+      },
+      {
+        "code": "POPIJA",
+        "name": "Popillia japonica (POPIJA)",
+        "type": "Host"
+      },
+      {
+        "code": "PRDILO",
+        "name": "Prodiplosis longifila (PRDILO)",
+        "type": "Host"
+      },
+      {
+        "code": "SCITCI",
+        "name": "Scirtothrips citri (SCITCI)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODER",
+        "name": "Spodoptera eridania (PRODER)",
+        "type": "Host"
+      },
+      {
+        "code": "LAPHFR",
+        "name": "Spodoptera frugiperda (LAPHFR)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODLI",
+        "name": "Spodoptera litura (PRODLI)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODOR",
+        "name": "Spodoptera ornithogalli (PRODOR)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODPR",
+        "name": "Spodoptera praefica (PRODPR)",
+        "type": "Host"
+      },
+      {
+        "code": "TAPARU",
+        "name": "Tapajosa rubromarginata (TAPARU)",
+        "type": "Host"
+      },
+      {
+        "code": "THRIAN",
+        "name": "Thrips angusticeps (THRIAN)",
+        "type": "Host"
+      },
+      {
+        "code": "THRIIM",
+        "name": "Thrips imaginis (THRIIM)",
+        "type": "Host"
+      },
+      {
+        "code": "TROGGA",
+        "name": "Trogoderma granarium (TROGGA)",
+        "type": "Host"
+      },
+      {
+        "code": "VERTNO",
+        "name": "Verticillium nonalfalfae (VERTNO)",
+        "type": "Host"
+      },
+      {
+        "code": "XIPHCA",
+        "name": "Xiphinema californicum (XIPHCA)",
+        "type": "Host"
+      },
+      {
+        "code": "XIPHRI",
+        "name": "Xiphinema rivesi (XIPHRI)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLEFA",
+        "name": "Xylella fastidiosa (XYLEFA)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLEFF",
+        "name": "Xylella fastidiosa subsp. fastidiosa (XYLEFF)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLEFM",
+        "name": "Xylella fastidiosa subsp. multiplex (XYLEFM)",
+        "type": "Host"
+      }
+    ]
+  },
+  "gbif": {
+    "key": 9151957,
+    "url": "https://www.gbif.org/species/9151957",
+    "scientificName": "Medicago sativa L.",
+    "canonicalName": "Medicago sativa",
+    "family": "Fabaceae",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "matchType": "EXACT",
+    "confidence": 99
+  }
+}

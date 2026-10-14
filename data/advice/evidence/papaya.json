@@ -1,0 +1,419 @@
+{
+  "schema": 1,
+  "crop_id": "papaya",
+  "generated_by": "scripts/advice-harvest.mjs",
+  "fetched_at": "2026-10-14",
+  "candidate": {
+    "ar": "البابايا",
+    "en": "Papaya",
+    "fr": "Papayer",
+    "sci_expected": "Carica papaya"
+  },
+  "eppo": {
+    "code": "CIAPA",
+    "overview_url": "https://gd.eppo.int/taxon/CIAPA",
+    "overview_title": "Carica papaya (CIAPA)",
+    "pests_url": "https://gd.eppo.int/taxon/CIAPA/pests",
+    "http_status": 200,
+    "pests_total_rows": 79,
+    "by_type": {
+      "Doubtful host": 1,
+      "Experimental": 2,
+      "Host": 69,
+      "Major host": 7
+    },
+    "pests": [
+      {
+        "code": "TOXTCU",
+        "name": "Anastrepha curvicauda (TOXTCU)",
+        "type": "Major host"
+      },
+      {
+        "code": "ASPRCA",
+        "name": "Asperisporium caricae (ASPRCA)",
+        "type": "Major host"
+      },
+      {
+        "code": "BCTRJA",
+        "name": "Bactrocera jarvisi (BCTRJA)",
+        "type": "Major host"
+      },
+      {
+        "code": "DACUTR",
+        "name": "Bactrocera tryoni (DACUTR)",
+        "type": "Major host"
+      },
+      {
+        "code": "PHYPAU",
+        "name": "'Candidatus Phytoplasma australiense' (PHYPAU)",
+        "type": "Major host"
+      },
+      {
+        "code": "PWBT00",
+        "name": "Papaya bunchy top agent (PWBT00)",
+        "type": "Major host"
+      },
+      {
+        "code": "PAPMV0",
+        "name": "Potexvirus papayae (PAPMV0)",
+        "type": "Major host"
+      },
+      {
+        "code": "ALECWO",
+        "name": "Aleurocanthus woglumi (ALECWO)",
+        "type": "Host"
+      },
+      {
+        "code": "ALEDDI",
+        "name": "Aleurodicus dispersus (ALEDDI)",
+        "type": "Host"
+      },
+      {
+        "code": "AMBPCO",
+        "name": "Amblypelta cocophaga (AMBPCO)",
+        "type": "Host"
+      },
+      {
+        "code": "AMBPLU",
+        "name": "Amblypelta lutescens (AMBPLU)",
+        "type": "Host"
+      },
+      {
+        "code": "ANSTFR",
+        "name": "Anastrepha fraterculus (ANSTFR)",
+        "type": "Host"
+      },
+      {
+        "code": "ANSTRE",
+        "name": "Anastrepha recurcauda (ANSTRE)",
+        "type": "Host"
+      },
+      {
+        "code": "ANSTSU",
+        "name": "Anastrepha suspensa (ANSTSU)",
+        "type": "Host"
+      },
+      {
+        "code": "BBTV00",
+        "name": "Babuvirus musae (BBTV00)",
+        "type": "Host"
+      },
+      {
+        "code": "BCTRCB",
+        "name": "Bactrocera carambolae (BCTRCB)",
+        "type": "Host"
+      },
+      {
+        "code": "DACUCR",
+        "name": "Bactrocera curvipennis (DACUCR)",
+        "type": "Host"
+      },
+      {
+        "code": "DACUDO",
+        "name": "Bactrocera dorsalis (DACUDO)",
+        "type": "Host"
+      },
+      {
+        "code": "BCTRKA",
+        "name": "Bactrocera kandiensis (BCTRKA)",
+        "type": "Host"
+      },
+      {
+        "code": "DACUMU",
+        "name": "Bactrocera musae (DACUMU)",
+        "type": "Host"
+      },
+      {
+        "code": "BCTROC",
+        "name": "Bactrocera occipitalis (BCTROC)",
+        "type": "Host"
+      },
+      {
+        "code": "DACUZO",
+        "name": "Bactrocera zonata (DACUZO)",
+        "type": "Host"
+      },
+      {
+        "code": "BAGRHI",
+        "name": "Bagrada hilaris (BAGRHI)",
+        "type": "Host"
+      },
+      {
+        "code": "CHILCU",
+        "name": "Begomovirus chillicapsici (CHILCU)",
+        "type": "Host"
+      },
+      {
+        "code": "TYLCV0",
+        "name": "Begomovirus coheni (TYLCV0)",
+        "type": "Host"
+      },
+      {
+        "code": "CLCUGV",
+        "name": "Begomovirus gossypigeziraense (CLCUGV)",
+        "type": "Host"
+      },
+      {
+        "code": "TOLCND",
+        "name": "Begomovirus solanumdelhiense (TOLCND)",
+        "type": "Host"
+      },
+      {
+        "code": "BRVPPA",
+        "name": "Brevipalpus papayensis (BRVPPA)",
+        "type": "Host"
+      },
+      {
+        "code": "BRVPYO",
+        "name": "Brevipalpus yothersi (BRVPYO)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYPSO",
+        "name": "'Candidatus Phytoplasma solani' (PHYPSO)",
+        "type": "Host"
+      },
+      {
+        "code": "CPMMV0",
+        "name": "Carlavirus vignae (CPMMV0)",
+        "type": "Host"
+      },
+      {
+        "code": "CERTAN",
+        "name": "Ceratitis anonae (CERTAN)",
+        "type": "Host"
+      },
+      {
+        "code": "CERTCA",
+        "name": "Ceratitis capitata (CERTCA)",
+        "type": "Host"
+      },
+      {
+        "code": "CERTQI",
+        "name": "Ceratitis quilicii (CERTQI)",
+        "type": "Host"
+      },
+      {
+        "code": "CRTZBR",
+        "name": "Ceratothripoides brunneus (CRTZBR)",
+        "type": "Host"
+      },
+      {
+        "code": "COLLAC",
+        "name": "Colletotrichum acutatum sensu lato (COLLAC)",
+        "type": "Host"
+      },
+      {
+        "code": "COLLFC",
+        "name": "Colletotrichum fructicola (COLLFC)",
+        "type": "Host"
+      },
+      {
+        "code": "LCV000",
+        "name": "Crinivirus lactucachlorosi (LCV000)",
+        "type": "Host"
+      },
+      {
+        "code": "DACUBI",
+        "name": "Dacus bivittatus (DACUBI)",
+        "type": "Host"
+      },
+      {
+        "code": "DACUCI",
+        "name": "Dacus ciliatus (DACUCI)",
+        "type": "Host"
+      },
+      {
+        "code": "DICHPU",
+        "name": "Dichocrocis punctiferalis (DICHPU)",
+        "type": "Host"
+      },
+      {
+        "code": "EMPOPA",
+        "name": "Empoasca papayae (EMPOPA)",
+        "type": "Host"
+      },
+      {
+        "code": "EMPOST",
+        "name": "Empoasca stevensi (EMPOST)",
+        "type": "Host"
+      },
+      {
+        "code": "EOTELE",
+        "name": "Eotetranychus lewisi (EOTELE)",
+        "type": "Host"
+      },
+      {
+        "code": "EUTEBA",
+        "name": "Eutetranychus banksi (EUTEBA)",
+        "type": "Host"
+      },
+      {
+        "code": "EUTEOR",
+        "name": "Eutetranychus orientalis (EUTEOR)",
+        "type": "Host"
+      },
+      {
+        "code": "FRANCS",
+        "name": "Frankliniella australis (FRANCS)",
+        "type": "Host"
+      },
+      {
+        "code": "ACHAFU",
+        "name": "Lissachatina fulica (ACHAFU)",
+        "type": "Host"
+      },
+      {
+        "code": "PHENHI",
+        "name": "Maconellicoccus hirsutus (PHENHI)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGMY",
+        "name": "Meloidogyne enterolobii (MELGMY)",
+        "type": "Host"
+      },
+      {
+        "code": "METAHE",
+        "name": "Metamasius hemipterus (METAHE)",
+        "type": "Host"
+      },
+      {
+        "code": "TRSV00",
+        "name": "Nepovirus nicotianae (TRSV00)",
+        "type": "Host"
+      },
+      {
+        "code": "OPOGSC",
+        "name": "Opogona sacchari (OPOGSC)",
+        "type": "Host"
+      },
+      {
+        "code": "TSWV00",
+        "name": "Orthotospovirus tomatomaculae (TSWV00)",
+        "type": "Host"
+      },
+      {
+        "code": "SAISNI",
+        "name": "Parasaissetia nigra (SAISNI)",
+        "type": "Host"
+      },
+      {
+        "code": "PHENSO",
+        "name": "Phenacoccus solenopsis (PHENSO)",
+        "type": "Host"
+      },
+      {
+        "code": "PHMPOM",
+        "name": "Phymatotrichopsis omnivora (PHMPOM)",
+        "type": "Host"
+      },
+      {
+        "code": "ZYMV00",
+        "name": "Potyvirus cucurbitaflavitesselati (ZYMV00)",
+        "type": "Host"
+      },
+      {
+        "code": "PRDILO",
+        "name": "Prodiplosis longifila (PRDILO)",
+        "type": "Host"
+      },
+      {
+        "code": "PSEAPE",
+        "name": "Pseudaulacaspis pentagona (PSEAPE)",
+        "type": "Host"
+      },
+      {
+        "code": "PSEAPE",
+        "name": "Pseudaulacaspis pentagona (as Carica) (PSEAPE)",
+        "type": "Host"
+      },
+      {
+        "code": "SPPHOB",
+        "name": "Rhabdoscelus obscurus (SPPHOB)",
+        "type": "Host"
+      },
+      {
+        "code": "ROTYRE",
+        "name": "Rotylenchulus reniformis (ROTYRE)",
+        "type": "Host"
+      },
+      {
+        "code": "SCITDO",
+        "name": "Scirtothrips dorsalis (SCITDO)",
+        "type": "Host"
+      },
+      {
+        "code": "SLENRU",
+        "name": "Selenothrips rubrocinctus (SLENRU)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODER",
+        "name": "Spodoptera eridania (PRODER)",
+        "type": "Host"
+      },
+      {
+        "code": "LAPHFR",
+        "name": "Spodoptera frugiperda (LAPHFR)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODOR",
+        "name": "Spodoptera ornithogalli (PRODOR)",
+        "type": "Host"
+      },
+      {
+        "code": "TETREV",
+        "name": "Tetranychus evansi (TETREV)",
+        "type": "Host"
+      },
+      {
+        "code": "TETRFI",
+        "name": "Tetranychus fijiensis (TETRFI)",
+        "type": "Host"
+      },
+      {
+        "code": "TETRME",
+        "name": "Tetranychus mexicanus (TETRME)",
+        "type": "Host"
+      },
+      {
+        "code": "THRIHA",
+        "name": "Thrips hawaiiensis (THRIHA)",
+        "type": "Host"
+      },
+      {
+        "code": "THRIPV",
+        "name": "Thrips parvispinus (THRIPV)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLBCR",
+        "name": "Xylosandrus crassiusculus (XYLBCR)",
+        "type": "Host"
+      },
+      {
+        "code": "DACUCM",
+        "name": "Zeugodacus cucumis (DACUCM)",
+        "type": "Host"
+      },
+      {
+        "code": "DACUCU",
+        "name": "Zeugodacus cucurbitae (DACUCU)",
+        "type": "Host"
+      }
+    ]
+  },
+  "gbif": {
+    "key": 2874484,
+    "url": "https://www.gbif.org/species/2874484",
+    "scientificName": "Carica papaya L.",
+    "canonicalName": "Carica papaya",
+    "family": "Caricaceae",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "matchType": "EXACT",
+    "confidence": 100
+  }
+}

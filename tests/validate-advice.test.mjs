@@ -5,7 +5,7 @@
  * وحده يفشل بالسبب الصحيح. ثم يفحص الحزمة الحقيقية وتقرير المطابقة.
  * Run: node tests/validate-advice.test.mjs
  */
-import { mkdtempSync, writeFileSync, mkdirSync, rmSync, existsSync, readFileSync, readdirSync } from 'node:fs';
+import { mkdtempSync, writeFileSync, mkdirSync, rmSync, existsSync, readFileSync, readdirSync, cpSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -133,10 +133,73 @@ const repPath = join(realDir, 'advice-registry-report.json');
 check('تقرير المطابقة موجود ويعيد العدّ كما هي',
   existsSync(repPath) && (() => {
     const rep = JSON.parse(readFileSync(repPath, 'utf8'));
-    const files = readdirSync(realDir).filter(f => f.endsWith('.json') && !['manifest.json', 'modifiers.json', 'advice-registry-report.json'].includes(f));
+    const files = readdirSync(realDir).filter(f => f.endsWith('.json') && !['manifest.json', 'modifiers.json', 'advice-registry-report.json', 'dossiers.json'].includes(f));
     const cards = files.reduce((n, f) => n + JSON.parse(readFileSync(join(realDir, f), 'utf8')).cards.length, 0);
     return rep.coverage.cards === cards && rep.completeness.violations === 0 && rep.dose_gate.pattern_hits === 0;
   })());
+
+/* ================= عقد الإصابات D61 (تغطية + حقن عيوب على حزمة مُنسوخة) ================= */
+const infManifest = JSON.parse(readFileSync(join(realDir, 'manifest.json'), 'utf8'));
+check('مطابقة الإصابات: كل محصول في manifest له نواة وإصابة، والعدّ يطابق',
+  !!real.stats.infections &&
+  real.stats.infections.crops === infManifest.crops.length &&
+  real.stats.infections.cards > 700 &&
+  real.stats.infections.others > 4000 &&
+  real.stats.infections.dossiers === readdirSync(join(realDir, 'evidence', '_dossiers')).filter(f => f.endsWith('.json')).length,
+  JSON.stringify(real.stats.infections));
+
+const cloneDir = mkdtempSync(join(tmpdir(), 'advice-inf-'));
+const freshClone = () => {
+  rmSync(cloneDir, { recursive: true, force: true });
+  cpSync(realDir, cloneDir, { recursive: true });
+};
+const infNeg = (label, mutate, re) => {
+  freshClone();
+  mutate(cloneDir);
+  const res = validatePack(cloneDir);
+  check(label, res.errors.some(e => re.test(e)), res.errors.slice(0, 3).join(' | '));
+};
+const readJ = (base, rel) => JSON.parse(readFileSync(join(base, rel), 'utf8'));
+const writeJ = (base, rel, o) => writeFileSync(join(base, rel), JSON.stringify(o, null, 2));
+
+infNeg('الإصابات: رفض كود خارج قائمة EPPO للمحصول', base => {
+  const rel = 'infections/tomato.json';
+  const o = readJ(base, rel); o.cards[0].code = 'ZZZZQ9'; writeJ(base, rel, o);
+}, /غير موجود في قائمة EPPO/);
+
+infNeg('الإصابات: رفض نوع لا يطابق تصنيف GBIF', base => {
+  const rel = 'infections/tomato.json';
+  const o = readJ(base, rel);
+  o.cards[0].type = o.cards[0].type === 'virus' ? 'insect' : 'virus';
+  writeJ(base, rel, o);
+}, /type لا يطابق التصنيف/);
+
+infNeg('الإصابات: رفض ترقيم غير متسلسل', base => {
+  const rel = 'infections/tomato.json';
+  const o = readJ(base, rel); o.cards[0].n = 99; writeJ(base, rel, o);
+}, /ترقيم غير متسلسل/);
+
+infNeg('الإصابات: رفض جرعة داخل نص ديوان', base => {
+  const o = readJ(base, 'dossiers.json');
+  const k = Object.keys(o.dossiers)[0];
+  o.dossiers[k].symptoms_ar[0] += ' ورشّة بمقدار 10 مل لكل لتر.';
+  writeJ(base, 'dossiers.json', o);
+}, /نمط جرعة داخل نص الديوان/);
+
+infNeg('الإصابات: رفض بطاقة ديوان بلا ديوان في dossiers.json', base => {
+  const o = readJ(base, 'dossiers.json');
+  delete o.dossiers.TSWV00;
+  writeJ(base, 'dossiers.json', o);
+}, /الديوان غير موجود|غير مُصدَّر/);
+
+infNeg('الإصابات: رفض بطاقة خارج التصنيف unknown (كود بلا تصنيف)', base => {
+  const rel = 'infections/tomato.json';
+  const o = readJ(base, rel);
+  o.cards[0].code = 'NOTAX9'; writeJ(base, rel, o);
+}, /لا تصنيف GBIF صالح|غير موجود في قائمة EPPO/);
+
+freshClone();
+rmSync(cloneDir, { recursive: true, force: true });
 
 console.log(`\nADVICE-TEST: PASS ${pass}  FAIL ${fail}`);
 process.exit(fail ? 1 : 0);

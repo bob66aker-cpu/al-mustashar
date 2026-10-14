@@ -1,0 +1,293 @@
+{
+  "schema": 1,
+  "crop_id": "olive",
+  "generated_by": "scripts/advice-harvest.mjs",
+  "fetched_at": "2026-10-14",
+  "candidate": {
+    "ar": "الزيتون",
+    "en": "Olive",
+    "fr": "Olivier",
+    "sci_expected": "Olea europaea"
+  },
+  "eppo": {
+    "code": "OLVEU",
+    "overview_url": "https://gd.eppo.int/taxon/OLVEU",
+    "overview_title": "Olea europaea (OLVEU)",
+    "pests_url": "https://gd.eppo.int/taxon/OLVEU/pests",
+    "http_status": 200,
+    "pests_total_rows": 52,
+    "by_type": {
+      "Experimental": 1,
+      "Host": 48,
+      "Major host": 3
+    },
+    "pests": [
+      {
+        "code": "DACUOL",
+        "name": "Bactrocera oleae (DACUOL)",
+        "type": "Major host"
+      },
+      {
+        "code": "PSDMSA",
+        "name": "Pseudomonas savastanoi pv. savastanoi (PSDMSA)",
+        "type": "Major host"
+      },
+      {
+        "code": "XYLEFA",
+        "name": "Xylella fastidiosa (XYLEFA)",
+        "type": "Major host"
+      },
+      {
+        "code": "ANSTFR",
+        "name": "Anastrepha fraterculus (ANSTFR)",
+        "type": "Host"
+      },
+      {
+        "code": "ANOLCN",
+        "name": "Anoplophora chinensis (ANOLCN)",
+        "type": "Host"
+      },
+      {
+        "code": "ANOLCN",
+        "name": "Anoplophora chinensis (as Olea) (ANOLCN)",
+        "type": "Host"
+      },
+      {
+        "code": "AONDCI",
+        "name": "Aonidiella citrina (AONDCI)",
+        "type": "Host"
+      },
+      {
+        "code": "DACUTR",
+        "name": "Bactrocera tryoni (DACUTR)",
+        "type": "Host"
+      },
+      {
+        "code": "BISCRO",
+        "name": "Biscogniauxia rosacearum (BISCRO)",
+        "type": "Host"
+      },
+      {
+        "code": "TETTFE",
+        "name": "Bothrogonia ferruginea (TETTFE)",
+        "type": "Host"
+      },
+      {
+        "code": "TORTPR",
+        "name": "Cacoecimorpha pronubana (TORTPR)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYPSO",
+        "name": "'Candidatus Phytoplasma solani' (PHYPSO)",
+        "type": "Host"
+      },
+      {
+        "code": "CERTCA",
+        "name": "Ceratitis capitata (CERTCA)",
+        "type": "Host"
+      },
+      {
+        "code": "COLLAC",
+        "name": "Colletotrichum acutatum sensu lato (COLLAC)",
+        "type": "Host"
+      },
+      {
+        "code": "COLLFC",
+        "name": "Colletotrichum fructicola (COLLFC)",
+        "type": "Host"
+      },
+      {
+        "code": "QUADPE",
+        "name": "Comstockaspis perniciosa (QUADPE)",
+        "type": "Host"
+      },
+      {
+        "code": "CMV000",
+        "name": "Cucumovirus CMV (CMV000)",
+        "type": "Host"
+      },
+      {
+        "code": "EOTELE",
+        "name": "Eotetranychus lewisi (EOTELE)",
+        "type": "Host"
+      },
+      {
+        "code": "EUTEOR",
+        "name": "Eutetranychus orientalis (EUTEOR)",
+        "type": "Host"
+      },
+      {
+        "code": "EUTYLA",
+        "name": "Eutypa lata (EUTYLA)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLBFO",
+        "name": "Euwallacea fornicatus sensu lato (XYLBFO)",
+        "type": "Host"
+      },
+      {
+        "code": "EUWAWH",
+        "name": "Euwallacea fornicatus sensu stricto (EUWAWH)",
+        "type": "Host"
+      },
+      {
+        "code": "EUZOSE",
+        "name": "Euzophera semifuneralis (EUZOSE)",
+        "type": "Host"
+      },
+      {
+        "code": "FUSAEW",
+        "name": "Fusarium euwallaceae (FUSAEW)",
+        "type": "Host"
+      },
+      {
+        "code": "HALYHA",
+        "name": "Halyomorpha halys (HALYHA)",
+        "type": "Host"
+      },
+      {
+        "code": "HOMLTR",
+        "name": "Homalodisca vitripennis (HOMLTR)",
+        "type": "Host"
+      },
+      {
+        "code": "NAUPXA",
+        "name": "Naupactus xanthographus (NAUPXA)",
+        "type": "Host"
+      },
+      {
+        "code": "ARMV00",
+        "name": "Nepovirus arabis (ARMV00)",
+        "type": "Host"
+      },
+      {
+        "code": "CLRV00",
+        "name": "Nepovirus avii (CLRV00)",
+        "type": "Host"
+      },
+      {
+        "code": "OMOPLE",
+        "name": "Omophlus lepturoides (OMOPLE)",
+        "type": "Host"
+      },
+      {
+        "code": "PHMPOM",
+        "name": "Phymatotrichopsis omnivora (PHMPOM)",
+        "type": "Host"
+      },
+      {
+        "code": "POCZSH",
+        "name": "Pochazia shantungensis (POCZSH)",
+        "type": "Host"
+      },
+      {
+        "code": "PRAYOL",
+        "name": "Prays oleae (PRAYOL)",
+        "type": "Host"
+      },
+      {
+        "code": "PSEAPE",
+        "name": "Pseudaulacaspis pentagona (PSEAPE)",
+        "type": "Host"
+      },
+      {
+        "code": "RALSPS",
+        "name": "Ralstonia pseudosolanacearum (RALSPS)",
+        "type": "Host"
+      },
+      {
+        "code": "RALSSO",
+        "name": "Ralstonia solanacearum species complex (RALSSO)",
+        "type": "Host"
+      },
+      {
+        "code": "RICASC",
+        "name": "Ricania speculum (RICASC)",
+        "type": "Host"
+      },
+      {
+        "code": "HELYBU",
+        "name": "Rotylenchus buxophilus (HELYBU)",
+        "type": "Host"
+      },
+      {
+        "code": "SCITAU",
+        "name": "Scirtothrips aurantii (SCITAU)",
+        "type": "Host"
+      },
+      {
+        "code": "SLRSV0",
+        "name": "Stralarivirus fragariae (SLRSV0)",
+        "type": "Host"
+      },
+      {
+        "code": "ARGPLE",
+        "name": "Thaumatotibia leucotreta (ARGPLE)",
+        "type": "Host"
+      },
+      {
+        "code": "THEBPI",
+        "name": "Theba pisana (THEBPI)",
+        "type": "Host"
+      },
+      {
+        "code": "TYLESE",
+        "name": "Tylenchulus semipenetrans (TYLESE)",
+        "type": "Host"
+      },
+      {
+        "code": "VERTDA",
+        "name": "Verticillium dahliae (VERTDA)",
+        "type": "Host"
+      },
+      {
+        "code": "XIPHCA",
+        "name": "Xiphinema californicum (XIPHCA)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLEFF",
+        "name": "Xylella fastidiosa subsp. fastidiosa (XYLEFF)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLEFM",
+        "name": "Xylella fastidiosa subsp. multiplex (XYLEFM)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLEFP",
+        "name": "Xylella fastidiosa subsp. pauca (XYLEFP)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLSCO",
+        "name": "Xylosandrus compactus (XYLSCO)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLBCR",
+        "name": "Xylosandrus crassiusculus (XYLBCR)",
+        "type": "Host"
+      },
+      {
+        "code": "ZAPRIN",
+        "name": "Zaprionus indianus (ZAPRIN)",
+        "type": "Host"
+      }
+    ]
+  },
+  "gbif": {
+    "key": 5415040,
+    "url": "https://www.gbif.org/species/5415040",
+    "scientificName": "Olea europaea L.",
+    "canonicalName": "Olea europaea",
+    "family": "Oleaceae",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "matchType": "EXACT",
+    "confidence": 99
+  }
+}

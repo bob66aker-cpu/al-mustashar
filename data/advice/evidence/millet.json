@@ -1,0 +1,97 @@
+{
+  "schema": 1,
+  "crop_id": "millet",
+  "generated_by": "scripts/advice-harvest.mjs",
+  "fetched_at": "2026-10-14",
+  "candidate": {
+    "ar": "الدخن",
+    "en": "Pearl millet",
+    "fr": "Millet perlé",
+    "sci_expected": "Pennisetum glaucum"
+  },
+  "eppo": {
+    "code": "PESGL",
+    "overview_url": "https://gd.eppo.int/taxon/PESGL",
+    "overview_title": "Cenchrus americanus (PESGL)",
+    "pests_url": "https://gd.eppo.int/taxon/PESGL/pests",
+    "http_status": 200,
+    "pests_total_rows": 14,
+    "by_type": {
+      "Experimental": 2,
+      "Host": 12
+    },
+    "pests": [
+      {
+        "code": "ATHEOZ",
+        "name": "Atherigona oryzae (ATHEOZ)",
+        "type": "Host"
+      },
+      {
+        "code": "HELIVI",
+        "name": "Chloridea virescens (HELIVI)",
+        "type": "Host"
+      },
+      {
+        "code": "DIABUH",
+        "name": "Diabrotica undecimpunctata howardi (DIABUH)",
+        "type": "Host"
+      },
+      {
+        "code": "DIABVI",
+        "name": "Diabrotica virgifera virgifera (DIABVI)",
+        "type": "Host"
+      },
+      {
+        "code": "WHPV00",
+        "name": "Emaravirus tritici (WHPV00)",
+        "type": "Host"
+      },
+      {
+        "code": "HELIAR",
+        "name": "Helicoverpa armigera (HELIAR)",
+        "type": "Host"
+      },
+      {
+        "code": "HELIZE",
+        "name": "Helicoverpa zea (HELIZE)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGET",
+        "name": "Meloidogyne ethiopica (MELGET)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGGC",
+        "name": "Meloidogyne graminicola (MELGGC)",
+        "type": "Host"
+      },
+      {
+        "code": "POOPCO",
+        "name": "Poophilus costalis (POOPCO)",
+        "type": "Host"
+      },
+      {
+        "code": "PROETR",
+        "name": "Prostephanus truncatus (PROETR)",
+        "type": "Host"
+      },
+      {
+        "code": "LAPHFR",
+        "name": "Spodoptera frugiperda (LAPHFR)",
+        "type": "Host"
+      }
+    ]
+  },
+  "gbif": {
+    "key": 5828197,
+    "url": "https://www.gbif.org/species/5828197",
+    "scientificName": "Cenchrus americanus (L.) Morrone",
+    "canonicalName": "Cenchrus americanus",
+    "family": "Poaceae",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "matchType": "EXACT",
+    "confidence": 100
+  }
+}

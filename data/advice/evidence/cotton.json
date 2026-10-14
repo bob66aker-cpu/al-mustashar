@@ -1,0 +1,674 @@
+{
+  "schema": 1,
+  "crop_id": "cotton",
+  "generated_by": "scripts/advice-harvest.mjs",
+  "fetched_at": "2026-10-14",
+  "candidate": {
+    "ar": "القطن",
+    "en": "Cotton",
+    "fr": "Coton",
+    "sci_expected": "Gossypium hirsutum"
+  },
+  "eppo": {
+    "code": "GOSHI",
+    "overview_url": "https://gd.eppo.int/taxon/GOSHI",
+    "overview_title": "Gossypium hirsutum (GOSHI)",
+    "pests_url": "https://gd.eppo.int/taxon/GOSHI/pests",
+    "http_status": 200,
+    "pests_total_rows": 129,
+    "by_type": {
+      "Experimental": 1,
+      "Host": 83,
+      "Major host": 44,
+      "Wild/Weed": 1
+    },
+    "pests": [
+      {
+        "code": "ERPHGO",
+        "name": "Acalitus gossypii (ERPHGO)",
+        "type": "Major host"
+      },
+      {
+        "code": "AGROSE",
+        "name": "Agrotis segetum (AGROSE)",
+        "type": "Major host"
+      },
+      {
+        "code": "EMPOBI",
+        "name": "Amrasca biguttula (EMPOBI)",
+        "type": "Major host"
+      },
+      {
+        "code": "EMPOBI",
+        "name": "Amrasca biguttula (as Gossypium) (EMPOBI)",
+        "type": "Major host"
+      },
+      {
+        "code": "COSPFL",
+        "name": "Anomis flava (COSPFL)",
+        "type": "Major host"
+      },
+      {
+        "code": "ANTHGR",
+        "name": "Anthonomus grandis (ANTHGR)",
+        "type": "Major host"
+      },
+      {
+        "code": "ANTHVE",
+        "name": "Anthonomus vestitus (ANTHVE)",
+        "type": "Major host"
+      },
+      {
+        "code": "APLOBE",
+        "name": "Aphelenchoides besseyi (APLOBE)",
+        "type": "Major host"
+      },
+      {
+        "code": "ASCOGO",
+        "name": "Ascochyta gossypiicola (ASCOGO)",
+        "type": "Major host"
+      },
+      {
+        "code": "ABMV00",
+        "name": "Begomovirus bauri (ABMV00)",
+        "type": "Major host"
+      },
+      {
+        "code": "CLCUGV",
+        "name": "Begomovirus gossypigeziraense (CLCUGV)",
+        "type": "Major host"
+      },
+      {
+        "code": "CLCRV0",
+        "name": "Begomovirus gossypii (CLCRV0)",
+        "type": "Major host"
+      },
+      {
+        "code": "CLCUMV",
+        "name": "Begomovirus gossypimultanense (CLCUMV)",
+        "type": "Major host"
+      },
+      {
+        "code": "BEMITA",
+        "name": "Bemisia tabaci (BEMITA)",
+        "type": "Major host"
+      },
+      {
+        "code": "HELIVI",
+        "name": "Chloridea virescens (HELIVI)",
+        "type": "Major host"
+      },
+      {
+        "code": "GLOMGO",
+        "name": "Colletotrichum gossypii (GLOMGO)",
+        "type": "Major host"
+      },
+      {
+        "code": "CAV000",
+        "name": "Cotton anthocyanosis virus (CAV000)",
+        "type": "Major host"
+      },
+      {
+        "code": "CTLR00",
+        "name": "Cotton leaf roll agent (CTLR00)",
+        "type": "Major host"
+      },
+      {
+        "code": "CTM000",
+        "name": "Cotton mosaic agent (CTM000)",
+        "type": "Major host"
+      },
+      {
+        "code": "CTSL00",
+        "name": "Cotton small leaf agent (CTSL00)",
+        "type": "Major host"
+      },
+      {
+        "code": "CTTS00",
+        "name": "Cotton terminal stunt agent (CTTS00)",
+        "type": "Major host"
+      },
+      {
+        "code": "CTVM00",
+        "name": "Cotton veinal mosaic agent (CTVM00)",
+        "type": "Major host"
+      },
+      {
+        "code": "CTVI00",
+        "name": "Cotton virescence agent (CTVI00)",
+        "type": "Major host"
+      },
+      {
+        "code": "DYSDCI",
+        "name": "Dysdercus cingulatus (DYSDCI)",
+        "type": "Major host"
+      },
+      {
+        "code": "DYSDFA",
+        "name": "Dysdercus fasciatus (DYSDFA)",
+        "type": "Major host"
+      },
+      {
+        "code": "DYSDPE",
+        "name": "Dysdercus peruvianus (DYSDPE)",
+        "type": "Major host"
+      },
+      {
+        "code": "EARIBI",
+        "name": "Earias biplaga (EARIBI)",
+        "type": "Major host"
+      },
+      {
+        "code": "EARIIN",
+        "name": "Earias insulana (EARIIN)",
+        "type": "Major host"
+      },
+      {
+        "code": "EARIVI",
+        "name": "Earias vittella (EARIVI)",
+        "type": "Major host"
+      },
+      {
+        "code": "HELIZE",
+        "name": "Helicoverpa zea (HELIZE)",
+        "type": "Major host"
+      },
+      {
+        "code": "HELOSC",
+        "name": "Helopeltis schoutedeni (HELOSC)",
+        "type": "Major host"
+      },
+      {
+        "code": "EMPOLY",
+        "name": "Jacobiasca lybica (EMPOLY)",
+        "type": "Major host"
+      },
+      {
+        "code": "OXYAHY",
+        "name": "Oxycarenus hyalinipennis (OXYAHY)",
+        "type": "Major host"
+      },
+      {
+        "code": "PECTGO",
+        "name": "Pectinophora gossypiella (PECTGO)",
+        "type": "Major host"
+      },
+      {
+        "code": "PLAYSC",
+        "name": "Pectinophora scutigera (PLAYSC)",
+        "type": "Major host"
+      },
+      {
+        "code": "PHENSO",
+        "name": "Phenacoccus solenopsis (PHENSO)",
+        "type": "Major host"
+      },
+      {
+        "code": "PHMPOM",
+        "name": "Phymatotrichopsis omnivora (PHMPOM)",
+        "type": "Major host"
+      },
+      {
+        "code": "SACAPY",
+        "name": "Sacadodes pyralis (SACAPY)",
+        "type": "Major host"
+      },
+      {
+        "code": "LAPHFR",
+        "name": "Spodoptera frugiperda (LAPHFR)",
+        "type": "Major host"
+      },
+      {
+        "code": "SPODLI",
+        "name": "Spodoptera littoralis (SPODLI)",
+        "type": "Major host"
+      },
+      {
+        "code": "PRODLI",
+        "name": "Spodoptera litura (PRODLI)",
+        "type": "Major host"
+      },
+      {
+        "code": "ARGPLE",
+        "name": "Thaumatotibia leucotreta (ARGPLE)",
+        "type": "Major host"
+      },
+      {
+        "code": "TRIARI",
+        "name": "Trialeurodes ricini (TRIARI)",
+        "type": "Major host"
+      },
+      {
+        "code": "XANTMA",
+        "name": "Xanthomonas citri pv. malvacearum (as Gossypium) (XANTMA)",
+        "type": "Major host"
+      },
+      {
+        "code": "ALEDDI",
+        "name": "Aleurodicus dispersus (ALEDDI)",
+        "type": "Host"
+      },
+      {
+        "code": "ALEDDU",
+        "name": "Aleurodicus dugesii (ALEDDU)",
+        "type": "Host"
+      },
+      {
+        "code": "COSPFL",
+        "name": "Anomis flava (as Gossypium) (COSPFL)",
+        "type": "Host"
+      },
+      {
+        "code": "ANTHVE",
+        "name": "Anthonomus vestitus (as Gossypium) (ANTHVE)",
+        "type": "Host"
+      },
+      {
+        "code": "TOXOCI",
+        "name": "Aphis citricidus (TOXOCI)",
+        "type": "Host"
+      },
+      {
+        "code": "APIOSL",
+        "name": "Apion soleatum (as Gossypium) (APIOSL)",
+        "type": "Host"
+      },
+      {
+        "code": "BAGRHI",
+        "name": "Bagrada hilaris (BAGRHI)",
+        "type": "Host"
+      },
+      {
+        "code": "SLCV00",
+        "name": "Begomovirus cucurbitapeponis (as Gossypium) (SLCV00)",
+        "type": "Host"
+      },
+      {
+        "code": "TOLCND",
+        "name": "Begomovirus solanumdelhiense (TOLCND)",
+        "type": "Host"
+      },
+      {
+        "code": "CERTCA",
+        "name": "Ceratitis capitata (as Gossypium) (CERTCA)",
+        "type": "Host"
+      },
+      {
+        "code": "CRTZBR",
+        "name": "Ceratothripoides brunneus (CRTZBR)",
+        "type": "Host"
+      },
+      {
+        "code": "GLOMGO",
+        "name": "Colletotrichum gossypii (as Gossypium) (GLOMGO)",
+        "type": "Host"
+      },
+      {
+        "code": "CONHDE",
+        "name": "Conotrachelus denieri (as Gossypium) (CONHDE)",
+        "type": "Host"
+      },
+      {
+        "code": "TOCV00",
+        "name": "Crinivirus tomatichlorosis (TOCV00)",
+        "type": "Host"
+      },
+      {
+        "code": "CRODPL",
+        "name": "Crocidosema plebejana (as Gossypium) (CRODPL)",
+        "type": "Host"
+      },
+      {
+        "code": "CRYBGN",
+        "name": "Cryptoblabes gnidiella (CRYBGN)",
+        "type": "Host"
+      },
+      {
+        "code": "CYLAPU",
+        "name": "Cylas puncticollis (CYLAPU)",
+        "type": "Host"
+      },
+      {
+        "code": "HYLEPL",
+        "name": "Delia platura (as Gossypium) (HYLEPL)",
+        "type": "Host"
+      },
+      {
+        "code": "DIABUN",
+        "name": "Diabrotica undecimpunctata undecimpunctata (as Gossypium) (DIABUN)",
+        "type": "Host"
+      },
+      {
+        "code": "DIABVZ",
+        "name": "Diabrotica virgifera zeae (DIABVZ)",
+        "type": "Host"
+      },
+      {
+        "code": "DICHPU",
+        "name": "Dichocrocis punctiferalis (as Gossypium) (DICHPU)",
+        "type": "Host"
+      },
+      {
+        "code": "DIPACA",
+        "name": "Diparopsis castanea (as Gossypium) (DIPACA)",
+        "type": "Host"
+      },
+      {
+        "code": "AUREPL",
+        "name": "Discosphaerina fulvida (as Gossypium) (AUREPL)",
+        "type": "Host"
+      },
+      {
+        "code": "DYSDCI",
+        "name": "Dysdercus cingulatus (as Gossypium) (DYSDCI)",
+        "type": "Host"
+      },
+      {
+        "code": "DYSDFA",
+        "name": "Dysdercus fasciatus (as Gossypium) (DYSDFA)",
+        "type": "Host"
+      },
+      {
+        "code": "DYSDPE",
+        "name": "Dysdercus peruvianus (as Gossypium) (DYSDPE)",
+        "type": "Host"
+      },
+      {
+        "code": "EARIIN",
+        "name": "Earias insulana (as Gossypium) (EARIIN)",
+        "type": "Host"
+      },
+      {
+        "code": "EARIVI",
+        "name": "Earias vittella (as Gossypium) (EARIVI)",
+        "type": "Host"
+      },
+      {
+        "code": "ELASLI",
+        "name": "Elasmopalpus lignosellus (ELASLI)",
+        "type": "Host"
+      },
+      {
+        "code": "EOTELE",
+        "name": "Eotetranychus lewisi (EOTELE)",
+        "type": "Host"
+      },
+      {
+        "code": "EUTEOR",
+        "name": "Eutetranychus orientalis (EUTEOR)",
+        "type": "Host"
+      },
+      {
+        "code": "EUTIGO",
+        "name": "Eutinobothrus gossypii (as Gossypium) (EUTIGO)",
+        "type": "Host"
+      },
+      {
+        "code": "EUZOSE",
+        "name": "Euzophera semifuneralis (EUZOSE)",
+        "type": "Host"
+      },
+      {
+        "code": "FRANOC",
+        "name": "Frankliniella occidentalis (FRANOC)",
+        "type": "Host"
+      },
+      {
+        "code": "FUSAFO",
+        "name": "Fusarium foetens (FUSAFO)",
+        "type": "Host"
+      },
+      {
+        "code": "GARGTO",
+        "name": "Gargaphia torresi (as Gossypium) (GARGTO)",
+        "type": "Host"
+      },
+      {
+        "code": "HELIAR",
+        "name": "Helicoverpa armigera (HELIAR)",
+        "type": "Host"
+      },
+      {
+        "code": "HELOBE",
+        "name": "Helopeltis bergrothi (HELOBE)",
+        "type": "Host"
+      },
+      {
+        "code": "HORCNO",
+        "name": "Horcias nobilellus (as Gossypium) (HORCNO)",
+        "type": "Host"
+      },
+      {
+        "code": "STEHHA",
+        "name": "Hypothenemus hampei (STEHHA)",
+        "type": "Host"
+      },
+      {
+        "code": "TSV000",
+        "name": "Ilarvirus TSV (as Gossypium) (TSV000)",
+        "type": "Host"
+      },
+      {
+        "code": "EMPOLY",
+        "name": "Jacobiasca lybica (as Gossypium) (EMPOLY)",
+        "type": "Host"
+      },
+      {
+        "code": "LIRITR",
+        "name": "Liriomyza trifolii (LIRITR)",
+        "type": "Host"
+      },
+      {
+        "code": "PHENHI",
+        "name": "Maconellicoccus hirsutus (PHENHI)",
+        "type": "Host"
+      },
+      {
+        "code": "COPSCR",
+        "name": "Megacopta cribraria (COPSCR)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGCH",
+        "name": "Meloidogyne chitwoodi (MELGCH)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGMY",
+        "name": "Meloidogyne enterolobii (MELGMY)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGET",
+        "name": "Meloidogyne ethiopica (MELGET)",
+        "type": "Host"
+      },
+      {
+        "code": "GRAGLE",
+        "name": "Naupactus leucoloma (GRAGLE)",
+        "type": "Host"
+      },
+      {
+        "code": "TRSV00",
+        "name": "Nepovirus nicotianae (TRSV00)",
+        "type": "Host"
+      },
+      {
+        "code": "TSWV00",
+        "name": "Orthotospovirus tomatomaculae (TSWV00)",
+        "type": "Host"
+      },
+      {
+        "code": "OXYAHY",
+        "name": "Oxycarenus hyalinipennis (as Gossypium) (OXYAHY)",
+        "type": "Host"
+      },
+      {
+        "code": "PARYMI",
+        "name": "Paraleyrodes minei (PARYMI)",
+        "type": "Host"
+      },
+      {
+        "code": "SAISNI",
+        "name": "Parasaissetia nigra (SAISNI)",
+        "type": "Host"
+      },
+      {
+        "code": "PECTGO",
+        "name": "Pectinophora gossypiella (as Gossypium) (PECTGO)",
+        "type": "Host"
+      },
+      {
+        "code": "PLAYSC",
+        "name": "Pectinophora scutigera (as Gossypium) (PLAYSC)",
+        "type": "Host"
+      },
+      {
+        "code": "PLAYSU",
+        "name": "Platyedra subcinerea (as Gossypium) (PLAYSU)",
+        "type": "Host"
+      },
+      {
+        "code": "PRDILO",
+        "name": "Prodiplosis longifila (PRDILO)",
+        "type": "Host"
+      },
+      {
+        "code": "PSEAPE",
+        "name": "Pseudaulacaspis pentagona (as Gossypium) (PSEAPE)",
+        "type": "Host"
+      },
+      {
+        "code": "PSDMS1",
+        "name": "Ralstonia solanacearum race 1 (no longer in use) (PSDMS1)",
+        "type": "Host"
+      },
+      {
+        "code": "RICASC",
+        "name": "Ricania speculum (as Gossypium) (RICASC)",
+        "type": "Host"
+      },
+      {
+        "code": "ROTYRE",
+        "name": "Rotylenchulus reniformis (as Gossypium) (ROTYRE)",
+        "type": "Host"
+      },
+      {
+        "code": "SCITAU",
+        "name": "Scirtothrips aurantii (as Gossypium) (SCITAU)",
+        "type": "Host"
+      },
+      {
+        "code": "SCITCI",
+        "name": "Scirtothrips citri (SCITCI)",
+        "type": "Host"
+      },
+      {
+        "code": "SCITDO",
+        "name": "Scirtothrips dorsalis (SCITDO)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODER",
+        "name": "Spodoptera eridania (PRODER)",
+        "type": "Host"
+      },
+      {
+        "code": "SPODLI",
+        "name": "Spodoptera littoralis (as Gossypium) (SPODLI)",
+        "type": "Host"
+      },
+      {
+        "code": "SPODMA",
+        "name": "Spodoptera mauritia (as Gossypium) (SPODMA)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODOR",
+        "name": "Spodoptera ornithogalli (PRODOR)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODPR",
+        "name": "Spodoptera praefica (PRODPR)",
+        "type": "Host"
+      },
+      {
+        "code": "TETREV",
+        "name": "Tetranychus evansi (TETREV)",
+        "type": "Host"
+      },
+      {
+        "code": "TETRME",
+        "name": "Tetranychus mexicanus (TETRME)",
+        "type": "Host"
+      },
+      {
+        "code": "TETRME",
+        "name": "Tetranychus mexicanus (as Gossypium) (TETRME)",
+        "type": "Host"
+      },
+      {
+        "code": "TETRPA",
+        "name": "Tetranychus pacificus (as Gossypium) (TETRPA)",
+        "type": "Host"
+      },
+      {
+        "code": "ARGPLE",
+        "name": "Thaumatotibia leucotreta (as Gossypium) (ARGPLE)",
+        "type": "Host"
+      },
+      {
+        "code": "THRIIM",
+        "name": "Thrips imaginis (THRIIM)",
+        "type": "Host"
+      },
+      {
+        "code": "THRIPL",
+        "name": "Thrips palmi (THRIPL)",
+        "type": "Host"
+      },
+      {
+        "code": "TRIAAB",
+        "name": "Trialeurodes abutiloneus (TRIAAB)",
+        "type": "Host"
+      },
+      {
+        "code": "TYLRCL",
+        "name": "Tylenchorhynchus claytoni (as Gossypium) (TYLRCL)",
+        "type": "Host"
+      },
+      {
+        "code": "VERTDA",
+        "name": "Verticillium dahliae (VERTDA)",
+        "type": "Host"
+      },
+      {
+        "code": "VERTNO",
+        "name": "Verticillium nonalfalfae (VERTNO)",
+        "type": "Host"
+      },
+      {
+        "code": "CARNFL",
+        "name": "Xyphon flaviceps (CARNFL)",
+        "type": "Host"
+      },
+      {
+        "code": "ZEUZCO",
+        "name": "Zeuzera coffeae (as Gossypium) (ZEUZCO)",
+        "type": "Host"
+      }
+    ]
+  },
+  "gbif": {
+    "key": 3152661,
+    "url": "https://www.gbif.org/species/3152661",
+    "scientificName": "Gossypium hirsutum L.",
+    "canonicalName": "Gossypium hirsutum",
+    "family": "Malvaceae",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "matchType": "EXACT",
+    "confidence": 99
+  }
+}

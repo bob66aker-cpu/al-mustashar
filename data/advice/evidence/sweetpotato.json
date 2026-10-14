@@ -1,0 +1,480 @@
+{
+  "schema": 1,
+  "crop_id": "sweetpotato",
+  "generated_by": "scripts/advice-harvest.mjs",
+  "fetched_at": "2026-10-14",
+  "candidate": {
+    "ar": "البطاطا الحلوة",
+    "en": "Sweet potato",
+    "fr": "Patate douce",
+    "sci_expected": "Ipomoea batatas"
+  },
+  "eppo": {
+    "code": "IPOBA",
+    "overview_url": "https://gd.eppo.int/taxon/IPOBA",
+    "overview_title": "Ipomoea batatas (IPOBA)",
+    "pests_url": "https://gd.eppo.int/taxon/IPOBA/pests",
+    "http_status": 200,
+    "pests_total_rows": 95,
+    "by_type": {
+      "Doubtful host": 1,
+      "Experimental": 3,
+      "Host": 66,
+      "Major host": 22,
+      "Wild/Weed": 3
+    },
+    "pests": [
+      {
+        "code": "ALCIDE",
+        "name": "Alcidodes dentipes (ALCIDE)",
+        "type": "Major host"
+      },
+      {
+        "code": "ALCIER",
+        "name": "Alcidodes erroneus (ALCIER)",
+        "type": "Major host"
+      },
+      {
+        "code": "ALTRTR",
+        "name": "Aleurothrixus trachoides (ALTRTR)",
+        "type": "Major host"
+      },
+      {
+        "code": "APLOBE",
+        "name": "Aphelenchoides besseyi (APLOBE)",
+        "type": "Major host"
+      },
+      {
+        "code": "BEMITA",
+        "name": "Bemisia tabaci (BEMITA)",
+        "type": "Major host"
+      },
+      {
+        "code": "BLOSIP",
+        "name": "Blosyrus ipomoeae (BLOSIP)",
+        "type": "Major host"
+      },
+      {
+        "code": "CASSBI",
+        "name": "Cassida bivittata (CASSBI)",
+        "type": "Major host"
+      },
+      {
+        "code": "CHEMCA",
+        "name": "Chelymorpha cassidea (CHEMCA)",
+        "type": "Major host"
+      },
+      {
+        "code": "SPCSV0",
+        "name": "Crinivirus ipomeae (SPCSV0)",
+        "type": "Major host"
+      },
+      {
+        "code": "CYLAFM",
+        "name": "Cylas femoralis (CYLAFM)",
+        "type": "Major host"
+      },
+      {
+        "code": "CYLAFO",
+        "name": "Cylas formicarius (CYLAFO)",
+        "type": "Major host"
+      },
+      {
+        "code": "CYLAPU",
+        "name": "Cylas puncticollis (CYLAPU)",
+        "type": "Major host"
+      },
+      {
+        "code": "ELSIBA",
+        "name": "Elsinoë batatas (ELSIBA)",
+        "type": "Major host"
+      },
+      {
+        "code": "EUSPPO",
+        "name": "Euscepes postfasciatus (EUSPPO)",
+        "type": "Major host"
+      },
+      {
+        "code": "SPMMV0",
+        "name": "Ipomovirus lenisbatatae (SPMMV0)",
+        "type": "Major host"
+      },
+      {
+        "code": "MEGEGR",
+        "name": "Megastes grandalis (MEGEGR)",
+        "type": "Major host"
+      },
+      {
+        "code": "MEGEPU",
+        "name": "Megastes pusialis (MEGEPU)",
+        "type": "Major host"
+      },
+      {
+        "code": "MELNCO",
+        "name": "Melanotus communis (MELNCO)",
+        "type": "Major host"
+      },
+      {
+        "code": "MELGMY",
+        "name": "Meloidogyne enterolobii (MELGMY)",
+        "type": "Major host"
+      },
+      {
+        "code": "MNLCIN",
+        "name": "Monilochaetes infuscans (MNLCIN)",
+        "type": "Major host"
+      },
+      {
+        "code": "SPFMV0",
+        "name": "Potyvirus batataplumei (SPFMV0)",
+        "type": "Major host"
+      },
+      {
+        "code": "PHYP39",
+        "name": "Sweet potato little leaf phytoplasma (PHYP39)",
+        "type": "Major host"
+      },
+      {
+        "code": "VASALY",
+        "name": "Aculops lycopersici (VASALY)",
+        "type": "Host"
+      },
+      {
+        "code": "ALEDDI",
+        "name": "Aleurodicus dispersus (ALEDDI)",
+        "type": "Host"
+      },
+      {
+        "code": "APLOFR",
+        "name": "Aphelenchoides fragariae (APLOFR)",
+        "type": "Host"
+      },
+      {
+        "code": "APOGCR",
+        "name": "Apogonia cribricollis (APOGCR)",
+        "type": "Host"
+      },
+      {
+        "code": "PARZCO",
+        "name": "Bactericera cockerelli (PARZCO)",
+        "type": "Host"
+      },
+      {
+        "code": "BEMITA",
+        "name": "Bemisia tabaci (as Convolvulaceae) (BEMITA)",
+        "type": "Host"
+      },
+      {
+        "code": "THIEBA",
+        "name": "Berkeleyomyces basicola (THIEBA)",
+        "type": "Host"
+      },
+      {
+        "code": "BRAPSU",
+        "name": "Brachyplatys subaeneus (BRAPSU)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYPZI",
+        "name": "'Candidatus Phytoplasma ziziphi' (PHYPZI)",
+        "type": "Host"
+      },
+      {
+        "code": "METRCI",
+        "name": "Cassida circumdata (METRCI)",
+        "type": "Host"
+      },
+      {
+        "code": "CERAFI",
+        "name": "Ceratocystis fimbriata (CERAFI)",
+        "type": "Host"
+      },
+      {
+        "code": "METRBI",
+        "name": "Charidotella bicolor (METRBI)",
+        "type": "Host"
+      },
+      {
+        "code": "CRTHMA",
+        "name": "Corythucha marmorata (CRTHMA)",
+        "type": "Host"
+      },
+      {
+        "code": "TOCV00",
+        "name": "Crinivirus tomatichlorosis (TOCV00)",
+        "type": "Host"
+      },
+      {
+        "code": "CMV000",
+        "name": "Cucumovirus CMV (CMV000)",
+        "type": "Host"
+      },
+      {
+        "code": "DELOGU",
+        "name": "Deloyala guttata (DELOGU)",
+        "type": "Host"
+      },
+      {
+        "code": "DIABSC",
+        "name": "Diabrotica speciosa (DIABSC)",
+        "type": "Host"
+      },
+      {
+        "code": "DIABUH",
+        "name": "Diabrotica undecimpunctata howardi (DIABUH)",
+        "type": "Host"
+      },
+      {
+        "code": "DPREAB",
+        "name": "Diaprepes abbreviatus (DPREAB)",
+        "type": "Host"
+      },
+      {
+        "code": "ERWICD",
+        "name": "Dickeya dianthicola (ERWICD)",
+        "type": "Host"
+      },
+      {
+        "code": "DITYDE",
+        "name": "Ditylenchus destructor (DITYDE)",
+        "type": "Host"
+      },
+      {
+        "code": "DITYDI",
+        "name": "Ditylenchus dipsaci (DITYDI)",
+        "type": "Host"
+      },
+      {
+        "code": "ELASLI",
+        "name": "Elasmopalpus lignosellus (ELASLI)",
+        "type": "Host"
+      },
+      {
+        "code": "ERWICH",
+        "name": "Erwinia chrysanthemi (ERWICH)",
+        "type": "Host"
+      },
+      {
+        "code": "EURHBR",
+        "name": "Eurhizococcus brasiliensis (EURHBR)",
+        "type": "Host"
+      },
+      {
+        "code": "EUTEOR",
+        "name": "Eutetranychus orientalis (EUTEOR)",
+        "type": "Host"
+      },
+      {
+        "code": "HELIAR",
+        "name": "Helicoverpa armigera (HELIAR)",
+        "type": "Host"
+      },
+      {
+        "code": "HELOSC",
+        "name": "Helopeltis schoutedeni (HELOSC)",
+        "type": "Host"
+      },
+      {
+        "code": "HOMLTR",
+        "name": "Homalodisca vitripennis (as Ipomoea) (HOMLTR)",
+        "type": "Host"
+      },
+      {
+        "code": "JONTNI",
+        "name": "Jonthonota nigripes (JONTNI)",
+        "type": "Host"
+      },
+      {
+        "code": "LAGRVL",
+        "name": "Lagria villosa (LAGRVL)",
+        "type": "Host"
+      },
+      {
+        "code": "LEPLAU",
+        "name": "Leptoglossus australis (LEPLAU)",
+        "type": "Host"
+      },
+      {
+        "code": "LEUIOR",
+        "name": "Leucinodes orbonalis (LEUIOR)",
+        "type": "Host"
+      },
+      {
+        "code": "LIRIHU",
+        "name": "Liriomyza huidobrensis (LIRIHU)",
+        "type": "Host"
+      },
+      {
+        "code": "ACHAFU",
+        "name": "Lissachatina fulica (ACHAFU)",
+        "type": "Host"
+      },
+      {
+        "code": "PHENHI",
+        "name": "Maconellicoccus hirsutus (PHENHI)",
+        "type": "Host"
+      },
+      {
+        "code": "MEGTUS",
+        "name": "Megalurothrips usitatus (MEGTUS)",
+        "type": "Host"
+      },
+      {
+        "code": "MCCTAB",
+        "name": "Microcephalothrips abdominalis (MCCTAB)",
+        "type": "Host"
+      },
+      {
+        "code": "NACOBA",
+        "name": "Nacobbus aberrans sensu lato (NACOBA)",
+        "type": "Host"
+      },
+      {
+        "code": "GRAGLE",
+        "name": "Naupactus leucoloma (GRAGLE)",
+        "type": "Host"
+      },
+      {
+        "code": "OMPHAN",
+        "name": "Omphisa anastomosalis (OMPHAN)",
+        "type": "Host"
+      },
+      {
+        "code": "OPOGSC",
+        "name": "Opogona sacchari (OPOGSC)",
+        "type": "Host"
+      },
+      {
+        "code": "TSWV00",
+        "name": "Orthotospovirus tomatomaculae (TSWV00)",
+        "type": "Host"
+      },
+      {
+        "code": "PHAIBA",
+        "name": "Passalora bataticola (PHAIBA)",
+        "type": "Host"
+      },
+      {
+        "code": "PHENMK",
+        "name": "Phenacoccus miruku (PHENMK)",
+        "type": "Host"
+      },
+      {
+        "code": "PHMPOM",
+        "name": "Phymatotrichopsis omnivora (PHMPOM)",
+        "type": "Host"
+      },
+      {
+        "code": "PLANKE",
+        "name": "Planococcus kenyae (PLANKE)",
+        "type": "Host"
+      },
+      {
+        "code": "PLSOCO",
+        "name": "Plesiommata corniculata (PLSOCO)",
+        "type": "Host"
+      },
+      {
+        "code": "POOPCO",
+        "name": "Poophilus costalis (POOPCO)",
+        "type": "Host"
+      },
+      {
+        "code": "PSTVD0",
+        "name": "Pospiviroid fusituberis (PSTVD0)",
+        "type": "Host"
+      },
+      {
+        "code": "PSEAPE",
+        "name": "Pseudaulacaspis pentagona (as Ipomoea) (PSEAPE)",
+        "type": "Host"
+      },
+      {
+        "code": "RALSPS",
+        "name": "Ralstonia pseudosolanacearum (RALSPS)",
+        "type": "Host"
+      },
+      {
+        "code": "RALSSO",
+        "name": "Ralstonia solanacearum species complex (RALSSO)",
+        "type": "Host"
+      },
+      {
+        "code": "RHSMLA",
+        "name": "Rhyssomatus landeiroi (RHSMLA)",
+        "type": "Host"
+      },
+      {
+        "code": "RHSMSC",
+        "name": "Rhyssomatus sculpturatus (RHSMSC)",
+        "type": "Host"
+      },
+      {
+        "code": "ROTYRE",
+        "name": "Rotylenchulus reniformis (ROTYRE)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODER",
+        "name": "Spodoptera eridania (PRODER)",
+        "type": "Host"
+      },
+      {
+        "code": "LAPHFR",
+        "name": "Spodoptera frugiperda (LAPHFR)",
+        "type": "Host"
+      },
+      {
+        "code": "SPODLI",
+        "name": "Spodoptera littoralis (SPODLI)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODLI",
+        "name": "Spodoptera litura (PRODLI)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODOR",
+        "name": "Spodoptera ornithogalli (PRODOR)",
+        "type": "Host"
+      },
+      {
+        "code": "STREIP",
+        "name": "Streptomyces ipomoeae (STREIP)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYP40",
+        "name": "Sweet potato witches' broom phytoplasma (PHYP40)",
+        "type": "Host"
+      },
+      {
+        "code": "TETREV",
+        "name": "Tetranychus evansi (TETREV)",
+        "type": "Host"
+      },
+      {
+        "code": "THRIPL",
+        "name": "Thrips palmi (THRIPL)",
+        "type": "Host"
+      },
+      {
+        "code": "XIPHCA",
+        "name": "Xiphinema californicum (XIPHCA)",
+        "type": "Host"
+      }
+    ]
+  },
+  "gbif": {
+    "key": 2928551,
+    "url": "https://www.gbif.org/species/2928551",
+    "scientificName": "Ipomoea batatas (L.) Lam.",
+    "canonicalName": "Ipomoea batatas",
+    "family": "Convolvulaceae",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "matchType": "EXACT",
+    "confidence": 99
+  }
+}

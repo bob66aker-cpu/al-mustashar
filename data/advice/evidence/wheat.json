@@ -1,0 +1,459 @@
+{
+  "schema": 1,
+  "crop_id": "wheat",
+  "generated_by": "scripts/advice-harvest.mjs",
+  "fetched_at": "2026-10-14",
+  "candidate": {
+    "ar": "القمح",
+    "en": "Wheat",
+    "fr": "Blé",
+    "sci_expected": "Triticum aestivum"
+  },
+  "eppo": {
+    "code": "TRZAX",
+    "overview_url": "https://gd.eppo.int/taxon/TRZAX",
+    "overview_title": "Triticum aestivum subsp. aestivum (TRZAX)",
+    "pests_url": "https://gd.eppo.int/taxon/TRZAX/pests",
+    "http_status": 200,
+    "pests_total_rows": 89,
+    "by_type": {
+      "Doubtful host": 1,
+      "Experimental": 4,
+      "Host": 53,
+      "Major host": 31
+    },
+    "pests": [
+      {
+        "code": "ANGUTR",
+        "name": "Anguina tritici (ANGUTR)",
+        "type": "Major host"
+      },
+      {
+        "code": "BYSMV0",
+        "name": "Betacytorhabdovirus hordei (BYSMV0)",
+        "type": "Major host"
+      },
+      {
+        "code": "WYLV00",
+        "name": "Closterovirus flavitritici (WYLV00)",
+        "type": "Major host"
+      },
+      {
+        "code": "CONTTR",
+        "name": "Contarinia tritici (CONTTR)",
+        "type": "Major host"
+      },
+      {
+        "code": "HYLECO",
+        "name": "Delia coarctata (HYLECO)",
+        "type": "Major host"
+      },
+      {
+        "code": "DIABSC",
+        "name": "Diabrotica speciosa (DIABSC)",
+        "type": "Major host"
+      },
+      {
+        "code": "BRAYNO",
+        "name": "Diuraphis noxia (BRAYNO)",
+        "type": "Major host"
+      },
+      {
+        "code": "EURYIN",
+        "name": "Eurygaster integriceps (EURYIN)",
+        "type": "Major host"
+      },
+      {
+        "code": "WCHMV0",
+        "name": "Furovirus chinense (WCHMV0)",
+        "type": "Major host"
+      },
+      {
+        "code": "HAPLTR",
+        "name": "Haplothrips tritici (HAPLTR)",
+        "type": "Major host"
+      },
+      {
+        "code": "HETDLA",
+        "name": "Heterodera latipons (HETDLA)",
+        "type": "Major host"
+      },
+      {
+        "code": "LIMOCF",
+        "name": "Limonius californicus (LIMOCF)",
+        "type": "Major host"
+      },
+      {
+        "code": "HYROBO",
+        "name": "Listronotus bonariensis (HYROBO)",
+        "type": "Major host"
+      },
+      {
+        "code": "BYDVM0",
+        "name": "Luteovirus mavhordei (BYDVM0)",
+        "type": "Major host"
+      },
+      {
+        "code": "BYDVP0",
+        "name": "Luteovirus pavhordei (BYDVP0)",
+        "type": "Major host"
+      },
+      {
+        "code": "MAYEDE",
+        "name": "Mayetiola destructor (MAYEDE)",
+        "type": "Major host"
+      },
+      {
+        "code": "MELGNA",
+        "name": "Meloidogyne naasi (MELGNA)",
+        "type": "Major host"
+      },
+      {
+        "code": "NYSIHU",
+        "name": "Nysius huttoni (NYSIHU)",
+        "type": "Major host"
+      },
+      {
+        "code": "HEMELE",
+        "name": "Orgyia leucostigma (as Triticum) (HEMELE)",
+        "type": "Major host"
+      },
+      {
+        "code": "LEMAME",
+        "name": "Oulema melanopus (LEMAME)",
+        "type": "Major host"
+      },
+      {
+        "code": "PYRIOR",
+        "name": "Pyricularia oryzae (PYRIOR)",
+        "type": "Major host"
+      },
+      {
+        "code": "PYRIOT",
+        "name": "Pyricularia oryzae Triticum lineage (PYRIOT)",
+        "type": "Major host"
+      },
+      {
+        "code": "CORBRA",
+        "name": "Rathayibacter rathayi (CORBRA)",
+        "type": "Major host"
+      },
+      {
+        "code": "SITDMO",
+        "name": "Sitodiplosis mosellana (SITDMO)",
+        "type": "Major host"
+      },
+      {
+        "code": "EWSMV0",
+        "name": "Tenuivirus eurotritici (EWSMV0)",
+        "type": "Major host"
+      },
+      {
+        "code": "TILLCO",
+        "name": "Tilletia controversa (TILLCO)",
+        "type": "Major host"
+      },
+      {
+        "code": "NEOVIN",
+        "name": "Tilletia indica (NEOVIN)",
+        "type": "Major host"
+      },
+      {
+        "code": "TRIHVI",
+        "name": "Trichodorus viruliferus (TRIHVI)",
+        "type": "Major host"
+      },
+      {
+        "code": "TROGGA",
+        "name": "Trogoderma granarium (TROGGA)",
+        "type": "Major host"
+      },
+      {
+        "code": "WYS000",
+        "name": "Wheat yellowing stripe agent (WYS000)",
+        "type": "Major host"
+      },
+      {
+        "code": "XANTTU",
+        "name": "Xanthomonas translucens pv. undulosa (XANTTU)",
+        "type": "Major host"
+      },
+      {
+        "code": "AGMYOR",
+        "name": "Agromyza oryzae (AGMYOR)",
+        "type": "Host"
+      },
+      {
+        "code": "ATHEOZ",
+        "name": "Atherigona oryzae (ATHEOZ)",
+        "type": "Host"
+      },
+      {
+        "code": "ATHEOZ",
+        "name": "Atherigona oryzae (as Triticum) (ATHEOZ)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYPSO",
+        "name": "'Candidatus Phytoplasma solani' (PHYPSO)",
+        "type": "Host"
+      },
+      {
+        "code": "CICDMB",
+        "name": "Cicadulina mbila (as Triticum) (CICDMB)",
+        "type": "Host"
+      },
+      {
+        "code": "CLAVPU",
+        "name": "Claviceps purpurea (as Triticum) (CLAVPU)",
+        "type": "Host"
+      },
+      {
+        "code": "CUERCO",
+        "name": "Cuerna costalis (CUERCO)",
+        "type": "Host"
+      },
+      {
+        "code": "CORBFL",
+        "name": "Curtobacterium flaccumfaciens pv. flaccumfaciens (CORBFL)",
+        "type": "Host"
+      },
+      {
+        "code": "HYLEAR",
+        "name": "Delia arambourgi (as Triticum) (HYLEAR)",
+        "type": "Host"
+      },
+      {
+        "code": "DIABLO",
+        "name": "Diabrotica barberi (DIABLO)",
+        "type": "Host"
+      },
+      {
+        "code": "DIABUH",
+        "name": "Diabrotica undecimpunctata howardi (DIABUH)",
+        "type": "Host"
+      },
+      {
+        "code": "DITYDI",
+        "name": "Ditylenchus dipsaci (DITYDI)",
+        "type": "Host"
+      },
+      {
+        "code": "ELASLI",
+        "name": "Elasmopalpus lignosellus (ELASLI)",
+        "type": "Host"
+      },
+      {
+        "code": "WHPV00",
+        "name": "Emaravirus tritici (WHPV00)",
+        "type": "Host"
+      },
+      {
+        "code": "EPILSI",
+        "name": "Epilachna similis similis (as Triticum) (EPILSI)",
+        "type": "Host"
+      },
+      {
+        "code": "ERWIRH",
+        "name": "Erwinia rhapontici (ERWIRH)",
+        "type": "Host"
+      },
+      {
+        "code": "MRCV00",
+        "name": "Fijivirus cuartoense (MRCV00)",
+        "type": "Host"
+      },
+      {
+        "code": "SBWMV0",
+        "name": "Furovirus tritici (as Triticum) (SBWMV0)",
+        "type": "Host"
+      },
+      {
+        "code": "HELIAR",
+        "name": "Helicoverpa armigera (HELIAR)",
+        "type": "Host"
+      },
+      {
+        "code": "HELIZE",
+        "name": "Helicoverpa zea (HELIZE)",
+        "type": "Host"
+      },
+      {
+        "code": "HETDZE",
+        "name": "Heterodera zeae (HETDZE)",
+        "type": "Host"
+      },
+      {
+        "code": "BSMV00",
+        "name": "Hordeivirus hordei (BSMV00)",
+        "type": "Host"
+      },
+      {
+        "code": "LAGRVL",
+        "name": "Lagria villosa (LAGRVL)",
+        "type": "Host"
+      },
+      {
+        "code": "CALGMA",
+        "name": "Laodelphax striatellus (CALGMA)",
+        "type": "Host"
+      },
+      {
+        "code": "LEPOQU",
+        "name": "Lepyronia quadrangularis (LEPOQU)",
+        "type": "Host"
+      },
+      {
+        "code": "LIRIHU",
+        "name": "Liriomyza huidobrensis (LIRIHU)",
+        "type": "Host"
+      },
+      {
+        "code": "MELNCO",
+        "name": "Melanotus communis (MELNCO)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGCH",
+        "name": "Meloidogyne chitwoodi (MELGCH)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGCH",
+        "name": "Meloidogyne chitwoodi (as Triticum) (MELGCH)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGFA",
+        "name": "Meloidogyne fallax (MELGFA)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGGC",
+        "name": "Meloidogyne graminicola (MELGGC)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGLC",
+        "name": "Meloidogyne luci (MELGLC)",
+        "type": "Host"
+      },
+      {
+        "code": "PSEDSE",
+        "name": "Mythimna separata (PSEDSE)",
+        "type": "Host"
+      },
+      {
+        "code": "NAUPXA",
+        "name": "Naupactus xanthographus (NAUPXA)",
+        "type": "Host"
+      },
+      {
+        "code": "PLSOMO",
+        "name": "Plesiommata mollicella (PLSOMO)",
+        "type": "Host"
+      },
+      {
+        "code": "PORPTR",
+        "name": "Porphyrophora tritici (PORPTR)",
+        "type": "Host"
+      },
+      {
+        "code": "PUCCGR",
+        "name": "Puccinia graminis (as Triticum) (PUCCGR)",
+        "type": "Host"
+      },
+      {
+        "code": "PYRIOR",
+        "name": "Pyricularia oryzae (as Triticum) (PYRIOR)",
+        "type": "Host"
+      },
+      {
+        "code": "REPTPA",
+        "name": "Reptalus panzeri (REPTPA)",
+        "type": "Host"
+      },
+      {
+        "code": "SCPHMA",
+        "name": "Sclerophthora macrospora (as Triticum) (SCPHMA)",
+        "type": "Host"
+      },
+      {
+        "code": "SESACA",
+        "name": "Sesamia calamistis (SESACA)",
+        "type": "Host"
+      },
+      {
+        "code": "SESACR",
+        "name": "Sesamia cretica (SESACR)",
+        "type": "Host"
+      },
+      {
+        "code": "SITDMO",
+        "name": "Sitodiplosis mosellana (as Triticum) (SITDMO)",
+        "type": "Host"
+      },
+      {
+        "code": "LAPHFR",
+        "name": "Spodoptera frugiperda (LAPHFR)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODOR",
+        "name": "Spodoptera ornithogalli (PRODOR)",
+        "type": "Host"
+      },
+      {
+        "code": "TAPARU",
+        "name": "Tapajosa rubromarginata (TAPARU)",
+        "type": "Host"
+      },
+      {
+        "code": "EWSMV0",
+        "name": "Tenuivirus eurotritici (as Triticum) (EWSMV0)",
+        "type": "Host"
+      },
+      {
+        "code": "MSPV00",
+        "name": "Tenuivirus zeae (as Triticum) (MSPV00)",
+        "type": "Host"
+      },
+      {
+        "code": "TILLCA",
+        "name": "Tilletia caries (as Triticum) (TILLCA)",
+        "type": "Host"
+      },
+      {
+        "code": "TILLCO",
+        "name": "Tilletia controversa (as Triticum) (TILLCO)",
+        "type": "Host"
+      },
+      {
+        "code": "UROCAG",
+        "name": "Urocystis agropyri (as Triticum) (UROCAG)",
+        "type": "Host"
+      },
+      {
+        "code": "XANTPC",
+        "name": "Xanthomonas prunicola (XANTPC)",
+        "type": "Host"
+      },
+      {
+        "code": "XANTTR",
+        "name": "Xanthomonas translucens pv. translucens (XANTTR)",
+        "type": "Host"
+      }
+    ]
+  },
+  "gbif": {
+    "key": 7795888,
+    "url": "https://www.gbif.org/species/7795888",
+    "scientificName": "Triticum aestivum L.",
+    "canonicalName": "Triticum aestivum",
+    "family": "Poaceae",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "matchType": "EXACT",
+    "confidence": 99
+  }
+}

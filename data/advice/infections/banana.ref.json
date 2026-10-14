@@ -1,0 +1,278 @@
+{
+  "schema": 1,
+  "crop_id": "banana",
+  "generated_by": "scripts/advice-generate.mjs",
+  "built": "2026-10-14",
+  "others": [
+    {
+      "type": "bacterium",
+      "code": "PHYPNO",
+      "name": "'Candidatus Phytoplasma noviguineense' (as Musa)",
+      "host": "Major host"
+    },
+    {
+      "type": "fungus",
+      "code": "FUSAC4",
+      "name": "Fusarium oxysporum f. sp. cubense Tropical race 4",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "OPOGSC",
+      "name": "Opogona sacchari",
+      "host": "Major host"
+    },
+    {
+      "type": "bacterium",
+      "code": "RALSSY",
+      "name": "Ralstonia syzygii (as Musa)",
+      "host": "Major host"
+    },
+    {
+      "type": "bacterium",
+      "code": "RALSSC",
+      "name": "Ralstonia syzygii subsp. celebesensis (as Musa)",
+      "host": "Major host"
+    },
+    {
+      "type": "bacterium",
+      "code": "XANTMU",
+      "name": "Xanthomonas vasicola pv. musacearum (as Musa)",
+      "host": "Major host"
+    },
+    {
+      "type": "insect",
+      "code": "ALEDDU",
+      "name": "Aleurodicus dugesii (as Musa)",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "AMBPLU",
+      "name": "Amblypelta lutescens",
+      "host": "Host"
+    },
+    {
+      "type": "virus",
+      "code": "BBTV00",
+      "name": "Babuvirus musae",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "BCTRCO",
+      "name": "Bactrocera correcta",
+      "host": "Host"
+    },
+    {
+      "type": "mite",
+      "code": "BRVPAZ",
+      "name": "Brevipalpus azores (as Musa)",
+      "host": "Host"
+    },
+    {
+      "type": "mite",
+      "code": "BRVPYO",
+      "name": "Brevipalpus yothersi (as Musa)",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "CERTAN",
+      "name": "Ceratitis anonae",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "VINSST",
+      "name": "Ceroplastes stellifer",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "SCITSI",
+      "name": "Chaetanaphothrips signipennis (as Musa)",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "CHRYFI",
+      "name": "Chrysomphalus aonidum",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "COLAHY",
+      "name": "Colaspis hypochlora (as Musa)",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "COTMAY",
+      "name": "Corythauma ayyari (as Musa)",
+      "host": "Host"
+    },
+    {
+      "type": "fungus",
+      "code": "GIBBCI",
+      "name": "Fusarium circinatum",
+      "host": "Host"
+    },
+    {
+      "type": "fungus",
+      "code": "GIBBFU",
+      "name": "Fusarium fujikuroi (as Ananas)",
+      "host": "Host"
+    },
+    {
+      "type": "fungus",
+      "code": "FUSACB",
+      "name": "Fusarium oxysporum f. sp. cubense (as Musa)",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "HERCBI",
+      "name": "Hercinothrips bicinctus (as Musa)",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "LACPCA",
+      "name": "Lachnopus campechianus (as Musa)",
+      "host": "Host"
+    },
+    {
+      "type": "fungus",
+      "code": "PHYORH",
+      "name": "Lasiodiplodia theobromae",
+      "host": "Host"
+    },
+    {
+      "type": "mollusc",
+      "code": "ACHAFU",
+      "name": "Lissachatina fulica (as Musa)",
+      "host": "Host"
+    },
+    {
+      "type": "nematode",
+      "code": "MELGEX",
+      "name": "Meloidogyne exigua (as Musa)",
+      "host": "Host"
+    },
+    {
+      "type": "nematode",
+      "code": "MELGGC",
+      "name": "Meloidogyne graminicola",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "METAHE",
+      "name": "Metamasius hemipterus (as Musa)",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "MCCTAB",
+      "name": "Microcephalothrips abdominalis (as Musa)",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "HEDYOC",
+      "name": "Nacoleia octasema (as Musa)",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "ODOILO",
+      "name": "Odoiporus longicollis (as Musa)",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "PAPUIN",
+      "name": "Papuana inermis (as Musa)",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "PAPUSE",
+      "name": "Papuana woodlarckiana (as Musa)",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "PARYMI",
+      "name": "Paraleyrodes minei",
+      "host": "Host"
+    },
+    {
+      "type": "nematode",
+      "code": "PRATCO",
+      "name": "Pratylenchus coffeae",
+      "host": "Host"
+    },
+    {
+      "type": "fungus",
+      "code": "MYCOFI",
+      "name": "Pseudocercospora fijiensis (as Musa)",
+      "host": "Host"
+    },
+    {
+      "type": "fungus",
+      "code": "PYRIOR",
+      "name": "Pyricularia oryzae (as Musa)",
+      "host": "Host"
+    },
+    {
+      "type": "nematode",
+      "code": "RADOSI",
+      "name": "Radopholus similis",
+      "host": "Host"
+    },
+    {
+      "type": "bacterium",
+      "code": "PSDMS2",
+      "name": "Ralstonia solanacearum race 2 (no longer in use) (as Musa)",
+      "host": "Host"
+    },
+    {
+      "type": "mite",
+      "code": "RAOIIN",
+      "name": "Raoiella indica",
+      "host": "Host"
+    },
+    {
+      "type": "nematode",
+      "code": "ROTYRE",
+      "name": "Rotylenchulus reniformis (as Musa)",
+      "host": "Host"
+    },
+    {
+      "type": "mite",
+      "code": "TETRME",
+      "name": "Tetranychus mexicanus",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "THRIHA",
+      "name": "Thrips hawaiiensis",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "TIRAPL",
+      "name": "Tiracola plagiata (as Musa)",
+      "host": "Host"
+    },
+    {
+      "type": "insect",
+      "code": "ZAPRIN",
+      "name": "Zaprionus indianus",
+      "host": "Host"
+    }
+  ]
+}

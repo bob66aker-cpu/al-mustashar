@@ -1,0 +1,194 @@
+{
+  "schema": 1,
+  "crop_id": "dates",
+  "generated_by": "scripts/advice-harvest.mjs",
+  "fetched_at": "2026-10-14",
+  "candidate": {
+    "ar": "التمور",
+    "en": "Dates",
+    "fr": "Dattier",
+    "sci_expected": "Phoenix dactylifera"
+  },
+  "eppo": {
+    "code": "PHXDA",
+    "overview_url": "https://gd.eppo.int/taxon/PHXDA",
+    "overview_title": "Phoenix dactylifera (PHXDA)",
+    "pests_url": "https://gd.eppo.int/taxon/PHXDA/pests",
+    "http_status": 200,
+    "pests_total_rows": 35,
+    "by_type": {
+      "Doubtful host": 3,
+      "Experimental": 1,
+      "Host": 25,
+      "Major host": 6
+    },
+    "pests": [
+      {
+        "code": "CEATVA",
+        "name": "Cerataphis brasiliensis (CEATVA)",
+        "type": "Major host"
+      },
+      {
+        "code": "DPBL00",
+        "name": "Date palm brittle leaf agent (DPBL00)",
+        "type": "Major host"
+      },
+      {
+        "code": "DIOCFR",
+        "name": "Diocalandra frumenti (DIOCFR)",
+        "type": "Major host"
+      },
+      {
+        "code": "FUSAAL",
+        "name": "Fusarium oxysporum f. sp. albedinis (FUSAAL)",
+        "type": "Major host"
+      },
+      {
+        "code": "RHYCFE",
+        "name": "Rhynchophorus ferrugineus (RHYCFE)",
+        "type": "Major host"
+      },
+      {
+        "code": "RHYCPA",
+        "name": "Rhynchophorus palmarum (RHYCPA)",
+        "type": "Major host"
+      },
+      {
+        "code": "ANSTSU",
+        "name": "Anastrepha suspensa (ANSTSU)",
+        "type": "Host"
+      },
+      {
+        "code": "DACUDO",
+        "name": "Bactrocera dorsalis (DACUDO)",
+        "type": "Host"
+      },
+      {
+        "code": "DACUTR",
+        "name": "Bactrocera tryoni (DACUTR)",
+        "type": "Host"
+      },
+      {
+        "code": "DACUZO",
+        "name": "Bactrocera zonata (DACUZO)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYPAC",
+        "name": "'Candidatus Phytoplasma aculeata' (PHYPAC)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYPFR",
+        "name": "'Candidatus Phytoplasma fraxini' (PHYPFR)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYPPA",
+        "name": "'Candidatus Phytoplasma palmae' (PHYPPA)",
+        "type": "Host"
+      },
+      {
+        "code": "CERTCA",
+        "name": "Ceratitis capitata (CERTCA)",
+        "type": "Host"
+      },
+      {
+        "code": "FIORCO",
+        "name": "Fiorinia phantasma (FIORCO)",
+        "type": "Host"
+      },
+      {
+        "code": "MYNDCR",
+        "name": "Haplaxius crudus (MYNDCR)",
+        "type": "Host"
+      },
+      {
+        "code": "PHENHI",
+        "name": "Maconellicoccus hirsutus (PHENHI)",
+        "type": "Host"
+      },
+      {
+        "code": "OPOGSC",
+        "name": "Opogona sacchari (as Phoenix) (OPOGSC)",
+        "type": "Host"
+      },
+      {
+        "code": "ORYCBO",
+        "name": "Oryctes boas (ORYCBO)",
+        "type": "Host"
+      },
+      {
+        "code": "ORYCMO",
+        "name": "Oryctes monoceros (ORYCMO)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYP56",
+        "name": "Palm lethal yellowing type syndromes (PHYP56)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYP56",
+        "name": "Palm lethal yellowing type syndromes (as Phoenix) (PHYP56)",
+        "type": "Host"
+      },
+      {
+        "code": "PAYSAR",
+        "name": "Paysandisia archon (PAYSAR)",
+        "type": "Host"
+      },
+      {
+        "code": "RADOSI",
+        "name": "Radopholus similis (RADOSI)",
+        "type": "Host"
+      },
+      {
+        "code": "RAOIIN",
+        "name": "Raoiella indica (RAOIIN)",
+        "type": "Host"
+      },
+      {
+        "code": "RHYCPH",
+        "name": "Rhynchophorus phoenicis (RHYCPH)",
+        "type": "Host"
+      },
+      {
+        "code": "RHIOHI",
+        "name": "Ripersiella hibisci (as Phoenix) (RHIOHI)",
+        "type": "Host"
+      },
+      {
+        "code": "SCITCI",
+        "name": "Scirtothrips citri (SCITCI)",
+        "type": "Host"
+      },
+      {
+        "code": "SERRMA",
+        "name": "Serratia marcescens (SERRMA)",
+        "type": "Host"
+      },
+      {
+        "code": "TETREV",
+        "name": "Tetranychus evansi (TETREV)",
+        "type": "Host"
+      },
+      {
+        "code": "ZAPRIN",
+        "name": "Zaprionus indianus (ZAPRIN)",
+        "type": "Host"
+      }
+    ]
+  },
+  "gbif": {
+    "key": 6109699,
+    "url": "https://www.gbif.org/species/6109699",
+    "scientificName": "Phoenix dactylifera L.",
+    "canonicalName": "Phoenix dactylifera",
+    "family": "Arecaceae",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "matchType": "EXACT",
+    "confidence": 100
+  }
+}

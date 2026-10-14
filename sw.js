@@ -1,6 +1,14 @@
 /*
  * sw.js — المستشار الزراعي (v29)
  *
+ * v63 (2026-10-14) — جولة D61 «مسار الإصابات» (نبات ← نوع ← إصابة مرقّمة):
+ *   68 محصولاً في شبكة الإرشاد مع بحث، وخطوة «نوع الإصابة» الجديدة،
+ *   766 بطاقة مرقّمة (مظاهر + علاج) من 30 ديواناً مُسنَداً في
+ *   data/advice/dossiers.json، ونواة كل محصول في data/advice/infections/
+ *   تُجهَّز مع القشرة (تعمل دون إنترنت من أول تشغيل)؛ القوائم المرجعية
+ *   الكبيرة (*.ref.json) تُحمَّل عند الطلب وتُخزَّن في الكاش.
+ *   الإصدار 1.19.27 — الحارس ppocr-size يرى 69 مدخلاً مُعلَناً في
+ *   DECLARED_ADDED.SHELL (لا إضافة صامتة)، والميّز D61 في docs/DECISIONS.md.
  * v61 (2026-10-12) — جولة «نفّذ كل الاقتراحات»: النواة غير الداعمة لـSIMD
  *   غادرت حزمة التجهيز الافتراضية (‎−6.5MB؛ تُحمَّل عند الطلب ثم تُحفظ في
  *   كاش OCR الدائم عبر isOcrUrl)، والمصدر الوحيد للنسخة صار
@@ -187,7 +195,7 @@
  * Personal data (IndexedDB history, theme, app version note) lives outside
  * the caches and is never touched by this worker.
  */
-const CACHE = 'mustashar-v62';
+const CACHE = 'mustashar-v63';
 const OCR_CACHE = 'mustashar-ocr';
 
 /* 1.7 — safe cache write: a full storage quota (QuotaExceededError) must
@@ -232,6 +240,76 @@ const SHELL = [
   './data/advice/barley.json',
   './data/advice/dates.json',
   './data/advice/alfalfa.json',
+  /* D61 — دواوين + نوى الإصابات: تُجهَّز مع القشرة (69 مدخلاً مُعلَناً) */
+  './data/advice/dossiers.json',
+  './data/advice/infections/alfalfa.json',
+  './data/advice/infections/almond.json',
+  './data/advice/infections/apple.json',
+  './data/advice/infections/apricot.json',
+  './data/advice/infections/avocado.json',
+  './data/advice/infections/banana.json',
+  './data/advice/infections/barley.json',
+  './data/advice/infections/bean.json',
+  './data/advice/infections/cabbage.json',
+  './data/advice/infections/carrot.json',
+  './data/advice/infections/cassava.json',
+  './data/advice/infections/cauliflower.json',
+  './data/advice/infections/cherry.json',
+  './data/advice/infections/chickpea.json',
+  './data/advice/infections/citrus.json',
+  './data/advice/infections/cocoa.json',
+  './data/advice/infections/coconut.json',
+  './data/advice/infections/coffee.json',
+  './data/advice/infections/cotton.json',
+  './data/advice/infections/cowpea.json',
+  './data/advice/infections/cucumber.json',
+  './data/advice/infections/dates.json',
+  './data/advice/infections/eggplant.json',
+  './data/advice/infections/fig.json',
+  './data/advice/infections/garlic.json',
+  './data/advice/infections/grape.json',
+  './data/advice/infections/groundnut.json',
+  './data/advice/infections/lentil.json',
+  './data/advice/infections/lettuce.json',
+  './data/advice/infections/maize.json',
+  './data/advice/infections/mango.json',
+  './data/advice/infections/melon.json',
+  './data/advice/infections/millet.json',
+  './data/advice/infections/oat.json',
+  './data/advice/infections/oilpalm.json',
+  './data/advice/infections/okra.json',
+  './data/advice/infections/olive.json',
+  './data/advice/infections/onion.json',
+  './data/advice/infections/papaya.json',
+  './data/advice/infections/pea.json',
+  './data/advice/infections/peach.json',
+  './data/advice/infections/pear.json',
+  './data/advice/infections/pepper.json',
+  './data/advice/infections/pigeonpea.json',
+  './data/advice/infections/pineapple.json',
+  './data/advice/infections/pistachio.json',
+  './data/advice/infections/plum.json',
+  './data/advice/infections/pomegranate.json',
+  './data/advice/infections/potato.json',
+  './data/advice/infections/pumpkin.json',
+  './data/advice/infections/rapeseed.json',
+  './data/advice/infections/rice.json',
+  './data/advice/infections/rye.json',
+  './data/advice/infections/sesame.json',
+  './data/advice/infections/sorghum.json',
+  './data/advice/infections/soybean.json',
+  './data/advice/infections/spinach.json',
+  './data/advice/infections/strawberry.json',
+  './data/advice/infections/sugarbeet.json',
+  './data/advice/infections/sugarcane.json',
+  './data/advice/infections/sunflower.json',
+  './data/advice/infections/sweetpotato.json',
+  './data/advice/infections/tea.json',
+  './data/advice/infections/tobacco.json',
+  './data/advice/infections/tomato.json',
+  './data/advice/infections/walnut.json',
+  './data/advice/infections/watermelon.json',
+  './data/advice/infections/wheat.json',
   './assets/fonts/LICENSE-OFL-IBM-Plex-Sans-Arabic.txt',
   './assets/icons/LICENSE-LUCIDE-ISC.txt',
   './assets/developer.jpg',

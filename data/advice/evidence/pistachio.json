@@ -1,0 +1,133 @@
+{
+  "schema": 1,
+  "crop_id": "pistachio",
+  "generated_by": "scripts/advice-harvest.mjs",
+  "fetched_at": "2026-10-14",
+  "candidate": {
+    "ar": "الفستق الحلبي",
+    "en": "Pistachio",
+    "fr": "Pistache",
+    "sci_expected": "Pistacia vera"
+  },
+  "eppo": {
+    "code": "PIAVE",
+    "overview_url": "https://gd.eppo.int/taxon/PIAVE",
+    "overview_title": "Pistacia vera (PIAVE)",
+    "pests_url": "https://gd.eppo.int/taxon/PIAVE/pests",
+    "http_status": 200,
+    "pests_total_rows": 20,
+    "by_type": {
+      "Doubtful host": 1,
+      "Host": 17,
+      "Major host": 2
+    },
+    "pests": [
+      {
+        "code": "EURTPL",
+        "name": "Eurytoma plotnikovi (EURTPL)",
+        "type": "Major host"
+      },
+      {
+        "code": "CORBFA",
+        "name": "Rhodococcus fascians (CORBFA)",
+        "type": "Major host"
+      },
+      {
+        "code": "ALECSN",
+        "name": "Aleurocanthus spiniferus (ALECSN)",
+        "type": "Host"
+      },
+      {
+        "code": "BISCRO",
+        "name": "Biscogniauxia rosacearum (BISCRO)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYPSO",
+        "name": "'Candidatus Phytoplasma solani' (PHYPSO)",
+        "type": "Host"
+      },
+      {
+        "code": "CHONRO",
+        "name": "Choristoneura rosaceana (CHONRO)",
+        "type": "Host"
+      },
+      {
+        "code": "CBCVD0",
+        "name": "Cocadviroid rimocitri (CBCVD0)",
+        "type": "Host"
+      },
+      {
+        "code": "ROSLNE",
+        "name": "Dematophora necatrix (ROSLNE)",
+        "type": "Host"
+      },
+      {
+        "code": "EUTYLA",
+        "name": "Eutypa lata (EUTYLA)",
+        "type": "Host"
+      },
+      {
+        "code": "HALYHA",
+        "name": "Halyomorpha halys (HALYHA)",
+        "type": "Host"
+      },
+      {
+        "code": "HSVD00",
+        "name": "Hostuviroid impedihumuli (HSVD00)",
+        "type": "Host"
+      },
+      {
+        "code": "MALAPA",
+        "name": "Malacosoma parallela (MALAPA)",
+        "type": "Host"
+      },
+      {
+        "code": "PHMPOM",
+        "name": "Phymatotrichopsis omnivora (PHMPOM)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYTCR",
+        "name": "Phytophthora cryptogea (PHYTCR)",
+        "type": "Host"
+      },
+      {
+        "code": "TROGGA",
+        "name": "Trogoderma granarium (TROGGA)",
+        "type": "Host"
+      },
+      {
+        "code": "VERTDA",
+        "name": "Verticillium dahliae (VERTDA)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLEFA",
+        "name": "Xylella fastidiosa (XYLEFA)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLEFM",
+        "name": "Xylella fastidiosa subsp. multiplex (XYLEFM)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLEFP",
+        "name": "Xylella fastidiosa subsp. pauca (XYLEFP)",
+        "type": "Host"
+      }
+    ]
+  },
+  "gbif": {
+    "key": 3190585,
+    "url": "https://www.gbif.org/species/3190585",
+    "scientificName": "Pistacia vera L.",
+    "canonicalName": "Pistacia vera",
+    "family": "Anacardiaceae",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "matchType": "EXACT",
+    "confidence": 99
+  }
+}

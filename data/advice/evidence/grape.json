@@ -1,0 +1,1035 @@
+{
+  "schema": 1,
+  "crop_id": "grape",
+  "generated_by": "scripts/advice-harvest.mjs",
+  "fetched_at": "2026-10-14",
+  "candidate": {
+    "ar": "العنب",
+    "en": "Grape",
+    "fr": "Vigne",
+    "sci_expected": "Vitis vinifera"
+  },
+  "eppo": {
+    "code": "VITVI",
+    "overview_url": "https://gd.eppo.int/taxon/VITVI",
+    "overview_title": "Vitis vinifera (VITVI)",
+    "pests_url": "https://gd.eppo.int/taxon/VITVI/pests",
+    "http_status": 200,
+    "pests_total_rows": 209,
+    "by_type": {
+      "Doubtful host": 5,
+      "Experimental": 3,
+      "Host": 135,
+      "Major host": 64,
+      "Non-host": 2
+    },
+    "pests": [
+      {
+        "code": "AGRBTU",
+        "name": "Agrobacterium tumefaciens (AGRBTU)",
+        "type": "Major host"
+      },
+      {
+        "code": "GLRAV4",
+        "name": "Ampelovirus tetravitis (GLRAV4)",
+        "type": "Major host"
+      },
+      {
+        "code": "GLRV13",
+        "name": "Ampelovirus tredecimvitis (GLRV13)",
+        "type": "Major host"
+      },
+      {
+        "code": "GLRAV3",
+        "name": "Ampelovirus trivitis (GLRAV3)",
+        "type": "Major host"
+      },
+      {
+        "code": "GLRAV1",
+        "name": "Ampelovirus univitis (GLRAV1)",
+        "type": "Major host"
+      },
+      {
+        "code": "ANTSOI",
+        "name": "Antispila oinophylla (ANTSOI)",
+        "type": "Major host"
+      },
+      {
+        "code": "APHIIL",
+        "name": "Aphis illinoisensis (APHIIL)",
+        "type": "Major host"
+      },
+      {
+        "code": "GYSVD2",
+        "name": "Apscaviroid betaflavivitis (as Vitis) (GYSVD2)",
+        "type": "Major host"
+      },
+      {
+        "code": "ARBOKA",
+        "name": "Arboridia kakogawana (ARBOKA)",
+        "type": "Major host"
+      },
+      {
+        "code": "GRIDAV",
+        "name": "Badnavirus decoloratiovitis (GRIDAV)",
+        "type": "Major host"
+      },
+      {
+        "code": "GVCV00",
+        "name": "Badnavirus venavitis (GVCV00)",
+        "type": "Major host"
+      },
+      {
+        "code": "BRVPLE",
+        "name": "Brevipalpus lewisi (BRVPLE)",
+        "type": "Major host"
+      },
+      {
+        "code": "PHYPAU",
+        "name": "'Candidatus Phytoplasma australiense' (PHYPAU)",
+        "type": "Major host"
+      },
+      {
+        "code": "PHYPSO",
+        "name": "'Candidatus Phytoplasma solani' (PHYPSO)",
+        "type": "Major host"
+      },
+      {
+        "code": "GLRAV2",
+        "name": "Closterovirus vitis (GLRAV2)",
+        "type": "Major host"
+      },
+      {
+        "code": "CONLDI",
+        "name": "Coniella diplodiella (CONLDI)",
+        "type": "Major host"
+      },
+      {
+        "code": "VITEVI",
+        "name": "Daktulosphaira vitifoliae (VITEVI)",
+        "type": "Major host"
+      },
+      {
+        "code": "ERYTVU",
+        "name": "Erasmoneura vulnerata (ERYTVU)",
+        "type": "Major host"
+      },
+      {
+        "code": "CLYSAM",
+        "name": "Eupoecilia ambiguella (CLYSAM)",
+        "type": "Major host"
+      },
+      {
+        "code": "EURHBR",
+        "name": "Eurhizococcus brasiliensis (EURHBR)",
+        "type": "Major host"
+      },
+      {
+        "code": "EUTYLA",
+        "name": "Eutypa lata (EUTYLA)",
+        "type": "Major host"
+      },
+      {
+        "code": "GRBAV0",
+        "name": "Grablovirus vitis (GRBAV0)",
+        "type": "Major host"
+      },
+      {
+        "code": "GCBAV0",
+        "name": "Grapevine corky bark-associated virus (GCBAV0)",
+        "type": "Major host"
+      },
+      {
+        "code": "PHYP64",
+        "name": "Grapevine flavescence dorée phytoplasma (PHYP64)",
+        "type": "Major host"
+      },
+      {
+        "code": "GVIN00",
+        "name": "Grapevine infectious necrosis agent (GVIN00)",
+        "type": "Major host"
+      },
+      {
+        "code": "GRGV00",
+        "name": "Grapevine red globe virus (GRGV00)",
+        "type": "Major host"
+      },
+      {
+        "code": "GVVM00",
+        "name": "Grapevine vein mosaic agent (GVVM00)",
+        "type": "Major host"
+      },
+      {
+        "code": "GVVN00",
+        "name": "Grapevine vein necrosis agent (GVVN00)",
+        "type": "Major host"
+      },
+      {
+        "code": "GRCPAT",
+        "name": "Graphocephala atropunctata (GRCPAT)",
+        "type": "Major host"
+      },
+      {
+        "code": "POLYBO",
+        "name": "Lobesia botrana (POLYBO)",
+        "type": "Major host"
+      },
+      {
+        "code": "GFKV00",
+        "name": "Maculavirus vitis (GFKV00)",
+        "type": "Major host"
+      },
+      {
+        "code": "GAMAV0",
+        "name": "Marafivirus asteroides (GAMAV0)",
+        "type": "Major host"
+      },
+      {
+        "code": "MARGCA",
+        "name": "Margarodes capensis (MARGCA)",
+        "type": "Major host"
+      },
+      {
+        "code": "MARGGR",
+        "name": "Margarodes greeni (MARGGR)",
+        "type": "Major host"
+      },
+      {
+        "code": "MARGPR",
+        "name": "Margarodes prieskaensis (MARGPR)",
+        "type": "Major host"
+      },
+      {
+        "code": "MARGVI",
+        "name": "Margarodes vitis (MARGVI)",
+        "type": "Major host"
+      },
+      {
+        "code": "MARGVR",
+        "name": "Margarodes vredendalensis (MARGVR)",
+        "type": "Major host"
+      },
+      {
+        "code": "MELGET",
+        "name": "Meloidogyne ethiopica (MELGET)",
+        "type": "Major host"
+      },
+      {
+        "code": "NAUPXA",
+        "name": "Naupactus xanthographus (NAUPXA)",
+        "type": "Major host"
+      },
+      {
+        "code": "GBLV00",
+        "name": "Nepovirus bulgariense (GBLV00)",
+        "type": "Major host"
+      },
+      {
+        "code": "GCMV00",
+        "name": "Nepovirus chromusivum (GCMV00)",
+        "type": "Major host"
+      },
+      {
+        "code": "GFLV00",
+        "name": "Nepovirus foliumflabelli (GFLV00)",
+        "type": "Major host"
+      },
+      {
+        "code": "TRSV00",
+        "name": "Nepovirus nicotianae (TRSV00)",
+        "type": "Major host"
+      },
+      {
+        "code": "ONCMUN",
+        "name": "Oncometopia orbona (ONCMUN)",
+        "type": "Major host"
+      },
+      {
+        "code": "OTIOSU",
+        "name": "Otiorhynchus sulcatus (OTIOSU)",
+        "type": "Major host"
+      },
+      {
+        "code": "PHLYCA",
+        "name": "Phlyctinus callosus (PHLYCA)",
+        "type": "Major host"
+      },
+      {
+        "code": "PHYNVI",
+        "name": "Phyllocnistis vitegenella (PHYNVI)",
+        "type": "Major host"
+      },
+      {
+        "code": "GUIGBI",
+        "name": "Phyllosticta ampelicida (GUIGBI)",
+        "type": "Major host"
+      },
+      {
+        "code": "PHMPOM",
+        "name": "Phymatotrichopsis omnivora (PHMPOM)",
+        "type": "Major host"
+      },
+      {
+        "code": "PLAAST",
+        "name": "Platynota stultana (PLAAST)",
+        "type": "Major host"
+      },
+      {
+        "code": "POPIJA",
+        "name": "Popillia japonica (POPIJA)",
+        "type": "Major host"
+      },
+      {
+        "code": "PSECOB",
+        "name": "Pseudococcus viburni (PSECOB)",
+        "type": "Major host"
+      },
+      {
+        "code": "PSPZTR",
+        "name": "Pseudopeziza tracheiphila (PSPZTR)",
+        "type": "Major host"
+      },
+      {
+        "code": "RHCDVI",
+        "name": "Rhacodiella vitis (RHCDVI)",
+        "type": "Major host"
+      },
+      {
+        "code": "SEPTAM",
+        "name": "Septoria ampelina (SEPTAM)",
+        "type": "Major host"
+      },
+      {
+        "code": "ARGPLE",
+        "name": "Thaumatotibia leucotreta (ARGPLE)",
+        "type": "Major host"
+      },
+      {
+        "code": "GINV00",
+        "name": "Trichovirus necroacini (GINV00)",
+        "type": "Major host"
+      },
+      {
+        "code": "GPGV00",
+        "name": "Trichovirus pinovitis (GPGV00)",
+        "type": "Major host"
+      },
+      {
+        "code": "GVA000",
+        "name": "Vitivirus alphavitis (GVA000)",
+        "type": "Major host"
+      },
+      {
+        "code": "GVB000",
+        "name": "Vitivirus betavitis (GVB000)",
+        "type": "Major host"
+      },
+      {
+        "code": "XANTCV",
+        "name": "Xanthomonas citri pv. viticola (XANTCV)",
+        "type": "Major host"
+      },
+      {
+        "code": "XYLEFA",
+        "name": "Xylella fastidiosa (XYLEFA)",
+        "type": "Major host"
+      },
+      {
+        "code": "XANTAM",
+        "name": "Xylophilus ampelinus (XANTAM)",
+        "type": "Major host"
+      },
+      {
+        "code": "XYLOPY",
+        "name": "Xylotrechus pyrrhoderus (XYLOPY)",
+        "type": "Major host"
+      },
+      {
+        "code": "ACNLCO",
+        "name": "Acanalonia conica (as Vitis) (ACNLCO)",
+        "type": "Host"
+      },
+      {
+        "code": "ALECSN",
+        "name": "Aleurocanthus spiniferus (ALECSN)",
+        "type": "Host"
+      },
+      {
+        "code": "ALEDDI",
+        "name": "Aleurodicus dispersus (ALEDDI)",
+        "type": "Host"
+      },
+      {
+        "code": "AMV000",
+        "name": "Alfamovirus AMV (AMV000)",
+        "type": "Host"
+      },
+      {
+        "code": "ANSTFR",
+        "name": "Anastrepha fraterculus (ANSTFR)",
+        "type": "Host"
+      },
+      {
+        "code": "APHIIL",
+        "name": "Aphis illinoisensis (as Vitis) (APHIIL)",
+        "type": "Host"
+      },
+      {
+        "code": "APHRPE",
+        "name": "Aphrophora permutata (APHRPE)",
+        "type": "Host"
+      },
+      {
+        "code": "GYSVD2",
+        "name": "Apscaviroid betaflavivitis (GYSVD2)",
+        "type": "Host"
+      },
+      {
+        "code": "BCTRCO",
+        "name": "Bactrocera correcta (BCTRCO)",
+        "type": "Host"
+      },
+      {
+        "code": "DACUDO",
+        "name": "Bactrocera dorsalis (DACUDO)",
+        "type": "Host"
+      },
+      {
+        "code": "DACUTR",
+        "name": "Bactrocera tryoni (DACUTR)",
+        "type": "Host"
+      },
+      {
+        "code": "BISCRO",
+        "name": "Biscogniauxia rosacearum (BISCRO)",
+        "type": "Host"
+      },
+      {
+        "code": "BRVPAZ",
+        "name": "Brevipalpus azores (as Vitis) (BRVPAZ)",
+        "type": "Host"
+      },
+      {
+        "code": "BRVPAU",
+        "name": "Brevipalpus californicus (BRVPAU)",
+        "type": "Host"
+      },
+      {
+        "code": "BRVPYO",
+        "name": "Brevipalpus yothersi (BRVPYO)",
+        "type": "Host"
+      },
+      {
+        "code": "BRVPYO",
+        "name": "Brevipalpus yothersi (as Vitis) (BRVPYO)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYP77",
+        "name": "Buckland valley grapevine yellows phytoplasma (PHYP77)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYPAS",
+        "name": "'Candidatus Phytoplasma asteris' (PHYPAS)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYPFR",
+        "name": "'Candidatus Phytoplasma fraxini' (PHYPFR)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYPMA",
+        "name": "'Candidatus Phytoplasma mali' (PHYPMA)",
+        "type": "Host"
+      },
+      {
+        "code": "CERTCA",
+        "name": "Ceratitis capitata (CERTCA)",
+        "type": "Host"
+      },
+      {
+        "code": "CERPFL",
+        "name": "Ceroplastes floridensis (CERPFL)",
+        "type": "Host"
+      },
+      {
+        "code": "HELIVI",
+        "name": "Chloridea virescens (HELIVI)",
+        "type": "Host"
+      },
+      {
+        "code": "STERPU",
+        "name": "Chondrostereum purpureum (STERPU)",
+        "type": "Host"
+      },
+      {
+        "code": "COLLFC",
+        "name": "Colletotrichum fructicola (COLLFC)",
+        "type": "Host"
+      },
+      {
+        "code": "QUADPE",
+        "name": "Comstockaspis perniciosa (QUADPE)",
+        "type": "Host"
+      },
+      {
+        "code": "CRYBGN",
+        "name": "Cryptoblabes gnidiella (CRYBGN)",
+        "type": "Host"
+      },
+      {
+        "code": "CMV000",
+        "name": "Cucumovirus CMV (CMV000)",
+        "type": "Host"
+      },
+      {
+        "code": "CUERCO",
+        "name": "Cuerna costalis (CUERCO)",
+        "type": "Host"
+      },
+      {
+        "code": "ROSLNE",
+        "name": "Dematophora necatrix (ROSLNE)",
+        "type": "Host"
+      },
+      {
+        "code": "DIABVZ",
+        "name": "Diabrotica virgifera zeae (as Vitis) (DIABVZ)",
+        "type": "Host"
+      },
+      {
+        "code": "PHOMGL",
+        "name": "Didymella glomerata (PHOMGL)",
+        "type": "Host"
+      },
+      {
+        "code": "MARGME",
+        "name": "Dimargarodes meridionalis (MARGME)",
+        "type": "Host"
+      },
+      {
+        "code": "DITYDI",
+        "name": "Ditylenchus dipsaci (DITYDI)",
+        "type": "Host"
+      },
+      {
+        "code": "DRAEMI",
+        "name": "Draeculacephala minerva (DRAEMI)",
+        "type": "Host"
+      },
+      {
+        "code": "DROSSU",
+        "name": "Drosophila suzukii (DROSSU)",
+        "type": "Host"
+      },
+      {
+        "code": "EOTELE",
+        "name": "Eotetranychus lewisi (EOTELE)",
+        "type": "Host"
+      },
+      {
+        "code": "TORTPO",
+        "name": "Epiphyas postvittana (TORTPO)",
+        "type": "Host"
+      },
+      {
+        "code": "EUTEBA",
+        "name": "Eutetranychus banksi (EUTEBA)",
+        "type": "Host"
+      },
+      {
+        "code": "EUTEOR",
+        "name": "Eutetranychus orientalis (EUTEOR)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLBFO",
+        "name": "Euwallacea fornicatus sensu lato (XYLBFO)",
+        "type": "Host"
+      },
+      {
+        "code": "EUWAWH",
+        "name": "Euwallacea fornicatus sensu stricto (EUWAWH)",
+        "type": "Host"
+      },
+      {
+        "code": "FRANCS",
+        "name": "Frankliniella australis (FRANCS)",
+        "type": "Host"
+      },
+      {
+        "code": "FRANOC",
+        "name": "Frankliniella occidentalis (FRANOC)",
+        "type": "Host"
+      },
+      {
+        "code": "GRCPCF",
+        "name": "Graphocephala confluens (GRCPCF)",
+        "type": "Host"
+      },
+      {
+        "code": "HALYHA",
+        "name": "Halyomorpha halys (HALYHA)",
+        "type": "Host"
+      },
+      {
+        "code": "HELIZE",
+        "name": "Helicoverpa zea (HELIZE)",
+        "type": "Host"
+      },
+      {
+        "code": "HELOAN",
+        "name": "Helopeltis antonii (HELOAN)",
+        "type": "Host"
+      },
+      {
+        "code": "HETRAR",
+        "name": "Heteronychus arator (HETRAR)",
+        "type": "Host"
+      },
+      {
+        "code": "HISHHA",
+        "name": "Hishimonus hamatus (HISHHA)",
+        "type": "Host"
+      },
+      {
+        "code": "HOMLTR",
+        "name": "Homalodisca vitripennis (HOMLTR)",
+        "type": "Host"
+      },
+      {
+        "code": "HOMLTR",
+        "name": "Homalodisca vitripennis (as Vitis) (HOMLTR)",
+        "type": "Host"
+      },
+      {
+        "code": "HSVD00",
+        "name": "Hostuviroid impedihumuli (HSVD00)",
+        "type": "Host"
+      },
+      {
+        "code": "HYAEOB",
+        "name": "Hyalesthes obsoletus (HYAEOB)",
+        "type": "Host"
+      },
+      {
+        "code": "HYPHCU",
+        "name": "Hyphantria cunea (HYPHCU)",
+        "type": "Host"
+      },
+      {
+        "code": "RBDV00",
+        "name": "Idaeovirus rubi (RBDV00)",
+        "type": "Host"
+      },
+      {
+        "code": "EMPOLY",
+        "name": "Jacobiasca lybica (EMPOLY)",
+        "type": "Host"
+      },
+      {
+        "code": "PHYORH",
+        "name": "Lasiodiplodia theobromae (PHYORH)",
+        "type": "Host"
+      },
+      {
+        "code": "LOPLJA",
+        "name": "Lopholeucaspis japonica (LOPLJA)",
+        "type": "Host"
+      },
+      {
+        "code": "LYCMDE",
+        "name": "Lycorma delicatula (LYCMDE)",
+        "type": "Host"
+      },
+      {
+        "code": "PHENHI",
+        "name": "Maconellicoccus hirsutus (PHENHI)",
+        "type": "Host"
+      },
+      {
+        "code": "MALAPA",
+        "name": "Malacosoma parallela (as Vitis) (MALAPA)",
+        "type": "Host"
+      },
+      {
+        "code": "MARGTR",
+        "name": "Margarodes trimeni (MARGTR)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGCH",
+        "name": "Meloidogyne chitwoodi (MELGCH)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGLC",
+        "name": "Meloidogyne luci (MELGLC)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGMA",
+        "name": "Meloidogyne mali (MELGMA)",
+        "type": "Host"
+      },
+      {
+        "code": "MELGVI",
+        "name": "Meloidogyne vitis (MELGVI)",
+        "type": "Host"
+      },
+      {
+        "code": "MCCTAB",
+        "name": "Microcephalothrips abdominalis (MCCTAB)",
+        "type": "Host"
+      },
+      {
+        "code": "MONIFC",
+        "name": "Monilinia fructicola (MONIFC)",
+        "type": "Host"
+      },
+      {
+        "code": "PHLLAM",
+        "name": "Neophysopella euvitis (PHLLAM)",
+        "type": "Host"
+      },
+      {
+        "code": "ARMV00",
+        "name": "Nepovirus arabis (ARMV00)",
+        "type": "Host"
+      },
+      {
+        "code": "CLRV00",
+        "name": "Nepovirus avii (CLRV00)",
+        "type": "Host"
+      },
+      {
+        "code": "AILV00",
+        "name": "Nepovirus italiaense (AILV00)",
+        "type": "Host"
+      },
+      {
+        "code": "TORSV0",
+        "name": "Nepovirus lycopersici (TORSV0)",
+        "type": "Host"
+      },
+      {
+        "code": "BLMOV0",
+        "name": "Nepovirus myrtilli (BLMOV0)",
+        "type": "Host"
+      },
+      {
+        "code": "TBRV00",
+        "name": "Nepovirus nigranuli (TBRV00)",
+        "type": "Host"
+      },
+      {
+        "code": "PRMV00",
+        "name": "Nepovirus persicae (PRMV00)",
+        "type": "Host"
+      },
+      {
+        "code": "RPRSV0",
+        "name": "Nepovirus rubi (RPRSV0)",
+        "type": "Host"
+      },
+      {
+        "code": "OEMOHI",
+        "name": "Oemona hirta (OEMOHI)",
+        "type": "Host"
+      },
+      {
+        "code": "OLIGPA",
+        "name": "Oligonychus perseae (OLIGPA)",
+        "type": "Host"
+      },
+      {
+        "code": "OLIGPU",
+        "name": "Oligonychus punicae (OLIGPU)",
+        "type": "Host"
+      },
+      {
+        "code": "OMOPLE",
+        "name": "Omophlus lepturoides (OMOPLE)",
+        "type": "Host"
+      },
+      {
+        "code": "ORIEIS",
+        "name": "Orientus ishidae (ORIEIS)",
+        "type": "Host"
+      },
+      {
+        "code": "SAISNI",
+        "name": "Parasaissetia nigra (SAISNI)",
+        "type": "Host"
+      },
+      {
+        "code": "PHENSO",
+        "name": "Phenacoccus solenopsis (PHENSO)",
+        "type": "Host"
+      },
+      {
+        "code": "PHENSO",
+        "name": "Phenacoccus solenopsis (as Vitis) (PHENSO)",
+        "type": "Host"
+      },
+      {
+        "code": "POCZSH",
+        "name": "Pochazia shantungensis (POCZSH)",
+        "type": "Host"
+      },
+      {
+        "code": "CEVD00",
+        "name": "Pospiviroid exocortiscitri (CEVD00)",
+        "type": "Host"
+      },
+      {
+        "code": "CSYV00",
+        "name": "Potexvirus citriflavivenae (CSYV00)",
+        "type": "Host"
+      },
+      {
+        "code": "PVX000",
+        "name": "Potexvirus ecspotati (PVX000)",
+        "type": "Host"
+      },
+      {
+        "code": "BCMV00",
+        "name": "Potyvirus phaseovulgaris (BCMV00)",
+        "type": "Host"
+      },
+      {
+        "code": "PVY000",
+        "name": "Potyvirus yituberosi (PVY000)",
+        "type": "Host"
+      },
+      {
+        "code": "PRDILO",
+        "name": "Prodiplosis longifila (PRDILO)",
+        "type": "Host"
+      },
+      {
+        "code": "PSEAPE",
+        "name": "Pseudaulacaspis pentagona (as Vitis) (PSEAPE)",
+        "type": "Host"
+      },
+      {
+        "code": "PSECCO",
+        "name": "Pseudococcus comstocki (PSECCO)",
+        "type": "Host"
+      },
+      {
+        "code": "PSECCO",
+        "name": "Pseudococcus comstocki (as Vitis) (PSECCO)",
+        "type": "Host"
+      },
+      {
+        "code": "PSDMVF",
+        "name": "Pseudomonas viridiflava (PSDMVF)",
+        "type": "Host"
+      },
+      {
+        "code": "REPTPA",
+        "name": "Reptalus panzeri (REPTPA)",
+        "type": "Host"
+      },
+      {
+        "code": "RICASC",
+        "name": "Ricania speculum (RICASC)",
+        "type": "Host"
+      },
+      {
+        "code": "HELYBU",
+        "name": "Rotylenchus buxophilus (HELYBU)",
+        "type": "Host"
+      },
+      {
+        "code": "SCAPLI",
+        "name": "Scaphoideus titanus (SCAPLI)",
+        "type": "Host"
+      },
+      {
+        "code": "SCITAU",
+        "name": "Scirtothrips aurantii (SCITAU)",
+        "type": "Host"
+      },
+      {
+        "code": "SCITCI",
+        "name": "Scirtothrips citri (SCITCI)",
+        "type": "Host"
+      },
+      {
+        "code": "SCITDO",
+        "name": "Scirtothrips dorsalis (SCITDO)",
+        "type": "Host"
+      },
+      {
+        "code": "SLENRU",
+        "name": "Selenothrips rubrocinctus (SLENRU)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODER",
+        "name": "Spodoptera eridania (PRODER)",
+        "type": "Host"
+      },
+      {
+        "code": "LAPHFR",
+        "name": "Spodoptera frugiperda (LAPHFR)",
+        "type": "Host"
+      },
+      {
+        "code": "SPODLI",
+        "name": "Spodoptera littoralis (SPODLI)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODOR",
+        "name": "Spodoptera ornithogalli (PRODOR)",
+        "type": "Host"
+      },
+      {
+        "code": "PRODPR",
+        "name": "Spodoptera praefica (PRODPR)",
+        "type": "Host"
+      },
+      {
+        "code": "SLRSV0",
+        "name": "Stralarivirus fragariae (SLRSV0)",
+        "type": "Host"
+      },
+      {
+        "code": "TFDAV0",
+        "name": "Temfrudevirus temperatum (TFDAV0)",
+        "type": "Host"
+      },
+      {
+        "code": "TETRME",
+        "name": "Tetranychus mexicanus (TETRME)",
+        "type": "Host"
+      },
+      {
+        "code": "TETRPA",
+        "name": "Tetranychus pacificus (TETRPA)",
+        "type": "Host"
+      },
+      {
+        "code": "THRIHA",
+        "name": "Thrips hawaiiensis (THRIHA)",
+        "type": "Host"
+      },
+      {
+        "code": "THRIIM",
+        "name": "Thrips imaginis (THRIIM)",
+        "type": "Host"
+      },
+      {
+        "code": "THRIPL",
+        "name": "Thrips palmi (THRIPL)",
+        "type": "Host"
+      },
+      {
+        "code": "TMV000",
+        "name": "Tobamovirus tabaci (TMV000)",
+        "type": "Host"
+      },
+      {
+        "code": "TRIHVI",
+        "name": "Trichodorus viruliferus (TRIHVI)",
+        "type": "Host"
+      },
+      {
+        "code": "HESOCA",
+        "name": "Trichoferus campestris (HESOCA)",
+        "type": "Host"
+      },
+      {
+        "code": "TROGGA",
+        "name": "Trogoderma granarium (TROGGA)",
+        "type": "Host"
+      },
+      {
+        "code": "TYLESE",
+        "name": "Tylenchulus semipenetrans (TYLESE)",
+        "type": "Host"
+      },
+      {
+        "code": "GLRAV7",
+        "name": "Velarivirus septemvitis (GLRAV7)",
+        "type": "Host"
+      },
+      {
+        "code": "VERTDA",
+        "name": "Verticillium dahliae (VERTDA)",
+        "type": "Host"
+      },
+      {
+        "code": "XIPHAA",
+        "name": "Xiphinema americanum sensu stricto (XIPHAA)",
+        "type": "Host"
+      },
+      {
+        "code": "XIPHBC",
+        "name": "Xiphinema bricolense (XIPHBC)",
+        "type": "Host"
+      },
+      {
+        "code": "XIPHCA",
+        "name": "Xiphinema californicum (XIPHCA)",
+        "type": "Host"
+      },
+      {
+        "code": "XIPHRI",
+        "name": "Xiphinema rivesi (XIPHRI)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLEFF",
+        "name": "Xylella fastidiosa subsp. fastidiosa (XYLEFF)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLEFM",
+        "name": "Xylella fastidiosa subsp. multiplex (XYLEFM)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLBCR",
+        "name": "Xylosandrus crassiusculus (XYLBCR)",
+        "type": "Host"
+      },
+      {
+        "code": "XYLBGE",
+        "name": "Xylosandrus germanus (XYLBGE)",
+        "type": "Host"
+      },
+      {
+        "code": "CARNFU",
+        "name": "Xyphon fulgidum (CARNFU)",
+        "type": "Host"
+      },
+      {
+        "code": "ZAPRIN",
+        "name": "Zaprionus indianus (ZAPRIN)",
+        "type": "Host"
+      },
+      {
+        "code": "ZAPRTU",
+        "name": "Zaprionus tuberculatus (ZAPRTU)",
+        "type": "Host"
+      }
+    ]
+  },
+  "gbif": {
+    "key": 5372392,
+    "url": "https://www.gbif.org/species/5372392",
+    "scientificName": "Vitis vinifera L.",
+    "canonicalName": "Vitis vinifera",
+    "family": "Vitaceae",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "matchType": "EXACT",
+    "confidence": 99
+  }
+}

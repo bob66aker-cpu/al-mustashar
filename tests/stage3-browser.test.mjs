@@ -35,6 +35,17 @@ try {
   const errors = [];
   page.on('pageerror', e => errors.push(e.message));
   page.on('console', m => { if (m.type() === 'error') errors.push(m.text()); });
+  /* 3.0a — pin a LIVE-CAPABLE device profile for this guard only. The app's
+   * ب4 intentionally reports profile.live=false on hosts with <=2 cores or
+   * <=2 GB (this container reports exactly that), so the probe interval is
+   * never scheduled and the gauge keeps its "—" placeholder forever. We
+   * change only what THIS page reports to the device classifier; the
+   * weak-device policy and its real behavior remain untouched, and no
+   * gauge value is ever written by the test. */
+  await page.evaluateOnNewDocument(() => {
+    Object.defineProperty(Navigator.prototype, 'hardwareConcurrency', { get: () => 8, configurable: true });
+    Object.defineProperty(Navigator.prototype, 'deviceMemory', { get: () => 8, configurable: true });
+  });
   await page.goto(BASE + '/', { waitUntil: 'networkidle0', timeout: 30000 });
   await sleep(1200);
 
@@ -48,17 +59,27 @@ try {
     if (camSupported) {
       await page.click('#cameraBtn').catch(() => {});
       await page.evaluate(() => { const b = document.getElementById('cameraBtn'); if (b) b.click(); });
-      await sleep(3000);   /* probe interval is 500ms — several ticks */
-      const st = await page.evaluate(() => {
-        const el = document.getElementById('liveSharp');
-        const v = document.getElementById('liveSharpVal');
-        return {
-          liveSection: !document.getElementById('liveSection').hidden,
-          val: v ? v.textContent : null,
-          cls: el ? el.className : '',
-          visible: el ? !el.hidden && getComputedStyle(el).display !== 'none' : false
-        };
-      });
+      /* bounded poll — hard 6s cap: the probe ticks every 500ms and the
+       * gauge DOM write is throttled to ~5 Hz, so poll for a ready gauge
+       * instead of a fixed 3000ms sleep. Same fields, same assertions, and
+       * NO value is ever forced into the DOM — if the probe never renders,
+       * the state keeps its "—" and both assertions below fail as before. */
+      let st = null;
+      const gaugeDeadline = Date.now() + 6000;
+      do {
+        st = await page.evaluate(() => {
+          const el = document.getElementById('liveSharp');
+          const v = document.getElementById('liveSharpVal');
+          return {
+            liveSection: !document.getElementById('liveSection').hidden,
+            val: v ? v.textContent : null,
+            cls: el ? el.className : '',
+            visible: el ? !el.hidden && getComputedStyle(el).display !== 'none' : false
+          };
+        });
+        if (st.visible && /^\d+%$/.test(st.val || '') && /lv-(red|amber|green)/.test(st.cls)) break;
+        await sleep(250);
+      } while (Date.now() < gaugeDeadline);
       must('3.0a: live camera opened (real MediaStream accepted)', st.liveSection);
       must('3.0a: gauge shows a % value', st.visible && /^\d+%$/.test(st.val || ''), 'val=' + st.val);
       must('3.0a: color level is one of red/amber/green only',

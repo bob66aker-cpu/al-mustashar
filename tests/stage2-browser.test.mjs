@@ -39,6 +39,18 @@ try {
   const errors = [];
   page.on('pageerror', e => errors.push(e.message));
   page.on('console', m => { if (m.type() === 'error') errors.push(m.text()); });
+  /* 2.2 — pin a LIVE-CAPABLE device profile for this guard only. The app's
+   * ب4 intentionally disables the live loop on hosts reporting <=2 cores or
+   * <=2 GB (this container reports exactly that), which makes every
+   * live-loop assertion below vacuous: the probe never ticks, cheapPass is
+   * never consulted, and the auto full pass can never fire. We change only
+   * what THIS page reports to the device classifier; the app's weak-device
+   * policy (PROFILE.weak.live=false) and its behavior on real weak devices
+   * remain untouched — no app file is edited. */
+  await page.evaluateOnNewDocument(() => {
+    Object.defineProperty(Navigator.prototype, 'hardwareConcurrency', { get: () => 8, configurable: true });
+    Object.defineProperty(Navigator.prototype, 'deviceMemory', { get: () => 8, configurable: true });
+  });
   await page.goto(BASE + '/', { waitUntil: 'networkidle0', timeout: 30000 });
   await sleep(1000);
 
@@ -132,27 +144,41 @@ try {
       ScanLive.cheapPass = () => true;   // force an AUTO full-engine pass
       window.__restoreScanLive = () => { ScanLive.frameMetrics = om; ScanLive.cheapPass = cp; };
     });
-    await sleep(2000);
+    /* bounded poll — hard 6s cap. The real chain behind this assertion is
+     * probe tick (<=500ms) + engine + frame-vote window (VOTE_WINDOW_MS
+     * 1600ms), so the old fixed sleep(2000) sat exactly on its tail. The
+     * condition and the assertion below are unchanged; only the wait is
+     * bounded instead of fixed, and a failure still reports the state. */
+    let earlyState = null;
+    const earlyDeadline = Date.now() + 6000;
+    do {
+      earlyState = await page.evaluate(() => ({
+        live: !document.querySelector('#liveSection').hidden,
+        retake: !document.querySelector('#retakeBtn').hidden,
+        msg: document.querySelector('#ocrMsg').textContent
+      }));
+      if (!earlyState.live && earlyState.retake) break;
+      await sleep(250);
+    } while (Date.now() < earlyDeadline);
     await page.evaluate(() => { if (window.__restoreScanLive) window.__restoreScanLive(); if (window.__restoreRecognize) window.__restoreRecognize(); });
-    const earlyState = await page.evaluate(() => ({
-      live: !document.querySelector('#liveSection').hidden,
-      retake: !document.querySelector('#retakeBtn').hidden,
-      msg: document.querySelector('#ocrMsg').textContent
-    }));
     must('2.2: early success stops live and re-offers retake (results stay)',
       earlyState.live === false && earlyState.retake === true, JSON.stringify(earlyState));
 
-    /* retake = full reset + straight back into the live camera */
-    await page.click('#retakeBtn');
+    /* retake = full reset + straight back into the live camera. Click only
+     * when the button actually appeared. If it never did, the assertion
+     * below records the SAME failure with an explicit cause instead of the
+     * old uncaught "not clickable" crash that hid the final tally. */
+    const retakeShown = await page.$eval('#retakeBtn', el => !el.hidden).catch(() => false);
+    if (retakeShown) await page.click('#retakeBtn');
     await sleep(900);
-    const retakeFlow = await page.evaluate(() => ({
+    const retakeFlow = retakeShown ? await page.evaluate(() => ({
       live: !document.querySelector('#liveSection').hidden,
       preview: document.querySelector('#previewRow').hidden,
       /* clearScanResults repaints the box with the single .empty placeholder —
        * "cleared" = no result cards remain, not zero children. */
       cards: document.querySelectorAll('#scanResults .result-card, #scanResults .card:not(.empty)').length,
       empty: !!document.querySelector('#scanResults .empty')
-    }));
+    })) : { error: 'retake button never became visible — see the FAIL above' };
     must('2.2: retake clears results and re-opens the live camera',
       retakeFlow.live === true && retakeFlow.preview === true
       && retakeFlow.cards === 0 && retakeFlow.empty === true,

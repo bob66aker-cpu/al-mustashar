@@ -102,8 +102,9 @@ check('html: the home CTA points at #/tws with the new name',
   html.includes('href="#/tws" id="homeAdviceCta"') && html.includes('data-i18n="advice.cta.title">التوصيات الزراعية'));
 check('html: the nav carries data-nav="tws" and no advice link remains',
   html.includes('data-nav="tws"') && !html.includes('data-nav="advice"') && !html.includes('href="#/advice"'));
-check('html: the old #view-advice is out of routing (no data-view) and hidden',
-  /<section class="view" id="view-advice" hidden>/.test(html) && !html.includes('data-view="advice"'));
+check('html: the legacy #view-advice section and its old Irsheed script are removed',
+  !html.includes('id="view-advice"') && !html.includes('src="src/irsheed.js"')
+  && !html.includes('data-view="advice"'));
 check('html: src/tawsiyat.js loads before src/app.js',
   html.indexOf('src/tawsiyat.js') > -1 && html.indexOf('src/tawsiyat.js') < html.indexOf('src/app.js'));
 check('app: VIEWS lists tws and no longer lists advice',

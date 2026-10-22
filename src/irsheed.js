@@ -199,15 +199,37 @@
     qEl.addEventListener('input', filterCrops);
     S.searchWired = true;
   }
+  /* D62 — المحصول يُختار من ورقة سفلية حسب الطلب (لا شبكة 68 خياراً مفتوحة) */
+  function openSheet() {
+    var s = document.getElementById('adviceCropSheet');
+    if (!s) return;
+    s.hidden = false;
+    s.classList.add('open');
+    var q = document.getElementById('adviceCropSearch');
+    if (q) { q.value = ''; filterCrops(); q.focus(); }
+  }
+  function closeSheet() {
+    var s = document.getElementById('adviceCropSheet');
+    if (!s) return;
+    s.classList.remove('open');
+    s.hidden = true;
+  }
   function renderCrops() {
     var box = document.getElementById('adviceCrops');
+    var pick = document.getElementById('adviceCropBtn');
     if (!box) return;
+    if (pick) {
+      var entry = S.crop ? cropEntry(S.crop) : null;
+      pick.textContent = entry ? cropLabel(entry) : t('advice.crops.pick', 'اختر المحصول…');
+      pick.setAttribute('data-crop', entry ? entry.id : '');
+    }
     box.textContent = '';
     (S.mf.crops || []).forEach(function (c) {
       var b = btn('crop-chip' + (S.crop === c.id ? ' active' : ''), cropLabel(c), function () {
         S.crop = c.id;
         S.type = '';
         store(function () { localStorage.setItem(LS_CROP, c.id); });
+        closeSheet();
         renderCrops();
         showCards();
       });
@@ -220,12 +242,8 @@
       box.appendChild(b);
     });
     if (global.UIIcons) global.UIIcons.paint(box);
-    var qEl = document.getElementById('adviceCropSearch');
-    if (qEl) {
-      qEl.hidden = (S.mf.crops || []).length <= 24;
-      wireCropSearch();
-      filterCrops();
-    }
+    wireCropSearch();
+    filterCrops();
   }
 
   /* ---------- مكوّنات البطاقة ---------- */
@@ -413,39 +431,134 @@
     box.textContent = '';
     if (!inf || !(inf.types || []).length) { card.hidden = true; return; }
     card.hidden = false;
-    var mk = function (id, label, count) {
-      var b = btn('type-chip' + (S.type === id ? ' active' : ''), '', function () {
-        S.type = id;
+    (inf.types || []).forEach(function (ty, i) {
+      var b = btn('type-row' + (S.type === ty.id ? ' active' : ''), '', function () {
+        S.type = (S.type === ty.id) ? '' : ty.id;   /* الضغط ثانية يُغلق الصف */
         renderTypes(S.inf[S.crop]);
         showInfections();
       });
-      b.setAttribute('data-type', id);
-      b.appendChild(el('span', 'tt', label));
-      if (count != null) b.appendChild(el('span', 'tn', String(count)));
-      return b;
-    };
-    box.appendChild(mk('', t('advice.types.all', 'الكل'), (inf.cards || []).length));
-    (inf.types || []).forEach(function (ty) {
-      box.appendChild(mk(ty.id, typeLabel(ty.id), ty.cards));
+      b.setAttribute('data-type', ty.id);
+      b.appendChild(el('span', 'type-num', String(i + 1)));
+      b.appendChild(el('span', 'tt', typeLabel(ty.id)));
+      b.appendChild(el('span', 'tn', String(ty.count != null ? ty.count : ty.cards)));
+      b.appendChild(el('span', 'chev', '▾'));
+      box.appendChild(b);
     });
   }
 
-  function infectionNode(c) {
-    var art = el('article', 'inf-card');
+  function typeNum(inf, id) {
+    var n = 0;
+    (inf.types || []).forEach(function (ty, i) { if (ty.id === id) n = i + 1; });
+    return n || null;
+  }
+  function dbName(k) {
+    return { libya: 'ليبيا', eu: 'أوروبية', epa: 'أمريكية', canada: 'كندية', australia: 'أسترالية' }[k] || k;
+  }
+  function extraDb() {
+    return store(function () { return localStorage.getItem('mustashar-advice-xdb'); }, '') || '';
+  }
+  function farmerExtraControl() {
+    var wrap = el('div', 'treat-extra');
+    var lab = el('label', '', t('advice.treat.extra', 'قاعدة بيانات إضافية (اختياري)'));
+    lab.setAttribute('for', 'adviceXdb');
+    var sel = el('select', '');
+    sel.id = 'adviceXdb';
+    [['', t('advice.treat.extra.none', 'لا شيء')], ['eu', dbName('eu')], ['epa', dbName('epa')],
+     ['canada', dbName('canada')], ['australia', dbName('australia')]].forEach(function (o) {
+      var op = el('option', '', o[1]);
+      op.value = o[0];
+      if (extraDb() === o[0]) op.selected = true;
+      sel.appendChild(op);
+    });
+    sel.addEventListener('change', function () {
+      store(function () { localStorage.setItem('mustashar-advice-xdb', sel.value); });
+      showInfections();
+    });
+    wrap.appendChild(lab);
+    wrap.appendChild(sel);
+    return wrap;
+  }
+  function treatNode(d) {
+    var sec = el('section', 'inf-sec treat-sec');
+    sec.appendChild(el('h4', '', t('advice.treat.title', 'المبيدات وفق وضعك — مطابقة على قواعد البيانات')));
+    var mode = deps.mode ? deps.mode() : 'farmer';
+    sec.appendChild(el('p', 'treat-mode', mode === 'pro'
+      ? t('advice.treat.pro', 'وضع المحترف: مطابقة على كل القواعد المُحمَّلة (ليبيا + أوروبا + أمريكا + كندا + أسترالية).')
+      : t('advice.treat.farmer', 'وضع المزارع: القواعد الليبية أولاً، مع خيار قاعدة إضافية.')));
+    if (d.treatment_note_ar) {
+      sec.appendChild(el('p', 'treat-note', d.treatment_note_ar));
+      return sec;
+    }
+    var xdb = mode !== 'pro' ? extraDb() : '';
+    var wanted = mode === 'pro' ? ['libya', 'eu', 'epa', 'canada', 'australia']
+                                : ['libya'].concat(xdb ? [xdb] : []);
+    (d.treatment || []).forEach(function (it) {
+      var g = el('div', 'treat-opt');
+      var fr = el('span', 'frac-badge', (it.scheme || '') + (it.moa ? ' ' + it.moa : ''));
+      g.appendChild(fr);
+      (it.actives || []).forEach(function (a) {
+        var row = el('div', 'treat-active');
+        row.appendChild(el('span', 'chem-ing-names', a.ar + ' (' + a.en + ')'));
+        var chips = el('div', 'reg-chips');
+        var src = (deps.lookupBySource ? deps.lookupBySource(a.en) : {}) || {};
+        var any = false;
+        wanted.forEach(function (w) {
+          var hit = src[w];
+          if (hit) {
+            any = true;
+            var c = chipNode(hit);
+            c.classList.add('src-' + w);
+            chips.appendChild(c);
+            return;
+          }
+          var loaded = (w === 'libya' || w === 'eu' || w === 'epa')
+            || (deps.packLoaded && deps.packLoaded(w));
+          if (loaded) {
+            any = true;
+            chips.appendChild(el('span', 'reg-chip tone-neutral',
+              t('advice.treat.notin', 'غير مطابَق في {db}').replace('{db}', dbName(w))));
+          }
+        });
+        if (!any) chips.appendChild(el('span', 'reg-chip tone-neutral',
+          t('advice.treat.none', 'غير مطابَق لأي مادة في القواعد المُحمَّلة')));
+        row.appendChild(chips);
+        g.appendChild(row);
+      });
+      if (it.source && it.source.url) {
+        var meta = el('div', 'chem-meta');
+        var a2 = el('a', 'src-link', it.source.title);
+        a2.href = it.source.url; a2.target = '_blank'; a2.rel = 'noopener noreferrer';
+        meta.appendChild(a2);
+        g.appendChild(meta);
+      }
+      sec.appendChild(g);
+    });
+    if (mode === 'pro' && (!deps.packLoaded || !deps.packLoaded('canada') || !deps.packLoaded('australia'))) {
+      sec.appendChild(el('p', 'treat-caution',
+        t('advice.treat.packoff', 'حزمتا كندا وأسترالية اختياريتان — حمّلهما من شاشة القواعد لتظهر مطابقاتهما.')));
+    }
+    sec.appendChild(el('p', 'treat-caution',
+      t('advice.treat.caution', 'تحقّق من الملصق: تركيبة المادة ونسبتها تختلف بحسب المحصول والفترة، ولا تخلط مواد من المجموعة نفسها داخل الموسم.')));
+    return sec;
+  }
+  function infectionNode(c, tnum) {
+    var art = el('details', 'inf-card fold');
+    var sum = el('summary', 'inf-sum');
     var head = el('div', 'inf-head');
-    head.appendChild(el('span', 'inf-num', String(c.n)));
+    head.appendChild(el('span', 'inf-num', (tnum != null ? tnum + '.' : '') + c.n));
     var titles = el('div', 'inf-titles');
     titles.appendChild(el('div', 'inf-name', c.name_ar));
     titles.appendChild(el('div', 'inf-sci', c.sci + (c.family ? ' · ' + c.family : '')));
     head.appendChild(titles);
-    art.appendChild(head);
+    sum.appendChild(head);
+    art.appendChild(sum);
 
     var d = (S.doss && S.doss.dossiers) ? S.doss.dossiers[c.dossier] : null;
     var badges = el('div', 'inf-badges');
     var major = c.host === 'Major host';
     badges.appendChild(el('span', 'host-chip' + (major ? ' major' : ''),
       t(major ? 'advice.host.major' : 'advice.host.host', major ? 'مضيف رئيسي' : 'مضيف')));
-    if (!S.type) badges.appendChild(el('span', 'host-chip', typeLabel(c.type)));
+    badges.appendChild(el('span', 'host-chip', typeLabel(c.type)));
     if (d) badges.appendChild(evBadge(d.evidence));
     art.appendChild(badges);
 
@@ -463,6 +576,8 @@
       d.management_ar.forEach(function (x) { u2.appendChild(el('li', '', x)); });
       s2.appendChild(u2);
       art.appendChild(s2);
+
+      art.appendChild(treatNode(d));
 
       var src = el('footer', 'inf-src');
       var a = el('a', '', d.source.title);
@@ -530,11 +645,18 @@
       if (empty) empty.hidden = true;
       return;
     }
-    var cards = (inf.cards || []).filter(function (c) { return !S.type || c.type === S.type; });
-    cards.forEach(function (c) { box.appendChild(infectionNode(c)); });
+    var cards = S.type ? (inf.cards || []).filter(function (c) { return c.type === S.type; }) : [];
+    var oldBar = document.getElementById('adviceTreatBar');
+    if (oldBar && oldBar.parentNode) oldBar.parentNode.removeChild(oldBar);
+    if (cards.length && (deps.mode ? deps.mode() : 'farmer') !== 'pro') {
+      var bar = farmerExtraControl();
+      bar.id = 'adviceTreatBar';
+      box.parentNode.insertBefore(bar, box);
+    }
+    cards.forEach(function (c) { box.appendChild(infectionNode(c, typeNum(inf, c.type))); });
     var ref = refSection(inf);
     if (ref) box.appendChild(ref);
-    if (empty) empty.hidden = cards.length > 0;
+    if (empty) empty.hidden = !(S.type && cards.length === 0);
   }
 
   /* ---------- عرض البطاقات ---------- */
@@ -572,6 +694,8 @@
     loadCrop(S.crop).then(function (d) {
       list.textContent = '';
       (d.cards || []).forEach(function (c) { list.appendChild(cardNode(prepare(c))); });
+      var hc = document.getElementById('adviceHandCount');
+      if (hc) hc.textContent = String((d.cards || []).length);
       return loadInf(S.crop);
     }).then(function (inf) {
       renderTypes(inf);
@@ -603,6 +727,16 @@
     document.addEventListener('langchange', function () {
       if (document.getElementById('view-advice') && !document.getElementById('view-advice').hidden) mount();
     });
+    document.addEventListener('modechange', function () {
+      if (document.getElementById('view-advice') && !document.getElementById('view-advice').hidden) showInfections();
+    });
+    var pickBtn = document.getElementById('adviceCropBtn');
+    var sheetEl = document.getElementById('adviceCropSheet');
+    var sheetX = document.getElementById('adviceCropSheetClose');
+    if (pickBtn) pickBtn.addEventListener('click', openSheet);
+    if (sheetX) sheetX.addEventListener('click', closeSheet);
+    if (sheetEl) sheetEl.addEventListener('click', function (e) { if (e.target === sheetEl) closeSheet(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeSheet(); });
     S.wired = true;
   }
 

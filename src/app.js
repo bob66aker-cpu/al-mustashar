@@ -46,10 +46,13 @@
    * Same-document navigation (back button + GitHub Pages subpath safe).
    * No business logic here — only show/hide + active nav state.
    * ============================================================ */
-  const VIEWS = ['home', 'search', 'scan', 'history', 'data', 'advice', 'about', 'legend', 'stats'];
+  const VIEWS = ['home', 'search', 'scan', 'history', 'data', 'tws', 'about', 'legend', 'stats'];
   function currentView() {
+    /* D63 — عرض التوصيات يقبل مسارات فرعية #/tws/<crop>/<n> (تنقّل داخلي
+     * بمفاتيح hash الأصلية فيعمل زر رجوع المتصفح بلا مكدّس إضافي). */
     const h = (location.hash || '').replace(/^#\/?/, '');
-    return VIEWS.indexOf(h) >= 0 ? h : 'home';
+    const base = h.split('/')[0];
+    return VIEWS.indexOf(base) >= 0 ? base : 'home';
   }
   function applyView() {
     const v = currentView();
@@ -70,7 +73,7 @@
     if (v === 'history') openHistory();
     if (v === 'search') mountJurisdiction();
     if (v === 'stats') renderStats();
-    if (v === 'advice' && window.Irsheed) Irsheed.mount();
+    if (v === 'tws' && window.Tawsiyat) Tawsiyat.mount();
   }
   window.addEventListener('hashchange', applyView);
 
@@ -817,11 +820,50 @@
     } catch (e) { return null; }
   }
 
+  /* D62 — مطابقة المادة على مستوى كل قاعدة على حدة (وضع المزارع/المحترف):
+   * نفس محرك البحث، لكن النتائج مُجمّعة حسب المصدر بدل أفضل مطابقة واحدة. */
+  function adviceIngredientBySource(ing) {
+    try {
+      /* normQ كانت دالة خاصة بـ irsheed — هنا الاسم المُطبَّع من محرك البحث نفسه */
+      const q = (window.SearchCore ? SearchCore.norm(ing) : String(ing || '')).trim();
+      if (!q) return {};
+      rebuildSearch();
+      if (!searchFn) return {};
+      const hits = searchFn(q, true) || [];
+      const SRC = { 'libya-500': 'libya', 'libya-248': 'libya', eu: 'eu', epa: 'epa', 'epa-cancelled': 'epa', canada: 'canada', australia: 'australia' };
+      const best = {};
+      /* محرك البحث يُرجع { k, r, s } — قراءة سابقة كانت hit.h فترمي استثناءً
+         وتُرجع {} لكل مادة، فتعرض «غير مطابَق» حتى حين توجد في السجل. */
+      hits.forEach(function (hit) {
+        const key = SRC[hit.k];
+        if (!key) return;
+        const cur = best[key];
+        if (!cur || hit.s.v > cur.v) best[key] = { v: hit.s.v, k: hit.k, r: hit.r };
+      });
+      const out = {};
+      Object.keys(best).forEach(function (key) {
+        const b = best[key];
+        const sd = statusDisplay(b.k, b.r, document.documentElement.lang || 'ar');
+        const raw = String((sd.raw != null ? sd.raw : '') + ' '
+          + (b.k === 'libya-500' ? ((b.r && b.r.category) || '') : ((b.r && (b.r.status || b.r.status_raw)) || '')));
+        const banned = /محظور|not approved|non-approved|cancelled/i.test(raw);
+        out[key] = { k: b.k, text: sd.text, tone: sd.tone, banned: banned };
+      });
+      return out;
+    } catch (e) { return {}; }
+  }
+  function advicePackLoaded(key) {
+    try { return !!(DB[key] && (DB[key].rows || []).length); } catch (e) { return false; }
+  }
+
   if (window.Irsheed) {
     Irsheed.init({
       t: t,
       lang: function () { return document.documentElement.lang || 'ar'; },
-      lookupIngredient: adviceIngredientStatus
+      mode: function () { const m = document.getElementById('mode'); return m && m.value === 'pro' ? 'pro' : 'farmer'; },
+      lookupIngredient: adviceIngredientStatus,
+      lookupBySource: adviceIngredientBySource,
+      packLoaded: advicePackLoaded
     });
   }
 

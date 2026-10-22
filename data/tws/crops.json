@@ -1,0 +1,6048 @@
+{
+  "built": "2026-10-21",
+  "crops": [
+    {
+      "cards": 13,
+      "family": "Fabaceae",
+      "id": "alfalfa",
+      "infections": [
+        {
+          "dossier": "PHMPOM",
+          "n": 1,
+          "name_ar": "تعفّن وذبول جذور النباتات",
+          "sci": "Phymatotrichopsis omnivora",
+          "type": "fungus"
+        },
+        {
+          "dossier": "SPODLI",
+          "n": 1,
+          "name_ar": "سوسة الأوراق المتوسطية",
+          "sci": "Spodoptera littoralis",
+          "type": "insect"
+        },
+        {
+          "dossier": "FRANOC",
+          "n": 2,
+          "name_ar": "تربس الأزهار الغربي",
+          "sci": "Frankliniella occidentalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "LAPHFR",
+          "n": 3,
+          "name_ar": "سوسة الذرة الأمريكية",
+          "sci": "Spodoptera frugiperda",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIZE",
+          "n": 4,
+          "name_ar": "دودة كوز الذرة",
+          "sci": "Helicoverpa zea",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIAR",
+          "n": 5,
+          "name_ar": "دودة الحشّاشة (البقّاحة)",
+          "sci": "Helicoverpa armigera",
+          "type": "insect"
+        },
+        {
+          "dossier": "LIRIHU",
+          "n": 6,
+          "name_ar": "حافرة الأوراق (Liriomyza huidobrensis)",
+          "sci": "Liriomyza huidobrensis",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHYPSO",
+          "n": 1,
+          "name_ar": "مرض الشاحبة (فتوبلازما solani)",
+          "sci": "'Candidatus Phytoplasma solani'",
+          "type": "bacterium"
+        },
+        {
+          "dossier": "DITYDI",
+          "n": 1,
+          "name_ar": "نيماتودا السيقان والأبصال",
+          "sci": "Ditylenchus dipsaci",
+          "type": "nematode"
+        },
+        {
+          "dossier": "LIRITR",
+          "n": 7,
+          "name_ar": "حافرة الأوراق المتعرجة الأمريكية",
+          "sci": "Liriomyza trifolii",
+          "type": "insect"
+        },
+        {
+          "dossier": "DIABUH",
+          "n": 8,
+          "name_ar": "خنفساء الخيار المرقطة",
+          "sci": "Diabrotica undecimpunctata howardi",
+          "type": "insect"
+        },
+        {
+          "dossier": "MELGET",
+          "n": 2,
+          "name_ar": "نيماتودا تعقد الجذور الإثيوبية",
+          "sci": "Meloidogyne ethiopica",
+          "type": "nematode"
+        },
+        {
+          "dossier": "HOMLTR",
+          "n": 9,
+          "name_ar": "الدبّاق الزجاجي الجناح",
+          "sci": "Homalodisca vitripennis",
+          "type": "insect"
+        }
+      ],
+      "name_ar": "البرسيم",
+      "name_en": "Alfalfa",
+      "sci": "Medicago sativa"
+    },
+    {
+      "cards": 12,
+      "family": "Rosaceae",
+      "id": "almond",
+      "infections": [
+        {
+          "dossier": "HELIZE",
+          "n": 1,
+          "name_ar": "دودة كوز الذرة",
+          "sci": "Helicoverpa zea",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHMPOM",
+          "n": 1,
+          "name_ar": "تعفّن وذبول جذور النباتات",
+          "sci": "Phymatotrichopsis omnivora",
+          "type": "fungus"
+        },
+        {
+          "dossier": "PSEAPE",
+          "n": 2,
+          "name_ar": "الدرع أبيض على الخوخ",
+          "sci": "Pseudaulacaspis pentagona",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHYPSO",
+          "n": 1,
+          "name_ar": "مرض الشاحبة (فتوبلازما solani)",
+          "sci": "'Candidatus Phytoplasma solani'",
+          "type": "bacterium"
+        },
+        {
+          "dossier": "CERTCA",
+          "n": 3,
+          "name_ar": "ذبابة الفاكهة المتوسطية",
+          "sci": "Ceratitis capitata",
+          "type": "insect"
+        },
+        {
+          "dossier": "HALYHA",
+          "n": 4,
+          "name_ar": "الخنفساء البنية المرقطة",
+          "sci": "Halyomorpha halys",
+          "type": "insect"
+        },
+        {
+          "dossier": "TBRV00",
+          "n": 1,
+          "name_ar": "فيروس الحلقات السوداء على الطماطم",
+          "sci": "Nepovirus nigranuli",
+          "type": "virus"
+        },
+        {
+          "dossier": "VERTDA",
+          "n": 2,
+          "name_ar": "ذبول الفيرتيسيوم",
+          "sci": "Verticillium dahliae",
+          "type": "fungus"
+        },
+        {
+          "dossier": "EUTEOR",
+          "n": 1,
+          "name_ar": "العنكبوت الأحمر الشرقي",
+          "sci": "Eutetranychus orientalis",
+          "type": "mite"
+        },
+        {
+          "dossier": "HOMLTR",
+          "n": 5,
+          "name_ar": "الدبّاق الزجاجي الجناح",
+          "sci": "Homalodisca vitripennis",
+          "type": "insect"
+        },
+        {
+          "dossier": "MONIFC",
+          "n": 3,
+          "name_ar": "فطر تعفّن ثمار الحجرية",
+          "sci": "Monilinia fructicola",
+          "type": "fungus"
+        },
+        {
+          "dossier": "CARPPO",
+          "n": 6,
+          "name_ar": "بعثة التفاح (دودة نواة الثمار)",
+          "sci": "Cydia pomonella",
+          "type": "insect"
+        }
+      ],
+      "name_ar": "اللوز",
+      "name_en": "Almond",
+      "sci": "Prunus"
+    },
+    {
+      "cards": 12,
+      "family": "Rosaceae",
+      "id": "apple",
+      "infections": [
+        {
+          "dossier": "PHMPOM",
+          "n": 1,
+          "name_ar": "تعفّن وذبول جذور النباتات",
+          "sci": "Phymatotrichopsis omnivora",
+          "type": "fungus"
+        },
+        {
+          "dossier": "SPODLI",
+          "n": 1,
+          "name_ar": "سوسة الأوراق المتوسطية",
+          "sci": "Spodoptera littoralis",
+          "type": "insect"
+        },
+        {
+          "dossier": "COLLFC",
+          "n": 2,
+          "name_ar": "لفحة الأوراق الأرجوانية وتعفّن الثمار",
+          "sci": "Colletotrichum fructicola",
+          "type": "fungus"
+        },
+        {
+          "dossier": "CARPPO",
+          "n": 2,
+          "name_ar": "بعثة التفاح (دودة نواة الثمار)",
+          "sci": "Cydia pomonella",
+          "type": "insect"
+        },
+        {
+          "dossier": "LAPHFR",
+          "n": 3,
+          "name_ar": "سوسة الذرة الأمريكية",
+          "sci": "Spodoptera frugiperda",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHENHI",
+          "n": 4,
+          "name_ar": "المن الوردي",
+          "sci": "Maconellicoccus hirsutus",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHYPSO",
+          "n": 1,
+          "name_ar": "مرض الشاحبة (فتوبلازما solani)",
+          "sci": "'Candidatus Phytoplasma solani'",
+          "type": "bacterium"
+        },
+        {
+          "dossier": "CERTCA",
+          "n": 5,
+          "name_ar": "ذبابة الفاكهة المتوسطية",
+          "sci": "Ceratitis capitata",
+          "type": "insect"
+        },
+        {
+          "dossier": "DACUDO",
+          "n": 6,
+          "name_ar": "ذبابة الفاكهة الشرقية",
+          "sci": "Bactrocera dorsalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "HALYHA",
+          "n": 7,
+          "name_ar": "الخنفساء البنية المرقطة",
+          "sci": "Halyomorpha halys",
+          "type": "insect"
+        },
+        {
+          "dossier": "EUTEOR",
+          "n": 1,
+          "name_ar": "العنكبوت الأحمر الشرقي",
+          "sci": "Eutetranychus orientalis",
+          "type": "mite"
+        },
+        {
+          "dossier": "MONIFC",
+          "n": 3,
+          "name_ar": "فطر تعفّن ثمار الحجرية",
+          "sci": "Monilinia fructicola",
+          "type": "fungus"
+        }
+      ],
+      "name_ar": "التفاح",
+      "name_en": "Apple",
+      "sci": "Malus domestica"
+    },
+    {
+      "cards": 14,
+      "family": "Rosaceae",
+      "id": "apricot",
+      "infections": [
+        {
+          "dossier": "FRANOC",
+          "n": 1,
+          "name_ar": "تربس الأزهار الغربي",
+          "sci": "Frankliniella occidentalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIZE",
+          "n": 2,
+          "name_ar": "دودة كوز الذرة",
+          "sci": "Helicoverpa zea",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHMPOM",
+          "n": 1,
+          "name_ar": "تعفّن وذبول جذور النباتات",
+          "sci": "Phymatotrichopsis omnivora",
+          "type": "fungus"
+        },
+        {
+          "dossier": "PSEAPE",
+          "n": 3,
+          "name_ar": "الدرع أبيض على الخوخ",
+          "sci": "Pseudaulacaspis pentagona",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHENHI",
+          "n": 4,
+          "name_ar": "المن الوردي",
+          "sci": "Maconellicoccus hirsutus",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHYPSO",
+          "n": 1,
+          "name_ar": "مرض الشاحبة (فتوبلازما solani)",
+          "sci": "'Candidatus Phytoplasma solani'",
+          "type": "bacterium"
+        },
+        {
+          "dossier": "CERTCA",
+          "n": 5,
+          "name_ar": "ذبابة الفاكهة المتوسطية",
+          "sci": "Ceratitis capitata",
+          "type": "insect"
+        },
+        {
+          "dossier": "DACUDO",
+          "n": 6,
+          "name_ar": "ذبابة الفاكهة الشرقية",
+          "sci": "Bactrocera dorsalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "HALYHA",
+          "n": 7,
+          "name_ar": "الخنفساء البنية المرقطة",
+          "sci": "Halyomorpha halys",
+          "type": "insect"
+        },
+        {
+          "dossier": "TBRV00",
+          "n": 1,
+          "name_ar": "فيروس الحلقات السوداء على الطماطم",
+          "sci": "Nepovirus nigranuli",
+          "type": "virus"
+        },
+        {
+          "dossier": "VERTDA",
+          "n": 2,
+          "name_ar": "ذبول الفيرتيسيوم",
+          "sci": "Verticillium dahliae",
+          "type": "fungus"
+        },
+        {
+          "dossier": "EUTEOR",
+          "n": 1,
+          "name_ar": "العنكبوت الأحمر الشرقي",
+          "sci": "Eutetranychus orientalis",
+          "type": "mite"
+        },
+        {
+          "dossier": "MONIFC",
+          "n": 3,
+          "name_ar": "فطر تعفّن ثمار الحجرية",
+          "sci": "Monilinia fructicola",
+          "type": "fungus"
+        },
+        {
+          "dossier": "CARPPO",
+          "n": 8,
+          "name_ar": "بعثة التفاح (دودة نواة الثمار)",
+          "sci": "Cydia pomonella",
+          "type": "insect"
+        }
+      ],
+      "name_ar": "المشمش",
+      "name_en": "Apricot",
+      "sci": "Prunus armeniaca"
+    },
+    {
+      "cards": 10,
+      "family": "Lauraceae",
+      "id": "avocado",
+      "infections": [
+        {
+          "dossier": "LAPHFR",
+          "n": 1,
+          "name_ar": "سوسة الذرة الأمريكية",
+          "sci": "Spodoptera frugiperda",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHMPOM",
+          "n": 1,
+          "name_ar": "تعفّن وذبول جذور النباتات",
+          "sci": "Phymatotrichopsis omnivora",
+          "type": "fungus"
+        },
+        {
+          "dossier": "THRIPL",
+          "n": 2,
+          "name_ar": "تربس البطيخ",
+          "sci": "Thrips palmi",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHENHI",
+          "n": 3,
+          "name_ar": "المن الوردي",
+          "sci": "Maconellicoccus hirsutus",
+          "type": "insect"
+        },
+        {
+          "dossier": "CERTCA",
+          "n": 4,
+          "name_ar": "ذبابة الفاكهة المتوسطية",
+          "sci": "Ceratitis capitata",
+          "type": "insect"
+        },
+        {
+          "dossier": "DACUDO",
+          "n": 5,
+          "name_ar": "ذبابة الفاكهة الشرقية",
+          "sci": "Bactrocera dorsalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "COLLFC",
+          "n": 2,
+          "name_ar": "لفحة الأوراق الأرجوانية وتعفّن الثمار",
+          "sci": "Colletotrichum fructicola",
+          "type": "fungus"
+        },
+        {
+          "dossier": "SCITDO",
+          "n": 6,
+          "name_ar": "تربس الفلفل",
+          "sci": "Scirtothrips dorsalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "EUTEOR",
+          "n": 1,
+          "name_ar": "العنكبوت الأحمر الشرقي",
+          "sci": "Eutetranychus orientalis",
+          "type": "mite"
+        },
+        {
+          "dossier": "HOMLTR",
+          "n": 7,
+          "name_ar": "الدبّاق الزجاجي الجناح",
+          "sci": "Homalodisca vitripennis",
+          "type": "insect"
+        }
+      ],
+      "name_ar": "الأفوكادو",
+      "name_en": "Avocado",
+      "sci": "Persea americana"
+    },
+    {
+      "cards": 5,
+      "family": "Musaceae",
+      "id": "banana",
+      "infections": [
+        {
+          "dossier": "RALSSO",
+          "n": 1,
+          "name_ar": "الذبول البكتيري الجنوبي",
+          "sci": "Ralstonia solanacearum species complex (as Musa)",
+          "type": "bacterium"
+        },
+        {
+          "dossier": "CERTCA",
+          "n": 1,
+          "name_ar": "ذبابة الفاكهة المتوسطية",
+          "sci": "Ceratitis capitata",
+          "type": "insect"
+        },
+        {
+          "dossier": "DACUDO",
+          "n": 2,
+          "name_ar": "ذبابة الفاكهة الشرقية",
+          "sci": "Bactrocera dorsalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "COLLFC",
+          "n": 1,
+          "name_ar": "لفحة الأوراق الأرجوانية وتعفّن الثمار",
+          "sci": "Colletotrichum fructicola",
+          "type": "fungus"
+        },
+        {
+          "dossier": "FRANOC",
+          "n": 3,
+          "name_ar": "تربس الأزهار الغربي",
+          "sci": "Frankliniella occidentalis",
+          "type": "insect"
+        }
+      ],
+      "name_ar": "الموز",
+      "name_en": "Banana",
+      "sci": "Musa acuminata"
+    },
+    {
+      "cards": 4,
+      "family": "Poaceae",
+      "id": "barley",
+      "infections": [
+        {
+          "dossier": "LAPHFR",
+          "n": 1,
+          "name_ar": "سوسة الذرة الأمريكية",
+          "sci": "Spodoptera frugiperda",
+          "type": "insect"
+        },
+        {
+          "dossier": "LIRIHU",
+          "n": 2,
+          "name_ar": "حافرة الأوراق (Liriomyza huidobrensis)",
+          "sci": "Liriomyza huidobrensis",
+          "type": "insect"
+        },
+        {
+          "dossier": "DITYDI",
+          "n": 1,
+          "name_ar": "نيماتودا السيقان والأبصال",
+          "sci": "Ditylenchus dipsaci",
+          "type": "nematode"
+        },
+        {
+          "dossier": "DIABUH",
+          "n": 3,
+          "name_ar": "خنفساء الخيار المرقطة",
+          "sci": "Diabrotica undecimpunctata howardi",
+          "type": "insect"
+        }
+      ],
+      "name_ar": "الشعير",
+      "name_en": "Barley",
+      "sci": "Hordeum vulgare"
+    },
+    {
+      "cards": 21,
+      "family": "Fabaceae",
+      "id": "bean",
+      "infections": [
+        {
+          "dossier": "HELIZE",
+          "n": 1,
+          "name_ar": "دودة كوز الذرة",
+          "sci": "Helicoverpa zea",
+          "type": "insect"
+        },
+        {
+          "dossier": "MELGET",
+          "n": 1,
+          "name_ar": "نيماتودا تعقد الجذور الإثيوبية",
+          "sci": "Meloidogyne ethiopica",
+          "type": "nematode"
+        },
+        {
+          "dossier": "LAPHFR",
+          "n": 2,
+          "name_ar": "سوسة الذرة الأمريكية",
+          "sci": "Spodoptera frugiperda",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHMPOM",
+          "n": 1,
+          "name_ar": "تعفّن وذبول جذور النباتات",
+          "sci": "Phymatotrichopsis omnivora",
+          "type": "fungus"
+        },
+        {
+          "dossier": "THRIPL",
+          "n": 3,
+          "name_ar": "تربس البطيخ",
+          "sci": "Thrips palmi",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIAR",
+          "n": 4,
+          "name_ar": "دودة الحشّاشة (البقّاحة)",
+          "sci": "Helicoverpa armigera",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHENHI",
+          "n": 5,
+          "name_ar": "المن الوردي",
+          "sci": "Maconellicoccus hirsutus",
+          "type": "insect"
+        },
+        {
+          "dossier": "TSWV00",
+          "n": 1,
+          "name_ar": "فيروس ذبول الطماطم المرقط",
+          "sci": "Orthotospovirus tomatomaculae",
+          "type": "virus"
+        },
+        {
+          "dossier": "BEMITA",
+          "n": 6,
+          "name_ar": "الذبابة البيضاء",
+          "sci": "Bemisia tabaci",
+          "type": "insect"
+        },
+        {
+          "dossier": "LIRIHU",
+          "n": 7,
+          "name_ar": "حافرة الأوراق (Liriomyza huidobrensis)",
+          "sci": "Liriomyza huidobrensis",
+          "type": "insect"
+        },
+        {
+          "dossier": "SPODLI",
+          "n": 8,
+          "name_ar": "سوسة الأوراق المتوسطية",
+          "sci": "Spodoptera littoralis",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHYPSO",
+          "n": 1,
+          "name_ar": "مرض الشاحبة (فتوبلازما solani)",
+          "sci": "'Candidatus Phytoplasma solani'",
+          "type": "bacterium"
+        },
+        {
+          "dossier": "DITYDI",
+          "n": 2,
+          "name_ar": "نيماتودا السيقان والأبصال",
+          "sci": "Ditylenchus dipsaci",
+          "type": "nematode"
+        },
+        {
+          "dossier": "LIRITR",
+          "n": 9,
+          "name_ar": "حافرة الأوراق المتعرجة الأمريكية",
+          "sci": "Liriomyza trifolii",
+          "type": "insect"
+        },
+        {
+          "dossier": "DIABUH",
+          "n": 10,
+          "name_ar": "خنفساء الخيار المرقطة",
+          "sci": "Diabrotica undecimpunctata howardi",
+          "type": "insect"
+        },
+        {
+          "dossier": "DACUDO",
+          "n": 11,
+          "name_ar": "ذبابة الفاكهة الشرقية",
+          "sci": "Bactrocera dorsalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "HALYHA",
+          "n": 12,
+          "name_ar": "الخنفساء البنية المرقطة",
+          "sci": "Halyomorpha halys",
+          "type": "insect"
+        },
+        {
+          "dossier": "TBRV00",
+          "n": 2,
+          "name_ar": "فيروس الحلقات السوداء على الطماطم",
+          "sci": "Nepovirus nigranuli",
+          "type": "virus"
+        },
+        {
+          "dossier": "FRANOC",
+          "n": 13,
+          "name_ar": "تربس الأزهار الغربي",
+          "sci": "Frankliniella occidentalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "SCITDO",
+          "n": 14,
+          "name_ar": "تربس الفلفل",
+          "sci": "Scirtothrips dorsalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "RALSSO",
+          "n": 2,
+          "name_ar": "الذبول البكتيري الجنوبي",
+          "sci": "Ralstonia solanacearum species complex (as Musa)",
+          "type": "bacterium"
+        }
+      ],
+      "name_ar": "الفاصولياء",
+      "name_en": "Common bean",
+      "sci": "Phaseolus vulgaris"
+    },
+    {
+      "cards": 14,
+      "family": "Brassicaceae",
+      "id": "cabbage",
+      "infections": [
+        {
+          "dossier": "SPODLI",
+          "n": 1,
+          "name_ar": "سوسة الأوراق المتوسطية",
+          "sci": "Spodoptera littoralis",
+          "type": "insect"
+        },
+        {
+          "dossier": "MELGET",
+          "n": 1,
+          "name_ar": "نيماتودا تعقد الجذور الإثيوبية",
+          "sci": "Meloidogyne ethiopica",
+          "type": "nematode"
+        },
+        {
+          "dossier": "HELIZE",
+          "n": 2,
+          "name_ar": "دودة كوز الذرة",
+          "sci": "Helicoverpa zea",
+          "type": "insect"
+        },
+        {
+          "dossier": "THRIPL",
+          "n": 3,
+          "name_ar": "تربس البطيخ",
+          "sci": "Thrips palmi",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIAR",
+          "n": 4,
+          "name_ar": "دودة الحشّاشة (البقّاحة)",
+          "sci": "Helicoverpa armigera",
+          "type": "insect"
+        },
+        {
+          "dossier": "TSWV00",
+          "n": 1,
+          "name_ar": "فيروس ذبول الطماطم المرقط",
+          "sci": "Orthotospovirus tomatomaculae",
+          "type": "virus"
+        },
+        {
+          "dossier": "BEMITA",
+          "n": 5,
+          "name_ar": "الذبابة البيضاء",
+          "sci": "Bemisia tabaci",
+          "type": "insect"
+        },
+        {
+          "dossier": "LIRIHU",
+          "n": 6,
+          "name_ar": "حافرة الأوراق (Liriomyza huidobrensis)",
+          "sci": "Liriomyza huidobrensis",
+          "type": "insect"
+        },
+        {
+          "dossier": "DITYDI",
+          "n": 2,
+          "name_ar": "نيماتودا السيقان والأبصال",
+          "sci": "Ditylenchus dipsaci",
+          "type": "nematode"
+        },
+        {
+          "dossier": "LIRITR",
+          "n": 7,
+          "name_ar": "حافرة الأوراق المتعرجة الأمريكية",
+          "sci": "Liriomyza trifolii",
+          "type": "insect"
+        },
+        {
+          "dossier": "HALYHA",
+          "n": 8,
+          "name_ar": "الخنفساء البنية المرقطة",
+          "sci": "Halyomorpha halys",
+          "type": "insect"
+        },
+        {
+          "dossier": "TBRV00",
+          "n": 2,
+          "name_ar": "فيروس الحلقات السوداء على الطماطم",
+          "sci": "Nepovirus nigranuli",
+          "type": "virus"
+        },
+        {
+          "dossier": "RALSSO",
+          "n": 1,
+          "name_ar": "الذبول البكتيري الجنوبي",
+          "sci": "Ralstonia solanacearum species complex (as Musa)",
+          "type": "bacterium"
+        },
+        {
+          "dossier": "VERTDA",
+          "n": 1,
+          "name_ar": "ذبول الفيرتيسيوم",
+          "sci": "Verticillium dahliae",
+          "type": "fungus"
+        }
+      ],
+      "name_ar": "الملفوف",
+      "name_en": "Cabbage",
+      "sci": "Brassica oleracea"
+    },
+    {
+      "cards": 8,
+      "family": "Apiaceae",
+      "id": "carrot",
+      "infections": [
+        {
+          "dossier": "LAPHFR",
+          "n": 1,
+          "name_ar": "سوسة الذرة الأمريكية",
+          "sci": "Spodoptera frugiperda",
+          "type": "insect"
+        },
+        {
+          "dossier": "THRIPL",
+          "n": 2,
+          "name_ar": "تربس البطيخ",
+          "sci": "Thrips palmi",
+          "type": "insect"
+        },
+        {
+          "dossier": "LIRIHU",
+          "n": 3,
+          "name_ar": "حافرة الأوراق (Liriomyza huidobrensis)",
+          "sci": "Liriomyza huidobrensis",
+          "type": "insect"
+        },
+        {
+          "dossier": "SPODLI",
+          "n": 4,
+          "name_ar": "سوسة الأوراق المتوسطية",
+          "sci": "Spodoptera littoralis",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHYPSO",
+          "n": 1,
+          "name_ar": "مرض الشاحبة (فتوبلازما solani)",
+          "sci": "'Candidatus Phytoplasma solani'",
+          "type": "bacterium"
+        },
+        {
+          "dossier": "DITYDI",
+          "n": 1,
+          "name_ar": "نيماتودا السيقان والأبصال",
+          "sci": "Ditylenchus dipsaci",
+          "type": "nematode"
+        },
+        {
+          "dossier": "LIRITR",
+          "n": 5,
+          "name_ar": "حافرة الأوراق المتعرجة الأمريكية",
+          "sci": "Liriomyza trifolii",
+          "type": "insect"
+        },
+        {
+          "dossier": "SCITDO",
+          "n": 6,
+          "name_ar": "تربس الفلفل",
+          "sci": "Scirtothrips dorsalis",
+          "type": "insect"
+        }
+      ],
+      "name_ar": "الجزر",
+      "name_en": "Carrot",
+      "sci": "Daucus carota"
+    },
+    {
+      "cards": 11,
+      "family": "Euphorbiaceae",
+      "id": "cassava",
+      "infections": [
+        {
+          "dossier": "BEMITA",
+          "n": 1,
+          "name_ar": "الذبابة البيضاء",
+          "sci": "Bemisia tabaci",
+          "type": "insect"
+        },
+        {
+          "dossier": "LAPHFR",
+          "n": 2,
+          "name_ar": "سوسة الذرة الأمريكية",
+          "sci": "Spodoptera frugiperda",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHMPOM",
+          "n": 1,
+          "name_ar": "تعفّن وذبول جذور النباتات",
+          "sci": "Phymatotrichopsis omnivora",
+          "type": "fungus"
+        },
+        {
+          "dossier": "THRIPL",
+          "n": 3,
+          "name_ar": "تربس البطيخ",
+          "sci": "Thrips palmi",
+          "type": "insect"
+        },
+        {
+          "dossier": "PSEAPE",
+          "n": 4,
+          "name_ar": "الدرع أبيض على الخوخ",
+          "sci": "Pseudaulacaspis pentagona",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHENHI",
+          "n": 5,
+          "name_ar": "المن الوردي",
+          "sci": "Maconellicoccus hirsutus",
+          "type": "insect"
+        },
+        {
+          "dossier": "DITYDI",
+          "n": 1,
+          "name_ar": "نيماتودا السيقان والأبصال",
+          "sci": "Ditylenchus dipsaci",
+          "type": "nematode"
+        },
+        {
+          "dossier": "COLLFC",
+          "n": 2,
+          "name_ar": "لفحة الأوراق الأرجوانية وتعفّن الثمار",
+          "sci": "Colletotrichum fructicola",
+          "type": "fungus"
+        },
+        {
+          "dossier": "SCITDO",
+          "n": 6,
+          "name_ar": "تربس الفلفل",
+          "sci": "Scirtothrips dorsalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "RALSSO",
+          "n": 1,
+          "name_ar": "الذبول البكتيري الجنوبي",
+          "sci": "Ralstonia solanacearum species complex (as Musa)",
+          "type": "bacterium"
+        },
+        {
+          "dossier": "EUTEOR",
+          "n": 1,
+          "name_ar": "العنكبوت الأحمر الشرقي",
+          "sci": "Eutetranychus orientalis",
+          "type": "mite"
+        }
+      ],
+      "name_ar": "المانيوكا",
+      "name_en": "Cassava",
+      "sci": "Manihot esculenta"
+    },
+    {
+      "cards": 14,
+      "family": "Brassicaceae",
+      "id": "cauliflower",
+      "infections": [
+        {
+          "dossier": "SPODLI",
+          "n": 1,
+          "name_ar": "سوسة الأوراق المتوسطية",
+          "sci": "Spodoptera littoralis",
+          "type": "insect"
+        },
+        {
+          "dossier": "MELGET",
+          "n": 1,
+          "name_ar": "نيماتودا تعقد الجذور الإثيوبية",
+          "sci": "Meloidogyne ethiopica",
+          "type": "nematode"
+        },
+        {
+          "dossier": "HELIZE",
+          "n": 2,
+          "name_ar": "دودة كوز الذرة",
+          "sci": "Helicoverpa zea",
+          "type": "insect"
+        },
+        {
+          "dossier": "THRIPL",
+          "n": 3,
+          "name_ar": "تربس البطيخ",
+          "sci": "Thrips palmi",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIAR",
+          "n": 4,
+          "name_ar": "دودة الحشّاشة (البقّاحة)",
+          "sci": "Helicoverpa armigera",
+          "type": "insect"
+        },
+        {
+          "dossier": "TSWV00",
+          "n": 1,
+          "name_ar": "فيروس ذبول الطماطم المرقط",
+          "sci": "Orthotospovirus tomatomaculae",
+          "type": "virus"
+        },
+        {
+          "dossier": "BEMITA",
+          "n": 5,
+          "name_ar": "الذبابة البيضاء",
+          "sci": "Bemisia tabaci",
+          "type": "insect"
+        },
+        {
+          "dossier": "LIRIHU",
+          "n": 6,
+          "name_ar": "حافرة الأوراق (Liriomyza huidobrensis)",
+          "sci": "Liriomyza huidobrensis",
+          "type": "insect"
+        },
+        {
+          "dossier": "DITYDI",
+          "n": 2,
+          "name_ar": "نيماتودا السيقان والأبصال",
+          "sci": "Ditylenchus dipsaci",
+          "type": "nematode"
+        },
+        {
+          "dossier": "LIRITR",
+          "n": 7,
+          "name_ar": "حافرة الأوراق المتعرجة الأمريكية",
+          "sci": "Liriomyza trifolii",
+          "type": "insect"
+        },
+        {
+          "dossier": "HALYHA",
+          "n": 8,
+          "name_ar": "الخنفساء البنية المرقطة",
+          "sci": "Halyomorpha halys",
+          "type": "insect"
+        },
+        {
+          "dossier": "TBRV00",
+          "n": 2,
+          "name_ar": "فيروس الحلقات السوداء على الطماطم",
+          "sci": "Nepovirus nigranuli",
+          "type": "virus"
+        },
+        {
+          "dossier": "RALSSO",
+          "n": 1,
+          "name_ar": "الذبول البكتيري الجنوبي",
+          "sci": "Ralstonia solanacearum species complex (as Musa)",
+          "type": "bacterium"
+        },
+        {
+          "dossier": "VERTDA",
+          "n": 1,
+          "name_ar": "ذبول الفيرتيسيوم",
+          "sci": "Verticillium dahliae",
+          "type": "fungus"
+        }
+      ],
+      "name_ar": "القرنبيط",
+      "name_en": "Cauliflower",
+      "sci": "Brassica oleracea"
+    },
+    {
+      "cards": 8,
+      "family": "Rosaceae",
+      "id": "cherry",
+      "infections": [
+        {
+          "dossier": "MONIFC",
+          "n": 1,
+          "name_ar": "فطر تعفّن ثمار الحجرية",
+          "sci": "Monilinia fructicola",
+          "type": "fungus"
+        },
+        {
+          "dossier": "HELIZE",
+          "n": 1,
+          "name_ar": "دودة كوز الذرة",
+          "sci": "Helicoverpa zea",
+          "type": "insect"
+        },
+        {
+          "dossier": "PSEAPE",
+          "n": 2,
+          "name_ar": "الدرع أبيض على الخوخ",
+          "sci": "Pseudaulacaspis pentagona",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHYPSO",
+          "n": 1,
+          "name_ar": "مرض الشاحبة (فتوبلازما solani)",
+          "sci": "'Candidatus Phytoplasma solani'",
+          "type": "bacterium"
+        },
+        {
+          "dossier": "CERTCA",
+          "n": 3,
+          "name_ar": "ذبابة الفاكهة المتوسطية",
+          "sci": "Ceratitis capitata",
+          "type": "insect"
+        },
+        {
+          "dossier": "DACUDO",
+          "n": 4,
+          "name_ar": "ذبابة الفاكهة الشرقية",
+          "sci": "Bactrocera dorsalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "HALYHA",
+          "n": 5,
+          "name_ar": "الخنفساء البنية المرقطة",
+          "sci": "Halyomorpha halys",
+          "type": "insect"
+        },
+        {
+          "dossier": "TBRV00",
+          "n": 1,
+          "name_ar": "فيروس الحلقات السوداء على الطماطم",
+          "sci": "Nepovirus nigranuli",
+          "type": "virus"
+        }
+      ],
+      "name_ar": "الكرز",
+      "name_en": "Sweet cherry",
+      "sci": "Prunus avium"
+    },
+    {
+      "cards": 7,
+      "family": "Fabaceae",
+      "id": "chickpea",
+      "infections": [
+        {
+          "dossier": "LAPHFR",
+          "n": 1,
+          "name_ar": "سوسة الذرة الأمريكية",
+          "sci": "Spodoptera frugiperda",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIZE",
+          "n": 2,
+          "name_ar": "دودة كوز الذرة",
+          "sci": "Helicoverpa zea",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIAR",
+          "n": 3,
+          "name_ar": "دودة الحشّاشة (البقّاحة)",
+          "sci": "Helicoverpa armigera",
+          "type": "insect"
+        },
+        {
+          "dossier": "TSWV00",
+          "n": 1,
+          "name_ar": "فيروس ذبول الطماطم المرقط",
+          "sci": "Orthotospovirus tomatomaculae",
+          "type": "virus"
+        },
+        {
+          "dossier": "LIRIHU",
+          "n": 4,
+          "name_ar": "حافرة الأوراق (Liriomyza huidobrensis)",
+          "sci": "Liriomyza huidobrensis",
+          "type": "insect"
+        },
+        {
+          "dossier": "DITYDI",
+          "n": 1,
+          "name_ar": "نيماتودا السيقان والأبصال",
+          "sci": "Ditylenchus dipsaci",
+          "type": "nematode"
+        },
+        {
+          "dossier": "RALSSO",
+          "n": 1,
+          "name_ar": "الذبول البكتيري الجنوبي",
+          "sci": "Ralstonia solanacearum species complex (as Musa)",
+          "type": "bacterium"
+        }
+      ],
+      "name_ar": "الحمص",
+      "name_en": "Chickpea",
+      "sci": "Cicer arietinum"
+    },
+    {
+      "cards": 4,
+      "family": "Rutaceae",
+      "id": "citrus",
+      "infections": [
+        {
+          "dossier": "PSEAPE",
+          "n": 1,
+          "name_ar": "الدرع أبيض على الخوخ",
+          "sci": "Pseudaulacaspis pentagona",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHENHI",
+          "n": 2,
+          "name_ar": "المن الوردي",
+          "sci": "Maconellicoccus hirsutus",
+          "type": "insect"
+        },
+        {
+          "dossier": "SCITDO",
+          "n": 3,
+          "name_ar": "تربس الفلفل",
+          "sci": "Scirtothrips dorsalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "EUTEOR",
+          "n": 1,
+          "name_ar": "العنكبوت الأحمر الشرقي",
+          "sci": "Eutetranychus orientalis",
+          "type": "mite"
+        }
+      ],
+      "name_ar": "الحمضيات",
+      "name_en": "Citrus",
+      "sci": "Citrus"
+    },
+    {
+      "cards": 7,
+      "family": "Malvaceae",
+      "id": "cocoa",
+      "infections": [
+        {
+          "dossier": "LAPHFR",
+          "n": 1,
+          "name_ar": "سوسة الذرة الأمريكية",
+          "sci": "Spodoptera frugiperda",
+          "type": "insect"
+        },
+        {
+          "dossier": "PSEAPE",
+          "n": 2,
+          "name_ar": "الدرع أبيض على الخوخ",
+          "sci": "Pseudaulacaspis pentagona",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHENHI",
+          "n": 3,
+          "name_ar": "المن الوردي",
+          "sci": "Maconellicoccus hirsutus",
+          "type": "insect"
+        },
+        {
+          "dossier": "CERTCA",
+          "n": 4,
+          "name_ar": "ذبابة الفاكهة المتوسطية",
+          "sci": "Ceratitis capitata",
+          "type": "insect"
+        },
+        {
+          "dossier": "DACUDO",
+          "n": 5,
+          "name_ar": "ذبابة الفاكهة الشرقية",
+          "sci": "Bactrocera dorsalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "COLLFC",
+          "n": 1,
+          "name_ar": "لفحة الأوراق الأرجوانية وتعفّن الثمار",
+          "sci": "Colletotrichum fructicola",
+          "type": "fungus"
+        },
+        {
+          "dossier": "SCITDO",
+          "n": 6,
+          "name_ar": "تربس الفلفل",
+          "sci": "Scirtothrips dorsalis",
+          "type": "insect"
+        }
+      ],
+      "name_ar": "الكاكاو",
+      "name_en": "Cocoa",
+      "sci": "Theobroma cacao"
+    },
+    {
+      "cards": 2,
+      "family": "Arecaceae",
+      "id": "coconut",
+      "infections": [
+        {
+          "dossier": "LAPHFR",
+          "n": 1,
+          "name_ar": "سوسة الذرة الأمريكية",
+          "sci": "Spodoptera frugiperda",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHENHI",
+          "n": 2,
+          "name_ar": "المن الوردي",
+          "sci": "Maconellicoccus hirsutus",
+          "type": "insect"
+        }
+      ],
+      "name_ar": "جوز الهند",
+      "name_en": "Coconut",
+      "sci": "Cocos nucifera"
+    },
+    {
+      "cards": 8,
+      "family": "Rubiaceae",
+      "id": "coffee",
+      "infections": [
+        {
+          "dossier": "LAPHFR",
+          "n": 1,
+          "name_ar": "سوسة الذرة الأمريكية",
+          "sci": "Spodoptera frugiperda",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIAR",
+          "n": 2,
+          "name_ar": "دودة الحشّاشة (البقّاحة)",
+          "sci": "Helicoverpa armigera",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHENHI",
+          "n": 3,
+          "name_ar": "المن الوردي",
+          "sci": "Maconellicoccus hirsutus",
+          "type": "insect"
+        },
+        {
+          "dossier": "TSWV00",
+          "n": 1,
+          "name_ar": "فيروس ذبول الطماطم المرقط",
+          "sci": "Orthotospovirus tomatomaculae",
+          "type": "virus"
+        },
+        {
+          "dossier": "CERTCA",
+          "n": 4,
+          "name_ar": "ذبابة الفاكهة المتوسطية",
+          "sci": "Ceratitis capitata",
+          "type": "insect"
+        },
+        {
+          "dossier": "LIRITR",
+          "n": 5,
+          "name_ar": "حافرة الأوراق المتعرجة الأمريكية",
+          "sci": "Liriomyza trifolii",
+          "type": "insect"
+        },
+        {
+          "dossier": "DACUDO",
+          "n": 6,
+          "name_ar": "ذبابة الفاكهة الشرقية",
+          "sci": "Bactrocera dorsalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "COLLFC",
+          "n": 1,
+          "name_ar": "لفحة الأوراق الأرجوانية وتعفّن الثمار",
+          "sci": "Colletotrichum fructicola",
+          "type": "fungus"
+        }
+      ],
+      "name_ar": "القهوة",
+      "name_en": "Coffee",
+      "sci": "Coffea arabica"
+    },
+    {
+      "cards": 17,
+      "family": "Malvaceae",
+      "id": "cotton",
+      "infections": [
+        {
+          "dossier": "LAPHFR",
+          "n": 1,
+          "name_ar": "سوسة الذرة الأمريكية",
+          "sci": "Spodoptera frugiperda",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIZE",
+          "n": 2,
+          "name_ar": "دودة كوز الذرة",
+          "sci": "Helicoverpa zea",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHMPOM",
+          "n": 1,
+          "name_ar": "تعفّن وذبول جذور النباتات",
+          "sci": "Phymatotrichopsis omnivora",
+          "type": "fungus"
+        },
+        {
+          "dossier": "BEMITA",
+          "n": 3,
+          "name_ar": "الذبابة البيضاء",
+          "sci": "Bemisia tabaci",
+          "type": "insect"
+        },
+        {
+          "dossier": "SPODLI",
+          "n": 4,
+          "name_ar": "سوسة الأوراق المتوسطية",
+          "sci": "Spodoptera littoralis",
+          "type": "insect"
+        },
+        {
+          "dossier": "THRIPL",
+          "n": 5,
+          "name_ar": "تربس البطيخ",
+          "sci": "Thrips palmi",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIAR",
+          "n": 6,
+          "name_ar": "دودة الحشّاشة (البقّاحة)",
+          "sci": "Helicoverpa armigera",
+          "type": "insect"
+        },
+        {
+          "dossier": "PSEAPE",
+          "n": 7,
+          "name_ar": "الدرع أبيض على الخوخ",
+          "sci": "Pseudaulacaspis pentagona",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHENHI",
+          "n": 8,
+          "name_ar": "المن الوردي",
+          "sci": "Maconellicoccus hirsutus",
+          "type": "insect"
+        },
+        {
+          "dossier": "TSWV00",
+          "n": 1,
+          "name_ar": "فيروس ذبول الطماطم المرقط",
+          "sci": "Orthotospovirus tomatomaculae",
+          "type": "virus"
+        },
+        {
+          "dossier": "CERTCA",
+          "n": 9,
+          "name_ar": "ذبابة الفاكهة المتوسطية",
+          "sci": "Ceratitis capitata",
+          "type": "insect"
+        },
+        {
+          "dossier": "LIRITR",
+          "n": 10,
+          "name_ar": "حافرة الأوراق المتعرجة الأمريكية",
+          "sci": "Liriomyza trifolii",
+          "type": "insect"
+        },
+        {
+          "dossier": "MELGET",
+          "n": 1,
+          "name_ar": "نيماتودا تعقد الجذور الإثيوبية",
+          "sci": "Meloidogyne ethiopica",
+          "type": "nematode"
+        },
+        {
+          "dossier": "FRANOC",
+          "n": 11,
+          "name_ar": "تربس الأزهار الغربي",
+          "sci": "Frankliniella occidentalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "SCITDO",
+          "n": 12,
+          "name_ar": "تربس الفلفل",
+          "sci": "Scirtothrips dorsalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "VERTDA",
+          "n": 2,
+          "name_ar": "ذبول الفيرتيسيوم",
+          "sci": "Verticillium dahliae",
+          "type": "fungus"
+        },
+        {
+          "dossier": "EUTEOR",
+          "n": 1,
+          "name_ar": "العنكبوت الأحمر الشرقي",
+          "sci": "Eutetranychus orientalis",
+          "type": "mite"
+        }
+      ],
+      "name_ar": "القطن",
+      "name_en": "Cotton",
+      "sci": "Gossypium hirsutum"
+    },
+    {
+      "cards": 12,
+      "family": "Fabaceae",
+      "id": "cowpea",
+      "infections": [
+        {
+          "dossier": "LAPHFR",
+          "n": 1,
+          "name_ar": "سوسة الذرة الأمريكية",
+          "sci": "Spodoptera frugiperda",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIZE",
+          "n": 2,
+          "name_ar": "دودة كوز الذرة",
+          "sci": "Helicoverpa zea",
+          "type": "insect"
+        },
+        {
+          "dossier": "THRIPL",
+          "n": 3,
+          "name_ar": "تربس البطيخ",
+          "sci": "Thrips palmi",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIAR",
+          "n": 4,
+          "name_ar": "دودة الحشّاشة (البقّاحة)",
+          "sci": "Helicoverpa armigera",
+          "type": "insect"
+        },
+        {
+          "dossier": "TSWV00",
+          "n": 1,
+          "name_ar": "فيروس ذبول الطماطم المرقط",
+          "sci": "Orthotospovirus tomatomaculae",
+          "type": "virus"
+        },
+        {
+          "dossier": "BEMITA",
+          "n": 5,
+          "name_ar": "الذبابة البيضاء",
+          "sci": "Bemisia tabaci",
+          "type": "insect"
+        },
+        {
+          "dossier": "LIRIHU",
+          "n": 6,
+          "name_ar": "حافرة الأوراق (Liriomyza huidobrensis)",
+          "sci": "Liriomyza huidobrensis",
+          "type": "insect"
+        },
+        {
+          "dossier": "SPODLI",
+          "n": 7,
+          "name_ar": "سوسة الأوراق المتوسطية",
+          "sci": "Spodoptera littoralis",
+          "type": "insect"
+        },
+        {
+          "dossier": "LIRITR",
+          "n": 8,
+          "name_ar": "حافرة الأوراق المتعرجة الأمريكية",
+          "sci": "Liriomyza trifolii",
+          "type": "insect"
+        },
+        {
+          "dossier": "DIABUH",
+          "n": 9,
+          "name_ar": "خنفساء الخيار المرقطة",
+          "sci": "Diabrotica undecimpunctata howardi",
+          "type": "insect"
+        },
+        {
+          "dossier": "MELGET",
+          "n": 1,
+          "name_ar": "نيماتودا تعقد الجذور الإثيوبية",
+          "sci": "Meloidogyne ethiopica",
+          "type": "nematode"
+        },
+        {
+          "dossier": "HOMLTR",
+          "n": 10,
+          "name_ar": "الدبّاق الزجاجي الجناح",
+          "sci": "Homalodisca vitripennis",
+          "type": "insect"
+        }
+      ],
+      "name_ar": "اللوبيا",
+      "name_en": "Cowpea",
+      "sci": "Vigna unguiculata"
+    },
+    {
+      "cards": 19,
+      "family": "Cucurbitaceae",
+      "id": "cucumber",
+      "infections": [
+        {
+          "dossier": "TSWV00",
+          "n": 1,
+          "name_ar": "فيروس ذبول الطماطم المرقط",
+          "sci": "Orthotospovirus tomatomaculae",
+          "type": "virus"
+        },
+        {
+          "dossier": "SPODLI",
+          "n": 1,
+          "name_ar": "سوسة الأوراق المتوسطية",
+          "sci": "Spodoptera littoralis",
+          "type": "insect"
+        },
+        {
+          "dossier": "DIABUH",
+          "n": 2,
+          "name_ar": "خنفساء الخيار المرقطة",
+          "sci": "Diabrotica undecimpunctata howardi",
+          "type": "insect"
+        },
+        {
+          "dossier": "FRANOC",
+          "n": 3,
+          "name_ar": "تربس الأزهار الغربي",
+          "sci": "Frankliniella occidentalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "LAPHFR",
+          "n": 4,
+          "name_ar": "سوسة الذرة الأمريكية",
+          "sci": "Spodoptera frugiperda",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIZE",
+          "n": 5,
+          "name_ar": "دودة كوز الذرة",
+          "sci": "Helicoverpa zea",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHMPOM",
+          "n": 1,
+          "name_ar": "تعفّن وذبول جذور النباتات",
+          "sci": "Phymatotrichopsis omnivora",
+          "type": "fungus"
+        },
+        {
+          "dossier": "THRIPL",
+          "n": 6,
+          "name_ar": "تربس البطيخ",
+          "sci": "Thrips palmi",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIAR",
+          "n": 7,
+          "name_ar": "دودة الحشّاشة (البقّاحة)",
+          "sci": "Helicoverpa armigera",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHENHI",
+          "n": 8,
+          "name_ar": "المن الوردي",
+          "sci": "Maconellicoccus hirsutus",
+          "type": "insect"
+        },
+        {
+          "dossier": "BEMITA",
+          "n": 9,
+          "name_ar": "الذبابة البيضاء",
+          "sci": "Bemisia tabaci",
+          "type": "insect"
+        },
+        {
+          "dossier": "LIRIHU",
+          "n": 10,
+          "name_ar": "حافرة الأوراق (Liriomyza huidobrensis)",
+          "sci": "Liriomyza huidobrensis",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHYPSO",
+          "n": 1,
+          "name_ar": "مرض الشاحبة (فتوبلازما solani)",
+          "sci": "'Candidatus Phytoplasma solani'",
+          "type": "bacterium"
+        },
+        {
+          "dossier": "DITYDI",
+          "n": 1,
+          "name_ar": "نيماتودا السيقان والأبصال",
+          "sci": "Ditylenchus dipsaci",
+          "type": "nematode"
+        },
+        {
+          "dossier": "LIRITR",
+          "n": 11,
+          "name_ar": "حافرة الأوراق المتعرجة الأمريكية",
+          "sci": "Liriomyza trifolii",
+          "type": "insect"
+        },
+        {
+          "dossier": "DACUDO",
+          "n": 12,
+          "name_ar": "ذبابة الفاكهة الشرقية",
+          "sci": "Bactrocera dorsalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "HALYHA",
+          "n": 13,
+          "name_ar": "الخنفساء البنية المرقطة",
+          "sci": "Halyomorpha halys",
+          "type": "insect"
+        },
+        {
+          "dossier": "SCITDO",
+          "n": 14,
+          "name_ar": "تربس الفلفل",
+          "sci": "Scirtothrips dorsalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "RALSSO",
+          "n": 2,
+          "name_ar": "الذبول البكتيري الجنوبي",
+          "sci": "Ralstonia solanacearum species complex (as Musa)",
+          "type": "bacterium"
+        }
+      ],
+      "name_ar": "الخيار",
+      "name_en": "Cucumber",
+      "sci": "Cucumis sativus"
+    },
+    {
+      "cards": 3,
+      "family": "Arecaceae",
+      "id": "dates",
+      "infections": [
+        {
+          "dossier": "PHENHI",
+          "n": 1,
+          "name_ar": "المن الوردي",
+          "sci": "Maconellicoccus hirsutus",
+          "type": "insect"
+        },
+        {
+          "dossier": "CERTCA",
+          "n": 2,
+          "name_ar": "ذبابة الفاكهة المتوسطية",
+          "sci": "Ceratitis capitata",
+          "type": "insect"
+        },
+        {
+          "dossier": "DACUDO",
+          "n": 3,
+          "name_ar": "ذبابة الفاكهة الشرقية",
+          "sci": "Bactrocera dorsalis",
+          "type": "insect"
+        }
+      ],
+      "name_ar": "التمور",
+      "name_en": "Dates",
+      "sci": "Phoenix dactylifera"
+    },
+    {
+      "cards": 21,
+      "family": "Solanaceae",
+      "id": "eggplant",
+      "infections": [
+        {
+          "dossier": "HELIZE",
+          "n": 1,
+          "name_ar": "دودة كوز الذرة",
+          "sci": "Helicoverpa zea",
+          "type": "insect"
+        },
+        {
+          "dossier": "TSWV00",
+          "n": 1,
+          "name_ar": "فيروس ذبول الطماطم المرقط",
+          "sci": "Orthotospovirus tomatomaculae",
+          "type": "virus"
+        },
+        {
+          "dossier": "SPODLI",
+          "n": 2,
+          "name_ar": "سوسة الأوراق المتوسطية",
+          "sci": "Spodoptera littoralis",
+          "type": "insect"
+        },
+        {
+          "dossier": "RALSSO",
+          "n": 1,
+          "name_ar": "الذبول البكتيري الجنوبي",
+          "sci": "Ralstonia solanacearum species complex (as Musa)",
+          "type": "bacterium"
+        },
+        {
+          "dossier": "LAPHFR",
+          "n": 3,
+          "name_ar": "سوسة الذرة الأمريكية",
+          "sci": "Spodoptera frugiperda",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHMPOM",
+          "n": 1,
+          "name_ar": "تعفّن وذبول جذور النباتات",
+          "sci": "Phymatotrichopsis omnivora",
+          "type": "fungus"
+        },
+        {
+          "dossier": "THRIPL",
+          "n": 4,
+          "name_ar": "تربس البطيخ",
+          "sci": "Thrips palmi",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIAR",
+          "n": 5,
+          "name_ar": "دودة الحشّاشة (البقّاحة)",
+          "sci": "Helicoverpa armigera",
+          "type": "insect"
+        },
+        {
+          "dossier": "PSEAPE",
+          "n": 6,
+          "name_ar": "الدرع أبيض على الخوخ",
+          "sci": "Pseudaulacaspis pentagona",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHENHI",
+          "n": 7,
+          "name_ar": "المن الوردي",
+          "sci": "Maconellicoccus hirsutus",
+          "type": "insect"
+        },
+        {
+          "dossier": "BEMITA",
+          "n": 8,
+          "name_ar": "الذبابة البيضاء",
+          "sci": "Bemisia tabaci",
+          "type": "insect"
+        },
+        {
+          "dossier": "LIRIHU",
+          "n": 9,
+          "name_ar": "حافرة الأوراق (Liriomyza huidobrensis)",
+          "sci": "Liriomyza huidobrensis",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHYPSO",
+          "n": 2,
+          "name_ar": "مرض الشاحبة (فتوبلازما solani)",
+          "sci": "'Candidatus Phytoplasma solani'",
+          "type": "bacterium"
+        },
+        {
+          "dossier": "CERTCA",
+          "n": 10,
+          "name_ar": "ذبابة الفاكهة المتوسطية",
+          "sci": "Ceratitis capitata",
+          "type": "insect"
+        },
+        {
+          "dossier": "LIRITR",
+          "n": 11,
+          "name_ar": "حافرة الأوراق المتعرجة الأمريكية",
+          "sci": "Liriomyza trifolii",
+          "type": "insect"
+        },
+        {
+          "dossier": "DIABUH",
+          "n": 12,
+          "name_ar": "خنفساء الخيار المرقطة",
+          "sci": "Diabrotica undecimpunctata howardi",
+          "type": "insect"
+        },
+        {
+          "dossier": "DACUDO",
+          "n": 13,
+          "name_ar": "ذبابة الفاكهة الشرقية",
+          "sci": "Bactrocera dorsalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "HALYHA",
+          "n": 14,
+          "name_ar": "الخنفساء البنية المرقطة",
+          "sci": "Halyomorpha halys",
+          "type": "insect"
+        },
+        {
+          "dossier": "TBRV00",
+          "n": 2,
+          "name_ar": "فيروس الحلقات السوداء على الطماطم",
+          "sci": "Nepovirus nigranuli",
+          "type": "virus"
+        },
+        {
+          "dossier": "SCITDO",
+          "n": 15,
+          "name_ar": "تربس الفلفل",
+          "sci": "Scirtothrips dorsalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "VERTDA",
+          "n": 2,
+          "name_ar": "ذبول الفيرتيسيوم",
+          "sci": "Verticillium dahliae",
+          "type": "fungus"
+        }
+      ],
+      "name_ar": "الباذنجان",
+      "name_en": "Eggplant",
+      "sci": "Solanum melongena"
+    },
+    {
+      "cards": 11,
+      "family": "Moraceae",
+      "id": "fig",
+      "infections": [
+        {
+          "dossier": "LAPHFR",
+          "n": 1,
+          "name_ar": "سوسة الذرة الأمريكية",
+          "sci": "Spodoptera frugiperda",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHMPOM",
+          "n": 1,
+          "name_ar": "تعفّن وذبول جذور النباتات",
+          "sci": "Phymatotrichopsis omnivora",
+          "type": "fungus"
+        },
+        {
+          "dossier": "PSEAPE",
+          "n": 2,
+          "name_ar": "الدرع أبيض على الخوخ",
+          "sci": "Pseudaulacaspis pentagona",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHENHI",
+          "n": 3,
+          "name_ar": "المن الوردي",
+          "sci": "Maconellicoccus hirsutus",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHYPSO",
+          "n": 1,
+          "name_ar": "مرض الشاحبة (فتوبلازما solani)",
+          "sci": "'Candidatus Phytoplasma solani'",
+          "type": "bacterium"
+        },
+        {
+          "dossier": "CERTCA",
+          "n": 4,
+          "name_ar": "ذبابة الفاكهة المتوسطية",
+          "sci": "Ceratitis capitata",
+          "type": "insect"
+        },
+        {
+          "dossier": "DACUDO",
+          "n": 5,
+          "name_ar": "ذبابة الفاكهة الشرقية",
+          "sci": "Bactrocera dorsalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "HALYHA",
+          "n": 6,
+          "name_ar": "الخنفساء البنية المرقطة",
+          "sci": "Halyomorpha halys",
+          "type": "insect"
+        },
+        {
+          "dossier": "COLLFC",
+          "n": 2,
+          "name_ar": "لفحة الأوراق الأرجوانية وتعفّن الثمار",
+          "sci": "Colletotrichum fructicola",
+          "type": "fungus"
+        },
+        {
+          "dossier": "RALSSO",
+          "n": 2,
+          "name_ar": "الذبول البكتيري الجنوبي",
+          "sci": "Ralstonia solanacearum species complex (as Musa)",
+          "type": "bacterium"
+        },
+        {
+          "dossier": "EUTEOR",
+          "n": 1,
+          "name_ar": "العنكبوت الأحمر الشرقي",
+          "sci": "Eutetranychus orientalis",
+          "type": "mite"
+        }
+      ],
+      "name_ar": "التين",
+      "name_en": "Fig",
+      "sci": "Ficus carica"
+    },
+    {
+      "cards": 7,
+      "family": "Amaryllidaceae",
+      "id": "garlic",
+      "infections": [
+        {
+          "dossier": "LAPHFR",
+          "n": 1,
+          "name_ar": "سوسة الذرة الأمريكية",
+          "sci": "Spodoptera frugiperda",
+          "type": "insect"
+        },
+        {
+          "dossier": "TSWV00",
+          "n": 1,
+          "name_ar": "فيروس ذبول الطماطم المرقط",
+          "sci": "Orthotospovirus tomatomaculae",
+          "type": "virus"
+        },
+        {
+          "dossier": "LIRIHU",
+          "n": 2,
+          "name_ar": "حافرة الأوراق (Liriomyza huidobrensis)",
+          "sci": "Liriomyza huidobrensis",
+          "type": "insect"
+        },
+        {
+          "dossier": "DITYDI",
+          "n": 1,
+          "name_ar": "نيماتودا السيقان والأبصال",
+          "sci": "Ditylenchus dipsaci",
+          "type": "nematode"
+        },
+        {
+          "dossier": "LIRITR",
+          "n": 3,
+          "name_ar": "حافرة الأوراق المتعرجة الأمريكية",
+          "sci": "Liriomyza trifolii",
+          "type": "insect"
+        },
+        {
+          "dossier": "TBRV00",
+          "n": 2,
+          "name_ar": "فيروس الحلقات السوداء على الطماطم",
+          "sci": "Nepovirus nigranuli",
+          "type": "virus"
+        },
+        {
+          "dossier": "FRANOC",
+          "n": 4,
+          "name_ar": "تربس الأزهار الغربي",
+          "sci": "Frankliniella occidentalis",
+          "type": "insect"
+        }
+      ],
+      "name_ar": "الثوم",
+      "name_en": "Garlic",
+      "sci": "Allium sativum"
+    },
+    {
+      "cards": 21,
+      "family": "Vitaceae",
+      "id": "grape",
+      "infections": [
+        {
+          "dossier": "PHMPOM",
+          "n": 1,
+          "name_ar": "تعفّن وذبول جذور النباتات",
+          "sci": "Phymatotrichopsis omnivora",
+          "type": "fungus"
+        },
+        {
+          "dossier": "PHYPSO",
+          "n": 1,
+          "name_ar": "مرض الشاحبة (فتوبلازما solani)",
+          "sci": "'Candidatus Phytoplasma solani'",
+          "type": "bacterium"
+        },
+        {
+          "dossier": "MELGET",
+          "n": 1,
+          "name_ar": "نيماتودا تعقد الجذور الإثيوبية",
+          "sci": "Meloidogyne ethiopica",
+          "type": "nematode"
+        },
+        {
+          "dossier": "LAPHFR",
+          "n": 1,
+          "name_ar": "سوسة الذرة الأمريكية",
+          "sci": "Spodoptera frugiperda",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIZE",
+          "n": 2,
+          "name_ar": "دودة كوز الذرة",
+          "sci": "Helicoverpa zea",
+          "type": "insect"
+        },
+        {
+          "dossier": "THRIPL",
+          "n": 3,
+          "name_ar": "تربس البطيخ",
+          "sci": "Thrips palmi",
+          "type": "insect"
+        },
+        {
+          "dossier": "PSEAPE",
+          "n": 4,
+          "name_ar": "الدرع أبيض على الخوخ",
+          "sci": "Pseudaulacaspis pentagona",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHENHI",
+          "n": 5,
+          "name_ar": "المن الوردي",
+          "sci": "Maconellicoccus hirsutus",
+          "type": "insect"
+        },
+        {
+          "dossier": "SPODLI",
+          "n": 6,
+          "name_ar": "سوسة الأوراق المتوسطية",
+          "sci": "Spodoptera littoralis",
+          "type": "insect"
+        },
+        {
+          "dossier": "CERTCA",
+          "n": 7,
+          "name_ar": "ذبابة الفاكهة المتوسطية",
+          "sci": "Ceratitis capitata",
+          "type": "insect"
+        },
+        {
+          "dossier": "DITYDI",
+          "n": 2,
+          "name_ar": "نيماتودا السيقان والأبصال",
+          "sci": "Ditylenchus dipsaci",
+          "type": "nematode"
+        },
+        {
+          "dossier": "DACUDO",
+          "n": 8,
+          "name_ar": "ذبابة الفاكهة الشرقية",
+          "sci": "Bactrocera dorsalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "HALYHA",
+          "n": 9,
+          "name_ar": "الخنفساء البنية المرقطة",
+          "sci": "Halyomorpha halys",
+          "type": "insect"
+        },
+        {
+          "dossier": "TBRV00",
+          "n": 1,
+          "name_ar": "فيروس الحلقات السوداء على الطماطم",
+          "sci": "Nepovirus nigranuli",
+          "type": "virus"
+        },
+        {
+          "dossier": "COLLFC",
+          "n": 2,
+          "name_ar": "لفحة الأوراق الأرجوانية وتعفّن الثمار",
+          "sci": "Colletotrichum fructicola",
+          "type": "fungus"
+        },
+        {
+          "dossier": "FRANOC",
+          "n": 10,
+          "name_ar": "تربس الأزهار الغربي",
+          "sci": "Frankliniella occidentalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "SCITDO",
+          "n": 11,
+          "name_ar": "تربس الفلفل",
+          "sci": "Scirtothrips dorsalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "VERTDA",
+          "n": 3,
+          "name_ar": "ذبول الفيرتيسيوم",
+          "sci": "Verticillium dahliae",
+          "type": "fungus"
+        },
+        {
+          "dossier": "EUTEOR",
+          "n": 1,
+          "name_ar": "العنكبوت الأحمر الشرقي",
+          "sci": "Eutetranychus orientalis",
+          "type": "mite"
+        },
+        {
+          "dossier": "HOMLTR",
+          "n": 12,
+          "name_ar": "الدبّاق الزجاجي الجناح",
+          "sci": "Homalodisca vitripennis",
+          "type": "insect"
+        },
+        {
+          "dossier": "MONIFC",
+          "n": 4,
+          "name_ar": "فطر تعفّن ثمار الحجرية",
+          "sci": "Monilinia fructicola",
+          "type": "fungus"
+        }
+      ],
+      "name_ar": "العنب",
+      "name_en": "Grape",
+      "sci": "Vitis vinifera"
+    },
+    {
+      "cards": 16,
+      "family": "Fabaceae",
+      "id": "groundnut",
+      "infections": [
+        {
+          "dossier": "DIABUH",
+          "n": 1,
+          "name_ar": "خنفساء الخيار المرقطة",
+          "sci": "Diabrotica undecimpunctata howardi",
+          "type": "insect"
+        },
+        {
+          "dossier": "RALSSO",
+          "n": 1,
+          "name_ar": "الذبول البكتيري الجنوبي",
+          "sci": "Ralstonia solanacearum species complex (as Musa)",
+          "type": "bacterium"
+        },
+        {
+          "dossier": "LAPHFR",
+          "n": 2,
+          "name_ar": "سوسة الذرة الأمريكية",
+          "sci": "Spodoptera frugiperda",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIZE",
+          "n": 3,
+          "name_ar": "دودة كوز الذرة",
+          "sci": "Helicoverpa zea",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHMPOM",
+          "n": 1,
+          "name_ar": "تعفّن وذبول جذور النباتات",
+          "sci": "Phymatotrichopsis omnivora",
+          "type": "fungus"
+        },
+        {
+          "dossier": "THRIPL",
+          "n": 4,
+          "name_ar": "تربس البطيخ",
+          "sci": "Thrips palmi",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIAR",
+          "n": 5,
+          "name_ar": "دودة الحشّاشة (البقّاحة)",
+          "sci": "Helicoverpa armigera",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHENHI",
+          "n": 6,
+          "name_ar": "المن الوردي",
+          "sci": "Maconellicoccus hirsutus",
+          "type": "insect"
+        },
+        {
+          "dossier": "TSWV00",
+          "n": 1,
+          "name_ar": "فيروس ذبول الطماطم المرقط",
+          "sci": "Orthotospovirus tomatomaculae",
+          "type": "virus"
+        },
+        {
+          "dossier": "BEMITA",
+          "n": 7,
+          "name_ar": "الذبابة البيضاء",
+          "sci": "Bemisia tabaci",
+          "type": "insect"
+        },
+        {
+          "dossier": "SPODLI",
+          "n": 8,
+          "name_ar": "سوسة الأوراق المتوسطية",
+          "sci": "Spodoptera littoralis",
+          "type": "insect"
+        },
+        {
+          "dossier": "LIRITR",
+          "n": 9,
+          "name_ar": "حافرة الأوراق المتعرجة الأمريكية",
+          "sci": "Liriomyza trifolii",
+          "type": "insect"
+        },
+        {
+          "dossier": "COLLFC",
+          "n": 2,
+          "name_ar": "لفحة الأوراق الأرجوانية وتعفّن الثمار",
+          "sci": "Colletotrichum fructicola",
+          "type": "fungus"
+        },
+        {
+          "dossier": "SCITDO",
+          "n": 10,
+          "name_ar": "تربس الفلفل",
+          "sci": "Scirtothrips dorsalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "VERTDA",
+          "n": 3,
+          "name_ar": "ذبول الفيرتيسيوم",
+          "sci": "Verticillium dahliae",
+          "type": "fungus"
+        },
+        {
+          "dossier": "EUTEOR",
+          "n": 1,
+          "name_ar": "العنكبوت الأحمر الشرقي",
+          "sci": "Eutetranychus orientalis",
+          "type": "mite"
+        }
+      ],
+      "name_ar": "الفول السوداني",
+      "name_en": "Groundnut",
+      "sci": "Arachis hypogaea"
+    },
+    {
+      "cards": 2,
+      "family": "Fabaceae",
+      "id": "lentil",
+      "infections": [
+        {
+          "dossier": "TSWV00",
+          "n": 1,
+          "name_ar": "فيروس ذبول الطماطم المرقط",
+          "sci": "Orthotospovirus tomatomaculae",
+          "type": "virus"
+        },
+        {
+          "dossier": "DITYDI",
+          "n": 1,
+          "name_ar": "نيماتودا السيقان والأبصال",
+          "sci": "Ditylenchus dipsaci",
+          "type": "nematode"
+        }
+      ],
+      "name_ar": "العدس",
+      "name_en": "Lentil",
+      "sci": "Vicia lens"
+    },
+    {
+      "cards": 15,
+      "family": "Asteraceae",
+      "id": "lettuce",
+      "infections": [
+        {
+          "dossier": "TSWV00",
+          "n": 1,
+          "name_ar": "فيروس ذبول الطماطم المرقط",
+          "sci": "Orthotospovirus tomatomaculae",
+          "type": "virus"
+        },
+        {
+          "dossier": "SPODLI",
+          "n": 1,
+          "name_ar": "سوسة الأوراق المتوسطية",
+          "sci": "Spodoptera littoralis",
+          "type": "insect"
+        },
+        {
+          "dossier": "LAPHFR",
+          "n": 2,
+          "name_ar": "سوسة الذرة الأمريكية",
+          "sci": "Spodoptera frugiperda",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIZE",
+          "n": 3,
+          "name_ar": "دودة كوز الذرة",
+          "sci": "Helicoverpa zea",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHMPOM",
+          "n": 1,
+          "name_ar": "تعفّن وذبول جذور النباتات",
+          "sci": "Phymatotrichopsis omnivora",
+          "type": "fungus"
+        },
+        {
+          "dossier": "THRIPL",
+          "n": 4,
+          "name_ar": "تربس البطيخ",
+          "sci": "Thrips palmi",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHENHI",
+          "n": 5,
+          "name_ar": "المن الوردي",
+          "sci": "Maconellicoccus hirsutus",
+          "type": "insect"
+        },
+        {
+          "dossier": "BEMITA",
+          "n": 6,
+          "name_ar": "الذبابة البيضاء",
+          "sci": "Bemisia tabaci",
+          "type": "insect"
+        },
+        {
+          "dossier": "LIRIHU",
+          "n": 7,
+          "name_ar": "حافرة الأوراق (Liriomyza huidobrensis)",
+          "sci": "Liriomyza huidobrensis",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHYPSO",
+          "n": 1,
+          "name_ar": "مرض الشاحبة (فتوبلازما solani)",
+          "sci": "'Candidatus Phytoplasma solani'",
+          "type": "bacterium"
+        },
+        {
+          "dossier": "LIRITR",
+          "n": 8,
+          "name_ar": "حافرة الأوراق المتعرجة الأمريكية",
+          "sci": "Liriomyza trifolii",
+          "type": "insect"
+        },
+        {
+          "dossier": "DIABUH",
+          "n": 9,
+          "name_ar": "خنفساء الخيار المرقطة",
+          "sci": "Diabrotica undecimpunctata howardi",
+          "type": "insect"
+        },
+        {
+          "dossier": "MELGET",
+          "n": 1,
+          "name_ar": "نيماتودا تعقد الجذور الإثيوبية",
+          "sci": "Meloidogyne ethiopica",
+          "type": "nematode"
+        },
+        {
+          "dossier": "TBRV00",
+          "n": 2,
+          "name_ar": "فيروس الحلقات السوداء على الطماطم",
+          "sci": "Nepovirus nigranuli",
+          "type": "virus"
+        },
+        {
+          "dossier": "VERTDA",
+          "n": 2,
+          "name_ar": "ذبول الفيرتيسيوم",
+          "sci": "Verticillium dahliae",
+          "type": "fungus"
+        }
+      ],
+      "name_ar": "الخس",
+      "name_en": "Lettuce",
+      "sci": "Lactuca sativa"
+    },
+    {
+      "cards": 14,
+      "family": "Poaceae",
+      "id": "maize",
+      "infections": [
+        {
+          "dossier": "LAPHFR",
+          "n": 1,
+          "name_ar": "سوسة الذرة الأمريكية",
+          "sci": "Spodoptera frugiperda",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIZE",
+          "n": 2,
+          "name_ar": "دودة كوز الذرة",
+          "sci": "Helicoverpa zea",
+          "type": "insect"
+        },
+        {
+          "dossier": "SPODLI",
+          "n": 3,
+          "name_ar": "سوسة الأوراق المتوسطية",
+          "sci": "Spodoptera littoralis",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHYPSO",
+          "n": 1,
+          "name_ar": "مرض الشاحبة (فتوبلازما solani)",
+          "sci": "'Candidatus Phytoplasma solani'",
+          "type": "bacterium"
+        },
+        {
+          "dossier": "DIABUH",
+          "n": 4,
+          "name_ar": "خنفساء الخيار المرقطة",
+          "sci": "Diabrotica undecimpunctata howardi",
+          "type": "insect"
+        },
+        {
+          "dossier": "DIABVI",
+          "n": 5,
+          "name_ar": "خنفساء جذور الذرة الغربية",
+          "sci": "Diabrotica virgifera virgifera",
+          "type": "insect"
+        },
+        {
+          "dossier": "THRIPL",
+          "n": 6,
+          "name_ar": "تربس البطيخ",
+          "sci": "Thrips palmi",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIAR",
+          "n": 7,
+          "name_ar": "دودة الحشّاشة (البقّاحة)",
+          "sci": "Helicoverpa armigera",
+          "type": "insect"
+        },
+        {
+          "dossier": "BEMITA",
+          "n": 8,
+          "name_ar": "الذبابة البيضاء",
+          "sci": "Bemisia tabaci",
+          "type": "insect"
+        },
+        {
+          "dossier": "LIRIHU",
+          "n": 9,
+          "name_ar": "حافرة الأوراق (Liriomyza huidobrensis)",
+          "sci": "Liriomyza huidobrensis",
+          "type": "insect"
+        },
+        {
+          "dossier": "DITYDI",
+          "n": 1,
+          "name_ar": "نيماتودا السيقان والأبصال",
+          "sci": "Ditylenchus dipsaci",
+          "type": "nematode"
+        },
+        {
+          "dossier": "MELGET",
+          "n": 2,
+          "name_ar": "نيماتودا تعقد الجذور الإثيوبية",
+          "sci": "Meloidogyne ethiopica",
+          "type": "nematode"
+        },
+        {
+          "dossier": "HALYHA",
+          "n": 10,
+          "name_ar": "الخنفساء البنية المرقطة",
+          "sci": "Halyomorpha halys",
+          "type": "insect"
+        },
+        {
+          "dossier": "HOMLTR",
+          "n": 11,
+          "name_ar": "الدبّاق الزجاجي الجناح",
+          "sci": "Homalodisca vitripennis",
+          "type": "insect"
+        }
+      ],
+      "name_ar": "الذرة الصفراء",
+      "name_en": "Maize",
+      "sci": "Zea mays"
+    },
+    {
+      "cards": 12,
+      "family": "Anacardiaceae",
+      "id": "mango",
+      "infections": [
+        {
+          "dossier": "LAPHFR",
+          "n": 1,
+          "name_ar": "سوسة الذرة الأمريكية",
+          "sci": "Spodoptera frugiperda",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHMPOM",
+          "n": 1,
+          "name_ar": "تعفّن وذبول جذور النباتات",
+          "sci": "Phymatotrichopsis omnivora",
+          "type": "fungus"
+        },
+        {
+          "dossier": "THRIPL",
+          "n": 2,
+          "name_ar": "تربس البطيخ",
+          "sci": "Thrips palmi",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIAR",
+          "n": 3,
+          "name_ar": "دودة الحشّاشة (البقّاحة)",
+          "sci": "Helicoverpa armigera",
+          "type": "insect"
+        },
+        {
+          "dossier": "PSEAPE",
+          "n": 4,
+          "name_ar": "الدرع أبيض على الخوخ",
+          "sci": "Pseudaulacaspis pentagona",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHENHI",
+          "n": 5,
+          "name_ar": "المن الوردي",
+          "sci": "Maconellicoccus hirsutus",
+          "type": "insect"
+        },
+        {
+          "dossier": "CERTCA",
+          "n": 6,
+          "name_ar": "ذبابة الفاكهة المتوسطية",
+          "sci": "Ceratitis capitata",
+          "type": "insect"
+        },
+        {
+          "dossier": "DACUDO",
+          "n": 7,
+          "name_ar": "ذبابة الفاكهة الشرقية",
+          "sci": "Bactrocera dorsalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "COLLFC",
+          "n": 2,
+          "name_ar": "لفحة الأوراق الأرجوانية وتعفّن الثمار",
+          "sci": "Colletotrichum fructicola",
+          "type": "fungus"
+        },
+        {
+          "dossier": "FRANOC",
+          "n": 8,
+          "name_ar": "تربس الأزهار الغربي",
+          "sci": "Frankliniella occidentalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "SCITDO",
+          "n": 9,
+          "name_ar": "تربس الفلفل",
+          "sci": "Scirtothrips dorsalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "HOMLTR",
+          "n": 10,
+          "name_ar": "الدبّاق الزجاجي الجناح",
+          "sci": "Homalodisca vitripennis",
+          "type": "insect"
+        }
+      ],
+      "name_ar": "المانجو",
+      "name_en": "Mango",
+      "sci": "Mangifera indica"
+    },
+    {
+      "cards": 15,
+      "family": "Cucurbitaceae",
+      "id": "melon",
+      "infections": [
+        {
+          "dossier": "TSWV00",
+          "n": 1,
+          "name_ar": "فيروس ذبول الطماطم المرقط",
+          "sci": "Orthotospovirus tomatomaculae",
+          "type": "virus"
+        },
+        {
+          "dossier": "DIABUH",
+          "n": 1,
+          "name_ar": "خنفساء الخيار المرقطة",
+          "sci": "Diabrotica undecimpunctata howardi",
+          "type": "insect"
+        },
+        {
+          "dossier": "LAPHFR",
+          "n": 2,
+          "name_ar": "سوسة الذرة الأمريكية",
+          "sci": "Spodoptera frugiperda",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIZE",
+          "n": 3,
+          "name_ar": "دودة كوز الذرة",
+          "sci": "Helicoverpa zea",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHMPOM",
+          "n": 1,
+          "name_ar": "تعفّن وذبول جذور النباتات",
+          "sci": "Phymatotrichopsis omnivora",
+          "type": "fungus"
+        },
+        {
+          "dossier": "THRIPL",
+          "n": 4,
+          "name_ar": "تربس البطيخ",
+          "sci": "Thrips palmi",
+          "type": "insect"
+        },
+        {
+          "dossier": "BEMITA",
+          "n": 5,
+          "name_ar": "الذبابة البيضاء",
+          "sci": "Bemisia tabaci",
+          "type": "insect"
+        },
+        {
+          "dossier": "LIRIHU",
+          "n": 6,
+          "name_ar": "حافرة الأوراق (Liriomyza huidobrensis)",
+          "sci": "Liriomyza huidobrensis",
+          "type": "insect"
+        },
+        {
+          "dossier": "SPODLI",
+          "n": 7,
+          "name_ar": "سوسة الأوراق المتوسطية",
+          "sci": "Spodoptera littoralis",
+          "type": "insect"
+        },
+        {
+          "dossier": "LIRITR",
+          "n": 8,
+          "name_ar": "حافرة الأوراق المتعرجة الأمريكية",
+          "sci": "Liriomyza trifolii",
+          "type": "insect"
+        },
+        {
+          "dossier": "MELGET",
+          "n": 1,
+          "name_ar": "نيماتودا تعقد الجذور الإثيوبية",
+          "sci": "Meloidogyne ethiopica",
+          "type": "nematode"
+        },
+        {
+          "dossier": "DACUDO",
+          "n": 9,
+          "name_ar": "ذبابة الفاكهة الشرقية",
+          "sci": "Bactrocera dorsalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "COLLFC",
+          "n": 2,
+          "name_ar": "لفحة الأوراق الأرجوانية وتعفّن الثمار",
+          "sci": "Colletotrichum fructicola",
+          "type": "fungus"
+        },
+        {
+          "dossier": "FRANOC",
+          "n": 10,
+          "name_ar": "تربس الأزهار الغربي",
+          "sci": "Frankliniella occidentalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "RALSSO",
+          "n": 1,
+          "name_ar": "الذبول البكتيري الجنوبي",
+          "sci": "Ralstonia solanacearum species complex (as Musa)",
+          "type": "bacterium"
+        }
+      ],
+      "name_ar": "الشمام",
+      "name_en": "Melon",
+      "sci": "Cucumis melo"
+    },
+    {
+      "cards": 6,
+      "family": "Poaceae",
+      "id": "millet",
+      "infections": [
+        {
+          "dossier": "LAPHFR",
+          "n": 1,
+          "name_ar": "سوسة الذرة الأمريكية",
+          "sci": "Spodoptera frugiperda",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIZE",
+          "n": 2,
+          "name_ar": "دودة كوز الذرة",
+          "sci": "Helicoverpa zea",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIAR",
+          "n": 3,
+          "name_ar": "دودة الحشّاشة (البقّاحة)",
+          "sci": "Helicoverpa armigera",
+          "type": "insect"
+        },
+        {
+          "dossier": "DIABUH",
+          "n": 4,
+          "name_ar": "خنفساء الخيار المرقطة",
+          "sci": "Diabrotica undecimpunctata howardi",
+          "type": "insect"
+        },
+        {
+          "dossier": "MELGET",
+          "n": 1,
+          "name_ar": "نيماتودا تعقد الجذور الإثيوبية",
+          "sci": "Meloidogyne ethiopica",
+          "type": "nematode"
+        },
+        {
+          "dossier": "DIABVI",
+          "n": 5,
+          "name_ar": "خنفساء جذور الذرة الغربية",
+          "sci": "Diabrotica virgifera virgifera",
+          "type": "insect"
+        }
+      ],
+      "name_ar": "الدخن",
+      "name_en": "Pearl millet",
+      "sci": "Cenchrus americanus"
+    },
+    {
+      "cards": 6,
+      "family": "Poaceae",
+      "id": "oat",
+      "infections": [
+        {
+          "dossier": "LAPHFR",
+          "n": 1,
+          "name_ar": "سوسة الذرة الأمريكية",
+          "sci": "Spodoptera frugiperda",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIZE",
+          "n": 2,
+          "name_ar": "دودة كوز الذرة",
+          "sci": "Helicoverpa zea",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIAR",
+          "n": 3,
+          "name_ar": "دودة الحشّاشة (البقّاحة)",
+          "sci": "Helicoverpa armigera",
+          "type": "insect"
+        },
+        {
+          "dossier": "DITYDI",
+          "n": 1,
+          "name_ar": "نيماتودا السيقان والأبصال",
+          "sci": "Ditylenchus dipsaci",
+          "type": "nematode"
+        },
+        {
+          "dossier": "DIABUH",
+          "n": 4,
+          "name_ar": "خنفساء الخيار المرقطة",
+          "sci": "Diabrotica undecimpunctata howardi",
+          "type": "insect"
+        },
+        {
+          "dossier": "MELGET",
+          "n": 2,
+          "name_ar": "نيماتودا تعقد الجذور الإثيوبية",
+          "sci": "Meloidogyne ethiopica",
+          "type": "nematode"
+        }
+      ],
+      "name_ar": "الشوفان",
+      "name_en": "Oat",
+      "sci": "Avena sativa"
+    },
+    {
+      "cards": 1,
+      "family": "Arecaceae",
+      "id": "oilpalm",
+      "infections": [
+        {
+          "dossier": "LAPHFR",
+          "n": 1,
+          "name_ar": "سوسة الذرة الأمريكية",
+          "sci": "Spodoptera frugiperda",
+          "type": "insect"
+        }
+      ],
+      "name_ar": "نخيل الزيت",
+      "name_en": "Oil palm",
+      "sci": "Elaeis guineensis"
+    },
+    {
+      "cards": 16,
+      "family": "Malvaceae",
+      "id": "okra",
+      "infections": [
+        {
+          "dossier": "LAPHFR",
+          "n": 1,
+          "name_ar": "سوسة الذرة الأمريكية",
+          "sci": "Spodoptera frugiperda",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIZE",
+          "n": 2,
+          "name_ar": "دودة كوز الذرة",
+          "sci": "Helicoverpa zea",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHMPOM",
+          "n": 1,
+          "name_ar": "تعفّن وذبول جذور النباتات",
+          "sci": "Phymatotrichopsis omnivora",
+          "type": "fungus"
+        },
+        {
+          "dossier": "THRIPL",
+          "n": 3,
+          "name_ar": "تربس البطيخ",
+          "sci": "Thrips palmi",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIAR",
+          "n": 4,
+          "name_ar": "دودة الحشّاشة (البقّاحة)",
+          "sci": "Helicoverpa armigera",
+          "type": "insect"
+        },
+        {
+          "dossier": "PSEAPE",
+          "n": 5,
+          "name_ar": "الدرع أبيض على الخوخ",
+          "sci": "Pseudaulacaspis pentagona",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHENHI",
+          "n": 6,
+          "name_ar": "المن الوردي",
+          "sci": "Maconellicoccus hirsutus",
+          "type": "insect"
+        },
+        {
+          "dossier": "BEMITA",
+          "n": 7,
+          "name_ar": "الذبابة البيضاء",
+          "sci": "Bemisia tabaci",
+          "type": "insect"
+        },
+        {
+          "dossier": "LIRIHU",
+          "n": 8,
+          "name_ar": "حافرة الأوراق (Liriomyza huidobrensis)",
+          "sci": "Liriomyza huidobrensis",
+          "type": "insect"
+        },
+        {
+          "dossier": "SPODLI",
+          "n": 9,
+          "name_ar": "سوسة الأوراق المتوسطية",
+          "sci": "Spodoptera littoralis",
+          "type": "insect"
+        },
+        {
+          "dossier": "LIRITR",
+          "n": 10,
+          "name_ar": "حافرة الأوراق المتعرجة الأمريكية",
+          "sci": "Liriomyza trifolii",
+          "type": "insect"
+        },
+        {
+          "dossier": "DACUDO",
+          "n": 11,
+          "name_ar": "ذبابة الفاكهة الشرقية",
+          "sci": "Bactrocera dorsalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "HALYHA",
+          "n": 12,
+          "name_ar": "الخنفساء البنية المرقطة",
+          "sci": "Halyomorpha halys",
+          "type": "insect"
+        },
+        {
+          "dossier": "SCITDO",
+          "n": 13,
+          "name_ar": "تربس الفلفل",
+          "sci": "Scirtothrips dorsalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "VERTDA",
+          "n": 2,
+          "name_ar": "ذبول الفيرتيسيوم",
+          "sci": "Verticillium dahliae",
+          "type": "fungus"
+        },
+        {
+          "dossier": "HOMLTR",
+          "n": 14,
+          "name_ar": "الدبّاق الزجاجي الجناح",
+          "sci": "Homalodisca vitripennis",
+          "type": "insect"
+        }
+      ],
+      "name_ar": "البامية",
+      "name_en": "Okra",
+      "sci": "Abelmoschus esculentus"
+    },
+    {
+      "cards": 10,
+      "family": "Oleaceae",
+      "id": "olive",
+      "infections": [
+        {
+          "dossier": "PHMPOM",
+          "n": 1,
+          "name_ar": "تعفّن وذبول جذور النباتات",
+          "sci": "Phymatotrichopsis omnivora",
+          "type": "fungus"
+        },
+        {
+          "dossier": "PSEAPE",
+          "n": 1,
+          "name_ar": "الدرع أبيض على الخوخ",
+          "sci": "Pseudaulacaspis pentagona",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHYPSO",
+          "n": 1,
+          "name_ar": "مرض الشاحبة (فتوبلازما solani)",
+          "sci": "'Candidatus Phytoplasma solani'",
+          "type": "bacterium"
+        },
+        {
+          "dossier": "CERTCA",
+          "n": 2,
+          "name_ar": "ذبابة الفاكهة المتوسطية",
+          "sci": "Ceratitis capitata",
+          "type": "insect"
+        },
+        {
+          "dossier": "HALYHA",
+          "n": 3,
+          "name_ar": "الخنفساء البنية المرقطة",
+          "sci": "Halyomorpha halys",
+          "type": "insect"
+        },
+        {
+          "dossier": "COLLFC",
+          "n": 2,
+          "name_ar": "لفحة الأوراق الأرجوانية وتعفّن الثمار",
+          "sci": "Colletotrichum fructicola",
+          "type": "fungus"
+        },
+        {
+          "dossier": "RALSSO",
+          "n": 2,
+          "name_ar": "الذبول البكتيري الجنوبي",
+          "sci": "Ralstonia solanacearum species complex (as Musa)",
+          "type": "bacterium"
+        },
+        {
+          "dossier": "VERTDA",
+          "n": 3,
+          "name_ar": "ذبول الفيرتيسيوم",
+          "sci": "Verticillium dahliae",
+          "type": "fungus"
+        },
+        {
+          "dossier": "EUTEOR",
+          "n": 1,
+          "name_ar": "العنكبوت الأحمر الشرقي",
+          "sci": "Eutetranychus orientalis",
+          "type": "mite"
+        },
+        {
+          "dossier": "HOMLTR",
+          "n": 4,
+          "name_ar": "الدبّاق الزجاجي الجناح",
+          "sci": "Homalodisca vitripennis",
+          "type": "insect"
+        }
+      ],
+      "name_ar": "الزيتون",
+      "name_en": "Olive",
+      "sci": "Olea europaea"
+    },
+    {
+      "cards": 11,
+      "family": "Amaryllidaceae",
+      "id": "onion",
+      "infections": [
+        {
+          "dossier": "LAPHFR",
+          "n": 1,
+          "name_ar": "سوسة الذرة الأمريكية",
+          "sci": "Spodoptera frugiperda",
+          "type": "insect"
+        },
+        {
+          "dossier": "THRIPL",
+          "n": 2,
+          "name_ar": "تربس البطيخ",
+          "sci": "Thrips palmi",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIAR",
+          "n": 3,
+          "name_ar": "دودة الحشّاشة (البقّاحة)",
+          "sci": "Helicoverpa armigera",
+          "type": "insect"
+        },
+        {
+          "dossier": "TSWV00",
+          "n": 1,
+          "name_ar": "فيروس ذبول الطماطم المرقط",
+          "sci": "Orthotospovirus tomatomaculae",
+          "type": "virus"
+        },
+        {
+          "dossier": "LIRIHU",
+          "n": 4,
+          "name_ar": "حافرة الأوراق (Liriomyza huidobrensis)",
+          "sci": "Liriomyza huidobrensis",
+          "type": "insect"
+        },
+        {
+          "dossier": "SPODLI",
+          "n": 5,
+          "name_ar": "سوسة الأوراق المتوسطية",
+          "sci": "Spodoptera littoralis",
+          "type": "insect"
+        },
+        {
+          "dossier": "DITYDI",
+          "n": 1,
+          "name_ar": "نيماتودا السيقان والأبصال",
+          "sci": "Ditylenchus dipsaci",
+          "type": "nematode"
+        },
+        {
+          "dossier": "LIRITR",
+          "n": 6,
+          "name_ar": "حافرة الأوراق المتعرجة الأمريكية",
+          "sci": "Liriomyza trifolii",
+          "type": "insect"
+        },
+        {
+          "dossier": "TBRV00",
+          "n": 2,
+          "name_ar": "فيروس الحلقات السوداء على الطماطم",
+          "sci": "Nepovirus nigranuli",
+          "type": "virus"
+        },
+        {
+          "dossier": "FRANOC",
+          "n": 7,
+          "name_ar": "تربس الأزهار الغربي",
+          "sci": "Frankliniella occidentalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "SCITDO",
+          "n": 8,
+          "name_ar": "تربس الفلفل",
+          "sci": "Scirtothrips dorsalis",
+          "type": "insect"
+        }
+      ],
+      "name_ar": "البصل",
+      "name_en": "Onion",
+      "sci": "Allium cepa"
+    },
+    {
+      "cards": 11,
+      "family": "Caricaceae",
+      "id": "papaya",
+      "infections": [
+        {
+          "dossier": "LAPHFR",
+          "n": 1,
+          "name_ar": "سوسة الذرة الأمريكية",
+          "sci": "Spodoptera frugiperda",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHMPOM",
+          "n": 1,
+          "name_ar": "تعفّن وذبول جذور النباتات",
+          "sci": "Phymatotrichopsis omnivora",
+          "type": "fungus"
+        },
+        {
+          "dossier": "PSEAPE",
+          "n": 2,
+          "name_ar": "الدرع أبيض على الخوخ",
+          "sci": "Pseudaulacaspis pentagona",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHENHI",
+          "n": 3,
+          "name_ar": "المن الوردي",
+          "sci": "Maconellicoccus hirsutus",
+          "type": "insect"
+        },
+        {
+          "dossier": "TSWV00",
+          "n": 1,
+          "name_ar": "فيروس ذبول الطماطم المرقط",
+          "sci": "Orthotospovirus tomatomaculae",
+          "type": "virus"
+        },
+        {
+          "dossier": "PHYPSO",
+          "n": 1,
+          "name_ar": "مرض الشاحبة (فتوبلازما solani)",
+          "sci": "'Candidatus Phytoplasma solani'",
+          "type": "bacterium"
+        },
+        {
+          "dossier": "CERTCA",
+          "n": 4,
+          "name_ar": "ذبابة الفاكهة المتوسطية",
+          "sci": "Ceratitis capitata",
+          "type": "insect"
+        },
+        {
+          "dossier": "DACUDO",
+          "n": 5,
+          "name_ar": "ذبابة الفاكهة الشرقية",
+          "sci": "Bactrocera dorsalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "COLLFC",
+          "n": 2,
+          "name_ar": "لفحة الأوراق الأرجوانية وتعفّن الثمار",
+          "sci": "Colletotrichum fructicola",
+          "type": "fungus"
+        },
+        {
+          "dossier": "SCITDO",
+          "n": 6,
+          "name_ar": "تربس الفلفل",
+          "sci": "Scirtothrips dorsalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "EUTEOR",
+          "n": 1,
+          "name_ar": "العنكبوت الأحمر الشرقي",
+          "sci": "Eutetranychus orientalis",
+          "type": "mite"
+        }
+      ],
+      "name_ar": "البابايا",
+      "name_en": "Papaya",
+      "sci": "Carica papaya"
+    },
+    {
+      "cards": 14,
+      "family": "Fabaceae",
+      "id": "pea",
+      "infections": [
+        {
+          "dossier": "MELGET",
+          "n": 1,
+          "name_ar": "نيماتودا تعقد الجذور الإثيوبية",
+          "sci": "Meloidogyne ethiopica",
+          "type": "nematode"
+        },
+        {
+          "dossier": "LAPHFR",
+          "n": 1,
+          "name_ar": "سوسة الذرة الأمريكية",
+          "sci": "Spodoptera frugiperda",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIZE",
+          "n": 2,
+          "name_ar": "دودة كوز الذرة",
+          "sci": "Helicoverpa zea",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHMPOM",
+          "n": 1,
+          "name_ar": "تعفّن وذبول جذور النباتات",
+          "sci": "Phymatotrichopsis omnivora",
+          "type": "fungus"
+        },
+        {
+          "dossier": "THRIPL",
+          "n": 3,
+          "name_ar": "تربس البطيخ",
+          "sci": "Thrips palmi",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIAR",
+          "n": 4,
+          "name_ar": "دودة الحشّاشة (البقّاحة)",
+          "sci": "Helicoverpa armigera",
+          "type": "insect"
+        },
+        {
+          "dossier": "TSWV00",
+          "n": 1,
+          "name_ar": "فيروس ذبول الطماطم المرقط",
+          "sci": "Orthotospovirus tomatomaculae",
+          "type": "virus"
+        },
+        {
+          "dossier": "LIRIHU",
+          "n": 5,
+          "name_ar": "حافرة الأوراق (Liriomyza huidobrensis)",
+          "sci": "Liriomyza huidobrensis",
+          "type": "insect"
+        },
+        {
+          "dossier": "SPODLI",
+          "n": 6,
+          "name_ar": "سوسة الأوراق المتوسطية",
+          "sci": "Spodoptera littoralis",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHYPSO",
+          "n": 1,
+          "name_ar": "مرض الشاحبة (فتوبلازما solani)",
+          "sci": "'Candidatus Phytoplasma solani'",
+          "type": "bacterium"
+        },
+        {
+          "dossier": "DITYDI",
+          "n": 2,
+          "name_ar": "نيماتودا السيقان والأبصال",
+          "sci": "Ditylenchus dipsaci",
+          "type": "nematode"
+        },
+        {
+          "dossier": "LIRITR",
+          "n": 7,
+          "name_ar": "حافرة الأوراق المتعرجة الأمريكية",
+          "sci": "Liriomyza trifolii",
+          "type": "insect"
+        },
+        {
+          "dossier": "DIABUH",
+          "n": 8,
+          "name_ar": "خنفساء الخيار المرقطة",
+          "sci": "Diabrotica undecimpunctata howardi",
+          "type": "insect"
+        },
+        {
+          "dossier": "FRANOC",
+          "n": 9,
+          "name_ar": "تربس الأزهار الغربي",
+          "sci": "Frankliniella occidentalis",
+          "type": "insect"
+        }
+      ],
+      "name_ar": "البازلاء",
+      "name_en": "Pea",
+      "sci": "Pisum sativum"
+    },
+    {
+      "cards": 19,
+      "family": "Rosaceae",
+      "id": "peach",
+      "infections": [
+        {
+          "dossier": "PHMPOM",
+          "n": 1,
+          "name_ar": "تعفّن وذبول جذور النباتات",
+          "sci": "Phymatotrichopsis omnivora",
+          "type": "fungus"
+        },
+        {
+          "dossier": "FRANOC",
+          "n": 1,
+          "name_ar": "تربس الأزهار الغربي",
+          "sci": "Frankliniella occidentalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "MONIFC",
+          "n": 2,
+          "name_ar": "فطر تعفّن ثمار الحجرية",
+          "sci": "Monilinia fructicola",
+          "type": "fungus"
+        },
+        {
+          "dossier": "LAPHFR",
+          "n": 2,
+          "name_ar": "سوسة الذرة الأمريكية",
+          "sci": "Spodoptera frugiperda",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIZE",
+          "n": 3,
+          "name_ar": "دودة كوز الذرة",
+          "sci": "Helicoverpa zea",
+          "type": "insect"
+        },
+        {
+          "dossier": "THRIPL",
+          "n": 4,
+          "name_ar": "تربس البطيخ",
+          "sci": "Thrips palmi",
+          "type": "insect"
+        },
+        {
+          "dossier": "PSEAPE",
+          "n": 5,
+          "name_ar": "الدرع أبيض على الخوخ",
+          "sci": "Pseudaulacaspis pentagona",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHENHI",
+          "n": 6,
+          "name_ar": "المن الوردي",
+          "sci": "Maconellicoccus hirsutus",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHYPSO",
+          "n": 1,
+          "name_ar": "مرض الشاحبة (فتوبلازما solani)",
+          "sci": "'Candidatus Phytoplasma solani'",
+          "type": "bacterium"
+        },
+        {
+          "dossier": "CERTCA",
+          "n": 7,
+          "name_ar": "ذبابة الفاكهة المتوسطية",
+          "sci": "Ceratitis capitata",
+          "type": "insect"
+        },
+        {
+          "dossier": "MELGET",
+          "n": 1,
+          "name_ar": "نيماتودا تعقد الجذور الإثيوبية",
+          "sci": "Meloidogyne ethiopica",
+          "type": "nematode"
+        },
+        {
+          "dossier": "DACUDO",
+          "n": 8,
+          "name_ar": "ذبابة الفاكهة الشرقية",
+          "sci": "Bactrocera dorsalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "HALYHA",
+          "n": 9,
+          "name_ar": "الخنفساء البنية المرقطة",
+          "sci": "Halyomorpha halys",
+          "type": "insect"
+        },
+        {
+          "dossier": "TBRV00",
+          "n": 1,
+          "name_ar": "فيروس الحلقات السوداء على الطماطم",
+          "sci": "Nepovirus nigranuli",
+          "type": "virus"
+        },
+        {
+          "dossier": "COLLFC",
+          "n": 3,
+          "name_ar": "لفحة الأوراق الأرجوانية وتعفّن الثمار",
+          "sci": "Colletotrichum fructicola",
+          "type": "fungus"
+        },
+        {
+          "dossier": "VERTDA",
+          "n": 4,
+          "name_ar": "ذبول الفيرتيسيوم",
+          "sci": "Verticillium dahliae",
+          "type": "fungus"
+        },
+        {
+          "dossier": "EUTEOR",
+          "n": 1,
+          "name_ar": "العنكبوت الأحمر الشرقي",
+          "sci": "Eutetranychus orientalis",
+          "type": "mite"
+        },
+        {
+          "dossier": "HOMLTR",
+          "n": 10,
+          "name_ar": "الدبّاق الزجاجي الجناح",
+          "sci": "Homalodisca vitripennis",
+          "type": "insect"
+        },
+        {
+          "dossier": "CARPPO",
+          "n": 11,
+          "name_ar": "بعثة التفاح (دودة نواة الثمار)",
+          "sci": "Cydia pomonella",
+          "type": "insect"
+        }
+      ],
+      "name_ar": "الخوخ",
+      "name_en": "Peach",
+      "sci": "Prunus persica"
+    },
+    {
+      "cards": 14,
+      "family": "Rosaceae",
+      "id": "pear",
+      "infections": [
+        {
+          "dossier": "LAPHFR",
+          "n": 1,
+          "name_ar": "سوسة الذرة الأمريكية",
+          "sci": "Spodoptera frugiperda",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIZE",
+          "n": 2,
+          "name_ar": "دودة كوز الذرة",
+          "sci": "Helicoverpa zea",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHMPOM",
+          "n": 1,
+          "name_ar": "تعفّن وذبول جذور النباتات",
+          "sci": "Phymatotrichopsis omnivora",
+          "type": "fungus"
+        },
+        {
+          "dossier": "THRIPL",
+          "n": 3,
+          "name_ar": "تربس البطيخ",
+          "sci": "Thrips palmi",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHENHI",
+          "n": 4,
+          "name_ar": "المن الوردي",
+          "sci": "Maconellicoccus hirsutus",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHYPSO",
+          "n": 1,
+          "name_ar": "مرض الشاحبة (فتوبلازما solani)",
+          "sci": "'Candidatus Phytoplasma solani'",
+          "type": "bacterium"
+        },
+        {
+          "dossier": "CERTCA",
+          "n": 5,
+          "name_ar": "ذبابة الفاكهة المتوسطية",
+          "sci": "Ceratitis capitata",
+          "type": "insect"
+        },
+        {
+          "dossier": "DACUDO",
+          "n": 6,
+          "name_ar": "ذبابة الفاكهة الشرقية",
+          "sci": "Bactrocera dorsalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "HALYHA",
+          "n": 7,
+          "name_ar": "الخنفساء البنية المرقطة",
+          "sci": "Halyomorpha halys",
+          "type": "insect"
+        },
+        {
+          "dossier": "SCITDO",
+          "n": 8,
+          "name_ar": "تربس الفلفل",
+          "sci": "Scirtothrips dorsalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "EUTEOR",
+          "n": 1,
+          "name_ar": "العنكبوت الأحمر الشرقي",
+          "sci": "Eutetranychus orientalis",
+          "type": "mite"
+        },
+        {
+          "dossier": "HOMLTR",
+          "n": 9,
+          "name_ar": "الدبّاق الزجاجي الجناح",
+          "sci": "Homalodisca vitripennis",
+          "type": "insect"
+        },
+        {
+          "dossier": "MONIFC",
+          "n": 2,
+          "name_ar": "فطر تعفّن ثمار الحجرية",
+          "sci": "Monilinia fructicola",
+          "type": "fungus"
+        },
+        {
+          "dossier": "CARPPO",
+          "n": 10,
+          "name_ar": "بعثة التفاح (دودة نواة الثمار)",
+          "sci": "Cydia pomonella",
+          "type": "insect"
+        }
+      ],
+      "name_ar": "الكمثرى",
+      "name_en": "Pear",
+      "sci": "Pyrus communis"
+    },
+    {
+      "cards": 22,
+      "family": "Solanaceae",
+      "id": "pepper",
+      "infections": [
+        {
+          "dossier": "HELIZE",
+          "n": 1,
+          "name_ar": "دودة كوز الذرة",
+          "sci": "Helicoverpa zea",
+          "type": "insect"
+        },
+        {
+          "dossier": "TSWV00",
+          "n": 1,
+          "name_ar": "فيروس ذبول الطماطم المرقط",
+          "sci": "Orthotospovirus tomatomaculae",
+          "type": "virus"
+        },
+        {
+          "dossier": "SPODLI",
+          "n": 2,
+          "name_ar": "سوسة الأوراق المتوسطية",
+          "sci": "Spodoptera littoralis",
+          "type": "insect"
+        },
+        {
+          "dossier": "FRANOC",
+          "n": 3,
+          "name_ar": "تربس الأزهار الغربي",
+          "sci": "Frankliniella occidentalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "SCITDO",
+          "n": 4,
+          "name_ar": "تربس الفلفل",
+          "sci": "Scirtothrips dorsalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "RALSSO",
+          "n": 1,
+          "name_ar": "الذبول البكتيري الجنوبي",
+          "sci": "Ralstonia solanacearum species complex (as Musa)",
+          "type": "bacterium"
+        },
+        {
+          "dossier": "LAPHFR",
+          "n": 5,
+          "name_ar": "سوسة الذرة الأمريكية",
+          "sci": "Spodoptera frugiperda",
+          "type": "insect"
+        },
+        {
+          "dossier": "THRIPL",
+          "n": 6,
+          "name_ar": "تربس البطيخ",
+          "sci": "Thrips palmi",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIAR",
+          "n": 7,
+          "name_ar": "دودة الحشّاشة (البقّاحة)",
+          "sci": "Helicoverpa armigera",
+          "type": "insect"
+        },
+        {
+          "dossier": "PSEAPE",
+          "n": 8,
+          "name_ar": "الدرع أبيض على الخوخ",
+          "sci": "Pseudaulacaspis pentagona",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHENHI",
+          "n": 9,
+          "name_ar": "المن الوردي",
+          "sci": "Maconellicoccus hirsutus",
+          "type": "insect"
+        },
+        {
+          "dossier": "BEMITA",
+          "n": 10,
+          "name_ar": "الذبابة البيضاء",
+          "sci": "Bemisia tabaci",
+          "type": "insect"
+        },
+        {
+          "dossier": "LIRIHU",
+          "n": 11,
+          "name_ar": "حافرة الأوراق (Liriomyza huidobrensis)",
+          "sci": "Liriomyza huidobrensis",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHYPSO",
+          "n": 2,
+          "name_ar": "مرض الشاحبة (فتوبلازما solani)",
+          "sci": "'Candidatus Phytoplasma solani'",
+          "type": "bacterium"
+        },
+        {
+          "dossier": "CERTCA",
+          "n": 12,
+          "name_ar": "ذبابة الفاكهة المتوسطية",
+          "sci": "Ceratitis capitata",
+          "type": "insect"
+        },
+        {
+          "dossier": "DITYDI",
+          "n": 1,
+          "name_ar": "نيماتودا السيقان والأبصال",
+          "sci": "Ditylenchus dipsaci",
+          "type": "nematode"
+        },
+        {
+          "dossier": "LIRITR",
+          "n": 13,
+          "name_ar": "حافرة الأوراق المتعرجة الأمريكية",
+          "sci": "Liriomyza trifolii",
+          "type": "insect"
+        },
+        {
+          "dossier": "MELGET",
+          "n": 2,
+          "name_ar": "نيماتودا تعقد الجذور الإثيوبية",
+          "sci": "Meloidogyne ethiopica",
+          "type": "nematode"
+        },
+        {
+          "dossier": "DACUDO",
+          "n": 14,
+          "name_ar": "ذبابة الفاكهة الشرقية",
+          "sci": "Bactrocera dorsalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "HALYHA",
+          "n": 15,
+          "name_ar": "الخنفساء البنية المرقطة",
+          "sci": "Halyomorpha halys",
+          "type": "insect"
+        },
+        {
+          "dossier": "COLLFC",
+          "n": 1,
+          "name_ar": "لفحة الأوراق الأرجوانية وتعفّن الثمار",
+          "sci": "Colletotrichum fructicola",
+          "type": "fungus"
+        },
+        {
+          "dossier": "VERTDA",
+          "n": 2,
+          "name_ar": "ذبول الفيرتيسيوم",
+          "sci": "Verticillium dahliae",
+          "type": "fungus"
+        }
+      ],
+      "name_ar": "الفلفل",
+      "name_en": "Pepper",
+      "sci": "Capsicum annuum"
+    },
+    {
+      "cards": 8,
+      "family": "Fabaceae",
+      "id": "pigeonpea",
+      "infections": [
+        {
+          "dossier": "LAPHFR",
+          "n": 1,
+          "name_ar": "سوسة الذرة الأمريكية",
+          "sci": "Spodoptera frugiperda",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIZE",
+          "n": 2,
+          "name_ar": "دودة كوز الذرة",
+          "sci": "Helicoverpa zea",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHMPOM",
+          "n": 1,
+          "name_ar": "تعفّن وذبول جذور النباتات",
+          "sci": "Phymatotrichopsis omnivora",
+          "type": "fungus"
+        },
+        {
+          "dossier": "HELIAR",
+          "n": 3,
+          "name_ar": "دودة الحشّاشة (البقّاحة)",
+          "sci": "Helicoverpa armigera",
+          "type": "insect"
+        },
+        {
+          "dossier": "PSEAPE",
+          "n": 4,
+          "name_ar": "الدرع أبيض على الخوخ",
+          "sci": "Pseudaulacaspis pentagona",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHENHI",
+          "n": 5,
+          "name_ar": "المن الوردي",
+          "sci": "Maconellicoccus hirsutus",
+          "type": "insect"
+        },
+        {
+          "dossier": "TSWV00",
+          "n": 1,
+          "name_ar": "فيروس ذبول الطماطم المرقط",
+          "sci": "Orthotospovirus tomatomaculae",
+          "type": "virus"
+        },
+        {
+          "dossier": "MELGET",
+          "n": 1,
+          "name_ar": "نيماتودا تعقد الجذور الإثيوبية",
+          "sci": "Meloidogyne ethiopica",
+          "type": "nematode"
+        }
+      ],
+      "name_ar": "الحمص الهندی",
+      "name_en": "Pigeon pea",
+      "sci": "Cajanus cajan"
+    },
+    {
+      "cards": 4,
+      "family": "Bromeliaceae",
+      "id": "pineapple",
+      "infections": [
+        {
+          "dossier": "PHENHI",
+          "n": 1,
+          "name_ar": "المن الوردي",
+          "sci": "Maconellicoccus hirsutus",
+          "type": "insect"
+        },
+        {
+          "dossier": "TSWV00",
+          "n": 1,
+          "name_ar": "فيروس ذبول الطماطم المرقط",
+          "sci": "Orthotospovirus tomatomaculae",
+          "type": "virus"
+        },
+        {
+          "dossier": "DACUDO",
+          "n": 2,
+          "name_ar": "ذبابة الفاكهة الشرقية",
+          "sci": "Bactrocera dorsalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "COLLFC",
+          "n": 1,
+          "name_ar": "لفحة الأوراق الأرجوانية وتعفّن الثمار",
+          "sci": "Colletotrichum fructicola",
+          "type": "fungus"
+        }
+      ],
+      "name_ar": "الأناناس",
+      "name_en": "Pineapple",
+      "sci": "Ananas comosus"
+    },
+    {
+      "cards": 4,
+      "family": "Anacardiaceae",
+      "id": "pistachio",
+      "infections": [
+        {
+          "dossier": "PHMPOM",
+          "n": 1,
+          "name_ar": "تعفّن وذبول جذور النباتات",
+          "sci": "Phymatotrichopsis omnivora",
+          "type": "fungus"
+        },
+        {
+          "dossier": "PHYPSO",
+          "n": 1,
+          "name_ar": "مرض الشاحبة (فتوبلازما solani)",
+          "sci": "'Candidatus Phytoplasma solani'",
+          "type": "bacterium"
+        },
+        {
+          "dossier": "HALYHA",
+          "n": 1,
+          "name_ar": "الخنفساء البنية المرقطة",
+          "sci": "Halyomorpha halys",
+          "type": "insect"
+        },
+        {
+          "dossier": "VERTDA",
+          "n": 2,
+          "name_ar": "ذبول الفيرتيسيوم",
+          "sci": "Verticillium dahliae",
+          "type": "fungus"
+        }
+      ],
+      "name_ar": "الفستق الحلبي",
+      "name_en": "Pistachio",
+      "sci": "Pistacia vera"
+    },
+    {
+      "cards": 15,
+      "family": "Rosaceae",
+      "id": "plum",
+      "infections": [
+        {
+          "dossier": "FRANOC",
+          "n": 1,
+          "name_ar": "تربس الأزهار الغربي",
+          "sci": "Frankliniella occidentalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "MONIFC",
+          "n": 1,
+          "name_ar": "فطر تعفّن ثمار الحجرية",
+          "sci": "Monilinia fructicola",
+          "type": "fungus"
+        },
+        {
+          "dossier": "HELIZE",
+          "n": 2,
+          "name_ar": "دودة كوز الذرة",
+          "sci": "Helicoverpa zea",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHMPOM",
+          "n": 2,
+          "name_ar": "تعفّن وذبول جذور النباتات",
+          "sci": "Phymatotrichopsis omnivora",
+          "type": "fungus"
+        },
+        {
+          "dossier": "THRIPL",
+          "n": 3,
+          "name_ar": "تربس البطيخ",
+          "sci": "Thrips palmi",
+          "type": "insect"
+        },
+        {
+          "dossier": "PSEAPE",
+          "n": 4,
+          "name_ar": "الدرع أبيض على الخوخ",
+          "sci": "Pseudaulacaspis pentagona",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHENHI",
+          "n": 5,
+          "name_ar": "المن الوردي",
+          "sci": "Maconellicoccus hirsutus",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHYPSO",
+          "n": 1,
+          "name_ar": "مرض الشاحبة (فتوبلازما solani)",
+          "sci": "'Candidatus Phytoplasma solani'",
+          "type": "bacterium"
+        },
+        {
+          "dossier": "CERTCA",
+          "n": 6,
+          "name_ar": "ذبابة الفاكهة المتوسطية",
+          "sci": "Ceratitis capitata",
+          "type": "insect"
+        },
+        {
+          "dossier": "DACUDO",
+          "n": 7,
+          "name_ar": "ذبابة الفاكهة الشرقية",
+          "sci": "Bactrocera dorsalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "HALYHA",
+          "n": 8,
+          "name_ar": "الخنفساء البنية المرقطة",
+          "sci": "Halyomorpha halys",
+          "type": "insect"
+        },
+        {
+          "dossier": "TBRV00",
+          "n": 1,
+          "name_ar": "فيروس الحلقات السوداء على الطماطم",
+          "sci": "Nepovirus nigranuli",
+          "type": "virus"
+        },
+        {
+          "dossier": "EUTEOR",
+          "n": 1,
+          "name_ar": "العنكبوت الأحمر الشرقي",
+          "sci": "Eutetranychus orientalis",
+          "type": "mite"
+        },
+        {
+          "dossier": "HOMLTR",
+          "n": 9,
+          "name_ar": "الدبّاق الزجاجي الجناح",
+          "sci": "Homalodisca vitripennis",
+          "type": "insect"
+        },
+        {
+          "dossier": "CARPPO",
+          "n": 10,
+          "name_ar": "بعثة التفاح (دودة نواة الثمار)",
+          "sci": "Cydia pomonella",
+          "type": "insect"
+        }
+      ],
+      "name_ar": "البرقوق",
+      "name_en": "Plum",
+      "sci": "Prunus domestica"
+    },
+    {
+      "cards": 8,
+      "family": "Lythraceae",
+      "id": "pomegranate",
+      "infections": [
+        {
+          "dossier": "PHMPOM",
+          "n": 1,
+          "name_ar": "تعفّن وذبول جذور النباتات",
+          "sci": "Phymatotrichopsis omnivora",
+          "type": "fungus"
+        },
+        {
+          "dossier": "PHENHI",
+          "n": 1,
+          "name_ar": "المن الوردي",
+          "sci": "Maconellicoccus hirsutus",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHYPSO",
+          "n": 1,
+          "name_ar": "مرض الشاحبة (فتوبلازما solani)",
+          "sci": "'Candidatus Phytoplasma solani'",
+          "type": "bacterium"
+        },
+        {
+          "dossier": "CERTCA",
+          "n": 2,
+          "name_ar": "ذبابة الفاكهة المتوسطية",
+          "sci": "Ceratitis capitata",
+          "type": "insect"
+        },
+        {
+          "dossier": "DACUDO",
+          "n": 3,
+          "name_ar": "ذبابة الفاكهة الشرقية",
+          "sci": "Bactrocera dorsalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "COLLFC",
+          "n": 2,
+          "name_ar": "لفحة الأوراق الأرجوانية وتعفّن الثمار",
+          "sci": "Colletotrichum fructicola",
+          "type": "fungus"
+        },
+        {
+          "dossier": "SCITDO",
+          "n": 4,
+          "name_ar": "تربس الفلفل",
+          "sci": "Scirtothrips dorsalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "EUTEOR",
+          "n": 1,
+          "name_ar": "العنكبوت الأحمر الشرقي",
+          "sci": "Eutetranychus orientalis",
+          "type": "mite"
+        }
+      ],
+      "name_ar": "الرمان",
+      "name_en": "Pomegranate",
+      "sci": "Punica granatum"
+    },
+    {
+      "cards": 19,
+      "family": "Solanaceae",
+      "id": "potato",
+      "infections": [
+        {
+          "dossier": "TSWV00",
+          "n": 1,
+          "name_ar": "فيروس ذبول الطماطم المرقط",
+          "sci": "Orthotospovirus tomatomaculae",
+          "type": "virus"
+        },
+        {
+          "dossier": "SPODLI",
+          "n": 1,
+          "name_ar": "سوسة الأوراق المتوسطية",
+          "sci": "Spodoptera littoralis",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHYPSO",
+          "n": 1,
+          "name_ar": "مرض الشاحبة (فتوبلازما solani)",
+          "sci": "'Candidatus Phytoplasma solani'",
+          "type": "bacterium"
+        },
+        {
+          "dossier": "MELGET",
+          "n": 1,
+          "name_ar": "نيماتودا تعقد الجذور الإثيوبية",
+          "sci": "Meloidogyne ethiopica",
+          "type": "nematode"
+        },
+        {
+          "dossier": "RALSSO",
+          "n": 2,
+          "name_ar": "الذبول البكتيري الجنوبي",
+          "sci": "Ralstonia solanacearum species complex (as Musa)",
+          "type": "bacterium"
+        },
+        {
+          "dossier": "LAPHFR",
+          "n": 2,
+          "name_ar": "سوسة الذرة الأمريكية",
+          "sci": "Spodoptera frugiperda",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIZE",
+          "n": 3,
+          "name_ar": "دودة كوز الذرة",
+          "sci": "Helicoverpa zea",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHMPOM",
+          "n": 1,
+          "name_ar": "تعفّن وذبول جذور النباتات",
+          "sci": "Phymatotrichopsis omnivora",
+          "type": "fungus"
+        },
+        {
+          "dossier": "THRIPL",
+          "n": 4,
+          "name_ar": "تربس البطيخ",
+          "sci": "Thrips palmi",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIAR",
+          "n": 5,
+          "name_ar": "دودة الحشّاشة (البقّاحة)",
+          "sci": "Helicoverpa armigera",
+          "type": "insect"
+        },
+        {
+          "dossier": "PSEAPE",
+          "n": 6,
+          "name_ar": "الدرع أبيض على الخوخ",
+          "sci": "Pseudaulacaspis pentagona",
+          "type": "insect"
+        },
+        {
+          "dossier": "BEMITA",
+          "n": 7,
+          "name_ar": "الذبابة البيضاء",
+          "sci": "Bemisia tabaci",
+          "type": "insect"
+        },
+        {
+          "dossier": "LIRIHU",
+          "n": 8,
+          "name_ar": "حافرة الأوراق (Liriomyza huidobrensis)",
+          "sci": "Liriomyza huidobrensis",
+          "type": "insect"
+        },
+        {
+          "dossier": "DITYDI",
+          "n": 2,
+          "name_ar": "نيماتودا السيقان والأبصال",
+          "sci": "Ditylenchus dipsaci",
+          "type": "nematode"
+        },
+        {
+          "dossier": "LIRITR",
+          "n": 9,
+          "name_ar": "حافرة الأوراق المتعرجة الأمريكية",
+          "sci": "Liriomyza trifolii",
+          "type": "insect"
+        },
+        {
+          "dossier": "DIABUH",
+          "n": 10,
+          "name_ar": "خنفساء الخيار المرقطة",
+          "sci": "Diabrotica undecimpunctata howardi",
+          "type": "insect"
+        },
+        {
+          "dossier": "TBRV00",
+          "n": 2,
+          "name_ar": "فيروس الحلقات السوداء على الطماطم",
+          "sci": "Nepovirus nigranuli",
+          "type": "virus"
+        },
+        {
+          "dossier": "SCITDO",
+          "n": 11,
+          "name_ar": "تربس الفلفل",
+          "sci": "Scirtothrips dorsalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "VERTDA",
+          "n": 2,
+          "name_ar": "ذبول الفيرتيسيوم",
+          "sci": "Verticillium dahliae",
+          "type": "fungus"
+        }
+      ],
+      "name_ar": "البطاطا",
+      "name_en": "Potato",
+      "sci": "Solanum tuberosum"
+    },
+    {
+      "cards": 15,
+      "family": "Cucurbitaceae",
+      "id": "pumpkin",
+      "infections": [
+        {
+          "dossier": "TSWV00",
+          "n": 1,
+          "name_ar": "فيروس ذبول الطماطم المرقط",
+          "sci": "Orthotospovirus tomatomaculae",
+          "type": "virus"
+        },
+        {
+          "dossier": "DIABUH",
+          "n": 1,
+          "name_ar": "خنفساء الخيار المرقطة",
+          "sci": "Diabrotica undecimpunctata howardi",
+          "type": "insect"
+        },
+        {
+          "dossier": "LAPHFR",
+          "n": 2,
+          "name_ar": "سوسة الذرة الأمريكية",
+          "sci": "Spodoptera frugiperda",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHMPOM",
+          "n": 1,
+          "name_ar": "تعفّن وذبول جذور النباتات",
+          "sci": "Phymatotrichopsis omnivora",
+          "type": "fungus"
+        },
+        {
+          "dossier": "THRIPL",
+          "n": 3,
+          "name_ar": "تربس البطيخ",
+          "sci": "Thrips palmi",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIAR",
+          "n": 4,
+          "name_ar": "دودة الحشّاشة (البقّاحة)",
+          "sci": "Helicoverpa armigera",
+          "type": "insect"
+        },
+        {
+          "dossier": "PSEAPE",
+          "n": 5,
+          "name_ar": "الدرع أبيض على الخوخ",
+          "sci": "Pseudaulacaspis pentagona",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHENHI",
+          "n": 6,
+          "name_ar": "المن الوردي",
+          "sci": "Maconellicoccus hirsutus",
+          "type": "insect"
+        },
+        {
+          "dossier": "BEMITA",
+          "n": 7,
+          "name_ar": "الذبابة البيضاء",
+          "sci": "Bemisia tabaci",
+          "type": "insect"
+        },
+        {
+          "dossier": "LIRIHU",
+          "n": 8,
+          "name_ar": "حافرة الأوراق (Liriomyza huidobrensis)",
+          "sci": "Liriomyza huidobrensis",
+          "type": "insect"
+        },
+        {
+          "dossier": "SPODLI",
+          "n": 9,
+          "name_ar": "سوسة الأوراق المتوسطية",
+          "sci": "Spodoptera littoralis",
+          "type": "insect"
+        },
+        {
+          "dossier": "MELGET",
+          "n": 1,
+          "name_ar": "نيماتودا تعقد الجذور الإثيوبية",
+          "sci": "Meloidogyne ethiopica",
+          "type": "nematode"
+        },
+        {
+          "dossier": "DACUDO",
+          "n": 10,
+          "name_ar": "ذبابة الفاكهة الشرقية",
+          "sci": "Bactrocera dorsalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "FRANOC",
+          "n": 11,
+          "name_ar": "تربس الأزهار الغربي",
+          "sci": "Frankliniella occidentalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "RALSSO",
+          "n": 1,
+          "name_ar": "الذبول البكتيري الجنوبي",
+          "sci": "Ralstonia solanacearum species complex (as Musa)",
+          "type": "bacterium"
+        }
+      ],
+      "name_ar": "القرع",
+      "name_en": "Pumpkin",
+      "sci": "Cucurbita maxima"
+    },
+    {
+      "cards": 8,
+      "family": "Brassicaceae",
+      "id": "rapeseed",
+      "infections": [
+        {
+          "dossier": "MELGET",
+          "n": 1,
+          "name_ar": "نيماتودا تعقد الجذور الإثيوبية",
+          "sci": "Meloidogyne ethiopica",
+          "type": "nematode"
+        },
+        {
+          "dossier": "LAPHFR",
+          "n": 1,
+          "name_ar": "سوسة الذرة الأمريكية",
+          "sci": "Spodoptera frugiperda",
+          "type": "insect"
+        },
+        {
+          "dossier": "TSWV00",
+          "n": 1,
+          "name_ar": "فيروس ذبول الطماطم المرقط",
+          "sci": "Orthotospovirus tomatomaculae",
+          "type": "virus"
+        },
+        {
+          "dossier": "BEMITA",
+          "n": 2,
+          "name_ar": "الذبابة البيضاء",
+          "sci": "Bemisia tabaci",
+          "type": "insect"
+        },
+        {
+          "dossier": "LIRIHU",
+          "n": 3,
+          "name_ar": "حافرة الأوراق (Liriomyza huidobrensis)",
+          "sci": "Liriomyza huidobrensis",
+          "type": "insect"
+        },
+        {
+          "dossier": "DITYDI",
+          "n": 2,
+          "name_ar": "نيماتودا السيقان والأبصال",
+          "sci": "Ditylenchus dipsaci",
+          "type": "nematode"
+        },
+        {
+          "dossier": "LIRITR",
+          "n": 4,
+          "name_ar": "حافرة الأوراق المتعرجة الأمريكية",
+          "sci": "Liriomyza trifolii",
+          "type": "insect"
+        },
+        {
+          "dossier": "VERTDA",
+          "n": 1,
+          "name_ar": "ذبول الفيرتيسيوم",
+          "sci": "Verticillium dahliae",
+          "type": "fungus"
+        }
+      ],
+      "name_ar": "الكولزا",
+      "name_en": "Rapeseed",
+      "sci": "Brassica napus"
+    },
+    {
+      "cards": 7,
+      "family": "Poaceae",
+      "id": "rice",
+      "infections": [
+        {
+          "dossier": "LAPHFR",
+          "n": 1,
+          "name_ar": "سوسة الذرة الأمريكية",
+          "sci": "Spodoptera frugiperda",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIZE",
+          "n": 2,
+          "name_ar": "دودة كوز الذرة",
+          "sci": "Helicoverpa zea",
+          "type": "insect"
+        },
+        {
+          "dossier": "THRIPL",
+          "n": 3,
+          "name_ar": "تربس البطيخ",
+          "sci": "Thrips palmi",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIAR",
+          "n": 4,
+          "name_ar": "دودة الحشّاشة (البقّاحة)",
+          "sci": "Helicoverpa armigera",
+          "type": "insect"
+        },
+        {
+          "dossier": "DIABUH",
+          "n": 5,
+          "name_ar": "خنفساء الخيار المرقطة",
+          "sci": "Diabrotica undecimpunctata howardi",
+          "type": "insect"
+        },
+        {
+          "dossier": "MELGET",
+          "n": 1,
+          "name_ar": "نيماتودا تعقد الجذور الإثيوبية",
+          "sci": "Meloidogyne ethiopica",
+          "type": "nematode"
+        },
+        {
+          "dossier": "HALYHA",
+          "n": 6,
+          "name_ar": "الخنفساء البنية المرقطة",
+          "sci": "Halyomorpha halys",
+          "type": "insect"
+        }
+      ],
+      "name_ar": "الأرز",
+      "name_en": "Rice",
+      "sci": "Oryza sativa"
+    },
+    {
+      "cards": 6,
+      "family": "Poaceae",
+      "id": "rye",
+      "infections": [
+        {
+          "dossier": "LAPHFR",
+          "n": 1,
+          "name_ar": "سوسة الذرة الأمريكية",
+          "sci": "Spodoptera frugiperda",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIZE",
+          "n": 2,
+          "name_ar": "دودة كوز الذرة",
+          "sci": "Helicoverpa zea",
+          "type": "insect"
+        },
+        {
+          "dossier": "DITYDI",
+          "n": 1,
+          "name_ar": "نيماتودا السيقان والأبصال",
+          "sci": "Ditylenchus dipsaci",
+          "type": "nematode"
+        },
+        {
+          "dossier": "DIABUH",
+          "n": 3,
+          "name_ar": "خنفساء الخيار المرقطة",
+          "sci": "Diabrotica undecimpunctata howardi",
+          "type": "insect"
+        },
+        {
+          "dossier": "MELGET",
+          "n": 2,
+          "name_ar": "نيماتودا تعقد الجذور الإثيوبية",
+          "sci": "Meloidogyne ethiopica",
+          "type": "nematode"
+        },
+        {
+          "dossier": "HALYHA",
+          "n": 4,
+          "name_ar": "الخنفساء البنية المرقطة",
+          "sci": "Halyomorpha halys",
+          "type": "insect"
+        }
+      ],
+      "name_ar": "الجاودار",
+      "name_en": "Rye",
+      "sci": "Secale cereale"
+    },
+    {
+      "cards": 5,
+      "family": "Pedaliaceae",
+      "id": "sesame",
+      "infections": [
+        {
+          "dossier": "LAPHFR",
+          "n": 1,
+          "name_ar": "سوسة الذرة الأمريكية",
+          "sci": "Spodoptera frugiperda",
+          "type": "insect"
+        },
+        {
+          "dossier": "THRIPL",
+          "n": 2,
+          "name_ar": "تربس البطيخ",
+          "sci": "Thrips palmi",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIAR",
+          "n": 3,
+          "name_ar": "دودة الحشّاشة (البقّاحة)",
+          "sci": "Helicoverpa armigera",
+          "type": "insect"
+        },
+        {
+          "dossier": "TSWV00",
+          "n": 1,
+          "name_ar": "فيروس ذبول الطماطم المرقط",
+          "sci": "Orthotospovirus tomatomaculae",
+          "type": "virus"
+        },
+        {
+          "dossier": "RALSSO",
+          "n": 1,
+          "name_ar": "الذبول البكتيري الجنوبي",
+          "sci": "Ralstonia solanacearum species complex (as Musa)",
+          "type": "bacterium"
+        }
+      ],
+      "name_ar": "السمسم",
+      "name_en": "Sesame",
+      "sci": "Sesamum indicum"
+    },
+    {
+      "cards": 6,
+      "family": "Poaceae",
+      "id": "sorghum",
+      "infections": [
+        {
+          "dossier": "LAPHFR",
+          "n": 1,
+          "name_ar": "سوسة الذرة الأمريكية",
+          "sci": "Spodoptera frugiperda",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIZE",
+          "n": 2,
+          "name_ar": "دودة كوز الذرة",
+          "sci": "Helicoverpa zea",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIAR",
+          "n": 3,
+          "name_ar": "دودة الحشّاشة (البقّاحة)",
+          "sci": "Helicoverpa armigera",
+          "type": "insect"
+        },
+        {
+          "dossier": "DIABUH",
+          "n": 4,
+          "name_ar": "خنفساء الخيار المرقطة",
+          "sci": "Diabrotica undecimpunctata howardi",
+          "type": "insect"
+        },
+        {
+          "dossier": "COLLFC",
+          "n": 1,
+          "name_ar": "لفحة الأوراق الأرجوانية وتعفّن الثمار",
+          "sci": "Colletotrichum fructicola",
+          "type": "fungus"
+        },
+        {
+          "dossier": "HOMLTR",
+          "n": 5,
+          "name_ar": "الدبّاق الزجاجي الجناح",
+          "sci": "Homalodisca vitripennis",
+          "type": "insect"
+        }
+      ],
+      "name_ar": "السورغوم",
+      "name_en": "Sorghum",
+      "sci": "Sorghum bicolor"
+    },
+    {
+      "cards": 17,
+      "family": "Fabaceae",
+      "id": "soybean",
+      "infections": [
+        {
+          "dossier": "LAPHFR",
+          "n": 1,
+          "name_ar": "سوسة الذرة الأمريكية",
+          "sci": "Spodoptera frugiperda",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIZE",
+          "n": 2,
+          "name_ar": "دودة كوز الذرة",
+          "sci": "Helicoverpa zea",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHMPOM",
+          "n": 1,
+          "name_ar": "تعفّن وذبول جذور النباتات",
+          "sci": "Phymatotrichopsis omnivora",
+          "type": "fungus"
+        },
+        {
+          "dossier": "THRIPL",
+          "n": 3,
+          "name_ar": "تربس البطيخ",
+          "sci": "Thrips palmi",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIAR",
+          "n": 4,
+          "name_ar": "دودة الحشّاشة (البقّاحة)",
+          "sci": "Helicoverpa armigera",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHENHI",
+          "n": 5,
+          "name_ar": "المن الوردي",
+          "sci": "Maconellicoccus hirsutus",
+          "type": "insect"
+        },
+        {
+          "dossier": "TSWV00",
+          "n": 1,
+          "name_ar": "فيروس ذبول الطماطم المرقط",
+          "sci": "Orthotospovirus tomatomaculae",
+          "type": "virus"
+        },
+        {
+          "dossier": "BEMITA",
+          "n": 6,
+          "name_ar": "الذبابة البيضاء",
+          "sci": "Bemisia tabaci",
+          "type": "insect"
+        },
+        {
+          "dossier": "LIRIHU",
+          "n": 7,
+          "name_ar": "حافرة الأوراق (Liriomyza huidobrensis)",
+          "sci": "Liriomyza huidobrensis",
+          "type": "insect"
+        },
+        {
+          "dossier": "SPODLI",
+          "n": 8,
+          "name_ar": "سوسة الأوراق المتوسطية",
+          "sci": "Spodoptera littoralis",
+          "type": "insect"
+        },
+        {
+          "dossier": "DITYDI",
+          "n": 1,
+          "name_ar": "نيماتودا السيقان والأبصال",
+          "sci": "Ditylenchus dipsaci",
+          "type": "nematode"
+        },
+        {
+          "dossier": "DIABUH",
+          "n": 9,
+          "name_ar": "خنفساء الخيار المرقطة",
+          "sci": "Diabrotica undecimpunctata howardi",
+          "type": "insect"
+        },
+        {
+          "dossier": "MELGET",
+          "n": 2,
+          "name_ar": "نيماتودا تعقد الجذور الإثيوبية",
+          "sci": "Meloidogyne ethiopica",
+          "type": "nematode"
+        },
+        {
+          "dossier": "HALYHA",
+          "n": 10,
+          "name_ar": "الخنفساء البنية المرقطة",
+          "sci": "Halyomorpha halys",
+          "type": "insect"
+        },
+        {
+          "dossier": "COLLFC",
+          "n": 2,
+          "name_ar": "لفحة الأوراق الأرجوانية وتعفّن الثمار",
+          "sci": "Colletotrichum fructicola",
+          "type": "fungus"
+        },
+        {
+          "dossier": "SCITDO",
+          "n": 11,
+          "name_ar": "تربس الفلفل",
+          "sci": "Scirtothrips dorsalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "HOMLTR",
+          "n": 12,
+          "name_ar": "الدبّاق الزجاجي الجناح",
+          "sci": "Homalodisca vitripennis",
+          "type": "insect"
+        }
+      ],
+      "name_ar": "الفول الصويا",
+      "name_en": "Soybean",
+      "sci": "Glycine max"
+    },
+    {
+      "cards": 12,
+      "family": "Amaranthaceae",
+      "id": "spinach",
+      "infections": [
+        {
+          "dossier": "LAPHFR",
+          "n": 1,
+          "name_ar": "سوسة الذرة الأمريكية",
+          "sci": "Spodoptera frugiperda",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIZE",
+          "n": 2,
+          "name_ar": "دودة كوز الذرة",
+          "sci": "Helicoverpa zea",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHMPOM",
+          "n": 1,
+          "name_ar": "تعفّن وذبول جذور النباتات",
+          "sci": "Phymatotrichopsis omnivora",
+          "type": "fungus"
+        },
+        {
+          "dossier": "THRIPL",
+          "n": 3,
+          "name_ar": "تربس البطيخ",
+          "sci": "Thrips palmi",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIAR",
+          "n": 4,
+          "name_ar": "دودة الحشّاشة (البقّاحة)",
+          "sci": "Helicoverpa armigera",
+          "type": "insect"
+        },
+        {
+          "dossier": "TSWV00",
+          "n": 1,
+          "name_ar": "فيروس ذبول الطماطم المرقط",
+          "sci": "Orthotospovirus tomatomaculae",
+          "type": "virus"
+        },
+        {
+          "dossier": "LIRIHU",
+          "n": 5,
+          "name_ar": "حافرة الأوراق (Liriomyza huidobrensis)",
+          "sci": "Liriomyza huidobrensis",
+          "type": "insect"
+        },
+        {
+          "dossier": "SPODLI",
+          "n": 6,
+          "name_ar": "سوسة الأوراق المتوسطية",
+          "sci": "Spodoptera littoralis",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHYPSO",
+          "n": 1,
+          "name_ar": "مرض الشاحبة (فتوبلازما solani)",
+          "sci": "'Candidatus Phytoplasma solani'",
+          "type": "bacterium"
+        },
+        {
+          "dossier": "LIRITR",
+          "n": 7,
+          "name_ar": "حافرة الأوراق المتعرجة الأمريكية",
+          "sci": "Liriomyza trifolii",
+          "type": "insect"
+        },
+        {
+          "dossier": "DIABUH",
+          "n": 8,
+          "name_ar": "خنفساء الخيار المرقطة",
+          "sci": "Diabrotica undecimpunctata howardi",
+          "type": "insect"
+        },
+        {
+          "dossier": "VERTDA",
+          "n": 2,
+          "name_ar": "ذبول الفيرتيسيوم",
+          "sci": "Verticillium dahliae",
+          "type": "fungus"
+        }
+      ],
+      "name_ar": "السبانخ",
+      "name_en": "Spinach",
+      "sci": "Spinacia oleracea"
+    },
+    {
+      "cards": 12,
+      "family": "Rosaceae",
+      "id": "strawberry",
+      "infections": [
+        {
+          "dossier": "MELGET",
+          "n": 1,
+          "name_ar": "نيماتودا تعقد الجذور الإثيوبية",
+          "sci": "Meloidogyne ethiopica",
+          "type": "nematode"
+        },
+        {
+          "dossier": "LAPHFR",
+          "n": 1,
+          "name_ar": "سوسة الذرة الأمريكية",
+          "sci": "Spodoptera frugiperda",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIZE",
+          "n": 2,
+          "name_ar": "دودة كوز الذرة",
+          "sci": "Helicoverpa zea",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHYPSO",
+          "n": 1,
+          "name_ar": "مرض الشاحبة (فتوبلازما solani)",
+          "sci": "'Candidatus Phytoplasma solani'",
+          "type": "bacterium"
+        },
+        {
+          "dossier": "CERTCA",
+          "n": 3,
+          "name_ar": "ذبابة الفاكهة المتوسطية",
+          "sci": "Ceratitis capitata",
+          "type": "insect"
+        },
+        {
+          "dossier": "DITYDI",
+          "n": 2,
+          "name_ar": "نيماتودا السيقان والأبصال",
+          "sci": "Ditylenchus dipsaci",
+          "type": "nematode"
+        },
+        {
+          "dossier": "TBRV00",
+          "n": 1,
+          "name_ar": "فيروس الحلقات السوداء على الطماطم",
+          "sci": "Nepovirus nigranuli",
+          "type": "virus"
+        },
+        {
+          "dossier": "COLLFC",
+          "n": 1,
+          "name_ar": "لفحة الأوراق الأرجوانية وتعفّن الثمار",
+          "sci": "Colletotrichum fructicola",
+          "type": "fungus"
+        },
+        {
+          "dossier": "FRANOC",
+          "n": 4,
+          "name_ar": "تربس الأزهار الغربي",
+          "sci": "Frankliniella occidentalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "SCITDO",
+          "n": 5,
+          "name_ar": "تربس الفلفل",
+          "sci": "Scirtothrips dorsalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "RALSSO",
+          "n": 2,
+          "name_ar": "الذبول البكتيري الجنوبي",
+          "sci": "Ralstonia solanacearum species complex (as Musa)",
+          "type": "bacterium"
+        },
+        {
+          "dossier": "VERTDA",
+          "n": 2,
+          "name_ar": "ذبول الفيرتيسيوم",
+          "sci": "Verticillium dahliae",
+          "type": "fungus"
+        }
+      ],
+      "name_ar": "الفراولة",
+      "name_en": "Strawberry",
+      "sci": "Fragaria ananassa"
+    },
+    {
+      "cards": 13,
+      "family": "Amaranthaceae",
+      "id": "sugarbeet",
+      "infections": [
+        {
+          "dossier": "LAPHFR",
+          "n": 1,
+          "name_ar": "سوسة الذرة الأمريكية",
+          "sci": "Spodoptera frugiperda",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHMPOM",
+          "n": 1,
+          "name_ar": "تعفّن وذبول جذور النباتات",
+          "sci": "Phymatotrichopsis omnivora",
+          "type": "fungus"
+        },
+        {
+          "dossier": "HELIAR",
+          "n": 2,
+          "name_ar": "دودة الحشّاشة (البقّاحة)",
+          "sci": "Helicoverpa armigera",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHENHI",
+          "n": 3,
+          "name_ar": "المن الوردي",
+          "sci": "Maconellicoccus hirsutus",
+          "type": "insect"
+        },
+        {
+          "dossier": "TSWV00",
+          "n": 1,
+          "name_ar": "فيروس ذبول الطماطم المرقط",
+          "sci": "Orthotospovirus tomatomaculae",
+          "type": "virus"
+        },
+        {
+          "dossier": "LIRIHU",
+          "n": 4,
+          "name_ar": "حافرة الأوراق (Liriomyza huidobrensis)",
+          "sci": "Liriomyza huidobrensis",
+          "type": "insect"
+        },
+        {
+          "dossier": "SPODLI",
+          "n": 5,
+          "name_ar": "سوسة الأوراق المتوسطية",
+          "sci": "Spodoptera littoralis",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHYPSO",
+          "n": 1,
+          "name_ar": "مرض الشاحبة (فتوبلازما solani)",
+          "sci": "'Candidatus Phytoplasma solani'",
+          "type": "bacterium"
+        },
+        {
+          "dossier": "DITYDI",
+          "n": 1,
+          "name_ar": "نيماتودا السيقان والأبصال",
+          "sci": "Ditylenchus dipsaci",
+          "type": "nematode"
+        },
+        {
+          "dossier": "LIRITR",
+          "n": 6,
+          "name_ar": "حافرة الأوراق المتعرجة الأمريكية",
+          "sci": "Liriomyza trifolii",
+          "type": "insect"
+        },
+        {
+          "dossier": "DIABUH",
+          "n": 7,
+          "name_ar": "خنفساء الخيار المرقطة",
+          "sci": "Diabrotica undecimpunctata howardi",
+          "type": "insect"
+        },
+        {
+          "dossier": "TBRV00",
+          "n": 2,
+          "name_ar": "فيروس الحلقات السوداء على الطماطم",
+          "sci": "Nepovirus nigranuli",
+          "type": "virus"
+        },
+        {
+          "dossier": "FRANOC",
+          "n": 8,
+          "name_ar": "تربس الأزهار الغربي",
+          "sci": "Frankliniella occidentalis",
+          "type": "insect"
+        }
+      ],
+      "name_ar": "شمندر السكر",
+      "name_en": "Sugar beet",
+      "sci": "Beta vulgaris"
+    },
+    {
+      "cards": 5,
+      "family": "Poaceae",
+      "id": "sugarcane",
+      "infections": [
+        {
+          "dossier": "LAPHFR",
+          "n": 1,
+          "name_ar": "سوسة الذرة الأمريكية",
+          "sci": "Spodoptera frugiperda",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIZE",
+          "n": 2,
+          "name_ar": "دودة كوز الذرة",
+          "sci": "Helicoverpa zea",
+          "type": "insect"
+        },
+        {
+          "dossier": "DITYDI",
+          "n": 1,
+          "name_ar": "نيماتودا السيقان والأبصال",
+          "sci": "Ditylenchus dipsaci",
+          "type": "nematode"
+        },
+        {
+          "dossier": "DIABUH",
+          "n": 3,
+          "name_ar": "خنفساء الخيار المرقطة",
+          "sci": "Diabrotica undecimpunctata howardi",
+          "type": "insect"
+        },
+        {
+          "dossier": "MELGET",
+          "n": 2,
+          "name_ar": "نيماتودا تعقد الجذور الإثيوبية",
+          "sci": "Meloidogyne ethiopica",
+          "type": "nematode"
+        }
+      ],
+      "name_ar": "قصب السكر",
+      "name_en": "Sugarcane",
+      "sci": "Saccharum officinarum"
+    },
+    {
+      "cards": 19,
+      "family": "Asteraceae",
+      "id": "sunflower",
+      "infections": [
+        {
+          "dossier": "MELGET",
+          "n": 1,
+          "name_ar": "نيماتودا تعقد الجذور الإثيوبية",
+          "sci": "Meloidogyne ethiopica",
+          "type": "nematode"
+        },
+        {
+          "dossier": "LAPHFR",
+          "n": 1,
+          "name_ar": "سوسة الذرة الأمريكية",
+          "sci": "Spodoptera frugiperda",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIZE",
+          "n": 2,
+          "name_ar": "دودة كوز الذرة",
+          "sci": "Helicoverpa zea",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHMPOM",
+          "n": 1,
+          "name_ar": "تعفّن وذبول جذور النباتات",
+          "sci": "Phymatotrichopsis omnivora",
+          "type": "fungus"
+        },
+        {
+          "dossier": "THRIPL",
+          "n": 3,
+          "name_ar": "تربس البطيخ",
+          "sci": "Thrips palmi",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIAR",
+          "n": 4,
+          "name_ar": "دودة الحشّاشة (البقّاحة)",
+          "sci": "Helicoverpa armigera",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHENHI",
+          "n": 5,
+          "name_ar": "المن الوردي",
+          "sci": "Maconellicoccus hirsutus",
+          "type": "insect"
+        },
+        {
+          "dossier": "TSWV00",
+          "n": 1,
+          "name_ar": "فيروس ذبول الطماطم المرقط",
+          "sci": "Orthotospovirus tomatomaculae",
+          "type": "virus"
+        },
+        {
+          "dossier": "LIRIHU",
+          "n": 6,
+          "name_ar": "حافرة الأوراق (Liriomyza huidobrensis)",
+          "sci": "Liriomyza huidobrensis",
+          "type": "insect"
+        },
+        {
+          "dossier": "SPODLI",
+          "n": 7,
+          "name_ar": "سوسة الأوراق المتوسطية",
+          "sci": "Spodoptera littoralis",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHYPSO",
+          "n": 1,
+          "name_ar": "مرض الشاحبة (فتوبلازما solani)",
+          "sci": "'Candidatus Phytoplasma solani'",
+          "type": "bacterium"
+        },
+        {
+          "dossier": "DITYDI",
+          "n": 2,
+          "name_ar": "نيماتودا السيقان والأبصال",
+          "sci": "Ditylenchus dipsaci",
+          "type": "nematode"
+        },
+        {
+          "dossier": "LIRITR",
+          "n": 8,
+          "name_ar": "حافرة الأوراق المتعرجة الأمريكية",
+          "sci": "Liriomyza trifolii",
+          "type": "insect"
+        },
+        {
+          "dossier": "DIABUH",
+          "n": 9,
+          "name_ar": "خنفساء الخيار المرقطة",
+          "sci": "Diabrotica undecimpunctata howardi",
+          "type": "insect"
+        },
+        {
+          "dossier": "HALYHA",
+          "n": 10,
+          "name_ar": "الخنفساء البنية المرقطة",
+          "sci": "Halyomorpha halys",
+          "type": "insect"
+        },
+        {
+          "dossier": "FRANOC",
+          "n": 11,
+          "name_ar": "تربس الأزهار الغربي",
+          "sci": "Frankliniella occidentalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "VERTDA",
+          "n": 2,
+          "name_ar": "ذبول الفيرتيسيوم",
+          "sci": "Verticillium dahliae",
+          "type": "fungus"
+        },
+        {
+          "dossier": "EUTEOR",
+          "n": 1,
+          "name_ar": "العنكبوت الأحمر الشرقي",
+          "sci": "Eutetranychus orientalis",
+          "type": "mite"
+        },
+        {
+          "dossier": "HOMLTR",
+          "n": 12,
+          "name_ar": "الدبّاق الزجاجي الجناح",
+          "sci": "Homalodisca vitripennis",
+          "type": "insect"
+        }
+      ],
+      "name_ar": "دوار الشمس",
+      "name_en": "Sunflower",
+      "sci": "Helianthus annuus"
+    },
+    {
+      "cards": 15,
+      "family": "Convolvulaceae",
+      "id": "sweetpotato",
+      "infections": [
+        {
+          "dossier": "BEMITA",
+          "n": 1,
+          "name_ar": "الذبابة البيضاء",
+          "sci": "Bemisia tabaci",
+          "type": "insect"
+        },
+        {
+          "dossier": "LAPHFR",
+          "n": 2,
+          "name_ar": "سوسة الذرة الأمريكية",
+          "sci": "Spodoptera frugiperda",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHMPOM",
+          "n": 1,
+          "name_ar": "تعفّن وذبول جذور النباتات",
+          "sci": "Phymatotrichopsis omnivora",
+          "type": "fungus"
+        },
+        {
+          "dossier": "THRIPL",
+          "n": 3,
+          "name_ar": "تربس البطيخ",
+          "sci": "Thrips palmi",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIAR",
+          "n": 4,
+          "name_ar": "دودة الحشّاشة (البقّاحة)",
+          "sci": "Helicoverpa armigera",
+          "type": "insect"
+        },
+        {
+          "dossier": "PSEAPE",
+          "n": 5,
+          "name_ar": "الدرع أبيض على الخوخ",
+          "sci": "Pseudaulacaspis pentagona",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHENHI",
+          "n": 6,
+          "name_ar": "المن الوردي",
+          "sci": "Maconellicoccus hirsutus",
+          "type": "insect"
+        },
+        {
+          "dossier": "TSWV00",
+          "n": 1,
+          "name_ar": "فيروس ذبول الطماطم المرقط",
+          "sci": "Orthotospovirus tomatomaculae",
+          "type": "virus"
+        },
+        {
+          "dossier": "LIRIHU",
+          "n": 7,
+          "name_ar": "حافرة الأوراق (Liriomyza huidobrensis)",
+          "sci": "Liriomyza huidobrensis",
+          "type": "insect"
+        },
+        {
+          "dossier": "SPODLI",
+          "n": 8,
+          "name_ar": "سوسة الأوراق المتوسطية",
+          "sci": "Spodoptera littoralis",
+          "type": "insect"
+        },
+        {
+          "dossier": "DITYDI",
+          "n": 1,
+          "name_ar": "نيماتودا السيقان والأبصال",
+          "sci": "Ditylenchus dipsaci",
+          "type": "nematode"
+        },
+        {
+          "dossier": "DIABUH",
+          "n": 9,
+          "name_ar": "خنفساء الخيار المرقطة",
+          "sci": "Diabrotica undecimpunctata howardi",
+          "type": "insect"
+        },
+        {
+          "dossier": "RALSSO",
+          "n": 1,
+          "name_ar": "الذبول البكتيري الجنوبي",
+          "sci": "Ralstonia solanacearum species complex (as Musa)",
+          "type": "bacterium"
+        },
+        {
+          "dossier": "EUTEOR",
+          "n": 1,
+          "name_ar": "العنكبوت الأحمر الشرقي",
+          "sci": "Eutetranychus orientalis",
+          "type": "mite"
+        },
+        {
+          "dossier": "HOMLTR",
+          "n": 10,
+          "name_ar": "الدبّاق الزجاجي الجناح",
+          "sci": "Homalodisca vitripennis",
+          "type": "insect"
+        }
+      ],
+      "name_ar": "البطاطا الحلوة",
+      "name_en": "Sweet potato",
+      "sci": "Ipomoea batatas"
+    },
+    {
+      "cards": 3,
+      "family": "Theaceae",
+      "id": "tea",
+      "infections": [
+        {
+          "dossier": "SCITDO",
+          "n": 1,
+          "name_ar": "تربس الفلفل",
+          "sci": "Scirtothrips dorsalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "PSEAPE",
+          "n": 2,
+          "name_ar": "الدرع أبيض على الخوخ",
+          "sci": "Pseudaulacaspis pentagona",
+          "type": "insect"
+        },
+        {
+          "dossier": "COLLFC",
+          "n": 1,
+          "name_ar": "لفحة الأوراق الأرجوانية وتعفّن الثمار",
+          "sci": "Colletotrichum fructicola",
+          "type": "fungus"
+        }
+      ],
+      "name_ar": "الشاي",
+      "name_en": "Tea",
+      "sci": "Camellia sinensis"
+    },
+    {
+      "cards": 16,
+      "family": "Solanaceae",
+      "id": "tobacco",
+      "infections": [
+        {
+          "dossier": "HELIZE",
+          "n": 1,
+          "name_ar": "دودة كوز الذرة",
+          "sci": "Helicoverpa zea",
+          "type": "insect"
+        },
+        {
+          "dossier": "TSWV00",
+          "n": 1,
+          "name_ar": "فيروس ذبول الطماطم المرقط",
+          "sci": "Orthotospovirus tomatomaculae",
+          "type": "virus"
+        },
+        {
+          "dossier": "BEMITA",
+          "n": 2,
+          "name_ar": "الذبابة البيضاء",
+          "sci": "Bemisia tabaci",
+          "type": "insect"
+        },
+        {
+          "dossier": "RALSSO",
+          "n": 1,
+          "name_ar": "الذبول البكتيري الجنوبي",
+          "sci": "Ralstonia solanacearum species complex (as Musa)",
+          "type": "bacterium"
+        },
+        {
+          "dossier": "LAPHFR",
+          "n": 3,
+          "name_ar": "سوسة الذرة الأمريكية",
+          "sci": "Spodoptera frugiperda",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHMPOM",
+          "n": 1,
+          "name_ar": "تعفّن وذبول جذور النباتات",
+          "sci": "Phymatotrichopsis omnivora",
+          "type": "fungus"
+        },
+        {
+          "dossier": "THRIPL",
+          "n": 4,
+          "name_ar": "تربس البطيخ",
+          "sci": "Thrips palmi",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIAR",
+          "n": 5,
+          "name_ar": "دودة الحشّاشة (البقّاحة)",
+          "sci": "Helicoverpa armigera",
+          "type": "insect"
+        },
+        {
+          "dossier": "LIRIHU",
+          "n": 6,
+          "name_ar": "حافرة الأوراق (Liriomyza huidobrensis)",
+          "sci": "Liriomyza huidobrensis",
+          "type": "insect"
+        },
+        {
+          "dossier": "SPODLI",
+          "n": 7,
+          "name_ar": "سوسة الأوراق المتوسطية",
+          "sci": "Spodoptera littoralis",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHYPSO",
+          "n": 2,
+          "name_ar": "مرض الشاحبة (فتوبلازما solani)",
+          "sci": "'Candidatus Phytoplasma solani'",
+          "type": "bacterium"
+        },
+        {
+          "dossier": "DITYDI",
+          "n": 1,
+          "name_ar": "نيماتودا السيقان والأبصال",
+          "sci": "Ditylenchus dipsaci",
+          "type": "nematode"
+        },
+        {
+          "dossier": "DIABUH",
+          "n": 8,
+          "name_ar": "خنفساء الخيار المرقطة",
+          "sci": "Diabrotica undecimpunctata howardi",
+          "type": "insect"
+        },
+        {
+          "dossier": "MELGET",
+          "n": 2,
+          "name_ar": "نيماتودا تعقد الجذور الإثيوبية",
+          "sci": "Meloidogyne ethiopica",
+          "type": "nematode"
+        },
+        {
+          "dossier": "COLLFC",
+          "n": 2,
+          "name_ar": "لفحة الأوراق الأرجوانية وتعفّن الثمار",
+          "sci": "Colletotrichum fructicola",
+          "type": "fungus"
+        },
+        {
+          "dossier": "FRANOC",
+          "n": 9,
+          "name_ar": "تربس الأزهار الغربي",
+          "sci": "Frankliniella occidentalis",
+          "type": "insect"
+        }
+      ],
+      "name_ar": "التبغ",
+      "name_en": "Tobacco",
+      "sci": "Nicotiana tabacum"
+    },
+    {
+      "cards": 25,
+      "family": "Solanaceae",
+      "id": "tomato",
+      "infections": [
+        {
+          "dossier": "HELIZE",
+          "n": 1,
+          "name_ar": "دودة كوز الذرة",
+          "sci": "Helicoverpa zea",
+          "type": "insect"
+        },
+        {
+          "dossier": "TSWV00",
+          "n": 1,
+          "name_ar": "فيروس ذبول الطماطم المرقط",
+          "sci": "Orthotospovirus tomatomaculae",
+          "type": "virus"
+        },
+        {
+          "dossier": "BEMITA",
+          "n": 2,
+          "name_ar": "الذبابة البيضاء",
+          "sci": "Bemisia tabaci",
+          "type": "insect"
+        },
+        {
+          "dossier": "SPODLI",
+          "n": 3,
+          "name_ar": "سوسة الأوراق المتوسطية",
+          "sci": "Spodoptera littoralis",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHYPSO",
+          "n": 1,
+          "name_ar": "مرض الشاحبة (فتوبلازما solani)",
+          "sci": "'Candidatus Phytoplasma solani'",
+          "type": "bacterium"
+        },
+        {
+          "dossier": "MELGET",
+          "n": 1,
+          "name_ar": "نيماتودا تعقد الجذور الإثيوبية",
+          "sci": "Meloidogyne ethiopica",
+          "type": "nematode"
+        },
+        {
+          "dossier": "TBRV00",
+          "n": 2,
+          "name_ar": "فيروس الحلقات السوداء على الطماطم",
+          "sci": "Nepovirus nigranuli",
+          "type": "virus"
+        },
+        {
+          "dossier": "RALSSO",
+          "n": 2,
+          "name_ar": "الذبول البكتيري الجنوبي",
+          "sci": "Ralstonia solanacearum species complex (as Musa)",
+          "type": "bacterium"
+        },
+        {
+          "dossier": "LAPHFR",
+          "n": 4,
+          "name_ar": "سوسة الذرة الأمريكية",
+          "sci": "Spodoptera frugiperda",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHMPOM",
+          "n": 1,
+          "name_ar": "تعفّن وذبول جذور النباتات",
+          "sci": "Phymatotrichopsis omnivora",
+          "type": "fungus"
+        },
+        {
+          "dossier": "THRIPL",
+          "n": 5,
+          "name_ar": "تربس البطيخ",
+          "sci": "Thrips palmi",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIAR",
+          "n": 6,
+          "name_ar": "دودة الحشّاشة (البقّاحة)",
+          "sci": "Helicoverpa armigera",
+          "type": "insect"
+        },
+        {
+          "dossier": "PSEAPE",
+          "n": 7,
+          "name_ar": "الدرع أبيض على الخوخ",
+          "sci": "Pseudaulacaspis pentagona",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHENHI",
+          "n": 8,
+          "name_ar": "المن الوردي",
+          "sci": "Maconellicoccus hirsutus",
+          "type": "insect"
+        },
+        {
+          "dossier": "LIRIHU",
+          "n": 9,
+          "name_ar": "حافرة الأوراق (Liriomyza huidobrensis)",
+          "sci": "Liriomyza huidobrensis",
+          "type": "insect"
+        },
+        {
+          "dossier": "CERTCA",
+          "n": 10,
+          "name_ar": "ذبابة الفاكهة المتوسطية",
+          "sci": "Ceratitis capitata",
+          "type": "insect"
+        },
+        {
+          "dossier": "DITYDI",
+          "n": 2,
+          "name_ar": "نيماتودا السيقان والأبصال",
+          "sci": "Ditylenchus dipsaci",
+          "type": "nematode"
+        },
+        {
+          "dossier": "LIRITR",
+          "n": 11,
+          "name_ar": "حافرة الأوراق المتعرجة الأمريكية",
+          "sci": "Liriomyza trifolii",
+          "type": "insect"
+        },
+        {
+          "dossier": "DIABUH",
+          "n": 12,
+          "name_ar": "خنفساء الخيار المرقطة",
+          "sci": "Diabrotica undecimpunctata howardi",
+          "type": "insect"
+        },
+        {
+          "dossier": "DACUDO",
+          "n": 13,
+          "name_ar": "ذبابة الفاكهة الشرقية",
+          "sci": "Bactrocera dorsalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "HALYHA",
+          "n": 14,
+          "name_ar": "الخنفساء البنية المرقطة",
+          "sci": "Halyomorpha halys",
+          "type": "insect"
+        },
+        {
+          "dossier": "COLLFC",
+          "n": 2,
+          "name_ar": "لفحة الأوراق الأرجوانية وتعفّن الثمار",
+          "sci": "Colletotrichum fructicola",
+          "type": "fungus"
+        },
+        {
+          "dossier": "FRANOC",
+          "n": 15,
+          "name_ar": "تربس الأزهار الغربي",
+          "sci": "Frankliniella occidentalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "SCITDO",
+          "n": 16,
+          "name_ar": "تربس الفلفل",
+          "sci": "Scirtothrips dorsalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "VERTDA",
+          "n": 3,
+          "name_ar": "ذبول الفيرتيسيوم",
+          "sci": "Verticillium dahliae",
+          "type": "fungus"
+        }
+      ],
+      "name_ar": "الطماطم",
+      "name_en": "Tomato",
+      "sci": "Solanum lycopersicum"
+    },
+    {
+      "cards": 10,
+      "family": "Juglandaceae",
+      "id": "walnut",
+      "infections": [
+        {
+          "dossier": "LAPHFR",
+          "n": 1,
+          "name_ar": "سوسة الذرة الأمريكية",
+          "sci": "Spodoptera frugiperda",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHMPOM",
+          "n": 1,
+          "name_ar": "تعفّن وذبول جذور النباتات",
+          "sci": "Phymatotrichopsis omnivora",
+          "type": "fungus"
+        },
+        {
+          "dossier": "PSEAPE",
+          "n": 2,
+          "name_ar": "الدرع أبيض على الخوخ",
+          "sci": "Pseudaulacaspis pentagona",
+          "type": "insect"
+        },
+        {
+          "dossier": "CERTCA",
+          "n": 3,
+          "name_ar": "ذبابة الفاكهة المتوسطية",
+          "sci": "Ceratitis capitata",
+          "type": "insect"
+        },
+        {
+          "dossier": "DACUDO",
+          "n": 4,
+          "name_ar": "ذبابة الفاكهة الشرقية",
+          "sci": "Bactrocera dorsalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "HALYHA",
+          "n": 5,
+          "name_ar": "الخنفساء البنية المرقطة",
+          "sci": "Halyomorpha halys",
+          "type": "insect"
+        },
+        {
+          "dossier": "COLLFC",
+          "n": 2,
+          "name_ar": "لفحة الأوراق الأرجوانية وتعفّن الثمار",
+          "sci": "Colletotrichum fructicola",
+          "type": "fungus"
+        },
+        {
+          "dossier": "EUTEOR",
+          "n": 1,
+          "name_ar": "العنكبوت الأحمر الشرقي",
+          "sci": "Eutetranychus orientalis",
+          "type": "mite"
+        },
+        {
+          "dossier": "HOMLTR",
+          "n": 6,
+          "name_ar": "الدبّاق الزجاجي الجناح",
+          "sci": "Homalodisca vitripennis",
+          "type": "insect"
+        },
+        {
+          "dossier": "CARPPO",
+          "n": 7,
+          "name_ar": "بعثة التفاح (دودة نواة الثمار)",
+          "sci": "Cydia pomonella",
+          "type": "insect"
+        }
+      ],
+      "name_ar": "الجوز",
+      "name_en": "Walnut",
+      "sci": "Juglans regia"
+    },
+    {
+      "cards": 18,
+      "family": "Cucurbitaceae",
+      "id": "watermelon",
+      "infections": [
+        {
+          "dossier": "SPODLI",
+          "n": 1,
+          "name_ar": "سوسة الأوراق المتوسطية",
+          "sci": "Spodoptera littoralis",
+          "type": "insect"
+        },
+        {
+          "dossier": "DIABUH",
+          "n": 2,
+          "name_ar": "خنفساء الخيار المرقطة",
+          "sci": "Diabrotica undecimpunctata howardi",
+          "type": "insect"
+        },
+        {
+          "dossier": "LAPHFR",
+          "n": 3,
+          "name_ar": "سوسة الذرة الأمريكية",
+          "sci": "Spodoptera frugiperda",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIZE",
+          "n": 4,
+          "name_ar": "دودة كوز الذرة",
+          "sci": "Helicoverpa zea",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHMPOM",
+          "n": 1,
+          "name_ar": "تعفّن وذبول جذور النباتات",
+          "sci": "Phymatotrichopsis omnivora",
+          "type": "fungus"
+        },
+        {
+          "dossier": "THRIPL",
+          "n": 5,
+          "name_ar": "تربس البطيخ",
+          "sci": "Thrips palmi",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIAR",
+          "n": 6,
+          "name_ar": "دودة الحشّاشة (البقّاحة)",
+          "sci": "Helicoverpa armigera",
+          "type": "insect"
+        },
+        {
+          "dossier": "TSWV00",
+          "n": 1,
+          "name_ar": "فيروس ذبول الطماطم المرقط",
+          "sci": "Orthotospovirus tomatomaculae",
+          "type": "virus"
+        },
+        {
+          "dossier": "BEMITA",
+          "n": 7,
+          "name_ar": "الذبابة البيضاء",
+          "sci": "Bemisia tabaci",
+          "type": "insect"
+        },
+        {
+          "dossier": "LIRIHU",
+          "n": 8,
+          "name_ar": "حافرة الأوراق (Liriomyza huidobrensis)",
+          "sci": "Liriomyza huidobrensis",
+          "type": "insect"
+        },
+        {
+          "dossier": "LIRITR",
+          "n": 9,
+          "name_ar": "حافرة الأوراق المتعرجة الأمريكية",
+          "sci": "Liriomyza trifolii",
+          "type": "insect"
+        },
+        {
+          "dossier": "MELGET",
+          "n": 1,
+          "name_ar": "نيماتودا تعقد الجذور الإثيوبية",
+          "sci": "Meloidogyne ethiopica",
+          "type": "nematode"
+        },
+        {
+          "dossier": "DACUDO",
+          "n": 10,
+          "name_ar": "ذبابة الفاكهة الشرقية",
+          "sci": "Bactrocera dorsalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "COLLFC",
+          "n": 2,
+          "name_ar": "لفحة الأوراق الأرجوانية وتعفّن الثمار",
+          "sci": "Colletotrichum fructicola",
+          "type": "fungus"
+        },
+        {
+          "dossier": "FRANOC",
+          "n": 11,
+          "name_ar": "تربس الأزهار الغربي",
+          "sci": "Frankliniella occidentalis",
+          "type": "insect"
+        },
+        {
+          "dossier": "RALSSO",
+          "n": 1,
+          "name_ar": "الذبول البكتيري الجنوبي",
+          "sci": "Ralstonia solanacearum species complex (as Musa)",
+          "type": "bacterium"
+        },
+        {
+          "dossier": "VERTDA",
+          "n": 3,
+          "name_ar": "ذبول الفيرتيسيوم",
+          "sci": "Verticillium dahliae",
+          "type": "fungus"
+        },
+        {
+          "dossier": "EUTEOR",
+          "n": 1,
+          "name_ar": "العنكبوت الأحمر الشرقي",
+          "sci": "Eutetranychus orientalis",
+          "type": "mite"
+        }
+      ],
+      "name_ar": "البطيخ",
+      "name_en": "Watermelon",
+      "sci": "Citrullus lanatus"
+    },
+    {
+      "cards": 7,
+      "family": "Poaceae",
+      "id": "wheat",
+      "infections": [
+        {
+          "dossier": "LAPHFR",
+          "n": 1,
+          "name_ar": "سوسة الذرة الأمريكية",
+          "sci": "Spodoptera frugiperda",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIZE",
+          "n": 2,
+          "name_ar": "دودة كوز الذرة",
+          "sci": "Helicoverpa zea",
+          "type": "insect"
+        },
+        {
+          "dossier": "HELIAR",
+          "n": 3,
+          "name_ar": "دودة الحشّاشة (البقّاحة)",
+          "sci": "Helicoverpa armigera",
+          "type": "insect"
+        },
+        {
+          "dossier": "LIRIHU",
+          "n": 4,
+          "name_ar": "حافرة الأوراق (Liriomyza huidobrensis)",
+          "sci": "Liriomyza huidobrensis",
+          "type": "insect"
+        },
+        {
+          "dossier": "PHYPSO",
+          "n": 1,
+          "name_ar": "مرض الشاحبة (فتوبلازما solani)",
+          "sci": "'Candidatus Phytoplasma solani'",
+          "type": "bacterium"
+        },
+        {
+          "dossier": "DITYDI",
+          "n": 1,
+          "name_ar": "نيماتودا السيقان والأبصال",
+          "sci": "Ditylenchus dipsaci",
+          "type": "nematode"
+        },
+        {
+          "dossier": "DIABUH",
+          "n": 5,
+          "name_ar": "خنفساء الخيار المرقطة",
+          "sci": "Diabrotica undecimpunctata howardi",
+          "type": "insect"
+        }
+      ],
+      "name_ar": "القمح",
+      "name_en": "Wheat",
+      "sci": "Triticum aestivum"
+    }
+  ],
+  "schema": 1
+}

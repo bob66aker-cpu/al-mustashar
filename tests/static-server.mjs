@@ -22,6 +22,8 @@ http.createServer((req, res) => {
   if (!fp.startsWith(ROOT) || !existsSync(fp) || statSync(fp).isDirectory()) {
     res.writeHead(404); res.end('nf'); return;
   }
-  res.writeHead(200, { 'Content-Type': MIME[extname(fp)] || 'application/octet-stream' });
+  /* Connection: close — يمنع إعادة توظيف مقبس keep-alive في undici (Node 22) الذي
+     يُسقط الاختبار بـ assert(!this.paused) عند إغلاق الخادم مبكراً. أداة اختبار فقط. */
+  res.writeHead(200, { 'Content-Type': MIME[extname(fp)] || 'application/octet-stream', 'Connection': 'close' });
   res.end(readFileSync(fp));
 }).listen(PORT, '127.0.0.1', () => console.log(`static server on http://127.0.0.1:${PORT}`));

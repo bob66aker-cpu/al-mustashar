@@ -43,10 +43,22 @@ for (const f of readdirSync(DOSS).filter(x => x.endsWith('.json'))) {
   if (!Array.isArray(d.symptoms_ar) || d.symptoms_ar.length < 2) fail(f + ': مظاهر أقل من 2');
   if (!Array.isArray(d.management_ar) || d.management_ar.length < 1) fail(f + ': علاج فارغ');
   if (!['A', 'B', 'C'].includes(d.evidence)) fail(f + ': evidence');
+  if (d.treatment !== undefined) {
+    if (!Array.isArray(d.treatment) || !d.treatment.length) fail(f + ': treatment ليس مصفوفة غير فارغة');
+    for (const it of d.treatment) {
+      if (!it.scheme || typeof it.moa !== 'string') fail(f + ': treatment.scheme/moa');
+      if (!Array.isArray(it.actives) || !it.actives.length) fail(f + ': treatment.actives فارغ');
+      for (const a of it.actives) if (!a.en || !a.ar) fail(f + ': active بلا en/ar');
+      if (!it.source || !/^https:\/\//.test(it.source.url || '')) fail(f + ': treatment.source.url');
+    }
+  }
+  if (!d.treatment && !d.treatment_note_ar) fail(f + ': لا علاج ولا ملاحظة علاج');
   dossiers[code] = {
     name_ar: d.name_ar, pest_name_en: d.pest_name_en, evidence: d.evidence,
     source: d.source, symptoms_ar: d.symptoms_ar, management_ar: d.management_ar
   };
+  if (d.treatment) dossiers[code].treatment = d.treatment;
+  if (d.treatment_note_ar) dossiers[code].treatment_note_ar = d.treatment_note_ar;
 }
 if (!Object.keys(dossiers).length) fail('لا دواوين');
 

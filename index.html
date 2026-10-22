@@ -1098,6 +1098,67 @@
       0% { box-shadow: 0 0 0 0 var(--primary-ink); }
       100% { box-shadow: 0 0 0 16px rgba(0, 0, 0, 0); }
     }
+    /* D62 — الإرشاد حسب الطلب: ورقة المحصول + صفوف الأنواع + بطاقات طيّ + قسم العلاج حسب الوضع */
+    .crop-pick {
+      display: block; width: 100%; min-height: 52px; padding: 14px 16px;
+      font: inherit; font-weight: 700; font-size: 1.02rem; text-align: start;
+      color: var(--text); background: var(--field);
+      border: 1.5px dashed var(--border); border-radius: var(--radius); cursor: pointer;
+    }
+    .crop-pick:hover, .crop-pick:focus-visible { border-color: var(--primary); color: var(--primary-strong); }
+    .sheet {
+      position: fixed; inset-inline: 0; bottom: 0; z-index: 60; padding: 12px 14px 20px;
+      background: var(--card); border-top: 1px solid var(--border);
+      border-radius: var(--radius) var(--radius) 0 0;
+      max-height: 72vh; overflow-y: auto; box-shadow: 0 -12px 40px var(--scrim);
+    }
+    .sheet[hidden] { display: none !important; }
+    .sheet-head {
+      position: sticky; top: -12px; z-index: 1; display: flex; gap: 8px; align-items: center;
+      background: var(--card); padding: 8px 0 10px;
+    }
+    .sheet-head .query { flex: 1; }
+    .sheet-close {
+      font-size: 1.4rem; line-height: 1; padding: 6px 12px; cursor: pointer;
+      background: transparent; color: var(--text);
+      border: 1px solid var(--border); border-radius: var(--radius-sm);
+    }
+    .advice-types { display: flex; flex-direction: column; gap: 8px; }
+    .type-row {
+      display: flex; align-items: center; gap: 10px; width: 100%; min-height: 52px;
+      padding: 10px 12px; font: inherit; text-align: start;
+      color: var(--text); background: var(--field);
+      border: 1px solid var(--border); border-radius: var(--radius); cursor: pointer;
+    }
+    .type-row.active { background: var(--primary-soft); border-color: var(--primary-ink); color: var(--primary-strong); }
+    .type-row .type-num {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 27px; height: 27px; flex: none; border-radius: 50%;
+      background: var(--primary); color: var(--on-primary);
+      font-weight: 800; font-size: .92rem;
+    }
+    .type-row .tt { flex: 1; font-weight: 700; }
+    .type-row .tn { color: var(--muted); font-size: .86rem; }
+    .type-row .chev { color: var(--muted); transition: transform .2s; }
+    .type-row.active .chev { transform: rotate(180deg); }
+    .fold { margin-block-start: 8px; }
+    .fold > summary {
+      cursor: pointer; min-height: 44px; display: flex; align-items: center; gap: 8px;
+      font-weight: 700; padding: 6px 4px; border-block-end: 1px solid var(--border);
+    }
+    .inf-card > .inf-sum { list-style: none; cursor: pointer; }
+    .inf-sum::-webkit-details-marker { display: none; }
+    .inf-card > .inf-sum::after { content: '▾'; margin-inline-start: auto; color: var(--muted); transition: transform .2s; }
+    .inf-card[open] > .inf-sum::after { transform: rotate(180deg); }
+    .inf-card[open] > .inf-sum { border-block-end: 1px solid var(--border); padding-block-end: 8px; margin-block-end: 6px; }
+    .treat-sec { margin-block-start: 10px; padding: 10px 12px; border: 1px dashed var(--border); border-radius: var(--radius); }
+    .treat-mode { font-size: .88rem; color: var(--muted); margin-block-end: 8px; }
+    .treat-opt { display: flex; flex-direction: column; gap: 6px; padding-block: 8px; border-block-end: 1px dotted var(--border); }
+    .treat-active { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+    .treat-extra { display: flex; align-items: center; gap: 8px; margin-block: 6px 10px; font-size: .9rem; }
+    .treat-extra select { font: inherit; padding: 6px 8px; border: 1px solid var(--border); background: var(--card); color: var(--text); border-radius: var(--radius-sm); }
+    .treat-note { font-size: .95rem; }
+    .treat-caution { font-size: .85rem; color: var(--muted); margin-block-start: 8px; }
   </style>
 </head>
 <body>
@@ -1187,11 +1248,11 @@
         <p class="inapp-note" id="inappNote" hidden></p>
       </div>
 
-      <a class="cta-scan cta-advice" href="#/advice" id="homeAdviceCta">
+      <a class="cta-scan cta-advice" href="#/tws" id="homeAdviceCta">
         <span class="sq" data-icon="mode-farmer"></span>
         <span>
-          <b data-i18n="advice.cta.title">الإرشاد الزراعي</b>
-          <span class="sub" data-i18n="advice.cta.sub">بطاقات كاملة لكل محصول: تأكيد أول، إرشاد زراعي، مواد مرخّصة، بدائل غير كيميائية، ومتى تطلب مختصاً — بلا تشخيص وبلا جرعات.</span>
+          <b data-i18n="advice.cta.title">التوصيات الزراعية</b>
+          <span class="sub" data-i18n="advice.cta.sub">مسار واضح: محصول ← إصابة ← بطاقة موثّقة بمصدرها — مظاهر الإصابة والتدبير المتكامل ومخططات العلاج من 30 ديواناً مسنداً، بلا تخمين وبلا جرعات.</span>
         </span>
       </a>
 
@@ -1722,7 +1783,7 @@
       </div>
     </section>
     <!-- ================= الإرشاد الزراعي (D59) ================= -->
-    <section class="view" id="view-advice" data-view="advice" hidden>
+    <section class="view" id="view-advice" hidden>
       <div class="page-head advice-head">
         <h1 data-i18n="advice.title">الإرشاد الزراعي</h1>
         <p data-i18n="advice.lead">من ملف مزرعتك إلى بطاقة عملية: تأكيد العرض أولاً، ثم الإرشاد الزراعي، والمواد المرخّصة، والبدائل غير الكيميائية، ومتى تطلب مختصاً.</p>
@@ -1742,21 +1803,31 @@
 
       <div class="card advice-step" id="adviceCropsCard">
         <h2><span class="step-n" data-i18n="advice.step.crops">٢</span><span data-i18n="advice.crops.title">اختر محصولك</span></h2>
-        <input class="query crop-search" id="adviceCropSearch" type="search" hidden autocomplete="off" data-i18n-placeholder="advice.crops.search" placeholder="ابحث عن محصولك…">
-        <div class="advice-crops" id="adviceCrops"></div>
+        <button id="adviceCropBtn" class="crop-pick" type="button" data-i18n="advice.crops.pick">اختر المحصول…</button>
+        <div id="adviceCropSheet" class="sheet" hidden>
+          <div class="sheet-head">
+            <input class="query crop-search" id="adviceCropSearch" type="search" autocomplete="off" data-i18n-placeholder="advice.crops.search" placeholder="ابحث عن محصولك…">
+            <button id="adviceCropSheetClose" class="sheet-close" type="button" aria-label="إغلاق">×</button>
+          </div>
+          <div class="advice-crops" id="adviceCrops"></div>
+        </div>
       </div>
 
       <div class="card advice-step" id="adviceTypesCard" hidden>
         <h2><span class="step-n" data-i18n="advice.step.types">٣</span><span data-i18n="advice.types.title">نوع الإصابة</span></h2>
-        <p class="hint" data-i18n="advice.types.hint">اختر نوع الإصابة لعرض بطاقاته المرقّمة: مظاهر الإصابة ثم العلاج.</p>
+        <p class="hint" data-i18n="advice.types.hint">اختر نوع الإصابة لعرض أمراضه المرقّمة (1.1، 1.2، …) — نوع واحد يُفتح في كل مرة.</p>
         <div class="advice-types" id="adviceTypes"></div>
       </div>
 
       <div class="advice-list" id="adviceInfections"></div>
       <p class="hint" id="adviceInfEmpty" hidden data-i18n="advice.inf.none">لا توجد بطاقة مسنّدة بعد لهذا النوع — راجع القائمة المرجعية أدناه.</p>
 
-      <div class="advice-list" id="adviceCards"></div>
       <p class="hint" id="adviceEmpty" data-i18n="advice.cards.hint">اختر محصولاً من الأعلى لتظهر بطاقاته كاملة.</p>
+      <details class="fold" id="adviceHandFold">
+        <summary><span data-i18n="advice.hand.fold">بطاقات تفصيلية إرشادية</span> (<span id="adviceHandCount">0</span>)</summary>
+        <p class="hint" data-i18n="advice.hand.hint">بطاقات المصادر الطبية (10 محاصيل) — تظهر عند فتح القسم.</p>
+        <div class="advice-list" id="adviceCards"></div>
+      </details>
     </section>
   </main>
 
@@ -1765,7 +1836,7 @@
       <a class="nav-item" href="#/" data-nav="home"><span class="nav-ic" data-icon="home"></span><span data-i18n="nav.home">الرئيسية</span></a>
       <a class="nav-item" href="#/search" data-nav="search"><span class="nav-ic" data-icon="search"></span><span data-i18n="nav.search">البحث</span></a>
       <a class="nav-item" href="#/scan" data-nav="scan"><span class="nav-ic" data-icon="scan"></span><span data-i18n="nav.scan">المسح</span></a>
-      <a class="nav-item" href="#/advice" data-nav="advice"><span class="nav-ic" data-icon="mode-farmer"></span><span data-i18n="nav.advice">الإرشاد</span></a>
+      <a class="nav-item" href="#/tws" data-nav="tws"><span class="nav-ic" data-icon="mode-farmer"></span><span data-i18n="nav.advice">التوصيات</span></a>
       <a class="nav-item" href="#/history" data-nav="history"><span class="nav-ic" data-icon="history"></span><span data-i18n="nav.history">السجل</span></a>
       <a class="nav-item" href="#/about" data-nav="about"><span class="nav-ic" data-icon="about"></span><span data-i18n="nav.about">حول</span></a>
     </div>
@@ -1793,6 +1864,7 @@
   <script src="src/qr.js"></script>
   <script src="src/stats.js"></script>
   <script src="src/irsheed.js"></script>
+  <script src="src/tawsiyat.js"></script>
   <script src="src/app.js"></script>
 </body>
 </html>

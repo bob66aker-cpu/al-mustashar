@@ -311,6 +311,20 @@ function validateInfections(dir, mf, err, warn, stats) {
   /* --- الدواوين: مصدر + نظافة + تطابق مع الملف الأصلي --- */
   const dossDir = join(evDir, '_dossiers');
   if (!existsSync(dossDir)) return err('infections', '_dossiers مفقود');
+  /* مطابقة المواد الفعّالة على اتحاد السجلات النشطة + الحزم الاختيارية على القرص */
+  const SCHEMES = new Set(['IRAC', 'FRAC', 'NEMATICIDE', 'BACTERICIDE', 'IGR', 'other']);
+  const SRC_TYPES = new Set(['ucipm', 'extension', 'cabi', 'cgiari', 'eppo', 'government', 'org', 'journal']);
+  const normName = s => String(s || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+  let ACTIVE_NAMES = null;
+  const activeNames = () => {
+    if (ACTIVE_NAMES) return ACTIVE_NAMES;
+    ACTIVE_NAMES = new Set();
+    for (const p of ['data/libya-500.json', 'data/libya-248.json', 'data/eu.json', 'data/epa.json', 'data-optional/canada.json', 'data-optional/australia.json']) {
+      try { for (const r of (JSON.parse(readFileSync(p, 'utf8')).rows || [])) ACTIVE_NAMES.add(normName(r.name)); }
+      catch (e) { /* حزمة اختيارية غير موجودة على القرص */ }
+    }
+    return ACTIVE_NAMES;
+  };
   for (const [code, d] of Object.entries(dossiers)) {
     const W = 'dossiers/' + code;
     if (!d.name_ar) err(W, 'name_ar مفقود');
@@ -324,6 +338,27 @@ function validateInfections(dir, mf, err, warn, stats) {
     if (!Array.isArray(d.management_ar) || d.management_ar.length < 1) err(W, 'management_ar فارغ');
     if (!EVIDENCE.has(d.evidence)) err(W, 'vidence خارج {A,B,C}: ' + d.evidence);
     else stats.evidence[d.evidence]++;
+    /* 62 — العلاج: كل مادة يجب أن تُطابَق اسماً في سجل حقيقي (لا مواد مخترعة) */
+    if (d.treatment !== undefined) {
+      if (!Array.isArray(d.treatment) || !d.treatment.length) err(W, 'treatment يجب أن يكون مصفوفة غير فارغة');
+      for (const it of (Array.isArray(d.treatment) ? d.treatment : [])) {
+        if (!SCHEMES.has(it && it.scheme)) err(W, 'scheme غير معروف: ' + (it && it.scheme));
+        if (typeof (it && it.moa) !== 'string' || it.moa.length > 12) err(W, 'moa غير صالح');
+        if (!Array.isArray(it.actives) || !it.actives.length) err(W, 'actives فارغ');
+        for (const a of (it.actives || [])) {
+          if (!a || typeof a.en !== 'string' || !a.en.trim()) err(W, 'active بلا اسم لاتيني');
+          else if (!activeNames().has(normName(a.en))) err(W, 'المادة غير موجودة في أي قاعدة مُحمّلة: ' + a.en);
+          if (!a || typeof a.ar !== 'string' || !a.ar.trim()) err(W, 'active بلا اسم عربي');
+        }
+        if (!it.source || !URL_RE.test(it.source.url || '')) err(W, 'treatment.source.url يجب أن يكون https');
+        if (!SRC_TYPES.has(it.source && it.source.type)) err(W, 'نوع مصدر علاج غير معروف: ' + (it.source && it.source.type));
+        const ttext = [it.scheme, it.moa, ...(it.actives || []).map(a => a.ar)].join('\n');
+        if (DOSE_RE.test(ttext)) { stats.doseHits++; err(W, 'نمط جرعة داخل العلاج: ' + ttext.match(DOSE_RE)[0]); }
+        for (const h of latinMixHits(ttext)) err(W, 'تجاوز عربي-لاتيني داخل كلمة: ' + h.token);
+      }
+    }
+    if (!d.treatment && !d.treatment_note_ar) err(W, 'لا علاج ولا ملاحظة علاج — كل ديوان يجب أن يُجيب عن سؤال المبيدات');
+    if (d.treatment_note_ar !== undefined && typeof d.treatment_note_ar !== 'string') err(W, 'treatment_note_ar ليس نصاً');
     const text = [d.name_ar, ...(d.symptoms_ar || []), ...(d.management_ar || [])].join('\n');
     const cjk = text.match(CJK_RE);
     if (cjk) err(W, 'حرف CJK/FFFD: ' + JSON.stringify([...new Set(cjk)]));
@@ -341,6 +376,8 @@ function validateInfections(dir, mf, err, warn, stats) {
       if (JSON.stringify(o.symptoms_ar) !== JSON.stringify(d.symptoms_ar)) err(W, 'يختلف عن الأصلي في symptoms_ar');
       if (JSON.stringify(o.management_ar) !== JSON.stringify(d.management_ar)) err(W, 'يختلف عن الأصلي في management_ar');
       if (JSON.stringify(o.source) !== JSON.stringify(d.source)) err(W, 'يختلف عن الأصلي في source');
+      if (JSON.stringify(o.treatment) !== JSON.stringify(d.treatment)) err(W, 'يختلف عن الأصلي في treatment');
+      if (JSON.stringify(o.treatment_note_ar) !== JSON.stringify(d.treatment_note_ar)) err(W, 'يختلف عن الأصلي في treatment_note_ar');
     }
   }
   for (const f of readdirSync(dossDir).filter(x => x.endsWith('.json'))) {

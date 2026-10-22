@@ -198,6 +198,38 @@ infNeg('الإصابات: رفض بطاقة خارج التصنيف unknown (ك�
   o.cards[0].code = 'NOTAX9'; writeJ(base, rel, o);
 }, /لا تصنيف GBIF صالح|غير موجود في قائمة EPPO/);
 
+/* ============ عقد الدواوين D63: علاج مُسنَد لكل ديوان + مادة مطابَقة فقط ============ */
+check('الحزمة الحقيقية: كل ديوان يجيب عن سؤال المبيدات (علاج أو ملاحظة صريحة)', (() => {
+  const o = JSON.parse(readFileSync(join(realDir, 'dossiers.json'), 'utf8'));
+  const ks = Object.keys(o.dossiers || {});
+  return ks.length >= 30 && ks.every(k => {
+    const d = o.dossiers[k];
+    return (Array.isArray(d.treatment) && d.treatment.length) ||
+      (typeof d.treatment_note_ar === 'string' && d.treatment_note_ar.length > 20);
+  });
+})());
+
+infNeg('العلاج: رفض مادة غير موجودة في أي سجل', base => {
+  const o = readJ(base, 'dossiers.json');
+  const k = Object.keys(o.dossiers).find(x => Array.isArray(o.dossiers[x].treatment) && o.dossiers[x].treatment.length);
+  o.dossiers[k].treatment[0].actives.push({ ar: 'مادة وهمية للفحص', en: 'zzz-fake-active-9', alt_names: [] });
+  writeJ(base, 'dossiers.json', o);
+}, /المادة غير موجودة في أي قاعدة مُحمّلة/);
+
+infNeg('العلاج: رفض ديوان بلا علاج ولا ملاحظة علاج', base => {
+  const o = readJ(base, 'dossiers.json');
+  const k = Object.keys(o.dossiers).find(x => Array.isArray(o.dossiers[x].treatment) && o.dossiers[x].treatment.length);
+  delete o.dossiers[k].treatment;
+  writeJ(base, 'dossiers.json', o);
+}, /لا علاج ولا ملاحظة علاج/);
+
+infNeg('العلاج: رفض مصفوفة علاج فارغة', base => {
+  const o = readJ(base, 'dossiers.json');
+  const k = Object.keys(o.dossiers).find(x => Array.isArray(o.dossiers[x].treatment) && o.dossiers[x].treatment.length);
+  o.dossiers[k].treatment = [];
+  writeJ(base, 'dossiers.json', o);
+}, /treatment يجب أن يكون مصفوفة غير فارغة/);
+
 freshClone();
 rmSync(cloneDir, { recursive: true, force: true });
 

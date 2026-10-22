@@ -22,5 +22,71 @@
     "قد تكبح الطفيليات أعداد الحافرات في الحقول عند تجنب المبيدات التي تضر بالأعداء الحيوية؛ ويمكن إطلاق الطفيليات في المحاصيل المحمية.",
     "يوصي المصدر بتناوب فئات المبيدات لتأخير تطور المقاومة، وباستخدام مواد أكثر انتقائية للمحافظة على الطفيليات."
   ],
-  "evidence": "B"
+  "evidence": "B",
+  "treatment": [
+    {
+      "scheme": "IRAC",
+      "moa": "28",
+      "actives": [
+        {
+          "en": "cyantraniliprole",
+          "ar": "سيانترانيليب رول"
+        }
+      ],
+      "source": {
+        "title": "UC IPM — Leafminers",
+        "publisher": "UC IPM",
+        "url": "https://ipm.ucanr.edu/agriculture/floriculture-and-ornamental-nurseries/leafminers/",
+        "type": "extension"
+      }
+    },
+    {
+      "scheme": "IRAC",
+      "moa": "17",
+      "actives": [
+        {
+          "en": "cyromazine",
+          "ar": "سيرومزين"
+        }
+      ],
+      "source": {
+        "title": "UC IPM — Leafminers",
+        "publisher": "UC IPM",
+        "url": "https://ipm.ucanr.edu/agriculture/floriculture-and-ornamental-nurseries/leafminers/",
+        "type": "extension"
+      }
+    },
+    {
+      "scheme": "IRAC",
+      "moa": "6",
+      "actives": [
+        {
+          "en": "abamectin",
+          "ar": "أبامكتين"
+        }
+      ],
+      "source": {
+        "title": "UC IPM — Leafminers",
+        "publisher": "UC IPM",
+        "url": "https://ipm.ucanr.edu/agriculture/floriculture-and-ornamental-nurseries/leafminers/",
+        "type": "extension"
+      }
+    },
+    {
+      "scheme": "IRAC",
+      "moa": "5",
+      "actives": [
+        {
+          "en": "spinosad",
+          "ar": "سبينوساد"
+        }
+      ],
+      "source": {
+        "title": "UC IPM — Leafminers",
+        "publisher": "UC IPM",
+        "url": "https://ipm.ucanr.edu/agriculture/floriculture-and-ornamental-nurseries/leafminers/",
+        "type": "extension"
+      }
+    }
+  ]
 }

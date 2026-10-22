@@ -22,5 +22,71 @@
     "يُنصح بتجنب الزراعة بجوار حقول مصابة، ولا سيما حقول الخس القريبة من موعد الحصاد.",
     "تتباين عتبات المعالجة بحسب نوع الحافرة؛ ويذكر المصدر أن عتبة حافرة البازلاء يُرجح أن تكون أقل بسبب ميلها إلى حفر السيقان."
   ],
-  "evidence": "A"
+  "evidence": "A",
+  "treatment": [
+    {
+      "scheme": "IRAC",
+      "moa": "28",
+      "actives": [
+        {
+          "en": "cyantraniliprole",
+          "ar": "سيانترانيليب رول"
+        }
+      ],
+      "source": {
+        "title": "UC IPM — Leafminers",
+        "publisher": "UC IPM",
+        "url": "https://ipm.ucanr.edu/agriculture/floriculture-and-ornamental-nurseries/leafminers/",
+        "type": "extension"
+      }
+    },
+    {
+      "scheme": "IRAC",
+      "moa": "17",
+      "actives": [
+        {
+          "en": "cyromazine",
+          "ar": "سيرومزين"
+        }
+      ],
+      "source": {
+        "title": "UC IPM — Leafminers",
+        "publisher": "UC IPM",
+        "url": "https://ipm.ucanr.edu/agriculture/floriculture-and-ornamental-nurseries/leafminers/",
+        "type": "extension"
+      }
+    },
+    {
+      "scheme": "IRAC",
+      "moa": "6",
+      "actives": [
+        {
+          "en": "abamectin",
+          "ar": "أبامكتين"
+        }
+      ],
+      "source": {
+        "title": "UC IPM — Leafminers",
+        "publisher": "UC IPM",
+        "url": "https://ipm.ucanr.edu/agriculture/floriculture-and-ornamental-nurseries/leafminers/",
+        "type": "extension"
+      }
+    },
+    {
+      "scheme": "IRAC",
+      "moa": "5",
+      "actives": [
+        {
+          "en": "spinosad",
+          "ar": "سبينوساد"
+        }
+      ],
+      "source": {
+        "title": "UC IPM — Leafminers",
+        "publisher": "UC IPM",
+        "url": "https://ipm.ucanr.edu/agriculture/floriculture-and-ornamental-nurseries/leafminers/",
+        "type": "extension"
+      }
+    }
+  ]
 }

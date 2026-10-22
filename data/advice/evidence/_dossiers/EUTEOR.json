@@ -21,5 +21,39 @@
     "حافظ على الأكاروسات المفترسة، إذ يمكن لبعضها إبقاء أعداد الآفة عند مستويات غير اقتصادية.",
     "يمكن دعم المكافحة الحيوية بمراعاة الأعداء الحيوية الموجودة في البستان عند اختيار تدابير المكافحة."
   ],
-  "evidence": "B"
+  "evidence": "B",
+  "treatment": [
+    {
+      "scheme": "IRAC",
+      "moa": "",
+      "actives": [
+        {
+          "en": "abamectin",
+          "ar": "أبامكتين"
+        },
+        {
+          "en": "thiamethoxam",
+          "ar": "ثياميثوكسام"
+        },
+        {
+          "en": "fenpyroximate",
+          "ar": "فينبروكسيميت"
+        },
+        {
+          "en": "chlorfenapyr",
+          "ar": "كلورفينابير"
+        },
+        {
+          "en": "sulfur",
+          "ar": "كبريت"
+        }
+      ],
+      "source": {
+        "title": "Current Applied Science and Technology — acaricides vs E. orientalis",
+        "publisher": "Current Applied Science and Technology",
+        "url": "https://cast.kmitl.ac.th/articles/240871",
+        "type": "journal"
+      }
+    }
+  ]
 }

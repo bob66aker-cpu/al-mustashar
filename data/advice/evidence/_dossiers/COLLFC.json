@@ -21,5 +21,111 @@
     "أدر الأعشاب تحت المظلة النباتية للحد من العوائل البديلة ومصادر العدوى الثانوية والرطوبة.",
     "نوّع مجموعات آلية التأثير للمبيدات الفطرية ضمن برنامج إدارة المقاومة."
   ],
-  "evidence": "B"
+  "evidence": "B",
+  "treatment": [
+    {
+      "scheme": "FRAC",
+      "moa": "M4",
+      "actives": [
+        {
+          "en": "captan",
+          "ar": "كابتان"
+        }
+      ],
+      "source": {
+        "title": "UF/IFAS Extension — Colletotrichum Crown Rot of Strawberry",
+        "publisher": "UF/IFAS Extension",
+        "url": "https://ask.ifas.ufl.edu/publication/PP156",
+        "type": "extension"
+      }
+    },
+    {
+      "scheme": "FRAC",
+      "moa": "3 + 11",
+      "actives": [
+        {
+          "en": "propiconazole",
+          "ar": "بروبيكونازول"
+        },
+        {
+          "en": "azoxystrobin",
+          "ar": "أزوكسيستروبين"
+        }
+      ],
+      "source": {
+        "title": "UF/IFAS Extension — Colletotrichum Crown Rot of Strawberry",
+        "publisher": "UF/IFAS Extension",
+        "url": "https://ask.ifas.ufl.edu/publication/PP156",
+        "type": "extension"
+      }
+    },
+    {
+      "scheme": "FRAC",
+      "moa": "7 + 11",
+      "actives": [
+        {
+          "en": "fluxapyroxad",
+          "ar": "فلوكسابيروكсад"
+        },
+        {
+          "en": "pyraclostrobin",
+          "ar": "بايكلاستروبين"
+        }
+      ],
+      "source": {
+        "title": "UF/IFAS Extension — Colletotrichum Crown Rot of Strawberry",
+        "publisher": "UF/IFAS Extension",
+        "url": "https://ask.ifas.ufl.edu/publication/PP156",
+        "type": "extension"
+      }
+    },
+    {
+      "scheme": "FRAC",
+      "moa": "11",
+      "actives": [
+        {
+          "en": "azoxystrobin",
+          "ar": "أزوكسيستروبين"
+        },
+        {
+          "en": "pyraclostrobin",
+          "ar": "بايكلاستروبين"
+        },
+        {
+          "en": "fluoxastrobin",
+          "ar": "فلوأوكسيستروبين"
+        },
+        {
+          "en": "trifloxystrobin",
+          "ar": "تريفلوكسيستروبين"
+        }
+      ],
+      "source": {
+        "title": "UF/IFAS Extension — Colletotrichum Crown Rot of Strawberry",
+        "publisher": "UF/IFAS Extension",
+        "url": "https://ask.ifas.ufl.edu/publication/PP156",
+        "type": "extension"
+      }
+    },
+    {
+      "scheme": "FRAC",
+      "moa": "9 + 12",
+      "actives": [
+        {
+          "en": "cyprodinil",
+          "ar": "سيبرودينيل"
+        },
+        {
+          "en": "fludioxonil",
+          "ar": "فليودوكسونيل"
+        }
+      ],
+      "source": {
+        "title": "UF/IFAS Extension — Colletotrichum Crown Rot of Strawberry",
+        "publisher": "UF/IFAS Extension",
+        "url": "https://ask.ifas.ufl.edu/publication/PP156",
+        "type": "extension"
+      }
+    }
+  ]
 }

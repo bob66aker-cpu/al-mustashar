@@ -22,5 +22,39 @@
     "استخدم مواد إكثار معتمدة وخالية من العامل الممرض للحد من انتقاله مع النباتات المعدة للزراعة.",
     "يمكن تطبيق المعالجة الحرارية على بعض مواد الإكثار المصابة للحد من انتشار المرض."
   ],
-  "evidence": "B"
+  "evidence": "B",
+  "treatment": [
+    {
+      "scheme": "IRAC",
+      "moa": "",
+      "actives": [
+        {
+          "en": "lambda-cyhalothrin",
+          "ar": "لامبدا-سيهالوثرين"
+        },
+        {
+          "en": "deltamethrin",
+          "ar": "دلتاميثرين"
+        },
+        {
+          "en": "esfenvalerate",
+          "ar": "إسفينفاليرات"
+        },
+        {
+          "en": "acetamiprid",
+          "ar": "أسيتاميبريد"
+        },
+        {
+          "en": "chlorpyrifos",
+          "ar": "كلوربيريفوس"
+        }
+      ],
+      "source": {
+        "title": "AIT — insecticides against the phytoplasma vector",
+        "publisher": "AIT",
+        "url": "https://publications.ait.ac.at/en/publications/effects-of-insecticides-and-repellents-on-the-spread-of-candidatu/",
+        "type": "journal"
+      }
+    }
+  ]
 }

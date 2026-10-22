@@ -22,5 +22,23 @@
     "نظف الأدوات والآلات والأحذية من التربة العالقة قبل انتقالها من الحقول المصابة إلى غير المصابة.",
     "أعطِ أولوية لمنع إدخالها وانتشارها، إذ تشير الصفحة إلى صعوبة مكافحة نيماتودا تعقد الجذور أو استئصالها بعد استقرارها."
   ],
-  "evidence": "B"
+  "evidence": "B",
+  "treatment": [
+    {
+      "scheme": "NEMATICIDE",
+      "moa": "",
+      "actives": [
+        {
+          "en": "fluopyram",
+          "ar": "فلوبيرام"
+        }
+      ],
+      "source": {
+        "title": "Universidad San Sebastián — fluopyram vs M. ethiopica",
+        "publisher": "Universidad San Sebastián",
+        "url": "https://researchers.uss.cl/en/publications/evaluation-of-fluopyram-for-management-of-meloidogyne-ethiopica-a-2/",
+        "type": "journal"
+      }
+    }
+  ]
 }

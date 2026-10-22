@@ -22,5 +22,135 @@
     "يمكن استخدام المكافحة الحيوية ببكتيريا Bacillus thuringiensis، وتكون أكثر نجاحاً عند وجودها على الأوراق مع ظهور اليرقات.",
     "تُذكر المبيدات ضمن تدابير إدارة الآفة، مع الإشارة إلى تسجيل مقاومة تختلف باختلاف المنطقة."
   ],
-  "evidence": "B"
+  "evidence": "B",
+  "treatment": [
+    {
+      "scheme": "IRAC",
+      "moa": "1B",
+      "actives": [
+        {
+          "en": "acephate",
+          "ar": "أسيفات"
+        }
+      ],
+      "source": {
+        "title": "UF/IFAS Extension — Insect and Mite Pest Management in Florida Peanut",
+        "publisher": "UF/IFAS Extension",
+        "url": "https://ask.ifas.ufl.edu/publication/IN1408",
+        "type": "extension"
+      }
+    },
+    {
+      "scheme": "IRAC",
+      "moa": "3A",
+      "actives": [
+        {
+          "en": "bifenthrin",
+          "ar": "بيفنترين"
+        },
+        {
+          "en": "beta-cyfluthrin",
+          "ar": "بيتا-سيفلوترين"
+        },
+        {
+          "en": "fenpropathrin",
+          "ar": "فينبروباثرين"
+        },
+        {
+          "en": "lambda-cyhalothrin",
+          "ar": "لامبدا-سيهالوثرين"
+        }
+      ],
+      "source": {
+        "title": "UF/IFAS Extension — Insect and Mite Pest Management in Florida Peanut",
+        "publisher": "UF/IFAS Extension",
+        "url": "https://ask.ifas.ufl.edu/publication/IN1408",
+        "type": "extension"
+      }
+    },
+    {
+      "scheme": "IRAC",
+      "moa": "28",
+      "actives": [
+        {
+          "en": "chlorantraniliprole",
+          "ar": "كلورانترانيليبرول"
+        }
+      ],
+      "source": {
+        "title": "UF/IFAS Extension — Insect and Mite Pest Management in Florida Peanut",
+        "publisher": "UF/IFAS Extension",
+        "url": "https://ask.ifas.ufl.edu/publication/IN1408",
+        "type": "extension"
+      }
+    },
+    {
+      "scheme": "IRAC",
+      "moa": "15",
+      "actives": [
+        {
+          "en": "diflubenzuron",
+          "ar": "ديفلوبينزورون"
+        },
+        {
+          "en": "novaluron",
+          "ar": "نوفالورون"
+        }
+      ],
+      "source": {
+        "title": "UF/IFAS Extension — Insect and Mite Pest Management in Florida Peanut",
+        "publisher": "UF/IFAS Extension",
+        "url": "https://ask.ifas.ufl.edu/publication/IN1408",
+        "type": "extension"
+      }
+    },
+    {
+      "scheme": "IRAC",
+      "moa": "22",
+      "actives": [
+        {
+          "en": "indoxacarb",
+          "ar": "إنداكساكارب"
+        }
+      ],
+      "source": {
+        "title": "UF/IFAS Extension — Insect and Mite Pest Management in Florida Peanut",
+        "publisher": "UF/IFAS Extension",
+        "url": "https://ask.ifas.ufl.edu/publication/IN1408",
+        "type": "extension"
+      }
+    },
+    {
+      "scheme": "IRAC",
+      "moa": "1A",
+      "actives": [
+        {
+          "en": "methomyl",
+          "ar": "ميثوميل"
+        }
+      ],
+      "source": {
+        "title": "UF/IFAS Extension — Insect and Mite Pest Management in Florida Peanut",
+        "publisher": "UF/IFAS Extension",
+        "url": "https://ask.ifas.ufl.edu/publication/IN1408",
+        "type": "extension"
+      }
+    },
+    {
+      "scheme": "IRAC",
+      "moa": "5",
+      "actives": [
+        {
+          "en": "spinetoram",
+          "ar": "سبينيتورام"
+        }
+      ],
+      "source": {
+        "title": "UF/IFAS Extension — Insect and Mite Pest Management in Florida Peanut",
+        "publisher": "UF/IFAS Extension",
+        "url": "https://ask.ifas.ufl.edu/publication/IN1408",
+        "type": "extension"
+      }
+    }
+  ]
 }

@@ -18,5 +18,27 @@
     "تحديد الهوية أولاً: الحشرات دقيقة جداً، وجمع عينات وفحصها يفرّع الأنواع القابلة للضرر عن غيرها.",
     "الدورة الحياتية تكمل في التربة أو وسط النمو تحت النباتات المصابة؛ نظافة المحيط والتخلص من النباتات المعزولة يقلّل مخزون الإصابة."
   ],
-  "evidence": "A"
+  "evidence": "A",
+  "treatment": [
+    {
+      "scheme": "IRAC",
+      "moa": "V",
+      "actives": [
+        {
+          "en": "spinosad",
+          "ar": "سبينوساد"
+        },
+        {
+          "en": "spinetoram",
+          "ar": "سبينيتورام"
+        }
+      ],
+      "source": {
+        "title": "UF/IFAS Extension — Managing Thrips in Pepper and Eggplant",
+        "publisher": "UF/IFAS Extension",
+        "url": "https://ask.ifas.ufl.edu/publication/IN401",
+        "type": "extension"
+      }
+    }
+  ]
 }

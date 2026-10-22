@@ -22,5 +22,43 @@
     "تُجرى الأبحاث على أسلوب الجذب والقتل، باستدراج الحشرات إلى أشجار محددة ومعاملتها.",
     "تشمل المكافحة الحيوية دبور البيض Trissolcus japonicus، الذي أُجيز إطلاقه في بعض المناطق التي استقر فيها."
   ],
-  "evidence": "B"
+  "evidence": "B",
+  "treatment": [
+    {
+      "scheme": "IRAC",
+      "moa": "4A",
+      "actives": [
+        {
+          "en": "acetamiprid",
+          "ar": "أسيتاميبريد"
+        }
+      ],
+      "source": {
+        "title": "UC IPM — Brown Marmorated Stink Bug",
+        "publisher": "UC IPM",
+        "url": "https://ipm.ucanr.edu/agriculture/peach/brown-marmorated-stink-bug/",
+        "type": "extension"
+      }
+    },
+    {
+      "scheme": "IRAC",
+      "moa": "3A",
+      "actives": [
+        {
+          "en": "bifenthrin",
+          "ar": "بيفنترين"
+        },
+        {
+          "en": "lambda-cyhalothrin",
+          "ar": "لامبدا-سيهالوثرين"
+        }
+      ],
+      "source": {
+        "title": "UC IPM — Brown Marmorated Stink Bug",
+        "publisher": "UC IPM",
+        "url": "https://ipm.ucanr.edu/agriculture/peach/brown-marmorated-stink-bug/",
+        "type": "extension"
+      }
+    }
+  ]
 }

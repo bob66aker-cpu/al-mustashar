@@ -22,5 +22,99 @@
     "تُذكر المبيدات التربوية ضمن الخيارات في المصادر المعتمدة عند الحاجة، ضمن برنامج يجمع الوسائل ويوافق تشخيص الحقل الميداني.",
     "يُنصح بإزالة بقايا الذرة المصابة وتقليل مصادر التراكم؛ والضرر الجذري يزيد قابلية إصابت النبات بأمراض الفطريات في الجذور، فتُؤخذ بعين الاعتبار عند التدبير."
   ],
-  "evidence": "B"
+  "evidence": "B",
+  "treatment": [
+    {
+      "scheme": "IRAC",
+      "moa": "4A",
+      "actives": [
+        {
+          "en": "clothianidin",
+          "ar": "كلوثيانيدين"
+        }
+      ],
+      "source": {
+        "title": "PNW Handbooks — Corn rootworm beetle",
+        "publisher": "PNW Handbooks",
+        "url": "https://pnwhandbooks.org/insect/agronomic/field-silage-corn/field-silage-corn-corn-rootworm-beetle",
+        "type": "extension"
+      }
+    },
+    {
+      "scheme": "IRAC",
+      "moa": "4",
+      "actives": [
+        {
+          "en": "imidacloprid",
+          "ar": "إميداكلوبريد"
+        }
+      ],
+      "source": {
+        "title": "PNW Handbooks — Corn rootworm beetle",
+        "publisher": "PNW Handbooks",
+        "url": "https://pnwhandbooks.org/insect/agronomic/field-silage-corn/field-silage-corn-corn-rootworm-beetle",
+        "type": "extension"
+      }
+    },
+    {
+      "scheme": "IRAC",
+      "moa": "3A",
+      "actives": [
+        {
+          "en": "bifenthrin",
+          "ar": "بيفنترين"
+        },
+        {
+          "en": "gamma-cyhalothrin",
+          "ar": "جاما-سيهالوثرين"
+        },
+        {
+          "en": "alpha-cypermethrin",
+          "ar": "ألفا-سيبرميثرين"
+        }
+      ],
+      "source": {
+        "title": "PNW Handbooks — Corn rootworm beetle",
+        "publisher": "PNW Handbooks",
+        "url": "https://pnwhandbooks.org/insect/agronomic/field-silage-corn/field-silage-corn-corn-rootworm-beetle",
+        "type": "extension"
+      }
+    },
+    {
+      "scheme": "IRAC",
+      "moa": "3",
+      "actives": [
+        {
+          "en": "lambda-cyhalothrin",
+          "ar": "لامبدا-سيهالوثرين"
+        },
+        {
+          "en": "tefluthrin",
+          "ar": "تيفلوترين"
+        }
+      ],
+      "source": {
+        "title": "PNW Handbooks — Corn rootworm beetle",
+        "publisher": "PNW Handbooks",
+        "url": "https://pnwhandbooks.org/insect/agronomic/field-silage-corn/field-silage-corn-corn-rootworm-beetle",
+        "type": "extension"
+      }
+    },
+    {
+      "scheme": "IRAC",
+      "moa": "",
+      "actives": [
+        {
+          "en": "ethoprop",
+          "ar": "إيتوبروب"
+        }
+      ],
+      "source": {
+        "title": "PNW Handbooks — Corn rootworm beetle",
+        "publisher": "PNW Handbooks",
+        "url": "https://pnwhandbooks.org/insect/agronomic/field-silage-corn/field-silage-corn-corn-rootworm-beetle",
+        "type": "extension"
+      }
+    }
+  ]
 }

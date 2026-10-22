@@ -22,5 +22,39 @@
     "أزل النباتات المصابة ومخلفاتها، ونظف المعدات والأدوات لتقليل نقل التربة المصابة.",
     "يمكن استخدام تشميس التربة للحد من الفطر عندما تسمح الظروف بتحقيق تسخين كافٍ لها."
   ],
-  "evidence": "B"
+  "evidence": "B",
+  "treatment": [
+    {
+      "scheme": "other",
+      "moa": "",
+      "actives": [
+        {
+          "en": "chloropicrin",
+          "ar": "كلوروبريكرين"
+        },
+        {
+          "en": "1,3-dichloropropene",
+          "ar": "1,3-دايكلوروبروبين"
+        },
+        {
+          "en": "metam sodium",
+          "ar": "ميثام-صوديوم"
+        },
+        {
+          "en": "metam potassium",
+          "ar": "ميثام-بوتاسيوم"
+        },
+        {
+          "en": "dazomet",
+          "ar": "دازوميت"
+        }
+      ],
+      "source": {
+        "title": "UC IPM — Verticillium Wilt",
+        "publisher": "UC IPM",
+        "url": "https://ipm.ucanr.edu/agriculture/floriculture-and-ornamental-nurseries/verticillium-wilt/",
+        "type": "extension"
+      }
+    }
+  ]
 }

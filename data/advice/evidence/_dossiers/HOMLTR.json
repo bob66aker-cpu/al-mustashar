@@ -22,5 +22,23 @@
     "يمكن أن تسهم الدبابير الطفلية التي تهاجم البيض في خفض أعداد الآفة، ويُذكر استخدام المكافحة الحيوية في المناطق الحضرية.",
     "تُستخدم المبيدات في بساتين الحمضيات عند ارتفاع الأعداد أو للحد من خطر انتقال الآفة إلى كروم العنب المجاورة."
   ],
-  "evidence": "A"
+  "evidence": "A",
+  "treatment": [
+    {
+      "scheme": "IRAC",
+      "moa": "4A",
+      "actives": [
+        {
+          "en": "imidacloprid",
+          "ar": "إميداكلوبريد"
+        }
+      ],
+      "source": {
+        "title": "UC IPM — Glassy-Winged Sharpshooter",
+        "publisher": "UC IPM",
+        "url": "https://ipm.ucanr.edu/agriculture/citrus/glassy-winged-sharpshooter/",
+        "type": "extension"
+      }
+    }
+  ]
 }

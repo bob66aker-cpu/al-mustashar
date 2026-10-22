@@ -22,5 +22,23 @@
     "ناوب الثوم مع محاصيل ضعيفة الاستضافة للنيماتودا، مع مكافحة الأعشاب والنباتات المتطوعة خلال فترة التناوب.",
     "يمكن استخدام محاصيل السماد الأخضر المذكورة في الصفحة للمساعدة في خفض أعداد النيماتودا."
   ],
-  "evidence": "B"
+  "evidence": "B",
+  "treatment": [
+    {
+      "scheme": "NEMATICIDE",
+      "moa": "7",
+      "actives": [
+        {
+          "en": "fluopyram",
+          "ar": "فلوبيرام"
+        }
+      ],
+      "source": {
+        "title": "ONvegetables — Managing Garlic Stem and Bulb Nematode",
+        "publisher": "ONvegetables",
+        "url": "https://onvegetables.com/2022/03/10/velum-prime-garlic/",
+        "type": "extension"
+      }
+    }
+  ]
 }

@@ -22,5 +22,175 @@
     "يمكن استخدام المفترسات Orius spp. والعث المفترس Neoseiulus cucumeris ونوع Amblyseius swirskii ضمن برامج المكافحة الحيوية.",
     "عند استخدام المبيدات، يوصي المصدر بتناوبها لتقليل خطر تطور المقاومة ودمجها مع استراتيجيات المكافحة الأخرى."
   ],
-  "evidence": "B"
+  "evidence": "B",
+  "treatment": [
+    {
+      "scheme": "IRAC",
+      "moa": "4A",
+      "actives": [
+        {
+          "en": "acetamiprid",
+          "ar": "أسيتاميبريد"
+        }
+      ],
+      "source": {
+        "title": "UF/IFAS Extension — Chilli Thrips Management Practices for Florida Strawberry",
+        "publisher": "UF/IFAS Extension",
+        "url": "https://ask.ifas.ufl.edu/publication/IN1346",
+        "type": "extension"
+      }
+    },
+    {
+      "scheme": "IRAC",
+      "moa": "4C",
+      "actives": [
+        {
+          "en": "sulfoxaflor",
+          "ar": "سلفوكسافلور"
+        }
+      ],
+      "source": {
+        "title": "UF/IFAS Extension — Chilli Thrips Management Practices for Florida Strawberry",
+        "publisher": "UF/IFAS Extension",
+        "url": "https://ask.ifas.ufl.edu/publication/IN1346",
+        "type": "extension"
+      }
+    },
+    {
+      "scheme": "IRAC",
+      "moa": "4D",
+      "actives": [
+        {
+          "en": "flupyradifurone",
+          "ar": "فلوبيراديفورون"
+        }
+      ],
+      "source": {
+        "title": "UF/IFAS Extension — Chilli Thrips Management Practices for Florida Strawberry",
+        "publisher": "UF/IFAS Extension",
+        "url": "https://ask.ifas.ufl.edu/publication/IN1346",
+        "type": "extension"
+      }
+    },
+    {
+      "scheme": "IRAC",
+      "moa": "5",
+      "actives": [
+        {
+          "en": "spinosad",
+          "ar": "سبينوساد"
+        },
+        {
+          "en": "spinetoram",
+          "ar": "سبينيتورام"
+        }
+      ],
+      "source": {
+        "title": "UF/IFAS Extension — Chilli Thrips Management Practices for Florida Strawberry",
+        "publisher": "UF/IFAS Extension",
+        "url": "https://ask.ifas.ufl.edu/publication/IN1346",
+        "type": "extension"
+      }
+    },
+    {
+      "scheme": "IRAC",
+      "moa": "6",
+      "actives": [
+        {
+          "en": "abamectin",
+          "ar": "أبامكتين"
+        }
+      ],
+      "source": {
+        "title": "UF/IFAS Extension — Chilli Thrips Management Practices for Florida Strawberry",
+        "publisher": "UF/IFAS Extension",
+        "url": "https://ask.ifas.ufl.edu/publication/IN1346",
+        "type": "extension"
+      }
+    },
+    {
+      "scheme": "IRAC",
+      "moa": "15",
+      "actives": [
+        {
+          "en": "novaluron",
+          "ar": "نوفالورون"
+        }
+      ],
+      "source": {
+        "title": "UF/IFAS Extension — Chilli Thrips Management Practices for Florida Strawberry",
+        "publisher": "UF/IFAS Extension",
+        "url": "https://ask.ifas.ufl.edu/publication/IN1346",
+        "type": "extension"
+      }
+    },
+    {
+      "scheme": "IRAC",
+      "moa": "21A",
+      "actives": [
+        {
+          "en": "tolfenpyrad",
+          "ar": "تولفينبيراد"
+        }
+      ],
+      "source": {
+        "title": "UF/IFAS Extension — Chilli Thrips Management Practices for Florida Strawberry",
+        "publisher": "UF/IFAS Extension",
+        "url": "https://ask.ifas.ufl.edu/publication/IN1346",
+        "type": "extension"
+      }
+    },
+    {
+      "scheme": "IRAC",
+      "moa": "28",
+      "actives": [
+        {
+          "en": "cyantraniliprole",
+          "ar": "سيانترانيليب رول"
+        }
+      ],
+      "source": {
+        "title": "UF/IFAS Extension — Chilli Thrips Management Practices for Florida Strawberry",
+        "publisher": "UF/IFAS Extension",
+        "url": "https://ask.ifas.ufl.edu/publication/IN1346",
+        "type": "extension"
+      }
+    },
+    {
+      "scheme": "IRAC",
+      "moa": "1B",
+      "actives": [
+        {
+          "en": "naled",
+          "ar": "ناليد"
+        },
+        {
+          "en": "malathion",
+          "ar": "مالاثيون"
+        }
+      ],
+      "source": {
+        "title": "UF/IFAS Extension — Chilli Thrips Management Practices for Florida Strawberry",
+        "publisher": "UF/IFAS Extension",
+        "url": "https://ask.ifas.ufl.edu/publication/IN1346",
+        "type": "extension"
+      }
+    },
+    {
+      "scheme": "IRAC",
+      "moa": "3A",
+      "actives": [
+        {
+          "en": "pyrethrins",
+          "ar": "بيريثرينات"
+        }
+      ],
+      "source": {
+        "title": "UF/IFAS Extension — Chilli Thrips Management Practices for Florida Strawberry",
+        "publisher": "UF/IFAS Extension",
+        "url": "https://ask.ifas.ufl.edu/publication/IN1346",
+        "type": "extension"
+      }
+    }
+  ]
 }

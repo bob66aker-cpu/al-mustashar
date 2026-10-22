@@ -19,5 +19,23 @@
     "الحصاد قبل الإكمال الكامل ممارسة شائعة في المناطق المستوطنة للآفة، لتفادي إصابة الثمار المتأخرة.",
     "عند رصد الإصابة تُطلق برامج كشف وإبادة مكثفة من الجهات الرسمية، وقد تُفرض حجرات تهديد أسواق الفاكهة الطازجة."
   ],
-  "evidence": "B"
+  "evidence": "B",
+  "treatment": [
+    {
+      "scheme": "IRAC",
+      "moa": "",
+      "actives": [
+        {
+          "en": "spinosad",
+          "ar": "سبينوساد"
+        }
+      ],
+      "source": {
+        "title": "DPIRD Western Australia — Mediterranean fruit fly",
+        "publisher": "DPIRD Western Australia",
+        "url": "https://www.dpird.wa.gov.au/businesses/pests-weeds-and-diseases/animal-pests-diseases/pest-insects/mediterranean-fruit-fly/",
+        "type": "extension"
+      }
+    }
+  ]
 }

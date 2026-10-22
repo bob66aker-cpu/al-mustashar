@@ -19,5 +19,135 @@
     "برنامج التدبير المتكامل يجمع ممارسات ثقافية جيدة: فترات خالية من المضيف، والحفاظ على الأعداء الطبيعيين، والمراقبة الدورية للحقل لكشف البؤر مبكراً، ولا يُلجأ للمبيد إلا عند الضرورة.",
     "أعداء بيولوجية فعلية تُسجَّل في الدليل: دودقة (Encarsia) و Eretmocerus تتغذى على يرقات الذبابات البيضاء، ويعيث الحشرات المفترسة (الخنافس المسطحة، يرقات الشبّاب، الدعسوقة) على اليرقات."
   ],
-  "evidence": "A"
+  "evidence": "A",
+  "treatment": [
+    {
+      "scheme": "IRAC",
+      "moa": "4A",
+      "actives": [
+        {
+          "en": "dinotefuran",
+          "ar": "دينوتيفوران"
+        },
+        {
+          "en": "imidacloprid",
+          "ar": "إميداكلوبريد"
+        },
+        {
+          "en": "thiamethoxam",
+          "ar": "ثياميثوكسام"
+        }
+      ],
+      "source": {
+        "title": "UF/IFAS Extension — Managing Bemisia tabaci MEAM1 in Florida Tomato",
+        "publisher": "UF/IFAS Extension",
+        "url": "https://ask.ifas.ufl.edu/publication/IN1430",
+        "type": "extension"
+      }
+    },
+    {
+      "scheme": "IRAC",
+      "moa": "4D",
+      "actives": [
+        {
+          "en": "flupyradifurone",
+          "ar": "فلوبيراديفورون"
+        }
+      ],
+      "source": {
+        "title": "UF/IFAS Extension — Managing Bemisia tabaci MEAM1 in Florida Tomato",
+        "publisher": "UF/IFAS Extension",
+        "url": "https://ask.ifas.ufl.edu/publication/IN1430",
+        "type": "extension"
+      }
+    },
+    {
+      "scheme": "IRAC",
+      "moa": "28",
+      "actives": [
+        {
+          "en": "cyantraniliprole",
+          "ar": "سيانترانيليب رول"
+        }
+      ],
+      "source": {
+        "title": "UF/IFAS Extension — Managing Bemisia tabaci MEAM1 in Florida Tomato",
+        "publisher": "UF/IFAS Extension",
+        "url": "https://ask.ifas.ufl.edu/publication/IN1430",
+        "type": "extension"
+      }
+    },
+    {
+      "scheme": "IRAC",
+      "moa": "23",
+      "actives": [
+        {
+          "en": "spirotetramat",
+          "ar": "سبيروتترامات"
+        }
+      ],
+      "source": {
+        "title": "UF/IFAS Extension — Managing Bemisia tabaci MEAM1 in Florida Tomato",
+        "publisher": "UF/IFAS Extension",
+        "url": "https://ask.ifas.ufl.edu/publication/IN1430",
+        "type": "extension"
+      }
+    },
+    {
+      "scheme": "IRAC",
+      "moa": "9",
+      "actives": [
+        {
+          "en": "afidopyropen",
+          "ar": "أفيدوبايروبين"
+        },
+        {
+          "en": "pymetrozine",
+          "ar": "بيميتروزين"
+        },
+        {
+          "en": "pyrifluquinazon",
+          "ar": "بيريفلوكينازون"
+        }
+      ],
+      "source": {
+        "title": "UF/IFAS Extension — Managing Bemisia tabaci MEAM1 in Florida Tomato",
+        "publisher": "UF/IFAS Extension",
+        "url": "https://ask.ifas.ufl.edu/publication/IN1430",
+        "type": "extension"
+      }
+    },
+    {
+      "scheme": "IRAC",
+      "moa": "7",
+      "actives": [
+        {
+          "en": "pyriproxyfen",
+          "ar": "بيريبروكسيفين"
+        }
+      ],
+      "source": {
+        "title": "UF/IFAS Extension — Managing Bemisia tabaci MEAM1 in Florida Tomato",
+        "publisher": "UF/IFAS Extension",
+        "url": "https://ask.ifas.ufl.edu/publication/IN1430",
+        "type": "extension"
+      }
+    },
+    {
+      "scheme": "IRAC",
+      "moa": "16",
+      "actives": [
+        {
+          "en": "buprofezin",
+          "ar": "بوبروفزين"
+        }
+      ],
+      "source": {
+        "title": "UF/IFAS Extension — Managing Bemisia tabaci MEAM1 in Florida Tomato",
+        "publisher": "UF/IFAS Extension",
+        "url": "https://ask.ifas.ufl.edu/publication/IN1430",
+        "type": "extension"
+      }
+    }
+  ]
 }

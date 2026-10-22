@@ -22,5 +22,99 @@
     "تذكر الصفحة الزيوت الحشرية ضمن وسائل المكافحة التقليدية.",
     "تصف الصفحة المكافحة بأنها صعبة بسبب الدرع الشمعي، وتوصي بالرجوع إلى الإرشاد الزراعي المحلي أو مرجع محدث لاختيار وسائل المكافحة."
   ],
-  "evidence": "B"
+  "evidence": "B",
+  "treatment": [
+    {
+      "scheme": "IRAC",
+      "moa": "",
+      "actives": [
+        {
+          "en": "abamectin",
+          "ar": "أبامكتين"
+        },
+        {
+          "en": "acephate",
+          "ar": "أسيفات"
+        },
+        {
+          "en": "acetamiprid",
+          "ar": "أسيتاميبريد"
+        },
+        {
+          "en": "azadirachtin",
+          "ar": "أزاديراكتين"
+        },
+        {
+          "en": "buprofezin",
+          "ar": "بوبروفزين"
+        },
+        {
+          "en": "carbaryl",
+          "ar": "كرباريل"
+        },
+        {
+          "en": "chlorpyrifos",
+          "ar": "كلوربيريفوس"
+        },
+        {
+          "en": "clothianidin",
+          "ar": "كلوثيانيدين"
+        },
+        {
+          "en": "cyantraniliprole",
+          "ar": "سيانترانيليب رول"
+        },
+        {
+          "en": "cyfluthrin",
+          "ar": "سيفلوترين"
+        },
+        {
+          "en": "dinotefuran",
+          "ar": "دينوتيفوران"
+        },
+        {
+          "en": "gamma-cyhalothrin",
+          "ar": "جاما-سيهالوثرين"
+        },
+        {
+          "en": "imidacloprid",
+          "ar": "إميداكلوبريد"
+        },
+        {
+          "en": "lambda-cyhalothrin",
+          "ar": "لامبدا-سيهالوثرين"
+        },
+        {
+          "en": "pyriproxyfen",
+          "ar": "بيريبروكسيفين"
+        }
+      ],
+      "source": {
+        "title": "UMass — White Peach Scale Insect & Mite Guide",
+        "publisher": "UMass",
+        "url": "https://www.umass.edu/agriculture-food-environment/landscape/publications-resources/insect-mite-guide/pseudaulacaspis-pentagona",
+        "type": "extension"
+      }
+    },
+    {
+      "scheme": "IRAC",
+      "moa": "",
+      "actives": [
+        {
+          "en": "spinetoram",
+          "ar": "سبينيتورام"
+        },
+        {
+          "en": "sulfoxaflor",
+          "ar": "سلفوكسافلور"
+        }
+      ],
+      "source": {
+        "title": "UMass — White Peach Scale Insect & Mite Guide",
+        "publisher": "UMass",
+        "url": "https://www.umass.edu/agriculture-food-environment/landscape/publications-resources/insect-mite-guide/pseudaulacaspis-pentagona",
+        "type": "extension"
+      }
+    }
+  ]
 }

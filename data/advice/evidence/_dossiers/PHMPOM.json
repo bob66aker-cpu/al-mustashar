@@ -22,5 +22,23 @@
     "يمكن إدخال محاصيل تغطية للسماد الأخضر إلى التربة للمساعدة في تقليل أثر المرض.",
     "قد يساعد تعديل بيئة التربة والمحافظة على رطوبتها في خفض أثر الفطر إذا تكرر ذلك سنويًا."
   ],
-  "evidence": "B"
+  "evidence": "B",
+  "treatment": [
+    {
+      "scheme": "FRAC",
+      "moa": "",
+      "actives": [
+        {
+          "en": "flutriafol",
+          "ar": "فلوتريافول"
+        }
+      ],
+      "source": {
+        "title": "Crop Protection Network — Phymatotrichum Root Rot of Cotton",
+        "publisher": "Crop Protection Network",
+        "url": "https://cropprotectionnetwork.org/encyclopedia/phymatotrichopsis-root-rot-of-cotton",
+        "type": "extension"
+      }
+    }
+  ]
 }

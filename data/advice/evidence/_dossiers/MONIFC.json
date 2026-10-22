@@ -19,5 +19,91 @@
     "إزالة الثمار المتساقطة ودفنها يقلّل مخزون العدوى، فبقايا الثمار المقطوفة مصدر عدوى للثمار الناضجة خاصة إن لامست ماء الري.",
     "المواد الفطرية الوقائية تُذكر في الدليل كتدبير وقائي قبل الإصابة لا علاج لما أصيب."
   ],
-  "evidence": "A"
+  "evidence": "A",
+  "treatment": [
+    {
+      "scheme": "FRAC",
+      "moa": "11 + 7",
+      "actives": [
+        {
+          "en": "pyraclostrobin",
+          "ar": "بايكلاستروبين"
+        },
+        {
+          "en": "boscalid",
+          "ar": "بوسكاليد"
+        }
+      ],
+      "source": {
+        "title": "UC IPM — Brown Rot on Fruit",
+        "publisher": "UC IPM",
+        "url": "https://ipm.ucanr.edu/agriculture/prune/brown-rot-on-fruit/",
+        "type": "extension"
+      }
+    },
+    {
+      "scheme": "FRAC",
+      "moa": "1",
+      "actives": [
+        {
+          "en": "thiophanate methyl",
+          "ar": "تيوفانات ميثيل"
+        }
+      ],
+      "source": {
+        "title": "UC IPM — Brown Rot on Fruit",
+        "publisher": "UC IPM",
+        "url": "https://ipm.ucanr.edu/agriculture/prune/brown-rot-on-fruit/",
+        "type": "extension"
+      }
+    },
+    {
+      "scheme": "FRAC",
+      "moa": "17",
+      "actives": [
+        {
+          "en": "fenhexamid",
+          "ar": "فينهكساميد"
+        }
+      ],
+      "source": {
+        "title": "UC IPM — Brown Rot on Fruit",
+        "publisher": "UC IPM",
+        "url": "https://ipm.ucanr.edu/agriculture/prune/brown-rot-on-fruit/",
+        "type": "extension"
+      }
+    },
+    {
+      "scheme": "FRAC",
+      "moa": "3",
+      "actives": [
+        {
+          "en": "myclobutanil",
+          "ar": "مايكلوبيوتانيل"
+        }
+      ],
+      "source": {
+        "title": "UC IPM — Brown Rot on Fruit",
+        "publisher": "UC IPM",
+        "url": "https://ipm.ucanr.edu/agriculture/prune/brown-rot-on-fruit/",
+        "type": "extension"
+      }
+    },
+    {
+      "scheme": "FRAC",
+      "moa": "12",
+      "actives": [
+        {
+          "en": "fludioxonil",
+          "ar": "فليودوكسونيل"
+        }
+      ],
+      "source": {
+        "title": "UC IPM — Brown Rot on Fruit",
+        "publisher": "UC IPM",
+        "url": "https://ipm.ucanr.edu/agriculture/prune/brown-rot-on-fruit/",
+        "type": "extension"
+      }
+    }
+  ]
 }

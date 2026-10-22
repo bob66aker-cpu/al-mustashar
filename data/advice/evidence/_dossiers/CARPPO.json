@@ -19,5 +19,107 @@
     "إرباض التزاوج هو الأداة المفضّلة لنظرة صحية بيئةً (سُمّيته المنخفضة على الإنسان والأعداء الطبيعية)، وقد يُستكمل بالرش في السنوات الأولى.",
     "في البساتين التي تُدار بالمبيدات تُبدَّل مجموعات الآلية المختلفة لمنع المقاومة."
   ],
-  "evidence": "A"
+  "evidence": "A",
+  "treatment": [
+    {
+      "scheme": "IRAC",
+      "moa": "5",
+      "actives": [
+        {
+          "en": "spinetoram",
+          "ar": "سبينيتورام"
+        },
+        {
+          "en": "spinosad",
+          "ar": "سبينوساد"
+        }
+      ],
+      "source": {
+        "title": "UC IPM — Codling Moth",
+        "publisher": "UC IPM",
+        "url": "https://ipm.ucanr.edu/agriculture/apple/codling-moth/",
+        "type": "extension"
+      }
+    },
+    {
+      "scheme": "IRAC",
+      "moa": "28",
+      "actives": [
+        {
+          "en": "chlorantraniliprole",
+          "ar": "كلورانترانيليبرول"
+        }
+      ],
+      "source": {
+        "title": "UC IPM — Codling Moth",
+        "publisher": "UC IPM",
+        "url": "https://ipm.ucanr.edu/agriculture/apple/codling-moth/",
+        "type": "extension"
+      }
+    },
+    {
+      "scheme": "IRAC",
+      "moa": "4A",
+      "actives": [
+        {
+          "en": "acetamiprid",
+          "ar": "أسيتاميبريد"
+        }
+      ],
+      "source": {
+        "title": "UC IPM — Codling Moth",
+        "publisher": "UC IPM",
+        "url": "https://ipm.ucanr.edu/agriculture/apple/codling-moth/",
+        "type": "extension"
+      }
+    },
+    {
+      "scheme": "IRAC",
+      "moa": "1B",
+      "actives": [
+        {
+          "en": "phosmet",
+          "ar": "فوسمت"
+        }
+      ],
+      "source": {
+        "title": "UC IPM — Codling Moth",
+        "publisher": "UC IPM",
+        "url": "https://ipm.ucanr.edu/agriculture/apple/codling-moth/",
+        "type": "extension"
+      }
+    },
+    {
+      "scheme": "IRAC",
+      "moa": "3A",
+      "actives": [
+        {
+          "en": "lambda-cyhalothrin",
+          "ar": "لامبدا-سيهالوثرين"
+        }
+      ],
+      "source": {
+        "title": "UC IPM — Codling Moth",
+        "publisher": "UC IPM",
+        "url": "https://ipm.ucanr.edu/agriculture/apple/codling-moth/",
+        "type": "extension"
+      }
+    },
+    {
+      "scheme": "IRAC",
+      "moa": "18",
+      "actives": [
+        {
+          "en": "methoxyfenozide",
+          "ar": "methoxyfenozide"
+        }
+      ],
+      "source": {
+        "title": "UC IPM — Codling Moth",
+        "publisher": "UC IPM",
+        "url": "https://ipm.ucanr.edu/agriculture/apple/codling-moth/",
+        "type": "extension"
+      }
+    }
+  ]
 }

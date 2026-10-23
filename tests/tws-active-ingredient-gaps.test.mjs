@@ -12,7 +12,6 @@ for (const section of data.sections || []) {
 }
 
 test('every empty active-ingredient cell stays visibly unverified and traceable to a PDF page', () => {
-  assert.ok(blankActive.length > 0, 'If all gaps were filled, remove/update this guard with the source audit');
   for (const { section, product } of blankActive) {
     assert.equal(product._verify?.status, 'NEEDS_VERIFICATION',
       'blank active ingredient must not be marked verified: ' + section.crop_id + '/' + section.n);

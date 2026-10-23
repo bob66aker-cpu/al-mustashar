@@ -326,7 +326,8 @@
     '#view-tws .tws-reg-badge b{font-size:.75rem}',
     '#view-tws .tws-reg-badge.ban{color:var(--st-ban-ink);background:var(--st-ban-soft)}',
     '#view-tws .tws-reg-badge.ok{color:var(--st-ok-ink);background:var(--st-ok-soft)}',
-    '#view-tws .tws-reg-badge.review{color:var(--st-review-ink);background:var(--st-review-soft)}'
+    '#view-tws .tws-reg-badge.review{color:var(--st-review-ink);background:var(--st-review-soft)}',
+    '#view-tws .tws-reg-badge.unknown{color:var(--muted);background:var(--field);border-color:var(--border)}'
   ].join('\n');
 
   function ensureInjected() {
@@ -466,10 +467,36 @@
   function regulatoryStatusMarkup(product) {
     var mode = document.getElementById('mode');
     if (!mode || mode.value !== 'pro' || typeof window.MustasharActiveStatus !== 'function') return '';
-    var isArabic = lang() === 'ar';
+    var locale = String(document.documentElement.lang || lang() || 'ar').toLowerCase().split('-')[0];
+    var isArabic = locale === 'ar';
+    var sourceNames = {
+      ar: {'libya-248':'ليبيا — قرار 248 لسنة 2024','libya-500':'ليبيا — قرار 500 لسنة 2026',eu:'الاتحاد الأوروبي',epa:'الولايات المتحدة — EPA',canada:'كندا — PMRA',australia:'أستراليا — APVMA'},
+      en: {'libya-248':'Libya — Decision 248/2024','libya-500':'Libya — Decision 500/2026',eu:'European Union',epa:'USA / EPA',canada:'Canada — PMRA',australia:'Australia — APVMA'},
+      fr: {'libya-248':'Libye — décision 248/2024','libya-500':'Libye — décision 500/2026',eu:'Union européenne',epa:'États-Unis — EPA',canada:'Canada — PMRA',australia:'Australie — APVMA'},
+      zh: {'libya-248':'利比亚 — 2024年第248号决定','libya-500':'利比亚 — 2026年第500号决定',eu:'欧盟',epa:'美国 — EPA',canada:'加拿大 — PMRA',australia:'澳大利亚 — APVMA'}
+    };
+    var ui = sourceNames[locale] || sourceNames.en;
+    var unknown = {
+      ar:'لا يوجد تطابق مؤكد في قاعدة الاختصاص المحدد',
+      en:'No confirmed match in the selected jurisdiction database',
+      fr:'Aucune correspondance confirmée dans la base de la juridiction sélectionnée',
+      zh:'在所选司法辖区数据库中未找到已确认匹配'
+    }[locale] || 'No confirmed match in the selected jurisdiction database';
+    var statusPrefix = {ar:'الحالة:',en:'Status:',fr:'Statut :',zh:'状态：'}[locale] || 'Status:';
+    function localStatus(h) {
+      var raw = String(h.status || '').trim();
+      if (locale === 'ar') return raw || String(h.status_raw || 'غير محددة في السجل');
+      var rawSource = String(h.status_raw || '').trim();
+      if (rawSource && !/[\u0600-\u06FF]/.test(rawSource)) return rawSource;
+      var normalized = raw.toLowerCase();
+      if (/محظور|ممنوع/.test(normalized)) return ({en:'Prohibited / not approved',fr:'Interdit / non approuvé',zh:'禁用 / 未获批准'}[locale] || 'Prohibited / not approved');
+      if (/مسموح/.test(normalized)) return ({en:'Active registration recorded',fr:'Enregistrement actif indiqué',zh:'记录存在有效登记'}[locale] || 'Active registration recorded');
+      if (/غير مُعاد التقييم|غير معاد التقييم/.test(normalized)) return ({en:'Not reassessed',fr:'Non réévalué',zh:'尚未重新评估'}[locale] || 'Not reassessed');
+      return raw || rawSource || '—';
+    }
     var ingredients = product['مكونات فعالة'] || [];
     if (!ingredients.length) return '';
-    var html = '<div class="tws-reg-status" aria-label="' + esc(isArabic ? 'الحالة التنظيمية للمادة الفعالة' : 'Active ingredient regulatory status') + '">';
+    var html = '<div class="tws-reg-status" aria-label="' + esc(({ar:'الحالة التنظيمية للمادة الفعالة',en:'Active ingredient regulatory status',fr:'Statut réglementaire de la substance active',zh:'有效成分监管状态'}[locale] || 'Active ingredient regulatory status')) + '">';
     var count = 0;
     ingredients.forEach(function (ing) {
       var cas = String(ing.cas || '');
@@ -482,34 +509,28 @@
           : (h.key === 'eu' || h.key === 'epa' || h.key === 'canada' || h.key === 'australia');
       });
       var seen = {};
+      var rendered = 0;
       selected.forEach(function (h) {
         var id = h.key + '|' + h.status + '|' + h.decision;
         if (seen[id]) return;
         seen[id] = true;
-        var label = {
-          'libya-248': isArabic ? 'ليبيا — قرار 248 لسنة 2024' : 'Libya — Decision 248/2024',
-          'libya-500': isArabic ? 'ليبيا — قرار 500 لسنة 2026' : 'Libya — Decision 500/2026',
-          'eu': isArabic ? 'الاتحاد الأوروبي' : 'European Union',
-          'epa': 'USA / EPA',
-          'canada': isArabic ? 'كندا — PMRA' : 'Canada — PMRA',
-          'australia': isArabic ? 'أستراليا — APVMA' : 'Australia — APVMA'
-        }[h.key] || h.key;
         var raw = String(h.status || h.status_raw || '').trim();
-        var lower = raw.toLowerCase();
-        var cls = /محظور|not approved|prohibited|banned|cancelled|cancelled/i.test(lower) ? 'ban'
-          : /مسموح|approved|registered|active registration|permitted/i.test(lower) ? 'ok'
+        var cls = /محظور|ممنوع|not approved|prohibited|banned|cancelled/i.test(raw) ? 'ban'
+          : /مسموح|approved|registered|active registration|permitted/i.test(raw) ? 'ok'
           : 'review';
-        var statusPrefix = isArabic ? 'الحالة:' : 'Status:';
-        var text = statusPrefix + ' ' + (raw || (isArabic ? 'غير محددة في السجل' : 'Not specified in source'));
-        if (h.key === 'libya-500' && h.decision) label = h.decision;
+        var label = ui[h.key] || h.key;
+        var value = localStatus(h);
         html += '<span class="tws-reg-badge ' + cls + '" title="' + esc(label + (h.status_raw ? ' — ' + h.status_raw : '')) + '">'
-          + '<b>' + esc(label) + '</b><span>' + esc(text) + '</span></span>';
-        count++;
+          + '<b>' + esc(label) + '</b><span>' + esc(statusPrefix + ' ' + value) + '</span></span>';
+        count++; rendered++;
       });
+      if (!rendered) {
+        html += '<span class="tws-reg-badge unknown"><b>' + esc(name || cas || (isArabic ? 'مادة فعالة' : 'Active ingredient')) + '</b><span>' + esc(unknown) + '</span></span>';
+        count++;
+      }
     });
     html += '</div>';
-    if (!count) return '';
-    return html;
+    return count ? html : '';
   }
 
   /* ---------- عرض البطاقة (من sections.json) ---------- */

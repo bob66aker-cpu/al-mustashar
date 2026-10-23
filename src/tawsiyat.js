@@ -131,8 +131,24 @@
     return (d && d[k]) || LABELS.ar[k] || k;
   }
   function typeName(t) { return (lang() === 'en' ? TYPE_EN[t] : TYPE_AR[t]) || t; }
+  /* Correct obvious OCR spacing/letter artifacts for display only.
+   * Source JSON remains untouched; uncertain titles are deliberately not guessed. */
+  function cleanArabic(s) {
+    var v = String(s == null ? '' : s);
+    [
+      [/جلراثيم/g, 'جراثيم'], [/احلشرات/g, 'الحشرات'], [/اجلذور/g, 'الجذور'],
+      [/اأعفان/g, 'أعفان'], [/اعفان/g, 'أعفان'], [/اأمراض/g, 'أمراض'],
+      [/البياضض/g, 'البياض'], [/مرضض/g, 'مرض'], [/الرتبسس/g, 'التربس'],
+      [/الرتبس/g, 'التربس'], [/ال من/g, 'المن'], [/امل ن/g, 'المن'],
+      [/ال م ن/g, 'المن'], [/الندوة املتاأخرة/g, 'الندوة المتأخرة'],
+      [/الصصداأ/g, 'الصدأ'], [/الصداأ/g, 'الصدأ'], [/الدقيقى/g, 'الدقيقي'],
+      [/الزغبى/g, 'الزغبي'], [/اللفح ة/g, 'اللفحة'], [/الباذجنان/g, 'الباذنجان'],
+      [/الكمرثى/g, 'الكمثرى'], [/الشـهــد/g, 'الشمام'], [/الكوســة/g, 'الكوسة']
+    ].forEach(function (pair) { v = v.replace(pair[0], pair[1]); });
+    return v;
+  }
   function esc(s) {
-    return String(s == null ? '' : s)
+    return cleanArabic(s)
       .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
       .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
   }
@@ -283,7 +299,25 @@
     '#view-tws .tws-btn{background:var(--tws-green);border-radius:12px;font-weight:750;box-shadow:0 4px 12px rgba(7,91,70,.15)}',
     '@media(min-width:760px){#view-tws .tws-card{padding:24px}#view-tws .tws-card .tws-prod{padding:16px}}',
     '@media(max-width:520px){#view-tws .tws-head{border-radius:16px;padding:18px}#view-tws .tws-card{border-radius:16px}#view-tws .tws-prod .row{grid-template-columns:1fr}#view-tws .tws-inf{align-items:flex-start;gap:8px}}',
-    '@media(prefers-reduced-motion:reduce){#view-tws .tws-crop,#view-tws .tws-inf{transition:none}}'
+    '@media(prefers-reduced-motion:reduce){#view-tws .tws-crop,#view-tws .tws-inf{transition:none}}',
+    /* Dark-theme contrast fix: dark headings on dark cards were unreadable. */
+    'html:not([data-theme="light"]) #view-tws .tws-card h3{background:#263c32;color:#b8f0d0;border:1px solid #456b58}',
+    'html:not([data-theme="light"]) #view-tws .tws-meta{background:#26352e;color:#e2f4e9;border:1px solid #456b58}',
+    'html:not([data-theme="light"]) #view-tws .tws-crumb{background:#26352e;border-color:#456b58}',
+    'html:not([data-theme="light"]) #view-tws .tws-crumb a{color:#9ce7bd}',
+    'html:not([data-theme="light"]) #view-tws .tws-crumb .cur{color:#e2f4e9}',
+    'html:not([data-theme="light"]) #view-tws .tws-crop{background:linear-gradient(155deg,#242b27,#263c32);border-color:#456b58}',
+    'html:not([data-theme="light"]) #view-tws .tws-crop b{color:#e7f8ee}',
+    'html:not([data-theme="light"]) #view-tws .tws-crop .en{color:#c3d7cb}',
+    'html:not([data-theme="light"]) #view-tws .tws-inf{background:linear-gradient(110deg,#242b27,#263c32);border-color:#456b58}',
+    'html:not([data-theme="light"]) #view-tws .tws-inf .nm b{color:#e7f8ee}',
+    'html:not([data-theme="light"]) #view-tws .tws-prod{background:linear-gradient(145deg,#242b27,#263c32);border-color:#456b58}',
+    'html:not([data-theme="light"]) #view-tws .tws-prod .act{color:#e7f8ee}',
+    'html:not([data-theme="light"]) #view-tws .tws-prod .act .nm{color:#a7ebc5}',
+    'html:not([data-theme="light"]) #view-tws .tws-prod .row span{background:#202b25;border-color:#456b58;color:#e7f8ee}',
+    'html:not([data-theme="light"]) #view-tws .tws-prod .row b{color:#a7ebc5}',
+    'html:not([data-theme="light"]) #view-tws .tws-foot{background:#26352e;color:#d9eee1;border-color:#456b58}',
+    'html:not([data-theme="light"]) #view-tws .tws-src a{color:#9ce7bd}'
   ].join('\n');
 
   function ensureInjected() {

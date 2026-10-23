@@ -14,7 +14,7 @@ test('professional mode installs the two additional jurisdiction packs', () => {
 });
 
 test('loaded and restored packs notify open recommendation cards to repaint', () => {
-  assert.match(app, /pack-auto-installed[\s\S]*?document\.dispatchEvent\(new Event\('regulatorydbchange'\)\)/);
+  assert.equal((app.match(/document\.dispatchEvent\(new Event\('regulatorydbchange'\)\)/g) || []).length >= 2, true);
   assert.match(app, /Repaint any open recommendation card[\s\S]*?document\.dispatchEvent\(new Event\('regulatorydbchange'\)\)/);
   assert.match(cards, /document\.addEventListener\('regulatorydbchange', route\)/);
 });

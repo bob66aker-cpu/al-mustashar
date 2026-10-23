@@ -317,7 +317,13 @@
     'html:not([data-theme="light"]) #view-tws .tws-prod .row span{background:#202b25;border-color:#456b58;color:#e7f8ee}',
     'html:not([data-theme="light"]) #view-tws .tws-prod .row b{color:#a7ebc5}',
     'html:not([data-theme="light"]) #view-tws .tws-foot{background:#26352e;color:#d9eee1;border-color:#456b58}',
-    'html:not([data-theme="light"]) #view-tws .tws-src a{color:#9ce7bd}'
+    'html:not([data-theme="light"]) #view-tws .tws-src a{color:#9ce7bd}',
+    '#view-tws .tws-reg-status{display:flex;flex-wrap:wrap;gap:7px;margin:8px 0 12px}',
+    '#view-tws .tws-reg-badge{display:flex;flex-direction:column;gap:2px;min-width:170px;max-width:100%;padding:7px 10px;border:1px solid currentColor;border-radius:10px;font-size:.78rem;line-height:1.6;overflow-wrap:anywhere}',
+    '#view-tws .tws-reg-badge b{font-size:.75rem}',
+    '#view-tws .tws-reg-badge.ban{color:var(--st-ban-ink);background:var(--st-ban-soft)}',
+    '#view-tws .tws-reg-badge.ok{color:var(--st-ok-ink);background:var(--st-ok-soft)}',
+    '#view-tws .tws-reg-badge.review{color:var(--st-review-ink);background:var(--st-review-soft)}'
   ].join('\n');
 
   function ensureInjected() {
@@ -362,6 +368,8 @@
     var sec = document.getElementById('view-tws');
     if (sec) sec.hidden = (location.hash.replace(/^#\/?/, '').split('/')[0] !== 'tws');
     route();
+    document.removeEventListener('modechange', route);
+    document.addEventListener('modechange', route);
   }
   function route() {
     var sec = document.getElementById('view-tws');
@@ -450,6 +458,55 @@
     return html;
   }
 
+  function regulatoryStatusMarkup(product) {
+    var mode = document.getElementById('mode');
+    if (!mode || mode.value !== 'pro' || typeof window.MustasharActiveStatus !== 'function') return '';
+    var isArabic = lang() === 'ar';
+    var ingredients = product['مكونات فعالة'] || [];
+    if (!ingredients.length) return '';
+    var html = '<div class="tws-reg-status" aria-label="' + esc(isArabic ? 'الحالة التنظيمية للمادة الفعالة' : 'Active ingredient regulatory status') + '">';
+    var count = 0;
+    ingredients.forEach(function (ing) {
+      var cas = String(ing.cas || '');
+      var how = String(ing.how || '');
+      var name = String(ing.name || '');
+      if (!name && !cas) return;
+      var hits = window.MustasharActiveStatus((how === 'exact' || how === 'tokens') ? cas : '', name);
+      var selected = hits.filter(function (h) {
+        return isArabic ? (h.key === 'libya-248' || h.key === 'libya-500')
+          : (h.key === 'eu' || h.key === 'epa' || h.key === 'canada' || h.key === 'australia');
+      });
+      var seen = {};
+      selected.forEach(function (h) {
+        var id = h.key + '|' + h.status + '|' + h.decision;
+        if (seen[id]) return;
+        seen[id] = true;
+        var label = {
+          'libya-248': isArabic ? 'ليبيا — قرار 248 لسنة 2024' : 'Libya — Decision 248/2024',
+          'libya-500': isArabic ? 'ليبيا — قرار 500 لسنة 2026' : 'Libya — Decision 500/2026',
+          'eu': isArabic ? 'الاتحاد الأوروبي' : 'European Union',
+          'epa': 'USA / EPA',
+          'canada': isArabic ? 'كندا — PMRA' : 'Canada — PMRA',
+          'australia': isArabic ? 'أستراليا — APVMA' : 'Australia — APVMA'
+        }[h.key] || h.key;
+        var raw = String(h.status || h.status_raw || '').trim();
+        var lower = raw.toLowerCase();
+        var cls = /محظور|not approved|prohibited|banned|cancelled|cancelled/i.test(lower) ? 'ban'
+          : /مسموح|approved|registered|active registration|permitted/i.test(lower) ? 'ok'
+          : 'review';
+        var statusPrefix = isArabic ? 'الحالة:' : 'Status:';
+        var text = statusPrefix + ' ' + (raw || (isArabic ? 'غير محددة في السجل' : 'Not specified in source'));
+        if (h.key === 'libya-500' && h.decision) label = h.decision;
+        html += '<span class="tws-reg-badge ' + cls + '" title="' + esc(label + (h.status_raw ? ' — ' + h.status_raw : '')) + '">'
+          + '<b>' + esc(label) + '</b><span>' + esc(text) + '</span></span>';
+        count++;
+      });
+    });
+    html += '</div>';
+    if (!count) return '';
+    return html;
+  }
+
   /* ---------- عرض البطاقة (من sections.json) ---------- */
   function renderCard(c, type, n, sec) {
     var inf = null;
@@ -509,6 +566,7 @@
             + (conc ? ' <span class="tws-parsed">' + esc(L('conc')) + ' ' + esc(conc) + '</span>' : '')
             + (form ? ' <span class="tws-parsed">' + esc(L('form')) + ' ' + esc(form) + '</span>' : '')
             + '</div>'
+            + regulatoryStatusMarkup(p)
             + '<div class="row"><span><b>' + esc(L('rate')) + ':</b> ' + esc(p['معدل الاستخدام'] || '—') + '</span>'
             + '<span><b>' + esc(L('who')) + ':</b> ' + esc(p['تصنيف WHO'] || '—') + '</span>'
             + '<span><b>' + esc(L('phi')) + ':</b> ' + esc(p['فترة الأمان'] || '—') + '</span></div>';

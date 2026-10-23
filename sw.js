@@ -1,6 +1,10 @@
 /*
  * sw.js — المستشار الزراعي (v29)
  *
+ * v65 (2026-10-22) — إزالة واجهة الإرشاد القديمة (hotfix/remove-legacy-advice-2026-10-22):
+ *   #view-advice وأمر تحميل src/irsheed.js وتكامل Irsheed خرجا من القشرة كليا؛
+ *   قسم التوصيات #/tws هو المسار الوحيد (بوابة القسم تفرض الحذف الكامل لا الإخفاء).
+ *   ملفات القشرة تغيّرت (index.html + src/app.js) ⇒ رفع الكاش — بلا تغيير في قوائم SHELL/DATA.
  * v63 (2026-10-14) — جولة D61 «مسار الإصابات» (نبات ← نوع ← إصابة مرقّمة):
  *   68 محصولاً في شبكة الإرشاد مع بحث، وخطوة «نوع الإصابة» الجديدة،
  *   766 بطاقة مرقّمة (مظاهر + علاج) من 30 ديواناً مُسنَداً في
@@ -195,7 +199,7 @@
  * Personal data (IndexedDB history, theme, app version note) lives outside
  * the caches and is never touched by this worker.
  */
-const CACHE = 'mustashar-v64';
+const CACHE = 'mustashar-v65';
 const OCR_CACHE = 'mustashar-ocr';
 
 /* 1.7 — safe cache write: a full storage quota (QuotaExceededError) must

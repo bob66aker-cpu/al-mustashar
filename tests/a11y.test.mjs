@@ -23,7 +23,7 @@ const CHROME = process.env.CHROME || '/home/daytona/.cache/ms-playwright/chromiu
 const BASE = process.env.BASE_URL || 'http://127.0.0.1:8080';
 const AXE_PATH = process.env.AXE_PATH || '/home/daytona/lh/node_modules/axe-core/axe.min.js';
 const AXE = readFileSync(AXE_PATH, 'utf8');
-const VIEWS = ['home', 'search', 'scan', 'history', 'data', 'advice', 'about', 'legend', 'stats'];
+const VIEWS = ['home', 'search', 'scan', 'history', 'data', 'tws', 'about', 'legend', 'stats'];
 
 let pass = 0, fail = 0;
 const check = (name, ok, detail) => {

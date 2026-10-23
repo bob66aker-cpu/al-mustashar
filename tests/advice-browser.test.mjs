@@ -4,7 +4,7 @@
  * خلفية: هذه البوابة كانت تقيس واجهة «الإرشاد الزراعي» القديمة (D59/D61/D63).
  * بقرار المالك في جولة «التوصيات الزراعية» استُبدل القسم في التطبيق الأساسي،
  * فصارت البوابة تقيس الجديد فعلاً في كروم حقيقي:
- *   - القسم القديم خرج من التنقل والتوجيه (‏#/advice يعود للرئيسية) وملفاته محفوظة.
+ *   - القسم القديم أُزيل كلياً من القشرة (#view-advice غير موجود، و#/advice يعود للرئيسية).
  *   - المسار الجديد: محصول ← إصابة ← بطاقة ← مصادر فوق data/advice الحقيقية.
  *   - البحث، زر رجوع المتصفح، حالات النقص (ديوان بلا مخطط علاج)، والعمل دون اتصال.
  *   - أحجام 320 و390 و1440 بلا تمرير أفقي. أي خطأ JavaScript = فشل.
@@ -71,24 +71,25 @@ try {
   check('the app loads', !!resp && resp.status() === 200, 'HTTP ' + (resp && resp.status()));
   await page.evaluate(() => { try { localStorage.clear(); } catch (e) {} });
 
-  /* 1) القسم القديم خرج من التجربة، والجديد دخل التنقل */
+  /* 1) القسم القديم أُزيل من القشرة كلياً، والجديد دخل التنقل */
   const retired = await page.evaluate(() => ({
     oldNav: document.querySelectorAll('[data-nav="advice"]').length,
     newNav: document.querySelectorAll('[data-nav="tws"]').length,
-    oldView: (() => { const v = document.getElementById('view-advice'); return v ? { hidden: v.hidden, dv: v.hasAttribute('data-view') } : null; })(),
+    oldView: document.getElementById('view-advice') === null,
+    irsheedScript: !!document.querySelector('script[src="src/irsheed.js"]'),
     cta: (document.getElementById('homeAdviceCta') || {}).getAttribute
       ? document.getElementById('homeAdviceCta').getAttribute('href') : ''
   }));
-  check('the old advice view is out of the nav and out of routing',
+  check('the old advice view is fully removed from the shell (not just hidden)',
     retired.oldNav === 0 && retired.newNav === 1 &&
-    retired.oldView && retired.oldView.hidden === true && retired.oldView.dv === false &&
+    retired.oldView === true && retired.irsheedScript === false &&
     retired.cta === '#/tws', JSON.stringify(retired));
 
   await page.evaluate(() => { location.hash = '#/advice'; });
   await sleep(500);
   const fallback = await page.evaluate(() => ({
     home: document.getElementById('view-home').hidden === false,
-    old: document.getElementById('view-advice').hidden
+    old: document.getElementById('view-advice') === null
   }));
   check('a deep link to #/advice falls back to the home view (old section unreachable)',
     fallback.home === true && fallback.old === true, JSON.stringify(fallback));

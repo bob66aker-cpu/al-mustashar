@@ -1,22 +1,21 @@
 /*
- * src/tawsiyat.js — قسم «التوصيات الزراعية» (2026-10-21)
- * ---------------------------------------------------------------
- * البديل الحديث لواجهة «الإرشاد الزراعي» القديمة: مسار منضبط
- *   محصول ← إصابة ← بطاقة التوصية ← التفاصيل والمصادر
- * فوق بيانات data/advice/ الحقيقية عبر فهرس مُولَّد data/tws/:
- *   - data/tws/manifest.json  فهرس الدواوين (30 ديواناً) + عدّادات التغطية
- *   - data/tws/crops.json     68 محصولاً × 766 بطاقة إصابة مرقّمة
- *   - data/tws/labels.json    تسميات الواجهة (ar/en) — هذه النسخة احتياطية مدمجة
- * التفاصيل الكاملة (مظاهر/تدبير/مخططات علاج/مصادر) تُقرأ حرفياً من
- * data/advice/dossiers.json — لا معالجة ولا إعادة صياغة ولا جرعات.
+ * src/tawsiyat.js — قسم «التوصيات الزراعية» (إعادة بناء 2026-10-23)
+ * ------------------------------------------------------------------
+ * المصدر الوحيد: كتاب «التوصيات المعتمدة لمكافحة الآفات الزراعية 2025»
+ * (لجنة مبيدات الآفات الزراعية · Recomm25.pdf). لا دواوين خارجية ولا
+ * روابط زراعية خارجية ولا نصوص مُولَّدة:
+ *   - data/tws/manifest.json   عدّادات وإحصاء المصدر وCAS والتدقيق
+ *   - data/tws/crops.json      فهرس المحاصيل (50) × إصابات الكتاب (258)
+ *   - data/tws/labels.json     تسميات الواجهة (ar/en) — هذه النسخة احتياطية مدمجة
+ *   - data/tws/sections.json   بطاقات الأقسام كاملة (تُحمَّل عند أول بطاقة)
+ *   - data/tws/img/*.webp      صور الكتاب المنسوبة لصفحاتها
+ * كل قيمة زراعية (مظهر/ميعاد/توقيت/إرشاد/معدل/WHO/PHI/MRL/CAS) تُعرض
+ * حرفيًا من بيانات الكتاب — بلا تحويلات رقمية وبلا إعادة صياغة. ما لم يُؤكَّد
+ * في سطر الطباعة يظهر بشارة «يحتاج تحققًا» ولا يُقدَّم كحقيقة.
  *
- * التوجيه: #/tws | #/tws/<crop> | #/tws/<crop>/<n> — app.js يحوّل المسار
- * إلى العرض عبر currentView() ثم يستدعي Tawsiyat.mount() عند فتح العرض،
- * وزر الرجوع في المتصفح يعمل لأن كل مستويات المسار hash أصلي.
- *
- * الحالات الناقصة تُعرض صراحةً ولا تُملأ بالتخمين:
- *   - ديوان بلا مخططات علاج (8 دواوين الآن) ← لوحة كهرمانية صريحة.
- *   - فشل تحميل الفهرس/التفاصيل ← لوحة خطأ + إعادة محاولة.
+ * التوجيه: #/tws | #/tws/<crop> | #/tws/<crop>/<type>.<n> — app.js يحوّل
+ * المسار إلى العرض عبر currentView() ثم يستدعي Tawsiyat.mount()، وزر
+ * رجوع المتصفح يعمل لأن كل مستويات المسار hash أصلي.
  */
 (function () {
   'use strict';
@@ -25,77 +24,89 @@
   var LABELS = {
     ar: {
       title: 'التوصيات الزراعية',
-      subtitle: 'اختر محصولك ثم الإصابة لتصل إلى بطاقة موثّقة بمصدرها: مظاهر الإصابة، تدبير متكامل، ومخططات العلاج من دواوين مسندة — بلا تخمين وبلا جرعات.',
+      subtitle: 'اختر محصولك ثم الإصابة لتصل إلى بطاقة من كتاب التوصيات المعتمدة 2025 وحده: وصف الإصابة كما ورد، وجدول العلاج بمادته وتركيزه ومعدل استخدامه وتصنيف WHO وفترة أمانه، وصور من الكتاب — بلا مصادر خارجية وبلا تخمين.',
       search_ph: 'ابحث عن محصول… (عربي أو Scientific name)',
       no_results: 'لا يوجد محصول بهذا الاسم',
-      crops_count: 'محصولاً ببطاقات موثّقة',
+      crops_count: 'محصولاً مغطّى بالكتاب',
       cards_count: 'بطاقة إصابة',
       back_crops: 'كل المحاصيل',
-      infections_of: 'إصابة موثّقة لهذا المحصول',
+      infections_of: 'إصابة من الكتاب لهذا المحصول',
       sci: 'الاسم العلمي',
       family: 'العائلة',
-      evidence_a: 'دليل قوي (A)',
-      evidence_b: 'دليل متوسط (B)',
-      no_treatment: 'بلا مخطط علاج في المصدر',
-      symptoms: 'مظاهر الإصابة',
-      management: 'التدبير المتكامل',
-      treatment: 'مخططات العلاج',
-      scheme: 'المخطط',
-      moa: 'آلية العمل',
-      actives: 'المواد الفعالة',
-      no_treatment_title: 'لا يوجد مخطط علاج في هذا المصدر',
-      no_treatment_body: 'الديوان يوثّق المظاهر والتدبير فقط لهذه الإصابة. لا تُعرض هنا بدائل أو جرعات مخترعة — راجع الملصق المحلي للمادة واطلب رأي المختص.',
+      type: 'النوع',
+      infection_no: 'إصابة رقم',
+      page: 'صفحة',
+      group: 'المجموعة في المصدر',
+      symptoms: 'مظهر الإصابة',
+      appearance: 'ميعاد ظهور الإصابة',
+      timing: 'توقيت المكافحة',
+      guidance: 'الإرشادات',
+      products: 'جدول التوصيات في الكتاب',
+      actives: 'المادة الفعالة',
+      conc: 'التركيز',
+      form: 'التركيبة',
+      rate: 'معدل الاستخدام',
+      who: 'تصنيف WHO',
+      phi: 'فترة الأمان (PHI)',
+      mrl: 'قيم MRL',
+      cas: 'رقم CAS',
+      cas_ambiguous: 'CAS ملتبس — لا يُعرض رقم',
+      cas_none: 'لا رقم CAS في السجلات',
+      images: 'صور من الكتاب',
       source: 'المصدر',
-      source_type: 'نوع المصدر',
-      retrieved: 'تاريخ الاعتماد',
-      dose_note: 'الجرعة وفترة الأمان تُقرأ من ملصق المنتج المعتمد محلياً — هذا القسم لا يعرض جرعات.',
-      coverage: 'التغطية',
-      coverage_line: 'دواوين مسندة: {d} · بطاقات: {c} · محاصيل: {k}',
-      evidence_note: 'الوسام مصدر الديوان: A = إرشاد ممتد أو توصية رسمية، B = مرجع ممتد محكّم.',
+      needs_verify: 'قيمة تحتاج تحققًا — غير مؤكدة في سطر الطباعة',
+      name_review: 'عنوان يحتاج مراجعة',
+      crop_conflict: 'تسمية محصول تحت المراجعة',
+      'coverage': 'التغطية',
+      coverage_line: 'من الكتاب: {c} بطاقة · {k} محصولاً',
+      dose_note: 'المادة والتركيز والمعدل وفترة الأمان وتصنيف WHO وقيم MRL مُساقَة حرفياً من جداول الكتاب — لا تُعرض هنا جرعات مخترعة.',
       load_error_title: 'تعذّر تحميل بيانات التوصيات',
       load_error_body: 'يفشل تحميل الفهرس — تحقّق من الاتصال أول مرة، أو أعد المحاولة بعد تجهيز التطبيق للعمل دون اتصال.',
       retry: 'إعادة المحاولة',
-      detail_error_title: 'تعذّر تحميل تفاصيل الديوان',
-      infection_no: 'إصابة رقم',
-      by_dossier: 'الديوان',
-      type: 'النوع'
+      detail_error_title: 'تعذّر تحميل بطاقة القسم من الكتاب'
     },
     en: {
       title: 'Crop recommendations',
-      subtitle: 'Pick a crop, then an infection, to reach a sourced card: symptoms, integrated management, and treatment schemes from referenced dossiers — no guessing, no doses.',
-      search_ph: 'Search a crop… (Arabic or scientific name)',
+      subtitle: 'Pick a crop, then an infection, to reach a card built solely from the official Recomm2025 book: the described symptoms, its treatment table with active ingredient, concentration, application rate, WHO class and PHI, plus images from the book — no outside sources, no guessing.',
+      search_ph: 'Search a crop… (Arabic or Scientific name)',
       no_results: 'No crop matches',
-      crops_count: 'crops with sourced cards',
+      crops_count: 'crops covered by the book',
       cards_count: 'infection cards',
       back_crops: 'All crops',
-      infections_of: 'sourced infections for this crop',
+      infections_of: 'infection from the book for this crop',
       sci: 'Scientific name',
       family: 'Family',
-      evidence_a: 'Strong evidence (A)',
-      evidence_b: 'Moderate evidence (B)',
-      no_treatment: 'No treatment scheme in source',
+      type: 'Type',
+      infection_no: 'Infection no.',
+      page: 'Page',
+      group: 'Group in source',
       symptoms: 'Symptoms',
-      management: 'Integrated management',
-      treatment: 'Treatment schemes',
-      scheme: 'Scheme',
-      moa: 'Mode of action',
-      actives: 'Active ingredients',
-      no_treatment_title: 'No treatment scheme in this source',
-      no_treatment_body: 'The dossier documents symptoms and management only for this infection. No invented alternatives or doses are shown — check the local product label and consult an advisor.',
+      appearance: 'When it appears',
+      timing: 'Control timing',
+      guidance: 'Guidance',
+      products: 'Recommendation table in the book',
+      actives: 'Active ingredient',
+      conc: 'Concentration',
+      form: 'Formulation',
+      rate: 'Application rate',
+      who: 'WHO class',
+      phi: 'PHI (harvest interval)',
+      mrl: 'MRL values',
+      cas: 'CAS no.',
+      cas_ambiguous: 'Ambiguous CAS — no number shown',
+      cas_none: 'No CAS number in the registries',
+      images: 'Images from the book',
       source: 'Source',
-      source_type: 'Source type',
-      retrieved: 'Retrieved',
-      dose_note: 'Doses and pre-harvest intervals come from the locally registered product label — this section shows no doses.',
-      coverage: 'Coverage',
-      coverage_line: 'Referenced dossiers: {d} · cards: {c} · crops: {k}',
-      evidence_note: 'Evidence badge is the dossier\'s: A = extension guidance or official recommendation, B = peer-reviewed reference.',
+      needs_verify: 'Value needs verification — not confirmed on the print line',
+      name_review: 'Heading needs review',
+      crop_conflict: 'Crop label under review',
+      'coverage': 'Coverage',
+      coverage_line: 'From the book: {c} cards · {k} crops',
+      dose_note: 'Ingredient, concentration, rate, PHI, WHO class and MRL values are quoted verbatim from the book tables — no invented doses here.',
       load_error_title: 'Could not load recommendation data',
       load_error_body: 'The index failed to load — connect once, or retry after the app is prepared for offline.',
       retry: 'Retry',
-      detail_error_title: 'Could not load dossier details',
-      infection_no: 'Infection no.',
-      by_dossier: 'Dossier',
-      type: 'Type'
+      detail_error_title: 'Could not load this section card from the book'
     }
   };
 
@@ -110,7 +121,7 @@
     mollusc: 'Mollusc', other: 'Other'
   };
 
-  var S = { man: null, crops: null, labels: null, dos: null, load: null, dosLoad: null, err: null, filter: '' };
+  var S = { man: null, crops: null, labels: null, sec: null, load: null, secLoad: null, err: null, filter: '' };
 
   function lang() {
     return (document.documentElement.lang || 'ar').toLowerCase().indexOf('en') === 0 ? 'en' : 'ar';
@@ -146,12 +157,24 @@
     }).catch(function (e) { S.err = e; S.load = null; });
     return S.load;
   }
-  function loadDossiers() {
-    if (S.dosLoad) return S.dosLoad;
-    S.dosLoad = fetchJSON('data/advice/dossiers.json')
-      .then(function (j) { S.dos = (j && j.dossiers) || {}; })
-      .catch(function () { S.dosLoad = null; });
-    return S.dosLoad;
+  /* بطاقات الأقسام كاملة — تُحمَّل عند أول فتح بطاقة وتبقى في الذاكرة والكاش */
+  function loadSections() {
+    if (S.sec) return Promise.resolve(S.sec);
+    if (S.secLoad) return S.secLoad;
+    S.secLoad = fetchJSON('data/tws/sections.json').then(function (d) {
+      S.sec = d; S.secLoad = null; return d;
+    }).catch(function (e) { S.secLoad = null; throw e; });
+    return S.secLoad;
+  }
+
+  /* ---------- استخراج حرفي من نص المادة (لا اختراع: قطع نص كما ورد) ---------- */
+  function parseForm(name) {
+    var m = String(name || '').trim().match(/(?:^|\s)([A-Z]{2,4})$/);
+    return m ? m[1] : null;
+  }
+  function parseConc(name) {
+    var m = String(name || '').match(/(%[\d.]+)\s*(?:[A-Z]{2,4})?$/);
+    return m ? m[1] : null;
   }
 
   /* ---------- الحقن ---------- */
@@ -175,27 +198,37 @@
     '.tws-crumb .cur{color:var(--muted)}',
     '.tws-meta{color:var(--muted);font-size:.84rem;line-height:1.8;margin:0 0 14px}',
     '.tws-meta em{font-style:italic}',
+    '.tws-chips{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}',
     '.tws-list{display:flex;flex-direction:column;gap:8px;margin:0 0 18px;padding:0;list-style:none}',
     '.tws-inf{display:flex;align-items:center;gap:10px;padding:12px 14px;border:1px solid var(--border);border-radius:12px;background:var(--card);color:var(--text);text-decoration:none;min-height:56px}',
     '.tws-inf:hover,.tws-inf:focus-visible{border-color:var(--primary-ink)}',
     '.tws-inf .no{flex:0 0 auto;min-width:2.2em;text-align:center;color:var(--primary-strong);font-weight:700}',
     '.tws-inf .nm{flex:1 1 auto;min-width:0}',
     '.tws-inf .nm b{display:block;font-size:.98rem}',
-    '.tws-inf .nm em{display:block;color:var(--muted);font-size:.78rem;font-style:italic;direction:ltr;text-align:start}',
+    '.tws-inf .nm .grp{display:block;color:var(--muted);font-size:.75rem}',
     '.tws-chip{flex:0 0 auto;font-size:.72rem;padding:4px 9px;border-radius:999px;border:1px solid transparent;white-space:nowrap}',
-    '.tws-chip.a{background:var(--st-ok-soft);color:var(--st-ok-ink);border-color:var(--st-ok)}',
-    '.tws-chip.b{background:rgba(127,184,245,.14);color:var(--st-info);border-color:var(--st-info)}',
+    '.tws-chip.pg{background:var(--primary-soft);color:var(--primary-strong);border-color:var(--primary-ink)}',
     '.tws-chip.warn{background:var(--st-review-soft);color:var(--st-review-ink);border-color:var(--st-review)}',
+    '.tws-chip.info{background:rgba(127,184,245,.14);color:var(--st-info);border-color:var(--st-info)}',
     '.tws-card{padding:14px;border:1px solid var(--border);border-radius:12px;background:var(--card);margin:0 0 12px}',
     '.tws-card h2{font-size:1.05rem;margin:0 0 4px}',
     '.tws-card h3{font-size:.95rem;margin:14px 0 8px;color:var(--primary-strong)}',
     '.tws-card ul{margin:0;padding-inline-start:20px}',
     '.tws-card li{line-height:1.8;font-size:.93rem;margin:0 0 8px}',
-    '.tws-scheme{border:1px solid var(--border);border-radius:10px;padding:10px 12px;margin:0 0 8px;background:var(--field)}',
-    '.tws-scheme .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 6px;font-size:.86rem}',
-    '.tws-scheme .tag{font-size:.72rem;padding:3px 8px;border-radius:999px;background:var(--primary-soft);color:var(--primary-strong)}',
-    '.tws-scheme .act{font-size:.88rem;line-height:1.7}',
-    '.tws-scheme .act em{color:var(--muted);font-style:italic;direction:ltr;display:inline-block}',
+    '.tws-card p.txt{line-height:1.9;font-size:.93rem;margin:0 0 10px}',
+    '.tws-gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px;margin:0 0 12px}',
+    '.tws-gallery figure{margin:0}',
+    '.tws-gallery img{width:100%;height:auto;border-radius:10px;border:1px solid var(--border);display:block;background:var(--field)}',
+    '.tws-gallery figcaption{color:var(--muted);font-size:.7rem;text-align:center;margin-top:3px}',
+    '.tws-prod{border:1px solid var(--border);border-radius:10px;padding:10px 12px;margin:0 0 8px;background:var(--field)}',
+    '.tws-prod .act{font-size:.9rem;line-height:1.7;margin:0 0 6px}',
+    '.tws-prod .act .nm{direction:ltr;unicode-bidi:embed}',
+    '.tws-prod .row{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:.82rem;margin:0 0 4px;color:var(--text)}',
+    '.tws-prod .row b{color:var(--primary-strong)}',
+    '.tws-parsed{display:inline-block;font-size:.74rem;padding:2px 8px;border-radius:999px;background:var(--primary-soft);color:var(--primary-strong);direction:ltr}',
+    '.tws-cas{display:inline-block;font-size:.76rem;padding:3px 9px;border-radius:999px;border:1px solid var(--st-ok);background:var(--st-ok-soft);color:var(--st-ok-ink);direction:ltr;margin:0 4px 4px 0}',
+    '.tws-cas.amb{border-color:var(--st-review);background:var(--st-review-soft);color:var(--st-review-ink);direction:rtl}',
+    '.tws-cas.none{border-color:var(--border);background:var(--card);color:var(--muted);direction:rtl}',
     '.tws-src{font-size:.85rem;line-height:1.8}',
     '.tws-src a{color:var(--primary-ink);word-break:break-word}',
     '.tws-note{border-inline-start:3px solid var(--st-review);background:var(--st-review-soft);border-radius:8px;padding:10px 12px;margin:10px 0;font-size:.86rem;line-height:1.8;color:var(--text)}',
@@ -236,7 +269,7 @@
     sec.addEventListener('click', function (e) {
       var btn = e.target && e.target.closest && e.target.closest('[data-tws-retry]');
       if (btn) {
-        S.load = null; S.dosLoad = null; S.err = null;
+        S.load = null; S.secLoad = null; S.sec = null; S.err = null;
         loadIndex().then(function () { route(); });
       }
     });
@@ -256,7 +289,7 @@
     if (!sec) return;
     var parts = (location.hash.replace(/^#\/?/, '') || 'tws').split('/');
     var crop = parts[1] || '';
-    /* رقم البطاقة = <type>.<n> لأن الترقيم يبدأ عند1 داخل كل نوع (fungus.1 ≠ insect.1) */
+    /* رقم البطاقة = <type>.<n> لأن الترقيم يبدأ عند 1 داخل كل نوع */
     var seg = parts[2] || '';
     var dot = seg.lastIndexOf('.');
     var infType = dot > 0 ? seg.slice(0, dot) : '';
@@ -274,14 +307,6 @@
     var list = (S.crops && S.crops.crops) || [];
     for (var i = 0; i < list.length; i++) if (list[i].id === id) return list[i];
     return null;
-  }
-  function dossierMeta(code) {
-    return (S.man && S.man.dossiers && S.man.dossiers[code]) || null;
-  }
-  function evChip(ev) {
-    if (ev === 'A') return '<span class="tws-chip a">' + esc(L('evidence_a')) + '</span>';
-    if (ev === 'B') return '<span class="tws-chip b">' + esc(L('evidence_b')) + '</span>';
-    return '';
   }
 
   /* ---------- عرض المحاصيل ---------- */
@@ -324,7 +349,6 @@
 
   /* ---------- عرض المحصول ---------- */
   function cropView(c) {
-    var chips = {};
     var html = '<div class="wrap">'
       + '<nav class="tws-crumb"><a href="#/tws">' + esc(L('back_crops')) + '</a><span class="sep">‹</span><span class="cur">' + esc(c.name_ar) + '</span></nav>'
       + '<div class="tws-head"><h1>' + esc(c.name_ar) + ' <span class="en" style="color:var(--muted);font-size:.8rem">' + esc(c.name_en) + '</span></h1>'
@@ -332,79 +356,118 @@
       + '<br>' + c.cards + ' ' + esc(L('infections_of')) + '</p></div>'
       + '<ul class="tws-list">';
     (c.infections || []).forEach(function (inf) {
-      var meta = dossierMeta(inf.dossier);
-      var ev = meta ? meta.evidence : '';
-      var noTreat = meta ? !meta.has_treatment : true;
-      if (ev) chips[ev] = 1;
       html += '<li><a class="tws-inf" href="#/tws/' + esc(c.id) + '/' + esc(inf.type) + '.' + esc(inf.n) + '">'
         + '<span class="no">' + esc(inf.n) + '</span>'
-        + '<span class="nm"><b>' + esc(inf.name_ar) + '</b><em>' + esc(inf.sci) + '</em></span>'
-        + (noTreat ? '<span class="tws-chip warn">' + esc(L('no_treatment')) + '</span>' : '')
-        + evChip(ev)
+        + '<span class="nm"><b>' + esc(inf.name_ar) + '</b>'
+        + (inf.group ? '<span class="grp">' + esc(L('group')) + ': ' + esc(inf.group) + '</span>' : '')
+        + '</span>'
+        + (inf.images ? '<span class="tws-chip info">🖼 ' + esc(inf.images) + '</span>' : '')
+        + (inf.name_status === 'NEEDS_REVIEW' ? '<span class="tws-chip warn">' + esc(L('name_review')) + '</span>' : '')
+        + (inf.crop_conflict ? '<span class="tws-chip warn">' + esc(L('crop_conflict')) + '</span>' : '')
+        + '<span class="tws-chip pg">' + esc(L('page')) + ' ' + esc(inf.printed_page) + '</span>'
         + '</a></li>';
     });
     html += '</ul>' + footer() + '</div>';
     return html;
   }
 
-  /* ---------- عرض البطاقة ---------- */
+  /* ---------- عرض البطاقة (من sections.json) ---------- */
   function renderCard(c, type, n, sec) {
     var inf = null;
     (c.infections || []).forEach(function (x) {
       if (String(x.n) === String(n) && x.type === type) inf = x;
     });
     if (!inf) { sec.innerHTML = wrap(errorPanel(L('no_results'), '#/tws/' + esc(c.id))); return; }
-    var meta = dossierMeta(inf.dossier) || {};
-    loadDossiers().then(function () {
-      var d = (S.dos && S.dos[inf.dossier]) || null;
+    loadSections().then(function (doc) {
+      var s = null;
+      ((doc && doc.sections) || []).forEach(function (x) {
+        if (x.crop_id === c.id && String(x.n) === String(inf.n)) s = x;
+      });
+      if (!s) { sec.innerHTML = wrap(errorPanel(L('detail_error_title'), '#/tws/' + esc(c.id))); return; }
+      var man = S.man || {};
+      var srcMeta = man.source || doc.source || {};
       var html = '<div class="wrap">'
         + '<nav class="tws-crumb"><a href="#/tws">' + esc(L('back_crops')) + '</a><span class="sep">‹</span>'
         + '<a href="#/tws/' + esc(c.id) + '">' + esc(c.name_ar) + '</a><span class="sep">‹</span>'
         + '<span class="cur">' + esc(inf.name_ar) + '</span></nav>'
         + '<div class="tws-card">'
-        + '<h2>' + esc(inf.name_ar) + '</h2>'
-        + '<p class="tws-meta"><em>' + esc(inf.sci) + '</em> · ' + esc(L('type')) + ': ' + esc(typeName(inf.type))
-        + ' · ' + esc(L('infection_no')) + ' ' + esc(inf.n) + ' · ' + esc(L('by_dossier')) + ': ' + esc((d && d.name_ar) || meta.name_ar || inf.dossier) + '<br>'
-        + evChip(meta.evidence) + '</p>';
-      if (!d) {
-        html += '<div class="tws-note">' + esc(L('detail_error_title')) + ' — ' + esc(inf.dossier) + '</div>';
-      } else {
-        if (d.symptoms_ar && d.symptoms_ar.length) {
-          html += '<h3>' + esc(L('symptoms')) + '</h3><ul>'
-            + d.symptoms_ar.map(function (s) { return '<li>' + esc(s) + '</li>'; }).join('')
-            + '</ul>';
-        }
-        if (d.management_ar && d.management_ar.length) {
-          html += '<h3>' + esc(L('management')) + '</h3><ul>'
-            + d.management_ar.map(function (s) { return '<li>' + esc(s) + '</li>'; }).join('')
-            + '</ul>';
-        }
-        if (d.treatment && d.treatment.length) {
-          html += '<h3>' + esc(L('treatment')) + '</h3>';
-          d.treatment.forEach(function (t) {
-            var src = t.source || {};
-            html += '<div class="tws-scheme">'
-              + '<div class="row"><span class="tag">' + esc(L('scheme')) + ': ' + esc(t.scheme || '—') + '</span>'
-              + '<span><b>' + esc(L('moa')) + ':</b> ' + esc(t.moa || '—') + '</span></div>'
-              + '<div class="act"><b>' + esc(L('actives')) + ':</b> '
-              + (t.actives || []).map(function (a) { return esc(a.ar || a.en) + ' <em>' + esc(a.en || '') + '</em>'; }).join(' · ')
-              + '</div>'
-              + (src.url ? '<div class="tws-src">↳ <a href="' + esc(src.url) + '" target="_blank" rel="noopener noreferrer">' + esc(src.title || src.url) + '</a></div>' : '')
-              + '</div>';
-          });
-        } else {
-          html += '<div class="tws-note"><b>' + esc(L('no_treatment_title')) + '</b><br>' + esc(L('no_treatment_body')) + '</div>';
-        }
-        html += '<h3>' + esc(L('source')) + '</h3><div class="tws-src">'
-          + (d.source && d.source.url
-            ? '<a href="' + esc(d.source.url) + '" target="_blank" rel="noopener noreferrer">' + esc(d.source.title || d.source.url) + '</a>'
-            : esc((d.source && d.source.title) || '—'))
-          + '<br>' + esc((d.source && d.source.publisher) || '')
-          + (d.source && d.source.type ? ' · ' + esc(L('source_type')) + ': ' + esc(d.source.type) : '')
-          + (d.source && d.source.retrieved ? ' · ' + esc(L('retrieved')) + ': ' + esc(d.source.retrieved) : '')
-          + '</div>';
-        html += '<div class="tws-note info">' + esc(L('evidence_note')) + '<br>' + esc(L('dose_note')) + '</div>';
+        + '<h2>' + esc(s.name_ar) + '</h2>'
+        + '<p class="tws-meta">' + esc(L('type')) + ': ' + esc(typeName(s.type))
+        + ' · ' + esc(L('infection_no')) + ' ' + esc(s.n)
+        + ' · ' + esc(L('page')) + ' ' + esc(s.printed_page) + ' (PDF ' + esc(s.page) + ')</p>'
+        + '<div class="tws-chips">'
+        + (s.group ? '<span class="tws-chip info">' + esc(L('group')) + ': ' + esc(s.group) + '</span>' : '')
+        + (s.name_status === 'NEEDS_REVIEW' ? '<span class="tws-chip warn">' + esc(L('name_review')) + '</span>' : '')
+        + (s.crop_conflict ? '<span class="tws-chip warn">' + esc(L('crop_conflict')) + '</span>' : '')
+        + '</div>';
+
+      /* صور الكتاب — تُعرض مباشرة كما طُلب */
+      if (s.images && s.images.length) {
+        html += '<h3>' + esc(L('images')) + '</h3><div class="tws-gallery">';
+        s.images.forEach(function (im) {
+          html += '<figure><img src="data/tws/img/' + esc(im.file) + '" width="' + esc(im.w) + '" height="' + esc(im.h) + '" loading="lazy" alt="' + esc(s.name_ar) + ' — ' + esc(L('page')) + ' ' + esc(im.pdf_page) + '">'
+            + '<figcaption>' + esc(L('page')) + ' ' + esc(im.pdf_page - (man.source && man.source.printed_offset || 13)) + ' (PDF ' + esc(im.pdf_page) + ')</figcaption></figure>';
+        });
+        html += '</div>';
       }
+
+      if (s.symptom && s.symptom.length) {
+        html += '<h3>' + esc(L('symptoms')) + '</h3><ul>'
+          + s.symptom.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('')
+          + '</ul>';
+      }
+      if (s.appearance) html += '<h3>' + esc(L('appearance')) + '</h3><p class="txt">' + esc(s.appearance) + '</p>';
+      if (s.timing) html += '<h3>' + esc(L('timing')) + '</h3><p class="txt">' + esc(s.timing) + '</p>';
+      if (s.guidance) html += '<h3>' + esc(L('guidance')) + '</h3><p class="txt">' + esc(s.guidance) + '</p>';
+
+      if (s.products && s.products.length) {
+        html += '<h3>' + esc(L('products')) + '</h3>';
+        s.products.forEach(function (p) {
+          var rawName = p['اسم المادة الفعالة'] || '';
+          var conc = parseConc(rawName), form = parseForm(rawName);
+          html += '<div class="tws-prod">'
+            + '<div class="act"><b>' + esc(L('actives')) + ':</b> <span class="nm">' + esc(rawName) + '</span>'
+            + (conc ? ' <span class="tws-parsed">' + esc(L('conc')) + ' ' + esc(conc) + '</span>' : '')
+            + (form ? ' <span class="tws-parsed">' + esc(L('form')) + ' ' + esc(form) + '</span>' : '')
+            + '</div>'
+            + '<div class="row"><span><b>' + esc(L('rate')) + ':</b> ' + esc(p['معدل الاستخدام'] || '—') + '</span>'
+            + '<span><b>' + esc(L('who')) + ':</b> ' + esc(p['تصنيف WHO'] || '—') + '</span>'
+            + '<span><b>' + esc(L('phi')) + ':</b> ' + esc(p['فترة الأمان'] || '—') + '</span></div>';
+          var mrl = p['قيم MRL'] || {};
+          var mrlParts = ['EPA', 'EU', 'Codex'].filter(function (k) { return mrl[k] !== undefined && mrl[k] !== ''; })
+            .map(function (k) { return k + ': ' + mrl[k]; });
+          if (mrlParts.length) {
+            html += '<div class="row"><span><b>' + esc(L('mrl')) + ':</b> ' + esc(mrlParts.join(' · ')) + '</span></div>';
+          }
+          /* CAS: رقم فقط عند مطابقة مؤكدة — الملتبس بلا رقم */
+          var ings = p['مكونات فعالة'] || [];
+          if (ings.length) {
+            html += '<div class="row">';
+            ings.forEach(function (m) {
+              var how = String(m.how || '');
+              if (m.cas && (how === 'exact' || how === 'tokens')) {
+                html += '<span class="tws-cas" title="' + esc(m.name || '') + '">' + esc(L('cas')) + ' <span dir="ltr">' + esc(m.cas) + '</span></span>';
+              } else if (how.indexOf('ambiguous') === 0) {
+                html += '<span class="tws-cas amb" title="' + esc(m.name || '') + '">' + esc(L('cas_ambiguous')) + '</span>';
+              } else {
+                html += '<span class="tws-cas none" title="' + esc(m.name || '') + '">' + esc(L('cas_none')) + '</span>';
+              }
+            });
+            html += '</div>';
+          }
+          if (p._verify && p._verify.status === 'NEEDS_VERIFICATION') {
+            html += '<div class="row"><span class="tws-chip warn">' + esc(L('needs_verify')) + '</span></div>';
+          }
+          html += '</div>';
+        });
+      }
+
+      html += '<h3>' + esc(L('source')) + '</h3><div class="tws-src">'
+        + (srcMeta.url ? '<a href="' + esc(srcMeta.url) + '" target="_blank" rel="noopener noreferrer">' + esc(srcMeta.title || srcMeta.url) + '</a><br>' : esc(srcMeta.title || ''))
+        + esc(srcMeta.publisher || '')
+        + ' · ' + esc(srcMeta.file || '')
+        + ' · ' + esc(L('page')) + ' ' + esc(s.printed_page) + ' (PDF ' + esc(s.page) + ')</div>';
+      html += '<div class="tws-note info">' + esc(L('dose_note')) + '</div>';
       html += '</div>' + footer() + '</div>';
       sec.innerHTML = html;
       window.scrollTo && window.scrollTo(0, 0);

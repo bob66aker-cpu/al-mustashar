@@ -1,13 +1,15 @@
 /*
- * tests/advice-browser.test.mjs — بوابة «التوصيات الزراعية» الحية (2026-10-21)
+ * tests/advice-browser.test.mjs — بوابة «التوصيات الزراعية» الحية (2026-10-23)
  * ---------------------------------------------------------------------------------
- * خلفية: هذه البوابة كانت تقيس واجهة «الإرشاد الزراعي» القديمة (D59/D61/D63).
- * بقرار المالك في جولة «التوصيات الزراعية» استُبدل القسم في التطبيق الأساسي،
- * فصارت البوابة تقيس الجديد فعلاً في كروم حقيقي:
- *   - القسم القديم أُزيل كلياً من القشرة (#view-advice غير موجود، و#/advice يعود للرئيسية).
- *   - المسار الجديد: محصول ← إصابة ← بطاقة ← مصادر فوق data/advice الحقيقية.
- *   - البحث، زر رجوع المتصفح، حالات النقص (ديوان بلا مخطط علاج)، والعمل دون اتصال.
- *   - أحجام 320 و390 و1440 بلا تمرير أفقي. أي خطأ JavaScript = فشل.
+ * العقد بعد إعادة البناء: القسم يُبنى من كتاب Recomm25 وحده في كروم حقيقي:
+ *   - القسم القديم ممحو من القشرة (#view-advice غير موجود، #/advice يعود للرئيسية).
+ *   - المسار: محصول ← إصابة ← بطاقة ← رجوع، والبطاقة تعرض حقول الكتاب حرفياً:
+ *     مظهر/ميعاد/توقيت/إرشادات + جدول المنتجات (معدل/WHO/PHI/MRL) + رقمان CAS
+ *     مؤكدان فقط + صور الكتاب محمّلة فعلاً + مصدر apc.gov.eg وحيد الروابط.
+ *   - علامات الصراحة: بطاقة فيها منتج NEEDS_VERIFICATION تُعلَّم بشارة، وبطاقة
+ *     تسميتها محصولها متعارضة تُعلَّم، ولا تُقدَّم كحقيقة.
+ *   - البحث، رجوع المتصفح، العمل دون اتصال (sections.json من الكاش)، EN،
+ *     وأحجام 320/390/1440 بلا تمرير أفقي. أي خطأ JavaScript = فشل.
  * تشغيل: node tests/advice-browser.test.mjs [baseUrl]
  */
 import puppeteer from 'puppeteer-core';
@@ -23,6 +25,7 @@ const argBase = process.argv[2];
 const BASE = (argBase || 'http://127.0.0.1:8080').replace(/\/$/, '');
 const CROPS = JSON.parse(readFileSync(join(root, 'data/tws/crops.json'), 'utf8')).crops;
 const MAN = JSON.parse(readFileSync(join(root, 'data/tws/manifest.json'), 'utf8'));
+const SECTIONS = JSON.parse(readFileSync(join(root, 'data/tws/sections.json'), 'utf8')).sections;
 
 let pass = 0, fail = 0;
 const check = (name, ok, extra = '') => {
@@ -31,17 +34,21 @@ const check = (name, ok, extra = '') => {
 };
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
-/* اختيار بطاقتين حيّتين من البيانات نفسها: مُعالَجة وبلا مخطط علاج */
-const treated = (() => {
-  for (const c of CROPS) for (const i of c.infections)
-    if (MAN.dossiers[i.dossier].has_treatment) return { crop: c.id, type: i.type, n: i.n };
-  return null;
-})();
-const untreated = (() => {
-  for (const c of CROPS) for (const i of c.infections)
-    if (!MAN.dossiers[i.dossier].has_treatment) return { crop: c.id, type: i.type, n: i.n };
-  return null;
-})();
+/* اختيار بطاقات من البيانات نفسها: القمح (أولوية المالك)، بطاقة تحتاج تحققًا،
+ * وبطاقة تسمية محصولها متعارضة */
+const routeOf = s => {
+  const row = (CROPS.find(c => c.id === s.crop_id) || {}).infections || [];
+  const inf = row.find(i => i.n === s.n) || {};
+  return { crop: s.crop_id, type: inf.type, n: s.n };
+};
+const wheatSecs = SECTIONS.filter(s => s.crop_id === 'wheat');
+const treatedSec = wheatSecs.slice().sort((a, b) => b.products.length - a.products.length)[0];
+const treated = routeOf(treatedSec);
+const flaggedSec = SECTIONS.find(s => s.crop_id !== treated.crop &&
+  s.products.some(p => p._verify && p._verify.status === 'NEEDS_VERIFICATION'));
+const flagged = flaggedSec ? routeOf(flaggedSec) : null;
+const conflictSec = SECTIONS.find(s => s.crop_conflict && s.crop_id !== treated.crop);
+const conflict = conflictSec ? routeOf(conflictSec) : null;
 
 let srv = null;
 if (!argBase) {
@@ -71,7 +78,7 @@ try {
   check('the app loads', !!resp && resp.status() === 200, 'HTTP ' + (resp && resp.status()));
   await page.evaluate(() => { try { localStorage.clear(); } catch (e) {} });
 
-  /* 1) القسم القديم أُزيل من القشرة كلياً، والجديد دخل التنقل */
+  /* 1) القسم القديم ممحو من القشرة كلياً، والجديد دخل التنقل */
   const retired = await page.evaluate(() => ({
     oldNav: document.querySelectorAll('[data-nav="advice"]').length,
     newNav: document.querySelectorAll('[data-nav="tws"]').length,
@@ -94,7 +101,7 @@ try {
   check('a deep link to #/advice falls back to the home view (old section unreachable)',
     fallback.home === true && fallback.old === true, JSON.stringify(fallback));
 
-  /* 2) القسم الجديد يفتح بشبكة المحاصيل كاملة */
+  /* 2) الشبكة تفتح بمحاصيل الكتاب كاملة */
   await page.evaluate(() => { location.hash = '#/tws'; });
   await page.waitForSelector('#view-tws:not([hidden])', { timeout: 8000 });
   await page.waitForFunction(() => document.querySelectorAll('.tws-crop').length > 0, { timeout: 15000 });
@@ -104,9 +111,10 @@ try {
     search: !!document.getElementById('twsFilter'),
     foot: (document.querySelector('.tws-foot') || {}).textContent || ''
   }));
-  check('the recommendations view opens with all 68 crops and a search box',
-    list.h1.includes('التوصيات') && list.crops === 68 && list.search &&
-    /30/.test(list.foot) && /766/.test(list.foot), JSON.stringify(list).slice(0, 220));
+  check('the recommendations view opens with every crop of the book and a search box',
+    list.h1.includes('التوصيات') && list.crops === MAN.counts.crops && list.search &&
+    list.foot.includes(String(MAN.counts.cards)) && list.foot.includes(String(MAN.counts.crops)),
+    JSON.stringify(list).slice(0, 220));
 
   /* 3) أحجام الشاشة الثلاثة بلا تمرير أفقي */
   for (const w of [320, 390, 1440]) {
@@ -133,50 +141,84 @@ try {
   await page.evaluate(() => { const f = document.getElementById('twsFilter'); f.value = ''; f.dispatchEvent(new Event('input', { bubbles: true })); });
   await sleep(300);
 
-  /* 5) المسار: محصول ← إصابة ← بطاقة بمصادر */
+  /* 5) صفحة المحصول: إصابات الكتاب مع صفحة الطباعة في كل صف */
   await page.evaluate(t => { location.hash = '#/tws/' + t.crop; }, treated);
   await page.waitForSelector('.tws-inf', { timeout: 8000 });
   const cropView = await page.evaluate(() => ({
     rows: document.querySelectorAll('.tws-inf').length,
     crumb: (document.querySelector('.tws-crumb a') || {}).textContent || '',
-    chips: document.querySelectorAll('.tws-chip').length
+    pageChips: [...document.querySelectorAll('.tws-chip.pg')].length,
+    groups: document.querySelectorAll('.tws-inf .grp').length
   }));
-  check('a crop page lists its sourced infections with breadcrumb and chips',
-    cropView.rows >= 1 && cropView.crumb.includes('كل المحاصيل') && cropView.chips >= 1, JSON.stringify(cropView));
+  const wheatRow = CROPS.find(c => c.id === treated.crop);
+  check('a crop page lists exactly its book infections with breadcrumb and print-page chips',
+    cropView.rows === wheatRow.cards && cropView.crumb.includes('كل المحاصيل')
+    && cropView.pageChips === wheatRow.cards && cropView.groups >= 1, JSON.stringify(cropView));
 
+  /* 6) بطاقة القمح: حقول الكتاب حرفياً + صور + CAS + مصدر وحيد */
   await page.evaluate(t => { location.hash = '#/tws/' + t.crop + '/' + t.type + '.' + t.n; }, treated);
   await page.waitForSelector('.tws-card', { timeout: 8000 });
   await sleep(400);
   const card = await page.evaluate(() => ({
     h2: (document.querySelector('.tws-card h2') || {}).textContent || '',
     sym: document.querySelectorAll('.tws-card ul li').length,
-    schemes: document.querySelectorAll('.tws-scheme').length,
-    srcs: [...document.querySelectorAll('.tws-card a')].map(a => a.getAttribute('href') || ''),
-    doseNote: (document.querySelector('.tws-note.info') || {}).textContent || ''
+    products: document.querySelectorAll('.tws-prod').length,
+    rows: document.querySelectorAll('.tws-prod .row').length,
+    cas: [...document.querySelectorAll('.tws-cas')].map(c => c.textContent || ''),
+    gallery: document.querySelectorAll('.tws-gallery img').length,
+    links: [...document.querySelectorAll('.tws-card a')].map(a => a.getAttribute('href') || ''),
+    doseNote: (document.querySelector('.tws-note.info') || {}).textContent || '',
+    heads: [...document.querySelectorAll('.tws-card h3')].map(h => h.textContent || '')
   }));
-  check('a treated card shows symptoms, treatment schemes and https sources',
-    card.h2.length > 0 && card.sym >= 1 && card.schemes >= 1 &&
-    card.srcs.filter(h => h.startsWith('https://')).length >= 1, JSON.stringify(card).slice(0, 240));
-  check('the card states that doses come from the local label (no doses shown)',
-    /الجرعة/.test(card.doseNote), card.doseNote.slice(0, 80));
+  const casDigits = card.cas.filter(t => /\d{2,7}-\d{2}-\d/.test(t)).length;
+  const externals = card.links.filter(h => h.startsWith('http'));
+  check('the treated card shows the book fields verbatim (symptoms, table rows, WHO/PHI/MRL)',
+    card.h2.length > 0 && card.sym >= 1 && card.products === treatedSec.products.length
+    && card.rows >= treatedSec.products.length
+    && card.heads.some(h => h.includes('ميعاد ظهور')) && card.heads.some(h => h.includes('توقيت المكافحة')),
+    JSON.stringify({ h2: card.h2.slice(0, 40), products: card.products, rows: card.rows }).slice(0, 220));
+  check('confirmed CAS numbers render as digits (ambiguous ones never do)',
+    casDigits >= 1, `digits=${casDigits} chips=${card.cas.length}`);
+  check('the book images render directly in the card', card.gallery >= 1, String(card.gallery));
+  check('the only external link is the official book (apc.gov.eg)',
+    externals.length >= 1 && externals.every(h => h.includes('apc.gov.eg')),
+    externals.join(' ').slice(0, 120));
+  check('the dose note says values come verbatim from the book tables',
+    /جداول الكتاب/.test(card.doseNote) && !/ملصق المنتج/.test(card.doseNote),
+    card.doseNote.slice(0, 90));
+  const imgLoaded = await page.waitForFunction(
+    () => [...document.querySelectorAll('.tws-gallery img')].some(i => i.complete && i.naturalWidth > 0),
+    { timeout: 15000 }
+  ).then(() => true).catch(() => false);
+  check('at least one book image actually decodes in the browser', imgLoaded === true);
 
-  /* 6) بطاقة بلا مخطط علاج: حالة صريحة لا تخمين */
-  if (untreated) {
-    await page.evaluate(t => { location.hash = '#/tws/' + t.crop; }, untreated);
-    await sleep(500);
-    await page.evaluate(t => { location.hash = '#/tws/' + t.crop + '/' + t.type + '.' + t.n; }, untreated);
+  /* 7) صراحة النقص: بطاقة تحتاج تحققًا تُعلَّم ولا تُقدَّم كحقيقة */
+  if (flagged) {
+    await page.evaluate(t => { location.hash = '#/tws/' + t.crop + '/' + t.type + '.' + t.n; }, flagged);
     await page.waitForSelector('.tws-card', { timeout: 8000 });
     await sleep(300);
-    const ut = await page.evaluate(() => ({
-      note: [...document.querySelectorAll('.tws-note')].map(e => e.textContent || '').join(' '),
-      sym: document.querySelectorAll('.tws-card ul li').length,
-      schemes: document.querySelectorAll('.tws-scheme').length
+    const fl = await page.evaluate(() => ({
+      warn: [...document.querySelectorAll('.tws-chip.warn')].map(c => c.textContent || '').join(' | '),
+      prods: document.querySelectorAll('.tws-prod').length
     }));
-    check('a dossier without schemes shows the honest amber note, keeps symptoms, invents nothing',
-      /لا يوجد مخطط علاج/.test(ut.note) && ut.sym >= 1 && ut.schemes === 0, JSON.stringify(ut).slice(0, 200));
-  } else check('an untreated card exists to test', false, 'none in data');
+    check('a product needing print-line verification is flagged on the card (not promoted)',
+      fl.warn.includes('تحتاج تحققًا') && fl.prods >= 1, JSON.stringify(fl).slice(0, 200));
+  } else check('a NEEDS_VERIFICATION card exists to test', false, 'none in data');
 
-  /* 7) زر رجوع المتصفح يعود مستويات المسار (تسلسل نظيف: شبكة ← محصول ← بطاقة) */
+  /* 8) صراحة تعارض تسمية المحصول */
+  if (conflict) {
+    await page.evaluate(t => { location.hash = '#/tws/' + t.crop + '/' + t.type + '.' + t.n; }, conflict);
+    await page.waitForSelector('.tws-card', { timeout: 8000 });
+    await sleep(300);
+    const cf = await page.evaluate(() => ({
+      warn: [...document.querySelectorAll('.tws-chip.warn')].map(c => c.textContent || '').join(' | '),
+      h2: (document.querySelector('.tws-card h2') || {}).textContent || ''
+    }));
+    check('a card whose print crop label contradicts the extraction shows the review flag',
+      cf.warn.includes('تحت المراجعة') && cf.h2.length > 0, JSON.stringify(cf).slice(0, 200));
+  } else check('a crop-label conflict card exists to test', false, 'none in data');
+
+  /* 9) زر رجوع المتصفح يعود مستويات المسار (شبكة ← محصول ← بطاقة) */
   await page.evaluate(() => { location.hash = '#/tws'; });
   await page.waitForFunction(() => !!document.getElementById('twsFilter'), { timeout: 5000 });
   await sleep(400);
@@ -207,7 +249,7 @@ try {
   const back2 = await page.evaluate(() => ({ search: !!document.getElementById('twsFilter'), hash: location.hash }));
   check('Back again returns to the crop grid', back2.search === true && back2.hash === '#/tws', JSON.stringify(back2));
 
-  /* 8) العمل دون اتصال بعد أول تحميل */
+  /* 10) العمل دون اتصال بعد أول فتح بطاقة (sections.json في الكاش) */
   await page.evaluate(t => { location.hash = '#/tws/' + t.crop + '/' + t.type + '.' + t.n; }, treated);
   await page.waitForSelector('.tws-card', { timeout: 8000 });
   const swReady = await page.evaluate(async () => {
@@ -221,29 +263,30 @@ try {
   await sleep(600);
   await page.evaluate(t => { location.hash = '#/tws/' + t.id + '/' + t.type + '.' + t.n; },
     { id: other.id, type: otherCard.type, n: otherCard.n });
-  await sleep(800);
+  await sleep(900);
   const offline = await page.evaluate(() => ({
     h2: (document.querySelector('.tws-card h2') || {}).textContent || '',
-    srcs: [...document.querySelectorAll('.tws-card a')].filter(a => (a.getAttribute('href') || '').startsWith('https://')).length
+    prods: document.querySelectorAll('.tws-prod').length,
+    srcs: [...document.querySelectorAll('.tws-card a')].filter(a => (a.getAttribute('href') || '').includes('apc.gov.eg')).length
   }));
-  check('offline: another crop card still renders from cache with its sources',
-    offline.h2.length > 0 && offline.srcs >= 1, JSON.stringify(offline));
+  check('offline: another crop card still renders from cache with its book source',
+    offline.h2.length > 0 && offline.prods >= 1 && offline.srcs >= 1, JSON.stringify(offline));
   await page.setOfflineMode(false);
 
-  /* 9) اللغة الإنجليزية */
+  /* 11) اللغة الإنجليزية */
   await page.select('#langSelect', 'en');
   await sleep(700);
   const en = await page.evaluate(() => ({
     nav: (document.querySelector('[data-nav="tws"] span:last-child') || {}).textContent || '',
     head: (document.querySelector('#view-tws h1, #view-tws h2') || {}).textContent || '',
-    srcs: [...document.querySelectorAll('#view-tws a')].filter(a => (a.getAttribute('href') || '').startsWith('https://')).length
+    srcs: [...document.querySelectorAll('#view-tws a')].filter(a => (a.getAttribute('href') || '').includes('apc.gov.eg')).length
   }));
   check('switching to English renames the section and keeps it rendering',
     en.nav.trim() === 'Recommendations' && en.head.trim().length > 0 && en.srcs >= 1, JSON.stringify(en));
   await page.select('#langSelect', 'ar');
   await sleep(500);
 
-  /* 10) صفر أخطاء JavaScript طوال الجولة */
+  /* 12) صفر أخطاء JavaScript طوال الجولة */
   check('no page errors while using the section', errors.length === 0, errors.slice(0, 3).join(' | '));
 } catch (e) {
   check('the recommendations smoke run completes', false, e.message);

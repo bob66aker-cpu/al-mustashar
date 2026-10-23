@@ -1,6 +1,11 @@
 /*
  * sw.js — المستشار الزراعي (v29)
  *
+ * v66 (2026-10-23) — إعادة بناء قسم التوصيات من الكتاب وحده (Recomm25):
+ *   بيانات القسم صارت من فهرس الكتاب مباشرة (data/tws/sections.json +
+ *   صور الكتاب data/tws/img/) — ملفات القشرة تغيّرت ⇒ رفع الكاش؛
+ *   بلا تغيير في قوائم SHELL/DATA (ملفات القسم تُحمَّل عند الطلب وتُكاش
+ *   وقت التشغيل كبقية بيانات الطلب).
  * v65 (2026-10-22) — إزالة واجهة الإرشاد القديمة (hotfix/remove-legacy-advice-2026-10-22):
  *   #view-advice وأمر تحميل src/irsheed.js وتكامل Irsheed خرجا من القشرة كليا؛
  *   قسم التوصيات #/tws هو المسار الوحيد (بوابة القسم تفرض الحذف الكامل لا الإخفاء).
@@ -199,7 +204,7 @@
  * Personal data (IndexedDB history, theme, app version note) lives outside
  * the caches and is never touched by this worker.
  */
-const CACHE = 'mustashar-v65';
+const CACHE = 'mustashar-v66';
 const OCR_CACHE = 'mustashar-ocr';
 
 /* 1.7 — safe cache write: a full storage quota (QuotaExceededError) must

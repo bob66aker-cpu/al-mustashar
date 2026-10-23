@@ -2824,6 +2824,10 @@
           installing[pack.key] = false;
           stateLine(pack.key);
           rebuildSearch();
+          /* The recommendation cards listen to this same event as the primary
+           * databases. Without it, cards opened before a pack finished loading
+           * kept showing "no confirmed match" until the user navigated away. */
+          document.dispatchEvent(new Event('regulatorydbchange'));
           diagAdd({ at: Date.now(), outcome: 'pack-auto-installed', src: pack.key, count: res.meta.count, sha256: String(res.manifest.sha256 || '').slice(0, 12) });
         }).catch(e => {
           installing[pack.key] = false;
@@ -2897,6 +2901,8 @@
       DB[k] = { meta: v.meta, rows: v.rows };
       stateLine(k);
       rebuildSearch();
+      /* Repaint any open recommendation card with the restored local pack. */
+      document.dispatchEvent(new Event('regulatorydbchange'));
       return k;
     })))).then(() => ensurePacks()).catch(() => {});
     /* التبديل إلى المحترف يحمّلهما إن لم يكونا موجودين */

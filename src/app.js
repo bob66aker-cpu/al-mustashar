@@ -3194,7 +3194,7 @@
         const rawCas = String(row.cas || '');
         const casTokens = rawCas.split(/[\n,;\[\]()]+/).map(digits).filter(Boolean);
         const exactCas = casKey && casTokens.includes(casKey);
-        const exactName = nameKey && (norm(row.name_norm || row.name) === nameKey);
+        const exactName = !casKey && nameKey && (norm(row.name_norm || row.name) === nameKey);
         if (!exactCas && !exactName) return;
         hits.push({
           key, name: row.name || name || '', cas: row.cas || '',

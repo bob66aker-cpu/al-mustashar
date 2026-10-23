@@ -189,3 +189,108 @@ article.result {
     scroll-behavior: auto !important;
   }
 }
+
+
+/* =================== Visual refresh 2026-10-23 ===================
+   Reference-inspired agricultural green, shared by the whole app.
+   Presentation only: no changes to regulatory meaning or data.
+*/
+:root {
+  --ui-forest: #075b46;
+  --ui-leaf: #08785b;
+  --ui-leaf-bright: #15916b;
+  --ui-mint: #e9f5ef;
+  --ui-line: #cfe4d8;
+  --ui-glass: rgba(255,255,255,.78);
+}
+html[data-theme="light"] {
+  --ui-mint: #e9f5ef;
+  --ui-line: #cfe4d8;
+  --ui-glass: rgba(255,255,255,.82);
+}
+@media (prefers-color-scheme: light) {
+  html:not([data-theme]) {
+    --ui-mint: #e9f5ef;
+    --ui-line: #cfe4d8;
+    --ui-glass: rgba(255,255,255,.82);
+  }
+}
+/* Cards across home, search, results, history, data, about and legend. */
+.card, article.result, .result-card, .history-item, .data-card, .mode-card,
+.jur-card, .lg-row, .info-rows .r {
+  border-radius: 16px;
+  transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease), background-color var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.card {
+  border-color: var(--border);
+  box-shadow: 0 3px 14px rgba(7,91,70,.055);
+}
+.card > h2, .page-head h1 {
+  letter-spacing: -.015em;
+}
+.card > h2 {
+  line-height: 1.5;
+}
+button, .btn, .btn-primary, .btn-outline, .nav-item, [role="button"] {
+  transition: color var(--dur) var(--ease), background-color var(--dur) var(--ease), border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+:where(button,.btn,.btn-primary,.btn-outline,[role="button"],a.nav-item):focus-visible {
+  outline: 3px solid var(--primary-strong);
+  outline-offset: 3px;
+}
+:where(.card,article.result,.result-card,.history-item,.data-card,.mode-card):hover {
+  border-color: var(--ui-line);
+  box-shadow: 0 7px 20px rgba(7,91,70,.10);
+}
+/* Image hover: subtle lift/zoom, with the caption kept legible. Applies to
+   recommendation source images, product/photo previews and about thumbnails. */
+:where(figure, .photo-card, .image-card, .thumb, .result-image, .crop-image) {
+  overflow: hidden;
+  border-radius: 14px;
+}
+:where(figure img, .photo-card img, .image-card img, .thumb img, .result-image img, .crop-image img) {
+  display: block;
+  max-width: 100%;
+  transition: transform 180ms var(--ease), filter 180ms var(--ease), box-shadow 180ms var(--ease);
+  transform-origin: center;
+}
+@media (hover: hover) and (pointer: fine) {
+  :where(figure, .photo-card, .image-card, .thumb, .result-image, .crop-image):hover img {
+    transform: scale(1.035);
+    filter: saturate(1.06) contrast(1.015);
+  }
+  :where(.card,article.result,.result-card,.history-item,.data-card,.mode-card):hover {
+    transform: translateY(-1px);
+  }
+  :where(button,.btn,.btn-primary,.btn-outline,.nav-item,[role="button"]):hover {
+    box-shadow: 0 5px 14px rgba(7,91,70,.13);
+  }
+}
+figure figcaption, .photo-caption, .image-caption {
+  line-height: 1.65;
+}
+.bottom {
+  border-top: 1px solid var(--border);
+  box-shadow: 0 -5px 20px rgba(7,91,70,.045);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+.bottom .nav-item {
+  border-radius: 12px;
+}
+.bottom .nav-item.active {
+  background: var(--primary-soft);
+  color: var(--primary-strong);
+}
+input, select, textarea {
+  border-radius: 12px;
+}
+.status, .source, .badge, .chip, .tws-chip {
+  border-radius: 999px;
+}
+@media (prefers-reduced-motion: reduce) {
+  :where(.card,article.result,.result-card,.history-item,.data-card,.mode-card,button,.btn,.btn-primary,.btn-outline,.nav-item,figure img,.photo-card img,.image-card img,.thumb img,.result-image img,.crop-image img) {
+    transition: none !important;
+    transform: none !important;
+  }
+}

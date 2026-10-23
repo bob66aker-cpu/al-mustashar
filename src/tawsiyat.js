@@ -131,8 +131,27 @@
     return (d && d[k]) || LABELS.ar[k] || k;
   }
   function typeName(t) { return (lang() === 'en' ? TYPE_EN[t] : TYPE_AR[t]) || t; }
+  /* Correct obvious OCR spacing/letter artifacts for display only.
+   * Source JSON remains untouched; uncertain titles are deliberately not guessed. */
+  function cleanArabic(s) {
+    var v = String(s == null ? '' : s);
+    [
+      [/جلراثيم/g, 'جراثيم'], [/احل/g, 'الح'], [/اجل/g, 'الج'], [/اأ/g, 'أ'],
+      [/اعفان/g, 'أعفان'], [/البياضض/g, 'البياض'], [/مرضض/g, 'مرض'],
+      [/الرتبسس/g, 'التربس'], [/الرتبس/g, 'التربس'], [/ال من/g, 'المن'],
+      [/امل ن/g, 'المن'], [/ال م ن/g, 'المن'], [/الندوة املتأخرة/g, 'الندوة المتأخرة'],
+      [/الندوة المتاأخرة/g, 'الندوة المتأخرة'], [/الصصدأ/g, 'الصدأ'], [/الصداأ/g, 'الصدأ'],
+      [/الدقيقى/g, 'الدقيقي'], [/الزغبى/g, 'الزغبي'], [/اللفح ة/g, 'اللفحة'],
+      [/الباذجنان/g, 'الباذنجان'], [/الكمرثى/g, 'الكمثرى'], [/الشـهــد/g, 'الشمام'],
+      [/الكوســة/g, 'الكوسة'], [/صصانعات/g, 'صانعات'], [/االنفاق/g, 'الأنفاق'],
+      [/الفئ ران/g, 'الفئران'], [/القواق ع/g, 'القواقع'], [/اعف ان/g, 'أعفان'],
+      [/الثم ار/g, 'الثمار'], [/اأوراق/g, 'أوراق'], [/اأعفان/g, 'أعفان'],
+      [/اأمراض/g, 'أمراض'], [/اأبو/g, 'أبو'], [/البيض السكلروتيني/g, 'الأبيض السكلروتيني']
+    ].forEach(function (pair) { v = v.replace(pair[0], pair[1]); });
+    return v;
+  }
   function esc(s) {
-    return String(s == null ? '' : s)
+    return cleanArabic(s)
       .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
       .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
   }
@@ -238,7 +257,77 @@
     '.tws-err h2{font-size:1.05rem;margin:0 0 8px}',
     '.tws-err p{color:var(--muted);line-height:1.8;margin:0 0 14px;font-size:.9rem}',
     '.tws-btn{display:inline-block;padding:10px 22px;border-radius:10px;background:var(--primary);color:var(--on-primary);border:0;font:inherit;font-size:.95rem;cursor:pointer}',
-    '@media (max-width:360px){.tws-grid{grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:6px}.tws-crop{padding:10px}}'
+    '@media (max-width:360px){.tws-grid{grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:6px}.tws-crop{padding:10px}}',
+    /* 2026-10-23 visual refresh: reference-inspired agricultural green cards */
+    'main:has(#view-tws:not([hidden])){max-width:1120px;padding-inline:clamp(12px,2.4vw,28px)}',
+    '#view-tws{--tws-forest:#075b46;--tws-green:#08785b;--tws-leaf:#13845f;--tws-mint:#e9f5ef;--tws-line:#cfe4d8;--tws-ink:#173b32}',
+    '#view-tws .wrap{max-width:100%;margin-inline:auto}',
+    '#view-tws .tws-head{position:relative;overflow:hidden;padding:clamp(18px,3vw,30px);margin:0 0 18px;border-radius:22px;background:linear-gradient(125deg,var(--tws-forest),#0c765b 62%,#15916b);color:#fff;box-shadow:0 8px 22px rgba(5,91,70,.14)}',
+    '#view-tws .tws-head h1{font-size:clamp(1.45rem,3vw,2.05rem);font-weight:800;line-height:1.35;color:#fff}',
+    '#view-tws .tws-head p{max-width:78ch;margin-top:8px;color:rgba(255,255,255,.9);font-size:.94rem;line-height:1.9}',
+    '#view-tws .tws-search{margin:0 0 10px;padding:14px 16px;border-radius:15px;border:1px solid var(--tws-line);background:var(--card);box-shadow:0 3px 12px rgba(9,80,58,.045)}',
+    '#view-tws .tws-count{padding:0 4px;margin:0 0 14px;color:var(--muted);font-weight:650}',
+    '#view-tws .tws-grid{grid-template-columns:repeat(auto-fill,minmax(min(100%,210px),1fr));gap:12px;margin-bottom:24px}',
+    '#view-tws .tws-crop{position:relative;min-height:108px;gap:8px;padding:16px;border-radius:17px;border:1px solid var(--tws-line);background:linear-gradient(155deg,var(--card),var(--tws-mint));box-shadow:0 3px 12px rgba(7,91,70,.055);transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}',
+    '#view-tws .tws-crop:hover,#view-tws .tws-crop:focus-visible{transform:translateY(-2px);border-color:var(--tws-green);box-shadow:0 8px 20px rgba(7,91,70,.12)}',
+    '#view-tws .tws-crop b{font-size:1.08rem;color:var(--tws-ink)}',
+    '#view-tws .tws-crop .n{color:var(--tws-green);font-weight:700}',
+    '#view-tws .tws-crumb{gap:8px;margin-bottom:16px;padding:8px 12px;border:1px solid var(--tws-line);border-radius:12px;background:var(--tws-mint)}',
+    '#view-tws .tws-crumb a{font-weight:700;color:var(--tws-green)}',
+    '#view-tws .tws-meta{margin-bottom:18px;padding:12px 14px;border-radius:12px;background:var(--tws-mint);color:var(--tws-ink)}',
+    '#view-tws .tws-chips{gap:8px;margin-bottom:16px}',
+    '#view-tws .tws-list{gap:12px;margin-bottom:22px}',
+    '#view-tws .tws-inf{min-height:70px;padding:14px 16px;border-radius:16px;border-color:var(--tws-line);background:linear-gradient(110deg,var(--card),var(--tws-mint));box-shadow:0 3px 12px rgba(7,91,70,.04);transition:border-color .18s ease,transform .18s ease}',
+    '#view-tws .tws-inf:hover,#view-tws .tws-inf:focus-visible{border-color:var(--tws-green);transform:translateY(-1px)}',
+    '#view-tws .tws-inf .no{display:grid;place-items:center;min-width:2.35em;min-height:2.35em;border-radius:50%;background:var(--tws-green);color:#fff}',
+    '#view-tws .tws-inf .nm b{font-size:1.02rem;line-height:1.6}',
+    '#view-tws .tws-chip{padding:5px 10px;font-weight:700}',
+    '#view-tws .tws-card{padding:clamp(14px,2.5vw,24px);margin-bottom:18px;border-radius:20px;border-color:var(--tws-line);background:var(--card);box-shadow:0 5px 18px rgba(7,91,70,.055)}',
+    '#view-tws .tws-card h2{padding:13px 16px;margin:0 0 16px;border-radius:14px;background:linear-gradient(110deg,var(--tws-forest),var(--tws-green));color:#fff;font-size:1.2rem;line-height:1.5}',
+    '#view-tws .tws-card h3{display:flex;align-items:center;gap:8px;padding:9px 12px;margin:18px 0 10px;border-radius:11px;background:var(--tws-mint);color:var(--tws-forest);font-size:1rem}',
+    '#view-tws .tws-card p.txt{padding:0 3px;font-size:1rem;line-height:2.05;color:var(--text)}',
+    '#view-tws .tws-gallery{grid-template-columns:repeat(auto-fill,minmax(min(100%,180px),1fr));gap:12px}',
+    '#view-tws .tws-gallery img{border-radius:14px;border-color:var(--tws-line);box-shadow:0 3px 12px rgba(7,91,70,.08)}',
+    '#view-tws .tws-gallery figcaption{font-size:.78rem;line-height:1.6}',
+    '#view-tws .tws-prod{padding:14px;margin-bottom:12px;border:1px solid var(--tws-line);border-radius:16px;background:linear-gradient(145deg,#f7fbf8,var(--tws-mint));box-shadow:0 3px 12px rgba(7,91,70,.045)}',
+    '#view-tws .tws-prod .act{font-size:1rem;line-height:1.85;padding-bottom:10px;margin-bottom:10px;border-bottom:1px solid var(--tws-line);color:var(--tws-ink)}',
+    '#view-tws .tws-prod .act .nm{font-weight:800;color:var(--tws-forest)}',
+    '#view-tws .tws-prod .row{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:8px;margin:0 0 8px}',
+    '#view-tws .tws-prod .row span{display:block;min-width:0;padding:10px 12px;border:1px solid var(--tws-line);border-radius:11px;background:rgba(255,255,255,.72);line-height:1.75;overflow-wrap:anywhere}',
+    '#view-tws .tws-prod .row b{display:block;margin-bottom:3px;color:var(--tws-green)}',
+    '#view-tws .tws-parsed{padding:4px 9px;background:#d9efe3;color:#075b46;font-weight:750}',
+    '#view-tws .tws-cas{padding:4px 9px;border-radius:9px;font-weight:700}',
+    '#view-tws .tws-note{border-radius:12px;padding:12px 14px;line-height:1.9}',
+    '#view-tws .tws-foot{margin-top:20px;padding:12px 14px;border:1px solid var(--tws-line);border-radius:12px;background:var(--tws-mint)}',
+    '#view-tws .tws-btn{background:var(--tws-green);border-radius:12px;font-weight:750;box-shadow:0 4px 12px rgba(7,91,70,.15)}',
+    '@media(min-width:760px){#view-tws .tws-card{padding:24px}#view-tws .tws-card .tws-prod{padding:16px}}',
+    '@media(max-width:520px){#view-tws .tws-head{border-radius:16px;padding:18px}#view-tws .tws-card{border-radius:16px}#view-tws .tws-prod .row{grid-template-columns:1fr}#view-tws .tws-inf{align-items:flex-start;gap:8px}}',
+    '@media(prefers-reduced-motion:reduce){#view-tws .tws-crop,#view-tws .tws-inf{transition:none}}',
+    /* Dark-theme contrast fix: dark headings on dark cards were unreadable. */
+    'html:not([data-theme="light"]) #view-tws .tws-card h3{background:#263c32;color:#b8f0d0;border:1px solid #456b58}',
+    'html:not([data-theme="light"]) #view-tws .tws-meta{background:#26352e;color:#e2f4e9;border:1px solid #456b58}',
+    'html:not([data-theme="light"]) #view-tws .tws-crumb{background:#26352e;border-color:#456b58}',
+    'html:not([data-theme="light"]) #view-tws .tws-crumb a{color:#9ce7bd}',
+    'html:not([data-theme="light"]) #view-tws .tws-crumb .cur{color:#e2f4e9}',
+    'html:not([data-theme="light"]) #view-tws .tws-crop{background:linear-gradient(155deg,#242b27,#263c32);border-color:#456b58}',
+    'html:not([data-theme="light"]) #view-tws .tws-crop b{color:#e7f8ee}',
+    'html:not([data-theme="light"]) #view-tws .tws-crop .en{color:#c3d7cb}',
+    'html:not([data-theme="light"]) #view-tws .tws-inf{background:linear-gradient(110deg,#242b27,#263c32);border-color:#456b58}',
+    'html:not([data-theme="light"]) #view-tws .tws-inf .nm b{color:#e7f8ee}',
+    'html:not([data-theme="light"]) #view-tws .tws-prod{background:linear-gradient(145deg,#242b27,#263c32);border-color:#456b58}',
+    'html:not([data-theme="light"]) #view-tws .tws-prod .act{color:#e7f8ee}',
+    'html:not([data-theme="light"]) #view-tws .tws-prod .act .nm{color:#a7ebc5}',
+    'html:not([data-theme="light"]) #view-tws .tws-prod .row span{background:#202b25;border-color:#456b58;color:#e7f8ee}',
+    'html:not([data-theme="light"]) #view-tws .tws-prod .row b{color:#a7ebc5}',
+    'html:not([data-theme="light"]) #view-tws .tws-foot{background:#26352e;color:#d9eee1;border-color:#456b58}',
+    'html:not([data-theme="light"]) #view-tws .tws-src a{color:#9ce7bd}',
+    '#view-tws .tws-reg-status{display:flex;flex-wrap:wrap;gap:7px;margin:8px 0 12px}',
+    '#view-tws .tws-reg-badge{display:flex;flex-direction:column;gap:2px;min-width:170px;max-width:100%;padding:7px 10px;border:1px solid currentColor;border-radius:10px;font-size:.78rem;line-height:1.6;overflow-wrap:anywhere}',
+    '#view-tws .tws-reg-badge b{font-size:.75rem}',
+    '#view-tws .tws-reg-badge.ban{color:var(--st-ban-ink);background:var(--st-ban-soft)}',
+    '#view-tws .tws-reg-badge.ok{color:var(--st-ok-ink);background:var(--st-ok-soft)}',
+    '#view-tws .tws-reg-badge.review{color:var(--st-review-ink);background:var(--st-review-soft)}',
+    '#view-tws .tws-reg-badge.unknown{color:var(--muted);background:var(--field);border-color:var(--border)}'
   ].join('\n');
 
   function ensureInjected() {
@@ -283,6 +372,10 @@
     var sec = document.getElementById('view-tws');
     if (sec) sec.hidden = (location.hash.replace(/^#\/?/, '').split('/')[0] !== 'tws');
     route();
+    document.removeEventListener('modechange', route);
+    document.addEventListener('modechange', route);
+    document.removeEventListener('regulatorydbchange', route);
+    document.addEventListener('regulatorydbchange', route);
   }
   function route() {
     var sec = document.getElementById('view-tws');
@@ -371,6 +464,75 @@
     return html;
   }
 
+  function regulatoryStatusMarkup(product) {
+    var mode = document.getElementById('mode');
+    if (!mode || mode.value !== 'pro' || typeof window.MustasharActiveStatus !== 'function') return '';
+    var locale = String(document.documentElement.lang || lang() || 'ar').toLowerCase().split('-')[0];
+    var isArabic = locale === 'ar';
+    var sourceNames = {
+      ar: {'libya-248':'ليبيا — قرار 248 لسنة 2024','libya-500':'ليبيا — قرار 500 لسنة 2026',eu:'الاتحاد الأوروبي',epa:'الولايات المتحدة — EPA',canada:'كندا — PMRA',australia:'أستراليا — APVMA'},
+      en: {'libya-248':'Libya — Decision 248/2024','libya-500':'Libya — Decision 500/2026',eu:'European Union',epa:'USA / EPA',canada:'Canada — PMRA',australia:'Australia — APVMA'},
+      fr: {'libya-248':'Libye — décision 248/2024','libya-500':'Libye — décision 500/2026',eu:'Union européenne',epa:'États-Unis — EPA',canada:'Canada — PMRA',australia:'Australie — APVMA'},
+      zh: {'libya-248':'利比亚 — 2024年第248号决定','libya-500':'利比亚 — 2026年第500号决定',eu:'欧盟',epa:'美国 — EPA',canada:'加拿大 — PMRA',australia:'澳大利亚 — APVMA'}
+    };
+    var ui = sourceNames[locale] || sourceNames.en;
+    var unknown = {
+      ar:'لا يوجد تطابق مؤكد في قاعدة الاختصاص المحدد',
+      en:'No confirmed match in the selected jurisdiction database',
+      fr:'Aucune correspondance confirmée dans la base de la juridiction sélectionnée',
+      zh:'在所选司法辖区数据库中未找到已确认匹配'
+    }[locale] || 'No confirmed match in the selected jurisdiction database';
+    var statusPrefix = {ar:'الحالة:',en:'Status:',fr:'Statut :',zh:'状态：'}[locale] || 'Status:';
+    function localStatus(h) {
+      var raw = String(h.status || '').trim();
+      if (locale === 'ar') return raw || String(h.status_raw || 'غير محددة في السجل');
+      var rawSource = String(h.status_raw || '').trim();
+      if (rawSource && !/[\u0600-\u06FF]/.test(rawSource)) return rawSource;
+      var normalized = raw.toLowerCase();
+      if (/محظور|ممنوع/.test(normalized)) return ({en:'Prohibited / not approved',fr:'Interdit / non approuvé',zh:'禁用 / 未获批准'}[locale] || 'Prohibited / not approved');
+      if (/مسموح/.test(normalized)) return ({en:'Active registration recorded',fr:'Enregistrement actif indiqué',zh:'记录存在有效登记'}[locale] || 'Active registration recorded');
+      if (/غير مُعاد التقييم|غير معاد التقييم/.test(normalized)) return ({en:'Not reassessed',fr:'Non réévalué',zh:'尚未重新评估'}[locale] || 'Not reassessed');
+      return raw || rawSource || '—';
+    }
+    var ingredients = product['مكونات فعالة'] || [];
+    if (!ingredients.length) return '';
+    var html = '<div class="tws-reg-status" aria-label="' + esc(({ar:'الحالة التنظيمية للمادة الفعالة',en:'Active ingredient regulatory status',fr:'Statut réglementaire de la substance active',zh:'有效成分监管状态'}[locale] || 'Active ingredient regulatory status')) + '">';
+    var count = 0;
+    ingredients.forEach(function (ing) {
+      var cas = String(ing.cas || '');
+      var how = String(ing.how || '');
+      var name = String(ing.name || '');
+      if (!name && !cas) return;
+      var hits = window.MustasharActiveStatus((how === 'exact' || how === 'tokens') ? cas : '', name);
+      var selected = hits.filter(function (h) {
+        return isArabic ? (h.key === 'libya-248' || h.key === 'libya-500')
+          : (h.key === 'eu' || h.key === 'epa' || h.key === 'canada' || h.key === 'australia');
+      });
+      var seen = {};
+      var rendered = 0;
+      selected.forEach(function (h) {
+        var id = h.key + '|' + h.status + '|' + h.decision;
+        if (seen[id]) return;
+        seen[id] = true;
+        var raw = String(h.status || h.status_raw || '').trim();
+        var cls = /محظور|ممنوع|not approved|prohibited|banned|cancelled/i.test(raw) ? 'ban'
+          : /مسموح|approved|registered|active registration|permitted/i.test(raw) ? 'ok'
+          : 'review';
+        var label = ui[h.key] || h.key;
+        var value = localStatus(h);
+        html += '<span class="tws-reg-badge ' + cls + '" title="' + esc(label + (h.status_raw ? ' — ' + h.status_raw : '')) + '">'
+          + '<b>' + esc(label) + '</b><span>' + esc(statusPrefix + ' ' + value) + '</span></span>';
+        count++; rendered++;
+      });
+      if (!rendered) {
+        html += '<span class="tws-reg-badge unknown"><b>' + esc(name || cas || (isArabic ? 'مادة فعالة' : 'Active ingredient')) + '</b><span>' + esc(unknown) + '</span></span>';
+        count++;
+      }
+    });
+    html += '</div>';
+    return count ? html : '';
+  }
+
   /* ---------- عرض البطاقة (من sections.json) ---------- */
   function renderCard(c, type, n, sec) {
     var inf = null;
@@ -430,6 +592,7 @@
             + (conc ? ' <span class="tws-parsed">' + esc(L('conc')) + ' ' + esc(conc) + '</span>' : '')
             + (form ? ' <span class="tws-parsed">' + esc(L('form')) + ' ' + esc(form) + '</span>' : '')
             + '</div>'
+            + regulatoryStatusMarkup(p)
             + '<div class="row"><span><b>' + esc(L('rate')) + ':</b> ' + esc(p['معدل الاستخدام'] || '—') + '</span>'
             + '<span><b>' + esc(L('who')) + ':</b> ' + esc(p['تصنيف WHO'] || '—') + '</span>'
             + '<span><b>' + esc(L('phi')) + ':</b> ' + esc(p['فترة الأمان'] || '—') + '</span></div>';

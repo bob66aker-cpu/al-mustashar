@@ -370,6 +370,8 @@
     route();
     document.removeEventListener('modechange', route);
     document.addEventListener('modechange', route);
+    document.removeEventListener('regulatorydbchange', route);
+    document.addEventListener('regulatorydbchange', route);
   }
   function route() {
     var sec = document.getElementById('view-tws');

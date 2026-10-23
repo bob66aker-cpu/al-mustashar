@@ -565,6 +565,7 @@
     return attemptFetch()
       .then(data => {
         DB[src.key] = data;
+        document.dispatchEvent(new Event('regulatorydbchange'));
         setPhase(src.key, 'ok', data.rows.length);
         if (cards && cards.buildCasIndex) cards.buildCasIndex(DB);
         if (tooShort(data)) {
@@ -577,6 +578,7 @@
       .catch(() => attemptFetch()                 // one silent retry
         .then(data => {
           DB[src.key] = data;
+          document.dispatchEvent(new Event('regulatorydbchange'));
           setPhase(src.key, 'ok', data.rows.length);
           if (cards && cards.buildCasIndex) cards.buildCasIndex(DB);
           return idbPut(STORE_DB, src.key, data).catch(() => {});
@@ -587,6 +589,7 @@
             if (looksValid(cached)) {
             if (cards && cards.buildCasIndex) cards.buildCasIndex(cached);
               DB[src.key] = cached;
+              document.dispatchEvent(new Event('regulatorydbchange'));
               setPhase(src.key, 'cached', cached.rows.length);
             } else {
               // mark unavailable — search simply skips this source

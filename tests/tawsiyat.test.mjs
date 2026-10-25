@@ -161,7 +161,7 @@ const wNames = wheat.map(s => normAr(s.name_ar)).join(' | ');
 const compact = s => normAr(s).replace(/[\sء]/g, '');
 const wCompact = wheat.map(s => compact(s.name_ar + ' ' + (s.group || '')));
 const REQUIRED = [
-  ['تفحم'], ['بياض', 'دقيق'], ['الصدا', 'الاصفر'], ['فيوزاريوم'], ['اعفان', 'جلذور'], ['المن']
+  ['تفحم'], ['بياض', 'دقيق'], ['الصدا', 'الاصفر'], ['فيوزاريوم'], ['اعفان', 'الجذور'], ['المن']
 ];
 const missingW = REQUIRED.filter(stems => !wCompact.some(c => stems.every(st => c.includes(st))))
   .map(st => st.join('+'));

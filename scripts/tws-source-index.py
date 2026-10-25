@@ -85,7 +85,9 @@ def main():
             if SYM_RE.search(txt) or GROUP_RE.search(txt) or NOISE_RE.search(txt):
                 continue
             tops.append({"y": y, "text": txt})
-        index[str(pno)] = {"heads": heads, "groups": groups, "tops": tops}
+        # كل أسطر الصفحة بمواضع y ( أساس التسمية لكل قسم بحسب الموقع الفعلي )
+        lines_out = [{"y": y, "text": t} for (y, t) in lines]
+        index[str(pno)] = {"heads": heads, "groups": groups, "tops": tops, "lines": lines_out}
     with open(OUT, "w", encoding="utf-8") as f:
         json.dump(index, f, ensure_ascii=False, indent=1)
     nh = sum(len(v["heads"]) for v in index.values())

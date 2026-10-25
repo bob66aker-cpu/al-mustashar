@@ -19,12 +19,15 @@
   "NOT_FOUND_IN_SOURCE"
  ],
  "summary": {
-  "VERIFIED": 139,
-  "NEEDS_REVIEW": 178,
-  "NOT_FOUND_IN_SOURCE": 707
+  "VERIFIED": 260,
+  "NEEDS_REVIEW": 63,
+  "NOT_FOUND_IN_SOURCE": 701
  },
  "notes": [
+  "فهرس الكتاب (المحتويات IX–XII) هو مرجع حدود المحاصيل: 62 مدخلاً (PDF = مطبوع + 13)؛ تسمية الصفحة من سطر الطباعة قبل عنوان القسم مباشرة بصفحته وموضع y.",
   "اللوبى = cowpea بمطابقة تسمية حرفيّة.",
+  "تصحيح العناوين بالتحقق البصري: 50 نصًّا مصححًا بـ OCR للصفحة الأصلية أو بعنوان مماثل مطبوع نظيفًا (HEAD_FIX، مسجَّل في name_fix) و13 عنوانًا قيد المراجعة (HEAD_REVIEW: النص كما ورد في الطباعة + سبب الحسم المتعذّر، name_status=NEEDS_REVIEW).",
+  "فصل الفول السودانى عن اللوبيا: صفحات 67-69 (مطبوع 54 / PDF 67-69) كانت مدرجةً سابقاً ضمن cowpea (الإصدار 1.19.30: cowpea بـ 9 بطاقات على 67-69 و181-183). سطر التسمية المطبوع على p67 و p68 و p69 «الفول السودانى …» ومدخل الفهرس (مطبوع 54 / PDF 67 «الفول الس ودانى») يثبتان محصولاً منفصلاً، بينما قسم «اللوبيا» يبدأ من مطبوع 168 / PDF 181 بسطر تسمية مستقل — الحالة السابقة والجديدة موثقتان هنا سبب التغيير. الدليل البصري: OCR لصورة الصفحة الأصلية p67 يقرأ «الفول السودانى». الحالة الجديدة: groundnut 5 بطاقات (67-69) + cowpea 4 بطاقات (181-183).",
   "تسمية الكتاب «الفول البلدى» ← fieldbean: تسمية صفحات 21–22؛ لا يُدَّعى تطابقها مع الفاصولياء",
   "تسمية الكتاب «الكركديه» ← roselle: محصول غير م存在于 الفهرس القديم — قُدّم بمسمّاه في الكتاب",
   "تسمية الكتاب «بنجر السكر» ← sugarbeet: الكتاب: بنجر السكر · الفهرس القديم: شمندر السكر — محصول واحد بدليل صفحات 33–42 قبل البرسيم مباشرة",
@@ -40,7 +43,7 @@
   "تسمية الكتاب «املوالح» ← citrus: الموالح (برتقال وحمضيات) — الفهرس القديم: الحمضيات",
   "تسمية الكتاب «اخلوخ» ← peach: تشويه طباعي للخوخ (p270–273)",
   "تسمية الكتاب «املشمش» ← apricot: المشمش — الفهرس القديم: المشمش",
-  "تسمية الكتاب «بطيخ اللب» ← watermelon: تسمية فرعية داخل صفحات البطيخ p162–165 — الإسناد للمحصول الأم مُعلَّم للمراجعة",
+  "تسمية الكتاب «بطيخ اللب» ← watermelon: الاستخراج ربطه بالبطيخ؛ المحتويات تجزئه مدخلاً مستقلاً-13، وسطور التسمية p162–165 تابعة له — الإسناد المصحَّح melo_labb والتعارض مُدوَّن",
   "تسمية الكتاب «الكانتالوب» ← cantaloupe: الكتاب يميّزها عن الشمام — قُدّمت كمحصول مستقل بمسمّاه",
   "تسمية الكتاب «الشهد» ← shahd: تسمية غير محسومة المقابل — قُدّمت كما وردت بلا تقابلية مُدّعاة",
   "تسمية الكتاب «الكوســة» ← koosa: الكوسة (قوقعة صيفية) بين الخيار والقرع — محصول مستقل بمسمّاه",
@@ -51,7 +54,16 @@
   "تسمية الكتاب «النخيل» ← dates: أبواب p250–251: السوسة الحمراء وابو دقيق السايكس وغبار النخيل — أعراض النخيل التمر",
   "تسمية الكتاب «املاجنو» ← mango: تشويه ترتيب حروف للمانجو p227–231 — الأنثركنوز والعفن الهبابى أبابها",
   "تسمية الكتاب «الكمرثى» ← pear: تشويه حروف (ث/ت) للكمثرى — اللفحة النارية p267–268 بين التفاح والخوخ",
-  "تسمية الكتاب «الزراعات المحمية» ← protected: قسم إرشادي في الكتاب لا محصول — معروض بمسمّاه دون إسناده لمحصول واحد"
+  "تسمية الكتاب «الزراعات المحمية» ← protected: قسم إرشادي في الكتاب لا محصول — معروض بمسمّاه دون إسناده لمحصول واحد",
+  "تسمية الكتاب «اللفت» ← leafbeet: مدخل الفهرس-5: مطبوع 117 ← PDF130 — غائب عن الفهرس القديم",
+  "تسمية الكتاب «كوسة اللب» ← koosa_labb: مدخل الفهرس-11: مطبوع 143 ← PDF156 — محصول مستقل بمسمّاه",
+  "تسمية الكتاب «بطيخ اللب» ← melo_labb: مدخل الفهرس-13: مطبوع 149 ← PDF162 — منفصل عن البطيخ-12 في المحتويات",
+  "تسمية الكتاب «نخيل السايكس» ← sykes_palm: مدخل الفهرس-6: مطبوع 238 ← PDF251 — منفصل عن النخيل-5",
+  "تسمية الكتاب «المسطحات الخضراء» ← green_areas: مدخل الفهرس-29: مطبوع 197 ← PDF210",
+  "تسمية الكتاب «المحاصيل الزراعية المخزونة» ← stored_crops: مدخل «رابعاً: آفات محاصيل متنوعة»-1: مطبوع 263 ← PDF276",
+  "تسمية الكتاب «المبانى فى الريف والحضر» ← buildings: مدخل الفهرس-2: مطبوع 265 ← PDF278",
+  "تسمية الكتاب «الحقول والمزارع وحدائق الفاكهة» ← open_fields: مدخل الفهرس-3: مطبوع 265 ← PDF278 — الفئران",
+  "تسمية الكتاب «القواقع» ← snails: مدخل الفهرس-4: مطبوع 266 ← PDF279"
  ],
  "rows": [
   {
@@ -672,7 +684,7 @@
    "printed_page": null,
    "pdf_page": null,
    "status": "NOT_FOUND_IN_SOURCE",
-   "action": "الكتاب لا يغطي هذا المحصول — أُزيل من قسم التوصيات؛ بياناته باقية في data/advice بانتظار دليل من الكتاب"
+   "action": "لم يثبت ارتباطها بهذا المحصول في الكتاب — أُزيلت من القسم؛ محفوظة في data/advice بانتظار دليل"
   },
   {
    "crop_id": "banana",
@@ -682,7 +694,7 @@
    "printed_page": null,
    "pdf_page": null,
    "status": "NOT_FOUND_IN_SOURCE",
-   "action": "الكتاب لا يغطي هذا المحصول — أُزيل من قسم التوصيات؛ بياناته باقية في data/advice بانتظار دليل من الكتاب"
+   "action": "لم يثبت ارتباطها بهذا المحصول في الكتاب — أُزيلت من القسم؛ محفوظة في data/advice بانتظار دليل"
   },
   {
    "crop_id": "banana",
@@ -692,7 +704,7 @@
    "printed_page": null,
    "pdf_page": null,
    "status": "NOT_FOUND_IN_SOURCE",
-   "action": "الكتاب لا يغطي هذا المحصول — أُزيل من قسم التوصيات؛ بياناته باقية في data/advice بانتظار دليل من الكتاب"
+   "action": "لم يثبت ارتباطها بهذا المحصول في الكتاب — أُزيلت من القسم؛ محفوظة في data/advice بانتظار دليل"
   },
   {
    "crop_id": "banana",
@@ -702,7 +714,7 @@
    "printed_page": null,
    "pdf_page": null,
    "status": "NOT_FOUND_IN_SOURCE",
-   "action": "الكتاب لا يغطي هذا المحصول — أُزيل من قسم التوصيات؛ بياناته باقية في data/advice بانتظار دليل من الكتاب"
+   "action": "لم يثبت ارتباطها بهذا المحصول في الكتاب — أُزيلت من القسم؛ محفوظة في data/advice بانتظار دليل"
   },
   {
    "crop_id": "banana",
@@ -712,7 +724,7 @@
    "printed_page": null,
    "pdf_page": null,
    "status": "NOT_FOUND_IN_SOURCE",
-   "action": "الكتاب لا يغطي هذا المحصول — أُزيل من قسم التوصيات؛ بياناته باقية في data/advice بانتظار دليل من الكتاب"
+   "action": "لم يثبت ارتباطها بهذا المحصول في الكتاب — أُزيلت من القسم؛ محفوظة في data/advice بانتظار دليل"
   },
   {
    "crop_id": "barley",
@@ -818,11 +830,11 @@
    "crop_id": "bean",
    "infection_id": "bean.5",
    "old_name": "المن الوردي",
-   "name_in_source": null,
-   "printed_page": null,
-   "pdf_page": null,
-   "status": "NOT_FOUND_IN_SOURCE",
-   "action": "لم يثبت ارتباطها بهذا المحصول في الكتاب — أُزيلت من القسم؛ محفوظة في data/advice بانتظار دليل"
+   "name_in_source": "المن",
+   "printed_page": 164,
+   "pdf_page": 177,
+   "status": "NEEDS_REVIEW",
+   "action": "مطابقة بمشتركات تسمية غير حرفية — تحتاج مراجعة بشرية قبل الاعتماد"
   },
   {
    "crop_id": "bean",
@@ -1878,7 +1890,7 @@
    "crop_id": "cotton",
    "infection_id": "cotton.8",
    "old_name": "المن الوردي",
-   "name_in_source": "ال من",
+   "name_in_source": "المن",
    "printed_page": 32,
    "pdf_page": 45,
    "status": "NEEDS_REVIEW",
@@ -2178,11 +2190,11 @@
    "crop_id": "cucumber",
    "infection_id": "cucumber.8",
    "old_name": "المن الوردي",
-   "name_in_source": null,
-   "printed_page": null,
-   "pdf_page": null,
-   "status": "NOT_FOUND_IN_SOURCE",
-   "action": "لم يثبت ارتباطها بهذا المحصول في الكتاب — أُزيلت من القسم؛ محفوظة في data/advice بانتظار دليل"
+   "name_in_source": "المن",
+   "printed_page": 126,
+   "pdf_page": 139,
+   "status": "NEEDS_REVIEW",
+   "action": "مطابقة بمشتركات تسمية غير حرفية — تحتاج مراجعة بشرية قبل الاعتماد"
   },
   {
    "crop_id": "cucumber",
@@ -2408,11 +2420,11 @@
    "crop_id": "eggplant",
    "infection_id": "eggplant.8",
    "old_name": "الذبابة البيضاء",
-   "name_in_source": null,
-   "printed_page": null,
-   "pdf_page": null,
-   "status": "NOT_FOUND_IN_SOURCE",
-   "action": "لم يثبت ارتباطها بهذا المحصول في الكتاب — أُزيلت من القسم؛ محفوظة في data/advice بانتظار دليل"
+   "name_in_source": "الذبابة البيضاء",
+   "printed_page": 122,
+   "pdf_page": 135,
+   "status": "VERIFIED",
+   "action": "مطابقة حرفية مع سطر الكتاب — أُبقي"
   },
   {
    "crop_id": "eggplant",
@@ -2438,11 +2450,11 @@
    "crop_id": "eggplant",
    "infection_id": "eggplant.10",
    "old_name": "ذبابة الفاكهة المتوسطية",
-   "name_in_source": null,
-   "printed_page": null,
-   "pdf_page": null,
-   "status": "NOT_FOUND_IN_SOURCE",
-   "action": "لم يثبت ارتباطها بهذا المحصول في الكتاب — أُزيلت من القسم؛ محفوظة في data/advice بانتظار دليل"
+   "name_in_source": "الذبابة البيضاء",
+   "printed_page": 122,
+   "pdf_page": 135,
+   "status": "NEEDS_REVIEW",
+   "action": "مطابقة بمشتركات تسمية غير حرفية — تحتاج مراجعة بشرية قبل الاعتماد"
   },
   {
    "crop_id": "eggplant",
@@ -2468,11 +2480,11 @@
    "crop_id": "eggplant",
    "infection_id": "eggplant.13",
    "old_name": "ذبابة الفاكهة الشرقية",
-   "name_in_source": null,
-   "printed_page": null,
-   "pdf_page": null,
-   "status": "NOT_FOUND_IN_SOURCE",
-   "action": "لم يثبت ارتباطها بهذا المحصول في الكتاب — أُزيلت من القسم؛ محفوظة في data/advice بانتظار دليل"
+   "name_in_source": "الذبابة البيضاء",
+   "printed_page": 122,
+   "pdf_page": 135,
+   "status": "NEEDS_REVIEW",
+   "action": "مطابقة بمشتركات تسمية غير حرفية — تحتاج مراجعة بشرية قبل الاعتماد"
   },
   {
    "crop_id": "eggplant",
@@ -2718,11 +2730,11 @@
    "crop_id": "grape",
    "infection_id": "grape.1",
    "old_name": "نيماتودا تعقد الجذور الإثيوبية",
-   "name_in_source": "نيماتودا تعقد اجلذور",
+   "name_in_source": "نيماتودا تعقد الجذور",
    "printed_page": 236,
    "pdf_page": 249,
-   "status": "NEEDS_REVIEW",
-   "action": "مطابقة بمشتركات تسمية غير حرفية — تحتاج مراجعة بشرية قبل الاعتماد"
+   "status": "VERIFIED",
+   "action": "مطابقة بالتضمين مع سطر الكتاب — أُبقي"
   },
   {
    "crop_id": "grape",
@@ -4458,9 +4470,9 @@
    "crop_id": "peach",
    "infection_id": "peach.5",
    "old_name": "الدرع أبيض على الخوخ",
-   "name_in_source": "النمل الأبيض",
-   "printed_page": 265,
-   "pdf_page": 278,
+   "name_in_source": "صدأ الخوخ",
+   "printed_page": 259,
+   "pdf_page": 272,
    "status": "NEEDS_REVIEW",
    "action": "مطابقة بمشتركات تسمية غير حرفية — تحتاج مراجعة بشرية قبل الاعتماد"
   },
@@ -4828,7 +4840,7 @@
    "crop_id": "pepper",
    "infection_id": "pepper.9",
    "old_name": "المن الوردي",
-   "name_in_source": "ال من",
+   "name_in_source": "المن",
    "printed_page": 119,
    "pdf_page": 132,
    "status": "NEEDS_REVIEW",
@@ -5268,11 +5280,11 @@
    "crop_id": "pomegranate",
    "infection_id": "pomegranate.1",
    "old_name": "المن الوردي",
-   "name_in_source": null,
-   "printed_page": null,
-   "pdf_page": null,
-   "status": "NOT_FOUND_IN_SOURCE",
-   "action": "لم يثبت ارتباطها بهذا المحصول في الكتاب — أُزيلت من القسم؛ محفوظة في data/advice بانتظار دليل"
+   "name_in_source": "المن",
+   "printed_page": 244,
+   "pdf_page": 257,
+   "status": "NEEDS_REVIEW",
+   "action": "مطابقة بمشتركات تسمية غير حرفية — تحتاج مراجعة بشرية قبل الاعتماد"
   },
   {
    "crop_id": "pomegranate",
@@ -5408,11 +5420,11 @@
    "crop_id": "potato",
    "infection_id": "potato.1",
    "old_name": "تعفّن وذبول جذور النباتات",
-   "name_in_source": null,
-   "printed_page": null,
-   "pdf_page": null,
-   "status": "NOT_FOUND_IN_SOURCE",
-   "action": "لم يثبت ارتباطها بهذا المحصول في الكتاب — أُزيلت من القسم؛ محفوظة في data/advice بانتظار دليل"
+   "name_in_source": "اعفان الجذور",
+   "printed_page": 115,
+   "pdf_page": 128,
+   "status": "NEEDS_REVIEW",
+   "action": "مطابقة بمشتركات تسمية غير حرفية — تحتاج مراجعة بشرية قبل الاعتماد"
   },
   {
    "crop_id": "potato",
@@ -5948,7 +5960,7 @@
    "crop_id": "sorghum",
    "infection_id": "sorghum.2",
    "old_name": "دودة كوز الذرة",
-   "name_in_source": "الدودة القارضضة",
+   "name_in_source": "الدودة القارضة",
    "printed_page": 45,
    "pdf_page": 58,
    "status": "NEEDS_REVIEW",
@@ -5958,7 +5970,7 @@
    "crop_id": "sorghum",
    "infection_id": "sorghum.3",
    "old_name": "دودة الحشّاشة (البقّاحة)",
-   "name_in_source": "الدودة القارضضة",
+   "name_in_source": "الدودة القارضة",
    "printed_page": 45,
    "pdf_page": 58,
    "status": "NEEDS_REVIEW",
@@ -7168,11 +7180,11 @@
    "crop_id": "tomato",
    "infection_id": "tomato.1",
    "old_name": "نيماتودا تعقد الجذور الإثيوبية",
-   "name_in_source": "نيماتودا تعقد اجلذور",
+   "name_in_source": "نيماتودا تعقد الجذور",
    "printed_page": 87,
    "pdf_page": 100,
-   "status": "NEEDS_REVIEW",
-   "action": "مطابقة بمشتركات تسمية غير حرفية — تحتاج مراجعة بشرية قبل الاعتماد"
+   "status": "VERIFIED",
+   "action": "مطابقة بالتضمين مع سطر الكتاب — أُبقي"
   },
   {
    "crop_id": "tomato",
@@ -7248,11 +7260,11 @@
    "crop_id": "tomato",
    "infection_id": "tomato.8",
    "old_name": "المن الوردي",
-   "name_in_source": null,
-   "printed_page": null,
-   "pdf_page": null,
-   "status": "NOT_FOUND_IN_SOURCE",
-   "action": "لم يثبت ارتباطها بهذا المحصول في الكتاب — أُزيلت من القسم؛ محفوظة في data/advice بانتظار دليل"
+   "name_in_source": "المن",
+   "printed_page": 66,
+   "pdf_page": 79,
+   "status": "NEEDS_REVIEW",
+   "action": "مطابقة بمشتركات تسمية غير حرفية — تحتاج مراجعة بشرية قبل الاعتماد"
   },
   {
    "crop_id": "tomato",
@@ -7548,11 +7560,11 @@
    "crop_id": "watermelon",
    "infection_id": "watermelon.7",
    "old_name": "الذبابة البيضاء",
-   "name_in_source": "الذبابة البيضاء",
-   "printed_page": 150,
-   "pdf_page": 163,
-   "status": "VERIFIED",
-   "action": "مطابقة حرفية مع سطر الكتاب — أُبقي"
+   "name_in_source": null,
+   "printed_page": null,
+   "pdf_page": null,
+   "status": "NOT_FOUND_IN_SOURCE",
+   "action": "لم يثبت ارتباطها بهذا المحصول في الكتاب — أُزيلت من القسم؛ محفوظة في data/advice بانتظار دليل"
   },
   {
    "crop_id": "watermelon",
@@ -7588,11 +7600,11 @@
    "crop_id": "watermelon",
    "infection_id": "watermelon.10",
    "old_name": "ذبابة الفاكهة الشرقية",
-   "name_in_source": "الذبابة البيضاء",
-   "printed_page": 150,
-   "pdf_page": 163,
-   "status": "NEEDS_REVIEW",
-   "action": "مطابقة بمشتركات تسمية غير حرفية — تحتاج مراجعة بشرية قبل الاعتماد"
+   "name_in_source": null,
+   "printed_page": null,
+   "pdf_page": null,
+   "status": "NOT_FOUND_IN_SOURCE",
+   "action": "لم يثبت ارتباطها بهذا المحصول في الكتاب — أُزيلت من القسم؛ محفوظة في data/advice بانتظار دليل"
   },
   {
    "crop_id": "watermelon",
@@ -7728,7 +7740,7 @@
    "crop_id": "rice",
    "infection_id": "rice.2",
    "old_name": null,
-   "name_in_source": "اللفح ة",
+   "name_in_source": "اللفحة",
    "printed_page": 42,
    "pdf_page": 55,
    "status": "VERIFIED",
@@ -7748,7 +7760,7 @@
    "crop_id": "rice",
    "infection_id": "rice.4",
    "old_name": null,
-   "name_in_source": ")عفن القدم واSستطالة البادرات (البكانا)عفن القدم واسستطالة البادرات (البكانا",
+   "name_in_source": "عفن القدم واستطالة البادرات (البكانا)",
    "printed_page": 43,
    "pdf_page": 56,
    "status": "VERIFIED",
@@ -7761,18 +7773,28 @@
    "name_in_source": "ابيضضاضض القمه النيماتودي",
    "printed_page": 44,
    "pdf_page": 57,
-   "status": "VERIFIED",
-   "action": "من الكتاب مباشرة · مُضاف للقسم"
+   "status": "NEEDS_REVIEW",
+   "action": "عنوان/ربط من الكتاب يحتاج مراجعة — معروض بحالته صراحةً · مُضاف للقسم"
   },
   {
    "crop_id": "eggplant",
    "infection_id": "eggplant.1",
    "old_name": null,
+   "name_in_source": "الذبابة البيضاء",
+   "printed_page": 122,
+   "pdf_page": 135,
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p135:y474.2 (مطبوع 122) · سطر «الباذنجان») — الاستخراج كان «الفلفل» · مطبوع 122 / PDF 135"
+  },
+  {
+   "crop_id": "eggplant",
+   "infection_id": "eggplant.2",
+   "old_name": null,
    "name_in_source": "العنكبوت الأحمر",
    "printed_page": 123,
    "pdf_page": 136,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الفلفل) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p136:y109.2 (مطبوع 122) · سطر «الباذجنان العنكبوت الأحمر») — الاستخراج كان «الفلفل» · مطبوع 123 / PDF 136 · مُضاف للقسم"
   },
   {
    "crop_id": "okra",
@@ -7818,7 +7840,7 @@
    "crop_id": "okra",
    "infection_id": "okra.5",
    "old_name": null,
-   "name_in_source": "نيماتودا تعقد اجلذور",
+   "name_in_source": "نيماتودا تعقد الجذور",
    "printed_page": 177,
    "pdf_page": 190,
    "status": "VERIFIED",
@@ -7842,7 +7864,7 @@
    "printed_page": 183,
    "pdf_page": 196,
    "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال البامية) — معروض بحالته صراحةً · مُضاف للقسم"
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p196:y147.7 (مطبوع 183) · سطر «البروكلى») — الاستخراج كان «البامية» · مطبوع 183 / PDF 196 · مُضاف للقسم"
   },
   {
    "crop_id": "broccoli",
@@ -7851,38 +7873,48 @@
    "name_in_source": "دودة ورق القطن",
    "printed_page": 183,
    "pdf_page": 196,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال البامية) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p196:y147.7 (مطبوع 183) · سطر «البروكلى») — الاستخراج كان «البامية» · مطبوع 183 / PDF 196 · مُضاف للقسم"
   },
   {
    "crop_id": "pea",
    "infection_id": "pea.1",
    "old_name": null,
-   "name_in_source": "البياض الدقيقى",
-   "printed_page": 171,
-   "pdf_page": 184,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال اللوبيا) — معروض بحالته صراحةً · مُضاف للقسم"
+   "name_in_source": "دودة ورق القطن",
+   "printed_page": 170,
+   "pdf_page": 183,
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p183:y468.3 (مطبوع 170) · سطر «البسلة») — الاستخراج كان «اللوبيا» · مطبوع 170 / PDF 183 · مُضاف للقسم"
   },
   {
    "crop_id": "pea",
    "infection_id": "pea.2",
    "old_name": null,
-   "name_in_source": "الص داأ",
+   "name_in_source": "البياض الدقيقى",
    "printed_page": 171,
    "pdf_page": 184,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال اللوبيا) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p184:y111.3 (مطبوع 170) · سطر «البسلة البياض الدقيقى») — الاستخراج كان «اللوبيا» · مطبوع 171 / PDF 184 · مُضاف للقسم"
   },
   {
    "crop_id": "pea",
    "infection_id": "pea.3",
    "old_name": null,
+   "name_in_source": "الصدأ",
+   "printed_page": 171,
+   "pdf_page": 184,
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p184:y111.3 (مطبوع 170) · سطر «البسلة البياض الدقيقى») — الاستخراج كان «اللوبيا» · مطبوع 171 / PDF 184 · مُضاف للقسم"
+  },
+  {
+   "crop_id": "pea",
+   "infection_id": "pea.4",
+   "old_name": null,
    "name_in_source": "لفحة الأسكوكيتا",
    "printed_page": 172,
    "pdf_page": 185,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال اللوبيا) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p185:y110.6 (مطبوع 170) · سطر «البسلة الصداأ») — الاستخراج كان «اللوبيا» · مطبوع 172 / PDF 185 · مُضاف للقسم"
   },
   {
    "crop_id": "onion",
@@ -7891,8 +7923,8 @@
    "name_in_source": "الرتبس",
    "printed_page": 10,
    "pdf_page": 23,
-   "status": "VERIFIED",
-   "action": "من الكتاب مباشرة · مُضاف للقسم"
+   "status": "NEEDS_REVIEW",
+   "action": "عنوان/ربط من الكتاب يحتاج مراجعة — معروض بحالته صراحةً · مُضاف للقسم"
   },
   {
    "crop_id": "onion",
@@ -7931,8 +7963,8 @@
    "name_in_source": "مرضض اجلذر القرنفلى",
    "printed_page": 15,
    "pdf_page": 28,
-   "status": "VERIFIED",
-   "action": "من الكتاب مباشرة · مُضاف للقسم"
+   "status": "NEEDS_REVIEW",
+   "action": "عنوان/ربط من الكتاب يحتاج مراجعة — معروض بحالته صراحةً · مُضاف للقسم"
   },
   {
    "crop_id": "potato",
@@ -7941,18 +7973,18 @@
    "name_in_source": "الدودة القارضة",
    "printed_page": 89,
    "pdf_page": 102,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الطماطم) — معروض بحالته صراحةً"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p102:y148.8 (مطبوع 89) · سطر «البطاطس») — الاستخراج كان «الطماطم» · مطبوع 89 / PDF 102"
   },
   {
    "crop_id": "potato",
    "infection_id": "potato.2",
    "old_name": null,
-   "name_in_source": "احلفار",
+   "name_in_source": "الحفار",
    "printed_page": 90,
    "pdf_page": 103,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الطماطم) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p103:y109.2 (مطبوع 89) · سطر «البطاطس احلفار») — الاستخراج كان «الطماطم» · مطبوع 90 / PDF 103 · مُضاف للقسم"
   },
   {
    "crop_id": "potato",
@@ -7961,28 +7993,28 @@
    "name_in_source": "الذبابة البيضاء",
    "printed_page": 91,
    "pdf_page": 104,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الطماطم) — معروض بحالته صراحةً"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p104:y109.2 (مطبوع 89) · سطر «البطاطس الذبابة البيضاء») — الاستخراج كان «الطماطم» · مطبوع 91 / PDF 104"
   },
   {
    "crop_id": "potato",
    "infection_id": "potato.4",
    "old_name": null,
-   "name_in_source": "ال من",
+   "name_in_source": "المن",
    "printed_page": 91,
    "pdf_page": 104,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الطماطم) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p104:y109.2 (مطبوع 89) · سطر «البطاطس الذبابة البيضاء») — الاستخراج كان «الطماطم» · مطبوع 91 / PDF 104 · مُضاف للقسم"
   },
   {
    "crop_id": "potato",
    "infection_id": "potato.5",
    "old_name": null,
-   "name_in_source": ")دودة درنات البطاطس (فى احلقل",
+   "name_in_source": "دودة درنات البطاطس (فى الحقل)",
    "printed_page": 93,
    "pdf_page": 106,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الطماطم) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p106:y109.2 (مطبوع 89) · سطر «)البطاطس دودة درنات البطاطس (فى احلقل») — الاستخراج كان «الطماطم» · مطبوع 93 / PDF 106 · مُضاف للقسم"
   },
   {
    "crop_id": "potato",
@@ -7991,8 +8023,8 @@
    "name_in_source": "دودة ورق القطن",
    "printed_page": 95,
    "pdf_page": 108,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الطماطم) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p108:y109.9 (مطبوع 89) · سطر «البطاطس دودة ورق القطن») — الاستخراج كان «الطماطم» · مطبوع 95 / PDF 108 · مُضاف للقسم"
   },
   {
    "crop_id": "potato",
@@ -8001,8 +8033,8 @@
    "name_in_source": "العنكبوت الأحمر",
    "printed_page": 96,
    "pdf_page": 109,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الطماطم) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p109:y109.2 (مطبوع 89) · سطر «البطاطس العنكبوت الأحمر») — الاستخراج كان «الطماطم» · مطبوع 96 / PDF 109 · مُضاف للقسم"
   },
   {
    "crop_id": "potato",
@@ -8011,18 +8043,18 @@
    "name_in_source": "القشرة السوداء (فطريات الرتبة)",
    "printed_page": 97,
    "pdf_page": 110,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الطماطم) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p110:y109.2 (مطبوع 89) · سطر «)البطاطس القشرة السوداء (فطريات الرتبة») — الاستخراج كان «الطماطم» · مطبوع 97 / PDF 110 · مُضاف للقسم"
   },
   {
    "crop_id": "potato",
    "infection_id": "potato.9",
    "old_name": null,
-   "name_in_source": "اعفان اجلذور وموت البادرات",
+   "name_in_source": "اعفان الجذور وموت البادرات",
    "printed_page": 98,
    "pdf_page": 111,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الطماطم) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p111:y109.2 (مطبوع 89) · سطر «البطاطس اعفان اجلذور وموت البادرات») — الاستخراج كان «الطماطم» · مطبوع 98 / PDF 111 · مُضاف للقسم"
   },
   {
    "crop_id": "potato",
@@ -8031,8 +8063,8 @@
    "name_in_source": "الذبول الفيوزاريومي",
    "printed_page": 99,
    "pdf_page": 112,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الطماطم) — معروض بحالته صراحةً"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p112:y109.2 (مطبوع 89) · سطر «البطاطس الذبول الفيوزاريومي») — الاستخراج كان «الطماطم» · مطبوع 99 / PDF 112"
   },
   {
    "crop_id": "potato",
@@ -8041,38 +8073,38 @@
    "name_in_source": "العفن البيض السكلروتيني",
    "printed_page": 100,
    "pdf_page": 113,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الطماطم) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p113:y109.2 (مطبوع 89) · سطر «البطاطس العفن البيض السكلروتيني») — الاستخراج كان «الطماطم» · مطبوع 100 / PDF 113 · مُضاف للقسم"
   },
   {
    "crop_id": "potato",
    "infection_id": "potato.12",
    "old_name": null,
-   "name_in_source": "العفن اجلاف",
+   "name_in_source": "العفن الجاف",
    "printed_page": 101,
    "pdf_page": 114,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الطماطم) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p114:y109.2 (مطبوع 89) · سطر «البطاطس العفن اجلاف») — الاستخراج كان «الطماطم» · مطبوع 101 / PDF 114 · مُضاف للقسم"
   },
   {
    "crop_id": "potato",
    "infection_id": "potato.13",
    "old_name": null,
-   "name_in_source": ")الندوة املبكرة (البدرية",
+   "name_in_source": "الندوة المبكرة (البدرية)",
    "printed_page": 101,
    "pdf_page": 114,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الطماطم) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p114:y109.2 (مطبوع 89) · سطر «البطاطس العفن اجلاف») — الاستخراج كان «الطماطم» · مطبوع 101 / PDF 114 · مُضاف للقسم"
   },
   {
    "crop_id": "potato",
    "infection_id": "potato.14",
    "old_name": null,
-   "name_in_source": "الندوة املتاأخرة",
+   "name_in_source": "الندوة المتأخرة",
    "printed_page": 106,
    "pdf_page": 119,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الطماطم) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p119:y109.2 (مطبوع 89) · سطر «البطاطس الندوة املتاأخرة») — الاستخراج كان «الطماطم» · مطبوع 106 / PDF 119 · مُضاف للقسم"
   },
   {
    "crop_id": "potato",
@@ -8081,18 +8113,18 @@
    "name_in_source": "نيماتودا تعقد الجذور",
    "printed_page": 111,
    "pdf_page": 124,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الطماطم) — معروض بحالته صراحةً"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p124:y109.2 (مطبوع 89) · سطر «البطاطس نيماتودا تعقد اجلذور») — الاستخراج كان «الطماطم» · مطبوع 111 / PDF 124"
   },
   {
    "crop_id": "potato",
    "infection_id": "potato.16",
    "old_name": null,
-   "name_in_source": "تعقيم تربة اأراضى مفتوحة",
+   "name_in_source": "تعقيم تربة أراضى مفتوحة",
    "printed_page": 111,
    "pdf_page": 124,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الطماطم) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p124:y109.2 (مطبوع 89) · سطر «البطاطس نيماتودا تعقد اجلذور») — الاستخراج كان «الطماطم» · مطبوع 111 / PDF 124 · مُضاف للقسم"
   },
   {
    "crop_id": "potato",
@@ -8101,8 +8133,8 @@
    "name_in_source": "نيماتودا التقرح",
    "printed_page": 112,
    "pdf_page": 125,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الطماطم) — معروض بحالته صراحةً"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p125:y109.2 (مطبوع 89) · سطر «البطاطس نيماتودا التقرح») — الاستخراج كان «الطماطم» · مطبوع 112 / PDF 125"
   },
   {
    "crop_id": "potato",
@@ -8111,8 +8143,8 @@
    "name_in_source": "دودة ورق القطن",
    "printed_page": 112,
    "pdf_page": 125,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الطماطم) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p125:y527.1 (مطبوع 112) · سطر «البطاطا») — الاستخراج كان «الطماطم» · مطبوع 112 / PDF 125 · مُضاف للقسم"
   },
   {
    "crop_id": "potato",
@@ -8138,11 +8170,11 @@
    "crop_id": "potato",
    "infection_id": "potato.21",
    "old_name": null,
-   "name_in_source": "اعفان اجلذور",
+   "name_in_source": "اعفان الجذور",
    "printed_page": 115,
    "pdf_page": 128,
    "status": "VERIFIED",
-   "action": "من الكتاب مباشرة · مُضاف للقسم"
+   "action": "من الكتاب مباشرة"
   },
   {
    "crop_id": "watermelon",
@@ -8185,78 +8217,18 @@
    "action": "من الكتاب مباشرة · مُضاف للقسم"
   },
   {
-   "crop_id": "watermelon",
-   "infection_id": "watermelon.5",
+   "crop_id": "apple",
+   "infection_id": "apple.1",
    "old_name": null,
-   "name_in_source": "امل ن",
-   "printed_page": 149,
-   "pdf_page": 162,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال البطيخ) — معروض بحالته صراحةً · مُضاف للقسم"
-  },
-  {
-   "crop_id": "watermelon",
-   "infection_id": "watermelon.6",
-   "old_name": null,
-   "name_in_source": "دودة ورق القطن",
-   "printed_page": 149,
-   "pdf_page": 162,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال البطيخ) — معروض بحالته صراحةً · مُضاف للقسم"
-  },
-  {
-   "crop_id": "watermelon",
-   "infection_id": "watermelon.7",
-   "old_name": null,
-   "name_in_source": "الذبابة البيضاء",
-   "printed_page": 150,
-   "pdf_page": 163,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال البطيخ) — معروض بحالته صراحةً"
-  },
-  {
-   "crop_id": "watermelon",
-   "infection_id": "watermelon.8",
-   "old_name": null,
-   "name_in_source": "العنكبوت الأحمر",
-   "printed_page": 150,
-   "pdf_page": 163,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال البطيخ) — معروض بحالته صراحةً"
-  },
-  {
-   "crop_id": "watermelon",
-   "infection_id": "watermelon.9",
-   "old_name": null,
-   "name_in_source": "البياض الدقيقى",
-   "printed_page": 151,
-   "pdf_page": 164,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال البطيخ) — معروض بحالته صراحةً · مُضاف للقسم"
-  },
-  {
-   "crop_id": "watermelon",
-   "infection_id": "watermelon.10",
-   "old_name": null,
-   "name_in_source": "لفحة الساق الصمغية",
-   "printed_page": 151,
-   "pdf_page": 164,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال البطيخ) — معروض بحالته صراحةً · مُضاف للقسم"
-  },
-  {
-   "crop_id": "watermelon",
-   "infection_id": "watermelon.11",
-   "old_name": null,
-   "name_in_source": "البياض الزغبى",
-   "printed_page": 152,
-   "pdf_page": 165,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال البطيخ) — معروض بحالته صراحةً · مُضاف للقسم"
+   "name_in_source": "حفار ساق التفاح",
+   "printed_page": 245,
+   "pdf_page": 258,
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p258:y517.5 (مطبوع 245) · سطر «التفــــاح») — الاستخراج كان «الرمان» · مطبوع 245 / PDF 258 · مُضاف للقسم"
   },
   {
    "crop_id": "apple",
-   "infection_id": "apple.1",
+   "infection_id": "apple.2",
    "old_name": null,
    "name_in_source": "من التفاح الصوفى",
    "printed_page": 246,
@@ -8266,7 +8238,7 @@
   },
   {
    "crop_id": "apple",
-   "infection_id": "apple.2",
+   "infection_id": "apple.3",
    "old_name": null,
    "name_in_source": "الأكاروس الأحمر الأوروبى (البيض الشتوى)",
    "printed_page": 247,
@@ -8276,9 +8248,9 @@
   },
   {
    "crop_id": "apple",
-   "infection_id": "apple.3",
+   "infection_id": "apple.4",
    "old_name": null,
-   "name_in_source": ")الأكاروس الأحمر الأوروبي (الطوار املتحركة",
+   "name_in_source": "الأكاروس الأحمر الأوروبي (الطوار المتحركة)",
    "printed_page": 247,
    "pdf_page": 260,
    "status": "VERIFIED",
@@ -8286,7 +8258,7 @@
   },
   {
    "crop_id": "apple",
-   "infection_id": "apple.4",
+   "infection_id": "apple.5",
    "old_name": null,
    "name_in_source": "العنكبوت الأحمر",
    "printed_page": 248,
@@ -8296,7 +8268,7 @@
   },
   {
    "crop_id": "apple",
-   "infection_id": "apple.5",
+   "infection_id": "apple.6",
    "old_name": null,
    "name_in_source": "البياض الدقيقى",
    "printed_page": 250,
@@ -8306,21 +8278,11 @@
   },
   {
    "crop_id": "apple",
-   "infection_id": "apple.6",
-   "old_name": null,
-   "name_in_source": "اجل رب",
-   "printed_page": 252,
-   "pdf_page": 265,
-   "status": "VERIFIED",
-   "action": "من الكتاب مباشرة · مُضاف للقسم"
-  },
-  {
-   "crop_id": "apple",
    "infection_id": "apple.7",
    "old_name": null,
-   "name_in_source": "احلشرات القشرية",
-   "printed_page": 253,
-   "pdf_page": 266,
+   "name_in_source": "الجرب",
+   "printed_page": 252,
+   "pdf_page": 265,
    "status": "VERIFIED",
    "action": "من الكتاب مباشرة · مُضاف للقسم"
   },
@@ -8331,14 +8293,14 @@
    "name_in_source": "الرتبسس",
    "printed_page": 16,
    "pdf_page": 29,
-   "status": "VERIFIED",
-   "action": "من الكتاب مباشرة · مُضاف للقسم"
+   "status": "NEEDS_REVIEW",
+   "action": "عنوان/ربط من الكتاب يحتاج مراجعة — معروض بحالته صراحةً · مُضاف للقسم"
   },
   {
    "crop_id": "garlic",
    "infection_id": "garlic.2",
    "old_name": null,
-   "name_in_source": "اكاروس جفاف روؤوس الثوم",
+   "name_in_source": "الأكاروس جفاف رؤوس الثوم",
    "printed_page": 17,
    "pdf_page": 30,
    "status": "VERIFIED",
@@ -8348,7 +8310,7 @@
    "crop_id": "garlic",
    "infection_id": "garlic.3",
    "old_name": null,
-   "name_in_source": "البياضض الزغبى",
+   "name_in_source": "البياض الزغبى",
    "printed_page": 17,
    "pdf_page": 30,
    "status": "VERIFIED",
@@ -8358,7 +8320,7 @@
    "crop_id": "garlic",
    "infection_id": "garlic.4",
    "old_name": null,
-   "name_in_source": "مرضض الصصداأ فى الثوم",
+   "name_in_source": "مرض الصدأ فى الثوم",
    "printed_page": 19,
    "pdf_page": 32,
    "status": "VERIFIED",
@@ -8388,51 +8350,41 @@
    "crop_id": "carrot",
    "infection_id": "carrot.3",
    "old_name": null,
-   "name_in_source": "نيماتودا تعقد اجلذور",
+   "name_in_source": "نيماتودا تعقد الجذور",
    "printed_page": 117,
    "pdf_page": 130,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الجزر) — معروض بحالته صراحةً · مُضاف للقسم"
-  },
-  {
-   "crop_id": "carrot",
-   "infection_id": "carrot.4",
-   "old_name": null,
-   "name_in_source": "امل ن",
-   "printed_page": 117,
-   "pdf_page": 130,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الجزر) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "من الكتاب مباشرة · مُضاف للقسم"
   },
   {
    "crop_id": "guava",
    "infection_id": "guava.1",
    "old_name": null,
-   "name_in_source": "احلشرة القشرية الرخوة (البولفيناريا)",
+   "name_in_source": "الحشرة القشرية الرخوة (البولفيناريا)",
    "printed_page": 241,
    "pdf_page": 254,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الزيتون) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p254:y155.1 (مطبوع 241) · سطر «الجوافة») — الاستخراج كان «الزيتون» · مطبوع 241 / PDF 254 · مُضاف للقسم"
   },
   {
    "crop_id": "guava",
    "infection_id": "guava.2",
    "old_name": null,
-   "name_in_source": "امل ن",
+   "name_in_source": "المن",
    "printed_page": 242,
    "pdf_page": 255,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الزيتون) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p255:y111 (مطبوع 241) · سطر «ّاجلوافة املــن») — الاستخراج كان «الزيتون» · مطبوع 242 / PDF 255 · مُضاف للقسم"
   },
   {
    "crop_id": "guava",
    "infection_id": "guava.3",
    "old_name": null,
-   "name_in_source": "حلم صداأ اأوراق اجلوافة",
+   "name_in_source": "حلم صدأ أوراق الجوافة",
    "printed_page": 242,
    "pdf_page": 255,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الزيتون) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p255:y111 (مطبوع 241) · سطر «ّاجلوافة املــن») — الاستخراج كان «الزيتون» · مطبوع 242 / PDF 255 · مُضاف للقسم"
   },
   {
    "crop_id": "guava",
@@ -8442,7 +8394,7 @@
    "printed_page": 243,
    "pdf_page": 256,
    "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الزيتون) — معروض بحالته صراحةً · مُضاف للقسم"
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p256:y111.3 (مطبوع 241) · سطر «اجلوافة احللم املبطط على ثمار اجلوافة») — الاستخراج كان «الزيتون» · مطبوع 243 / PDF 256 · مُضاف للقسم"
   },
   {
    "crop_id": "guava",
@@ -8451,8 +8403,18 @@
    "name_in_source": "تبقع الأوراق",
    "printed_page": 243,
    "pdf_page": 256,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الزيتون) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p256:y111.3 (مطبوع 241) · سطر «اجلوافة احللم املبطط على ثمار اجلوافة») — الاستخراج كان «الزيتون» · مطبوع 243 / PDF 256 · مُضاف للقسم"
+  },
+  {
+   "crop_id": "open_fields",
+   "infection_id": "open_fields.1",
+   "old_name": null,
+   "name_in_source": "الفئران",
+   "printed_page": 265,
+   "pdf_page": 278,
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p278:y546.1 (مطبوع 265) · سطر «الحقول والمزارع وحدائق الفاكهة») — الاستخراج كان «الخوخ» · مطبوع 265 / PDF 278 · مُضاف للقسم"
   },
   {
    "crop_id": "artichoke",
@@ -8461,8 +8423,8 @@
    "name_in_source": "دودة ورق القطن",
    "printed_page": 187,
    "pdf_page": 200,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال القرنبيط) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p200:y151.5 (مطبوع 187) · سطر «الخرشوف») — الاستخراج كان «القرنبيط» · مطبوع 187 / PDF 200 · مُضاف للقسم"
   },
   {
    "crop_id": "lettuce",
@@ -8501,8 +8463,8 @@
    "name_in_source": "البياض الدقيقى",
    "printed_page": 257,
    "pdf_page": 270,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الخوخ) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "من الكتاب مباشرة · مُضاف للقسم"
   },
   {
    "crop_id": "peach",
@@ -8511,18 +8473,18 @@
    "name_in_source": "العفن البنى",
    "printed_page": 258,
    "pdf_page": 271,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الخوخ) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "من الكتاب مباشرة · مُضاف للقسم"
   },
   {
    "crop_id": "peach",
    "infection_id": "peach.5",
    "old_name": null,
-   "name_in_source": "صداأ اخلوخ",
+   "name_in_source": "صدأ الخوخ",
    "printed_page": 259,
    "pdf_page": 272,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الخوخ) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "من الكتاب مباشرة"
   },
   {
    "crop_id": "peach",
@@ -8532,67 +8494,7 @@
    "printed_page": 260,
    "pdf_page": 273,
    "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الخوخ) — معروض بحالته صراحةً · مُضاف للقسم"
-  },
-  {
-   "crop_id": "peach",
-   "infection_id": "peach.7",
-   "old_name": null,
-   "name_in_source": "البياض الدقيقى",
-   "printed_page": 260,
-   "pdf_page": 273,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الخوخ) — معروض بحالته صراحةً · مُضاف للقسم"
-  },
-  {
-   "crop_id": "peach",
-   "infection_id": "peach.8",
-   "old_name": null,
-   "name_in_source": "حشرات احلبوب املخزونة",
-   "printed_page": 263,
-   "pdf_page": 276,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الخوخ) — معروض بحالته صراحةً · مُضاف للقسم"
-  },
-  {
-   "crop_id": "peach",
-   "infection_id": "peach.9",
-   "old_name": null,
-   "name_in_source": "حشرات التمور املخزونة",
-   "printed_page": 264,
-   "pdf_page": 277,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الخوخ) — معروض بحالته صراحةً · مُضاف للقسم"
-  },
-  {
-   "crop_id": "peach",
-   "infection_id": "peach.10",
-   "old_name": null,
-   "name_in_source": "النمل الأبيض",
-   "printed_page": 265,
-   "pdf_page": 278,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الخوخ) — معروض بحالته صراحةً"
-  },
-  {
-   "crop_id": "peach",
-   "infection_id": "peach.11",
-   "old_name": null,
-   "name_in_source": "الفئ ران",
-   "printed_page": 265,
-   "pdf_page": 278,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الخوخ) — معروض بحالته صراحةً · مُضاف للقسم"
-  },
-  {
-   "crop_id": "peach",
-   "infection_id": "peach.12",
-   "old_name": null,
-   "name_in_source": "القواق ع",
-   "printed_page": 266,
-   "pdf_page": 279,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الخوخ) — معروض بحالته صراحةً · مُضاف للقسم"
+   "action": "عنوان/ربط من الكتاب يحتاج مراجعة — معروض بحالته صراحةً · مُضاف للقسم"
   },
   {
    "crop_id": "cucumber",
@@ -8608,11 +8510,11 @@
    "crop_id": "cucumber",
    "infection_id": "cucumber.2",
    "old_name": null,
-   "name_in_source": "امل ن",
+   "name_in_source": "المن",
    "printed_page": 126,
    "pdf_page": 139,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الخيار) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "من الكتاب مباشرة"
   },
   {
    "crop_id": "cucumber",
@@ -8621,8 +8523,8 @@
    "name_in_source": "صانعات الأنفاق",
    "printed_page": 128,
    "pdf_page": 141,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الخيار) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "من الكتاب مباشرة · مُضاف للقسم"
   },
   {
    "crop_id": "cucumber",
@@ -8631,8 +8533,8 @@
    "name_in_source": "دودة ورق القطن",
    "printed_page": 128,
    "pdf_page": 141,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الخيار) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "من الكتاب مباشرة · مُضاف للقسم"
   },
   {
    "crop_id": "cucumber",
@@ -8641,28 +8543,28 @@
    "name_in_source": "العنكبوت الأحمر",
    "printed_page": 129,
    "pdf_page": 142,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الخيار) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "من الكتاب مباشرة · مُضاف للقسم"
   },
   {
    "crop_id": "cucumber",
    "infection_id": "cucumber.6",
    "old_name": null,
-   "name_in_source": "اعف ان الثم ار",
+   "name_in_source": "اعفان الثمار",
    "printed_page": 131,
    "pdf_page": 144,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الخيار) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "من الكتاب مباشرة · مُضاف للقسم"
   },
   {
    "crop_id": "cucumber",
    "infection_id": "cucumber.7",
    "old_name": null,
-   "name_in_source": "اعفان اجلذور وموت البادرات",
+   "name_in_source": "اعفان الجذور وموت البادرات",
    "printed_page": 131,
    "pdf_page": 144,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الخيار) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "من الكتاب مباشرة · مُضاف للقسم"
   },
   {
    "crop_id": "cucumber",
@@ -8671,8 +8573,8 @@
    "name_in_source": "البياض الدقيقى",
    "printed_page": 134,
    "pdf_page": 147,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الخيار) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "من الكتاب مباشرة · مُضاف للقسم"
   },
   {
    "crop_id": "cucumber",
@@ -8681,8 +8583,8 @@
    "name_in_source": "البياض الزغبى",
    "printed_page": 136,
    "pdf_page": 149,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الخيار) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "من الكتاب مباشرة · مُضاف للقسم"
   },
   {
    "crop_id": "cucumber",
@@ -8691,38 +8593,28 @@
    "name_in_source": "لفحة الساق الصمغية",
    "printed_page": 139,
    "pdf_page": 152,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الخيار) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "من الكتاب مباشرة · مُضاف للقسم"
   },
   {
    "crop_id": "cucumber",
    "infection_id": "cucumber.11",
    "old_name": null,
-   "name_in_source": "نيماتودا تعقد اجلذور",
+   "name_in_source": "نيماتودا تعقد الجذور",
    "printed_page": 140,
    "pdf_page": 153,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الخيار) — معروض بحالته صراحةً · مُضاف للقسم"
-  },
-  {
-   "crop_id": "cucumber",
-   "infection_id": "cucumber.12",
-   "old_name": null,
-   "name_in_source": "الذبابة البيضاء",
-   "printed_page": 140,
-   "pdf_page": 153,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الخيار) — معروض بحالته صراحةً"
+   "status": "VERIFIED",
+   "action": "من الكتاب مباشرة · مُضاف للقسم"
   },
   {
    "crop_id": "sorghum",
    "infection_id": "sorghum.1",
    "old_name": null,
-   "name_in_source": "الدودة القارضضة",
+   "name_in_source": "الدودة القارضة",
    "printed_page": 45,
    "pdf_page": 58,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الأرز) — معروض بحالته صراحةً"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p58:y157.3 (مطبوع 45) · سطر «الذرة الشامية») — الاستخراج كان «الأرز» · مطبوع 45 / PDF 58"
   },
   {
    "crop_id": "sorghum",
@@ -8731,8 +8623,8 @@
    "name_in_source": "دودة ورق القطن",
    "printed_page": 46,
    "pdf_page": 59,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الأرز) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p59:y110.6 (مطبوع 45) · سطر «الذره الشامية دوده ورق القطن») — الاستخراج كان «الأرز» · مطبوع 46 / PDF 59 · مُضاف للقسم"
   },
   {
    "crop_id": "sorghum",
@@ -8742,7 +8634,7 @@
    "printed_page": 46,
    "pdf_page": 59,
    "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الأرز) — معروض بحالته صراحةً · مُضاف للقسم"
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p59:y110.6 (مطبوع 45) · سطر «الذره الشامية دوده ورق القطن») — الاستخراج كان «الأرز» · مطبوع 46 / PDF 59 · مُضاف للقسم"
   },
   {
    "crop_id": "sorghum",
@@ -8751,28 +8643,28 @@
    "name_in_source": "ثاقبات الذرة",
    "printed_page": 48,
    "pdf_page": 61,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الأرز) — معروض بحالته صراحةً"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p61:y110.6 (مطبوع 45) · سطر «الذره الشامية ثاقبات الذرة») — الاستخراج كان «الأرز» · مطبوع 48 / PDF 61"
   },
   {
    "crop_id": "sorghum",
    "infection_id": "sorghum.5",
    "old_name": null,
-   "name_in_source": "اعفان اجلذور وموت البادرات",
+   "name_in_source": "اعفان الجذور وموت البادرات",
    "printed_page": 48,
    "pdf_page": 61,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الأرز) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p61:y110.6 (مطبوع 45) · سطر «الذره الشامية ثاقبات الذرة») — الاستخراج كان «الأرز» · مطبوع 48 / PDF 61 · مُضاف للقسم"
   },
   {
    "crop_id": "pomegranate",
    "infection_id": "pomegranate.1",
    "old_name": null,
-   "name_in_source": "امل ن",
+   "name_in_source": "المن",
    "printed_page": 244,
    "pdf_page": 257,
    "status": "VERIFIED",
-   "action": "من الكتاب مباشرة · مُضاف للقسم"
+   "action": "من الكتاب مباشرة"
   },
   {
    "crop_id": "pomegranate",
@@ -8791,18 +8683,8 @@
    "name_in_source": "اأبو دقيق الرمان",
    "printed_page": 245,
    "pdf_page": 258,
-   "status": "VERIFIED",
-   "action": "من الكتاب مباشرة · مُضاف للقسم"
-  },
-  {
-   "crop_id": "pomegranate",
-   "infection_id": "pomegranate.4",
-   "old_name": null,
-   "name_in_source": "حفار ساق التفاح",
-   "printed_page": 245,
-   "pdf_page": 258,
-   "status": "VERIFIED",
-   "action": "من الكتاب مباشرة · مُضاف للقسم"
+   "status": "NEEDS_REVIEW",
+   "action": "عنوان/ربط من الكتاب يحتاج مراجعة — معروض بحالته صراحةً · مُضاف للقسم"
   },
   {
    "crop_id": "protected",
@@ -8811,14 +8693,24 @@
    "name_in_source": "نيماتودا الرتبة (معقمات)",
    "printed_page": 196,
    "pdf_page": 209,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الفراولة) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p209:y151.6 (مطبوع 196) · سطر «الزراعات المحمية») — الاستخراج كان «الفراولة» · مطبوع 196 / PDF 209 · مُضاف للقسم"
+  },
+  {
+   "crop_id": "protected",
+   "infection_id": "protected.2",
+   "old_name": null,
+   "name_in_source": "نيماتودا الرتبة (مكافحة)",
+   "printed_page": 197,
+   "pdf_page": 210,
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p210:y109.2 (مطبوع 196) · سطر «)الزراعات املحمية نيماتودا الرتبة (مكافحة») — الاستخراج كان «الفراولة» · مطبوع 197 / PDF 210 · مُضاف للقسم"
   },
   {
    "crop_id": "olive",
    "infection_id": "olive.1",
    "old_name": null,
-   "name_in_source": "احلشرات القشرية",
+   "name_in_source": "الحشرات القشرية",
    "printed_page": 239,
    "pdf_page": 252,
    "status": "VERIFIED",
@@ -8828,7 +8720,7 @@
    "crop_id": "olive",
    "infection_id": "olive.2",
    "old_name": null,
-   "name_in_source": "دودة اأوراق الزيتون",
+   "name_in_source": "دودة أوراق الزيتون",
    "printed_page": 240,
    "pdf_page": 253,
    "status": "VERIFIED",
@@ -8858,7 +8750,17 @@
    "crop_id": "sesame",
    "infection_id": "sesame.1",
    "old_name": null,
-   "name_in_source": "اأعفان اجلذور وموت البادرات",
+   "name_in_source": "العفن الفحمي",
+   "printed_page": 57,
+   "pdf_page": 70,
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p70:y361.1 (مطبوع 57) · سطر «السمسم») — الاستخراج كان «قصب السكر» · مطبوع 57 / PDF 70 · مُضاف للقسم"
+  },
+  {
+   "crop_id": "sesame",
+   "infection_id": "sesame.2",
+   "old_name": null,
+   "name_in_source": "اعفان الجذور وموت البادرات",
    "printed_page": 58,
    "pdf_page": 71,
    "status": "VERIFIED",
@@ -8891,8 +8793,8 @@
    "name_in_source": "الذبابة البيضاء",
    "printed_page": 161,
    "pdf_page": 174,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الشمام) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p174:y150.4 (مطبوع 161) · سطر «الشـهــد») — الاستخراج كان «الشمام» · مطبوع 161 / PDF 174 · مُضاف للقسم"
   },
   {
    "crop_id": "shahd",
@@ -8901,8 +8803,8 @@
    "name_in_source": "البياض الدقيقى",
    "printed_page": 161,
    "pdf_page": 174,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الشمام) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p174:y150.4 (مطبوع 161) · سطر «الشـهــد») — الاستخراج كان «الشمام» · مطبوع 161 / PDF 174 · مُضاف للقسم"
   },
   {
    "crop_id": "shahd",
@@ -8911,8 +8813,8 @@
    "name_in_source": "البياض الزغبى",
    "printed_page": 162,
    "pdf_page": 175,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الشمام) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p175:y110.6 (مطبوع 161) · سطر «الشـهـد البياض الدقيقى») — الاستخراج كان «الشمام» · مطبوع 162 / PDF 175 · مُضاف للقسم"
   },
   {
    "crop_id": "tomato",
@@ -8938,11 +8840,11 @@
    "crop_id": "tomato",
    "infection_id": "tomato.3",
    "old_name": null,
-   "name_in_source": "امل ن",
+   "name_in_source": "المن",
    "printed_page": 66,
    "pdf_page": 79,
    "status": "VERIFIED",
-   "action": "من الكتاب مباشرة · مُضاف للقسم"
+   "action": "من الكتاب مباشرة"
   },
   {
    "crop_id": "tomato",
@@ -8988,7 +8890,7 @@
    "crop_id": "tomato",
    "infection_id": "tomato.8",
    "old_name": null,
-   "name_in_source": ")صانعات الأنفاق (جنس لريومايزا",
+   "name_in_source": "صانعات الأنفاق (جنس لريومايزا)",
    "printed_page": 74,
    "pdf_page": 87,
    "status": "VERIFIED",
@@ -9018,7 +8920,7 @@
    "crop_id": "tomato",
    "infection_id": "tomato.11",
    "old_name": null,
-   "name_in_source": "اعفان اجلذور وموت البادرات",
+   "name_in_source": "اعفان الجذور وموت البادرات",
    "printed_page": 78,
    "pdf_page": 91,
    "status": "VERIFIED",
@@ -9038,7 +8940,7 @@
    "crop_id": "tomato",
    "infection_id": "tomato.13",
    "old_name": null,
-   "name_in_source": ")الندوة املبكرة (البدرية",
+   "name_in_source": "الندوة المبكرة (البدرية)",
    "printed_page": 81,
    "pdf_page": 94,
    "status": "VERIFIED",
@@ -9048,7 +8950,7 @@
    "crop_id": "tomato",
    "infection_id": "tomato.14",
    "old_name": null,
-   "name_in_source": "الندوة املتاأخرة",
+   "name_in_source": "الندوة المتأخرة",
    "printed_page": 84,
    "pdf_page": 97,
    "status": "VERIFIED",
@@ -9058,7 +8960,7 @@
    "crop_id": "tomato",
    "infection_id": "tomato.15",
    "old_name": null,
-   "name_in_source": "اأمراض الرتبة",
+   "name_in_source": "أمراض الرتبة",
    "printed_page": 87,
    "pdf_page": 100,
    "status": "VERIFIED",
@@ -9068,7 +8970,7 @@
    "crop_id": "tomato",
    "infection_id": "tomato.16",
    "old_name": null,
-   "name_in_source": "نيماتودا تعقد اجلذور",
+   "name_in_source": "نيماتودا تعقد الجذور",
    "printed_page": 87,
    "pdf_page": 100,
    "status": "VERIFIED",
@@ -9101,8 +9003,8 @@
    "name_in_source": "الرتبس",
    "printed_page": 220,
    "pdf_page": 233,
-   "status": "VERIFIED",
-   "action": "من الكتاب مباشرة · مُضاف للقسم"
+   "status": "NEEDS_REVIEW",
+   "action": "عنوان/ربط من الكتاب يحتاج مراجعة — معروض بحالته صراحةً · مُضاف للقسم"
   },
   {
    "crop_id": "grape",
@@ -9158,7 +9060,7 @@
    "crop_id": "grape",
    "infection_id": "grape.9",
    "old_name": null,
-   "name_in_source": "نيماتودا تعقد اجلذور",
+   "name_in_source": "نيماتودا تعقد الجذور",
    "printed_page": 236,
    "pdf_page": 249,
    "status": "VERIFIED",
@@ -9168,21 +9070,21 @@
    "crop_id": "bean",
    "infection_id": "bean.1",
    "old_name": null,
-   "name_in_source": "صانعات النفاق",
+   "name_in_source": "صانعات الأنفاق",
    "printed_page": 163,
    "pdf_page": 176,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الشمام) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p176:y162.9 (مطبوع 163) · سطر «الفاصوليا») — الاستخراج كان «الشمام» · مطبوع 163 / PDF 176 · مُضاف للقسم"
   },
   {
    "crop_id": "bean",
    "infection_id": "bean.2",
    "old_name": null,
-   "name_in_source": "ال م ن",
+   "name_in_source": "المن",
    "printed_page": 164,
    "pdf_page": 177,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الشمام) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p177:y108.8 (مطبوع 163) · سطر «ّالفاصوليا الـمـن») — الاستخراج كان «الشمام» · مطبوع 164 / PDF 177"
   },
   {
    "crop_id": "bean",
@@ -9191,18 +9093,18 @@
    "name_in_source": "العنكبوت الأحمر",
    "printed_page": 165,
    "pdf_page": 178,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الشمام) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p178:y111.3 (مطبوع 163) · سطر «الفاصوليا العنكبوت الحمر») — الاستخراج كان «الشمام» · مطبوع 165 / PDF 178 · مُضاف للقسم"
   },
   {
    "crop_id": "bean",
    "infection_id": "bean.4",
    "old_name": null,
-   "name_in_source": "الصداأ",
+   "name_in_source": "الصدأ",
    "printed_page": 166,
    "pdf_page": 179,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الشمام) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p179:y109.2 (مطبوع 163) · سطر «الفاصوليا الصداأ») — الاستخراج كان «الشمام» · مطبوع 166 / PDF 179 · مُضاف للقسم"
   },
   {
    "crop_id": "bean",
@@ -9211,18 +9113,18 @@
    "name_in_source": "تبقع الأوراق",
    "printed_page": 167,
    "pdf_page": 180,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الشمام) — معروض بحالته صراحةً"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p180:y109.2 (مطبوع 163) · سطر «الفاصوليا تبقع الوراق») — الاستخراج كان «الشمام» · مطبوع 167 / PDF 180"
   },
   {
    "crop_id": "bean",
    "infection_id": "bean.6",
    "old_name": null,
-   "name_in_source": "اأعفان اجلذور وموت البادرات",
+   "name_in_source": "اعفان الجذور وموت البادرات",
    "printed_page": 167,
    "pdf_page": 180,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الشمام) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p180:y109.2 (مطبوع 163) · سطر «الفاصوليا تبقع الوراق») — الاستخراج كان «الشمام» · مطبوع 167 / PDF 180 · مُضاف للقسم"
   },
   {
    "crop_id": "strawberry",
@@ -9268,7 +9170,7 @@
    "crop_id": "strawberry",
    "infection_id": "strawberry.5",
    "old_name": null,
-   "name_in_source": "مرض عفن اجلذور",
+   "name_in_source": "مرض عفن الجذور",
    "printed_page": 194,
    "pdf_page": 207,
    "status": "VERIFIED",
@@ -9285,54 +9187,14 @@
    "action": "من الكتاب مباشرة · مُضاف للقسم"
   },
   {
-   "crop_id": "strawberry",
-   "infection_id": "strawberry.7",
-   "old_name": null,
-   "name_in_source": ")نيماتودا الرتبة (مكافحة",
-   "printed_page": 197,
-   "pdf_page": 210,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الفراولة) — معروض بحالته صراحةً · مُضاف للقسم"
-  },
-  {
-   "crop_id": "strawberry",
-   "infection_id": "strawberry.8",
-   "old_name": null,
-   "name_in_source": "اآفات املسطحات اخلضراء",
-   "printed_page": 197,
-   "pdf_page": 210,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الفراولة) — معروض بحالته صراحةً · مُضاف للقسم"
-  },
-  {
-   "crop_id": "strawberry",
-   "infection_id": "strawberry.9",
-   "old_name": null,
-   "name_in_source": "تبقع اأوراق",
-   "printed_page": 198,
-   "pdf_page": 211,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الفراولة) — معروض بحالته صراحةً · مُضاف للقسم"
-  },
-  {
-   "crop_id": "strawberry",
-   "infection_id": "strawberry.10",
-   "old_name": null,
-   "name_in_source": "احلشرات القشرية",
-   "printed_page": 199,
-   "pdf_page": 212,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الفراولة) — معروض بحالته صراحةً · مُضاف للقسم"
-  },
-  {
    "crop_id": "pepper",
    "infection_id": "pepper.1",
    "old_name": null,
    "name_in_source": "الرتبس",
    "printed_page": 118,
    "pdf_page": 131,
-   "status": "VERIFIED",
-   "action": "من الكتاب مباشرة · مُضاف للقسم"
+   "status": "NEEDS_REVIEW",
+   "action": "عنوان/ربط من الكتاب يحتاج مراجعة — معروض بحالته صراحةً · مُضاف للقسم"
   },
   {
    "crop_id": "pepper",
@@ -9348,7 +9210,7 @@
    "crop_id": "pepper",
    "infection_id": "pepper.3",
    "old_name": null,
-   "name_in_source": "ال من",
+   "name_in_source": "المن",
    "printed_page": 119,
    "pdf_page": 132,
    "status": "VERIFIED",
@@ -9358,7 +9220,7 @@
    "crop_id": "pepper",
    "infection_id": "pepper.4",
    "old_name": null,
-   "name_in_source": "دورة ورق القطن",
+   "name_in_source": "دودة ورق القطن",
    "printed_page": 120,
    "pdf_page": 133,
    "status": "VERIFIED",
@@ -9395,34 +9257,24 @@
    "action": "من الكتاب مباشرة · مُضاف للقسم"
   },
   {
-   "crop_id": "pepper",
-   "infection_id": "pepper.8",
-   "old_name": null,
-   "name_in_source": "الذبابة البيضاء",
-   "printed_page": 122,
-   "pdf_page": 135,
-   "status": "VERIFIED",
-   "action": "من الكتاب مباشرة"
-  },
-  {
    "crop_id": "fieldbean",
    "infection_id": "fieldbean.1",
    "old_name": null,
-   "name_in_source": "ال من",
+   "name_in_source": "المن",
    "printed_page": 8,
    "pdf_page": 21,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال القمح) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p21:y154.8 (مطبوع 8) · سطر «الفول البلدى») — الاستخراج كان «القمح» · مطبوع 8 / PDF 21 · مُضاف للقسم"
   },
   {
    "crop_id": "fieldbean",
    "infection_id": "fieldbean.2",
    "old_name": null,
-   "name_in_source": "العنكبوت االحمر",
+   "name_in_source": "العنكبوت الأحمر",
    "printed_page": 9,
    "pdf_page": 22,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال القمح) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p22:y111.3 (مطبوع 8) · سطر «الفول البلدى العنكبوت الحمر») — الاستخراج كان «القمح» · مطبوع 9 / PDF 22 · مُضاف للقسم"
   },
   {
    "crop_id": "fieldbean",
@@ -9431,8 +9283,8 @@
    "name_in_source": "التبقع البنى",
    "printed_page": 9,
    "pdf_page": 22,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال القمح) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p22:y111.3 (مطبوع 8) · سطر «الفول البلدى العنكبوت الحمر») — الاستخراج كان «القمح» · مطبوع 9 / PDF 22 · مُضاف للقسم"
   },
   {
    "crop_id": "groundnut",
@@ -9441,18 +9293,18 @@
    "name_in_source": "العنكبوت الأحمر",
    "printed_page": 54,
    "pdf_page": 67,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال قصب السكر) — معروض بحالته صراحةً"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p67:y149 (مطبوع 54) · سطر «الفول السودانى») — الاستخراج كان «قصب السكر» · مطبوع 54 / PDF 67"
   },
   {
    "crop_id": "groundnut",
    "infection_id": "groundnut.2",
    "old_name": null,
-   "name_in_source": "اعفان اجلذور وموت البادرات",
+   "name_in_source": "اعفان الجذور وموت البادرات",
    "printed_page": 54,
    "pdf_page": 67,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال قصب السكر) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p67:y149 (مطبوع 54) · سطر «الفول السودانى») — الاستخراج كان «قصب السكر» · مطبوع 54 / PDF 67 · مُضاف للقسم"
   },
   {
    "crop_id": "groundnut",
@@ -9461,8 +9313,8 @@
    "name_in_source": "تبقع الأوراق",
    "printed_page": 55,
    "pdf_page": 68,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال قصب السكر) — معروض بحالته صراحةً"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p68:y109.2 (مطبوع 54) · سطر «الفول السودانى اعفان اجلذور وموت البادرات») — الاستخراج كان «قصب السكر» · مطبوع 55 / PDF 68"
   },
   {
    "crop_id": "groundnut",
@@ -9471,28 +9323,18 @@
    "name_in_source": "اأعفان الثمار",
    "printed_page": 56,
    "pdf_page": 69,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال قصب السكر) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p69:y109.2 (مطبوع 54) · سطر «الفول السودانى تبقع الأوراق») — الاستخراج كان «قصب السكر» · مطبوع 56 / PDF 69 · مُضاف للقسم"
   },
   {
    "crop_id": "groundnut",
    "infection_id": "groundnut.5",
    "old_name": null,
-   "name_in_source": "نيماتودا تعقد اجلذور",
+   "name_in_source": "نيماتودا تعقد الجذور",
    "printed_page": 56,
    "pdf_page": 69,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال قصب السكر) — معروض بحالته صراحةً · مُضاف للقسم"
-  },
-  {
-   "crop_id": "groundnut",
-   "infection_id": "groundnut.6",
-   "old_name": null,
-   "name_in_source": "العفن الفحمي",
-   "printed_page": 57,
-   "pdf_page": 70,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال قصب السكر) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p69:y109.2 (مطبوع 54) · سطر «الفول السودانى تبقع الأوراق») — الاستخراج كان «قصب السكر» · مطبوع 56 / PDF 69 · مُضاف للقسم"
   },
   {
    "crop_id": "pumpkin",
@@ -9511,16 +9353,6 @@
    "name_in_source": "البياض الزغبى",
    "printed_page": 142,
    "pdf_page": 155,
-   "status": "VERIFIED",
-   "action": "من الكتاب مباشرة · مُضاف للقسم"
-  },
-  {
-   "crop_id": "pumpkin",
-   "infection_id": "pumpkin.3",
-   "old_name": null,
-   "name_in_source": "دودة ورق القطن",
-   "printed_page": 143,
-   "pdf_page": 156,
    "status": "VERIFIED",
    "action": "من الكتاب مباشرة · مُضاف للقسم"
   },
@@ -9551,18 +9383,18 @@
    "name_in_source": "العفن االبيضض االسسكلروتينى",
    "printed_page": 186,
    "pdf_page": 199,
-   "status": "VERIFIED",
-   "action": "من الكتاب مباشرة · مُضاف للقسم"
+   "status": "NEEDS_REVIEW",
+   "action": "عنوان/ربط من الكتاب يحتاج مراجعة — معروض بحالته صراحةً · مُضاف للقسم"
   },
   {
    "crop_id": "cotton",
    "infection_id": "cotton.1",
    "old_name": null,
-   "name_in_source": "احلف ار",
+   "name_in_source": "الحفار",
    "printed_page": 31,
    "pdf_page": 44,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال القطن) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "من الكتاب مباشرة · مُضاف للقسم"
   },
   {
    "crop_id": "cotton",
@@ -9578,7 +9410,7 @@
    "crop_id": "cotton",
    "infection_id": "cotton.3",
    "old_name": null,
-   "name_in_source": "ال من",
+   "name_in_source": "المن",
    "printed_page": 32,
    "pdf_page": 45,
    "status": "VERIFIED",
@@ -9588,7 +9420,7 @@
    "crop_id": "cotton",
    "infection_id": "cotton.4",
    "old_name": null,
-   "name_in_source": ")دودة ورق القطن (فقس حديث",
+   "name_in_source": "دودة ورق القطن (فقس حديث)",
    "printed_page": 33,
    "pdf_page": 46,
    "status": "VERIFIED",
@@ -9628,7 +9460,7 @@
    "crop_id": "cotton",
    "infection_id": "cotton.8",
    "old_name": null,
-   "name_in_source": "اعفان اجلذور وموت البادرات",
+   "name_in_source": "اعفان الجذور وموت البادرات",
    "printed_page": 39,
    "pdf_page": 52,
    "status": "VERIFIED",
@@ -9638,7 +9470,7 @@
    "crop_id": "wheat",
    "infection_id": "wheat.1",
    "old_name": null,
-   "name_in_source": "ال من",
+   "name_in_source": "المن",
    "printed_page": 3,
    "pdf_page": 16,
    "status": "VERIFIED",
@@ -9668,7 +9500,7 @@
    "crop_id": "wheat",
    "infection_id": "wheat.4",
    "old_name": null,
-   "name_in_source": "الصداأ الأصفر املخطط",
+   "name_in_source": "الصدأ الأصفر المخطط",
    "printed_page": 5,
    "pdf_page": 18,
    "status": "VERIFIED",
@@ -9678,7 +9510,7 @@
    "crop_id": "wheat",
    "infection_id": "wheat.5",
    "old_name": null,
-   "name_in_source": "اأمراضض الفيوزاريوم فى القمح",
+   "name_in_source": "أمراض الفيوزاريوم فى القمح",
    "printed_page": 7,
    "pdf_page": 20,
    "status": "VERIFIED",
@@ -9688,11 +9520,21 @@
    "crop_id": "wheat",
    "infection_id": "wheat.6",
    "old_name": null,
-   "name_in_source": "اأعفان اجلذور وموت البادرات",
+   "name_in_source": "اعفان الجذور وموت البادرات",
    "printed_page": 7,
    "pdf_page": 20,
    "status": "VERIFIED",
    "action": "من الكتاب مباشرة · مُضاف للقسم"
+  },
+  {
+   "crop_id": "snails",
+   "infection_id": "snails.1",
+   "old_name": null,
+   "name_in_source": "القواقع",
+   "printed_page": 266,
+   "pdf_page": 279,
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (head-entry:p279:y351.9 (مطبوع 266) · سطر «القواقـــــع») — الاستخراج كان «الخوخ» · مطبوع 266 / PDF 279 · مُضاف للقسم"
   },
   {
    "crop_id": "cantaloupe",
@@ -9701,8 +9543,8 @@
    "name_in_source": "دودة ورق القطن",
    "printed_page": 155,
    "pdf_page": 168,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الشمام) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p168:y149.9 (مطبوع 155) · سطر «الكانتالوب») — الاستخراج كان «الشمام» · مطبوع 155 / PDF 168 · مُضاف للقسم"
   },
   {
    "crop_id": "cantaloupe",
@@ -9711,8 +9553,8 @@
    "name_in_source": "الذبابة البيضاء",
    "printed_page": 156,
    "pdf_page": 169,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الشمام) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p169:y110.6 (مطبوع 155) · سطر «الكانتالوب الذبابة البيضاء») — الاستخراج كان «الشمام» · مطبوع 156 / PDF 169 · مُضاف للقسم"
   },
   {
    "crop_id": "cantaloupe",
@@ -9722,7 +9564,7 @@
    "printed_page": 156,
    "pdf_page": 169,
    "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الشمام) — معروض بحالته صراحةً · مُضاف للقسم"
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p169:y110.6 (مطبوع 155) · سطر «الكانتالوب الذبابة البيضاء») — الاستخراج كان «الشمام» · مطبوع 156 / PDF 169 · مُضاف للقسم"
   },
   {
    "crop_id": "cantaloupe",
@@ -9731,8 +9573,8 @@
    "name_in_source": "العنكبوت الأحمر",
    "printed_page": 157,
    "pdf_page": 170,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الشمام) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p170:y110.6 (مطبوع 155) · سطر «الكانتالوب العنكبوت الأحمر») — الاستخراج كان «الشمام» · مطبوع 157 / PDF 170 · مُضاف للقسم"
   },
   {
    "crop_id": "cantaloupe",
@@ -9741,8 +9583,8 @@
    "name_in_source": "البياض الدقيقى",
    "printed_page": 157,
    "pdf_page": 170,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الشمام) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p170:y110.6 (مطبوع 155) · سطر «الكانتالوب العنكبوت الأحمر») — الاستخراج كان «الشمام» · مطبوع 157 / PDF 170 · مُضاف للقسم"
   },
   {
    "crop_id": "cantaloupe",
@@ -9751,28 +9593,28 @@
    "name_in_source": "البياض الزغبى",
    "printed_page": 158,
    "pdf_page": 171,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الشمام) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p171:y110.6 (مطبوع 155) · سطر «الكانتالوب البياض الدقيقى») — الاستخراج كان «الشمام» · مطبوع 158 / PDF 171 · مُضاف للقسم"
   },
   {
    "crop_id": "cantaloupe",
    "infection_id": "cantaloupe.7",
    "old_name": null,
-   "name_in_source": "اأعفان اجلذور وموت البادرات",
+   "name_in_source": "اعفان الجذور وموت البادرات",
    "printed_page": 159,
    "pdf_page": 172,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الشمام) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p172:y110.6 (مطبوع 155) · سطر «الكانتالوب البياض الزغبى») — الاستخراج كان «الشمام» · مطبوع 159 / PDF 172 · مُضاف للقسم"
   },
   {
    "crop_id": "cantaloupe",
    "infection_id": "cantaloupe.8",
    "old_name": null,
-   "name_in_source": ".لفحة الساق الصمغية",
+   "name_in_source": "لفحة الساق الصمغية",
    "printed_page": 160,
    "pdf_page": 173,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الشمام) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p173:y110.6 (مطبوع 155) · سطر «الكانتالوب لفحة الساق الصمغية») — الاستخراج كان «الشمام» · مطبوع 160 / PDF 173 · مُضاف للقسم"
   },
   {
    "crop_id": "roselle",
@@ -9781,8 +9623,8 @@
    "name_in_source": "البياض الدقيقى",
    "printed_page": 40,
    "pdf_page": 53,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال القطن) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p53:y147.9 (مطبوع 40) · سطر «الكركديه») — الاستخراج كان «القطن» · مطبوع 40 / PDF 53 · مُضاف للقسم"
   },
   {
    "crop_id": "cabbage",
@@ -9791,8 +9633,8 @@
    "name_in_source": "دودة ورق القطن",
    "printed_page": 178,
    "pdf_page": 191,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال البامية) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p191:y152.8 (مطبوع 178) · سطر «الكرنب») — الاستخراج كان «البامية» · مطبوع 178 / PDF 191 · مُضاف للقسم"
   },
   {
    "crop_id": "cabbage",
@@ -9801,18 +9643,18 @@
    "name_in_source": "الذبابة البيضاء",
    "printed_page": 178,
    "pdf_page": 191,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال البامية) — معروض بحالته صراحةً"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p191:y152.8 (مطبوع 178) · سطر «الكرنب») — الاستخراج كان «البامية» · مطبوع 178 / PDF 191"
   },
   {
    "crop_id": "cabbage",
    "infection_id": "cabbage.3",
    "old_name": null,
-   "name_in_source": "امل ن",
+   "name_in_source": "المن",
    "printed_page": 179,
    "pdf_page": 192,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال البامية) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p192:y110.6 (مطبوع 178) · سطر «الكرنب الذبابة البيضاء») — الاستخراج كان «البامية» · مطبوع 179 / PDF 192 · مُضاف للقسم"
   },
   {
    "crop_id": "cabbage",
@@ -9822,17 +9664,17 @@
    "printed_page": 179,
    "pdf_page": 192,
    "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال البامية) — معروض بحالته صراحةً · مُضاف للقسم"
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p192:y110.6 (مطبوع 178) · سطر «الكرنب الذبابة البيضاء») — الاستخراج كان «البامية» · مطبوع 179 / PDF 192 · مُضاف للقسم"
   },
   {
    "crop_id": "cabbage",
    "infection_id": "cabbage.5",
    "old_name": null,
-   "name_in_source": "الفراشه ذات الظهر املاسى",
+   "name_in_source": "الفراشه ذات الظهر الماسى",
    "printed_page": 180,
    "pdf_page": 193,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال البامية) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p193:y110.6 (مطبوع 178) · سطر «الكرنب ابو دقيق الكرنب») — الاستخراج كان «البامية» · مطبوع 180 / PDF 193 · مُضاف للقسم"
   },
   {
    "crop_id": "cabbage",
@@ -9841,8 +9683,8 @@
    "name_in_source": "العنكبوت الحمر",
    "printed_page": 181,
    "pdf_page": 194,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال البامية) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p194:y110.6 (مطبوع 178) · سطر «الكرنب العنكبوت الحمر») — الاستخراج كان «البامية» · مطبوع 181 / PDF 194 · مُضاف للقسم"
   },
   {
    "crop_id": "cabbage",
@@ -9851,8 +9693,8 @@
    "name_in_source": "البياض الزغبى",
    "printed_page": 181,
    "pdf_page": 194,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال البامية) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p194:y110.6 (مطبوع 178) · سطر «الكرنب العنكبوت الحمر») — الاستخراج كان «البامية» · مطبوع 181 / PDF 194 · مُضاف للقسم"
   },
   {
    "crop_id": "cabbage",
@@ -9861,8 +9703,8 @@
    "name_in_source": "البياض الدقيقى",
    "printed_page": 182,
    "pdf_page": 195,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال البامية) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p195:y110.6 (مطبوع 178) · سطر «الكرنب البياض الدقيقى») — الاستخراج كان «البامية» · مطبوع 182 / PDF 195 · مُضاف للقسم"
   },
   {
    "crop_id": "cabbage",
@@ -9871,44 +9713,74 @@
    "name_in_source": "اعفان الجذور وموت البادرات",
    "printed_page": 182,
    "pdf_page": 195,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال البامية) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p195:y110.6 (مطبوع 178) · سطر «الكرنب البياض الدقيقى») — الاستخراج كان «البامية» · مطبوع 182 / PDF 195 · مُضاف للقسم"
   },
   {
    "crop_id": "pear",
    "infection_id": "pear.1",
    "old_name": null,
-   "name_in_source": "الأشنة",
-   "printed_page": 254,
-   "pdf_page": 267,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال التفاح) — معروض بحالته صراحةً · مُضاف للقسم"
+   "name_in_source": "الحشرات القشرية",
+   "printed_page": 253,
+   "pdf_page": 266,
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p266:y405.5 (مطبوع 253) · سطر «الكمثـرى») — الاستخراج كان «التفاح» · مطبوع 253 / PDF 266 · مُضاف للقسم"
   },
   {
    "crop_id": "pear",
    "infection_id": "pear.2",
    "old_name": null,
+   "name_in_source": "الأشنة",
+   "printed_page": 254,
+   "pdf_page": 267,
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p267:y111.3 (مطبوع 253) · سطر «الكمرثى احلشرات القشرية») — الاستخراج كان «التفاح» · مطبوع 254 / PDF 267 · مُضاف للقسم"
+  },
+  {
+   "crop_id": "pear",
+   "infection_id": "pear.3",
+   "old_name": null,
    "name_in_source": "اللفحة النارية",
    "printed_page": 255,
    "pdf_page": 268,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال التفاح) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p268:y109.2 (مطبوع 253) · سطر «الكمرثى اللفحة النارية») — الاستخراج كان «التفاح» · مطبوع 255 / PDF 268 · مُضاف للقسم"
   },
   {
    "crop_id": "koosa",
    "infection_id": "koosa.1",
    "old_name": null,
+   "name_in_source": "الذبابة البيضاء",
+   "printed_page": 140,
+   "pdf_page": 153,
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p153:y482.4 (مطبوع 140) · سطر «الكوســـة») — الاستخراج كان «الخيار» · مطبوع 140 / PDF 153 · مُضاف للقسم"
+  },
+  {
+   "crop_id": "koosa",
+   "infection_id": "koosa.2",
+   "old_name": null,
    "name_in_source": "البياض الدقيقى",
    "printed_page": 141,
    "pdf_page": 154,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الخيار) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p154:y109.2 (مطبوع 140) · سطر «الكوســة البياض الدقيقى») — الاستخراج كان «الخيار» · مطبوع 141 / PDF 154 · مُضاف للقسم"
+  },
+  {
+   "crop_id": "leafbeet",
+   "infection_id": "leafbeet.1",
+   "old_name": null,
+   "name_in_source": "المن",
+   "printed_page": 117,
+   "pdf_page": 130,
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p130:y462.1 (مطبوع 117) · سطر «اللفت») — الاستخراج كان «الجزر» · مطبوع 117 / PDF 130 · مُضاف للقسم"
   },
   {
    "crop_id": "cowpea",
    "infection_id": "cowpea.1",
    "old_name": null,
-   "name_in_source": "امل ن",
+   "name_in_source": "المن",
    "printed_page": 168,
    "pdf_page": 181,
    "status": "VERIFIED",
@@ -9945,16 +9817,6 @@
    "action": "من الكتاب مباشرة · مُضاف للقسم"
   },
   {
-   "crop_id": "cowpea",
-   "infection_id": "cowpea.5",
-   "old_name": null,
-   "name_in_source": "دودة ورق القطن",
-   "printed_page": 170,
-   "pdf_page": 183,
-   "status": "VERIFIED",
-   "action": "من الكتاب مباشرة · مُضاف للقسم"
-  },
-  {
    "crop_id": "mango",
    "infection_id": "mango.1",
    "old_name": null,
@@ -9968,7 +9830,7 @@
    "crop_id": "mango",
    "infection_id": "mango.2",
    "old_name": null,
-   "name_in_source": "احلشرات القشرية",
+   "name_in_source": "الحشرات القشرية",
    "printed_page": 213,
    "pdf_page": 226,
    "status": "VERIFIED",
@@ -9981,8 +9843,8 @@
    "name_in_source": "ذباب الفاكهة",
    "printed_page": 214,
    "pdf_page": 227,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال المانجو) — معروض بحالته صراحةً"
+   "status": "VERIFIED",
+   "action": "من الكتاب مباشرة"
   },
   {
    "crop_id": "mango",
@@ -9991,18 +9853,18 @@
    "name_in_source": "البياض الدقيقى",
    "printed_page": 215,
    "pdf_page": 228,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال المانجو) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "من الكتاب مباشرة · مُضاف للقسم"
   },
   {
    "crop_id": "mango",
    "infection_id": "mango.5",
    "old_name": null,
-   "name_in_source": ")لفحة الأزهار (الأنرثاكنوز",
+   "name_in_source": "لفحة الأزهار (الأنرثاكنوز)",
    "printed_page": 217,
    "pdf_page": 230,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال المانجو) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "من الكتاب مباشرة · مُضاف للقسم"
   },
   {
    "crop_id": "mango",
@@ -10011,8 +9873,198 @@
    "name_in_source": "العفن الهبابى",
    "printed_page": 218,
    "pdf_page": 231,
+   "status": "VERIFIED",
+   "action": "من الكتاب مباشرة · مُضاف للقسم"
+  },
+  {
+   "crop_id": "buildings",
+   "infection_id": "buildings.1",
+   "old_name": null,
+   "name_in_source": "النمل الأبيض",
+   "printed_page": 265,
+   "pdf_page": 278,
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p278:y150.6 (مطبوع 265) · سطر «المبانى فى الريف والحضر») — الاستخراج كان «الخوخ» · مطبوع 265 / PDF 278 · مُضاف للقسم"
+  },
+  {
+   "crop_id": "stored_crops",
+   "infection_id": "stored_crops.1",
+   "old_name": null,
+   "name_in_source": "حشرات الحبوب المخزونة",
+   "printed_page": 263,
+   "pdf_page": 276,
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p276:y163.8 (مطبوع 263) · سطر «الحاصالت الزراعية المخزونة») — الاستخراج كان «الخوخ» · مطبوع 263 / PDF 276 · مُضاف للقسم"
+  },
+  {
+   "crop_id": "stored_crops",
+   "infection_id": "stored_crops.2",
+   "old_name": null,
+   "name_in_source": "حشرات التمور المخزونة",
+   "printed_page": 264,
+   "pdf_page": 277,
    "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال المانجو) — معروض بحالته صراحةً · مُضاف للقسم"
+   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الخوخ) — معروض بحالته صراحةً · مُضاف للقسم"
+  },
+  {
+   "crop_id": "green_areas",
+   "infection_id": "green_areas.1",
+   "old_name": null,
+   "name_in_source": "آفات المسطحات الخضراء",
+   "printed_page": 197,
+   "pdf_page": 210,
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p210:y473.3 (مطبوع 197) · سطر «المسطحات الخضراء») — الاستخراج كان «الفراولة» · مطبوع 197 / PDF 210 · مُضاف للقسم"
+  },
+  {
+   "crop_id": "green_areas",
+   "infection_id": "green_areas.2",
+   "old_name": null,
+   "name_in_source": "تبقع أوراق",
+   "printed_page": 198,
+   "pdf_page": 211,
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p211:y111.1 (مطبوع 197) · سطر «املسطحات اخلضراء اآفات املسطحات اخلضراء») — الاستخراج كان «الفراولة» · مطبوع 198 / PDF 211 · مُضاف للقسم"
+  },
+  {
+   "crop_id": "apricot",
+   "infection_id": "apricot.1",
+   "old_name": null,
+   "name_in_source": "البياض الدقيقى",
+   "printed_page": 260,
+   "pdf_page": 273,
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p273:y497.1 (مطبوع 260) · سطر «المشمش») — الاستخراج كان «الخوخ» · مطبوع 260 / PDF 273 · مُضاف للقسم"
+  },
+  {
+   "crop_id": "citrus",
+   "infection_id": "citrus.1",
+   "old_name": null,
+   "name_in_source": "الحشرات القشرية",
+   "printed_page": 199,
+   "pdf_page": 212,
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p212:y149.4 (مطبوع 199) · سطر «المــــــوالح») — الاستخراج كان «الفراولة» · مطبوع 199 / PDF 212 · مُضاف للقسم"
+  },
+  {
+   "crop_id": "citrus",
+   "infection_id": "citrus.2",
+   "old_name": null,
+   "name_in_source": "ذباب الفاكهة",
+   "printed_page": 201,
+   "pdf_page": 214,
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p214:y111.3 (مطبوع 199) · سطر «املوالح ذباب الفاكهة») — الاستخراج كان «الفراولة» · مطبوع 201 / PDF 214 · مُضاف للقسم"
+  },
+  {
+   "crop_id": "citrus",
+   "infection_id": "citrus.3",
+   "old_name": null,
+   "name_in_source": "صانعات الأنفاق",
+   "printed_page": 203,
+   "pdf_page": 216,
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p216:y111.3 (مطبوع 199) · سطر «املوالح صانعات النفاق») — الاستخراج كان «الفراولة» · مطبوع 203 / PDF 216 · مُضاف للقسم"
+  },
+  {
+   "crop_id": "citrus",
+   "infection_id": "citrus.4",
+   "old_name": null,
+   "name_in_source": "الأكاروس الموالح البنى",
+   "printed_page": 203,
+   "pdf_page": 216,
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p216:y111.3 (مطبوع 199) · سطر «املوالح صانعات النفاق») — الاستخراج كان «الفراولة» · مطبوع 203 / PDF 216 · مُضاف للقسم"
+  },
+  {
+   "crop_id": "citrus",
+   "infection_id": "citrus.5",
+   "old_name": null,
+   "name_in_source": "الأكاروس الموالح الحمر",
+   "printed_page": 205,
+   "pdf_page": 218,
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p218:y111.1 (مطبوع 199) · سطر «املوالح اكاروس املوالح الحمر») — الاستخراج كان «الفراولة» · مطبوع 205 / PDF 218 · مُضاف للقسم"
+  },
+  {
+   "crop_id": "citrus",
+   "infection_id": "citrus.6",
+   "old_name": null,
+   "name_in_source": "الأكاروس صدأ الموالح",
+   "printed_page": 205,
+   "pdf_page": 218,
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p218:y111.1 (مطبوع 199) · سطر «املوالح اكاروس املوالح الحمر») — الاستخراج كان «الفراولة» · مطبوع 205 / PDF 218 · مُضاف للقسم"
+  },
+  {
+   "crop_id": "citrus",
+   "infection_id": "citrus.7",
+   "old_name": null,
+   "name_in_source": "الأشنة",
+   "printed_page": 207,
+   "pdf_page": 220,
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p220:y111.3 (مطبوع 199) · سطر «املوالح اكاروس صداأ املوالح») — الاستخراج كان «الفراولة» · مطبوع 207 / PDF 220 · مُضاف للقسم"
+  },
+  {
+   "crop_id": "citrus",
+   "infection_id": "citrus.8",
+   "old_name": null,
+   "name_in_source": "التصمغ",
+   "printed_page": 208,
+   "pdf_page": 221,
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p221:y111.3 (مطبوع 199) · سطر «املوالح الأشنة») — الاستخراج كان «الفراولة» · مطبوع 208 / PDF 221 · مُضاف للقسم"
+  },
+  {
+   "crop_id": "citrus",
+   "infection_id": "citrus.9",
+   "old_name": null,
+   "name_in_source": "اعفان الثمار بعد الجمع",
+   "printed_page": 209,
+   "pdf_page": 222,
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p222:y111.3 (مطبوع 199) · سطر «املوالح اعفان الثمار بعد اجلمع») — الاستخراج كان «الفراولة» · مطبوع 209 / PDF 222 · مُضاف للقسم"
+  },
+  {
+   "crop_id": "citrus",
+   "infection_id": "citrus.10",
+   "old_name": null,
+   "name_in_source": "نيماتودا التدهور البطئ (فى الأشجار المثمرة)",
+   "printed_page": 210,
+   "pdf_page": 223,
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p223:y111.3 (مطبوع 199) · سطر «)املوالح نيماتودا التدهور البطئ (فى الأشجار املثمرة») — الاستخراج كان «الفراولة» · مطبوع 210 / PDF 223 · مُضاف للقسم"
+  },
+  {
+   "crop_id": "citrus",
+   "infection_id": "citrus.11",
+   "old_name": null,
+   "name_in_source": "نيماتودا التدهور البطئ (فى الغرس الحديث)",
+   "printed_page": 211,
+   "pdf_page": 224,
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p224:y111.3 (مطبوع 199) · سطر «)املوالح نيماتودا التدهور البطئ (فى الغرس احلديث») — الاستخراج كان «الفراولة» · مطبوع 211 / PDF 224 · مُضاف للقسم"
+  },
+  {
+   "crop_id": "citrus",
+   "infection_id": "citrus.12",
+   "old_name": null,
+   "name_in_source": "عفن السرة",
+   "printed_page": 212,
+   "pdf_page": 225,
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p225:y151.6 (مطبوع 212) · سطر «)الموالح (البرتقال») — الاستخراج كان «الفراولة» · مطبوع 212 / PDF 225 · مُضاف للقسم"
+  },
+  {
+   "crop_id": "banana",
+   "infection_id": "banana.1",
+   "old_name": null,
+   "name_in_source": "نيماتودا تعقد الجذور",
+   "printed_page": 261,
+   "pdf_page": 274,
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p274:y387.1 (مطبوع 261) · سطر «المــوز») — الاستخراج كان «الخوخ» · مطبوع 261 / PDF 274 · مُضاف للقسم"
   },
   {
    "crop_id": "dates",
@@ -10022,7 +10074,7 @@
    "printed_page": 237,
    "pdf_page": 250,
    "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال العنب) — معروض بحالته صراحةً · مُضاف للقسم"
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p250:y149.5 (مطبوع 237) · سطر «النخيل») — الاستخراج كان «العنب» · مطبوع 237 / PDF 250 · مُضاف للقسم"
   },
   {
    "crop_id": "dates",
@@ -10031,138 +10083,78 @@
    "name_in_source": "غبار النخيلاأكاروس",
    "printed_page": 237,
    "pdf_page": 250,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال العنب) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p250:y200.8 (مطبوع 237) · سطر «ة النخيل احلمراءوسس») — الاستخراج كان «العنب» · مطبوع 237 / PDF 250 · مُضاف للقسم"
   },
   {
-   "crop_id": "dates",
-   "infection_id": "dates.3",
+   "crop_id": "melo_labb",
+   "infection_id": "melo_labb.1",
    "old_name": null,
-   "name_in_source": "ابو دقيق السايكس",
-   "printed_page": 238,
-   "pdf_page": 251,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال العنب) — معروض بحالته صراحةً · مُضاف للقسم"
+   "name_in_source": "المن",
+   "printed_page": 149,
+   "pdf_page": 162,
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p162:y152.7 (مطبوع 149) · سطر «بطيخ اللب») — الاستخراج كان «البطيخ» · مطبوع 149 / PDF 162 · مُضاف للقسم"
   },
   {
-   "crop_id": "apricot",
-   "infection_id": "apricot.1",
+   "crop_id": "melo_labb",
+   "infection_id": "melo_labb.2",
    "old_name": null,
-   "name_in_source": "نيماتودا تعقد اجلذور",
-   "printed_page": 261,
-   "pdf_page": 274,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الخوخ) — معروض بحالته صراحةً · مُضاف للقسم"
+   "name_in_source": "دودة ورق القطن",
+   "printed_page": 149,
+   "pdf_page": 162,
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p162:y152.7 (مطبوع 149) · سطر «بطيخ اللب») — الاستخراج كان «البطيخ» · مطبوع 149 / PDF 162 · مُضاف للقسم"
   },
   {
-   "crop_id": "citrus",
-   "infection_id": "citrus.1",
+   "crop_id": "melo_labb",
+   "infection_id": "melo_labb.3",
    "old_name": null,
-   "name_in_source": "ذباب الفاكهة",
-   "printed_page": 201,
-   "pdf_page": 214,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الفراولة) — معروض بحالته صراحةً · مُضاف للقسم"
+   "name_in_source": "الذبابة البيضاء",
+   "printed_page": 150,
+   "pdf_page": 163,
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p163:y109.2 (مطبوع 149) · سطر «بطيخ اللب دودة ورق القطن») — الاستخراج كان «البطيخ» · مطبوع 150 / PDF 163 · مُضاف للقسم"
   },
   {
-   "crop_id": "citrus",
-   "infection_id": "citrus.2",
+   "crop_id": "melo_labb",
+   "infection_id": "melo_labb.4",
    "old_name": null,
-   "name_in_source": "صانعات الأنفاق",
-   "printed_page": 203,
-   "pdf_page": 216,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الفراولة) — معروض بحالته صراحةً · مُضاف للقسم"
+   "name_in_source": "العنكبوت الأحمر",
+   "printed_page": 150,
+   "pdf_page": 163,
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p163:y109.2 (مطبوع 149) · سطر «بطيخ اللب دودة ورق القطن») — الاستخراج كان «البطيخ» · مطبوع 150 / PDF 163 · مُضاف للقسم"
   },
   {
-   "crop_id": "citrus",
-   "infection_id": "citrus.3",
+   "crop_id": "melo_labb",
+   "infection_id": "melo_labb.5",
    "old_name": null,
-   "name_in_source": "اكاروس املوالح البنى",
-   "printed_page": 203,
-   "pdf_page": 216,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الفراولة) — معروض بحالته صراحةً · مُضاف للقسم"
+   "name_in_source": "البياض الدقيقى",
+   "printed_page": 151,
+   "pdf_page": 164,
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p164:y109.9 (مطبوع 149) · سطر «بطيخ اللب العنكبوت الأحمر») — الاستخراج كان «البطيخ» · مطبوع 151 / PDF 164 · مُضاف للقسم"
   },
   {
-   "crop_id": "citrus",
-   "infection_id": "citrus.4",
+   "crop_id": "melo_labb",
+   "infection_id": "melo_labb.6",
    "old_name": null,
-   "name_in_source": "اكاروس املوالح الحمر",
-   "printed_page": 205,
-   "pdf_page": 218,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الفراولة) — معروض بحالته صراحةً · مُضاف للقسم"
+   "name_in_source": "لفحة الساق الصمغية",
+   "printed_page": 151,
+   "pdf_page": 164,
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p164:y109.9 (مطبوع 149) · سطر «بطيخ اللب العنكبوت الأحمر») — الاستخراج كان «البطيخ» · مطبوع 151 / PDF 164 · مُضاف للقسم"
   },
   {
-   "crop_id": "citrus",
-   "infection_id": "citrus.5",
+   "crop_id": "melo_labb",
+   "infection_id": "melo_labb.7",
    "old_name": null,
-   "name_in_source": "اكاروس صداأ املوالح",
-   "printed_page": 205,
-   "pdf_page": 218,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الفراولة) — معروض بحالته صراحةً · مُضاف للقسم"
-  },
-  {
-   "crop_id": "citrus",
-   "infection_id": "citrus.6",
-   "old_name": null,
-   "name_in_source": "الأش نة",
-   "printed_page": 207,
-   "pdf_page": 220,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الفراولة) — معروض بحالته صراحةً · مُضاف للقسم"
-  },
-  {
-   "crop_id": "citrus",
-   "infection_id": "citrus.7",
-   "old_name": null,
-   "name_in_source": "التصمغ",
-   "printed_page": 208,
-   "pdf_page": 221,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الفراولة) — معروض بحالته صراحةً · مُضاف للقسم"
-  },
-  {
-   "crop_id": "citrus",
-   "infection_id": "citrus.8",
-   "old_name": null,
-   "name_in_source": "اعفان الثمار بعد اجلمع",
-   "printed_page": 209,
-   "pdf_page": 222,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الفراولة) — معروض بحالته صراحةً · مُضاف للقسم"
-  },
-  {
-   "crop_id": "citrus",
-   "infection_id": "citrus.9",
-   "old_name": null,
-   "name_in_source": "نيماتودا التدهور البطئ (فى الأشجار املثمرة)",
-   "printed_page": 210,
-   "pdf_page": 223,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الفراولة) — معروض بحالته صراحةً · مُضاف للقسم"
-  },
-  {
-   "crop_id": "citrus",
-   "infection_id": "citrus.10",
-   "old_name": null,
-   "name_in_source": ")نيماتودا التدهور البطئ (فى الغرس احلديث",
-   "printed_page": 211,
-   "pdf_page": 224,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الفراولة) — معروض بحالته صراحةً · مُضاف للقسم"
-  },
-  {
-   "crop_id": "citrus",
-   "infection_id": "citrus.11",
-   "old_name": null,
-   "name_in_source": "عفن السرة",
-   "printed_page": 212,
-   "pdf_page": 225,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الفراولة) — معروض بحالته صراحةً · مُضاف للقسم"
+   "name_in_source": "البياض الزغبى",
+   "printed_page": 152,
+   "pdf_page": 165,
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p165:y111.3 (مطبوع 149) · سطر «بطيخ اللب لفحة الساق الصمغية») — الاستخراج كان «البطيخ» · مطبوع 152 / PDF 165 · مُضاف للقسم"
   },
   {
    "crop_id": "sugarbeet",
@@ -10171,8 +10163,8 @@
    "name_in_source": "خنفساء البنجر السلحفائية",
    "printed_page": 20,
    "pdf_page": 33,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الثوم) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p33:y151.1 (مطبوع 20) · سطر «بنجر السكر») — الاستخراج كان «الثوم» · مطبوع 20 / PDF 33 · مُضاف للقسم"
   },
   {
    "crop_id": "sugarbeet",
@@ -10181,28 +10173,28 @@
    "name_in_source": "دودة ورق القطن",
    "printed_page": 21,
    "pdf_page": 34,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الثوم) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p34:y109.2 (مطبوع 20) · سطر «بنجر السكر دودة ورق القطن») — الاستخراج كان «الثوم» · مطبوع 21 / PDF 34 · مُضاف للقسم"
   },
   {
    "crop_id": "sugarbeet",
    "infection_id": "sugarbeet.3",
    "old_name": null,
-   "name_in_source": "صصانعات االنفاق",
+   "name_in_source": "صانعات الأنفاق",
    "printed_page": 24,
    "pdf_page": 37,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الثوم) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p37:y109.2 (مطبوع 20) · سطر «بنجر السكر دوره ورق القطن») — الاستخراج كان «الثوم» · مطبوع 24 / PDF 37 · مُضاف للقسم"
   },
   {
    "crop_id": "sugarbeet",
    "infection_id": "sugarbeet.4",
    "old_name": null,
-   "name_in_source": "ذبابة اأوراق البنجر",
+   "name_in_source": "ذبابة أوراق البنجر",
    "printed_page": 25,
    "pdf_page": 38,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الثوم) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p38:y110.6 (مطبوع 20) · سطر «بنجر السكر ذبابة اأوراق البنجر») — الاستخراج كان «الثوم» · مطبوع 25 / PDF 38 · مُضاف للقسم"
   },
   {
    "crop_id": "sugarbeet",
@@ -10211,24 +10203,24 @@
    "name_in_source": "تبقع ا لأوراق",
    "printed_page": 26,
    "pdf_page": 39,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الثوم) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p39:y109.2 (مطبوع 20) · سطر «بنجر السكر تبقع الأوراق») — الاستخراج كان «الثوم» · مطبوع 26 / PDF 39 · مُضاف للقسم"
   },
   {
    "crop_id": "sugarbeet",
    "infection_id": "sugarbeet.6",
    "old_name": null,
-   "name_in_source": "نيماتودا تعقد اجلذور",
+   "name_in_source": "نيماتودا تعقد الجذور",
    "printed_page": 29,
    "pdf_page": 42,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال الثوم) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p42:y109.2 (مطبوع 20) · سطر «بنجر السكر نيماتودا تعقد اجلذور») — الاستخراج كان «الثوم» · مطبوع 29 / PDF 42 · مُضاف للقسم"
   },
   {
    "crop_id": "sunflower",
    "infection_id": "sunflower.1",
    "old_name": null,
-   "name_in_source": "البياضض الدقيقى",
+   "name_in_source": "البياض الدقيقى",
    "printed_page": 59,
    "pdf_page": 72,
    "status": "VERIFIED",
@@ -10238,7 +10230,7 @@
    "crop_id": "sunflower",
    "infection_id": "sunflower.2",
    "old_name": null,
-   "name_in_source": "اأعفان اجلذور وموت البادرات",
+   "name_in_source": "اعفان الجذور وموت البادرات",
    "printed_page": 59,
    "pdf_page": 72,
    "status": "VERIFIED",
@@ -10251,14 +10243,14 @@
    "name_in_source": "العنكبوت الأحمر",
    "printed_page": 60,
    "pdf_page": 73,
-   "status": "NEEDS_REVIEW",
-   "action": "عنوان/ربط من الكتاب يحتاج مراجعة (تعارض تسمية محصول: الاستخراج قال دوار الشمس) — معروض بحالته صراحةً · مُضاف للقسم"
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p73:y153.1 (مطبوع 60) · سطر «فول الصويا») — الاستخراج كان «دوار الشمس» · مطبوع 60 / PDF 73 · مُضاف للقسم"
   },
   {
    "crop_id": "sugarcane",
    "infection_id": "sugarcane.1",
    "old_name": null,
-   "name_in_source": "احلشرة القشرية الرخوة",
+   "name_in_source": "الحشرة القشرية الرخوة",
    "printed_page": 50,
    "pdf_page": 63,
    "status": "VERIFIED",
@@ -10288,11 +10280,31 @@
    "crop_id": "sugarcane",
    "infection_id": "sugarcane.4",
    "old_name": null,
-   "name_in_source": "عفن اجلذور فى قصسب السسكر",
+   "name_in_source": "عفن الجذور فى قصب السكر",
    "printed_page": 53,
    "pdf_page": 66,
    "status": "VERIFIED",
    "action": "من الكتاب مباشرة · مُضاف للقسم"
+  },
+  {
+   "crop_id": "koosa_labb",
+   "infection_id": "koosa_labb.1",
+   "old_name": null,
+   "name_in_source": "دودة ورق القطن",
+   "printed_page": 143,
+   "pdf_page": 156,
+   "status": "VERIFIED",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p156:y285.8 (مطبوع 143) · سطر «كوسة اللب») — الاستخراج كان «القرع» · مطبوع 143 / PDF 156 · مُضاف للقسم"
+  },
+  {
+   "crop_id": "sykes_palm",
+   "infection_id": "sykes_palm.1",
+   "old_name": null,
+   "name_in_source": "ابو دقيق السايكس",
+   "printed_page": 238,
+   "pdf_page": 251,
+   "status": "NEEDS_REVIEW",
+   "action": "أُثبت ربط الكتاب بالسطر المطبوع (print-label:p251:y321.4 (مطبوع 238) · سطر «نخيل السايكس») — الاستخراج كان «العنب» · مطبوع 238 / PDF 251 · مُضاف للقسم"
   }
  ]
 }

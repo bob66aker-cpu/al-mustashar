@@ -14,7 +14,7 @@
   "printed_offset": 13
  },
  "counts": {
-  "crops": 50,
+  "crops": 60,
   "cards": 258,
   "products": 2993,
   "images": 256
@@ -37,8 +37,8 @@
  ],
  "audit": {
   "rows": 1024,
-  "VERIFIED": 139,
-  "NEEDS_REVIEW": 178,
-  "NOT_FOUND_IN_SOURCE": 707
+  "VERIFIED": 260,
+  "NEEDS_REVIEW": 63,
+  "NOT_FOUND_IN_SOURCE": 701
  }
 }

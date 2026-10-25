@@ -28,7 +28,7 @@
     {
      "n": 2,
      "type": "fungus",
-     "name_ar": "اللفح ة",
+     "name_ar": "اللفحة",
      "printed_page": 42,
      "pdf_page": 55,
      "has_rec": true,
@@ -48,7 +48,7 @@
     {
      "n": 4,
      "type": "fungus",
-     "name_ar": ")عفن القدم واSستطالة البادرات (البكانا)عفن القدم واسستطالة البادرات (البكانا",
+     "name_ar": "عفن القدم واستطالة البادرات (البكانا)",
      "printed_page": 43,
      "pdf_page": 56,
      "has_rec": true,
@@ -63,6 +63,7 @@
      "pdf_page": 57,
      "has_rec": true,
      "group": "النيماتودا",
+     "name_status": "NEEDS_REVIEW",
      "images": 2
     }
    ]
@@ -73,10 +74,21 @@
    "name_en": "Eggplant",
    "sci": "Solanum melongena",
    "family": "Solanaceae",
-   "cards": 1,
+   "cards": 2,
    "infections": [
     {
      "n": 1,
+     "type": "insect",
+     "name_ar": "الذبابة البيضاء",
+     "printed_page": 122,
+     "pdf_page": 135,
+     "has_rec": true,
+     "group": "احلشرات",
+     "crop_conflict": true,
+     "images": 2
+    },
+    {
+     "n": 2,
      "type": "mite",
      "name_ar": "العنكبوت الأحمر",
      "printed_page": 123,
@@ -139,7 +151,7 @@
     {
      "n": 5,
      "type": "nematode",
-     "name_ar": "نيماتودا تعقد اجلذور",
+     "name_ar": "نيماتودا تعقد الجذور",
      "printed_page": 177,
      "pdf_page": 190,
      "has_rec": true,
@@ -184,6 +196,7 @@
      "pdf_page": 196,
      "has_rec": true,
      "group": "احلشرات",
+     "name_status": "NEEDS_REVIEW",
      "crop_conflict": true,
      "images": 2
     },
@@ -206,10 +219,21 @@
    "name_en": "Pea",
    "sci": "Pisum sativum",
    "family": "Fabaceae",
-   "cards": 3,
+   "cards": 4,
    "infections": [
     {
      "n": 1,
+     "type": "mite",
+     "name_ar": "دودة ورق القطن",
+     "printed_page": 170,
+     "pdf_page": 183,
+     "has_rec": true,
+     "group": "الأكاروسات",
+     "crop_conflict": true,
+     "images": 2
+    },
+    {
+     "n": 2,
      "type": "fungus",
      "name_ar": "البياض الدقيقى",
      "printed_page": 171,
@@ -220,9 +244,9 @@
      "images": 2
     },
     {
-     "n": 2,
+     "n": 3,
      "type": "fungus",
-     "name_ar": "الص داأ",
+     "name_ar": "الصدأ",
      "printed_page": 171,
      "pdf_page": 184,
      "has_rec": true,
@@ -231,7 +255,7 @@
      "images": 3
     },
     {
-     "n": 3,
+     "n": 4,
      "type": "fungus",
      "name_ar": "لفحة الأسكوكيتا",
      "printed_page": 172,
@@ -259,6 +283,7 @@
      "pdf_page": 23,
      "has_rec": true,
      "group": "احلشرات",
+     "name_status": "NEEDS_REVIEW",
      "images": 1
     },
     {
@@ -299,6 +324,7 @@
      "pdf_page": 28,
      "has_rec": true,
      "group": "الفطريات",
+     "name_status": "NEEDS_REVIEW",
      "images": 1
     }
    ]
@@ -325,7 +351,7 @@
     {
      "n": 2,
      "type": "insect",
-     "name_ar": "احلفار",
+     "name_ar": "الحفار",
      "printed_page": 90,
      "pdf_page": 103,
      "has_rec": true,
@@ -347,7 +373,7 @@
     {
      "n": 4,
      "type": "insect",
-     "name_ar": "ال من",
+     "name_ar": "المن",
      "printed_page": 91,
      "pdf_page": 104,
      "has_rec": true,
@@ -358,7 +384,7 @@
     {
      "n": 5,
      "type": "insect",
-     "name_ar": ")دودة درنات البطاطس (فى احلقل",
+     "name_ar": "دودة درنات البطاطس (فى الحقل)",
      "printed_page": 93,
      "pdf_page": 106,
      "has_rec": true,
@@ -402,7 +428,7 @@
     {
      "n": 9,
      "type": "fungus",
-     "name_ar": "اعفان اجلذور وموت البادرات",
+     "name_ar": "اعفان الجذور وموت البادرات",
      "printed_page": 98,
      "pdf_page": 111,
      "has_rec": true,
@@ -435,7 +461,7 @@
     {
      "n": 12,
      "type": "fungus",
-     "name_ar": "العفن اجلاف",
+     "name_ar": "العفن الجاف",
      "printed_page": 101,
      "pdf_page": 114,
      "has_rec": true,
@@ -446,7 +472,7 @@
     {
      "n": 13,
      "type": "fungus",
-     "name_ar": ")الندوة املبكرة (البدرية",
+     "name_ar": "الندوة المبكرة (البدرية)",
      "printed_page": 101,
      "pdf_page": 114,
      "has_rec": true,
@@ -457,7 +483,7 @@
     {
      "n": 14,
      "type": "fungus",
-     "name_ar": "الندوة املتاأخرة",
+     "name_ar": "الندوة المتأخرة",
      "printed_page": 106,
      "pdf_page": 119,
      "has_rec": true,
@@ -479,7 +505,7 @@
     {
      "n": 16,
      "type": "fungus",
-     "name_ar": "تعقيم تربة اأراضى مفتوحة",
+     "name_ar": "تعقيم تربة أراضى مفتوحة",
      "printed_page": 111,
      "pdf_page": 124,
      "has_rec": true,
@@ -511,26 +537,28 @@
     },
     {
      "n": 19,
-     "type": "other",
+     "type": "nematode",
      "name_ar": "الذبابة البيضاء",
      "printed_page": 113,
      "pdf_page": 126,
      "has_rec": true,
+     "group": "النيماتودا",
      "images": 2
     },
     {
      "n": 20,
-     "type": "other",
+     "type": "nematode",
      "name_ar": "العنكبوت الحمر",
      "printed_page": 114,
      "pdf_page": 127,
      "has_rec": true,
+     "group": "النيماتودا",
      "images": 2
     },
     {
      "n": 21,
      "type": "fungus",
-     "name_ar": "اعفان اجلذور",
+     "name_ar": "اعفان الجذور",
      "printed_page": 115,
      "pdf_page": 128,
      "has_rec": true,
@@ -545,7 +573,7 @@
    "name_en": "Watermelon",
    "sci": "Citrullus lanatus",
    "family": "Cucurbitaceae",
-   "cards": 11,
+   "cards": 4,
    "infections": [
     {
      "n": 1,
@@ -585,83 +613,6 @@
      "has_rec": true,
      "group": "الفطريات",
      "images": 1
-    },
-    {
-     "n": 5,
-     "type": "insect",
-     "name_ar": "امل ن",
-     "printed_page": 149,
-     "pdf_page": 162,
-     "has_rec": true,
-     "group": "احلشرات",
-     "crop_conflict": true,
-     "images": 2
-    },
-    {
-     "n": 6,
-     "type": "insect",
-     "name_ar": "دودة ورق القطن",
-     "printed_page": 149,
-     "pdf_page": 162,
-     "has_rec": true,
-     "group": "احلشرات",
-     "crop_conflict": true,
-     "images": 4
-    },
-    {
-     "n": 7,
-     "type": "insect",
-     "name_ar": "الذبابة البيضاء",
-     "printed_page": 150,
-     "pdf_page": 163,
-     "has_rec": true,
-     "group": "احلشرات",
-     "crop_conflict": true,
-     "images": 2
-    },
-    {
-     "n": 8,
-     "type": "insect",
-     "name_ar": "العنكبوت الأحمر",
-     "printed_page": 150,
-     "pdf_page": 163,
-     "has_rec": true,
-     "group": "احلشرات",
-     "crop_conflict": true,
-     "images": 4
-    },
-    {
-     "n": 9,
-     "type": "fungus",
-     "name_ar": "البياض الدقيقى",
-     "printed_page": 151,
-     "pdf_page": 164,
-     "has_rec": true,
-     "group": "الفطريات",
-     "crop_conflict": true,
-     "images": 2
-    },
-    {
-     "n": 10,
-     "type": "fungus",
-     "name_ar": "لفحة الساق الصمغية",
-     "printed_page": 151,
-     "pdf_page": 164,
-     "has_rec": true,
-     "group": "الفطريات",
-     "crop_conflict": true,
-     "images": 3
-    },
-    {
-     "n": 11,
-     "type": "fungus",
-     "name_ar": "البياض الزغبى",
-     "printed_page": 152,
-     "pdf_page": 165,
-     "has_rec": true,
-     "group": "الفطريات",
-     "crop_conflict": true,
-     "images": 1
     }
    ]
   },
@@ -676,6 +627,16 @@
     {
      "n": 1,
      "type": "other",
+     "name_ar": "حفار ساق التفاح",
+     "printed_page": 245,
+     "pdf_page": 258,
+     "has_rec": true,
+     "crop_conflict": true,
+     "images": 3
+    },
+    {
+     "n": 2,
+     "type": "other",
      "name_ar": "من التفاح الصوفى",
      "printed_page": 246,
      "pdf_page": 259,
@@ -683,7 +644,7 @@
      "images": 1
     },
     {
-     "n": 2,
+     "n": 3,
      "type": "mite",
      "name_ar": "الأكاروس الأحمر الأوروبى (البيض الشتوى)",
      "printed_page": 247,
@@ -693,9 +654,9 @@
      "images": 2
     },
     {
-     "n": 3,
+     "n": 4,
      "type": "mite",
-     "name_ar": ")الأكاروس الأحمر الأوروبي (الطوار املتحركة",
+     "name_ar": "الأكاروس الأحمر الأوروبي (الطوار المتحركة)",
      "printed_page": 247,
      "pdf_page": 260,
      "has_rec": true,
@@ -703,7 +664,7 @@
      "images": 3
     },
     {
-     "n": 4,
+     "n": 5,
      "type": "mite",
      "name_ar": "العنكبوت الأحمر",
      "printed_page": 248,
@@ -713,7 +674,7 @@
      "images": 1
     },
     {
-     "n": 5,
+     "n": 6,
      "type": "mite",
      "name_ar": "البياض الدقيقى",
      "printed_page": 250,
@@ -723,21 +684,11 @@
      "images": 1
     },
     {
-     "n": 6,
-     "type": "mite",
-     "name_ar": "اجل رب",
-     "printed_page": 252,
-     "pdf_page": 265,
-     "has_rec": true,
-     "group": "الأكاروسات",
-     "images": 2
-    },
-    {
      "n": 7,
      "type": "mite",
-     "name_ar": "احلشرات القشرية",
-     "printed_page": 253,
-     "pdf_page": 266,
+     "name_ar": "الجرب",
+     "printed_page": 252,
+     "pdf_page": 265,
      "has_rec": true,
      "group": "الأكاروسات",
      "images": 2
@@ -760,12 +711,13 @@
      "pdf_page": 29,
      "has_rec": true,
      "group": "الحشرات",
+     "name_status": "NEEDS_REVIEW",
      "images": 1
     },
     {
      "n": 2,
      "type": "mite",
-     "name_ar": "اكاروس جفاف روؤوس الثوم",
+     "name_ar": "الأكاروس جفاف رؤوس الثوم",
      "printed_page": 17,
      "pdf_page": 30,
      "has_rec": true,
@@ -775,7 +727,7 @@
     {
      "n": 3,
      "type": "mite",
-     "name_ar": "البياضض الزغبى",
+     "name_ar": "البياض الزغبى",
      "printed_page": 17,
      "pdf_page": 30,
      "has_rec": true,
@@ -785,7 +737,7 @@
     {
      "n": 4,
      "type": "mite",
-     "name_ar": "مرضض الصصداأ فى الثوم",
+     "name_ar": "مرض الصدأ فى الثوم",
      "printed_page": 19,
      "pdf_page": 32,
      "has_rec": true,
@@ -800,7 +752,7 @@
    "name_en": "Carrot",
    "sci": "Daucus carota",
    "family": "Apiaceae",
-   "cards": 4,
+   "cards": 3,
    "infections": [
     {
      "n": 1,
@@ -825,23 +777,11 @@
     {
      "n": 3,
      "type": "nematode",
-     "name_ar": "نيماتودا تعقد اجلذور",
+     "name_ar": "نيماتودا تعقد الجذور",
      "printed_page": 117,
      "pdf_page": 130,
      "has_rec": true,
      "group": "النيماتودا",
-     "crop_conflict": true,
-     "images": 2
-    },
-    {
-     "n": 4,
-     "type": "insect",
-     "name_ar": "امل ن",
-     "printed_page": 117,
-     "pdf_page": 130,
-     "has_rec": true,
-     "group": "احلشرات",
-     "crop_conflict": true,
      "images": 2
     }
    ]
@@ -857,7 +797,7 @@
     {
      "n": 1,
      "type": "insect",
-     "name_ar": "احلشرة القشرية الرخوة (البولفيناريا)",
+     "name_ar": "الحشرة القشرية الرخوة (البولفيناريا)",
      "printed_page": 241,
      "pdf_page": 254,
      "has_rec": true,
@@ -867,18 +807,19 @@
     },
     {
      "n": 2,
-     "type": "other",
-     "name_ar": "امل ن",
+     "type": "insect",
+     "name_ar": "المن",
      "printed_page": 242,
      "pdf_page": 255,
      "has_rec": true,
+     "group": "احلشرات",
      "crop_conflict": true,
      "images": 2
     },
     {
      "n": 3,
      "type": "mite",
-     "name_ar": "حلم صداأ اأوراق اجلوافة",
+     "name_ar": "حلم صدأ أوراق الجوافة",
      "printed_page": 242,
      "pdf_page": 255,
      "has_rec": true,
@@ -888,11 +829,13 @@
     },
     {
      "n": 4,
-     "type": "other",
+     "type": "mite",
      "name_ar": "احللم املبطط على ثمار اجلوافة",
      "printed_page": 243,
      "pdf_page": 256,
      "has_rec": true,
+     "group": "الأكاروسات",
+     "name_status": "NEEDS_REVIEW",
      "crop_conflict": true,
      "images": 2
     },
@@ -906,6 +849,27 @@
      "group": "الفطريات",
      "crop_conflict": true,
      "images": 2
+    }
+   ]
+  },
+  {
+   "id": "open_fields",
+   "name_ar": "الحقول والمزارع وحدائق الفاكهة",
+   "name_en": "Fields & orchards",
+   "sci": null,
+   "family": null,
+   "cards": 1,
+   "infections": [
+    {
+     "n": 1,
+     "type": "insect",
+     "name_ar": "الفئران",
+     "printed_page": 265,
+     "pdf_page": 278,
+     "has_rec": true,
+     "group": "احلشرات",
+     "crop_conflict": true,
+     "images": 3
     }
    ]
   },
@@ -956,7 +920,7 @@
    "name_en": "Peach",
    "sci": "Prunus persica",
    "family": "Rosaceae",
-   "cards": 12,
+   "cards": 6,
    "infections": [
     {
      "n": 1,
@@ -980,106 +944,44 @@
     },
     {
      "n": 3,
-     "type": "other",
+     "type": "insect",
      "name_ar": "البياض الدقيقى",
      "printed_page": 257,
      "pdf_page": 270,
      "has_rec": true,
-     "crop_conflict": true,
+     "group": "احلشرات",
      "images": 1
     },
     {
      "n": 4,
-     "type": "other",
+     "type": "insect",
      "name_ar": "العفن البنى",
      "printed_page": 258,
      "pdf_page": 271,
      "has_rec": true,
-     "crop_conflict": true,
+     "group": "احلشرات",
      "images": 0
     },
     {
      "n": 5,
-     "type": "other",
-     "name_ar": "صداأ اخلوخ",
+     "type": "insect",
+     "name_ar": "صدأ الخوخ",
      "printed_page": 259,
      "pdf_page": 272,
      "has_rec": true,
-     "crop_conflict": true,
+     "group": "احلشرات",
      "images": 0
     },
     {
      "n": 6,
-     "type": "other",
+     "type": "insect",
      "name_ar": "جتعد اأوراق اخلوخ",
      "printed_page": 260,
      "pdf_page": 273,
      "has_rec": true,
-     "crop_conflict": true,
-     "images": 2
-    },
-    {
-     "n": 7,
-     "type": "other",
-     "name_ar": "البياض الدقيقى",
-     "printed_page": 260,
-     "pdf_page": 273,
-     "has_rec": true,
-     "crop_conflict": true,
-     "images": 3
-    },
-    {
-     "n": 8,
-     "type": "other",
-     "name_ar": "حشرات احلبوب املخزونة",
-     "printed_page": 263,
-     "pdf_page": 276,
-     "has_rec": true,
-     "crop_conflict": true,
-     "images": 3
-    },
-    {
-     "n": 9,
-     "type": "other",
-     "name_ar": "حشرات التمور املخزونة",
-     "printed_page": 264,
-     "pdf_page": 277,
-     "has_rec": true,
-     "crop_conflict": true,
-     "images": 2
-    },
-    {
-     "n": 10,
-     "type": "insect",
-     "name_ar": "النمل الأبيض",
-     "printed_page": 265,
-     "pdf_page": 278,
-     "has_rec": true,
      "group": "احلشرات",
-     "crop_conflict": true,
+     "name_status": "NEEDS_REVIEW",
      "images": 2
-    },
-    {
-     "n": 11,
-     "type": "insect",
-     "name_ar": "الفئ ران",
-     "printed_page": 265,
-     "pdf_page": 278,
-     "has_rec": true,
-     "group": "احلشرات",
-     "crop_conflict": true,
-     "images": 3
-    },
-    {
-     "n": 12,
-     "type": "other",
-     "name_ar": "القواق ع",
-     "printed_page": 266,
-     "pdf_page": 279,
-     "has_rec": true,
-     "group": "الالفقاريات",
-     "crop_conflict": true,
-     "images": 1
     }
    ]
   },
@@ -1089,7 +991,7 @@
    "name_en": "Cucumber",
    "sci": "Cucumis sativus",
    "family": "Cucurbitaceae",
-   "cards": 12,
+   "cards": 11,
    "infections": [
     {
      "n": 1,
@@ -1103,11 +1005,10 @@
     {
      "n": 2,
      "type": "other",
-     "name_ar": "امل ن",
+     "name_ar": "المن",
      "printed_page": 126,
      "pdf_page": 139,
      "has_rec": true,
-     "crop_conflict": true,
      "images": 1
     },
     {
@@ -1117,7 +1018,6 @@
      "printed_page": 128,
      "pdf_page": 141,
      "has_rec": true,
-     "crop_conflict": true,
      "images": 2
     },
     {
@@ -1127,7 +1027,6 @@
      "printed_page": 128,
      "pdf_page": 141,
      "has_rec": true,
-     "crop_conflict": true,
      "images": 2
     },
     {
@@ -1138,29 +1037,26 @@
      "pdf_page": 142,
      "has_rec": true,
      "group": "الأكاروسات",
-     "crop_conflict": true,
      "images": 1
     },
     {
      "n": 6,
      "type": "fungus",
-     "name_ar": "اعف ان الثم ار",
+     "name_ar": "اعفان الثمار",
      "printed_page": 131,
      "pdf_page": 144,
      "has_rec": true,
      "group": "الفطريات",
-     "crop_conflict": true,
      "images": 2
     },
     {
      "n": 7,
      "type": "fungus",
-     "name_ar": "اعفان اجلذور وموت البادرات",
+     "name_ar": "اعفان الجذور وموت البادرات",
      "printed_page": 131,
      "pdf_page": 144,
      "has_rec": true,
      "group": "الفطريات",
-     "crop_conflict": true,
      "images": 2
     },
     {
@@ -1171,7 +1067,6 @@
      "pdf_page": 147,
      "has_rec": true,
      "group": "الفطريات",
-     "crop_conflict": true,
      "images": 1
     },
     {
@@ -1182,7 +1077,6 @@
      "pdf_page": 149,
      "has_rec": true,
      "group": "الفطريات",
-     "crop_conflict": true,
      "images": 2
     },
     {
@@ -1193,29 +1087,16 @@
      "pdf_page": 152,
      "has_rec": true,
      "group": "الفطريات",
-     "crop_conflict": true,
      "images": 1
     },
     {
      "n": 11,
      "type": "fungus",
-     "name_ar": "نيماتودا تعقد اجلذور",
+     "name_ar": "نيماتودا تعقد الجذور",
      "printed_page": 140,
      "pdf_page": 153,
      "has_rec": true,
      "group": "الفطريات",
-     "crop_conflict": true,
-     "images": 2
-    },
-    {
-     "n": 12,
-     "type": "insect",
-     "name_ar": "الذبابة البيضاء",
-     "printed_page": 140,
-     "pdf_page": 153,
-     "has_rec": true,
-     "group": "احلشرات",
-     "crop_conflict": true,
      "images": 2
     }
    ]
@@ -1231,7 +1112,7 @@
     {
      "n": 1,
      "type": "insect",
-     "name_ar": "الدودة القارضضة",
+     "name_ar": "الدودة القارضة",
      "printed_page": 45,
      "pdf_page": 58,
      "has_rec": true,
@@ -1258,6 +1139,7 @@
      "pdf_page": 59,
      "has_rec": true,
      "group": "احلشرات",
+     "name_status": "NEEDS_REVIEW",
      "crop_conflict": true,
      "images": 2
     },
@@ -1275,7 +1157,7 @@
     {
      "n": 5,
      "type": "insect",
-     "name_ar": "اعفان اجلذور وموت البادرات",
+     "name_ar": "اعفان الجذور وموت البادرات",
      "printed_page": 48,
      "pdf_page": 61,
      "has_rec": true,
@@ -1291,12 +1173,12 @@
    "name_en": "Pomegranate",
    "sci": "Punica granatum",
    "family": "Lythraceae",
-   "cards": 4,
+   "cards": 3,
    "infections": [
     {
      "n": 1,
      "type": "insect",
-     "name_ar": "امل ن",
+     "name_ar": "المن",
      "printed_page": 244,
      "pdf_page": 257,
      "has_rec": true,
@@ -1321,17 +1203,8 @@
      "pdf_page": 258,
      "has_rec": true,
      "group": "احلشرات",
+     "name_status": "NEEDS_REVIEW",
      "images": 2
-    },
-    {
-     "n": 4,
-     "type": "insect",
-     "name_ar": "حفار ساق التفاح",
-     "printed_page": 245,
-     "pdf_page": 258,
-     "has_rec": true,
-     "group": "احلشرات",
-     "images": 3
     }
    ]
   },
@@ -1341,7 +1214,7 @@
    "name_en": "Protected cultivation",
    "sci": null,
    "family": null,
-   "cards": 1,
+   "cards": 2,
    "infections": [
     {
      "n": 1,
@@ -1353,6 +1226,17 @@
      "group": "النيماتودا",
      "crop_conflict": true,
      "images": 1
+    },
+    {
+     "n": 2,
+     "type": "nematode",
+     "name_ar": "نيماتودا الرتبة (مكافحة)",
+     "printed_page": 197,
+     "pdf_page": 210,
+     "has_rec": true,
+     "group": "النيماتودا",
+     "crop_conflict": true,
+     "images": 2
     }
    ]
   },
@@ -1367,7 +1251,7 @@
     {
      "n": 1,
      "type": "insect",
-     "name_ar": "احلشرات القشرية",
+     "name_ar": "الحشرات القشرية",
      "printed_page": 239,
      "pdf_page": 252,
      "has_rec": true,
@@ -1377,7 +1261,7 @@
     {
      "n": 2,
      "type": "insect",
-     "name_ar": "دودة اأوراق الزيتون",
+     "name_ar": "دودة أوراق الزيتون",
      "printed_page": 240,
      "pdf_page": 253,
      "has_rec": true,
@@ -1422,15 +1306,27 @@
    "name_en": "Sesame",
    "sci": "Sesamum indicum",
    "family": "Pedaliaceae",
-   "cards": 1,
+   "cards": 2,
    "infections": [
     {
      "n": 1,
-     "type": "other",
-     "name_ar": "اأعفان اجلذور وموت البادرات",
+     "type": "fungus",
+     "name_ar": "العفن الفحمي",
+     "printed_page": 57,
+     "pdf_page": 70,
+     "has_rec": true,
+     "group": "الفطريات",
+     "crop_conflict": true,
+     "images": 1
+    },
+    {
+     "n": 2,
+     "type": "fungus",
+     "name_ar": "اعفان الجذور وموت البادرات",
      "printed_page": 58,
      "pdf_page": 71,
      "has_rec": true,
+     "group": "الفطريات",
      "images": 3
     }
    ]
@@ -1539,7 +1435,7 @@
     {
      "n": 3,
      "type": "insect",
-     "name_ar": "امل ن",
+     "name_ar": "المن",
      "printed_page": 66,
      "pdf_page": 79,
      "has_rec": true,
@@ -1589,7 +1485,7 @@
     {
      "n": 8,
      "type": "insect",
-     "name_ar": ")صانعات الأنفاق (جنس لريومايزا",
+     "name_ar": "صانعات الأنفاق (جنس لريومايزا)",
      "printed_page": 74,
      "pdf_page": 87,
      "has_rec": true,
@@ -1619,7 +1515,7 @@
     {
      "n": 11,
      "type": "fungus",
-     "name_ar": "اعفان اجلذور وموت البادرات",
+     "name_ar": "اعفان الجذور وموت البادرات",
      "printed_page": 78,
      "pdf_page": 91,
      "has_rec": true,
@@ -1639,7 +1535,7 @@
     {
      "n": 13,
      "type": "fungus",
-     "name_ar": ")الندوة املبكرة (البدرية",
+     "name_ar": "الندوة المبكرة (البدرية)",
      "printed_page": 81,
      "pdf_page": 94,
      "has_rec": true,
@@ -1649,7 +1545,7 @@
     {
      "n": 14,
      "type": "fungus",
-     "name_ar": "الندوة املتاأخرة",
+     "name_ar": "الندوة المتأخرة",
      "printed_page": 84,
      "pdf_page": 97,
      "has_rec": true,
@@ -1659,7 +1555,7 @@
     {
      "n": 15,
      "type": "fungus",
-     "name_ar": "اأمراض الرتبة",
+     "name_ar": "أمراض الرتبة",
      "printed_page": 87,
      "pdf_page": 100,
      "has_rec": true,
@@ -1669,7 +1565,7 @@
     {
      "n": 16,
      "type": "fungus",
-     "name_ar": "نيماتودا تعقد اجلذور",
+     "name_ar": "نيماتودا تعقد الجذور",
      "printed_page": 87,
      "pdf_page": 100,
      "has_rec": true,
@@ -1714,6 +1610,7 @@
      "pdf_page": 233,
      "has_rec": true,
      "group": "احلشرات",
+     "name_status": "NEEDS_REVIEW",
      "images": 2
     },
     {
@@ -1769,7 +1666,7 @@
     {
      "n": 9,
      "type": "nematode",
-     "name_ar": "نيماتودا تعقد اجلذور",
+     "name_ar": "نيماتودا تعقد الجذور",
      "printed_page": 236,
      "pdf_page": 249,
      "has_rec": true,
@@ -1789,7 +1686,7 @@
     {
      "n": 1,
      "type": "insect",
-     "name_ar": "صانعات النفاق",
+     "name_ar": "صانعات الأنفاق",
      "printed_page": 163,
      "pdf_page": 176,
      "has_rec": true,
@@ -1800,7 +1697,7 @@
     {
      "n": 2,
      "type": "insect",
-     "name_ar": "ال م ن",
+     "name_ar": "المن",
      "printed_page": 164,
      "pdf_page": 177,
      "has_rec": true,
@@ -1822,7 +1719,7 @@
     {
      "n": 4,
      "type": "fungus",
-     "name_ar": "الصداأ",
+     "name_ar": "الصدأ",
      "printed_page": 166,
      "pdf_page": 179,
      "has_rec": true,
@@ -1844,7 +1741,7 @@
     {
      "n": 6,
      "type": "fungus",
-     "name_ar": "اأعفان اجلذور وموت البادرات",
+     "name_ar": "اعفان الجذور وموت البادرات",
      "printed_page": 167,
      "pdf_page": 180,
      "has_rec": true,
@@ -1860,7 +1757,7 @@
    "name_en": "Strawberry",
    "sci": "Fragaria ananassa",
    "family": "Rosaceae",
-   "cards": 10,
+   "cards": 6,
    "infections": [
     {
      "n": 1,
@@ -1905,7 +1802,7 @@
     {
      "n": 5,
      "type": "fungus",
-     "name_ar": "مرض عفن اجلذور",
+     "name_ar": "مرض عفن الجذور",
      "printed_page": 194,
      "pdf_page": 207,
      "has_rec": true,
@@ -1921,48 +1818,6 @@
      "has_rec": true,
      "group": "الفطريات",
      "images": 1
-    },
-    {
-     "n": 7,
-     "type": "other",
-     "name_ar": ")نيماتودا الرتبة (مكافحة",
-     "printed_page": 197,
-     "pdf_page": 210,
-     "has_rec": true,
-     "crop_conflict": true,
-     "images": 2
-    },
-    {
-     "n": 8,
-     "type": "other",
-     "name_ar": "اآفات املسطحات اخلضراء",
-     "printed_page": 197,
-     "pdf_page": 210,
-     "has_rec": true,
-     "crop_conflict": true,
-     "images": 3
-    },
-    {
-     "n": 9,
-     "type": "fungus",
-     "name_ar": "تبقع اأوراق",
-     "printed_page": 198,
-     "pdf_page": 211,
-     "has_rec": true,
-     "group": "الفطريات",
-     "crop_conflict": true,
-     "images": 1
-    },
-    {
-     "n": 10,
-     "type": "insect",
-     "name_ar": "احلشرات القشرية",
-     "printed_page": 199,
-     "pdf_page": 212,
-     "has_rec": true,
-     "group": "احلشرات",
-     "crop_conflict": true,
-     "images": 1
     }
    ]
   },
@@ -1972,7 +1827,7 @@
    "name_en": "Pepper",
    "sci": "Capsicum annuum",
    "family": "Solanaceae",
-   "cards": 8,
+   "cards": 7,
    "infections": [
     {
      "n": 1,
@@ -1982,6 +1837,7 @@
      "pdf_page": 131,
      "has_rec": true,
      "group": "احلشرات",
+     "name_status": "NEEDS_REVIEW",
      "images": 3
     },
     {
@@ -1997,7 +1853,7 @@
     {
      "n": 3,
      "type": "insect",
-     "name_ar": "ال من",
+     "name_ar": "المن",
      "printed_page": 119,
      "pdf_page": 132,
      "has_rec": true,
@@ -2007,7 +1863,7 @@
     {
      "n": 4,
      "type": "insect",
-     "name_ar": "دورة ورق القطن",
+     "name_ar": "دودة ورق القطن",
      "printed_page": 120,
      "pdf_page": 133,
      "has_rec": true,
@@ -2043,16 +1899,6 @@
      "has_rec": true,
      "group": "الفطريات",
      "images": 2
-    },
-    {
-     "n": 8,
-     "type": "insect",
-     "name_ar": "الذبابة البيضاء",
-     "printed_page": 122,
-     "pdf_page": 135,
-     "has_rec": true,
-     "group": "احلشرات",
-     "images": 2
     }
    ]
   },
@@ -2067,7 +1913,7 @@
     {
      "n": 1,
      "type": "insect",
-     "name_ar": "ال من",
+     "name_ar": "المن",
      "printed_page": 8,
      "pdf_page": 21,
      "has_rec": true,
@@ -2078,7 +1924,7 @@
     {
      "n": 2,
      "type": "mite",
-     "name_ar": "العنكبوت االحمر",
+     "name_ar": "العنكبوت الأحمر",
      "printed_page": 9,
      "pdf_page": 22,
      "has_rec": true,
@@ -2105,7 +1951,7 @@
    "name_en": "Groundnut",
    "sci": "Arachis hypogaea",
    "family": "Fabaceae",
-   "cards": 6,
+   "cards": 5,
    "infections": [
     {
      "n": 1,
@@ -2121,7 +1967,7 @@
     {
      "n": 2,
      "type": "mite",
-     "name_ar": "اعفان اجلذور وموت البادرات",
+     "name_ar": "اعفان الجذور وموت البادرات",
      "printed_page": 54,
      "pdf_page": 67,
      "has_rec": true,
@@ -2154,24 +2000,13 @@
     {
      "n": 5,
      "type": "mite",
-     "name_ar": "نيماتودا تعقد اجلذور",
+     "name_ar": "نيماتودا تعقد الجذور",
      "printed_page": 56,
      "pdf_page": 69,
      "has_rec": true,
      "group": "الأكاروسات",
      "crop_conflict": true,
      "images": 3
-    },
-    {
-     "n": 6,
-     "type": "fungus",
-     "name_ar": "العفن الفحمي",
-     "printed_page": 57,
-     "pdf_page": 70,
-     "has_rec": true,
-     "group": "الفطريات",
-     "crop_conflict": true,
-     "images": 1
     }
    ]
   },
@@ -2181,7 +2016,7 @@
    "name_en": "Pumpkin",
    "sci": "Cucurbita maxima",
    "family": "Cucurbitaceae",
-   "cards": 3,
+   "cards": 2,
    "infections": [
     {
      "n": 1,
@@ -2202,16 +2037,6 @@
      "has_rec": true,
      "group": "الفطريات",
      "images": 3
-    },
-    {
-     "n": 3,
-     "type": "insect",
-     "name_ar": "دودة ورق القطن",
-     "printed_page": 143,
-     "pdf_page": 156,
-     "has_rec": true,
-     "group": "احلشرات",
-     "images": 1
     }
    ]
   },
@@ -2251,6 +2076,7 @@
      "pdf_page": 199,
      "has_rec": true,
      "group": "الفطريات",
+     "name_status": "NEEDS_REVIEW",
      "images": 1
     }
    ]
@@ -2266,12 +2092,11 @@
     {
      "n": 1,
      "type": "insect",
-     "name_ar": "احلف ار",
+     "name_ar": "الحفار",
      "printed_page": 31,
      "pdf_page": 44,
      "has_rec": true,
      "group": "احلشرات",
-     "crop_conflict": true,
      "images": 1
     },
     {
@@ -2287,7 +2112,7 @@
     {
      "n": 3,
      "type": "insect",
-     "name_ar": "ال من",
+     "name_ar": "المن",
      "printed_page": 32,
      "pdf_page": 45,
      "has_rec": true,
@@ -2297,7 +2122,7 @@
     {
      "n": 4,
      "type": "insect",
-     "name_ar": ")دودة ورق القطن (فقس حديث",
+     "name_ar": "دودة ورق القطن (فقس حديث)",
      "printed_page": 33,
      "pdf_page": 46,
      "has_rec": true,
@@ -2337,7 +2162,7 @@
     {
      "n": 8,
      "type": "fungus",
-     "name_ar": "اعفان اجلذور وموت البادرات",
+     "name_ar": "اعفان الجذور وموت البادرات",
      "printed_page": 39,
      "pdf_page": 52,
      "has_rec": true,
@@ -2357,7 +2182,7 @@
     {
      "n": 1,
      "type": "insect",
-     "name_ar": "ال من",
+     "name_ar": "المن",
      "printed_page": 3,
      "pdf_page": 16,
      "has_rec": true,
@@ -2387,7 +2212,7 @@
     {
      "n": 4,
      "type": "fungus",
-     "name_ar": "الصداأ الأصفر املخطط",
+     "name_ar": "الصدأ الأصفر المخطط",
      "printed_page": 5,
      "pdf_page": 18,
      "has_rec": true,
@@ -2397,7 +2222,7 @@
     {
      "n": 5,
      "type": "fungus",
-     "name_ar": "اأمراضض الفيوزاريوم فى القمح",
+     "name_ar": "أمراض الفيوزاريوم فى القمح",
      "printed_page": 7,
      "pdf_page": 20,
      "has_rec": true,
@@ -2407,12 +2232,33 @@
     {
      "n": 6,
      "type": "fungus",
-     "name_ar": "اأعفان اجلذور وموت البادرات",
+     "name_ar": "اعفان الجذور وموت البادرات",
      "printed_page": 7,
      "pdf_page": 20,
      "has_rec": true,
      "group": "الفطريات",
      "images": 2
+    }
+   ]
+  },
+  {
+   "id": "snails",
+   "name_ar": "القواقع",
+   "name_en": "Snails",
+   "sci": null,
+   "family": null,
+   "cards": 1,
+   "infections": [
+    {
+     "n": 1,
+     "type": "other",
+     "name_ar": "القواقع",
+     "printed_page": 266,
+     "pdf_page": 279,
+     "has_rec": true,
+     "group": "الالفقاريات",
+     "crop_conflict": true,
+     "images": 1
     }
    ]
   },
@@ -2454,6 +2300,7 @@
      "pdf_page": 169,
      "has_rec": true,
      "group": "احلشرات",
+     "name_status": "NEEDS_REVIEW",
      "crop_conflict": true,
      "images": 3
     },
@@ -2493,7 +2340,7 @@
     {
      "n": 7,
      "type": "mite",
-     "name_ar": "اأعفان اجلذور وموت البادرات",
+     "name_ar": "اعفان الجذور وموت البادرات",
      "printed_page": 159,
      "pdf_page": 172,
      "has_rec": true,
@@ -2504,7 +2351,7 @@
     {
      "n": 8,
      "type": "mite",
-     "name_ar": ".لفحة الساق الصمغية",
+     "name_ar": "لفحة الساق الصمغية",
      "printed_page": 160,
      "pdf_page": 173,
      "has_rec": true,
@@ -2516,7 +2363,7 @@
   },
   {
    "id": "roselle",
-   "name_ar": "الكركديه",
+   "name_ar": "الكركدية",
    "name_en": "Roselle",
    "sci": null,
    "family": null,
@@ -2568,7 +2415,7 @@
     {
      "n": 3,
      "type": "insect",
-     "name_ar": "امل ن",
+     "name_ar": "المن",
      "printed_page": 179,
      "pdf_page": 192,
      "has_rec": true,
@@ -2584,13 +2431,14 @@
      "pdf_page": 192,
      "has_rec": true,
      "group": "احلشرات",
+     "name_status": "NEEDS_REVIEW",
      "crop_conflict": true,
      "images": 4
     },
     {
      "n": 5,
      "type": "insect",
-     "name_ar": "الفراشه ذات الظهر املاسى",
+     "name_ar": "الفراشه ذات الظهر الماسى",
      "printed_page": 180,
      "pdf_page": 193,
      "has_rec": true,
@@ -2650,10 +2498,20 @@
    "name_en": "Pear",
    "sci": "Pyrus communis",
    "family": "Rosaceae",
-   "cards": 2,
+   "cards": 3,
    "infections": [
     {
      "n": 1,
+     "type": "other",
+     "name_ar": "الحشرات القشرية",
+     "printed_page": 253,
+     "pdf_page": 266,
+     "has_rec": true,
+     "crop_conflict": true,
+     "images": 2
+    },
+    {
+     "n": 2,
      "type": "fungus",
      "name_ar": "الأشنة",
      "printed_page": 254,
@@ -2664,7 +2522,7 @@
      "images": 1
     },
     {
-     "n": 2,
+     "n": 3,
      "type": "other",
      "name_ar": "اللفحة النارية",
      "printed_page": 255,
@@ -2682,10 +2540,21 @@
    "name_en": "Courgette",
    "sci": null,
    "family": null,
-   "cards": 1,
+   "cards": 2,
    "infections": [
     {
      "n": 1,
+     "type": "insect",
+     "name_ar": "الذبابة البيضاء",
+     "printed_page": 140,
+     "pdf_page": 153,
+     "has_rec": true,
+     "group": "احلشرات",
+     "crop_conflict": true,
+     "images": 2
+    },
+    {
+     "n": 2,
      "type": "fungus",
      "name_ar": "البياض الدقيقى",
      "printed_page": 141,
@@ -2698,17 +2567,38 @@
    ]
   },
   {
+   "id": "leafbeet",
+   "name_ar": "اللفت",
+   "name_en": "Turnip",
+   "sci": null,
+   "family": null,
+   "cards": 1,
+   "infections": [
+    {
+     "n": 1,
+     "type": "insect",
+     "name_ar": "المن",
+     "printed_page": 117,
+     "pdf_page": 130,
+     "has_rec": true,
+     "group": "احلشرات",
+     "crop_conflict": true,
+     "images": 2
+    }
+   ]
+  },
+  {
    "id": "cowpea",
    "name_ar": "اللوبيا",
    "name_en": "Cowpea",
    "sci": "Vigna unguiculata",
    "family": "Fabaceae",
-   "cards": 5,
+   "cards": 4,
    "infections": [
     {
      "n": 1,
      "type": "insect",
-     "name_ar": "امل ن",
+     "name_ar": "المن",
      "printed_page": 168,
      "pdf_page": 181,
      "has_rec": true,
@@ -2744,16 +2634,6 @@
      "has_rec": true,
      "group": "الأكاروسات",
      "images": 2
-    },
-    {
-     "n": 5,
-     "type": "mite",
-     "name_ar": "دودة ورق القطن",
-     "printed_page": 170,
-     "pdf_page": 183,
-     "has_rec": true,
-     "group": "الأكاروسات",
-     "images": 2
     }
    ]
   },
@@ -2778,7 +2658,7 @@
     {
      "n": 2,
      "type": "insect",
-     "name_ar": "احلشرات القشرية",
+     "name_ar": "الحشرات القشرية",
      "printed_page": 213,
      "pdf_page": 226,
      "has_rec": true,
@@ -2787,12 +2667,12 @@
     },
     {
      "n": 3,
-     "type": "other",
+     "type": "insect",
      "name_ar": "ذباب الفاكهة",
      "printed_page": 214,
      "pdf_page": 227,
      "has_rec": true,
-     "crop_conflict": true,
+     "group": "احلشرات",
      "images": 1
     },
     {
@@ -2803,18 +2683,16 @@
      "pdf_page": 228,
      "has_rec": true,
      "group": "الفطريات",
-     "crop_conflict": true,
      "images": 1
     },
     {
      "n": 5,
      "type": "fungus",
-     "name_ar": ")لفحة الأزهار (الأنرثاكنوز",
+     "name_ar": "لفحة الأزهار (الأنرثاكنوز)",
      "printed_page": 217,
      "pdf_page": 230,
      "has_rec": true,
      "group": "الفطريات",
-     "crop_conflict": true,
      "images": 1
     },
     {
@@ -2825,51 +2703,89 @@
      "pdf_page": 231,
      "has_rec": true,
      "group": "الفطريات",
-     "crop_conflict": true,
      "images": 1
     }
    ]
   },
   {
-   "id": "dates",
-   "name_ar": "النخيل",
-   "name_en": "Dates",
-   "sci": "Phoenix dactylifera",
-   "family": "Arecaceae",
-   "cards": 3,
+   "id": "buildings",
+   "name_ar": "المبانى فى الريف والحضر",
+   "name_en": "Buildings",
+   "sci": null,
+   "family": null,
+   "cards": 1,
+   "infections": [
+    {
+     "n": 1,
+     "type": "insect",
+     "name_ar": "النمل الأبيض",
+     "printed_page": 265,
+     "pdf_page": 278,
+     "has_rec": true,
+     "group": "احلشرات",
+     "crop_conflict": true,
+     "images": 2
+    }
+   ]
+  },
+  {
+   "id": "stored_crops",
+   "name_ar": "المحاصيل الزراعية المخزونة",
+   "name_en": "Stored crops",
+   "sci": null,
+   "family": null,
+   "cards": 2,
    "infections": [
     {
      "n": 1,
      "type": "other",
-     "name_ar": "ة النخيل احلمراءوسس",
-     "printed_page": 237,
-     "pdf_page": 250,
+     "name_ar": "حشرات الحبوب المخزونة",
+     "printed_page": 263,
+     "pdf_page": 276,
      "has_rec": true,
-     "group": "احلش",
      "crop_conflict": true,
      "images": 3
     },
     {
      "n": 2,
      "type": "other",
-     "name_ar": "غبار النخيلاأكاروس",
-     "printed_page": 237,
-     "pdf_page": 250,
+     "name_ar": "حشرات التمور المخزونة",
+     "printed_page": 264,
+     "pdf_page": 277,
      "has_rec": true,
-     "group": "احلش",
-     "crop_conflict": true,
-     "images": 5
-    },
-    {
-     "n": 3,
-     "type": "insect",
-     "name_ar": "ابو دقيق السايكس",
-     "printed_page": 238,
-     "pdf_page": 251,
-     "has_rec": true,
-     "group": "احلشرات",
      "crop_conflict": true,
      "images": 2
+    }
+   ]
+  },
+  {
+   "id": "green_areas",
+   "name_ar": "المسطحات الخضراء",
+   "name_en": "Green areas",
+   "sci": null,
+   "family": null,
+   "cards": 2,
+   "infections": [
+    {
+     "n": 1,
+     "type": "other",
+     "name_ar": "آفات المسطحات الخضراء",
+     "printed_page": 197,
+     "pdf_page": 210,
+     "has_rec": true,
+     "crop_conflict": true,
+     "images": 3
+    },
+    {
+     "n": 2,
+     "type": "fungus",
+     "name_ar": "تبقع أوراق",
+     "printed_page": 198,
+     "pdf_page": 211,
+     "has_rec": true,
+     "group": "الفطريات",
+     "crop_conflict": true,
+     "images": 1
     }
    ]
   },
@@ -2884,12 +2800,12 @@
     {
      "n": 1,
      "type": "other",
-     "name_ar": "نيماتودا تعقد اجلذور",
-     "printed_page": 261,
-     "pdf_page": 274,
+     "name_ar": "البياض الدقيقى",
+     "printed_page": 260,
+     "pdf_page": 273,
      "has_rec": true,
      "crop_conflict": true,
-     "images": 1
+     "images": 3
     }
    ]
   },
@@ -2899,92 +2815,111 @@
    "name_en": "Citrus",
    "sci": "Citrus",
    "family": "Rutaceae",
-   "cards": 11,
+   "cards": 12,
    "infections": [
     {
      "n": 1,
-     "type": "other",
-     "name_ar": "ذباب الفاكهة",
-     "printed_page": 201,
-     "pdf_page": 214,
+     "type": "insect",
+     "name_ar": "الحشرات القشرية",
+     "printed_page": 199,
+     "pdf_page": 212,
      "has_rec": true,
+     "group": "احلشرات",
      "crop_conflict": true,
      "images": 1
     },
     {
      "n": 2,
-     "type": "other",
+     "type": "insect",
+     "name_ar": "ذباب الفاكهة",
+     "printed_page": 201,
+     "pdf_page": 214,
+     "has_rec": true,
+     "group": "احلشرات",
+     "crop_conflict": true,
+     "images": 1
+    },
+    {
+     "n": 3,
+     "type": "insect",
      "name_ar": "صانعات الأنفاق",
      "printed_page": 203,
      "pdf_page": 216,
      "has_rec": true,
-     "crop_conflict": true,
-     "images": 2
-    },
-    {
-     "n": 3,
-     "type": "other",
-     "name_ar": "اكاروس املوالح البنى",
-     "printed_page": 203,
-     "pdf_page": 216,
-     "has_rec": true,
+     "group": "احلشرات",
      "crop_conflict": true,
      "images": 2
     },
     {
      "n": 4,
-     "type": "other",
-     "name_ar": "اكاروس املوالح الحمر",
-     "printed_page": 205,
-     "pdf_page": 218,
+     "type": "insect",
+     "name_ar": "الأكاروس الموالح البنى",
+     "printed_page": 203,
+     "pdf_page": 216,
      "has_rec": true,
+     "group": "احلشرات",
      "crop_conflict": true,
      "images": 2
     },
     {
      "n": 5,
-     "type": "other",
-     "name_ar": "اكاروس صداأ املوالح",
+     "type": "insect",
+     "name_ar": "الأكاروس الموالح الحمر",
      "printed_page": 205,
      "pdf_page": 218,
      "has_rec": true,
-     "crop_conflict": true,
-     "images": 3
-    },
-    {
-     "n": 6,
-     "type": "other",
-     "name_ar": "الأش نة",
-     "printed_page": 207,
-     "pdf_page": 220,
-     "has_rec": true,
+     "group": "احلشرات",
      "crop_conflict": true,
      "images": 2
     },
     {
+     "n": 6,
+     "type": "insect",
+     "name_ar": "الأكاروس صدأ الموالح",
+     "printed_page": 205,
+     "pdf_page": 218,
+     "has_rec": true,
+     "group": "احلشرات",
+     "crop_conflict": true,
+     "images": 3
+    },
+    {
      "n": 7,
-     "type": "other",
+     "type": "insect",
+     "name_ar": "الأشنة",
+     "printed_page": 207,
+     "pdf_page": 220,
+     "has_rec": true,
+     "group": "احلشرات",
+     "crop_conflict": true,
+     "images": 2
+    },
+    {
+     "n": 8,
+     "type": "insect",
      "name_ar": "التصمغ",
      "printed_page": 208,
      "pdf_page": 221,
      "has_rec": true,
-     "crop_conflict": true,
-     "images": 1
-    },
-    {
-     "n": 8,
-     "type": "other",
-     "name_ar": "اعفان الثمار بعد اجلمع",
-     "printed_page": 209,
-     "pdf_page": 222,
-     "has_rec": true,
+     "group": "احلشرات",
      "crop_conflict": true,
      "images": 1
     },
     {
      "n": 9,
+     "type": "insect",
+     "name_ar": "اعفان الثمار بعد الجمع",
+     "printed_page": 209,
+     "pdf_page": 222,
+     "has_rec": true,
+     "group": "احلشرات",
+     "crop_conflict": true,
+     "images": 1
+    },
+    {
+     "n": 10,
      "type": "nematode",
-     "name_ar": "نيماتودا التدهور البطئ (فى الأشجار املثمرة)",
+     "name_ar": "نيماتودا التدهور البطئ (فى الأشجار المثمرة)",
      "printed_page": 210,
      "pdf_page": 223,
      "has_rec": true,
@@ -2993,9 +2928,9 @@
      "images": 1
     },
     {
-     "n": 10,
+     "n": 11,
      "type": "nematode",
-     "name_ar": ")نيماتودا التدهور البطئ (فى الغرس احلديث",
+     "name_ar": "نيماتودا التدهور البطئ (فى الغرس الحديث)",
      "printed_page": 211,
      "pdf_page": 224,
      "has_rec": true,
@@ -3004,11 +2939,151 @@
      "images": 1
     },
     {
-     "n": 11,
+     "n": 12,
      "type": "fungus",
      "name_ar": "عفن السرة",
      "printed_page": 212,
      "pdf_page": 225,
+     "has_rec": true,
+     "group": "الفطريات",
+     "crop_conflict": true,
+     "images": 1
+    }
+   ]
+  },
+  {
+   "id": "banana",
+   "name_ar": "الموز",
+   "name_en": "Banana",
+   "sci": "Musa acuminata",
+   "family": "Musaceae",
+   "cards": 1,
+   "infections": [
+    {
+     "n": 1,
+     "type": "other",
+     "name_ar": "نيماتودا تعقد الجذور",
+     "printed_page": 261,
+     "pdf_page": 274,
+     "has_rec": true,
+     "crop_conflict": true,
+     "images": 1
+    }
+   ]
+  },
+  {
+   "id": "dates",
+   "name_ar": "النخيل",
+   "name_en": "Dates",
+   "sci": "Phoenix dactylifera",
+   "family": "Arecaceae",
+   "cards": 2,
+   "infections": [
+    {
+     "n": 1,
+     "type": "other",
+     "name_ar": "ة النخيل احلمراءوسس",
+     "printed_page": 237,
+     "pdf_page": 250,
+     "has_rec": true,
+     "group": "احلش",
+     "name_status": "NEEDS_REVIEW",
+     "crop_conflict": true,
+     "images": 3
+    },
+    {
+     "n": 2,
+     "type": "other",
+     "name_ar": "غبار النخيلاأكاروس",
+     "printed_page": 237,
+     "pdf_page": 250,
+     "has_rec": true,
+     "group": "احلش",
+     "crop_conflict": true,
+     "images": 5
+    }
+   ]
+  },
+  {
+   "id": "melo_labb",
+   "name_ar": "بطيخ اللب",
+   "name_en": "Labb melon",
+   "sci": null,
+   "family": null,
+   "cards": 7,
+   "infections": [
+    {
+     "n": 1,
+     "type": "insect",
+     "name_ar": "المن",
+     "printed_page": 149,
+     "pdf_page": 162,
+     "has_rec": true,
+     "group": "احلشرات",
+     "crop_conflict": true,
+     "images": 2
+    },
+    {
+     "n": 2,
+     "type": "insect",
+     "name_ar": "دودة ورق القطن",
+     "printed_page": 149,
+     "pdf_page": 162,
+     "has_rec": true,
+     "group": "احلشرات",
+     "crop_conflict": true,
+     "images": 4
+    },
+    {
+     "n": 3,
+     "type": "insect",
+     "name_ar": "الذبابة البيضاء",
+     "printed_page": 150,
+     "pdf_page": 163,
+     "has_rec": true,
+     "group": "احلشرات",
+     "crop_conflict": true,
+     "images": 2
+    },
+    {
+     "n": 4,
+     "type": "insect",
+     "name_ar": "العنكبوت الأحمر",
+     "printed_page": 150,
+     "pdf_page": 163,
+     "has_rec": true,
+     "group": "احلشرات",
+     "crop_conflict": true,
+     "images": 4
+    },
+    {
+     "n": 5,
+     "type": "fungus",
+     "name_ar": "البياض الدقيقى",
+     "printed_page": 151,
+     "pdf_page": 164,
+     "has_rec": true,
+     "group": "الفطريات",
+     "crop_conflict": true,
+     "images": 2
+    },
+    {
+     "n": 6,
+     "type": "fungus",
+     "name_ar": "لفحة الساق الصمغية",
+     "printed_page": 151,
+     "pdf_page": 164,
+     "has_rec": true,
+     "group": "الفطريات",
+     "crop_conflict": true,
+     "images": 3
+    },
+    {
+     "n": 7,
+     "type": "fungus",
+     "name_ar": "البياض الزغبى",
+     "printed_page": 152,
+     "pdf_page": 165,
      "has_rec": true,
      "group": "الفطريات",
      "crop_conflict": true,
@@ -3049,7 +3124,7 @@
     {
      "n": 3,
      "type": "insect",
-     "name_ar": "صصانعات االنفاق",
+     "name_ar": "صانعات الأنفاق",
      "printed_page": 24,
      "pdf_page": 37,
      "has_rec": true,
@@ -3060,7 +3135,7 @@
     {
      "n": 4,
      "type": "insect",
-     "name_ar": "ذبابة اأوراق البنجر",
+     "name_ar": "ذبابة أوراق البنجر",
      "printed_page": 25,
      "pdf_page": 38,
      "has_rec": true,
@@ -3082,7 +3157,7 @@
     {
      "n": 6,
      "type": "nematode",
-     "name_ar": "نيماتودا تعقد اجلذور",
+     "name_ar": "نيماتودا تعقد الجذور",
      "printed_page": 29,
      "pdf_page": 42,
      "has_rec": true,
@@ -3103,7 +3178,7 @@
     {
      "n": 1,
      "type": "fungus",
-     "name_ar": "البياضض الدقيقى",
+     "name_ar": "البياض الدقيقى",
      "printed_page": 59,
      "pdf_page": 72,
      "has_rec": true,
@@ -3113,7 +3188,7 @@
     {
      "n": 2,
      "type": "fungus",
-     "name_ar": "اأعفان اجلذور وموت البادرات",
+     "name_ar": "اعفان الجذور وموت البادرات",
      "printed_page": 59,
      "pdf_page": 72,
      "has_rec": true,
@@ -3154,7 +3229,7 @@
     {
      "n": 1,
      "type": "insect",
-     "name_ar": "احلشرة القشرية الرخوة",
+     "name_ar": "الحشرة القشرية الرخوة",
      "printed_page": 50,
      "pdf_page": 63,
      "has_rec": true,
@@ -3184,12 +3259,55 @@
     {
      "n": 4,
      "type": "fungus",
-     "name_ar": "عفن اجلذور فى قصسب السسكر",
+     "name_ar": "عفن الجذور فى قصب السكر",
      "printed_page": 53,
      "pdf_page": 66,
      "has_rec": true,
      "group": "الفطريات",
      "images": 1
+    }
+   ]
+  },
+  {
+   "id": "koosa_labb",
+   "name_ar": "كوسة اللب",
+   "name_en": "Marrow",
+   "sci": null,
+   "family": null,
+   "cards": 1,
+   "infections": [
+    {
+     "n": 1,
+     "type": "insect",
+     "name_ar": "دودة ورق القطن",
+     "printed_page": 143,
+     "pdf_page": 156,
+     "has_rec": true,
+     "group": "احلشرات",
+     "crop_conflict": true,
+     "images": 1
+    }
+   ]
+  },
+  {
+   "id": "sykes_palm",
+   "name_ar": "نخيل السايكس",
+   "name_en": "Sykes palm",
+   "sci": null,
+   "family": null,
+   "cards": 1,
+   "infections": [
+    {
+     "n": 1,
+     "type": "insect",
+     "name_ar": "ابو دقيق السايكس",
+     "printed_page": 238,
+     "pdf_page": 251,
+     "has_rec": true,
+     "group": "احلشرات",
+     "name_status": "NEEDS_REVIEW",
+     "crop_conflict": true,
+     "images": 2
     }
    ]
   }

@@ -41,7 +41,7 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const J = p => JSON.parse(readFileSync(join(ROOT, p), 'utf8'));
-const BUILT = '2026-10-23';
+const BUILT = '2026-10-25';
 
 const SOURCE = {
   title: 'التوصيات المعتمدة لمكافحة الآفات الزراعية 2025',

@@ -1,6 +1,12 @@
 /*
  * sw.js — المستشار الزراعي (v29)
  *
+ * v69 (2026-10-26) — ترجمة محتوى بطاقة التوصيات بمعرّف ثابت (tws.card.<id>.*):
+ *   أوصاف البطاقة وأسماء الإصابات تُقرأ من نظام ترجمة التطبيق للغة الحالية؛
+ *   غياب الترجمة ⇒ النص العربي الأصلي حرفياً مع شارة صراحة صريحة (بلا ادّعاء
+ *   ترجمة وبلا نص زراعي مخترع)، والاتجاه يتبع اللغة عبر lang/dir على المحتوى
+ *   العربي داخل واجهة LTR. ملفا القشرة تغيّرا (ملف القسم + ملف الترجمة) ⇒
+ *   رفع الكاش — بلا تغيير في قوائم SHELL/DATA ولا في بيانات data/tws.
  * v68 (2026-10-26) — إصلاح تبديل اللغات في قسم «التوصيات» (Mimo v2.6):
  *   لغة القسم صارت لغة التطبيق نفسها من نظام I18N (ar/en/fr/zh) بدل إسقاط
  *   كل لغة ليست إنجليزية إلى العربية، مع إعادة رسم المسار الحالي على حدث
@@ -212,7 +218,7 @@
  * Personal data (IndexedDB history, theme, app version note) lives outside
  * the caches and is never touched by this worker.
  */
-const CACHE = 'mustashar-v68';
+const CACHE = 'mustashar-v69';
 const OCR_CACHE = 'mustashar-ocr';
 
 /* 1.7 — safe cache write: a full storage quota (QuotaExceededError) must

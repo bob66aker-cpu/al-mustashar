@@ -63,7 +63,8 @@
       load_error_title: 'تعذّر تحميل بيانات التوصيات',
       load_error_body: 'يفشل تحميل الفهرس — تحقّق من الاتصال أول مرة، أو أعد المحاولة بعد تجهيز التطبيق للعمل دون اتصال.',
       retry: 'إعادة المحاولة',
-      detail_error_title: 'تعذّر تحميل بطاقة القسم من الكتاب'
+      detail_error_title: 'تعذّر تحميل بطاقة القسم من الكتاب',
+      content_ar_fallback: 'الأسماء والأوصاف الزراعية هنا معروضة بالنص العربي الأصلي من الكتاب — ترجمتها غير متاحة بعد.'
     },
     en: {
       title: 'Crop recommendations',
@@ -106,7 +107,8 @@
       load_error_title: 'Could not load recommendation data',
       load_error_body: 'The index failed to load — connect once, or retry after the app is prepared for offline.',
       retry: 'Retry',
-      detail_error_title: 'Could not load this section card from the book'
+      detail_error_title: 'Could not load this section card from the book',
+      content_ar_fallback: 'Agricultural names and descriptions here are shown in the original Arabic text from the book — their translation is not available yet.'
     }
   };
 
@@ -158,6 +160,62 @@
       if (v && v !== NO_KEY) return v;
     }
     return TYPE_AR[t] || TYPE_EN[t] || t;
+  }
+  /* رسالة عامة للقسم ليست تسمية من الكتاب: تُقرأ مباشرة من ملف ترجمة
+   * التطبيق مفتاح tws.* وبهبوط عربي/إنجليزي مدمج إن غاب النظام — خارج مسار
+   * L() لأن بيانات الكتاب (data/tws/labels.json مصدر تسميات ar/en) لا تُمسّ. */
+  function TM(k) {
+    if (window.I18N) {
+      var v = window.I18N.t('tws.' + k, NO_KEY);
+      if (v && v !== NO_KEY) return v;
+    }
+    var f = LABELS[lang()] || LABELS.ar;
+    return (f && f[k]) || LABELS.ar[k] || k;
+  }
+  /* عزل النص العربي داخل واجهة غير عربية: lang/dir فقط عند حروف عربية فعلية */
+  function arAttr(s) {
+    return /[؀-ۿ]/.test(String(s || '')) ? ' lang="ar" dir="rtl"' : '';
+  }
+  /* ---------- ترجمة محتوى البطاقة بمعرّف ثابت ----------
+   * المعرّف الثابت = مسار البطاقة نفسه: <crop_id>/<type>.<n> (مثل
+   * wheat/fungus.3) — ثابت عبر اللغات والعروض. المفاتيح تُقرأ من نظام ترجمة
+   * التطبيق نفسه (مصدر ترجمة واحد؛ لا أربع قواعد بيانات ولا جدول جديد):
+   *   tws.card.<id>.title | .name | .group | .appearance | .timing | .guidance
+   *   tws.card.<id>.symptom.<i>   صنف من قائمة الأعراض (يبدأ من 0)
+   *   tws.card.<id>.symptom       قائمة الأعراض كاملة مفصولة بسطور (بديل)
+   * غياب المفتاح ليس خطأ: النص العربي الأصلي يُعرض حرفياً كما هو (ok:false)
+   * مع شارة صراحة تقول إن الترجمة غير متاحة بعد — وبلا نص بديل مخترع. النص
+   * العربي لا يُغيَّر في البيانات أصلاً، ويُحفظ إضافتا في data-tws-ar على
+   * العنصر عند عرض ترجمة لاحقة. */
+  function trGet(key) {
+    if (!window.I18N) return null;
+    var v = window.I18N.t(key, NO_KEY);
+    return (v && v !== NO_KEY) ? v : null;
+  }
+  function cardT(id, field, idx, arabic) {
+    var r = { text: arabic, ok: true };
+    if (lang() === 'ar') return r;   /* العربية هي النص الأصلي نفسه */
+    var hit = trGet('tws.card.' + id + '.' + field + (idx == null ? '' : '.' + idx));
+    if (hit == null && field === 'symptom' && idx != null) {
+      var whole = trGet('tws.card.' + id + '.symptom');
+      if (whole != null) hit = String(whole).split('\n')[idx] || null;
+    }
+    if (hit == null) { r.ok = false; return r; }  /* لا ترجمة بعد ⇒ عربي أصلي */
+    r.text = hit;
+    return r;
+  }
+  /* سمة العنصر: نص عربي معروض داخل واجهة غير عربية يُعزل اتجاهياً؛ وعند عرض
+   * ترجمة لاحقة يُحفظ النص العربي الأصلي في data-tws-ar (والبيانات تبقى كما هي) */
+  function contentAttr(r, arabic) {
+    if (r.text !== arabic) return ' data-tws-ar="' + esc(arabic) + '"';
+    if (!r.ok) return ' lang="ar" dir="rtl"';
+    return arAttr(arabic);
+  }
+  /* شارة الصراحة: خارج العربية فقط وعند سقوط أي نص زراعي إلى العربية لعدم
+   * توفّر ترجمته — لا تدّعي أن المحتوى مترجم. */
+  function arFallbackNote(shown, mt) {
+    if (!shown || lang() === 'ar') return '';
+    return '<p class="tws-note info tws-ar-fb" style="margin:' + (mt || '0 0 12px') + '">' + esc(TM('content_ar_fallback')) + '</p>';
   }
   function esc(s) {
     return String(s == null ? '' : s)
@@ -434,17 +492,22 @@
   }
 
   function cropView(c) {
+    var nameFb = false;
     var html = '<div class="wrap">'
-      + '<nav class="tws-crumb"><a href="#/tws">' + esc(L('back_crops')) + '</a><span class="sep">‹</span><span class="cur">' + esc(c.name_ar) + '</span></nav>'
-      + '<header class="tws-cropband"><h1>' + esc(c.name_ar) + ' <span class="tws-band-en">' + esc(c.name_en) + '</span></h1>'
-      + '<p class="tws-meta">' + esc(L('sci')) + ': <em>' + esc(c.sci || '—') + '</em> · ' + esc(L('family')) + ': ' + esc(c.family || '—')
-      + '<br>' + esc(String(c.cards)) + ' ' + esc(L('infections_of')) + '</p></header>'
-      + '<ul class="tws-list">';
+      + '<nav class="tws-crumb"><a href="#/tws">' + esc(L('back_crops')) + '</a><span class="sep">‹</span><span class="cur"' + arAttr(c.name_ar) + '>' + esc(c.name_ar) + '</span></nav>'
+      + '<header class="tws-cropband"><h1' + arAttr(c.name_ar) + '>' + esc(c.name_ar) + ' <span class="tws-band-en">' + esc(c.name_en) + '</span></h1>'
+      + '<p class="tws-meta">' + esc(L('sci')) + ': <em>' + esc(c.sci || '—') + '</em> · ' + esc(L('family')) + ': <span' + arAttr(c.family) + '>' + esc(c.family || '—') + '</span>'
+      + '<br>' + esc(String(c.cards)) + ' ' + esc(L('infections_of')) + '</p></header>';
+    var items = '';
     (c.infections || []).forEach(function (inf) {
-      html += '<li><a class="tws-inf" href="#/tws/' + esc(c.id) + '/' + esc(inf.type) + '.' + esc(inf.n) + '">'
+      var infId = c.id + '/' + inf.type + '.' + inf.n;
+      var nm = cardT(infId, 'name', null, inf.name_ar);
+      var grp = inf.group ? cardT(infId, 'group', null, inf.group) : null;
+      if (!nm.ok || (grp && !grp.ok)) nameFb = true;
+      items += '<li><a class="tws-inf" href="#/tws/' + esc(c.id) + '/' + esc(inf.type) + '.' + esc(inf.n) + '">'
         + '<span class="no">' + esc(inf.n) + '</span>'
-        + '<span class="nm"><b>' + esc(inf.name_ar) + '</b>'
-        + (inf.group ? '<span class="grp">' + esc(L('group')) + ': ' + esc(inf.group) + '</span>' : '')
+        + '<span class="nm"><b' + contentAttr(nm, inf.name_ar) + '>' + esc(nm.text) + '</b>'
+        + (grp ? '<span class="grp">' + esc(L('group')) + ': <span' + contentAttr(grp, inf.group) + '>' + esc(grp.text) + '</span></span>' : '')
         + '</span>'
         + (inf.images ? '<span class="tws-chip info">' + esc(L('images')) + ': ' + esc(String(inf.images)) + '</span>' : '')
         + (inf.name_status === 'NEEDS_REVIEW' ? '<span class="tws-chip warn">' + esc(L('name_review')) + '</span>' : '')
@@ -452,7 +515,7 @@
         + '<span class="tws-chip pg">' + esc(L('page')) + ' ' + esc(inf.printed_page) + '</span>'
         + '</a></li>';
     });
-    html += '</ul>' + footer() + '</div>';
+    html += arFallbackNote(nameFb) + '<ul class="tws-list">' + items + '</ul>' + footer() + '</div>';
     return html;
   }
 
@@ -462,6 +525,10 @@
       if (String(x.n) === String(n) && x.type === type) inf = x;
     });
     if (!inf) { sec.innerHTML = wrap(errorPanel(L('no_results'), '#/tws/' + esc(c.id))); return; }
+    var cid = c.id + '/' + type + '.' + n;
+    var fb = false;
+    var nm = cardT(cid, 'name', null, inf.name_ar);
+    if (!nm.ok) fb = true;
     loadSections().then(function (doc) {
       var s = null;
       ((doc && doc.sections) || []).forEach(function (x) {
@@ -470,19 +537,23 @@
       if (!s) { sec.innerHTML = wrap(errorPanel(L('detail_error_title'), '#/tws/' + esc(c.id))); return; }
       var man = S.man || {};
       var srcMeta = man.source || doc.source || {};
+      var ti = cardT(cid, 'title', null, s.name_ar);
+      if (!ti.ok) fb = true;
+      var grp = s.group ? cardT(cid, 'group', null, s.group) : null;
+      if (grp && !grp.ok) fb = true;
       var html = '<div class="wrap">'
         + '<nav class="tws-crumb"><a href="#/tws">' + esc(L('back_crops')) + '</a><span class="sep">‹</span>'
-        + '<a href="#/tws/' + esc(c.id) + '">' + esc(c.name_ar) + '</a><span class="sep">‹</span>'
-        + '<span class="cur">' + esc(inf.name_ar) + '</span></nav>'
+        + '<a href="#/tws/' + esc(c.id) + '"' + arAttr(c.name_ar) + '>' + esc(c.name_ar) + '</a><span class="sep">‹</span>'
+        + '<span class="cur"' + contentAttr(nm, inf.name_ar) + '>' + esc(nm.text) + '</span></nav>'
         + '<article class="tws-card">'
         + '<header class="tws-hero">'
         + '<div class="tws-hero-row"><span class="tws-hmark" aria-hidden="true"></span>'
-        + '<h2>' + esc(s.name_ar) + '</h2></div>'
+        + '<h2' + contentAttr(ti, s.name_ar) + '>' + esc(ti.text) + '</h2></div>'
         + '<p class="tws-meta">' + esc(L('type')) + ': ' + esc(typeName(s.type))
         + ' · ' + esc(L('infection_no')) + ' ' + esc(s.n)
         + ' · ' + esc(L('page')) + ' ' + esc(s.printed_page) + ' (PDF ' + esc(s.page) + ')</p>'
         + '<div class="tws-chips">'
-        + (s.group ? '<span class="tws-chip info">' + esc(L('group')) + ': ' + esc(s.group) + '</span>' : '')
+        + (grp ? '<span class="tws-chip info">' + esc(L('group')) + ': <span' + contentAttr(grp, s.group) + '>' + esc(grp.text) + '</span></span>' : '')
         + (s.name_status === 'NEEDS_REVIEW' ? '<span class="tws-chip warn">' + esc(L('name_review')) + '</span>' : '')
         + (s.crop_conflict ? '<span class="tws-chip warn">' + esc(L('crop_conflict')) + '</span>' : '')
         + '</div></header>';
@@ -490,19 +561,36 @@
       if (s.images && s.images.length) {
         var g = '<section class="tws-cell tws-cell--full"><h3>' + esc(L('images')) + '</h3><div class="tws-gallery">';
         s.images.forEach(function (im) {
-          g += '<figure><img src="data/tws/img/' + esc(im.file) + '" width="' + esc(im.w) + '" height="' + esc(im.h) + '" loading="lazy" alt="' + esc(s.name_ar) + ' — ' + esc(L('page')) + ' ' + esc(im.pdf_page) + '">'
+          g += '<figure><img src="data/tws/img/' + esc(im.file) + '" width="' + esc(im.w) + '" height="' + esc(im.h) + '" loading="lazy" alt="' + esc(ti.text) + ' — ' + esc(L('page')) + ' ' + esc(im.pdf_page) + '">'
             + '<figcaption>' + esc(L('page')) + ' ' + esc(im.pdf_page - (man.source && man.source.printed_offset || 13)) + ' (PDF ' + esc(im.pdf_page) + ')</figcaption></figure>';
         });
         cells.push(g + '</div></section>');
       }
       if (s.symptom && s.symptom.length) {
+        var symItems = s.symptom.map(function (x, i) {
+          var r = cardT(cid, 'symptom', i, x);
+          if (!r.ok) fb = true;
+          return '<li' + contentAttr(r, x) + '>' + esc(r.text) + '</li>';
+        }).join('');
         cells.push('<section class="tws-cell tws-cell--full"><h3>' + esc(L('symptoms')) + '</h3><ul>'
-          + s.symptom.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('')
-          + '</ul></section>');
+          + symItems + '</ul></section>');
       }
-      if (s.appearance) cells.push('<section class="tws-cell"><h3>' + esc(L('appearance')) + '</h3><p class="txt">' + esc(s.appearance) + '</p></section>');
-      if (s.timing) cells.push('<section class="tws-cell"><h3>' + esc(L('timing')) + '</h3><p class="txt">' + esc(s.timing) + '</p></section>');
-      if (s.guidance) cells.push('<section class="tws-cell"><h3>' + esc(L('guidance')) + '</h3><p class="txt">' + esc(s.guidance) + '</p></section>');
+      if (s.appearance) {
+        var ap = cardT(cid, 'appearance', null, s.appearance);
+        if (!ap.ok) fb = true;
+        cells.push('<section class="tws-cell"><h3>' + esc(L('appearance')) + '</h3><p class="txt"' + contentAttr(ap, s.appearance) + '>' + esc(ap.text) + '</p></section>');
+      }
+      if (s.timing) {
+        var tm = cardT(cid, 'timing', null, s.timing);
+        if (!tm.ok) fb = true;
+        cells.push('<section class="tws-cell"><h3>' + esc(L('timing')) + '</h3><p class="txt"' + contentAttr(tm, s.timing) + '>' + esc(tm.text) + '</p></section>');
+      }
+      if (s.guidance) {
+        var gd = cardT(cid, 'guidance', null, s.guidance);
+        if (!gd.ok) fb = true;
+        cells.push('<section class="tws-cell"><h3>' + esc(L('guidance')) + '</h3><p class="txt"' + contentAttr(gd, s.guidance) + '>' + esc(gd.text) + '</p></section>');
+      }
+      html += arFallbackNote(fb, '14px 14px 0');
       if (cells.length) html += '<div class="tws-bento">' + cells.join('') + '</div>';
 
       if (s.products && s.products.length) {

@@ -55,6 +55,7 @@
       'stats.days': 'نشاط آخر ١٤ يوماً (فتح + بحث + مسح)',
       'stats.langs': 'جلسات حسب اللغة',
       'nav.advice': 'التوصيات',
+      'tws.content_ar_fallback': 'الأسماء والأوصاف الزراعية هنا معروضة بالنص العربي الأصلي من الكتاب — ترجمتها غير متاحة بعد.',
       'advice.cta.title': 'التوصيات الزراعية',
       'advice.cta.sub': 'مسار واضح: محصول ← إصابة ← بطاقة موثّقة بمصدرها — مظاهر الإصابة والتدبير المتكامل ومخططات العلاج من 30 ديواناً مسنداً، بلا تخمين وبلا جرعات.',
       'advice.title': 'الإرشاد الزراعي',
@@ -518,6 +519,7 @@
       'stats.days': 'Activity, last 14 days (opens + searches + scans)',
       'stats.langs': 'Sessions by language',
       'nav.advice': 'Recommendations',
+      'tws.content_ar_fallback': 'Agricultural names and descriptions here are shown in the original Arabic text from the book — their translation is not available yet.',
       'advice.cta.title': 'Crop recommendations',
       'advice.cta.sub': 'A clear path: crop → infection → a sourced card — symptoms, integrated management, and treatment schemes from 30 referenced dossiers — no guessing, no doses.',
       'advice.title': 'Farm & crop advice',
@@ -1447,7 +1449,8 @@
       'tws.load_error_title': 'Impossible de charger les données des recommandations',
       'tws.load_error_body': 'L’index n’a pas pu être chargé — connectez l’application une fois, ou réessayez après sa préparation hors ligne.',
       'tws.retry': 'Réessayer',
-      'tws.detail_error_title': 'Impossible de charger cette fiche du livre'
+      'tws.detail_error_title': 'Impossible de charger cette fiche du livre',
+      'tws.content_ar_fallback': 'Les noms et descriptions agricoles sont affichés dans le texte arabe original du livre — leur traduction n’est pas encore disponible.'
     },
 
     zh: {
@@ -1956,7 +1959,8 @@
       'tws.load_error_title': '无法加载建议数据',
       'tws.load_error_body': '索引加载失败——请先联网一次，或在应用完成离线准备后重试。',
       'tws.retry': '重试',
-      'tws.detail_error_title': '无法从本书加载该章节卡片'
+      'tws.detail_error_title': '无法从本书加载该章节卡片',
+      'tws.content_ar_fallback': '此处的农业名称与描述以书中原始阿拉伯文显示——其翻译尚不可用。'
     }
   };
 

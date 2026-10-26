@@ -1400,7 +1400,54 @@
       'prep.working': 'Préparation…',
       'prep.fail': 'Préparation impossible maintenant — réessayez en ligne',
       'prep.failNote': 'Impossible de télécharger les fichiers OCR maintenant. Nouvelle tentative automatique au premier scan en ligne.',
-      'prep.noStorage': 'Ce navigateur ne prend pas entièrement en charge le stockage local'
+      'prep.noStorage': 'Ce navigateur ne prend pas entièrement en charge le stockage local',
+
+      /* ── تسميات قسم «بطاقة التوصيات» (#/tws) — Mimo v2.6 ────────────────────
+       * ar وen تأتيان من مصدر القسم نفسه data/tws/labels.json (يقرؤهما
+       * src/tawsiyat.js مباشرة)، ولذلك لا تُكرَّران هنا. هذه المفاتيح تُكمل
+       * اللغتين الأخريين اللتين لا تغطّيهما تسميات القسم، فلا يبقى القسم
+       * عربيًا عند اختيار FR/ZH. نصوص واجهة فقط — لا محتوى زراعي مُخترع. */
+      'tws.title': 'Recommandations agricoles',
+      'tws.subtitle': 'Choisissez une culture, puis une infection, pour accéder à une fiche construite uniquement à partir du livre officiel Recomm2025 : les symptômes décrits, son tableau de traitement avec la substance active, la concentration, la dose d’utilisation, la classe OMS et le DAA, plus les images du livre — aucune source extérieure, aucune supposition.',
+      'tws.search_ph': 'Rechercher une culture… (arabe ou nom scientifique)',
+      'tws.no_results': 'Aucune culture ne correspond',
+      'tws.crops_count': 'cultures couvertes par le livre',
+      'tws.cards_count': 'fiches d’infection',
+      'tws.back_crops': 'Toutes les cultures',
+      'tws.infections_of': 'infection du livre pour cette culture',
+      'tws.sci': 'Nom scientifique',
+      'tws.family': 'Famille',
+      'tws.type': 'Type',
+      'tws.infection_no': 'Infection n°',
+      'tws.page': 'Page',
+      'tws.group': 'Groupe dans la source',
+      'tws.symptoms': 'Symptômes de l’infection',
+      'tws.appearance': 'Moment d’apparition',
+      'tws.timing': 'Calendrier de la lutte',
+      'tws.guidance': 'Consignes',
+      'tws.products': 'Tableau des recommandations du livre',
+      'tws.actives': 'Substance active',
+      'tws.conc': 'Concentration',
+      'tws.form': 'Formulation',
+      'tws.rate': 'Dose d’utilisation',
+      'tws.who': 'Classe OMS',
+      'tws.phi': 'DAA (délai de récolte)',
+      'tws.mrl': 'Valeurs LMR',
+      'tws.cas': 'N° CAS',
+      'tws.cas_ambiguous': 'CAS ambigu — aucun numéro affiché',
+      'tws.cas_none': 'Aucun numéro CAS dans les registres',
+      'tws.images': 'Images du livre',
+      'tws.source': 'Source',
+      'tws.needs_verify': 'Valeur à vérifier — non confirmée sur la ligne imprimée',
+      'tws.name_review': 'Intitulé à revoir',
+      'tws.crop_conflict': 'Étiquette de culture en cours de révision',
+      'tws.coverage': 'Couverture',
+      'tws.coverage_line': 'Du livre : {c} fiches · {k} cultures',
+      'tws.dose_note': 'Substance, concentration, dose, DAA, classe OMS et valeurs LMR sont citées mot pour mot des tableaux du livre — aucune dose inventée ici.',
+      'tws.load_error_title': 'Impossible de charger les données des recommandations',
+      'tws.load_error_body': 'L’index n’a pas pu être chargé — connectez l’application une fois, ou réessayez après sa préparation hors ligne.',
+      'tws.retry': 'Réessayer',
+      'tws.detail_error_title': 'Impossible de charger cette fiche du livre'
     },
 
     zh: {
@@ -1862,7 +1909,54 @@
       'prep.working': '正在准备…',
       'prep.fail': '当前无法准备——请在联网时重试',
       'prep.failNote': '当前无法下载 OCR 文件。首次联网扫描时将自动重试。',
-      'prep.noStorage': '此浏览器不完全支持本地存储'
+      'prep.noStorage': '此浏览器不完全支持本地存储',
+
+      /* ── 「作物建议」版块标签（#/tws）— Mimo v2.6 ──────────────────────
+       * 阿拉伯语与英语来自版块自身的 data/tws/labels.json（由
+       * src/tawsiyat.js 直接读取），故不在此重复；这里只补齐该文件
+       * 未覆盖的语言，使版块随界面语言切换。仅为界面文字，
+       * 不含任何编造的农业内容。 */
+      'tws.title': '作物建议',
+      'tws.subtitle': '先选择作物，再选择病虫害，即可打开完全依据官方《2025推荐手册》编写的卡片：书中所述的症状、含有效成分、浓度、使用剂量、WHO 分类和安全间隔期的防治表，以及书中的图片——不引用外部来源，不做任何臆测。',
+      'tws.search_ph': '搜索作物……（阿拉伯语或学名）',
+      'tws.no_results': '没有匹配的作物',
+      'tws.crops_count': '种作物（本书覆盖）',
+      'tws.cards_count': '张病虫害卡片',
+      'tws.back_crops': '全部作物',
+      'tws.infections_of': '个本书记载的病虫害',
+      'tws.sci': '学名',
+      'tws.family': '科',
+      'tws.type': '类型',
+      'tws.infection_no': '病虫害编号',
+      'tws.page': '页码',
+      'tws.group': '来源中的分组',
+      'tws.symptoms': '病状表现',
+      'tws.appearance': '发生时期',
+      'tws.timing': '防治时机',
+      'tws.guidance': '指导意见',
+      'tws.products': '书中推荐表',
+      'tws.actives': '有效成分',
+      'tws.conc': '浓度',
+      'tws.form': '剂型',
+      'tws.rate': '使用剂量',
+      'tws.who': 'WHO 分类',
+      'tws.phi': '安全间隔期（PHI）',
+      'tws.mrl': 'MRL 值',
+      'tws.cas': 'CAS 号',
+      'tws.cas_ambiguous': 'CAS 不确定——不显示号码',
+      'tws.cas_none': '登记库中无 CAS 号',
+      'tws.images': '书中图片',
+      'tws.source': '来源',
+      'tws.needs_verify': '该值需核实——印刷行中未确认',
+      'tws.name_review': '标题待复核',
+      'tws.crop_conflict': '作物标注待复核',
+      'tws.coverage': '覆盖范围',
+      'tws.coverage_line': '来自本书：{c} 张卡片 · {k} 种作物',
+      'tws.dose_note': '成分、浓度、剂量、安全间隔期、WHO 分类和 MRL 值均逐字引自书中表格——这里不提供任何编造的剂量。',
+      'tws.load_error_title': '无法加载建议数据',
+      'tws.load_error_body': '索引加载失败——请先联网一次，或在应用完成离线准备后重试。',
+      'tws.retry': '重试',
+      'tws.detail_error_title': '无法从本书加载该章节卡片'
     }
   };
 

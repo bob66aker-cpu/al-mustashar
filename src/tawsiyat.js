@@ -123,14 +123,42 @@
 
   var S = { man: null, crops: null, labels: null, sec: null, load: null, secLoad: null, err: null, filter: '' };
 
+  /* لغة القسم هي لغة التطبيق نفسها (نظام I18N: ar/en/fr/zh)، لا وسم <html lang>
+   * وحده: المفردة القديمة كانت تُسقط كل لغة ليست إنجليزية إلى العربية، فبقيت
+   * الفرنسية والصينية عربيتين. */
+  var NO_KEY = '\u0000';   /* رمز لا يظهر في أي ترجمة — يميّز «المفتاح غير موجود» */
   function lang() {
+    if (window.I18N && typeof window.I18N.getLang === 'function') {
+      var l = String(window.I18N.getLang() || '').toLowerCase();
+      if (l) return l;
+    }
     return (document.documentElement.lang || 'ar').toLowerCase().indexOf('en') === 0 ? 'en' : 'ar';
   }
+  /* ترتيب المصدر: تسميات الكتاب (data/tws/labels.json — ar/en) مصدر القسم،
+   * ثم مفاتيح tws.* في نظام ترجمة التطبيق (تغطّي fr/zh)، ثم الاحتياط المدمج،
+   * ثم العربية. لا جدول ترجمة جديد ولا نص زراعي مُخترع. */
   function L(k) {
-    var d = (S.labels && (S.labels[lang()] || S.labels.ar)) || LABELS.ar;
-    return (d && d[k]) || LABELS.ar[k] || k;
+    var d = S.labels && S.labels[lang()];
+    if (d && d[k]) return d[k];
+    if (window.I18N) {
+      var v = window.I18N.t('tws.' + k, NO_KEY);
+      if (v && v !== NO_KEY) return v;
+    }
+    var f = LABELS[lang()] || LABELS.ar;
+    return (f && f[k]) || LABELS.ar[k] || k;
   }
-  function typeName(t) { return (lang() === 'en' ? TYPE_EN[t] : TYPE_AR[t]) || t; }
+  /* أسماء الأنواع: صيغتَا ar/en المعتادتان كما كانتان بلا تغيير، وسرقتهما من
+   * مفاتيح advice.type.* الجاهزة لبقية اللغات — بلا جدول ترجمة إضافي. */
+  function typeName(t) {
+    var lg = lang();
+    if (lg === 'en' && TYPE_EN[t]) return TYPE_EN[t];
+    if (lg === 'ar' && TYPE_AR[t]) return TYPE_AR[t];
+    if (window.I18N) {
+      var v = window.I18N.t('advice.type.' + t, NO_KEY);
+      if (v && v !== NO_KEY) return v;
+    }
+    return TYPE_AR[t] || TYPE_EN[t] || t;
+  }
   function esc(s) {
     return String(s == null ? '' : s)
       .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
@@ -249,8 +277,9 @@
   '.tws-prod .row span{overflow-wrap:anywhere}',
   '.tws-parsed{display:inline-block;font-size:.72rem;font-weight:700;padding:2px 9px;border-radius:999px;background:var(--primary-soft);color:var(--primary-strong);direction:ltr;margin-inline-start:6px}',
   '.tws-cas{display:inline-block;font-size:.76rem;padding:3px 10px;border-radius:999px;border:1px solid var(--st-ok);background:var(--st-ok-soft);color:var(--st-ok-ink);direction:ltr;margin:2px 4px 2px 0}',
-  '.tws-cas.amb{border-color:var(--st-review);background:var(--st-review-soft);color:var(--st-review-ink);direction:rtl}',
-  '.tws-cas.none{border-color:var(--border);background:transparent;color:var(--muted);direction:rtl}',
+  /* شارتا «ملتبس/بلا رقم» يتبعان اتجاه الصفحة في كل اللغات — بلا اتجاه مفروض */
+  '.tws-cas.amb{border-color:var(--st-review);background:var(--st-review-soft);color:var(--st-review-ink);unicode-bidi:isolate}',
+  '.tws-cas.none{border-color:var(--border);background:transparent;color:var(--muted);unicode-bidi:isolate}',
   '.tws-cas span[dir="ltr"]{font-weight:800;letter-spacing:.02em}',
   '.tws-src{font-size:.85rem;line-height:1.85;color:var(--text)}',
   '.tws-src a{color:var(--primary-ink);word-break:break-word;font-weight:700;text-decoration:none;border-bottom:1px solid var(--primary-ink)}',
@@ -305,7 +334,7 @@
     sec.className = 'view';
     sec.id = 'view-tws';
     sec.setAttribute('data-view', 'tws');
-    sec.setAttribute('aria-label', LABELS.ar.title);
+    sec.setAttribute('aria-label', L('title'));
     sec.hidden = true;
     var main = document.getElementById('appMain');
     if (!main) return;
@@ -339,6 +368,7 @@
   function route() {
     var sec = document.getElementById('view-tws');
     if (!sec) return;
+    sec.setAttribute('aria-label', L('title'));
     var parts = (location.hash.replace(/^#\/?/, '') || 'tws').split('/');
     var crop = parts[1] || '';
     /* رقم البطاقة = <type>.<n> لأن الترقيم يبدأ عند 1 داخل كل نوع */
@@ -550,6 +580,15 @@
       + '</div>';
   }
   function wrap(inner) { return '<div class="wrap">' + inner + '</div>'; }
+
+  /* تحديث حيّ عند تغيير لغة التطبيق: يُعاد رسم المسار الحالي بلا إعادة تحميل
+   * الصفحة. I18N يطلق langchange بعد تحديث <html lang> و<html dir> (RTL/LTR)،
+   * فتصل الترجمة والاتجاه معًا. القسم المخفي يُعاد رسمه عند فتحه عبر mount(). */
+  document.addEventListener('langchange', function () {
+    var sec = document.getElementById('view-tws');
+    if (!sec || sec.hidden) return;
+    route();
+  });
 
   window.Tawsiyat = { mount: mount, _state: S };
 })();

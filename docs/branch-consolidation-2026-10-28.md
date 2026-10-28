@@ -107,3 +107,7 @@
 
 > التغطية لا تُوصف بأنها «خالية من أخطاء»: بوابة `test:static` تغطي ما تغطيه،
 > و23 خلية مادة فعالة فارغة تبقى معلَّمة `NEEDS_VERIFICATION` مربوطة بصفحة PDF.
+
+**تثبيت PDF المصدر (SHA-256):**
+- `tmp/apc/Recomm25.pdf` (مُغلق بـ`.gitignore`) = `520ec93766284cef700ec5fb22bad69c17ce4e84aaaa206c251918084d5cbe38` — الملف الذي أُنشئت منه طبقات A/B في `scripts/card-text-provenance.mjs`، والسكربت يرفض الآن أي ملف لا يطابق هذه البصمة.
+- نسخ سابقة لم تُثبَّت في خط الإنتاج: `Recomm25.final.pdf` = `27391fb97302ee808278709c7cafcf772bbadb70a28dc55db5d4ea34b163807a` · `Recomm25.fixed.pdf` = `db3ea5a64fd82a13e1b1244986f294dc1e2fd06cfb628678c5780d1f25ca029b`.

@@ -22,6 +22,7 @@
  *    (ج) خطأ في الطباعة نفسها · (د) خطأ عرض · (هـ) حالة غير محسومة تبقى للمراجعة البشرية.
  */
 import { execFileSync } from "node:child_process";
+import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 
@@ -34,6 +35,18 @@ const AUDIT = path.join(ROOT, "data/tws/audit.json");
 const TMP = path.join(ROOT, "tmp/prov");
 const OUT_DIR = path.join(ROOT, "data/apc2025_review/reports");
 const OUT_CSV = path.join(OUT_DIR, "card-text-provenance.csv");
+
+// تثبيت هوية PDF المصدر (SHA-256): لا تُبنى طبقات A/B على ملف غير مطابق
+const EXPECTED_PDF_SHA256 =
+  "520ec93766284cef700ec5fb22bad69c17ce4e84aaaa206c251918084d5cbe38"; // tmp/apc/Recomm25.pdf
+if (PDF) {
+  const actual = crypto.createHash("sha256").update(fs.readFileSync(PDF)).digest("hex");
+  if (actual !== EXPECTED_PDF_SHA256) {
+    const msg = `SHA-256 mismatch للـPDF المصدر: متوقع ${EXPECTED_PDF_SHA256} · فعلي ${actual} · ملف ${PDF}`;
+    if (PDF.endsWith("Recomm25.pdf")) throw new Error(msg);
+    console.warn("WARNING: " + msg);
+  }
+}
 
 const FIELDS = ["group", "name_ar", "symptom", "appearance", "timing", "guidance"];
 // أنماط عطب طبقة النص العربي المعروفة (لا تُعدّ دليلاً وحدها — التصنيف من مطابقة الطبقة بالصورة)

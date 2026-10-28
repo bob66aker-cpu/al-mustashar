@@ -1,0 +1,72 @@
+{
+ "clodinafop-butyl": {
+  "status": 200,
+  "body": {
+   "status": {
+    "code": 0
+   },
+   "total": 1,
+   "dictionary_terms": {
+    "compound": [
+     "Clodinafop Propargyl"
+    ]
+   }
+  }
+ },
+ "fenoxaprop-p-butyl": {
+  "status": 200,
+  "body": {
+   "status": {
+    "code": 0
+   },
+   "total": 1,
+   "dictionary_terms": {
+    "compound": [
+     "Fenoxaprop-P-ethyl"
+    ]
+   }
+  }
+ },
+ "thioahatate-methyl": {
+  "status": 200,
+  "body": {
+   "status": {
+    "code": 0
+   },
+   "total": 1,
+   "dictionary_terms": {
+    "compound": [
+     "THIOPHANATE METHYL"
+    ]
+   }
+  }
+ },
+ "thiofanate-methyl": {
+  "status": 200,
+  "body": {
+   "status": {
+    "code": 0
+   },
+   "total": 1,
+   "dictionary_terms": {
+    "compound": [
+     "Thiofanate"
+    ]
+   }
+  }
+ },
+ "copper complex": {
+  "status": 200,
+  "body": {
+   "status": {
+    "code": 0
+   },
+   "total": 1,
+   "dictionary_terms": {
+    "compound": [
+     "Copper, compound with silver (1:1)"
+    ]
+   }
+  }
+ }
+}

@@ -1,0 +1,645 @@
+﻿crop_id,pest_ar,card_id,printed_pages,actives,field,issue
+onion,البياض الزغبى,onion-pests-02,"11,12",Dimethomorph 30% + Fosetyl-aluminium 45%,concentration_sum,مجموع تراكيز المواد 75 ≠ نسبة المستحضر 60 (قد يكون من الأصل المطبوع)
+egyptian-clover,دودة ورق القطن,egyptian-clover-pests-01,30,Bacillus thuringiensis 6.4%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+sugarcane,دودة القصب الكبرى,sugarcane-pests-02,51,Lufenuron 5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+sugarcane,دودة القصب الكبرى,sugarcane-pests-02,51,Emamectin benzoate 5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+sugarcane,عفن الجذور فى قصب السكر,sugarcane-pests-04,53,Thiophanate-methyl 70%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+peanut,تبقع الأوراق,peanut-pests-03,"55,56",Difenoconazole ?% + Propiconazole ?%,concentration,تركيز مادة فعالة غير مطبوع/غير محدد
+peanut,تبقع الأوراق,peanut-pests-03,"55,56",Difenoconazole ?% + Propiconazole ?%,mrl,عدد أسطر MRL (1) ≠ عدد المواد (2)
+sesame,أعفان الجذور وموت البادرات,sesame-pests-02,58,Thiophanate-methyl 70%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+sunflower,أعفان الجذور وموت البادرات,sunflower-pests-02,59,Azoxystrobin 20% + Tebuconazole 30%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+tomato,حشرة توتا أبسليوتا,tomato-pests-04,"67,68",Bacillus thuringiensis 50%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+tomato,حشرة توتا أبسليوتا,tomato-pests-04,"67,68",Bacillus thuringiensis 6.4%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+tomato,حشرة توتا أبسليوتا,tomato-pests-04,"67,68",Bacillus thuringiensis 9.4%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+tomato,حشرة توتا أبسليوتا,tomato-pests-04,"67,68",Bacillus thuringiensis 9.4%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+tomato,دودة ورق القطن,tomato-pests-05,"69,70,71",Acetamiprid 6.4% + Emamectin benzoate 4.8%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+tomato,دودة ورق القطن,tomato-pests-05,"69,70,71",Bacillus thuringiensis 6.4%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+tomato,دودة ورق القطن,tomato-pests-05,"69,70,71",Bacillus thuringiensis 54%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+tomato,اعفان الجذور وموت البادرات,tomato-pests-11,"78,79",Trichoderma viride 1.15%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+tomato,اعفان الجذور وموت البادرات,tomato-pests-11,"78,79",Flutolanil 25%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+tomato,اعفان الجذور وموت البادرات,tomato-pests-11,"78,79",Azoxystrobin 28.2% + Metalaxyl-M 10.8%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+tomato,البياض الدقيقي,tomato-pests-12,"79,80",Tebuconazole 25% + Trifloxystrobin 25%,concentration_sum,مجموع تراكيز المواد 50 ≠ نسبة المستحضر 75 (قد يكون من الأصل المطبوع)
+tomato,الندوة المبكرة (البدرية),tomato-pests-13,"81,82,83",Bacillus megaterium 66%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+tomato,الندوة المبكرة (البدرية),tomato-pests-13,"81,82,83",Chlorothalonil 25% + Difenoconazole 5%,concentration_sum,مجموع تراكيز المواد 30 ≠ نسبة المستحضر 55 (قد يكون من الأصل المطبوع)
+tomato,أمراض التربة,tomato-pests-15,87,Bacillus amyloliquefaciens FZB24 13%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+tomato,نيماتودا تعقد الجذور,tomato-pests-16,"87,88",Cadusafos 20%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+tomato,نيماتودا تعقد الجذور,tomato-pests-16,"87,88",Oxamyl 24%,concentration_sum,مجموع تراكيز المواد 24 ≠ نسبة المستحضر 10 (قد يكون من الأصل المطبوع)
+tomato,نيماتودا تعقد الجذور,tomato-pests-16,"87,88",Fosthiazate 10%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+potato,دودة درنات البطاطس (فى الحقل),potato-pests-05,"93,94",Bacillus thuringiensis 5.5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+potato,دودة درنات البطاطس (فى الحقل),potato-pests-05,"93,94",Bacillus thuringiensis 54%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+potato,دودة درنات البطاطس (فى الحقل),potato-pests-05,"93,94",Bacillus thuringiensis 9.4%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+potato,دودة درنات البطاطس (فى الحقل),potato-pests-05,"93,94",Bacillus thuringiensis 6.4%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+potato,دودة درنات البطاطس (فى الحقل),potato-pests-05,"93,94",Bacillus thuringiensis 6.4%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+potato,القشرة السوداء (فطريات التربة),potato-pests-08,97,Trichoderma asperellum 12%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+potato,القشرة السوداء (فطريات التربة),potato-pests-08,97,Trichoderma asperellum 12%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+potato,القشرة السوداء (فطريات التربة),potato-pests-08,97,Fludioxonil 10%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+potato,القشرة السوداء (فطريات التربة),potato-pests-08,97,Pencycuron 25%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+potato,القشرة السوداء (فطريات التربة),potato-pests-08,97,Bacillus subtilis 1.34%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+potato,الذبول الفيزاريومي,potato-pests-10,99,Fludioxonil 10%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+potato,الندوة المبكرة (البدرية),potato-pests-13,"101,102,103,104,105",Cymoxanil 8% + Mancozeb 68%,concentration_sum,مجموع تراكيز المواد 76 ≠ نسبة المستحضر 72 (قد يكون من الأصل المطبوع)
+potato,الندوة المبكرة (البدرية),potato-pests-13,"101,102,103,104,105",Dimethomorph 7.2% + Pyraclostrobin 5%,concentration_sum,مجموع تراكيز المواد 12.2 ≠ نسبة المستحضر 11.2 (قد يكون من الأصل المطبوع)
+potato,الندوة المبكرة (البدرية),potato-pests-13,"101,102,103,104,105",Difenoconazole 12.5% + Pydiflumetofen 7.5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+potato,الندوة المتأخرة,potato-pests-14,"106,107,108,109,110",Copper oxychloride 47.89%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+potato,الندوة المتأخرة,potato-pests-14,"106,107,108,109,110",Copper oxychloride 40% + Metalaxyl-M 4%,concentration_sum,مجموع تراكيز المواد 44 ≠ نسبة المستحضر 45 (قد يكون من الأصل المطبوع)
+potato,الندوة المتأخرة,potato-pests-14,"106,107,108,109,110",Azoxystrobin 16.8% + Cyazofamid 7.4%,concentration_sum,مجموع تراكيز المواد 24.200000000000003 ≠ نسبة المستحضر 26 (قد يكون من الأصل المطبوع)
+potato,الندوة المتأخرة,potato-pests-14,"106,107,108,109,110",Copper hydroxide 38.37%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+potato,تعقيم تربة أراضي مفتوحة,potato-pests-16,111,"1,3-Dichloropropene 93%",phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+potato,نيماتودا التقرح,potato-pests-17,112,Ethoprophos 10%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+cucumber,الذبابة البيضاء,cucumber-pests-01,"124,125",Abamectin 2% + Thiamethoxam 12%,concentration_sum,مجموع تراكيز المواد 14 ≠ نسبة المستحضر 12 (قد يكون من الأصل المطبوع)
+cucumber,المن,cucumber-pests-02,"126,127",Fludioxonil 2% + Thiamethoxam 10%,concentration_sum,مجموع تراكيز المواد 12 ≠ نسبة المستحضر 22 (قد يكون من الأصل المطبوع)
+cucumber,المن,cucumber-pests-02,"126,127",Thiamethoxam 25%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+cucumber,المن,cucumber-pests-02,"126,127",Thiamethoxam 25%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+cucumber,اعفان الجذور وموت البادرات,cucumber-pests-07,"131,132,133",Hymexazol 30%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+cucumber,اعفان الجذور وموت البادرات,cucumber-pests-07,"131,132,133",Thiophanate-methyl 70%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+cucumber,اعفان الجذور وموت البادرات,cucumber-pests-07,"131,132,133",Thiophanate-methyl 70%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+cucumber,اعفان الجذور وموت البادرات,cucumber-pests-07,"131,132,133",Bacillus subtilis 1.34%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+cucumber,اعفان الجذور وموت البادرات,cucumber-pests-07,"131,132,133",Hymexazol ?% + Metalaxyl-M ?%,concentration,تركيز مادة فعالة غير مطبوع/غير محدد
+cucumber,اعفان الجذور وموت البادرات,cucumber-pests-07,"131,132,133",Fosetyl-aluminium 31% + Propamocarb hydrochloride 43%,concentration_sum,مجموع تراكيز المواد 74 ≠ نسبة المستحضر 84 (قد يكون من الأصل المطبوع)
+cucumber,البياض الدقيقى,cucumber-pests-08,"134,135",Trichoderma album 2.5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+cucumber,البياض الدقيقى,cucumber-pests-08,"134,135",Prochloraz 40% + Propiconazole 6%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+cucumber,البياض الزغبى,cucumber-pests-09,"136,137,138,139",Mancozeb 80%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+cucumber,لفحة الساق الصمغية,cucumber-pests-10,139,Difenoconazole 25%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+cucumber,نيماتودا تعقد الجذور,cucumber-pests-11,140,Abamectin 2%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+watermelon,العنكبوت الأحمر,watermelon-pests-01,"144,145",Hexythiazox 5%,formulation_type,نوع المستحضر غير موجود
+shammam,البياض الدقيق,shammam-pests-01,153,Chlorothalonil 16.6% + Tebuconazole ?%,concentration,تركيز مادة فعالة غير مطبوع/غير محدد
+cantaloupe,العنكبوت الأحمر,cantaloupe-pests-04,157,Sulfur 80%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+snap-bean,المنّ,snap-bean-pests-02,164,Thiamethoxam 25%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+snap-bean,أعفان الجذور وموت البادرات,snap-bean-pests-06,167,Trichoderma asperellum 12%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+cowpea,العنكبوت الأحمر,cowpea-pests-04,170,Chlorfenapyr 24%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+pea,لفحة الأسكوكيتا,pea-pests-04,172,Mancozeb ?%,concentration,تركيز مادة فعالة غير مطبوع/غير محدد
+okra,الذبابة البيضاء,okra-pests-03,175,Acetamiprid 5% + Bifenthrin 2.5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+cabbage,العنكبوت الاحمر,cabbage-pests-06,181,Abamectin 5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+lettuce,دودة ورق القطن,lettuce-pests-01,188,Acetamiprid 22.7% + Bifenthrin 27.3%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+spinach,دودة ورق القطن,spinach-pests-01,189,Acetamiprid 22.7% + Bifenthrin 27.3%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+strawberry,دودة ورق القطن,strawberry-pests-01,190,Bacillus thuringiensis 50%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+strawberry,اعفان الثمار,strawberry-pests-03,192,Bacillus megaterium 6%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+strawberry,اعفان الثمار,strawberry-pests-03,192,Bacillus amyloliquefaciens MBI 600 11%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+strawberry,اعفان الثمار,strawberry-pests-03,192,Bacillus subtilis 1.34%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+protected-crops,نيماتودا التربة (معقمات),protected-crops-pests-01,196,"1,3-Dichloropropene 60.8% + Chloropicrin 33.3%",phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+protected-crops,نيماتودا التربة (معقمات),protected-crops-pests-01,196,Dimethyl disulfide 94.8%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+protected-crops,نيماتودا التربة (معقمات),protected-crops-pests-01,196,Metam sodium 51%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+protected-crops,نيماتودا التربة (مكافحة),protected-crops-pests-02,197,Cadusafos 10%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+protected-crops,نيماتودا التربة (مكافحة),protected-crops-pests-02,197,Cadusafos 20%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+turf,آفات المسطحات الخضراء,turf-pests-01,"197,198",Lambda-cyhalothrin 5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+turf,آفات المسطحات الخضراء,turf-pests-01,"197,198",Lambda-cyhalothrin 5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+turf,آفات المسطحات الخضراء,turf-pests-01,"197,198",Lambda-cyhalothrin 10%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+turf,آفات المسطحات الخضراء,turf-pests-01,"197,198",Etoxazole 10% + Fenpropathrin 10%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+turf,آفات المسطحات الخضراء,turf-pests-01,"197,198",Acetamiprid 22.7% + Bifenthrin 27.3%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+turf,آفات المسطحات الخضراء,turf-pests-01,"197,198",Acetamiprid 22.7% + Bifenthrin 27.3%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+turf,آفات المسطحات الخضراء,turf-pests-01,"197,198",Acetamiprid 5% + Bifenthrin 2.5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+turf,آفات المسطحات الخضراء,turf-pests-01,"197,198",Acetamiprid 5% + Bifenthrin 2.5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+turf,آفات المسطحات الخضراء,turf-pests-01,"197,198",Buprofezin 10% + Imidacloprid 20%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+turf,آفات المسطحات الخضراء,turf-pests-01,"197,198",Abamectin 1.3% + Bifenthrin 8.8%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+turf,آفات المسطحات الخضراء,turf-pests-01,"197,198",Beta-cyfluthrin 10%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+turf,تبقع أوراق,turf-pests-02,198,Azoxystrobin 6.25% + Propiconazole 10.4%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+turf,تبقع أوراق,turf-pests-02,198,Azoxystrobin 20% + Difenoconazole 12.5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+citrus,الحشرات القشرية,citrus-pests-01,"199,200",Mineral oil 80%,formulation_type,نوع المستحضر غير موجود
+citrus,الحشرات القشرية,citrus-pests-01,"199,200",Mineral oil 80%,formulation_type,نوع المستحضر غير موجود
+citrus,الحشرات القشرية,citrus-pests-01,"199,200",Mineral oil 85%,formulation_type,نوع المستحضر غير موجود
+citrus,التصمغ,citrus-pests-08,208,Fosetyl-aluminium 80%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+citrus,التصمغ,citrus-pests-08,208,Fosetyl-aluminium 80%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+mango,البق الدقيقى,mango-pests-01,213,Mineral oil 85%,formulation_type,نوع المستحضر غير موجود
+mango,البق الدقيقى,mango-pests-01,213,Mineral oil 82%,formulation_type,نوع المستحضر غير موجود
+mango,الحشرات القشرية,mango-pests-02,"213,214",Mineral oil 85%,formulation_type,نوع المستحضر غير موجود
+mango,الحشرات القشرية,mango-pests-02,"213,214",Mineral oil 82%,formulation_type,نوع المستحضر غير موجود
+mango,البياض الدقيقى,mango-pests-04,"215,216",Trichoderma album 2.5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البق الدقيقى,grape-pests-01,219,Spirotetramat 10%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البق الدقيقى,grape-pests-01,219,Sulfoxaflor 24%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البق الدقيقى,grape-pests-01,219,Mineral oil 82%,formulation_type,نوع المستحضر غير موجود
+grape,البق الدقيقى,grape-pests-01,219,Mineral oil 82%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,التربس,grape-pests-03,220,Bifenthrin 10%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,دودة ثمار العنب,grape-pests-04,"221,222",Emamectin benzoate 2.3%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,دودة ثمار العنب,grape-pests-04,"221,222",Spinosad 24%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,دودة ثمار العنب,grape-pests-04,"221,222",Bacillus thuringiensis 6.4%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,دودة ثمار العنب,grape-pests-04,"221,222",Spinetoram 12%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,دودة ثمار العنب,grape-pests-04,"221,222",Methoxyfenozide 24%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,دودة ثمار العنب,grape-pests-04,"221,222",Methoxyfenozide 24%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,دودة ثمار العنب,grape-pests-04,"221,222",Methoxyfenozide 24%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,دودة ثمار العنب,grape-pests-04,"221,222",Methoxyfenozide 24%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,دودة ثمار العنب,grape-pests-04,"221,222",Lufenuron 5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,دودة ثمار العنب,grape-pests-04,"221,222",Lufenuron 5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,دودة ثمار العنب,grape-pests-04,"221,222",Lufenuron 5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,دودة ثمار العنب,grape-pests-04,"221,222",Lufenuron 5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,دودة ثمار العنب,grape-pests-04,"221,222",Lufenuron 5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,دودة ثمار العنب,grape-pests-04,"221,222",Indoxacarb 15%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,دودة ثمار العنب,grape-pests-04,"221,222",Indoxacarb 15%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,دودة ثمار العنب,grape-pests-04,"221,222",Indoxacarb 15%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,دودة ثمار العنب,grape-pests-04,"221,222",Indoxacarb 15%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,دودة ثمار العنب,grape-pests-04,"221,222",Indoxacarb 15%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,دودة ثمار العنب,grape-pests-04,"221,222",Indoxacarb 30%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,دودة ثمار العنب,grape-pests-04,"221,222",Indoxacarb 14.5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,دودة ثمار العنب,grape-pests-04,"221,222",Lufenuron 10%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,دودة ثمار العنب,grape-pests-04,"221,222",Lufenuron 10%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,دودة ثمار العنب,grape-pests-04,"221,222",Indoxacarb 30%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,دودة ثمار العنب,grape-pests-04,"221,222",Indoxacarb 30%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,دودة ثمار العنب,grape-pests-04,"221,222",Indoxacarb 30%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,دودة ثمار العنب,grape-pests-04,"221,222",Methoxyfenozide 30% + Spinetoram 6%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,دودة ثمار العنب,grape-pests-04,"221,222",Triflumuron 40%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,دودة ثمار العنب,grape-pests-04,"221,222",Bacillus thuringiensis 54%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,دودة ثمار العنب,grape-pests-04,"221,222",Spinosad 22.8%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,دودة ثمار العنب,grape-pests-04,"221,222",Spinosad 22.8%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,دودة ثمار العنب,grape-pests-04,"221,222",Spinosad 48%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,دودة ثمار العنب,grape-pests-04,"221,222",Tebufenozide 20%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,دودة ثمار العنب,grape-pests-04,"221,222",Spinosad 2.5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,العنكبوت الأحمر,grape-pests-05,223,Chlorfenapyr 24%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,العنكبوت الأحمر,grape-pests-05,223,Chlorfenapyr 24%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,العنكبوت الأحمر,grape-pests-05,223,Chlorfenapyr 24%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,العنكبوت الأحمر,grape-pests-05,223,Chlorfenapyr 24%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,العنكبوت الأحمر,grape-pests-05,223,Chlorfenapyr 24%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,العنكبوت الأحمر,grape-pests-05,223,Hexythiazox 5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,العنكبوت الأحمر,grape-pests-05,223,Hexythiazox 5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,العنكبوت الأحمر,grape-pests-05,223,Fenpyroximate 5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,العنكبوت الأحمر,grape-pests-05,223,Fenpyroximate 5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,العنكبوت الأحمر,grape-pests-05,223,Fenpyroximate 5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,العنكبوت الأحمر,grape-pests-05,223,Bifenazate 24%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,العنكبوت الأحمر,grape-pests-05,223,Bifenazate 24%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,العنكبوت الأحمر,grape-pests-05,223,Chlorfenapyr 36%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,العنكبوت الأحمر,grape-pests-05,223,Chlorfenapyr 36%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,العنكبوت الأحمر,grape-pests-05,223,Spirodiclofen 24%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,العنكبوت الأحمر,grape-pests-05,223,Bifenazate 50%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,العنكبوت الأحمر,grape-pests-05,223,Spiromesifen 24%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,اعفان الثمار,grape-pests-06,"224,225",Fenpyrazamine 50%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,اعفان الثمار,grape-pests-06,"224,225",Boscalid 25.2% + Pyraclostrobin 12.8%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,اعفان الثمار,grape-pests-06,"224,225",Boscalid 25.2% + Pyraclostrobin 12.8%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,اعفان الثمار,grape-pests-06,"224,225",Boscalid 25.2% + Pyraclostrobin 12.8%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,اعفان الثمار,grape-pests-06,"224,225",Trichoderma asperellum 12%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,اعفان الثمار,grape-pests-06,"224,225",Fenhexamid 50%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,اعفان الثمار,grape-pests-06,"224,225",Fenhexamid 50%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,اعفان الثمار,grape-pests-06,"224,225",Azoxystrobin 22.8% + Dimethomorph 57.2%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,اعفان الثمار,grape-pests-06,"224,225",Azoxystrobin 22.8% + Dimethomorph 57.2%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,اعفان الثمار,grape-pests-06,"224,225",Cyprodinil 37% + Fludioxonil 25%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,اعفان الثمار,grape-pests-06,"224,225",Cyprodinil 37% + Fludioxonil 25%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,اعفان الثمار,grape-pests-06,"224,225",Cyprodinil 37% + Fludioxonil 25%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,اعفان الثمار,grape-pests-06,"224,225",Cyprodinil 37.5% + Fludioxonil 25%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,اعفان الثمار,grape-pests-06,"224,225",Cyprodinil 37.5% + Fludioxonil 25%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,اعفان الثمار,grape-pests-06,"224,225",Cyprodinil 37.5% + Fludioxonil 25%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,اعفان الثمار,grape-pests-06,"224,225",Pyrimethanil 20%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,اعفان الثمار,grape-pests-06,"224,225",Pyrimethanil 20%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,اعفان الثمار,grape-pests-06,"224,225",Thiophanate-methyl 70%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,اعفان الثمار,grape-pests-06,"224,225",Boscalid 50%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,اعفان الثمار,grape-pests-06,"224,225",Boscalid 50%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,اعفان الثمار,grape-pests-06,"224,225",Boscalid 50%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,اعفان الثمار,grape-pests-06,"224,225",Pyrimethanil 40%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,اعفان الثمار,grape-pests-06,"224,225",Boscalid 25% + Pyraclostrobin 13%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,اعفان الثمار,grape-pests-06,"224,225",Boscalid 25% + Pyraclostrobin 13%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,اعفان الثمار,grape-pests-06,"224,225",Bacillus amyloliquefaciens MBI 600 11%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,اعفان الثمار,grape-pests-06,"224,225",Pyrimethanil 80%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,اعفان الثمار,grape-pests-06,"224,225",Pyrimethanil 80%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,اعفان الثمار,grape-pests-06,"224,225",Pyrimethanil 80%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,اعفان الثمار,grape-pests-06,"224,225",Pyraclostrobin 25%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,اعفان الثمار,grape-pests-06,"224,225",Pyraclostrobin 50%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,اعفان الثمار,grape-pests-06,"224,225",Pyrimethanil 45%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,اعفان الثمار,grape-pests-06,"224,225",Boscalid 50%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Sulfur 80%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Sulfur 80%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Sulfur 80%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Boscalid 20% + Kresoxim-methyl 10%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Boscalid 20% + Kresoxim-methyl 10%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Thiophanate-methyl 70%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Thiophanate-methyl 70%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Thiophanate-methyl 70%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Thiophanate-methyl 70%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Thiophanate-methyl 70%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Thiophanate-methyl 70%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Thiophanate-methyl 70%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Thiophanate-methyl 70%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Thiophanate-methyl 70%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Thiophanate-methyl 70%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Sulfur 80%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Sulfur 80%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Sulfur 80%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Sulfur 80%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Sulfur 80%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Sulfur 80%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Sulfur 80%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Sulfur 80%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Sulfur 80%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Sulfur 80%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Penconazole 10%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Penconazole 10%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Penconazole 10%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Penconazole 10%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Penconazole 10%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Azoxystrobin 25%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Azoxystrobin 25%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Tebuconazole 5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Boscalid 25% + Pyraclostrobin 13%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Propiconazole 25%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Propiconazole 25%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Propiconazole 25%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Propiconazole 25%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Propiconazole 25%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Propiconazole 25%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Propiconazole 25%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Boscalid 25.2% + Pyraclostrobin 12.8%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Boscalid 25.2% + Pyraclostrobin 12.8%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Boscalid 25.2% + Pyraclostrobin 12.8%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Boscalid 25.2% + Pyraclostrobin 12.8%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Tebuconazole 25%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Bacillus amyloliquefaciens FZB24 13%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Myclobutanil 12.5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Myclobutanil 12.5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Azoxystrobin 20% + Difenoconazole 12.5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Azoxystrobin 20% + Difenoconazole 12.5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Azoxystrobin 20% + Difenoconazole 12.5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Azoxystrobin 20% + Difenoconazole 12.5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Azoxystrobin 20% + Difenoconazole 12.5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Azoxystrobin 20% + Difenoconazole 12.5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Proquinazid 20%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Trifloxystrobin 50%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Difenoconazole 25%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Tetraconazole 10%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Sulfur 71.76%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Flutianil 5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Myclobutanil 25%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Myclobutanil 25%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Myclobutanil 25%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Myclobutanil 25%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Dimethomorph 12% + Pyraclostrobin 6.7%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Dimethomorph 12% + Pyraclostrobin 6.7%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Dimethomorph 12% + Pyraclostrobin 6.7%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Dimethomorph 12% + Pyraclostrobin 6.7%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Dimethomorph 12% + Pyraclostrobin 6.7%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Dimethomorph 12% + Pyraclostrobin 6.7%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Dimethomorph 12% + Pyraclostrobin 6.7%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Dimethomorph 12% + Pyraclostrobin 6.7%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Spiroxamine 30%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Myclobutanil 40%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Difenoconazole 15% + Propiconazole 15%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Metiram 55% + Pyraclostrobin 5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Metiram 55% + Pyraclostrobin 5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Metiram 55% + Pyraclostrobin 5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Cyflufenamid 5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Sulfur 80%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Sulfur 70%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Boscalid 20% + Pyraclostrobin 10%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Flutriafol 25%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Trifloxystrobin 50%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Metrafenone 50%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Spiroxamine 80%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Fluxapyroxad 30%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Boscalid 25.5% + Pyraclostrobin 12.5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Difenoconazole 12.5% + Pydiflumetofen 7.5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Fluopyram 25% + Trifloxystrobin 25%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Trifloxystrobin 25% + Tebuconazole 50%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Fluoxastrobin 48%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",Mefentrifluconazole 7.5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Azoxystrobin 25%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Azoxystrobin 25%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Azoxystrobin 25%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Azoxystrobin 25%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Azoxystrobin 25%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Azoxystrobin 25%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Mancozeb 80%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Mancozeb 80%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Mancozeb 80%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Mancozeb 80%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Mancozeb 80%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Mancozeb 80%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Copper oxychloride 67.7% + Dimethomorph 6%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Azoxystrobin 20% + Dimethomorph 50%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Azoxystrobin 20% + Dimethomorph 50%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Cymoxanil 30% + Famoxadone 22.5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Cymoxanil 30% + Famoxadone 22.5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Cymoxanil 30% + Famoxadone 22.5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Cymoxanil 30% + Famoxadone 22.5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Copper oxychloride 69%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Copper hydroxide 77%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Copper hydroxide 24.4% + Copper oxychloride 24.5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Copper hydroxide 46%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Metalaxyl 25%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Propamocarb hydrochloride 72.2%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Cymoxanil 8% + Mancozeb 64%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Cymoxanil 8% + Mancozeb 64%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Cymoxanil 8% + Mancozeb 64%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Cymoxanil 8% + Mancozeb 64%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Benalaxyl 5% + Copper oxychloride 26.32% + Copper hydroxide 26.18%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Fluoxastrobin 48%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Azoxystrobin 20% + Cyproconazole 8%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Azoxystrobin 20% + Cyproconazole 8%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Picoxystrobin 22.5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Fluopicolide 4.44% + Fosetyl-aluminium 66.67%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Copper oxychloride 85%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Copper oxychloride 85%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Copper oxychloride 85%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Dimethomorph 50%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Dimethomorph 50%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Copper sulfate 23.5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Mancozeb 64% + Metalaxyl 8%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Mancozeb 64% + Metalaxyl 8%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Mancozeb 64% + Metalaxyl 8%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Cymoxanil 30% + Famoxadone 22.5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Cymoxanil 3% + Bordeaux mixture 22.5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Azoxystrobin 6% + Chlorothalonil 50%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Oxathiapiprolin 4% + Zoxamide 30%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Fluazinam 50%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Pyraclostrobin 5% + Metiram 55%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Boscalid 25.2% + Pyraclostrobin 12.8%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Iprovalicarb 8.4% + Copper oxychloride 70%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Captan 80%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Captan 80%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Cymoxanil 45%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Benalaxyl 4% + Mancozeb 65%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Copper oxychloride 60.06%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Phosphorous acid salts 53.6%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Copper oxychloride 67% + Dimethomorph 6%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Copper oxychloride 30% + Cymoxanil 10%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Copper hydroxide 61.4%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Copper oxychloride 68.95% + Cymoxanil 4.2%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Copper sulfate 25.63%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Azoxystrobin 80%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Azoxystrobin 80%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Fosetyl-aluminium 80%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Copper sulfate (tribasic) 34.5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Copper oxychloride 50%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Copper hydroxide 53.8%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Cymoxanil 4% + Folpet 25% + Fosetyl-aluminium ?%,concentration,تركيز مادة فعالة غير مطبوع/غير محدد
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Cymoxanil 4% + Folpet 25% + Fosetyl-aluminium ?%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Dimethomorph 12% + Pyraclostrobin 6.7%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Dimethomorph 12% + Pyraclostrobin 6.7%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Ametoctradin 20%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Captan 50%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Azoxystrobin 20% + Difenoconazole 12.5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Copper oxychloride 84.04%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Mancozeb 60% + Metalaxyl 8%,concentration_sum,مجموع تراكيز المواد 68 ≠ نسبة المستحضر 72 (قد يكون من الأصل المطبوع)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Cymoxanil 8% + Metalaxyl 64%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Azoxystrobin 20% + Dimethomorph 10%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Copper sulfate (tribasic) 70%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Fosetyl-aluminium 90%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",Folpet 40% + Metalaxyl 10%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,نيماتودا تعقد الجذور,grape-pests-09,236,Oxamyl 24%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,نيماتودا تعقد الجذور,grape-pests-09,236,Oxamyl 24%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,نيماتودا تعقد الجذور,grape-pests-09,236,Fosthiazate 90%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,نيماتودا تعقد الجذور,grape-pests-09,236,Fosthiazate 20%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+olive,دودة أوراق الزيتون,olive-pests-02,240,Bacillus thuringiensis 6.4%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+olive,دودة أوراق الزيتون,olive-pests-02,240,Bacillus thuringiensis 6.4%,who,تصنيف WHO فارغ
+guava,الحشرة القشرية الرخوة (البولفيناريا),guava-pests-01,241,Mineral oil 80%,formulation_type,نوع المستحضر غير موجود
+guava,الحشرة القشرية الرخوة (البولفيناريا),guava-pests-01,241,Mineral oil 80%,formulation_type,نوع المستحضر غير موجود
+pomegranate,أبو دقيق الرمان,pomegranate-pests-03,245,Bacillus thuringiensis 6.4%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+pear,الحشرة القشرية,pear-pests-01,"253,254",Mineral oil 80%,formulation_type,نوع المستحضر غير موجود
+peach,العفن البنى,peach-pests-04,"258,259",Prochloraz 10% + Propiconazole 6%,concentration_sum,مجموع تراكيز المواد 16 ≠ نسبة المستحضر 46 (قد يكون من الأصل المطبوع)
+banana,نيماتودا تعقد الجذور,banana-pests-01,"261,262",Cadusafos 10%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+banana,نيماتودا تعقد الجذور,banana-pests-01,"261,262",Cadusafos 20%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+stored-products,حشرات الحبوب المخزونة,stored-products-pests-01,"263,264",Aluminium phosphide 56%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+stored-products,حشرات الحبوب المخزونة,stored-products-pests-01,"263,264",Aluminium phosphide 56%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+stored-products,حشرات الحبوب المخزونة,stored-products-pests-01,"263,264",Aluminium phosphide 56%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+stored-products,حشرات الحبوب المخزونة,stored-products-pests-01,"263,264",Aluminium phosphide 56%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+stored-products,حشرات الحبوب المخزونة,stored-products-pests-01,"263,264",Aluminium phosphide 56%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+stored-products,حشرات الحبوب المخزونة,stored-products-pests-01,"263,264",Aluminium phosphide 56%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+stored-products,حشرات الحبوب المخزونة,stored-products-pests-01,"263,264",Aluminium phosphide 56%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+stored-products,حشرات الحبوب المخزونة,stored-products-pests-01,"263,264",Aluminium phosphide 56%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+stored-products,حشرات الحبوب المخزونة,stored-products-pests-01,"263,264",Phosphine 2% + CO2 98%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+stored-products,حشرات الحبوب المخزونة,stored-products-pests-01,"263,264",Phosphine 2% + CO2 98%,mrl,عدد أسطر MRL (1) ≠ عدد المواد (2)
+stored-products,حشرات الحبوب المخزونة,stored-products-pests-01,"263,264",Magnesium phosphide 66%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+stored-products,حشرات التمور المخزونة,stored-products-pests-02,264,Phosphine 2% + CO2 98%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+stored-products,حشرات التمور المخزونة,stored-products-pests-02,264,Phosphine 2% + CO2 98%,mrl,عدد أسطر MRL (1) ≠ عدد المواد (2)
+buildings,النمل الأبيض,buildings-pests-01,265,Lambda-cyhalothrin 10%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+buildings,النمل الأبيض,buildings-pests-01,265,Indoxacarb 30%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+buildings,النمل الأبيض,buildings-pests-01,265,Lambda-cyhalothrin 5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+fields-orchards,الفئران,fields-orchards-pests-01,"265,266",Zinc phosphide 80%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+fields-orchards,الفئران,fields-orchards-pests-01,"265,266",Zinc phosphide 80%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+fields-orchards,الفئران,fields-orchards-pests-01,"265,266",Zinc phosphide 80%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+fields-orchards,الفئران,fields-orchards-pests-01,"265,266",Zinc phosphide 80%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+fields-orchards,الفئران,fields-orchards-pests-01,"265,266",Bromadiolone 0.005%,formulation_type,نوع المستحضر غير موجود
+fields-orchards,الفئران,fields-orchards-pests-01,"265,266",Bromadiolone 0.005%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+fields-orchards,الفئران,fields-orchards-pests-01,"265,266",Bromadiolone 0.005%,formulation_type,نوع المستحضر غير موجود
+fields-orchards,الفئران,fields-orchards-pests-01,"265,266",Bromadiolone 0.005%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+snails,القواقع,snails-pests-01,266,Metaldehyde 5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+wheat,الحشائش الحولية عريضة الأوراق,wheat-weeds-07,"269,270",Tribenuron-methyl 75%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+wheat,الحشائش الحولية عريضة الأوراق,wheat-weeds-07,"269,270",Bromoxynil octanoate 24%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+wheat,الحشائش الحولية عريضة الأوراق,wheat-weeds-07,"269,270",Florasulam 7.5% + Flumetsulam 10%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+wheat,الحشائش الحولية عريضة الأوراق,wheat-weeds-07,"269,270",Florasulam 5.7% + Flumetsulam 10%,concentration_sum,مجموع تراكيز المواد 15.7 ≠ نسبة المستحضر 17.5 (قد يكون من الأصل المطبوع)
+wheat,الحشائش الحولية النجيلية,wheat-weeds-09,"271,272,273",Clodinafop-propargyl 15%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+wheat,الحشائش الحولية النجيلية,wheat-weeds-09,"271,272,273",Clodinafop-propargyl 15%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+wheat,الحشائش الحولية النجيلية,wheat-weeds-09,"271,272,273",Clodinafop-propargyl 15%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+wheat,الحشائش الحولية عريضة الأوراق والنجيلية,wheat-weeds-10,"274,275",Diflufenican 5% + Iodosulfuron-methyl-sodium 0.25% + Mesosulfuron-methyl 0.75% + Mefenpyr-diethyl 2.25%,concentration_sum,مجموع تراكيز المواد 8.25 ≠ نسبة المستحضر 6 (قد يكون من الأصل المطبوع)
+flax,الحشائش الحولية عريضة الأوراق والنجيلية,flax-weeds-01,276,Bromoxynil octanoate 24%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+sugar-beet,الحشائش الحولية عريضة الأوراق,sugar-beet-weeds-08,"284,285,286",Phenmedipham 9.1% + Desmedipham 7.1% + Ethofumesate 11.2%,concentration_sum,مجموع تراكيز المواد 27.4 ≠ نسبة المستحضر 24.7 (قد يكون من الأصل المطبوع)
+sugar-beet,الحشائش الحولية عريضة الأوراق,sugar-beet-weeds-08,"284,285,286",Phenmedipham 9.1% + Desmedipham 7.1% + Ethofumesate 11.2%,concentration_sum,مجموع تراكيز المواد 27.4 ≠ نسبة المستحضر 24.7 (قد يكون من الأصل المطبوع)
+cotton,الذبابة البيضاء,cotton-pests-02,32,Buprofezin 25%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+cotton,دودة ورق القطن (فقس حديث),cotton-pests-04,33,Bacillus thuringiensis 9.4%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+cotton,دودة ورق القطن (فقس حديث),cotton-pests-04,33,Bacillus thuringiensis 9.4%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+cotton,دودة ورق القطن,cotton-pests-05,"33,34",Chlorfluazuron 5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+cotton,دودة ورق القطن,cotton-pests-05,"33,34",Diflubenzuron 48%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+cotton,دودة ورق القطن,cotton-pests-05,"33,34",Hexaflumuron 10%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+cotton,ديدان اللوز,cotton-pests-06,"35,36,37",Lambda-cyhalothrin 5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+cotton,ديدان اللوز,cotton-pests-06,"35,36,37",Alpha-cypermethrin 10%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+cotton,ديدان اللوز,cotton-pests-06,"35,36,37",Alpha-cypermethrin 10%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+cotton,ديدان اللوز,cotton-pests-06,"35,36,37",Lambda-cyhalothrin 2.5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+cotton,ديدان اللوز,cotton-pests-06,"35,36,37",Cypermethrin 25%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+cotton,ديدان اللوز,cotton-pests-06,"35,36,37",Cypermethrin 20%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+cotton,العنكبوت الأحمر,cotton-pests-07,38,Fenpyroximate 5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+cotton,العنكبوت الأحمر,cotton-pests-07,38,Abamectin 1.8%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+cotton,اعفان الجذور وموت البادرات,cotton-pests-08,39,Fludioxonil 2.5% + Metalaxyl-M 1%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+cotton,اعفان الجذور وموت البادرات,cotton-pests-08,39,Flutolanil 25%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+rice,ابيضاض القمة النيماتودى,rice-pests-05,44,Fosthiazate 75%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+maize,دودة ورق القطن,maize-pests-02,46,Lufenuron 5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+maize,دودة الحشد الخريفية,maize-pests-03,"46,47",Indoxacarb 30%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+maize,دودة الحشد الخريفية,maize-pests-03,"46,47",Chlorfenapyr 24%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+maize,دودة الحشد الخريفية,maize-pests-03,"46,47",Emamectin benzoate 5.7%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+maize,دودة الحشد الخريفية,maize-pests-03,"46,47",Chlorantraniliprole 20%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+maize,دودة الحشد الخريفية,maize-pests-03,"46,47",Bacillus thuringiensis 9.4%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+maize,دودة الحشد الخريفية,maize-pests-03,"46,47",Acetamiprid 22.7% + Bifenthrin 27.3%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+maize,دودة الحشد الخريفية,maize-pests-03,"46,47",Bacillus thuringiensis 6.4%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+maize,دودة الحشد الخريفية,maize-pests-03,"46,47",Lambda-cyhalothrin 5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+maize,ثاقبات الذرة,maize-pests-04,48,Lufenuron 5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+maize,اعفان الجذور وموت البادرات,maize-pests-05,"48,49",Fludioxonil 2.5% + Metalaxyl-M 1%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+cotton,الحشائش الحولية عريضة الأوراق والنجيلية,cotton-weeds-09,290,Pendimethalin 45.5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+cotton,الحشائش الحولية النجيلية,cotton-weeds-10,291,Quizalofop-P-tefuryl 4%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+rice,حشائش الأرز الشتل (الدنيبة - أبو ركبة - العجيرة),rice-weeds-07,293,Penoxsulam 24%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+rice,حشائش الأرز الشتل (الدنيبة - أبو ركبة - العجيرة),rice-weeds-07,293,Thiobencarb 50%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+rice,حشائش الأرز الشتل (العجيرة - السمار - السعد - عريضة الأوراق),rice-weeds-09,"294,295,296",Halosulfuron-methyl 75%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+rice,حشائش الأرز الشتل (العجيرة - السمار - السعد - عريضة الأوراق),rice-weeds-09,"294,295,296",Bentazone 48%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+rice,حشائش الأرز الشتل (العجيرة - السمار - السعد - عريضة الأوراق),rice-weeds-09,"294,295,296",Pyrazosulfuron-ethyl 10%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+rice,حشائش الأرز البدار (الدنيبة - أبو ركبة - العجيرة),rice-weeds-10,"296,297",Penoxsulam 2.5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+rice,حشائش الأرز البدار (الدنيبة - أبو ركبة - العجيرة),rice-weeds-10,"296,297",Thiobencarb 50%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+rice,حشائش الأرز البدار (العجيرة - السمار - السعد - عريضة الأوراق),rice-weeds-13,"300,301",Pyrazosulfuron-ethyl 10%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+maize,الحشائش الحولية عريضة الأوراق والنجيلية,maize-weeds-07,"303,304",Pendimethalin 45.5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+sugarcane,الحشائش عريضة الأوراق (الشبيط - الرجلة - أم اللبن - العليق),sugarcane-weeds-05,307,Fluroxypyr 20%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+peanut,الحشائش الحولية عريضة الأوراق,peanut-weeds-06,309,MCPA 28.5% + Imazapic 2.5%,concentration_sum,مجموع تراكيز المواد 31.0 ≠ نسبة المستحضر 24 (قد يكون من الأصل المطبوع)
+peanut,الحشائش الحولية النجيلية,peanut-weeds-07,310,Fluazifop-P-butyl 12.5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+peanut,الحشائش الحولية النجيلية,peanut-weeds-07,310,Fluazifop-P-butyl 12.5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+peanut,الحشائش النجيلية الحولية والمعمرة,peanut-weeds-10,313,Clethodim 12.5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+peanut,الحشائش النجيلية الحولية والمعمرة,peanut-weeds-10,313,Fluazifop-P-butyl 12.5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+tomato,الحشائش النجيلية الحولية والمعمرة,tomato-weeds-20,318,Fluazifop-P-butyl 12.5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+potato,الحشائش الحولية عريضة الأوراق والنجيلية,potato-weeds-18,319,Metribuzin 48%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+potato,الحشائش النجيلية الحولية والمعمرة,potato-weeds-20,"320,321",Quizalofop-P-tefuryl 4%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+grape,الحشائش النجيلية الحولية والمعمرة ماعدا (الحجنه - الحلفا - الغاب),grape-weeds-12,343,Clethodim 12.5%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+orchards-pome-stone,الحشائش الحولية عريضة الأوراق,orchards-pome-stone-weeds-03,347,Imazapic 2.5% + MCPA 25.5%,concentration_sum,مجموع تراكيز المواد 28.0 ≠ نسبة المستحضر 31 (قد يكون من الأصل المطبوع)
+orchards-pome-stone,حشيشة السعد,orchards-pome-stone-weeds-04,348,Imazapic 2.5%,concentration_sum,مجموع تراكيز المواد 2.5 ≠ نسبة المستحضر 24 (قد يكون من الأصل المطبوع)
+turf,الحشائش الحولية الصيفية عريضة الأوراق والنجيلية,turf-weeds-03,"349,350",Prodiamine 65%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+canal-banks-drains,الحشائش الحولية والمعمرة,canal-banks-drains-weeds-01,350,Glyphosate isopropylammonium 48%,phi_days,فترة الأمان فارغة (أو أكثر من قيمة في الأصل بحسب الملاحظة)
+wheat,البياض الدقيقى فى القمح,wheat-pests-03,5,,pest_group,مجموعة الآفة فارغة
+wheat,الصدأ الأصفر المخطط,wheat-pests-04,"5,6",,pest_group,مجموعة الآفة فارغة
+wheat,أمراض الفيوزاريوم فى القمح,wheat-pests-05,7,,pest_group,مجموعة الآفة فارغة
+wheat,أعفان الجذور وموت البادرات,wheat-pests-06,7,,pest_group,مجموعة الآفة فارغة
+onion,العفن الأبيض,onion-pests-03,"13,14",,pest_group,مجموعة الآفة فارغة
+onion,اللطعة الأرجوانية,onion-pests-04,"14,15",,pest_group,مجموعة الآفة فارغة
+onion,مرض الجذر القرنفلى,onion-pests-05,15,,pest_group,مجموعة الآفة فارغة
+garlic,مرض الصدأ فى الثوم,garlic-pests-04,19,,pest_group,مجموعة الآفة فارغة
+sugar-beet,دودة ورق القطن,sugar-beet-pests-02,"21,22,23,24",,pest_group,مجموعة الآفة فارغة
+sugar-beet,صانعات الانفاق,sugar-beet-pests-03,24,,pest_group,مجموعة الآفة فارغة
+sugar-beet,ذبابة أوراق البنجر,sugar-beet-pests-04,25,,pest_group,مجموعة الآفة فارغة
+sugarcane,دودة القصب الكبرى,sugarcane-pests-02,51,,pest_group,مجموعة الآفة فارغة
+sugarcane,عفن الجذور فى قصب السكر,sugarcane-pests-04,53,,pest_group,مجموعة الآفة فارغة
+peanut,تبقع الأوراق,peanut-pests-03,"55,56",,pest_group,مجموعة الآفة فارغة
+peanut,أعفان الثمار,peanut-pests-04,56,,pest_group,مجموعة الآفة فارغة
+sesame,أعفان الجذور وموت البادرات,sesame-pests-02,58,,pest_group,مجموعة الآفة فارغة
+sunflower,أعفان الجذور وموت البادرات,sunflower-pests-02,59,,pest_group,مجموعة الآفة فارغة
+tomato,الذبابة البيضاء,tomato-pests-02,"62,63,64,65",,pest_group,مجموعة الآفة فارغة
+tomato,المنّ,tomato-pests-03,66,,pest_group,مجموعة الآفة فارغة
+tomato,حشرة توتا أبسليوتا,tomato-pests-04,"67,68",Cyromazine,who,تصنيف WHO مختلف بين صفوف نفس المادة/المستحضر: Low III/U (قد يعود لاختلاف المنتجات؛ يلزم تدقيق الأصل)
+tomato,حشرة توتا أبسليوتا,tomato-pests-04,"67,68",,pest_group,مجموعة الآفة فارغة
+tomato,دودة ورق القطن,tomato-pests-05,"69,70,71",,pest_group,مجموعة الآفة فارغة
+tomato,دودة اللوز الأمريكية,tomato-pests-06,72,,pest_group,مجموعة الآفة فارغة
+tomato,ديدان ثمار الطماطم,tomato-pests-07,73,,pest_group,مجموعة الآفة فارغة
+tomato,صانعات الأنفاق (جنس ليرومايزا),tomato-pests-08,74,,pest_group,مجموعة الآفة فارغة
+tomato,اعفان الجذور وموت البادرات,tomato-pests-11,"78,79",,pest_group,مجموعة الآفة فارغة
+tomato,البياض الدقيقي,tomato-pests-12,"79,80",,pest_group,مجموعة الآفة فارغة
+tomato,الندوة المبكرة (البدرية),tomato-pests-13,"81,82,83",Difenoconazole,who,تصنيف WHO مختلف بين صفوف نفس المادة/المستحضر: Mod II/U (قد يعود لاختلاف المنتجات؛ يلزم تدقيق الأصل)
+tomato,الندوة المبكرة (البدرية),tomato-pests-13,"81,82,83",,pest_group,مجموعة الآفة فارغة
+tomato,الندوة المتأخرة,tomato-pests-14,"84,85,86",,pest_group,مجموعة الآفة فارغة
+tomato,أمراض التربة,tomato-pests-15,87,,pest_group,مجموعة الآفة فارغة
+potato,الذبابة البيضاء,potato-pests-03,91,,pest_group,مجموعة الآفة فارغة
+potato,المنّ,potato-pests-04,"91,92",,pest_group,مجموعة الآفة فارغة
+potato,دودة درنات البطاطس (فى الحقل),potato-pests-05,"93,94",,pest_group,مجموعة الآفة فارغة
+potato,دودة ورق القطن,potato-pests-06,95,,pest_group,مجموعة الآفة فارغة
+potato,اعفان الجذور وموت البادرات,potato-pests-09,98,,pest_group,مجموعة الآفة فارغة
+potato,الذبول الفيزاريومي,potato-pests-10,99,,pest_group,مجموعة الآفة فارغة
+potato,العفن الابيض الاسكلروتيني,potato-pests-11,100,,pest_group,مجموعة الآفة فارغة
+potato,العفن الجاف,potato-pests-12,101,,pest_group,مجموعة الآفة فارغة
+potato,الندوة المبكرة (البدرية),potato-pests-13,"101,102,103,104,105",Cymoxanil + Mancozeb,who,تصنيف WHO مختلف بين صفوف نفس المادة/المستحضر: Low III/Mod II (قد يعود لاختلاف المنتجات؛ يلزم تدقيق الأصل)
+potato,الندوة المبكرة (البدرية),potato-pests-13,"101,102,103,104,105",,pest_group,مجموعة الآفة فارغة
+potato,الندوة المتأخرة,potato-pests-14,"106,107,108,109,110",Copper oxychloride,who,تصنيف WHO مختلف بين صفوف نفس المادة/المستحضر: Low III/Mod II (قد يعود لاختلاف المنتجات؛ يلزم تدقيق الأصل)
+potato,الندوة المتأخرة,potato-pests-14,"106,107,108,109,110",,pest_group,مجموعة الآفة فارغة
+potato,نيماتودا تعقد الجذور,potato-pests-15,111,,pest_group,مجموعة الآفة فارغة
+potato,تعقيم تربة أراضي مفتوحة,potato-pests-16,111,,pest_group,مجموعة الآفة فارغة
+sweet-potato,الذبابة البيضاء,sweet-potato-pests-02,"113,114",,pest_group,مجموعة الآفة فارغة
+pepper,الذبابة البيضاء,pepper-pests-02,"118,119",,pest_group,مجموعة الآفة فارغة
+pepper,المن,pepper-pests-03,119,,pest_group,مجموعة الآفة فارغة
+pepper,دودة ورق القطن,pepper-pests-04,120,,pest_group,مجموعة الآفة فارغة
+pepper,العفن الرمادى,pepper-pests-07,122,,pest_group,مجموعة الآفة فارغة
+cucumber,اعفان الجذور وموت البادرات,cucumber-pests-07,"131,132,133",Hymexazol,who,تصنيف WHO مختلف بين صفوف نفس المادة/المستحضر: Low III/U (قد يعود لاختلاف المنتجات؛ يلزم تدقيق الأصل)
+cucumber,اعفان الجذور وموت البادرات,cucumber-pests-07,"131,132,133",Hymexazol,who,تصنيف WHO مختلف بين صفوف نفس المادة/المستحضر: Low III/U (قد يعود لاختلاف المنتجات؛ يلزم تدقيق الأصل)
+cucumber,نيماتودا تعقد الجذور,cucumber-pests-11,140,,pest_group,مجموعة الآفة فارغة
+cabbage,المن,cabbage-pests-03,179,,pest_group,مجموعة الآفة فارغة
+cabbage,ابو دقيق الكرنب,cabbage-pests-04,"179,180",,pest_group,مجموعة الآفة فارغة
+cabbage,الفراشه ذات الظهر الماسى,cabbage-pests-05,180,,pest_group,مجموعة الآفة فارغة
+cabbage,العنكبوت الاحمر,cabbage-pests-06,181,,pest_group,مجموعة الآفة فارغة
+strawberry,العنكبوت الأحمر,strawberry-pests-02,"190,191",Pyridaben,who,تصنيف WHO مختلف بين صفوف نفس المادة/المستحضر: Low III/Mod II (قد يعود لاختلاف المنتجات؛ يلزم تدقيق الأصل)
+strawberry,البياض الدقيق,strawberry-pests-04,"193,194",,pest_group,مجموعة الآفة فارغة
+strawberry,مرض عفن الجذور,strawberry-pests-05,194,,pest_group,مجموعة الآفة فارغة
+strawberry,تبقع الأوراق,strawberry-pests-06,195,,pest_group,مجموعة الآفة فارغة
+citrus,ذباب الفاكهة,citrus-pests-02,"201,202",Deltamethrin,who,تصنيف WHO مختلف بين صفوف نفس المادة/المستحضر: Low III/U (قد يعود لاختلاف المنتجات؛ يلزم تدقيق الأصل)
+citrus,ذباب الفاكهة,citrus-pests-02,"201,202",,pest_group,مجموعة الآفة فارغة
+citrus,صانعات الأنفاق,citrus-pests-03,203,,pest_group,مجموعة الآفة فارغة
+citrus,اكاروس الموالح البنى,citrus-pests-04,"203,204",Hexythiazox,who,تصنيف WHO مختلف بين صفوف نفس المادة/المستحضر: Mod II/U (قد يعود لاختلاف المنتجات؛ يلزم تدقيق الأصل)
+citrus,اكاروس الموالح البنى,citrus-pests-04,"203,204",Hexythiazox,who,تصنيف WHO مختلف بين صفوف نفس المادة/المستحضر: Mod II/U (قد يعود لاختلاف المنتجات؛ يلزم تدقيق الأصل)
+citrus,اكاروس الموالح البنى,citrus-pests-04,"203,204",Hexythiazox,who,تصنيف WHO مختلف بين صفوف نفس المادة/المستحضر: Mod II/U (قد يعود لاختلاف المنتجات؛ يلزم تدقيق الأصل)
+citrus,اكاروس الموالح الاحمر,citrus-pests-05,205,,pest_group,مجموعة الآفة فارغة
+citrus,اكاروس صدأ الموالح,citrus-pests-06,"205,206,207",Clofentezine,who,تصنيف WHO مختلف بين صفوف نفس المادة/المستحضر: Low III/U (قد يعود لاختلاف المنتجات؛ يلزم تدقيق الأصل)
+citrus,اكاروس صدأ الموالح,citrus-pests-06,"205,206,207",,pest_group,مجموعة الآفة فارغة
+citrus,الأشنة,citrus-pests-07,"207,208",,pest_group,مجموعة الآفة فارغة
+citrus,التصمغ,citrus-pests-08,208,,pest_group,مجموعة الآفة فارغة
+citrus,اعفان الثمار بعد الجمع,citrus-pests-09,209,,pest_group,مجموعة الآفة فارغة
+citrus,نيماتودا التدهور البطئ (فى الغرس الحديث),citrus-pests-11,211,,pest_group,مجموعة الآفة فارغة
+mango,لفحة الأزهار (الأنثراكنوز),mango-pests-05,217,,pest_group,مجموعة الآفة فارغة
+mango,العفن الهبابى,mango-pests-06,218,,pest_group,مجموعة الآفة فارغة
+grape,ذباب الفاكهة,grape-pests-02,220,,pest_group,مجموعة الآفة فارغة
+grape,التربس,grape-pests-03,220,,pest_group,مجموعة الآفة فارغة
+grape,دودة ثمار العنب,grape-pests-04,"221,222",,pest_group,مجموعة الآفة فارغة
+grape,البياض الدقيقى,grape-pests-07,"226,227,228,229,230,231",,pest_group,مجموعة الآفة فارغة
+grape,البياض الزغبى,grape-pests-08,"231,232,233,234,235",,pest_group,مجموعة الآفة فارغة
+apple,العنكبوت الأحمر,apple-pests-05,"248,249",,pest_group,مجموعة الآفة فارغة
+apple,البياض الدقيقي,apple-pests-06,"250,251",,pest_group,مجموعة الآفة فارغة
+apple,الجرب,apple-pests-07,"252,253",,pest_group,مجموعة الآفة فارغة
+peach,تجعد أوراق الخوخ,peach-pests-06,260,,pest_group,مجموعة الآفة فارغة
+wheat,الحشائش الحولية عريضة الأوراق,wheat-weeds-07,"269,270",,pest_group,مجموعة الآفة فارغة
+wheat,حشيشة الصامة,wheat-weeds-08,271,,pest_group,مجموعة الآفة فارغة
+wheat,الحشائش الحولية النجيلية,wheat-weeds-09,"271,272,273",,pest_group,مجموعة الآفة فارغة
+wheat,الحشائش الحولية عريضة الأوراق والنجيلية,wheat-weeds-10,"274,275",,pest_group,مجموعة الآفة فارغة
+barley,الحشائش الحولية عريضة الأوراق والنجيلية,barley-weeds-01,275,,pest_group,مجموعة الآفة فارغة
+flax,الحشائش الحولية عريضة الأوراق والنجيلية,flax-weeds-01,276,,pest_group,مجموعة الآفة فارغة
+faba-bean,الحشائش الحولية النجيلية,faba-bean-weeds-04,277,,pest_group,مجموعة الآفة فارغة
+onion,الحشائش الحولية عريضة الأوراق والنجيلية,onion-weeds-06,"277,278",,pest_group,مجموعة الآفة فارغة
+onion,الحشائش الحولية عريضة الأوراق,onion-weeds-07,279,,pest_group,مجموعة الآفة فارغة
+onion,الحشائش الحولية النجيلية,onion-weeds-08,"279,280",,pest_group,مجموعة الآفة فارغة
+garlic,الحشائش الحولية عريضة الأوراق والنجيلية,garlic-weeds-05,"280,281",,pest_group,مجموعة الآفة فارغة
+garlic,الحشائش الحولية عريضة الأوراق,garlic-weeds-06,281,,pest_group,مجموعة الآفة فارغة
+garlic,الحشائش الحولية النجيلية,garlic-weeds-07,282,,pest_group,مجموعة الآفة فارغة
+sugar-beet,الحشائش الحولية عريضة الأوراق والنجيلية,sugar-beet-weeds-07,"283,284",,pest_group,مجموعة الآفة فارغة
+sugar-beet,الحشائش الحولية عريضة الأوراق,sugar-beet-weeds-08,"284,285,286",,pest_group,مجموعة الآفة فارغة
+sugar-beet,الحشائش الحولية النجيلية,sugar-beet-weeds-09,"286,287",,pest_group,مجموعة الآفة فارغة
+cotton,الذبابة البيضاء,cotton-pests-02,32,,pest_group,مجموعة الآفة فارغة
+cotton,المن,cotton-pests-03,32,,pest_group,مجموعة الآفة فارغة
+cotton,دودة ورق القطن (فقس حديث),cotton-pests-04,33,,pest_group,مجموعة الآفة فارغة
+cotton,دودة ورق القطن,cotton-pests-05,"33,34",,pest_group,مجموعة الآفة فارغة
+cotton,ديدان اللوز,cotton-pests-06,"35,36,37",,pest_group,مجموعة الآفة فارغة
+rice,التفحم الكاذب,rice-pests-03,"42,43",,pest_group,مجموعة الآفة فارغة
+rice,عفن القدم والاستطالة (البكانا),rice-pests-04,43,,pest_group,مجموعة الآفة فارغة
+maize,دودة ورق القطن,maize-pests-02,46,,pest_group,مجموعة الآفة فارغة
+maize,دودة الحشد الخريفية,maize-pests-03,"46,47",,pest_group,مجموعة الآفة فارغة
+maize,ثاقبات الذرة,maize-pests-04,48,,pest_group,مجموعة الآفة فارغة
+chickpea,الحشائش الحولية عريضة الأوراق,chickpea-weeds-01,288,,pest_group,مجموعة الآفة فارغة
+egyptian-clover,الحشائش الحولية عريضة الأوراق والنجيلية,egyptian-clover-weeds-02,289,,pest_group,مجموعة الآفة فارغة
+cotton,الحشائش الحولية عريضة الأوراق والنجيلية,cotton-weeds-09,290,,pest_group,مجموعة الآفة فارغة
+cotton,الحشائش الحولية النجيلية,cotton-weeds-10,291,,pest_group,مجموعة الآفة فارغة
+sunflower,الحشائش الحولية عريضة الأوراق والنجيلية,sunflower-weeds-03,291,,pest_group,مجموعة الآفة فارغة
+rice,حشائش مشاتل الأرز (الدنيبة - أبو ركبة - العجيرة),rice-weeds-06,292,,pest_group,مجموعة الآفة فارغة
+rice,حشائش الأرز الشتل (الدنيبة - أبو ركبة - العجيرة),rice-weeds-07,293,,pest_group,مجموعة الآفة فارغة
+rice,حشائش الأرز الشتل (دنيبة - أبو ركبة),rice-weeds-08,294,,pest_group,مجموعة الآفة فارغة
+rice,حشائش الأرز الشتل (العجيرة - السمار - السعد - عريضة الأوراق),rice-weeds-09,"294,295,296",,pest_group,مجموعة الآفة فارغة
+rice,حشائش الأرز البدار (الدنيبة - أبو ركبة - العجيرة),rice-weeds-10,"296,297",,pest_group,مجموعة الآفة فارغة
+rice,حشائش الأرز البدار (دنيبة - ابو ركبة - عجيرة - عريضة الاوراق),rice-weeds-11,298,,pest_group,مجموعة الآفة فارغة
+rice,حشائش الأرز البدار (دنيبة - أبو ركبة),rice-weeds-12,299,,pest_group,مجموعة الآفة فارغة
+rice,حشائش الأرز البدار (العجيرة - السمار - السعد - عريضة الأوراق),rice-weeds-13,"300,301",,pest_group,مجموعة الآفة فارغة
+maize,الحشائش عريضة الأوراق (الشبيط - الرجلة - أم اللبن - العليق),maize-weeds-06,302,,pest_group,مجموعة الآفة فارغة
+maize,الحشائش الحولية عريضة الأوراق والنجيلية,maize-weeds-07,"303,304",,pest_group,مجموعة الآفة فارغة
+maize,حشيشة السعد,maize-weeds-08,305,,pest_group,مجموعة الآفة فارغة
+maize,الحشائش الحولية عريضة الاوراق,maize-weeds-09,"305,306",,pest_group,مجموعة الآفة فارغة
+yellow-maize,الحشائش الحولية عريضة الأوراق والنجيلية,yellow-maize-weeds-01,306,,pest_group,مجموعة الآفة فارغة
+sugarcane,الحشائش عريضة الأوراق (الشبيط - الرجلة - أم اللبن - العليق),sugarcane-weeds-05,307,,pest_group,مجموعة الآفة فارغة
+sugarcane,الحشائش الحولية عريضة الأوراق والنجيلية,sugarcane-weeds-06,308,,pest_group,مجموعة الآفة فارغة
+peanut,الحشائش الحولية عريضة الأوراق,peanut-weeds-06,309,,pest_group,مجموعة الآفة فارغة
+peanut,الحشائش الحولية النجيلية,peanut-weeds-07,310,,pest_group,مجموعة الآفة فارغة
+peanut,الحشائش الحولية عريضة الأوراق والنجيلية,peanut-weeds-08,311,,pest_group,مجموعة الآفة فارغة
+peanut,حشيشة السعد,peanut-weeds-09,312,,pest_group,مجموعة الآفة فارغة
+peanut,الحشائش النجيلية الحولية والمعمرة,peanut-weeds-10,313,,pest_group,مجموعة الآفة فارغة
+soybean,الحشائش الحولية عريضة الأوراق والنجيلية,soybean-weeds-02,314,,pest_group,مجموعة الآفة فارغة
+tomato,الحشائش الحولية عريضة الأوراق,tomato-weeds-17,315,,pest_group,مجموعة الآفة فارغة
+tomato,الحشائش الحولية النجيلية,tomato-weeds-18,316,,pest_group,مجموعة الآفة فارغة
+tomato,الحشائش الحولية عريضة الأوراق والنجيلية,tomato-weeds-19,317,,pest_group,مجموعة الآفة فارغة
+tomato,الحشائش النجيلية الحولية والمعمرة,tomato-weeds-20,318,,pest_group,مجموعة الآفة فارغة
+tomato,السعد,tomato-weeds-21,318,,pest_group,مجموعة الآفة فارغة
+potato,الحشائش الحولية عريضة الأوراق والنجيلية,potato-weeds-18,319,,pest_group,مجموعة الآفة فارغة
+potato,الحشائش الحولية عريضة الأوراق,potato-weeds-19,320,,pest_group,مجموعة الآفة فارغة
+potato,الحشائش النجيلية الحولية والمعمرة,potato-weeds-20,"320,321",,pest_group,مجموعة الآفة فارغة
+potato,الحشائش الحولية النجيلية,potato-weeds-21,321,,pest_group,مجموعة الآفة فارغة
+potato,تجفيف المجموع الخضرى للنبات,potato-weeds-22,322,,pest_group,مجموعة الآفة فارغة
+potato,حشيشة السعد,potato-weeds-23,323,,pest_group,مجموعة الآفة فارغة
+potato,الحشائش الحولية عريضة الأوراق والنجيلية,potato-weeds-24,"323,324",,pest_group,مجموعة الآفة فارغة
+potato,الحشائش الحولية النجيلية,potato-weeds-25,324,,pest_group,مجموعة الآفة فارغة
+pea,الحشائش الحولية عريضة الأوراق والنجيلية,pea-weeds-05,325,,pest_group,مجموعة الآفة فارغة
+pea,الحشائش الحولية عريضة الأوراق,pea-weeds-06,326,,pest_group,مجموعة الآفة فارغة
+snap-bean,الحشائش النجيلية الحولية والمعمرة ماعدا (الحجنه - الحلفا - الفاب),snap-bean-weeds-07,327,,pest_group,مجموعة الآفة فارغة
+snap-bean,الحشائش الحولية عريضة الأوراق والنجيلية,snap-bean-weeds-08,"327,328",,pest_group,مجموعة الآفة فارغة
+cowpea,الحشائش الحولية عريضة الأوراق,cowpea-weeds-05,328,,pest_group,مجموعة الآفة فارغة
+seed-watermelon,الحشائش الحولية عريضة الأوراق والنجيلية,seed-watermelon-weeds-08,329,,pest_group,مجموعة الآفة فارغة
+eggplant,الحشائش الحولية النجيلية,eggplant-weeds-03,330,,pest_group,مجموعة الآفة فارغة
+eggplant,حشيشة السعد,eggplant-weeds-04,331,,pest_group,مجموعة الآفة فارغة
+cabbage,الحشائش الحولية النجيلية,cabbage-weeds-10,332,,pest_group,مجموعة الآفة فارغة
+cabbage,الحشائش الحولية عريضة الأوراق والنجيلية,cabbage-weeds-11,333,,pest_group,مجموعة الآفة فارغة
+carrot,الحشائش الحولية عريضة الأوراق والنجيلية,carrot-weeds-04,334,,pest_group,مجموعة الآفة فارغة
+citrus,الحشائش الحولية والمعمرة,citrus-weeds-12,"335,336,337,338",,pest_group,مجموعة الآفة فارغة
+citrus,الحشائش الحولية عريضة الأوراق والنجيلية,citrus-weeds-13,338,,pest_group,مجموعة الآفة فارغة
+citrus,الحشائش النجيلية الحولية والمعمرة ماعدا (الحجنه - الحلفا - الغاب),citrus-weeds-14,339,,pest_group,مجموعة الآفة فارغة
+citrus,الحشائش الحولية عريضة الأوراق,citrus-weeds-15,340,,pest_group,مجموعة الآفة فارغة
+grape,الحشائش الحولية والمعمرة,grape-weeds-10,341,,pest_group,مجموعة الآفة فارغة
+grape,الحشائش الحولية عريضة الأوراق والنجيلية,grape-weeds-11,342,,pest_group,مجموعة الآفة فارغة
+grape,الحشائش النجيلية الحولية والمعمرة ماعدا (الحجنه - الحلفا - الغاب),grape-weeds-12,343,,pest_group,مجموعة الآفة فارغة
+orchards-pome-stone,الحشائش الحولية والمعمرة,orchards-pome-stone-weeds-01,"344,345",,pest_group,مجموعة الآفة فارغة
+orchards-pome-stone,الحشائش الحولية عريضة الأوراق والنجيلية,orchards-pome-stone-weeds-02,346,,pest_group,مجموعة الآفة فارغة
+orchards-pome-stone,الحشائش الحولية عريضة الأوراق,orchards-pome-stone-weeds-03,347,,pest_group,مجموعة الآفة فارغة
+orchards-pome-stone,حشيشة السعد,orchards-pome-stone-weeds-04,348,,pest_group,مجموعة الآفة فارغة
+orchards-pome-stone,الحشائش النجيلية الحولية والمعمرة ماعدا (الحجنه - الحلفا - الغاب),orchards-pome-stone-weeds-05,349,,pest_group,مجموعة الآفة فارغة
+turf,الحشائش الحولية الصيفية عريضة الأوراق والنجيلية,turf-weeds-03,"349,350",,pest_group,مجموعة الآفة فارغة

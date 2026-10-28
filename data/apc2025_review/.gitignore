@@ -1,2 +1,7 @@
 extracted/
 repro/
+verification/cache/ppdb/
+verification/cache/pubchem/
+verification/ppdb_index_raw.htm
+verification/atoz_*.htm
+verification/atoz_report_urls.txt

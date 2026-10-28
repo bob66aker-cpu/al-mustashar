@@ -1,0 +1,229 @@
+{
+ "69327-76-0": {
+  "status": 200,
+  "body": {
+   "PropertyTable": {
+    "Properties": [
+     {
+      "CID": 50367,
+      "IUPACName": "2-tert-butylimino-5-phenyl-3-propan-2-yl-1,3,5-thiadiazinan-4-one",
+      "Title": "2-(Tert-butylimino)-5-phenyl-3-(propan-2-yl)-1,3,5-thiadiazinan-4-one"
+     }
+    ]
+   }
+  }
+ },
+ "953030-84-7": {
+  "status": 200,
+  "body": {
+   "PropertyTable": {
+    "Properties": [
+     {
+      "CID": 50367,
+      "IUPACName": "2-tert-butylimino-5-phenyl-3-propan-2-yl-1,3,5-thiadiazinan-4-one",
+      "Title": "2-(Tert-butylimino)-5-phenyl-3-(propan-2-yl)-1,3,5-thiadiazinan-4-one"
+     }
+    ]
+   }
+  }
+ },
+ "943832-81-3": {
+  "status": 200,
+  "body": {
+   "PropertyTable": {
+    "Properties": [
+     {
+      "CID": 67420724,
+      "IUPACName": "4-amino-3-chloro-6-(4-chloro-2-fluoro-3-methoxyphenyl)-5-fluoropyridine-2-carboxylic acid",
+      "Title": "Florpyrauxifen"
+     }
+    ]
+   }
+  }
+ },
+ "1390661-72-9": {
+  "status": 200,
+  "body": {
+   "PropertyTable": {
+    "Properties": [
+     {
+      "CID": 70495450,
+      "IUPACName": "benzyl 4-amino-3-chloro-6-(4-chloro-2-fluoro-3-methoxyphenyl)-5-fluoropyridine-2-carboxylate",
+      "Title": "Florpyrauxifen-benzyl"
+     }
+    ]
+   }
+  }
+ },
+ "304900-25-2": {
+  "status": 200,
+  "body": {
+   "PropertyTable": {
+    "Properties": [
+     {
+      "CID": 66608677,
+      "IUPACName": "2-[2-fluoro-5-(trifluoromethyl)phenyl]sulfanyl-2-[3-(2-methoxyphenyl)-1,3-thiazolidin-2-ylidene]acetonitrile",
+      "Title": "2-[[2-Fluoro-5-(trifluoromethyl)phenyl]thio]-2-[3-(2-methoxyphenyl)-2-thiazolidinylidene]acetonitrile"
+     }
+    ]
+   }
+  }
+ },
+ "958647-10-4": {
+  "status": 200,
+  "body": {
+   "PropertyTable": {
+    "Properties": [
+     {
+      "CID": 44151818,
+      "IUPACName": "(2Z)-2-[2-fluoro-5-(trifluoromethyl)phenyl]sulfanyl-2-[3-(2-methoxyphenyl)-1,3-thiazolidin-2-ylidene]acetonitrile",
+      "Title": "Flutianil"
+     }
+    ]
+   }
+  }
+ },
+ "70901-12-1": {
+  "status": 200,
+  "body": {
+   "PropertyTable": {
+    "Properties": [
+     {
+      "CID": 23716553,
+      "IUPACName": "potassium (carboxymethylamino)methyl-hydroxyphosphinate",
+      "Title": "Glyphosate potassium"
+     }
+    ]
+   }
+  }
+ },
+ "39600-42-5": {
+  "status": 200,
+  "body": {
+   "PropertyTable": {
+    "Properties": [
+     {
+      "CID": 23673029,
+      "IUPACName": "potassium 2-(phosphonomethylamino)acetate",
+      "Title": "Potassium 2-((phosphonomethyl)amino)acetate"
+     },
+     {
+      "CID": 23716553,
+      "IUPACName": "potassium (carboxymethylamino)methyl-hydroxyphosphinate",
+      "Title": "Glyphosate potassium"
+     },
+     {
+      "CID": 87063789,
+      "Title": "2-[(Phosphonomethyl)amino]acetic acid potassium"
+     }
+    ]
+   }
+  }
+ },
+ "169202-06-6": {
+  "status": 200,
+  "body": {
+   "PropertyTable": {
+    "Properties": [
+     {
+      "CID": 13883445,
+      "IUPACName": "2-[8-[8-(diaminomethylideneamino)octylamino]octyl]guanidine;tris(4-dodecylbenzenesulfonic acid)",
+      "Title": "Iminoctadine trialbesilate"
+     }
+    ]
+   }
+  }
+ },
+ "99257-43-9": {
+  "status": 200,
+  "body": {
+   "PropertyTable": {
+    "Properties": [
+     {
+      "CID": 24834756,
+      "IUPACName": "2-[8-[8-(diaminomethylideneamino)octylamino]octyl]guanidine;tris(2-dodecylbenzenesulfonic acid)",
+      "Title": "Iminoctadine tris(albesilate)"
+     }
+    ]
+   }
+  }
+ },
+ "144171-61-9": {
+  "status": 200,
+  "body": {
+   "PropertyTable": {
+    "Properties": [
+     {
+      "CID": 9936739,
+      "IUPACName": "methyl 7-chloro-2-[methoxycarbonyl-[4-(trifluoromethoxy)phenyl]carbamoyl]-3,5-dihydroindeno[1,2-e][1,3,4]oxadiazine-4a-carboxylate",
+      "Title": "Indoxacarb, (+-)-"
+     }
+    ]
+   }
+  }
+ },
+ "173584-44-6": {
+  "status": 200,
+  "body": {
+   "PropertyTable": {
+    "Properties": [
+     {
+      "CID": 107720,
+      "IUPACName": "methyl (4aS)-7-chloro-2-[methoxycarbonyl-[4-(trifluoromethoxy)phenyl]carbamoyl]-3,5-dihydroindeno[1,2-e][1,3,4]oxadiazine-4a-carboxylate",
+      "Title": "Indoxacarb"
+     }
+    ]
+   }
+  }
+ },
+ "8042-47-5": {
+  "status": 404,
+  "body": {
+   "Fault": {
+    "Code": "PUGREST.NotFound",
+    "Message": "No CID found",
+    "Details": [
+     "No CID found that matches the given name"
+    ]
+   }
+  }
+ },
+ "64742-46-7": {
+  "status": 404,
+  "body": {
+   "Fault": {
+    "Code": "PUGREST.NotFound",
+    "Message": "No CID found",
+    "Details": [
+     "No CID found that matches the given name"
+    ]
+   }
+  }
+ },
+ "1344-73-6": {
+  "status": 200,
+  "body": {
+   "PropertyTable": {
+    "Properties": [
+     {
+      "CID": 20308382,
+      "IUPACName": "copper(1+);hydrogen sulfate",
+      "Title": "Sulfuric acid, copper salt, basic"
+     }
+    ]
+   }
+  }
+ },
+ "8022-96-6": {
+  "status": 404,
+  "body": {
+   "Fault": {
+    "Code": "PUGREST.NotFound",
+    "Message": "No CID found",
+    "Details": [
+     "No CID found that matches the given name"
+    ]
+   }
+  }
+ }
+}

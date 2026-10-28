@@ -1,0 +1,16 @@
+{
+ "generated": "2026-10-28",
+ "total_actives": 273,
+ "confirmed": 245,
+ "conflict": 7,
+ "pc_only": 7,
+ "identity_only": 1,
+ "not_found": 1,
+ "no_pkg_cas": 12,
+ "no_cas_assigned_proven": 0,
+ "biological_confirmed": 8,
+ "biological_probable": 5,
+ "missing_fields_rows": 2104,
+ "biologicals_csv_rows": 18,
+ "primary_source_note": "CAS Common Chemistry API = 401 Unauthorized (2026-10-28)؛ EPA = 503؛ EU DB = واجهة تفاعلية بلا API ظاهر — صفر أرقام من مصدر أولي"
+}

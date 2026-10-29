@@ -130,6 +130,14 @@
     var d = (S.labels && (S.labels[lang()] || S.labels.ar)) || LABELS.ar;
     return (d && d[k]) || LABELS.ar[k] || k;
   }
+  /* ترجمة نص بطاقة (الأصل العربي مرجع؛ تظهر الإنجليزية فقط إن وُجدت وإلا يبقى العربي) */
+  function tx(s, f, ar) {
+    if (lang() === 'en' && S.i18n && S.i18n.cards) {
+      var t = S.i18n.cards[s.crop_id + '/' + s.type + '.' + s.n];
+      if (t && t[f]) return t[f];
+    }
+    return ar;
+  }
   function typeName(t) { return (lang() === 'en' ? TYPE_EN[t] : TYPE_AR[t]) || t; }
   function esc(s) {
     return String(s == null ? '' : s)
@@ -161,7 +169,11 @@
   function loadSections() {
     if (S.sec) return Promise.resolve(S.sec);
     if (S.secLoad) return S.secLoad;
-    S.secLoad = fetchJSON('data/tws/sections.json').then(function (d) {
+    S.secLoad = Promise.all([
+      fetchJSON('data/tws/sections.json'),
+      fetchJSON('data/tws/card_i18n.json').catch(function () { return null; })
+    ]).then(function (r) {
+      var d = r[0]; S.i18n = r[1];
       S.sec = d; S.secLoad = null; return d;
     }).catch(function (e) { S.secLoad = null; throw e; });
     return S.secLoad;
@@ -391,12 +403,12 @@
         + '<a href="#/tws/' + esc(c.id) + '">' + esc(c.name_ar) + '</a><span class="sep">‹</span>'
         + '<span class="cur">' + esc(inf.name_ar) + '</span></nav>'
         + '<div class="tws-card">'
-        + '<h2>' + esc(s.name_ar) + '</h2>'
+        + '<h2>' + esc(tx(s, 'name', s.name_ar)) + '</h2>'
         + '<p class="tws-meta">' + esc(L('type')) + ': ' + esc(typeName(s.type))
         + ' · ' + esc(L('infection_no')) + ' ' + esc(s.n)
         + ' · ' + esc(L('page')) + ' ' + esc(s.printed_page) + ' (PDF ' + esc(s.page) + ')</p>'
         + '<div class="tws-chips">'
-        + (s.group ? '<span class="tws-chip info">' + esc(L('group')) + ': ' + esc(s.group) + '</span>' : '')
+        + (s.group ? '<span class="tws-chip info">' + esc(L('group')) + ': ' + esc(tx(s, 'group', s.group)) + '</span>' : '')
         + (s.name_status === 'NEEDS_REVIEW' ? '<span class="tws-chip warn">' + esc(L('name_review')) + '</span>' : '')
         + (s.crop_conflict ? '<span class="tws-chip warn">' + esc(L('crop_conflict')) + '</span>' : '')
         + '</div>';
@@ -412,13 +424,14 @@
       }
 
       if (s.symptom && s.symptom.length) {
+        var symEn = tx(s, 'symptom', null);
         html += '<h3>' + esc(L('symptoms')) + '</h3><ul>'
-          + s.symptom.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('')
+          + (symEn ? '<li>' + esc(symEn) + '</li>' : s.symptom.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join(''))
           + '</ul>';
       }
-      if (s.appearance) html += '<h3>' + esc(L('appearance')) + '</h3><p class="txt">' + esc(s.appearance) + '</p>';
-      if (s.timing) html += '<h3>' + esc(L('timing')) + '</h3><p class="txt">' + esc(s.timing) + '</p>';
-      if (s.guidance) html += '<h3>' + esc(L('guidance')) + '</h3><p class="txt">' + esc(s.guidance) + '</p>';
+      if (s.appearance) html += '<h3>' + esc(L('appearance')) + '</h3><p class="txt">' + esc(tx(s, 'appearance', s.appearance)) + '</p>';
+      if (s.timing) html += '<h3>' + esc(L('timing')) + '</h3><p class="txt">' + esc(tx(s, 'timing', s.timing)) + '</p>';
+      if (s.guidance) html += '<h3>' + esc(L('guidance')) + '</h3><p class="txt">' + esc(tx(s, 'guidance', s.guidance)) + '</p>';
 
       if (s.products && s.products.length) {
         html += '<h3>' + esc(L('products')) + '</h3>';

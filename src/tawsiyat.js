@@ -138,6 +138,9 @@
     }
     return ar;
   }
+  /* نوع الآفة المعروض يتبع «مجموعة الآفة» المطبوعة في الكتاب إن وُجدت (التصنيف الآلي القديم أخطأ في 23 بطاقة)؛ المسار والمعرّف لا يتغيّران */
+  var GROUP_TYPE = { 'الحشرات': 'insect', 'الفطريات': 'fungus', 'الأكاروسات': 'mite', 'النيماتودا': 'nematode', 'البكتيريا': 'bacterium', 'الفقاريات': 'other', 'اللافقاريات': 'other' };
+  function shownType(s) { return GROUP_TYPE[s.group] || s.type; }
   function typeName(t) { return (lang() === 'en' ? TYPE_EN[t] : TYPE_AR[t]) || t; }
   function esc(s) {
     return String(s == null ? '' : s)
@@ -404,7 +407,7 @@
         + '<span class="cur">' + esc(inf.name_ar) + '</span></nav>'
         + '<div class="tws-card">'
         + '<h2 dir="auto">' + esc(tx(s, 'name', s.name_ar)) + '</h2>'
-        + '<p class="tws-meta">' + esc(L('type')) + ': ' + esc(typeName(s.type))
+        + '<p class="tws-meta">' + esc(L('type')) + ': ' + esc(typeName(shownType(s)))
         + ' · ' + esc(L('infection_no')) + ' ' + esc(s.n)
         + ' · ' + esc(L('page')) + ' ' + esc(s.printed_page) + ' (PDF ' + esc(s.page) + ')</p>'
         + '<div class="tws-chips">'

@@ -132,8 +132,8 @@
   }
   /* ترجمة نص بطاقة (الأصل العربي مرجع؛ تظهر الإنجليزية فقط إن وُجدت وإلا يبقى العربي) */
   function tx(s, f, ar) {
-    if (lang() === 'en' && S.i18n && S.i18n.cards) {
-      var t = S.i18n.cards[s.crop_id + '/' + s.type + '.' + s.n];
+    if (lang() === 'en' && S.i18n && S.i18n.cards && S.i18n.cards.en) {
+      var t = S.i18n.cards.en[s.crop_id + '/' + s.type + '.' + s.n];
       if (t && t[f]) return t[f];
     }
     return ar;
@@ -403,7 +403,7 @@
         + '<a href="#/tws/' + esc(c.id) + '">' + esc(c.name_ar) + '</a><span class="sep">‹</span>'
         + '<span class="cur">' + esc(inf.name_ar) + '</span></nav>'
         + '<div class="tws-card">'
-        + '<h2>' + esc(tx(s, 'name', s.name_ar)) + '</h2>'
+        + '<h2 dir="auto">' + esc(tx(s, 'name', s.name_ar)) + '</h2>'
         + '<p class="tws-meta">' + esc(L('type')) + ': ' + esc(typeName(s.type))
         + ' · ' + esc(L('infection_no')) + ' ' + esc(s.n)
         + ' · ' + esc(L('page')) + ' ' + esc(s.printed_page) + ' (PDF ' + esc(s.page) + ')</p>'
@@ -426,12 +426,12 @@
       if (s.symptom && s.symptom.length) {
         var symEn = tx(s, 'symptom', null);
         html += '<h3>' + esc(L('symptoms')) + '</h3><ul>'
-          + (symEn ? '<li>' + esc(symEn) + '</li>' : s.symptom.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join(''))
+          + (symEn ? '<li dir="auto">' + esc(symEn) + '</li>' : s.symptom.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join(''))
           + '</ul>';
       }
-      if (s.appearance) html += '<h3>' + esc(L('appearance')) + '</h3><p class="txt">' + esc(tx(s, 'appearance', s.appearance)) + '</p>';
-      if (s.timing) html += '<h3>' + esc(L('timing')) + '</h3><p class="txt">' + esc(tx(s, 'timing', s.timing)) + '</p>';
-      if (s.guidance) html += '<h3>' + esc(L('guidance')) + '</h3><p class="txt">' + esc(tx(s, 'guidance', s.guidance)) + '</p>';
+      if (s.appearance) html += '<h3>' + esc(L('appearance')) + '</h3><p class="txt" dir="auto">' + esc(tx(s, 'appearance', s.appearance)) + '</p>';
+      if (s.timing) html += '<h3>' + esc(L('timing')) + '</h3><p class="txt" dir="auto">' + esc(tx(s, 'timing', s.timing)) + '</p>';
+      if (s.guidance) html += '<h3>' + esc(L('guidance')) + '</h3><p class="txt" dir="auto">' + esc(tx(s, 'guidance', s.guidance)) + '</p>';
 
       if (s.products && s.products.length) {
         html += '<h3>' + esc(L('products')) + '</h3>';

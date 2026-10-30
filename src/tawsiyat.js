@@ -254,13 +254,18 @@
     '.tws-err p{color:var(--muted);line-height:1.8;margin:0 0 14px;font-size:.9rem}',
     '.tws-btn{display:inline-block;padding:10px 22px;border-radius:10px;background:var(--primary);color:var(--on-primary);border:0;font:inherit;font-size:.95rem;cursor:pointer}',
     '@media (max-width:360px){.tws-grid{grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:6px}.tws-crop{padding:10px}}',
-    '#view-tws .tws-reg-status{display:flex;flex-wrap:wrap;gap:7px;margin:8px 0 12px}',
-    '#view-tws .tws-reg-badge{display:flex;flex-direction:column;gap:2px;min-width:170px;max-width:100%;padding:7px 10px;border:1px solid currentColor;border-radius:10px;font-size:.78rem;line-height:1.6;overflow-wrap:anywhere}',
-    '#view-tws .tws-reg-badge b{font-size:.75rem}',
+    '#view-tws .tws-reg-status{margin:6px 0 10px;display:flex;flex-direction:column;gap:5px}',
+    '#view-tws .tws-reg-line{display:flex;flex-wrap:wrap;align-items:center;gap:5px}',
+    '#view-tws .tws-reg-name{font-size:.74rem;color:var(--muted);margin-inline-end:2px}',
+    '#view-tws .tws-reg-badge{display:inline-flex;gap:5px;align-items:center;padding:2px 9px;border:1px solid currentColor;border-radius:999px;font-size:.74rem;line-height:1.6;white-space:nowrap}',
+    '#view-tws .tws-reg-badge b{font-weight:700}',
     '#view-tws .tws-reg-badge.ban{color:var(--st-ban-ink);background:var(--st-ban-soft)}',
     '#view-tws .tws-reg-badge.ok{color:var(--st-ok-ink);background:var(--st-ok-soft)}',
     '#view-tws .tws-reg-badge.review{color:var(--st-review-ink);background:var(--st-review-soft)}',
-    '#view-tws .tws-reg-badge.unknown{color:var(--muted);background:var(--field);border-color:var(--border)}'
+    '#view-tws .tws-reg-badge.unknown{color:var(--muted);background:var(--field);border-color:var(--border)}',
+    '#view-tws .tws-reg-note{font-size:.76rem;color:var(--muted)}',
+    '#view-tws .tws-reg-note summary{cursor:pointer}',
+    '#view-tws .tws-reg-note p{margin:4px 0 0;line-height:1.7}'
   ].join('\n');
 
   function ensureInjected() {
@@ -433,39 +438,57 @@
     }
     var ingredients = product['مكونات فعالة'] || [];
     if (!ingredients.length) return '';
-    var html = '<div class="tws-reg-status" aria-label="' + esc(({ar:'الحالة التنظيمية للمادة الفعالة',en:'Active ingredient regulatory status',fr:'Statut réglementaire de la substance active',zh:'有效成分监管状态'}[locale] || 'Active ingredient regulatory status')) + '">';
-    var count = 0;
+    var mode = document.getElementById('mode');
+    var pro = !!(mode && mode.value === 'pro');
+    /* الاختصاصات المعروضة: العربية = ليبيا (+ الأوروبية والأمريكية والكندية والأسترالية في المحترف)؛
+       اللغات الأخرى لا تعرض ليبيا أبدًا: المزارع = الاتحاد الأوروبي، المحترف = الأربع قواعد. */
+    var wanted = isArabic
+      ? (pro ? ['libya-248', 'libya-500', 'eu', 'epa', 'canada', 'australia'] : ['libya-248', 'libya-500'])
+      : (pro ? ['eu', 'epa', 'canada', 'australia'] : ['eu']);
+    var shortNames = {
+      ar: {'libya-248':'ليبيا ٢٤٨','libya-500':'ليبيا ٥٠٠',eu:'الاتحاد الأوروبي',epa:'أمريكا',canada:'كندا',australia:'أستراليا'},
+      en: {'libya-248':'Libya 248','libya-500':'Libya 500',eu:'EU',epa:'USA',canada:'Canada',australia:'Australia'},
+      fr: {'libya-248':'Libye 248','libya-500':'Libye 500',eu:'UE',epa:'É.-U.',canada:'Canada',australia:'Australie'},
+      zh: {'libya-248':'利比亚248','libya-500':'利比亚500',eu:'欧盟',epa:'美国',canada:'加拿大',australia:'澳大利亚'}
+    };
+    var sn = shortNames[locale] || shortNames.en;
+    var title = ({ar:'الحالة التنظيمية',en:'Regulatory status',fr:'Statut réglementaire',zh:'监管状态'}[locale] || 'Regulatory status');
+    var unknownShort = ({ar:'لا تطابق مؤكد',en:'no confirmed match',fr:'aucune correspondance',zh:'无确认匹配'}[locale] || 'no confirmed match');
+    var html = '<div class="tws-reg-status" role="group" aria-label="' + esc(title) + '">';
+    var count = 0, notes = [];
     ingredients.forEach(function (ing) {
-      var cas = String(ing.cas || '');
-      var how = String(ing.how || '');
-      var name = String(ing.name || '');
+      var cas = String(ing.cas || ''), how = String(ing.how || ''), name = String(ing.name || '');
       if (!name && !cas) return;
-      var hits = window.MustasharActiveStatus((how === 'exact' || how === 'tokens') ? cas : '', name);
-      var selected = hits.filter(function (h) {
-        return isArabic ? (h.key === 'libya-248' || h.key === 'libya-500')
-          : (h.key === 'eu' || h.key === 'epa' || h.key === 'canada' || h.key === 'australia');
+      var hits = window.MustasharActiveStatus((how === 'exact' || how === 'tokens') ? cas : '', name)
+        .filter(function (h) { return wanted.indexOf(h.key) >= 0; });
+      var seen = {}, chips = '';
+      wanted.forEach(function (k) {
+        hits.filter(function (h) { return h.key === k; }).forEach(function (h) {
+          var id = h.key + '|' + h.status;
+          if (seen[id]) return;
+          seen[id] = true;
+          var raw = String(h.status || h.status_raw || '').trim();
+          var cls = /محظور|ممنوع|not approved|prohibited|banned|cancelled/i.test(raw) ? 'ban'
+            : /مسموح|approved|registered|active registration|permitted/i.test(raw) ? 'ok' : 'review';
+          var full = (ui[h.key] || h.key) + ' — ' + localStatus(h);
+          var code = h.key === 'libya-500' ? String(h.status || '').trim()
+            : (cls === 'ban' ? ({ar:'محظور',en:'banned',fr:'interdit',zh:'禁用'}[locale] || 'banned')
+            : cls === 'ok' ? ({ar:'مسموح',en:'allowed',fr:'autorisé',zh:'允许'}[locale] || 'allowed')
+            : localStatus(h));
+          if (h.key === 'libya-500') {
+            var ex = typeof window.MustasharStatusExplain === 'function' ? window.MustasharStatusExplain(code) : '';
+            if (ex && notes.indexOf(code + ' — ' + ex) < 0) notes.push(code + ' — ' + ex);
+          }
+          chips += '<span class="tws-reg-badge ' + cls + '" title="' + esc(full) + '"><b>' + esc(sn[h.key] || h.key) + '</b> ' + esc(code) + '</span>';
+        });
       });
-      var seen = {};
-      var rendered = 0;
-      selected.forEach(function (h) {
-        var id = h.key + '|' + h.status + '|' + h.decision;
-        if (seen[id]) return;
-        seen[id] = true;
-        var raw = String(h.status || h.status_raw || '').trim();
-        var cls = /محظور|ممنوع|not approved|prohibited|banned|cancelled/i.test(raw) ? 'ban'
-          : /مسموح|approved|registered|active registration|permitted/i.test(raw) ? 'ok'
-          : 'review';
-        var label = ui[h.key] || h.key;
-        var value = localStatus(h);
-        html += '<span class="tws-reg-badge ' + cls + '" title="' + esc(label + (h.status_raw ? ' — ' + h.status_raw : '')) + '">'
-          + '<b>' + esc(label) + '</b><span>' + esc(statusPrefix + ' ' + value) + '</span></span>';
-        count++; rendered++;
-      });
-      if (!rendered) {
-        html += '<span class="tws-reg-badge unknown"><b>' + esc(name || cas || (isArabic ? 'مادة فعالة' : 'Active ingredient')) + '</b><span>' + esc(unknown) + '</span></span>';
-        count++;
-      }
+      if (!chips) chips = '<span class="tws-reg-badge unknown" title="' + esc(unknown) + '">' + esc(unknownShort) + '</span>';
+      var label = ingredients.length > 1 ? '<span class="tws-reg-name" dir="auto">' + esc(name || cas) + '</span>' : '';
+      html += '<div class="tws-reg-line">' + label + chips + '</div>';
+      count++;
     });
+    if (notes.length) html += '<details class="tws-reg-note"><summary>' + esc(({ar:'شرح الحالة',en:'Status explained',fr:'Explication du statut',zh:'状态说明'}[locale] || 'Status explained')) + '</summary>'
+      + notes.map(function (n) { return '<p dir="auto">' + esc(n) + '</p>'; }).join('') + '</details>';
     html += '</div>';
     return count ? html : '';
   }

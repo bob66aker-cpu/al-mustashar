@@ -565,6 +565,7 @@
     return attemptFetch()
       .then(data => {
         DB[src.key] = data;
+        document.dispatchEvent(new Event('regulatorydbchange'));
         setPhase(src.key, 'ok', data.rows.length);
         if (cards && cards.buildCasIndex) cards.buildCasIndex(DB);
         if (tooShort(data)) {
@@ -577,6 +578,7 @@
       .catch(() => attemptFetch()                 // one silent retry
         .then(data => {
           DB[src.key] = data;
+          document.dispatchEvent(new Event('regulatorydbchange'));
           setPhase(src.key, 'ok', data.rows.length);
           if (cards && cards.buildCasIndex) cards.buildCasIndex(DB);
           return idbPut(STORE_DB, src.key, data).catch(() => {});
@@ -587,6 +589,7 @@
             if (looksValid(cached)) {
             if (cards && cards.buildCasIndex) cards.buildCasIndex(cached);
               DB[src.key] = cached;
+              document.dispatchEvent(new Event('regulatorydbchange'));
               setPhase(src.key, 'cached', cached.rows.length);
             } else {
               // mark unavailable — search simply skips this source
@@ -2821,6 +2824,7 @@
           installing[pack.key] = false;
           stateLine(pack.key);
           rebuildSearch();
+          document.dispatchEvent(new Event('regulatorydbchange'));
           diagAdd({ at: Date.now(), outcome: 'pack-auto-installed', src: pack.key, count: res.meta.count, sha256: String(res.manifest.sha256 || '').slice(0, 12) });
         }).catch(e => {
           installing[pack.key] = false;
@@ -2894,6 +2898,7 @@
       DB[k] = { meta: v.meta, rows: v.rows };
       stateLine(k);
       rebuildSearch();
+      document.dispatchEvent(new Event('regulatorydbchange'));
       return k;
     })))).then(() => ensurePacks()).catch(() => {});
     /* التبديل إلى المحترف يحمّلهما إن لم يكونا موجودين */
@@ -3171,6 +3176,39 @@
     if (note) note.hidden = false;
     renderStats();
   });
+
+  /* Read-only regulatory lookup for the recommendation cards.
+   * Matches exact CAS tokens first; name fallback is exact-normalized only.
+   * Never turns a missing match into an allowed/prohibited verdict. */
+  window.MustasharStatusExplain = function (code) { return statusExplainFull(code); };
+  window.MustasharActiveStatus = function (cas, name) {
+    const digits = value => String(value || '').replace(/[^0-9]/g, '');
+    const casKey = digits(cas);
+    const norm = value => String(value || '').toLowerCase()
+      .normalize('NFKD').replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^\p{L}\p{N}]+/gu, ' ').trim().replace(/\s+/g, ' ');
+    const nameKey = norm(name);
+    const keys = ['libya-248', 'libya-500', 'eu', 'epa', 'canada', 'australia'];
+    const hits = [];
+    keys.forEach(key => {
+      const data = DB[key];
+      if (!data || !Array.isArray(data.rows)) return;
+      data.rows.forEach(row => {
+        const rawCas = String(row.cas || '');
+        const casTokens = rawCas.split(/[\n,;\[\]()]+/).map(digits).filter(Boolean);
+        const exactCas = casKey && casTokens.includes(casKey);
+        const exactName = !casKey && nameKey && (norm(row.name_norm || row.name) === nameKey);
+        if (!exactCas && !exactName) return;
+        hits.push({
+          key, name: row.name || name || '', cas: row.cas || '',
+          status: row.status || '', status_raw: row.status_raw || '',
+          decision: row.decision || '', category: row.category || '',
+          match: exactCas ? 'cas' : 'exact-name'
+        });
+      });
+    });
+    return hits;
+  };
 
   /* ============================================================
    * Boot

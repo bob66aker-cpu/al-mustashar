@@ -40391,14 +40391,14 @@
      "مكونات فعالة": [
       {
        "name": "Iminoctadine tris (albesilate)",
-       "cas": "169202-06-6",
-       "how": "unverified"
+       "cas": "99257-43-9",
+       "how": "exact"
       }
      ],
      "mrl_rows": [
       {
        "name": "Iminoctadine tris (albesilate)",
-       "cas": "169202-06-6",
+       "cas": "99257-43-9",
        "EPA": null,
        "EU": 0.01,
        "Codex": null
@@ -55467,14 +55467,14 @@
      "مكونات فعالة": [
       {
        "name": "Iminoctadine tris (albesilate)",
-       "cas": "169202-06-6",
-       "how": "unverified"
+       "cas": "99257-43-9",
+       "how": "exact"
       }
      ],
      "mrl_rows": [
       {
        "name": "Iminoctadine tris (albesilate)",
-       "cas": "169202-06-6",
+       "cas": "99257-43-9",
        "EPA": null,
        "EU": 0.01,
        "Codex": null
@@ -88527,14 +88527,14 @@
      "مكونات فعالة": [
       {
        "name": "Iminoctadine tris(albesilate)",
-       "cas": "169202-06-6",
-       "how": "unverified"
+       "cas": "99257-43-9",
+       "how": "exact"
       }
      ],
      "mrl_rows": [
       {
        "name": "Iminoctadine tris(albesilate)",
-       "cas": "169202-06-6",
+       "cas": "99257-43-9",
        "EPA": null,
        "EU": 0.1,
        "Codex": null
@@ -93224,7 +93224,7 @@
      "mrl_rows": [
       {
        "name": "Phoshorous acid salts",
-       "cas": "13598-36-2",
+       "cas": null,
        "EPA": null,
        "EU": null,
        "Codex": null
@@ -94923,7 +94923,7 @@
       {
        "name": "Jasmine oil",
        "cas": "8022-96-6",
-       "how": "unverified"
+       "how": "exact"
       },
       {
        "name": "Mineral oil",

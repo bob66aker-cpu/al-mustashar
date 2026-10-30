@@ -1,6 +1,8 @@
 /*
  * sw.js — المستشار الزراعي (v29)
  *
+ * v69 (2026-10-31) — بطاقات الحشائش (80) وجداول المبيدات النظيفة داخل data/tws (ضمن SHELL) ⇒ رفع الكاش.
+ *
  * v68 (2026-10-30) — قسم التوصيات يعمل دون اتصال من أول زيارة: src/tawsiyat.js وintl.js
  *   وملفات (stats.js يبقى خارج SHELL بعقد ppocr-size) data/tws الخمسة (بلا الصور) دخلت SHELL؛ ملفات القشرة تغيّرت ⇒ رفع الكاش.
  *
@@ -207,7 +209,7 @@
  * Personal data (IndexedDB history, theme, app version note) lives outside
  * the caches and is never touched by this worker.
  */
-const CACHE = 'mustashar-v68';
+const CACHE = 'mustashar-v69';
 const OCR_CACHE = 'mustashar-ocr';
 
 /* 1.7 — safe cache write: a full storage quota (QuotaExceededError) must

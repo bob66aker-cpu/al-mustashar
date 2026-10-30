@@ -56,6 +56,7 @@
       source: 'المصدر',
       cas_unverified: 'قيد التحقق',
       examples: 'أمثلة من المصدر',
+      extra_guidance: 'إرشادات خاصة',
       needs_verify: 'قيمة تحتاج تحققًا — غير مؤكدة في سطر الطباعة',
       name_review: 'عنوان يحتاج مراجعة',
       crop_conflict: 'تسمية محصول تحت المراجعة',
@@ -101,6 +102,7 @@
       source: 'Source',
       cas_unverified: 'under verification',
       examples: 'Examples from the source',
+      extra_guidance: 'Special guidance',
       needs_verify: 'Value needs verification — not confirmed on the print line',
       name_review: 'Heading needs review',
       crop_conflict: 'Crop label under review',
@@ -568,6 +570,12 @@
       if (s.appearance) html += '<h3>' + esc(L('appearance')) + '</h3><p class="txt" dir="auto">' + esc(tx(s, 'appearance', s.appearance)) + '</p>';
       if (s.examples && s.examples.length) html += '<h3>' + esc(L('examples')) + '</h3><p class="txt" dir="auto">' + esc(tx(s, 'examples', s.examples.join('، '))) + '</p>';
       if (s.timing) html += '<h3>' + esc(L('timing')) + '</h3><p class="txt" dir="auto">' + esc(tx(s, 'timing', s.timing)) + '</p>';
+      if (s.extra && s.extra.length) {
+        var exT = (loc() !== 'ar' && S.i18n && S.i18n.cards && S.i18n.cards[loc()] && S.i18n.cards[loc()][s.crop_id + '/' + s.type + '.' + s.n]) || {};
+        s.extra.forEach(function (x, i) {
+          html += '<h3>' + esc(L('extra_guidance')) + '</h3><p class="txt" dir="auto">' + esc((exT.extra && exT.extra[i]) || x.text) + '</p>';
+        });
+      }
       if (s.guidance) html += '<h3>' + esc(L('guidance')) + '</h3><p class="txt" dir="auto">' + esc(tx(s, 'guidance', s.guidance)) + '</p>';
 
       if (s.products && s.products.length) {

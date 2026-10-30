@@ -1888,6 +1888,390 @@
     "appearance": "Land snails are nocturnal animals, and the longest season of their activity - as a pest - is the spring season followed by autumn and winter, and the activity of snails increases where soil moisture rises and temperature becomes moderate, whereas during the summer months most snails stick to supports, plant stems, branches and palms, where they enter a resting phase and stop moving and feeding, and they close the opening of the shell with a membrane that protects the snail's body from moisture loss.",
     "timing": "The chemical control programme using poisoned bait is applied during the periods of snail activity, especially during the period from February until May.",
     "guidance": "To the quantity required per feddan are added 5 kg of bran and half a kg of molasses, mixed with about 2.5 L of water to make the poisoned bait. The bait is added by the handful between the plants or around tree trunks over moist soil."
+   },
+   "wheat/weed.7": {
+    "name": "Annual broadleaf weeds"
+   },
+   "wheat/weed.8": {
+    "name": "Sama grass (Hashisha al-Sama)",
+    "guidance": "Overall spray within 10–15 days after planting."
+   },
+   "wheat/weed.9": {
+    "name": "Annual grass weeds"
+   },
+   "wheat/weed.10": {
+    "name": "Annual broadleaf and grass weeds"
+   },
+   "wheat/weed.11": {
+    "name": "Annual broadleaf and grass weeds",
+    "guidance": "Overall spray when barley is at the 3–5 leaf stage."
+   },
+   "flax/weed.1": {
+    "name": "Annual broadleaf and grass weeds",
+    "guidance": "Overall spray when flax is at the 3–5 leaf stage."
+   },
+   "fieldbean/weed.4": {
+    "name": "Annual grass weeds",
+    "guidance": "Overall spray when the weed plants are at the 2–4 leaf stage."
+   },
+   "onion/weed.6": {
+    "name": "Annual broadleaf and grass weeds"
+   },
+   "onion/weed.7": {
+    "name": "Annual broadleaf weeds",
+    "guidance": "Start spraying the herbicide 20–25 days after transplanting."
+   },
+   "onion/weed.8": {
+    "name": "Annual grass weeds",
+    "guidance": "Spray at the 2–4 leaf stage of the weeds."
+   },
+   "garlic/weed.5": {
+    "name": "Annual broadleaf and grass weeds",
+    "guidance": "Overall spray 21 days after planting."
+   },
+   "garlic/weed.6": {
+    "name": "Annual broadleaf weeds",
+    "guidance": "Spray after land preparation and layout, then irrigate for planting immediately."
+   },
+   "garlic/weed.7": {
+    "name": "Annual grass weeds",
+    "guidance": "Overall spray over the weeds and the crop when the grass weeds are at the 2–4 leaf stage."
+   },
+   "sugarbeet/weed.7": {
+    "name": "Annual broadleaf and grass weeds"
+   },
+   "sugarbeet/weed.8": {
+    "name": "Annual broadleaf weeds"
+   },
+   "sugarbeet/weed.9": {
+    "name": "Annual grass weeds"
+   },
+   "chickpea/weed.1": {
+    "name": "Annual broadleaf weeds",
+    "guidance": "Overall spray after land preparation and immediately before the planting irrigation."
+   },
+   "alfalfa/weed.2": {
+    "name": "Annual broadleaf and grass weeds",
+    "guidance": "Spray immediately before the planting irrigation; do not use on sandy soils."
+   },
+   "cotton/weed.9": {
+    "name": "Annual broadleaf and grass weeds",
+    "guidance": "Spray on the rows after planting and immediately before irrigation; one shallow hoeing is advised a month after spraying the herbicide."
+   },
+   "cotton/weed.10": {
+    "name": "Annual grass weeds",
+    "guidance": "Overall spray when the annual weeds are at the 2–4 leaf stage."
+   },
+   "sunflower/weed.3": {
+    "name": "Annual broadleaf and grass weeds",
+    "guidance": "Overall spray after land preparation and division and immediately before the planting irrigation."
+   },
+   "rice/weed.6": {
+    "name": "Rice nursery weeds (Denieba – Abu Rukba – Ajeira)",
+    "guidance": "Mix the herbicide with fine soil or agricultural gypsum and broadcast the mixture 7–10 days after planting."
+   },
+   "rice/weed.7": {
+    "name": "Transplanted rice weeds (Denieba – Abu Rukba – Ajeira)"
+   },
+   "rice/weed.8": {
+    "name": "Transplanted rice weeds (Denieba – Abu Rukba)"
+   },
+   "rice/weed.9": {
+    "name": "Transplanted rice weeds (Ajeira – Samar – Sa'ad – broadleaf)"
+   },
+   "rice/weed.10": {
+    "name": "Direct-seeded rice weeds (Denieba – Abu Rukba – Ajeira)"
+   },
+   "rice/weed.11": {
+    "name": "Direct-seeded rice weeds (Denieba – Abu Rukba – Ajeira – broadleaf)"
+   },
+   "rice/weed.12": {
+    "name": "Direct-seeded rice weeds (Denieba – Abu Rukba)"
+   },
+   "rice/weed.13": {
+    "name": "Direct-seeded rice weeds (Ajeira – Samar – Sa'ad – broadleaf)"
+   },
+   "sorghum/weed.6": {
+    "name": "Broadleaf weeds (Shabeet – Rigla – Umm al-Laban – Aleeq)"
+   },
+   "sorghum/weed.7": {
+    "name": "Annual broadleaf and grass weeds"
+   },
+   "sorghum/weed.8": {
+    "name": "Nutsedge (Sa'ad)",
+    "extra": [
+     "Overall spray when nutsedge (Sa'ad) is at the 2–3 leaf stage."
+    ]
+   },
+   "sorghum/weed.9": {
+    "name": "Annual broadleaf weeds",
+    "extra": [
+     "Overall spray at the 4–5 leaf stage of the maize."
+    ]
+   },
+   "sorghum/weed.10": {
+    "name": "Annual broadleaf and grass weeds",
+    "extra": [
+     "Spray after placing the seed in the soil and immediately before the planting irrigation."
+    ]
+   },
+   "sugarcane/weed.5": {
+    "name": "Broadleaf weeds (Shabeet – Rigla – Umm al-Laban – Aleeq)",
+    "extra": [
+     "Overall spray over the crop and the weeds when the spring sugarcane plants are about 40–60 cm tall."
+    ]
+   },
+   "sugarcane/weed.6": {
+    "name": "Annual broadleaf and grass weeds",
+    "extra": [
+     "Spray after planting and before irrigation."
+    ]
+   },
+   "groundnut/weed.6": {
+    "name": "Annual broadleaf weeds"
+   },
+   "groundnut/weed.7": {
+    "name": "Annual grass weeds",
+    "extra": [
+     "Overall spray when the annual weeds are at the 2–4 leaf stage."
+    ]
+   },
+   "groundnut/weed.8": {
+    "name": "Annual broadleaf and grass weeds",
+    "extra": [
+     "Spray after planting and before irrigation."
+    ]
+   },
+   "groundnut/weed.9": {
+    "name": "Nutsedge (Sa'ad)"
+   },
+   "groundnut/weed.10": {
+    "name": "Annual and perennial grass weeds",
+    "extra": [
+     "Overall spray when annual weeds are at the 2–4 leaf stage, or perennial weeds when 10–15 cm tall."
+    ]
+   },
+   "soybean/weed.2": {
+    "name": "Annual broadleaf and grass weeds",
+    "extra": [
+     "Overall spray when the annual weeds are at the 2–4 leaf stage."
+    ]
+   },
+   "tomato/weed.17": {
+    "name": "Annual broadleaf weeds",
+    "extra": [
+     "Spray after land preparation and layout, and immediately before the planting irrigation."
+    ]
+   },
+   "tomato/weed.18": {
+    "name": "Annual grass weeds",
+    "extra": [
+     "Overall spray when the weeds are actively growing at the 2–5 leaf stage."
+    ]
+   },
+   "tomato/weed.19": {
+    "name": "Annual broadleaf and grass weeds"
+   },
+   "tomato/weed.20": {
+    "name": "Annual and perennial grass weeds",
+    "extra": [
+     "Overall spray when annual weeds are at the 2–4 leaf stage, or perennial weeds when 10–15 cm tall."
+    ]
+   },
+   "tomato/weed.21": {
+    "name": "Nutsedge (Sa'ad)",
+    "extra": [
+     "Overall spray at the 3–4 leaf stage of the nutsedge (Sa'ad) plants."
+    ]
+   },
+   "potato/weed.18": {
+    "name": "Annual broadleaf and grass weeds"
+   },
+   "potato/weed.19": {
+    "name": "Annual broadleaf weeds",
+    "extra": [
+     "Spray on weed growth before the potato seedlings emerge."
+    ]
+   },
+   "potato/weed.20": {
+    "name": "Annual and perennial grass weeds",
+    "extra": [
+     "Overall spray when annual weeds are at the 2–4 leaf stage, or when perennial weeds are 10–15 cm tall."
+    ]
+   },
+   "potato/weed.21": {
+    "name": "Annual grass weeds",
+    "extra": [
+     "Overall spray at the 2–4 leaf stage of the weeds."
+    ]
+   },
+   "potato/other.22": {
+    "name": "Drying of the plant's green foliage",
+    "extra": [
+     "Overall spray on the potato plants two weeks before harvest."
+    ]
+   },
+   "potato/weed.23": {
+    "name": "Nutsedge (Sa'ad)",
+    "extra": [
+     "Overall spray at the 3–4 true-leaf stage of the potato."
+    ]
+   },
+   "potato/weed.24": {
+    "name": "Annual broadleaf and grass weeds",
+    "extra": [
+     "Spray after land preparation and layout, and before the planting and transplanting irrigation."
+    ]
+   },
+   "potato/weed.25": {
+    "name": "Annual grass weeds",
+    "extra": [
+     "Overall spray over the crop and the weeds when the weeds are at the 2–4 leaf stage."
+    ]
+   },
+   "pea/weed.5": {
+    "name": "Annual broadleaf and grass weeds"
+   },
+   "pea/weed.6": {
+    "name": "Annual broadleaf weeds",
+    "extra": [
+     "Overall spray at the 2–4 leaf stage of the pea."
+    ]
+   },
+   "bean/weed.7": {
+    "name": "Annual and perennial grass weeds except (Hagna – Halfa – Ghab)",
+    "extra": [
+     "Overall spray when annual weeds are at the 2–4 leaf stage and perennial weeds are 10–15 cm tall."
+    ]
+   },
+   "bean/weed.8": {
+    "name": "Annual broadleaf and grass weeds",
+    "extra": [
+     "Spray after land preparation and layout, immediately before the planting irrigation."
+    ]
+   },
+   "cowpea/weed.5": {
+    "name": "Annual broadleaf weeds",
+    "extra": [
+     "Overall spray when the weeds are at the 2–4 leaf stage."
+    ]
+   },
+   "melo_labb/weed.8": {
+    "name": "Annual broadleaf and grass weeds",
+    "extra": [
+     "Spray after land preparation and layout, and immediately before the planting irrigation."
+    ]
+   },
+   "eggplant/weed.3": {
+    "name": "Annual grass weeds",
+    "extra": [
+     "Overall spray when the weeds are at the 2–5 leaf stage."
+    ]
+   },
+   "eggplant/weed.4": {
+    "name": "Nutsedge (Sa'ad)",
+    "extra": [
+     "Spray on nutsedge (Sa'ad) growth 10–15 cm tall."
+    ]
+   },
+   "cabbage/weed.10": {
+    "name": "Annual grass weeds",
+    "extra": [
+     "Overall spray when the weeds are at the 2–4 leaf stage."
+    ]
+   },
+   "cabbage/weed.11": {
+    "name": "Annual broadleaf and grass weeds",
+    "extra": [
+     "Spray after land preparation and layout, then transplant and irrigate for planting immediately."
+    ]
+   },
+   "carrot/weed.4": {
+    "name": "Annual broadleaf and grass weeds",
+    "extra": [
+     "Spray after land preparation and layout, immediately before the planting irrigation."
+    ]
+   },
+   "citrus/weed.13": {
+    "name": "Annual and perennial weeds",
+    "extra": [
+     "Spray on actively growing green weeds 10–15 cm tall with a knapsack sprayer fitted with a TK1 nozzle at 125 L water per feddan."
+    ]
+   },
+   "citrus/weed.14": {
+    "name": "Annual broadleaf and grass weeds",
+    "extra": [
+     "Spray on actively growing green weeds at the early stages, without letting the spray solution reach the crop trees."
+    ]
+   },
+   "citrus/weed.15": {
+    "name": "Annual and perennial grass weeds except (Hagna – Halfa – Ghab)",
+    "extra": [
+     "Overall spray when annual weeds are at the 3–4 leaf stage, or perennials when 10–15 cm tall."
+    ]
+   },
+   "citrus/weed.16": {
+    "name": "Annual broadleaf weeds",
+    "extra": [
+     "Spray on actively growing green weeds at the early stages, avoiding the spray solution reaching the trees."
+    ]
+   },
+   "grape/weed.10": {
+    "name": "Annual and perennial weeds",
+    "extra": [
+     "Spray on actively growing green weeds 10–15 cm tall with a knapsack sprayer fitted with a TK1 nozzle at 125 L water per feddan."
+    ]
+   },
+   "grape/weed.11": {
+    "name": "Annual broadleaf and grass weeds",
+    "extra": [
+     "Overall spray when the weeds are at the 2–4 leaf stage."
+    ]
+   },
+   "grape/weed.12": {
+    "name": "Annual and perennial grass weeds except (Hagna – Halfa – Ghab)",
+    "extra": [
+     "Spray on actively growing green grass weeds when annual weeds are at the 2–5 leaf stage and perennial weeds are 10–15 cm tall."
+    ]
+   },
+   "orchards-pome-stone/weed.1": {
+    "name": "Annual and perennial weeds",
+    "extra": [
+     "Spray on actively growing green weeds at the early stages, without letting the spray solution reach the crop trees."
+    ]
+   },
+   "orchards-pome-stone/weed.2": {
+    "name": "Annual broadleaf and grass weeds",
+    "extra": [
+     "Spray on actively growing green weeds at the early stages, without letting the spray solution reach the crop trees."
+    ]
+   },
+   "orchards-pome-stone/weed.3": {
+    "name": "Annual broadleaf weeds",
+    "extra": [
+     "Spray on actively growing green weeds at the early stages, avoiding the spray solution reaching the crop trees."
+    ]
+   },
+   "orchards-pome-stone/weed.4": {
+    "name": "Nutsedge (Sa'ad)"
+   },
+   "orchards-pome-stone/weed.5": {
+    "name": "Annual and perennial grass weeds except (Hagna – Halfa – Ghab)",
+    "extra": [
+     "Overall spray when the weeds have 2–5 leaves and perennial weeds are 10–15 cm tall."
+    ]
+   },
+   "green_areas/weed.3": {
+    "name": "Summer annual broadleaf and grass weeds",
+    "extra": [
+     "Overall spray after mowing the turf and before weed germination."
+    ]
+   },
+   "canal-banks-drains/weed.1": {
+    "name": "Annual and perennial weeds",
+    "extra": [
+     "Spray on actively growing green weeds 10–15 cm tall for perennials or at the 2–4 leaf stage for annuals, with a knapsack sprayer fitted with a TK1 nozzle at 125 L water per feddan."
+    ]
    }
   },
   "fr": {
@@ -3777,6 +4161,390 @@
     "appearance": "Les escargots terrestres sont des animaux à activité nocturne, et la saison la plus longue de leur activité - comme ravageur - est le printemps, suivi de l'automne et de l'hiver ; l'activité des escargots augmente lorsque l'humidité du sol s'élève et que la température devient modérée, tandis que pendant les mois d'été la plupart des escargots se fixent aux tuteurs, aux tiges des plantes, aux branches et aux palmiers, où ils entrent en phase de repos et cessent de bouger et de s'alimenter, et ils ferment l'ouverture de la coquille par une membrane qui protège le corps de l'escargot de la perte d'humidité.",
     "timing": "Le programme de lutte chimique à l'aide d'appât empoisonné est appliqué pendant les périodes d'activité des escargots, en particulier de février à mai.",
     "guidance": "À la quantité nécessaire par feddan sont ajoutés 5 kg de son et un demi-kg de mélasse, mélangés à environ 2,5 L d'eau pour confectionner l'appât empoisonné. L'appât est déposé à la poignée entre les plantes ou autour des troncs d'arbres sur un sol humide."
+   },
+   "wheat/weed.7": {
+    "name": "Adventices annuelles à feuilles larges"
+   },
+   "wheat/weed.8": {
+    "name": "Herbe Sama (Hashisha al-Sama)",
+    "guidance": "Pulvérisation en plein dans les 10 à 15 jours suivant le semis."
+   },
+   "wheat/weed.9": {
+    "name": "Graminées adventices annuelles"
+   },
+   "wheat/weed.10": {
+    "name": "Adventices annuelles à feuilles larges et graminées"
+   },
+   "wheat/weed.11": {
+    "name": "Adventices annuelles à feuilles larges et graminées",
+    "guidance": "Pulvérisation en plein lorsque l'orge est au stade 3 à 5 feuilles."
+   },
+   "flax/weed.1": {
+    "name": "Adventices annuelles à feuilles larges et graminées",
+    "guidance": "Pulvérisation en plein lorsque le lin est au stade 3 à 5 feuilles."
+   },
+   "fieldbean/weed.4": {
+    "name": "Graminées adventices annuelles",
+    "guidance": "Pulvérisation en plein lorsque les plants d'adventices sont au stade 2 à 4 feuilles."
+   },
+   "onion/weed.6": {
+    "name": "Adventices annuelles à feuilles larges et graminées"
+   },
+   "onion/weed.7": {
+    "name": "Adventices annuelles à feuilles larges",
+    "guidance": "Commencer la pulvérisation de l'herbicide 20 à 25 jours après le repiquage."
+   },
+   "onion/weed.8": {
+    "name": "Graminées adventices annuelles",
+    "guidance": "Pulvériser au stade 2 à 4 feuilles des adventices."
+   },
+   "garlic/weed.5": {
+    "name": "Adventices annuelles à feuilles larges et graminées",
+    "guidance": "Pulvérisation en plein 21 jours après le semis."
+   },
+   "garlic/weed.6": {
+    "name": "Adventices annuelles à feuilles larges",
+    "guidance": "Pulvériser après la préparation et le tracé du terrain, puis irriguer immédiatement pour le semis."
+   },
+   "garlic/weed.7": {
+    "name": "Graminées adventices annuelles",
+    "guidance": "Pulvérisation en plein sur les adventices et la culture lorsque les graminées sont au stade 2 à 4 feuilles."
+   },
+   "sugarbeet/weed.7": {
+    "name": "Adventices annuelles à feuilles larges et graminées"
+   },
+   "sugarbeet/weed.8": {
+    "name": "Adventices annuelles à feuilles larges"
+   },
+   "sugarbeet/weed.9": {
+    "name": "Graminées adventices annuelles"
+   },
+   "chickpea/weed.1": {
+    "name": "Adventices annuelles à feuilles larges",
+    "guidance": "Pulvérisation en plein après la préparation du terrain et juste avant l'irrigation de semis."
+   },
+   "alfalfa/weed.2": {
+    "name": "Adventices annuelles à feuilles larges et graminées",
+    "guidance": "Pulvériser juste avant l'irrigation de semis ; ne pas utiliser sur sols sableux."
+   },
+   "cotton/weed.9": {
+    "name": "Adventices annuelles à feuilles larges et graminées",
+    "guidance": "Pulvériser sur les lignes après le semis et juste avant l'irrigation ; un sarclage superficiel est conseillé un mois après le traitement herbicide."
+   },
+   "cotton/weed.10": {
+    "name": "Graminées adventices annuelles",
+    "guidance": "Pulvérisation en plein lorsque les adventices annuelles sont au stade 2 à 4 feuilles."
+   },
+   "sunflower/weed.3": {
+    "name": "Adventices annuelles à feuilles larges et graminées",
+    "guidance": "Pulvérisation en plein après la préparation et la division du terrain et juste avant l'irrigation de semis."
+   },
+   "rice/weed.6": {
+    "name": "Adventices des pépinières de riz (Denieba – Abu Rukba – Ajeira)",
+    "guidance": "Mélanger l'herbicide à de la terre fine ou du gypse agricole et épandre le mélange 7 à 10 jours après le semis."
+   },
+   "rice/weed.7": {
+    "name": "Adventices du riz repiqué (Denieba – Abu Rukba – Ajeira)"
+   },
+   "rice/weed.8": {
+    "name": "Adventices du riz repiqué (Denieba – Abu Rukba)"
+   },
+   "rice/weed.9": {
+    "name": "Adventices du riz repiqué (Ajeira – Samar – Sa'ad – broadleaf)"
+   },
+   "rice/weed.10": {
+    "name": "Adventices du riz semé en direct (Denieba – Abu Rukba – Ajeira)"
+   },
+   "rice/weed.11": {
+    "name": "Adventices du riz semé en direct (Denieba – Abu Rukba – Ajeira – broadleaf)"
+   },
+   "rice/weed.12": {
+    "name": "Adventices du riz semé en direct (Denieba – Abu Rukba)"
+   },
+   "rice/weed.13": {
+    "name": "Adventices du riz semé en direct (Ajeira – Samar – Sa'ad – broadleaf)"
+   },
+   "sorghum/weed.6": {
+    "name": "Adventices à feuilles larges (Shabeet – Rigla – Umm al-Laban – Aleeq)"
+   },
+   "sorghum/weed.7": {
+    "name": "Adventices annuelles à feuilles larges et graminées"
+   },
+   "sorghum/weed.8": {
+    "name": "Souchet (Sa'ad)",
+    "extra": [
+     "Pulvérisation en plein lorsque le souchet (Sa'ad) est au stade 2 à 3 feuilles."
+    ]
+   },
+   "sorghum/weed.9": {
+    "name": "Adventices annuelles à feuilles larges",
+    "extra": [
+     "Pulvérisation en plein au stade 4 à 5 feuilles du maïs."
+    ]
+   },
+   "sorghum/weed.10": {
+    "name": "Adventices annuelles à feuilles larges et graminées",
+    "extra": [
+     "Pulvériser après la mise en terre des semences et juste avant l'irrigation de semis."
+    ]
+   },
+   "sugarcane/weed.5": {
+    "name": "Adventices à feuilles larges (Shabeet – Rigla – Umm al-Laban – Aleeq)",
+    "extra": [
+     "Pulvérisation en plein sur la culture et les adventices lorsque les plants de canne à sucre de printemps mesurent environ 40 à 60 cm."
+    ]
+   },
+   "sugarcane/weed.6": {
+    "name": "Adventices annuelles à feuilles larges et graminées",
+    "extra": [
+     "Pulvériser après le semis et avant l'irrigation."
+    ]
+   },
+   "groundnut/weed.6": {
+    "name": "Adventices annuelles à feuilles larges"
+   },
+   "groundnut/weed.7": {
+    "name": "Graminées adventices annuelles",
+    "extra": [
+     "Pulvérisation en plein lorsque les adventices annuelles sont au stade 2 à 4 feuilles."
+    ]
+   },
+   "groundnut/weed.8": {
+    "name": "Adventices annuelles à feuilles larges et graminées",
+    "extra": [
+     "Pulvériser après le semis et avant l'irrigation."
+    ]
+   },
+   "groundnut/weed.9": {
+    "name": "Souchet (Sa'ad)"
+   },
+   "groundnut/weed.10": {
+    "name": "Graminées adventices annuelles et vivaces",
+    "extra": [
+     "Pulvérisation en plein lorsque les adventices annuelles sont au stade 2 à 4 feuilles, ou les vivaces lorsqu'elles mesurent 10 à 15 cm."
+    ]
+   },
+   "soybean/weed.2": {
+    "name": "Adventices annuelles à feuilles larges et graminées",
+    "extra": [
+     "Pulvérisation en plein lorsque les adventices annuelles sont au stade 2 à 4 feuilles."
+    ]
+   },
+   "tomato/weed.17": {
+    "name": "Adventices annuelles à feuilles larges",
+    "extra": [
+     "Pulvériser après la préparation et le tracé du terrain, et juste avant l'irrigation de semis."
+    ]
+   },
+   "tomato/weed.18": {
+    "name": "Graminées adventices annuelles",
+    "extra": [
+     "Pulvérisation en plein lorsque les adventices sont en croissance active au stade 2 à 5 feuilles."
+    ]
+   },
+   "tomato/weed.19": {
+    "name": "Adventices annuelles à feuilles larges et graminées"
+   },
+   "tomato/weed.20": {
+    "name": "Graminées adventices annuelles et vivaces",
+    "extra": [
+     "Pulvérisation en plein lorsque les adventices annuelles sont au stade 2 à 4 feuilles, ou les vivaces lorsqu'elles mesurent 10 à 15 cm."
+    ]
+   },
+   "tomato/weed.21": {
+    "name": "Souchet (Sa'ad)",
+    "extra": [
+     "Pulvérisation en plein au stade 3 à 4 feuilles des plants de souchet (Sa'ad)."
+    ]
+   },
+   "potato/weed.18": {
+    "name": "Adventices annuelles à feuilles larges et graminées"
+   },
+   "potato/weed.19": {
+    "name": "Adventices annuelles à feuilles larges",
+    "extra": [
+     "Pulvériser sur les adventices avant la levée des plantules de pomme de terre."
+    ]
+   },
+   "potato/weed.20": {
+    "name": "Graminées adventices annuelles et vivaces",
+    "extra": [
+     "Pulvérisation en plein lorsque les adventices annuelles sont au stade 2 à 4 feuilles, ou lorsque les vivaces mesurent 10 à 15 cm."
+    ]
+   },
+   "potato/weed.21": {
+    "name": "Graminées adventices annuelles",
+    "extra": [
+     "Pulvérisation en plein au stade 2 à 4 feuilles des adventices."
+    ]
+   },
+   "potato/other.22": {
+    "name": "Dessiccation du feuillage vert de la plante",
+    "extra": [
+     "Pulvérisation en plein sur les plants de pomme de terre deux semaines avant la récolte."
+    ]
+   },
+   "potato/weed.23": {
+    "name": "Souchet (Sa'ad)",
+    "extra": [
+     "Pulvérisation en plein au stade 3 à 4 vraies feuilles de la pomme de terre."
+    ]
+   },
+   "potato/weed.24": {
+    "name": "Adventices annuelles à feuilles larges et graminées",
+    "extra": [
+     "Pulvériser après la préparation et le tracé du terrain, et avant l'irrigation de semis et de repiquage."
+    ]
+   },
+   "potato/weed.25": {
+    "name": "Graminées adventices annuelles",
+    "extra": [
+     "Pulvérisation en plein sur la culture et les adventices lorsque celles-ci sont au stade 2 à 4 feuilles."
+    ]
+   },
+   "pea/weed.5": {
+    "name": "Adventices annuelles à feuilles larges et graminées"
+   },
+   "pea/weed.6": {
+    "name": "Adventices annuelles à feuilles larges",
+    "extra": [
+     "Pulvérisation en plein au stade 2 à 4 feuilles du pois."
+    ]
+   },
+   "bean/weed.7": {
+    "name": "Graminées adventices annuelles et vivaces à l'exception de (Hagna – Halfa – Ghab)",
+    "extra": [
+     "Pulvérisation en plein lorsque les adventices annuelles sont au stade 2 à 4 feuilles et les vivaces mesurent 10 à 15 cm."
+    ]
+   },
+   "bean/weed.8": {
+    "name": "Adventices annuelles à feuilles larges et graminées",
+    "extra": [
+     "Pulvériser après la préparation et le tracé du terrain, juste avant l'irrigation de semis."
+    ]
+   },
+   "cowpea/weed.5": {
+    "name": "Adventices annuelles à feuilles larges",
+    "extra": [
+     "Pulvérisation en plein lorsque les adventices sont au stade 2 à 4 feuilles."
+    ]
+   },
+   "melo_labb/weed.8": {
+    "name": "Adventices annuelles à feuilles larges et graminées",
+    "extra": [
+     "Pulvériser après la préparation et le tracé du terrain, et juste avant l'irrigation de semis."
+    ]
+   },
+   "eggplant/weed.3": {
+    "name": "Graminées adventices annuelles",
+    "extra": [
+     "Pulvérisation en plein lorsque les adventices sont au stade 2 à 5 feuilles."
+    ]
+   },
+   "eggplant/weed.4": {
+    "name": "Souchet (Sa'ad)",
+    "extra": [
+     "Pulvériser sur les repousses de souchet (Sa'ad) de 10 à 15 cm de haut."
+    ]
+   },
+   "cabbage/weed.10": {
+    "name": "Graminées adventices annuelles",
+    "extra": [
+     "Pulvérisation en plein lorsque les adventices sont au stade 2 à 4 feuilles."
+    ]
+   },
+   "cabbage/weed.11": {
+    "name": "Adventices annuelles à feuilles larges et graminées",
+    "extra": [
+     "Pulvériser après la préparation et le tracé du terrain, puis repiquer et irriguer immédiatement."
+    ]
+   },
+   "carrot/weed.4": {
+    "name": "Adventices annuelles à feuilles larges et graminées",
+    "extra": [
+     "Pulvériser après la préparation et le tracé du terrain, juste avant l'irrigation de semis."
+    ]
+   },
+   "citrus/weed.13": {
+    "name": "Adventices annuelles et vivaces",
+    "extra": [
+     "Pulvériser sur les adventices vertes en croissance active de 10 à 15 cm de haut avec un pulvérisateur à dos équipé d'une buse TK1, à raison de 125 L d'eau par feddan."
+    ]
+   },
+   "citrus/weed.14": {
+    "name": "Adventices annuelles à feuilles larges et graminées",
+    "extra": [
+     "Pulvériser sur les adventices vertes en croissance active aux premiers stades, sans que la bouillie atteigne les arbres de la culture."
+    ]
+   },
+   "citrus/weed.15": {
+    "name": "Graminées adventices annuelles et vivaces à l'exception de (Hagna – Halfa – Ghab)",
+    "extra": [
+     "Pulvérisation en plein lorsque les adventices annuelles sont au stade 3 à 4 feuilles, ou les vivaces lorsqu'elles mesurent 10 à 15 cm."
+    ]
+   },
+   "citrus/weed.16": {
+    "name": "Adventices annuelles à feuilles larges",
+    "extra": [
+     "Pulvériser sur les adventices vertes en croissance active aux premiers stades en évitant que la bouillie atteigne les arbres."
+    ]
+   },
+   "grape/weed.10": {
+    "name": "Adventices annuelles et vivaces",
+    "extra": [
+     "Pulvériser sur les adventices vertes en croissance active de 10 à 15 cm de haut avec un pulvérisateur à dos équipé d'une buse TK1, à raison de 125 L d'eau par feddan."
+    ]
+   },
+   "grape/weed.11": {
+    "name": "Adventices annuelles à feuilles larges et graminées",
+    "extra": [
+     "Pulvérisation en plein lorsque les adventices sont au stade 2 à 4 feuilles."
+    ]
+   },
+   "grape/weed.12": {
+    "name": "Graminées adventices annuelles et vivaces à l'exception de (Hagna – Halfa – Ghab)",
+    "extra": [
+     "Pulvériser sur les graminées vertes en croissance active lorsque les adventices annuelles sont au stade 2 à 5 feuilles et les vivaces mesurent 10 à 15 cm."
+    ]
+   },
+   "orchards-pome-stone/weed.1": {
+    "name": "Adventices annuelles et vivaces",
+    "extra": [
+     "Pulvériser sur les adventices vertes en croissance active aux premiers stades, sans que la bouillie atteigne les arbres de la culture."
+    ]
+   },
+   "orchards-pome-stone/weed.2": {
+    "name": "Adventices annuelles à feuilles larges et graminées",
+    "extra": [
+     "Pulvériser sur les adventices vertes en croissance active aux premiers stades, sans que la bouillie atteigne les arbres de la culture."
+    ]
+   },
+   "orchards-pome-stone/weed.3": {
+    "name": "Adventices annuelles à feuilles larges",
+    "extra": [
+     "Pulvériser sur les adventices vertes en croissance active aux premiers stades en évitant que la bouillie atteigne les arbres de la culture."
+    ]
+   },
+   "orchards-pome-stone/weed.4": {
+    "name": "Souchet (Sa'ad)"
+   },
+   "orchards-pome-stone/weed.5": {
+    "name": "Graminées adventices annuelles et vivaces à l'exception de (Hagna – Halfa – Ghab)",
+    "extra": [
+     "Pulvérisation en plein lorsque les adventices ont 2 à 5 feuilles et les vivaces mesurent 10 à 15 cm."
+    ]
+   },
+   "green_areas/weed.3": {
+    "name": "Adventices estivales annuelles à feuilles larges et graminées",
+    "extra": [
+     "Pulvérisation en plein après la tonte du gazon et avant la germination des adventices."
+    ]
+   },
+   "canal-banks-drains/weed.1": {
+    "name": "Adventices annuelles et vivaces",
+    "extra": [
+     "Pulvériser sur les adventices vertes en croissance active de 10 à 15 cm pour les vivaces ou au stade 2 à 4 feuilles pour les annuelles, avec un pulvérisateur à dos équipé d'une buse TK1, à raison de 125 L d'eau par feddan."
+    ]
    }
   },
   "zh": {
@@ -5666,6 +6434,390 @@
     "appearance": "陆生蜗牛是夜行性动物，其作为害虫活动最长的季节是春季，其次是秋季和冬季，土壤湿度升高、温度适中时蜗牛活动增强；而在夏季几个月里，大多数蜗牛附着在支架、植物茎、枝条和棕榈树上，进入休眠期，停止活动和取食，并用一层膜封住壳口，保护蜗牛身体免于失水。",
     "timing": "在蜗牛活动期，尤其是2月至5月期间，实施使用毒饵的化学防治方案。",
     "guidance": "在每feddan所需的药量中加入5 kg麦麸和半公斤糖蜜，与约2.5 L水混合制成毒饵。将毒饵一把一把地撒在植株之间或树干周围的湿润土壤上。"
+   },
+   "wheat/weed.7": {
+    "name": "一年生阔叶杂草"
+   },
+   "wheat/weed.8": {
+    "name": "Sama 草（Hashisha al-Sama）",
+    "guidance": "播种后10–15天内全面喷施。"
+   },
+   "wheat/weed.9": {
+    "name": "一年生禾本科杂草"
+   },
+   "wheat/weed.10": {
+    "name": "一年生阔叶杂草和禾本科杂草"
+   },
+   "wheat/weed.11": {
+    "name": "一年生阔叶杂草和禾本科杂草",
+    "guidance": "大麦处于3–5叶期时全面喷施。"
+   },
+   "flax/weed.1": {
+    "name": "一年生阔叶杂草和禾本科杂草",
+    "guidance": "亚麻处于3–5叶期时全面喷施。"
+   },
+   "fieldbean/weed.4": {
+    "name": "一年生禾本科杂草",
+    "guidance": "杂草植株处于2–4叶期时全面喷施。"
+   },
+   "onion/weed.6": {
+    "name": "一年生阔叶杂草和禾本科杂草"
+   },
+   "onion/weed.7": {
+    "name": "一年生阔叶杂草",
+    "guidance": "移栽后20–25天开始喷施除草剂。"
+   },
+   "onion/weed.8": {
+    "name": "一年生禾本科杂草",
+    "guidance": "杂草处于2–4叶期时喷施。"
+   },
+   "garlic/weed.5": {
+    "name": "一年生阔叶杂草和禾本科杂草",
+    "guidance": "播种后21天全面喷施。"
+   },
+   "garlic/weed.6": {
+    "name": "一年生阔叶杂草",
+    "guidance": "整地、划畦后喷施，随后立即进行播种灌溉。"
+   },
+   "garlic/weed.7": {
+    "name": "一年生禾本科杂草",
+    "guidance": "禾本科杂草处于2–4叶期时，对杂草和作物全面喷施。"
+   },
+   "sugarbeet/weed.7": {
+    "name": "一年生阔叶杂草和禾本科杂草"
+   },
+   "sugarbeet/weed.8": {
+    "name": "一年生阔叶杂草"
+   },
+   "sugarbeet/weed.9": {
+    "name": "一年生禾本科杂草"
+   },
+   "chickpea/weed.1": {
+    "name": "一年生阔叶杂草",
+    "guidance": "整地后，在播种灌溉前立即全面喷施。"
+   },
+   "alfalfa/weed.2": {
+    "name": "一年生阔叶杂草和禾本科杂草",
+    "guidance": "播种灌溉前立即喷施；不得用于沙质土壤。"
+   },
+   "cotton/weed.9": {
+    "name": "一年生阔叶杂草和禾本科杂草",
+    "guidance": "播种后、灌溉前立即沿行喷施；建议在施药一个月后进行一次浅锄。"
+   },
+   "cotton/weed.10": {
+    "name": "一年生禾本科杂草",
+    "guidance": "一年生杂草处于2–4叶期时全面喷施。"
+   },
+   "sunflower/weed.3": {
+    "name": "一年生阔叶杂草和禾本科杂草",
+    "guidance": "整地、分畦后，在播种灌溉前立即全面喷施。"
+   },
+   "rice/weed.6": {
+    "name": "水稻苗床杂草（Denieba – Abu Rukba – Ajeira）",
+    "guidance": "将药剂与细土或农用石膏混匀，播种后7–10天撒施。"
+   },
+   "rice/weed.7": {
+    "name": "移栽水稻杂草（Denieba – Abu Rukba – Ajeira）"
+   },
+   "rice/weed.8": {
+    "name": "移栽水稻杂草（Denieba – Abu Rukba）"
+   },
+   "rice/weed.9": {
+    "name": "移栽水稻杂草（Ajeira – Samar – Sa'ad – broadleaf）"
+   },
+   "rice/weed.10": {
+    "name": "直播水稻杂草（Denieba – Abu Rukba – Ajeira）"
+   },
+   "rice/weed.11": {
+    "name": "直播水稻杂草（Denieba – Abu Rukba – Ajeira – broadleaf）"
+   },
+   "rice/weed.12": {
+    "name": "直播水稻杂草（Denieba – Abu Rukba）"
+   },
+   "rice/weed.13": {
+    "name": "直播水稻杂草（Ajeira – Samar – Sa'ad – broadleaf）"
+   },
+   "sorghum/weed.6": {
+    "name": "阔叶杂草（Shabeet – Rigla – Umm al-Laban – Aleeq）"
+   },
+   "sorghum/weed.7": {
+    "name": "一年生阔叶杂草和禾本科杂草"
+   },
+   "sorghum/weed.8": {
+    "name": "莎草（Sa'ad）",
+    "extra": [
+     "莎草（Sa'ad）处于2–3叶期时全面喷施。"
+    ]
+   },
+   "sorghum/weed.9": {
+    "name": "一年生阔叶杂草",
+    "extra": [
+     "玉米处于4–5叶期时全面喷施。"
+    ]
+   },
+   "sorghum/weed.10": {
+    "name": "一年生阔叶杂草和禾本科杂草",
+    "extra": [
+     "种子入土后，在播种灌溉前立即喷施。"
+    ]
+   },
+   "sugarcane/weed.5": {
+    "name": "阔叶杂草（Shabeet – Rigla – Umm al-Laban – Aleeq）",
+    "extra": [
+     "春植甘蔗株高约40–60厘米时，对作物和杂草全面喷施。"
+    ]
+   },
+   "sugarcane/weed.6": {
+    "name": "一年生阔叶杂草和禾本科杂草",
+    "extra": [
+     "播种后、灌溉前喷施。"
+    ]
+   },
+   "groundnut/weed.6": {
+    "name": "一年生阔叶杂草"
+   },
+   "groundnut/weed.7": {
+    "name": "一年生禾本科杂草",
+    "extra": [
+     "一年生杂草处于2–4叶期时全面喷施。"
+    ]
+   },
+   "groundnut/weed.8": {
+    "name": "一年生阔叶杂草和禾本科杂草",
+    "extra": [
+     "播种后、灌溉前喷施。"
+    ]
+   },
+   "groundnut/weed.9": {
+    "name": "莎草（Sa'ad）"
+   },
+   "groundnut/weed.10": {
+    "name": "一年生和多年生禾本科杂草",
+    "extra": [
+     "一年生杂草处于2–4叶期，或多年生杂草高10–15厘米时全面喷施。"
+    ]
+   },
+   "soybean/weed.2": {
+    "name": "一年生阔叶杂草和禾本科杂草",
+    "extra": [
+     "一年生杂草处于2–4叶期时全面喷施。"
+    ]
+   },
+   "tomato/weed.17": {
+    "name": "一年生阔叶杂草",
+    "extra": [
+     "整地、划畦后，并在播种灌溉前立即喷施。"
+    ]
+   },
+   "tomato/weed.18": {
+    "name": "一年生禾本科杂草",
+    "extra": [
+     "杂草生长活跃、处于2–5叶期时全面喷施。"
+    ]
+   },
+   "tomato/weed.19": {
+    "name": "一年生阔叶杂草和禾本科杂草"
+   },
+   "tomato/weed.20": {
+    "name": "一年生和多年生禾本科杂草",
+    "extra": [
+     "一年生杂草处于2–4叶期，或多年生杂草高10–15厘米时全面喷施。"
+    ]
+   },
+   "tomato/weed.21": {
+    "name": "莎草（Sa'ad）",
+    "extra": [
+     "莎草（Sa'ad）植株处于3–4叶期时全面喷施。"
+    ]
+   },
+   "potato/weed.18": {
+    "name": "一年生阔叶杂草和禾本科杂草"
+   },
+   "potato/weed.19": {
+    "name": "一年生阔叶杂草",
+    "extra": [
+     "马铃薯幼苗出土前，对杂草茎叶喷施。"
+    ]
+   },
+   "potato/weed.20": {
+    "name": "一年生和多年生禾本科杂草",
+    "extra": [
+     "一年生杂草处于2–4叶期，或多年生杂草高10–15厘米时全面喷施。"
+    ]
+   },
+   "potato/weed.21": {
+    "name": "一年生禾本科杂草",
+    "extra": [
+     "杂草处于2–4叶期时全面喷施。"
+    ]
+   },
+   "potato/other.22": {
+    "name": "植株绿色茎叶干燥",
+    "extra": [
+     "收获前两周对马铃薯植株全面喷施。"
+    ]
+   },
+   "potato/weed.23": {
+    "name": "莎草（Sa'ad）",
+    "extra": [
+     "马铃薯处于3–4片真叶期时全面喷施。"
+    ]
+   },
+   "potato/weed.24": {
+    "name": "一年生阔叶杂草和禾本科杂草",
+    "extra": [
+     "整地、划畦后，在播种和移栽灌溉前喷施。"
+    ]
+   },
+   "potato/weed.25": {
+    "name": "一年生禾本科杂草",
+    "extra": [
+     "杂草处于2–4叶期时，对作物和杂草全面喷施。"
+    ]
+   },
+   "pea/weed.5": {
+    "name": "一年生阔叶杂草和禾本科杂草"
+   },
+   "pea/weed.6": {
+    "name": "一年生阔叶杂草",
+    "extra": [
+     "豌豆处于2–4叶期时全面喷施。"
+    ]
+   },
+   "bean/weed.7": {
+    "name": "一年生和多年生禾本科杂草（Hagna – Halfa – Ghab除外）",
+    "extra": [
+     "一年生杂草处于2–4叶期且多年生杂草高10–15厘米时全面喷施。"
+    ]
+   },
+   "bean/weed.8": {
+    "name": "一年生阔叶杂草和禾本科杂草",
+    "extra": [
+     "整地、划畦后，在播种灌溉前立即喷施。"
+    ]
+   },
+   "cowpea/weed.5": {
+    "name": "一年生阔叶杂草",
+    "extra": [
+     "杂草处于2–4叶期时全面喷施。"
+    ]
+   },
+   "melo_labb/weed.8": {
+    "name": "一年生阔叶杂草和禾本科杂草",
+    "extra": [
+     "整地、划畦后，并在播种灌溉前立即喷施。"
+    ]
+   },
+   "eggplant/weed.3": {
+    "name": "一年生禾本科杂草",
+    "extra": [
+     "杂草处于2–5叶期时全面喷施。"
+    ]
+   },
+   "eggplant/weed.4": {
+    "name": "莎草（Sa'ad）",
+    "extra": [
+     "对高10–15厘米的莎草（Sa'ad）新生植株喷施。"
+    ]
+   },
+   "cabbage/weed.10": {
+    "name": "一年生禾本科杂草",
+    "extra": [
+     "杂草处于2–4叶期时全面喷施。"
+    ]
+   },
+   "cabbage/weed.11": {
+    "name": "一年生阔叶杂草和禾本科杂草",
+    "extra": [
+     "整地、划畦后喷施，随后移栽并立即灌溉。"
+    ]
+   },
+   "carrot/weed.4": {
+    "name": "一年生阔叶杂草和禾本科杂草",
+    "extra": [
+     "整地、划畦后，在播种灌溉前立即喷施。"
+    ]
+   },
+   "citrus/weed.13": {
+    "name": "一年生和多年生杂草",
+    "extra": [
+     "对高10–15厘米、生长活跃的绿色杂草喷施，使用配TK1喷头的背负式喷雾器，每费丹用水125升。"
+    ]
+   },
+   "citrus/weed.14": {
+    "name": "一年生阔叶杂草和禾本科杂草",
+    "extra": [
+     "对处于早期阶段、生长活跃的绿色杂草喷施，避免药液接触作物树木。"
+    ]
+   },
+   "citrus/weed.15": {
+    "name": "一年生和多年生禾本科杂草（Hagna – Halfa – Ghab除外）",
+    "extra": [
+     "一年生杂草处于3–4叶期，或多年生杂草高10–15厘米时全面喷施。"
+    ]
+   },
+   "citrus/weed.16": {
+    "name": "一年生阔叶杂草",
+    "extra": [
+     "对处于早期阶段、生长活跃的绿色杂草喷施，避免药液接触树木。"
+    ]
+   },
+   "grape/weed.10": {
+    "name": "一年生和多年生杂草",
+    "extra": [
+     "对高10–15厘米、生长活跃的绿色杂草喷施，使用配TK1喷头的背负式喷雾器，每费丹用水125升。"
+    ]
+   },
+   "grape/weed.11": {
+    "name": "一年生阔叶杂草和禾本科杂草",
+    "extra": [
+     "杂草处于2–4叶期时全面喷施。"
+    ]
+   },
+   "grape/weed.12": {
+    "name": "一年生和多年生禾本科杂草（Hagna – Halfa – Ghab除外）",
+    "extra": [
+     "一年生杂草处于2–5叶期、多年生杂草高10–15厘米时，对生长活跃的绿色禾本科杂草喷施。"
+    ]
+   },
+   "orchards-pome-stone/weed.1": {
+    "name": "一年生和多年生杂草",
+    "extra": [
+     "对处于早期阶段、生长活跃的绿色杂草喷施，避免药液接触作物树木。"
+    ]
+   },
+   "orchards-pome-stone/weed.2": {
+    "name": "一年生阔叶杂草和禾本科杂草",
+    "extra": [
+     "对处于早期阶段、生长活跃的绿色杂草喷施，避免药液接触作物树木。"
+    ]
+   },
+   "orchards-pome-stone/weed.3": {
+    "name": "一年生阔叶杂草",
+    "extra": [
+     "对处于早期阶段、生长活跃的绿色杂草喷施，避免药液接触作物树木。"
+    ]
+   },
+   "orchards-pome-stone/weed.4": {
+    "name": "莎草（Sa'ad）"
+   },
+   "orchards-pome-stone/weed.5": {
+    "name": "一年生和多年生禾本科杂草（Hagna – Halfa – Ghab除外）",
+    "extra": [
+     "杂草有2–5片叶且多年生杂草高10–15厘米时全面喷施。"
+    ]
+   },
+   "green_areas/weed.3": {
+    "name": "夏季一年生阔叶杂草和禾本科杂草",
+    "extra": [
+     "草坪修剪后、杂草萌发前全面喷施。"
+    ]
+   },
+   "canal-banks-drains/weed.1": {
+    "name": "一年生和多年生杂草",
+    "extra": [
+     "对生长活跃的绿色杂草喷施：多年生杂草高10–15厘米，一年生杂草2–4叶期；使用配TK1喷头的背负式喷雾器，每费丹用水125升。"
+    ]
    }
   }
  },
@@ -5731,7 +6883,11 @@
    "sugarcane": "Sugarcane",
    "koosa_labb": "Seed squash (labb)",
    "sykes_palm": "Sykes palm",
-   "sweet-potato": "Sweet potato"
+   "sweet-potato": "Sweet potato",
+   "chickpea": "Chickpea",
+   "flax": "Flax",
+   "canal-banks-drains": "Canal banks and drains",
+   "orchards-pome-stone": "Orchards (pome and stone fruit)"
   },
   "fr": {
    "rice": "Riz",
@@ -5794,7 +6950,11 @@
    "sugarcane": "Canne à sucre",
    "koosa_labb": "Courge à graines (labb)",
    "sykes_palm": "Palmier Sykes",
-   "sweet-potato": "Patate douce"
+   "sweet-potato": "Patate douce",
+   "chickpea": "Pois chiche",
+   "flax": "Lin",
+   "canal-banks-drains": "Berges des canaux et drains",
+   "orchards-pome-stone": "Vergers (fruits à pépins et à noyau)"
   },
   "zh": {
    "rice": "水稻",
@@ -5857,7 +7017,11 @@
    "sugarcane": "甘蔗",
    "koosa_labb": "籽用西葫芦（labb）",
    "sykes_palm": "赛克斯棕榈",
-   "sweet-potato": "甘薯"
+   "sweet-potato": "甘薯",
+   "chickpea": "鹰嘴豆",
+   "flax": "亚麻",
+   "canal-banks-drains": "渠岸和排水沟",
+   "orchards-pome-stone": "果园（仁果类和核果类）"
   }
  }
 }

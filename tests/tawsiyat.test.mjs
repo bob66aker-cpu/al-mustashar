@@ -32,7 +32,9 @@ const labels = J('data/tws/labels.json');
 const man = J('data/tws/manifest.json');
 const audit = J('data/tws/audit.json');
 const legacy = J('data/tws/audit-legacy-index.json');
-const sections = secsDoc.sections || [];
+const allSections = secsDoc.sections || [];
+const sections = allSections;
+const pestSecs = allSections.filter(s => s.page <= 279); /* بطاقات الآفات (الكتاب 16–279)؛ الحشائش بعدها */
 
 /* ----------1) المصدر الوحيد ---------- */
 check('source: the only declared source is the official book (apc.gov.eg)',
@@ -62,6 +64,8 @@ for (const c of cropsDoc.crops) {
     if (!s || s.n !== inf.n || normAr(s.name_ar) !== normAr(inf.name_ar) || s.type !== inf.type) bad.push(`${c.id}/${inf.n}: row`);
   });
 }
+check('weeds: 80 weed/herbicide cards present, each with products and the book page (pdf >= 280)',
+  allSections.filter(s => s.page > 279).length === 80 && allSections.filter(s => s.page > 279).every(s => s.products.length > 0 && s.final_id));
 check('index: every crop row recomputes from sections.json (cards, order, n, type, name)',
   bad.length === 0, bad.slice(0, 4).join(', '));
 const cardsCalc = cropsDoc.crops.reduce((a, c) => a + c.cards, 0);
@@ -76,7 +80,7 @@ check('manifest: counts agree with the data (crops/cards/products/images)',
 
 /* ----------3) إثبات المصدر لكل سجل ---------- */
 const proven = sections.filter(s =>
-  s.printed_page === s.page - 13 && s.page >= 16 && s.page <= 279
+  s.printed_page === s.page - 13 && s.page >= 16 && s.page <= 410
   && Array.isArray(s.pages) && s.pages.includes(s.page)
   && s.crop_evidence && typeof s.name_ar === 'string' && s.name_ar.length > 0);
 check('provenance: every card carries pdf page = printed + 13, page span, evidence',
@@ -140,7 +144,7 @@ const legacyCards = legacy.crops.reduce((a, c) => a + (c.infections || []).lengt
 check('audit: the legacy baseline snapshot is intact (68 crops, 766 cards)',
   legacy.crops.length === 68 && legacyCards === 766, `${legacy.crops.length}/${legacyCards}`);
 check('audit: every legacy record and every book card has a row (766 + 258)',
-  audit.rows.length === legacyCards + sections.length, String(audit.rows.length));
+  audit.rows.length === legacyCards + pestSecs.length, String(audit.rows.length));
 const recount = {
   VERIFIED: audit.rows.filter(r => r.status === 'VERIFIED').length,
   NEEDS_REVIEW: audit.rows.filter(r => r.status === 'NEEDS_REVIEW').length,
@@ -155,7 +159,7 @@ check('audit: NOT_FOUND rows never claim a source name; kept rows always do',
   rowNoSrc === 0 && rowSrc === 0, `noSrc=${rowNoSrc} src=${rowSrc}`);
 
 /* ----------7) القمح من الصفر كما في الكتاب ---------- */
-const wheat = sections.filter(s => s.crop_id === 'wheat');
+const wheat = pestSecs.filter(s => s.crop_id === 'wheat');
 const wNames = wheat.map(s => normAr(s.name_ar)).join(' | ');
 /* الاشتقاطات الحرفية لسطور الكتاب (بلا شكل/همزة/مسافة لتصفّي تشوّهات الطباعة) */
 const compact = s => normAr(s).replace(/[\sء]/g, '');
@@ -184,7 +188,7 @@ check('wheat: the old maize-pest rows are NOT_FOUND_IN_SOURCE, not facts',
   wheatRemoved.filter(r => /كوز|الذرة/.test(r.old_name)).map(r => r.status + ':' + r.old_name).join(' | '));
 
 /* ----------8) تسميات المحاصيل لا تختلط ---------- */
-const fb = sections.filter(s => s.crop_id === 'fieldbean');
+const fb = pestSecs.filter(s => s.crop_id === 'fieldbean');
 check('crop labels: book pages 21–22 belong to the book\u2019s own label (الفول البلدى), not to wheat',
   fb.length === 3 && fb.every(s => s.page === 21 || s.page === 22)
   && !wheat.some(s => s.page === 21 || s.page === 22), `${fb.length}`);

@@ -13,7 +13,7 @@
    "name_en": "Rice",
    "sci": "Oryza sativa",
    "family": "Poaceae",
-   "cards": 5,
+   "cards": 13,
    "infections": [
     {
      "n": 1,
@@ -64,6 +64,86 @@
      "has_rec": true,
      "group": "النيماتودا",
      "images": 2
+    },
+    {
+     "n": 6,
+     "type": "weed",
+     "name_ar": "حشائش مشاتل الأرز (الدنيبة - أبو ركبة - العجيرة)",
+     "printed_page": 292,
+     "pdf_page": 305,
+     "has_rec": true,
+     "group": null,
+     "images": 0
+    },
+    {
+     "n": 7,
+     "type": "weed",
+     "name_ar": "حشائش الأرز الشتل (الدنيبة - أبو ركبة - العجيرة)",
+     "printed_page": 293,
+     "pdf_page": 306,
+     "has_rec": true,
+     "group": null,
+     "images": 0
+    },
+    {
+     "n": 8,
+     "type": "weed",
+     "name_ar": "حشائش الأرز الشتل (دنيبة - أبو ركبة)",
+     "printed_page": 294,
+     "pdf_page": 307,
+     "has_rec": true,
+     "group": null,
+     "images": 0
+    },
+    {
+     "n": 9,
+     "type": "weed",
+     "name_ar": "حشائش الأرز الشتل (العجيرة - السمار - السعد - عريضة الأوراق)",
+     "printed_page": 294,
+     "pdf_page": 307,
+     "has_rec": true,
+     "group": null,
+     "images": 0
+    },
+    {
+     "n": 10,
+     "type": "weed",
+     "name_ar": "حشائش الأرز البدار (الدنيبة - أبو ركبة - العجيرة)",
+     "printed_page": 296,
+     "pdf_page": 309,
+     "has_rec": true,
+     "group": null,
+     "images": 0
+    },
+    {
+     "n": 11,
+     "type": "weed",
+     "name_ar": "حشائش الأرز البدار (دنيبة - ابو ركبة - عجيرة - عريضة الاوراق)",
+     "printed_page": 298,
+     "pdf_page": 311,
+     "has_rec": true,
+     "group": null,
+     "images": 0
+    },
+    {
+     "n": 12,
+     "type": "weed",
+     "name_ar": "حشائش الأرز البدار (دنيبة - أبو ركبة)",
+     "printed_page": 299,
+     "pdf_page": 312,
+     "has_rec": true,
+     "group": null,
+     "images": 0
+    },
+    {
+     "n": 13,
+     "type": "weed",
+     "name_ar": "حشائش الأرز البدار (العجيرة - السمار - السعد - عريضة الأوراق)",
+     "printed_page": 300,
+     "pdf_page": 313,
+     "has_rec": true,
+     "group": null,
+     "images": 0
     }
    ]
   },
@@ -73,7 +153,7 @@
    "name_en": "Eggplant",
    "sci": "Solanum melongena",
    "family": "Solanaceae",
-   "cards": 2,
+   "cards": 4,
    "infections": [
     {
      "n": 1,
@@ -94,6 +174,26 @@
      "has_rec": true,
      "group": "الأكاروسات",
      "images": 1
+    },
+    {
+     "n": 3,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية النجيلية",
+     "printed_page": 330,
+     "pdf_page": 343,
+     "has_rec": true,
+     "group": null,
+     "images": 0
+    },
+    {
+     "n": 4,
+     "type": "weed",
+     "name_ar": "حشيشة السعد",
+     "printed_page": 331,
+     "pdf_page": 344,
+     "has_rec": true,
+     "group": null,
+     "images": 0
     }
    ]
   },
@@ -163,7 +263,7 @@
    "name_en": "Alfalfa",
    "sci": "Medicago sativa",
    "family": "Fabaceae",
-   "cards": 1,
+   "cards": 2,
    "infections": [
     {
      "n": 1,
@@ -174,6 +274,16 @@
      "has_rec": true,
      "group": "الحشرات",
      "images": 1
+    },
+    {
+     "n": 2,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية عريضة الأوراق والنجيلية",
+     "printed_page": 289,
+     "pdf_page": 302,
+     "has_rec": true,
+     "group": null,
+     "images": 0
     }
    ]
   },
@@ -213,7 +323,7 @@
    "name_en": "Pea",
    "sci": "Pisum sativum",
    "family": "Fabaceae",
-   "cards": 4,
+   "cards": 6,
    "infections": [
     {
      "n": 1,
@@ -254,6 +364,26 @@
      "has_rec": true,
      "group": "الفطريات",
      "images": 1
+    },
+    {
+     "n": 5,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية عريضة الأوراق والنجيلية",
+     "printed_page": 325,
+     "pdf_page": 338,
+     "has_rec": true,
+     "group": null,
+     "images": 0
+    },
+    {
+     "n": 6,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية عريضة الأوراق",
+     "printed_page": 326,
+     "pdf_page": 339,
+     "has_rec": true,
+     "group": null,
+     "images": 0
     }
    ]
   },
@@ -263,7 +393,7 @@
    "name_en": "Onion",
    "sci": "Allium cepa",
    "family": "Amaryllidaceae",
-   "cards": 5,
+   "cards": 8,
    "infections": [
     {
      "n": 1,
@@ -314,6 +444,36 @@
      "has_rec": true,
      "group": null,
      "images": 1
+    },
+    {
+     "n": 6,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية عريضة الأوراق والنجيلية",
+     "printed_page": 277,
+     "pdf_page": 290,
+     "has_rec": true,
+     "group": null,
+     "images": 0
+    },
+    {
+     "n": 7,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية عريضة الأوراق",
+     "printed_page": 279,
+     "pdf_page": 292,
+     "has_rec": true,
+     "group": null,
+     "images": 0
+    },
+    {
+     "n": 8,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية النجيلية",
+     "printed_page": 279,
+     "pdf_page": 292,
+     "has_rec": true,
+     "group": null,
+     "images": 0
     }
    ]
   },
@@ -323,7 +483,7 @@
    "name_en": "Potato",
    "sci": "Solanum tuberosum",
    "family": "Solanaceae",
-   "cards": 17,
+   "cards": 25,
    "infections": [
     {
      "n": 1,
@@ -494,6 +654,86 @@
      "has_rec": true,
      "group": "النيماتودا",
      "images": 2
+    },
+    {
+     "n": 18,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية عريضة الأوراق والنجيلية",
+     "printed_page": 319,
+     "pdf_page": 332,
+     "has_rec": true,
+     "group": null,
+     "images": 0
+    },
+    {
+     "n": 19,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية عريضة الأوراق",
+     "printed_page": 320,
+     "pdf_page": 333,
+     "has_rec": true,
+     "group": null,
+     "images": 0
+    },
+    {
+     "n": 20,
+     "type": "weed",
+     "name_ar": "الحشائش النجيلية الحولية والمعمرة",
+     "printed_page": 320,
+     "pdf_page": 333,
+     "has_rec": true,
+     "group": null,
+     "images": 0
+    },
+    {
+     "n": 21,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية النجيلية",
+     "printed_page": 321,
+     "pdf_page": 334,
+     "has_rec": true,
+     "group": null,
+     "images": 0
+    },
+    {
+     "n": 22,
+     "type": "other",
+     "name_ar": "تجفيف المجموع الخضرى للنبات",
+     "printed_page": 322,
+     "pdf_page": 335,
+     "has_rec": true,
+     "group": null,
+     "images": 0
+    },
+    {
+     "n": 23,
+     "type": "weed",
+     "name_ar": "حشيشة السعد",
+     "printed_page": 323,
+     "pdf_page": 336,
+     "has_rec": true,
+     "group": null,
+     "images": 0
+    },
+    {
+     "n": 24,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية عريضة الأوراق والنجيلية",
+     "printed_page": 323,
+     "pdf_page": 336,
+     "has_rec": true,
+     "group": null,
+     "images": 0
+    },
+    {
+     "n": 25,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية النجيلية",
+     "printed_page": 324,
+     "pdf_page": 337,
+     "has_rec": true,
+     "group": null,
+     "images": 0
     }
    ]
   },
@@ -683,7 +923,7 @@
    "name_en": "Garlic",
    "sci": "Allium sativum",
    "family": "Amaryllidaceae",
-   "cards": 4,
+   "cards": 7,
    "infections": [
     {
      "n": 1,
@@ -724,6 +964,36 @@
      "has_rec": true,
      "group": null,
      "images": 1
+    },
+    {
+     "n": 5,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية عريضة الأوراق والنجيلية",
+     "printed_page": 280,
+     "pdf_page": 293,
+     "has_rec": true,
+     "group": null,
+     "images": 0
+    },
+    {
+     "n": 6,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية عريضة الأوراق",
+     "printed_page": 281,
+     "pdf_page": 294,
+     "has_rec": true,
+     "group": null,
+     "images": 0
+    },
+    {
+     "n": 7,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية النجيلية",
+     "printed_page": 282,
+     "pdf_page": 295,
+     "has_rec": true,
+     "group": null,
+     "images": 0
     }
    ]
   },
@@ -733,7 +1003,7 @@
    "name_en": "Carrot",
    "sci": "Daucus carota",
    "family": "Apiaceae",
-   "cards": 3,
+   "cards": 4,
    "infections": [
     {
      "n": 1,
@@ -764,6 +1034,16 @@
      "has_rec": true,
      "group": "النيماتودا",
      "images": 2
+    },
+    {
+     "n": 4,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية عريضة الأوراق والنجيلية",
+     "printed_page": 334,
+     "pdf_page": 347,
+     "has_rec": true,
+     "group": null,
+     "images": 0
     }
    ]
   },
@@ -1083,7 +1363,7 @@
    "name_en": "Sorghum",
    "sci": "Sorghum bicolor",
    "family": "Poaceae",
-   "cards": 5,
+   "cards": 10,
    "infections": [
     {
      "n": 1,
@@ -1134,6 +1414,56 @@
      "has_rec": true,
      "group": "الفطريات",
      "images": 2
+    },
+    {
+     "n": 6,
+     "type": "weed",
+     "name_ar": "الحشائش عريضة الأوراق (الشبيط - الرجلة - أم اللبن - العليق)",
+     "printed_page": 302,
+     "pdf_page": 315,
+     "has_rec": true,
+     "group": null,
+     "images": 0
+    },
+    {
+     "n": 7,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية عريضة الأوراق والنجيلية",
+     "printed_page": 303,
+     "pdf_page": 316,
+     "has_rec": true,
+     "group": null,
+     "images": 0
+    },
+    {
+     "n": 8,
+     "type": "weed",
+     "name_ar": "حشيشة السعد",
+     "printed_page": 305,
+     "pdf_page": 318,
+     "has_rec": true,
+     "group": null,
+     "images": 0
+    },
+    {
+     "n": 9,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية عريضة الاوراق",
+     "printed_page": 305,
+     "pdf_page": 318,
+     "has_rec": true,
+     "group": null,
+     "images": 0
+    },
+    {
+     "n": 10,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية عريضة الأوراق والنجيلية",
+     "printed_page": 306,
+     "pdf_page": 319,
+     "has_rec": true,
+     "group": null,
+     "images": 0
     }
    ]
   },
@@ -1373,7 +1703,7 @@
    "name_en": "Tomato",
    "sci": "Solanum lycopersicum",
    "family": "Solanaceae",
-   "cards": 16,
+   "cards": 21,
    "infections": [
     {
      "n": 1,
@@ -1534,6 +1864,56 @@
      "has_rec": true,
      "group": "النيماتودا",
      "images": 2
+    },
+    {
+     "n": 17,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية عريضة الأوراق",
+     "printed_page": 315,
+     "pdf_page": 328,
+     "has_rec": true,
+     "group": null,
+     "images": 0
+    },
+    {
+     "n": 18,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية النجيلية",
+     "printed_page": 316,
+     "pdf_page": 329,
+     "has_rec": true,
+     "group": null,
+     "images": 0
+    },
+    {
+     "n": 19,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية عريضة الأوراق والنجيلية",
+     "printed_page": 317,
+     "pdf_page": 330,
+     "has_rec": true,
+     "group": null,
+     "images": 0
+    },
+    {
+     "n": 20,
+     "type": "weed",
+     "name_ar": "الحشائش النجيلية الحولية والمعمرة",
+     "printed_page": 318,
+     "pdf_page": 331,
+     "has_rec": true,
+     "group": null,
+     "images": 0
+    },
+    {
+     "n": 21,
+     "type": "weed",
+     "name_ar": "السعد",
+     "printed_page": 318,
+     "pdf_page": 331,
+     "has_rec": true,
+     "group": null,
+     "images": 0
     }
    ]
   },
@@ -1543,7 +1923,7 @@
    "name_en": "Grape",
    "sci": "Vitis vinifera",
    "family": "Vitaceae",
-   "cards": 9,
+   "cards": 12,
    "infections": [
     {
      "n": 1,
@@ -1634,6 +2014,36 @@
      "has_rec": true,
      "group": "النيماتودا",
      "images": 1
+    },
+    {
+     "n": 10,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية والمعمرة",
+     "printed_page": 341,
+     "pdf_page": 354,
+     "has_rec": true,
+     "group": null,
+     "images": 0
+    },
+    {
+     "n": 11,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية عريضة الأوراق والنجيلية",
+     "printed_page": 342,
+     "pdf_page": 355,
+     "has_rec": true,
+     "group": null,
+     "images": 0
+    },
+    {
+     "n": 12,
+     "type": "weed",
+     "name_ar": "الحشائش النجيلية الحولية والمعمرة ماعدا (الحجنه - الحلفا - الغاب)",
+     "printed_page": 343,
+     "pdf_page": 356,
+     "has_rec": true,
+     "group": null,
+     "images": 0
     }
    ]
   },
@@ -1643,7 +2053,7 @@
    "name_en": "Common bean",
    "sci": "Phaseolus vulgaris",
    "family": "Fabaceae",
-   "cards": 6,
+   "cards": 8,
    "infections": [
     {
      "n": 1,
@@ -1704,6 +2114,26 @@
      "has_rec": true,
      "group": "الفطريات",
      "images": 2
+    },
+    {
+     "n": 7,
+     "type": "weed",
+     "name_ar": "الحشائش النجيلية الحولية والمعمرة ماعدا (الحجنه - الحلفا - الفاب)",
+     "printed_page": 327,
+     "pdf_page": 340,
+     "has_rec": true,
+     "group": null,
+     "images": 0
+    },
+    {
+     "n": 8,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية عريضة الأوراق والنجيلية",
+     "printed_page": 327,
+     "pdf_page": 340,
+     "has_rec": true,
+     "group": null,
+     "images": 0
     }
    ]
   },
@@ -1863,7 +2293,7 @@
    "name_en": "Field bean",
    "sci": null,
    "family": null,
-   "cards": 3,
+   "cards": 4,
    "infections": [
     {
      "n": 1,
@@ -1894,6 +2324,16 @@
      "has_rec": true,
      "group": "الفطريات",
      "images": 2
+    },
+    {
+     "n": 4,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية النجيلية",
+     "printed_page": 277,
+     "pdf_page": 290,
+     "has_rec": true,
+     "group": null,
+     "images": 0
     }
    ]
   },
@@ -1903,7 +2343,7 @@
    "name_en": "Groundnut",
    "sci": "Arachis hypogaea",
    "family": "Fabaceae",
-   "cards": 5,
+   "cards": 10,
    "infections": [
     {
      "n": 1,
@@ -1954,6 +2394,56 @@
      "has_rec": true,
      "group": "النيماتودا",
      "images": 3
+    },
+    {
+     "n": 6,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية عريضة الأوراق",
+     "printed_page": 309,
+     "pdf_page": 322,
+     "has_rec": true,
+     "group": null,
+     "images": 0
+    },
+    {
+     "n": 7,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية النجيلية",
+     "printed_page": 310,
+     "pdf_page": 323,
+     "has_rec": true,
+     "group": null,
+     "images": 0
+    },
+    {
+     "n": 8,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية عريضة الأوراق والنجيلية",
+     "printed_page": 311,
+     "pdf_page": 324,
+     "has_rec": true,
+     "group": null,
+     "images": 0
+    },
+    {
+     "n": 9,
+     "type": "weed",
+     "name_ar": "حشيشة السعد",
+     "printed_page": 312,
+     "pdf_page": 325,
+     "has_rec": true,
+     "group": null,
+     "images": 0
+    },
+    {
+     "n": 10,
+     "type": "weed",
+     "name_ar": "الحشائش النجيلية الحولية والمعمرة",
+     "printed_page": 313,
+     "pdf_page": 326,
+     "has_rec": true,
+     "group": null,
+     "images": 0
     }
    ]
   },
@@ -2033,7 +2523,7 @@
    "name_en": "Cotton",
    "sci": "Gossypium hirsutum",
    "family": "Malvaceae",
-   "cards": 8,
+   "cards": 10,
    "infections": [
     {
      "n": 1,
@@ -2114,6 +2604,26 @@
      "has_rec": true,
      "group": "الفطريات",
      "images": 1
+    },
+    {
+     "n": 9,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية عريضة الأوراق والنجيلية",
+     "printed_page": 290,
+     "pdf_page": 303,
+     "has_rec": true,
+     "group": null,
+     "images": 0
+    },
+    {
+     "n": 10,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية النجيلية",
+     "printed_page": 291,
+     "pdf_page": 304,
+     "has_rec": true,
+     "group": null,
+     "images": 0
     }
    ]
   },
@@ -2123,7 +2633,7 @@
    "name_en": "Wheat",
    "sci": "Triticum aestivum",
    "family": "Poaceae",
-   "cards": 6,
+   "cards": 11,
    "infections": [
     {
      "n": 1,
@@ -2184,6 +2694,56 @@
      "has_rec": true,
      "group": null,
      "images": 2
+    },
+    {
+     "n": 7,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية عريضة الأوراق",
+     "printed_page": 269,
+     "pdf_page": 282,
+     "has_rec": true,
+     "group": null,
+     "images": 0
+    },
+    {
+     "n": 8,
+     "type": "weed",
+     "name_ar": "حشيشة الصامة",
+     "printed_page": 271,
+     "pdf_page": 284,
+     "has_rec": true,
+     "group": null,
+     "images": 0
+    },
+    {
+     "n": 9,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية النجيلية",
+     "printed_page": 271,
+     "pdf_page": 284,
+     "has_rec": true,
+     "group": null,
+     "images": 0
+    },
+    {
+     "n": 10,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية عريضة الأوراق والنجيلية",
+     "printed_page": 274,
+     "pdf_page": 287,
+     "has_rec": true,
+     "group": null,
+     "images": 0
+    },
+    {
+     "n": 11,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية عريضة الأوراق والنجيلية",
+     "printed_page": 275,
+     "pdf_page": 288,
+     "has_rec": true,
+     "group": null,
+     "images": 0
     }
    ]
   },
@@ -2323,7 +2883,7 @@
    "name_en": "Cabbage",
    "sci": "Brassica oleracea",
    "family": "Brassicaceae",
-   "cards": 9,
+   "cards": 11,
    "infections": [
     {
      "n": 1,
@@ -2414,6 +2974,26 @@
      "has_rec": true,
      "group": "الفطريات",
      "images": 2
+    },
+    {
+     "n": 10,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية النجيلية",
+     "printed_page": 332,
+     "pdf_page": 345,
+     "has_rec": true,
+     "group": null,
+     "images": 0
+    },
+    {
+     "n": 11,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية عريضة الأوراق والنجيلية",
+     "printed_page": 333,
+     "pdf_page": 346,
+     "has_rec": true,
+     "group": null,
+     "images": 0
     }
    ]
   },
@@ -2513,7 +3093,7 @@
    "name_en": "Cowpea",
    "sci": "Vigna unguiculata",
    "family": "Fabaceae",
-   "cards": 4,
+   "cards": 5,
    "infections": [
     {
      "n": 1,
@@ -2554,6 +3134,16 @@
      "has_rec": true,
      "group": "الأكاروسات",
      "images": 2
+    },
+    {
+     "n": 5,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية عريضة الأوراق",
+     "printed_page": 328,
+     "pdf_page": 341,
+     "has_rec": true,
+     "group": null,
+     "images": 0
     }
    ]
   },
@@ -2683,7 +3273,7 @@
    "name_en": "Green areas",
    "sci": null,
    "family": null,
-   "cards": 2,
+   "cards": 3,
    "infections": [
     {
      "n": 1,
@@ -2704,6 +3294,16 @@
      "has_rec": true,
      "group": "الفطريات",
      "images": 1
+    },
+    {
+     "n": 3,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية الصيفية عريضة الأوراق والنجيلية",
+     "printed_page": 349,
+     "pdf_page": 362,
+     "has_rec": true,
+     "group": null,
+     "images": 0
     }
    ]
   },
@@ -2733,7 +3333,7 @@
    "name_en": "Citrus",
    "sci": "Citrus",
    "family": "Rutaceae",
-   "cards": 12,
+   "cards": 16,
    "infections": [
     {
      "n": 1,
@@ -2854,6 +3454,46 @@
      "has_rec": true,
      "group": "الفطريات",
      "images": 1
+    },
+    {
+     "n": 13,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية والمعمرة",
+     "printed_page": 335,
+     "pdf_page": 348,
+     "has_rec": true,
+     "group": null,
+     "images": 0
+    },
+    {
+     "n": 14,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية عريضة الأوراق والنجيلية",
+     "printed_page": 338,
+     "pdf_page": 351,
+     "has_rec": true,
+     "group": null,
+     "images": 0
+    },
+    {
+     "n": 15,
+     "type": "weed",
+     "name_ar": "الحشائش النجيلية الحولية والمعمرة ماعدا (الحجنه - الحلفا - الغاب)",
+     "printed_page": 339,
+     "pdf_page": 352,
+     "has_rec": true,
+     "group": null,
+     "images": 0
+    },
+    {
+     "n": 16,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية عريضة الأوراق",
+     "printed_page": 340,
+     "pdf_page": 353,
+     "has_rec": true,
+     "group": null,
+     "images": 0
     }
    ]
   },
@@ -2913,7 +3553,7 @@
    "name_en": "Labb melon",
    "sci": null,
    "family": null,
-   "cards": 7,
+   "cards": 8,
    "infections": [
     {
      "n": 1,
@@ -2984,6 +3624,16 @@
      "has_rec": true,
      "group": "الفطريات",
      "images": 1
+    },
+    {
+     "n": 8,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية عريضة الأوراق والنجيلية",
+     "printed_page": 329,
+     "pdf_page": 342,
+     "has_rec": true,
+     "group": null,
+     "images": 0
     }
    ]
   },
@@ -2993,7 +3643,7 @@
    "name_en": "Sugar beet",
    "sci": "Beta vulgaris",
    "family": "Amaranthaceae",
-   "cards": 6,
+   "cards": 9,
    "infections": [
     {
      "n": 1,
@@ -3054,6 +3704,36 @@
      "has_rec": true,
      "group": "النيماتودا",
      "images": 1
+    },
+    {
+     "n": 7,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية عريضة الأوراق والنجيلية",
+     "printed_page": 283,
+     "pdf_page": 296,
+     "has_rec": true,
+     "group": null,
+     "images": 0
+    },
+    {
+     "n": 8,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية عريضة الأوراق",
+     "printed_page": 284,
+     "pdf_page": 297,
+     "has_rec": true,
+     "group": null,
+     "images": 0
+    },
+    {
+     "n": 9,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية النجيلية",
+     "printed_page": 286,
+     "pdf_page": 299,
+     "has_rec": true,
+     "group": null,
+     "images": 0
     }
    ]
   },
@@ -3063,7 +3743,7 @@
    "name_en": "Sunflower",
    "sci": "Helianthus annuus",
    "family": "Asteraceae",
-   "cards": 2,
+   "cards": 3,
    "infections": [
     {
      "n": 1,
@@ -3084,6 +3764,16 @@
      "has_rec": true,
      "group": null,
      "images": 2
+    },
+    {
+     "n": 3,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية عريضة الأوراق والنجيلية",
+     "printed_page": 291,
+     "pdf_page": 304,
+     "has_rec": true,
+     "group": null,
+     "images": 0
     }
    ]
   },
@@ -3093,7 +3783,7 @@
    "name_en": "Soybean",
    "sci": "Glycine max",
    "family": "Fabaceae",
-   "cards": 1,
+   "cards": 2,
    "infections": [
     {
      "n": 1,
@@ -3104,6 +3794,16 @@
      "has_rec": true,
      "group": "الأكاروسات",
      "images": 1
+    },
+    {
+     "n": 2,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية عريضة الأوراق والنجيلية",
+     "printed_page": 314,
+     "pdf_page": 327,
+     "has_rec": true,
+     "group": null,
+     "images": 0
     }
    ]
   },
@@ -3113,7 +3813,7 @@
    "name_en": "Sugarcane",
    "sci": "Saccharum officinarum",
    "family": "Poaceae",
-   "cards": 4,
+   "cards": 6,
    "infections": [
     {
      "n": 1,
@@ -3154,6 +3854,26 @@
      "has_rec": true,
      "group": null,
      "images": 1
+    },
+    {
+     "n": 5,
+     "type": "weed",
+     "name_ar": "الحشائش عريضة الأوراق (الشبيط - الرجلة - أم اللبن - العليق)",
+     "printed_page": 307,
+     "pdf_page": 320,
+     "has_rec": true,
+     "group": null,
+     "images": 0
+    },
+    {
+     "n": 6,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية عريضة الأوراق والنجيلية",
+     "printed_page": 308,
+     "pdf_page": 321,
+     "has_rec": true,
+     "group": null,
+     "images": 0
     }
    ]
   },
@@ -3194,6 +3914,126 @@
      "has_rec": true,
      "group": "الحشرات",
      "images": 2
+    }
+   ]
+  },
+  {
+   "id": "chickpea",
+   "name_ar": "الحمص",
+   "name_en": "Chickpea",
+   "sci": "Cicer arietinum",
+   "family": "Fabaceae",
+   "cards": 1,
+   "infections": [
+    {
+     "n": 1,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية عريضة الأوراق",
+     "printed_page": 288,
+     "pdf_page": 301,
+     "has_rec": true,
+     "group": null,
+     "images": 0
+    }
+   ]
+  },
+  {
+   "id": "flax",
+   "name_ar": "الكتان",
+   "name_en": "Flax",
+   "sci": "Linum usitatissimum",
+   "family": "Linaceae",
+   "cards": 1,
+   "infections": [
+    {
+     "n": 1,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية عريضة الأوراق والنجيلية",
+     "printed_page": 276,
+     "pdf_page": 289,
+     "has_rec": true,
+     "group": null,
+     "images": 0
+    }
+   ]
+  },
+  {
+   "id": "canal-banks-drains",
+   "name_ar": "جوانب الجسور والمصارف",
+   "name_en": "Canal banks and drains",
+   "sci": "",
+   "family": "",
+   "cards": 1,
+   "infections": [
+    {
+     "n": 1,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية والمعمرة",
+     "printed_page": 350,
+     "pdf_page": 363,
+     "has_rec": true,
+     "group": null,
+     "images": 0
+    }
+   ]
+  },
+  {
+   "id": "orchards-pome-stone",
+   "name_ar": "حدائق الفاكهة (الحلويات ذات النواة الحجرية)",
+   "name_en": "Orchards (pome and stone fruit)",
+   "sci": "",
+   "family": "",
+   "cards": 5,
+   "infections": [
+    {
+     "n": 1,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية والمعمرة",
+     "printed_page": 344,
+     "pdf_page": 357,
+     "has_rec": true,
+     "group": null,
+     "images": 0
+    },
+    {
+     "n": 2,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية عريضة الأوراق والنجيلية",
+     "printed_page": 346,
+     "pdf_page": 359,
+     "has_rec": true,
+     "group": null,
+     "images": 0
+    },
+    {
+     "n": 3,
+     "type": "weed",
+     "name_ar": "الحشائش الحولية عريضة الأوراق",
+     "printed_page": 347,
+     "pdf_page": 360,
+     "has_rec": true,
+     "group": null,
+     "images": 0
+    },
+    {
+     "n": 4,
+     "type": "weed",
+     "name_ar": "حشيشة السعد",
+     "printed_page": 348,
+     "pdf_page": 361,
+     "has_rec": true,
+     "group": null,
+     "images": 0
+    },
+    {
+     "n": 5,
+     "type": "weed",
+     "name_ar": "الحشائش النجيلية الحولية والمعمرة ماعدا (الحجنه - الحلفا - الغاب)",
+     "printed_page": 349,
+     "pdf_page": 362,
+     "has_rec": true,
+     "group": null,
+     "images": 0
     }
    ]
   }

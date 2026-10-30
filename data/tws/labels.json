@@ -45,7 +45,8 @@
   "retry": "إعادة المحاولة",
   "detail_error_title": "تعذّر تحميل بطاقة القسم من الكتاب",
   "cas_unverified": "قيد التحقق",
-  "examples": "أمثلة من المصدر"
+  "examples": "أمثلة من المصدر",
+  "extra_guidance": "إرشادات خاصة"
  },
  "en": {
   "title": "Crop recommendations",
@@ -90,7 +91,8 @@
   "retry": "Retry",
   "detail_error_title": "Could not load this section card from the book",
   "cas_unverified": "under verification",
-  "examples": "Examples from the source"
+  "examples": "Examples from the source",
+  "extra_guidance": "Special guidance"
  },
  "fr": {
   "title": "Recommandations par culture",
@@ -135,7 +137,8 @@
   "load_error_title": "Impossible de charger les recommandations",
   "load_error_body": "L'index n'a pas pu être chargé — connectez-vous une fois ou réessayez après la préparation hors ligne.",
   "retry": "Réessayer",
-  "detail_error_title": "Impossible de charger cette fiche du livre"
+  "detail_error_title": "Impossible de charger cette fiche du livre",
+  "extra_guidance": "Recommandations particulières"
  },
  "zh": {
   "title": "作物推荐",
@@ -180,6 +183,7 @@
   "load_error_title": "无法加载推荐数据",
   "load_error_body": "索引加载失败——请联网一次，或在应用离线准备完成后重试。",
   "retry": "重试",
-  "detail_error_title": "无法加载手册中的该卡片"
+  "detail_error_title": "无法加载手册中的该卡片",
+  "extra_guidance": "特别指导"
  }
 }

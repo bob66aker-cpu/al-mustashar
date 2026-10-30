@@ -54,6 +54,8 @@
       cas_none: 'لا رقم CAS في السجلات',
       images: 'صور من الكتاب',
       source: 'المصدر',
+      cas_unverified: 'قيد التحقق',
+      examples: 'أمثلة من المصدر',
       needs_verify: 'قيمة تحتاج تحققًا — غير مؤكدة في سطر الطباعة',
       name_review: 'عنوان يحتاج مراجعة',
       crop_conflict: 'تسمية محصول تحت المراجعة',
@@ -97,6 +99,8 @@
       cas_none: 'No CAS number in the registries',
       images: 'Images from the book',
       source: 'Source',
+      cas_unverified: 'under verification',
+      examples: 'Examples from the source',
       needs_verify: 'Value needs verification — not confirmed on the print line',
       name_review: 'Heading needs review',
       crop_conflict: 'Crop label under review',
@@ -123,25 +127,44 @@
 
   var S = { man: null, crops: null, labels: null, sec: null, load: null, secLoad: null, err: null, filter: '' };
 
+  /* اللغة الفعلية للواجهة: ar | en | fr | zh */
+  function loc() {
+    var c = String(document.documentElement.lang || 'ar').toLowerCase().slice(0, 2);
+    return (c === 'en' || c === 'fr' || c === 'zh') ? c : 'ar';
+  }
   function lang() {
     return (document.documentElement.lang || 'ar').toLowerCase().indexOf('en') === 0 ? 'en' : 'ar';
   }
   function L(k) {
-    var d = (S.labels && (S.labels[lang()] || S.labels.ar)) || LABELS.ar;
+    var d = (S.labels && (S.labels[loc()] || S.labels[lang()] || S.labels.ar)) || LABELS.ar;
     return (d && d[k]) || LABELS.ar[k] || k;
   }
   /* ترجمة نص بطاقة (الأصل العربي مرجع؛ تظهر الإنجليزية فقط إن وُجدت وإلا يبقى العربي) */
   function tx(s, f, ar) {
-    if (lang() === 'en' && S.i18n && S.i18n.cards && S.i18n.cards.en) {
-      var t = S.i18n.cards.en[s.crop_id + '/' + s.type + '.' + s.n];
+    if (loc() !== 'ar' && S.i18n && S.i18n.cards && S.i18n.cards[loc()]) {
+      var t = S.i18n.cards[loc()][s.crop_id + '/' + s.type + '.' + s.n];
       if (t && t[f]) return t[f];
     }
     return ar;
   }
   /* نوع الآفة المعروض يتبع «مجموعة الآفة» المطبوعة في الكتاب إن وُجدت (التصنيف الآلي القديم أخطأ في 23 بطاقة)؛ المسار والمعرّف لا يتغيّران */
   var GROUP_TYPE = { 'الحشرات': 'insect', 'الفطريات': 'fungus', 'الأكاروسات': 'mite', 'النيماتودا': 'nematode', 'البكتيريا': 'bacterium', 'الفقاريات': 'other', 'اللافقاريات': 'other' };
-  function shownType(s) { return GROUP_TYPE[s.group] || s.type; }
-  function typeName(t) { return (lang() === 'en' ? TYPE_EN[t] : TYPE_AR[t]) || t; }
+  function shownType(s) { return s.type || GROUP_TYPE[s.group]; }
+  var TYPE_FR = { insect: 'Insecte', mite: 'Acarien', fungus: 'Champignon', pseudo_fungus: 'Oomycète', bacterium: 'Bactérie', virus: 'Virus', nematode: 'Nématode', weed: 'Adventice', mollusc: 'Mollusque', other: 'Autre' };
+  var TYPE_ZH = { insect: '昆虫', mite: '螨类', fungus: '真菌', pseudo_fungus: '卵菌', bacterium: '细菌', virus: '病毒', nematode: '线虫', weed: '杂草', mollusc: '软体动物', other: '其他' };
+  function typeName(t) { var c = loc(); return (c === 'fr' ? TYPE_FR[t] : c === 'zh' ? TYPE_ZH[t] : c === 'en' ? TYPE_EN[t] : TYPE_AR[t]) || t; }
+  /* ترجمة وحدات المعدل فقط (الأرقام والرموز تبقى حرفيًا كما طُبعت في الكتاب) */
+  var UNITS = {
+    en: { 'لتر': 'L', 'سم³': 'cm³', 'جم': 'g', 'كجم': 'kg', 'طن': 'ton', 'فدان': 'feddan', 'ماء': 'water', 'تقاوى': 'seed', 'تقاوي': 'seed', 'درنات': 'tubers', 'صوب': 'greenhouse', 'مرة': 'time', 'أو': 'or', 'م³': 'm³', 'فراغ': 'space', 'نبات': 'plant', 'شجرة': 'tree', 'رش جزئى': 'spot spray', 'حقن': 'injection' },
+    fr: { 'لتر': 'L', 'سم³': 'cm³', 'جم': 'g', 'كجم': 'kg', 'طن': 'tonne', 'فدان': 'feddan', 'ماء': 'eau', 'تقاوى': 'semences', 'تقاوي': 'semences', 'درنات': 'tubercules', 'صوب': 'serre', 'مرة': 'fois', 'أو': 'ou', 'م³': 'm³', 'فراغ': 'volume', 'نبات': 'plante', 'شجرة': 'arbre', 'رش جزئى': 'pulvérisation partielle', 'حقن': 'injection' },
+    zh: { 'لتر': '升', 'سم³': '立方厘米', 'جم': '克', 'كجم': '千克', 'طن': '吨', 'فدان': '费丹', 'ماء': '水', 'تقاوى': '种子', 'تقاوي': '种子', 'درنات': '块茎', 'صوب': '温室', 'مرة': '次', 'أو': '或', 'م³': '立方米', 'فراغ': '空间', 'نبات': '株', 'شجرة': '棵', 'رش جزئى': '局部喷雾', 'حقن': '注射' }
+  };
+  function rateText(p) {
+    var r = String(p['معدل الاستخدام'] || '');
+    var u = UNITS[loc()];
+    if (!u || !r) return r;
+    return r.replace(/[\u0621-\u064A\u00B3]+(?: جزئى)?/g, function (w) { return u[w] !== undefined ? u[w] : w; });
+  }
   function esc(s) {
     return String(s == null ? '' : s)
       .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
@@ -163,7 +186,7 @@
       fetchJSON('data/tws/labels.json').catch(function () { return null; })
     ]).then(function (r) {
       S.man = r[0]; S.crops = r[1];
-      if (r[2] && r[2].ar && r[2].en) S.labels = { ar: r[2].ar, en: r[2].en };
+      if (r[2] && r[2].ar && r[2].en) S.labels = r[2];
       S.err = null;
     }).catch(function (e) { S.err = e; S.load = null; });
     return S.load;
@@ -221,6 +244,7 @@
     '.tws-inf .nm{flex:1 1 auto;min-width:0}',
     '.tws-inf .nm b{display:block;font-size:.98rem}',
     '.tws-inf .nm .grp{display:block;color:var(--muted);font-size:.75rem}',
+    '#view-tws .tws-sub{margin:14px 0 6px;padding:6px 10px;border-radius:10px;background:var(--field);font-size:.9rem}',
     '.tws-chip{flex:0 0 auto;font-size:.72rem;padding:4px 9px;border-radius:999px;border:1px solid transparent;white-space:nowrap}',
     '.tws-chip.pg{background:var(--primary-soft);color:var(--primary-strong);border-color:var(--primary-ink)}',
     '.tws-chip.warn{background:var(--st-review-soft);color:var(--st-review-ink);border-color:var(--st-review)}',
@@ -310,6 +334,8 @@
     var sec = document.getElementById('view-tws');
     if (sec) sec.hidden = (location.hash.replace(/^#\/?/, '').split('/')[0] !== 'tws');
     route();
+    document.removeEventListener('langchange', route);
+    document.addEventListener('langchange', route);
     document.removeEventListener('modechange', route);
     document.addEventListener('modechange', route);
     document.removeEventListener('regulatorydbchange', route);
@@ -540,24 +566,33 @@
           + '</ul>';
       }
       if (s.appearance) html += '<h3>' + esc(L('appearance')) + '</h3><p class="txt" dir="auto">' + esc(tx(s, 'appearance', s.appearance)) + '</p>';
+      if (s.examples && s.examples.length) html += '<h3>' + esc(L('examples')) + '</h3><p class="txt" dir="auto">' + esc(tx(s, 'examples', s.examples.join('، '))) + '</p>';
       if (s.timing) html += '<h3>' + esc(L('timing')) + '</h3><p class="txt" dir="auto">' + esc(tx(s, 'timing', s.timing)) + '</p>';
       if (s.guidance) html += '<h3>' + esc(L('guidance')) + '</h3><p class="txt" dir="auto">' + esc(tx(s, 'guidance', s.guidance)) + '</p>';
 
       if (s.products && s.products.length) {
         html += '<h3>' + esc(L('products')) + '</h3>';
+        var lastSub = null;
         s.products.forEach(function (p) {
           var rawName = p['اسم المادة الفعالة'] || '';
-          var conc = parseConc(rawName), form = parseForm(rawName);
+          var conc = p.conc != null ? p.conc : parseConc(rawName), form = p.form != null ? p.form : parseForm(rawName);
+          if (p.sub && p.sub !== lastSub) { html += '<h4 class="tws-sub" dir="auto">' + esc(p.sub) + '</h4>'; lastSub = p.sub; }
           html += '<div class="tws-prod">'
             + '<div class="act"><b>' + esc(L('actives')) + ':</b> <span class="nm">' + esc(rawName) + '</span>'
             + (conc ? ' <span class="tws-parsed">' + esc(L('conc')) + ' ' + esc(conc) + '</span>' : '')
             + (form ? ' <span class="tws-parsed">' + esc(L('form')) + ' ' + esc(form) + '</span>' : '')
             + '</div>'
             + regulatoryStatusMarkup(p)
-            + '<div class="row"><span><b>' + esc(L('rate')) + ':</b> ' + esc(p['معدل الاستخدام'] || '—') + '</span>'
+            + '<div class="row"><span><b>' + esc(L('rate')) + ':</b> ' + esc(rateText(p) || '—') + '</span>'
             + '<span><b>' + esc(L('who')) + ':</b> ' + esc(p['تصنيف WHO'] || '—') + '</span>'
             + '<span><b>' + esc(L('phi')) + ':</b> ' + esc(p['فترة الأمان'] || '—') + '</span></div>';
-          var mrl = p['قيم MRL'] || {};
+          if (p.mrl_rows && p.mrl_rows.length) {
+            html += '<div class="row"><span><b>' + esc(L('mrl')) + ':</b>' + p.mrl_rows.map(function (m) {
+              var v = ['EPA', 'EU', 'Codex'].map(function (k) { return k + ': ' + (m[k] == null ? '—' : m[k]); }).join(' · ');
+              return '<br><span dir="ltr" class="tws-mrl">' + (p.mrl_rows.length > 1 && m.name ? esc(m.name) + ' — ' : '') + esc(v) + '</span>';
+            }).join('') + '</span></div>';
+          }
+          var mrl = p.mrl_rows ? {} : (p['قيم MRL'] || {});
           var mrlParts = ['EPA', 'EU', 'Codex'].filter(function (k) { return mrl[k] !== undefined && mrl[k] !== ''; })
             .map(function (k) { return k + ': ' + mrl[k]; });
           if (mrlParts.length) {
@@ -571,6 +606,8 @@
               var how = String(m.how || '');
               if (m.cas && (how === 'exact' || how === 'tokens')) {
                 html += '<span class="tws-cas" title="' + esc(m.name || '') + '">' + esc(L('cas')) + ' <span dir="ltr">' + esc(m.cas) + '</span></span>';
+              } else if (how === 'unverified' && m.cas) {
+                html += '<span class="tws-cas amb" title="' + esc(m.name || '') + '">' + esc(L('cas')) + ' <span dir="ltr">' + esc(m.cas) + '</span> · ' + esc(L('cas_unverified')) + '</span>';
               } else if (how.indexOf('ambiguous') === 0) {
                 html += '<span class="tws-cas amb" title="' + esc(m.name || '') + '">' + esc(L('cas_ambiguous')) + '</span>';
               } else {
@@ -579,7 +616,7 @@
             });
             html += '</div>';
           }
-          if (p._verify && p._verify.status === 'NEEDS_VERIFICATION') {
+          if ((p._verify && p._verify.status === 'NEEDS_VERIFICATION') || p.uncertain) {
             html += '<div class="row"><span class="tws-chip warn">' + esc(L('needs_verify')) + '</span></div>';
           }
           html += '</div>';

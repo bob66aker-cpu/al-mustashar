@@ -42,7 +42,7 @@
      "printed_page": 42,
      "pdf_page": 55,
      "has_rec": true,
-     "group": "الفطريات",
+     "group": null,
      "images": 3
     },
     {
@@ -52,7 +52,7 @@
      "printed_page": 43,
      "pdf_page": 56,
      "has_rec": true,
-     "group": "الفطريات",
+     "group": null,
      "images": 2
     },
     {
@@ -63,7 +63,6 @@
      "pdf_page": 57,
      "has_rec": true,
      "group": "النيماتودا",
-     "name_status": "NEEDS_REVIEW",
      "images": 2
     }
    ]
@@ -84,7 +83,6 @@
      "pdf_page": 135,
      "has_rec": true,
      "group": "الحشرات",
-     "crop_conflict": true,
      "images": 2
     },
     {
@@ -95,7 +93,6 @@
      "pdf_page": 136,
      "has_rec": true,
      "group": "الأكاروسات",
-     "crop_conflict": true,
      "images": 1
     }
    ]
@@ -196,8 +193,6 @@
      "pdf_page": 196,
      "has_rec": true,
      "group": "الحشرات",
-     "name_status": "NEEDS_REVIEW",
-     "crop_conflict": true,
      "images": 2
     },
     {
@@ -208,7 +203,6 @@
      "pdf_page": 196,
      "has_rec": true,
      "group": "الحشرات",
-     "crop_conflict": true,
      "images": 2
     }
    ]
@@ -223,13 +217,12 @@
    "infections": [
     {
      "n": 1,
-     "type": "mite",
+     "type": "insect",
      "name_ar": "دودة ورق القطن",
      "printed_page": 170,
      "pdf_page": 183,
      "has_rec": true,
      "group": "الحشرات",
-     "crop_conflict": true,
      "images": 2
     },
     {
@@ -240,7 +233,6 @@
      "pdf_page": 184,
      "has_rec": true,
      "group": "الفطريات",
-     "crop_conflict": true,
      "images": 2
     },
     {
@@ -251,7 +243,6 @@
      "pdf_page": 184,
      "has_rec": true,
      "group": "الفطريات",
-     "crop_conflict": true,
      "images": 3
     },
     {
@@ -262,7 +253,6 @@
      "pdf_page": 185,
      "has_rec": true,
      "group": "الفطريات",
-     "crop_conflict": true,
      "images": 1
     }
    ]
@@ -283,7 +273,6 @@
      "pdf_page": 23,
      "has_rec": true,
      "group": "الحشرات",
-     "name_status": "NEEDS_REVIEW",
      "images": 1
     },
     {
@@ -303,7 +292,7 @@
      "printed_page": 13,
      "pdf_page": 26,
      "has_rec": true,
-     "group": "الفطريات",
+     "group": null,
      "images": 3
     },
     {
@@ -313,7 +302,7 @@
      "printed_page": 14,
      "pdf_page": 27,
      "has_rec": true,
-     "group": "الفطريات",
+     "group": null,
      "images": 3
     },
     {
@@ -323,8 +312,7 @@
      "printed_page": 15,
      "pdf_page": 28,
      "has_rec": true,
-     "group": "الفطريات",
-     "name_status": "NEEDS_REVIEW",
+     "group": null,
      "images": 1
     }
    ]
@@ -335,7 +323,7 @@
    "name_en": "Potato",
    "sci": "Solanum tuberosum",
    "family": "Solanaceae",
-   "cards": 21,
+   "cards": 17,
    "infections": [
     {
      "n": 1,
@@ -345,7 +333,6 @@
      "pdf_page": 102,
      "has_rec": true,
      "group": "الحشرات",
-     "crop_conflict": true,
      "images": 1
     },
     {
@@ -356,7 +343,6 @@
      "pdf_page": 103,
      "has_rec": true,
      "group": "الحشرات",
-     "crop_conflict": true,
      "images": 1
     },
     {
@@ -366,8 +352,7 @@
      "printed_page": 91,
      "pdf_page": 104,
      "has_rec": true,
-     "group": "الحشرات",
-     "crop_conflict": true,
+     "group": null,
      "images": 2
     },
     {
@@ -377,8 +362,7 @@
      "printed_page": 91,
      "pdf_page": 104,
      "has_rec": true,
-     "group": "الحشرات",
-     "crop_conflict": true,
+     "group": null,
      "images": 2
     },
     {
@@ -388,8 +372,7 @@
      "printed_page": 93,
      "pdf_page": 106,
      "has_rec": true,
-     "group": "الحشرات",
-     "crop_conflict": true,
+     "group": null,
      "images": 1
     },
     {
@@ -399,8 +382,7 @@
      "printed_page": 95,
      "pdf_page": 108,
      "has_rec": true,
-     "group": "الحشرات",
-     "crop_conflict": true,
+     "group": null,
      "images": 1
     },
     {
@@ -411,7 +393,6 @@
      "pdf_page": 109,
      "has_rec": true,
      "group": "الأكاروسات",
-     "crop_conflict": true,
      "images": 1
     },
     {
@@ -422,7 +403,6 @@
      "pdf_page": 110,
      "has_rec": true,
      "group": "الفطريات",
-     "crop_conflict": true,
      "images": 1
     },
     {
@@ -432,8 +412,7 @@
      "printed_page": 98,
      "pdf_page": 111,
      "has_rec": true,
-     "group": "الفطريات",
-     "crop_conflict": true,
+     "group": null,
      "images": 1
     },
     {
@@ -443,8 +422,7 @@
      "printed_page": 99,
      "pdf_page": 112,
      "has_rec": true,
-     "group": "الفطريات",
-     "crop_conflict": true,
+     "group": null,
      "images": 1
     },
     {
@@ -454,8 +432,7 @@
      "printed_page": 100,
      "pdf_page": 113,
      "has_rec": true,
-     "group": "الفطريات",
-     "crop_conflict": true,
+     "group": null,
      "images": 1
     },
     {
@@ -465,8 +442,7 @@
      "printed_page": 101,
      "pdf_page": 114,
      "has_rec": true,
-     "group": "الفطريات",
-     "crop_conflict": true,
+     "group": null,
      "images": 2
     },
     {
@@ -476,8 +452,7 @@
      "printed_page": 101,
      "pdf_page": 114,
      "has_rec": true,
-     "group": "الفطريات",
-     "crop_conflict": true,
+     "group": null,
      "images": 2
     },
     {
@@ -487,30 +462,27 @@
      "printed_page": 106,
      "pdf_page": 119,
      "has_rec": true,
-     "group": "الفطريات",
-     "crop_conflict": true,
+     "group": null,
      "images": 1
     },
     {
      "n": 15,
-     "type": "fungus",
+     "type": "nematode",
      "name_ar": "نيماتودا تعقد الجذور",
      "printed_page": 111,
      "pdf_page": 124,
      "has_rec": true,
-     "group": "الفطريات",
-     "crop_conflict": true,
+     "group": null,
      "images": 3
     },
     {
      "n": 16,
-     "type": "fungus",
+     "type": "other",
      "name_ar": "تعقيم تربة أراضي مفتوحة",
      "printed_page": 111,
      "pdf_page": 124,
      "has_rec": true,
-     "group": "الفطريات",
-     "crop_conflict": true,
+     "group": null,
      "images": 3
     },
     {
@@ -521,33 +493,41 @@
      "pdf_page": 125,
      "has_rec": true,
      "group": "النيماتودا",
-     "crop_conflict": true,
      "images": 2
-    },
+    }
+   ]
+  },
+  {
+   "id": "sweet-potato",
+   "name_ar": "البطاطا",
+   "name_en": "Sweet potato",
+   "sci": "Ipomoea batatas",
+   "family": "Convolvulaceae",
+   "cards": 4,
+   "infections": [
     {
-     "n": 18,
-     "type": "nematode",
+     "n": 1,
+     "type": "insect",
      "name_ar": "دودة ورق القطن",
      "printed_page": 112,
      "pdf_page": 125,
      "has_rec": true,
      "group": "الحشرات",
-     "crop_conflict": true,
      "images": 3
     },
     {
-     "n": 19,
-     "type": "nematode",
+     "n": 2,
+     "type": "insect",
      "name_ar": "الذبابة البيضاء",
      "printed_page": 113,
      "pdf_page": 126,
      "has_rec": true,
-     "group": "النيماتودا",
+     "group": null,
      "images": 2
     },
     {
-     "n": 20,
-     "type": "nematode",
+     "n": 3,
+     "type": "mite",
      "name_ar": "العنكبوت الاحمر",
      "printed_page": 114,
      "pdf_page": 127,
@@ -556,7 +536,7 @@
      "images": 2
     },
     {
-     "n": 21,
+     "n": 4,
      "type": "fungus",
      "name_ar": "اعفان الجذور",
      "printed_page": 115,
@@ -577,13 +557,13 @@
    "infections": [
     {
      "n": 1,
-     "type": "other",
+     "type": "mite",
      "name_ar": "العنكبوت الأحمر",
      "printed_page": 144,
      "pdf_page": 157,
      "has_rec": true,
-     "images": 1,
-     "group": "الأكاروسات"
+     "group": "الأكاروسات",
+     "images": 1
     },
     {
      "n": 2,
@@ -627,24 +607,23 @@
    "infections": [
     {
      "n": 1,
-     "type": "other",
+     "type": "insect",
      "name_ar": "حفار ساق التفاح",
      "printed_page": 245,
      "pdf_page": 258,
      "has_rec": true,
-     "crop_conflict": true,
-     "images": 3,
-     "group": "الحشرات"
+     "group": "الحشرات",
+     "images": 3
     },
     {
      "n": 2,
-     "type": "other",
+     "type": "insect",
      "name_ar": "من التفاح الصوفى",
      "printed_page": 246,
      "pdf_page": 259,
      "has_rec": true,
-     "images": 1,
-     "group": "الحشرات"
+     "group": "الحشرات",
+     "images": 1
     },
     {
      "n": 3,
@@ -672,28 +651,28 @@
      "name_ar": "العنكبوت الأحمر",
      "printed_page": 248,
      "pdf_page": 261,
-     "has_rec": false,
-     "group": "الأكاروسات",
+     "has_rec": true,
+     "group": null,
      "images": 1
     },
     {
      "n": 6,
-     "type": "mite",
+     "type": "fungus",
      "name_ar": "البياض الدقيقي",
      "printed_page": 250,
      "pdf_page": 263,
      "has_rec": true,
-     "group": "الأكاروسات",
+     "group": null,
      "images": 1
     },
     {
      "n": 7,
-     "type": "mite",
+     "type": "fungus",
      "name_ar": "الجرب",
      "printed_page": 252,
      "pdf_page": 265,
      "has_rec": true,
-     "group": "الأكاروسات",
+     "group": null,
      "images": 2
     }
    ]
@@ -714,7 +693,6 @@
      "pdf_page": 29,
      "has_rec": true,
      "group": "الحشرات",
-     "name_status": "NEEDS_REVIEW",
      "images": 1
     },
     {
@@ -729,7 +707,7 @@
     },
     {
      "n": 3,
-     "type": "mite",
+     "type": "fungus",
      "name_ar": "البياض الزغبى",
      "printed_page": 17,
      "pdf_page": 30,
@@ -739,12 +717,12 @@
     },
     {
      "n": 4,
-     "type": "mite",
+     "type": "fungus",
      "name_ar": "مرض الصدأ فى الثوم",
      "printed_page": 19,
      "pdf_page": 32,
      "has_rec": true,
-     "group": "الأكاروسات",
+     "group": null,
      "images": 1
     }
    ]
@@ -805,7 +783,6 @@
      "pdf_page": 254,
      "has_rec": true,
      "group": "الحشرات",
-     "crop_conflict": true,
      "images": 1
     },
     {
@@ -816,7 +793,6 @@
      "pdf_page": 255,
      "has_rec": true,
      "group": "الحشرات",
-     "crop_conflict": true,
      "images": 2
     },
     {
@@ -827,7 +803,6 @@
      "pdf_page": 255,
      "has_rec": true,
      "group": "الأكاروسات",
-     "crop_conflict": true,
      "images": 2
     },
     {
@@ -838,8 +813,6 @@
      "pdf_page": 256,
      "has_rec": true,
      "group": "الأكاروسات",
-     "name_status": "NEEDS_REVIEW",
-     "crop_conflict": true,
      "images": 2
     },
     {
@@ -850,7 +823,6 @@
      "pdf_page": 256,
      "has_rec": true,
      "group": "الفطريات",
-     "crop_conflict": true,
      "images": 2
     }
    ]
@@ -865,13 +837,12 @@
    "infections": [
     {
      "n": 1,
-     "type": "insect",
+     "type": "other",
      "name_ar": "الفئران",
      "printed_page": 265,
      "pdf_page": 278,
      "has_rec": true,
      "group": "الفقاريات",
-     "crop_conflict": true,
      "images": 3
     }
    ]
@@ -892,7 +863,6 @@
      "pdf_page": 200,
      "has_rec": true,
      "group": "الحشرات",
-     "crop_conflict": true,
      "images": 1
     }
    ]
@@ -937,7 +907,7 @@
     },
     {
      "n": 2,
-     "type": "insect",
+     "type": "mite",
      "name_ar": "العنكبوت الأحمر",
      "printed_page": 256,
      "pdf_page": 269,
@@ -947,7 +917,7 @@
     },
     {
      "n": 3,
-     "type": "insect",
+     "type": "fungus",
      "name_ar": "البياض الدقيقي",
      "printed_page": 257,
      "pdf_page": 270,
@@ -957,7 +927,7 @@
     },
     {
      "n": 4,
-     "type": "insect",
+     "type": "fungus",
      "name_ar": "العفن البنى",
      "printed_page": 258,
      "pdf_page": 271,
@@ -967,7 +937,7 @@
     },
     {
      "n": 5,
-     "type": "insect",
+     "type": "fungus",
      "name_ar": "صدأ الخوخ",
      "printed_page": 259,
      "pdf_page": 272,
@@ -977,13 +947,12 @@
     },
     {
      "n": 6,
-     "type": "insect",
+     "type": "fungus",
      "name_ar": "تجعد أوراق الخوخ",
      "printed_page": 260,
      "pdf_page": 273,
      "has_rec": true,
-     "group": "الحشرات",
-     "name_status": "NEEDS_REVIEW",
+     "group": null,
      "images": 2
     }
    ]
@@ -998,43 +967,43 @@
    "infections": [
     {
      "n": 1,
-     "type": "other",
+     "type": "insect",
      "name_ar": "الذبابة البيضاء",
      "printed_page": 124,
      "pdf_page": 137,
      "has_rec": true,
-     "images": 1,
-     "group": "الحشرات"
+     "group": "الحشرات",
+     "images": 1
     },
     {
      "n": 2,
-     "type": "other",
+     "type": "insect",
      "name_ar": "المن",
      "printed_page": 126,
      "pdf_page": 139,
      "has_rec": true,
-     "images": 1,
-     "group": "الحشرات"
+     "group": "الحشرات",
+     "images": 1
     },
     {
      "n": 3,
-     "type": "other",
+     "type": "insect",
      "name_ar": "صانعات الأنفاق",
      "printed_page": 128,
      "pdf_page": 141,
      "has_rec": true,
-     "images": 2,
-     "group": "الحشرات"
+     "group": "الحشرات",
+     "images": 2
     },
     {
      "n": 4,
-     "type": "other",
+     "type": "insect",
      "name_ar": "دودة ورق القطن",
      "printed_page": 128,
      "pdf_page": 141,
      "has_rec": true,
-     "images": 2,
-     "group": "الحشرات"
+     "group": "الحشرات",
+     "images": 2
     },
     {
      "n": 5,
@@ -1098,12 +1067,12 @@
     },
     {
      "n": 11,
-     "type": "fungus",
+     "type": "nematode",
      "name_ar": "نيماتودا تعقد الجذور",
      "printed_page": 140,
      "pdf_page": 153,
      "has_rec": true,
-     "group": "الفطريات",
+     "group": null,
      "images": 2
     }
    ]
@@ -1124,7 +1093,6 @@
      "pdf_page": 58,
      "has_rec": true,
      "group": "الحشرات",
-     "crop_conflict": true,
      "images": 1
     },
     {
@@ -1134,8 +1102,7 @@
      "printed_page": 46,
      "pdf_page": 59,
      "has_rec": true,
-     "group": "الحشرات",
-     "crop_conflict": true,
+     "group": null,
      "images": 2
     },
     {
@@ -1145,9 +1112,7 @@
      "printed_page": 46,
      "pdf_page": 59,
      "has_rec": true,
-     "group": "الحشرات",
-     "name_status": "NEEDS_REVIEW",
-     "crop_conflict": true,
+     "group": null,
      "images": 2
     },
     {
@@ -1157,19 +1122,17 @@
      "printed_page": 48,
      "pdf_page": 61,
      "has_rec": true,
-     "group": "الحشرات",
-     "crop_conflict": true,
+     "group": null,
      "images": 2
     },
     {
      "n": 5,
-     "type": "insect",
+     "type": "fungus",
      "name_ar": "اعفان الجذور وموت البادرات",
      "printed_page": 48,
      "pdf_page": 61,
      "has_rec": true,
      "group": "الفطريات",
-     "crop_conflict": true,
      "images": 2
     }
    ]
@@ -1210,7 +1173,6 @@
      "pdf_page": 258,
      "has_rec": true,
      "group": "الحشرات",
-     "name_status": "NEEDS_REVIEW",
      "images": 2
     }
    ]
@@ -1231,7 +1193,6 @@
      "pdf_page": 209,
      "has_rec": true,
      "group": "النيماتودا",
-     "crop_conflict": true,
      "images": 1
     },
     {
@@ -1242,7 +1203,6 @@
      "pdf_page": 210,
      "has_rec": true,
      "group": "النيماتودا",
-     "crop_conflict": true,
      "images": 2
     }
    ]
@@ -1323,7 +1283,6 @@
      "pdf_page": 70,
      "has_rec": true,
      "group": "الفطريات",
-     "crop_conflict": true,
      "images": 1
     },
     {
@@ -1333,7 +1292,7 @@
      "printed_page": 58,
      "pdf_page": 71,
      "has_rec": true,
-     "group": "الفطريات",
+     "group": null,
      "images": 3
     }
    ]
@@ -1384,29 +1343,26 @@
      "pdf_page": 174,
      "has_rec": true,
      "group": "الحشرات",
-     "crop_conflict": true,
      "images": 2
     },
     {
      "n": 2,
-     "type": "insect",
+     "type": "fungus",
      "name_ar": "البياض الدقيق",
      "printed_page": 161,
      "pdf_page": 174,
      "has_rec": true,
      "group": "الفطريات",
-     "crop_conflict": true,
      "images": 3
     },
     {
      "n": 3,
-     "type": "insect",
+     "type": "fungus",
      "name_ar": "البياض الزغبى",
      "printed_page": 162,
      "pdf_page": 175,
      "has_rec": true,
      "group": "الفطريات",
-     "crop_conflict": true,
      "images": 1
     }
    ]
@@ -1436,7 +1392,7 @@
      "printed_page": 62,
      "pdf_page": 75,
      "has_rec": true,
-     "group": "الحشرات",
+     "group": null,
      "images": 1
     },
     {
@@ -1446,7 +1402,7 @@
      "printed_page": 66,
      "pdf_page": 79,
      "has_rec": true,
-     "group": "الحشرات",
+     "group": null,
      "images": 1
     },
     {
@@ -1456,7 +1412,7 @@
      "printed_page": 67,
      "pdf_page": 80,
      "has_rec": true,
-     "group": "الحشرات",
+     "group": null,
      "images": 1
     },
     {
@@ -1466,7 +1422,7 @@
      "printed_page": 69,
      "pdf_page": 82,
      "has_rec": true,
-     "group": "الحشرات",
+     "group": null,
      "images": 1
     },
     {
@@ -1476,7 +1432,7 @@
      "printed_page": 72,
      "pdf_page": 85,
      "has_rec": true,
-     "group": "الحشرات",
+     "group": null,
      "images": 1
     },
     {
@@ -1486,7 +1442,7 @@
      "printed_page": 73,
      "pdf_page": 86,
      "has_rec": true,
-     "group": "الحشرات",
+     "group": null,
      "images": 1
     },
     {
@@ -1496,16 +1452,16 @@
      "printed_page": 74,
      "pdf_page": 87,
      "has_rec": true,
-     "group": "الحشرات",
+     "group": null,
      "images": 2
     },
     {
      "n": 9,
-     "type": "insect",
+     "type": "mite",
      "name_ar": "العنكبوت الأحمر",
      "printed_page": 74,
      "pdf_page": 87,
-     "has_rec": false,
+     "has_rec": true,
      "group": "الأكاروسات",
      "images": 3
     },
@@ -1526,7 +1482,7 @@
      "printed_page": 78,
      "pdf_page": 91,
      "has_rec": true,
-     "group": "الفطريات",
+     "group": null,
      "images": 2
     },
     {
@@ -1536,7 +1492,7 @@
      "printed_page": 79,
      "pdf_page": 92,
      "has_rec": true,
-     "group": "الفطريات",
+     "group": null,
      "images": 1
     },
     {
@@ -1546,7 +1502,7 @@
      "printed_page": 81,
      "pdf_page": 94,
      "has_rec": true,
-     "group": "الفطريات",
+     "group": null,
      "images": 1
     },
     {
@@ -1556,7 +1512,7 @@
      "printed_page": 84,
      "pdf_page": 97,
      "has_rec": true,
-     "group": "الفطريات",
+     "group": null,
      "images": 1
     },
     {
@@ -1566,12 +1522,12 @@
      "printed_page": 87,
      "pdf_page": 100,
      "has_rec": true,
-     "group": "الفطريات",
+     "group": null,
      "images": 2
     },
     {
      "n": 16,
-     "type": "fungus",
+     "type": "nematode",
      "name_ar": "نيماتودا تعقد الجذور",
      "printed_page": 87,
      "pdf_page": 100,
@@ -1606,7 +1562,7 @@
      "printed_page": 220,
      "pdf_page": 233,
      "has_rec": true,
-     "group": "الحشرات",
+     "group": null,
      "images": 2
     },
     {
@@ -1616,8 +1572,7 @@
      "printed_page": 220,
      "pdf_page": 233,
      "has_rec": true,
-     "group": "الحشرات",
-     "name_status": "NEEDS_REVIEW",
+     "group": null,
      "images": 2
     },
     {
@@ -1627,7 +1582,7 @@
      "printed_page": 221,
      "pdf_page": 234,
      "has_rec": true,
-     "group": "الحشرات",
+     "group": null,
      "images": 1
     },
     {
@@ -1657,7 +1612,7 @@
      "printed_page": 226,
      "pdf_page": 239,
      "has_rec": true,
-     "group": "الفطريات",
+     "group": null,
      "images": 2
     },
     {
@@ -1667,7 +1622,7 @@
      "printed_page": 231,
      "pdf_page": 244,
      "has_rec": true,
-     "group": "الفطريات",
+     "group": null,
      "images": 1
     },
     {
@@ -1698,7 +1653,6 @@
      "pdf_page": 176,
      "has_rec": true,
      "group": "الحشرات",
-     "crop_conflict": true,
      "images": 1
     },
     {
@@ -1709,18 +1663,16 @@
      "pdf_page": 177,
      "has_rec": true,
      "group": "الحشرات",
-     "crop_conflict": true,
      "images": 1
     },
     {
      "n": 3,
-     "type": "other",
+     "type": "mite",
      "name_ar": "العنكبوت الأحمر",
      "printed_page": 165,
      "pdf_page": 178,
      "has_rec": true,
      "group": "الأكاروسات",
-     "crop_conflict": true,
      "images": 1
     },
     {
@@ -1731,7 +1683,6 @@
      "pdf_page": 179,
      "has_rec": true,
      "group": "الفطريات",
-     "crop_conflict": true,
      "images": 1
     },
     {
@@ -1742,7 +1693,6 @@
      "pdf_page": 180,
      "has_rec": true,
      "group": "الفطريات",
-     "crop_conflict": true,
      "images": 2
     },
     {
@@ -1753,7 +1703,6 @@
      "pdf_page": 180,
      "has_rec": true,
      "group": "الفطريات",
-     "crop_conflict": true,
      "images": 2
     }
    ]
@@ -1778,11 +1727,11 @@
     },
     {
      "n": 2,
-     "type": "insect",
+     "type": "mite",
      "name_ar": "العنكبوت الأحمر",
      "printed_page": 190,
      "pdf_page": 203,
-     "has_rec": false,
+     "has_rec": true,
      "group": "الأكاروسات",
      "images": 2
     },
@@ -1803,7 +1752,7 @@
      "printed_page": 193,
      "pdf_page": 206,
      "has_rec": true,
-     "group": "الفطريات",
+     "group": null,
      "images": 2
     },
     {
@@ -1813,7 +1762,7 @@
      "printed_page": 194,
      "pdf_page": 207,
      "has_rec": true,
-     "group": "الفطريات",
+     "group": null,
      "images": 1
     },
     {
@@ -1823,7 +1772,7 @@
      "printed_page": 195,
      "pdf_page": 208,
      "has_rec": true,
-     "group": "الفطريات",
+     "group": null,
      "images": 1
     }
    ]
@@ -1844,7 +1793,6 @@
      "pdf_page": 131,
      "has_rec": true,
      "group": "الحشرات",
-     "name_status": "NEEDS_REVIEW",
      "images": 3
     },
     {
@@ -1854,7 +1802,7 @@
      "printed_page": 118,
      "pdf_page": 131,
      "has_rec": true,
-     "group": "الحشرات",
+     "group": null,
      "images": 4
     },
     {
@@ -1864,7 +1812,7 @@
      "printed_page": 119,
      "pdf_page": 132,
      "has_rec": true,
-     "group": "الحشرات",
+     "group": null,
      "images": 1
     },
     {
@@ -1874,7 +1822,7 @@
      "printed_page": 120,
      "pdf_page": 133,
      "has_rec": true,
-     "group": "الحشرات",
+     "group": null,
      "images": 2
     },
     {
@@ -1904,7 +1852,7 @@
      "printed_page": 122,
      "pdf_page": 135,
      "has_rec": true,
-     "group": "الفطريات",
+     "group": null,
      "images": 2
     }
    ]
@@ -1925,7 +1873,6 @@
      "pdf_page": 21,
      "has_rec": true,
      "group": "الحشرات",
-     "crop_conflict": true,
      "images": 1
     },
     {
@@ -1936,7 +1883,6 @@
      "pdf_page": 22,
      "has_rec": true,
      "group": "الأكاروسات",
-     "crop_conflict": true,
      "images": 2
     },
     {
@@ -1947,7 +1893,6 @@
      "pdf_page": 22,
      "has_rec": true,
      "group": "الفطريات",
-     "crop_conflict": true,
      "images": 2
     }
    ]
@@ -1968,51 +1913,46 @@
      "pdf_page": 67,
      "has_rec": true,
      "group": "الأكاروسات",
-     "crop_conflict": true,
      "images": 2
     },
     {
      "n": 2,
-     "type": "mite",
+     "type": "fungus",
      "name_ar": "اعفان الجذور وموت البادرات",
      "printed_page": 54,
      "pdf_page": 67,
      "has_rec": true,
      "group": "الفطريات",
-     "crop_conflict": true,
      "images": 3
     },
     {
      "n": 3,
-     "type": "mite",
+     "type": "fungus",
      "name_ar": "تبقع الأوراق",
      "printed_page": 55,
      "pdf_page": 68,
      "has_rec": true,
-     "group": "الأكاروسات",
-     "crop_conflict": true,
+     "group": null,
      "images": 3
     },
     {
      "n": 4,
-     "type": "mite",
+     "type": "fungus",
      "name_ar": "أعفان الثمار",
      "printed_page": 56,
      "pdf_page": 69,
      "has_rec": true,
-     "group": "الأكاروسات",
-     "crop_conflict": true,
+     "group": null,
      "images": 2
     },
     {
      "n": 5,
-     "type": "mite",
+     "type": "nematode",
      "name_ar": "نيماتودا تعقد الجذور",
      "printed_page": 56,
      "pdf_page": 69,
      "has_rec": true,
      "group": "النيماتودا",
-     "crop_conflict": true,
      "images": 3
     }
    ]
@@ -2083,7 +2023,6 @@
      "pdf_page": 199,
      "has_rec": true,
      "group": "الفطريات",
-     "name_status": "NEEDS_REVIEW",
      "images": 1
     }
    ]
@@ -2113,7 +2052,7 @@
      "printed_page": 32,
      "pdf_page": 45,
      "has_rec": true,
-     "group": "الحشرات",
+     "group": null,
      "images": 2
     },
     {
@@ -2123,7 +2062,7 @@
      "printed_page": 32,
      "pdf_page": 45,
      "has_rec": true,
-     "group": "الحشرات",
+     "group": null,
      "images": 2
     },
     {
@@ -2133,7 +2072,7 @@
      "printed_page": 33,
      "pdf_page": 46,
      "has_rec": true,
-     "group": "الحشرات",
+     "group": null,
      "images": 2
     },
     {
@@ -2143,7 +2082,7 @@
      "printed_page": 33,
      "pdf_page": 46,
      "has_rec": true,
-     "group": "الحشرات",
+     "group": null,
      "images": 2
     },
     {
@@ -2153,7 +2092,7 @@
      "printed_page": 35,
      "pdf_page": 48,
      "has_rec": true,
-     "group": "الحشرات",
+     "group": null,
      "images": 1
     },
     {
@@ -2213,7 +2152,7 @@
      "printed_page": 5,
      "pdf_page": 18,
      "has_rec": true,
-     "group": "الفطريات",
+     "group": null,
      "images": 2
     },
     {
@@ -2223,7 +2162,7 @@
      "printed_page": 5,
      "pdf_page": 18,
      "has_rec": true,
-     "group": "الفطريات",
+     "group": null,
      "images": 4
     },
     {
@@ -2233,7 +2172,7 @@
      "printed_page": 7,
      "pdf_page": 20,
      "has_rec": true,
-     "group": "الفطريات",
+     "group": null,
      "images": 2
     },
     {
@@ -2243,7 +2182,7 @@
      "printed_page": 7,
      "pdf_page": 20,
      "has_rec": true,
-     "group": "الفطريات",
+     "group": null,
      "images": 2
     }
    ]
@@ -2258,13 +2197,12 @@
    "infections": [
     {
      "n": 1,
-     "type": "other",
+     "type": "mollusc",
      "name_ar": "القواقع",
      "printed_page": 266,
      "pdf_page": 279,
      "has_rec": true,
      "group": "اللافقاريات",
-     "crop_conflict": true,
      "images": 1
     }
    ]
@@ -2285,7 +2223,6 @@
      "pdf_page": 168,
      "has_rec": true,
      "group": "الحشرات",
-     "crop_conflict": true,
      "images": 1
     },
     {
@@ -2296,7 +2233,6 @@
      "pdf_page": 169,
      "has_rec": true,
      "group": "الحشرات",
-     "crop_conflict": true,
      "images": 3
     },
     {
@@ -2307,8 +2243,6 @@
      "pdf_page": 169,
      "has_rec": true,
      "group": "الحشرات",
-     "name_status": "NEEDS_REVIEW",
-     "crop_conflict": true,
      "images": 3
     },
     {
@@ -2319,51 +2253,46 @@
      "pdf_page": 170,
      "has_rec": true,
      "group": "الأكاروسات",
-     "crop_conflict": true,
      "images": 2
     },
     {
      "n": 5,
-     "type": "mite",
+     "type": "fungus",
      "name_ar": "البياض الدقيق",
      "printed_page": 157,
      "pdf_page": 170,
      "has_rec": true,
      "group": "الفطريات",
-     "crop_conflict": true,
      "images": 3
     },
     {
      "n": 6,
-     "type": "mite",
+     "type": "fungus",
      "name_ar": "البياض الزغبى",
      "printed_page": 158,
      "pdf_page": 171,
      "has_rec": true,
      "group": "الفطريات",
-     "crop_conflict": true,
      "images": 2
     },
     {
      "n": 7,
-     "type": "mite",
+     "type": "fungus",
      "name_ar": "أعفان الجذور وموت البادرات",
      "printed_page": 159,
      "pdf_page": 172,
      "has_rec": true,
      "group": "الفطريات",
-     "crop_conflict": true,
      "images": 1
     },
     {
      "n": 8,
-     "type": "mite",
+     "type": "fungus",
      "name_ar": "لفحة الساق الصمغية",
      "printed_page": 160,
      "pdf_page": 173,
      "has_rec": true,
      "group": "الفطريات",
-     "crop_conflict": true,
      "images": 1
     }
    ]
@@ -2384,7 +2313,6 @@
      "pdf_page": 53,
      "has_rec": true,
      "group": "الفطريات",
-     "crop_conflict": true,
      "images": 1
     }
    ]
@@ -2405,7 +2333,6 @@
      "pdf_page": 191,
      "has_rec": true,
      "group": "الحشرات",
-     "crop_conflict": true,
      "images": 2
     },
     {
@@ -2416,7 +2343,6 @@
      "pdf_page": 191,
      "has_rec": true,
      "group": "الحشرات",
-     "crop_conflict": true,
      "images": 4
     },
     {
@@ -2426,8 +2352,7 @@
      "printed_page": 179,
      "pdf_page": 192,
      "has_rec": true,
-     "group": "الحشرات",
-     "crop_conflict": true,
+     "group": null,
      "images": 2
     },
     {
@@ -2437,9 +2362,7 @@
      "printed_page": 179,
      "pdf_page": 192,
      "has_rec": true,
-     "group": "الحشرات",
-     "name_status": "NEEDS_REVIEW",
-     "crop_conflict": true,
+     "group": null,
      "images": 4
     },
     {
@@ -2449,19 +2372,17 @@
      "printed_page": 180,
      "pdf_page": 193,
      "has_rec": true,
-     "group": "الحشرات",
-     "crop_conflict": true,
+     "group": null,
      "images": 2
     },
     {
      "n": 6,
-     "type": "insect",
+     "type": "mite",
      "name_ar": "العنكبوت الاحمر",
      "printed_page": 181,
      "pdf_page": 194,
      "has_rec": true,
-     "group": "الحشرات",
-     "crop_conflict": true,
+     "group": null,
      "images": 2
     },
     {
@@ -2472,7 +2393,6 @@
      "pdf_page": 194,
      "has_rec": true,
      "group": "الفطريات",
-     "crop_conflict": true,
      "images": 2
     },
     {
@@ -2483,7 +2403,6 @@
      "pdf_page": 195,
      "has_rec": true,
      "group": "الفطريات",
-     "crop_conflict": true,
      "images": 2
     },
     {
@@ -2494,7 +2413,6 @@
      "pdf_page": 195,
      "has_rec": true,
      "group": "الفطريات",
-     "crop_conflict": true,
      "images": 2
     }
    ]
@@ -2509,14 +2427,13 @@
    "infections": [
     {
      "n": 1,
-     "type": "other",
+     "type": "insect",
      "name_ar": "الحشرة القشرية",
      "printed_page": 253,
      "pdf_page": 266,
      "has_rec": true,
-     "crop_conflict": true,
-     "images": 2,
-     "group": "الحشرات"
+     "group": "الحشرات",
+     "images": 2
     },
     {
      "n": 2,
@@ -2526,18 +2443,16 @@
      "pdf_page": 267,
      "has_rec": true,
      "group": "الفطريات",
-     "crop_conflict": true,
      "images": 1
     },
     {
      "n": 3,
-     "type": "other",
+     "type": "bacterium",
      "name_ar": "اللفحة النارية",
      "printed_page": 255,
      "pdf_page": 268,
      "has_rec": true,
      "group": "البكتيريا",
-     "crop_conflict": true,
      "images": 1
     }
    ]
@@ -2558,7 +2473,6 @@
      "pdf_page": 153,
      "has_rec": true,
      "group": "الحشرات",
-     "crop_conflict": true,
      "images": 2
     },
     {
@@ -2569,7 +2483,6 @@
      "pdf_page": 154,
      "has_rec": true,
      "group": "الفطريات",
-     "crop_conflict": true,
      "images": 1
     }
    ]
@@ -2590,7 +2503,6 @@
      "pdf_page": 130,
      "has_rec": true,
      "group": "الحشرات",
-     "crop_conflict": true,
      "images": 2
     }
    ]
@@ -2700,7 +2612,7 @@
      "printed_page": 217,
      "pdf_page": 230,
      "has_rec": true,
-     "group": "الفطريات",
+     "group": null,
      "images": 1
     },
     {
@@ -2710,7 +2622,7 @@
      "printed_page": 218,
      "pdf_page": 231,
      "has_rec": true,
-     "group": "الفطريات",
+     "group": null,
      "images": 1
     }
    ]
@@ -2731,7 +2643,6 @@
      "pdf_page": 278,
      "has_rec": true,
      "group": "الحشرات",
-     "crop_conflict": true,
      "images": 2
     }
    ]
@@ -2746,25 +2657,23 @@
    "infections": [
     {
      "n": 1,
-     "type": "other",
+     "type": "insect",
      "name_ar": "حشرات الحبوب المخزونة",
      "printed_page": 263,
      "pdf_page": 276,
      "has_rec": true,
-     "crop_conflict": true,
-     "images": 3,
-     "group": "الحشرات"
+     "group": "الحشرات",
+     "images": 3
     },
     {
      "n": 2,
-     "type": "other",
+     "type": "insect",
      "name_ar": "حشرات التمور المخزونة",
      "printed_page": 264,
      "pdf_page": 277,
      "has_rec": true,
-     "crop_conflict": true,
-     "images": 2,
-     "group": "الحشرات"
+     "group": "الحشرات",
+     "images": 2
     }
    ]
   },
@@ -2778,14 +2687,13 @@
    "infections": [
     {
      "n": 1,
-     "type": "other",
+     "type": "insect",
      "name_ar": "آفات المسطحات الخضراء",
      "printed_page": 197,
      "pdf_page": 210,
      "has_rec": true,
-     "crop_conflict": true,
-     "images": 3,
-     "group": "الحشرات"
+     "group": "الحشرات",
+     "images": 3
     },
     {
      "n": 2,
@@ -2795,7 +2703,6 @@
      "pdf_page": 211,
      "has_rec": true,
      "group": "الفطريات",
-     "crop_conflict": true,
      "images": 1
     }
    ]
@@ -2810,14 +2717,13 @@
    "infections": [
     {
      "n": 1,
-     "type": "other",
+     "type": "fungus",
      "name_ar": "البياض الدقيق",
      "printed_page": 260,
      "pdf_page": 273,
      "has_rec": true,
-     "crop_conflict": true,
-     "images": 3,
-     "group": "الفطريات"
+     "group": "الفطريات",
+     "images": 3
     }
    ]
   },
@@ -2837,7 +2743,6 @@
      "pdf_page": 212,
      "has_rec": true,
      "group": "الحشرات",
-     "crop_conflict": true,
      "images": 1
     },
     {
@@ -2847,8 +2752,7 @@
      "printed_page": 201,
      "pdf_page": 214,
      "has_rec": true,
-     "group": "الحشرات",
-     "crop_conflict": true,
+     "group": null,
      "images": 1
     },
     {
@@ -2858,74 +2762,67 @@
      "printed_page": 203,
      "pdf_page": 216,
      "has_rec": true,
-     "group": "الحشرات",
-     "crop_conflict": true,
+     "group": null,
      "images": 2
     },
     {
      "n": 4,
-     "type": "insect",
+     "type": "mite",
      "name_ar": "اكاروس الموالح البنى",
      "printed_page": 203,
      "pdf_page": 216,
      "has_rec": true,
      "group": "الأكاروسات",
-     "crop_conflict": true,
      "images": 2
     },
     {
      "n": 5,
-     "type": "insect",
+     "type": "mite",
      "name_ar": "اكاروس الموالح الاحمر",
      "printed_page": 205,
      "pdf_page": 218,
      "has_rec": true,
-     "group": "الحشرات",
-     "crop_conflict": true,
+     "group": null,
      "images": 2
     },
     {
      "n": 6,
-     "type": "insect",
+     "type": "mite",
      "name_ar": "اكاروس صدأ الموالح",
      "printed_page": 205,
      "pdf_page": 218,
      "has_rec": true,
-     "group": "الحشرات",
-     "crop_conflict": true,
+     "group": null,
      "images": 3
     },
     {
      "n": 7,
-     "type": "insect",
+     "type": "other",
      "name_ar": "الأشنة",
      "printed_page": 207,
      "pdf_page": 220,
      "has_rec": true,
-     "group": "الحشرات",
-     "crop_conflict": true,
+     "group": null,
      "images": 2
     },
     {
      "n": 8,
-     "type": "insect",
+     "type": "other",
      "name_ar": "التصمغ",
      "printed_page": 208,
      "pdf_page": 221,
      "has_rec": true,
-     "group": "الحشرات",
-     "crop_conflict": true,
+     "group": null,
      "images": 1
     },
     {
      "n": 9,
-     "type": "insect",
+     "type": "fungus",
      "name_ar": "اعفان الثمار بعد الجمع",
      "printed_page": 209,
      "pdf_page": 222,
      "has_rec": true,
-     "group": "الحشرات",
-     "crop_conflict": true,
+     "group": null,
      "images": 1
     },
     {
@@ -2936,7 +2833,6 @@
      "pdf_page": 223,
      "has_rec": true,
      "group": "النيماتودا",
-     "crop_conflict": true,
      "images": 1
     },
     {
@@ -2946,8 +2842,7 @@
      "printed_page": 211,
      "pdf_page": 224,
      "has_rec": true,
-     "group": "النيماتودا",
-     "crop_conflict": true,
+     "group": null,
      "images": 1
     },
     {
@@ -2958,7 +2853,6 @@
      "pdf_page": 225,
      "has_rec": true,
      "group": "الفطريات",
-     "crop_conflict": true,
      "images": 1
     }
    ]
@@ -2973,14 +2867,13 @@
    "infections": [
     {
      "n": 1,
-     "type": "other",
+     "type": "nematode",
      "name_ar": "نيماتودا تعقد الجذور",
      "printed_page": 261,
      "pdf_page": 274,
      "has_rec": true,
-     "crop_conflict": true,
-     "images": 1,
-     "group": "النيماتودا"
+     "group": "النيماتودا",
+     "images": 1
     }
    ]
   },
@@ -2994,25 +2887,22 @@
    "infections": [
     {
      "n": 1,
-     "type": "other",
+     "type": "insect",
      "name_ar": "سوسة النخيل الحمراء",
      "printed_page": 237,
      "pdf_page": 250,
      "has_rec": true,
      "group": "الحشرات",
-     "name_status": "NEEDS_REVIEW",
-     "crop_conflict": true,
      "images": 3
     },
     {
      "n": 2,
-     "type": "other",
+     "type": "mite",
      "name_ar": "أكاروس غبار النخيل",
      "printed_page": 237,
      "pdf_page": 250,
      "has_rec": true,
      "group": "الحشرات",
-     "crop_conflict": true,
      "images": 5
     }
    ]
@@ -3033,7 +2923,6 @@
      "pdf_page": 162,
      "has_rec": true,
      "group": "الحشرات",
-     "crop_conflict": true,
      "images": 2
     },
     {
@@ -3044,7 +2933,6 @@
      "pdf_page": 162,
      "has_rec": true,
      "group": "الحشرات",
-     "crop_conflict": true,
      "images": 4
     },
     {
@@ -3055,18 +2943,16 @@
      "pdf_page": 163,
      "has_rec": true,
      "group": "الحشرات",
-     "crop_conflict": true,
      "images": 2
     },
     {
      "n": 4,
-     "type": "insect",
+     "type": "mite",
      "name_ar": "العنكبوت الأحمر",
      "printed_page": 150,
      "pdf_page": 163,
      "has_rec": true,
      "group": "الأكاروسات",
-     "crop_conflict": true,
      "images": 4
     },
     {
@@ -3077,7 +2963,6 @@
      "pdf_page": 164,
      "has_rec": true,
      "group": "الفطريات",
-     "crop_conflict": true,
      "images": 2
     },
     {
@@ -3088,7 +2973,6 @@
      "pdf_page": 164,
      "has_rec": true,
      "group": "الفطريات",
-     "crop_conflict": true,
      "images": 3
     },
     {
@@ -3099,7 +2983,6 @@
      "pdf_page": 165,
      "has_rec": true,
      "group": "الفطريات",
-     "crop_conflict": true,
      "images": 1
     }
    ]
@@ -3120,7 +3003,6 @@
      "pdf_page": 33,
      "has_rec": true,
      "group": "الحشرات",
-     "crop_conflict": true,
      "images": 1
     },
     {
@@ -3130,8 +3012,7 @@
      "printed_page": 21,
      "pdf_page": 34,
      "has_rec": true,
-     "group": "الحشرات",
-     "crop_conflict": true,
+     "group": null,
      "images": 2
     },
     {
@@ -3141,8 +3022,7 @@
      "printed_page": 24,
      "pdf_page": 37,
      "has_rec": true,
-     "group": "الحشرات",
-     "crop_conflict": true,
+     "group": null,
      "images": 1
     },
     {
@@ -3152,8 +3032,7 @@
      "printed_page": 25,
      "pdf_page": 38,
      "has_rec": true,
-     "group": "الحشرات",
-     "crop_conflict": true,
+     "group": null,
      "images": 1
     },
     {
@@ -3164,7 +3043,6 @@
      "pdf_page": 39,
      "has_rec": true,
      "group": "الفطريات",
-     "crop_conflict": true,
      "images": 1
     },
     {
@@ -3175,7 +3053,6 @@
      "pdf_page": 42,
      "has_rec": true,
      "group": "النيماتودا",
-     "crop_conflict": true,
      "images": 1
     }
    ]
@@ -3205,7 +3082,7 @@
      "printed_page": 59,
      "pdf_page": 72,
      "has_rec": true,
-     "group": "الفطريات",
+     "group": null,
      "images": 2
     }
    ]
@@ -3226,7 +3103,6 @@
      "pdf_page": 73,
      "has_rec": true,
      "group": "الأكاروسات",
-     "crop_conflict": true,
      "images": 1
     }
    ]
@@ -3256,7 +3132,7 @@
      "printed_page": 51,
      "pdf_page": 64,
      "has_rec": true,
-     "group": "الحشرات",
+     "group": null,
      "images": 1
     },
     {
@@ -3276,7 +3152,7 @@
      "printed_page": 53,
      "pdf_page": 66,
      "has_rec": true,
-     "group": "الفطريات",
+     "group": null,
      "images": 1
     }
    ]
@@ -3297,7 +3173,6 @@
      "pdf_page": 156,
      "has_rec": true,
      "group": "الحشرات",
-     "crop_conflict": true,
      "images": 1
     }
    ]
@@ -3318,8 +3193,6 @@
      "pdf_page": 251,
      "has_rec": true,
      "group": "الحشرات",
-     "name_status": "NEEDS_REVIEW",
-     "crop_conflict": true,
      "images": 2
     }
    ]

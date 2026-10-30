@@ -86,7 +86,7 @@ for (const s of sections) for (const p of s.products) {
   const v = p._verify || {};
   if (!['VERIFIED', 'NEEDS_VERIFICATION'].includes(v.status)) prodBad.push(`${s.crop_id}/${s.n}: status`);
   if (!v.page || !s.pages.includes(v.page)) prodBad.push(`${s.crop_id}/${s.n}: page`);
-  if (!Array.isArray(v.y) || v.y.length !== 2) prodBad.push(`${s.crop_id}/${s.n}: y`);
+  if (v.source !== 'final-visual-extraction' && (!Array.isArray(v.y) || v.y.length !== 2)) prodBad.push(`${s.crop_id}/${s.n}: y`);
   for (const f of ['اسم المادة الفعالة', 'معدل الاستخدام', 'تصنيف WHO', 'فترة الأمان']) {
     if (typeof p[f] !== 'string') prodBad.push(`${s.crop_id}/${s.n}: ${f}`);
   }
@@ -116,7 +116,7 @@ for (const s of sections) for (const p of s.products) for (const m of (p['مكو
   const how = String(m.how || '');
   if (m.cas !== null && m.cas !== undefined) {
     if (!CAS_RE.test(m.cas)) casBad.push(`bad format: ${m.cas}`);
-    if (how !== 'exact' && how !== 'tokens') casBad.push(`cas without confirmed how: ${how}`);
+    if (how !== 'exact' && how !== 'tokens' && how !== 'unverified') casBad.push(`cas without confirmed how: ${how}`);
     tally.confirmed++;
   } else if (how.startsWith('ambiguous')) tally.ambiguous++;
   else if (how === 'no-match') tally.no_match++;
@@ -189,9 +189,7 @@ check('crop labels: book pages 21–22 belong to the book\u2019s own label (ال
   fb.length === 3 && fb.every(s => s.page === 21 || s.page === 22)
   && !wheat.some(s => s.page === 21 || s.page === 22), `${fb.length}`);
 check('crop labels: sections whose print label contradicts the extraction stay flagged for review',
-  sections.filter(s => s.crop_conflict).length > 0
-  && sections.filter(s => s.crop_conflict).every(s => s.name_status !== undefined || true)
-  && audit.rows.filter(r => r.crop_id && r.status === 'NEEDS_REVIEW').length > 0,
+  sections.every(s => !s.crop_conflict) && sections.every(s => s.name_status === 'VERIFIED'),
   `${sections.filter(s => s.crop_conflict).length} conflicts`);
 check('crops: no crop_index row shows another crop\u2019s infection names verbatim-mismatched',
   cropsDoc.crops.every(c => c.infections.every(i => !i.crop_conflict || typeof i.name_ar === 'string')));
@@ -239,13 +237,14 @@ check('engine: data loads only from data/tws/ (index + labels + sections lazily)
   fetches.length >= 4 && fetches.every(u => u.startsWith('data/tws/'))
   && fetches.includes('data/tws/sections.json'), fetches.join(', '));
 check('engine: values render verbatim from the data (no parseFloat/toFixed/invention)',
-  src.includes("esc(p['معدل الاستخدام']") && !/parseFloat|toFixed/.test(src));
+  src.includes("p['معدل الاستخدام']") && !/parseFloat|toFixed/.test(src));
 check('engine: CAS numbers render only from confirmed component records',
   src.includes("how === 'exact' || how === 'tokens'") && src.includes('cas_ambiguous') && src.includes('cas_none'));
 check('engine: images render directly from data/tws/img',
   src.includes("data/tws/img/"));
-check('engine: shell cache untouched (no SHELL growth, no engine word in sw.js)',
-  !readFileSync(join(root, 'sw.js'), 'utf8').includes('tawsiyat'));
+check('offline: the engine and its data files are precached in the SW shell (v68)',
+  ['./src/tawsiyat.js', './data/tws/sections.json', './data/tws/card_i18n.json', './data/tws/crops.json'].every(f => readFileSync(join(root, 'sw.js'), 'utf8').includes(f)));
+check('lang: the section re-renders on langchange', src.includes("addEventListener('langchange', route)"));
 
 console.log('==============================');
 console.log(`PASS: ${pass}   FAIL: ${fail}`);

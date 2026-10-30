@@ -100,7 +100,7 @@ console.log('=== 3) لا نتائج قبل الضغط ===');
     && /PacksModule\.PACKS\.forEach\(p => box\.appendChild\(row\(p\)\)\)/.test(app));
   check('the pack wording is farmer language, not technical',
     /packs\.why\.' \+ pack\.key/.test(app)
-    && /ليس نصيبًا ليبيا/.test(i18n) && /not a Libyan ruling/.test(i18n));
+    && /ليس نصًا ليبيًا/.test(i18n) && /not a Libyan ruling/.test(i18n));
   check('a downloaded pack is verified by sha256 before it is used',
     /checksum mismatch/.test(packs) && /crypto\.subtle\.digest\('SHA-256'/.test(packs));
   check('the progress is real (streamed bytes), not a fake timer',

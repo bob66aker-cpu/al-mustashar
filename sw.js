@@ -1,6 +1,9 @@
 /*
  * sw.js — المستشار الزراعي (v29)
  *
+ * v68 (2026-10-30) — قسم التوصيات يعمل دون اتصال من أول زيارة: src/tawsiyat.js وintl.js
+ *   وملفات (stats.js يبقى خارج SHELL بعقد ppocr-size) data/tws الخمسة (بلا الصور) دخلت SHELL؛ ملفات القشرة تغيّرت ⇒ رفع الكاش.
+ *
  * v66 (2026-10-23) — إعادة بناء قسم التوصيات من الكتاب وحده (Recomm25):
  *   بيانات القسم صارت من فهرس الكتاب مباشرة (data/tws/sections.json +
  *   صور الكتاب data/tws/img/) — ملفات القشرة تغيّرت ⇒ رفع الكاش؛
@@ -204,7 +207,7 @@
  * Personal data (IndexedDB history, theme, app version note) lives outside
  * the caches and is never touched by this worker.
  */
-const CACHE = 'mustashar-v67';
+const CACHE = 'mustashar-v68';
 const OCR_CACHE = 'mustashar-ocr';
 
 /* 1.7 — safe cache write: a full storage quota (QuotaExceededError) must
@@ -237,6 +240,13 @@ const SHELL = [
   './src/cas.js',
   /* D59 — حزمة الإرشاد: تُجهَّز مع القشرة ليعمل الإرشاد دون إنترنت من أول تشغيل */
   './src/irsheed.js',
+  './src/tawsiyat.js',
+  './src/intl.js',
+  './data/tws/manifest.json',
+  './data/tws/crops.json',
+  './data/tws/labels.json',
+  './data/tws/sections.json',
+  './data/tws/card_i18n.json',
   './data/advice/manifest.json',
   './data/advice/modifiers.json',
   './data/advice/citrus.json',

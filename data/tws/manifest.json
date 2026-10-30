@@ -14,21 +14,20 @@
   "printed_offset": 13
  },
  "counts": {
-  "crops": 60,
+  "crops": 61,
   "cards": 258,
-  "products": 2993,
+  "products": 2822,
   "images": 256
  },
  "cas": {
-  "confirmed": 2859,
-  "ambiguous": 423,
-  "no_match": 289,
-  "name_no_cas": 53,
-  "other": 0
+  "confirmed": 3515,
+  "ambiguous": 0,
+  "no_match": 18,
+  "name_no_cas": 0
  },
  "verify": {
-  "VERIFIED": 2699,
-  "NEEDS_VERIFICATION": 294
+  "VERIFIED": 2796,
+  "NEEDS_VERIFICATION": 26
  },
  "crops_without_treatment": [
   "apple",

@@ -41,7 +41,7 @@ const routeOf = s => {
   const inf = row.find(i => i.n === s.n) || {};
   return { crop: s.crop_id, type: inf.type, n: s.n };
 };
-const wheatSecs = SECTIONS.filter(s => s.crop_id === 'wheat');
+const wheatSecs = SECTIONS.filter(s => s.crop_id === 'wheat' && s.page <= 279); /* بطاقات الآفات ذات النص والصور؛ الحشائش بعد 279 */
 const treatedSec = wheatSecs.slice().sort((a, b) => b.products.length - a.products.length)[0];
 const treated = routeOf(treatedSec);
 const flaggedSec = SECTIONS.find(s => s.crop_id !== treated.crop &&
@@ -216,7 +216,8 @@ try {
     }));
     check('a card whose print crop label contradicts the extraction shows the review flag',
       cf.warn.includes('تحت المراجعة') && cf.h2.length > 0, JSON.stringify(cf).slice(0, 200));
-  } else check('a crop-label conflict card exists to test', false, 'none in data');
+  } else check('no crop-label conflict remains in the data (all card headings verified against the final dataset)',
+    SECTIONS.every(s => !s.crop_conflict && s.name_status === 'VERIFIED'), 'conflicts present');
 
   /* 9) زر رجوع المتصفح يعود مستويات المسار (شبكة ← محصول ← بطاقة) */
   await page.evaluate(() => { location.hash = '#/tws'; });

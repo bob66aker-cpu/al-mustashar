@@ -1,0 +1,43 @@
+# تحديث قواعد البيانات الدولية كل 15 يومًا (الأول والسادس عشر من كل شهر).
+# يبني القاعدتين المؤتمتتين (كندا، أستراليا) ويختم التواريخ ثم يفتح طلب دمج للمراجعة —
+# لا يدمج ولا ينشر أبدًا. EU وEPA تُحدَّثان يدويًا وفق docs/data-update-guide.md
+# ويُدرجان في نص الطلب كمهمة معلّقة. القواعد الليبية مستثناة.
+# ملاحظة: GitHub لا يشغّل الجدولة إلا من الفرع الافتراضي للمستودع.
+name: db-refresh
+on:
+  schedule:
+    - cron: "0 3 1,16 * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+  pull-requests: write
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Freshness before
+        run: node scripts/db-freshness.mjs || true
+      - name: Build Canada
+        run: node scripts/build-canada.mjs
+      - name: Build Australia
+        run: node scripts/build-australia.mjs
+      - name: Stamp dates (international only)
+        run: node scripts/stamp-datacheck.mjs canada australia
+      - name: Verify
+        run: node tests/data-packs.test.mjs && node tests/verify.mjs
+      - name: Open review PR (never merges)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          D=$(date -u +%F)
+          if git diff --quiet; then echo "no changes"; exit 0; fi
+          git config user.name "db-refresh"; git config user.email "db-refresh@users.noreply.github.com"
+          git checkout -b "data-refresh/$D"
+          git add -A && git commit -m "data: refresh Canada + Australia ($D)"
+          git push origin "data-refresh/$D"
+          gh pr create --title "data: 15-day refresh $D" --body "Canada + Australia rebuilt and stamped. PENDING MANUAL: EU (data/eu.json) and EPA (data/epa.json) per docs/data-update-guide.md, then node scripts/stamp-datacheck.mjs eu epa epa-cancelled. Libya excluded. Review the diff counts (>2% change = read the rows) before merging."

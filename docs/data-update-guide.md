@@ -16,14 +16,21 @@
 |---|---|---|---|
 | ليبيا 248 | `data/libya-248.json` | يدوي من المرسوم الرسمي | عند صدور تعديل |
 | ليبيا 500 | `data/libya-500.json` | يدوي من المرسوم الرسمي | عند صدور تعديل |
-| الاتحاد الأوروبي | `data/eu.json` | `scripts/update-intl-dbs.mjs` | أسبوعياً |
-| أمريكا (EPA) | `data/epa.json` + `epa-cancelled.json` | `tools/build-epa-master.js` من دفتر EPA Master | ربعياً |
-| كندا (اختياري) | `data-optional/canada.json` | `scripts/build-canada.mjs` | أسبوعياً |
-| أستراليا (اختياري) | `data-optional/australia.json` | `scripts/build-australia.mjs` | أسبوعياً |
+| الاتحاد الأوروبي | `data/eu.json` | `scripts/update-intl-dbs.mjs` (نقاط الجلب فيه مؤقتة، فالتحديث الفعلي يدوي) | كل 15 يوماً |
+| أمريكا (EPA) | `data/epa.json` + `epa-cancelled.json` | `tools/build-epa-master.js` من دفتر EPA Master | كل 15 يوماً |
+| كندا (اختياري) | `data-optional/canada.json` | `scripts/build-canada.mjs` | كل 15 يوماً |
+| أستراليا (اختياري) | `data-optional/australia.json` | `scripts/build-australia.mjs` | كل 15 يوماً |
 
 القواعد الأساسية الخمس **مخزَّنة مسبقاً** في عامل الخدمة. القاعدتان
 الاختياريتان **غير مخزَّنتين**: تُنزَّل بطلب المزارع وتُحفظ في IndexedDB بعد
 التحقق من بصمة sha256.
+
+### دورة الـ15 يوماً (قرار صاحب المشروع 2026-11-02)
+
+- كل القواعد الدولية (EU، EPA، كندا، أستراليا) تُراجَع كل 15 يوماً؛ **القاعدتان الليبيتان مستثناتان** لأنه لا يصدر لهما تحديث دوري — يُبلِّغ صاحب المشروع يدوياً عند صدور تعديل.
+- فحص الحداثة (قراءة فقط): `node scripts/db-freshness.mjs` — يخرج برمز 1 إن تجاوزت قاعدة 15 يوماً.
+- بعد تجديد قاعدة: `node scripts/stamp-datacheck.mjs <db...>` (يرفض ليبيا ويُبقي `data_updated` = أحدث تاريخ).
+- الأتمتة: `.github/workflows/db-refresh.yml` (1 و16 من كل شهر) تبني كندا وأستراليا وتفتح طلب دمج للمراجعة ولا تدمج ولا تنشر. القاعدتان EU و EPA تبقيان يدويتين وتُذكَران في نص الطلب. GitHub لا يشغّل الجدولة إلا من الفرع الافتراضي.
 
 ---
 

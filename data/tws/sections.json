@@ -93217,8 +93217,8 @@
      "مكونات فعالة": [
       {
        "name": "Phoshorous acid salts",
-       "cas": "13598-36-2",
-       "how": "unverified"
+       "cas": null,
+       "how": "no-match"
       }
      ],
      "mrl_rows": [

@@ -66,7 +66,23 @@
       load_error_title: 'تعذّر تحميل بيانات التوصيات',
       load_error_body: 'يفشل تحميل الفهرس — تحقّق من الاتصال أول مرة، أو أعد المحاولة بعد تجهيز التطبيق للعمل دون اتصال.',
       retry: 'إعادة المحاولة',
-      detail_error_title: 'تعذّر تحميل بطاقة القسم من الكتاب'
+      detail_error_title: 'تعذّر تحميل بطاقة القسم من الكتاب',
+      'a7_link_title': 'الملحق 7 — محاصيل مساحاتها أقل من 50 ألف فدان',
+      'a7_link_desc': 'مبيدات مقترحة للتجريب تمهيدًا لتسجيلها، وليست توصيات معتمدة',
+      'a7_title': 'الملحق 7: المحاصيل الأقل مساحة',
+      'a7_banner': 'هذه المبيدات «مقترحة للتجريب تمهيدًا لتسجيلها» كما ورد في الكتاب؛ لا معدلات ولا فترات أمان ولا توصية معتمدة بعد. لا تُستخدم كتوصية.',
+      'a7_intro_note': 'نص مقدمة الملحق كما طُبع (بالعربية)',
+      'a7_section': 'القسم',
+      'a7_crops': 'المحاصيل ومساحاتها (فدان)',
+      'a7_insects': 'الحشرات والمبيدات المقترحة',
+      'a7_diseases': 'الأمراض والمبيدات المقترحة',
+      'a7_weeds': 'الحشائش والمبيدات المقترحة',
+      'a7_for_crops': 'للمحاصيل',
+      'a7_nolink': 'في هذا القسم لا يربط الجدول المطبوع كل آفة بمحصول بعينه؛ القائمة لمجموعة المحاصيل كلها.',
+      'a7_source': 'المصدر: كتاب APC 2025، الملحق 7، صفحة {p}',
+      'a7_names_note': 'أسماء المحاصيل والآفات والحشائش كما طُبعت بالعربية؛ أسماء المواد الفعالة كما طُبعت بالإنجليزية.',
+      'a7_none': '—',
+      'a7_error': 'تعذّر تحميل الملحق 7'
     },
     en: {
       title: 'Crop recommendations',
@@ -112,7 +128,23 @@
       load_error_title: 'Could not load recommendation data',
       load_error_body: 'The index failed to load — connect once, or retry after the app is prepared for offline.',
       retry: 'Retry',
-      detail_error_title: 'Could not load this section card from the book'
+      detail_error_title: 'Could not load this section card from the book',
+      'a7_link_title': 'Appendix 7 — minor crops (under 50,000 feddan)',
+      'a7_link_desc': 'Pesticides proposed for trials ahead of registration — not approved recommendations',
+      'a7_title': 'Appendix 7: minor crops',
+      'a7_banner': 'These pesticides are "proposed for trials ahead of registration", as stated in the book: no rates, no pre-harvest intervals, and no approved recommendation yet. Do not use as a recommendation.',
+      'a7_intro_note': 'Appendix introduction as printed (in Arabic)',
+      'a7_section': 'Section',
+      'a7_crops': 'Crops and areas (feddan)',
+      'a7_insects': 'Insects and proposed pesticides',
+      'a7_diseases': 'Diseases and proposed pesticides',
+      'a7_weeds': 'Weeds and proposed herbicides',
+      'a7_for_crops': 'For crops',
+      'a7_nolink': 'In this section the printed table does not tie each pest to a specific crop; the list applies to the whole crop group.',
+      'a7_source': 'Source: APC 2025 book, Appendix 7, page {p}',
+      'a7_names_note': 'Crop, pest and weed names are shown as printed in Arabic; active ingredient names as printed in English.',
+      'a7_none': '—',
+      'a7_error': 'Could not load Appendix 7'
     }
   };
 
@@ -225,6 +257,16 @@
     '.tws-search{width:100%;padding:12px 14px;border:1px solid var(--control);border-radius:12px;background:var(--field);color:var(--text);font:inherit;font-size:1rem;margin:12px 0 6px}',
     '.tws-search:focus{outline:2px solid var(--primary-ink);outline-offset:1px}',
     '.tws-count{color:var(--muted);font-size:.82rem;margin:0 0 12px}',
+    '.tws-a7link{display:flex;flex-direction:column;gap:4px;margin:0 0 12px;padding:12px;border:1px dashed var(--border);border-radius:12px;background:var(--card);color:var(--text);text-decoration:none}',
+    '.tws-a7link span{font-size:.82rem;color:var(--muted)}',
+    '.tws-a7note{margin:0 0 14px;padding:10px 12px;border:1px solid var(--border);border-radius:12px;background:var(--card);font-size:.9rem;line-height:1.7}',
+    '.tws-a7sec{margin:0 0 18px;padding:12px;border:1px solid var(--border);border-radius:12px;background:var(--card)}',
+    '.tws-a7sec h2{margin:0 0 6px;font-size:1.05rem}',
+    '.tws-a7sec h3{margin:12px 0 6px;font-size:.95rem}',
+    '.tws-a7sec ul{margin:0;padding:0 18px}',
+    '.tws-a7sec li{margin:0 0 6px;line-height:1.7}',
+    '.tws-a7sec .act{direction:ltr;unicode-bidi:isolate;display:inline-block}',
+    '.tws-a7intro{margin:0 0 14px}.tws-a7intro p{direction:rtl;text-align:right;line-height:1.9}',
     '.tws-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:8px;margin:0 0 18px;padding:0;list-style:none}',
     '.tws-crop{display:flex;flex-direction:column;gap:4px;min-height:76px;padding:12px;border:1px solid var(--border);border-radius:12px;background:var(--card);color:var(--text);text-decoration:none}',
     '.tws-crop:hover,.tws-crop:focus-visible{border-color:var(--primary-ink)}',
@@ -356,6 +398,7 @@
     loadIndex().then(function () {
       if (S.err || !S.man || !S.crops) { sec.innerHTML = errorPanel(); return; }
       if (!crop) { renderCrops(); return; }
+      if (crop === 'appendix7') { renderAppendix7(sec); return; }
       var c = findCrop(crop);
       if (!c) { sec.innerHTML = wrap(errorPanel(L('no_results'), '')); return; }
       if (!n) { sec.innerHTML = cropView(c); window.scrollTo && window.scrollTo(0, 0); return; }
@@ -390,6 +433,9 @@
     if (!list.length) {
       html += '<div class="tws-err"><p>' + esc(L('no_results')) + '</p></div>';
     } else {
+      if (!q) {
+        html += '<a class="tws-a7link" href="#/tws/appendix7"><b>' + esc(L('a7_link_title')) + '</b><span>' + esc(L('a7_link_desc')) + '</span></a>';
+      }
       html += '<ul class="tws-grid">';
       list.forEach(function (c) {
         html += '<li><a class="tws-crop" href="#/tws/' + esc(c.id) + '">'
@@ -404,6 +450,63 @@
       .replace('{d}', cnt.dossiers || '—').replace('{c}', cnt.cards || '—').replace('{k}', cnt.crops || '—'))
       + ' · ' + esc(man.built || '') + '<br>' + esc(L('dose_note')) + '</p></div>';
     sec.innerHTML = html;
+  }
+
+  /* ---------- الملحق 7 (محاصيل مساحاتها أقل من 50 ألف فدان) ---------- */
+  function loadAppendix7() {
+    if (S.a7) return Promise.resolve(S.a7);
+    return fetchJSON('data/tws/appendix7.json').then(function (d) { S.a7 = d; return d; });
+  }
+  function a7Acts(list) {
+    return (list || []).map(function (a) { return '<span class="act">' + esc(a) + '</span>'; }).join('، ');
+  }
+  function a7Pests(rows, showCrops) {
+    var h = '<ul>';
+    rows.forEach(function (r) {
+      h += '<li><b>' + esc((r.pests || []).join(' · ')) + '</b>';
+      if (showCrops && r.crops && r.crops.length) h += ' <span class="tws-meta">(' + esc(L('a7_for_crops')) + ': ' + esc(r.crops.join('، ')) + ')</span>';
+      h += '<br>' + a7Acts(r.actives) + '</li>';
+    });
+    return h + '</ul>';
+  }
+  function renderAppendix7(sec) {
+    loadAppendix7().then(function (d) {
+      var html = '<div class="wrap">'
+        + '<nav class="tws-crumb"><a href="#/tws">' + esc(L('back_crops')) + '</a><span class="sep">‹</span><span class="cur">' + esc(L('a7_title')) + '</span></nav>'
+        + '<div class="tws-head"><h1>' + esc(L('a7_title')) + '</h1></div>'
+        + '<p class="tws-a7note" role="note">' + esc(L('a7_banner')) + '</p>'
+        + '<p class="tws-meta">' + esc(L('a7_names_note')) + '</p>'
+        + '<details class="tws-a7intro"><summary>' + esc(L('a7_intro_note')) + '</summary><p lang="ar" dir="rtl">' + esc(d.intro_ar) + '</p></details>';
+      (d.secs || []).forEach(function (s) {
+        var linked = (s.insects || []).concat(s.diseases || []).some(function (r) { return r.crops && r.crops.length; });
+        html += '<section class="tws-a7sec"><h2><span lang="ar" dir="rtl">' + esc(s.letter + ' — ' + s.title) + '</span></h2>'
+          + '<p class="tws-meta">' + esc(L('a7_source').replace('{p}', s.page)) + '</p>'
+          + '<h3>' + esc(L('a7_crops')) + '</h3><ul>';
+        (s.crops || []).forEach(function (c) {
+          html += '<li><span lang="ar" dir="rtl">' + esc(c.name) + '</span> — <span dir="ltr">' + esc(Number(c.area).toLocaleString('en-US')) + '</span></li>';
+        });
+        html += '</ul>';
+        if (!linked) html += '<p class="tws-meta">' + esc(L('a7_nolink')) + '</p>';
+        if ((s.insects || []).length) html += '<h3>' + esc(L('a7_insects')) + '</h3>' + a7Pests(s.insects, true);
+        if ((s.diseases || []).length) html += '<h3>' + esc(L('a7_diseases')) + '</h3>' + a7Pests(s.diseases, true);
+        if ((s.weeds || []).length) {
+          html += '<h3>' + esc(L('a7_weeds')) + '</h3><ul>';
+          s.weeds.forEach(function (w) {
+            html += '<li>';
+            if (w.crops && w.crops.length) html += '<span class="tws-meta">' + esc(L('a7_for_crops')) + ': ' + esc(w.crops.join('، ')) + '</span><br>';
+            (w.groups || []).forEach(function (g) {
+              html += '<span lang="ar" dir="rtl">' + (g.label ? '<b>' + esc(g.label) + ':</b> ' : '') + esc((g.names || []).join('، ')) + '</span><br>';
+            });
+            html += a7Acts(w.actives) + '</li>';
+          });
+          html += '</ul>';
+        }
+        html += '</section>';
+      });
+      html += '</div>';
+      sec.innerHTML = html;
+      window.scrollTo && window.scrollTo(0, 0);
+    }).catch(function () { sec.innerHTML = wrap(errorPanel(L('a7_error'), '#/tws')); });
   }
 
   /* ---------- عرض المحصول ---------- */

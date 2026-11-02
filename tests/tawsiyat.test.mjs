@@ -250,6 +250,23 @@ check('offline: the engine and its data files are precached in the SW shell (v68
   ['./src/tawsiyat.js', './data/tws/sections.json', './data/tws/card_i18n.json', './data/tws/crops.json'].every(f => readFileSync(join(root, 'sw.js'), 'utf8').includes(f)));
 check('lang: the section re-renders on langchange', src.includes("addEventListener('langchange', route)"));
 
+/* ---------- الملحق 7 ---------- */
+const a7 = J('data/tws/appendix7.json');
+const a7Src = JSON.stringify(a7);
+check('a7: nine sections (printed letters, he and ha absent) with printed pages 383..389',
+  a7.secs.length === 9 && a7.secs.map(s => s.letter).join('') === 'أبجدوزطيك' && a7.secs.every(s => s.page >= 383 && s.page <= 389),
+  a7.secs.map(s => s.letter).join(''));
+check('a7: 56 crops each with a numeric area', a7.secs.reduce((n, s) => n + s.crops.length, 0) === 56 && a7.secs.every(s => s.crops.every(c => c.name && Number.isFinite(c.area))),
+  String(a7.secs.reduce((n, s) => n + s.crops.length, 0)));
+check('a7: proposals only — no rate, PHI, registration number or trade-name fields anywhere',
+  !/"(rate|phi|reg|registration|trade)[a-z_]*"/i.test(a7Src) && a7.secs.every(s => !('rate' in s)));
+check('a7: every pest row lists at least one active and no Arabic letters inside active names',
+  a7.secs.every(s => s.insects.concat(s.diseases).every(r => r.actives.length && r.actives.every(a => !/[؀-ۿ]/.test(a)))));
+check('a7: labels exist in all four languages', ['ar', 'en', 'fr', 'zh'].every(l => ['a7_title', 'a7_banner', 'a7_link_title', 'a7_nolink', 'a7_source'].every(k => labels[l][k])));
+check('a7: route, index link and offline precache wired',
+  src.includes("crop === 'appendix7'") && src.includes('#/tws/appendix7') && readFileSync(join(root, 'sw.js'), 'utf8').includes('./data/tws/appendix7.json'));
+check('a7: the intro is shown verbatim in Arabic and escaped', src.includes('esc(d.intro_ar)'));
+
 console.log('==============================');
 console.log(`PASS: ${pass}   FAIL: ${fail}`);
 process.exit(fail ? 1 : 0);

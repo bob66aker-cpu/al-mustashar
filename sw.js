@@ -1,6 +1,8 @@
 /*
  * sw.js — المستشار الزراعي (v29)
  *
+ * v72 (2026-11-03) — نص الإخلاء egypt_note (مصدر مصري، لا يعني السماح في ليبيا) في بطاقات التوصيات وتذييلاتها + وصف manifest ⇒ رفع الكاش.
+ *
  * v71 (2026-11-03) — إصلاح سباق قياس الكاش (لا يعيد إنشاء حاوية محذوفة) وإظهار محاصيل الحشائش في الملحق 7 فقط حيث ذكرها المصدر صراحةً ⇒ رفع الكاش.
  *
  * v70 (2026-11-02) — الملحق 7 (data/tws/appendix7.json) ضمن SHELL ⇒ رفع الكاش.
@@ -213,7 +215,7 @@
  * Personal data (IndexedDB history, theme, app version note) lives outside
  * the caches and is never touched by this worker.
  */
-const CACHE = 'mustashar-v71';
+const CACHE = 'mustashar-v72';
 const OCR_CACHE = 'mustashar-ocr';
 
 /* 1.7 — safe cache write: a full storage quota (QuotaExceededError) must

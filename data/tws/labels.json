@@ -62,7 +62,8 @@
   "a7_source": "المصدر: كتاب APC 2025، الملحق 7، صفحة {p}",
   "a7_names_note": "أسماء المحاصيل والآفات والحشائش كما طُبعت بالعربية؛ أسماء المواد الفعالة كما طُبعت بالإنجليزية.",
   "a7_none": "—",
-  "a7_error": "تعذّر تحميل الملحق 7"
+  "a7_error": "تعذّر تحميل الملحق 7",
+  "egypt_note": "مصدر هذه التوصيات كتاب «التوصيات المعتمدة لمكافحة الآفات الزراعية 2025» الصادر عن لجنة مبيدات الآفات الزراعية في مصر، وهي بحسب تسجيل المنتجات في مصر. وجود مادة فيها لا يعني أنها مسموحة في ليبيا: راجع شارات الحالة التنظيمية وملصق المنتج، ولا يغني هذا التطبيق عن استشارة مهندس زراعي مختص."
  },
  "en": {
   "title": "Crop recommendations",
@@ -124,7 +125,8 @@
   "a7_source": "Source: APC 2025 book, Appendix 7, page {p}",
   "a7_names_note": "Crop, pest and weed names are shown as printed in Arabic; active ingredient names as printed in English.",
   "a7_none": "—",
-  "a7_error": "Could not load Appendix 7"
+  "a7_error": "Could not load Appendix 7",
+  "egypt_note": "These recommendations come from the 2025 book \"Approved Recommendations for the Control of Agricultural Pests\" issued by Egypt's Agricultural Pesticides Committee and reflect product registrations in Egypt. A substance appearing here does not mean it is permitted in Libya: check the regulatory status badges and the product label, and consult a qualified agronomist."
  },
  "fr": {
   "title": "Recommandations par culture",
@@ -186,7 +188,8 @@
   "a7_source": "Source : livre APC 2025, annexe 7, page {p}",
   "a7_names_note": "Les noms de cultures, ravageurs et adventices sont ceux imprimés en arabe ; les matières actives telles qu'imprimées en anglais.",
   "a7_none": "—",
-  "a7_error": "Impossible de charger l'annexe 7"
+  "a7_error": "Impossible de charger l'annexe 7",
+  "egypt_note": "Ces recommandations proviennent du livre « Recommandations approuvées pour la lutte contre les ravageurs agricoles » (2025) du Comité égyptien des pesticides agricoles et reflètent les homologations en Égypte. La présence d'une substance ici ne signifie pas qu'elle est autorisée en Libye : consultez les badges de statut réglementaire et l'étiquette du produit, ainsi qu'un agronome qualifié."
  },
  "zh": {
   "title": "作物推荐",
@@ -248,6 +251,7 @@
   "a7_source": "来源:APC 2025 年手册,附录7,第{p}页",
   "a7_names_note": "作物、有害生物和杂草名称保持原书阿拉伯文;有效成分名称保持原书英文。",
   "a7_none": "—",
-  "a7_error": "无法加载附录7"
+  "a7_error": "无法加载附录7",
+  "egypt_note": "这些建议来自埃及农药委员会发布的《2025年农业有害生物防治批准建议》一书,反映的是埃及的产品登记情况。某物质出现在此处并不意味着它在利比亚被允许:请查看监管状态标识和产品标签,并咨询合格的农艺师。"
  }
 }

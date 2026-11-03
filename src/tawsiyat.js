@@ -62,6 +62,7 @@
       crop_conflict: 'تسمية محصول تحت المراجعة',
       'coverage': 'التغطية',
       coverage_line: 'من الكتاب: {c} بطاقة · {k} محصولاً',
+      'egypt_note': 'مصدر هذه التوصيات كتاب «التوصيات المعتمدة لمكافحة الآفات الزراعية 2025» الصادر عن لجنة مبيدات الآفات الزراعية في مصر، وهي بحسب تسجيل المنتجات في مصر. وجود مادة فيها لا يعني أنها مسموحة في ليبيا: راجع شارات الحالة التنظيمية وملصق المنتج، ولا يغني هذا التطبيق عن استشارة مهندس زراعي مختص.',
       dose_note: 'المادة والتركيز والمعدل وفترة الأمان وتصنيف WHO وقيم MRL مُساقَة حرفياً من جداول الكتاب — لا تُعرض هنا جرعات مخترعة.',
       load_error_title: 'تعذّر تحميل بيانات التوصيات',
       load_error_body: 'يفشل تحميل الفهرس — تحقّق من الاتصال أول مرة، أو أعد المحاولة بعد تجهيز التطبيق للعمل دون اتصال.',
@@ -124,6 +125,7 @@
       crop_conflict: 'Crop label under review',
       'coverage': 'Coverage',
       coverage_line: 'From the book: {c} cards · {k} crops',
+      'egypt_note': 'These recommendations come from the 2025 book "Approved Recommendations for the Control of Agricultural Pests" issued by Egypt\'s Agricultural Pesticides Committee and reflect product registrations in Egypt. A substance appearing here does not mean it is permitted in Libya: check the regulatory status badges and the product label, and consult a qualified agronomist.',
       dose_note: 'Ingredient, concentration, rate, PHI, WHO class and MRL values are quoted verbatim from the book tables — no invented doses here.',
       load_error_title: 'Could not load recommendation data',
       load_error_body: 'The index failed to load — connect once, or retry after the app is prepared for offline.',
@@ -448,7 +450,7 @@
     }
     html += '<p class="tws-foot">' + esc(L('coverage_line')
       .replace('{d}', cnt.dossiers || '—').replace('{c}', cnt.cards || '—').replace('{k}', cnt.crops || '—'))
-      + ' · ' + esc(man.built || '') + '<br>' + esc(L('dose_note')) + '</p></div>';
+      + ' · ' + esc(man.built || '') + '<br>' + esc(L('dose_note')) + '<br>' + esc(L('egypt_note')) + '</p></div>';
     sec.innerHTML = html;
   }
 
@@ -739,7 +741,7 @@
         + esc(srcMeta.publisher || '')
         + ' · ' + esc(srcMeta.file || '')
         + ' · ' + esc(L('page')) + ' ' + esc(s.printed_page) + ' (PDF ' + esc(s.page) + ')</div>';
-      html += '<div class="tws-note info">' + esc(L('dose_note')) + '</div>';
+      html += '<div class="tws-note info">' + esc(L('dose_note')) + '</div><div class="tws-note warn">' + esc(L('egypt_note')) + '</div>';
       html += '</div>' + footer() + '</div>';
       sec.innerHTML = html;
       window.scrollTo && window.scrollTo(0, 0);
@@ -753,7 +755,7 @@
     var cnt = man.counts || {};
     return '<p class="tws-foot">' + esc(L('coverage_line')
       .replace('{d}', cnt.dossiers || '—').replace('{c}', cnt.cards || '—').replace('{k}', cnt.crops || '—'))
-      + ' · ' + esc(man.built || '') + '<br>' + esc(L('dose_note')) + '</p>';
+      + ' · ' + esc(man.built || '') + '<br>' + esc(L('dose_note')) + '<br>' + esc(L('egypt_note')) + '</p>';
   }
   function errorPanel(title, backHref) {
     return '<div class="tws-err"><h2>' + esc(title || L('load_error_title')) + '</h2>'

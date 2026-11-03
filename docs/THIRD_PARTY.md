@@ -13,6 +13,8 @@
 | خط IBM Plex Sans Arabic | `assets/fonts/ibm-plex-sans-arabic-{regular,bold}.woff2` | v15 (من Google Fonts، بدون أرقام داخل الملف) | SIL OFL 1.1 — النص الكامل مرفق: `assets/fonts/LICENSE-OFL-IBM-Plex-Sans-Arabic.txt` | https://fonts.google.com/specimen/IBM+Plex+Sans+Arabic | وزنان 400/700 — 19.5KB + 19.2KB (مقاس بالتشغيل) — ترويسة الملف الثنائي لا تحمل نصًا، الترخيص موثق من صفحة المصدر |
 | أيقونات Lucide | `src/icons.js` (inner markup) + `assets/icons/LICENSE-LUCIDE-ISC.txt` | 0.462.0 | ISC — النص الكامل مرفق في الملف المذكور | https://lucide.dev | 31 رمزًا — الوسوم الداخلية منقولة حرفيًا من `lucide-static@0.462.0`، ترويسة المصدر تحمل سطر `@license lucide-static v0.462.0 - ISC` |
 
+| كتاب «التوصيات المعتمدة لمكافحة الآفات الزراعية 2025» (نصوص وجداول وصور قسم التوصيات) | `data/tws/*` | طبعة 2025 | حقوقه لجهة إصداره (لجنة مبيدات الآفات الزراعية، مصر) وليس للمطوّر؛ لم يُوثَّق إذن إعادة النشر بعد — ينتظر قرار المالك | يُسند في كل بطاقة (رقم الصفحة) وفي نص الإخلاء `egypt_note` | — |
+
 ## إجراء التحقق المستخدم
 
 1. `grep` على ترويسات الملفات للبحث عن إشارات الترخيص — وُجدت في `tesseract.min.js` و`worker.min.js`.

@@ -7,16 +7,16 @@
   "license": "OGL-Canada",
   "license_url": "https://open.canada.ca/en/open-government-licence-canada",
   "attribution_en": "Contains information licensed under the Open Government Licence – Canada.",
-  "retrieved_date": "2026-10-11",
-  "count": 1313,
-  "product_count": 21811,
-  "cas_present": 970,
-  "cas_empty": 343,
+  "retrieved_date": "2026-11-03",
+  "count": 1318,
+  "product_count": 21855,
+  "cas_present": 974,
+  "cas_empty": 344,
   "cas_nonstandard": 0,
   "optional": true,
   "built_with": "scripts/build-canada.mjs",
   "schema": "name,name_fr,name_norm,cas,cas_raw,cas_norm,status,status_raw,category,source,row",
-  "sha256": "ac0447ffd7d2ab79eeeb997b28e4e279147c05cb3c1a9fdb87f24c378af0098b"
+  "sha256": "f294b978c8a6523a6f2f6e06b744d2fc170047ba271fb23fc47f6629878c4da4"
  },
  "rows": [
   {
@@ -501,12 +501,12 @@
    "row": 37
   },
   {
-   "name": "2,4-DB",
-   "name_fr": "2,4-DB (N.M.)",
-   "name_norm": "2 4 db",
-   "cas": "94-82-6",
-   "cas_raw": "94-82-6",
-   "cas_norm": "94826",
+   "name": "2,4-DB (PRESENT AS 2-ETHYLHEXYL ESTER)",
+   "name_fr": "2,4-DB (N.M.) (PRÉSENT SOUS FORME D'ESTER 2-ÉTHYLHÉXYLE)",
+   "name_norm": "2 4 db present as 2 ethylhexyl ester",
+   "cas": "7720-36-7",
+   "cas_raw": "7720-36-7",
+   "cas_norm": "7720367",
    "status": "غير مُعاد التقييم",
    "status_raw": "NO",
    "category": "",
@@ -514,12 +514,12 @@
    "row": 38
   },
   {
-   "name": "2,4-DB (PRESENT AS 2-ETHYLHEXYL ESTER)",
-   "name_fr": "2,4-DB (N.M.) (PRÉSENT SOUS FORME D'ESTER 2-ÉTHYLHÉXYLE)",
-   "name_norm": "2 4 db present as 2 ethylhexyl ester",
-   "cas": "7720-36-7",
-   "cas_raw": "7720-36-7",
-   "cas_norm": "7720367",
+   "name": "2,4-DB (PRESENT AS ACID)",
+   "name_fr": "2,4-DB (PRÉSENT SOUS FORME D'ACIDE)",
+   "name_norm": "2 4 db present as acid",
+   "cas": "94-82-6",
+   "cas_raw": "94-82-6",
+   "cas_norm": "94826",
    "status": "غير مُعاد التقييم",
    "status_raw": "NO",
    "category": "",
@@ -846,7 +846,7 @@
    "cas_raw": "199111-50-7",
    "cas_norm": "199111507",
    "status": "غير مُعاد التقييم",
-   "status_raw": "NO",
+   "status_raw": "YES",
    "category": "",
    "source": "canada",
    "row": 64
@@ -859,7 +859,7 @@
    "cas_raw": "27668-52-6",
    "cas_norm": "27668526",
    "status": "غير مُعاد التقييم",
-   "status_raw": "NO",
+   "status_raw": "YES",
    "category": "",
    "source": "canada",
    "row": 65
@@ -3283,6 +3283,58 @@
    "row": 251
   },
   {
+   "name": "BROMOXYNIL (PRESENT AS ACID)",
+   "name_fr": "BROMOXYNIL (PRÉSENT SOUS FORME D'ACIDE)",
+   "name_norm": "bromoxynil present as acid",
+   "cas": "1689-84-5",
+   "cas_raw": "1689-84-5",
+   "cas_norm": "1689845",
+   "status": "غير مُعاد التقييم",
+   "status_raw": "YES",
+   "category": "",
+   "source": "canada",
+   "row": 252
+  },
+  {
+   "name": "BROMOXYNIL (PRESENT AS HEPTANOATE AND OCTANOATE ESTERS)",
+   "name_fr": "BROMOXYNIL (PRÉSENT SOUS FORME D¿ESTERS D¿HEPTANOATE ET D¿OCTANOATE)",
+   "name_norm": "bromoxynil present as heptanoate and octanoate esters",
+   "cas": "",
+   "cas_raw": "",
+   "cas_norm": "",
+   "status": "غير مُعاد التقييم",
+   "status_raw": "YES",
+   "category": "",
+   "source": "canada",
+   "row": 253
+  },
+  {
+   "name": "BROMOXYNIL (PRESENT AS HEPTANOATE ESTER)",
+   "name_fr": "BROMOXYNIL (PRÉSENT SOUS FORME D' ESTER HEPTANOATE)",
+   "name_norm": "bromoxynil present as heptanoate ester",
+   "cas": "56634-95-8",
+   "cas_raw": "56634-95-8",
+   "cas_norm": "56634958",
+   "status": "غير مُعاد التقييم",
+   "status_raw": "YES",
+   "category": "",
+   "source": "canada",
+   "row": 254
+  },
+  {
+   "name": "BROMOXYNIL (PRESENT AS OCTANOATE ESTER)",
+   "name_fr": "BROMOXYNIL (PRÉSENT SOUS FORME D' ESTER OCTANOATE)",
+   "name_norm": "bromoxynil present as octanoate ester",
+   "cas": "1689-99-2",
+   "cas_raw": "1689-99-2",
+   "cas_norm": "1689992",
+   "status": "غير مُعاد التقييم",
+   "status_raw": "YES",
+   "category": "",
+   "source": "canada",
+   "row": 255
+  },
+  {
    "name": "BRONOPOL",
    "name_fr": "BRONOPOL (N.M.)",
    "name_norm": "bronopol",
@@ -3293,7 +3345,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 252
+   "row": 256
   },
   {
    "name": "BUPROFEZIN",
@@ -3306,7 +3358,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 253
+   "row": 257
   },
   {
    "name": "BURKHOLDERIA SP STRAIN A396 CELLS AND SPENT FERMENTATION MEDIA",
@@ -3319,7 +3371,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 254
+   "row": 258
   },
   {
    "name": "BUTOXYPOLYPROPOXYPOLYETHOXYETHANOL - IODINE COMPLEX",
@@ -3332,7 +3384,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 255
+   "row": 259
   },
   {
    "name": "BUTOXYPOLYPROPYLENE GLYCOL",
@@ -3345,7 +3397,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 256
+   "row": 260
   },
   {
    "name": "BUTYLATE",
@@ -3358,7 +3410,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 257
+   "row": 261
   },
   {
    "name": "C. ROSEA STRAIN 321U",
@@ -3371,7 +3423,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 258
+   "row": 262
   },
   {
    "name": "C12-C16- ALKYLDIMETHYLAMINE OXIDES AND RELATED AMINE OXIDES",
@@ -3384,7 +3436,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 259
+   "row": 263
   },
   {
    "name": "CALCIUM ACETATE",
@@ -3397,7 +3449,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 260
+   "row": 264
   },
   {
    "name": "CALCIUM DISODIUM EDTA HYDRATE",
@@ -3410,7 +3462,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 261
+   "row": 265
   },
   {
    "name": "CALCIUM HYPOCHLORITE",
@@ -3423,7 +3475,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 262
+   "row": 266
   },
   {
    "name": "CALCIUM POLYSULFIDE",
@@ -3436,7 +3488,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 263
+   "row": 267
   },
   {
    "name": "CAMPHOR OIL",
@@ -3449,7 +3501,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 264
+   "row": 268
   },
   {
    "name": "CANDIDA OLEOPHILA STRAIN O",
@@ -3462,7 +3514,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 265
+   "row": 269
   },
   {
    "name": "CANOLA FLEA BEETLE T57336 DOUBLE STRANDED RNA",
@@ -3475,7 +3527,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 266
+   "row": 270
   },
   {
    "name": "CANOLA OIL",
@@ -3488,7 +3540,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 267
+   "row": 271
   },
   {
    "name": "CAPRIC ACID",
@@ -3501,7 +3553,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 268
+   "row": 272
   },
   {
    "name": "CAPROIC ACID",
@@ -3514,7 +3566,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 269
+   "row": 273
   },
   {
    "name": "CAPRYLIC ACID",
@@ -3527,7 +3579,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 270
+   "row": 274
   },
   {
    "name": "CAPSAICIN",
@@ -3540,7 +3592,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 271
+   "row": 275
   },
   {
    "name": "CAPTAN",
@@ -3553,7 +3605,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 272
+   "row": 276
   },
   {
    "name": "CARBARYL",
@@ -3566,7 +3618,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 273
+   "row": 277
   },
   {
    "name": "CARBATHIIN",
@@ -3579,7 +3631,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 274
+   "row": 278
   },
   {
    "name": "CARBENDAZIM",
@@ -3592,7 +3644,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 275
+   "row": 279
   },
   {
    "name": "CARBENDAZIM-PHOSPHATE",
@@ -3605,7 +3657,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 276
+   "row": 280
   },
   {
    "name": "CARBOFURAN",
@@ -3618,7 +3670,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 277
+   "row": 281
   },
   {
    "name": "CARBON DIOXIDE GAS",
@@ -3631,7 +3683,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 278
+   "row": 282
   },
   {
    "name": "CARFENTRAZONE-ETHYL",
@@ -3644,7 +3696,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 279
+   "row": 283
   },
   {
    "name": "CASTOR OIL",
@@ -3657,7 +3709,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 280
+   "row": 284
   },
   {
    "name": "CEDAR LEAF OIL",
@@ -3670,7 +3722,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 281
+   "row": 285
   },
   {
    "name": "CEDARWOOD OIL",
@@ -3683,7 +3735,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 282
+   "row": 286
   },
   {
    "name": "CEDARWOOD OIL (JUNIPERUS MEXICANA EXTRACT)",
@@ -3696,7 +3748,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 283
+   "row": 287
   },
   {
    "name": "CELLULOSE (FROM POWDERED CORN COBS)",
@@ -3709,7 +3761,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 284
+   "row": 288
   },
   {
    "name": "CHINOMETHIONAT",
@@ -3722,7 +3774,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 285
+   "row": 289
   },
   {
    "name": "CHITOSAN",
@@ -3735,7 +3787,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 286
+   "row": 290
   },
   {
    "name": "CHLORAMBEN PRESENT AS AMMONIUM SALT OR AS SODIUM SALT",
@@ -3748,7 +3800,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 287
+   "row": 291
   },
   {
    "name": "CHLORANTRANILIPROLE",
@@ -3761,7 +3813,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 288
+   "row": 292
   },
   {
    "name": "CHLORDANE",
@@ -3774,7 +3826,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 289
+   "row": 293
   },
   {
    "name": "CHLORDECONE",
@@ -3787,7 +3839,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 290
+   "row": 294
   },
   {
    "name": "CHLORFENAPYR",
@@ -3800,7 +3852,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 291
+   "row": 295
   },
   {
    "name": "CHLORFENVINPHOS",
@@ -3813,7 +3865,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 292
+   "row": 296
   },
   {
    "name": "CHLORFLURECOL-METHYL",
@@ -3826,7 +3878,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 293
+   "row": 297
   },
   {
    "name": "CHLORIMURON-ETHYL",
@@ -3839,7 +3891,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 294
+   "row": 298
   },
   {
    "name": "CHLORITE [MINERAL]",
@@ -3852,7 +3904,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 295
+   "row": 299
   },
   {
    "name": "CHLORMEQUAT CHLORIDE",
@@ -3865,7 +3917,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 296
+   "row": 300
   },
   {
    "name": "CHLOROACETAMIDE",
@@ -3878,7 +3930,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 297
+   "row": 301
   },
   {
    "name": "CHLOROBENZILATE",
@@ -3891,7 +3943,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 298
+   "row": 302
   },
   {
    "name": "CHLORONEB",
@@ -3904,7 +3956,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 299
+   "row": 303
   },
   {
    "name": "CHLOROPHACINONE",
@@ -3917,7 +3969,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 300
+   "row": 304
   },
   {
    "name": "CHLOROPICRIN",
@@ -3930,7 +3982,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 301
+   "row": 305
   },
   {
    "name": "CHLOROTHALONIL",
@@ -3943,7 +3995,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 302
+   "row": 306
   },
   {
    "name": "CHLORPROPHAM",
@@ -3956,7 +4008,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 303
+   "row": 307
   },
   {
    "name": "CHLORPYRIFOS",
@@ -3969,7 +4021,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 304
+   "row": 308
   },
   {
    "name": "CHLORSULFURON",
@@ -3982,7 +4034,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 305
+   "row": 309
   },
   {
    "name": "CHLORTHAL (PRESENT AS DIMETHYL ESTER)",
@@ -3995,7 +4047,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 306
+   "row": 310
   },
   {
    "name": "CHOLECALCIFEROL",
@@ -4008,7 +4060,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 307
+   "row": 311
   },
   {
    "name": "CHONDROSTEREUM PURPUREUM (STRAIN: HQ1):CHONDROSTEREUM PURPUREUM (STRAIN: NORTH AMERICAN; PATHOVAR: PFC2139)",
@@ -4021,7 +4073,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 308
+   "row": 312
   },
   {
    "name": "CHONDROSTEREUM PURPUREUM STRAIN PFC2139",
@@ -4034,7 +4086,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 309
+   "row": 313
   },
   {
    "name": "CHROMIC ACID",
@@ -4047,7 +4099,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 310
+   "row": 314
   },
   {
    "name": "CHROMOBACTERIUM SUBTSUGAE STRAIN PRAA4-IT CELLS AND SPENT FERMENTATION MEDIA",
@@ -4060,7 +4112,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 311
+   "row": 315
   },
   {
    "name": "CIS-JASMONE",
@@ -4073,7 +4125,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 312
+   "row": 316
   },
   {
    "name": "CITRIC ACID",
@@ -4086,7 +4138,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 313
+   "row": 317
   },
   {
    "name": "CITRONELLA OIL",
@@ -4099,7 +4151,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 314
+   "row": 318
   },
   {
    "name": "CITRONELLA TERPENE",
@@ -4112,7 +4164,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 315
+   "row": 319
   },
   {
    "name": "CITRONELLAL",
@@ -4125,7 +4177,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 316
+   "row": 320
   },
   {
    "name": "CLAVIBACTER MICHIGANENSIS (SPP MICHIGANENSIS) BACTERIOPHAGE",
@@ -4138,7 +4190,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 317
+   "row": 321
   },
   {
    "name": "CLETHODIM",
@@ -4151,7 +4203,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 318
+   "row": 322
   },
   {
    "name": "CLODINAFOP-PROPARGYL",
@@ -4164,7 +4216,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 319
+   "row": 323
   },
   {
    "name": "CLOFENTEZINE",
@@ -4177,7 +4229,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 320
+   "row": 324
   },
   {
    "name": "CLOMAZONE",
@@ -4190,7 +4242,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 321
+   "row": 325
   },
   {
    "name": "CLONOSTACHYS ROSEA STRAIN 88-710",
@@ -4203,7 +4255,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 322
+   "row": 326
   },
   {
    "name": "CLONOSTACHYS ROSEA (STRAIN ACM941)",
@@ -4216,7 +4268,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 323
+   "row": 327
   },
   {
    "name": "CLONOSTACHYS ROSEA STRAIN CR-7",
@@ -4229,7 +4281,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 324
+   "row": 328
   },
   {
    "name": "CLONOSTACHYS ROSEA STRAIN J1446",
@@ -4242,7 +4294,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 325
+   "row": 329
   },
   {
    "name": "CLOPYRALID (PRESENT AS ACID, OR AS SALTS)",
@@ -4255,7 +4307,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 326
+   "row": 330
   },
   {
    "name": "CLOQUINTOCET-MEXYL",
@@ -4268,7 +4320,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 327
+   "row": 331
   },
   {
    "name": "CLORANSULAM-METHYL",
@@ -4281,7 +4333,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 328
+   "row": 332
   },
   {
    "name": "CLOTHIANIDIN",
@@ -4294,7 +4346,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 329
+   "row": 333
   },
   {
    "name": "CLOVE",
@@ -4307,7 +4359,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 330
+   "row": 334
   },
   {
    "name": "CLOVE OIL",
@@ -4320,7 +4372,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 331
+   "row": 335
   },
   {
    "name": "COAL TAR ACIDS",
@@ -4333,7 +4385,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 332
+   "row": 336
   },
   {
    "name": "COAL TAR OILS",
@@ -4346,7 +4398,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 333
+   "row": 337
   },
   {
    "name": "CODLELURE",
@@ -4359,7 +4411,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 334
+   "row": 338
   },
   {
    "name": "COLD PRESSED ORANGE OIL",
@@ -4372,7 +4424,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 335
+   "row": 339
   },
   {
    "name": "COLLETOTRICHUM GLOEOSPORIOIDES F.SP. MALVAE",
@@ -4385,7 +4437,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 336
+   "row": 340
   },
   {
    "name": "COLORADO POTATO BEETLE LDS001.1 DOUBLE STRANDED RNA",
@@ -4398,7 +4450,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 337
+   "row": 341
   },
   {
    "name": "COLORADO POTATO BEETLE LDS012.1 DOUBLE STRANDED RNA",
@@ -4411,7 +4463,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 338
+   "row": 342
   },
   {
    "name": "CONCENTRATED APPLE JUICE",
@@ -4424,7 +4476,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 339
+   "row": 343
   },
   {
    "name": "CONIOTHYRIUM MINITANS STRAIN CON/M/91-08",
@@ -4437,7 +4489,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 340
+   "row": 344
   },
   {
    "name": "COPPER AS ELEMENTAL, PRESENT AS COPPER TRIETHANOLAMINE COMPLEX",
@@ -4450,7 +4502,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 341
+   "row": 345
   },
   {
    "name": "COPPER, METALLIC",
@@ -4463,7 +4515,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 342
+   "row": 346
   },
   {
    "name": "COPPER (PRESENT AS BASIC COPPER CARBONATE)",
@@ -4476,7 +4528,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 343
+   "row": 347
   },
   {
    "name": "COPPER (PRESENT AS BASIC COPPER SULFATE)",
@@ -4489,7 +4541,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 344
+   "row": 348
   },
   {
    "name": "COPPER (PRESENT AS COPPER 8-QUINOLINOLATE)",
@@ -4502,7 +4554,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 345
+   "row": 349
   },
   {
    "name": "COPPER (PRESENT AS COPPER HYDROXIDE)",
@@ -4515,7 +4567,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 346
+   "row": 350
   },
   {
    "name": "COPPER (PRESENT AS COPPER NAPHTHENATE)",
@@ -4528,7 +4580,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 347
+   "row": 351
   },
   {
    "name": "COPPER (PRESENT AS COPPER : NICKEL : MANGANESE : IRON ALLOY)",
@@ -4541,7 +4593,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 348
+   "row": 352
   },
   {
    "name": "COPPER (PRESENT AS COPPER OCTANOATE)",
@@ -4554,7 +4606,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 349
+   "row": 353
   },
   {
    "name": "COPPER (PRESENT AS COPPER OXYCHLORIDE)",
@@ -4567,7 +4619,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 350
+   "row": 354
   },
   {
    "name": "COPPER (PRESENT AS COPPER SULFATE PENTAHYDRATE)",
@@ -4580,7 +4632,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 351
+   "row": 355
   },
   {
    "name": "COPPER (PRESENT AS CUPRIC AMMONIUM FORMATE AND TANNATE COMPLEX)",
@@ -4593,7 +4645,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 352
+   "row": 356
   },
   {
    "name": "COPPER (PRESENT AS CUPRIC OXIDE)",
@@ -4606,7 +4658,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 353
+   "row": 357
   },
   {
    "name": "COPPER (PRESENT AS CUPROUS OXIDE)",
@@ -4619,7 +4671,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 354
+   "row": 358
   },
   {
    "name": "COPPER (PRESENT AS CUPROUS OXIDE, CUPRIC OXIDE AND METALLIC COPPER)",
@@ -4632,7 +4684,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 355
+   "row": 359
   },
   {
    "name": "COPPER (PRESENT AS CUPROUS THIOCYANATE)",
@@ -4645,7 +4697,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 356
+   "row": 360
   },
   {
    "name": "COPPER (PRESENT AS MIXED COPPER ETHANOLAMINE COMPLEXES OR AS BIS(2-ANIMOETHANOLATE)",
@@ -4658,7 +4710,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 357
+   "row": 361
   },
   {
    "name": "COPPER (PRESENT AS PICRO CUPRIC AMMONIUM FORMATE AND TANNATE COMPLEX)",
@@ -4671,7 +4723,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 358
+   "row": 362
   },
   {
    "name": "COPPER (PRESENT AS SILVER COPPER ZEOLITE)",
@@ -4684,7 +4736,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 359
+   "row": 363
   },
   {
    "name": "COPPER PYRITHIONE",
@@ -4697,7 +4749,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 360
+   "row": 364
   },
   {
    "name": "CORN GLUTEN MEAL",
@@ -4710,7 +4762,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 361
+   "row": 365
   },
   {
    "name": "CORNMINT OIL",
@@ -4723,7 +4775,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 362
+   "row": 366
   },
   {
    "name": "COUMAPHOS",
@@ -4736,7 +4788,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 363
+   "row": 367
   },
   {
    "name": "CPBMESH DSRNA",
@@ -4749,7 +4801,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 364
+   "row": 368
   },
   {
    "name": "CREOSOTE",
@@ -4762,7 +4814,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 365
+   "row": 369
   },
   {
    "name": "CRESYLIC ACID (OR: PHENOLIC HOMOLOGUES; A MIXTURE OF CRESOLS, XYLENOLS, ETHYL PHENOLS AND HIGHER MOLECULAR WEIGHT PHENOLS)",
@@ -4775,7 +4827,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 366
+   "row": 370
   },
   {
    "name": "CROTOXYPHOS",
@@ -4788,7 +4840,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 367
+   "row": 371
   },
   {
    "name": "CRUFOMATE",
@@ -4801,7 +4853,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 368
+   "row": 372
   },
   {
    "name": "CUPRIC OXIDE",
@@ -4814,7 +4866,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 369
+   "row": 373
   },
   {
    "name": "CYANAZINE",
@@ -4827,7 +4879,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 370
+   "row": 374
   },
   {
    "name": "CYANOGEN",
@@ -4840,7 +4892,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 371
+   "row": 375
   },
   {
    "name": "CYANTRANILIPROLE",
@@ -4853,7 +4905,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 372
+   "row": 376
   },
   {
    "name": "CYAZOFAMID",
@@ -4866,7 +4918,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 373
+   "row": 377
   },
   {
    "name": "CYCLANILIPROLE",
@@ -4879,7 +4931,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 374
+   "row": 378
   },
   {
    "name": "CYCLOATE",
@@ -4892,7 +4944,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 375
+   "row": 379
   },
   {
    "name": "CYCLOBUTRIFLURAM",
@@ -4905,7 +4957,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 376
+   "row": 380
   },
   {
    "name": "CYCLOHEXIMIDE",
@@ -4918,7 +4970,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 377
+   "row": 381
   },
   {
    "name": "CYDIA POMONELLA GRANULOVIRUS ISOLATE V-22",
@@ -4931,7 +4983,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 378
+   "row": 382
   },
   {
    "name": "CYDIA POMONELLA GRANULOVIRUS STRAIN CMGV4",
@@ -4944,7 +4996,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 379
+   "row": 383
   },
   {
    "name": "CYDIA POMONELLA GRANULOVIRUS (STRAIN M)",
@@ -4957,7 +5009,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 380
+   "row": 384
   },
   {
    "name": "CYFLUFENAMID",
@@ -4970,7 +5022,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 381
+   "row": 385
   },
   {
    "name": "CYFLUMETOFEN",
@@ -4983,7 +5035,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 382
+   "row": 386
   },
   {
    "name": "CYFLUTHRIN",
@@ -4996,7 +5048,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 383
+   "row": 387
   },
   {
    "name": "CYMOXANIL",
@@ -5009,7 +5061,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 384
+   "row": 388
   },
   {
    "name": "CYPERMETHRIN",
@@ -5022,7 +5074,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 385
+   "row": 389
   },
   {
    "name": "CYPHENOTHRIN",
@@ -5035,7 +5087,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 386
+   "row": 390
   },
   {
    "name": "CYPRODINIL",
@@ -5048,7 +5100,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 387
+   "row": 391
   },
   {
    "name": "CYPROSULFAMIDE",
@@ -5061,7 +5113,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 388
+   "row": 392
   },
   {
    "name": "CYROMAZINE",
@@ -5074,7 +5126,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 389
+   "row": 393
   },
   {
    "name": "D-CIS,TRANS-ALLETHRIN",
@@ -5087,7 +5139,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 390
+   "row": 394
   },
   {
    "name": "D-LIMONENE",
@@ -5100,7 +5152,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 391
+   "row": 395
   },
   {
    "name": "D-PHENOTHRIN",
@@ -5113,7 +5165,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 392
+   "row": 396
   },
   {
    "name": "D-TRANS-ALLETHRIN",
@@ -5126,7 +5178,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 393
+   "row": 397
   },
   {
    "name": "DALAPON",
@@ -5139,7 +5191,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 394
+   "row": 398
   },
   {
    "name": "DAMINOZIDE",
@@ -5152,7 +5204,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 395
+   "row": 399
   },
   {
    "name": "DAZOMET",
@@ -5165,7 +5217,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 396
+   "row": 400
   },
   {
    "name": "DBCP",
@@ -5178,7 +5230,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 397
+   "row": 401
   },
   {
    "name": "DDT",
@@ -5191,7 +5243,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 398
+   "row": 402
   },
   {
    "name": "DECYL ISONONYL DIMETHYL AMMONIUM CHLORIDE",
@@ -5204,7 +5256,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 399
+   "row": 403
   },
   {
    "name": "DEET PLUS RELATED ACTIVE TOLUAMIDES",
@@ -5217,7 +5269,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 400
+   "row": 404
   },
   {
    "name": "DEHYDRATED APPLE POWDER",
@@ -5230,7 +5282,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 401
+   "row": 405
   },
   {
    "name": "DEHYDROABIETYLAMINE ACETATE",
@@ -5243,7 +5295,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 402
+   "row": 406
   },
   {
    "name": "DEHYDROABIETYLAMINE ETHYLENE OXIDE",
@@ -5256,7 +5308,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 403
+   "row": 407
   },
   {
    "name": "DELTAMETHRIN",
@@ -5269,7 +5321,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 404
+   "row": 408
   },
   {
    "name": "DEMETON-S",
@@ -5282,7 +5334,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 405
+   "row": 409
   },
   {
    "name": "DENATONIUM BENZOATE",
@@ -5295,7 +5347,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 406
+   "row": 410
   },
   {
    "name": "DENATURED ETHANOL",
@@ -5308,7 +5360,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 407
+   "row": 411
   },
   {
    "name": "DESMEDIPHAM",
@@ -5321,7 +5373,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 408
+   "row": 412
   },
   {
    "name": "DEVICE, NO GUARANTEE REQUIRED",
@@ -5334,7 +5386,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 409
+   "row": 413
   },
   {
    "name": "DEVICE (SWIMMING POOL ALGAECIDE,BACTERIACIDE) NO GUARANTEE REQUIRED - (OR: MOLLUSCICIDE - SEE REMARKS)",
@@ -5347,7 +5399,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 410
+   "row": 414
   },
   {
    "name": "DEVICE (SWIMMING POOL ALGAECIDE, COPPER GENERATING) NO GUARANTEE REQUIRED",
@@ -5360,7 +5412,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 411
+   "row": 415
   },
   {
    "name": "DEVICE (SWIMMING POOL ALGAECIDE, PEROXIDE) NO GUARANTEE REQUIRED",
@@ -5373,7 +5425,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 412
+   "row": 416
   },
   {
    "name": "DEVICE (SWIMMING POOL ALGAECIDE, SALT IN DEVICE) NO GUARANTEE REQUIRED",
@@ -5386,7 +5438,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 413
+   "row": 417
   },
   {
    "name": "DEVICE (SWIMMING POOL ALGAECIDE, SALT IN POOL) NO GUARANTEE REQUIRED",
@@ -5399,7 +5451,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 414
+   "row": 418
   },
   {
    "name": "DEVICE (SWIMMING POOL ALGAECIDE, ULTRA VIOLET) NO GUARANTEE REQUIRED",
@@ -5412,7 +5464,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 415
+   "row": 419
   },
   {
    "name": "DEVICE (SWIMMING POOL ALGAECIDE, ZINC) NO GUARANTEE REQUIRED",
@@ -5425,7 +5477,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 416
+   "row": 420
   },
   {
    "name": "DI-N-BUTYL SUCCINATE",
@@ -5438,7 +5490,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 417
+   "row": 421
   },
   {
    "name": "DI-N-PROPYL ISOCINCHOMERONATE",
@@ -5451,7 +5503,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 418
+   "row": 422
   },
   {
    "name": "DI(PHENYLMERCURIC)DODECENYL SUCCINATE",
@@ -5464,7 +5516,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 419
+   "row": 423
   },
   {
    "name": "DIALKYL (8% C8, 9% C10, 47% C12, 18% C14, 8% C16, 10% C18) DIMETHYL AMMONIUM CHLORIDE",
@@ -5477,7 +5529,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 420
+   "row": 424
   },
   {
    "name": "DIALLYL DISULFIDE AND RELATED SULFIDES",
@@ -5490,7 +5542,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 421
+   "row": 425
   },
   {
    "name": "DIAMMONIUM PHOSPHATE",
@@ -5503,7 +5555,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 422
+   "row": 426
   },
   {
    "name": "DIAZINON",
@@ -5516,7 +5568,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 423
+   "row": 427
   },
   {
    "name": "DICAMBA (PRESENT AS ACID)",
@@ -5529,7 +5581,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 424
+   "row": 428
   },
   {
    "name": "DICAMBA (PRESENT AS ACID, ESTER, SALTS)",
@@ -5542,7 +5594,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 425
+   "row": 429
   },
   {
    "name": "DICAMBA (PRESENT AS DIETHANOLAMINE SALT)",
@@ -5555,7 +5607,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 426
+   "row": 430
   },
   {
    "name": "DICAMBA (PRESENT AS DIGLYCOLAMINE SALT)",
@@ -5568,7 +5620,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 427
+   "row": 431
   },
   {
    "name": "DICAMBA (PRESENT AS DIMETHYLAMINE SALT)",
@@ -5581,7 +5633,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 428
+   "row": 432
   },
   {
    "name": "DICAMBA (PRESENT AS ISOPROPYLAMINE SALT)",
@@ -5594,7 +5646,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 429
+   "row": 433
   },
   {
    "name": "DICAMBA (PRESENT AS MONOETHANOLAMINE SALT)",
@@ -5607,7 +5659,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 430
+   "row": 434
   },
   {
    "name": "DICAMBA (PRESENT AS N-(2-AMINOETHYL)-1,2-ETHANEDIAMINE SALT)",
@@ -5620,7 +5672,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 431
+   "row": 435
   },
   {
    "name": "DICAMBA (PRESENT AS N,N-BIS(3-AMINOPROPYL)METHYLAMINE SALT)",
@@ -5633,7 +5685,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 432
+   "row": 436
   },
   {
    "name": "DICAMBA (PRESENT AS POTASSIUM SALT)",
@@ -5646,7 +5698,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 433
+   "row": 437
   },
   {
    "name": "DICAMBA (PRESENT AS SODIUM SALT)",
@@ -5659,7 +5711,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 434
+   "row": 438
   },
   {
    "name": "DICHLOBENIL",
@@ -5672,7 +5724,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 435
+   "row": 439
   },
   {
    "name": "DICHLOFLUANID",
@@ -5685,7 +5737,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 436
+   "row": 440
   },
   {
    "name": "DICHLONE",
@@ -5698,7 +5750,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 437
+   "row": 441
   },
   {
    "name": "DICHLORFLURECOL-METHYL",
@@ -5711,7 +5763,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 438
+   "row": 442
   },
   {
    "name": "DICHLOROPHEN",
@@ -5724,7 +5776,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 439
+   "row": 443
   },
   {
    "name": "DICHLORPROP",
@@ -5737,7 +5789,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 440
+   "row": 444
   },
   {
    "name": "DICHLORPROP-P",
@@ -5750,7 +5802,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 441
+   "row": 445
   },
   {
    "name": "DICHLORPROP-P (PRESENT AS 2-ETHYLHEXYL ESTER)",
@@ -5763,7 +5815,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 442
+   "row": 446
   },
   {
    "name": "DICHLORPROP-P (PRESENT AS DIMETHYLAMINE SALT)",
@@ -5776,7 +5828,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 443
+   "row": 447
   },
   {
    "name": "DICHLORPROP (PRESENT AS BUTOXYETHYL ESTER, AS ISOOCTYL ESTER, OR AS ETHYLHEXYL ESTER)",
@@ -5789,7 +5841,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 444
+   "row": 448
   },
   {
    "name": "DICHLORPROP (PRESENT AS DIMETHYLAMINE SALT)",
@@ -5802,7 +5854,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 445
+   "row": 449
   },
   {
    "name": "DICHLORVOS PLUS RELATED ACTIVE COMPOUNDS",
@@ -5815,7 +5867,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 446
+   "row": 450
   },
   {
    "name": "DICLOFOP-METHYL",
@@ -5828,7 +5880,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 447
+   "row": 451
   },
   {
    "name": "DICLORAN",
@@ -5841,7 +5893,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 448
+   "row": 452
   },
   {
    "name": "DICOFOL",
@@ -5854,7 +5906,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 449
+   "row": 453
   },
   {
    "name": "DIDECYLDIMETHYLAMMONIUM CHLORIDE",
@@ -5867,7 +5919,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 450
+   "row": 454
   },
   {
    "name": "DIDECYLDIMETHYLAMMONIUM PRESENT AS CARBONATE AND BICARBONATE SALTS",
@@ -5880,7 +5932,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 451
+   "row": 455
   },
   {
    "name": "DIENOCHLOR",
@@ -5893,7 +5945,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 452
+   "row": 456
   },
   {
    "name": "DIETHOFENCARB",
@@ -5906,7 +5958,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 453
+   "row": 457
   },
   {
    "name": "DIFENOCONAZOLE",
@@ -5919,7 +5971,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 454
+   "row": 458
   },
   {
    "name": "DIFENZOQUAT (PRESENT AS METHYL SULPHATE SALT)",
@@ -5932,7 +5984,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 455
+   "row": 459
   },
   {
    "name": "DIFETHIALONE",
@@ -5945,7 +5997,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 456
+   "row": 460
   },
   {
    "name": "DIFLUBENZURON",
@@ -5958,7 +6010,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 457
+   "row": 461
   },
   {
    "name": "DIFLUFENICAN",
@@ -5971,7 +6023,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 458
+   "row": 462
   },
   {
    "name": "DIFLUFENZOPYR",
@@ -5984,7 +6036,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 459
+   "row": 463
   },
   {
    "name": "DIFLUFENZOPYR (PRESENT AS SODIUM SALT)",
@@ -5997,7 +6049,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 460
+   "row": 464
   },
   {
    "name": "DIISOBUTYLPHENOXYETHOXYETHYL DIMETHYL BENZYL AMMONIUM CHLORIDE (PRESENT AS MONOHYDRATE)",
@@ -6010,7 +6062,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 461
+   "row": 465
   },
   {
    "name": "DIMETHENAMID",
@@ -6023,7 +6075,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 462
+   "row": 466
   },
   {
    "name": "DIMETHENAMID-P",
@@ -6036,7 +6088,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 463
+   "row": 467
   },
   {
    "name": "DIMETHOATE",
@@ -6049,7 +6101,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 464
+   "row": 468
   },
   {
    "name": "DIMETHOMORPH",
@@ -6062,7 +6114,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 465
+   "row": 469
   },
   {
    "name": "DIMETHOXANE",
@@ -6075,7 +6127,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 466
+   "row": 470
   },
   {
    "name": "DIMETHYL ALKYL AMINE",
@@ -6088,7 +6140,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 467
+   "row": 471
   },
   {
    "name": "DIMETHYL PHTHALATE",
@@ -6101,7 +6153,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 468
+   "row": 472
   },
   {
    "name": "DIMETHYLOXAZOLIDINE",
@@ -6114,7 +6166,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 469
+   "row": 473
   },
   {
    "name": "DINITROPHENOL",
@@ -6127,7 +6179,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 470
+   "row": 474
   },
   {
    "name": "DINOCAP (PLUS RELATED ACTIVE COMPOUNDS)",
@@ -6140,7 +6192,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 471
+   "row": 475
   },
   {
    "name": "DINOSEB PRESENT IN FREE FORM",
@@ -6153,7 +6205,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 472
+   "row": 476
   },
   {
    "name": "DINOTEFURAN",
@@ -6166,7 +6218,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 473
+   "row": 477
   },
   {
    "name": "DIOCTYL SODIUM SUCCINATE OR DOCUSATE SODIUM",
@@ -6179,7 +6231,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 474
+   "row": 478
   },
   {
    "name": "DIOCTYLDIMETHYLAMMONIUM CHLORIDE",
@@ -6192,7 +6244,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 475
+   "row": 479
   },
   {
    "name": "DIODOFON",
@@ -6202,10 +6254,10 @@
    "cas_raw": "20018-09-1",
    "cas_norm": "20018091",
    "status": "غير مُعاد التقييم",
-   "status_raw": "NO",
+   "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 476
+   "row": 480
   },
   {
    "name": "DIPHACINONE (PRESENT IN FREE FORM OR AS SODIUM SALT)",
@@ -6218,7 +6270,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 477
+   "row": 481
   },
   {
    "name": "DIPHENYLAMINE",
@@ -6231,7 +6283,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 478
+   "row": 482
   },
   {
    "name": "DIPHENYLSTIBINE 2-ETHYLHEXOATE",
@@ -6244,7 +6296,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 479
+   "row": 483
   },
   {
    "name": "DIPROPYLENE GLYCOL",
@@ -6257,7 +6309,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 480
+   "row": 484
   },
   {
    "name": "DIQUAT (PRESENT AS DIBROMIDE)",
@@ -6270,7 +6322,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 481
+   "row": 485
   },
   {
    "name": "DISODIUM CYANODITHIOIMIDOCARBONATE",
@@ -6283,7 +6335,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 482
+   "row": 486
   },
   {
    "name": "DISODIUM OCTABORATE ANHYDROUS",
@@ -6296,7 +6348,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 483
+   "row": 487
   },
   {
    "name": "DISODIUM OCTABORATE TETRAHYDRATE",
@@ -6309,7 +6361,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 484
+   "row": 488
   },
   {
    "name": "DISPARLURE",
@@ -6322,7 +6374,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 485
+   "row": 489
   },
   {
    "name": "DISTEARYL (15% C16, 85% C18) DIMETHYL AMMONIUM CHLORIDE",
@@ -6335,7 +6387,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 486
+   "row": 490
   },
   {
    "name": "DISULFOTON",
@@ -6348,7 +6400,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 487
+   "row": 491
   },
   {
    "name": "DITHIANON",
@@ -6361,7 +6413,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 488
+   "row": 492
   },
   {
    "name": "DITHIOPYR",
@@ -6374,7 +6426,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 489
+   "row": 493
   },
   {
    "name": "DIURON",
@@ -6387,7 +6439,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 490
+   "row": 494
   },
   {
    "name": "DNOC PRESENT AS SODIUM SALT",
@@ -6400,7 +6452,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 491
+   "row": 495
   },
   {
    "name": "DODECYLGUANIDINE HYDROCHLORIDE",
@@ -6413,7 +6465,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 492
+   "row": 496
   },
   {
    "name": "DODEMORPH-ACETATE",
@@ -6426,7 +6478,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 493
+   "row": 497
   },
   {
    "name": "DODINE",
@@ -6439,7 +6491,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 494
+   "row": 498
   },
   {
    "name": "DRIED BLOOD",
@@ -6452,7 +6504,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 495
+   "row": 499
   },
   {
    "name": "DRIED EGGS",
@@ -6465,7 +6517,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 496
+   "row": 500
   },
   {
    "name": "(E)-11-TETRADECENYL ACETATE",
@@ -6478,7 +6530,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 497
+   "row": 501
   },
   {
    "name": "(E)-4-TRIDECENYL ACETATE",
@@ -6491,7 +6543,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 498
+   "row": 502
   },
   {
    "name": "(E)-4-TRIDECENYL ACETATE + (Z)-4-TRIDECENYL ACETATE",
@@ -6504,7 +6556,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 499
+   "row": 503
   },
   {
    "name": "E-8-DODECEN-1-YL ACETATE OR E-8-DODECENYL ACETATE",
@@ -6517,7 +6569,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 500
+   "row": 504
   },
   {
    "name": "(E)-9-PENTADECENYL ACETATE",
@@ -6530,7 +6582,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 501
+   "row": 505
   },
   {
    "name": "(E)-9 PENTADEEN-1-OL ACETATE",
@@ -6543,7 +6595,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 502
+   "row": 506
   },
   {
    "name": "E-FUSCOL",
@@ -6556,7 +6608,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 503
+   "row": 507
   },
   {
    "name": "(E,Z)-11-TETRADECEN-1-OL",
@@ -6569,7 +6621,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 504
+   "row": 508
   },
   {
    "name": "(E,Z)-11-TETRADECENAL",
@@ -6582,7 +6634,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 505
+   "row": 509
   },
   {
    "name": "(E,Z)-11-TETRADECENYL ACETATE",
@@ -6595,7 +6647,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 506
+   "row": 510
   },
   {
    "name": "(E,Z)-2,13-OCTADECADIEN-1-OL",
@@ -6608,7 +6660,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 507
+   "row": 511
   },
   {
    "name": "(E,Z)-2,13-OCTADECADIEN-1-YL ACETATE",
@@ -6621,7 +6673,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 508
+   "row": 512
   },
   {
    "name": "(E,Z)-3,13-OCTADECADIEN-1-YL ACETATE",
@@ -6634,7 +6686,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 509
+   "row": 513
   },
   {
    "name": "(E,Z)-8,10-PENTADECADIENYL ACETATE",
@@ -6647,7 +6699,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 510
+   "row": 514
   },
   {
    "name": "(E,Z)-9-DODECENYL ACETATE",
@@ -6660,7 +6712,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 511
+   "row": 515
   },
   {
    "name": "EG84-DSRNA-GLB",
@@ -6673,7 +6725,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 512
+   "row": 516
   },
   {
    "name": "EMAMECTIN BENZOATE",
@@ -6686,7 +6738,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 513
+   "row": 517
   },
   {
    "name": "ENDOSULFAN",
@@ -6699,7 +6751,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 514
+   "row": 518
   },
   {
    "name": "ENDOTHAL",
@@ -6712,7 +6764,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 515
+   "row": 519
   },
   {
    "name": "ENDOTHAL (PRESENT AS DIPOTASSIUM SALT)",
@@ -6725,7 +6777,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 516
+   "row": 520
   },
   {
    "name": "ENDOTHAL (PRESENT AS N,N-DIMETHYLALKYLAMINE SALT)",
@@ -6738,7 +6790,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 517
+   "row": 521
   },
   {
    "name": "ENDRIN",
@@ -6751,7 +6803,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 518
+   "row": 522
   },
   {
    "name": "ENTEROBACTER SP. STRAIN SST3 WALAA",
@@ -6764,7 +6816,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 519
+   "row": 523
   },
   {
    "name": "EPTC",
@@ -6777,7 +6829,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 520
+   "row": 524
   },
   {
    "name": "EPYRIFENACIL",
@@ -6790,7 +6842,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 521
+   "row": 525
   },
   {
    "name": "ERGOCALCIFEROL",
@@ -6803,7 +6855,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 522
+   "row": 526
   },
   {
    "name": "ERYSICHRONA DSRNA",
@@ -6816,7 +6868,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 523
+   "row": 527
   },
   {
    "name": "ES169-DSRNA-GLB",
@@ -6829,7 +6881,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 524
+   "row": 528
   },
   {
    "name": "ES170-DSRNA-GLB",
@@ -6842,7 +6894,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 525
+   "row": 529
   },
   {
    "name": "ES171-DSRNA-GLB",
@@ -6855,7 +6907,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 526
+   "row": 530
   },
   {
    "name": "ES172-DSRNA-GLB",
@@ -6868,7 +6920,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 527
+   "row": 531
   },
   {
    "name": "ES173-DSRNA-GLB",
@@ -6881,7 +6933,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 528
+   "row": 532
   },
   {
    "name": "ES187-DSRNA-GLB",
@@ -6894,7 +6946,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 529
+   "row": 533
   },
   {
    "name": "ES188-DSRNA-GLB",
@@ -6907,7 +6959,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 530
+   "row": 534
   },
   {
    "name": "ES75-DSRNA-GLB",
@@ -6920,7 +6972,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 531
+   "row": 535
   },
   {
    "name": "ES76-DSRNA-GLB",
@@ -6933,7 +6985,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 532
+   "row": 536
   },
   {
    "name": "ES77-DSRNA-GLB",
@@ -6946,7 +6998,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 533
+   "row": 537
   },
   {
    "name": "ES79.015 DSRNA",
@@ -6959,7 +7011,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 534
+   "row": 538
   },
   {
    "name": "ETHABOXAM",
@@ -6972,7 +7024,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 535
+   "row": 539
   },
   {
    "name": "ETHALFLURALIN",
@@ -6985,7 +7037,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 536
+   "row": 540
   },
   {
    "name": "ETHAMETSULFURON-METHYL",
@@ -6998,7 +7050,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 537
+   "row": 541
   },
   {
    "name": "ETHANOL (70% DENATURED)",
@@ -7011,7 +7063,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 538
+   "row": 542
   },
   {
    "name": "ETHEPHON",
@@ -7024,7 +7076,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 539
+   "row": 543
   },
   {
    "name": "ETHION",
@@ -7037,7 +7089,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 540
+   "row": 544
   },
   {
    "name": "ETHIPROLE",
@@ -7050,7 +7102,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 541
+   "row": 545
   },
   {
    "name": "ETHOFUMESATE",
@@ -7063,7 +7115,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 542
+   "row": 546
   },
   {
    "name": "ETHOPROPHOS",
@@ -7076,7 +7128,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 543
+   "row": 547
   },
   {
    "name": "ETHOXYQUIN",
@@ -7089,7 +7141,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 544
+   "row": 548
   },
   {
    "name": "ETHYLENE",
@@ -7102,7 +7154,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 545
+   "row": 549
   },
   {
    "name": "ETHYLENE OXIDE",
@@ -7115,7 +7167,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 546
+   "row": 550
   },
   {
    "name": "ETHYLHEXANEDIOL",
@@ -7128,7 +7180,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 547
+   "row": 551
   },
   {
    "name": "ETOFENPROX",
@@ -7141,7 +7193,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 548
+   "row": 552
   },
   {
    "name": "ETOXAZOLE",
@@ -7154,7 +7206,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 549
+   "row": 553
   },
   {
    "name": "ETRIDIAZOLE",
@@ -7167,7 +7219,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 550
+   "row": 554
   },
   {
    "name": "EUCALYPTUS CITRIODORA OIL (LEMON EUCALYPTUS OIL)",
@@ -7180,7 +7232,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 551
+   "row": 555
   },
   {
    "name": "EUCALYPTUS OIL",
@@ -7193,7 +7245,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 552
+   "row": 556
   },
   {
    "name": "EUGENOL",
@@ -7206,7 +7258,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 553
+   "row": 557
   },
   {
    "name": "EXC7963 FERMENTATION SOLIDS CONTAINING DOUBLE STRANDED RNA PSS004.1",
@@ -7219,7 +7271,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 554
+   "row": 558
   },
   {
    "name": "EXC7964 FERMENTATION SOLIDS CONTAINING DOUBLE STRANDED RNA PSS012.1",
@@ -7232,7 +7284,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 555
+   "row": 559
   },
   {
    "name": "EXTRACT OF CHENOPODIUM AMBROSIOIDES NEAR AMBROSIOIDES",
@@ -7245,7 +7297,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 556
+   "row": 560
   },
   {
    "name": "EXTRACT OF REYNOUTRIA SACHALINENSIS",
@@ -7258,7 +7310,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 557
+   "row": 561
   },
   {
    "name": "EXTRACT OF SWINGLEA GLUTINOSA",
@@ -7271,7 +7323,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 558
+   "row": 562
   },
   {
    "name": "FAMOXADONE",
@@ -7284,7 +7336,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 559
+   "row": 563
   },
   {
    "name": "FATTY ACIDS",
@@ -7297,7 +7349,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 560
+   "row": 564
   },
   {
    "name": "FENAMIDONE",
@@ -7310,7 +7362,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 561
+   "row": 565
   },
   {
    "name": "FENAZAQUIN",
@@ -7323,7 +7375,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 562
+   "row": 566
   },
   {
    "name": "FENBUCONAZOLE",
@@ -7336,7 +7388,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 563
+   "row": 567
   },
   {
    "name": "FENBUTATIN OXIDE",
@@ -7349,7 +7401,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 564
+   "row": 568
   },
   {
    "name": "FENEPTAMIDOQUIN",
@@ -7362,7 +7414,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 565
+   "row": 569
   },
   {
    "name": "FENHEXAMID",
@@ -7375,7 +7427,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 566
+   "row": 570
   },
   {
    "name": "FENITROTHION",
@@ -7388,7 +7440,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 567
+   "row": 571
   },
   {
    "name": "FENOPROP PRESENT AS ACID, AS SALTS (TRIETHANOLAMINE, SODIUM), OR AS ESTERS (BUTOXYETHYL, ISO-OCTYL, PROYLENE GYLCOL BUTYL ETHER)",
@@ -7401,7 +7453,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 568
+   "row": 572
   },
   {
    "name": "FENOXAPROP-ETHYL",
@@ -7414,7 +7466,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 569
+   "row": 573
   },
   {
    "name": "FENOXAPROP-P-ETHYL",
@@ -7427,7 +7479,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 570
+   "row": 574
   },
   {
    "name": "FENPICOXAMID",
@@ -7440,7 +7492,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 571
+   "row": 575
   },
   {
    "name": "FENPROPATHRIN",
@@ -7453,7 +7505,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 572
+   "row": 576
   },
   {
    "name": "FENPROPIDIN",
@@ -7466,7 +7518,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 573
+   "row": 577
   },
   {
    "name": "FENPROPIMORPH",
@@ -7479,7 +7531,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 574
+   "row": 578
   },
   {
    "name": "FENPYRAZAMINE",
@@ -7492,7 +7544,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 575
+   "row": 579
   },
   {
    "name": "FENPYROXIMATE",
@@ -7505,7 +7557,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 576
+   "row": 580
   },
   {
    "name": "FENSULFOTHION",
@@ -7518,7 +7570,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 577
+   "row": 581
   },
   {
    "name": "FENTHION",
@@ -7531,7 +7583,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 578
+   "row": 582
   },
   {
    "name": "FENVALERATE",
@@ -7544,7 +7596,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 579
+   "row": 583
   },
   {
    "name": "FERBAM",
@@ -7557,7 +7609,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 580
+   "row": 584
   },
   {
    "name": "FERRIC PHOSPHATE",
@@ -7570,7 +7622,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 581
+   "row": 585
   },
   {
    "name": "FIR NEEDLE OIL",
@@ -7583,7 +7635,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 582
+   "row": 586
   },
   {
    "name": "FISH MEAL MIXTURE",
@@ -7596,7 +7648,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 583
+   "row": 587
   },
   {
    "name": "FISH OIL MIXTURE",
@@ -7609,7 +7661,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 584
+   "row": 588
   },
   {
    "name": "FLAMPROP-M-METHYL",
@@ -7622,7 +7674,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 585
+   "row": 589
   },
   {
    "name": "FLAMPROP-METHYL",
@@ -7635,7 +7687,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 586
+   "row": 590
   },
   {
    "name": "FLAZASULFURON",
@@ -7648,7 +7700,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 587
+   "row": 591
   },
   {
    "name": "FLG22-BT PEPTIDE",
@@ -7661,7 +7713,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 588
+   "row": 592
   },
   {
    "name": "FLONICAMID",
@@ -7674,7 +7726,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 589
+   "row": 593
   },
   {
    "name": "FLORASULAM",
@@ -7687,7 +7739,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 590
+   "row": 594
   },
   {
    "name": "FLORPYRAUXIFEN (PRESENT AS BENZYL ESTER)",
@@ -7700,7 +7752,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 591
+   "row": 595
   },
   {
    "name": "FLORYLPICOXAMID",
@@ -7713,7 +7765,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 592
+   "row": 596
   },
   {
    "name": "FLUAZAINDOLIZINE",
@@ -7726,7 +7778,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 593
+   "row": 597
   },
   {
    "name": "FLUAZIFOP-BUTYL",
@@ -7739,7 +7791,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 594
+   "row": 598
   },
   {
    "name": "FLUAZIFOP-P-BUTYL",
@@ -7752,7 +7804,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 595
+   "row": 599
   },
   {
    "name": "FLUAZIFOP-P-BUTYL AND S-ISOMER",
@@ -7765,7 +7817,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 596
+   "row": 600
   },
   {
    "name": "FLUAZINAM",
@@ -7778,7 +7830,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 597
+   "row": 601
   },
   {
    "name": "FLUBENDIAMIDE",
@@ -7791,7 +7843,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 598
+   "row": 602
   },
   {
    "name": "FLUCARBAZONE (PRESENT AS FLUCARBAZONE-SODIUM)",
@@ -7804,7 +7856,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 599
+   "row": 603
   },
   {
    "name": "FLUCYTHRINATE",
@@ -7817,7 +7869,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 600
+   "row": 604
   },
   {
    "name": "FLUDIOXONIL",
@@ -7830,7 +7882,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 601
+   "row": 605
   },
   {
    "name": "FLUENSULFONE",
@@ -7843,7 +7895,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 602
+   "row": 606
   },
   {
    "name": "FLUFENACET",
@@ -7856,7 +7908,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 603
+   "row": 607
   },
   {
    "name": "FLUFENOXURON",
@@ -7869,7 +7921,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 604
+   "row": 608
   },
   {
    "name": "FLUMETHRIN",
@@ -7882,7 +7934,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 605
+   "row": 609
   },
   {
    "name": "FLUMETSULAM",
@@ -7895,7 +7947,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 606
+   "row": 610
   },
   {
    "name": "FLUMIOXAZIN",
@@ -7908,7 +7960,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 607
+   "row": 611
   },
   {
    "name": "FLUOPICOLIDE",
@@ -7921,7 +7973,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 608
+   "row": 612
   },
   {
    "name": "FLUOPYRAM",
@@ -7934,7 +7986,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 609
+   "row": 613
   },
   {
    "name": "FLUOXAPIPROLIN",
@@ -7947,7 +7999,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 610
+   "row": 614
   },
   {
    "name": "FLUOXASTROBIN",
@@ -7960,7 +8012,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 611
+   "row": 615
   },
   {
    "name": "FLUPYRADIFURONE",
@@ -7973,7 +8025,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 612
+   "row": 616
   },
   {
    "name": "FLURECOL-METHYL",
@@ -7986,7 +8038,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 613
+   "row": 617
   },
   {
    "name": "FLUROXYPYR (PRESENT AS 1-METHYLHEPTYL ESTER)",
@@ -7999,7 +8051,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 614
+   "row": 618
   },
   {
    "name": "FLUSILAZOLE",
@@ -8012,7 +8064,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 615
+   "row": 619
   },
   {
    "name": "FLUTIANIL",
@@ -8025,7 +8077,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 616
+   "row": 620
   },
   {
    "name": "FLUTOLANIL",
@@ -8038,7 +8090,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 617
+   "row": 621
   },
   {
    "name": "FLUTRIAFOL",
@@ -8051,7 +8103,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 618
+   "row": 622
   },
   {
    "name": "FLUVALINATE-TAU",
@@ -8064,7 +8116,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 619
+   "row": 623
   },
   {
    "name": "FLUXAPYROXAD",
@@ -8077,7 +8129,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 620
+   "row": 624
   },
   {
    "name": "FOLPET",
@@ -8090,7 +8142,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 621
+   "row": 625
   },
   {
    "name": "FOMESAFEN",
@@ -8103,7 +8155,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 622
+   "row": 626
   },
   {
    "name": "FONOFOS",
@@ -8116,7 +8168,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 623
+   "row": 627
   },
   {
    "name": "FORAMSULFURON",
@@ -8129,7 +8181,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 624
+   "row": 628
   },
   {
    "name": "FORMALDEHYDE",
@@ -8142,7 +8194,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 625
+   "row": 629
   },
   {
    "name": "FORMETANATE HYDROCHLORIDE",
@@ -8155,7 +8207,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 626
+   "row": 630
   },
   {
    "name": "FORMIC ACID",
@@ -8168,7 +8220,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 627
+   "row": 631
   },
   {
    "name": "FOSAMINE AMMONIUM",
@@ -8181,7 +8233,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 628
+   "row": 632
   },
   {
    "name": "FOSETYL-ALUMINUM",
@@ -8194,7 +8246,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 629
+   "row": 633
   },
   {
    "name": "FURFURYL PROPIONATE",
@@ -8207,7 +8259,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 630
+   "row": 634
   },
   {
    "name": "GAMMA-BHC FROM LINDANE",
@@ -8220,7 +8272,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 631
+   "row": 635
   },
   {
    "name": "GAMMA-CYHALOTHRIN",
@@ -8233,7 +8285,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 632
+   "row": 636
   },
   {
    "name": "GARLIC",
@@ -8246,7 +8298,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 633
+   "row": 637
   },
   {
    "name": "GARLIC JUICE",
@@ -8259,7 +8311,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 634
+   "row": 638
   },
   {
    "name": "GARLIC OIL",
@@ -8272,7 +8324,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 635
+   "row": 639
   },
   {
    "name": "GARLIC POWDER",
@@ -8285,7 +8337,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 636
+   "row": 640
   },
   {
    "name": "GERANIOL",
@@ -8298,7 +8350,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 637
+   "row": 641
   },
   {
    "name": "GERANIUM OIL",
@@ -8311,7 +8363,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 638
+   "row": 642
   },
   {
    "name": "GERMAN COCKROACH EXTRACT",
@@ -8324,7 +8376,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 639
+   "row": 643
   },
   {
    "name": "GFP-DSRNA",
@@ -8337,7 +8389,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 640
+   "row": 644
   },
   {
    "name": "GIBBERELLIC ACID",
@@ -8350,7 +8402,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 641
+   "row": 645
   },
   {
    "name": "GIBBERELLINS A4 AND A7",
@@ -8363,7 +8415,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 642
+   "row": 646
   },
   {
    "name": "GLUFOSINATE-AMMONIUM",
@@ -8376,7 +8428,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 643
+   "row": 647
   },
   {
    "name": "GLUFOSINATE-P-AMMONIUM",
@@ -8389,7 +8441,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 644
+   "row": 648
   },
   {
    "name": "GLUTARALDEHYDE",
@@ -8402,7 +8454,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 645
+   "row": 649
   },
   {
    "name": "GLYCOLIC ACID",
@@ -8415,7 +8467,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 646
+   "row": 650
   },
   {
    "name": "GLYODIN",
@@ -8428,7 +8480,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 647
+   "row": 651
   },
   {
    "name": "GLYPHOSATE",
@@ -8441,7 +8493,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 648
+   "row": 652
   },
   {
    "name": "GLYPHOSATE (PRESENT AS DIMETHYLAMINE SALT)",
@@ -8454,7 +8506,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 649
+   "row": 653
   },
   {
    "name": "GLYPHOSATE (PRESENT AS ISOPROPYLAMINE AND POTASSIUM SALT)",
@@ -8467,7 +8519,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 650
+   "row": 654
   },
   {
    "name": "GLYPHOSATE (PRESENT AS ISOPROPYLAMINE SALT OR ETHANOLAMINE SALT)",
@@ -8480,7 +8532,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 651
+   "row": 655
   },
   {
    "name": "GLYPHOSATE (PRESENT AS MONO-AMMONIUM SALT OR DIAMMONIUM SALT)",
@@ -8493,7 +8545,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 652
+   "row": 656
   },
   {
    "name": "GLYPHOSATE (PRESENT AS POTASSIUM SALT)",
@@ -8506,7 +8558,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 653
+   "row": 657
   },
   {
    "name": "GLYPHOSATE (PRESENT AS TRIMETHYLSULFONIUM SALT)",
@@ -8519,7 +8571,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 654
+   "row": 658
   },
   {
    "name": "GS-OMEGA/KAPPA-HXTX-HV1A",
@@ -8532,7 +8584,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 655
+   "row": 659
   },
   {
    "name": "GS2 DOUBLE STRANDED RNA",
@@ -8545,7 +8597,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 656
+   "row": 660
   },
   {
    "name": "GS5823.005-DSRNA-GLB",
@@ -8558,7 +8610,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 657
+   "row": 661
   },
   {
    "name": "GS5995.002-DSRNA-GLB",
@@ -8571,7 +8623,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 658
+   "row": 662
   },
   {
    "name": "HALAUXIFEN (PRESENT AS METHYL ESTER)",
@@ -8584,7 +8636,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 659
+   "row": 663
   },
   {
    "name": "HALOSULFURON (PRESENT AS METHYL ESTER)",
@@ -8597,7 +8649,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 660
+   "row": 664
   },
   {
    "name": "HEAT-KILLED BURKHOLDERIA RINOJENSIS STRAIN A396 CELLS AND SPENT FERMENTATION MEDIA",
@@ -8610,7 +8662,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 661
+   "row": 665
   },
   {
    "name": "HELICOVERPA ARMIGERA NUCLEOPOLYHEDROVIRUS BV-0003",
@@ -8623,7 +8675,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 662
+   "row": 666
   },
   {
    "name": "HEPTACHLOR",
@@ -8636,7 +8688,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 663
+   "row": 667
   },
   {
    "name": "HEPTYL BUTYRATE",
@@ -8649,7 +8701,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 664
+   "row": 668
   },
   {
    "name": "HERBAL MIXTURE (GRAPEFRUIT EXTRACT, CAYANNE EXTRACT, THYME EXTRACT, ALOE VERA EXTRACT, HYSSOPUS EXTRACT, GINSENG EXTRACT",
@@ -8662,7 +8714,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 665
+   "row": 669
   },
   {
    "name": "HEXACONAZOLE",
@@ -8675,7 +8727,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 666
+   "row": 670
   },
   {
    "name": "HEXAHYDRO-1,3,5-TRIETHYL-S-TRIAZINE",
@@ -8688,7 +8740,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 667
+   "row": 671
   },
   {
    "name": "HEXAHYDRO-1,3,5-TRIS(2-HYDROXYETHYL)-S-TRIAZINE",
@@ -8698,10 +8750,10 @@
    "cas_raw": "4719-04-4",
    "cas_norm": "4719044",
    "status": "غير مُعاد التقييم",
-   "status_raw": "NO",
+   "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 668
+   "row": 672
   },
   {
    "name": "HEXANAL",
@@ -8714,7 +8766,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 669
+   "row": 673
   },
   {
    "name": "HEXAZINONE",
@@ -8727,7 +8779,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 670
+   "row": 674
   },
   {
    "name": "HEXYTHIAZOX",
@@ -8740,7 +8792,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 671
+   "row": 675
   },
   {
    "name": "HOP BETA ACIDS (PRESENT AS POTASSIUM SALTS)",
@@ -8753,7 +8805,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 672
+   "row": 676
   },
   {
    "name": "HYDRAMETHYLNON",
@@ -8766,7 +8818,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 673
+   "row": 677
   },
   {
    "name": "HYDROCHLORIC ACID",
@@ -8779,7 +8831,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 674
+   "row": 678
   },
   {
    "name": "HYDROGEN CYANAMIDE",
@@ -8792,7 +8844,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 675
+   "row": 679
   },
   {
    "name": "HYDROGEN CYANIDE",
@@ -8805,7 +8857,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 676
+   "row": 680
   },
   {
    "name": "HYDROGEN PEROXIDE",
@@ -8818,7 +8870,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 677
+   "row": 681
   },
   {
    "name": "HYDROGENATED CATMINT OIL",
@@ -8831,7 +8883,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 678
+   "row": 682
   },
   {
    "name": "HYDROXYL RADICALS",
@@ -8844,7 +8896,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 679
+   "row": 683
   },
   {
    "name": "HYDROXYMETHYL-5,5-DIMETHYLHYDANTOIN",
@@ -8857,7 +8909,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 680
+   "row": 684
   },
   {
    "name": "IBA",
@@ -8870,7 +8922,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 681
+   "row": 685
   },
   {
    "name": "ICAFOLIN-METHYL",
@@ -8883,7 +8935,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 682
+   "row": 686
   },
   {
    "name": "ICARIDIN",
@@ -8896,7 +8948,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 683
+   "row": 687
   },
   {
    "name": "IMAZAMETHABENZ-METHYL",
@@ -8909,7 +8961,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 684
+   "row": 688
   },
   {
    "name": "IMAZAMOX",
@@ -8922,7 +8974,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 685
+   "row": 689
   },
   {
    "name": "IMAZAMOX (PRESENT AS AMMONIUM SALT)",
@@ -8935,7 +8987,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 686
+   "row": 690
   },
   {
    "name": "IMAZAMOX (PRESENT AS SODIUM SALT)",
@@ -8948,7 +9000,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 687
+   "row": 691
   },
   {
    "name": "IMAZAPIC",
@@ -8961,7 +9013,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 688
+   "row": 692
   },
   {
    "name": "IMAZAPYR",
@@ -8974,7 +9026,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 689
+   "row": 693
   },
   {
    "name": "IMAZAPYR (PRESENT AS AMMONIUM SALT)",
@@ -8987,7 +9039,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 690
+   "row": 694
   },
   {
    "name": "IMAZAPYR (PRESENT AS ISOPROPYLAMINE SALT)",
@@ -9000,7 +9052,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 691
+   "row": 695
   },
   {
    "name": "IMAZETHAPYR",
@@ -9010,10 +9062,10 @@
    "cas_raw": "81335-77-5",
    "cas_norm": "81335775",
    "status": "غير مُعاد التقييم",
-   "status_raw": "NO",
+   "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 692
+   "row": 696
   },
   {
    "name": "IMAZETHAPYR (PRESENT AS AMMONIUM SALT)",
@@ -9026,7 +9078,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 693
+   "row": 697
   },
   {
    "name": "IMAZETHAPYR (PRESENT AS POTASSIUM SALT)",
@@ -9039,7 +9091,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 694
+   "row": 698
   },
   {
    "name": "IMIDACLOPRID",
@@ -9052,7 +9104,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 695
+   "row": 699
   },
   {
    "name": "IMIPROTHRIN",
@@ -9065,7 +9117,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 696
+   "row": 700
   },
   {
    "name": "INDAZIFLAM",
@@ -9078,7 +9130,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 697
+   "row": 701
   },
   {
    "name": "INDOLE",
@@ -9091,7 +9143,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 698
+   "row": 702
   },
   {
    "name": "INDOLE-3-BUTYRIC ACID (PRESENT AS POTASSIUM SALT)",
@@ -9104,7 +9156,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 699
+   "row": 703
   },
   {
    "name": "INDOXACARB TECHNICAL",
@@ -9117,7 +9169,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 700
+   "row": 704
   },
   {
    "name": "INPYRFLUXAM",
@@ -9130,7 +9182,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 701
+   "row": 705
   },
   {
    "name": "IODINE",
@@ -9143,7 +9195,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 702
+   "row": 706
   },
   {
    "name": "IODOFENPHOS",
@@ -9156,7 +9208,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 703
+   "row": 707
   },
   {
    "name": "IODOSULFURON-METHYL-SODIUM",
@@ -9169,7 +9221,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 704
+   "row": 708
   },
   {
    "name": "IPCONAZOLE",
@@ -9182,7 +9234,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 705
+   "row": 709
   },
   {
    "name": "IPFLUFENOQUIN",
@@ -9195,7 +9247,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 706
+   "row": 710
   },
   {
    "name": "IPRODIONE",
@@ -9208,7 +9260,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 707
+   "row": 711
   },
   {
    "name": "IRON (PRESENT AS FEHEDTA)",
@@ -9221,7 +9273,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 708
+   "row": 712
   },
   {
    "name": "IRON (PRESENT AS FERRIC PHOSPHATE)",
@@ -9234,7 +9286,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 709
+   "row": 713
   },
   {
    "name": "IRON (PRESENT AS FERRIC SODIUM EDTA TRIHYDRATE)",
@@ -9247,7 +9299,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 710
+   "row": 714
   },
   {
    "name": "IRON (PRESENT AS FERROUS SULFATE HEPTAHYDRATE)",
@@ -9260,7 +9312,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 711
+   "row": 715
   },
   {
    "name": "IRON (PRESENT AS FERROUS SULFATE MONOHYDRATE)",
@@ -9273,7 +9325,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 712
+   "row": 716
   },
   {
    "name": "ISOBORNYL THIOCYANOACETATE PLUS RELATED ACTIVE TERPENES",
@@ -9286,7 +9338,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 713
+   "row": 717
   },
   {
    "name": "ISOCYCLOSERAM",
@@ -9299,7 +9351,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 714
+   "row": 718
   },
   {
    "name": "ISOFETAMID",
@@ -9312,7 +9364,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 715
+   "row": 719
   },
   {
    "name": "ISOFLUCYPRAM",
@@ -9325,7 +9377,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 716
+   "row": 720
   },
   {
    "name": "ISOPROPYL ALCOHOL",
@@ -9338,7 +9390,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 717
+   "row": 721
   },
   {
    "name": "ISOPROTHIOLANE",
@@ -9351,7 +9403,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 718
+   "row": 722
   },
   {
    "name": "ISOPYRAZAM",
@@ -9364,7 +9416,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 719
+   "row": 723
   },
   {
    "name": "ISOXABEN",
@@ -9377,7 +9429,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 720
+   "row": 724
   },
   {
    "name": "ISOXADIFEN-ETHYL",
@@ -9390,7 +9442,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 721
+   "row": 725
   },
   {
    "name": "ISOXAFLUTOLE",
@@ -9403,7 +9455,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 722
+   "row": 726
   },
   {
    "name": "KAOLIN",
@@ -9416,7 +9468,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 723
+   "row": 727
   },
   {
    "name": "KASUGAMYCIN (PRESENT AS HYDROCHLORIDE HYDRATE)",
@@ -9429,7 +9481,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 724
+   "row": 728
   },
   {
    "name": "KRESOXIM-METHYL",
@@ -9442,7 +9494,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 725
+   "row": 729
   },
   {
    "name": "L-(+)-LACTIC ACID",
@@ -9455,7 +9507,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 726
+   "row": 730
   },
   {
    "name": "L-MENTHOL",
@@ -9468,7 +9520,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 727
+   "row": 731
   },
   {
    "name": "LACTIC ACID",
@@ -9481,7 +9533,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 728
+   "row": 732
   },
   {
    "name": "LACTO - FERMENTED DAIRY PRODUCTS",
@@ -9494,7 +9546,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 729
+   "row": 733
   },
   {
    "name": "LACTOBACILLUS CASEI STRAIN LPT-111",
@@ -9504,10 +9556,10 @@
    "cas_raw": "",
    "cas_norm": "",
    "status": "غير مُعاد التقييم",
-   "status_raw": "YES",
+   "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 730
+   "row": 734
   },
   {
    "name": "LACTOBACILLUS RHAMNOSUS STRAIN LPT-21",
@@ -9517,10 +9569,10 @@
    "cas_raw": "",
    "cas_norm": "",
    "status": "غير مُعاد التقييم",
-   "status_raw": "YES",
+   "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 731
+   "row": 735
   },
   {
    "name": "LACTOCOCCUS LACTIS SSP. CREMORIS STRAIN M11/CSL",
@@ -9530,10 +9582,10 @@
    "cas_raw": "",
    "cas_norm": "",
    "status": "غير مُعاد التقييم",
-   "status_raw": "YES",
+   "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 732
+   "row": 736
   },
   {
    "name": "LACTOCOCCUS LACTIS SSP. LACTIS STRAIN LL102/CSL",
@@ -9543,10 +9595,10 @@
    "cas_raw": "",
    "cas_norm": "",
    "status": "غير مُعاد التقييم",
-   "status_raw": "YES",
+   "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 733
+   "row": 737
   },
   {
    "name": "LACTOCOCCUS LACTIS SSP. LACTIS STRAIN LL64/CSL",
@@ -9556,10 +9608,10 @@
    "cas_raw": "",
    "cas_norm": "",
    "status": "غير مُعاد التقييم",
-   "status_raw": "YES",
+   "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 734
+   "row": 738
   },
   {
    "name": "LACTOSE",
@@ -9572,7 +9624,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 735
+   "row": 739
   },
   {
    "name": "LAMBDA-CYHALOTHRIN",
@@ -9585,7 +9637,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 736
+   "row": 740
   },
   {
    "name": "LAMINARIN",
@@ -9598,7 +9650,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 737
+   "row": 741
   },
   {
    "name": "LANTHANUM OXIDE",
@@ -9611,7 +9663,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 738
+   "row": 742
   },
   {
    "name": "LDEG12 DOUBLE STRANDED RNA",
@@ -9624,7 +9676,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 739
+   "row": 743
   },
   {
    "name": "LEMON OIL",
@@ -9637,7 +9689,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 740
+   "row": 744
   },
   {
    "name": "LEMONGRASS OIL",
@@ -9650,7 +9702,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 741
+   "row": 745
   },
   {
    "name": "LINURON",
@@ -9663,7 +9715,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 742
+   "row": 746
   },
   {
    "name": "LIPASE",
@@ -9676,7 +9728,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 743
+   "row": 747
   },
   {
    "name": "LIQUID CARBON DIOXIDE",
@@ -9689,7 +9741,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 744
+   "row": 748
   },
   {
    "name": "LIQUID CORN GLUTEN",
@@ -9702,7 +9754,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 745
+   "row": 749
   },
   {
    "name": "LITHIUM HYPOCHLORITE",
@@ -9715,7 +9767,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 746
+   "row": 750
   },
   {
    "name": "LYMANTRIA DISPAR MULTICAPSID NUCLEOPOLYHEDROVIRUS STRAIN LDP-67",
@@ -9728,7 +9780,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 747
+   "row": 751
   },
   {
    "name": "LYSINIBACILLUS SPHAERICUS 2362, SEROTYPE H5A5B, STRAIN ABTS 1743",
@@ -9741,7 +9793,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 748
+   "row": 752
   },
   {
    "name": "M-CRESOL",
@@ -9754,7 +9806,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 749
+   "row": 753
   },
   {
    "name": "MAGNESIUM PHOSPHIDE",
@@ -9767,7 +9819,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 750
+   "row": 754
   },
   {
    "name": "MALATHION",
@@ -9780,7 +9832,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 751
+   "row": 755
   },
   {
    "name": "MALEIC HYDRAZIDE",
@@ -9793,7 +9845,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 752
+   "row": 756
   },
   {
    "name": "MALTODEXTRIN",
@@ -9806,7 +9858,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 753
+   "row": 757
   },
   {
    "name": "MAMESTRA CONFIGURATA NUCLEOPOLYHEDROVIRUS (MACONPV)",
@@ -9819,7 +9871,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 754
+   "row": 758
   },
   {
    "name": "MAMMALIAN GONADOTROPIN RELEASING HORMONE (GNRH)",
@@ -9832,7 +9884,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 755
+   "row": 759
   },
   {
    "name": "MANCOZEB",
@@ -9845,7 +9897,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 756
+   "row": 760
   },
   {
    "name": "MANDESTROBIN",
@@ -9858,7 +9910,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 757
+   "row": 761
   },
   {
    "name": "MANDIPROPAMID",
@@ -9871,7 +9923,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 758
+   "row": 762
   },
   {
    "name": "MANEB",
@@ -9884,7 +9936,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 759
+   "row": 763
   },
   {
    "name": "MCPA (PRESENT AS ACID)",
@@ -9897,7 +9949,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 760
+   "row": 764
   },
   {
    "name": "MCPA (PRESENT AS AMINE SALTS: DIETHANOLAMINE, DIMETHYLAMINE, OR MIXED AMINES)",
@@ -9910,7 +9962,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 761
+   "row": 765
   },
   {
    "name": "MCPA (PRESENT AS ESTERS)",
@@ -9923,7 +9975,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 762
+   "row": 766
   },
   {
    "name": "MCPA (PRESENT AS POTASSIUM SALT OR AS SODIUM SALT)",
@@ -9936,7 +9988,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 763
+   "row": 767
   },
   {
    "name": "MCPB",
@@ -9949,7 +10001,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 764
+   "row": 768
   },
   {
    "name": "MCPB (PRESENT AS SODIUM SALT)",
@@ -9962,7 +10014,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 765
+   "row": 769
   },
   {
    "name": "MEAT MEAL MIXTURE",
@@ -9975,7 +10027,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 766
+   "row": 770
   },
   {
    "name": "MECOPROP-P (PRESENT AS ACID)",
@@ -9988,7 +10040,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 767
+   "row": 771
   },
   {
    "name": "MECOPROP-P (PRESENT AS AMINE SALT)",
@@ -10001,7 +10053,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 768
+   "row": 772
   },
   {
    "name": "MECOPROP-P (PRESENT AS DIGLYCOLAMINE SALT)",
@@ -10014,7 +10066,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 769
+   "row": 773
   },
   {
    "name": "MECOPROP-P (PRESENT AS DIMETHYLAMINE SALT)",
@@ -10027,7 +10079,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 770
+   "row": 774
   },
   {
    "name": "MECOPROP-P (PRESENT AS POTASSIUM SALT)",
@@ -10040,7 +10092,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 771
+   "row": 775
   },
   {
    "name": "MECOPROP (PRESENT AS 3-ETHYLHEXYL ESTER)",
@@ -10053,7 +10105,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 772
+   "row": 776
   },
   {
    "name": "MECOPROP (PRESENT AS ACID)",
@@ -10066,7 +10118,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 773
+   "row": 777
   },
   {
    "name": "MECOPROP (PRESENT AS AMINE SALT)",
@@ -10079,7 +10131,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 774
+   "row": 778
   },
   {
    "name": "MECOPROP (PRESENT AS DIETHANOLAMINE SALT)",
@@ -10092,7 +10144,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 775
+   "row": 779
   },
   {
    "name": "MECOPROP (PRESENT AS DIMETHYLAMINE SALT)",
@@ -10105,7 +10157,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 776
+   "row": 780
   },
   {
    "name": "MECOPROP (PRESENT AS POTASSIUM SALT)",
@@ -10118,7 +10170,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 777
+   "row": 781
   },
   {
    "name": "MEFENPYR",
@@ -10131,7 +10183,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 778
+   "row": 782
   },
   {
    "name": "MEFENPYR-DIETHYL",
@@ -10144,7 +10196,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 779
+   "row": 783
   },
   {
    "name": "MEFENTRIFLUCONAZOLE",
@@ -10157,7 +10209,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 780
+   "row": 784
   },
   {
    "name": "MEPTYLDINOCAP",
@@ -10170,7 +10222,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 781
+   "row": 785
   },
   {
    "name": "MERCURIC CHLORIDE",
@@ -10183,7 +10235,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 782
+   "row": 786
   },
   {
    "name": "MERCUROUS CHLORIDE",
@@ -10196,7 +10248,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 783
+   "row": 787
   },
   {
    "name": "MERCURY AS ELEMENTAL, PRESENT AS PHENYLMERCURIC SALTS OF DODECENYL SUCCINIC AND TALL OIL FATTY ACIDS",
@@ -10209,7 +10261,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 784
+   "row": 788
   },
   {
    "name": "MESOSULFURON-METHYL",
@@ -10222,7 +10274,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 785
+   "row": 789
   },
   {
    "name": "MESOTRIONE",
@@ -10235,7 +10287,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 786
+   "row": 790
   },
   {
    "name": "METAFLUMIZONE (E,Z-ISOMER)",
@@ -10248,7 +10300,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 787
+   "row": 791
   },
   {
    "name": "METALAXYL",
@@ -10261,7 +10313,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 788
+   "row": 792
   },
   {
    "name": "METALAXYL-M AND S-ISOMER",
@@ -10274,7 +10326,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 789
+   "row": 793
   },
   {
    "name": "METALDEHYDE",
@@ -10287,7 +10339,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 790
+   "row": 794
   },
   {
    "name": "METAM-POTASSIUM OR POTASSIUM METHYLDITHIOCARBAMATE",
@@ -10300,7 +10352,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 791
+   "row": 795
   },
   {
    "name": "METAM-SODIUM OR SODIUM METHYLDITHIOCARBAMATE",
@@ -10313,7 +10365,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 792
+   "row": 796
   },
   {
    "name": "METAMITRON",
@@ -10326,7 +10378,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 793
+   "row": 797
   },
   {
    "name": "METARHIZIUM ANISOPLIAE (STRAIN AGASSIZ / LRC112)",
@@ -10339,7 +10391,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 794
+   "row": 798
   },
   {
    "name": "METARHIZIUM ANISOPLIAE VAR. ACRIDUM",
@@ -10352,7 +10404,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 795
+   "row": 799
   },
   {
    "name": "METARHIZIUM BRUNNEUM CB15",
@@ -10365,7 +10417,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 796
+   "row": 800
   },
   {
    "name": "METARHIZIUM BRUNNEUM STRAIN F52",
@@ -10378,7 +10430,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 797
+   "row": 801
   },
   {
    "name": "METARHIZIUM BRUNNEUM STRAIN LRC 112",
@@ -10391,7 +10443,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 798
+   "row": 802
   },
   {
    "name": "METARHIZIUM RILEYI STRAIN PHP1705",
@@ -10404,7 +10456,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 799
+   "row": 803
   },
   {
    "name": "METARHIZIUM ROBERTSII STRAIN CPD006",
@@ -10417,7 +10469,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 800
+   "row": 804
   },
   {
    "name": "METCONAZOLE",
@@ -10430,7 +10482,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 801
+   "row": 805
   },
   {
    "name": "METHAMIDOPHOS",
@@ -10443,7 +10495,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 802
+   "row": 806
   },
   {
    "name": "METHIDATHION",
@@ -10456,7 +10508,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 803
+   "row": 807
   },
   {
    "name": "METHIOCARB",
@@ -10469,7 +10521,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 804
+   "row": 808
   },
   {
    "name": "METHIOZOLIN",
@@ -10482,7 +10534,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 805
+   "row": 809
   },
   {
    "name": "METHOMYL",
@@ -10495,7 +10547,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 806
+   "row": 810
   },
   {
    "name": "METHOXYCHLOR",
@@ -10508,7 +10560,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 807
+   "row": 811
   },
   {
    "name": "METHOXYFENOZIDE",
@@ -10521,7 +10573,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 808
+   "row": 812
   },
   {
    "name": "METHYL ANTHRANILATE",
@@ -10534,7 +10586,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 809
+   "row": 813
   },
   {
    "name": "METHYL BROMIDE",
@@ -10547,7 +10599,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 810
+   "row": 814
   },
   {
    "name": "METHYL ISOTHIOCYANATE",
@@ -10560,7 +10612,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 811
+   "row": 815
   },
   {
    "name": "METHYL JASMONATE",
@@ -10573,7 +10625,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 812
+   "row": 816
   },
   {
    "name": "METHYL NONYL KETONE",
@@ -10586,7 +10638,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 813
+   "row": 817
   },
   {
    "name": "METHYL SALICYLATE",
@@ -10599,7 +10651,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 814
+   "row": 818
   },
   {
    "name": "METHYLATED CANOLA OIL",
@@ -10612,7 +10664,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 815
+   "row": 819
   },
   {
    "name": "METHYLATED SEED OIL OF SOYBEAN",
@@ -10625,7 +10677,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 816
+   "row": 820
   },
   {
    "name": "METHYLDODECYLBENZYL TRIMETHYL AMMONIUM CHLORIDE 80% AND METHYLDODECYLXYLYLENE BIS(TRIMETHYL AMMONIUM CHLORIDE) 20%",
@@ -10638,7 +10690,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 817
+   "row": 821
   },
   {
    "name": "METHYLENE BIS(THIOCYANATE)",
@@ -10651,7 +10703,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 818
+   "row": 822
   },
   {
    "name": "METIRAM",
@@ -10664,7 +10716,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 819
+   "row": 823
   },
   {
    "name": "METOBROMURON",
@@ -10677,7 +10729,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 820
+   "row": 824
   },
   {
    "name": "METOFLUTHRIN",
@@ -10690,7 +10742,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 821
+   "row": 825
   },
   {
    "name": "METOLACHLOR",
@@ -10703,7 +10755,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 822
+   "row": 826
   },
   {
    "name": "METRAFENONE",
@@ -10716,7 +10768,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 823
+   "row": 827
   },
   {
    "name": "METRIBUZIN",
@@ -10729,7 +10781,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 824
+   "row": 828
   },
   {
    "name": "METSULFURON-METHYL",
@@ -10742,7 +10794,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 825
+   "row": 829
   },
   {
    "name": "MICROBACTERIUM SP. K49",
@@ -10755,7 +10807,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 826
+   "row": 830
   },
   {
    "name": "MICROSPHAEROPSIS OCHRACEA (STRAIN P130A)",
@@ -10768,7 +10820,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 827
+   "row": 831
   },
   {
    "name": "MILD PEPINO MOSAIC VIRUS ISOLATE VC1",
@@ -10781,7 +10833,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 828
+   "row": 832
   },
   {
    "name": "MILD PEPINO MOSAIC VIRUS ISOLATE VX1",
@@ -10794,7 +10846,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 829
+   "row": 833
   },
   {
    "name": "MINERAL OIL",
@@ -10807,7 +10859,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 830
+   "row": 834
   },
   {
    "name": "MINERAL OIL (HERBICIDAL OR PLANT GROWTH REGULATOR)",
@@ -10820,7 +10872,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 831
+   "row": 835
   },
   {
    "name": "MINERAL OIL - PARAFFIN BASE",
@@ -10833,7 +10885,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 832
+   "row": 836
   },
   {
    "name": "MINERAL SPIRITS",
@@ -10846,7 +10898,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 833
+   "row": 837
   },
   {
    "name": "MINT",
@@ -10859,7 +10911,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 834
+   "row": 838
   },
   {
    "name": "MIXTURE OF CITRONELLA OIL, CITRUS OIL, EUCALYPTUS OIL, PINE OIL, GERANIUM OIL AND CAMPHOR OIL",
@@ -10872,7 +10924,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 835
+   "row": 839
   },
   {
    "name": "MOMFLUOROTHRIN",
@@ -10885,7 +10937,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 836
+   "row": 840
   },
   {
    "name": "MONO- AND DI-POTASSIUM SALT OF PHOSPHOROUS ACID",
@@ -10898,7 +10950,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 837
+   "row": 841
   },
   {
    "name": "MONO- AND DIBASIC SODIUM, POTASSIUM, AND AMMONIUM PHOSPHITES",
@@ -10911,7 +10963,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 838
+   "row": 842
   },
   {
    "name": "MONOLINURON",
@@ -10924,7 +10976,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 839
+   "row": 843
   },
   {
    "name": "MONURON",
@@ -10937,7 +10989,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 840
+   "row": 844
   },
   {
    "name": "MUSTARD OIL",
@@ -10950,7 +11002,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 841
+   "row": 845
   },
   {
    "name": "MYCLOBUTANIL",
@@ -10963,7 +11015,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 842
+   "row": 846
   },
   {
    "name": "N-[A-(1-NITROETHYL)BENZYL]ETHYLENEDIAMINE, PRESENT AS POTASSIUM SALT",
@@ -10976,7 +11028,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 843
+   "row": 847
   },
   {
    "name": "N-ALKYL-1,3-PROPANEDIAMINE ACETATE",
@@ -10989,7 +11041,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 844
+   "row": 848
   },
   {
    "name": "N-ALKYL (25% C12, 60% C14, 15% C16) DIMETHYL BENZYL AMMONIUM CHLORIDE",
@@ -11002,7 +11054,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 845
+   "row": 849
   },
   {
    "name": "N-ALKYL(3% C12, 95% C14, 2% C16)DIMETHYLBENZYLAMMONIUM CHLORIDE (OR: MYRISTYL DIMETHYLBENZYLAMMONIUM CHLORIDE DIHYDRATE)",
@@ -11015,20 +11067,20 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 846
+   "row": 850
   },
   {
    "name": "N-ALKYL(40% C12, 50% C14, 10% C16)DIMETHYLBENZYLAMMONIUM SACCHARINATE",
    "name_fr": "SACCHARINATE DE N-ALKYL (40% C12, 50% C14, 10% C16) DIMÉTHYL BENZYL AMMONIUM (N.M.)",
    "name_norm": "n alkyl 40 c12 50 c14 10 c16 dimethylbenzylammonium saccharinate",
-   "cas": "",
-   "cas_raw": "",
-   "cas_norm": "",
+   "cas": "68989-01-5",
+   "cas_raw": "68989-01-5",
+   "cas_norm": "68989015",
    "status": "غير مُعاد التقييم",
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 847
+   "row": 851
   },
   {
    "name": "N-ALKYL(5% C5-18, 61% C12, 23% C14, 11% C16)DIMETHYLBENZYLAMMONIUM CHLORIDE",
@@ -11041,7 +11093,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 848
+   "row": 852
   },
   {
    "name": "N-ALKYL (50% C12, 30% C14, 17% C16, 3% C18) DIMETHYL BENZYL AMMONIUM CHLORIDE",
@@ -11054,7 +11106,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 849
+   "row": 853
   },
   {
    "name": "N-ALKYL (50% C12, 30% C14, 17% C16, 3% C18) DIMETHYL ETHYLBENZYL AMMONIUM CHLORIDE",
@@ -11067,7 +11119,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 850
+   "row": 854
   },
   {
    "name": "N-ALKYL (60% C14, 30% C16, 5% C12, 5% C18)DIMETHYL BENZYL AMMONIUM CHLORIDE",
@@ -11080,7 +11132,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 851
+   "row": 855
   },
   {
    "name": "N-ALKYL(67% C12, 25% C14, 7% C16, 1% C18)DIMETHYLBENZYLAMMONIUM CHLORIDE",
@@ -11093,7 +11145,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 852
+   "row": 856
   },
   {
    "name": "N-ALKYL(68% C12, 32% C14)DIMETHYL ETHYLBENZYL AMMONIUM CHLORIDE",
@@ -11106,7 +11158,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 853
+   "row": 857
   },
   {
    "name": "N-ALKYL (98% C12, 2% C14) DIMETHYL 1-NAPHTHYLMETHYL AMMONIUM CHLORIDE",
@@ -11119,7 +11171,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 854
+   "row": 858
   },
   {
    "name": "N-ALKYL DIETHANOLAMINE",
@@ -11132,7 +11184,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 855
+   "row": 859
   },
   {
    "name": "N-ALKYL POLYETHOXYETHANOL",
@@ -11145,7 +11197,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 856
+   "row": 860
   },
   {
    "name": "N-BUTYL-1,2-BENZISOTHIAZOLIN-3-ONE",
@@ -11158,7 +11210,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 857
+   "row": 861
   },
   {
    "name": "N-COCO-ALKYLTRIMETHYLENE DIAMINES PRESENT AS MONOBENZOATE SALT",
@@ -11171,7 +11223,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 858
+   "row": 862
   },
   {
    "name": "N-CYCLOPROPYL-N'-(1,1-DIMETHYLETHYL)-6-(METHYLTHIO)-1,3,5-TRIAZINE-2,4-DIAMINE",
@@ -11184,7 +11236,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 859
+   "row": 863
   },
   {
    "name": "N-DECANOL",
@@ -11197,7 +11249,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 860
+   "row": 864
   },
   {
    "name": "N-DIALKYL(5% C12, 60% C14, 30% C16, 5% C18)METHYLBENZYLAMMONIUM CHLORIDE",
@@ -11210,7 +11262,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 861
+   "row": 865
   },
   {
    "name": "N-METHYLOL CHLOROACETAMIDE",
@@ -11223,7 +11275,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 862
+   "row": 866
   },
   {
    "name": "N,N'-METHYLENEBISMORPHOLINE",
@@ -11236,7 +11288,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 863
+   "row": 867
   },
   {
    "name": "N-OCTYL BICYCLOHEPTENE DICARBOXIMIDE",
@@ -11249,7 +11301,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 864
+   "row": 868
   },
   {
    "name": "N-PHENYL MERCURY 2-ETHYLHEXYL MALEATE",
@@ -11262,7 +11314,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 865
+   "row": 869
   },
   {
    "name": "NABAM",
@@ -11275,7 +11327,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 866
+   "row": 870
   },
   {
    "name": "NALED",
@@ -11288,7 +11340,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 867
+   "row": 871
   },
   {
    "name": "NAPHTHALENE",
@@ -11301,7 +11353,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 868
+   "row": 872
   },
   {
    "name": "NAPHTHALENE ACETIC ACID (PRESENT AS ETHYL ESTER, SODIUM SALT, OR AMMONIUM SALT)",
@@ -11314,7 +11366,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 869
+   "row": 873
   },
   {
    "name": "NAPHTHALENEACETAMIDE",
@@ -11327,7 +11379,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 870
+   "row": 874
   },
   {
    "name": "NAPROPAMIDE",
@@ -11340,7 +11392,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 871
+   "row": 875
   },
   {
    "name": "NAPTALAM (PRESENT AS ACID OR AS SODIUM SALT)",
@@ -11353,7 +11405,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 872
+   "row": 876
   },
   {
    "name": "NATAMYCIN",
@@ -11366,7 +11418,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 873
+   "row": 877
   },
   {
    "name": "NATURAL GUM RESINS",
@@ -11379,7 +11431,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 874
+   "row": 878
   },
   {
    "name": "NEEM OIL",
@@ -11392,7 +11444,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 875
+   "row": 879
   },
   {
    "name": "NEMAGON",
@@ -11405,7 +11457,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 876
+   "row": 880
   },
   {
    "name": "NEODIPRION ABIETIS NUCLEOPOLYHEDROVIRUS",
@@ -11418,7 +11470,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 877
+   "row": 881
   },
   {
    "name": "NICARBAZIN",
@@ -11431,7 +11483,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 878
+   "row": 882
   },
   {
    "name": "NICLOSAMIDE",
@@ -11444,7 +11496,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 879
+   "row": 883
   },
   {
    "name": "NICOSULFURON",
@@ -11457,7 +11509,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 880
+   "row": 884
   },
   {
    "name": "NICOTINE (PRESENT AS ALKALOID OR AS SULPHATE)",
@@ -11470,7 +11522,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 881
+   "row": 885
   },
   {
    "name": "NITRAPYRIN",
@@ -11483,7 +11535,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 882
+   "row": 886
   },
   {
    "name": "NITROFURAZONE",
@@ -11496,7 +11548,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 883
+   "row": 887
   },
   {
    "name": "NONYLPHENOXYPOLYETHOXYETHANOL",
@@ -11509,7 +11561,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 884
+   "row": 888
   },
   {
    "name": "NONYLPHENOXYPOLYETHOXYETHANOL - IODINE COMPLEX",
@@ -11522,7 +11574,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 885
+   "row": 889
   },
   {
    "name": "NOSEMA (PARANOSEMA) LOCUSTAE CANNING",
@@ -11535,7 +11587,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 886
+   "row": 890
   },
   {
    "name": "NOT AVAILABLE (THE CODE N/A WAS APPLIED TO HISTORICAL PRODUCTS FOR WHICH THERE WAS INSUFFICIENT INFORMATION REGARDING ACTIVE INGREDIENT)",
@@ -11548,7 +11600,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 887
+   "row": 891
   },
   {
    "name": "NOVALURON",
@@ -11561,7 +11613,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 888
+   "row": 892
   },
   {
    "name": "NOVIFLUMURON",
@@ -11574,7 +11626,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 889
+   "row": 893
   },
   {
    "name": "NUCLEAR POLYHEDROSIS VIRUS OF RED-HEADED PINE SAWFLY",
@@ -11587,7 +11639,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 890
+   "row": 894
   },
   {
    "name": "NUCLEOPOLYHEDROVIRUS FOR DOUGLAS-FIR TUSSOCK MOTH",
@@ -11600,7 +11652,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 891
+   "row": 895
   },
   {
    "name": "NURANONE",
@@ -11613,7 +11665,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 892
+   "row": 896
   },
   {
    "name": "O-BENZYL-P-CHLOROPHENOL",
@@ -11626,7 +11678,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 893
+   "row": 897
   },
   {
    "name": "OCTADEC-9-ENOIC ACID, ETHYL ESTER",
@@ -11639,7 +11691,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 894
+   "row": 898
   },
   {
    "name": "OCTADEC-9-ENOIC ACID, METHYL ESTER",
@@ -11652,7 +11704,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 895
+   "row": 899
   },
   {
    "name": "OCTENOL",
@@ -11665,7 +11717,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 896
+   "row": 900
   },
   {
    "name": "OCTYLDECYLDIMETHYLAMMONIUM CHLORIDE",
@@ -11678,7 +11730,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 897
+   "row": 901
   },
   {
    "name": "OCTYLPHENOXYPOLYETHOXYETHANOL",
@@ -11691,7 +11743,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 898
+   "row": 902
   },
   {
    "name": "OCTYLPHENOXYPOLYETHOXYETHANOL PHOSPHATE ESTER",
@@ -11704,7 +11756,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 899
+   "row": 903
   },
   {
    "name": "OIL OF BLACK PEPPER",
@@ -11717,7 +11769,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 900
+   "row": 904
   },
   {
    "name": "OIL OF LAVENDER",
@@ -11730,7 +11782,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 901
+   "row": 905
   },
   {
    "name": "OIL OF LEMON EUCALYPTUS, HYDRATED, CYCLIZED",
@@ -11743,7 +11795,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 902
+   "row": 906
   },
   {
    "name": "OLEORESIN CAPSICUM EXTRACT",
@@ -11756,7 +11808,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 903
+   "row": 907
   },
   {
    "name": "OLIGONUCLEOTIDE - TGAI - GLB SEQUENCE ES179",
@@ -11769,7 +11821,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 904
+   "row": 908
   },
   {
    "name": "OLIGONUCLEOTIDE - TGAI - GLB SEQUENCE ES180",
@@ -11782,7 +11834,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 905
+   "row": 909
   },
   {
    "name": "OLIGONUCLEOTIDE - TGAI - GLB SEQUENCE ES203",
@@ -11795,7 +11847,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 906
+   "row": 910
   },
   {
    "name": "OLIGONUCLEOTIDE - TGAI - GLB SEQUENCE ES204",
@@ -11808,7 +11860,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 907
+   "row": 911
   },
   {
    "name": "OPHIOSTOMA PILIFERUM FUNGUS",
@@ -11821,7 +11873,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 908
+   "row": 912
   },
   {
    "name": "ORGYIA LEUCOSTIGMA NUCLEOPOLYHEDROVIRUS (OISNPV)",
@@ -11834,7 +11886,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 909
+   "row": 913
   },
   {
    "name": "ORIENTAL MUSTARD SEED MEAL",
@@ -11847,7 +11899,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 910
+   "row": 914
   },
   {
    "name": "OXADIAZON",
@@ -11860,7 +11912,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 911
+   "row": 915
   },
   {
    "name": "OXALIC ACID DIHYDRATE",
@@ -11870,10 +11922,10 @@
    "cas_raw": "6153-56-6",
    "cas_norm": "6153566",
    "status": "غير مُعاد التقييم",
-   "status_raw": "NO",
+   "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 912
+   "row": 916
   },
   {
    "name": "OXAMYL",
@@ -11886,7 +11938,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 913
+   "row": 917
   },
   {
    "name": "OXATHIAPIPROLIN",
@@ -11899,7 +11951,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 914
+   "row": 918
   },
   {
    "name": "OXINE BENZOATE",
@@ -11912,7 +11964,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 915
+   "row": 919
   },
   {
    "name": "OXINE METHYLMERCURY",
@@ -11925,7 +11977,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 916
+   "row": 920
   },
   {
    "name": "OXIRANE DERIVATIVES (50% MINIMUM)",
@@ -11938,7 +11990,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 917
+   "row": 921
   },
   {
    "name": "OXYCARBOXIN",
@@ -11951,7 +12003,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 918
+   "row": 922
   },
   {
    "name": "OXYDEMETON-METHYL",
@@ -11964,7 +12016,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 919
+   "row": 923
   },
   {
    "name": "OXYDIETHYLENE BIS(ALKYL DIMETHYL AMMONIUM CHLORIDE)",
@@ -11977,7 +12029,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 920
+   "row": 924
   },
   {
    "name": "OXYFLUORFEN",
@@ -11990,7 +12042,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 921
+   "row": 925
   },
   {
    "name": "OZONE",
@@ -12003,7 +12055,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 922
+   "row": 926
   },
   {
    "name": "P-MENTHANE-3,8-DIOL",
@@ -12016,7 +12068,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 923
+   "row": 927
   },
   {
    "name": "P-TERT AMYL PHENOL",
@@ -12029,7 +12081,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 924
+   "row": 928
   },
   {
    "name": "PACLOBUTRAZOL",
@@ -12042,7 +12094,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 925
+   "row": 929
   },
   {
    "name": "PAECILOMYCES FUMOSOROSEUS STRAIN FE 9901",
@@ -12055,7 +12107,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 926
+   "row": 930
   },
   {
    "name": "PAENIBACILLUS POLYMYXA",
@@ -12068,7 +12120,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 927
+   "row": 931
   },
   {
    "name": "PAENIBACILLUS POLYMYXA STRAIN 4G4",
@@ -12081,7 +12133,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 928
+   "row": 932
   },
   {
    "name": "PAENIBACILLUS POLYMYXA STRAIN DJM4H12",
@@ -12094,7 +12146,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 929
+   "row": 933
   },
   {
    "name": "PANTOEA AGGLOMERANS C9-1",
@@ -12107,7 +12159,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 930
+   "row": 934
   },
   {
    "name": "PANTOEA AGGLOMERANS STRAIN E325 (NRRL B-21856)",
@@ -12120,7 +12172,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 931
+   "row": 935
   },
   {
    "name": "PARADICHLOROBENZENE",
@@ -12133,7 +12185,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 932
+   "row": 936
   },
   {
    "name": "PARAFFIN BASE PETROLEUM OIL",
@@ -12146,7 +12198,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 933
+   "row": 937
   },
   {
    "name": "PARAFORMALDEHYDE",
@@ -12159,7 +12211,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 934
+   "row": 938
   },
   {
    "name": "PARAQUAT",
@@ -12172,7 +12224,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 935
+   "row": 939
   },
   {
    "name": "PARATHION",
@@ -12185,7 +12237,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 936
+   "row": 940
   },
   {
    "name": "PASTEURIA NISHIZAWAE PN1",
@@ -12198,7 +12250,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 937
+   "row": 941
   },
   {
    "name": "PCS041.1",
@@ -12211,7 +12263,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 938
+   "row": 942
   },
   {
    "name": "PEBULATE",
@@ -12224,7 +12276,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 939
+   "row": 943
   },
   {
    "name": "PELARGONIC ACID",
@@ -12237,7 +12289,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 940
+   "row": 944
   },
   {
    "name": "PENDIMETHALIN",
@@ -12250,7 +12302,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 941
+   "row": 945
   },
   {
    "name": "PENFLUFEN",
@@ -12263,7 +12315,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 942
+   "row": 946
   },
   {
    "name": "PENTACHLOROPHENOL PLUS RELATED ACTIVE CHLOROPHENOLS",
@@ -12276,7 +12328,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 943
+   "row": 947
   },
   {
    "name": "PENTHIOPYRAD",
@@ -12289,7 +12341,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 944
+   "row": 948
   },
   {
    "name": "PEPINO MOSAIC VIRUS, STRAIN CH2, ISOLATE 1906",
@@ -12302,7 +12354,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 945
+   "row": 949
   },
   {
    "name": "PEPPERMINT OIL",
@@ -12315,7 +12367,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 946
+   "row": 950
   },
   {
    "name": "PERFORMIC ACID",
@@ -12328,7 +12380,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 947
+   "row": 951
   },
   {
    "name": "PERMETHRIN",
@@ -12341,7 +12393,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 948
+   "row": 952
   },
   {
    "name": "PEROXYACETIC ACID",
@@ -12354,7 +12406,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 949
+   "row": 953
   },
   {
    "name": "PETHOXAMID",
@@ -12367,7 +12419,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 950
+   "row": 954
   },
   {
    "name": "PETROLEUM HYDROCARBON BLEND",
@@ -12380,7 +12432,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 951
+   "row": 955
   },
   {
    "name": "PHENMEDIPHAM",
@@ -12393,7 +12445,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 952
+   "row": 956
   },
   {
    "name": "PHENYLMERCURIC ACETATE",
@@ -12406,7 +12458,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 953
+   "row": 957
   },
   {
    "name": "PHENYLMERCURIC OLEATE",
@@ -12419,7 +12471,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 954
+   "row": 958
   },
   {
    "name": "PHLEBIOPSIS GIGANTEA",
@@ -12432,7 +12484,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 955
+   "row": 959
   },
   {
    "name": "PHMB",
@@ -12445,7 +12497,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 956
+   "row": 960
   },
   {
    "name": "PHOMA MACROSTOMA",
@@ -12458,7 +12510,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 957
+   "row": 961
   },
   {
    "name": "PHORATE",
@@ -12471,7 +12523,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 958
+   "row": 962
   },
   {
    "name": "PHOSALONE",
@@ -12484,7 +12536,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 959
+   "row": 963
   },
   {
    "name": "PHOSMET",
@@ -12497,7 +12549,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 960
+   "row": 964
   },
   {
    "name": "PHOSPHINE",
@@ -12510,7 +12562,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 961
+   "row": 965
   },
   {
    "name": "PHOSPHORIC ACID",
@@ -12523,7 +12575,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 962
+   "row": 966
   },
   {
    "name": "PHTHALO GREEN PIGMENT",
@@ -12536,7 +12588,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 963
+   "row": 967
   },
   {
    "name": "PHTHORIMAEA OPERCULELLA GRANULOVIRUS ISOLATE GV-0019",
@@ -12549,7 +12601,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 964
+   "row": 968
   },
   {
    "name": "PICARBUTRAZOX",
@@ -12562,7 +12614,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 965
+   "row": 969
   },
   {
    "name": "PICLORAM (PRESENT AS ACID)",
@@ -12575,7 +12627,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 966
+   "row": 970
   },
   {
    "name": "PICLORAM (PRESENT AS AMINE SALTS)",
@@ -12588,7 +12640,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 967
+   "row": 971
   },
   {
    "name": "PICLORAM (PRESENT AS POTASSIUM SALT)",
@@ -12601,7 +12653,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 968
+   "row": 972
   },
   {
    "name": "PICOLINAFEN",
@@ -12614,7 +12666,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 969
+   "row": 973
   },
   {
    "name": "PICOXYSTROBIN",
@@ -12627,7 +12679,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 970
+   "row": 974
   },
   {
    "name": "PINDONE PRESENT IN FREE FORM OR AS SODIUM SALT",
@@ -12640,7 +12692,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 971
+   "row": 975
   },
   {
    "name": "PINE NEEDLE OIL",
@@ -12653,7 +12705,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 972
+   "row": 976
   },
   {
    "name": "PINE OIL",
@@ -12666,7 +12718,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 973
+   "row": 977
   },
   {
    "name": "PINOXADEN",
@@ -12679,7 +12731,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 974
+   "row": 978
   },
   {
    "name": "PIPERINE",
@@ -12692,7 +12744,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 975
+   "row": 979
   },
   {
    "name": "PIPERONYL BUTOXIDE",
@@ -12705,7 +12757,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 976
+   "row": 980
   },
   {
    "name": "PIRIMICARB",
@@ -12718,7 +12770,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 977
+   "row": 981
   },
   {
    "name": "PLUTELLA XYLOSTELLA GRANULOVIRUS (PLXYGV) ISOLATE GV-0020",
@@ -12731,7 +12783,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 978
+   "row": 982
   },
   {
    "name": "POLY[HYDROXYETHYLENE(DIMETHYLIMINIO)ETHYLENE(DIMETHYLIMINIO)METHYLENE DICHLORIDE]",
@@ -12744,7 +12796,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 979
+   "row": 983
   },
   {
    "name": "POLY[OXYETHYLENE(DIMETHYLIMINIO)ETHYLENE(DIMETHYLIMINIO)ETHYLENE DICHLORIDE]",
@@ -12757,7 +12809,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 980
+   "row": 984
   },
   {
    "name": "POLYACRYLAMIDE",
@@ -12770,7 +12822,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 981
+   "row": 985
   },
   {
    "name": "POLYACRYLIC POLYMER",
@@ -12783,7 +12835,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 982
+   "row": 986
   },
   {
    "name": "POLYETHOXYPOLYPROPOXYPOLYETHOXYETHANOL-IODINE COMPLEX",
@@ -12796,7 +12848,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 983
+   "row": 987
   },
   {
    "name": "POLYMERIZED BUTENES",
@@ -12809,7 +12861,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 984
+   "row": 988
   },
   {
    "name": "POLYOXIN D ZINC SALT",
@@ -12822,7 +12874,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 985
+   "row": 989
   },
   {
    "name": "POLYOXYALKYLATED ALKYL PHOSPHATE ESTER",
@@ -12835,7 +12887,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 986
+   "row": 990
   },
   {
    "name": "POLYOXYETHYLENE (20) SORBITAN MONOLAURATE",
@@ -12848,7 +12900,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 987
+   "row": 991
   },
   {
    "name": "POLYOXYETHYLENE ISOTRIDECYL ETHER",
@@ -12861,7 +12913,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 988
+   "row": 992
   },
   {
    "name": "POLYVINYL ALCOHOL",
@@ -12874,7 +12926,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 989
+   "row": 993
   },
   {
    "name": "POLYVINYL POLYMER",
@@ -12887,7 +12939,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 990
+   "row": 994
   },
   {
    "name": "PORCINE ZONA PELLUCIDA",
@@ -12900,7 +12952,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 991
+   "row": 995
   },
   {
    "name": "POTASSIUM 4- AND 6-CHLORO-2-PHENYLPHENATE",
@@ -12913,7 +12965,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 992
+   "row": 996
   },
   {
    "name": "POTASSIUM BICARBONATE",
@@ -12926,7 +12978,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 993
+   "row": 997
   },
   {
    "name": "POTASSIUM CHLORIDE",
@@ -12939,7 +12991,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 994
+   "row": 998
   },
   {
    "name": "POTASSIUM COCOATE",
@@ -12952,7 +13004,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 995
+   "row": 999
   },
   {
    "name": "POTASSIUM DICHLORO-S-TRIAZINETRIONE",
@@ -12965,7 +13017,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 996
+   "row": 1000
   },
   {
    "name": "POTASSIUM DICHROMATE",
@@ -12978,7 +13030,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 997
+   "row": 1001
   },
   {
    "name": "POTASSIUM DIMETHYLDITHIOCARBAMATE",
@@ -12991,7 +13043,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 998
+   "row": 1002
   },
   {
    "name": "POTASSIUM HYDROXIDE",
@@ -13004,7 +13056,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 999
+   "row": 1003
   },
   {
    "name": "POTASSIUM N-HYDROXYMETHYL-N-METHYLDITHIOCARBAMATE",
@@ -13017,7 +13069,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1000
+   "row": 1004
   },
   {
    "name": "POTASSIUM PEROXYMONOSULFATE (PRESENT AS POTASSIUM PEROXYMONOSULFATE SULFATE)",
@@ -13030,7 +13082,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1001
+   "row": 1005
   },
   {
    "name": "POTASSIUM SALTS OF FATTY ACIDS",
@@ -13043,7 +13095,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1002
+   "row": 1006
   },
   {
    "name": "POTATO STARCH",
@@ -13056,7 +13108,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1003
+   "row": 1007
   },
   {
    "name": "PRALLETHRIN",
@@ -13069,7 +13121,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1004
+   "row": 1008
   },
   {
    "name": "PRIMISULFURON-METHYL",
@@ -13082,7 +13134,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1005
+   "row": 1009
   },
   {
    "name": "PRODIAMINE",
@@ -13095,7 +13147,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1006
+   "row": 1010
   },
   {
    "name": "PROHEXADIONE-CALCIUM",
@@ -13105,10 +13157,10 @@
    "cas_raw": "127277-53-6",
    "cas_norm": "127277536",
    "status": "غير مُعاد التقييم",
-   "status_raw": "YES",
+   "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1007
+   "row": 1011
   },
   {
    "name": "PROHYDROJASMON",
@@ -13121,7 +13173,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1008
+   "row": 1012
   },
   {
    "name": "PROLAN",
@@ -13134,7 +13186,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1009
+   "row": 1013
   },
   {
    "name": "PROMETON PLUS RELATED ACTIVE TRIAZINES",
@@ -13147,7 +13199,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1010
+   "row": 1014
   },
   {
    "name": "PROMETRYN PLUS RELATED ACTIVE TRIAZINES",
@@ -13160,7 +13212,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 1011
+   "row": 1015
   },
   {
    "name": "PROPAMOCARB HYDROCHLORIDE",
@@ -13173,7 +13225,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1012
+   "row": 1016
   },
   {
    "name": "PROPANIL",
@@ -13186,7 +13238,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1013
+   "row": 1017
   },
   {
    "name": "PROPARGITE",
@@ -13199,7 +13251,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1014
+   "row": 1018
   },
   {
    "name": "PROPETAMPHOS",
@@ -13212,7 +13264,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1015
+   "row": 1019
   },
   {
    "name": "PROPICONAZOLE",
@@ -13225,7 +13277,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 1016
+   "row": 1020
   },
   {
    "name": "PROPOXUR",
@@ -13238,7 +13290,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 1017
+   "row": 1021
   },
   {
    "name": "PROPOXYCARBAZONE-SODIUM",
@@ -13251,7 +13303,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1018
+   "row": 1022
   },
   {
    "name": "PROPYLENE GLYCOL",
@@ -13264,7 +13316,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1019
+   "row": 1023
   },
   {
    "name": "PROPYLENE OXIDE",
@@ -13277,7 +13329,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1020
+   "row": 1024
   },
   {
    "name": "PROPYZAMIDE",
@@ -13290,7 +13342,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 1021
+   "row": 1025
   },
   {
    "name": "PROQUINAZID",
@@ -13303,7 +13355,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1022
+   "row": 1026
   },
   {
    "name": "PROSULFURON",
@@ -13316,7 +13368,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1023
+   "row": 1027
   },
   {
    "name": "PROTEASE ENZYME",
@@ -13329,7 +13381,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1024
+   "row": 1028
   },
   {
    "name": "PROTHIOCONAZOLE",
@@ -13342,7 +13394,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 1025
+   "row": 1029
   },
   {
    "name": "PSEUDOMONAS CHLORORAPHIS SUBSP. AURANTIACA STRAIN AFS009",
@@ -13355,7 +13407,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1026
+   "row": 1030
   },
   {
    "name": "PSEUDOMONAS COLEOPTERORUM (STRAIN 49762)",
@@ -13368,7 +13420,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1027
+   "row": 1031
   },
   {
    "name": "PSEUDOMONAS FLUORESCENS A506",
@@ -13381,7 +13433,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1028
+   "row": 1032
   },
   {
    "name": "PSEUDOMONAS FLUORESCENS CL145A",
@@ -13394,7 +13446,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1029
+   "row": 1033
   },
   {
    "name": "PSEUDOMONAS SYRINGAE PV TAGETIS ICMP4091",
@@ -13407,7 +13459,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1030
+   "row": 1034
   },
   {
    "name": "PSEUDOMONAS SYRINGAE - STRAIN ESC-10",
@@ -13420,7 +13472,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 1031
+   "row": 1035
   },
   {
    "name": "PSEUDOZYMA FLOCCULOSA",
@@ -13433,7 +13485,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1032
+   "row": 1036
   },
   {
    "name": "PUTRESCENT WHOLE EGG SOLIDS",
@@ -13446,7 +13498,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1033
+   "row": 1037
   },
   {
    "name": "PYDIFLUMETOFEN",
@@ -13459,7 +13511,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1034
+   "row": 1038
   },
   {
    "name": "PYMETROZINE",
@@ -13472,7 +13524,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1035
+   "row": 1039
   },
   {
    "name": "PYRACLOSTROBIN",
@@ -13485,7 +13537,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 1036
+   "row": 1040
   },
   {
    "name": "PYRAFLUFEN-ETHYL",
@@ -13498,7 +13550,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1037
+   "row": 1041
   },
   {
    "name": "PYRASULFOTOLE",
@@ -13511,7 +13563,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 1038
+   "row": 1042
   },
   {
    "name": "PYRAZIFLUMID",
@@ -13524,7 +13576,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1039
+   "row": 1043
   },
   {
    "name": "PYRAZON",
@@ -13537,7 +13589,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1040
+   "row": 1044
   },
   {
    "name": "PYRAZOPHOS",
@@ -13550,7 +13602,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1041
+   "row": 1045
   },
   {
    "name": "PYRETHRINS",
@@ -13563,7 +13615,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1042
+   "row": 1046
   },
   {
    "name": "PYRIDABEN",
@@ -13576,7 +13628,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1043
+   "row": 1047
   },
   {
    "name": "PYRIDATE",
@@ -13589,7 +13641,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1044
+   "row": 1048
   },
   {
    "name": "PYRIFLUQUINAZON",
@@ -13602,7 +13654,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1045
+   "row": 1049
   },
   {
    "name": "PYRIMETHANIL",
@@ -13615,7 +13667,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 1046
+   "row": 1050
   },
   {
    "name": "PYRIOFENONE",
@@ -13628,7 +13680,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1047
+   "row": 1051
   },
   {
    "name": "PYRIPROXYFEN",
@@ -13641,7 +13693,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1048
+   "row": 1052
   },
   {
    "name": "PYROXASULFONE",
@@ -13654,7 +13706,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1049
+   "row": 1053
   },
   {
    "name": "PYROXSULAM",
@@ -13667,7 +13719,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 1050
+   "row": 1054
   },
   {
    "name": "PYTHIUM OLIGANDRUM OOSPORES",
@@ -13680,7 +13732,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1051
+   "row": 1055
   },
   {
    "name": "QUINCLORAC",
@@ -13693,7 +13745,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1052
+   "row": 1056
   },
   {
    "name": "QUINCLORAC (PRESENT AS DIMETHYLAMINE SALT)",
@@ -13706,7 +13758,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1053
+   "row": 1057
   },
   {
    "name": "QUINOXYFEN",
@@ -13719,7 +13771,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1054
+   "row": 1058
   },
   {
    "name": "QUINTOZENE",
@@ -13732,7 +13784,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1055
+   "row": 1059
   },
   {
    "name": "QUIZALOFOP-ETHYL",
@@ -13745,7 +13797,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1056
+   "row": 1060
   },
   {
    "name": "QUIZALOFOP-P-ETHYL",
@@ -13758,7 +13810,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1057
+   "row": 1061
   },
   {
    "name": "R-(-)-1-OCTEN-3-OL",
@@ -13771,7 +13823,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1058
+   "row": 1062
   },
   {
    "name": "RACEMIC CAMPHOR",
@@ -13784,7 +13836,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1059
+   "row": 1063
   },
   {
    "name": "RECODED AS PIC. (PICLORAM AS ISOOCTYL ESTERS OR AS POTASSIUM SALT: FORMERLY TORDON)",
@@ -13797,7 +13849,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1060
+   "row": 1064
   },
   {
    "name": "RECODED UNDER BNP. (BORAX PENTAHYDRATE OR SODIUM TETRABORATE PENTAHYDRATE)",
@@ -13810,7 +13862,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1061
+   "row": 1065
   },
   {
    "name": "RECODED UNDER CAB. (CARBARYL: FORMERLY SEVIN)",
@@ -13823,7 +13875,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1062
+   "row": 1066
   },
   {
    "name": "RECODED UNDER DCH",
@@ -13836,7 +13888,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1063
+   "row": 1067
   },
   {
    "name": "RECODED UNDER MGB. (2,3,4,5-BIS(2-BUTYLENE)TETRAHYDRO-2-FUFURAL: FORMERLY MGK REPELLENT II)",
@@ -13849,7 +13901,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1064
+   "row": 1068
   },
   {
    "name": "RECODED UNDER SFT. (SULFOTEP: FORMERLY TEDP)",
@@ -13862,7 +13914,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1065
+   "row": 1069
   },
   {
    "name": "RECTIFIED CLOVE LEAF OIL",
@@ -13875,7 +13927,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1066
+   "row": 1070
   },
   {
    "name": "RED SQUILL",
@@ -13888,7 +13940,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1067
+   "row": 1071
   },
   {
    "name": "RELATED CAPSAICINOIDS",
@@ -13901,7 +13953,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1068
+   "row": 1072
   },
   {
    "name": "RESCALURE",
@@ -13914,7 +13966,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1069
+   "row": 1073
   },
   {
    "name": "RESMETHRIN",
@@ -13927,7 +13979,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1070
+   "row": 1074
   },
   {
    "name": "RHIZOBIUM ETLI STRAIN DJM4D6",
@@ -13940,7 +13992,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1071
+   "row": 1075
   },
   {
    "name": "RIMSULFURON",
@@ -13953,7 +14005,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 1072
+   "row": 1076
   },
   {
    "name": "RONNEL",
@@ -13966,7 +14018,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1073
+   "row": 1077
   },
   {
    "name": "ROSEMARY OIL",
@@ -13979,7 +14031,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1074
+   "row": 1078
   },
   {
    "name": "ROTENONE",
@@ -13992,7 +14044,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 1075
+   "row": 1079
   },
   {
    "name": "S-(2-HYDROXYPROPYL)THIOMETHANE SULFONATE",
@@ -14005,7 +14057,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1076
+   "row": 1080
   },
   {
    "name": "S-KINOPRENE",
@@ -14018,7 +14070,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1077
+   "row": 1081
   },
   {
    "name": "S-METHOPRENE",
@@ -14031,7 +14083,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 1078
+   "row": 1082
   },
   {
    "name": "S-METOLACHLOR AND R-ENANTIOMER",
@@ -14044,7 +14096,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 1079
+   "row": 1083
   },
   {
    "name": "SACCHAROMYCES CEREVISIAE STRAIN Y243",
@@ -14057,7 +14109,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1080
+   "row": 1084
   },
   {
    "name": "SAFLUFENACIL",
@@ -14070,7 +14122,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 1081
+   "row": 1085
   },
   {
    "name": "SAPONINS OF CHENOPODIUM QUINOA",
@@ -14083,7 +14135,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1082
+   "row": 1086
   },
   {
    "name": "SAYBOLT UNIVERSAL VISCOSITY IN SECONDS AT 100 DEGREES FAHRENHEIT",
@@ -14096,7 +14148,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1083
+   "row": 1087
   },
   {
    "name": "SCLEROTINIA MINOR IMI 3144141",
@@ -14109,7 +14161,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1084
+   "row": 1088
   },
   {
    "name": "SEDAXANE",
@@ -14122,7 +14174,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1085
+   "row": 1089
   },
   {
    "name": "SESAME SEED OIL",
@@ -14135,7 +14187,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1086
+   "row": 1090
   },
   {
    "name": "SETHOXYDIM",
@@ -14148,7 +14200,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1087
+   "row": 1091
   },
   {
    "name": "SHEEP FAT",
@@ -14161,7 +14213,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1088
+   "row": 1092
   },
   {
    "name": "SIDURON",
@@ -14174,7 +14226,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1089
+   "row": 1093
   },
   {
    "name": "SILICA AEROGEL",
@@ -14187,7 +14239,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 1090
+   "row": 1094
   },
   {
    "name": "SILICON DIOXIDE (PRESENT AS 100% DIATOMACEOUS EARTH) - FRESH WATER FOSSILS",
@@ -14200,7 +14252,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 1091
+   "row": 1095
   },
   {
    "name": "SILICON DIOXIDE (PRESENT AS 100% DIATOMACEOUS EARTH) - SALT WATER FOSSILS",
@@ -14213,7 +14265,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1092
+   "row": 1096
   },
   {
    "name": "SILOXYLATED POLYETHER",
@@ -14226,7 +14278,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1093
+   "row": 1097
   },
   {
    "name": "SILVER",
@@ -14239,7 +14291,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1094
+   "row": 1098
   },
   {
    "name": "SILVER CHLORIDE",
@@ -14252,7 +14304,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1095
+   "row": 1099
   },
   {
    "name": "SILVER GRAPHENE OXIDE",
@@ -14265,7 +14317,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1096
+   "row": 1100
   },
   {
    "name": "SILVER NITRATE",
@@ -14278,7 +14330,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1097
+   "row": 1101
   },
   {
    "name": "SILVER (PRESENT AS OXYSILVER NITRATE)",
@@ -14291,7 +14343,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1098
+   "row": 1102
   },
   {
    "name": "SILVER (PRESENT AS SILVER COPPER ZEOLITE)",
@@ -14304,7 +14356,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1099
+   "row": 1103
   },
   {
    "name": "SILVER (PRESENT AS SILVER PHOSPHATE GLASS)",
@@ -14317,7 +14369,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1100
+   "row": 1104
   },
   {
    "name": "SILVER (PRESENT AS SILVER ZEOLITE)",
@@ -14330,7 +14382,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1101
+   "row": 1105
   },
   {
    "name": "SIMAZINE PLUS RELATED ACTIVE TRIAZINES",
@@ -14343,7 +14395,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 1102
+   "row": 1106
   },
   {
    "name": "SOAP (NON-SPECIFIC)",
@@ -14356,7 +14408,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1103
+   "row": 1107
   },
   {
    "name": "SODIUM 2-PHENYLPHENATE",
@@ -14369,7 +14421,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1104
+   "row": 1108
   },
   {
    "name": "SODIUM ALPHA-OLEFIN SULFONATE",
@@ -14382,7 +14434,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1105
+   "row": 1109
   },
   {
    "name": "SODIUM BROMIDE",
@@ -14395,7 +14447,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1106
+   "row": 1110
   },
   {
    "name": "SODIUM CARBONATE",
@@ -14408,7 +14460,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1107
+   "row": 1111
   },
   {
    "name": "SODIUM CARBONATE PEROXYHYDRATE",
@@ -14421,7 +14473,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1108
+   "row": 1112
   },
   {
    "name": "SODIUM CHLORATE",
@@ -14434,7 +14486,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 1109
+   "row": 1113
   },
   {
    "name": "SODIUM CHLORIDE",
@@ -14447,7 +14499,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1110
+   "row": 1114
   },
   {
    "name": "SODIUM CHLORITE",
@@ -14460,7 +14512,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 1111
+   "row": 1115
   },
   {
    "name": "SODIUM CYANIDE",
@@ -14473,7 +14525,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1112
+   "row": 1116
   },
   {
    "name": "SODIUM DICHLORO-S-TRIAZINETRIONE",
@@ -14486,7 +14538,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1113
+   "row": 1117
   },
   {
    "name": "SODIUM DIMETHYLDITHIOCARBAMATE",
@@ -14499,7 +14551,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1114
+   "row": 1118
   },
   {
    "name": "SODIUM DODECYLBENZENESULFONATE",
@@ -14512,7 +14564,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1115
+   "row": 1119
   },
   {
    "name": "SODIUM FLUORIDE",
@@ -14525,7 +14577,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1116
+   "row": 1120
   },
   {
    "name": "SODIUM FLUOSILICATE (OR SODIUM SILICOFLUORIDE)",
@@ -14538,7 +14590,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1117
+   "row": 1121
   },
   {
    "name": "SODIUM HYDROXIDE",
@@ -14551,7 +14603,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1118
+   "row": 1122
   },
   {
    "name": "SODIUM HYPOCHLORITE",
@@ -14564,7 +14616,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1119
+   "row": 1123
   },
   {
    "name": "SODIUM LAURYL SULFATE",
@@ -14577,7 +14629,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1120
+   "row": 1124
   },
   {
    "name": "SODIUM METABISULFITE",
@@ -14590,7 +14642,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1121
+   "row": 1125
   },
   {
    "name": "SODIUM METABORATE",
@@ -14603,7 +14655,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1122
+   "row": 1126
   },
   {
    "name": "SODIUM METABORATE OCTAHYDRATE",
@@ -14616,7 +14668,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1123
+   "row": 1127
   },
   {
    "name": "SODIUM METABORATE TETRAHYDRATE",
@@ -14629,7 +14681,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1124
+   "row": 1128
   },
   {
    "name": "SODIUM METASILICATE",
@@ -14642,7 +14694,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1125
+   "row": 1129
   },
   {
    "name": "SODIUM MONOFLUOROACETATE",
@@ -14655,7 +14707,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1126
+   "row": 1130
   },
   {
    "name": "SODIUM NITRITE",
@@ -14668,7 +14720,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1127
+   "row": 1131
   },
   {
    "name": "SODIUM NONANOYLOXYBENZENE SULFONATE (NOBS)",
@@ -14681,7 +14733,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1128
+   "row": 1132
   },
   {
    "name": "SODIUM O-BENZYL-P-CHLOROPHENATE",
@@ -14694,7 +14746,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1129
+   "row": 1133
   },
   {
    "name": "SODIUM OMADINE",
@@ -14707,7 +14759,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1130
+   "row": 1134
   },
   {
    "name": "SODIUM PARA-TERTIARY AMYLPHENATE",
@@ -14720,7 +14772,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1131
+   "row": 1135
   },
   {
    "name": "SODIUM PENTACHLOROPHENATE PLUS RELATED CHLOROPHENATES",
@@ -14733,7 +14785,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1132
+   "row": 1136
   },
   {
    "name": "SODIUM SALT OF 2-MERCAPTOBENZOTHIAZOLE",
@@ -14746,7 +14798,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1133
+   "row": 1137
   },
   {
    "name": "SODIUM SALT OF N-(3,4-DICHLOROPHENYL)-N'-2 (2-SULFO-4-CHLOROPHENOXY)-5-CHLOROPHENYL UREA",
@@ -14759,7 +14811,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1134
+   "row": 1138
   },
   {
    "name": "SODIUM TETRACHLOROPHENATE PLUS RELATED CHLOROPHENATES",
@@ -14772,7 +14824,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1135
+   "row": 1139
   },
   {
    "name": "SOLVENT (PETROLEUM HYDROCARBONS)",
@@ -14785,7 +14837,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1136
+   "row": 1140
   },
   {
    "name": "SOYBEAN OIL",
@@ -14798,7 +14850,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1137
+   "row": 1141
   },
   {
    "name": "SPEARMINT OIL",
@@ -14811,7 +14863,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1138
+   "row": 1142
   },
   {
    "name": "SPIDOXAMAT",
@@ -14824,7 +14876,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1139
+   "row": 1143
   },
   {
    "name": "SPIDOXAMAT (PRESENT AS POTASSIUM SALT)",
@@ -14837,7 +14889,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1140
+   "row": 1144
   },
   {
    "name": "SPINETORAM",
@@ -14850,7 +14902,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 1141
+   "row": 1145
   },
   {
    "name": "SPINOSAD",
@@ -14863,7 +14915,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 1142
+   "row": 1146
   },
   {
    "name": "SPIRODICLOFEN",
@@ -14876,7 +14928,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 1143
+   "row": 1147
   },
   {
    "name": "SPIROMESIFEN",
@@ -14889,7 +14941,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 1144
+   "row": 1148
   },
   {
    "name": "SPIROPIDION",
@@ -14902,7 +14954,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1145
+   "row": 1149
   },
   {
    "name": "SPIROTETRAMAT",
@@ -14915,7 +14967,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 1146
+   "row": 1150
   },
   {
    "name": "SPIROXAMINE",
@@ -14928,7 +14980,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1147
+   "row": 1151
   },
   {
    "name": "SPODOPTERA FRUGIPERDA NUCLEOPOLYHEDROVIRUS, ISOLATE 19",
@@ -14941,7 +14993,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1148
+   "row": 1152
   },
   {
    "name": "STEARIC ACID AND RELATED FATTY ACIDS",
@@ -14954,7 +15006,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1149
+   "row": 1153
   },
   {
    "name": "STREPTOMYCES ACIDISCABIES STRAIN RL-110T CELLS AND SPENT FERMENTATION MEDIA",
@@ -14967,7 +15019,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1150
+   "row": 1154
   },
   {
    "name": "STREPTOMYCES GRISEOVIRIDIS STRAIN K61",
@@ -14980,7 +15032,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1151
+   "row": 1155
   },
   {
    "name": "STREPTOMYCES LYDICUS STRAIN WYEC108",
@@ -14993,7 +15045,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1152
+   "row": 1156
   },
   {
    "name": "STREPTOMYCES MELANOSPORAFACIENS",
@@ -15006,7 +15058,20 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1153
+   "row": 1157
+  },
+  {
+   "name": "STREPTOMYCES SP. STRAIN M2",
+   "name_fr": "STREPTOMYCES SP. SOUCHE M2",
+   "name_norm": "streptomyces sp strain m2",
+   "cas": "",
+   "cas_raw": "",
+   "cas_norm": "",
+   "status": "غير مُعاد التقييم",
+   "status_raw": "NO",
+   "category": "",
+   "source": "canada",
+   "row": 1158
   },
   {
    "name": "STREPTOMYCIN",
@@ -15019,7 +15084,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 1154
+   "row": 1159
   },
   {
    "name": "STRYCHNINE",
@@ -15032,7 +15097,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1155
+   "row": 1160
   },
   {
    "name": "STYRENE BUTADIENE COPOLYMER RUBBER",
@@ -15045,7 +15110,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1156
+   "row": 1161
   },
   {
    "name": "SUCROSE",
@@ -15058,7 +15123,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1157
+   "row": 1162
   },
   {
    "name": "SUCROSE OCTANOATE ESTERS",
@@ -15071,7 +15136,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1158
+   "row": 1163
   },
   {
    "name": "SULFAQUINOXALINE (PRESENT AS SODIUM SALT)",
@@ -15084,7 +15149,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1159
+   "row": 1164
   },
   {
    "name": "SULFENTRAZONE",
@@ -15097,7 +15162,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 1160
+   "row": 1165
   },
   {
    "name": "SULFOMETURON METHYL",
@@ -15110,7 +15175,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1161
+   "row": 1166
   },
   {
    "name": "SULFOSULFURON",
@@ -15123,7 +15188,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1162
+   "row": 1167
   },
   {
    "name": "SULFOTEP PLUS RELATED ACTIVE COMPOUNDS",
@@ -15136,7 +15201,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1163
+   "row": 1168
   },
   {
    "name": "SULFOXAFLOR",
@@ -15149,7 +15214,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1164
+   "row": 1169
   },
   {
    "name": "SULFOXIDE PLUS RELATED ACTIVE COMPOUNDS",
@@ -15162,7 +15227,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1165
+   "row": 1170
   },
   {
    "name": "SULFURIC ACID",
@@ -15175,7 +15240,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1166
+   "row": 1171
   },
   {
    "name": "SULFURYL FLUORIDE",
@@ -15188,7 +15253,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 1167
+   "row": 1172
   },
   {
    "name": "SULPHUR",
@@ -15201,7 +15266,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1168
+   "row": 1173
   },
   {
    "name": "SURFACTANT BLEND",
@@ -15214,7 +15279,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1169
+   "row": 1174
   },
   {
    "name": "SURFACTANT MIXTURE",
@@ -15227,7 +15292,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1170
+   "row": 1175
   },
   {
    "name": "T42982 DOUBLE STRANDED RNA",
@@ -15240,7 +15305,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1171
+   "row": 1176
   },
   {
    "name": "T44917 DOUBLE STRANDED RNA",
@@ -15253,7 +15318,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1172
+   "row": 1177
   },
   {
    "name": "T44918 DOUBLE STRANDED RNA",
@@ -15266,7 +15331,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1173
+   "row": 1178
   },
   {
    "name": "T44922 DOUBLE STRANDED RNA",
@@ -15279,7 +15344,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1174
+   "row": 1179
   },
   {
    "name": "T45082 DOUBLE STRANDED RNA",
@@ -15292,7 +15357,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1175
+   "row": 1180
   },
   {
    "name": "T45126 DOUBLE STRANDED RNA",
@@ -15305,7 +15370,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1176
+   "row": 1181
   },
   {
    "name": "T54572 DOUBLE STRANDED RNA",
@@ -15318,7 +15383,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1177
+   "row": 1182
   },
   {
    "name": "TALL OIL FATTY ACIDS",
@@ -15331,7 +15396,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1178
+   "row": 1183
   },
   {
    "name": "TALLOW FATTY ACID AMINE ETHOXYLATE",
@@ -15344,7 +15409,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1179
+   "row": 1184
   },
   {
    "name": "TCA (PRESENT AS SODIUM SALT)",
@@ -15357,7 +15422,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1180
+   "row": 1185
   },
   {
    "name": "TEA TREE OIL",
@@ -15370,7 +15435,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1181
+   "row": 1186
   },
   {
    "name": "TEBUCONAZOLE",
@@ -15383,7 +15448,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 1182
+   "row": 1187
   },
   {
    "name": "TEBUFENOZIDE",
@@ -15396,7 +15461,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1183
+   "row": 1188
   },
   {
    "name": "TEBUFENPYRAD",
@@ -15409,7 +15474,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1184
+   "row": 1189
   },
   {
    "name": "TEBUTHIURON",
@@ -15422,7 +15487,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1185
+   "row": 1190
   },
   {
    "name": "TEFLUBENZURON",
@@ -15435,7 +15500,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1186
+   "row": 1191
   },
   {
    "name": "TEFLUTHRIN",
@@ -15448,7 +15513,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 1187
+   "row": 1192
   },
   {
    "name": "TEMBOTRIONE",
@@ -15461,7 +15526,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 1188
+   "row": 1193
   },
   {
    "name": "TEMEPHOS",
@@ -15474,7 +15539,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1189
+   "row": 1194
   },
   {
    "name": "TEPP",
@@ -15487,7 +15552,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1190
+   "row": 1195
   },
   {
    "name": "TEPRALOXYDIM",
@@ -15500,7 +15565,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1191
+   "row": 1196
   },
   {
    "name": "TERBACIL",
@@ -15513,7 +15578,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 1192
+   "row": 1197
   },
   {
    "name": "TERBUCARB",
@@ -15526,7 +15591,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1193
+   "row": 1198
   },
   {
    "name": "TERBUFOS",
@@ -15539,7 +15604,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1194
+   "row": 1199
   },
   {
    "name": "TETRACHLORVINPHOS",
@@ -15552,7 +15617,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 1195
+   "row": 1200
   },
   {
    "name": "TETRACONAZOLE",
@@ -15565,7 +15630,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 1196
+   "row": 1201
   },
   {
    "name": "TETRADIFON",
@@ -15578,7 +15643,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1197
+   "row": 1202
   },
   {
    "name": "TETRAKIS(HYDROXYMETHYL)PHOSPHONIUM SULFATE",
@@ -15591,7 +15656,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 1198
+   "row": 1203
   },
   {
    "name": "TETRAMETHRIN",
@@ -15604,7 +15669,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1199
+   "row": 1204
   },
   {
    "name": "TETRANILIPROLE",
@@ -15617,7 +15682,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1200
+   "row": 1205
   },
   {
    "name": "TETRAPOTASSIUM PYROPHOSPHATE",
@@ -15630,7 +15695,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1201
+   "row": 1206
   },
   {
    "name": "TETRASODIUM ETHYLENEDIAMINETETRAACETATE",
@@ -15643,7 +15708,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1202
+   "row": 1207
   },
   {
    "name": "THIABENDAZOLE",
@@ -15656,7 +15721,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1203
+   "row": 1208
   },
   {
    "name": "THIACLOPRID",
@@ -15669,7 +15734,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 1204
+   "row": 1209
   },
   {
    "name": "THIAMETHOXAM",
@@ -15682,7 +15747,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 1205
+   "row": 1210
   },
   {
    "name": "THIDIAZURON",
@@ -15695,7 +15760,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1206
+   "row": 1211
   },
   {
    "name": "THIENCARBAZONE-METHYL",
@@ -15708,7 +15773,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 1207
+   "row": 1212
   },
   {
    "name": "THIFENSULFURON-METHYL",
@@ -15721,7 +15786,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 1208
+   "row": 1213
   },
   {
    "name": "THIODICARB",
@@ -15734,7 +15799,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1209
+   "row": 1214
   },
   {
    "name": "THIONAZIN",
@@ -15747,7 +15812,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1210
+   "row": 1215
   },
   {
    "name": "THIOPHANATE-METHYL",
@@ -15760,7 +15825,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1211
+   "row": 1216
   },
   {
    "name": "THIRAM",
@@ -15773,7 +15838,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1212
+   "row": 1217
   },
   {
    "name": "THYME OIL",
@@ -15786,7 +15851,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1213
+   "row": 1218
   },
   {
    "name": "THYMOL",
@@ -15799,7 +15864,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 1214
+   "row": 1219
   },
   {
    "name": "TIAFENACIL",
@@ -15812,7 +15877,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1215
+   "row": 1220
   },
   {
    "name": "TIOXAZAFEN",
@@ -15825,7 +15890,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1216
+   "row": 1221
   },
   {
    "name": "TOLFENPYRAD",
@@ -15838,7 +15903,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1217
+   "row": 1222
   },
   {
    "name": "TOLPYRALATE",
@@ -15851,7 +15916,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1218
+   "row": 1223
   },
   {
    "name": "TOLYPOCLADIUM CYLINDROSPORUM ANT-05",
@@ -15864,7 +15929,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1219
+   "row": 1224
   },
   {
    "name": "TOPRAMEZONE",
@@ -15877,7 +15942,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 1220
+   "row": 1225
   },
   {
    "name": "TRALKOXYDIM",
@@ -15890,7 +15955,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1221
+   "row": 1226
   },
   {
    "name": "TRALOMETHRIN",
@@ -15903,7 +15968,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1222
+   "row": 1227
   },
   {
    "name": "TRI-N-BUTYLTIN CHLORIDE",
@@ -15916,7 +15981,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1223
+   "row": 1228
   },
   {
    "name": "TRI-N-BUTYLTIN FLUORIDE",
@@ -15929,7 +15994,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1224
+   "row": 1229
   },
   {
    "name": "TRI-N-BUTYLTIN MALEATE",
@@ -15942,7 +16007,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1225
+   "row": 1230
   },
   {
    "name": "TRI-N-BUTYLTIN METHACRYLATE",
@@ -15955,7 +16020,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1226
+   "row": 1231
   },
   {
    "name": "TRIADIMEFON",
@@ -15968,7 +16033,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1227
+   "row": 1232
   },
   {
    "name": "TRIADIMENOL",
@@ -15981,7 +16046,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1228
+   "row": 1233
   },
   {
    "name": "TRIALLATE",
@@ -15994,7 +16059,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 1229
+   "row": 1234
   },
   {
    "name": "TRIASULFURON",
@@ -16007,7 +16072,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1230
+   "row": 1235
   },
   {
    "name": "TRIBENURON-METHYL",
@@ -16020,7 +16085,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 1231
+   "row": 1236
   },
   {
    "name": "TRIBUTYL TETRADECYL PHOSPHONIUM CHLORIDE",
@@ -16033,7 +16098,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1232
+   "row": 1237
   },
   {
    "name": "TRIBUTYLTIN OXIDE",
@@ -16046,7 +16111,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1233
+   "row": 1238
   },
   {
    "name": "TRICHLORFON",
@@ -16059,7 +16124,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1234
+   "row": 1239
   },
   {
    "name": "TRICHLORO-S-TRIAZINETRIONE",
@@ -16072,7 +16137,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 1235
+   "row": 1240
   },
   {
    "name": "TRICHODERMA AFROHARZIANUM STRAIN TH2RI99",
@@ -16085,7 +16150,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1236
+   "row": 1241
   },
   {
    "name": "TRICHODERMA ASPERELLUM STRAIN ICC 012",
@@ -16098,7 +16163,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1237
+   "row": 1242
   },
   {
    "name": "TRICHODERMA ASPERELLUM STRAIN KD",
@@ -16111,7 +16176,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1238
+   "row": 1243
   },
   {
    "name": "TRICHODERMA ASPERELLUM, STRAIN T34",
@@ -16124,7 +16189,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1239
+   "row": 1244
   },
   {
    "name": "TRICHODERMA ATROVIRIDE STRAIN 77B",
@@ -16137,7 +16202,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1240
+   "row": 1245
   },
   {
    "name": "TRICHODERMA GAMSII STRAIN ICC 080",
@@ -16150,7 +16215,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1241
+   "row": 1246
   },
   {
    "name": "TRICHODERMA HARZIANUM RIFAI STRAIN KRL-AG2",
@@ -16163,7 +16228,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1242
+   "row": 1247
   },
   {
    "name": "TRICHODERMA HARZIANUM RIFAI STRAIN T-22",
@@ -16176,7 +16241,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1243
+   "row": 1248
   },
   {
    "name": "TRICHODERMA HARZIANUM RIFAI STRAIN TH2",
@@ -16189,7 +16254,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1244
+   "row": 1249
   },
   {
    "name": "TRICHODERMA VIRENS STRAIN G-41",
@@ -16202,7 +16267,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1245
+   "row": 1250
   },
   {
    "name": "TRICLOPYR, PRESENT AS BUTOXYETHYL ESTER",
@@ -16215,7 +16280,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 1246
+   "row": 1251
   },
   {
    "name": "TRICLOPYR TRIETHYLAMINE SALT",
@@ -16228,7 +16293,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1247
+   "row": 1252
   },
   {
    "name": "TRIETHANOLAMINE SALTS OF FATTY ACIDS",
@@ -16241,7 +16306,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1248
+   "row": 1253
   },
   {
    "name": "TRIETHYLENE GLYCOL",
@@ -16254,7 +16319,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1249
+   "row": 1254
   },
   {
    "name": "TRIFLOXYSTROBIN",
@@ -16267,7 +16332,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 1250
+   "row": 1255
   },
   {
    "name": "TRIFLUDIMOXAZIN",
@@ -16280,7 +16345,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1251
+   "row": 1256
   },
   {
    "name": "TRIFLUMEZOPYRIM",
@@ -16293,7 +16358,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1252
+   "row": 1257
   },
   {
    "name": "TRIFLUMIZOLE",
@@ -16306,7 +16371,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1253
+   "row": 1258
   },
   {
    "name": "TRIFLURALIN",
@@ -16319,7 +16384,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 1254
+   "row": 1259
   },
   {
    "name": "TRIFLUSULFURON-METHYL",
@@ -16332,7 +16397,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1255
+   "row": 1260
   },
   {
    "name": "TRIFORINE",
@@ -16345,7 +16410,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1256
+   "row": 1261
   },
   {
    "name": "TRIGLYCERIDE ETHOXYLATE 10 POE",
@@ -16358,7 +16423,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1257
+   "row": 1262
   },
   {
    "name": "TRIMETHYLAMINE",
@@ -16371,7 +16436,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1258
+   "row": 1263
   },
   {
    "name": "TRIMETHYLNONYLPOLYETHOXYETHANOL",
@@ -16384,7 +16449,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1259
+   "row": 1264
   },
   {
    "name": "TRINEXAPAC-ETHYL",
@@ -16397,7 +16462,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1260
+   "row": 1265
   },
   {
    "name": "TRITICONAZOLE",
@@ -16410,7 +16475,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 1261
+   "row": 1266
   },
   {
    "name": "TYPHULA PHACORRHIZA (STRAIN 94671)",
@@ -16423,7 +16488,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1262
+   "row": 1267
   },
   {
    "name": "ULOCLADIUM OUDEMANSII (U3 STRAIN)",
@@ -16436,7 +16501,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1263
+   "row": 1268
   },
   {
    "name": "ULTRAVIOLET A (WAVELENGTH 315 - 400 NM)",
@@ -16449,7 +16514,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1264
+   "row": 1269
   },
   {
    "name": "ULTRAVIOLET B (WAVELENGTH 280 - 315 NM)",
@@ -16462,7 +16527,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1265
+   "row": 1270
   },
   {
    "name": "ULTRAVIOLET C (WAVELENGTH 100 - 280 NM)",
@@ -16475,7 +16540,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1266
+   "row": 1271
   },
   {
    "name": "ULTRAVIOLET LIGHT",
@@ -16488,7 +16553,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1267
+   "row": 1272
   },
   {
    "name": "UNDECYLENIC ACID",
@@ -16501,7 +16566,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1268
+   "row": 1273
   },
   {
    "name": "UNICONAZOLE-P",
@@ -16514,7 +16579,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 1269
+   "row": 1274
   },
   {
    "name": "(UNSPECIFIED STRAIN) DOUBLE STRANDED RNA",
@@ -16527,7 +16592,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1270
+   "row": 1275
   },
   {
    "name": "UNSULPHONATABLE RESIDUE",
@@ -16540,7 +16605,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1271
+   "row": 1276
   },
   {
    "name": "UREA",
@@ -16553,7 +16618,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1272
+   "row": 1277
   },
   {
    "name": "VADESCANA DOUBLE STRANDED RNA",
@@ -16566,7 +16631,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1273
+   "row": 1278
   },
   {
    "name": "VEGETABLE OIL",
@@ -16579,7 +16644,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1274
+   "row": 1279
   },
   {
    "name": "VERBENONE",
@@ -16592,7 +16657,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1275
+   "row": 1280
   },
   {
    "name": "VERNOLATE",
@@ -16605,7 +16670,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1276
+   "row": 1281
   },
   {
    "name": "VERTICILLIUM ALBO-ATRUM, ISOLATE WCS850",
@@ -16618,7 +16683,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 1277
+   "row": 1282
   },
   {
    "name": "VINCLOZOLIN",
@@ -16631,7 +16696,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1278
+   "row": 1283
   },
   {
    "name": "VIOLET LIGHT (WAVELENGTH 380 - 450 NM)",
@@ -16644,7 +16709,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1279
+   "row": 1284
   },
   {
    "name": "VISIBLE LIGHT SPECTRUM (WAVELENGTH 380 - 750 NM)",
@@ -16657,7 +16722,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1280
+   "row": 1285
   },
   {
    "name": "WARFARIN (PRESENT IN FREE FORM OR AS SODIUM SALT)",
@@ -16670,7 +16735,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 1281
+   "row": 1286
   },
   {
    "name": "WATER SOLUBLE DYES",
@@ -16683,7 +16748,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1282
+   "row": 1287
   },
   {
    "name": "WHEAT GLUTEN",
@@ -16696,7 +16761,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1283
+   "row": 1288
   },
   {
    "name": "WILLAERTIA MAGNA C2C.MAKY",
@@ -16709,7 +16774,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1284
+   "row": 1289
   },
   {
    "name": "WINTERGREEN OIL",
@@ -16722,7 +16787,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 1285
+   "row": 1290
   },
   {
    "name": "XYLENOLS",
@@ -16735,7 +16800,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1286
+   "row": 1291
   },
   {
    "name": "YELLOW MUSTARD SEED MEAL",
@@ -16748,7 +16813,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1287
+   "row": 1292
   },
   {
    "name": "(Z)-11-TETRADECEN-1-OL",
@@ -16761,7 +16826,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1288
+   "row": 1293
   },
   {
    "name": "(Z)-11-TETRADECENAL",
@@ -16774,7 +16839,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1289
+   "row": 1294
   },
   {
    "name": "(Z)-11-TETRADECENYL ACETATE",
@@ -16787,7 +16852,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1290
+   "row": 1295
   },
   {
    "name": "(Z)-4-TRIDECENYL ACETATE",
@@ -16800,7 +16865,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1291
+   "row": 1296
   },
   {
    "name": "Z-8-DODECEN-1-OL OR Z-8-DODECENOL",
@@ -16813,7 +16878,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1292
+   "row": 1297
   },
   {
    "name": "Z-8-DODECEN-1-YL ACETATE OR Z-8-DODECENYL ACETATE",
@@ -16826,7 +16891,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1293
+   "row": 1298
   },
   {
    "name": "(Z)-9-DODECENYL ACETATE",
@@ -16839,7 +16904,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1294
+   "row": 1299
   },
   {
    "name": "(Z)-9-TETRADECEN-1-YL ACETATE",
@@ -16852,7 +16917,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1295
+   "row": 1300
   },
   {
    "name": "(Z)-9-TRICOSENE OR MUSCALURE",
@@ -16865,7 +16930,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1296
+   "row": 1301
   },
   {
    "name": "(Z,E)-7,11-HEXADECADIENYL ACETATE",
@@ -16878,7 +16943,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1297
+   "row": 1302
   },
   {
    "name": "(Z,Z)-11,13-HEXADECADIENAL",
@@ -16891,7 +16956,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1298
+   "row": 1303
   },
   {
    "name": "(Z,Z)-3,13-OCTADECADIEN-1-OL",
@@ -16904,7 +16969,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1299
+   "row": 1304
   },
   {
    "name": "(Z,Z)-3,13-OCTADECADIEN-1-YL ACETATE",
@@ -16917,7 +16982,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1300
+   "row": 1305
   },
   {
    "name": "(Z,Z)-7,11-HEXADECADIENYL ACETATE",
@@ -16930,7 +16995,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1301
+   "row": 1306
   },
   {
    "name": "(Z,Z)/(E,Z)-3,13-OCTADECADIENYL ACETATE",
@@ -16943,7 +17008,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1302
+   "row": 1307
   },
   {
    "name": "ZETA-CYPERMETHRIN",
@@ -16956,7 +17021,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1303
+   "row": 1308
   },
   {
    "name": "ZINC",
@@ -16969,7 +17034,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1304
+   "row": 1309
   },
   {
    "name": "ZINC 2-MERCAPTOBENZOTHIAZOLE",
@@ -16982,7 +17047,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1305
+   "row": 1310
   },
   {
    "name": "ZINC ACTIVATED POLY(ETHYLENE DITHIOCARBAMOYL DISULPHIDE)",
@@ -16995,7 +17060,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1306
+   "row": 1311
   },
   {
    "name": "ZINC BORATE",
@@ -17008,7 +17073,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1307
+   "row": 1312
   },
   {
    "name": "ZINC PHOSPHIDE",
@@ -17021,7 +17086,7 @@
    "status_raw": "YES",
    "category": "",
    "source": "canada",
-   "row": 1308
+   "row": 1313
   },
   {
    "name": "ZINC (PRESENT AS ZINC NAPHTHENATE)",
@@ -17034,7 +17099,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1309
+   "row": 1314
   },
   {
    "name": "ZINC (PRESENT AS ZINC OXIDE)",
@@ -17047,7 +17112,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1310
+   "row": 1315
   },
   {
    "name": "ZINEB",
@@ -17060,7 +17125,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1311
+   "row": 1316
   },
   {
    "name": "ZIRAM",
@@ -17073,7 +17138,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1312
+   "row": 1317
   },
   {
    "name": "ZOXAMIDE",
@@ -17086,7 +17151,7 @@
    "status_raw": "NO",
    "category": "",
    "source": "canada",
-   "row": 1313
+   "row": 1318
   }
  ]
 }

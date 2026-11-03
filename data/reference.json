@@ -1211,7 +1211,7 @@
    "exports": [
     "data-optional/canada.json"
    ],
-   "rows": 1313,
+   "rows": 1318,
    "guide": {
     "ar": "واجهة PMRA الرسمية — حقل منطقي YES/NO بلا نص دليل",
     "en": "PMRA official API — the YES/NO boolean field, no guide prose."
@@ -1247,7 +1247,7 @@
    "exports": [
     "data-optional/australia.json"
    ],
-   "rows": 2695,
+   "rows": 2696,
    "guide": {
     "ar": "تصدير PUBCRIS — عمود مجموعات المنتجات وعمود Status",
     "en": "PUBCRIS export — the product-group column and the Status column."
@@ -2260,6 +2260,7 @@
     "HERBICIDE",
     "HERBICIDE / HOUSEHOLD INSECTICIDE / INSECTICIDE",
     "HERBICIDE / INSECTICIDE",
+    "HERBICIDE / INSECTICIDE / MARKER",
     "HERBICIDE / INSECTICIDE / PASTE",
     "HERBICIDE / MARKER",
     "HERBICIDE / MITICIDE",

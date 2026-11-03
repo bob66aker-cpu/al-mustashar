@@ -2650,6 +2650,7 @@
         const url = new URL(p, location.href);
         let hit = null;
         for (const name of names) {
+          if (!(await caches.has(name))) continue; /* may have been deleted meanwhile — never re-create it */
           const c = await caches.open(name);
           hit = await c.match(url.href);
           if (hit) break;

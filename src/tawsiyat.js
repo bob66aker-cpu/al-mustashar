@@ -53,7 +53,6 @@
       cas_ambiguous: 'CAS ملتبس — لا يُعرض رقم',
       cas_none: 'لا رقم CAS في السجلات',
       images: 'صور من الكتاب',
-      source: 'المصدر',
       cas_unverified: 'قيد التحقق',
       examples: 'أمثلة من المصدر',
       extra_guidance: 'إرشادات خاصة',
@@ -116,7 +115,6 @@
       cas_ambiguous: 'Ambiguous CAS — no number shown',
       cas_none: 'No CAS number in the registries',
       images: 'Images from the book',
-      source: 'Source',
       cas_unverified: 'under verification',
       examples: 'Examples from the source',
       extra_guidance: 'Special guidance',
@@ -640,7 +638,6 @@
       });
       if (!s) { sec.innerHTML = wrap(errorPanel(L('detail_error_title'), '#/tws/' + esc(c.id))); return; }
       var man = S.man || {};
-      var srcMeta = man.source || doc.source || {};
       var html = '<div class="wrap">'
         + '<nav class="tws-crumb"><a href="#/tws">' + esc(L('back_crops')) + '</a><span class="sep">‹</span>'
         + '<a href="#/tws/' + esc(c.id) + '">' + esc(c.name_ar) + '</a><span class="sep">‹</span>'
@@ -736,13 +733,8 @@
         });
       }
 
-      html += '<h3>' + esc(L('source')) + '</h3><div class="tws-src">'
-        + (srcMeta.url ? '<a href="' + esc(srcMeta.url) + '" target="_blank" rel="noopener noreferrer">' + esc(srcMeta.title || srcMeta.url) + '</a><br>' : esc(srcMeta.title || ''))
-        + esc(srcMeta.publisher || '')
-        + ' · ' + esc(srcMeta.file || '')
-        + ' · ' + esc(L('page')) + ' ' + esc(s.printed_page) + ' (PDF ' + esc(s.page) + ')</div>';
       html += '<div class="tws-note info">' + esc(L('dose_note')) + '</div><div class="tws-note warn">' + esc(L('egypt_note')) + '</div>';
-      html += '</div>' + footer() + '</div>';
+      html += '</div>' + footer(true) + '</div>';
       sec.innerHTML = html;
       window.scrollTo && window.scrollTo(0, 0);
     }).catch(function () {
@@ -750,12 +742,12 @@
     });
   }
 
-  function footer() {
+  function footer(card) {
     var man = S.man || {};
     var cnt = man.counts || {};
     return '<p class="tws-foot">' + esc(L('coverage_line')
       .replace('{d}', cnt.dossiers || '—').replace('{c}', cnt.cards || '—').replace('{k}', cnt.crops || '—'))
-      + ' · ' + esc(man.built || '') + '<br>' + esc(L('dose_note')) + '<br>' + esc(L('egypt_note')) + '</p>';
+      + ' · ' + esc(man.built || '') + (card ? '' : '<br>' + esc(L('dose_note')) + '<br>' + esc(L('egypt_note'))) + '</p>';
   }
   function errorPanel(title, backHref) {
     return '<div class="tws-err"><h2>' + esc(title || L('load_error_title')) + '</h2>'

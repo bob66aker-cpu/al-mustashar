@@ -240,8 +240,12 @@ const fetches = [...src.matchAll(/fetchJSON\('([^']+)'\)/g)].map(m => m[1]);
 check('engine: data loads only from data/tws/ (index + labels + sections lazily)',
   fetches.length >= 4 && fetches.every(u => u.startsWith('data/tws/'))
   && fetches.includes('data/tws/sections.json'), fetches.join(', '));
-check('engine: values render verbatim from the data (no parseFloat/toFixed/invention)',
-  src.includes("p['معدل الاستخدام']") && !/parseFloat|toFixed/.test(src));
+/* Owner decision 2026-11-05: a rate printed per feddan is shown per hectare (1 feddan = 0.42 ha),
+   always together with the printed value. Number parsing is allowed ONLY inside sig3/feddanToHectare. */
+const stripConv = src.replace(/function sig3[\s\S]*?function feddanToHectare[\s\S]*?\n  \}\n/, '');
+check('engine: values render verbatim; the only arithmetic is the feddan→hectare conversion, which always shows the printed value',
+  src.includes("p['معدل الاستخدام']") && !/parseFloat|toFixed/.test(stripConv)
+  && src.includes('FEDDAN_HA = 0.42') && src.includes("L('rate_printed')") && src.includes('SIMPLE_FEDDAN'));
 check('engine: CAS numbers render only from confirmed component records',
   src.includes("how === 'exact' || how === 'tokens'") && src.includes('cas_ambiguous') && src.includes('cas_none'));
 check('engine: images render directly from data/tws/img',

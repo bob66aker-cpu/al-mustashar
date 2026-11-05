@@ -38,7 +38,7 @@
   "crop_conflict": "تسمية محصول تحت المراجعة",
   "coverage": "التغطية",
   "coverage_line": "من الكتاب: {c} بطاقة · {k} محصولاً",
-  "dose_note": "المادة والتركيز والمعدل وفترة الأمان وتصنيف WHO وقيم MRL مُساقَة حرفياً من جداول الكتاب — لا تُعرض هنا جرعات مخترعة.",
+  "dose_note": "المادة والتركيز وفترة الأمان وتصنيف WHO وقيم MRL مُساقَة حرفياً من جداول الكتاب. أما المعدل المطبوع بالفدان فيُعرض محوَّلاً إلى هكتار تقريباً (1 فدان ≈ 0.42 هكتار) ومعه المطبوع كما ورد — لا تُعرض هنا جرعات مخترعة.",
   "load_error_title": "تعذّر تحميل بيانات التوصيات",
   "load_error_body": "يفشل تحميل الفهرس — تحقّق من الاتصال أول مرة، أو أعد المحاولة بعد تجهيز التطبيق للعمل دون اتصال.",
   "retry": "إعادة المحاولة",
@@ -62,7 +62,9 @@
   "a7_names_note": "أسماء المحاصيل والآفات والحشائش كما طُبعت بالعربية؛ أسماء المواد الفعالة كما طُبعت بالإنجليزية.",
   "a7_none": "—",
   "a7_error": "تعذّر تحميل الملحق 7",
-  "egypt_note": "مصدر هذه التوصيات كتاب «التوصيات المعتمدة لمكافحة الآفات الزراعية 2025» الصادر عن لجنة مبيدات الآفات الزراعية في مصر، وهي بحسب تسجيل المنتجات في مصر. وجود مادة فيها لا يعني أنها مسموحة في ليبيا: راجع شارات الحالة التنظيمية وملصق المنتج، ولا يغني هذا التطبيق عن استشارة مهندس زراعي مختص."
+  "egypt_note": "هذه التوصيات بحسب تسجيل المنتجات في مصر، ووجود مادة فيها لا يعني أنها مسموحة في ليبيا: راجع شارات الحالة التنظيمية وملصق المنتج، ولا يغني هذا التطبيق عن استشارة مهندس زراعي مختص.",
+  "rate_printed": "المطبوع",
+  "rate_kept": "بالفدان كما طُبع"
  },
  "en": {
   "title": "Crop recommendations",
@@ -100,7 +102,7 @@
   "crop_conflict": "Crop label under review",
   "coverage": "Coverage",
   "coverage_line": "From the book: {c} cards · {k} crops",
-  "dose_note": "Ingredient, concentration, rate, PHI, WHO class and MRL values are quoted verbatim from the book tables — no invented doses here.",
+  "dose_note": "Ingredient, concentration, PHI, WHO class and MRL values are quoted verbatim from the book tables. A rate printed per feddan is shown converted to per hectare (1 feddan ≈ 0.42 ha), with the printed value beside it — no invented doses here.",
   "load_error_title": "Could not load recommendation data",
   "load_error_body": "The index failed to load — connect once, or retry after the app is prepared for offline.",
   "retry": "Retry",
@@ -124,7 +126,9 @@
   "a7_names_note": "Crop, pest and weed names are shown as printed in Arabic; active ingredient names as printed in English.",
   "a7_none": "—",
   "a7_error": "Could not load Appendix 7",
-  "egypt_note": "These recommendations come from the 2025 book \"Approved Recommendations for the Control of Agricultural Pests\" issued by Egypt's Agricultural Pesticides Committee and reflect product registrations in Egypt. A substance appearing here does not mean it is permitted in Libya: check the regulatory status badges and the product label, and consult a qualified agronomist."
+  "egypt_note": "These recommendations reflect product registrations in Egypt. A substance appearing here does not mean it is permitted in Libya: check the regulatory status badges and the product label, and consult a qualified agronomist.",
+  "rate_printed": "printed",
+  "rate_kept": "per feddan, as printed"
  },
  "fr": {
   "title": "Recommandations par culture",
@@ -164,7 +168,7 @@
   "crop_conflict": "Libellé de culture à vérifier",
   "coverage": "Couverture",
   "coverage_line": "Du livre : {c} fiches · {k} cultures",
-  "dose_note": "Matière active, concentration, dose, DAR, classe OMS et LMR sont cités tels quels des tableaux du livre — aucune dose inventée.",
+  "dose_note": "Matière active, concentration, DAR, classe OMS et LMR sont cités tels quels des tableaux du livre. Une dose imprimée par feddan est affichée convertie par hectare (1 feddan ≈ 0,42 ha), avec la valeur imprimée à côté — aucune dose inventée.",
   "load_error_title": "Impossible de charger les recommandations",
   "load_error_body": "L'index n'a pas pu être chargé — connectez-vous une fois ou réessayez après la préparation hors ligne.",
   "retry": "Réessayer",
@@ -186,7 +190,9 @@
   "a7_names_note": "Les noms de cultures, ravageurs et adventices sont ceux imprimés en arabe ; les matières actives telles qu'imprimées en anglais.",
   "a7_none": "—",
   "a7_error": "Impossible de charger l'annexe 7",
-  "egypt_note": "Ces recommandations proviennent du livre « Recommandations approuvées pour la lutte contre les ravageurs agricoles » (2025) du Comité égyptien des pesticides agricoles et reflètent les homologations en Égypte. La présence d'une substance ici ne signifie pas qu'elle est autorisée en Libye : consultez les badges de statut réglementaire et l'étiquette du produit, ainsi qu'un agronome qualifié."
+  "egypt_note": "Ces recommandations reflètent les homologations en Égypte. La présence d'une substance ici ne signifie pas qu'elle est autorisée en Libye : consultez les badges de statut réglementaire et l'étiquette du produit, et demandez conseil à un ingénieur agronome qualifié.",
+  "rate_printed": "imprimé",
+  "rate_kept": "par feddan, tel qu'imprimé"
  },
  "zh": {
   "title": "作物推荐",
@@ -226,7 +232,7 @@
   "crop_conflict": "作物标签待核",
   "coverage": "覆盖范围",
   "coverage_line": "来自手册：{c} 张卡片 · {k} 种作物",
-  "dose_note": "有效成分、浓度、用量、PHI、WHO 分类和 MRL 值均原样引自手册表格——未虚构任何剂量。",
+  "dose_note": "有效成分、浓度、PHI、WHO 分类和 MRL 值均原样引自手册表格。按费丹印刷的用量会换算为每公顷显示(1 费丹 ≈ 0.42 公顷),并附上原文数值——未虚构任何剂量。",
   "load_error_title": "无法加载推荐数据",
   "load_error_body": "索引加载失败——请联网一次，或在应用离线准备完成后重试。",
   "retry": "重试",
@@ -248,6 +254,8 @@
   "a7_names_note": "作物、有害生物和杂草名称保持原书阿拉伯文;有效成分名称保持原书英文。",
   "a7_none": "—",
   "a7_error": "无法加载附录7",
-  "egypt_note": "这些建议来自埃及农药委员会发布的《2025年农业有害生物防治批准建议》一书,反映的是埃及的产品登记情况。某物质出现在此处并不意味着它在利比亚被允许:请查看监管状态标识和产品标签,并咨询合格的农艺师。"
+  "egypt_note": "这些建议反映的是埃及的产品登记情况。某物质出现在此处并不意味着它在利比亚被允许:请查看监管状态标识和产品标签,并咨询合格的农艺师。",
+  "rate_printed": "原文",
+  "rate_kept": "按费丹,原文"
  }
 }

@@ -61,8 +61,10 @@
       crop_conflict: 'تسمية محصول تحت المراجعة',
       'coverage': 'التغطية',
       coverage_line: 'من الكتاب: {c} بطاقة · {k} محصولاً',
-      'egypt_note': 'مصدر هذه التوصيات كتاب «التوصيات المعتمدة لمكافحة الآفات الزراعية 2025» الصادر عن لجنة مبيدات الآفات الزراعية في مصر، وهي بحسب تسجيل المنتجات في مصر. وجود مادة فيها لا يعني أنها مسموحة في ليبيا: راجع شارات الحالة التنظيمية وملصق المنتج، ولا يغني هذا التطبيق عن استشارة مهندس زراعي مختص.',
-      dose_note: 'المادة والتركيز والمعدل وفترة الأمان وتصنيف WHO وقيم MRL مُساقَة حرفياً من جداول الكتاب — لا تُعرض هنا جرعات مخترعة.',
+      'egypt_note': 'هذه التوصيات بحسب تسجيل المنتجات في مصر، ووجود مادة فيها لا يعني أنها مسموحة في ليبيا: راجع شارات الحالة التنظيمية وملصق المنتج، ولا يغني هذا التطبيق عن استشارة مهندس زراعي مختص.',
+      'dose_note': 'المادة والتركيز وفترة الأمان وتصنيف WHO وقيم MRL مُساقَة حرفياً من جداول الكتاب. أما المعدل المطبوع بالفدان فيُعرض محوَّلاً إلى هكتار تقريباً (1 فدان ≈ 0.42 هكتار) ومعه المطبوع كما ورد — لا تُعرض هنا جرعات مخترعة.',
+      'rate_printed': 'المطبوع',
+      'rate_kept': 'بالفدان كما طُبع',
       load_error_title: 'تعذّر تحميل بيانات التوصيات',
       load_error_body: 'يفشل تحميل الفهرس — تحقّق من الاتصال أول مرة، أو أعد المحاولة بعد تجهيز التطبيق للعمل دون اتصال.',
       retry: 'إعادة المحاولة',
@@ -123,8 +125,10 @@
       crop_conflict: 'Crop label under review',
       'coverage': 'Coverage',
       coverage_line: 'From the book: {c} cards · {k} crops',
-      'egypt_note': 'These recommendations come from the 2025 book "Approved Recommendations for the Control of Agricultural Pests" issued by Egypt\'s Agricultural Pesticides Committee and reflect product registrations in Egypt. A substance appearing here does not mean it is permitted in Libya: check the regulatory status badges and the product label, and consult a qualified agronomist.',
-      dose_note: 'Ingredient, concentration, rate, PHI, WHO class and MRL values are quoted verbatim from the book tables — no invented doses here.',
+      'egypt_note': 'These recommendations reflect product registrations in Egypt. A substance appearing here does not mean it is permitted in Libya: check the regulatory status badges and the product label, and consult a qualified agronomist.',
+      'dose_note': 'Ingredient, concentration, PHI, WHO class and MRL values are quoted verbatim from the book tables. A rate printed per feddan is shown converted to per hectare (1 feddan ≈ 0.42 ha), with the printed value beside it — no invented doses here.',
+      'rate_printed': 'printed',
+      'rate_kept': 'per feddan, as printed',
       load_error_title: 'Could not load recommendation data',
       load_error_body: 'The index failed to load — connect once, or retry after the app is prepared for offline.',
       retry: 'Retry',
@@ -189,15 +193,39 @@
   function typeName(t) { var c = loc(); return (c === 'fr' ? TYPE_FR[t] : c === 'zh' ? TYPE_ZH[t] : c === 'en' ? TYPE_EN[t] : TYPE_AR[t]) || t; }
   /* ترجمة وحدات المعدل فقط (الأرقام والرموز تبقى حرفيًا كما طُبعت في الكتاب) */
   var UNITS = {
-    en: { 'لتر': 'L', 'سم³': 'cm³', 'جم': 'g', 'كجم': 'kg', 'طن': 'ton', 'فدان': 'feddan', 'ماء': 'water', 'تقاوى': 'seed', 'تقاوي': 'seed', 'درنات': 'tubers', 'صوب': 'greenhouse', 'مرة': 'time', 'أو': 'or', 'م³': 'm³', 'فراغ': 'space', 'نبات': 'plant', 'شجرة': 'tree', 'رش جزئى': 'spot spray', 'حقن': 'injection' },
-    fr: { 'لتر': 'L', 'سم³': 'cm³', 'جم': 'g', 'كجم': 'kg', 'طن': 'tonne', 'فدان': 'feddan', 'ماء': 'eau', 'تقاوى': 'semences', 'تقاوي': 'semences', 'درنات': 'tubercules', 'صوب': 'serre', 'مرة': 'fois', 'أو': 'ou', 'م³': 'm³', 'فراغ': 'volume', 'نبات': 'plante', 'شجرة': 'arbre', 'رش جزئى': 'pulvérisation partielle', 'حقن': 'injection' },
-    zh: { 'لتر': '升', 'سم³': '立方厘米', 'جم': '克', 'كجم': '千克', 'طن': '吨', 'فدان': '费丹', 'ماء': '水', 'تقاوى': '种子', 'تقاوي': '种子', 'درنات': '块茎', 'صوب': '温室', 'مرة': '次', 'أو': '或', 'م³': '立方米', 'فراغ': '空间', 'نبات': '株', 'شجرة': '棵', 'رش جزئى': '局部喷雾', 'حقن': '注射' }
+    en: { 'لتر': 'L', 'سم³': 'cm³', 'جم': 'g', 'كجم': 'kg', 'طن': 'ton', 'هكتار': 'ha', 'فدان': 'feddan', 'ماء': 'water', 'تقاوى': 'seed', 'تقاوي': 'seed', 'درنات': 'tubers', 'صوب': 'greenhouse', 'مرة': 'time', 'أو': 'or', 'م³': 'm³', 'فراغ': 'space', 'نبات': 'plant', 'شجرة': 'tree', 'رش جزئى': 'spot spray', 'حقن': 'injection' },
+    fr: { 'لتر': 'L', 'سم³': 'cm³', 'جم': 'g', 'كجم': 'kg', 'طن': 'tonne', 'هكتار': 'ha', 'فدان': 'feddan', 'ماء': 'eau', 'تقاوى': 'semences', 'تقاوي': 'semences', 'درنات': 'tubercules', 'صوب': 'serre', 'مرة': 'fois', 'أو': 'ou', 'م³': 'm³', 'فراغ': 'volume', 'نبات': 'plante', 'شجرة': 'arbre', 'رش جزئى': 'pulvérisation partielle', 'حقن': 'injection' },
+    zh: { 'لتر': '升', 'سم³': '立方厘米', 'جم': '克', 'كجم': '千克', 'طن': '吨', 'هكتار': '公顷', 'فدان': '费丹', 'ماء': '水', 'تقاوى': '种子', 'تقاوي': '种子', 'درنات': '块茎', 'صوب': '温室', 'مرة': '次', 'أو': '或', 'م³': '立方米', 'فراغ': '空间', 'نبات': '株', 'شجرة': '棵', 'رش جزئى': '局部喷雾', 'حقن': '注射' }
   };
-  function rateText(p) {
-    var r = String(p['معدل الاستخدام'] || '');
+  function rateTranslate(r) {
     var u = UNITS[loc()];
     if (!u || !r) return r;
     return r.replace(/[\u0621-\u064A\u00B3]+(?: جزئى)?/g, function (w) { return u[w] !== undefined ? u[w] : w; });
+  }
+  function rateText(p) { return rateTranslate(String(p['معدل الاستخدام'] || '')); }
+  /* المعدل بالفدان → هكتار (1 فدان ≈ 0.42 هكتار): تُحوَّل الصيغة البسيطة فقط (رقم + وحدة/فدان
+     مع تكرار مطبعي أو ملاحظة بين قوسين)؛ ويبقى المطبوع ظاهرًا بجانبه، وأي صيغة أعقد تبقى كما طُبعت. */
+  var FEDDAN_HA = 0.42;
+  var SIMPLE_FEDDAN = /^\s*([0-9]+(?:[.,][0-9]+)?)\s*(سم³|جم|لتر|كجم)\s*\/\s*فدان(?:\s*(?:سم³|جم|لتر|كجم)\s*\/\s*فدان)?\s*(\([^()]*\))?\s*$/;
+  function sig3(x) { return String(parseFloat(x.toPrecision(3))); }
+  function feddanToHectare(raw) {
+    var m = SIMPLE_FEDDAN.exec(raw);
+    if (!m) return null;
+    var v = parseFloat(m[1].replace(',', '.'));
+    if (!isFinite(v) || v <= 0) return null;
+    var unit = m[2], x = v / FEDDAN_HA;
+    if (unit === 'سم³' && x >= 1000) { x = x / 1000; unit = 'لتر'; }
+    else if (unit === 'جم' && x >= 1000) { x = x / 1000; unit = 'كجم'; }
+    return sig3(x) + ' ' + unit + '/هكتار' + (m[3] ? ' ' + m[3] : '');
+  }
+  function rateHtml(p) {
+    var raw = String(p['معدل الاستخدام'] || '');
+    if (!raw) return '—';
+    var conv = feddanToHectare(raw);
+    if (conv) {
+      return esc(rateTranslate(conv)) + ' <small class="tws-printed" dir="auto">(' + esc(L('rate_printed')) + ': ' + esc(rateTranslate(raw)) + ')</small>';
+    }
+    return esc(rateTranslate(raw)) + (raw.indexOf('فدان') >= 0 ? ' <small class="tws-printed" dir="auto">(' + esc(L('rate_kept')) + ')</small>' : '');
   }
   function esc(s) {
     return String(s == null ? '' : s)
@@ -291,6 +319,7 @@
     '#view-tws .tws-sub{margin:14px 0 6px;padding:6px 10px;border-radius:10px;background:var(--field);font-size:.9rem}',
     '.tws-chip{flex:0 0 auto;font-size:.72rem;padding:4px 9px;border-radius:999px;border:1px solid transparent;white-space:nowrap}',
     '.tws-chip.pg{background:var(--primary-soft);color:var(--primary-strong);border-color:var(--primary-ink)}',
+    '.tws-printed{opacity:.75;font-size:.8em}',
     '.tws-chip.warn{background:var(--st-review-soft);color:var(--st-review-ink);border-color:var(--st-review)}',
     '.tws-chip.info{background:rgba(127,184,245,.14);color:var(--st-info);border-color:var(--st-info)}',
     '.tws-card{padding:14px;border:1px solid var(--border);border-radius:12px;background:var(--card);margin:0 0 12px}',
@@ -533,6 +562,24 @@
     return html;
   }
 
+  /* كل الإملاءات التي ورد بها نفس الرقم CAS في كتاب التوصيات (لمطابقة اسم القرار الليبي رغم خطأ مطبعي) */
+  function nameAliases(cas, how) {
+    if (how !== 'exact' || !cas || !S.sec) return [];
+    if (!S.casNames) {
+      S.casNames = {};
+      ((S.sec && S.sec.sections) || []).forEach(function (x) {
+        (x.products || x.rows || []).forEach(function (p) {
+          (p['مكونات فعالة'] || []).forEach(function (a) {
+            if (a.how !== 'exact' || !a.cas || !a.name) return;
+            var l = S.casNames[a.cas] || (S.casNames[a.cas] = []);
+            if (l.indexOf(a.name) < 0) l.push(a.name);
+          });
+        });
+      });
+    }
+    return S.casNames[cas] || [];
+  }
+
   function regulatoryStatusMarkup(product) {
     if (typeof window.MustasharActiveStatus !== 'function') return '';
     var locale = String(document.documentElement.lang || lang() || 'ar').toLowerCase().split('-')[0];
@@ -590,7 +637,7 @@
     ingredients.forEach(function (ing) {
       var cas = String(ing.cas || ''), how = String(ing.how || ''), name = String(ing.name || '');
       if (!name && !cas) return;
-      var hits = window.MustasharActiveStatus((how === 'exact' || how === 'tokens') ? cas : '', name)
+      var hits = window.MustasharActiveStatus((how === 'exact' || how === 'tokens') ? cas : '', name, nameAliases(cas, how))
         .filter(function (h) { return wanted.indexOf(h.key) >= 0; });
       var seen = {}, chips = '';
       wanted.forEach(function (k) {
@@ -601,7 +648,8 @@
           var raw = String(h.status || h.status_raw || '').trim();
           var cls = /محظور|ممنوع|not approved|prohibited|banned|cancelled/i.test(raw) ? 'ban'
             : /مسموح|approved|registered|active registration|permitted/i.test(raw) ? 'ok' : 'review';
-          var full = (ui[h.key] || h.key) + ' — ' + localStatus(h);
+          var full = (ui[h.key] || h.key) + ' — ' + localStatus(h)
+            + (h.match === 'parent-name' ? ' (' + ({ar:'مطابقة باسم المادة الأم دون الملح أو الإستر',en:'matched by parent substance name (salt/ester dropped)',fr:'correspondance par le nom de la substance mère',zh:'按母体物质名称匹配'}[locale] || 'parent') + ')' : '');
           var code = h.key === 'libya-500' ? String(h.status || '').trim()
             : (cls === 'ban' ? ({ar:'محظور',en:'banned',fr:'interdit',zh:'禁用'}[locale] || 'banned')
             : cls === 'ok' ? ({ar:'مسموح',en:'allowed',fr:'autorisé',zh:'允许'}[locale] || 'allowed')
@@ -646,7 +694,7 @@
         + '<h2 dir="auto">' + esc(tx(s, 'name', s.name_ar)) + '</h2>'
         + '<p class="tws-meta">' + esc(L('type')) + ': ' + esc(typeName(shownType(s)))
         + ' · ' + esc(L('infection_no')) + ' ' + esc(s.n)
-        + ' · ' + esc(L('page')) + ' ' + esc(s.printed_page) + ' (PDF ' + esc(s.page) + ')</p>'
+        + ' · ' + esc(L('page')) + ' ' + esc(s.printed_page) + '</p>'
         + '<div class="tws-chips">'
         + (s.group ? '<span class="tws-chip info">' + esc(L('group')) + ': ' + esc(tx(s, 'group', s.group)) + '</span>' : '')
         + (s.name_status === 'NEEDS_REVIEW' ? '<span class="tws-chip warn">' + esc(L('name_review')) + '</span>' : '')
@@ -658,7 +706,7 @@
         html += '<h3>' + esc(L('images')) + '</h3><div class="tws-gallery">';
         s.images.forEach(function (im) {
           html += '<figure><img src="data/tws/img/' + esc(im.file) + '" width="' + esc(im.w) + '" height="' + esc(im.h) + '" loading="lazy" alt="' + esc(s.name_ar) + ' — ' + esc(L('page')) + ' ' + esc(im.pdf_page) + '">'
-            + '<figcaption>' + esc(L('page')) + ' ' + esc(im.pdf_page - (man.source && man.source.printed_offset || 13)) + ' (PDF ' + esc(im.pdf_page) + ')</figcaption></figure>';
+            + '<figcaption>' + esc(L('page')) + ' ' + esc(im.pdf_page - (man.source && man.source.printed_offset || 13)) + '</figcaption></figure>';
         });
         html += '</div>';
       }
@@ -693,7 +741,7 @@
             + (form ? ' <span class="tws-parsed">' + esc(L('form')) + ' ' + esc(form) + '</span>' : '')
             + '</div>'
             + regulatoryStatusMarkup(p)
-            + '<div class="row"><span><b>' + esc(L('rate')) + ':</b> ' + esc(rateText(p) || '—') + '</span>'
+            + '<div class="row"><span><b>' + esc(L('rate')) + ':</b> ' + rateHtml(p) + '</span>'
             + '<span><b>' + esc(L('who')) + ':</b> ' + esc(p['تصنيف WHO'] || '—') + '</span>'
             + '<span><b>' + esc(L('phi')) + ':</b> ' + esc(p['فترة الأمان'] || '—') + '</span></div>';
           if (p.mrl_rows && p.mrl_rows.length) {

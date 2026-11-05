@@ -3182,7 +3182,17 @@
    * Matches exact CAS tokens first; name fallback is exact-normalized only.
    * Never turns a missing match into an allowed/prohibited verdict. */
   window.MustasharStatusExplain = function (code) { return statusExplainFull(code); };
-  window.MustasharActiveStatus = function (cas, name) {
+  /* Libya's two decisions list actives by name (their CAS column is partial), so a
+   * book active whose CAS is not in the Libyan row still has to be found by NAME.
+   * Order per Libyan database: CAS token, then exact name (any spelling given in
+   * `aliases`), then the parent name once a trailing salt/ester word is dropped from
+   * the BOOK name only (Emamectin benzoate -> Emamectin). A Libyan row that itself
+   * carries a qualifier (Bromoxynil octanoate) is never matched by its bare parent. */
+  const SALT_WORDS = new Set(['benzoate', 'hydrochloride', 'sodium', 'potassium', 'ammonium',
+    'isopropylammonium', 'diammonium', 'monopotassium', 'butyl', 'methyl', 'ethyl', 'isooctyl',
+    'meptyl', 'butotyl', 'tefuryl', 'octanoate', 'heptanoate', 'aluminium', 'aluminum',
+    'dimethylammonium', 'salt', 'salts', 'trolamine']);
+  window.MustasharActiveStatus = function (cas, name, aliases) {
     const digits = value => String(value || '').replace(/[^0-9]/g, '');
     const casKey = digits(cas);
     const norm = value => String(value || '').toLowerCase()
@@ -3191,9 +3201,18 @@
     const nameKey = norm(name);
     const keys = ['libya-248', 'libya-500', 'eu', 'epa', 'canada', 'australia'];
     const hits = [];
+    const nameKeys = [nameKey].concat((aliases || []).map(norm)).filter(Boolean)
+      .filter((v, i, a) => a.indexOf(v) === i);
+    const parentKey = k => {
+      const w = k.split(' ');
+      while (w.length > 1 && SALT_WORDS.has(w[w.length - 1])) w.pop();
+      return w.join(' ');
+    };
+    const parentKeys = nameKeys.map(parentKey).filter((v, i, a) => a.indexOf(v) === i);
     keys.forEach(key => {
       const data = DB[key];
       if (!data || !Array.isArray(data.rows)) return;
+      const before = hits.length;
       data.rows.forEach(row => {
         const rawCas = String(row.cas || '');
         const casTokens = rawCas.split(/[\n,;\[\]()]+/).map(digits).filter(Boolean);
@@ -3207,6 +3226,28 @@
           match: exactCas ? 'cas' : 'exact-name'
         });
       });
+      if (hits.length > before || key.indexOf('libya') !== 0) return;
+      const bookHasStrain = nameKeys.some(k => k.indexOf('strain') >= 0);
+      const found = [];
+      data.rows.forEach(row => {
+        /* a microbial strain row is never matched by a book name that names no strain */
+        if (!bookHasStrain && /strain/i.test(String(row.name || ''))) return;
+        const full = norm(row.name_norm || row.name);
+        const first = norm(String(row.name || '').split(/[\n(\[]/)[0]);
+        let match = '';
+        if (nameKeys.includes(full) || nameKeys.includes(first)) match = 'exact-name';
+        else if (parentKeys.includes(full) || parentKeys.includes(first)) match = 'parent-name';
+        if (!match) return;
+        found.push({
+          key, name: row.name || name || '', cas: row.cas || '',
+          status: row.status || '', status_raw: row.status_raw || '',
+          decision: row.decision || '', category: row.category || '',
+          match
+        });
+      });
+      /* an exact-name row beats a parent-name row of the same decision */
+      const anyExact = found.some(h => h.match === 'exact-name');
+      found.forEach(h => { if (!anyExact || h.match === 'exact-name') hits.push(h); });
     });
     return hits;
   };

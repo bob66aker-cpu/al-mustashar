@@ -627,7 +627,7 @@
       ? (pro ? ['libya-248', 'libya-500', 'eu', 'epa', 'canada', 'australia'] : ['libya-248', 'libya-500'])
       : (pro ? ['eu', 'epa', 'canada', 'australia'] : ['eu']);
     var shortNames = {
-      ar: {'libya-248':'ليبيا ٢٤٨','libya-500':'ليبيا ٥٠٠',eu:'الاتحاد الأوروبي',epa:'أمريكا',canada:'كندا',australia:'أستراليا'},
+      ar: {'libya-248':'وفق القرار 248 / 2024 م','libya-500':'وفق القرار 500 / 2026 م',eu:'الاتحاد الأوروبي',epa:'أمريكا',canada:'كندا',australia:'أستراليا'},
       en: {'libya-248':'Libya 248','libya-500':'Libya 500',eu:'EU',epa:'USA',canada:'Canada',australia:'Australia'},
       fr: {'libya-248':'Libye 248','libya-500':'Libye 500',eu:'UE',epa:'É.-U.',canada:'Canada',australia:'Australie'},
       zh: {'libya-248':'利比亚248','libya-500':'利比亚500',eu:'欧盟',epa:'美国',canada:'加拿大',australia:'澳大利亚'}

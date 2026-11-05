@@ -520,7 +520,7 @@
     'data/eu.json':            'ef629525c2dae8f741e1697faaecf2319e1a646e4e011d2754ef66e23844101e',
     'data/epa.json':           'b24d7c3e3a8dbd7e84ef7b1a59bbfb98674b5c8ad44ff7f7a3dbe0d90d7775f3',
     'data/epa-cancelled.json': 'c2b5b38e4bfe07dc466c45d4f18518691a57de17b078822e2e6fab00de58fde7',
-    'data/reference.json':      '3aded96431a14664f71d58595a3fd3703023bdba9dd1f087e683504cfd40e053'
+    'data/reference.json':      'f370145a0016cc14a1352305b3f4c53222a88f83b4e9277ad11aacb92b0d5924'
   };
 
   /* يُرجع null حين لا تتوفّر Web Crypto (سياق غير آمن) — لا يُرجع false أبداً،

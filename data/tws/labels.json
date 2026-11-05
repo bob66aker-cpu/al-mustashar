@@ -62,7 +62,6 @@
   "a7_names_note": "أسماء المحاصيل والآفات والحشائش كما طُبعت بالعربية؛ أسماء المواد الفعالة كما طُبعت بالإنجليزية.",
   "a7_none": "—",
   "a7_error": "تعذّر تحميل الملحق 7",
-  "egypt_note": "هذه التوصيات بحسب تسجيل المنتجات في مصر، ووجود مادة فيها لا يعني أنها مسموحة في ليبيا: راجع شارات الحالة التنظيمية وملصق المنتج، ولا يغني هذا التطبيق عن استشارة مهندس زراعي مختص.",
   "rate_printed": "المطبوع",
   "rate_kept": "بالفدان كما طُبع"
  },
@@ -126,7 +125,6 @@
   "a7_names_note": "Crop, pest and weed names are shown as printed in Arabic; active ingredient names as printed in English.",
   "a7_none": "—",
   "a7_error": "Could not load Appendix 7",
-  "egypt_note": "These recommendations reflect product registrations in Egypt. A substance appearing here does not mean it is permitted in Libya: check the regulatory status badges and the product label, and consult a qualified agronomist.",
   "rate_printed": "printed",
   "rate_kept": "per feddan, as printed"
  },
@@ -190,7 +188,6 @@
   "a7_names_note": "Les noms de cultures, ravageurs et adventices sont ceux imprimés en arabe ; les matières actives telles qu'imprimées en anglais.",
   "a7_none": "—",
   "a7_error": "Impossible de charger l'annexe 7",
-  "egypt_note": "Ces recommandations reflètent les homologations en Égypte. La présence d'une substance ici ne signifie pas qu'elle est autorisée en Libye : consultez les badges de statut réglementaire et l'étiquette du produit, et demandez conseil à un ingénieur agronome qualifié.",
   "rate_printed": "imprimé",
   "rate_kept": "par feddan, tel qu'imprimé"
  },
@@ -254,7 +251,6 @@
   "a7_names_note": "作物、有害生物和杂草名称保持原书阿拉伯文;有效成分名称保持原书英文。",
   "a7_none": "—",
   "a7_error": "无法加载附录7",
-  "egypt_note": "这些建议反映的是埃及的产品登记情况。某物质出现在此处并不意味着它在利比亚被允许:请查看监管状态标识和产品标签,并咨询合格的农艺师。",
   "rate_printed": "原文",
   "rate_kept": "按费丹,原文"
  }

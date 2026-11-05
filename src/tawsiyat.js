@@ -61,7 +61,6 @@
       crop_conflict: 'تسمية محصول تحت المراجعة',
       'coverage': 'التغطية',
       coverage_line: 'من الكتاب: {c} بطاقة · {k} محصولاً',
-      'egypt_note': 'هذه التوصيات بحسب تسجيل المنتجات في مصر، ووجود مادة فيها لا يعني أنها مسموحة في ليبيا: راجع شارات الحالة التنظيمية وملصق المنتج، ولا يغني هذا التطبيق عن استشارة مهندس زراعي مختص.',
       'dose_note': 'المادة والتركيز وفترة الأمان وتصنيف WHO وقيم MRL مُساقَة حرفياً من جداول الكتاب. أما المعدل المطبوع بالفدان فيُعرض محوَّلاً إلى هكتار تقريباً (1 فدان ≈ 0.42 هكتار) ومعه المطبوع كما ورد — لا تُعرض هنا جرعات مخترعة.',
       'rate_printed': 'المطبوع',
       'rate_kept': 'بالفدان كما طُبع',
@@ -125,7 +124,6 @@
       crop_conflict: 'Crop label under review',
       'coverage': 'Coverage',
       coverage_line: 'From the book: {c} cards · {k} crops',
-      'egypt_note': 'These recommendations reflect product registrations in Egypt. A substance appearing here does not mean it is permitted in Libya: check the regulatory status badges and the product label, and consult a qualified agronomist.',
       'dose_note': 'Ingredient, concentration, PHI, WHO class and MRL values are quoted verbatim from the book tables. A rate printed per feddan is shown converted to per hectare (1 feddan ≈ 0.42 ha), with the printed value beside it — no invented doses here.',
       'rate_printed': 'printed',
       'rate_kept': 'per feddan, as printed',
@@ -330,6 +328,11 @@
     '.tws-card p.txt{line-height:1.9;font-size:.93rem;margin:0 0 10px}',
     '.tws-gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px;margin:0 0 12px}',
     '.tws-gallery figure{margin:0}',
+    '.tws-gallery img{transition:transform .25s ease,box-shadow .25s ease}',
+    '@media (hover:hover){.tws-gallery figure:hover img{transform:translateY(-3px) scale(1.04);box-shadow:0 10px 24px rgba(0,0,0,.28)}}',
+    '.tws-gallery.rv figure{opacity:0;transform:translateY(10px);transition:opacity .45s ease,transform .45s ease}',
+    '.tws-gallery.rv figure.in{opacity:1;transform:none}',
+    '@media (prefers-reduced-motion:reduce){.tws-gallery.rv figure{opacity:1;transform:none;transition:none}.tws-gallery img{transition:none}.tws-gallery figure:hover img{transform:none}}',
     '.tws-gallery img{width:100%;height:auto;border-radius:10px;border:1px solid var(--border);display:block;background:var(--field)}',
     '.tws-gallery figcaption{color:var(--muted);font-size:.7rem;text-align:center;margin-top:3px}',
     '.tws-prod{border:1px solid var(--border);border-radius:10px;padding:10px 12px;margin:0 0 8px;background:var(--field)}',
@@ -477,7 +480,7 @@
     }
     html += '<p class="tws-foot">' + esc(L('coverage_line')
       .replace('{d}', cnt.dossiers || '—').replace('{c}', cnt.cards || '—').replace('{k}', cnt.crops || '—'))
-      + ' · ' + esc(man.built || '') + '<br>' + esc(L('dose_note')) + '<br>' + esc(L('egypt_note')) + '</p></div>';
+      + ' · ' + esc(man.built || '') + '<br>' + esc(L('dose_note')) + '</p></div>';
     sec.innerHTML = html;
   }
 
@@ -711,6 +714,8 @@
         html += '</div>';
       }
 
+      if (s.images && s.images.length) { setTimeout(revealGallery, 0); }
+
       if (s.symptom && s.symptom.length) {
         var symEn = tx(s, 'symptom', null);
         html += '<h3>' + esc(L('symptoms')) + '</h3><ul>'
@@ -781,7 +786,7 @@
         });
       }
 
-      html += '<div class="tws-note info">' + esc(L('dose_note')) + '</div><div class="tws-note warn">' + esc(L('egypt_note')) + '</div>';
+      html += '<div class="tws-note info">' + esc(L('dose_note')) + '</div>';
       html += '</div>' + footer(true) + '</div>';
       sec.innerHTML = html;
       window.scrollTo && window.scrollTo(0, 0);
@@ -790,12 +795,23 @@
     });
   }
 
+  /* ظهور الصور تدريجيًا عند التمرير إليها (وتبقى ظاهرة دون المراقِب أو مع تقليل الحركة) */
+  function revealGallery() {
+    var figs = document.querySelectorAll('.tws-gallery figure');
+    if (!figs.length || !('IntersectionObserver' in window)) return;
+    var gal = document.querySelector('.tws-gallery'); if (gal) gal.classList.add('rv');
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    for (var j = 0; j < figs.length; j++) io.observe(figs[j]);
+  }
+
   function footer(card) {
     var man = S.man || {};
     var cnt = man.counts || {};
     return '<p class="tws-foot">' + esc(L('coverage_line')
       .replace('{d}', cnt.dossiers || '—').replace('{c}', cnt.cards || '—').replace('{k}', cnt.crops || '—'))
-      + ' · ' + esc(man.built || '') + (card ? '' : '<br>' + esc(L('dose_note')) + '<br>' + esc(L('egypt_note'))) + '</p>';
+      + ' · ' + esc(man.built || '') + (card ? '' : '<br>' + esc(L('dose_note'))) + '</p>';
   }
   function errorPanel(title, backHref) {
     return '<div class="tws-err"><h2>' + esc(title || L('load_error_title')) + '</h2>'

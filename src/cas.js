@@ -219,8 +219,17 @@
     return r && String(r.duplicate_note || '').trim() ? String(r.duplicate_note).trim() : '';
   }
 
+  /* Decree-500 codes read in Arabic in the Arabic UI (display only; the raw code stays the data key).
+   * Wording follows the guide's own explanation lines: Approved -> معتمد; REV -> «مراجعة علمية»;
+   * RAR -> «تقييم مخاطر محليًا»; REV* = REV + the guide's asterisk note. */
+  var AR500 = { 'Approved': '\u0645\u0639\u062a\u0645\u062f',
+    'REV': '\u0642\u064a\u062f \u0627\u0644\u0645\u0631\u0627\u062c\u0639\u0629',
+    'REV*': '\u0642\u064a\u062f \u0627\u0644\u0645\u0631\u0627\u062c\u0639\u0629 *',
+    'RAR': '\u064a\u062a\u0637\u0644\u0628 \u062a\u0642\u064a\u064a\u0645 \u0645\u062e\u0627\u0637\u0631' };
+  function ar500Label(code) { return Object.prototype.hasOwnProperty.call(AR500, String(code || '').trim()) ? AR500[String(code).trim()] : ''; }
+
   /* ---------- exports ---------- */
   global.CasDissect = { casChecksum, dissectStatus, classify, ambiguity, casOf,
     isCorrectedRow, casDisplayRaw, casDisplayCorrected, casSourceKey,
-    casStereo, casFlag, casSuggested, casReview, casNote, casDuplicateNote };
+    casStereo, casFlag, casSuggested, casReview, casNote, casDuplicateNote, ar500Label };
 })(typeof window !== 'undefined' ? window : globalThis);

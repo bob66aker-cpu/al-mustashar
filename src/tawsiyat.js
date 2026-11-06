@@ -631,8 +631,8 @@
       zh:'在所选司法辖区数据库中未找到已确认匹配'
     }[locale] || 'No confirmed match in the selected jurisdiction database';
     var statusPrefix = {ar:'الحالة:',en:'Status:',fr:'Statut :',zh:'状态：'}[locale] || 'Status:';
-    /* Arabic UI: the Decree-500 code «Approved» reads «معتمد»; the other codes (REV, RAR, REV*) stay as printed */
-    function codeLabel(c) { return (locale === 'ar' && c === 'Approved') ? '\u0645\u0639\u062a\u0645\u062f' : c; }
+    /* Arabic UI: Decree-500 codes (Approved, REV, RAR, REV*) read in Arabic */
+    function codeLabel(c) { return (locale === 'ar' && window.CasDissect && CasDissect.ar500Label(c)) || c; }
     function localStatus(h) {
       if (h.key === 'libya-500') {
         var code = String(h.status || '').trim();

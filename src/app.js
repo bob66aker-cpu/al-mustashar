@@ -771,13 +771,16 @@
   function isNonArabicUi() { return (document.documentElement.lang || 'ar') !== 'ar'; }
   function statusDisplay(r, k, showDetails) {
     const d = CasDissect.dissectStatus(r, k);
-    const phrase = t(d.key, d.raw || '?');
+    /* Arabic UI: Decree-500 codes read in Arabic («قرار 500: معتمد»…) — display only */
+    const ar500 = (!isNonArabicUi() && /^st\.500\.(approved|rev|rar|revstar)$/.test(d.key) && CasDissect.ar500Label)
+      ? CasDissect.ar500Label(d.raw) : '';
+    const phrase = ar500 ? ('قرار 500: ' + ar500) : t(d.key, d.raw || '?');
     let extra = '';
     /* the raw code stays visible — but only when the phrase does not already
      * name it. An explained code now reads «قرار 500: رمز REV», so adding
      * « (REV)» repeated it; an unknown code («قرار 500: رمز غير مفسَّر»)
      * still gets its raw value appended, which is where that note earns it. */
-    const namesCode = !!d.raw && phrase.indexOf(d.raw) !== -1;
+    const namesCode = !!d.raw && (phrase.indexOf(d.raw) !== -1 || !!ar500);
     /* the verbatim source term is Arabic: shown only in the Arabic UI */
     const rawShown = !(isNonArabicUi() && /[\u0600-\u06FF]/.test(String(d.raw || '')));
     if (/^st\.500\./.test(d.key) && d.raw && !namesCode) extra = ' (' + d.raw + ')';

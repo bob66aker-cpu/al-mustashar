@@ -887,7 +887,7 @@ check('feedback 7: the badge no longer contradicts the explanation printed under
   && ['st.500.rev', 'st.500.rar', 'st.500.revstar', 'st.500.approved']
      .every(k => !/غير مفسَّر/.test(refText('libya500', k, 'ar')))
   && /'st\.500\.unknown':\s*'[^']*غير مفسَّر/.test(fb6I18n));check('feedback 7: the raw code is appended only when the badge does not already name it',
-  app.includes("const namesCode = !!d.raw && phrase.indexOf(d.raw) !== -1;")
+  app.includes("const namesCode = !!d.raw && (phrase.indexOf(d.raw) !== -1 || !!ar500);")
   && app.includes("&& d.raw && !namesCode) extra = ' (' + d.raw + ')';")
   && app.includes("&& d.raw !== phrase && !namesCode) extra = ' · ' + d.raw;"));
 

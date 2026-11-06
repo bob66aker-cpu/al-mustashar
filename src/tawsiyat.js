@@ -631,11 +631,13 @@
       zh:'在所选司法辖区数据库中未找到已确认匹配'
     }[locale] || 'No confirmed match in the selected jurisdiction database';
     var statusPrefix = {ar:'الحالة:',en:'Status:',fr:'Statut :',zh:'状态：'}[locale] || 'Status:';
+    /* Arabic UI: the Decree-500 code «Approved» reads «معتمد»; the other codes (REV, RAR, REV*) stay as printed */
+    function codeLabel(c) { return (locale === 'ar' && c === 'Approved') ? '\u0645\u0639\u062a\u0645\u062f' : c; }
     function localStatus(h) {
       if (h.key === 'libya-500') {
         var code = String(h.status || '').trim();
         var ex = typeof window.MustasharStatusExplain === 'function' ? window.MustasharStatusExplain(code) : '';
-        return code + (ex ? ' — ' + ex : '');
+        return codeLabel(code) + (ex ? ' — ' + ex : '');
       }
       var raw = String(h.status || '').trim();
       if (locale === 'ar') return raw || String(h.status_raw || 'غير محددة في السجل');
@@ -689,9 +691,9 @@
             : localStatus(h));
           if (h.key === 'libya-500') {
             var ex = typeof window.MustasharStatusExplain === 'function' ? window.MustasharStatusExplain(code) : '';
-            if (ex && notes.indexOf(code + ' — ' + ex) < 0) notes.push(code + ' — ' + ex);
+            if (ex && notes.indexOf(codeLabel(code) + ' — ' + ex) < 0) notes.push(codeLabel(code) + ' — ' + ex);
           }
-          chips += '<span class="tws-reg-badge ' + cls + '" title="' + esc(full) + '"><b>' + esc(sn[h.key] || h.key) + '</b> ' + esc(code) + '</span>';
+          chips += '<span class="tws-reg-badge ' + cls + '" title="' + esc(full) + '"><b>' + esc(sn[h.key] || h.key) + '</b> ' + esc(h.key === 'libya-500' ? codeLabel(code) : code) + '</span>';
         });
       });
       if (!chips) chips = '<span class="tws-reg-badge unknown" title="' + esc(unknown) + '">' + esc(unknownShort) + '</span>';

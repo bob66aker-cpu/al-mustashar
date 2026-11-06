@@ -215,7 +215,7 @@
  * Personal data (IndexedDB history, theme, app version note) lives outside
  * the caches and is never touched by this worker.
  */
-const CACHE = 'mustashar-v80';
+const CACHE = 'mustashar-v81';
 const OCR_CACHE = 'mustashar-ocr';
 
 /* 1.7 — safe cache write: a full storage quota (QuotaExceededError) must
@@ -255,6 +255,7 @@ const SHELL = [
   './data/tws/labels.json',
   './data/tws/sections.json',
   './data/tws/appendix7.json',
+  './data/tws/appendix7_i18n.json',
   './data/tws/card_i18n.json',
   './data/advice/manifest.json',
   './data/advice/modifiers.json',

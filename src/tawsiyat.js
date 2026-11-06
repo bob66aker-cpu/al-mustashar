@@ -135,7 +135,7 @@
       'a7_link_desc': 'Pesticides proposed for trials ahead of registration — not approved recommendations',
       'a7_title': 'Appendix 7: minor crops',
       'a7_banner': 'These pesticides are "proposed for trials ahead of registration", as stated in the book: no rates, no pre-harvest intervals, and no approved recommendation yet. Do not use as a recommendation.',
-      'a7_intro_note': 'Appendix introduction as printed (in Arabic)',
+      'a7_intro_note': 'Appendix introduction (translated from the printed Arabic)',
       'a7_section': 'Section',
       'a7_crops': 'Crops and areas (feddan)',
       'a7_insects': 'Insects and proposed pesticides',
@@ -144,7 +144,7 @@
       'a7_for_crops': 'For crops',
       'a7_nolink': 'In this section the printed table does not tie each pest to a specific crop; the list applies to the whole crop group.',
       'a7_source': 'Source: APC 2025 book, Appendix 7, page {p}',
-      'a7_names_note': 'Crop, pest and weed names are shown as printed in Arabic; active ingredient names as printed in English.',
+      'a7_names_note': 'Crop, pest and weed names are translated from the printed Arabic. Egyptian local names with no reliable equivalent are transliterated and marked “local name”; active ingredient names are as printed in English.',
       'a7_none': '—',
       'a7_error': 'Could not load Appendix 7'
     }
@@ -503,16 +503,26 @@
   /* ---------- الملحق 7 (محاصيل مساحاتها أقل من 50 ألف فدان) ---------- */
   function loadAppendix7() {
     if (S.a7) return Promise.resolve(S.a7);
-    return fetchJSON('data/tws/appendix7.json').then(function (d) { S.a7 = d; return d; });
+    return Promise.all([
+      fetchJSON('data/tws/appendix7.json'),
+      fetchJSON('data/tws/appendix7_i18n.json').catch(function () { return null; })
+    ]).then(function (r) { S.a7 = r[0]; S.a7i = r[1]; return r[0]; });
   }
+  /* Appendix 7 names: Arabic print only in Arabic; other languages use appendix7_i18n.json */
+  function a7n(ar) {
+    if (loc() === 'ar' || !ar) return ar;
+    var m = S.a7i && S.a7i[loc()] && S.a7i[loc()].names;
+    return (m && m[ar]) || ar;
+  }
+  function a7List(list) { return (list || []).map(a7n).join(loc() === 'ar' ? '\u060c ' : ', '); }
   function a7Acts(list) {
-    return (list || []).map(function (a) { return '<span class="act">' + esc(a) + '</span>'; }).join('، ');
+    return (list || []).map(function (a) { return '<span class="act">' + esc(a) + '</span>'; }).join(loc() === 'ar' ? '\u060c ' : ', ');
   }
   function a7Pests(rows, showCrops) {
     var h = '<ul>';
     rows.forEach(function (r) {
-      h += '<li><b>' + esc((r.pests || []).join(' · ')) + '</b>';
-      if (showCrops && r.crops && r.crops.length) h += ' <span class="tws-meta">(' + esc(L('a7_for_crops')) + ': ' + esc(r.crops.join('، ')) + ')</span>';
+      h += '<li><b>' + esc((r.pests || []).map(a7n).join(' · ')) + '</b>';
+      if (showCrops && r.crops && r.crops.length) h += ' <span class="tws-meta">(' + esc(L('a7_for_crops')) + ': ' + esc(a7List(r.crops)) + ')</span>';
       h += '<br>' + a7Acts(r.actives) + '</li>';
     });
     return h + '</ul>';
@@ -524,14 +534,18 @@
         + '<div class="tws-head"><h1>' + esc(L('a7_title')) + '</h1></div>'
         + '<p class="tws-a7note" role="note">' + esc(L('a7_banner')) + '</p>'
         + '<p class="tws-meta">' + esc(L('a7_names_note')) + '</p>'
-        + '<details class="tws-a7intro"><summary>' + esc(L('a7_intro_note')) + '</summary><p lang="ar" dir="rtl">' + esc(d.intro_ar) + '</p></details>';
-      (d.secs || []).forEach(function (s) {
+        + '<details class="tws-a7intro"><summary>' + esc(L('a7_intro_note')) + '</summary>'
+        + (loc() !== 'ar' && S.a7i && S.a7i[loc()] && S.a7i[loc()].intro
+          ? '<p class="tws-a7intro-tr" dir="ltr">' + esc(S.a7i[loc()].intro) + '</p>'
+          : '<p lang="ar" dir="rtl">' + esc(d.intro_ar) + '</p>') + '</details>';
+      (d.secs || []).forEach(function (s, si) {
+        var ar = loc() === 'ar';
         var linked = (s.insects || []).concat(s.diseases || []).some(function (r) { return r.crops && r.crops.length; });
-        html += '<section class="tws-a7sec"><h2><span lang="ar" dir="rtl">' + esc(s.letter + ' — ' + s.title) + '</span></h2>'
+        html += '<section class="tws-a7sec"><h2>' + (ar ? '<span lang="ar" dir="rtl">' + esc(s.letter + ' — ' + s.title) + '</span>' : esc(String.fromCharCode(65 + si) + ' \u2014 ' + a7n(s.title))) + '</h2>'
           + '<p class="tws-meta">' + esc(L('a7_source').replace('{p}', s.page)) + '</p>'
           + '<h3>' + esc(L('a7_crops')) + '</h3><ul>';
         (s.crops || []).forEach(function (c) {
-          html += '<li><span lang="ar" dir="rtl">' + esc(c.name) + '</span> — <span dir="ltr">' + esc(Number(c.area).toLocaleString('en-US')) + '</span></li>';
+          html += '<li>' + (ar ? '<span lang="ar" dir="rtl">' + esc(c.name) + '</span>' : esc(a7n(c.name))) + ' \u2014 <span dir="ltr">' + esc(Number(c.area).toLocaleString('en-US')) + '</span></li>';
         });
         html += '</ul>';
         if (!linked) html += '<p class="tws-meta">' + esc(L('a7_nolink')) + '</p>';
@@ -541,9 +555,9 @@
           html += '<h3>' + esc(L('a7_weeds')) + '</h3><ul>';
           s.weeds.forEach(function (w) {
             html += '<li>';
-            if (w.crops && w.crops.length) html += '<span class="tws-meta">' + esc(L('a7_for_crops')) + ': ' + esc(w.crops.join('، ')) + '</span><br>';
+            if (w.crops && w.crops.length) html += '<span class="tws-meta">' + esc(L('a7_for_crops')) + ': ' + esc(a7List(w.crops)) + '</span><br>';
             (w.groups || []).forEach(function (g) {
-              html += '<span lang="ar" dir="rtl">' + (g.label ? '<b>' + esc(g.label) + ':</b> ' : '') + esc((g.names || []).join('، ')) + '</span><br>';
+              html += (ar ? '<span lang="ar" dir="rtl">' : '<span>') + (g.label ? '<b>' + esc(a7n(g.label)) + ':</b> ' : '') + esc(a7List(g.names)) + '</span><br>';
             });
             html += a7Acts(w.actives) + '</li>';
           });

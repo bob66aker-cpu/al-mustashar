@@ -271,6 +271,28 @@ check('a7: route, index link and offline precache wired',
   src.includes("crop === 'appendix7'") && src.includes('#/tws/appendix7') && readFileSync(join(root, 'sw.js'), 'utf8').includes('./data/tws/appendix7.json'));
 check('a7: the intro is shown verbatim in Arabic and escaped', src.includes('esc(d.intro_ar)'));
 
+
+/* Appendix 7 translations: every Arabic crop / pest / weed / title string has en, fr, zh (no Arabic left in them) */
+{
+  const a7t = J('data/tws/appendix7_i18n.json');
+  const need = new Set();
+  const add = x => { if (x && x.length > 1) need.add(x); };
+  for (const s of a7.secs) {
+    add(s.title);
+    s.crops.forEach(c => add(c.name));
+    for (const k of ['insects', 'diseases']) (s[k] || []).forEach(r => { r.pests.forEach(add); r.crops.forEach(add); });
+    (s.weeds || []).forEach(w => { w.crops.forEach(add); w.groups.forEach(g => { add(g.label); g.names.forEach(add); }); });
+  }
+  for (const l of ['en', 'fr', 'zh']) {
+    const m = (a7t[l] || {}).names || {};
+    const miss = [...need].filter(x => !m[x]);
+    const arabic = Object.values(m).filter(v => /[؀-ۿ]/.test(v));
+    check('appendix 7 ' + l + ': every name is translated (' + need.size + ')', miss.length === 0, miss.join(' | '));
+    check('appendix 7 ' + l + ': no Arabic letters in translations + intro', arabic.length === 0 && !/[؀-ۿ]/.test(a7t[l].intro));
+  }
+}
+
+
 console.log('==============================');
 console.log(`PASS: ${pass}   FAIL: ${fail}`);
 process.exit(fail ? 1 : 0);

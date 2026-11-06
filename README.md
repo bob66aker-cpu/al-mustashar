@@ -18,7 +18,7 @@ USA/EPA — فعالة وملغاة) بالاسم أو رقم CAS، مع مسح 
 | `src/ocr.js` | محرك المسح البصري (tesseract.js 6.0.1 ذاتي الاستضافة؛ eng افتراضيًا وara عند الطلب) |
 | `src/ppocr.js` | مانيفست الحزمة الاختيارية PP-OCRv5 (معطّلة افتراضياً؛ لا تُحمَّل بايت واحدة إلا بعلم صريح) |
 | `src/i18n.js` | القواميس (ar/en/fr/zh) |
-| `sw.js` | عامل الخدمة (كاش `mustashar-v80` (يتغير مع كل إصدار؛ راجع `version.json`) + كاش OCR دائم) |
+| `sw.js` | عامل الخدمة (كاش `mustashar-v81` (يتغير مع كل إصدار؛ راجع `version.json`) + كاش OCR دائم) |
 | `data/*.json` | القواعد المرجعية (ليبيا/EU/EPA) لا تُعدَّل يدويًا؛ بيانها في `docs/data-provenance.md` — والحزم الاختيارية في `data-optional/` |
 | `scripts/update-intl-dbs.mjs` | وكيل تحديث القواعد الدولية (مصادر EU/EPA الحالية ترجع 404؛ التحديث المعتمد يدوي: EPA ربعيًا عبر `tools/build-epa-master.js`) |
 | `src/packs.js` · `src/stats.js` | لوحة الحزم الاختيارية · إحصاءات استخدام محلية (لا تغادر الجهاز) |
@@ -65,7 +65,7 @@ node scripts/stamp-datacheck.mjs canada        # يختم تاريخ آخر تح
 ## فحص ما بعد النشر
 
 ```bash
-node scripts/post-deploy-smoke.mjs https://al-mustashar.pages.dev --expect 1.19.44
+node scripts/post-deploy-smoke.mjs https://al-mustashar.pages.dev --expect 1.19.45
 ```
 
 يقرأ فقط ويتحقق أن الإصدار المنشور هو المقصود وأن ملفات القسم والقواعد تُخدم.

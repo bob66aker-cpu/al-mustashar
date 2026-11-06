@@ -307,6 +307,7 @@
     '.tws-a7sec ul{margin:0;padding:0 18px}',
     '.tws-a7sec li{margin:0 0 6px;line-height:1.7}',
     '.tws-a7sec .act{direction:ltr;unicode-bidi:isolate;display:inline-block}',
+    '.tws-errata{margin:10px 0}.tws-errata summary{cursor:pointer;font-weight:700}.tws-errata h3{margin:16px 0 6px;font-size:1rem}.tws-errata{max-width:100%;overflow:hidden}.tws-errata-wrap{overflow-x:auto;max-width:calc(100vw - 56px)}.tws-errata-t td,.tws-errata-t th{overflow-wrap:anywhere}.tws-errata-t{border-collapse:collapse;width:100%;table-layout:fixed;font-size:.85rem}.tws-errata-t th,.tws-errata-t td{border:1px solid var(--border,#8884);padding:4px 7px;text-align:start;vertical-align:top}.tws-errata-t th{background:var(--card-2,#8881)}',
     '.tws-a7intro{margin:0 0 14px}.tws-a7intro p{direction:rtl;text-align:right;line-height:1.9}',
     '.tws-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:8px;margin:0 0 18px;padding:0;list-style:none}',
     '.tws-crop{display:flex;flex-direction:column;gap:4px;min-height:76px;padding:12px;border:1px solid var(--border);border-radius:12px;background:var(--card);color:var(--text);text-decoration:none}',
@@ -707,6 +708,41 @@
     return count ? html : '';
   }
 
+
+  /* ---------- Verification-notes report (About → Sources): separate from the cards ---------- */
+  var errataData = null;
+  function renderErrata(force) {
+    var det = document.getElementById('aboutTwsErrata');
+    if (!det) return;
+    var T0 = errataData && errataData.t[loc()];
+    var sum = document.getElementById('aboutTwsErrataSum');
+    var body = document.getElementById('aboutTwsErrataBody');
+    function paint() {
+      var T = errataData.t[loc()] || errataData.t.en, R = errataData.shared;
+      sum.textContent = T.title;
+      if (!det.open && !force) return;
+      function tbl(head, rows) {
+        return '<div class="tws-errata-wrap"><table class="tws-errata-t"><thead><tr>' + head.map(function (h) { return '<th>' + esc(h) + '</th>'; }).join('') + '</tr></thead><tbody>'
+          + rows.map(function (r) { return '<tr>' + r.map(function (c) { return '<td dir="auto">' + esc(c) + '</td>'; }).join('') + '</tr>'; }).join('') + '</tbody></table></div>';
+      }
+      var h = '<p class="tws-meta">' + esc(T.date) + '</p><p>' + esc(T.intro) + '</p>';
+      h += '<h3>' + esc(T.h_sum) + '</h3>' + tbl([T.c_type, T.c_rows, T.c_unv],
+        R.rows.map(function (r) { return [T.types[r[0]], String(r[1]), String(r[2])]; }).concat([[T.total, String(R.total[0]), String(R.total[1])]]));
+      h += '<h3>' + esc(T.h_spell) + '</h3>' + tbl([T.c_print, T.c_corr], R.spell_ex);
+      h += '<h3>' + esc(T.h_ratio) + '</h3>' + tbl([T.c_prod, T.c_printed, T.c_sum, T.c_page], R.ratio_ex);
+      h += '<h3>' + esc(T.h_mrl) + '</h3>' + tbl([T.c_item, T.c_book, T.c_ref], R.mrl_ex);
+      h += '<h3>' + esc(T.h_cas) + '</h3>' + tbl([T.c_sub, T.c_app, T.c_sugg], R.cas_ex);
+      h += '<h3>' + esc(T.h_who) + '</h3><p>' + esc(T.who) + '</p>';
+      h += '<h3>' + esc(T.h_lim) + '</h3><ul>' + T.lim.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>';
+      h += '<h3>' + esc(T.h_src) + '</h3><ul>' + R.src.map(function (x) { return '<li><a href="' + esc(x[1]) + '" target="_blank" rel="noopener noreferrer">' + esc(x[0]) + '</a></li>'; }).join('') + '</ul>';
+      h += '<p><b>' + esc(T.note) + '</b></p>';
+      body.innerHTML = h;
+      det.dir = loc() === 'ar' ? 'rtl' : 'ltr';
+    }
+    if (errataData) { paint(); return; }
+    fetchJSON('data/tws/errata_report.json').then(function (d) { errataData = d; paint(); }).catch(function () {});
+  }
+
   /* ---------- عرض البطاقة (من sections.json) ---------- */
   function renderCard(c, type, n, sec) {
     var inf = null;
@@ -853,6 +889,24 @@
       + '</div>';
   }
   function wrap(inner) { return '<div class="wrap">' + inner + '</div>'; }
+
+  /* the verification-notes report lives in About → Sources, so it is wired at load, not at mount */
+  document.addEventListener('langchange', function () { renderErrata(); });
+  (function () {
+    function wire() {
+      if (!document.getElementById('tws-errata-css')) {
+        var st = document.createElement('style'); st.id = 'tws-errata-css';
+        st.textContent = '.tws-errata{margin:10px 0;max-width:100%}.tws-errata summary{cursor:pointer;font-weight:700}.tws-errata h3{margin:16px 0 6px;font-size:1rem}'
+          + '.tws-errata-wrap{overflow-x:auto;max-width:calc(100vw - 56px)}.tws-errata-t{border-collapse:collapse;width:100%;table-layout:fixed;font-size:.85rem}'
+          + '.tws-errata-t th,.tws-errata-t td{border:1px solid var(--border,#8884);padding:4px 7px;text-align:start;vertical-align:top;overflow-wrap:anywhere}.tws-errata-t th{background:var(--card-2,#8881)}';
+        document.head.appendChild(st);
+      }
+      renderErrata();
+      var d = document.getElementById('aboutTwsErrata');
+      if (d) d.addEventListener('toggle', function () { if (d.open) renderErrata(true); });
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', wire); else wire();
+  })();
 
   window.Tawsiyat = { mount: mount, _state: S };
 })();

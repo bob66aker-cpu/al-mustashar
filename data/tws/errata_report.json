@@ -1,0 +1,375 @@
+{
+ "schema": 1,
+ "built": "2026-11-06",
+ "shared": {
+  "rows": [
+   [
+    "spell",
+    54,
+    0
+   ],
+   [
+    "ratio",
+    99,
+    92
+   ],
+   [
+    "rate",
+    71,
+    71
+   ],
+   [
+    "who",
+    410,
+    54
+   ],
+   [
+    "phi",
+    435,
+    435
+   ],
+   [
+    "mrl",
+    14,
+    0
+   ],
+   [
+    "cas",
+    3,
+    0
+   ],
+   [
+    "conflict",
+    591,
+    591
+   ],
+   [
+    "dup",
+    389,
+    389
+   ]
+  ],
+  "total": [
+   2066,
+   1611
+  ],
+  "spell_ex": [
+   [
+    "Fludioxanil",
+    "Fludioxonil"
+   ],
+   [
+    "Matalaxyl-M",
+    "Metalaxyl-M"
+   ],
+   [
+    "Chlorimuron-methyl",
+    "Chlorimuron-ethyl"
+   ],
+   [
+    "Thiocyclam hydrogen oxabte",
+    "Thiocyclam hydrogen oxalate"
+   ],
+   [
+    "Phoshorous acid",
+    "Phosphorous acid"
+   ],
+   [
+    "Trichoderma virde",
+    "Trichoderma viride"
+   ],
+   [
+    "Clodinafop-butyl",
+    "Clodinafop-propargyl"
+   ]
+  ],
+  "ratio_ex": [
+   [
+    "Tebuconazole 25% + Trifloxystrobin 25%",
+    "75%",
+    "50%",
+    "79"
+   ],
+   [
+    "Chlorothalonil 25% + Difenoconazole 5%",
+    "55%",
+    "30%",
+    "81"
+   ],
+   [
+    "Dimethomorph 30% + Fosetyl-Aluminium 45%",
+    "60%",
+    "75%",
+    "11"
+   ],
+   [
+    "Cymoxanil 8% + Mancozeb 68%",
+    "72%",
+    "76%",
+    "101"
+   ],
+   [
+    "Fosetyl-Aluminam 31% + Propamocarb hydrochloride 43%",
+    "84%",
+    "74%",
+    "131"
+   ]
+  ],
+  "mrl_ex": [
+   [
+    "Propiconazole / peach",
+    "4",
+    "2.0 (Peach, 40 CFR 180.434)"
+   ],
+   [
+    "Difenoconazole / mango",
+    "0.01",
+    "1 (Mango, 40 CFR 180.475)"
+   ],
+   [
+    "Quinclorac / rice",
+    "5",
+    "10 (Rice, grain)"
+   ],
+   [
+    "Metsulfuron-methyl / wheat",
+    "1",
+    "0.1 (Wheat, grain)"
+   ],
+   [
+    "Dimethomorph / strawberry",
+    "1.5",
+    "0.90 (Strawberry)"
+   ]
+  ],
+  "cas_ex": [
+   [
+    "Zeta-cypermethrin",
+    "52315-07-8",
+    "1315501-18-8"
+   ],
+   [
+    "Febuconazole",
+    "107534-96-3",
+    "114369-43-6"
+   ],
+   [
+    "Formetanate",
+    "23422-53-9",
+    "22259-30-9"
+   ]
+  ],
+  "src": [
+   [
+    "PPDB",
+    "https://sitem.herts.ac.uk/aeru/ppdb/en/atoz.htm"
+   ],
+   [
+    "WHO 2019",
+    "https://www.who.int/publications/i/item/9789240005662"
+   ],
+   [
+    "eCFR 40 CFR 180",
+    "https://www.ecfr.gov/current/title-40/chapter-I/subchapter-E/part-180"
+   ],
+   [
+    "CIPAC",
+    "https://www.cipac.org/index.php/m-p/further-information/formulation-codes"
+   ]
+  ]
+ },
+ "t": {
+  "ar": {
+   "title": "تقرير ملاحظات التحقق على الكتاب المطبوع (2025)",
+   "date": "تقرير تدقيق آلي بتاريخ 6 نوفمبر 2026 — لم تُراجعه جهة بشرية بعد",
+   "intro": "هذا التقرير منفصل عن البطاقات: كل قيمة في البطاقات تبقى كما طُبعت في الكتاب، ولا تُعدَّل بناءً على هذا التقرير. هو ملاحظات مقارنة بمصادر خارجية، وبعضها يحتاج حكماً بشرياً أو ملصقات رسمية غير متاحة آلياً.",
+   "h_sum": "ملخص بحسب النوع",
+   "c_type": "النوع",
+   "c_rows": "الصفوف",
+   "c_unv": "بلا تأكيد خارجي",
+   "total": "المجموع",
+   "types": {
+    "spell": "أخطاء إملائية في الأسماء",
+    "ratio": "النسب والتراكيز",
+    "rate": "الوحدات ومعدلات الاستخدام",
+    "who": "تصنيف WHO",
+    "phi": "فترة الأمان (خلايا فارغة وقيم كبيرة)",
+    "mrl": "قيم MRL مقابل EPA",
+    "cas": "أرقام CAS في التطبيق",
+    "conflict": "تضارب بين بطاقات الكتاب",
+    "dup": "تكرار محتمل (قد يكون أثر استخراج)"
+   },
+   "h_spell": "أمثلة إملائية مؤكدة بمصدر (PPDB)",
+   "c_print": "المطبوع",
+   "c_corr": "الصحيح المقترح",
+   "h_ratio": "مجموع النسب لا يطابق التركيز المطبوع",
+   "c_prod": "المنتج",
+   "c_printed": "التركيز المطبوع",
+   "c_sum": "مجموع المكونات",
+   "c_page": "الصفحة المطبوعة",
+   "h_mrl": "قيم MRL تخالف 40 CFR 180 (EPA)",
+   "c_item": "مادة / محصول",
+   "c_book": "الكتاب",
+   "c_ref": "المصدر الرسمي",
+   "h_cas": "أرقام CAS تحتاج حسماً (رقم التطبيق، لا الكتاب)",
+   "c_sub": "المادة",
+   "c_app": "الرقم الحالي",
+   "c_sugg": "الرقم المقترح",
+   "h_who": "تصنيف WHO",
+   "who": "يطبع الكتاب تصنيف المستحضر، لذلك يختلف عن تصنيف المادة التقنية، وهذا مقبول بالتمديد. لكن 320 صفاً تطبع تصنيفاً أخطر مما يبلّغ به المصدر للمادة التقنية (منها 159 صفاً لـ Azoxystrobin وMancozeb)، ولا يفسّرها التمديد؛ و36 تركيبة تحمل تصنيفين متضاربين داخل الكتاب.",
+   "h_lim": "ما لم يتحقق منه",
+   "lim": [
+    "فترات الأمان (435 صفاً): لا ملصقات رسمية قابلة للاستعلام الآلي.",
+    "MRL الاتحاد الأوروبي وCodex: لا واجهة عامة للمقارنة الآلية.",
+    "معدلات الاستخدام والتضارب: الدليل داخلي من بيانات الكتاب فقط، وقد يعكس الفرق توقيت الرش.",
+    "ملف الكتاب الرسمي لم يُقرأ بصرياً في هذا التدقيق (ملف تالف)، فبقيت المقارنة على النص المنقول."
+   ],
+   "h_src": "المصادر المستخدمة",
+   "note": "القرار: تبقى البطاقات كما طُبعت، وتُدرس التصحيحات بنداً بنداً."
+  },
+  "en": {
+   "title": "Verification notes on the printed book (2025)",
+   "date": "Automated audit report dated 6 Nov 2026 — not yet reviewed by a human",
+   "intro": "This report is separate from the cards: every value on the cards stays exactly as printed in the book and is not changed because of this report. These are comparisons with external sources; some need human judgement or official labels that cannot be queried automatically.",
+   "h_sum": "Summary by type",
+   "c_type": "Type",
+   "c_rows": "Rows",
+   "c_unv": "No external confirmation",
+   "total": "Total",
+   "types": {
+    "spell": "Spelling errors in names",
+    "ratio": "Ratios and concentrations",
+    "rate": "Units and application rates",
+    "who": "WHO classification",
+    "phi": "Pre-harvest interval (empty cells and large values)",
+    "mrl": "MRL values vs EPA",
+    "cas": "CAS numbers in the app",
+    "conflict": "Conflicts between book cards",
+    "dup": "Possible duplicates (may be an extraction artefact)"
+   },
+   "h_spell": "Spelling examples confirmed by a source (PPDB)",
+   "c_print": "Printed",
+   "c_corr": "Suggested correct form",
+   "h_ratio": "Sum of component percentages differs from the printed concentration",
+   "c_prod": "Product",
+   "c_printed": "Printed concentration",
+   "c_sum": "Sum of components",
+   "c_page": "Printed page",
+   "h_mrl": "MRL values that differ from 40 CFR 180 (EPA)",
+   "c_item": "Active / crop",
+   "c_book": "Book",
+   "c_ref": "Official source",
+   "h_cas": "CAS numbers that need a decision (the app’s number, not the book’s)",
+   "c_sub": "Substance",
+   "c_app": "Current number",
+   "c_sugg": "Suggested number",
+   "h_who": "WHO classification",
+   "who": "The book prints the class of the formulation, so it can differ from the technical-grade class, which is acceptable by dilution. But 320 rows print a more hazardous class than the source reports for the technical material (159 of them for Azoxystrobin and Mancozeb), which dilution cannot explain; and 36 formulations carry two conflicting classes inside the book.",
+   "h_lim": "Not verified",
+   "lim": [
+    "Pre-harvest intervals (435 rows): no official labels that can be queried automatically.",
+    "EU and Codex MRLs: no public interface for automated comparison.",
+    "Application rates and conflicts: evidence is internal (book data only); a difference may reflect spray timing.",
+    "The official book file could not be read visually in this audit (corrupt file), so the comparison used the transcribed text."
+   ],
+   "h_src": "Sources used",
+   "note": "Decision: the cards stay as printed; corrections are considered item by item."
+  },
+  "fr": {
+   "title": "Notes de vérification sur le livre imprimé (2025)",
+   "date": "Rapport d’audit automatisé du 6 nov. 2026 — pas encore relu par un humain",
+   "intro": "Ce rapport est distinct des fiches : chaque valeur des fiches reste telle qu’imprimée dans le livre et n’est pas modifiée à cause de ce rapport. Ce sont des comparaisons avec des sources externes ; certaines exigent un jugement humain ou des étiquettes officielles non interrogeables automatiquement.",
+   "h_sum": "Résumé par type",
+   "c_type": "Type",
+   "c_rows": "Lignes",
+   "c_unv": "Sans confirmation externe",
+   "total": "Total",
+   "types": {
+    "spell": "Fautes d’orthographe dans les noms",
+    "ratio": "Proportions et concentrations",
+    "rate": "Unités et doses d’emploi",
+    "who": "Classification OMS",
+    "phi": "Délai avant récolte (cellules vides et valeurs élevées)",
+    "mrl": "Valeurs LMR comparées à l’EPA",
+    "cas": "Numéros CAS dans l’application",
+    "conflict": "Conflits entre fiches du livre",
+    "dup": "Doublons possibles (peut être un artefact d’extraction)"
+   },
+   "h_spell": "Exemples d’orthographe confirmés par une source (PPDB)",
+   "c_print": "Imprimé",
+   "c_corr": "Forme correcte suggérée",
+   "h_ratio": "La somme des pourcentages des composants diffère de la concentration imprimée",
+   "c_prod": "Produit",
+   "c_printed": "Concentration imprimée",
+   "c_sum": "Somme des composants",
+   "c_page": "Page imprimée",
+   "h_mrl": "Valeurs LMR différentes de 40 CFR 180 (EPA)",
+   "c_item": "Matière / culture",
+   "c_book": "Livre",
+   "c_ref": "Source officielle",
+   "h_cas": "Numéros CAS à trancher (numéro de l’application, pas du livre)",
+   "c_sub": "Substance",
+   "c_app": "Numéro actuel",
+   "c_sugg": "Numéro suggéré",
+   "h_who": "Classification OMS",
+   "who": "Le livre imprime la classe de la formulation ; elle peut donc différer de celle de la matière technique, ce qui est acceptable par dilution. Mais 320 lignes impriment une classe plus dangereuse que celle indiquée pour la matière technique (dont 159 pour Azoxystrobin et Mancozeb), ce que la dilution n’explique pas ; et 36 formulations portent deux classes contradictoires dans le livre.",
+   "h_lim": "Non vérifié",
+   "lim": [
+    "Délais avant récolte (435 lignes) : pas d’étiquettes officielles interrogeables automatiquement.",
+    "LMR de l’UE et du Codex : pas d’interface publique pour une comparaison automatisée.",
+    "Doses et conflits : preuve interne (données du livre) ; l’écart peut refléter le moment du traitement.",
+    "Le fichier officiel du livre n’a pas pu être lu visuellement (fichier corrompu) ; la comparaison porte sur le texte transcrit."
+   ],
+   "h_src": "Sources utilisées",
+   "note": "Décision : les fiches restent telles qu’imprimées ; les corrections sont examinées une à une."
+  },
+  "zh": {
+   "title": "印刷手册（2025）核查说明",
+   "date": "自动审核报告，日期 2026 年 11 月 6 日 — 尚未经人工复核",
+   "intro": "本报告独立于卡片：卡片中的每个数值仍保持手册印刷原样，不会因本报告而修改。这些是与外部来源的比对，其中一部分需要人工判断，或需要无法自动查询的官方标签。",
+   "h_sum": "按类型汇总",
+   "c_type": "类型",
+   "c_rows": "行数",
+   "c_unv": "无外部确认",
+   "total": "合计",
+   "types": {
+    "spell": "名称拼写错误",
+    "ratio": "比例与浓度",
+    "rate": "单位与使用量",
+    "who": "WHO 分级",
+    "phi": "采收前间隔期（空白及偏大数值）",
+    "mrl": "MRL 值与 EPA 比对",
+    "cas": "应用中的 CAS 号",
+    "conflict": "手册卡片之间的冲突",
+    "dup": "可能重复（也可能是提取痕迹）"
+   },
+   "h_spell": "有来源（PPDB）确认的拼写示例",
+   "c_print": "印刷",
+   "c_corr": "建议的正确写法",
+   "h_ratio": "各成分百分比之和与印刷浓度不符",
+   "c_prod": "产品",
+   "c_printed": "印刷浓度",
+   "c_sum": "成分之和",
+   "c_page": "印刷页码",
+   "h_mrl": "与 40 CFR 180（EPA）不一致的 MRL 值",
+   "c_item": "成分 / 作物",
+   "c_book": "手册",
+   "c_ref": "官方来源",
+   "h_cas": "需要决定的 CAS 号（应用中的编号，非手册所印）",
+   "c_sub": "物质",
+   "c_app": "当前编号",
+   "c_sugg": "建议编号",
+   "h_who": "WHO 分级",
+   "who": "手册印刷的是制剂的分级，因此可能与原药分级不同，按稀释推算是可以接受的。但有 320 行印刷的分级比原药所报告的更危险（其中 159 行涉及 Azoxystrobin 和 Mancozeb），稀释无法解释；另有 36 个制剂在手册内带有两种相互矛盾的分级。",
+   "h_lim": "未能核实的内容",
+   "lim": [
+    "采收前间隔期（435 行）：没有可自动查询的官方标签。",
+    "欧盟和 Codex 的 MRL：没有可用于自动比对的公开接口。",
+    "使用量与冲突：证据仅来自手册内部数据，差异可能反映施药时间的不同。",
+    "本次审核无法目视读取官方手册文件（文件损坏），因此比对基于已转录的文本。"
+   ],
+   "h_src": "所用来源",
+   "note": "决定：卡片保持印刷原样，更正将逐项研究。"
+  }
+ }
+}

@@ -119,7 +119,7 @@
        * row's own source text (status_raw), never a sentence of ours. */
       var explain = '';
       if (x.k === 'libya-500') explain = statusExplainFull(x.r.status) || '';
-      if (!explain && ctx.mode === 'pro' && x.r.status_raw) explain = String(x.r.status_raw);
+      if (!explain && ctx.mode === 'pro' && x.r.status_raw && !(ctx.lang !== 'ar' && /[\u0600-\u06FF]/.test(String(x.r.status_raw)))) explain = String(x.r.status_raw);
       var candidateLine = candidate
         ? '<p class="st-explain-full candidate-note">' + esc(t('mt.candidate.note',
           'الاسم لم يُطابق بالكامل — هذه نتيجة مرشّحة تتطلب تأكيد الاسم، وليست حكماً تنظيمياً.')) + '</p>'

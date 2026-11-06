@@ -183,6 +183,19 @@
     }
     return ar;
   }
+  /* names follow the app language: Arabic only in Arabic; the other languages use their own
+   * translated crop / infection names (card_i18n.json, full coverage), never the Arabic print */
+  function cropName(c) {
+    if (loc() === 'ar') return c.name_ar;
+    var m = S.i18n && S.i18n.crops && S.i18n.crops[loc()];
+    return (m && m[c.id]) || c.name_en || c.name_ar;
+  }
+  function infName(c, inf) {
+    if (loc() === 'ar') return inf.name_ar;
+    var m = S.i18n && S.i18n.cards && S.i18n.cards[loc()];
+    var t = m && m[c.id + '/' + inf.type + '.' + inf.n];
+    return (t && t.name) || inf.name_ar;
+  }
   /* نوع الآفة المعروض يتبع «مجموعة الآفة» المطبوعة في الكتاب إن وُجدت (التصنيف الآلي القديم أخطأ في 23 بطاقة)؛ المسار والمعرّف لا يتغيّران */
   var GROUP_TYPE = { 'الحشرات': 'insect', 'الفطريات': 'fungus', 'الأكاروسات': 'mite', 'النيماتودا': 'nematode', 'البكتيريا': 'bacterium', 'الفقاريات': 'other', 'اللافقاريات': 'other' };
   function shownType(s) { return s.type || GROUP_TYPE[s.group]; }
@@ -243,10 +256,12 @@
     S.load = Promise.all([
       fetchJSON('data/tws/manifest.json'),
       fetchJSON('data/tws/crops.json'),
-      fetchJSON('data/tws/labels.json').catch(function () { return null; })
+      fetchJSON('data/tws/labels.json').catch(function () { return null; }),
+      fetchJSON('data/tws/card_i18n.json').catch(function () { return null; })
     ]).then(function (r) {
       S.man = r[0]; S.crops = r[1];
       if (r[2] && r[2].ar && r[2].en) S.labels = r[2];
+      if (r[3] && !S.i18n) S.i18n = r[3];
       S.err = null;
     }).catch(function (e) { S.err = e; S.load = null; });
     return S.load;
@@ -259,7 +274,7 @@
       fetchJSON('data/tws/sections.json'),
       fetchJSON('data/tws/card_i18n.json').catch(function () { return null; })
     ]).then(function (r) {
-      var d = r[0]; S.i18n = r[1];
+      var d = r[0]; S.i18n = r[1] || S.i18n;
       S.sec = d; S.secLoad = null; return d;
     }).catch(function (e) { S.secLoad = null; throw e; });
     return S.secLoad;
@@ -452,6 +467,7 @@
     var list = all.filter(function (c) {
       if (!q) return true;
       return (c.name_ar || '').indexOf(q) >= 0
+        || cropName(c).toLowerCase().indexOf(q) >= 0
         || (c.name_en || '').toLowerCase().indexOf(q) >= 0
         || (c.sci || '').toLowerCase().indexOf(q) >= 0
         || c.id.indexOf(q) >= 0;
@@ -471,8 +487,8 @@
       html += '<ul class="tws-grid">';
       list.forEach(function (c) {
         html += '<li><a class="tws-crop" href="#/tws/' + esc(c.id) + '">'
-          + '<b>' + esc(c.name_ar) + '</b>'
-          + '<span class="en">' + esc(c.name_en) + '</span>'
+          + '<b>' + esc(cropName(c)) + '</b>'
+          + '<span class="en">' + esc(loc() === 'ar' ? c.name_en : (c.sci || '')) + '</span>'
           + '<span class="n">' + c.cards + ' ' + esc(L('cards_count')) + '</span>'
           + '</a></li>';
       });
@@ -544,15 +560,15 @@
   /* ---------- عرض المحصول ---------- */
   function cropView(c) {
     var html = '<div class="wrap">'
-      + '<nav class="tws-crumb"><a href="#/tws">' + esc(L('back_crops')) + '</a><span class="sep">‹</span><span class="cur">' + esc(c.name_ar) + '</span></nav>'
-      + '<div class="tws-head"><h1>' + esc(c.name_ar) + ' <span class="en" style="color:var(--muted);font-size:.8rem">' + esc(c.name_en) + '</span></h1>'
+      + '<nav class="tws-crumb"><a href="#/tws">' + esc(L('back_crops')) + '</a><span class="sep">‹</span><span class="cur">' + esc(cropName(c)) + '</span></nav>'
+      + '<div class="tws-head"><h1>' + esc(cropName(c)) + (loc() === 'ar' ? ' <span class="en" style="color:var(--muted);font-size:.8rem">' + esc(c.name_en) + '</span>' : '') + '</h1>'
       + '<p class="tws-meta">' + esc(L('sci')) + ': <em>' + esc(c.sci || '—') + '</em> · ' + esc(L('family')) + ': ' + esc(c.family || '—')
       + '<br>' + c.cards + ' ' + esc(L('infections_of')) + '</p></div>'
       + '<ul class="tws-list">';
     (c.infections || []).forEach(function (inf) {
       html += '<li><a class="tws-inf" href="#/tws/' + esc(c.id) + '/' + esc(inf.type) + '.' + esc(inf.n) + '">'
         + '<span class="no">' + esc(inf.n) + '</span>'
-        + '<span class="nm"><b>' + esc(inf.name_ar) + '</b>'
+        + '<span class="nm"><b>' + esc(infName(c, inf)) + '</b>'
         + (inf.group ? '<span class="grp">' + esc(L('group')) + ': ' + esc(inf.group) + '</span>' : '')
         + '</span>'
         + (inf.images ? '<span class="tws-chip info">🖼 ' + esc(inf.images) + '</span>' : '')
@@ -691,8 +707,8 @@
       var man = S.man || {};
       var html = '<div class="wrap">'
         + '<nav class="tws-crumb"><a href="#/tws">' + esc(L('back_crops')) + '</a><span class="sep">‹</span>'
-        + '<a href="#/tws/' + esc(c.id) + '">' + esc(c.name_ar) + '</a><span class="sep">‹</span>'
-        + '<span class="cur">' + esc(inf.name_ar) + '</span></nav>'
+        + '<a href="#/tws/' + esc(c.id) + '">' + esc(cropName(c)) + '</a><span class="sep">‹</span>'
+        + '<span class="cur">' + esc(infName(c, inf)) + '</span></nav>'
         + '<div class="tws-card">'
         + '<h2 dir="auto">' + esc(tx(s, 'name', s.name_ar)) + '</h2>'
         + '<p class="tws-meta">' + esc(L('type')) + ': ' + esc(typeName(shownType(s)))
@@ -708,7 +724,7 @@
       if (s.images && s.images.length) {
         html += '<h3>' + esc(L('images')) + '</h3><div class="tws-gallery">';
         s.images.forEach(function (im) {
-          html += '<figure><img src="data/tws/img/' + esc(im.file) + '" width="' + esc(im.w) + '" height="' + esc(im.h) + '" loading="lazy" alt="' + esc(s.name_ar) + ' — ' + esc(L('page')) + ' ' + esc(im.pdf_page) + '">'
+          html += '<figure><img src="data/tws/img/' + esc(im.file) + '" width="' + esc(im.w) + '" height="' + esc(im.h) + '" loading="lazy" alt="' + esc(tx(s, 'name', s.name_ar)) + ' — ' + esc(L('page')) + ' ' + esc(im.pdf_page) + '">'
             + '<figcaption>' + esc(L('page')) + ' ' + esc(im.pdf_page - (man.source && man.source.printed_offset || 13)) + '</figcaption></figure>';
         });
         html += '</div>';

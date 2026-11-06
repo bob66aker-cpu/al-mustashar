@@ -768,6 +768,7 @@
    * verdict. Red (banned tone) is reserved for Libya decree 248 alone;
    * reference-source alerts are amber; everything else is neutral.
    * The raw source term stays beside the translation (never hidden). */
+  function isNonArabicUi() { return (document.documentElement.lang || 'ar') !== 'ar'; }
   function statusDisplay(r, k, showDetails) {
     const d = CasDissect.dissectStatus(r, k);
     const phrase = t(d.key, d.raw || '?');
@@ -777,8 +778,10 @@
      * « (REV)» repeated it; an unknown code («قرار 500: رمز غير مفسَّر»)
      * still gets its raw value appended, which is where that note earns it. */
     const namesCode = !!d.raw && phrase.indexOf(d.raw) !== -1;
+    /* the verbatim source term is Arabic: shown only in the Arabic UI */
+    const rawShown = !(isNonArabicUi() && /[\u0600-\u06FF]/.test(String(d.raw || '')));
     if (/^st\.500\./.test(d.key) && d.raw && !namesCode) extra = ' (' + d.raw + ')';
-    else if (showDetails && d.raw && d.raw !== phrase && !namesCode) extra = ' · ' + d.raw;
+    else if (showDetails && d.raw && rawShown && d.raw !== phrase && !namesCode) extra = ' · ' + d.raw;
     if (d.rup) extra += ' · ' + t('st.epa.rup.note', 'استخدام مقيد (للمرخّصين فقط)');
     /* Status legend badge (شرح الرموز): a clickable info chip only for
      * Decree-500 statuses that have a verbatim explanation (Approved, REV,
@@ -2489,13 +2492,21 @@
   /* 3.0b — results WITH the read confidence: the text stays editable and
    * «بحث من النص» re-runs it (already the case); the confidence badge is
    * pure display (no decision path reads it). */
+  let lastScanConfidence = null;
+  function renderScanConfidence() {
+    const el = $('#ocrConf');
+    if (!el) return;
+    el.textContent = (lastScanConfidence !== null)
+      ? tf('scan.confidence', 'درجة الثقة: {n}%', { n: lastScanConfidence })
+      : '';
+  }
+  document.addEventListener('langchange', renderScanConfidence);
   function proceedWithScan(res, tips) {
     const merged = searchCandidates(res.cas, res.candidates);
     showOcrResults(merged);
     $('#ocrText').value = res.text || '';
-    $('#ocrConf').textContent = (res.confidence !== null && res.confidence !== undefined)
-      ? tf('scan.confidence', 'درجة الثقة: {n}%', { n: res.confidence })
-      : '';
+    lastScanConfidence = (res.confidence !== null && res.confidence !== undefined) ? res.confidence : null;
+    renderScanConfidence();
     $('#ocrActions').hidden = false;
     if (merged.length) {
       ocrMsg.textContent = tips && tips.length

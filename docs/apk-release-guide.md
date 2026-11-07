@@ -25,7 +25,7 @@
 |---|---|---|
 | الفرع | `release-1-pre-oct11-preserved` | `experimental-v2-tawsiyat-text-2026-10-29` |
 | الرابط | مشروع Pages جديد (الخطوة 3) | `https://al-mustashar.pages.dev` |
-| معرّف الحزمة المقترح | `ly.akakus.mustashar.v1` | `ly.akakus.mustashar` |
+| معرّف الحزمة المقترح | `ly.almustashar.app.v1` | `ly.almustashar.app` |
 | اسم التطبيق المقترح | المستشار الزراعي (تجريبي 1) | المستشار الزراعي |
 
 اختلاف معرّف الحزمة ضروري ليُثبَّت الإصداران معاً على الجهاز نفسه وليكون لكل منهما صفحة في المتجر.

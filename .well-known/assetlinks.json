@@ -2,7 +2,7 @@
   "relation": ["delegate_permission/common.handle_all_urls"],
   "target": {
     "namespace": "android_app",
-    "package_name": "ly.akakus.mustashar",
-    "sha256_cert_fingerprints": ["B5:16:6B:14:96:88:F1:6A:87:7C:03:D1:19:19:61:54:62:5D:5E:60:1F:91:CE:02:48:64:B0:4F:5C:D5:CF:CA"]
+    "package_name": "ly.almustashar.app",
+    "sha256_cert_fingerprints": ["D9:93:19:19:79:20:D6:D9:96:07:DE:B6:92:CB:C1:61:B6:F2:67:2A:B9:E8:A6:8B:72:DB:D7:CD:B1:20:46:CF"]
   }
 }]

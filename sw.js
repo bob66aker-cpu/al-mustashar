@@ -215,270 +215,13 @@
  * Personal data (IndexedDB history, theme, app version note) lives outside
  * the caches and is never touched by this worker.
  */
-const CACHE = 'mustashar-v85';
+const CACHE = 'mustashar-v86';
 const OCR_CACHE = 'mustashar-ocr';
 
-/* v85 — صور كتاب التوصيات (256 صورة، نحو 4.7 م.ب) تُحمَّل مرة واحدة بعد القشرة على دفعات
- * صغيرة ليعمل القسم بصوره دون إنترنت؛ فشل أي صورة لا يُفشل التثبيت، وهي خارج SHELL عمدًا
- * (عقد ppocr-size). */
-const TWS_IMG = [
-  './data/tws/img/p100-074.webp',
-  './data/tws/img/p100-075.webp',
-  './data/tws/img/p103-076.webp',
-  './data/tws/img/p104-077.webp',
-  './data/tws/img/p104-078.webp',
-  './data/tws/img/p106-079.webp',
-  './data/tws/img/p108-080.webp',
-  './data/tws/img/p109-081.webp',
-  './data/tws/img/p110-082.webp',
-  './data/tws/img/p111-083.webp',
-  './data/tws/img/p112-084.webp',
-  './data/tws/img/p113-085.webp',
-  './data/tws/img/p114-086.webp',
-  './data/tws/img/p114-087.webp',
-  './data/tws/img/p119-088.webp',
-  './data/tws/img/p124-089.webp',
-  './data/tws/img/p124-090.webp',
-  './data/tws/img/p124-091.webp',
-  './data/tws/img/p125-092.webp',
-  './data/tws/img/p125-093.webp',
-  './data/tws/img/p126-094.webp',
-  './data/tws/img/p128-095.webp',
-  './data/tws/img/p129-096.webp',
-  './data/tws/img/p129-097.webp',
-  './data/tws/img/p130-098.webp',
-  './data/tws/img/p130-099.webp',
-  './data/tws/img/p131-100.webp',
-  './data/tws/img/p131-101.webp',
-  './data/tws/img/p131-102.webp',
-  './data/tws/img/p132-103.webp',
-  './data/tws/img/p133-104.webp',
-  './data/tws/img/p134-105.webp',
-  './data/tws/img/p135-106.webp',
-  './data/tws/img/p135-107.webp',
-  './data/tws/img/p136-108.webp',
-  './data/tws/img/p139-109.webp',
-  './data/tws/img/p141-110.webp',
-  './data/tws/img/p141-111.webp',
-  './data/tws/img/p142-112.webp',
-  './data/tws/img/p144-113.webp',
-  './data/tws/img/p144-114.webp',
-  './data/tws/img/p147-115.webp',
-  './data/tws/img/p149-116.webp',
-  './data/tws/img/p152-117.webp',
-  './data/tws/img/p153-118.webp',
-  './data/tws/img/p153-119.webp',
-  './data/tws/img/p154-120.webp',
-  './data/tws/img/p155-121.webp',
-  './data/tws/img/p155-122.webp',
-  './data/tws/img/p156-123.webp',
-  './data/tws/img/p157-124.webp',
-  './data/tws/img/p159-125.webp',
-  './data/tws/img/p16-001.webp',
-  './data/tws/img/p160-126.webp',
-  './data/tws/img/p161-127.webp',
-  './data/tws/img/p162-128.webp',
-  './data/tws/img/p162-129.webp',
-  './data/tws/img/p163-130.webp',
-  './data/tws/img/p163-131.webp',
-  './data/tws/img/p164-132.webp',
-  './data/tws/img/p164-133.webp',
-  './data/tws/img/p165-134.webp',
-  './data/tws/img/p166-135.webp',
-  './data/tws/img/p167-136.webp',
-  './data/tws/img/p168-137.webp',
-  './data/tws/img/p169-138.webp',
-  './data/tws/img/p169-139.webp',
-  './data/tws/img/p169-140.webp',
-  './data/tws/img/p17-002.webp',
-  './data/tws/img/p170-141.webp',
-  './data/tws/img/p170-142.webp',
-  './data/tws/img/p171-143.webp',
-  './data/tws/img/p172-144.webp',
-  './data/tws/img/p174-145.webp',
-  './data/tws/img/p174-146.webp',
-  './data/tws/img/p176-147.webp',
-  './data/tws/img/p177-148.webp',
-  './data/tws/img/p178-149.webp',
-  './data/tws/img/p179-150.webp',
-  './data/tws/img/p18-003.webp',
-  './data/tws/img/p18-004.webp',
-  './data/tws/img/p180-151.webp',
-  './data/tws/img/p180-152.webp',
-  './data/tws/img/p181-153.webp',
-  './data/tws/img/p181-154.webp',
-  './data/tws/img/p182-155.webp',
-  './data/tws/img/p183-156.webp',
-  './data/tws/img/p183-157.webp',
-  './data/tws/img/p184-158.webp',
-  './data/tws/img/p184-159.webp',
-  './data/tws/img/p185-160.webp',
-  './data/tws/img/p186-161.webp',
-  './data/tws/img/p187-162.webp',
-  './data/tws/img/p188-163.webp',
-  './data/tws/img/p189-164.webp',
-  './data/tws/img/p190-165.webp',
-  './data/tws/img/p191-166.webp',
-  './data/tws/img/p191-167.webp',
-  './data/tws/img/p192-168.webp',
-  './data/tws/img/p192-169.webp',
-  './data/tws/img/p193-170.webp',
-  './data/tws/img/p193-171.webp',
-  './data/tws/img/p194-172.webp',
-  './data/tws/img/p194-173.webp',
-  './data/tws/img/p195-174.webp',
-  './data/tws/img/p195-175.webp',
-  './data/tws/img/p196-176.webp',
-  './data/tws/img/p196-177.webp',
-  './data/tws/img/p197-178.webp',
-  './data/tws/img/p198-179.webp',
-  './data/tws/img/p199-180.webp',
-  './data/tws/img/p20-005.webp',
-  './data/tws/img/p20-006.webp',
-  './data/tws/img/p200-181.webp',
-  './data/tws/img/p201-182.webp',
-  './data/tws/img/p202-183.webp',
-  './data/tws/img/p203-184.webp',
-  './data/tws/img/p203-185.webp',
-  './data/tws/img/p205-186.webp',
-  './data/tws/img/p206-187.webp',
-  './data/tws/img/p207-188.webp',
-  './data/tws/img/p208-189.webp',
-  './data/tws/img/p209-190.webp',
-  './data/tws/img/p21-007.webp',
-  './data/tws/img/p210-191.webp',
-  './data/tws/img/p211-192.webp',
-  './data/tws/img/p212-193.webp',
-  './data/tws/img/p214-194.webp',
-  './data/tws/img/p216-195.webp',
-  './data/tws/img/p216-196.webp',
-  './data/tws/img/p218-197.webp',
-  './data/tws/img/p218-198.webp',
-  './data/tws/img/p22-008.webp',
-  './data/tws/img/p22-009.webp',
-  './data/tws/img/p220-199.webp',
-  './data/tws/img/p221-200.webp',
-  './data/tws/img/p222-201.webp',
-  './data/tws/img/p223-202.webp',
-  './data/tws/img/p225-203.webp',
-  './data/tws/img/p226-204.webp',
-  './data/tws/img/p226-205.webp',
-  './data/tws/img/p227-206.webp',
-  './data/tws/img/p228-207.webp',
-  './data/tws/img/p23-010.webp',
-  './data/tws/img/p230-208.webp',
-  './data/tws/img/p231-209.webp',
-  './data/tws/img/p232-210.webp',
-  './data/tws/img/p233-211.webp',
-  './data/tws/img/p233-212.webp',
-  './data/tws/img/p234-213.webp',
-  './data/tws/img/p236-214.webp',
-  './data/tws/img/p237-215.webp',
-  './data/tws/img/p239-216.webp',
-  './data/tws/img/p24-011.webp',
-  './data/tws/img/p244-217.webp',
-  './data/tws/img/p249-218.webp',
-  './data/tws/img/p250-219.webp',
-  './data/tws/img/p250-220.webp',
-  './data/tws/img/p250-221.webp',
-  './data/tws/img/p251-222.webp',
-  './data/tws/img/p251-223.webp',
-  './data/tws/img/p252-224.webp',
-  './data/tws/img/p253-225.webp',
-  './data/tws/img/p253-226.webp',
-  './data/tws/img/p254-227.webp',
-  './data/tws/img/p255-228.webp',
-  './data/tws/img/p255-229.webp',
-  './data/tws/img/p256-230.webp',
-  './data/tws/img/p256-231.webp',
-  './data/tws/img/p257-232.webp',
-  './data/tws/img/p257-233.webp',
-  './data/tws/img/p258-234.webp',
-  './data/tws/img/p258-235.webp',
-  './data/tws/img/p259-236.webp',
-  './data/tws/img/p26-012.webp',
-  './data/tws/img/p260-237.webp',
-  './data/tws/img/p260-238.webp',
-  './data/tws/img/p261-239.webp',
-  './data/tws/img/p263-240.webp',
-  './data/tws/img/p265-241.webp',
-  './data/tws/img/p266-242.webp',
-  './data/tws/img/p267-243.webp',
-  './data/tws/img/p268-244.webp',
-  './data/tws/img/p269-245.webp',
-  './data/tws/img/p269-246.webp',
-  './data/tws/img/p27-013.webp',
-  './data/tws/img/p27-014.webp',
-  './data/tws/img/p270-247.webp',
-  './data/tws/img/p273-248.webp',
-  './data/tws/img/p273-249.webp',
-  './data/tws/img/p274-250.webp',
-  './data/tws/img/p276-251.webp',
-  './data/tws/img/p277-252.webp',
-  './data/tws/img/p277-253.webp',
-  './data/tws/img/p278-254.webp',
-  './data/tws/img/p278-255.webp',
-  './data/tws/img/p279-256.webp',
-  './data/tws/img/p28-015.webp',
-  './data/tws/img/p29-016.webp',
-  './data/tws/img/p30-017.webp',
-  './data/tws/img/p30-018.webp',
-  './data/tws/img/p32-019.webp',
-  './data/tws/img/p33-020.webp',
-  './data/tws/img/p34-021.webp',
-  './data/tws/img/p37-022.webp',
-  './data/tws/img/p38-023.webp',
-  './data/tws/img/p39-024.webp',
-  './data/tws/img/p42-025.webp',
-  './data/tws/img/p43-026.webp',
-  './data/tws/img/p44-027.webp',
-  './data/tws/img/p45-028.webp',
-  './data/tws/img/p45-029.webp',
-  './data/tws/img/p46-030.webp',
-  './data/tws/img/p46-031.webp',
-  './data/tws/img/p48-032.webp',
-  './data/tws/img/p51-033.webp',
-  './data/tws/img/p52-034.webp',
-  './data/tws/img/p53-035.webp',
-  './data/tws/img/p54-036.webp',
-  './data/tws/img/p55-037.webp',
-  './data/tws/img/p55-038.webp',
-  './data/tws/img/p56-039.webp',
-  './data/tws/img/p57-040.webp',
-  './data/tws/img/p58-041.webp',
-  './data/tws/img/p59-042.webp',
-  './data/tws/img/p59-043.webp',
-  './data/tws/img/p61-044.webp',
-  './data/tws/img/p61-045.webp',
-  './data/tws/img/p63-046.webp',
-  './data/tws/img/p64-047.webp',
-  './data/tws/img/p65-048.webp',
-  './data/tws/img/p66-049.webp',
-  './data/tws/img/p67-050.webp',
-  './data/tws/img/p67-051.webp',
-  './data/tws/img/p68-052.webp',
-  './data/tws/img/p69-053.webp',
-  './data/tws/img/p69-054.webp',
-  './data/tws/img/p70-055.webp',
-  './data/tws/img/p71-056.webp',
-  './data/tws/img/p72-057.webp',
-  './data/tws/img/p72-058.webp',
-  './data/tws/img/p73-059.webp',
-  './data/tws/img/p74-060.webp',
-  './data/tws/img/p75-061.webp',
-  './data/tws/img/p79-062.webp',
-  './data/tws/img/p80-063.webp',
-  './data/tws/img/p82-064.webp',
-  './data/tws/img/p85-065.webp',
-  './data/tws/img/p86-066.webp',
-  './data/tws/img/p87-067.webp',
-  './data/tws/img/p87-068.webp',
-  './data/tws/img/p90-069.webp',
-  './data/tws/img/p91-070.webp',
-  './data/tws/img/p92-071.webp',
-  './data/tws/img/p94-072.webp',
-  './data/tws/img/p97-073.webp'
-];
+/* v86 — صور كتاب التوصيات (256 صورة) تُحمَّل من الصفحة نفسها (src/tawsiyat.js) إلى كاش دائم مستقل
+ * عن إصدارات القشرة، بعدّاد ظاهر وإعادة محاولة؛ عامل الخدمة يقدّمها من هذا الكاش أولًا. */
+const TWS_IMG_CACHE = 'mustashar-tws-img';
+const isTwsImg = url => /\/data\/tws\/img\/[^/]+\.webp$/.test(url.pathname);
 
 
 /* 1.7 — safe cache write: a full storage quota (QuotaExceededError) must
@@ -679,13 +422,6 @@ self.addEventListener('install', e => {
       try { await cache.add(new Request(url, { cache: 'reload' })); }
       catch (err) { console.warn('[sw] data precache failed:', url, err); }
     }));
-    /* v85: صور التوصيات على دفعات من 12 — كل صورة مستقلة */
-    for (let i = 0; i < TWS_IMG.length; i += 12) {
-      await Promise.all(TWS_IMG.slice(i, i + 12).map(async url => {
-        try { if (!(await cache.match(url))) await cache.add(new Request(url)); }
-        catch (err) { console.warn('[sw] tws image precache failed:', url, err); }
-      }));
-    }
     /* v27: OCR assets and the zxing wasm deliberately stay OUT of install
      * (documented design, unchanged): ~8.7 MB must not delay SW activation
      * on a first visit. They enter the PERMANENT cache lazily — the
@@ -714,7 +450,7 @@ self.addEventListener('activate', e => {
          * which every engine can read regardless of SW version — mirroring
          * them here would duplicate ~17.6 MB on every future update. */
         for (const n of names) {
-          if (n === CACHE || n === OCR_CACHE || !/^mustashar-v\d+$/.test(n)) continue;
+          if (n === CACHE || n === OCR_CACHE || n === TWS_IMG_CACHE || !/^mustashar-v\d+$/.test(n)) continue;
           const old = await caches.open(n);
           for (const req of await old.keys()) {
             if (isOcrUrl(new URL(req.url))) continue;
@@ -726,7 +462,7 @@ self.addEventListener('activate', e => {
       } catch (err) { /* mirroring is best-effort; caches stay intact */ }
     }
     await Promise.all(names
-      .filter(n => n !== CACHE && n !== OCR_CACHE && !/^mustashar-v\d+$/.test(n))
+      .filter(n => n !== CACHE && n !== OCR_CACHE && n !== TWS_IMG_CACHE && !/^mustashar-v\d+$/.test(n))
       .map(n => caches.delete(n)));
     // only now, with everything mirrored, drop superseded versioned caches
     await Promise.all(names
@@ -789,6 +525,23 @@ self.addEventListener('fetch', e => {
       try {
         const fresh = await fetch(new Request(req, { cache: 'reload' }));
         if (fresh.ok) { await ocr.put(req, fresh.clone()); }
+        return fresh;
+      } catch (err) {
+        return new Response('offline', { status: 503 });
+      }
+    })());
+    return;
+  }
+
+  // صور التوصيات: كاش دائم أولًا، ثم القشرة، ثم الشبكة (وتُخزَّن عند أول جلب)
+  if (isTwsImg(url)) {
+    e.respondWith((async () => {
+      const own = await caches.open(TWS_IMG_CACHE);
+      const hit = (await own.match(req)) || (await (await caches.open(CACHE)).match(req));
+      if (hit) return hit;
+      try {
+        const fresh = await fetch(req);
+        if (fresh && fresh.ok && url.origin === location.origin) { try { await own.put(req, fresh.clone()); } catch (err) {} }
         return fresh;
       } catch (err) {
         return new Response('offline', { status: 503 });

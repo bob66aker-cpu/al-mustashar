@@ -63,7 +63,14 @@
   "a7_none": "—",
   "a7_error": "تعذّر تحميل الملحق 7",
   "rate_printed": "المطبوع",
-  "rate_kept": "بالفدان كما طُبع"
+  "rate_kept": "بالفدان كما طُبع",
+  "img_sync_title": "صور الكتاب للعمل دون إنترنت",
+  "img_sync_done": "محفوظة كاملة ({n} صورة)",
+  "img_sync_prog": "جارٍ الحفظ: {a} من {n}",
+  "img_sync_part": "محفوظ {a} من {n}",
+  "img_sync_fail": "تعذّر حفظ {f} صورة (رمز {c})",
+  "img_sync_btn": "حفظ الصور الآن",
+  "img_sync_offline": "يلزم اتصال بالإنترنت لحفظ الصور"
  },
  "en": {
   "title": "Crop recommendations",
@@ -126,7 +133,14 @@
   "a7_none": "—",
   "a7_error": "Could not load Appendix 7",
   "rate_printed": "printed",
-  "rate_kept": "per feddan, as printed"
+  "rate_kept": "per feddan, as printed",
+  "img_sync_title": "Book images for offline use",
+  "img_sync_done": "All saved ({n} images)",
+  "img_sync_prog": "Saving: {a} of {n}",
+  "img_sync_part": "Saved {a} of {n}",
+  "img_sync_fail": "Could not save {f} images (code {c})",
+  "img_sync_btn": "Save images now",
+  "img_sync_offline": "An internet connection is needed to save the images"
  },
  "fr": {
   "title": "Recommandations par culture",
@@ -189,7 +203,14 @@
   "a7_none": "—",
   "a7_error": "Impossible de charger l'annexe 7",
   "rate_printed": "imprimé",
-  "rate_kept": "par feddan, tel qu'imprimé"
+  "rate_kept": "par feddan, tel qu'imprimé",
+  "img_sync_title": "Images du livre hors ligne",
+  "img_sync_done": "Toutes enregistrées ({n} images)",
+  "img_sync_prog": "Enregistrement : {a} sur {n}",
+  "img_sync_part": "{a} enregistrées sur {n}",
+  "img_sync_fail": "Échec pour {f} images (code {c})",
+  "img_sync_btn": "Enregistrer les images",
+  "img_sync_offline": "Une connexion Internet est nécessaire pour enregistrer les images"
  },
  "zh": {
   "title": "作物推荐",
@@ -252,6 +273,13 @@
   "a7_none": "—",
   "a7_error": "无法加载附录7",
   "rate_printed": "原文",
-  "rate_kept": "按费丹,原文"
+  "rate_kept": "按费丹,原文",
+  "img_sync_title": "离线使用的手册图片",
+  "img_sync_done": "已全部保存（{n} 张）",
+  "img_sync_prog": "正在保存：{a} / {n}",
+  "img_sync_part": "已保存 {a} / {n}",
+  "img_sync_fail": "有 {f} 张图片保存失败（代码 {c}）",
+  "img_sync_btn": "立即保存图片",
+  "img_sync_offline": "保存图片需要联网"
  }
 }

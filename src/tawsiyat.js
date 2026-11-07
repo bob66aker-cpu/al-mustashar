@@ -61,6 +61,13 @@
       crop_conflict: 'تسمية محصول تحت المراجعة',
       'coverage': 'التغطية',
       coverage_line: 'من الكتاب: {c} بطاقة · {k} محصولاً',
+      img_sync_title: 'صور الكتاب للعمل دون إنترنت',
+      img_sync_done: 'محفوظة كاملة ({n} صورة)',
+      img_sync_prog: 'جارٍ الحفظ: {a} من {n}',
+      img_sync_part: 'محفوظ {a} من {n}',
+      img_sync_fail: 'تعذّر حفظ {f} صورة (رمز {c})',
+      img_sync_btn: 'حفظ الصور الآن',
+      img_sync_offline: 'يلزم اتصال بالإنترنت لحفظ الصور',
       'dose_note': 'المادة والتركيز وفترة الأمان وتصنيف WHO وقيم MRL مُساقَة حرفياً من جداول الكتاب. أما المعدل المطبوع بالفدان فيُعرض محوَّلاً إلى هكتار تقريباً (1 فدان ≈ 0.42 هكتار) ومعه المطبوع كما ورد — لا تُعرض هنا جرعات مخترعة.',
       'rate_printed': 'المطبوع',
       'rate_kept': 'بالفدان كما طُبع',
@@ -124,6 +131,13 @@
       crop_conflict: 'Crop label under review',
       'coverage': 'Coverage',
       coverage_line: 'From the book: {c} cards · {k} crops',
+      img_sync_title: 'Book images for offline use',
+      img_sync_done: 'All saved ({n} images)',
+      img_sync_prog: 'Saving: {a} of {n}',
+      img_sync_part: 'Saved {a} of {n}',
+      img_sync_fail: 'Could not save {f} images (code {c})',
+      img_sync_btn: 'Save images now',
+      img_sync_offline: 'An internet connection is needed to save the images',
       'dose_note': 'Ingredient, concentration, PHI, WHO class and MRL values are quoted verbatim from the book tables. A rate printed per feddan is shown converted to per hectare (1 feddan ≈ 0.42 ha), with the printed value beside it — no invented doses here.',
       'rate_printed': 'printed',
       'rate_kept': 'per feddan, as printed',
@@ -251,6 +265,66 @@
       return r.json();
     });
   }
+  /* ---------- حفظ صور الكتاب للعمل دون إنترنت (من الصفحة، بعدّاد ظاهر) ---------- */
+  var IMG_CACHE = 'mustashar-tws-img';
+  var IMG = { list: null, have: 0, n: 0, fail: 0, code: '', busy: false, started: false };
+  function imgBoxHtml() {
+    if (!IMG.n) return '';
+    var s;
+    if (IMG.have >= IMG.n) s = L('img_sync_done').replace('{n}', IMG.n);
+    else if (IMG.busy) s = L('img_sync_prog').replace('{a}', IMG.have).replace('{n}', IMG.n);
+    else s = L('img_sync_part').replace('{a}', IMG.have).replace('{n}', IMG.n)
+      + (IMG.fail ? ' · ' + L('img_sync_fail').replace('{f}', IMG.fail).replace('{c}', IMG.code) : '')
+      + (navigator.onLine === false ? ' · ' + L('img_sync_offline') : '');
+    var btn = (IMG.have < IMG.n && !IMG.busy) ? ' <button type="button" class="tws-btn" data-tws-imgsync>' + esc(L('img_sync_btn')) + '</button>' : '';
+    return '<b>' + esc(L('img_sync_title')) + ':</b> ' + esc(s) + btn;
+  }
+  function imgPaint() {
+    var el = document.getElementById('twsImgSync');
+    if (el) el.innerHTML = imgBoxHtml();
+  }
+  function imgSync() {
+    if (!('caches' in window) || IMG.busy) return Promise.resolve();
+    IMG.busy = true; IMG.fail = 0; IMG.code = '';
+    var base = document.baseURI || location.href;
+    return (IMG.list ? Promise.resolve(IMG.list) : fetchJSON('data/tws/img-list.json').then(function (l) { IMG.list = l; return l; }))
+      .then(function (list) {
+        IMG.n = list.length;
+        return caches.open(IMG_CACHE).then(function (c) {
+          return c.keys().then(function (ks) {
+            var have = {}; ks.forEach(function (r) { have[new URL(r.url).pathname] = 1; });
+            var todo = [];
+            list.forEach(function (f) {
+              var u = new URL('data/tws/img/' + f, base);
+              if (have[u.pathname]) return;
+              todo.push(u.href);
+            });
+            IMG.have = list.length - todo.length; imgPaint();
+            if (!todo.length) return;
+            if (navigator.onLine === false) return;
+            var idx = 0, tick = 0;
+            function worker() {
+              if (idx >= todo.length) return Promise.resolve();
+              var u = todo[idx++];
+              return fetch(u).then(function (r) {
+                if (!r.ok) { IMG.fail++; IMG.code = r.status; return; }
+                return c.put(u, r).then(function () { IMG.have++; });
+              }).catch(function (e) { IMG.fail++; IMG.code = (e && e.name) || 'net'; })
+                .then(function () { if (++tick % 6 === 0) imgPaint(); return worker(); });
+            }
+            return Promise.all([worker(), worker(), worker(), worker()]);
+          });
+        });
+      })
+      .catch(function (e) { IMG.fail++; IMG.code = (e && e.name) || 'err'; })
+      .then(function () { IMG.busy = false; imgPaint(); });
+  }
+  document.addEventListener('click', function (e) {
+    var b = e.target && e.target.closest && e.target.closest('[data-tws-imgsync]');
+    if (b) imgSync();
+  });
+  window.addEventListener('online', function () { if (IMG.n && IMG.have < IMG.n) imgSync(); });
+
   function loadIndex() {
     if (S.load) return S.load;
     S.load = Promise.all([
@@ -498,8 +572,10 @@
     }
     html += '<p class="tws-foot">' + esc(L('coverage_line')
       .replace('{d}', cnt.dossiers || '—').replace('{c}', cnt.cards || '—').replace('{k}', cnt.crops || '—'))
-      + ' · ' + esc(man.built || '') + '<br>' + esc(L('dose_note')) + '</p></div>';
+      + ' · ' + esc(man.built || '') + '<br>' + esc(L('dose_note')) + '</p>'
+      + '<p class="tws-foot" id="twsImgSync" aria-live="polite">' + imgBoxHtml() + '</p></div>';
     sec.innerHTML = html;
+    if (!IMG.started) { IMG.started = true; imgSync(); } else imgPaint();
   }
 
   /* ---------- الملحق 7 (محاصيل مساحاتها أقل من 50 ألف فدان) ---------- */

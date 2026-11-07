@@ -346,6 +346,7 @@
     '.tws-gallery figure{margin:0}',
     '.tws-gallery img{transition:transform .25s ease,box-shadow .25s ease}',
     '@media (hover:hover){.tws-gallery figure:hover img{transform:translateY(-3px) scale(1.04);box-shadow:0 10px 24px rgba(0,0,0,.28)}}',
+    '@media (hover:none){.tws-gallery figure:active img{transform:translateY(-3px) scale(1.04);box-shadow:0 10px 24px rgba(0,0,0,.28)}}',
     '.tws-gallery.rv figure{opacity:0;transform:translateY(10px);transition:opacity .45s ease,transform .45s ease}',
     '.tws-gallery.rv figure.in{opacity:1;transform:none}',
     '@media (prefers-reduced-motion:reduce){.tws-gallery.rv figure{opacity:1;transform:none;transition:none}.tws-gallery img{transition:none}.tws-gallery figure:hover img{transform:none}}',

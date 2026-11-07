@@ -1,0 +1,8 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "ly.akakus.mustashar",
+    "sha256_cert_fingerprints": ["B5:16:6B:14:96:88:F1:6A:87:7C:03:D1:19:19:61:54:62:5D:5E:60:1F:91:CE:02:48:64:B0:4F:5C:D5:CF:CA"]
+  }
+}]

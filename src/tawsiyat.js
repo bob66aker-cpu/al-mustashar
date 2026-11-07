@@ -323,7 +323,15 @@
     var b = e.target && e.target.closest && e.target.closest('[data-tws-imgsync]');
     if (b) imgSync();
   });
-  window.addEventListener('online', function () { if (IMG.n && IMG.have < IMG.n) imgSync(); });
+  window.addEventListener('online', function () { if (!IMG.started) { IMG.started = true; imgSync(); } else if (IMG.n && IMG.have < IMG.n) imgSync(); });
+  /* تلقائيًا من أول تشغيل وبلا أي إجراء من المستخدم: مرة واحدة بعد اكتمال تحميل التطبيق، ويستأنف عند عودة الاتصال */
+  function imgAuto() {
+    setTimeout(function () {
+      if (navigator.onLine === false) return;
+      if (!IMG.started) { IMG.started = true; imgSync(); }
+    }, 2500);
+  }
+  if (document.readyState === 'complete') imgAuto(); else window.addEventListener('load', imgAuto);
 
   function loadIndex() {
     if (S.load) return S.load;

@@ -58,15 +58,20 @@ jobs:
           git config user.name "db-refresh"; git config user.email "db-refresh@users.noreply.github.com"
           git checkout -b "data-refresh/$D"
           git add -A && git commit -m "data: refresh Canada + Australia ($D)"
-          git push origin "data-refresh/$D"
-          gh pr create --base "$V2" --title "data: 15-day refresh $D" --body "Canada + Australia rebuilt and stamped. EU/EPA: see the open issue 'EU/EPA 15-day refresh'. Review the diff counts (>2% change = read the rows) before merging. Libya excluded."
+          git push -f origin "data-refresh/$D"
+          echo "BRANCH=data-refresh/$D" >> "$GITHUB_ENV"
+          gh pr create --base "$V2" --title "data: 15-day refresh $D" --body "Canada + Australia rebuilt and stamped. EU/EPA: see the open issue 'EU/EPA 15-day refresh'. Review the diff counts (>2% change = read the rows) before merging. Libya excluded." || echo "PR creation not permitted by repo setting; branch pushed, see issue for compare link"
       - name: Open or update the EU/EPA issue
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           STALE=$(node -e "const r=require('/tmp/fresh.json');console.log(r.rows.filter(x=>x.stale&&['eu','epa','epa-cancelled'].includes(x.db)).map(x=>x.db+' ('+x.age_days+'d)').join(', '))")
-          [ -z "$STALE" ] && { echo "EU/EPA fresh"; exit 0; }
-          BODY="Overdue (max 15 days): $STALE
+          CMP=""
+          [ -n "$BRANCH" ] && CMP="Canada/Australia branch ready for review: https://github.com/${{ github.repository }}/compare/$V2...$BRANCH?expand=1"
+          [ -z "$STALE" ] && [ -z "$CMP" ] && { echo "nothing to report"; exit 0; }
+          BODY="Overdue (max 15 days): ${STALE:-none}
+
+          $CMP
 
           $(cat /tmp/probe.md)
 

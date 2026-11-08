@@ -1,0 +1,6 @@
+dc39a37a 000  0fail https://data.europa.eu/api/hub/repo/datasets/pesticides.jsonld
+9b3e05ed 200 application/json 310004 https://data.europa.eu/api/hub/search/datasets/pesticides
+22d85a71 200 text/html 146109 https://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/start/screen/active-substances
+be6c1df6 200 text/html 146109 https://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/start/screen/mrls/download
+3112b20d 200 text/html; charset=utf-8 95990 https://food.ec.europa.eu/plants/pesticides/eu-pesticides-database_en
+EU 200 application/x-ndjson; charset=utf-8 10104321

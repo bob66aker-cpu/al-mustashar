@@ -1,0 +1,16 @@
+== out/eu/22d85a71.body
+== out/eu/3112b20d.body
+/document/download/7c32875b-720e-4c48-a463-ae5b0f3fde2d_en?filename=pesticides_legis_national-authorities.pdf
+download
+https://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/start/screen/mrls/download
+== out/eu/9b3e05ed.body
+Download
+Downloadable
+Downloadbaar
+download_url
+downloades,
+https://api.datalake.sante.service.ec.europa.eu/files/download?file_name=Pesticides-APIs-V3.0.pdf&api-version=v1.0
+https://api.datalake.sante.service.ec.europa.eu/sante/pesticides/active-substances-download?format=json&api-version=v3.0
+https://api.datalake.sante.service.ec.europa.eu/sante/pesticides/pesticide-residues-mrls-download?language_code=EN&format=json&api-version=v3.0
+https://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/start/screen/mrls/download
+== out/eu/be6c1df6.body

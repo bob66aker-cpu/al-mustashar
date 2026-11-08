@@ -1,0 +1,48 @@
+00No Record Obtainable                                                          
+01Renewal Not Requested                                                         
+02Company Request                                                               
+03Product Recall Notices                                                        
+04EPA Letter                                                                    
+05Company Combined/Replaced                                                     
+06Not Under FIFRA                                                               
+07IFR Docket                                                                    
+08Undeliverable Mail                                                            
+09Out of Business                                                               
+0NNew Pest                                                                      
+0OOther                                                                         
+0RResistance development                                                        
+0WWeather Conditions                                                            
+10Federal Register                                                              
+11Transfer of Product                                                           
+12Device                                                                        
+13Limited Use Termination                                                       
+21Data Call-in Notification                                                     
+22Reg. Standard Call-in Notice                                                  
+23Special Review Action                                                         
+24Label Improvement Program                                                     
+26Other Agency Action                                                           
+27Non-Food Use Call-in                                                          
+28Generic Data Exemption Call-in                                                
+29Unknown Reason Code                                                           
+30Unknown                                                                       
+31Final Intrastate Cancellation                                                 
+32Maint. Fee Non-Payment - Registrant Req.                                      
+33Maint. Fee Non-Payment - No Response                                          
+34Maint. Fee Non-Payment - Undeliverable                                        
+35Pending Cancellation                                                          
+40Unknown Reason Code                                                           
+41Reregistration Transfer                                                       
+42Clean-Up Transfer                                                             
+43Reregistration Unsupported Chemical                                           
+44Registration Revocation                                                       
+45Cancellation Proceeding                                                       
+46Incomplete Action                                                             
+47Crisis                                                                        
+48Administrative Withdrawal                                                     
+49Time Limited Registration - Expired                                           
+50one-time expiration clean-up                                                  
+51Section 18 Automatic Expiration                                               
+ARAlt. Cancelled Under Reregistration                                           
+ASAlt. Cancelled Under Special Review                                           
+CRUse Cancelled Under Reregistration                                            
+CSUse Cancelled Under Special Review                                            

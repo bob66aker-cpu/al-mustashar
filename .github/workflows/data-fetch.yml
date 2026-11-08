@@ -32,6 +32,11 @@ jobs:
             echo "$n $code $u" | tee -a out/eu/probe.txt
           done
           for f in out/eu/*.body; do echo "== $f"; grep -oiE 'https?://[^"'"'"' <>]+\.(csv|xlsx?|json|zip)[^"'"'"' <>]*|[^"'"'"' <>]*(download|export)[^"'"'"' <>]*' "$f" | sort -u | head -25; done | tee out/eu/links.txt
+      - name: Fetch EU active substances (official API v3)
+        run: |
+          UA="AlMustashar-datafetch/1.0 (bob66aker@gmail.com)"
+          curl -sS -L -m 180 -A "$UA" -o out/eu/active-substances.json -D out/eu/active-substances.headers "https://api.datalake.sante.service.ec.europa.eu/sante/pesticides/active-substances-download?format=json&api-version=v3.0" -w 'EU %{http_code} %{content_type} %{size_download}\n' | tee -a out/eu/probe.txt
+          head -c 1500 out/eu/active-substances.json; echo
       - name: Publish raw results
         run: |
           git config user.name data-fetch; git config user.email data-fetch@users.noreply.github.com

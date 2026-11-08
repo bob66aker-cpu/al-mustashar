@@ -7,16 +7,16 @@
   "license": "OGL-Canada",
   "license_url": "https://open.canada.ca/en/open-government-licence-canada",
   "attribution_en": "Contains information licensed under the Open Government Licence – Canada.",
-  "retrieved_date": "2026-11-03",
+  "retrieved_date": "2026-11-08",
   "count": 1318,
-  "product_count": 21855,
+  "product_count": 21860,
   "cas_present": 974,
   "cas_empty": 344,
   "cas_nonstandard": 0,
   "optional": true,
   "built_with": "scripts/build-canada.mjs",
   "schema": "name,name_fr,name_norm,cas,cas_raw,cas_norm,status,status_raw,category,source,row",
-  "sha256": "f294b978c8a6523a6f2f6e06b744d2fc170047ba271fb23fc47f6629878c4da4"
+  "sha256": "9a8842cc4335d57eb47cde9a09f77429ef056900f72761b6576f540615ea2fb2"
  },
  "rows": [
   {

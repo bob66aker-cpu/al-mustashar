@@ -1,8 +1,9 @@
-# تحديث قواعد البيانات الدولية كل 15 يومًا (الأول والسادس عشر من كل شهر).
-# يبني القاعدتين المؤتمتتين (كندا، أستراليا) ويختم التواريخ ثم يفتح طلب دمج للمراجعة —
-# لا يدمج ولا ينشر أبدًا. EU و EPA تُحدَّثان يدويًا وفق docs/data-update-guide.md
-# ويُدرجان في نص الطلب كمهمة معلّقة. القواعد الليبية مستثناة.
-# ملاحظة: GitHub لا يشغّل الجدولة إلا من الفرع الافتراضي للمستودع.
+# دورة تحديث قواعد البيانات الدولية كل 15 يومًا (1 و16 من كل شهر).
+# هذا الملف موجود في الفرع الافتراضي main لأن GitHub لا يشغّل الجدولة إلا منه،
+# لكنه يسحب كود فرع V2 ويعمل عليه، ويفتح طلب الدمج نحو V2. لا يدمج ولا ينشر أبدًا.
+# 1) كندا وأستراليا: تُبنيان آليًا ويُختم تاريخهما.
+# 2) EU وEPA: يفحص الحداثة، ويجرّب روابط المصادر الرسمية من خادم GitHub (له إنترنت كامل)،
+#    ثم يفتح/يحدّث issue واحدًا بالمطلوب يدويًا مع نتيجة الفحص. القواعد الليبية مستثناة.
 name: db-refresh
 on:
   schedule:
@@ -11,22 +12,40 @@ on:
 permissions:
   contents: write
   pull-requests: write
+  issues: write
+env:
+  V2: experimental-v2-tawsiyat-text-2026-10-29
 jobs:
   refresh:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.V2 }}
       - uses: actions/setup-node@v4
         with:
           node-version: 22
       - name: Freshness before
-        run: node scripts/db-freshness.mjs || true
+        run: node scripts/db-freshness.mjs --json > /tmp/fresh.json || true
+      - name: Probe EU/EPA official sources (report only)
+        run: |
+          {
+            echo "### Source probe $(date -u +%F)"
+            for u in \
+              "https://food.ec.europa.eu/plants/pesticides/eu-pesticides-database_en" \
+              "https://food.ec.europa.eu/system/tdm?filename=eu_pesticides_database_substances.json" \
+              "https://www.epa.gov/pesticide-registration-services-and-compliance/pesticide-registration-datasets" \
+              "https://www.fao.org/fao-who-codexalimentarius/codex-texts/dbs/pests/en/"; do
+              c=$(curl -s -o /dev/null -L -m 30 -w '%{http_code} %{content_type}' "$u" || echo "fail")
+              echo "- $c  $u"
+            done
+          } | tee /tmp/probe.md
       - name: Build Canada
         run: node scripts/build-canada.mjs
       - name: Build Australia
         run: node scripts/build-australia.mjs
-      - name: Stamp dates (international only)
+      - name: Stamp dates (international automated only)
         run: node scripts/stamp-datacheck.mjs canada australia
       - name: Verify
         run: node tests/data-packs.test.mjs && node tests/verify.mjs
@@ -40,4 +59,17 @@ jobs:
           git checkout -b "data-refresh/$D"
           git add -A && git commit -m "data: refresh Canada + Australia ($D)"
           git push origin "data-refresh/$D"
-          gh pr create --title "data: 15-day refresh $D" --body "Canada + Australia rebuilt and stamped. PENDING MANUAL: EU (data/eu.json) and EPA (data/epa.json) per docs/data-update-guide.md, then node scripts/stamp-datacheck.mjs eu epa epa-cancelled. Libya excluded. Review the diff counts (>2% change = read the rows) before merging."
+          gh pr create --base "$V2" --title "data: 15-day refresh $D" --body "Canada + Australia rebuilt and stamped. EU/EPA: see the open issue 'EU/EPA 15-day refresh'. Review the diff counts (>2% change = read the rows) before merging. Libya excluded."
+      - name: Open or update the EU/EPA issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          STALE=$(node -e "const r=require('/tmp/fresh.json');console.log(r.rows.filter(x=>x.stale&&['eu','epa','epa-cancelled'].includes(x.db)).map(x=>x.db+' ('+x.age_days+'d)').join(', '))")
+          [ -z "$STALE" ] && { echo "EU/EPA fresh"; exit 0; }
+          BODY="Overdue (max 15 days): $STALE
+
+          $(cat /tmp/probe.md)
+
+          Procedure: docs/data-update-guide.md. After refresh: node scripts/stamp-datacheck.mjs eu epa epa-cancelled. Libya excluded."
+          N=$(gh issue list --state open --search 'EU/EPA 15-day refresh in:title' --json number -q '.[0].number')
+          if [ -n "$N" ]; then gh issue comment "$N" --body "$BODY"; else gh issue create --title "EU/EPA 15-day refresh" --body "$BODY"; fi

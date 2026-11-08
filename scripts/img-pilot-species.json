@@ -1,0 +1,19 @@
+[
+{"id":"rpw","ar":"سوسة النخيل الحمراء","names":["Rhynchophorus ferrugineus"]},
+{"id":"sli","ar":"دودة ورق القطن","names":["Spodoptera littoralis"]},
+{"id":"sfr","ar":"دودة الحشد الخريفية","names":["Spodoptera frugiperda"]},
+{"id":"tuta","ar":"توتا أبسليوتا","names":["Tuta absoluta"]},
+{"id":"lblight","ar":"الندوة المتأخرة","names":["Phytophthora infestans"]},
+{"id":"eblight","ar":"الندوة المبكرة (البدرية)","names":["Alternaria solani"]},
+{"id":"ptm","ar":"دودة درنات البطاطس","names":["Phthorimaea operculella"]},
+{"id":"peachcurl","ar":"تجعد أوراق الخوخ","names":["Taphrina deformans"]},
+{"id":"earias","ar":"دودة اللوز الشوكية","names":["Earias insulana"]},
+{"id":"sesamia","ar":"دودة القصب الكبرى","names":["Sesamia cretica"]},
+{"id":"cassida","ar":"خنفساء البنجر السلحفائية","names":["Cassida vittata"]},
+{"id":"fsmut","ar":"التفحم الكاذب (الأرز)","names":["Ustilaginoidea virens"]},
+{"id":"blast","ar":"لفحة الأرز","names":["Magnaporthe oryzae","Pyricularia oryzae"]},
+{"id":"dm","ar":"البياض الزغبي (العنب)","names":["Plasmopara viticola"]},
+{"id":"rhizo","ar":"القشرة السوداء (البطاطس)","names":["Rhizoctonia solani"]},
+{"id":"smut","ar":"تفحم القمح السائب","names":["Ustilago tritici","Ustilago nuda"]},
+{"id":"medfly","ar":"ذبابة ثمار البحر المتوسط","names":["Ceratitis capitata"]}
+]

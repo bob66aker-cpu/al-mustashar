@@ -1,0 +1,23 @@
+name: img-pilot
+on:
+  push:
+    branches: [img-pilot-work]
+    paths: ['scripts/img-pilot.mjs','scripts/img-pilot-species.json','.github/workflows/img-pilot.yml']
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: node scripts/img-pilot.mjs scripts/img-pilot-species.json
+      - name: Publish results to branch img-pilot-results
+        run: |
+          git config user.name img-pilot; git config user.email img-pilot@users.noreply.github.com
+          git checkout --orphan img-pilot-results
+          git rm -rf --cached . >/dev/null 2>&1 || true
+          git add -f img-pilot
+          git commit -qm "img-pilot results"
+          git push -f origin img-pilot-results

@@ -67,6 +67,18 @@
       img_sync_part: 'محفوظ {a} من {n}',
       img_sync_fail: 'تعذّر حفظ {f} صورة (رمز {c})',
       img_sync_btn: 'حفظ الصور الآن',
+      gal_h: "معرض صور الآفة أو المرض",
+      gal_book: "من الكتاب",
+      gal_organism: "صورة الآفة",
+      gal_host: "على المحصول",
+      gal_dl: "تحميل صور هذا المحصول ({n} صورة، {mb} ميغابايت)",
+      gal_prog: "جارٍ تحميل الصور: {a} من {n}",
+      gal_done: "صور المعرض محفوظة على جهازك للعمل دون إنترنت.",
+      gal_fail: "تعذّر تحميل بعض الصور ({f}). أعد المحاولة.",
+      gal_offline: "يلزم اتصال بالإنترنت مرة واحدة لتحميل صور هذا المحصول.",
+      gal_src: "المصدر",
+      gal_by: "المؤلف",
+      gal_hint: "صور مفتوحة الترخيص إضافة إلى صور الكتاب. تُحمَّل عند طلبك فقط وتخص محصولًا واحدًا.",
       img_sync_offline: 'يلزم اتصال بالإنترنت لحفظ الصور',
       'dose_note': 'المادة والتركيز وفترة الأمان وتصنيف WHO وقيم MRL مُساقَة حرفياً من جداول الكتاب. أما المعدل المطبوع بالفدان فيُعرض محوَّلاً إلى هكتار تقريباً (1 فدان ≈ 0.42 هكتار) ومعه المطبوع كما ورد — لا تُعرض هنا جرعات مخترعة.',
       'rate_printed': 'المطبوع',
@@ -137,6 +149,18 @@
       img_sync_part: 'Saved {a} of {n}',
       img_sync_fail: 'Could not save {f} images (code {c})',
       img_sync_btn: 'Save images now',
+      gal_h: "Pest or disease photo gallery",
+      gal_book: "From the book",
+      gal_organism: "Pest photo",
+      gal_host: "On the crop",
+      gal_dl: "Download this crop's photos ({n} photos, {mb} MB)",
+      gal_prog: "Downloading photos: {a} of {n}",
+      gal_done: "Gallery photos are saved on your device for offline use.",
+      gal_fail: "Some photos could not be downloaded ({f}). Try again.",
+      gal_offline: "An internet connection is needed once to download this crop's photos.",
+      gal_src: "Source",
+      gal_by: "Author",
+      gal_hint: "Openly licensed photos in addition to the book's images. Downloaded only on request, one crop at a time.",
       img_sync_offline: 'An internet connection is needed to save the images',
       'dose_note': 'Ingredient, concentration, PHI, WHO class and MRL values are quoted verbatim from the book tables. A rate printed per feddan is shown converted to per hectare (1 feddan ≈ 0.42 ha), with the printed value beside it — no invented doses here.',
       'rate_printed': 'printed',
@@ -434,6 +458,9 @@
     '@media (prefers-reduced-motion:reduce){.tws-gallery.rv figure{opacity:1;transform:none;transition:none}.tws-gallery img{transition:none}.tws-gallery figure:hover img{transform:none}}',
     '.tws-gallery img{width:100%;height:auto;border-radius:10px;border:1px solid var(--border);display:block;background:var(--field)}',
     '.tws-gallery figcaption{color:var(--muted);font-size:.7rem;text-align:center;margin-top:3px}',
+    '.tws-bdg{display:inline-block;border:1px solid var(--border);border-radius:999px;padding:0 7px;font-size:.66rem;font-weight:700;color:var(--text,inherit);background:var(--field)}',
+    '.tws-bdg.book{border-style:dashed}.tws-bdg.org{border-style:solid}.tws-bdg.host{border-width:2px}',
+    '.tws-gallery figcaption a{color:inherit;text-decoration:underline}',
     '.tws-prod{border:1px solid var(--border);border-radius:10px;padding:10px 12px;margin:0 0 8px;background:var(--field)}',
     '.tws-prod .act{font-size:.9rem;line-height:1.7;margin:0 0 6px}',
     '.tws-prod .act .nm{direction:ltr;unicode-bidi:embed}',
@@ -829,6 +856,88 @@
   }
 
   /* ---------- عرض البطاقة (من sections.json) ---------- */
+
+  /* ---------- معرض صور الآفة/المرض: صور مفتوحة الترخيص، تُحمَّل حسب المحصول وعند الطلب فقط ---------- */
+  var GAL_CACHE = 'mustashar-tws-gallery';
+  var GAL = { idx: null, man: {}, busy: {} };
+  function galJSON(url) {
+    var base = document.baseURI || location.href, u = new URL(url, base).href;
+    var save = function (j) {
+      if ('caches' in window) caches.open(GAL_CACHE).then(function (c) { return c.put(u, new Response(JSON.stringify(j), { headers: { 'content-type': 'application/json' } })); }).catch(function () {});
+      return j;
+    };
+    return fetchJSON(url).then(save).catch(function (e) {
+      if (!('caches' in window)) throw e;
+      return caches.open(GAL_CACHE).then(function (c) { return c.match(u); }).then(function (r) { if (!r) throw e; return r.json(); });
+    });
+  }
+  function galUrl(f) { return new URL('data/tws/gallery/img/' + f, document.baseURI || location.href).href; }
+  function galHave(items) {
+    if (!('caches' in window)) return Promise.resolve(false);
+    return caches.open(GAL_CACHE).then(function (c) {
+      return Promise.all(items.map(function (it) { return c.match(galUrl(it.file)); })).then(function (rs) { return rs.every(function (r) { return !!r; }); });
+    }).catch(function () { return false; });
+  }
+  function galBadge(kind) {
+    var k = kind === 'host' ? 'gal_host' : 'gal_organism';
+    return '<span class="tws-bdg ' + (kind === 'host' ? 'host' : 'org') + '">' + esc(L(k)) + '</span>';
+  }
+  function galFigs(items, name) {
+    return '<div class="tws-gallery">' + items.map(function (it) {
+      return '<figure><img src="' + esc(galUrl(it.file)) + '" width="' + esc(it.w) + '" height="' + esc(it.h) + '" loading="lazy" alt="' + esc(name) + '">'
+        + '<figcaption>' + galBadge(it.kind) + '<br>' + esc(L('gal_by')) + ': <span dir="auto">' + esc(it.author) + '</span> · ' + esc(it.license)
+        + ' · <a href="' + esc(it.page) + '" target="_blank" rel="noopener noreferrer">' + esc(L('gal_src')) + '</a></figcaption></figure>';
+    }).join('') + '</div>';
+  }
+  function galPaint(el, cropId, n, name) {
+    galJSON('data/tws/gallery/' + cropId + '.json').then(function (man) {
+      GAL.man[cropId] = man;
+      var mine = man.items.filter(function (x) { return String(x.n) === String(n); });
+      if (!mine.length) { el.innerHTML = ''; return; }
+      return galHave(man.items).then(function (all) {
+        if (all) { el.innerHTML = '<h3>' + esc(L('gal_h')) + '</h3>' + galFigs(mine, name) + '<p class="tws-foot">' + esc(L('gal_done')) + '</p>'; return; }
+        var bytes = man.items.reduce(function (a, x) { return a + x.bytes; }, 0);
+        var btn = L('gal_dl').replace('{n}', man.items.length).replace('{mb}', String(Math.round(bytes / 104857.6) / 10));
+        var off = (typeof navigator !== 'undefined' && navigator.onLine === false);
+        el.innerHTML = '<h3>' + esc(L('gal_h')) + '</h3><p class="tws-foot">' + esc(L('gal_hint')) + '</p>'
+          + '<p><button type="button" class="tws-btn" data-tws-gal="' + esc(cropId) + '"' + (off ? ' disabled' : '') + '>' + esc(btn) + '</button></p>'
+          + (off ? '<p class="tws-foot">' + esc(L('gal_offline')) + '</p>' : '') + '<p class="tws-foot" id="twsGalProg" aria-live="polite"></p>';
+      });
+    }).catch(function () { el.innerHTML = ''; });
+  }
+  function galDownload(cropId, el, n, name) {
+    var man = GAL.man[cropId]; if (!man || GAL.busy[cropId] || !('caches' in window)) return;
+    GAL.busy[cropId] = true;
+    var prog = function (t) { var p = document.getElementById('twsGalProg'); if (p) p.textContent = t; };
+    var fail = 0, code = '', done = 0, total = man.items.length;
+    prog(L('gal_prog').replace('{a}', 0).replace('{n}', total));
+    caches.open(GAL_CACHE).then(function (c) {
+      var q = man.items.slice(), workers = [];
+      function next() {
+        var it = q.shift(); if (!it) return Promise.resolve();
+        var u = galUrl(it.file);
+        return c.match(u).then(function (hit) {
+          if (hit) { done++; return; }
+          return fetch(u).then(function (r) {
+            if (!r.ok) { fail++; code = r.status; return; }
+            return c.put(u, r).then(function () { done++; });
+          }).catch(function (e) { fail++; code = (e && e.name) || 'net'; });
+        }).then(function () { prog(L('gal_prog').replace('{a}', done).replace('{n}', total)); return next(); });
+      }
+      for (var i = 0; i < 3; i++) workers.push(next());
+      return Promise.all(workers);
+    }).catch(function () { fail++; }).then(function () {
+      GAL.busy[cropId] = false;
+      if (fail) { prog(L('gal_fail').replace('{f}', fail + (code ? ' ' + code : ''))); return; }
+      galPaint(el, cropId, n, name);
+    });
+  }
+  document.addEventListener('click', function (e) {
+    var b = e.target && e.target.closest && e.target.closest('[data-tws-gal]'); if (!b) return;
+    var el = document.getElementById('twsGal2'); if (!el) return;
+    galDownload(b.getAttribute('data-tws-gal'), el, el.getAttribute('data-n'), el.getAttribute('data-name'));
+  });
+
   function renderCard(c, type, n, sec) {
     var inf = null;
     (c.infections || []).forEach(function (x) {
@@ -862,12 +971,13 @@
         html += '<h3>' + esc(L('images')) + '</h3><div class="tws-gallery">';
         s.images.forEach(function (im) {
           html += '<figure><img src="data/tws/img/' + esc(im.file) + '" width="' + esc(im.w) + '" height="' + esc(im.h) + '" loading="lazy" alt="' + esc(tx(s, 'name', s.name_ar)) + ' — ' + esc(L('page')) + ' ' + esc(im.pdf_page) + '">'
-            + '<figcaption>' + esc(L('page')) + ' ' + esc(im.pdf_page - (man.source && man.source.printed_offset || 13)) + '</figcaption></figure>';
+            + '<figcaption><span class="tws-bdg book">' + esc(L('gal_book')) + '</span><br>' + esc(L('page')) + ' ' + esc(im.pdf_page - (man.source && man.source.printed_offset || 13)) + '</figcaption></figure>';
         });
         html += '</div>';
       }
 
       if (s.images && s.images.length) { setTimeout(revealGallery, 0); }
+      html += '<div id="twsGal2" data-n="' + esc(s.n) + '" data-name="' + esc(tx(s, 'name', s.name_ar)) + '"></div>';
 
       if (s.symptom && s.symptom.length) {
         var symEn = tx(s, 'symptom', null);
@@ -942,6 +1052,7 @@
       html += '<div class="tws-note info">' + esc(L('dose_note')) + '</div>';
       html += '</div>' + footer(true) + '</div>';
       sec.innerHTML = html;
+      galPaint(document.getElementById('twsGal2'), c.id, s.n, tx(s, 'name', s.name_ar));
       window.scrollTo && window.scrollTo(0, 0);
     }).catch(function () {
       sec.innerHTML = wrap(errorPanel(L('detail_error_title'), '#/tws/' + esc(c.id)));

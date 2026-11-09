@@ -70,7 +70,19 @@
   "img_sync_part": "محفوظ {a} من {n}",
   "img_sync_fail": "تعذّر حفظ {f} صورة (رمز {c})",
   "img_sync_btn": "حفظ الصور الآن",
-  "img_sync_offline": "يلزم اتصال بالإنترنت لحفظ الصور"
+  "img_sync_offline": "يلزم اتصال بالإنترنت لحفظ الصور",
+  "gal_h": "معرض صور الآفة أو المرض",
+  "gal_book": "من الكتاب",
+  "gal_organism": "صورة الآفة",
+  "gal_host": "على المحصول",
+  "gal_dl": "تحميل صور هذا المحصول ({n} صورة، {mb} ميغابايت)",
+  "gal_prog": "جارٍ تحميل الصور: {a} من {n}",
+  "gal_done": "صور المعرض محفوظة على جهازك للعمل دون إنترنت.",
+  "gal_fail": "تعذّر تحميل بعض الصور ({f}). أعد المحاولة.",
+  "gal_offline": "يلزم اتصال بالإنترنت مرة واحدة لتحميل صور هذا المحصول.",
+  "gal_src": "المصدر",
+  "gal_by": "المؤلف",
+  "gal_hint": "صور مفتوحة الترخيص إضافة إلى صور الكتاب. تُحمَّل عند طلبك فقط وتخص محصولًا واحدًا."
  },
  "en": {
   "title": "Crop recommendations",
@@ -140,7 +152,19 @@
   "img_sync_part": "Saved {a} of {n}",
   "img_sync_fail": "Could not save {f} images (code {c})",
   "img_sync_btn": "Save images now",
-  "img_sync_offline": "An internet connection is needed to save the images"
+  "img_sync_offline": "An internet connection is needed to save the images",
+  "gal_h": "Pest or disease photo gallery",
+  "gal_book": "From the book",
+  "gal_organism": "Pest photo",
+  "gal_host": "On the crop",
+  "gal_dl": "Download this crop's photos ({n} photos, {mb} MB)",
+  "gal_prog": "Downloading photos: {a} of {n}",
+  "gal_done": "Gallery photos are saved on your device for offline use.",
+  "gal_fail": "Some photos could not be downloaded ({f}). Try again.",
+  "gal_offline": "An internet connection is needed once to download this crop's photos.",
+  "gal_src": "Source",
+  "gal_by": "Author",
+  "gal_hint": "Openly licensed photos in addition to the book's images. Downloaded only on request, one crop at a time."
  },
  "fr": {
   "title": "Recommandations par culture",
@@ -210,7 +234,19 @@
   "img_sync_part": "{a} enregistrées sur {n}",
   "img_sync_fail": "Échec pour {f} images (code {c})",
   "img_sync_btn": "Enregistrer les images",
-  "img_sync_offline": "Une connexion Internet est nécessaire pour enregistrer les images"
+  "img_sync_offline": "Une connexion Internet est nécessaire pour enregistrer les images",
+  "gal_h": "Galerie de photos du ravageur ou de la maladie",
+  "gal_book": "Du livre",
+  "gal_organism": "Photo du ravageur",
+  "gal_host": "Sur la culture",
+  "gal_dl": "Télécharger les photos de cette culture ({n} photos, {mb} Mo)",
+  "gal_prog": "Téléchargement des photos : {a} sur {n}",
+  "gal_done": "Les photos de la galerie sont enregistrées sur votre appareil pour une utilisation hors ligne.",
+  "gal_fail": "Certaines photos n'ont pas pu être téléchargées ({f}). Réessayez.",
+  "gal_offline": "Une connexion Internet est nécessaire une seule fois pour télécharger les photos de cette culture.",
+  "gal_src": "Source",
+  "gal_by": "Auteur",
+  "gal_hint": "Photos sous licence libre en plus des images du livre. Téléchargées uniquement à la demande, une culture à la fois."
  },
  "zh": {
   "title": "作物推荐",
@@ -280,6 +316,18 @@
   "img_sync_part": "已保存 {a} / {n}",
   "img_sync_fail": "有 {f} 张图片保存失败（代码 {c}）",
   "img_sync_btn": "立即保存图片",
-  "img_sync_offline": "保存图片需要联网"
+  "img_sync_offline": "保存图片需要联网",
+  "gal_h": "病虫害图库",
+  "gal_book": "来自手册",
+  "gal_organism": "病虫害照片",
+  "gal_host": "作物上的症状",
+  "gal_dl": "下载此作物的照片（{n} 张，{mb} MB）",
+  "gal_prog": "正在下载照片：{a}/{n}",
+  "gal_done": "图库照片已保存到您的设备，可离线使用。",
+  "gal_fail": "部分照片下载失败（{f}）。请重试。",
+  "gal_offline": "下载此作物的照片需要联网一次。",
+  "gal_src": "来源",
+  "gal_by": "作者",
+  "gal_hint": "除手册图片外的开放许可照片。仅在您需要时下载，每次一种作物。"
  }
 }

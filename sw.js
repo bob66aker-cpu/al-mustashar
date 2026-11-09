@@ -215,12 +215,14 @@
  * Personal data (IndexedDB history, theme, app version note) lives outside
  * the caches and is never touched by this worker.
  */
-const CACHE = 'mustashar-v88';
+const CACHE = 'mustashar-v89';
 const OCR_CACHE = 'mustashar-ocr';
 
 /* v86 — صور كتاب التوصيات (256 صورة) تُحمَّل من الصفحة نفسها (src/tawsiyat.js) إلى كاش دائم مستقل
  * عن إصدارات القشرة، بعدّاد ظاهر وإعادة محاولة؛ عامل الخدمة يقدّمها من هذا الكاش أولًا. */
 const TWS_IMG_CACHE = 'mustashar-tws-img';
+const TWS_GAL_CACHE = 'mustashar-tws-gallery';
+const isTwsGal = url => /\/data\/tws\/gallery\/img\/[^/]+\.webp$/.test(url.pathname);
 const isTwsImg = url => /\/data\/tws\/img\/[^/]+\.webp$/.test(url.pathname);
 
 
@@ -450,7 +452,7 @@ self.addEventListener('activate', e => {
          * which every engine can read regardless of SW version — mirroring
          * them here would duplicate ~17.6 MB on every future update. */
         for (const n of names) {
-          if (n === CACHE || n === OCR_CACHE || n === TWS_IMG_CACHE || !/^mustashar-v\d+$/.test(n)) continue;
+          if (n === CACHE || n === OCR_CACHE || n === TWS_IMG_CACHE || n === TWS_GAL_CACHE || !/^mustashar-v\d+$/.test(n)) continue;
           const old = await caches.open(n);
           for (const req of await old.keys()) {
             if (isOcrUrl(new URL(req.url))) continue;
@@ -462,7 +464,7 @@ self.addEventListener('activate', e => {
       } catch (err) { /* mirroring is best-effort; caches stay intact */ }
     }
     await Promise.all(names
-      .filter(n => n !== CACHE && n !== OCR_CACHE && n !== TWS_IMG_CACHE && !/^mustashar-v\d+$/.test(n))
+      .filter(n => n !== CACHE && n !== OCR_CACHE && n !== TWS_IMG_CACHE && n !== TWS_GAL_CACHE && !/^mustashar-v\d+$/.test(n))
       .map(n => caches.delete(n)));
     // only now, with everything mirrored, drop superseded versioned caches
     await Promise.all(names
@@ -529,6 +531,17 @@ self.addEventListener('fetch', e => {
       } catch (err) {
         return new Response('offline', { status: 503 });
       }
+    })());
+    return;
+  }
+
+  // معرض الصور: كاش دائم أولًا، ثم الشبكة؛ لا يُخزَّن إلا بطلب المستخدم (تحميل المحصول من الصفحة)
+  if (isTwsGal(url)) {
+    e.respondWith((async () => {
+      const own = await caches.open(TWS_GAL_CACHE);
+      const hit = await own.match(req);
+      if (hit) return hit;
+      try { return await fetch(req); } catch (err) { return new Response('offline', { status: 503 }); }
     })());
     return;
   }

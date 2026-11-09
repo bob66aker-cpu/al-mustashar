@@ -1,0 +1,269 @@
+[
+{
+"id": "t-cutworm",
+"ar": "الدودة القارضة",
+"names": [
+"Agrotis ipsilon"
+],
+"queries": [
+"Agrotis ipsilon larva tomato",
+"black cutworm tomato seedling"
+],
+"inat": [
+"Agrotis ipsilon"
+],
+"host": "tomato|solanum lycopersicum|lycopersicon"
+},
+{
+"id": "t-whitefly",
+"ar": "الذبابة البيضاء",
+"names": [
+"Bemisia tabaci"
+],
+"queries": [
+"Bemisia tabaci tomato",
+"whitefly tomato leaf"
+],
+"inat": [
+"Bemisia tabaci"
+],
+"host": "tomato|solanum lycopersicum|lycopersicon"
+},
+{
+"id": "t-aphid",
+"ar": "المنّ",
+"names": [
+"Myzus persicae",
+"Macrosiphum euphorbiae"
+],
+"queries": [
+"aphids tomato",
+"Myzus persicae tomato"
+],
+"inat": [
+"Myzus persicae",
+"Macrosiphum euphorbiae"
+],
+"host": "tomato|solanum lycopersicum|lycopersicon"
+},
+{
+"id": "t-tuta",
+"ar": "توتا أبسليوتا",
+"names": [
+"Tuta absoluta"
+],
+"queries": [
+"Tuta absoluta tomato",
+"Tuta absoluta larva mine leaf"
+],
+"inat": [
+"Tuta absoluta"
+],
+"host": "tomato|solanum lycopersicum|lycopersicon"
+},
+{
+"id": "t-sln",
+"ar": "دودة ورق القطن",
+"names": [
+"Spodoptera littoralis"
+],
+"queries": [
+"Spodoptera littoralis tomato",
+"Spodoptera tomato larva"
+],
+"inat": [
+"Spodoptera littoralis"
+],
+"host": "tomato|solanum lycopersicum|lycopersicon"
+},
+{
+"id": "t-hz",
+"ar": "دودة اللوز الأمريكية",
+"names": [
+"Helicoverpa armigera"
+],
+"queries": [
+"Helicoverpa armigera tomato fruit",
+"tomato fruitworm"
+],
+"inat": [
+"Helicoverpa armigera"
+],
+"host": "tomato|solanum lycopersicum|lycopersicon"
+},
+{
+"id": "t-fruitworm",
+"ar": "ديدان ثمار الطماطم",
+"names": [
+"Helicoverpa armigera",
+"Spodoptera exigua"
+],
+"queries": [
+"tomato fruit borer damage",
+"Helicoverpa tomato fruit hole"
+],
+"inat": [
+"Helicoverpa armigera",
+"Spodoptera exigua"
+],
+"host": "tomato|solanum lycopersicum|lycopersicon"
+},
+{
+"id": "t-leafminer",
+"ar": "صانعات الأنفاق",
+"names": [
+"Liriomyza trifolii",
+"Liriomyza bryoniae",
+"Liriomyza sativae"
+],
+"queries": [
+"Liriomyza tomato leaf mine",
+"leafminer tomato"
+],
+"inat": [
+"Liriomyza trifolii",
+"Liriomyza bryoniae",
+"Liriomyza sativae"
+],
+"host": "tomato|solanum lycopersicum|lycopersicon"
+},
+{
+"id": "t-spidermite",
+"ar": "العنكبوت الأحمر",
+"names": [
+"Tetranychus urticae"
+],
+"queries": [
+"Tetranychus urticae tomato",
+"spider mite tomato leaf"
+],
+"inat": [
+"Tetranychus urticae"
+],
+"host": "tomato|solanum lycopersicum|lycopersicon"
+},
+{
+"id": "t-fruitrot",
+"ar": "اعفان الثمار",
+"names": [
+"Botrytis cinerea",
+"Alternaria alternata",
+"Rhizopus stolonifer"
+],
+"queries": [
+"tomato fruit rot",
+"Botrytis cinerea tomato fruit",
+"tomato blossom end rot"
+],
+"inat": [
+"Botrytis cinerea",
+"Alternaria alternata",
+"Rhizopus stolonifer"
+],
+"host": "tomato|solanum lycopersicum|lycopersicon"
+},
+{
+"id": "t-damping",
+"ar": "اعفان الجذور وموت البادرات",
+"names": [
+"Pythium",
+"Rhizoctonia solani",
+"Fusarium oxysporum"
+],
+"queries": [
+"tomato damping off seedlings",
+"Pythium tomato root rot",
+"tomato crown root rot"
+],
+"inat": [
+"Pythium",
+"Rhizoctonia solani",
+"Fusarium oxysporum"
+],
+"host": "tomato|solanum lycopersicum|lycopersicon"
+},
+{
+"id": "t-powdery",
+"ar": "البياض الدقيقي",
+"names": [
+"Leveillula taurica",
+"Oidium neolycopersici"
+],
+"queries": [
+"powdery mildew tomato",
+"Leveillula taurica tomato"
+],
+"inat": [
+"Leveillula taurica",
+"Oidium neolycopersici"
+],
+"host": "tomato|solanum lycopersicum|lycopersicon"
+},
+{
+"id": "t-eblight",
+"ar": "الندوة المبكرة",
+"names": [
+"Alternaria solani"
+],
+"queries": [
+"Alternaria solani tomato",
+"early blight tomato leaf"
+],
+"inat": [
+"Alternaria solani"
+],
+"host": "tomato|solanum lycopersicum|lycopersicon"
+},
+{
+"id": "t-lblight",
+"ar": "الندوة المتأخرة",
+"names": [
+"Phytophthora infestans"
+],
+"queries": [
+"Phytophthora infestans tomato",
+"late blight tomato leaf fruit"
+],
+"inat": [
+"Phytophthora infestans"
+],
+"host": "tomato|solanum lycopersicum|lycopersicon"
+},
+{
+"id": "t-soil",
+"ar": "أمراض التربة",
+"names": [
+"Fusarium oxysporum",
+"Verticillium dahliae",
+"Sclerotium rolfsii"
+],
+"queries": [
+"Fusarium wilt tomato",
+"Verticillium wilt tomato",
+"Sclerotium rolfsii tomato"
+],
+"inat": [
+"Fusarium oxysporum",
+"Verticillium dahliae",
+"Sclerotium rolfsii"
+],
+"host": "tomato|solanum lycopersicum|lycopersicon"
+},
+{
+"id": "t-rkn",
+"ar": "نيماتودا تعقد الجذور",
+"names": [
+"Meloidogyne incognita",
+"Meloidogyne javanica"
+],
+"queries": [
+"root-knot nematode tomato",
+"Meloidogyne tomato root galls"
+],
+"inat": [
+"Meloidogyne incognita",
+"Meloidogyne javanica"
+],
+"host": "tomato|solanum lycopersicum|lycopersicon|root"
+}
+]

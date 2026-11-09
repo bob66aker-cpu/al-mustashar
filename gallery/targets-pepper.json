@@ -1,0 +1,113 @@
+[
+{
+"id": "pp-thrips",
+"ar": "التربس",
+"names": [
+"Frankliniella occidentalis",
+"Thrips tabaci"
+],
+"queries": [
+"thrips pepper flower",
+"Frankliniella occidentalis pepper"
+],
+"inat": [
+"Frankliniella occidentalis",
+"Thrips tabaci"
+],
+"host": "pepper|capsicum"
+},
+{
+"id": "pp-whitefly",
+"ar": "الذبابة البيضاء",
+"names": [
+"Bemisia tabaci"
+],
+"queries": [
+"whitefly pepper",
+"Bemisia tabaci pepper leaf"
+],
+"inat": [
+"Bemisia tabaci"
+],
+"host": "pepper|capsicum"
+},
+{
+"id": "pp-aphid",
+"ar": "المن",
+"names": [
+"Myzus persicae",
+"Aphis gossypii"
+],
+"queries": [
+"aphids pepper",
+"Myzus persicae pepper"
+],
+"inat": [
+"Myzus persicae",
+"Aphis gossypii"
+],
+"host": "pepper|capsicum"
+},
+{
+"id": "pp-sln",
+"ar": "دودة ورق القطن",
+"names": [
+"Spodoptera littoralis",
+"Spodoptera exigua"
+],
+"queries": [
+"Spodoptera pepper larva",
+"armyworm pepper"
+],
+"inat": [
+"Spodoptera littoralis",
+"Spodoptera exigua"
+],
+"host": "pepper|capsicum"
+},
+{
+"id": "pp-mite",
+"ar": "العنكبوت الأحمر",
+"names": [
+"Tetranychus urticae"
+],
+"queries": [
+"spider mite pepper",
+"Tetranychus urticae pepper leaf"
+],
+"inat": [
+"Tetranychus urticae"
+],
+"host": "pepper|capsicum"
+},
+{
+"id": "pp-powdery",
+"ar": "البياض الدقيق",
+"names": [
+"Leveillula taurica"
+],
+"queries": [
+"powdery mildew pepper",
+"Leveillula taurica pepper"
+],
+"inat": [
+"Leveillula taurica"
+],
+"host": "pepper|capsicum"
+},
+{
+"id": "pp-botrytis",
+"ar": "العفن الرمادى",
+"names": [
+"Botrytis cinerea"
+],
+"queries": [
+"Botrytis pepper",
+"gray mold pepper fruit"
+],
+"inat": [
+"Botrytis cinerea"
+],
+"host": "pepper|capsicum"
+}
+]

@@ -2,7 +2,7 @@ name: gallery-collect
 on:
   push:
     branches: [gallery-work]
-    paths: ['scripts/gallery-collect.mjs','gallery/targets-*.json','.github/workflows/gallery-collect.yml']
+    paths: ['gallery/crops-todo.txt','scripts/gallery-collect.mjs','gallery/targets-*.json','.github/workflows/gallery-collect.yml']
 permissions:
   contents: write
 jobs:
@@ -13,12 +13,14 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: { node-version: 22 }
-      - run: node scripts/gallery-collect.mjs gallery/targets-potato.json out/potato
+      - name: Collect
+        run: |
+          for c in $(cat gallery/crops-todo.txt); do node scripts/gallery-collect.mjs gallery/targets-$c.json out/$c || true; done
       - name: Publish results
         run: |
           git config user.name gallery; git config user.email gallery@users.noreply.github.com
           git checkout --orphan gallery-results
           git rm -rf --cached . >/dev/null 2>&1 || true
           git add -f out
-          git commit -qm "gallery candidates (potato)"
+          git commit -qm "gallery candidates"
           git push -f origin gallery-results

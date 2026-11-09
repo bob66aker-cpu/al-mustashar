@@ -1,0 +1,24 @@
+name: gallery-collect
+on:
+  push:
+    branches: [gallery-work]
+    paths: ['scripts/gallery-collect.mjs','gallery/targets-*.json','.github/workflows/gallery-collect.yml']
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: node scripts/gallery-collect.mjs gallery/targets-potato.json out/potato
+      - name: Publish results
+        run: |
+          git config user.name gallery; git config user.email gallery@users.noreply.github.com
+          git checkout --orphan gallery-results
+          git rm -rf --cached . >/dev/null 2>&1 || true
+          git add -f out
+          git commit -qm "gallery candidates (potato)"
+          git push -f origin gallery-results

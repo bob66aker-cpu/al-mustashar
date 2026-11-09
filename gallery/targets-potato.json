@@ -1,0 +1,17 @@
+[
+{"id":"p-lblight","ar":"الندوة المتأخرة","names":["Phytophthora infestans"],"queries":["\"Phytophthora infestans\" potato leaf","late blight potato"],"inat":["Phytophthora infestans"],"host":"potato|solanum tuberosum|kartoffel"},
+{"id":"p-eblight","ar":"الندوة المبكرة","names":["Alternaria solani"],"queries":["\"Alternaria solani\" potato","early blight potato leaf"],"inat":["Alternaria solani"],"host":"potato|solanum tuberosum|kartoffel"},
+{"id":"p-ptm","ar":"دودة درنات البطاطس","names":["Phthorimaea operculella"],"queries":["potato tuber moth tuber","\"Phthorimaea operculella\" larva potato"],"inat":["Phthorimaea operculella"],"host":"potato|tuber|solanum"},
+{"id":"p-blackscurf","ar":"القشرة السوداء","names":["Rhizoctonia solani"],"queries":["black scurf potato tuber","\"Rhizoctonia solani\" potato"],"inat":["Rhizoctonia solani"],"host":"potato|tuber|scurf"},
+{"id":"p-sclero","ar":"العفن الأبيض الإسكلروتيني","names":["Sclerotinia sclerotiorum"],"queries":["\"Sclerotinia sclerotiorum\" potato","white mold potato stem"],"inat":["Sclerotinia sclerotiorum"],"host":"potato|solanum|stem"},
+{"id":"p-fusarium-wilt","ar":"الذبول الفيزاريومي","names":["Fusarium oxysporum"],"queries":["Fusarium wilt potato","\"Fusarium oxysporum\" potato"],"inat":[],"host":"potato|solanum tuberosum"},
+{"id":"p-dryrot","ar":"العفن الجاف","names":["Fusarium sambucinum"],"queries":["potato dry rot Fusarium tuber","\"Fusarium\" dry rot potato tuber"],"inat":[],"host":"potato|tuber"},
+{"id":"p-rkn","ar":"نيماتودا تعقد الجذور","names":["Meloidogyne incognita"],"queries":["root-knot nematode potato tuber","Meloidogyne potato galls"],"inat":[],"host":"potato|tuber|galls|root-knot"},
+{"id":"p-lesion","ar":"نيماتودا التقرح","names":["Pratylenchus penetrans"],"queries":["lesion nematode Pratylenchus potato"],"inat":[],"host":"potato|lesion|Pratylenchus"},
+{"id":"p-cutworm","ar":"الدودة القارضة","names":["Agrotis ipsilon"],"queries":["black cutworm Agrotis ipsilon larva"],"inat":["Agrotis ipsilon"],"host":null},
+{"id":"p-molecricket","ar":"الحفار","names":["Gryllotalpa gryllotalpa"],"queries":["mole cricket Gryllotalpa"],"inat":["Gryllotalpa gryllotalpa"],"host":null},
+{"id":"p-whitefly","ar":"الذبابة البيضاء","names":["Bemisia tabaci"],"queries":["Bemisia tabaci whitefly leaf"],"inat":["Bemisia tabaci"],"host":null},
+{"id":"p-aphid","ar":"المنّ","names":["Myzus persicae"],"queries":["Myzus persicae green peach aphid potato"],"inat":["Myzus persicae"],"host":"potato|solanum"},
+{"id":"p-sli","ar":"دودة ورق القطن","names":["Spodoptera littoralis"],"queries":["Spodoptera littoralis larva","Egyptian cotton leafworm"],"inat":["Spodoptera littoralis"],"host":null},
+{"id":"p-mite","ar":"العنكبوت الأحمر","names":["Tetranychus urticae"],"queries":["Tetranychus urticae spider mite damage leaf"],"inat":["Tetranychus urticae"],"host":null}
+]

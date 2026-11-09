@@ -164,3 +164,5 @@ cas_source) بقرار مستخدم معتمد، وبيانات eu/epa تبقى 
 > ولا يُصحَّح تلقائيًا، ولا يُستخدم كتطابق مؤكد عبر رقم CAS.
 
 | 2026-11-09 | eu + epa + epa-cancelled | تجديد دوري آلي كل 15 يومًا من المصادر الرسمية (EU: واجهة المفوضية v3؛ EPA: ملفات PPIS الخمسة): eu 1485 (بصمة `97eccbca4f6840079e6260ec944dc18a435ba3f7543515299ad4d4ec81ac852d`)، epa 1374 (بصمة `06017a0e1ecabcd0a7c542803bc979c8a0e606fa2800a06c698a06ac1b39cbba`)، epa-cancelled 1425 (بصمة `1ff9d6e087c78b3aa667699f68e3085bec2aa72b94ea9f9e1eb3314a41219b88`) | `scripts/build-eu.mjs` + `tools/build-epa-master.js --from-ppis` |
+
+| 2026-11-09 | epa + epa-cancelled | تجديد دوري آلي كل 15 يومًا من المصادر الرسمية (EU: واجهة المفوضية v3؛ EPA: ملفات PPIS الخمسة): epa 1374 (بصمة `7ace6f6a62a3c7bc2f705c0d6b27db08e6ee74c2a969490c49fe2a080b432092`)، epa-cancelled 1425 (بصمة `7dbefd83632bfe989840dbcd48e809da95c5c3c50c516425dcb110bd3fd2c52d`) | `scripts/build-eu.mjs` + `tools/build-epa-master.js --from-ppis` |

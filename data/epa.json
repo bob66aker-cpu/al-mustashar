@@ -3,7 +3,7 @@
   "key": "epa",
   "name": "USA / EPA",
   "count": 1374,
-  "built": "2026-11-08",
+  "built": "2026-11-09",
   "source": "EPA PPIS (www3.epa.gov/pesticides/PPISdata) — 5 official files, automated rebuild",
   "built_from_workbook_date": "2026-09-22",
   "verification": {

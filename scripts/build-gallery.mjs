@@ -32,7 +32,7 @@ for (const f of fs.readdirSync('gallery').filter(x => /^selected-.+\.json$/.test
   }
   fs.writeFileSync(`${OUT}/${crop}.json`, JSON.stringify(man));
   const cards = {}; let bytes = 0;
-  man.items.forEach(x => { cards[x.n] = (cards[x.n] || 0) + 1; bytes += x.bytes; });
+  man.items.forEach(x => { [].concat(x.n).forEach(k => { cards[k] = (cards[k] || 0) + 1; }); bytes += x.bytes; });
   index.crops[crop] = { count: man.items.length, bytes, cards };
   console.log(crop, man.items.length, 'images', Math.round(bytes / 1024) + ' KB');
 }

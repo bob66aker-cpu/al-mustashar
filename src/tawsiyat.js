@@ -892,7 +892,7 @@
   function galPaint(el, cropId, n, name) {
     galJSON('data/tws/gallery/' + cropId + '.json').then(function (man) {
       GAL.man[cropId] = man;
-      var mine = man.items.filter(function (x) { return String(x.n) === String(n); });
+      var mine = man.items.filter(function (x) { return [].concat(x.n).map(String).indexOf(String(n)) >= 0; });
       if (!mine.length) { el.innerHTML = ''; return; }
       return galHave(man.items).then(function (all) {
         if (all) { el.innerHTML = '<h3>' + esc(L('gal_h')) + '</h3>' + galFigs(mine, name) + '<p class="tws-foot">' + esc(L('gal_done')) + '</p>'; return; }

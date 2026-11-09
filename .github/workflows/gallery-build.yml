@@ -1,0 +1,25 @@
+name: gallery-build
+on:
+  push:
+    branches: [gallery-work]
+    paths: ['gallery/selected-*.json','scripts/build-gallery.mjs','.github/workflows/gallery-build.yml']
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm install --no-save sharp@0.33.5
+      - run: node scripts/build-gallery.mjs out-gallery
+      - name: Publish built gallery
+        run: |
+          git config user.name gallery; git config user.email gallery@users.noreply.github.com
+          git checkout --orphan gallery-built
+          git rm -rf --cached . >/dev/null 2>&1 || true
+          git add -f out-gallery
+          git commit -qm "gallery built"
+          git push -f origin gallery-built

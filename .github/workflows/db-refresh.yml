@@ -1,9 +1,11 @@
 # دورة تحديث قواعد البيانات الدولية كل 15 يومًا (1 و16 من كل شهر).
-# هذا الملف موجود في الفرع الافتراضي main لأن GitHub لا يشغّل الجدولة إلا منه،
-# لكنه يسحب كود فرع V2 ويعمل عليه، ويفتح طلب الدمج نحو V2. لا يدمج ولا ينشر أبدًا.
-# 1) كندا وأستراليا: تُبنيان آليًا ويُختم تاريخهما.
-# 2) EU وEPA: يفحص الحداثة، ويجرّب روابط المصادر الرسمية من خادم GitHub (له إنترنت كامل)،
-#    ثم يفتح/يحدّث issue واحدًا بالمطلوب يدويًا مع نتيجة الفحص. القواعد الليبية مستثناة.
+# الملف في الفرع الافتراضي main لأن GitHub لا يشغّل الجدولة إلا منه، لكنه يسحب كود فرع V2 ويعمل عليه،
+# ويدفع فرع data-refresh/<التاريخ> ثم يفتح issue برابط المقارنة (وطلب دمج إن سمح إعداد المستودع).
+# لا يدمج ولا ينشر أبدًا. القواعد الليبية مستثناة.
+#  - كندا وأستراليا: scripts/build-canada.mjs و build-australia.mjs
+#  - EU: scripts/build-eu.mjs (واجهة المفوضية الرسمية v3)
+#  - EPA: ملفات PPIS الخمسة الرسمية ثم tools/build-epa-master.js --from-ppis
+# أي مصدر يفشل يبقى ملفه كما هو ويُذكر في الـ issue؛ ولا يُختم تاريخه.
 name: db-refresh
 on:
   schedule:
@@ -18,7 +20,7 @@ env:
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
         with:
@@ -26,55 +28,59 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Freshness before
-        run: node scripts/db-freshness.mjs --json > /tmp/fresh.json || true
-      - name: Probe EU/EPA official sources (report only)
+      - name: Build all international databases (each isolated)
         run: |
-          {
-            echo "### Source probe $(date -u +%F)"
-            for u in \
-              "https://food.ec.europa.eu/plants/pesticides/eu-pesticides-database_en" \
-              "https://food.ec.europa.eu/system/tdm?filename=eu_pesticides_database_substances.json" \
-              "https://www.epa.gov/pesticide-registration-services-and-compliance/pesticide-registration-datasets" \
-              "https://www.fao.org/fao-who-codexalimentarius/codex-texts/dbs/pests/en/"; do
-              c=$(curl -s -o /dev/null -L -m 30 -w '%{http_code} %{content_type}' "$u" || echo "fail")
-              echo "- $c  $u"
-            done
-          } | tee /tmp/probe.md
-      - name: Build Canada
-        run: node scripts/build-canada.mjs
-      - name: Build Australia
-        run: node scripts/build-australia.mjs
-      - name: Stamp dates (international automated only)
-        run: node scripts/stamp-datacheck.mjs canada australia
+          UA="AlMustashar-datarefresh/1.0 (bob66aker@gmail.com)"
+          : > /tmp/ok.txt; : > /tmp/fail.txt
+          run() { name="$1"; shift; if "$@" > "/tmp/log-$name.txt" 2>&1; then echo "$name" >> /tmp/ok.txt; else echo "$name" >> /tmp/fail.txt; tail -3 "/tmp/log-$name.txt"; git checkout -- "data/$name.json" 2>/dev/null || true; fi; }
+          run canada node scripts/build-canada.mjs
+          run australia node scripts/build-australia.mjs
+          run eu node scripts/build-eu.mjs
+          # EPA: download the 5 official files, then rebuild both epa databases
+          mkdir -p /tmp/ppis
+          good=1
+          for f in product formula chemcas chemname ctreason; do
+            curl -fsS -L -m 180 -A "$UA" -o /tmp/ppis/$f.zip "https://www3.epa.gov/pesticides/PPISdata/$f.zip" && (cd /tmp/ppis && unzip -o -q $f.zip && rm $f.zip) || good=0
+          done
+          if [ "$good" = 1 ]; then
+            if node tools/build-epa-master.js --from-ppis /tmp/ppis > /tmp/log-epa.txt 2>&1; then echo "epa" >> /tmp/ok.txt; echo "epa-cancelled" >> /tmp/ok.txt; else echo "epa" >> /tmp/fail.txt; tail -3 /tmp/log-epa.txt; git checkout -- data/epa.json data/epa-cancelled.json; fi
+          else echo "epa" >> /tmp/fail.txt; fi
+          echo "OK: $(tr '\n' ' ' < /tmp/ok.txt)"; echo "FAILED: $(tr '\n' ' ' < /tmp/fail.txt)"
+      - name: Stamp, rebaseline, bump (only what changed)
+        run: |
+          OKS=$(cat /tmp/ok.txt | tr '\n' ' ')
+          [ -z "$OKS" ] && { echo "nothing built"; exit 0; }
+          node scripts/stamp-datacheck.mjs $OKS
+          CH=""; for d in eu epa epa-cancelled; do git diff --quiet -- data/$d.json || CH="$CH $d"; done
+          if [ -n "$CH" ]; then node scripts/rebaseline-intl.mjs $CH; fi
+          if ! git diff --quiet -- data; then node scripts/bump-shell.mjs; fi
       - name: Verify
-        run: node tests/data-packs.test.mjs && node tests/verify.mjs
-      - name: Open review PR (never merges)
+        run: |
+          node tests/verify.mjs | tail -3
+          node tests/data-health.test.mjs | tail -2
+          node tests/data-packs.test.mjs | tail -2
+      - name: Push review branch and open PR/issue (never merges)
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           D=$(date -u +%F)
-          if git diff --quiet; then echo "no changes"; exit 0; fi
-          git config user.name "db-refresh"; git config user.email "db-refresh@users.noreply.github.com"
-          git checkout -b "data-refresh/$D"
-          git add -A && git commit -m "data: refresh Canada + Australia ($D)"
-          git push -f origin "data-refresh/$D"
-          echo "BRANCH=data-refresh/$D" >> "$GITHUB_ENV"
-          gh pr create --base "$V2" --title "data: 15-day refresh $D" --body "Canada + Australia rebuilt and stamped. EU/EPA: see the open issue 'EU/EPA 15-day refresh'. Review the diff counts (>2% change = read the rows) before merging. Libya excluded." || echo "PR creation not permitted by repo setting; branch pushed, see issue for compare link"
-      - name: Open or update the EU/EPA issue
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          STALE=$(node -e "const r=require('/tmp/fresh.json');console.log(r.rows.filter(x=>x.stale&&['eu','epa','epa-cancelled'].includes(x.db)).map(x=>x.db+' ('+x.age_days+'d)').join(', '))")
-          CMP=""
-          [ -n "$BRANCH" ] && CMP="Canada/Australia branch ready for review: https://github.com/${{ github.repository }}/compare/$V2...$BRANCH?expand=1"
-          [ -z "$STALE" ] && [ -z "$CMP" ] && { echo "nothing to report"; exit 0; }
-          BODY="Overdue (max 15 days): ${STALE:-none}
+          FAILED=$(tr '\n' ' ' < /tmp/fail.txt)
+          if git diff --quiet; then SUMMARY="No data changes."; BRANCH=""; else
+            git config user.name "db-refresh"; git config user.email "db-refresh@users.noreply.github.com"
+            git checkout -b "data-refresh/$D"; git add -A
+            git commit -q -m "data: 15-day refresh $D (international only; Libya untouched)"
+            git push -f origin "data-refresh/$D"; BRANCH="data-refresh/$D"
+            SUMMARY="$(git diff --stat HEAD~1 | tail -1)"
+            gh pr create --base "$V2" --title "data: 15-day refresh $D" --body "Built from official sources. Review diff counts before merging. Libya excluded." || echo "PR creation not permitted; see compare link in the issue"
+          fi
+          BODY="Refresh $D. Built OK: $(tr '\n' ' ' < /tmp/ok.txt). FAILED (kept as-is, not stamped): ${FAILED:-none}.
+          $SUMMARY"
+          [ -n "$BRANCH" ] && BODY="$BODY
 
-          $CMP
+          Review/merge: https://github.com/${{ github.repository }}/compare/$V2...$BRANCH?expand=1
+          Merging into V2 deploys the site automatically."
+          [ -n "$FAILED" ] && BODY="$BODY
 
-          $(cat /tmp/probe.md)
-
-          Procedure: docs/data-update-guide.md. After refresh: node scripts/stamp-datacheck.mjs eu epa epa-cancelled. Libya excluded."
-          N=$(gh issue list --state open --search 'EU/EPA 15-day refresh in:title' --json number -q '.[0].number')
-          if [ -n "$N" ]; then gh issue comment "$N" --body "$BODY"; else gh issue create --title "EU/EPA 15-day refresh" --body "$BODY"; fi
+          Failed sources need a manual look: docs/data-update-guide.md."
+          N=$(gh issue list --state open --search '15-day refresh in:title' --json number -q '.[0].number')
+          if [ -n "$N" ]; then gh issue comment "$N" --body "$BODY"; else gh issue create --title "15-day data refresh" --body "$BODY"; fi

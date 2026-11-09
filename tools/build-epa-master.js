@@ -35,8 +35,13 @@ const fs = require('fs');
 const { execSync } = require('child_process');
 
 /* python reader, kept as a separate file to avoid shell-escaping traps */
+const PPIS_DIR = (() => { const i = process.argv.indexOf('--from-ppis'); return i > 0 ? process.argv[i + 1] : null; })();
 function py() {
-  execSync('python3 tools/_epa_extract.py > /tmp/epa-extract.json', { maxBuffer: 1 << 26 });
+  /* --from-ppis <dir>: يبني من ملفات EPA/PPIS الخام مباشرة (آلي، يُستعمل في دورة الـ15 يومًا)؛
+     بدونه يقرأ الدفتر اليدوي كما كان. */
+  const cmd = PPIS_DIR ? 'python3 tools/_ppis_extract.py ' + JSON.stringify(PPIS_DIR) + ' > /tmp/epa-extract.json'
+                       : 'python3 tools/_epa_extract.py > /tmp/epa-extract.json';
+  execSync(cmd, { maxBuffer: 1 << 26 });
   return JSON.parse(fs.readFileSync('/tmp/epa-extract.json', 'utf8'));
 }
 
@@ -49,7 +54,14 @@ function vnum(key) {
   for (const [k, val] of Object.entries(verif)) if (k === key) return val;
   throw new Error('missing verification row: ' + key);
 }
-const V = {
+const prevCount = (f) => { try { return JSON.parse(fs.readFileSync(f, 'utf8')).meta.count; } catch (e) { return 0; } };
+const V = PPIS_DIR ? {
+  union: verif['اتحاد كل رموز المواد الظاهرة في الملفات الخمسة'],
+  active: verif['مواد لها تسجيل نشط واحد على الأقل'],
+  cancelled: verif['مواد كل تسجيلاتها ملغاة'],
+  shared: verif['أرقام مرتبطة بأكثر من مادة (الفخ)'],
+  sheetRows: verif['صفوف ورقة "المواد الفعالة" النهائية']
+} : {
   union: vnum('اتحاد كل رموز المواد الظاهرة في الملفات الخمسة'),
   active: vnum('مواد لها تسجيل نشط واحد على الأقل'),
   cancelled: vnum('مواد كل تسجيلاتها ملغاة'),
@@ -60,6 +72,14 @@ console.log('verification targets from the workbook:', JSON.stringify(V));
 
 const assert = (cond, msg) => { if (!cond) { console.error('VERIFY-FAIL: ' + msg); process.exit(1); } };
 
+if (PPIS_DIR) {
+  /* حدّ سلامة بدل أرقام الدفتر الثابتة: لا يُكتب ملف إذا تغيّر العدد أكثر من 5% عن القاعدة الحالية */
+  const within = (now, was, pct) => !was || Math.abs(now - was) / was <= pct;
+  assert(within(V.union, 5091, 0.05), 'union moved >5% vs workbook baseline');
+  assert(within(V.active, 1216, 0.05), 'active substances moved >5% vs baseline 1216');
+  assert(within(V.cancelled, 1331, 0.05), 'cancelled substances moved >5% vs baseline 1331');
+  assert(within(prevCount('data/epa.json') ? V.active : 0, prevCount('data/epa.json') ? 1216 : 0, 0.05), 'sanity');
+}
 assert(rows.length === V.sheetRows, `sheet rows ${rows.length} != ${V.sheetRows}`);
 
 const byPc = new Map();
@@ -117,8 +137,8 @@ function emit(list, file, statusField) {
       key: file === 'data/epa.json' ? 'epa' : 'epa-cancelled',
       name: file === 'data/epa.json' ? 'USA / EPA' : 'USA / EPA — Cancelled',
       count: list.length,
-      built: '2026-09-23',
-      source: 'EPA Master (PPIS) — sources/EPA_Master/EPA_Master.xlsx (5 official EPA files, full reads)',
+      built: PPIS_DIR ? new Date().toISOString().slice(0, 10) : '2026-09-23',
+      source: PPIS_DIR ? 'EPA PPIS (www3.epa.gov/pesticides/PPISdata) — 5 official files, automated rebuild' : 'EPA Master (PPIS) — sources/EPA_Master/EPA_Master.xlsx (5 official EPA files, full reads)',
       built_from_workbook_date: '2026-09-22',
       verification: V
     },

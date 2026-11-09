@@ -27,7 +27,8 @@ const CD = globalThis.CasDissect;
 /* Regression baselines recomputed after the EPA Master (PPIS) rebuild
  * (2026-09-23). They are allowed to grow only via a deliberate data round:
  * an unexplained change here is a data-integrity signal, not noise. */
-const DUP_KNOWN = 283;      /* same normalized name, different CAS signature
+const BASE = JSON.parse(fs.readFileSync('tests/data-baseline.json', 'utf8'));
+const DUP_KNOWN = BASE.dup_ambiguous_known || 283;      /* same normalized name, different CAS signature
    * (2026-10-03, D42: 285 → 283, and it DROPS. libya-500 row 187
    * Florpyrauxifen-benzyl now carries 1390661-72-9, the value the diff
    * register adopted, so it stops disagreeing with eu and epa and the two
@@ -51,12 +52,12 @@ const FILES = {
    * docs/data-provenance.md change log + tests/data-baseline.json */
   'libya-248': { rows: 77,  sha: 'b6850e0381fda847b0bc4b30096d35847b91e626587647dd79ef80ea04cbacd5' },
   'libya-500': { rows: 411, sha: '08b852cb1ac8f438e5f960936bae9b525ec8057ff5e3f61cd1062f44ba23ae14' },
-  'eu':        { rows: 1483, sha: 'ef629525c2dae8f741e1697faaecf2319e1a646e4e011d2754ef66e23844101e' },
+  'eu':        { rows: BASE.files['data/eu.json'].rows, sha: BASE.files['data/eu.json'].sha256 },
   /* EPA Master (PPIS) rebuild (2026-09-23): active registry (1361) +
    * all-cancelled archive (1425), built by tools/build-epa-master.js from
    * sources/EPA_Master/EPA_Master.xlsx. The legacy 2199-row file is superseded. */
-  'epa':             { rows: 1361, sha: 'b24d7c3e3a8dbd7e84ef7b1a59bbfb98674b5c8ad44ff7f7a3dbe0d90d7775f3' },
-  'epa-cancelled':   { rows: 1425, sha: 'c2b5b38e4bfe07dc466c45d4f18518691a57de17b078822e2e6fab00de58fde7' }
+  'epa':             { rows: BASE.files['data/epa.json'].rows, sha: BASE.files['data/epa.json'].sha256 },
+  'epa-cancelled':   { rows: BASE.files['data/epa-cancelled.json'].rows, sha: BASE.files['data/epa-cancelled.json'].sha256 }
 };
 const DBS = {};
 for (const [k, exp] of Object.entries(FILES)) {

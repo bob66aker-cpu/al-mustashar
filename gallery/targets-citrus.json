@@ -1,0 +1,185 @@
+[
+{
+"id": "ci-scale",
+"ar": "الحشرات القشرية",
+"names": [
+"Aonidiella aurantii",
+"Chrysomphalus aonidum",
+"Parlatoria pergandii",
+"Coccus hesperidum"
+],
+"queries": [
+"scale insects citrus",
+"California red scale orange",
+"Aonidiella aurantii"
+],
+"inat": [
+"Aonidiella aurantii",
+"Chrysomphalus aonidum",
+"Parlatoria pergandii",
+"Coccus hesperidum"
+],
+"host": "citrus|orange|lemon|mandarin|grapefruit"
+},
+{
+"id": "ci-medfly",
+"ar": "ذباب الفاكهة",
+"names": [
+"Ceratitis capitata"
+],
+"queries": [
+"Ceratitis capitata citrus orange",
+"Mediterranean fruit fly orange"
+],
+"inat": [
+"Ceratitis capitata"
+],
+"host": "citrus|orange|lemon|mandarin|grapefruit"
+},
+{
+"id": "ci-leafminer",
+"ar": "صانعات الأنفاق",
+"names": [
+"Phyllocnistis citrella"
+],
+"queries": [
+"citrus leafminer Phyllocnistis citrella",
+"Phyllocnistis citrella leaf"
+],
+"inat": [
+"Phyllocnistis citrella"
+],
+"host": "citrus|orange|lemon|mandarin|grapefruit"
+},
+{
+"id": "ci-brownmite",
+"ar": "اكاروس الموالح البنى",
+"names": [
+"Eutetranychus orientalis",
+"Bryobia rubrioculus"
+],
+"queries": [
+"Eutetranychus orientalis citrus",
+"citrus brown mite"
+],
+"inat": [
+"Eutetranychus orientalis",
+"Bryobia rubrioculus"
+],
+"host": "citrus|orange|lemon|mandarin|grapefruit"
+},
+{
+"id": "ci-redmite",
+"ar": "اكاروس الموالح الاحمر",
+"names": [
+"Panonychus citri"
+],
+"queries": [
+"Panonychus citri citrus",
+"citrus red mite"
+],
+"inat": [
+"Panonychus citri"
+],
+"host": "citrus|orange|lemon|mandarin|grapefruit"
+},
+{
+"id": "ci-rustmite",
+"ar": "اكاروس صدأ الموالح",
+"names": [
+"Phyllocoptruta oleivora"
+],
+"queries": [
+"Phyllocoptruta oleivora citrus rust mite",
+"citrus rust mite fruit"
+],
+"inat": [
+"Phyllocoptruta oleivora"
+],
+"host": "citrus|orange|lemon|mandarin|grapefruit"
+},
+{
+"id": "ci-lichen",
+"ar": "الأشنة",
+"names": [
+"Parmelia",
+"Usnea"
+],
+"queries": [
+"lichens on citrus tree trunk",
+"lichen orange tree"
+],
+"inat": [
+"Parmelia",
+"Usnea"
+],
+"host": "citrus|orange|lemon|mandarin|grapefruit"
+},
+{
+"id": "ci-gummosis",
+"ar": "التصمغ",
+"names": [
+"Phytophthora citrophthora",
+"Phytophthora nicotianae"
+],
+"queries": [
+"citrus gummosis trunk",
+"Phytophthora gummosis citrus"
+],
+"inat": [
+"Phytophthora citrophthora",
+"Phytophthora nicotianae"
+],
+"host": "citrus|orange|lemon|mandarin|grapefruit"
+},
+{
+"id": "ci-postharvest",
+"ar": "اعفان الثمار بعد الجمع",
+"names": [
+"Penicillium digitatum",
+"Penicillium italicum",
+"Geotrichum citri-aurantii"
+],
+"queries": [
+"Penicillium digitatum orange",
+"green mold citrus fruit",
+"citrus blue mold"
+],
+"inat": [
+"Penicillium digitatum",
+"Penicillium italicum",
+"Geotrichum citri-aurantii"
+],
+"host": "citrus|orange|lemon|mandarin|grapefruit"
+},
+{
+"id": "ci-slowdecline",
+"ar": "نيماتودا التدهور البطئ",
+"names": [
+"Tylenchulus semipenetrans"
+],
+"queries": [
+"Tylenchulus semipenetrans citrus root",
+"citrus nematode"
+],
+"inat": [
+"Tylenchulus semipenetrans"
+],
+"host": "citrus|orange|lemon|mandarin|grapefruit"
+},
+{
+"id": "ci-navel",
+"ar": "عفن السرة",
+"names": [
+"Alternaria citri"
+],
+"queries": [
+"navel end rot orange Alternaria citri",
+"black rot citrus fruit"
+],
+"inat": [
+"Alternaria citri"
+],
+"host": "citrus|orange|lemon|mandarin|grapefruit"
+}
+]

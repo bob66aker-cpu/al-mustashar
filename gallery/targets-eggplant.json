@@ -1,0 +1,32 @@
+[
+{
+"id": "eg-whitefly",
+"ar": "الذبابة البيضاء",
+"names": [
+"Bemisia tabaci"
+],
+"queries": [
+"whitefly eggplant",
+"Bemisia tabaci eggplant leaf"
+],
+"inat": [
+"Bemisia tabaci"
+],
+"host": "eggplant|aubergine|solanum melongena"
+},
+{
+"id": "eg-mite",
+"ar": "العنكبوت الأحمر",
+"names": [
+"Tetranychus urticae"
+],
+"queries": [
+"spider mite eggplant",
+"Tetranychus urticae eggplant"
+],
+"inat": [
+"Tetranychus urticae"
+],
+"host": "eggplant|aubergine|solanum melongena"
+}
+]

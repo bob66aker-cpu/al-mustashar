@@ -1,2 +1,3 @@
-tomato
-pepper
+cucumber
+eggplant
+citrus

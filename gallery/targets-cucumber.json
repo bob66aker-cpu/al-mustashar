@@ -1,0 +1,180 @@
+[
+{
+"id": "cu-whitefly",
+"ar": "الذبابة البيضاء",
+"names": [
+"Bemisia tabaci",
+"Trialeurodes vaporariorum"
+],
+"queries": [
+"whitefly cucumber leaf",
+"Bemisia tabaci cucumber"
+],
+"inat": [
+"Bemisia tabaci",
+"Trialeurodes vaporariorum"
+],
+"host": "cucumber|cucumis sativus|cucurbit|zucchini|squash"
+},
+{
+"id": "cu-aphid",
+"ar": "المن",
+"names": [
+"Aphis gossypii"
+],
+"queries": [
+"Aphis gossypii cucumber",
+"aphids cucumber leaf"
+],
+"inat": [
+"Aphis gossypii"
+],
+"host": "cucumber|cucumis sativus|cucurbit|zucchini|squash"
+},
+{
+"id": "cu-leafminer",
+"ar": "صانعات الأنفاق",
+"names": [
+"Liriomyza trifolii",
+"Liriomyza sativae"
+],
+"queries": [
+"leafminer cucumber leaf mines"
+],
+"inat": [
+"Liriomyza trifolii",
+"Liriomyza sativae"
+],
+"host": "cucumber|cucumis sativus|cucurbit|zucchini|squash"
+},
+{
+"id": "cu-sln",
+"ar": "دودة ورق القطن",
+"names": [
+"Spodoptera littoralis"
+],
+"queries": [
+"Spodoptera cucumber larva"
+],
+"inat": [
+"Spodoptera littoralis"
+],
+"host": "cucumber|cucumis sativus|cucurbit|zucchini|squash"
+},
+{
+"id": "cu-mite",
+"ar": "العنكبوت الأحمر",
+"names": [
+"Tetranychus urticae"
+],
+"queries": [
+"spider mite cucumber leaf",
+"Tetranychus urticae cucumber"
+],
+"inat": [
+"Tetranychus urticae"
+],
+"host": "cucumber|cucumis sativus|cucurbit|zucchini|squash"
+},
+{
+"id": "cu-fruitrot",
+"ar": "اعفان الثمار",
+"names": [
+"Botrytis cinerea",
+"Rhizopus stolonifer",
+"Sclerotinia sclerotiorum"
+],
+"queries": [
+"cucumber fruit rot",
+"Botrytis cucumber fruit"
+],
+"inat": [
+"Botrytis cinerea",
+"Rhizopus stolonifer",
+"Sclerotinia sclerotiorum"
+],
+"host": "cucumber|cucumis sativus|cucurbit|zucchini|squash"
+},
+{
+"id": "cu-damping",
+"ar": "اعفان الجذور وموت البادرات",
+"names": [
+"Pythium aphanidermatum",
+"Rhizoctonia solani"
+],
+"queries": [
+"cucumber damping off",
+"Pythium cucumber root rot"
+],
+"inat": [
+"Pythium aphanidermatum",
+"Rhizoctonia solani"
+],
+"host": "cucumber|cucumis sativus|cucurbit|zucchini|squash"
+},
+{
+"id": "cu-powdery",
+"ar": "البياض الدقيقى",
+"names": [
+"Podosphaera xanthii",
+"Erysiphe cichoracearum"
+],
+"queries": [
+"powdery mildew cucumber leaf",
+"Podosphaera xanthii cucumber"
+],
+"inat": [
+"Podosphaera xanthii",
+"Erysiphe cichoracearum"
+],
+"host": "cucumber|cucumis sativus|cucurbit|zucchini|squash"
+},
+{
+"id": "cu-downy",
+"ar": "البياض الزغبى",
+"names": [
+"Pseudoperonospora cubensis"
+],
+"queries": [
+"downy mildew cucumber leaf",
+"Pseudoperonospora cubensis"
+],
+"inat": [
+"Pseudoperonospora cubensis"
+],
+"host": "cucumber|cucumis sativus|cucurbit|zucchini|squash"
+},
+{
+"id": "cu-gsb",
+"ar": "لفحة الساق الصمغية",
+"names": [
+"Didymella bryoniae",
+"Stagonosporopsis cucurbitacearum"
+],
+"queries": [
+"gummy stem blight cucumber",
+"Didymella bryoniae"
+],
+"inat": [
+"Didymella bryoniae",
+"Stagonosporopsis cucurbitacearum"
+],
+"host": "cucumber|cucumis sativus|cucurbit|zucchini|squash"
+},
+{
+"id": "cu-rkn",
+"ar": "نيماتودا تعقد الجذور",
+"names": [
+"Meloidogyne incognita",
+"Meloidogyne javanica"
+],
+"queries": [
+"root-knot nematode cucumber"
+],
+"inat": [
+"Meloidogyne incognita",
+"Meloidogyne javanica"
+],
+"host": "cucumber|cucumis sativus|cucurbit|zucchini|squash"
+}
+]

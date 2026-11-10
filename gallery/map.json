@@ -1,0 +1,518 @@
+{
+"cotton": {
+"1": [
+"bk-molecricket-1",
+"bk-molecricket-2",
+"bk-molecricket-3"
+],
+"2": [
+"bk-bemisia-1",
+"bk-bemisia-2",
+"bk-bemisia-3"
+],
+"3": [
+"bk-agossypii-1",
+"bk-agossypii-2",
+"bk-agossypii-3"
+],
+"4": [
+"bk-sln-1",
+"bk-sln-2",
+"bk-sln-3"
+],
+"5": [
+"bk-sln-1",
+"bk-sln-2",
+"bk-sln-3"
+],
+"6": [
+"bk-pbw-1",
+"bk-pbw-2",
+"bk-pbw-3",
+"bk-earias-1",
+"bk-earias-2",
+"bk-earias-3"
+],
+"7": [
+"bk-tetranychus-1"
+]
+},
+"sweet-potato": {
+"1": [
+"bk-sln-1",
+"bk-sln-2",
+"bk-sln-3"
+],
+"2": [
+"bk-bemisia-1",
+"bk-bemisia-2",
+"bk-bemisia-3"
+],
+"3": [
+"bk-tetranychus-1"
+]
+},
+"okra": {
+"1": [
+"bk-earias-1",
+"bk-earias-2",
+"bk-earias-3"
+],
+"2": [
+"bk-sln-1",
+"bk-sln-2",
+"bk-sln-3"
+],
+"3": [
+"bk-bemisia-1",
+"bk-bemisia-2",
+"bk-bemisia-3"
+],
+"4": [
+"bk-tetranychus-1"
+],
+"5": [
+"bk-rkn-1",
+"bk-rkn-2",
+"bk-rkn-3"
+]
+},
+"cowpea": {
+"1": [
+"bk-afabae-1",
+"bk-afabae-2"
+],
+"2": [
+"bk-etiella-1",
+"bk-etiella-2",
+"bk-etiella-3"
+],
+"3": [
+"bk-bemisia-1",
+"bk-bemisia-2",
+"bk-bemisia-3"
+],
+"4": [
+"bk-tetranychus-1"
+]
+},
+"fieldbean": {
+"1": [
+"bk-afabae-1",
+"bk-afabae-2"
+],
+"2": [
+"bk-tetranychus-1"
+]
+},
+"cabbage": {
+"1": [
+"bk-sln-1",
+"bk-sln-2",
+"bk-sln-3"
+],
+"2": [
+"bk-bemisia-1",
+"bk-bemisia-2",
+"bk-bemisia-3"
+],
+"4": [
+"bk-pieris-1",
+"bk-pieris-2",
+"bk-pieris-3"
+],
+"5": [
+"bk-plutella-1",
+"bk-plutella-2",
+"bk-plutella-3"
+],
+"6": [
+"bk-tetranychus-1"
+]
+},
+"broccoli": {
+"1": [
+"bk-pieris-1",
+"bk-pieris-2",
+"bk-pieris-3"
+],
+"2": [
+"bk-sln-1",
+"bk-sln-2",
+"bk-sln-3"
+]
+},
+"cauliflower": {
+"1": [
+"bk-sln-1",
+"bk-sln-2",
+"bk-sln-3"
+],
+"2": [
+"bk-bemisia-1",
+"bk-bemisia-2",
+"bk-bemisia-3"
+]
+},
+"koosa": {
+"1": [
+"bk-bemisia-1",
+"bk-bemisia-2",
+"bk-bemisia-3"
+]
+},
+"koosa_labb": {
+"1": [
+"bk-sln-1",
+"bk-sln-2",
+"bk-sln-3"
+]
+},
+"melo_labb": {
+"1": [
+"bk-agossypii-1",
+"bk-agossypii-2",
+"bk-agossypii-3"
+],
+"2": [
+"bk-sln-1",
+"bk-sln-2",
+"bk-sln-3"
+],
+"3": [
+"bk-bemisia-1",
+"bk-bemisia-2",
+"bk-bemisia-3"
+],
+"4": [
+"bk-tetranychus-1"
+]
+},
+"cantaloupe": {
+"1": [
+"bk-sln-1",
+"bk-sln-2",
+"bk-sln-3"
+],
+"2": [
+"bk-bemisia-1",
+"bk-bemisia-2",
+"bk-bemisia-3"
+],
+"4": [
+"bk-tetranychus-1"
+]
+},
+"shahd": {
+"1": [
+"bk-bemisia-1",
+"bk-bemisia-2",
+"bk-bemisia-3"
+]
+},
+"watermelon": {
+"1": [
+"bk-tetranychus-1"
+]
+},
+"bean": {
+"3": [
+"bk-tetranychus-1"
+]
+},
+"soybean": {
+"1": [
+"bk-tetranychus-1"
+]
+},
+"carrot": {
+"1": [
+"bk-tetranychus-1"
+],
+"3": [
+"bk-rkn-1",
+"bk-rkn-2",
+"bk-rkn-3"
+]
+},
+"groundnut": {
+"1": [
+"bk-tetranychus-1"
+],
+"5": [
+"bk-rkn-1",
+"bk-rkn-2",
+"bk-rkn-3"
+]
+},
+"strawberry": {
+"1": [
+"bk-sln-1",
+"bk-sln-2",
+"bk-sln-3"
+],
+"2": [
+"bk-tetranychus-1"
+]
+},
+"peach": {
+"1": [
+"bk-peachfly-1",
+"bk-peachfly-2",
+"bk-peachfly-3",
+"bk-medfly-1",
+"bk-medfly-2",
+"bk-medfly-3"
+],
+"2": [
+"bk-tetranychus-1"
+]
+},
+"apple": {
+"1": [
+"bk-zeuzera-1",
+"bk-zeuzera-2",
+"bk-zeuzera-3"
+],
+"2": [
+"bk-eriosoma-1",
+"bk-eriosoma-2",
+"bk-eriosoma-3"
+],
+"3": [
+"bk-pulmi-1",
+"bk-pulmi-2"
+],
+"4": [
+"bk-pulmi-1",
+"bk-pulmi-2"
+],
+"5": [
+"bk-tetranychus-1"
+]
+},
+"grape": {
+"1": [
+"bk-pcitri-1",
+"bk-pcitri-2"
+],
+"2": [
+"bk-medfly-1",
+"bk-medfly-2",
+"bk-medfly-3"
+],
+"3": [
+"bk-fowthrips-1",
+"bk-fowthrips-2",
+"bk-fowthrips-3"
+],
+"4": [
+"bk-lobesia-1",
+"bk-lobesia-2"
+],
+"5": [
+"bk-tetranychus-1"
+],
+"9": [
+"bk-rkn-1",
+"bk-rkn-2",
+"bk-rkn-3"
+]
+},
+"mango": {
+"1": [
+"bk-pcitri-1",
+"bk-pcitri-2"
+],
+"3": [
+"bk-medfly-1",
+"bk-medfly-2",
+"bk-medfly-3"
+]
+},
+"pomegranate": {
+"2": [
+"bk-pcitri-1",
+"bk-pcitri-2"
+]
+},
+"guava": {
+"2": [
+"bk-agossypii-1",
+"bk-agossypii-2",
+"bk-agossypii-3"
+]
+},
+"dates": {
+"1": [
+"bk-rpw-1",
+"bk-rpw-2",
+"bk-rpw-3"
+]
+},
+"olive": {
+"1": [
+"bk-saissetia-1",
+"bk-saissetia-2"
+],
+"2": [
+"bk-prays-1",
+"bk-prays-2",
+"bk-prays-3"
+]
+},
+"onion": {
+"1": [
+"bk-tthrips-1"
+]
+},
+"garlic": {
+"1": [
+"bk-tthrips-1"
+]
+},
+"sugarbeet": {
+"1": [
+"bk-cassida-1",
+"bk-cassida-2",
+"bk-cassida-3"
+],
+"2": [
+"bk-sln-1",
+"bk-sln-2",
+"bk-sln-3"
+],
+"4": [
+"bk-pegomya-1",
+"bk-pegomya-2"
+],
+"6": [
+"bk-rkn-1",
+"bk-rkn-2",
+"bk-rkn-3"
+]
+},
+"alfalfa": {
+"1": [
+"bk-sln-1",
+"bk-sln-2",
+"bk-sln-3"
+]
+},
+"leafbeet": {
+"1": [
+"bk-mpersicae-1",
+"bk-mpersicae-2",
+"bk-mpersicae-3"
+]
+},
+"sorghum": {
+"1": [
+"bk-cutworm-1",
+"bk-cutworm-2",
+"bk-cutworm-3"
+],
+"2": [
+"bk-sln-1",
+"bk-sln-2",
+"bk-sln-3"
+],
+"3": [
+"bk-faw-1",
+"bk-faw-2",
+"bk-faw-3"
+],
+"4": [
+"bk-ostrinia-1",
+"bk-ostrinia-2",
+"bk-ostrinia-3"
+]
+},
+"rice": {
+"1": [
+"bk-chironomus-1",
+"bk-chironomus-2",
+"bk-chironomus-3"
+]
+},
+"artichoke": {
+"1": [
+"bk-sln-1",
+"bk-sln-2",
+"bk-sln-3"
+]
+},
+"lettuce": {
+"1": [
+"bk-sln-1",
+"bk-sln-2",
+"bk-sln-3"
+]
+},
+"spinach": {
+"1": [
+"bk-sln-1",
+"bk-sln-2",
+"bk-sln-3"
+]
+},
+"pea": {
+"1": [
+"bk-sln-1",
+"bk-sln-2",
+"bk-sln-3"
+]
+},
+"banana": {
+"1": [
+"bk-rkn-1",
+"bk-rkn-2",
+"bk-rkn-3"
+]
+},
+"buildings": {
+"1": [
+"bk-termite-1",
+"bk-termite-2",
+"bk-termite-3"
+]
+},
+"open_fields": {
+"1": [
+"bk-rattus-1",
+"bk-rattus-2",
+"bk-rattus-3"
+]
+},
+"snails": {
+"1": [
+"bk-snail-1",
+"bk-snail-2",
+"bk-snail-3"
+]
+},
+"stored_crops": {
+"1": [
+"bk-sitophilus-1",
+"bk-sitophilus-2",
+"bk-sitophilus-3",
+"bk-tribolium-1",
+"bk-tribolium-2",
+"bk-tribolium-3",
+"bk-rhyzopertha-1",
+"bk-rhyzopertha-2",
+"bk-rhyzopertha-3",
+"bk-oryzaephilus-1",
+"bk-oryzaephilus-2",
+"bk-oryzaephilus-3"
+],
+"2": [
+"bk-ephestia-1",
+"bk-ephestia-2",
+"bk-ephestia-3",
+"bk-oryzaephilus-1",
+"bk-oryzaephilus-2",
+"bk-oryzaephilus-3"
+]
+}
+}

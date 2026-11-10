@@ -2,7 +2,7 @@ name: gallery-build
 on:
   push:
     branches: [gallery-work]
-    paths: ['gallery/selected-*.json','scripts/build-gallery.mjs','.github/workflows/gallery-build.yml']
+    paths: ['gallery/selected-*.json','gallery/bank.json','gallery/map.json','scripts/build-gallery.mjs','.github/workflows/gallery-build.yml']
 permissions:
   contents: write
 jobs:

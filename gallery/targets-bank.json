@@ -1,0 +1,754 @@
+[
+{
+"id": "b-sln",
+"ar": "Spodoptera littoralis",
+"names": [
+"Spodoptera littoralis"
+],
+"queries": [
+"Spodoptera littoralis larva",
+"Egyptian cotton leafworm"
+],
+"inat": [
+"Spodoptera littoralis"
+],
+"host": null
+},
+{
+"id": "b-bemisia",
+"ar": "Bemisia tabaci",
+"names": [
+"Bemisia tabaci"
+],
+"queries": [
+"Bemisia tabaci adult",
+"whitefly adults leaf"
+],
+"inat": [
+"Bemisia tabaci"
+],
+"host": null
+},
+{
+"id": "b-agossypii",
+"ar": "Aphis gossypii",
+"names": [
+"Aphis gossypii"
+],
+"queries": [
+"Aphis gossypii colony",
+"cotton aphid"
+],
+"inat": [
+"Aphis gossypii"
+],
+"host": null
+},
+{
+"id": "b-mpersicae",
+"ar": "Myzus persicae",
+"names": [
+"Myzus persicae"
+],
+"queries": [
+"Myzus persicae colony",
+"green peach aphid"
+],
+"inat": [
+"Myzus persicae"
+],
+"host": null
+},
+{
+"id": "b-afabae",
+"ar": "Aphis fabae",
+"names": [
+"Aphis fabae"
+],
+"queries": [
+"Aphis fabae colony",
+"black bean aphid"
+],
+"inat": [
+"Aphis fabae"
+],
+"host": null
+},
+{
+"id": "b-tetranychus",
+"ar": "Tetranychus urticae",
+"names": [
+"Tetranychus urticae"
+],
+"queries": [
+"Tetranychus urticae",
+"two-spotted spider mite"
+],
+"inat": [
+"Tetranychus urticae"
+],
+"host": null
+},
+{
+"id": "b-tthrips",
+"ar": "Thrips tabaci",
+"names": [
+"Thrips tabaci"
+],
+"queries": [
+"Thrips tabaci onion",
+"onion thrips"
+],
+"inat": [
+"Thrips tabaci"
+],
+"host": null
+},
+{
+"id": "b-fowthrips",
+"ar": "Frankliniella occidentalis",
+"names": [
+"Frankliniella occidentalis"
+],
+"queries": [
+"Frankliniella occidentalis",
+"western flower thrips"
+],
+"inat": [
+"Frankliniella occidentalis"
+],
+"host": null
+},
+{
+"id": "b-medfly",
+"ar": "Ceratitis capitata",
+"names": [
+"Ceratitis capitata"
+],
+"queries": [
+"Ceratitis capitata adult",
+"Mediterranean fruit fly"
+],
+"inat": [
+"Ceratitis capitata"
+],
+"host": null
+},
+{
+"id": "b-peachfly",
+"ar": "Bactrocera zonata",
+"names": [
+"Bactrocera zonata"
+],
+"queries": [
+"Bactrocera zonata",
+"peach fruit fly"
+],
+"inat": [
+"Bactrocera zonata"
+],
+"host": null
+},
+{
+"id": "b-liriomyza",
+"ar": "Liriomyza trifolii",
+"names": [
+"Liriomyza trifolii"
+],
+"queries": [
+"Liriomyza trifolii",
+"Liriomyza leafminer adult",
+"serpentine leafminer"
+],
+"inat": [
+"Liriomyza trifolii"
+],
+"host": null
+},
+{
+"id": "b-pieris",
+"ar": "Pieris rapae",
+"names": [
+"Pieris rapae"
+],
+"queries": [
+"Pieris rapae larva cabbage",
+"cabbage white butterfly"
+],
+"inat": [
+"Pieris rapae"
+],
+"host": null
+},
+{
+"id": "b-plutella",
+"ar": "Plutella xylostella",
+"names": [
+"Plutella xylostella"
+],
+"queries": [
+"Plutella xylostella larva",
+"diamondback moth"
+],
+"inat": [
+"Plutella xylostella"
+],
+"host": null
+},
+{
+"id": "b-pbw",
+"ar": "Pectinophora gossypiella",
+"names": [
+"Pectinophora gossypiella"
+],
+"queries": [
+"Pectinophora gossypiella",
+"pink bollworm"
+],
+"inat": [
+"Pectinophora gossypiella"
+],
+"host": null
+},
+{
+"id": "b-earias",
+"ar": "Earias insulana",
+"names": [
+"Earias insulana"
+],
+"queries": [
+"Earias insulana",
+"spiny bollworm"
+],
+"inat": [
+"Earias insulana"
+],
+"host": null
+},
+{
+"id": "b-harmigera",
+"ar": "Helicoverpa armigera",
+"names": [
+"Helicoverpa armigera"
+],
+"queries": [
+"Helicoverpa armigera larva",
+"cotton bollworm"
+],
+"inat": [
+"Helicoverpa armigera"
+],
+"host": null
+},
+{
+"id": "b-faw",
+"ar": "Spodoptera frugiperda",
+"names": [
+"Spodoptera frugiperda"
+],
+"queries": [
+"Spodoptera frugiperda larva",
+"fall armyworm"
+],
+"inat": [
+"Spodoptera frugiperda"
+],
+"host": null
+},
+{
+"id": "b-sesamia",
+"ar": "Sesamia cretica",
+"names": [
+"Sesamia cretica"
+],
+"queries": [
+"Sesamia cretica",
+"pink stem borer"
+],
+"inat": [
+"Sesamia cretica"
+],
+"host": null
+},
+{
+"id": "b-ostrinia",
+"ar": "Ostrinia nubilalis",
+"names": [
+"Ostrinia nubilalis"
+],
+"queries": [
+"Ostrinia nubilalis",
+"European corn borer"
+],
+"inat": [
+"Ostrinia nubilalis"
+],
+"host": null
+},
+{
+"id": "b-rpw",
+"ar": "Rhynchophorus ferrugineus",
+"names": [
+"Rhynchophorus ferrugineus"
+],
+"queries": [
+"Rhynchophorus ferrugineus",
+"red palm weevil"
+],
+"inat": [
+"Rhynchophorus ferrugineus"
+],
+"host": null
+},
+{
+"id": "b-dustmite",
+"ar": "Oligonychus afrasiaticus",
+"names": [
+"Oligonychus afrasiaticus"
+],
+"queries": [
+"Oligonychus afrasiaticus",
+"date palm dust mite"
+],
+"inat": [
+"Oligonychus afrasiaticus"
+],
+"host": null
+},
+{
+"id": "b-pcitri",
+"ar": "Planococcus citri",
+"names": [
+"Planococcus citri"
+],
+"queries": [
+"Planococcus citri",
+"citrus mealybug"
+],
+"inat": [
+"Planococcus citri"
+],
+"host": null
+},
+{
+"id": "b-mhirsutus",
+"ar": "Maconellicoccus hirsutus",
+"names": [
+"Maconellicoccus hirsutus"
+],
+"queries": [
+"Maconellicoccus hirsutus",
+"pink hibiscus mealybug"
+],
+"inat": [
+"Maconellicoccus hirsutus"
+],
+"host": null
+},
+{
+"id": "b-molecricket",
+"ar": "Gryllotalpa gryllotalpa",
+"names": [
+"Gryllotalpa gryllotalpa"
+],
+"queries": [
+"Gryllotalpa gryllotalpa",
+"mole cricket"
+],
+"inat": [
+"Gryllotalpa gryllotalpa"
+],
+"host": null
+},
+{
+"id": "b-cutworm",
+"ar": "Agrotis ipsilon",
+"names": [
+"Agrotis ipsilon"
+],
+"queries": [
+"Agrotis ipsilon larva",
+"black cutworm"
+],
+"inat": [
+"Agrotis ipsilon"
+],
+"host": null
+},
+{
+"id": "b-cassida",
+"ar": "Cassida vittata",
+"names": [
+"Cassida vittata"
+],
+"queries": [
+"Cassida vittata",
+"beet tortoise beetle"
+],
+"inat": [
+"Cassida vittata"
+],
+"host": null
+},
+{
+"id": "b-pegomya",
+"ar": "Pegomya betae",
+"names": [
+"Pegomya betae"
+],
+"queries": [
+"Pegomya betae",
+"beet leaf miner fly"
+],
+"inat": [
+"Pegomya betae"
+],
+"host": null
+},
+{
+"id": "b-lobesia",
+"ar": "Lobesia botrana",
+"names": [
+"Lobesia botrana"
+],
+"queries": [
+"Lobesia botrana",
+"European grapevine moth"
+],
+"inat": [
+"Lobesia botrana"
+],
+"host": null
+},
+{
+"id": "b-prays",
+"ar": "Prays oleae",
+"names": [
+"Prays oleae"
+],
+"queries": [
+"Prays oleae",
+"olive moth"
+],
+"inat": [
+"Prays oleae"
+],
+"host": null
+},
+{
+"id": "b-eriosoma",
+"ar": "Eriosoma lanigerum",
+"names": [
+"Eriosoma lanigerum"
+],
+"queries": [
+"Eriosoma lanigerum",
+"woolly apple aphid"
+],
+"inat": [
+"Eriosoma lanigerum"
+],
+"host": null
+},
+{
+"id": "b-pulmi",
+"ar": "Panonychus ulmi",
+"names": [
+"Panonychus ulmi"
+],
+"queries": [
+"Panonychus ulmi",
+"European red mite"
+],
+"inat": [
+"Panonychus ulmi"
+],
+"host": null
+},
+{
+"id": "b-zeuzera",
+"ar": "Zeuzera pyrina",
+"names": [
+"Zeuzera pyrina"
+],
+"queries": [
+"Zeuzera pyrina",
+"leopard moth"
+],
+"inat": [
+"Zeuzera pyrina"
+],
+"host": null
+},
+{
+"id": "b-virachola",
+"ar": "Virachola livia",
+"names": [
+"Virachola livia"
+],
+"queries": [
+"Virachola livia",
+"pomegranate butterfly Deudorix"
+],
+"inat": [
+"Virachola livia"
+],
+"host": null
+},
+{
+"id": "b-termite",
+"ar": "Reticulitermes",
+"names": [
+"Reticulitermes"
+],
+"queries": [
+"subterranean termites",
+"Microcerotermes termite workers"
+],
+"inat": [
+"Reticulitermes"
+],
+"host": null
+},
+{
+"id": "b-rattus",
+"ar": "Rattus rattus",
+"names": [
+"Rattus rattus"
+],
+"queries": [
+"Rattus rattus",
+"black rat"
+],
+"inat": [
+"Rattus rattus"
+],
+"host": null
+},
+{
+"id": "b-snail",
+"ar": "Eobania vermiculata",
+"names": [
+"Eobania vermiculata"
+],
+"queries": [
+"Eobania vermiculata",
+"Theba pulchella",
+"Helix snail garden"
+],
+"inat": [
+"Eobania vermiculata"
+],
+"host": null
+},
+{
+"id": "b-sitophilus",
+"ar": "Sitophilus oryzae",
+"names": [
+"Sitophilus oryzae"
+],
+"queries": [
+"Sitophilus oryzae",
+"rice weevil"
+],
+"inat": [
+"Sitophilus oryzae"
+],
+"host": null
+},
+{
+"id": "b-tribolium",
+"ar": "Tribolium castaneum",
+"names": [
+"Tribolium castaneum"
+],
+"queries": [
+"Tribolium castaneum",
+"red flour beetle"
+],
+"inat": [
+"Tribolium castaneum"
+],
+"host": null
+},
+{
+"id": "b-rhyzopertha",
+"ar": "Rhyzopertha dominica",
+"names": [
+"Rhyzopertha dominica"
+],
+"queries": [
+"Rhyzopertha dominica",
+"lesser grain borer"
+],
+"inat": [
+"Rhyzopertha dominica"
+],
+"host": null
+},
+{
+"id": "b-ephestia",
+"ar": "Ephestia cautella",
+"names": [
+"Ephestia cautella"
+],
+"queries": [
+"Ephestia cautella",
+"Cadra cautella almond moth"
+],
+"inat": [
+"Ephestia cautella"
+],
+"host": null
+},
+{
+"id": "b-oryzaephilus",
+"ar": "Oryzaephilus surinamensis",
+"names": [
+"Oryzaephilus surinamensis"
+],
+"queries": [
+"Oryzaephilus surinamensis",
+"sawtoothed grain beetle"
+],
+"inat": [
+"Oryzaephilus surinamensis"
+],
+"host": null
+},
+{
+"id": "b-etiella",
+"ar": "Etiella zinckenella",
+"names": [
+"Etiella zinckenella"
+],
+"queries": [
+"Etiella zinckenella",
+"pod borer legume"
+],
+"inat": [
+"Etiella zinckenella"
+],
+"host": null
+},
+{
+"id": "b-aceria",
+"ar": "Aceria tulipae",
+"names": [
+"Aceria tulipae"
+],
+"queries": [
+"Aceria tulipae",
+"wheat curl mite garlic"
+],
+"inat": [
+"Aceria tulipae"
+],
+"host": null
+},
+{
+"id": "b-chilo",
+"ar": "Chilo agamemnonellus",
+"names": [
+"Chilo agamemnonellus"
+],
+"queries": [
+"Chilo agamemnon",
+"sugarcane stem borer"
+],
+"inat": [
+"Chilo agamemnonellus"
+],
+"host": null
+},
+{
+"id": "b-saissetia",
+"ar": "Saissetia oleae",
+"names": [
+"Saissetia oleae"
+],
+"queries": [
+"Saissetia oleae",
+"black scale olive"
+],
+"inat": [
+"Saissetia oleae"
+],
+"host": null
+},
+{
+"id": "b-parlatoria",
+"ar": "Parlatoria blanchardi",
+"names": [
+"Parlatoria blanchardi"
+],
+"queries": [
+"Parlatoria blanchardi",
+"date palm scale"
+],
+"inat": [
+"Parlatoria blanchardi"
+],
+"host": null
+},
+{
+"id": "b-pulvinaria",
+"ar": "Pulvinaria psidii",
+"names": [
+"Pulvinaria psidii"
+],
+"queries": [
+"Pulvinaria psidii",
+"green shield scale"
+],
+"inat": [
+"Pulvinaria psidii"
+],
+"host": null
+},
+{
+"id": "b-phyllocoptes",
+"ar": "Aculops lycopersici",
+"names": [
+"Aculops lycopersici"
+],
+"queries": [
+"Aculops lycopersici",
+"tomato russet mite"
+],
+"inat": [
+"Aculops lycopersici"
+],
+"host": null
+},
+{
+"id": "b-chironomus",
+"ar": "Chironomus",
+"names": [
+"Chironomus"
+],
+"queries": [
+"Chironomus larva bloodworm",
+"bloodworm midge larva rice"
+],
+"inat": [
+"Chironomus"
+],
+"host": null
+},
+{
+"id": "b-rkn",
+"ar": "Meloidogyne incognita",
+"names": [
+"Meloidogyne incognita"
+],
+"queries": [
+"Meloidogyne incognita galls roots",
+"root-knot nematode root galls"
+],
+"inat": [
+"Meloidogyne incognita"
+],
+"host": null
+}
+]

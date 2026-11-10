@@ -1,0 +1,41 @@
+[
+{
+"id": "eggplant-01",
+"crop_id": "eggplant",
+"n": 1,
+"kind": "host",
+"src": "commons",
+"thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e8/Bemisia_tabaci_under_leaf_of_eggplant.jpg/960px-Bemisia_tabaci_under_leaf_of_eggplant.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+"page": "https://commons.wikimedia.org/wiki/File:Bemisia_tabaci_under_leaf_of_eggplant.jpg",
+"license": "CC BY-SA 4.0",
+"author": "Wee Hong",
+"species": "Bemisia tabaci",
+"title": "File:Bemisia tabaci under leaf of eggplant.jpg"
+},
+{
+"id": "eggplant-02",
+"crop_id": "eggplant",
+"n": 1,
+"kind": "organism",
+"src": "commons",
+"thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/01/Bemisia_tabaci_from_USDA_1.jpg/960px-Bemisia_tabaci_from_USDA_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+"page": "https://commons.wikimedia.org/wiki/File:Bemisia_tabaci_from_USDA_1.jpg",
+"license": "Public domain",
+"author": "Stephen Ausmus",
+"species": "Bemisia tabaci",
+"title": "File:Bemisia tabaci from USDA 1.jpg"
+},
+{
+"id": "eggplant-03",
+"crop_id": "eggplant",
+"n": 1,
+"kind": "organism",
+"src": "commons",
+"thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/ff/Bemisia_tabaci_from_USDA_2.jpg/960px-Bemisia_tabaci_from_USDA_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+"page": "https://commons.wikimedia.org/wiki/File:Bemisia_tabaci_from_USDA_2.jpg",
+"license": "Public domain",
+"author": "Stephen Ausmus",
+"species": "Bemisia tabaci",
+"title": "File:Bemisia tabaci from USDA 2.jpg"
+}
+]

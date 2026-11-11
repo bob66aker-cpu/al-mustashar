@@ -103,6 +103,11 @@
 ],
 "2": [
 "bk-tetranychus-1"
+],
+"3": [
+"bd-fieldbean-chocolate-1",
+"bd-fieldbean-chocolate-2",
+"bd-fieldbean-chocolate-3"
 ]
 },
 "cabbage": {
@@ -128,6 +133,14 @@
 ],
 "6": [
 "bk-tetranychus-1"
+],
+"7": [
+"bd-cabbage-downy-1",
+"bd-cabbage-downy-2",
+"bd-cabbage-downy-3"
+],
+"8": [
+"bd-cabbage-powdery-1"
 ]
 },
 "broccoli": {
@@ -159,6 +172,11 @@
 "bk-bemisia-1",
 "bk-bemisia-2",
 "bk-bemisia-3"
+],
+"2": [
+"bd-cuc-powdery-1",
+"bd-cuc-powdery-2",
+"bd-cuc-powdery-3"
 ]
 },
 "koosa_labb": {
@@ -186,6 +204,21 @@
 ],
 "4": [
 "bk-tetranychus-1"
+],
+"5": [
+"bd-cuc-powdery-1",
+"bd-cuc-powdery-2",
+"bd-cuc-powdery-3"
+],
+"7": [
+"bd-cuc-downy-1",
+"bd-cuc-downy-2",
+"bd-cuc-downy-3"
+],
+"6": [
+"bd-cuc-gsb-1",
+"bd-cuc-gsb-2",
+"bd-cuc-gsb-3"
 ]
 },
 "cantaloupe": {
@@ -201,6 +234,21 @@
 ],
 "4": [
 "bk-tetranychus-1"
+],
+"5": [
+"bd-cuc-powdery-1",
+"bd-cuc-powdery-2",
+"bd-cuc-powdery-3"
+],
+"6": [
+"bd-cuc-downy-1",
+"bd-cuc-downy-2",
+"bd-cuc-downy-3"
+],
+"8": [
+"bd-cuc-gsb-1",
+"bd-cuc-gsb-2",
+"bd-cuc-gsb-3"
 ]
 },
 "shahd": {
@@ -208,11 +256,36 @@
 "bk-bemisia-1",
 "bk-bemisia-2",
 "bk-bemisia-3"
+],
+"2": [
+"bd-cuc-powdery-1",
+"bd-cuc-powdery-2",
+"bd-cuc-powdery-3"
+],
+"3": [
+"bd-cuc-downy-1",
+"bd-cuc-downy-2",
+"bd-cuc-downy-3"
 ]
 },
 "watermelon": {
 "1": [
 "bk-tetranychus-1"
+],
+"2": [
+"bd-cuc-powdery-1",
+"bd-cuc-powdery-2",
+"bd-cuc-powdery-3"
+],
+"3": [
+"bd-cuc-downy-1",
+"bd-cuc-downy-2",
+"bd-cuc-downy-3"
+],
+"4": [
+"bd-cuc-gsb-1",
+"bd-cuc-gsb-2",
+"bd-cuc-gsb-3"
 ]
 },
 "bean": {
@@ -243,6 +316,9 @@
 "bk-rkn-1",
 "bk-rkn-2",
 "bk-rkn-3"
+],
+"3": [
+"bd-groundnut-leafspot-1"
 ]
 },
 "strawberry": {
@@ -253,6 +329,15 @@
 ],
 "2": [
 "bk-tetranychus-1"
+],
+"3": [
+"bd-straw-botrytis-1",
+"bd-straw-botrytis-2"
+],
+"6": [
+"bd-straw-leafspot-1",
+"bd-straw-leafspot-2",
+"bd-straw-leafspot-3"
 ]
 },
 "peach": {
@@ -266,6 +351,17 @@
 ],
 "2": [
 "bk-tetranychus-1"
+],
+"5": [
+"bd-peach-rust-1",
+"bd-peach-rust-2",
+"bd-peach-rust-3"
+],
+"6": [
+"bd-peach-leafcurl-1",
+"bd-peach-leafcurl-2",
+"bd-peach-leafcurl-3",
+"bd-peach-leafcurl-4"
 ]
 },
 "apple": {
@@ -289,6 +385,16 @@
 ],
 "5": [
 "bk-tetranychus-1"
+],
+"6": [
+"bd-apple-powdery-1",
+"bd-apple-powdery-2",
+"bd-apple-powdery-3"
+],
+"7": [
+"bd-apple-scab-1",
+"bd-apple-scab-2",
+"bd-apple-scab-3"
 ]
 },
 "grape": {
@@ -317,6 +423,14 @@
 "bk-rkn-1",
 "bk-rkn-2",
 "bk-rkn-3"
+],
+"6": [
+"bd-grape-botrytis-1"
+],
+"8": [
+"bd-grape-downy-1",
+"bd-grape-downy-2",
+"bd-grape-downy-3"
 ]
 },
 "mango": {
@@ -328,6 +442,9 @@
 "bk-medfly-1",
 "bk-medfly-2",
 "bk-medfly-3"
+],
+"5": [
+"bd-mango-anthracnose-1"
 ]
 },
 "pomegranate": {
@@ -364,11 +481,25 @@
 "onion": {
 "1": [
 "bk-tthrips-1"
+],
+"2": [
+"bd-onion-downy-1",
+"bd-onion-downy-2",
+"bd-onion-downy-3"
+],
+"5": [
+"bd-onion-pinkroot-1",
+"bd-onion-pinkroot-2"
 ]
 },
 "garlic": {
 "1": [
 "bk-tthrips-1"
+],
+"4": [
+"bd-garlic-rust-1",
+"bd-garlic-rust-2",
+"bd-garlic-rust-3"
 ]
 },
 "sugarbeet": {
@@ -390,6 +521,11 @@
 "bk-rkn-1",
 "bk-rkn-2",
 "bk-rkn-3"
+],
+"5": [
+"bd-sugarbeet-cercospora-1",
+"bd-sugarbeet-cercospora-2",
+"bd-sugarbeet-cercospora-3"
 ]
 },
 "alfalfa": {
@@ -433,6 +569,20 @@
 "bk-chironomus-1",
 "bk-chironomus-2",
 "bk-chironomus-3"
+],
+"2": [
+"bd-rice-blast-1",
+"bd-rice-blast-2",
+"bd-rice-blast-3"
+],
+"3": [
+"bd-rice-falsesmut-1",
+"bd-rice-falsesmut-2",
+"bd-rice-falsesmut-3"
+],
+"5": [
+"bd-rice-whitetip-1",
+"bd-rice-whitetip-2"
 ]
 },
 "artichoke": {
@@ -461,6 +611,14 @@
 "bk-sln-1",
 "bk-sln-2",
 "bk-sln-3"
+],
+"2": [
+"bd-pea-powdery-1",
+"bd-pea-powdery-2",
+"bd-pea-powdery-3"
+],
+"4": [
+"bd-pea-ascochyta-1"
 ]
 },
 "banana": {
@@ -513,6 +671,50 @@
 "bk-oryzaephilus-1",
 "bk-oryzaephilus-2",
 "bk-oryzaephilus-3"
+]
+},
+"wheat": {
+"4": [
+"bd-wheat-yrust-1"
+],
+"5": [
+"bd-wheat-fusarium-1"
+]
+},
+"sugarcane": {
+"3": [
+"bd-sugarcane-whipsmut-1"
+]
+},
+"pumpkin": {
+"1": [
+"bd-cuc-powdery-1",
+"bd-cuc-powdery-2",
+"bd-cuc-powdery-3"
+],
+"2": [
+"bd-cuc-downy-1",
+"bd-cuc-downy-2",
+"bd-cuc-downy-3"
+]
+},
+"melon": {
+"1": [
+"bd-cuc-powdery-1",
+"bd-cuc-powdery-2",
+"bd-cuc-powdery-3"
+],
+"2": [
+"bd-cuc-gsb-1",
+"bd-cuc-gsb-2",
+"bd-cuc-gsb-3"
+]
+},
+"pear": {
+"3": [
+"bd-pear-fireblight-1",
+"bd-pear-fireblight-2",
+"bd-pear-fireblight-3"
 ]
 }
 }

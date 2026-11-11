@@ -65,7 +65,7 @@ node scripts/stamp-datacheck.mjs canada        # يختم تاريخ آخر تح
 ## فحص ما بعد النشر
 
 ```bash
-node scripts/post-deploy-smoke.mjs https://al-mustashar.pages.dev --expect 1.19.56
+node scripts/post-deploy-smoke.mjs https://al-mustashar.pages.dev --expect 1.19.57
 ```
 
 يقرأ فقط ويتحقق أن الإصدار المنشور هو المقصود وأن ملفات القسم والقواعد تُخدم.

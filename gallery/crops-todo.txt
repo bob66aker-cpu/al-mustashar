@@ -1,2 +1,1 @@
-bank2
-dis2
+bank

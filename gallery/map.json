@@ -249,6 +249,11 @@
 "bd-cuc-gsb-1",
 "bd-cuc-gsb-2",
 "bd-cuc-gsb-3"
+],
+"3": [
+"b2-dacus-182",
+"b2-dacus-183",
+"b2-dacus-184"
 ]
 },
 "shahd": {
@@ -291,6 +296,9 @@
 "bean": {
 "3": [
 "bk-tetranychus-1"
+],
+"1": [
+"b2-liriomyza2-185"
 ]
 },
 "soybean": {
@@ -306,6 +314,10 @@
 "bk-rkn-1",
 "bk-rkn-2",
 "bk-rkn-3"
+],
+"2": [
+"b2-carrot-powdery2-211",
+"b2-carrot-powdery2-212"
 ]
 },
 "groundnut": {
@@ -362,6 +374,11 @@
 "bd-peach-leafcurl-2",
 "bd-peach-leafcurl-3",
 "bd-peach-leafcurl-4"
+],
+"4": [
+"b2-peach-brownrot2-215",
+"b2-peach-brownrot2-216",
+"b2-peach-brownrot2-217"
 ]
 },
 "apple": {
@@ -445,12 +462,26 @@
 ],
 "5": [
 "bd-mango-anthracnose-1"
+],
+"2": [
+"b2-pulvinaria2-189",
+"b2-pulvinaria2-190"
 ]
 },
 "pomegranate": {
 "2": [
 "bk-pcitri-1",
 "bk-pcitri-2"
+],
+"1": [
+"b2-aphispunicae-191",
+"b2-aphispunicae-192",
+"b2-aphispunicae-193"
+],
+"3": [
+"b2-virachola2-194",
+"b2-virachola2-195",
+"b2-virachola2-196"
 ]
 },
 "guava": {
@@ -458,6 +489,11 @@
 "bk-agossypii-1",
 "bk-agossypii-2",
 "bk-agossypii-3"
+],
+"1": [
+"b2-pulvinaria2-186",
+"b2-pulvinaria2-187",
+"b2-pulvinaria2-188"
 ]
 },
 "dates": {
@@ -476,6 +512,9 @@
 "bk-prays-1",
 "bk-prays-2",
 "bk-prays-3"
+],
+"3": [
+"b2-olive-peacock2-218"
 ]
 },
 "onion": {
@@ -490,6 +529,11 @@
 "5": [
 "bd-onion-pinkroot-1",
 "bd-onion-pinkroot-2"
+],
+"3": [
+"b2-onion-whiterot2-206",
+"b2-onion-whiterot2-207",
+"b2-onion-whiterot2-208"
 ]
 },
 "garlic": {
@@ -679,6 +723,21 @@
 ],
 "5": [
 "bd-wheat-fusarium-1"
+],
+"1": [
+"b2-wheataphid-179",
+"b2-wheataphid-180",
+"b2-wheataphid-181"
+],
+"2": [
+"b2-wheat-smut2-202"
+],
+"3": [
+"b2-wheat-powdery2-203"
+],
+"6": [
+"b2-wheat-rootrot2-204",
+"b2-wheat-rootrot2-205"
 ]
 },
 "sugarcane": {
@@ -715,6 +774,73 @@
 "bd-pear-fireblight-1",
 "bd-pear-fireblight-2",
 "bd-pear-fireblight-3"
+],
+"2": [
+"b2-lichen2-197",
+"b2-lichen2-198",
+"b2-lichen2-199"
+]
+},
+"tomato": {
+"8": [
+"b2-liriomyza2-185"
+]
+},
+"cucumber": {
+"3": [
+"b2-liriomyza2-185"
+],
+"6": [
+"b2-cuc-fruitrot2-213",
+"b2-cuc-fruitrot2-214"
+],
+"8": [
+"bd-cuc-powdery-1",
+"bd-cuc-powdery-2",
+"bd-cuc-powdery-3"
+]
+},
+"citrus": {
+"7": [
+"b2-lichen2-197",
+"b2-lichen2-198",
+"b2-lichen2-199"
+]
+},
+"sykes_palm": {
+"1": [
+"b2-diaspis-200",
+"b2-diaspis-201"
+]
+},
+"sesame": {
+"1": [
+"b2-sesame-charcoal2-209",
+"b2-sesame-charcoal2-210"
+]
+},
+"eggplant": {
+"2": [
+"bk-tetranychus-1"
+]
+},
+"potato": {
+"15": [
+"bk-rkn-1",
+"bk-rkn-2",
+"bk-rkn-3"
+]
+},
+"protected": {
+"1": [
+"bk-rkn-1",
+"bk-rkn-2",
+"bk-rkn-3"
+],
+"2": [
+"bk-rkn-1",
+"bk-rkn-2",
+"bk-rkn-3"
 ]
 }
 }

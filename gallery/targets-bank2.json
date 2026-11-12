@@ -1,0 +1,344 @@
+[
+{
+"id": "b-wheataphid",
+"ar": "wheataphid",
+"names": [
+"Sitobion avenae",
+"Rhopalosiphum padi",
+"Schizaphis graminum"
+],
+"queries": [
+"Sitobion avenae wheat",
+"Rhopalosiphum padi",
+"cereal aphid wheat ear"
+],
+"inat": [
+"Sitobion avenae",
+"Rhopalosiphum padi"
+],
+"host": null,
+"cards": {}
+},
+{
+"id": "b-dacus",
+"ar": "dacus",
+"names": [
+"Dacus ciliatus",
+"Zeugodacus cucurbitae",
+"Bactrocera cucurbitae"
+],
+"queries": [
+"Dacus ciliatus",
+"melon fly Zeugodacus cucurbitae",
+"Dacus ciliatus cucurbit fruit"
+],
+"inat": [
+"Dacus ciliatus",
+"Zeugodacus cucurbitae"
+],
+"host": null,
+"cards": {}
+},
+{
+"id": "b-liriomyza2",
+"ar": "liriomyza2",
+"names": [
+"Liriomyza"
+],
+"queries": [
+"Liriomyza leaf mine tomato",
+"Liriomyza trifolii larva",
+"leafminer mines on leaf serpentine",
+"Liriomyza sativae adult fly"
+],
+"inat": [
+"Liriomyza"
+],
+"host": null,
+"cards": {}
+},
+{
+"id": "b-eutetranychus",
+"ar": "eutetranychus",
+"names": [
+"Eutetranychus orientalis",
+"Eutetranychus banksi"
+],
+"queries": [
+"Eutetranychus orientalis citrus",
+"Eutetranychus banksi Texas citrus mite"
+],
+"inat": [
+"Eutetranychus orientalis",
+"Eutetranychus banksi"
+],
+"host": null,
+"cards": {}
+},
+{
+"id": "b-pcitri-mite",
+"ar": "pcitri-mite",
+"names": [
+"Panonychus citri"
+],
+"queries": [
+"Panonychus citri",
+"citrus red mite leaf"
+],
+"inat": [
+"Panonychus citri"
+],
+"host": null,
+"cards": {}
+},
+{
+"id": "b-aculops",
+"ar": "aculops",
+"names": [
+"Phyllocoptruta oleivora",
+"Aculops pelekassi",
+"Aculus"
+],
+"queries": [
+"citrus rust mite damage fruit",
+"Phyllocoptruta oleivora"
+],
+"inat": [
+"Phyllocoptruta oleivora",
+"Aculops pelekassi"
+],
+"host": null,
+"cards": {}
+},
+{
+"id": "b-pulvinaria2",
+"ar": "pulvinaria2",
+"names": [
+"Pulvinaria psidii",
+"Pulvinaria",
+"Coccus hesperidum"
+],
+"queries": [
+"Pulvinaria psidii",
+"soft scale insects leaf",
+"green shield scale Pulvinaria"
+],
+"inat": [
+"Pulvinaria psidii",
+"Pulvinaria"
+],
+"host": null,
+"cards": {}
+},
+{
+"id": "b-aphispunicae",
+"ar": "aphispunicae",
+"names": [
+"Aphis punicae",
+"Aphis gossypii"
+],
+"queries": [
+"Aphis punicae pomegranate",
+"aphids pomegranate"
+],
+"inat": [
+"Aphis punicae",
+"Aphis gossypii"
+],
+"host": null,
+"cards": {}
+},
+{
+"id": "b-virachola2",
+"ar": "virachola2",
+"names": [
+"Virachola livia",
+"Deudorix livia"
+],
+"queries": [
+"Deudorix livia",
+"Virachola livia pomegranate butterfly",
+"pomegranate fruit borer Deudorix"
+],
+"inat": [
+"Virachola livia",
+"Deudorix livia"
+],
+"host": null,
+"cards": {}
+},
+{
+"id": "b-quadraspidiotus",
+"ar": "quadraspidiotus",
+"names": [
+"Quadraspidiotus perniciosus",
+"Diaspidiotus perniciosus",
+"Epidiaspis leperii"
+],
+"queries": [
+"San Jose scale pear",
+"Quadraspidiotus perniciosus",
+"scale insects fruit tree bark"
+],
+"inat": [
+"Quadraspidiotus perniciosus",
+"Diaspidiotus perniciosus"
+],
+"host": null,
+"cards": {}
+},
+{
+"id": "b-oligonychus2",
+"ar": "oligonychus2",
+"names": [
+"Oligonychus afrasiaticus",
+"Oligonychus"
+],
+"queries": [
+"Oligonychus afrasiaticus date palm",
+"date palm fruit mite dust",
+"Oligonychus afrasiaticus dates"
+],
+"inat": [
+"Oligonychus afrasiaticus",
+"Oligonychus"
+],
+"host": null,
+"cards": {}
+},
+{
+"id": "b-sugarcane-scale",
+"ar": "sugarcane-scale",
+"names": [
+"Saccharicoccus sacchari",
+"Aulacaspis tegalensis",
+"Pulvinaria elongata"
+],
+"queries": [
+"sugarcane scale insect",
+"Saccharicoccus sacchari"
+],
+"inat": [
+"Saccharicoccus sacchari",
+"Aulacaspis tegalensis"
+],
+"host": null,
+"cards": {}
+},
+{
+"id": "b-sesamia2",
+"ar": "sesamia2",
+"names": [
+"Sesamia cretica",
+"Sesamia nonagrioides",
+"Chilo"
+],
+"queries": [
+"Sesamia nonagrioides",
+"Sesamia cretica sugarcane",
+"Chilo sacchariphagus",
+"sugarcane borer larva"
+],
+"inat": [
+"Sesamia cretica",
+"Sesamia nonagrioides"
+],
+"host": null,
+"cards": {}
+},
+{
+"id": "b-lichen2",
+"ar": "lichen2",
+"names": [
+"lichen",
+"Parmelia",
+"Xanthoria"
+],
+"queries": [
+"lichen on citrus branch",
+"lichens on orchard tree trunk",
+"lichens pear tree bark"
+],
+"inat": [
+"lichen",
+"Parmelia"
+],
+"host": null,
+"cards": {}
+},
+{
+"id": "b-gummosis2",
+"ar": "gummosis2",
+"names": [
+"gummosis",
+"Phytophthora"
+],
+"queries": [
+"citrus gummosis trunk",
+"Phytophthora gummosis bark citrus",
+"citrus trunk gum exudation"
+],
+"inat": [
+"gummosis",
+"Phytophthora"
+],
+"host": null,
+"cards": {}
+},
+{
+"id": "b-diaspis",
+"ar": "diaspis",
+"names": [
+"Diaspis boisduvali",
+"Diaspis"
+],
+"queries": [
+"Diaspis boisduvali palm",
+"cycas scale insect",
+"Aulacaspis yasumatsui"
+],
+"inat": [
+"Diaspis boisduvali",
+"Diaspis"
+],
+"host": null,
+"cards": {}
+},
+{
+"id": "b-allotropa",
+"ar": "allotropa",
+"names": [
+"Aceria tulipae",
+"Aceria"
+],
+"queries": [
+"garlic dry bulb mite",
+"Aceria tulipae bulb",
+"wheat curl mite garlic"
+],
+"inat": [
+"Aceria tulipae",
+"Aceria"
+],
+"host": null,
+"cards": {}
+},
+{
+"id": "b-pegomya2",
+"ar": "pegomya2",
+"names": [
+"Pegomya",
+"Liriomyza"
+],
+"queries": [
+"beet leaf miner Pegomya hyoscyami",
+"leafminer beet leaf mines"
+],
+"inat": [
+"Pegomya",
+"Liriomyza"
+],
+"host": null,
+"cards": {}
+}
+]

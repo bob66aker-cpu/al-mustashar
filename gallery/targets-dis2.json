@@ -1,0 +1,884 @@
+[
+{
+"id": "d-wheat-smut2",
+"ar": "wheat-smut2",
+"names": [
+"loose smut",
+"Ustilago tritici",
+"Ustilago nuda",
+"smut"
+],
+"queries": [
+"wheat loose smut ears",
+"Ustilago tritici wheat",
+"smut wheat head black"
+],
+"inat": [
+"loose smut",
+"Ustilago tritici"
+],
+"host": "wheat|triticum|barley|cereal",
+"cards": {
+"wheat": [
+2
+]
+}
+},
+{
+"id": "d-wheat-powdery2",
+"ar": "wheat-powdery2",
+"names": [
+"powdery mildew",
+"Blumeria",
+"Erysiphe graminis"
+],
+"queries": [
+"wheat powdery mildew",
+"Blumeria graminis wheat leaves",
+"cereal powdery mildew"
+],
+"inat": [
+"powdery mildew",
+"Blumeria"
+],
+"host": "wheat|triticum|barley|cereal",
+"cards": {
+"wheat": [
+3
+]
+}
+},
+{
+"id": "d-wheat-rootrot2",
+"ar": "wheat-rootrot2",
+"names": [
+"root rot",
+"take-all",
+"Gaeumannomyces",
+"Bipolaris",
+"crown rot",
+"Fusarium"
+],
+"queries": [
+"take-all wheat roots",
+"wheat root rot",
+"wheat crown rot Fusarium"
+],
+"inat": [
+"root rot",
+"take-all"
+],
+"host": "wheat|triticum|cereal",
+"cards": {
+"wheat": [
+6
+]
+}
+},
+{
+"id": "d-onion-whiterot2",
+"ar": "onion-whiterot2",
+"names": [
+"white rot",
+"Sclerotium cepivorum",
+"Stromatinia"
+],
+"queries": [
+"onion white rot",
+"Sclerotium cepivorum"
+],
+"inat": [
+"white rot",
+"Sclerotium cepivorum"
+],
+"host": "onion|allium|garlic|leek",
+"cards": {
+"onion": [
+3
+]
+}
+},
+{
+"id": "d-onion-purple2",
+"ar": "onion-purple2",
+"names": [
+"purple blotch",
+"Alternaria porri",
+"Alternaria"
+],
+"queries": [
+"onion purple blotch",
+"Alternaria porri onion leaf"
+],
+"inat": [
+"purple blotch",
+"Alternaria porri"
+],
+"host": "onion|allium|garlic",
+"cards": {
+"onion": [
+4
+]
+}
+},
+{
+"id": "d-garlic-downy2",
+"ar": "garlic-downy2",
+"names": [
+"downy mildew",
+"Peronospora"
+],
+"queries": [
+"onion downy mildew leaves",
+"Peronospora destructor allium",
+"garlic downy mildew"
+],
+"inat": [
+"downy mildew",
+"Peronospora"
+],
+"host": "onion|allium|garlic|leek",
+"cards": {
+"garlic": [
+3
+]
+}
+},
+{
+"id": "d-damping-generic",
+"ar": "damping-generic",
+"names": [
+"damping off",
+"damping-off",
+"Pythium",
+"Rhizoctonia",
+"root rot",
+"seedling"
+],
+"queries": [
+"damping off seedlings",
+"Pythium damping off",
+"Rhizoctonia solani seedling",
+"seedling blight root rot"
+],
+"inat": [
+"damping off",
+"damping-off"
+],
+"host": "seedling|cotton|sorghum|sesame|sunflower|cucumber|melon|bean|cabbage|peanut|groundnut|cantaloupe|potato|tomato",
+"cards": {
+"cotton": [
+8
+],
+"sorghum": [
+5
+],
+"groundnut": [
+2
+],
+"sesame": [
+2
+],
+"sunflower": [
+2
+],
+"cantaloupe": [
+7
+],
+"cucumber": [
+7
+],
+"bean": [
+6
+],
+"cabbage": [
+9
+],
+"tomato": [
+11
+],
+"potato": [
+9
+],
+"strawberry": [
+5
+],
+"sweet-potato": [
+4
+]
+}
+},
+{
+"id": "d-roselle-powdery",
+"ar": "roselle-powdery",
+"names": [
+"powdery mildew",
+"Erysiphe",
+"Oidium"
+],
+"queries": [
+"roselle powdery mildew",
+"Hibiscus powdery mildew leaves"
+],
+"inat": [
+"powdery mildew",
+"Erysiphe"
+],
+"host": "roselle|hibiscus",
+"cards": {
+"roselle": [
+1
+]
+}
+},
+{
+"id": "d-rice-bakanae2",
+"ar": "rice-bakanae2",
+"names": [
+"bakanae",
+"Fusarium fujikuroi",
+"foot rot"
+],
+"queries": [
+"bakanae rice",
+"Fusarium fujikuroi rice seedling elongated"
+],
+"inat": [
+"bakanae",
+"Fusarium fujikuroi"
+],
+"host": "rice|oryza",
+"cards": {
+"rice": [
+4
+]
+}
+},
+{
+"id": "d-sugarcane-rootrot",
+"ar": "sugarcane-rootrot",
+"names": [
+"root rot",
+"Pythium",
+"red rot",
+"Colletotrichum falcatum"
+],
+"queries": [
+"sugarcane root rot",
+"sugarcane red rot"
+],
+"inat": [
+"root rot",
+"Pythium"
+],
+"host": "sugarcane|saccharum",
+"cards": {
+"sugarcane": [
+4
+]
+}
+},
+{
+"id": "d-groundnut-podrot",
+"ar": "groundnut-podrot",
+"names": [
+"pod rot",
+"Aspergillus niger",
+"Sclerotium rolfsii",
+"crown rot",
+"aflatoxin"
+],
+"queries": [
+"groundnut pod rot",
+"peanut Aspergillus crown rot",
+"peanut southern blight Sclerotium rolfsii",
+"peanut pods mould"
+],
+"inat": [
+"pod rot",
+"Aspergillus niger"
+],
+"host": "groundnut|peanut|arachis",
+"cards": {
+"groundnut": [
+4
+]
+}
+},
+{
+"id": "d-sesame-charcoal2",
+"ar": "sesame-charcoal2",
+"names": [
+"charcoal rot",
+"Macrophomina phaseolina",
+"Macrophomina"
+],
+"queries": [
+"sesame charcoal rot",
+"Macrophomina phaseolina stem"
+],
+"inat": [
+"charcoal rot",
+"Macrophomina phaseolina"
+],
+"host": "sesame|sesamum|sunflower|soybean|bean|sorghum",
+"cards": {
+"sesame": [
+1
+]
+}
+},
+{
+"id": "d-sunflower-powdery2",
+"ar": "sunflower-powdery2",
+"names": [
+"powdery mildew",
+"Golovinomyces",
+"Erysiphe",
+"Leveillula"
+],
+"queries": [
+"sunflower powdery mildew",
+"Helianthus powdery mildew"
+],
+"inat": [
+"powdery mildew",
+"Golovinomyces"
+],
+"host": "sunflower|helianthus",
+"cards": {
+"sunflower": [
+1
+]
+}
+},
+{
+"id": "d-potato-soil",
+"ar": "potato-soil",
+"names": [
+"Fusarium",
+"wilt",
+"dry rot",
+"Sclerotinia",
+"white mold",
+"Rhizoctonia"
+],
+"queries": [
+"potato Fusarium wilt",
+"potato dry rot Fusarium tubers",
+"Sclerotinia potato white mold",
+"potato Rhizoctonia stem canker black scurf"
+],
+"inat": [
+"Fusarium",
+"wilt"
+],
+"host": "potato|solanum tuberosum",
+"cards": {
+"potato": [
+10,
+11,
+12
+]
+}
+},
+{
+"id": "d-potato-eblight",
+"ar": "potato-eblight",
+"names": [
+"early blight",
+"Alternaria solani",
+"Alternaria"
+],
+"queries": [
+"potato early blight Alternaria solani",
+"early blight potato leaf lesions"
+],
+"inat": [
+"early blight",
+"Alternaria solani"
+],
+"host": "potato|solanum tuberosum",
+"cards": {
+"potato": [
+13
+]
+}
+},
+{
+"id": "d-tomato-soil",
+"ar": "tomato-soil",
+"names": [
+"Fusarium wilt",
+"Verticillium",
+"Sclerotium rolfsii",
+"Fusarium oxysporum",
+"southern blight",
+"corky root"
+],
+"queries": [
+"tomato Fusarium wilt",
+"tomato Verticillium wilt",
+"tomato southern blight Sclerotium rolfsii",
+"tomato corky root"
+],
+"inat": [
+"Fusarium wilt",
+"Verticillium"
+],
+"host": "tomato|solanum lycopersicum|lycopersicon",
+"cards": {
+"tomato": [
+15
+]
+}
+},
+{
+"id": "d-carrot-powdery2",
+"ar": "carrot-powdery2",
+"names": [
+"powdery mildew",
+"Erysiphe",
+"Erysiphe heraclei"
+],
+"queries": [
+"carrot powdery mildew",
+"Apiaceae powdery mildew leaves"
+],
+"inat": [
+"powdery mildew",
+"Erysiphe"
+],
+"host": "carrot|daucus|parsley|apiaceae",
+"cards": {
+"carrot": [
+2
+]
+}
+},
+{
+"id": "d-cuc-fruitrot2",
+"ar": "cuc-fruitrot2",
+"names": [
+"fruit rot",
+"Rhizopus",
+"Phytophthora",
+"Pythium",
+"Choanephora",
+"Sclerotinia"
+],
+"queries": [
+"cucumber fruit rot",
+"squash fruit rot Phytophthora capsici",
+"cucurbit fruit rot Rhizopus",
+"cucumber Choanephora wet rot"
+],
+"inat": [
+"fruit rot",
+"Rhizopus"
+],
+"host": "cucumber|squash|cucurbit|zucchini|pumpkin|melon",
+"cards": {
+"cucumber": [
+6
+]
+}
+},
+{
+"id": "d-bean-rust2",
+"ar": "bean-rust2",
+"names": [
+"rust",
+"Uromyces",
+"pustules"
+],
+"queries": [
+"bean rust",
+"Uromyces appendiculatus bean",
+"rust pustules bean leaf"
+],
+"inat": [
+"rust",
+"Uromyces"
+],
+"host": "bean|phaseolus",
+"cards": {
+"bean": [
+4
+]
+}
+},
+{
+"id": "d-bean-leafspot2",
+"ar": "bean-leafspot2",
+"names": [
+"leaf spot",
+"angular leaf spot",
+"Pseudocercospora",
+"Alternaria",
+"bacterial",
+"Xanthomonas"
+],
+"queries": [
+"bean leaf spot",
+"angular leaf spot beans",
+"bean common blight halo blight"
+],
+"inat": [
+"leaf spot",
+"angular leaf spot"
+],
+"host": "bean|phaseolus",
+"cards": {
+"bean": [
+5
+]
+}
+},
+{
+"id": "d-pea-rust2",
+"ar": "pea-rust2",
+"names": [
+"rust",
+"Uromyces",
+"pustules"
+],
+"queries": [
+"pea rust",
+"Uromyces pisi",
+"rust on pea leaves"
+],
+"inat": [
+"rust",
+"Uromyces"
+],
+"host": "pea|pisum|vicia|faba|legume",
+"cards": {
+"pea": [
+3
+]
+}
+},
+{
+"id": "d-cauli-white",
+"ar": "cauli-white",
+"names": [
+"white mold",
+"Sclerotinia sclerotiorum",
+"Sclerotinia"
+],
+"queries": [
+"Sclerotinia cauliflower",
+"Sclerotinia sclerotiorum cabbage",
+"white mold brassica head"
+],
+"inat": [
+"white mold",
+"Sclerotinia sclerotiorum"
+],
+"host": "cauliflower|cabbage|brassica|broccoli",
+"cards": {
+"cauliflower": [
+3
+]
+}
+},
+{
+"id": "d-straw-powdery2",
+"ar": "straw-powdery2",
+"names": [
+"powdery mildew",
+"Podosphaera",
+"Sphaerotheca"
+],
+"queries": [
+"strawberry powdery mildew",
+"Podosphaera aphanis strawberry leaves fruit"
+],
+"inat": [
+"powdery mildew",
+"Podosphaera"
+],
+"host": "strawberry|fragaria",
+"cards": {
+"strawberry": [
+4
+]
+}
+},
+{
+"id": "d-straw-rootrot",
+"ar": "straw-rootrot",
+"names": [
+"root rot",
+"crown rot",
+"Phytophthora cactorum",
+"red stele",
+"Verticillium"
+],
+"queries": [
+"strawberry crown rot Phytophthora cactorum",
+"strawberry root rot",
+"strawberry red stele"
+],
+"inat": [
+"root rot",
+"crown rot"
+],
+"host": "strawberry|fragaria",
+"cards": {
+"strawberry": [
+5
+]
+}
+},
+{
+"id": "d-lawn-leafspot",
+"ar": "lawn-leafspot",
+"names": [
+"leaf spot",
+"dollar spot",
+"Bipolaris",
+"brown patch",
+"Rhizoctonia",
+"turf"
+],
+"queries": [
+"turfgrass leaf spot",
+"lawn dollar spot",
+"lawn brown patch",
+"Bipolaris leaf spot turf"
+],
+"inat": [
+"leaf spot",
+"dollar spot"
+],
+"host": "turf|lawn|grass",
+"cards": {
+"green_areas": [
+2
+]
+}
+},
+{
+"id": "d-citrus-navel",
+"ar": "citrus-navel",
+"names": [
+"navel end rot",
+"Alternaria citri",
+"black rot",
+"Alternaria"
+],
+"queries": [
+"citrus black rot Alternaria",
+"navel orange black rot",
+"citrus fruit Alternaria rot"
+],
+"inat": [
+"navel end rot",
+"Alternaria citri"
+],
+"host": "citrus|orange|lemon|mandarin",
+"cards": {
+"citrus": [
+12
+]
+}
+},
+{
+"id": "d-mango-powdery2",
+"ar": "mango-powdery2",
+"names": [
+"powdery mildew",
+"Oidium mangiferae",
+"Oidium"
+],
+"queries": [
+"mango powdery mildew",
+"mango inflorescence white powder"
+],
+"inat": [
+"powdery mildew",
+"Oidium mangiferae"
+],
+"host": "mango|mangifera",
+"cards": {
+"mango": [
+4
+]
+}
+},
+{
+"id": "d-mango-sooty2",
+"ar": "mango-sooty2",
+"names": [
+"sooty mold",
+"sooty mould",
+"Capnodium",
+"Meliola"
+],
+"queries": [
+"sooty mold mango",
+"sooty mould on leaves",
+"mango sooty mould black leaves"
+],
+"inat": [
+"sooty mold",
+"sooty mould"
+],
+"host": "mango|mangifera|citrus|guava|olive",
+"cards": {
+"mango": [
+6
+]
+}
+},
+{
+"id": "d-grape-powdery2",
+"ar": "grape-powdery2",
+"names": [
+"powdery mildew",
+"Erysiphe necator",
+"Uncinula"
+],
+"queries": [
+"grape powdery mildew",
+"grapevine powdery mildew bunches",
+"Erysiphe necator berries"
+],
+"inat": [
+"powdery mildew",
+"Erysiphe necator"
+],
+"host": "grape|vitis|vineyard",
+"cards": {
+"grape": [
+7
+]
+}
+},
+{
+"id": "d-olive-peacock2",
+"ar": "olive-peacock2",
+"names": [
+"peacock spot",
+"Spilocaea",
+"Fusicladium",
+"olive leaf spot",
+"Cycloconium"
+],
+"queries": [
+"olive leaf peacock spot",
+"Spilocaea oleaginea",
+"olive leaves spots"
+],
+"inat": [
+"peacock spot",
+"Spilocaea"
+],
+"host": "olive|olea",
+"cards": {
+"olive": [
+3
+]
+}
+},
+{
+"id": "d-guava-leafspot",
+"ar": "guava-leafspot",
+"names": [
+"leaf spot",
+"anthracnose",
+"Pestalotia",
+"Pestalotiopsis",
+"Cercospora"
+],
+"queries": [
+"guava leaf spot",
+"guava anthracnose",
+"Pestalotiopsis guava"
+],
+"inat": [
+"leaf spot",
+"anthracnose"
+],
+"host": "guava|psidium",
+"cards": {
+"guava": [
+5
+]
+}
+},
+{
+"id": "d-peach-powdery2",
+"ar": "peach-powdery2",
+"names": [
+"powdery mildew",
+"Podosphaera pannosa",
+"Sphaerotheca pannosa"
+],
+"queries": [
+"peach powdery mildew",
+"Podosphaera pannosa peach",
+"rose powdery mildew Podosphaera pannosa"
+],
+"inat": [
+"powdery mildew",
+"Podosphaera pannosa"
+],
+"host": "peach|prunus|nectarine|rose",
+"cards": {
+"peach": [
+3
+]
+}
+},
+{
+"id": "d-peach-brownrot2",
+"ar": "peach-brownrot2",
+"names": [
+"brown rot",
+"Monilinia",
+"Monilia"
+],
+"queries": [
+"peach brown rot fruit",
+"Monilinia fructicola peach",
+"brown rot stone fruit mummies"
+],
+"inat": [
+"brown rot",
+"Monilinia"
+],
+"host": "peach|prunus|nectarine|plum|cherry|apricot",
+"cards": {
+"peach": [
+4
+]
+}
+},
+{
+"id": "d-apricot-powdery2",
+"ar": "apricot-powdery2",
+"names": [
+"powdery mildew",
+"Podosphaera",
+"Sphaerotheca"
+],
+"queries": [
+"apricot powdery mildew",
+"stone fruit powdery mildew fruit",
+"Podosphaera tridactyla"
+],
+"inat": [
+"powdery mildew",
+"Podosphaera"
+],
+"host": "apricot|prunus|plum|cherry|peach",
+"cards": {
+"apricot": [
+1
+]
+}
+}
+]

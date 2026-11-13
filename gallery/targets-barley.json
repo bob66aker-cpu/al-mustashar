@@ -1,0 +1,183 @@
+[
+ {
+  "id": "barley-powdery",
+  "ar": "barley-powdery",
+  "names": [
+   "powdery mildew",
+   "Blumeria graminis",
+   "Blumeria hordei"
+  ],
+  "queries": [
+   "barley powdery mildew",
+   "Blumeria graminis hordei",
+   "Blumeria graminis barley leaf"
+  ],
+  "inat": [
+   "Blumeria graminis"
+  ],
+  "host": "barley|hordeum",
+  "cards": {}
+ },
+ {
+  "id": "barley-netblotch",
+  "ar": "barley-netblotch",
+  "names": [
+   "net blotch",
+   "Pyrenophora teres",
+   "Drechslera teres"
+  ],
+  "queries": [
+   "barley net blotch",
+   "Pyrenophora teres leaf"
+  ],
+  "inat": [
+   "Pyrenophora teres"
+  ],
+  "host": "barley|hordeum",
+  "cards": {}
+ },
+ {
+  "id": "barley-scald",
+  "ar": "barley-scald",
+  "names": [
+   "scald",
+   "Rhynchosporium"
+  ],
+  "queries": [
+   "barley scald Rhynchosporium",
+   "Rhynchosporium secalis leaf"
+  ],
+  "inat": [
+   "Rhynchosporium"
+  ],
+  "host": "barley|hordeum",
+  "cards": {}
+ },
+ {
+  "id": "barley-leafrust",
+  "ar": "barley-leafrust",
+  "names": [
+   "leaf rust",
+   "Puccinia hordei"
+  ],
+  "queries": [
+   "barley leaf rust",
+   "Puccinia hordei"
+  ],
+  "inat": [
+   "Puccinia hordei"
+  ],
+  "host": "barley|hordeum",
+  "cards": {}
+ },
+ {
+  "id": "barley-stripe-rust",
+  "ar": "barley-stripe-rust",
+  "names": [
+   "stripe rust",
+   "Puccinia striiformis",
+   "yellow rust"
+  ],
+  "queries": [
+   "barley stripe rust",
+   "Puccinia striiformis hordei"
+  ],
+  "inat": [
+   "Puccinia striiformis"
+  ],
+  "host": "barley|hordeum",
+  "cards": {}
+ },
+ {
+  "id": "barley-loose-smut",
+  "ar": "barley-loose-smut",
+  "names": [
+   "loose smut",
+   "Ustilago nuda",
+   "Ustilago"
+  ],
+  "queries": [
+   "barley loose smut",
+   "Ustilago nuda barley head"
+  ],
+  "inat": [
+   "Ustilago nuda"
+  ],
+  "host": "barley|hordeum",
+  "cards": {}
+ },
+ {
+  "id": "barley-covered-smut",
+  "ar": "barley-covered-smut",
+  "names": [
+   "covered smut",
+   "Ustilago hordei"
+  ],
+  "queries": [
+   "barley covered smut",
+   "Ustilago hordei"
+  ],
+  "inat": [
+   "Ustilago hordei"
+  ],
+  "host": "barley|hordeum",
+  "cards": {}
+ },
+ {
+  "id": "barley-aphid",
+  "ar": "barley-aphid",
+  "names": [
+   "aphid",
+   "Rhopalosiphum padi",
+   "Sitobion avenae",
+   "Schizaphis graminum",
+   "Diuraphis noxia"
+  ],
+  "queries": [
+   "Rhopalosiphum padi barley",
+   "Sitobion avenae",
+   "Diuraphis noxia Russian wheat aphid",
+   "Schizaphis graminum greenbug"
+  ],
+  "inat": [
+   "Rhopalosiphum padi",
+   "Sitobion avenae",
+   "Diuraphis noxia"
+  ],
+  "host": "barley|hordeum",
+  "cards": {}
+ },
+ {
+  "id": "barley-bydv",
+  "ar": "barley-bydv",
+  "names": [
+   "barley yellow dwarf",
+   "BYDV"
+  ],
+  "queries": [
+   "barley yellow dwarf virus symptoms",
+   "BYDV barley field"
+  ],
+  "inat": [],
+  "host": "barley|hordeum",
+  "cards": {}
+ },
+ {
+  "id": "barley-bipolaris",
+  "ar": "barley-bipolaris",
+  "names": [
+   "spot blotch",
+   "Bipolaris sorokiniana",
+   "common root rot"
+  ],
+  "queries": [
+   "barley spot blotch Bipolaris sorokiniana",
+   "Cochliobolus sativus barley"
+  ],
+  "inat": [
+   "Bipolaris sorokiniana"
+  ],
+  "host": "barley|hordeum",
+  "cards": {}
+ }
+]

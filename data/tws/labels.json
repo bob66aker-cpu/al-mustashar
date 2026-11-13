@@ -4,7 +4,7 @@
  "note": "تسميات قسم التوصيات — المصدر الوحيد كتاب التوصيات المعتمدة 2025 (لا دواوين خارجية).",
  "ar": {
   "title": "التوصيات الزراعية",
-  "subtitle": "اختر محصولك ثم الإصابة لتصل إلى بطاقة من كتاب التوصيات المعتمدة 2025 وحده: وصف الإصابة كما ورد، وجدول العلاج بمادته وتركيزه ومعدل استخدامه وتصنيف WHO وفترة أمانه، وصور من الكتاب — بلا مصادر خارجية وبلا تخمين.",
+  "subtitle": "اختر محصولك ثم الإصابة لتصل إلى بطاقة من كتاب التوصيات المعتمدة 2025 وحده: وصف الإصابة كما ورد، وجدول العلاج بمادته وتركيزه ومعدل استخدامه وتصنيف WHO وفترة أمانه، وصور من الكتاب — بلا مصادر خارجية وبلا تخمين. الاستثناء الوحيد: قسم الشعير، وهو من مصادر دولية موثقة وموسوم بذلك.",
   "search_ph": "ابحث عن محصول… (عربي أو Scientific name)",
   "no_results": "لا يوجد محصول بهذا الاسم",
   "crops_count": "محصولاً مغطّى بالكتاب",
@@ -86,7 +86,7 @@
  },
  "en": {
   "title": "Crop recommendations",
-  "subtitle": "Pick a crop, then an infection, to reach a card built solely from the official Recomm2025 book: the described symptoms, its treatment table with active ingredient, concentration, application rate, WHO class and PHI, plus images from the book — no outside sources, no guessing.",
+  "subtitle": "Pick a crop, then an infection, to reach a card built solely from the official Recomm2025 book: the described symptoms, its treatment table with active ingredient, concentration, application rate, WHO class and PHI, plus images from the book — no outside sources, no guessing. The only exception is the barley section, which comes from documented international sources and is labelled as such.",
   "search_ph": "Search a crop… (Arabic or Scientific name)",
   "no_results": "No crop matches",
   "crops_count": "crops covered by the book",
@@ -168,7 +168,7 @@
  },
  "fr": {
   "title": "Recommandations par culture",
-  "subtitle": "Choisissez une culture puis un ravageur ou une maladie pour accéder à une fiche issue uniquement du livre officiel Recomm2025 : symptômes décrits, tableau de traitement (matière active, concentration, dose, classe OMS, délai avant récolte) et images du livre — sans source externe ni supposition.",
+  "subtitle": "Choisissez une culture puis un ravageur ou une maladie pour accéder à une fiche issue uniquement du livre officiel Recomm2025 : symptômes décrits, tableau de traitement (matière active, concentration, dose, classe OMS, délai avant récolte) et images du livre — sans source externe ni supposition. Seule exception : la section orge, issue de sources internationales documentées et signalée comme telle.",
   "search_ph": "Rechercher une culture… (arabe ou nom scientifique)",
   "no_results": "Aucune culture ne correspond",
   "crops_count": "cultures couvertes par le livre",
@@ -250,7 +250,7 @@
  },
  "zh": {
   "title": "作物推荐",
-  "subtitle": "选择作物，再选择病虫草害，即可查看仅来自官方《Recomm2025》手册的卡片：所述症状、防治表（有效成分、浓度、使用量、WHO 分类、安全间隔期）及手册图片——不含外部来源，不作猜测。",
+  "subtitle": "选择作物，再选择病虫草害，即可查看仅来自官方《Recomm2025》手册的卡片：所述症状、防治表（有效成分、浓度、使用量、WHO 分类、安全间隔期）及手册图片——不含外部来源，不作猜测。唯一例外是大麦部分，其来自有据可查的国际来源并已明确标注。",
   "search_ph": "搜索作物…（阿拉伯语或学名）",
   "no_results": "没有匹配的作物",
   "crops_count": "手册涵盖的作物",

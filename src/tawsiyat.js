@@ -24,7 +24,7 @@
   var LABELS = {
     ar: {
       title: 'التوصيات الزراعية',
-      subtitle: 'اختر محصولك ثم الإصابة لتصل إلى بطاقة من كتاب التوصيات المعتمدة 2025 وحده: وصف الإصابة كما ورد، وجدول العلاج بمادته وتركيزه ومعدل استخدامه وتصنيف WHO وفترة أمانه، وصور من الكتاب — بلا مصادر خارجية وبلا تخمين.',
+      subtitle: 'اختر محصولك ثم الإصابة لتصل إلى بطاقة من كتاب التوصيات المعتمدة 2025 وحده: وصف الإصابة كما ورد، وجدول العلاج بمادته وتركيزه ومعدل استخدامه وتصنيف WHO وفترة أمانه، وصور من الكتاب — بلا مصادر خارجية وبلا تخمين. الاستثناء الوحيد: قسم الشعير، وهو من مصادر دولية موثقة وموسوم بذلك.',
       search_ph: 'ابحث عن محصول… (عربي أو Scientific name)',
       no_results: 'لا يوجد محصول بهذا الاسم',
       crops_count: 'محصولاً مغطّى بالكتاب',
@@ -106,7 +106,7 @@
     },
     en: {
       title: 'Crop recommendations',
-      subtitle: 'Pick a crop, then an infection, to reach a card built solely from the official Recomm2025 book: the described symptoms, its treatment table with active ingredient, concentration, application rate, WHO class and PHI, plus images from the book — no outside sources, no guessing.',
+      subtitle: 'Pick a crop, then an infection, to reach a card built solely from the official Recomm2025 book: the described symptoms, its treatment table with active ingredient, concentration, application rate, WHO class and PHI, plus images from the book — no outside sources, no guessing. The only exception is the barley section, which comes from documented international sources and is labelled as such.',
       search_ph: 'Search a crop… (Arabic or Scientific name)',
       no_results: 'No crop matches',
       crops_count: 'crops covered by the book',

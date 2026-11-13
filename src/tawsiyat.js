@@ -640,6 +640,10 @@
         if (lb.length) html += '<h3>' + esc(U.libya) + '</h3>' + ul(lb) + srcs(d.libya.sources);
       } else {
         html += '<div class="tws-card"><h2 dir="auto">' + esc(card.name[l]) + '</h2><p class="tws-meta"><em>' + esc(card.sci || '') + '</em> \u00b7 ' + esc(U.badge) + '</p>' + notice
+          + (card.images && card.images.length ? '<h3>' + esc(U.images) + '</h3><div class="tws-gallery">' + card.images.map(function (im) {
+              return '<figure><img src="data/tws/supplement/img/' + esc(im.file) + '" width="' + esc(im.w) + '" height="' + esc(im.h) + '" loading="lazy" alt="' + esc(card.name[l]) + '">'
+                + '<figcaption><span class="tws-bdg host">' + esc(U.host) + '</span><br>' + esc(im.author) + ' \u00b7 ' + esc(im.license) + '<br><a href="' + esc(im.page) + '" rel="noopener noreferrer" target="_blank">' + esc(U.by) + '</a></figcaption></figure>';
+            }).join('') + '</div>' : '')
           + '<h3>' + esc(U.symptoms) + '</h3>' + ul(pick(card.symptoms))
           + (pick(card.timing).length ? '<h3>' + esc(U.timing) + '</h3>' + ul(pick(card.timing)) : '')
           + (pick(card.cultural).length ? '<h3>' + esc(U.cultural) + '</h3>' + ul(pick(card.cultural)) : '')

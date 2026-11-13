@@ -132,6 +132,18 @@
      "title": "CGIAR MEL repository (El Bouhssini et al. 2011)",
      "url": "https://repo.mel.cgiar.org/items/6923f1b7-12c3-4102-bd4b-4d3278f63084"
     }
+   ],
+   "images": [
+    {
+     "file": "russian_wheat_aphid-1.webp",
+     "kind": "host",
+     "w": 800,
+     "h": 526,
+     "license": "Public domain",
+     "author": "Peggy Greb",
+     "page": "https://commons.wikimedia.org/wiki/File:Russian_wheat_aphid.jpg",
+     "title": "File:Russian wheat aphid.jpg"
+    }
    ]
   },
   {
@@ -270,6 +282,28 @@
      "title": "UC IPM - Leaf scald of barley",
      "url": "https://ipm.ucanr.edu/agriculture/small-grains/leaf-scald-of-barley"
     }
+   ],
+   "images": [
+    {
+     "file": "scald-1.webp",
+     "kind": "host",
+     "w": 768,
+     "h": 768,
+     "license": "CC BY 3.0 us",
+     "author": "Clemson University - USDA Cooperative Extension Slide Series from United States",
+     "page": "https://commons.wikimedia.org/wiki/File:Rhynchosporium_secalis_(Oudem.)_J._J._Davis_1234073.jpg",
+     "title": "File:Rhynchosporium secalis (Oudem.) J. J. Davis 1234073.jpg"
+    },
+    {
+     "file": "scald-2.webp",
+     "kind": "host",
+     "w": 768,
+     "h": 576,
+     "license": "CC BY 3.0 us",
+     "author": "Mary Burrows from United States Montana State University",
+     "page": "https://commons.wikimedia.org/wiki/File:Rhynchosporium_secalis_(Oudem.)_J._J._Davis_5475053.jpg",
+     "title": "File:Rhynchosporium secalis (Oudem.) J. J. Davis 5475053.jpg"
+    }
    ]
   },
   {
@@ -382,6 +416,48 @@
     {
      "title": "UC IPM - Leaf rusts of wheat and barley",
      "url": "https://ipm.ucanr.edu/agriculture/small-grains/leaf-rusts-of-wheat-and-barley-crown-rust-of-oats/"
+    }
+   ],
+   "images": [
+    {
+     "file": "leaf_rust-1.webp",
+     "kind": "host",
+     "w": 768,
+     "h": 576,
+     "license": "CC BY 3.0 us",
+     "author": "Donald Groth from United States Louisiana State University AgCenter",
+     "page": "https://commons.wikimedia.org/wiki/File:Puccinia_hordei_G.H._Otth_5410687.jpg",
+     "title": "File:Puccinia hordei G.H. Otth 5410687.jpg"
+    },
+    {
+     "file": "leaf_rust-2.webp",
+     "kind": "host",
+     "w": 768,
+     "h": 546,
+     "license": "CC BY 3.0 us",
+     "author": "Donald Groth from United States Louisiana State University AgCenter",
+     "page": "https://commons.wikimedia.org/wiki/File:Puccinia_hordei_G.H._Otth_5410688.jpg",
+     "title": "File:Puccinia hordei G.H. Otth 5410688.jpg"
+    },
+    {
+     "file": "leaf_rust-3.webp",
+     "kind": "host",
+     "w": 768,
+     "h": 514,
+     "license": "CC BY 3.0 us",
+     "author": "Donald Groth from United States Louisiana State University AgCenter",
+     "page": "https://commons.wikimedia.org/wiki/File:Puccinia_hordei_G.H._Otth_5410685.jpg",
+     "title": "File:Puccinia hordei G.H. Otth 5410685.jpg"
+    },
+    {
+     "file": "leaf_rust-4.webp",
+     "kind": "host",
+     "w": 768,
+     "h": 576,
+     "license": "CC BY 3.0 us",
+     "author": "Donald Groth from United States Louisiana State University AgCenter",
+     "page": "https://commons.wikimedia.org/wiki/File:Puccinia_hordei_G.H._Otth_5410689.jpg",
+     "title": "File:Puccinia hordei G.H. Otth 5410689.jpg"
     }
    ]
   },
@@ -499,6 +575,48 @@
     {
      "title": "Agriculture Victoria - Bunts and smuts of cereals",
      "url": "https://agriculture.vic.gov.au/biosecurity/plant-diseases/grain-pulses-and-cereal-diseases/bunts-and-smuts-of-cereals"
+    }
+   ],
+   "images": [
+    {
+     "file": "loose_smut-1.webp",
+     "kind": "host",
+     "w": 800,
+     "h": 601,
+     "license": "CC BY-SA 3.0",
+     "author": "Agronom",
+     "page": "https://commons.wikimedia.org/wiki/File:Ustilago_nuda_on_spring_barley.JPG",
+     "title": "File:Ustilago nuda on spring barley.JPG"
+    },
+    {
+     "file": "loose_smut-2.webp",
+     "kind": "host",
+     "w": 534,
+     "h": 800,
+     "license": "CC BY-SA 3.0",
+     "author": "Rasbak",
+     "page": "https://commons.wikimedia.org/wiki/File:Ustilago_nuda_barley,_stuifbrand_op_gerst_(2).jpg",
+     "title": "File:Ustilago nuda barley, stuifbrand op gerst (2).jpg"
+    },
+    {
+     "file": "loose_smut-3.webp",
+     "kind": "host",
+     "w": 573,
+     "h": 800,
+     "license": "CC BY-SA 3.0",
+     "author": "Rasbak",
+     "page": "https://commons.wikimedia.org/wiki/File:Ustilago_nuda_barley,_stuifbrand_op_gerst_(3).jpg",
+     "title": "File:Ustilago nuda barley, stuifbrand op gerst (3).jpg"
+    },
+    {
+     "file": "loose_smut-4.webp",
+     "kind": "host",
+     "w": 534,
+     "h": 800,
+     "license": "CC BY-SA 3.0",
+     "author": "Rasbak",
+     "page": "https://commons.wikimedia.org/wiki/File:Ustilago_nuda_barley,_stuifbrand_op_gerst_(1).jpg",
+     "title": "File:Ustilago nuda barley, stuifbrand op gerst (1).jpg"
     }
    ]
   },
@@ -770,7 +888,10 @@
    "libya": "ما وُثّق عن الشعير في ليبيا",
    "cards": "آفة ومرض",
    "country": "بلد المصدر",
-   "badge": "ليس من الكتاب"
+   "badge": "ليس من الكتاب",
+   "images": "صور مرخّصة (على الشعير)",
+   "host": "على المحصول",
+   "by": "المصدر"
   },
   "en": {
    "tile_note": "External sources",
@@ -784,7 +905,10 @@
    "libya": "What is documented about barley in Libya",
    "cards": "pests and diseases",
    "country": "Source country",
-   "badge": "Not from the book"
+   "badge": "Not from the book",
+   "images": "Licensed images (on barley)",
+   "host": "On the crop",
+   "by": "Source"
   }
  }
 }

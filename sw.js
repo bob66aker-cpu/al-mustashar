@@ -215,7 +215,7 @@
  * Personal data (IndexedDB history, theme, app version note) lives outside
  * the caches and is never touched by this worker.
  */
-const CACHE = 'mustashar-v95';
+const CACHE = 'mustashar-v96';
 const OCR_CACHE = 'mustashar-ocr';
 
 /* v86 — صور كتاب التوصيات (256 صورة) تُحمَّل من الصفحة نفسها (src/tawsiyat.js) إلى كاش دائم مستقل
@@ -263,6 +263,7 @@ const SHELL = [
   './data/tws/labels.json',
   './data/tws/sections.json',
   './data/tws/appendix7.json',
+  './data/tws/supplement/barley.json',
   './data/tws/appendix7_i18n.json',
   './data/tws/errata_report.json',
   './data/tws/card_i18n.json',

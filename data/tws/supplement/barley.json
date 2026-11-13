@@ -1,0 +1,790 @@
+{
+ "schema": 1,
+ "crop": {
+  "id": "barley",
+  "name_ar": "الشعير",
+  "name_en": "Barley",
+  "sci": "Hordeum vulgare",
+  "family": "Poaceae"
+ },
+ "notice": {
+  "ar": "هذا القسم ليس من كتاب التوصيات المصري (APC) لأنه لا يغطي الشعير؛ وهو مُجمَّع من المصادر الإرشادية والبحثية الدولية المدرجة. الأسماء العربية مترجمة من مطوّر التطبيق وليست موثّقة من المصادر. بنود المكافحة الكيميائية هي أسماء المواد الفعالة فقط كما وردت في بلد المصدر، وليست تسجيلًا أو توصية للاستخدام في ليبيا؛ راجع قائمة المبيدات المعتمدة في ليبيا واستشر مهندسًا زراعيًا محليًا.",
+  "en": "This section is NOT from the APC Egyptian recommendations book (which does not cover barley); it is compiled from the listed international extension and research sources. Arabic names are translated by the app developer and are not source-verified. Chemical items are active ingredient names only, as labelled in the source country; they are not a registration or recommendation for Libya. Check the Libyan approved pesticide list and consult a local agronomist."
+ },
+ "cards": [
+  {
+   "id": "aphids",
+   "type": "insect",
+   "name": {
+    "ar": "المنّ على الشعير",
+    "en": "Aphids on barley"
+   },
+   "sci": "Rhopalosiphum padi; Sitobion avenae; Schizaphis graminum",
+   "symptoms": {
+    "ar": [
+     "Rhopalosiphum padi: الإصابات الشديدة تسبب تخطيطًا أصفر ذهبيًا على الأوراق، وقد تلوي الأعداد الكبيرة ورقة العلم في شكل لولب محكم يحبس السفا (رأس يشبه صنارة السمك).",
+     "Schizaphis graminum (المنّ الأخضر): يظهر الضرر على شكل بقع أو رقع مصفرّة على الأوراق؛ وعمومًا لا تتضرر النباتات إلا إذا حدثت تغذية كثيفة قبل التفريع؛ وينقل أيضًا فيروس BYDV.",
+     "Sitobion avenae: يتغذى أساسًا على أوراق وسيقان الشعير والشوفان (ويستعمر السنابل في القمح)؛ الضرر عادة طفيف؛ ناقل لفيروس BYDV؛ ولم تُحدَّد عتبات اقتصادية له."
+    ],
+    "en": [
+     "Rhopalosiphum padi: heavy infestations cause golden-yellow streaking of leaves; heavy populations can curl the flag leaf into a tight corkscrew trapping the awns (fish-hook head).",
+     "Schizaphis graminum (greenbug): injury appears as yellowish spots or patches on leaves; plants are generally damaged only if significant feeding occurs before tillering; also transmits BYDV.",
+     "Sitobion avenae: mainly feeds on barley and oat leaves and stems (colonises heads in wheat); injury usually minor; vector of BYDV; economic thresholds not established."
+    ]
+   },
+   "timing": {
+    "ar": [
+     "Rhopalosiphum padi هو أكثر أنواع منّ الحبوب شيوعًا؛ وقد يظهر بعد بزوغ البادرات، وغالبًا في فبراير–مارس (كاليفورنيا).",
+     "المنّ الأخضر: افحص الحقول بانتظام من بزوغ البادرات حتى التفريع. أما Sitobion avenae فيظهر عادة في وقت متأخر من الموسم مقارنة بأنواع منّ الحبوب الأخرى."
+    ],
+    "en": [
+     "R. padi is the most common cereal aphid; can appear after seedling emergence, most often February-March (California).",
+     "Greenbug: check fields regularly from seedling emergence to tillering. S. avenae typically shows up later in the season than other cereal aphids."
+    ]
+   },
+   "cultural": {
+    "ar": [
+     "تُبقي المفترسات والطفيليات الأعداد عادة تحت السيطرة؛ قيّم نشاطها قبل التفكير في المكافحة الكيميائية. أتلف الحبوب المتطوعة قبل بزوغ المحاصيل الجديدة. الأعداء الطبيعية: «المومياءات المنتفخة» (المنّ المتطفَّل عليه)، وخنافس الدعسوقة، وأسود المنّ (الأسد الأخضر)، ويرقات ذباب السرفيد.",
+     "تُعتبر المعالجة لـ R. padi فقط عندما يتجاوز المنّ نحو 50–60 لكل ساق (فرع) وتكون الأعداء الطبيعية غير نشطة أو يكون المحصول على بُعد عدة أسابيع من الإزهار (إرشاد كاليفورنيا)."
+    ],
+    "en": [
+     "Predators and parasites usually keep populations in check; assess their activity before considering chemical control. Destroy volunteer cereals before new crops emerge. Natural enemies: parasitised 'bloated mummies', lady beetles, green lacewings, syrphid larvae.",
+     "R. padi treatment considered only when aphids exceed about 50-60 per tiller and natural enemies are inactive or crop is several weeks from flowering (California guidance)."
+    ]
+   },
+   "chemical": [
+    {
+     "active": "malathion",
+     "ar": "ملاثيون",
+     "note": {
+      "ar": "يذكر المصدر أنه قد يُستخدم على القمح والشعير والشوفان والجاودار. ويحذّر المصدر من أنه شديد السمية للنحل.",
+      "en": "Source says it may be used on wheat, barley, oats, rye. Source warns it is highly toxic to bees."
+     },
+     "source_country": "USA (California, UC IPM; text 2009, table 2016 - verify current registration)"
+    }
+   ],
+   "sources": [
+    {
+     "title": "UC IPM - Bird cherry-oat aphid",
+     "url": "https://ipm.ucanr.edu/agriculture/small-grains/bird-cherry-oat-aphid/"
+    },
+    {
+     "title": "UC IPM - Greenbug",
+     "url": "https://ipm.ucanr.edu/agriculture/small-grains/greenbug/"
+    },
+    {
+     "title": "UC IPM - English grain aphid",
+     "url": "https://ipm.ucanr.edu/agriculture/small-grains/english-grain-aphid/"
+    }
+   ]
+  },
+  {
+   "id": "russian_wheat_aphid",
+   "type": "insect",
+   "name": {
+    "ar": "منّ القمح الروسي",
+    "en": "Russian wheat aphid"
+   },
+   "sci": "Diuraphis noxia",
+   "symptoms": {
+    "ar": [
+     "منّ أخضر شاحب مغزلي الشكل له زائدة ثانية تشبه الذيل فوق الذنيب؛ والعَرَض الأكثر تميزًا خطوط بيضاء طولية على الأوراق وأحيانًا على الساق؛ تتقزم النباتات شديدة الإصابة وتلتف أوراقها قائمة كأوراق البصل. الضرر أكبر ما يكون على القمح والشعير."
+    ],
+    "en": [
+     "Pale green spindle-shaped aphid with a second tail-like process above the cauda; most characteristic symptom is white longitudinal streaks on leaves and sometimes the stem; heavily infested plants stunted, leaves curl upright like onion leaves. Damage greatest on wheat and barley."
+    ]
+   },
+   "timing": {
+    "ar": [
+     "يقضي الصيف على الأعشاب ثم ينتقل إلى الحبوب في أواخر الخريف، ويتحمل درجات الحرارة تحت الصفر؛ والنباتات المجهدة تتضرر أكثر. ليس ناقلًا لفيروس BYDV (بحسب صفحة UC IPM عن BYDV).",
+     "ورقة بحثية بقيادة إيكاردا (ICARDA): يصيب منّ القمح الروسي القمح والشعير في المغرب والجزائر وتونس وإثيوبيا واليمن وتركيا وإيران؛ ومقاومة العائل النباتي هي الوسيلة الأكثر اقتصادية وعملية للمكافحة (تركّز الورقة على مصادر المقاومة في القمح)."
+    ],
+    "en": [
+     "Survives summer on grasses, moves to cereals in late fall, tolerates sub-freezing temperatures; stressed plants suffer more damage. Not a BYDV vector (per UC IPM BYDV page).",
+     "ICARDA-led paper: RWA affects wheat and barley in Morocco, Algeria, Tunisia, Ethiopia, Yemen, Turkey and Iran; host plant resistance is the most economical and practical means of control (paper focuses on wheat resistance sources)."
+    ]
+   },
+   "cultural": {
+    "ar": [
+     "حافظ على الأعداء الطبيعية؛ أزل الحبوب المتطوعة؛ وأبقِ النباتات بعيدة عن إجهاد الماء والعناصر الغذائية."
+    ],
+    "en": [
+     "Conserve natural enemies; remove volunteer cereals; keep plants free from water and nutrient stress."
+    ]
+   },
+   "chemical": [
+    {
+     "active": "malathion",
+     "ar": "ملاثيون",
+     "note": {
+      "ar": "تذكر الصفحة أنه قد يُستخدم على القمح والشعير والشوفان والجاودار.",
+      "en": "Page says it may be used on wheat, barley, oats and rye."
+     },
+     "source_country": "USA (California, UC IPM)"
+    }
+   ],
+   "sources": [
+    {
+     "title": "UC IPM - Russian wheat aphid",
+     "url": "https://ipm.ucanr.edu/agriculture/small-grains/russian-wheat-aphid/"
+    },
+    {
+     "title": "CGIAR MEL repository (El Bouhssini et al. 2011)",
+     "url": "https://repo.mel.cgiar.org/items/6923f1b7-12c3-4102-bd4b-4d3278f63084"
+    }
+   ]
+  },
+  {
+   "id": "sunn_pest",
+   "type": "insect",
+   "name": {
+    "ar": "حشرة السونة (السن)",
+    "en": "Sunn pest"
+   },
+   "sci": "Eurygaster integriceps",
+   "symptoms": {
+    "ar": [
+     "الشعير مذكور كعائل ثانوي: «يتأثر بدرجة أقل لكنه يفلت عادة من الضرر الشديد بسبب نضجه المبكر». والقمح هو العائل الرئيسي. علامة على الحبة: نقطة سوداء دقيقة تحيط بها هالة شاحبة؛ يحطّم اللعاب الغلوتين (جودة الخبز)؛ ويقلل تلف الجنين الإنبات."
+    ],
+    "en": [
+     "Barley listed as a minor host: 'affected to a lesser extent but usually escapes severe damage due to early ripening'. Wheat is the major host. Grain sign: a black pinpoint on the grain surrounded by a pale halo; saliva degrades gluten (bread quality); embryo damage reduces germination."
+    ]
+   },
+   "timing": {
+    "ar": [
+     "ملاحظة إقليمية: تذكر صحيفة البيانات أن الجزائر هي الدولة الأفريقية الوحيدة التي لها سجلات. تقارير الفاو القُطرية (نحو 1993): خسائر في العراق 20–30% في الشعير و70–90% في القمح؛ وتتأثر في سوريا مناطق زراعة القمح والشعير الرئيسية؛ واستبدلت سوريا القمح بالشعير في البؤر الساخنة. لم يُعثر على ذكر لليبيا؛ ووجودها في ليبيا غير موثّق في المصادر."
+    ],
+    "en": [
+     "Regional note: datasheet lists Algeria as the only African country with records. FAO country reports (c. 1993): Iraq losses 20-30% in barley and 70-90% in wheat; Syria main wheat and barley areas affected; Syria replaced wheat with barley in hot spots. No Libya mention found; presence in Libya is not documented in the sources."
+    ]
+   },
+   "cultural": {
+    "ar": [
+     "التدابير الزراعية المذكورة بحسب البلد في تقرير الفاو: أصناف مبكرة النضج، والجمع اليدوي، والحصاد المبكر/السريع، وبحوث موعد الزراعة (أفغانستان وإيران وباكستان)؛ وتصف صحيفة البيانات المكافحة الكيميائية بأنها صعبة وغير مستدامة بيئيًا."
+    ],
+    "en": [
+     "Cultural measures reported by country in FAO report: early-maturing varieties, hand-picking, early/rapid harvesting, sowing date research (Afghanistan, Iran, Pakistan); datasheet calls chemical control difficult and not environmentally sustainable."
+    ]
+   },
+   "chemical": [],
+   "sources": [
+    {
+     "title": "Purdue CAPS - Eurygaster integriceps datasheet",
+     "url": "https://caps.ceris.purdue.edu/wp-content/uploads/2025/07/Eurygaster-integriceps-datasheet-final.pdf"
+    },
+    {
+     "title": "FAO",
+     "url": "https://www.fao.org/4/V9976E/v9976e05.htm"
+    }
+   ]
+  },
+  {
+   "id": "net_blotch",
+   "type": "fungus",
+   "name": {
+    "ar": "التبقع الشبكي",
+    "en": "Net blotch"
+   },
+   "sci": "Pyrenophora teres (net form f. teres; spot form f. maculata)",
+   "symptoms": {
+    "ar": [
+     "تبدأ الآفات كبقع صغيرة خضراء داكنة/مشبعة بالماء تتحول إلى بنية فاتحة، ثم تصبح بقعًا بنية ضيقة ذات مظهر شبكي أو متقاطع مع اصفرار حولها؛ والإصابة الشديدة قد تقتل الورقة؛ وقد تتأثر السنابل.",
+     "الآفات المبكرة بقع دائرية صغيرة تتسع إلى خطوط بنية داكنة ضيقة تكوّن نمطًا شبيهًا بالشبكة."
+    ],
+    "en": [
+     "Lesions begin as tiny, dark green/water-soaked spots that turn light brown, then become narrow brown blotches with a netted or cross-hatched appearance with yellowing around; severe infection can kill the leaf; spikes can be affected.",
+     "Early lesions small circular spots, enlarging into narrow dark brown stripes forming a net-like pattern."
+    ]
+   },
+   "timing": {
+    "ar": [
+     "يُفضّل المرض طقس الربيع الرطب والبارد؛ وتتكوّن الأبواغ عند رطوبة قريبة من 100% وحرارة نحو 16–27 °م. يقضي الفطر الشتاء على بقايا الشعير وقد ينتقل بالبذور.",
+     "إيكاردا (ICARDA): التبقع الشبكي مرض شائع على أوراق الشعير في شمال أفريقيا؛ وفي المغرب عُزي نحو 30% من الخسائر المبلَّغ عنها في المحصول إلى التبقع الشبكي. يُدار المرض بالجمع بين اختيار الأصناف والتناوب الزراعي والمبيدات الفطرية."
+    ],
+    "en": [
+     "Humid and cool spring weather favours disease; spores form at near 100% humidity and about 16-27 C. Pathogen overwinters on barley residue and can be seedborne.",
+     "ICARDA: net blotch is a common barley leaf disease in North Africa; in Morocco almost 30% of reported yield losses were attributed to net blotch. Disease managed by combining varietal selection, crop rotation and fungicides."
+    ]
+   },
+   "cultural": {
+    "ar": [
+     "تناوب مع محصول غير الشعير؛ قلّل البقايا بحصاد القش وطمر الأرضة (الجذامة)؛ أتلف الشعير المتطوع والأعشاب العائلة؛ استخدم بذورًا نظيفة وأصنافًا مقاومة؛ وفي الحقول الموبوءة تتضرر الزراعات المتأخرة (ديسمبر–يناير في كاليفورنيا) أقل من المبكرة (أكتوبر–نوفمبر).",
+     "استخدم بذورًا خالية من المسبب؛ تناوب مع محاصيل غير قابلة للإصابة لموسمين على الأقل؛ اقلب القش/الجذامة المصابة بالحراثة."
+    ],
+    "en": [
+     "Rotate to a non-barley crop; reduce residue by harvesting straw and incorporating stubble; destroy volunteer barley and grass hosts; use clean seed and resistant cultivars; in infested fields late plantings (Dec-Jan in California) suffer less than early (Oct-Nov).",
+     "Use pathogen-free seed; rotate with nonsusceptible crops for at least two seasons; plow under infected straw/stubble."
+    ]
+   },
+   "chemical": [],
+   "sources": [
+    {
+     "title": "UC IPM - Net blotch of barley",
+     "url": "https://ipm.ucanr.edu/agriculture/small-grains/net-blotch-of-barley/"
+    },
+    {
+     "title": "PNW Handbooks - Barley net blotch",
+     "url": "https://pnwhandbooks.org/plantdisease/host-disease/barley-hordeum-vulgare-net-blotch"
+    },
+    {
+     "title": "ICARDA",
+     "url": "https://www.icarda.org/node/2643"
+    }
+   ]
+  },
+  {
+   "id": "scald",
+   "type": "fungus",
+   "name": {
+    "ar": "لفحة الشعير (الإسكالد)",
+    "en": "Barley scald (leaf scald)"
+   },
+   "sci": "Rhynchosporium secalis",
+   "symptoms": {
+    "ar": [
+     "بقع داكنة أو شاحبة أو رمادية مزرقة تتسع إلى آفات بيضاوية ذات مراكز رمادية مزرقة وحواف بنية داكنة، وتندمج لتعطي مظهر «اللفح»؛ والإصابات الشديدة قد تقتل الأوراق."
+    ],
+    "en": [
+     "Dark, pale or bluish-gray spots enlarge into oval lesions with bluish-gray centres and dark brown margins, merging to give a scalded look; severe infections can kill leaves."
+    ]
+   },
+   "timing": {
+    "ar": [
+     "أشد ما يكون في السنوات ذات الأمطار الأعلى من المعتاد؛ تحدث العدوى في الطقس البارد الممطر بين نحو 40–77 فهرنهايت (نحو 4–25 °م)؛ يلزم بلل ورقي لا يقل عن 24 ساعة؛ وينتشر بالرذاذ ومطر تدفعه الرياح."
+    ],
+    "en": [
+     "Most severe in years of higher-than-normal rainfall; infection in cool rainy weather roughly 40-77 F (about 4-25 C); leaf wetness of at least 24 h needed; spread by splashing/wind-driven rain."
+    ]
+   },
+   "cultural": {
+    "ar": [
+     "تناوب مع محصول غير الشعير؛ أزل بقايا الشعير؛ أتلف الشعير المتطوع والأعشاب العائلة؛ تجنب الزراعة المبكرة (أكتوبر–نوفمبر) في الحقول الموبوءة (الزراعات المتأخرة ديسمبر–يناير أقل ضررًا)؛ استخدم بذورًا نظيفة وأصنافًا مقاومة."
+    ],
+    "en": [
+     "Rotate to non-barley crop; remove barley residue; destroy volunteer barley/grass hosts; avoid early planting (Oct-Nov) in infested fields, later plantings (Dec-Jan) less damaged; use clean seed and resistant cultivars."
+    ]
+   },
+   "chemical": [],
+   "sources": [
+    {
+     "title": "UC IPM - Leaf scald of barley",
+     "url": "https://ipm.ucanr.edu/agriculture/small-grains/leaf-scald-of-barley"
+    }
+   ]
+  },
+  {
+   "id": "powdery_mildew",
+   "type": "fungus",
+   "name": {
+    "ar": "البياض الدقيقي",
+    "en": "Powdery mildew"
+   },
+   "sci": "Blumeria graminis f. sp. hordei",
+   "symptoms": {
+    "ar": [
+     "كتل أبواغ مسحوقية رمادية بيضاء أو بنية فاتحة على الأوراق وأغماد الأوراق والسنابل؛ والإصابة الشديدة تحوّل الأوراق إلى الأصفر ثم البني ثم تموت."
+    ],
+    "en": [
+     "Powdery gray-white or buff spore masses on leaves, leaf sheaths and heads; heavy infection turns leaves yellow and brown, then dead."
+    ]
+   },
+   "timing": {
+    "ar": [
+     "يُفضّل المرض النمو الغض الكثيف، والكثافات النباتية العالية، والإفراط في إضافة النيتروجين، والرطوبة العالية، والحرارة المنخفضة."
+    ],
+    "en": [
+     "Heavy succulent growth, dense stands, over-application of nitrogen, high humidity and low temperatures favour disease."
+    ]
+   },
+   "cultural": {
+    "ar": [
+     "ازرع أصنافًا مقاومة؛ خفّض معدلات النيتروجين إذا كان المرض شديدًا؛ حراثة نظيفة وتناوب زراعي."
+    ],
+    "en": [
+     "Plant resistant varieties; reduce nitrogen rates if disease severe; clean plowing and crop rotation."
+    ]
+   },
+   "chemical": [
+    {
+     "active": "mancozeb",
+     "ar": "مانكوزيب",
+     "note": {
+      "ar": "اختُبر في تجارب حقلية على صنفي الشعير «Areg» و«Wady Bargoge» (ملخص البحث)؛ ولا يوجد ترتيب لفعاليته منفردًا.",
+      "en": "Tested in field trials on barley cultivars 'Areg' and 'Wady Bargoge' (abstract); no efficacy ranking given for mancozeb separately."
+     },
+     "source_country": "Libya (University of Tripoli, 2025)"
+    },
+    {
+     "active": "thiophanate-methyl",
+     "ar": "ثيوفانيت-ميثيل",
+     "note": {
+      "ar": "في التجربة الليبية نفسها (باسم Topsin-M70%)؛ سُجّل أنه الأضعف تأثيرًا بين المعاملات المختبرة. وكان البنزوثيازول (محفّز كيميائي) الأفضل أداءً.",
+      "en": "Same Libyan trial (as Topsin-M70%); reported as having the weakest effect among treatments tested. Benzothiazole (chemical inducer) performed best."
+     },
+     "source_country": "Libya (University of Tripoli, 2025)"
+    }
+   ],
+   "sources": [
+    {
+     "title": "PNW Handbooks - Barley powdery mildew",
+     "url": "https://pnwhandbooks.org/plantdisease/host-disease/barley-hordeum-vulgare-powdery-mildew"
+    },
+    {
+     "title": "Albayan Scientific Journal, University of Tripoli (2025)",
+     "url": "https://journal.su.edu.ly/index.php/bayan/en/article/view/3644"
+    }
+   ]
+  },
+  {
+   "id": "leaf_rust",
+   "type": "fungus",
+   "name": {
+    "ar": "الصدأ البني (صدأ الأوراق) في الشعير",
+    "en": "Barley leaf rust"
+   },
+   "sci": "Puccinia hordei",
+   "symptoms": {
+    "ar": [
+     "البثرات على الشعير صغيرة مستديرة بنية مصفرّة، بلا الحواف الممزقة لصدأ الساق؛ وتغمق وتصبح لامعة عند تكوّن الأبواغ التيليّة مع النضج."
+    ],
+    "en": [
+     "Pustules on barley are small, round and yellowish brown, without ragged edges of stem rusts; darken and turn shiny as teliospores form with maturity."
+    ]
+   },
+   "timing": {
+    "ar": [
+     "مرض متأخر في الموسم يسبب خسائر في السنوات عالية الرطوبة؛ وتُفضَّل العدوى الثانوية عند 16–22 °م مع الرطوبة أو الندى أو رطوبة المظلة النباتية. صدأ أوراق الشعير لا يصيب القمح."
+    ],
+    "en": [
+     "Late-season disease causing losses in years with high humidity; secondary infection favoured at 16-22 C with humidity, dew or canopy moisture. Barley leaf rust does not affect wheat."
+    ]
+   },
+   "cultural": {
+    "ar": [
+     "ازرع أصنافًا مقاومة من الشعير."
+    ],
+    "en": [
+     "Plant resistant barley cultivars."
+    ]
+   },
+   "chemical": [
+    {
+     "active": "propiconazole",
+     "ar": "بروبيكونازول",
+     "note": {
+      "ar": "إذا تغلبت سلالات جديدة على المقاومة؛ يُطبَّق بين التفريع والتسنبل لحماية ورقة العلم؛ والملصق للشعير حتى المرحلة Feekes 10.5.4.",
+      "en": "If new races overcome resistance; apply between tillering and heading to protect the flag leaf; label for barley up to Feekes 10.5.4."
+     },
+     "source_country": "USA (California, UC IPM, text 04/26, table 07/25)"
+    }
+   ],
+   "sources": [
+    {
+     "title": "UC IPM - Leaf rusts of wheat and barley",
+     "url": "https://ipm.ucanr.edu/agriculture/small-grains/leaf-rusts-of-wheat-and-barley-crown-rust-of-oats/"
+    }
+   ]
+  },
+  {
+   "id": "stripe_rust",
+   "type": "fungus",
+   "name": {
+    "ar": "الصدأ الأصفر (المخطط) في الشعير",
+    "en": "Barley stripe rust"
+   },
+   "sci": "Puccinia striiformis f. sp. hordei",
+   "symptoms": {
+    "ar": [
+     "بثرات صفراء برتقالية مرتبة خطيًا بين عروق الورقة؛ وتصاب القنابع (الغلوم) غالبًا؛ وتظهر الأعراض أبكر من الأصداء الأخرى؛ وتغمق البثرات وتلمع عند النضج."
+    ],
+    "en": [
+     "Yellow-orange pustules arranged linearly between leaf veins; glumes often infected; symptoms appear earlier than other rusts; pustules turn dark and shiny at maturity."
+    ]
+   },
+   "timing": {
+    "ar": [
+     "أسرع نمو عند 10–16 °م مع مطر متقطع وندى، وقد يستمر في حرارة أعلى/ظروف أجف؛ دورات ثانوية كل 7–10 أيام؛ وسلالات الشعير تبقى في مناخات أدفأ وأجف من سلالات القمح."
+    ],
+    "en": [
+     "Fastest development at 10-16 C with intermittent rain and dew, can continue at higher temperatures/drier conditions; secondary cycles every 7-10 days; barley strains survive in warmer, drier climates than wheat strains."
+    ]
+   },
+   "cultural": {
+    "ar": [
+     "ازرع أصنافًا مقاومة؛ راقب الحقول واتصل بالمرشد المحلي."
+    ],
+    "en": [
+     "Plant resistant cultivars; monitor fields and contact local advisor."
+    ]
+   },
+   "chemical": [
+    {
+     "active": "azoxystrobin",
+     "ar": "أزوكسيستروبين",
+     "note": {
+      "ar": "",
+      "en": ""
+     },
+     "source_country": "USA (California, UC IPM)"
+    },
+    {
+     "active": "propiconazole",
+     "ar": "بروبيكونازول",
+     "note": {
+      "ar": "",
+      "en": ""
+     },
+     "source_country": "USA (California, UC IPM)"
+    },
+    {
+     "active": "propiconazole + trifloxystrobin",
+     "ar": "بروبيكونازول + تريفلوكسيستروبين",
+     "note": {
+      "ar": "مخلوط جاهز (premix).",
+      "en": "Premix."
+     },
+     "source_country": "USA (California, UC IPM)"
+    },
+    {
+     "active": "pyraclostrobin",
+     "ar": "بيراكلوستروبين",
+     "note": {
+      "ar": "",
+      "en": ""
+     },
+     "source_country": "USA (California, UC IPM)"
+    }
+   ],
+   "sources": [
+    {
+     "title": "UC IPM - Stripe rusts of wheat and barley",
+     "url": "https://ipm.ucanr.edu/agriculture/small-grains/stripe-rusts-of-wheat-and-barley/"
+    }
+   ]
+  },
+  {
+   "id": "loose_smut",
+   "type": "fungus",
+   "name": {
+    "ar": "التفحم السائب",
+    "en": "Loose smut"
+   },
+   "sci": "Ustilago nuda (syn. U. tritici in some sources)",
+   "symptoms": {
+    "ar": [
+     "تبدو النباتات طبيعية حتى بزوغ السنابل؛ وتبزغ السنابل المصابة قبل السليمة ويُستبدل كل الحب بكتلة أبواغ بنية داكنة؛ ويتمزق الغشاء مبكرًا تاركًا سوقًا عارية."
+    ],
+    "en": [
+     "Plants look normal until ear emergence; affected heads emerge before healthy ones and all grain is replaced by dark brown spore mass; membrane breaks early leaving bare stalks."
+    ]
+   },
+   "timing": {
+    "ar": [
+     "تُفضَّل العدوى بالمطر المتكرر والرطوبة العالية و16–22 °م أثناء الإزهار؛ ويبقى الفطر على هيئة خيوط ساكنة في جنين البذرة."
+    ],
+    "en": [
+     "Infection favoured by frequent rain, high humidity and 16-22 C during flowering; fungus survives as dormant hyphae in the seed embryo."
+    ]
+   },
+   "cultural": {
+    "ar": [
+     "بعد حدوث تفشٍّ، احصل على بذور جديدة نظيفة؛ والمعاملات الجهازية للبذور كل عام تكافح المرض (مفهوم عام؛ لا تذكر الصفحة مادة فعالة)."
+    ],
+    "en": [
+     "After an outbreak source new clean seed; systemic seed treatments every year control the disease (concept; page names no active ingredient)."
+    ]
+   },
+   "chemical": [],
+   "sources": [
+    {
+     "title": "Agriculture Victoria - Bunts and smuts of cereals",
+     "url": "https://agriculture.vic.gov.au/biosecurity/plant-diseases/grain-pulses-and-cereal-diseases/bunts-and-smuts-of-cereals"
+    }
+   ]
+  },
+  {
+   "id": "covered_smut",
+   "type": "fungus",
+   "name": {
+    "ar": "التفحم المغطى",
+    "en": "Covered smut"
+   },
+   "sci": "Ustilago hordei (called Ustilago segetum var. hordei in the Victorian source)",
+   "symptoms": {
+    "ar": [
+     "لا علامات حتى بزوغ السنابل؛ تُستبدل الزهيرات في السنابل المصابة بكتل أبواغ بنية داكنة إلى سوداء تتماسك أكثر من أبواغ التفحم السائب."
+    ],
+    "en": [
+     "No signs until ear emergence; florets of infected ears replaced by masses of dark brown to black spores held more firmly than loose smut spores."
+    ]
+   },
+   "timing": {
+    "ar": [
+     "تلوّث الأبواغ الحبوب عند الحصاد وتنبت مع البذرة عند الزراعة؛ يُفضّل المرض الترب الأجف و15–21 °م؛ والزراعة المبكرة تزيد الإصابة."
+    ],
+    "en": [
+     "Spores contaminate grain at harvest and germinate with the seed at sowing; favours drier soils and 15-21 C; earlier sowing increases infection."
+    ]
+   },
+   "cultural": {
+    "ar": [
+     "معاملات البذور بالمبيدات الفطرية كل عام تكافحه بفعالية؛ استخدم بذورًا جديدة من مصدر نظيف بعد التفشي؛ والأصناف المقاومة متوفرة."
+    ],
+    "en": [
+     "Fungicide seed treatments every year control it effectively; use new seed from a clean source after an outbreak; resistant varieties are available."
+    ]
+   },
+   "chemical": [],
+   "sources": [
+    {
+     "title": "Agriculture Victoria - Bunts and smuts of cereals",
+     "url": "https://agriculture.vic.gov.au/biosecurity/plant-diseases/grain-pulses-and-cereal-diseases/bunts-and-smuts-of-cereals"
+    }
+   ]
+  },
+  {
+   "id": "root_rots",
+   "type": "fungus",
+   "name": {
+    "ar": "التعفن الشائع للجذور وتبقع الأوراق (Bipolaris)",
+    "en": "Common root rot and spot blotch"
+   },
+   "sci": "Bipolaris sorokiniana",
+   "symptoms": {
+    "ar": [
+     "Bipolaris sorokiniana: تظهر على البادرات المصابة آفات بنية على الجذور والغمد الأولي (الكوليوبتيل) والسلاميات تحت التاج؛ ويظهر تبقع الأوراق كآفات بنية صغيرة أقل من 1 سم قد تندمج."
+    ],
+    "en": [
+     "B. sorokiniana: infected seedlings have brown lesions on roots, coleoptiles and subcrown internodes; spot blotch shows as small brown leaf lesions under 1 cm, which may merge."
+    ]
+   },
+   "timing": {
+    "ar": [
+     "يُفضّل مرض البادرات الإجهاد مثل الزراعة في تربة حارة جافة؛ ويكثر تبقع الأوراق في الطقس الرطب وعلى الأوراق السفلية وبعد تكوّن السنابل (B. sorokiniana)."
+    ],
+    "en": [
+     "Seedling disease favoured by stress such as planting in hot, dry soils; spot blotch more frequent in wet weather, on lower leaves and after head development (B. sorokiniana)."
+    ]
+   },
+   "cultural": {
+    "ar": [
+     "توجد أصناف مقاومة/متحملة جزئيًا للشعير والقمح لكنها لا تكفي وحدها؛ بذور سليمة؛ زراعة ضحلة في تربة باردة؛ تقليل إجهاد العناصر الغذائية والرطوبة؛ وقد تفيد المبيدات الفطرية المضافة للبذور؛ والتناوب مع محاصيل غير عائلة يخفض اللقاح لكنه قد يكون غير عملي بسبب اتساع مدى العوائل؛ والمبيدات الفطرية الورقية محدودة الفائدة."
+    ],
+    "en": [
+     "Partially resistant/tolerant varieties exist for barley and wheat but are not enough alone; healthy seed; shallow planting in cool soil; reduce nutrient/moisture stress; seed-applied fungicides may help; rotation with non-hosts can reduce inoculum but may be impractical due to wide host range; foliar fungicides of limited use."
+    ]
+   },
+   "chemical": [],
+   "sources": [
+    {
+     "title": "Bugwood Wiki - Bipolaris sorokiniana",
+     "url": "https://wiki.bugwood.org/Bipolaris_sorokiniana_(Common_Root_Rot_and_Spot_Blotch_of_Barley_and_Wheat)"
+    }
+   ]
+  },
+  {
+   "id": "barley_stripe",
+   "type": "fungus",
+   "name": {
+    "ar": "التخطط الشعيري (المخطط)",
+    "en": "Barley stripe"
+   },
+   "sci": "Pyrenophora graminea",
+   "symptoms": {
+    "ar": [
+     "خطوط طويلة شاحبة أو صفراء على الورقة الثانية والثالثة وما بعدها تغمق مع الوقت؛ تتشقق الأوراق على امتداد الخطوط؛ تتقزم النباتات وتكون السنابل فارغة."
+    ],
+    "en": [
+     "Long pale or yellow stripes on second, third and later leaves that darken; leaves split along stripes; plants stunted, spikes blank."
+    ]
+   },
+   "timing": {
+    "ar": [],
+    "en": []
+   },
+   "cultural": {
+    "ar": [
+     "استخدم بذورًا معتمدة؛ لا تعد زراعة بذور من حقول مصابة."
+    ],
+    "en": [
+     "Use certified seed; do not replant seed from infected fields."
+    ]
+   },
+   "chemical": [],
+   "sources": [
+    {
+     "title": "UC IPM - Barley stripe",
+     "url": "https://ipm.ucanr.edu/agriculture/small-grains/barley-stripe/"
+    }
+   ]
+  },
+  {
+   "id": "bydv",
+   "type": "virus",
+   "name": {
+    "ar": "فيروس تقزم الشعير الأصفر",
+    "en": "Barley yellow dwarf virus (BYDV)"
+   },
+   "sci": "Barley yellow dwarf virus (BYDV; Luteoviridae)",
+   "symptoms": {
+    "ar": [
+     "تلوّن غير منتظم مبقّع للأوراق بدرجات الأصفر أو الأحمر أو الأرجواني؛ والإصابات المبكرة الشديدة قد تقتل النباتات الصغيرة. أوراق القمح/الشعير تصفرّ عادة.",
+     "في الشعير تكتسب الأوراق لونًا أصفر ذهبيًا زاهيًا، أحيانًا مع تبقعات نخرية بنية؛ وتتقزم النباتات وقد تنضج مبكرًا."
+    ],
+    "en": [
+     "Uneven, blotchy leaf discoloration in yellow, red or purple shades; severe early infections can kill young plants. Wheat/barley leaves usually turn yellow.",
+     "In barley, leaves develop a bright golden-yellow colour, sometimes with necrotic brown flecking; plants stunted, may ripen prematurely."
+    ]
+   },
+   "timing": {
+    "ar": [
+     "ينقله معظم أنواع منّ الحبوب الشائعة (منّ الشوفان، ومنّ الحبوب الإنجليزي، ومنّ الوردة والحبوب، ومنّ ورق الذرة، والمنّ الأخضر)؛ ومنّ القمح الروسي ليس ناقلًا. الأوبئة أرجح في المواسم الباردة الرطبة."
+    ],
+    "en": [
+     "Vectored by most common grain aphids (bird cherry-oat, English grain, rose-grain, corn leaf aphids, greenbug); Russian wheat aphid is not a vector. Epidemics most likely in cool, moist seasons."
+    ]
+   },
+   "cultural": {
+    "ar": [
+     "ازرع أصناف شعير مقاومة أو متحملة؛ تجنب الزراعة المبكرة (سبتمبر–أكتوبر) أو المتأخرة (فبراير–مارس) في كاليفورنيا.",
+     "تتوفر مستويات عالية من المقاومة أو التحمل في الشعير والشوفان؛ كافح الأعشاب النجيلية والحبوب المتطوعة؛ المبيدات الفطرية لا تكافح الفيروس؛ والمبيدات الحشرية فقط عندما يشير الكشف الحقلي إلى الحاجة."
+    ],
+    "en": [
+     "Plant resistant or tolerant barley cultivars; avoid early (Sept-Oct) or late (Feb-Mar) planting in California.",
+     "High levels of resistance or tolerance are available in barley and oats; control grassy weeds and volunteer cereals; fungicides do not control the virus; insecticides only when scouting indicates need."
+    ]
+   },
+   "chemical": [],
+   "sources": [
+    {
+     "title": "UC IPM - Barley yellow dwarf",
+     "url": "https://ipm.ucanr.edu/agriculture/small-grains/barley-yellow-dwarf/"
+    },
+    {
+     "title": "UNL Extension - G1823",
+     "url": "https://extensionpubs.unl.edu/publication/g1823/2013/html/view"
+    }
+   ]
+  },
+  {
+   "id": "cereal_cyst_nematode",
+   "type": "nematode",
+   "name": {
+    "ar": "نيماتودا أكياس الحبوب",
+    "en": "Cereal cyst nematode"
+   },
+   "sci": "Heterodera avenae (and H. latipons in Mediterranean)",
+   "symptoms": {
+    "ar": [
+     "جذور القمح تصبح كتلة كثيفة متشابكة مع ظهور الإناث؛ وفوق الأرض تظهر رقع (من 1 إلى أكثر من 100 م²) من نباتات شاحبة ضعيفة ذات تفريع أقل. جذور الشعير أقل تأثرًا من جذور الشوفان."
+    ],
+    "en": [
+     "Wheat roots become a dense bushy knotted mass with visible females; above ground, patches (1 to 100+ m2) of pale weak plants with fewer tillers. Barley roots are less affected than oat roots."
+    ]
+   },
+   "timing": {
+    "ar": [
+     "في المناخات المتوسطية يكون سكون الفقس إجباريًا وطويل الأمد، ويُكسر عندما تبرد التربة وتزداد رطوبة. H. latipons متوسطي إلى حد كبير ويُشتبه في أنه يحدّ من الشعير والقمح القاسي في المناطق شبه الجافة.",
+     "تنبيه: ذكرت UC IPM (كاليفورنيا) أن نيماتودا أكياس الحبوب «سُجّلت على النجيليات لكنها لم تُكتشف في الحبوب الصغيرة» هناك؛ ولم يُعثر على سجل لها في ليبيا."
+    ],
+    "en": [
+     "In Mediterranean climates hatching dormancy is obligate and long-lasting, broken when soils cool and get wetter. H. latipons is largely Mediterranean and suspected to limit barley and durum wheat in semi-arid regions.",
+     "Caveat: UC IPM (California) states cereal cyst nematode 'has been reported on grasses, but it has not been detected in small grains' there; no Libya record found."
+    ]
+   },
+   "cultural": {
+    "ar": [
+     "التناوب الخالي من النجيليات مع محاصيل غير عائلة من أنجع الطرق؛ والأصناف المقاومة من أفضل الخيارات (نجحت في أستراليا والسويد وفرنسا) لكن المقاومة قد تنهار؛ والمبيدات النيماتودية غير اقتصادية عمومًا."
+    ],
+    "en": [
+     "Grass-free rotations with non-host crops are among the most efficient methods; resistant cultivars are one of the best options (worked in Australia, Sweden, France) but resistance can break down; nematicides generally not economical."
+    ]
+   },
+   "chemical": [],
+   "sources": [
+    {
+     "title": "FAO - Important nematode pests (J.M. Nicol)",
+     "url": "https://www.fao.org/4/Y4011E/y4011e0p.htm"
+    },
+    {
+     "title": "UC IPM - Nematodes of small grains",
+     "url": "https://ipm.ucanr.edu/agriculture/small-grains/nematodes/"
+    }
+   ]
+  }
+ ],
+ "libya": {
+  "ar": [
+   "جدول تاريخي للفاو: مساحة الشعير المحصودة في ليبيا 213,000 هكتار (1969/71)، و284,000 هكتار (1979/81)، و283,000 هكتار (1989/91)؛ والإنتاج 70,000 / 97,000 / 140,000 طن؛ والغلة 326 / 342 / 496 كجم/هكتار. بيانات قديمة.",
+   "الفاو (عبر World-Grain، نحو أغسطس 2022): قُدّر إجمالي إنتاج ليبيا من الحبوب بـ 209,000 طن لعام 2022؛ ونحو 12% فقط من 15.4 مليون هكتار صالحة للزراعة؛ وتوقع المجلس الدولي للحبوب (IGC) واردات شعير 500,000 طن في 2022-23 (900,000 طن في العام السابق)؛ وتذكر الفاو أن 50% من إجمالي واردات الشعير البالغة مليون طن مصدرها أوكرانيا.",
+   "موجز الفاو GIEWS عن ليبيا (تاريخ المرجع 16 يوليو 2026): بدأ حصاد القمح الشتوي والشعير في مايو 2026 ومن المتوقع انتهاؤه في أواخر يوليو؛ ويُتوقع أن يبلغ إجمالي إنتاج الحبوب لعام 2026 نحو 150,000 طن، أي أقل بنحو 20% من متوسط السنوات الخمس، مع انخفاض المساحة المزروعة. لا توجد أرقام خاصة بالشعير في الموجز.",
+   "أمراض الشعير المسجلة في ليبيا في مسح وطني مبكر: صدأ أوراق الشعير، والتفحم المغطى في الشعير، وبعض تبقعات أوراق الشعير (غير مسماة فرديًا في الملخص). (محمد 1975؛ ملخص فقط؛ يسرد الملخص أيضًا صدأ الساق والتفحم المنتن (bunt) والتفحم السائب والبياض الدقيقي دون ذكر المحصول العائل.)",
+   "البياض الدقيقي وُصف بأنه تهديد رئيسي للشعير في المناطق الجافة وشبه الجافة؛ وفي تجارب حقلية في ليبيا على صنفي «Areg» و«Wady Bargoge» اختُبرت أحماض الساليسيليك والأوكساليك والتانيك، والبنزوثيازول (أفضل نتيجة)، والمبيدان الفطريان mancozeb وthiophanate-methyl (Topsin-M70%، الأضعف تأثيرًا) (إكريم وغزالة 2025؛ ملخص فقط).",
+   "فطريات تخزين حبوب الشعير في منطقة زليتن: تم التعرف على 10 أنواع في 6 أجناس (عينات يناير 2013)؛ وكانت Aspergillus flavus وA. ochraceus وRhizopus stolonifer الأشد إمراضية، إذ خفّضت الإنبات إلى 33.3%. وتذكر مقدمة الورقة صدأ الأوراق والبياض الدقيقي والتبقع الشبكي كأمراض للشعير (الوادي وعلي وجبران 2020)."
+  ],
+  "en": [
+   "Historical FAO table: Libya barley area harvested 213,000 ha (1969/71), 284,000 ha (1979/81), 283,000 ha (1989/91); production 70,000 / 97,000 / 140,000 t; yield 326 / 342 / 496 kg/ha. Old data.",
+   "FAO (via World-Grain, c. Aug 2022): total Libyan cereal output estimated 209,000 t for 2022; only about 12% of 15.4 million ha is arable; IGC forecast 2022-23 barley imports 500,000 t (900,000 t the previous year); FAO states 50% of total barley imports of 1 million t originated from Ukraine.",
+   "FAO GIEWS Libya country brief (reference date 16 July 2026): winter wheat and barley harvest started in May 2026 and was expected to finish by late July; total 2026 cereal production forecast about 150,000 t, nearly 20% below the five-year average, with reduced planted area. No barley-specific figures in the brief.",
+   "Barley diseases reported in Libya in an early national survey: leaf rust of barley, covered smut of barley, and some barley leaf spots (not individually named in abstract). (Mohamed 1975; abstract only; the abstract also lists stem rust, bunt, loose smut and powdery mildew without a host crop.)",
+   "Powdery mildew described as a major threat to barley in arid and semi-arid regions; field trials in Libya on cultivars 'Areg' and 'Wady Bargoge' tested salicylic, oxalic and tannic acids, benzothiazole (best result), and fungicides mancozeb and thiophanate-methyl (Topsin-M70%, weakest effect) (Ekrim & Ghazala 2025; abstract only).",
+   "Storage fungi on barley grain in Zliten area: 10 species in 6 genera identified (Jan 2013 samples); Aspergillus flavus, A. ochraceus and Rhizopus stolonifer most pathogenic, reducing germination to 33.3%. The paper's introduction mentions leaf rust, powdery mildew and net blotch as barley diseases (El-Wadii, Ali & Jubran 2020)."
+  ],
+  "sources": [
+   {
+    "title": "FAO - Barley: area, yield and production (Table A.4.4)",
+    "url": "https://www.fao.org/3/v4200e/V4200E1k.htm"
+   },
+   {
+    "title": "World-Grain - Focus on Libya",
+    "url": "https://world-grain.com/articles/17527-focus-on-libya"
+   },
+   {
+    "title": "FAO GIEWS - Libya country brief",
+    "url": "https://www.fao.org/giews/countrybrief/country.jsp?code=LBY"
+   },
+   {
+    "title": "Libyan Journal of Agriculture (Mohamed 1975)",
+    "url": "https://journals.uot.edu.ly/index.php/ljagric/article/view/686"
+   },
+   {
+    "title": "Albayan Scientific Journal, University of Tripoli (2025)",
+    "url": "https://journal.su.edu.ly/index.php/bayan/en/article/view/3644"
+   },
+   {
+    "title": "Al-Asmarya Islamic University J. Applied Science (2020)",
+    "url": "https://journals.asmarya.edu.ly/jbs/index.php/jbs/article/download/193/136"
+   }
+  ]
+ },
+ "ui": {
+  "ar": {
+   "tile_note": "من مصادر خارجية",
+   "back": "كل المحاصيل",
+   "symptoms": "مظهر الإصابة",
+   "timing": "التوقيت والظروف",
+   "cultural": "المكافحة غير الكيميائية",
+   "chemical": "مواد فعالة مذكورة في مصدرها (بلا جرعات)",
+   "none_chem": "لا توجد مادة فعالة موثّقة لهذه الآفة في المصادر المعتمدة هنا.",
+   "sources": "المصادر",
+   "libya": "ما وُثّق عن الشعير في ليبيا",
+   "cards": "آفة ومرض",
+   "country": "بلد المصدر",
+   "badge": "ليس من الكتاب"
+  },
+  "en": {
+   "tile_note": "External sources",
+   "back": "All crops",
+   "symptoms": "Symptoms",
+   "timing": "Timing and conditions",
+   "cultural": "Non-chemical control",
+   "chemical": "Active ingredients named in their source (no doses)",
+   "none_chem": "No documented active ingredient for this pest in the sources used here.",
+   "sources": "Sources",
+   "libya": "What is documented about barley in Libya",
+   "cards": "pests and diseases",
+   "country": "Source country",
+   "badge": "Not from the book"
+  }
+ }
+}

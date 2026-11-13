@@ -215,7 +215,7 @@
  * Personal data (IndexedDB history, theme, app version note) lives outside
  * the caches and is never touched by this worker.
  */
-const CACHE = 'mustashar-v94';
+const CACHE = 'mustashar-v95';
 const OCR_CACHE = 'mustashar-ocr';
 
 /* v86 — صور كتاب التوصيات (256 صورة) تُحمَّل من الصفحة نفسها (src/tawsiyat.js) إلى كاش دائم مستقل

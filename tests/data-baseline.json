@@ -1,5 +1,5 @@
 {
-  "_comment": "Immutable baseline of the database files. tests/verify.mjs recomputes SHA-256 and row counts and fails if anything changed. Do not edit these values unless the user deliberately replaces a source file. epa.json + epa-cancelled.json rebuilt 2026-09-23 by tools/build-epa-master.js from sources/EPA_Master/EPA_Master.xlsx (EPA Master / PPIS, 5 official EPA files, full reads) — see docs/data-provenance.md sections 4-5. | 2026-09-27: libya-248/500 resha after the approved documented CAS-correction round (cas_raw/cas_corrected/cas_source; docs/data-provenance.md). | 2026-09-27 (2): libya-248/500 resha after the second approved CAS round (2 more decree repairs, stereo flag + (R) descriptor, documented candidate numbers, 248 information notes/duplicate marks — no official CAS value changed; docs/data-provenance.md). | 2026-11-09 15-day refresh (automated): eu, epa, epa-cancelled rebaselined by scripts/rebaseline-intl.mjs after the approved periodic update; Libya untouched.",
+  "_comment": "Immutable baseline of the database files. tests/verify.mjs recomputes SHA-256 and row counts and fails if anything changed. Do not edit these values unless the user deliberately replaces a source file. epa.json + epa-cancelled.json rebuilt 2026-09-23 by tools/build-epa-master.js from sources/EPA_Master/EPA_Master.xlsx (EPA Master / PPIS, 5 official EPA files, full reads) — see docs/data-provenance.md sections 4-5. | 2026-09-27: libya-248/500 resha after the approved documented CAS-correction round (cas_raw/cas_corrected/cas_source; docs/data-provenance.md). | 2026-09-27 (2): libya-248/500 resha after the second approved CAS round (2 more decree repairs, stereo flag + (R) descriptor, documented candidate numbers, 248 information notes/duplicate marks — no official CAS value changed; docs/data-provenance.md). | 2026-11-16 15-day refresh (automated): eu, epa, epa-cancelled rebaselined by scripts/rebaseline-intl.mjs after the approved periodic update; Libya untouched.",
   "files": {
     "data/libya-248.json": {
       "sha256": "b6850e0381fda847b0bc4b30096d35847b91e626587647dd79ef80ea04cbacd5",
@@ -10,15 +10,15 @@
       "rows": 411
     },
     "data/eu.json": {
-      "sha256": "97eccbca4f6840079e6260ec944dc18a435ba3f7543515299ad4d4ec81ac852d",
+      "sha256": "1f9a34f7aa2b2b52563c651322242da55bf6d8acaf3305782144fbe91c76935f",
       "rows": 1485
     },
     "data/epa.json": {
-      "sha256": "06017a0e1ecabcd0a7c542803bc979c8a0e606fa2800a06c698a06ac1b39cbba",
+      "sha256": "a6cf051ef633e87d0b494864cbe303712753fbf1f26750d0a223bffb36890c93",
       "rows": 1374
     },
     "data/epa-cancelled.json": {
-      "sha256": "1ff9d6e087c78b3aa667699f68e3085bec2aa72b94ea9f9e1eb3314a41219b88",
+      "sha256": "7d1c99e1f57ceb1cc2978168b0749e279f39219b99a88847423fdb61094f0cc7",
       "rows": 1425
     }
   },

@@ -1,15 +1,15 @@
 {
-  "version": "1.19.61",
-  "shell": "mustashar-v97",
-  "released": "2026-11-13",
-  "data_updated": "2026-11-08",
+  "version": "1.19.62",
+  "shell": "mustashar-v98",
+  "released": "2026-11-16",
+  "data_updated": "2026-11-16",
   "dataCheck": {
     "libya-248": "2026-09-27",
     "libya-500": "2026-10-03",
-    "eu": "2026-11-08",
-    "epa": "2026-11-08",
-    "epa-cancelled": "2026-11-08",
-    "canada": "2026-11-08",
-    "australia": "2026-11-08"
+    "eu": "2026-11-16",
+    "epa": "2026-11-16",
+    "epa-cancelled": "2026-11-16",
+    "canada": "2026-11-16",
+    "australia": "2026-11-16"
   }
 }

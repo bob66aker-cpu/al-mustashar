@@ -3,7 +3,7 @@
   "key": "epa",
   "name": "USA / EPA",
   "count": 1374,
-  "built": "2026-11-08",
+  "built": "2026-11-16",
   "source": "EPA PPIS (www3.epa.gov/pesticides/PPISdata) — 5 official files, automated rebuild",
   "built_from_workbook_date": "2026-09-22",
   "verification": {
@@ -2628,7 +2628,7 @@
    "shared_cas_count": 1,
    "status": "مسموح",
    "status_raw": "له تسجيل نشط واحد على الأقل",
-   "active_registrations": 77,
+   "active_registrations": 78,
    "cancelled_registrations": 71,
    "source": "EPA Master (PPIS)",
    "row": 154
@@ -6606,7 +6606,7 @@
    "shared_cas_count": 1,
    "status": "مسموح",
    "status_raw": "له تسجيل نشط واحد على الأقل",
-   "active_registrations": 44,
+   "active_registrations": 45,
    "cancelled_registrations": 2,
    "source": "EPA Master (PPIS)",
    "row": 388
@@ -7677,7 +7677,7 @@
    "shared_cas_count": 1,
    "status": "مسموح",
    "status_raw": "له تسجيل نشط واحد على الأقل",
-   "active_registrations": 127,
+   "active_registrations": 128,
    "cancelled_registrations": 2,
    "source": "EPA Master (PPIS)",
    "row": 451
@@ -8221,7 +8221,7 @@
    "shared_cas_count": 1,
    "status": "مسموح",
    "status_raw": "له تسجيل نشط واحد على الأقل",
-   "active_registrations": 90,
+   "active_registrations": 92,
    "cancelled_registrations": 14,
    "source": "EPA Master (PPIS)",
    "row": 483
@@ -8374,7 +8374,7 @@
    "shared_cas_count": 1,
    "status": "مسموح",
    "status_raw": "له تسجيل نشط واحد على الأقل",
-   "active_registrations": 42,
+   "active_registrations": 43,
    "cancelled_registrations": 22,
    "source": "EPA Master (PPIS)",
    "row": 492
@@ -8782,7 +8782,7 @@
    "shared_cas_count": 1,
    "status": "مسموح",
    "status_raw": "له تسجيل نشط واحد على الأقل",
-   "active_registrations": 65,
+   "active_registrations": 66,
    "cancelled_registrations": 97,
    "source": "EPA Master (PPIS)",
    "row": 516
@@ -9258,7 +9258,7 @@
    "shared_cas_count": 1,
    "status": "مسموح",
    "status_raw": "له تسجيل نشط واحد على الأقل",
-   "active_registrations": 5,
+   "active_registrations": 6,
    "cancelled_registrations": 0,
    "source": "EPA Master (PPIS)",
    "row": 544
@@ -9768,7 +9768,7 @@
    "shared_cas_count": 1,
    "status": "مسموح",
    "status_raw": "له تسجيل نشط واحد على الأقل",
-   "active_registrations": 42,
+   "active_registrations": 43,
    "cancelled_registrations": 12,
    "source": "EPA Master (PPIS)",
    "row": 574
@@ -9853,7 +9853,7 @@
    "shared_cas_count": 1,
    "status": "مسموح",
    "status_raw": "له تسجيل نشط واحد على الأقل",
-   "active_registrations": 21,
+   "active_registrations": 22,
    "cancelled_registrations": 52,
    "source": "EPA Master (PPIS)",
    "row": 579
@@ -11621,7 +11621,7 @@
    "shared_cas_count": 1,
    "status": "مسموح",
    "status_raw": "له تسجيل نشط واحد على الأقل",
-   "active_registrations": 13,
+   "active_registrations": 15,
    "cancelled_registrations": 0,
    "source": "EPA Master (PPIS)",
    "row": 683
@@ -11757,7 +11757,7 @@
    "shared_cas_count": 1,
    "status": "مسموح",
    "status_raw": "له تسجيل نشط واحد على الأقل",
-   "active_registrations": 141,
+   "active_registrations": 142,
    "cancelled_registrations": 25,
    "source": "EPA Master (PPIS)",
    "row": 691
@@ -11961,7 +11961,7 @@
    "shared_cas_count": 1,
    "status": "مسموح",
    "status_raw": "له تسجيل نشط واحد على الأقل",
-   "active_registrations": 20,
+   "active_registrations": 21,
    "cancelled_registrations": 0,
    "source": "EPA Master (PPIS)",
    "row": 703
@@ -12012,7 +12012,7 @@
    "shared_cas_count": 2,
    "status": "مسموح",
    "status_raw": "له تسجيل نشط واحد على الأقل",
-   "active_registrations": 31,
+   "active_registrations": 32,
    "cancelled_registrations": 2,
    "source": "EPA Master (PPIS)",
    "row": 706
@@ -12046,7 +12046,7 @@
    "shared_cas_count": 1,
    "status": "مسموح",
    "status_raw": "له تسجيل نشط واحد على الأقل",
-   "active_registrations": 129,
+   "active_registrations": 131,
    "cancelled_registrations": 18,
    "source": "EPA Master (PPIS)",
    "row": 708
@@ -12131,7 +12131,7 @@
    "shared_cas_count": 1,
    "status": "مسموح",
    "status_raw": "له تسجيل نشط واحد على الأقل",
-   "active_registrations": 24,
+   "active_registrations": 25,
    "cancelled_registrations": 0,
    "source": "EPA Master (PPIS)",
    "row": 713
@@ -12182,7 +12182,7 @@
    "shared_cas_count": 1,
    "status": "مسموح",
    "status_raw": "له تسجيل نشط واحد على الأقل",
-   "active_registrations": 20,
+   "active_registrations": 21,
    "cancelled_registrations": 3,
    "source": "EPA Master (PPIS)",
    "row": 716
@@ -12590,7 +12590,7 @@
    "shared_cas_count": 1,
    "status": "مسموح",
    "status_raw": "له تسجيل نشط واحد على الأقل",
-   "active_registrations": 135,
+   "active_registrations": 136,
    "cancelled_registrations": 21,
    "source": "EPA Master (PPIS)",
    "row": 740
@@ -13151,7 +13151,7 @@
    "shared_cas_count": 1,
    "status": "مسموح",
    "status_raw": "له تسجيل نشط واحد على الأقل",
-   "active_registrations": 22,
+   "active_registrations": 23,
    "cancelled_registrations": 32,
    "source": "EPA Master (PPIS)",
    "row": 773
@@ -13627,7 +13627,7 @@
    "shared_cas_count": 2,
    "status": "مسموح",
    "status_raw": "له تسجيل نشط واحد على الأقل",
-   "active_registrations": 496,
+   "active_registrations": 497,
    "cancelled_registrations": 193,
    "source": "EPA Master (PPIS)",
    "row": 801
@@ -13644,7 +13644,7 @@
    "shared_cas_count": 1,
    "status": "مسموح",
    "status_raw": "له تسجيل نشط واحد على الأقل",
-   "active_registrations": 496,
+   "active_registrations": 497,
    "cancelled_registrations": 193,
    "source": "EPA Master (PPIS)",
    "row": 802
@@ -14970,7 +14970,7 @@
    "shared_cas_count": 1,
    "status": "مسموح",
    "status_raw": "له تسجيل نشط واحد على الأقل",
-   "active_registrations": 146,
+   "active_registrations": 147,
    "cancelled_registrations": 11,
    "source": "EPA Master (PPIS)",
    "row": 880
@@ -15021,7 +15021,7 @@
    "shared_cas_count": 1,
    "status": "مسموح",
    "status_raw": "له تسجيل نشط واحد على الأقل",
-   "active_registrations": 122,
+   "active_registrations": 123,
    "cancelled_registrations": 39,
    "source": "EPA Master (PPIS)",
    "row": 883
@@ -15089,7 +15089,7 @@
    "shared_cas_count": 1,
    "status": "مسموح",
    "status_raw": "له تسجيل نشط واحد على الأقل",
-   "active_registrations": 18,
+   "active_registrations": 19,
    "cancelled_registrations": 52,
    "source": "EPA Master (PPIS)",
    "row": 887
@@ -17809,7 +17809,7 @@
    "shared_cas_count": 1,
    "status": "مسموح",
    "status_raw": "له تسجيل نشط واحد على الأقل",
-   "active_registrations": 12,
+   "active_registrations": 13,
    "cancelled_registrations": 0,
    "source": "EPA Master (PPIS)",
    "row": 1047
@@ -17826,7 +17826,7 @@
    "shared_cas_count": 1,
    "status": "مسموح",
    "status_raw": "له تسجيل نشط واحد على الأقل",
-   "active_registrations": 66,
+   "active_registrations": 67,
    "cancelled_registrations": 8,
    "source": "EPA Master (PPIS)",
    "row": 1048
@@ -18795,7 +18795,7 @@
    "shared_cas_count": 2,
    "status": "مسموح",
    "status_raw": "له تسجيل نشط واحد على الأقل",
-   "active_registrations": 78,
+   "active_registrations": 80,
    "cancelled_registrations": 1,
    "source": "EPA Master (PPIS)",
    "row": 1105
@@ -19305,7 +19305,7 @@
    "shared_cas_count": 1,
    "status": "مسموح",
    "status_raw": "له تسجيل نشط واحد على الأقل",
-   "active_registrations": 47,
+   "active_registrations": 48,
    "cancelled_registrations": 1,
    "source": "EPA Master (PPIS)",
    "row": 1135
@@ -19594,7 +19594,7 @@
    "shared_cas_count": 1,
    "status": "مسموح",
    "status_raw": "له تسجيل نشط واحد على الأقل",
-   "active_registrations": 134,
+   "active_registrations": 135,
    "cancelled_registrations": 16,
    "source": "EPA Master (PPIS)",
    "row": 1152
@@ -19679,7 +19679,7 @@
    "shared_cas_count": 1,
    "status": "مسموح",
    "status_raw": "له تسجيل نشط واحد على الأقل",
-   "active_registrations": 36,
+   "active_registrations": 37,
    "cancelled_registrations": 2,
    "source": "EPA Master (PPIS)",
    "row": 1157
@@ -21770,7 +21770,7 @@
    "shared_cas_count": 1,
    "status": "مسموح",
    "status_raw": "له تسجيل نشط واحد على الأقل",
-   "active_registrations": 95,
+   "active_registrations": 96,
    "cancelled_registrations": 30,
    "source": "EPA Master (PPIS)",
    "row": 1280
@@ -21855,7 +21855,7 @@
    "shared_cas_count": 2,
    "status": "مسموح",
    "status_raw": "له تسجيل نشط واحد على الأقل",
-   "active_registrations": 16,
+   "active_registrations": 17,
    "cancelled_registrations": 2,
    "source": "EPA Master (PPIS)",
    "row": 1285
@@ -21957,7 +21957,7 @@
    "shared_cas_count": 1,
    "status": "مسموح",
    "status_raw": "له تسجيل نشط واحد على الأقل",
-   "active_registrations": 4,
+   "active_registrations": 5,
    "cancelled_registrations": 0,
    "source": "EPA Master (PPIS)",
    "row": 1291
@@ -22059,7 +22059,7 @@
    "shared_cas_count": 1,
    "status": "مسموح",
    "status_raw": "له تسجيل نشط واحد على الأقل",
-   "active_registrations": 32,
+   "active_registrations": 34,
    "cancelled_registrations": 0,
    "source": "EPA Master (PPIS)",
    "row": 1297

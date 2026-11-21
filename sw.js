@@ -215,7 +215,7 @@
  * Personal data (IndexedDB history, theme, app version note) lives outside
  * the caches and is never touched by this worker.
  */
-const CACHE = 'mustashar-v97';
+const CACHE = 'mustashar-v100';
 const OCR_CACHE = 'mustashar-ocr';
 
 /* v86 — صور كتاب التوصيات (256 صورة) تُحمَّل من الصفحة نفسها (src/tawsiyat.js) إلى كاش دائم مستقل
@@ -412,6 +412,21 @@ const isOcrUrl = url =>
   (/\/vendor\/tesseract\/(core\/tesseract-core-(simd-)?lstm\.wasm(\.js)?|lang\/(eng|ara)\.traineddata\.gz|worker\.min\.js)$/.test(url.pathname)
    || /\/src\/vendor\/zxing_reader\.wasm$/.test(url.pathname));
 
+/* نسخة أندرويد فقط (أصلها https://localhost): قواعد دولية مُحدَّثة من موقع التطبيق تُقدَّم من
+ * mustashar-remote-data بدل النسخة المضمَّنة (src/remote-data.js يملؤه بعد التحقق من البصمات).
+ * على الموقع لا يفعل هذا المعالج شيئًا فيبقى سلوك الكاش كما كان. الطلب ?b=1 يتجاوزه عمدًا. */
+const REMOTE_CACHE = 'mustashar-remote-data';
+const REMOTE_PATHS = /^\/(data\/(eu|epa|epa-cancelled)\.json|data-optional\/(canada|australia)(\.manifest)?\.json)$/;
+self.addEventListener('fetch', e => {
+  if (self.location.origin !== 'https://localhost' || e.request.method !== 'GET') return;
+  const url = new URL(e.request.url);
+  if (url.search || !REMOTE_PATHS.test(url.pathname)) return;
+  e.respondWith((async () => {
+    const hit = await (await caches.open(REMOTE_CACHE)).match(url.pathname);
+    return hit || fetch(e.request);
+  })());
+});
+
 self.addEventListener('install', e => {
   e.waitUntil((async () => {
     const cache = await caches.open(CACHE);
@@ -453,7 +468,7 @@ self.addEventListener('activate', e => {
          * which every engine can read regardless of SW version — mirroring
          * them here would duplicate ~17.6 MB on every future update. */
         for (const n of names) {
-          if (n === CACHE || n === OCR_CACHE || n === TWS_IMG_CACHE || n === TWS_GAL_CACHE || !/^mustashar-v\d+$/.test(n)) continue;
+          if (n === CACHE || n === OCR_CACHE || n === TWS_IMG_CACHE || n === TWS_GAL_CACHE || n === REMOTE_CACHE || !/^mustashar-v\d+$/.test(n)) continue;
           const old = await caches.open(n);
           for (const req of await old.keys()) {
             if (isOcrUrl(new URL(req.url))) continue;
@@ -465,7 +480,7 @@ self.addEventListener('activate', e => {
       } catch (err) { /* mirroring is best-effort; caches stay intact */ }
     }
     await Promise.all(names
-      .filter(n => n !== CACHE && n !== OCR_CACHE && n !== TWS_IMG_CACHE && n !== TWS_GAL_CACHE && !/^mustashar-v\d+$/.test(n))
+      .filter(n => n !== CACHE && n !== OCR_CACHE && n !== TWS_IMG_CACHE && n !== TWS_GAL_CACHE && n !== REMOTE_CACHE && !/^mustashar-v\d+$/.test(n))
       .map(n => caches.delete(n)));
     // only now, with everything mirrored, drop superseded versioned caches
     await Promise.all(names

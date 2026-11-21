@@ -17,3 +17,7 @@ fs.writeFileSync('package.json', JSON.stringify(pj, null, 2) + '\n');
 let rd = fs.readFileSync('README.md', 'utf8').replace(/--expect \d+\.\d+\.\d+/, '--expect ' + nv);
 fs.writeFileSync('README.md', rd);
 console.log('bumped to ' + nv + ' / mustashar-v' + n);
+
+/* data/remote-manifest.json يتجدد مع كل رفع (نسخة أندرويد تجلب منه تحديثات القواعد الدولية) */
+import { spawnSync } from 'node:child_process';
+spawnSync(process.execPath, ['scripts/build-remote-manifest.mjs'], { stdio: 'inherit' });

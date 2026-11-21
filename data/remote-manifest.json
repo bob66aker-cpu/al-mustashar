@@ -1,0 +1,46 @@
+{
+ "schema": 1,
+ "built": "2026-11-08",
+ "dataCheck": {
+  "eu": "2026-11-08",
+  "epa": "2026-11-08",
+  "epa-cancelled": "2026-11-08",
+  "canada": "2026-11-08",
+  "australia": "2026-11-08"
+ },
+ "files": {
+  "data/eu.json": {
+   "sha256": "97eccbca4f6840079e6260ec944dc18a435ba3f7543515299ad4d4ec81ac852d",
+   "bytes": 424294,
+   "rows": 1485
+  },
+  "data/epa.json": {
+   "sha256": "06017a0e1ecabcd0a7c542803bc979c8a0e606fa2800a06c698a06ac1b39cbba",
+   "bytes": 698354,
+   "rows": 1374
+  },
+  "data/epa-cancelled.json": {
+   "sha256": "1ff9d6e087c78b3aa667699f68e3085bec2aa72b94ea9f9e1eb3314a41219b88",
+   "bytes": 790039,
+   "rows": 1425
+  },
+  "data-optional/canada.json": {
+   "sha256": "42e5620112f8bc742a101a222acf4a46f3d323599169c75827859a70b09242f7",
+   "bytes": 456162,
+   "rows": 1318
+  },
+  "data-optional/canada.manifest.json": {
+   "sha256": "b1781f9ca6d1b54312933a05b7e195a1193296eeafbfd1aef12375fb59a9efe7",
+   "bytes": 556
+  },
+  "data-optional/australia.json": {
+   "sha256": "ae40e841eb403cb28fffc782e1ea966937957f9b2686c36e351757164f4308e6",
+   "bytes": 910305,
+   "rows": 2697
+  },
+  "data-optional/australia.manifest.json": {
+   "sha256": "27c24ec475e6a8dbbd8fa461de43bb099f3af5bc8e89f947346bb8a53b198410",
+   "bytes": 562
+  }
+ }
+}

@@ -35,3 +35,18 @@
 /data/*
   Cache-Control: public, max-age=3600
   X-Content-Type-Options: nosniff
+
+# تحديث القواعد الدولية من داخل نسخة أندرويد (src/remote-data.js): ملفات عامة للقراءة فقط عبر GET بلا كوكيز.
+# نطاق النسخة المضمَّنة https://localhost يحتاج هذه الترويسة؛ لا تشمل الملفات الليبية ولا أي بيانات مستخدم.
+/data/remote-manifest.json
+  Access-Control-Allow-Origin: *
+/data/eu.json
+  Access-Control-Allow-Origin: *
+/data/epa.json
+  Access-Control-Allow-Origin: *
+/data/epa-cancelled.json
+  Access-Control-Allow-Origin: *
+/data-optional/*
+  Access-Control-Allow-Origin: *
+/version.json
+  Access-Control-Allow-Origin: *

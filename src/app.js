@@ -517,9 +517,9 @@
   const DATA_SHA256 = {
     'data/libya-248.json':     'b6850e0381fda847b0bc4b30096d35847b91e626587647dd79ef80ea04cbacd5',
     'data/libya-500.json':     '08b852cb1ac8f438e5f960936bae9b525ec8057ff5e3f61cd1062f44ba23ae14',
-    'data/eu.json':            'ef629525c2dae8f741e1697faaecf2319e1a646e4e011d2754ef66e23844101e',
-    'data/epa.json':           'b24d7c3e3a8dbd7e84ef7b1a59bbfb98674b5c8ad44ff7f7a3dbe0d90d7775f3',
-    'data/epa-cancelled.json': 'c2b5b38e4bfe07dc466c45d4f18518691a57de17b078822e2e6fab00de58fde7',
+    'data/eu.json':            '97eccbca4f6840079e6260ec944dc18a435ba3f7543515299ad4d4ec81ac852d',
+    'data/epa.json':           '06017a0e1ecabcd0a7c542803bc979c8a0e606fa2800a06c698a06ac1b39cbba',
+    'data/epa-cancelled.json': '1ff9d6e087c78b3aa667699f68e3085bec2aa72b94ea9f9e1eb3314a41219b88',
     'data/reference.json':      'f370145a0016cc14a1352305b3f4c53222a88f83b4e9277ad11aacb92b0d5924'
   };
 
@@ -534,12 +534,14 @@
 
   function loadSource(src) {
     setPhase(src.key, 'loading');
-    const attemptFetch = () => fetch(src.url, { cache: 'no-store' }).then(async res => {
+    /* نسخة الأندرويد: إن فشلت قاعدة مُحدَّثة (كاش مفقود مثلًا) تُجرَّب النسخة المضمَّنة بطلب ?b=1 لا يعترضه sw.js */
+    let useBundled = false;
+    const attemptFetch = () => fetch(useBundled ? src.url + '?b=1' : src.url, { cache: 'no-store' }).then(async res => {
       if (!res.ok) throw new Error('HTTP ' + res.status);
       /* البصمة على البايتات الخام: لو اختلف الملف عن المبنيّ رُفض قبل
        * JSON.parse، فيرتدّ إلى إعادة المحاولة ثم إلى النسخة المخزّنة —
        * نفس مسار الضعف: لا كود جديد، لا مسار فشل خاص. */
-      const want = DATA_SHA256[src.url];
+      const want = (window.RemoteData && RemoteData.pin(src.url) && !useBundled) ? RemoteData.pin(src.url) : DATA_SHA256[src.url];
       if (want) {
         const buf = await res.arrayBuffer();
         const got = await sha256Hex(buf);
@@ -563,6 +565,11 @@
     };
 
     return attemptFetch()
+      .catch(err => {
+        if (!(window.RemoteData && RemoteData.pin(src.url))) throw err;
+        useBundled = true;
+        return attemptFetch();
+      })
       .then(data => {
         DB[src.key] = data;
         document.dispatchEvent(new Event('regulatorydbchange'));
@@ -695,6 +702,7 @@
          * المعروضة قبل وصولها تُعاد رسمها مرة واحدة حتى لا تبقى بلا تاريخ. */
         if (info.dataCheck) {
           window.__dataCheck = info.dataCheck;
+          if (window.RemoteData && RemoteData.dataCheck()) window.__dataCheck = Object.assign({}, info.dataCheck, RemoteData.dataCheck());
           try {
             if (lastResults.length) render(lastResults, $('#query').value.trim());
             if (lastScanResults.length) render(lastScanResults, '', '#scanResults');

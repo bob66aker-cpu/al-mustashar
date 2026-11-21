@@ -41,6 +41,15 @@ b._comment = String(b._comment).replace(/ \| \d{4}-\d{2}-\d{2} 15-day refresh \(
   console.log('dup_ambiguous_known = ' + dup);
 }
 fs.writeFileSync(f, JSON.stringify(b, null, 2) + '\n');
+/* keep the pins in src/app.js (DATA_SHA256) in step with the baseline: a refreshed file with a stale pin is rejected at load */
+{
+  let app = fs.readFileSync('src/app.js', 'utf8'); const before = app;
+  for (const d of dbs) {
+    const p = 'data/' + d + '.json';
+    app = app.replace(new RegExp("('" + p.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + "':\\s*')[0-9a-f]{64}(')"), '$1' + b.files[p].sha256 + '$2');
+  }
+  if (app !== before) fs.writeFileSync('src/app.js', app);
+}
 /* provenance change-log line (tests require every pinned sha to be documented) */
 const pv = 'docs/data-provenance.md';
 const sh = d => b.files['data/' + d + '.json'].sha256.slice(0, 8) + '…';

@@ -69,6 +69,15 @@ const hEntries = {};
 for (const m of health.matchAll(/'([a-z0-9-]+)'\s*:\s*\{\s*rows:\s*(\d+)\s*,\s*sha:\s*'([0-9a-f]{64})'/g)) {
   hEntries[m[1]] = { rows: Number(m[2]), sha: m[3] };
 }
+/* eu / epa / epa-cancelled: since the automated 15-day refresh their expected sha lives in tests/data-baseline.json
+ * (rewritten by scripts/rebaseline-intl.mjs, which now also rewrites the app.js table) — not in data-health.test.mjs. */
+{
+  const base = JSON.parse(readFileSync(join(root, 'tests/data-baseline.json'), 'utf8')).files || {};
+  for (const k of ['eu', 'epa', 'epa-cancelled']) {
+    const e = base['data/' + k + '.json'];
+    if (e && !hEntries[k]) hEntries[k] = { rows: e.rows, sha: e.sha256 };
+  }
+}
 check('data-health has 5 expectations', Object.keys(hEntries).length === 5, JSON.stringify(Object.keys(hEntries)));
 
 const keyToFile = {

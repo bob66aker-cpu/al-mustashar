@@ -4,9 +4,9 @@ set -euo pipefail
 ROOT="$(pwd)"; W="$ROOT/_cap"; rm -rf "$W"; mkdir -p "$W/www"
 VER="$(node -p "require('./version.json').version")"
 # 1) web assets: everything the app serves, minus dev-only folders
-rsync -a --exclude='.git' --exclude='.github' --exclude='_cap' --exclude='android-build' --exclude='tests' --exclude='docs' \
-  --exclude='archive' --exclude='tools' --exclude='sources' --exclude='config' --exclude='node_modules' --exclude='*.md' \
-  --exclude='gallery' --exclude='scripts' --exclude='out*' ./ "$W/www/"
+rsync -a --exclude='/.git' --exclude='/.github' --exclude='/_cap' --exclude='/android-build' --exclude='/tests' --exclude='/docs' \
+  --exclude='/archive' --exclude='/tools' --exclude='/sources' --exclude='/config' --exclude='node_modules' --exclude='*.md' \
+  --exclude='/gallery' --exclude='/scripts' --exclude='/out*' ./ "$W/www/"
 cd "$W"
 npm init -y >/dev/null
 npm i --no-audit --no-fund @capacitor/core@6 @capacitor/cli@6 @capacitor/android@6 >/dev/null

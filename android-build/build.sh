@@ -7,6 +7,9 @@ VER="$(node -p "require('./version.json').version")"
 rsync -a --exclude='/.git' --exclude='/.github' --exclude='/_cap' --exclude='/android-build' --exclude='/tests' --exclude='/docs' \
   --exclude='/archive' --exclude='/tools' --exclude='/sources' --exclude='/config' --exclude='node_modules' --exclude='*.md' \
   --exclude='/gallery' --exclude='/scripts' --exclude='/out*' ./ "$W/www/"
+# CSP of the bundled copy only: allow contacting the app's own website for database updates (src/remote-data.js)
+sed -i "s#connect-src 'self'#connect-src 'self' https://al-mustashar.pages.dev#" "$W/www/index.html"
+grep -q "connect-src 'self' https://al-mustashar.pages.dev" "$W/www/index.html" || { echo "CSP patch failed"; exit 1; }
 cd "$W"
 npm init -y >/dev/null
 npm i --no-audit --no-fund @capacitor/core@6 @capacitor/cli@6 @capacitor/android@6 >/dev/null

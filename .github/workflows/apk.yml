@@ -17,9 +17,12 @@ jobs:
         with: { distribution: temurin, java-version: 17 }
       - run: pip install pillow
       - run: bash android-build/build.sh
+        env:
+          KEYSTORE_B64: ${{ secrets.KEYSTORE_B64 }}
+          KS_PASS: ${{ secrets.KS_PASS }}
       - name: Publish built APK (signing key only in encrypted form)
         run: |
-          mkdir -p out-apk && mv al-mustashar-*.apk signing-bundle.enc signing-key.enc out-apk/
+          mkdir -p out-apk && mv al-mustashar-*.apk out-apk/
           (cd out-apk && sha256sum * > SHA256SUMS.txt)
           git config user.name apk; git config user.email apk@users.noreply.github.com
           git checkout --orphan apk-built

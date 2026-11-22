@@ -2306,9 +2306,9 @@
     diagAdd(entry);
     const now = Date.now();
     const burst = errLog.filter(function (e) { return now - e.at < 10000; }).length;
-    showSafetyBanner(burst >= 3);
+    showSafetyBanner(burst >= 3, undefined, entry.message + (entry.source ? ' @ ' + entry.source : ''));
   }
-  function showSafetyBanner(offerReload, custom) {
+  function showSafetyBanner(offerReload, custom, detail) {
     const b = $('#safetyBanner');
     if (!b) return;
     b.textContent = '';
@@ -2317,6 +2317,13 @@
       ? t('safety.net', 'حدث خطأ غير متوقع أكثر من مرة — سُجل في سجل التشخيص. يُنصح بإعادة تحميل الصفحة بأمان.')
       : t('safety.net.once', 'حدث خطأ غير متوقع — سُجل في سجل التشخيص.'));
     b.appendChild(txt);
+    /* سبب الخطأ التقني (للمعاينة والتشخيص على الهاتف حيث يتعذّر تصدير السجل) */
+    if (detail && !custom) {
+      const d = document.createElement('div');
+      d.dir = 'ltr'; d.style.cssText = 'font:11px/1.4 monospace;opacity:.8;margin-top:4px;word-break:break-all';
+      d.textContent = String(detail).slice(0, 220);
+      b.appendChild(d);
+    }
     if (custom) { b.hidden = false; return; }   /* storage hint: no reload button */
     const btn = document.createElement('button');
     btn.type = 'button';

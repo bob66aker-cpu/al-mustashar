@@ -2709,6 +2709,21 @@
   async function updatePrepPanel() {
     const st = $('#prepState'), btn = $('#prepBtn');
     if (!st) return;
+    /* نسخة أندرويد: الواجهة والقواعد وملفات OCR مدمجة داخل الحزمة، فلا شيء يُجهَّز */
+    if (window.RemoteData && RemoteData.isNative()) {
+      ['#prepShell', '#prepData', '#prepOcr'].forEach(id => { const li = $(id); if (li) li.classList.add('done'); });
+      ['#prepShellSize', '#prepDataSize', '#prepOcrSize'].forEach(id => { const z = $(id); if (z) z.textContent = t('prep.bundled', 'مدمج'); });
+      st.textContent = t('prep.full', 'جاهز للعمل بدون إنترنت');
+      st.className = 'chip db-ok';
+      const bt = $('#prepBtnText'); if (bt) bt.textContent = t('prep.done', 'التطبيق مجهز بالكامل');
+      if (btn) btn.disabled = true;
+      const mini = $('#homePrepCard');
+      if (mini) {
+        const w = $('#homePrepWorking'), r = $('#homeReadyLine'), b = $('#homePrepBar');
+        if (w) w.hidden = true; if (r) r.hidden = false; if (b) b.style.width = '100%';
+      }
+      return;
+    }
     if (!window.caches) { st.textContent = t('prep.noStorage', 'المتصفح لا يدعم التخزين المحلي الكامل'); return; }
     /* 1.7 — عرض الحصة المستخدمة/المتاحة بجانب بنود التجهيز. */
     try {

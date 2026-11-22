@@ -1,6 +1,6 @@
 {
   "name": "al-mustashar",
-  "version": "1.19.66",
+  "version": "1.19.67",
   "private": true,
   "description": "المستشار الزراعي — Agricultural Advisor. Static dependency-free PWA; this manifest exists only for the dev/test tooling (browser UI tests).",
   "scripts": {

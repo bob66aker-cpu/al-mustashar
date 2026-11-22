@@ -5,11 +5,15 @@
   "name_ar": "الشعير",
   "name_en": "Barley",
   "sci": "Hordeum vulgare",
-  "family": "Poaceae"
+  "family": "Poaceae",
+  "name_fr": "Orge",
+  "name_zh": "大麦"
  },
  "notice": {
   "ar": "هذا القسم ليس من كتاب التوصيات المصري (APC) لأنه لا يغطي الشعير؛ وهو مُجمَّع من المصادر الإرشادية والبحثية الدولية المدرجة. الأسماء العربية مترجمة من مطوّر التطبيق وليست موثّقة من المصادر. بنود المكافحة الكيميائية هي أسماء المواد الفعالة فقط كما وردت في بلد المصدر، وليست تسجيلًا أو توصية للاستخدام في ليبيا؛ راجع قائمة المبيدات المعتمدة في ليبيا واستشر مهندسًا زراعيًا محليًا.",
-  "en": "This section is NOT from the APC Egyptian recommendations book (which does not cover barley); it is compiled from the listed international extension and research sources. Arabic names are translated by the app developer and are not source-verified. Chemical items are active ingredient names only, as labelled in the source country; they are not a registration or recommendation for Libya. Check the Libyan approved pesticide list and consult a local agronomist."
+  "en": "This section is NOT from the APC Egyptian recommendations book (which does not cover barley); it is compiled from the listed international extension and research sources. Arabic names are translated by the app developer and are not source-verified. Chemical items are active ingredient names only, as labelled in the source country; they are not a registration or recommendation for Libya. Check the Libyan approved pesticide list and consult a local agronomist.",
+  "fr": "Cette section n’est PAS tirée du livre des recommandations égyptiennes de l’APC (qui ne traite pas de l’orge) ; elle est compilée à partir des sources internationales de vulgarisation et de recherche indiquées. Les noms arabes sont traduits par le développeur de l’application et ne sont pas vérifiés par rapport aux sources. Les éléments chimiques sont uniquement des noms de matières actives, tels qu’indiqués dans le pays de la source ; ils ne constituent ni une homologation ni une recommandation pour la Libye. Consultez la liste libyenne des pesticides approuvés et un agronome local.",
+  "zh": "本部分并非来自埃及APC推荐手册（该手册不涉及大麦），而是根据所列的国际推广与研究资料汇编而成。阿拉伯语名称由应用开发者翻译，未经资料来源核实。化学品条目仅为活性成分名称，按来源国的标签标注；并不代表在利比亚的登记或推荐。请查阅利比亚核准的农药清单，并咨询当地农艺师。"
  },
  "cards": [
   {
@@ -17,7 +21,9 @@
    "type": "insect",
    "name": {
     "ar": "المنّ على الشعير",
-    "en": "Aphids on barley"
+    "en": "Aphids on barley",
+    "fr": "Pucerons de l’orge",
+    "zh": "大麦蚜虫"
    },
    "sci": "Rhopalosiphum padi; Sitobion avenae; Schizaphis graminum",
    "symptoms": {
@@ -30,6 +36,16 @@
      "Rhopalosiphum padi: heavy infestations cause golden-yellow streaking of leaves; heavy populations can curl the flag leaf into a tight corkscrew trapping the awns (fish-hook head).",
      "Schizaphis graminum (greenbug): injury appears as yellowish spots or patches on leaves; plants are generally damaged only if significant feeding occurs before tillering; also transmits BYDV.",
      "Sitobion avenae: mainly feeds on barley and oat leaves and stems (colonises heads in wheat); injury usually minor; vector of BYDV; economic thresholds not established."
+    ],
+    "fr": [
+     "Rhopalosiphum padi : les fortes infestations provoquent des stries jaune doré sur les feuilles ; de fortes populations peuvent enrouler la feuille étendard en un tire-bouchon serré qui piège les barbes (épi en hameçon).",
+     "Schizaphis graminum (puceron vert des céréales, « greenbug ») : les dégâts apparaissent sous forme de taches ou de plages jaunâtres sur les feuilles ; les plantes ne sont généralement endommagées que si une alimentation importante a lieu avant le tallage ; transmet aussi le BYDV.",
+     "Sitobion avenae : se nourrit principalement sur les feuilles et les tiges d’orge et d’avoine (colonise les épis chez le blé) ; dégâts généralement mineurs ; vecteur du BYDV ; seuils économiques non établis."
+    ],
+    "zh": [
+     "Rhopalosiphum padi：严重发生时叶片出现金黄色条纹；种群密度高时可使旗叶卷成紧密的螺旋状并卡住麦芒（鱼钩状穗）。",
+     "Schizaphis graminum（麦二叉蚜/绿色麦蚜）：危害表现为叶片上出现淡黄色斑点或斑块；一般只有在分蘖前发生大量取食时植株才会受害；同时传播BYDV。",
+     "Sitobion avenae：主要取食大麦和燕麦的叶片与茎秆（在小麦上则在穗部定殖）；危害通常较轻；是BYDV的传毒介体；尚未确立经济阈值。"
     ]
    },
    "timing": {
@@ -40,6 +56,14 @@
     "en": [
      "R. padi is the most common cereal aphid; can appear after seedling emergence, most often February-March (California).",
      "Greenbug: check fields regularly from seedling emergence to tillering. S. avenae typically shows up later in the season than other cereal aphids."
+    ],
+    "fr": [
+     "R. padi est le puceron des céréales le plus courant ; il peut apparaître après la levée, le plus souvent en février-mars (Californie).",
+     "Puceron vert des céréales : inspecter régulièrement les champs de la levée au tallage. S. avenae apparaît généralement plus tard dans la saison que les autres pucerons des céréales."
+    ],
+    "zh": [
+     "R. padi是最常见的禾谷类蚜虫；可在幼苗出土后出现，最常见于2-3月（加利福尼亚州）。",
+     "麦二叉蚜：从幼苗出土到分蘖期定期检查田块。S. avenae通常比其他禾谷类蚜虫在生长季出现得更晚。"
     ]
    },
    "cultural": {
@@ -50,6 +74,14 @@
     "en": [
      "Predators and parasites usually keep populations in check; assess their activity before considering chemical control. Destroy volunteer cereals before new crops emerge. Natural enemies: parasitised 'bloated mummies', lady beetles, green lacewings, syrphid larvae.",
      "R. padi treatment considered only when aphids exceed about 50-60 per tiller and natural enemies are inactive or crop is several weeks from flowering (California guidance)."
+    ],
+    "fr": [
+     "Les prédateurs et les parasites maintiennent généralement les populations sous contrôle ; évaluer leur activité avant d’envisager une lutte chimique. Détruire les céréales spontanées avant la levée des nouvelles cultures. Ennemis naturels : « momies gonflées » parasitées, coccinelles, chrysopes vertes, larves de syrphes.",
+     "Un traitement contre R. padi n’est envisagé que lorsque les pucerons dépassent environ 50-60 par talle et que les ennemis naturels sont inactifs ou que la culture est à plusieurs semaines de la floraison (recommandation de Californie)."
+    ],
+    "zh": [
+     "天敌和寄生物通常能控制蚜虫种群；在考虑化学防治之前先评估天敌的活动情况。在新作物出苗前清除自生谷类植株。天敌：被寄生的“膨胀僵蚜”、瓢虫、草蛉、食蚜蝇幼虫。",
+     "仅当蚜虫数量超过每分蘖约50-60头，且天敌不活跃或作物距开花还有数周时，才考虑对R. padi进行防治（加利福尼亚州指南）。"
     ]
    },
    "chemical": [
@@ -58,7 +90,9 @@
      "ar": "ملاثيون",
      "note": {
       "ar": "يذكر المصدر أنه قد يُستخدم على القمح والشعير والشوفان والجاودار. ويحذّر المصدر من أنه شديد السمية للنحل.",
-      "en": "Source says it may be used on wheat, barley, oats, rye. Source warns it is highly toxic to bees."
+      "en": "Source says it may be used on wheat, barley, oats, rye. Source warns it is highly toxic to bees.",
+      "fr": "La source indique qu’il peut être utilisé sur le blé, l’orge, l’avoine et le seigle. La source avertit qu’il est très toxique pour les abeilles.",
+      "zh": "资料来源称可用于小麦、大麦、燕麦、黑麦。资料来源警告其对蜜蜂剧毒。"
      },
      "source_country": "USA (California, UC IPM; text 2009, table 2016 - verify current registration)"
     }
@@ -83,7 +117,9 @@
    "type": "insect",
    "name": {
     "ar": "منّ القمح الروسي",
-    "en": "Russian wheat aphid"
+    "en": "Russian wheat aphid",
+    "fr": "Puceron russe du blé",
+    "zh": "俄罗斯小麦蚜"
    },
    "sci": "Diuraphis noxia",
    "symptoms": {
@@ -92,6 +128,12 @@
     ],
     "en": [
      "Pale green spindle-shaped aphid with a second tail-like process above the cauda; most characteristic symptom is white longitudinal streaks on leaves and sometimes the stem; heavily infested plants stunted, leaves curl upright like onion leaves. Damage greatest on wheat and barley."
+    ],
+    "fr": [
+     "Puceron vert pâle en forme de fuseau, avec un second prolongement en forme de queue au-dessus de la cauda ; le symptôme le plus caractéristique est la présence de stries blanches longitudinales sur les feuilles et parfois sur la tige ; les plantes fortement infestées sont rabougries et leurs feuilles s’enroulent à la verticale comme des feuilles d’oignon. Dégâts maximaux sur le blé et l’orge."
+    ],
+    "zh": [
+     "淡绿色纺锤形蚜虫，在尾片上方有第二个尾状突起；最典型的症状是叶片上（有时在茎上）出现白色纵向条纹；严重受害的植株矮化，叶片向上卷曲如洋葱叶。对小麦和大麦的危害最大。"
     ]
    },
    "timing": {
@@ -102,6 +144,14 @@
     "en": [
      "Survives summer on grasses, moves to cereals in late fall, tolerates sub-freezing temperatures; stressed plants suffer more damage. Not a BYDV vector (per UC IPM BYDV page).",
      "ICARDA-led paper: RWA affects wheat and barley in Morocco, Algeria, Tunisia, Ethiopia, Yemen, Turkey and Iran; host plant resistance is the most economical and practical means of control (paper focuses on wheat resistance sources)."
+    ],
+    "fr": [
+     "Survit l’été sur les graminées, passe aux céréales à la fin de l’automne, tolère les températures inférieures à zéro ; les plantes stressées subissent plus de dégâts. Il n’est pas vecteur du BYDV (d’après la page BYDV de UC IPM).",
+     "Article dirigé par l’ICARDA : le puceron russe du blé affecte le blé et l’orge au Maroc, en Algérie, en Tunisie, en Éthiopie, au Yémen, en Turquie et en Iran ; la résistance de la plante hôte est le moyen de lutte le plus économique et le plus pratique (l’article porte sur les sources de résistance du blé)."
+    ],
+    "zh": [
+     "夏季在禾草上存活，晚秋迁移到谷类作物上，耐低于冰点的温度；受胁迫的植株受害更重。不是BYDV的传毒介体（据UC IPM的BYDV页面）。",
+     "ICARDA牵头的论文：俄罗斯小麦蚜影响摩洛哥、阿尔及利亚、突尼斯、埃塞俄比亚、也门、土耳其和伊朗的小麦和大麦；寄主植物抗性是最经济实用的防治手段（论文侧重于小麦的抗性来源）。"
     ]
    },
    "cultural": {
@@ -110,6 +160,12 @@
     ],
     "en": [
      "Conserve natural enemies; remove volunteer cereals; keep plants free from water and nutrient stress."
+    ],
+    "fr": [
+     "Préserver les ennemis naturels ; éliminer les céréales spontanées ; maintenir les plantes exemptes de stress hydrique et nutritionnel."
+    ],
+    "zh": [
+     "保护天敌；清除自生谷类植株；使植株免受水分和养分胁迫。"
     ]
    },
    "chemical": [
@@ -118,7 +174,9 @@
      "ar": "ملاثيون",
      "note": {
       "ar": "تذكر الصفحة أنه قد يُستخدم على القمح والشعير والشوفان والجاودار.",
-      "en": "Page says it may be used on wheat, barley, oats and rye."
+      "en": "Page says it may be used on wheat, barley, oats and rye.",
+      "fr": "La page indique qu’il peut être utilisé sur le blé, l’orge, l’avoine et le seigle.",
+      "zh": "该页面称可用于小麦、大麦、燕麦和黑麦。"
      },
      "source_country": "USA (California, UC IPM)"
     }
@@ -151,7 +209,9 @@
    "type": "insect",
    "name": {
     "ar": "حشرة السونة (السن)",
-    "en": "Sunn pest"
+    "en": "Sunn pest",
+    "fr": "Punaise des céréales (Eurygaster)",
+    "zh": "麦蝽"
    },
    "sci": "Eurygaster integriceps",
    "symptoms": {
@@ -160,6 +220,12 @@
     ],
     "en": [
      "Barley listed as a minor host: 'affected to a lesser extent but usually escapes severe damage due to early ripening'. Wheat is the major host. Grain sign: a black pinpoint on the grain surrounded by a pale halo; saliva degrades gluten (bread quality); embryo damage reduces germination."
+    ],
+    "fr": [
+     "L’orge est indiquée comme hôte secondaire : « touchée dans une moindre mesure mais échappe généralement aux dégâts graves grâce à sa maturation précoce ». Le blé est l’hôte principal. Signe sur le grain : un point noir minuscule entouré d’un halo pâle ; la salive dégrade le gluten (qualité boulangère) ; l’atteinte de l’embryon réduit la germination."
+    ],
+    "zh": [
+     "大麦被列为次要寄主：“受害程度较轻，但由于成熟早，通常能避开严重危害”。小麦是主要寄主。籽粒症状：籽粒表面有一个黑色针尖状斑点，周围有淡色晕圈；唾液会降解面筋（影响面包品质）；胚受损会降低发芽率。"
     ]
    },
    "timing": {
@@ -168,6 +234,12 @@
     ],
     "en": [
      "Regional note: datasheet lists Algeria as the only African country with records. FAO country reports (c. 1993): Iraq losses 20-30% in barley and 70-90% in wheat; Syria main wheat and barley areas affected; Syria replaced wheat with barley in hot spots. No Libya mention found; presence in Libya is not documented in the sources."
+    ],
+    "fr": [
+     "Note régionale : la fiche indique l’Algérie comme seul pays africain avec des signalements. Rapports nationaux de la FAO (vers 1993) : Irak, pertes de 20-30 % sur l’orge et de 70-90 % sur le blé ; Syrie, principales zones de blé et d’orge touchées ; la Syrie a remplacé le blé par l’orge dans les foyers. Aucune mention de la Libye trouvée ; la présence en Libye n’est pas documentée dans les sources."
+    ],
+    "zh": [
+     "区域说明：数据表列出阿尔及利亚是唯一有记录的非洲国家。FAO国家报告（约1993年）：伊拉克大麦损失20-30%，小麦损失70-90%；叙利亚的主要小麦和大麦产区受影响；叙利亚在重灾区以大麦取代了小麦。未发现提及利比亚；资料来源中没有利比亚存在该虫的记录。"
     ]
    },
    "cultural": {
@@ -176,6 +248,12 @@
     ],
     "en": [
      "Cultural measures reported by country in FAO report: early-maturing varieties, hand-picking, early/rapid harvesting, sowing date research (Afghanistan, Iran, Pakistan); datasheet calls chemical control difficult and not environmentally sustainable."
+    ],
+    "fr": [
+     "Mesures culturales rapportées par pays dans le rapport de la FAO : variétés précoces, ramassage manuel, récolte précoce/rapide, recherche sur la date de semis (Afghanistan, Iran, Pakistan) ; la fiche qualifie la lutte chimique de difficile et non durable sur le plan environnemental."
+    ],
+    "zh": [
+     "FAO报告中按国家列出的栽培措施：早熟品种、人工捕捉、提早/快速收获、播期研究（阿富汗、伊朗、巴基斯坦）；数据表称化学防治困难且在环境上不可持续。"
     ]
    },
    "chemical": [],
@@ -195,7 +273,9 @@
    "type": "fungus",
    "name": {
     "ar": "التبقع الشبكي",
-    "en": "Net blotch"
+    "en": "Net blotch",
+    "fr": "Helminthosporiose en réseau",
+    "zh": "网斑病"
    },
    "sci": "Pyrenophora teres (net form f. teres; spot form f. maculata)",
    "symptoms": {
@@ -206,6 +286,14 @@
     "en": [
      "Lesions begin as tiny, dark green/water-soaked spots that turn light brown, then become narrow brown blotches with a netted or cross-hatched appearance with yellowing around; severe infection can kill the leaf; spikes can be affected.",
      "Early lesions small circular spots, enlarging into narrow dark brown stripes forming a net-like pattern."
+    ],
+    "fr": [
+     "Les lésions débutent par de minuscules taches vert foncé/d’aspect détrempé qui deviennent brun clair, puis des taches brunes étroites d’aspect réticulé ou quadrillé avec un jaunissement autour ; une infection grave peut tuer la feuille ; les épis peuvent être atteints.",
+     "Les premières lésions sont de petites taches circulaires qui s’élargissent en rayures brun foncé étroites formant un motif en réseau."
+    ],
+    "zh": [
+     "病斑起初为微小的深绿色/水渍状斑点，转为浅褐色，然后变成狭长的褐色斑块，呈网状或交叉网格状，周围发黄；严重感染可使叶片枯死；穗部也可能受害。",
+     "早期病斑为小圆斑，扩大后成为狭长的深褐色条纹，形成网状图案。"
     ]
    },
    "timing": {
@@ -216,6 +304,14 @@
     "en": [
      "Humid and cool spring weather favours disease; spores form at near 100% humidity and about 16-27 C. Pathogen overwinters on barley residue and can be seedborne.",
      "ICARDA: net blotch is a common barley leaf disease in North Africa; in Morocco almost 30% of reported yield losses were attributed to net blotch. Disease managed by combining varietal selection, crop rotation and fungicides."
+    ],
+    "fr": [
+     "Un temps printanier humide et frais favorise la maladie ; les spores se forment à une humidité proche de 100 % et à environ 16-27 C. Le pathogène hiverne sur les résidus d’orge et peut être transmis par les semences.",
+     "ICARDA : l’helminthosporiose en réseau est une maladie foliaire courante de l’orge en Afrique du Nord ; au Maroc, près de 30 % des pertes de rendement signalées lui ont été attribuées. La maladie est gérée par la combinaison du choix variétal, de la rotation des cultures et des fongicides."
+    ],
+    "zh": [
+     "潮湿凉爽的春季天气有利于发病；孢子在接近100%的湿度和约16-27 °C下形成。病原菌在大麦残茬上越冬，并可经种子传播。",
+     "ICARDA：网斑病是北非常见的大麦叶部病害；在摩洛哥，报告的产量损失中近30%归因于网斑病。该病通过品种选择、轮作和杀菌剂相结合来防控。"
     ]
    },
    "cultural": {
@@ -226,6 +322,14 @@
     "en": [
      "Rotate to a non-barley crop; reduce residue by harvesting straw and incorporating stubble; destroy volunteer barley and grass hosts; use clean seed and resistant cultivars; in infested fields late plantings (Dec-Jan in California) suffer less than early (Oct-Nov).",
      "Use pathogen-free seed; rotate with nonsusceptible crops for at least two seasons; plow under infected straw/stubble."
+    ],
+    "fr": [
+     "Alterner avec une culture autre que l’orge ; réduire les résidus en récoltant la paille et en incorporant le chaume ; détruire l’orge spontanée et les graminées hôtes ; utiliser des semences saines et des cultivars résistants ; dans les champs infestés, les semis tardifs (déc.-janv. en Californie) souffrent moins que les semis précoces (oct.-nov.).",
+     "Utiliser des semences exemptes de pathogène ; alterner avec des cultures non sensibles pendant au moins deux saisons ; enfouir par labour la paille/le chaume infectés."
+    ],
+    "zh": [
+     "轮作非大麦作物；通过收获秸秆和翻埋残茬减少残留物；清除自生大麦和禾草寄主；使用清洁种子和抗病品种；在发病田块中，晚播（加利福尼亚州12-1月）比早播（10-11月）受害较轻。",
+     "使用无病原菌的种子；与不感病作物轮作至少两个季节；将感病的秸秆/残茬翻埋。"
     ]
    },
    "chemical": [],
@@ -249,7 +353,9 @@
    "type": "fungus",
    "name": {
     "ar": "لفحة الشعير (الإسكالد)",
-    "en": "Barley scald (leaf scald)"
+    "en": "Barley scald (leaf scald)",
+    "fr": "Rhynchosporiose de l’orge (échaudure des feuilles)",
+    "zh": "大麦云纹病（叶部云纹病）"
    },
    "sci": "Rhynchosporium secalis",
    "symptoms": {
@@ -258,6 +364,12 @@
     ],
     "en": [
      "Dark, pale or bluish-gray spots enlarge into oval lesions with bluish-gray centres and dark brown margins, merging to give a scalded look; severe infections can kill leaves."
+    ],
+    "fr": [
+     "Des taches foncées, pâles ou gris bleuâtre s’élargissent en lésions ovales à centre gris bleuâtre et bords brun foncé, qui fusionnent et donnent un aspect échaudé ; les infections graves peuvent tuer les feuilles."
+    ],
+    "zh": [
+     "深色、浅色或蓝灰色斑点扩大为椭圆形病斑，中心蓝灰色，边缘深褐色，相互融合呈烫伤状；严重感染可使叶片枯死。"
     ]
    },
    "timing": {
@@ -266,6 +378,12 @@
     ],
     "en": [
      "Most severe in years of higher-than-normal rainfall; infection in cool rainy weather roughly 40-77 F (about 4-25 C); leaf wetness of at least 24 h needed; spread by splashing/wind-driven rain."
+    ],
+    "fr": [
+     "Plus grave les années de pluviosité supérieure à la normale ; infection par temps frais et pluvieux, environ 40-77 F (environ 4-25 C) ; une humidité des feuilles d’au moins 24 h est nécessaire ; propagation par les éclaboussures et la pluie poussée par le vent."
+    ],
+    "zh": [
+     "在降雨量高于正常的年份最为严重；在凉爽多雨天气下约40-77 °F（约4-25 °C）时发生侵染；需要叶面湿润至少24小时；通过飞溅/风吹雨水传播。"
     ]
    },
    "cultural": {
@@ -274,6 +392,12 @@
     ],
     "en": [
      "Rotate to non-barley crop; remove barley residue; destroy volunteer barley/grass hosts; avoid early planting (Oct-Nov) in infested fields, later plantings (Dec-Jan) less damaged; use clean seed and resistant cultivars."
+    ],
+    "fr": [
+     "Alterner avec une culture autre que l’orge ; éliminer les résidus d’orge ; détruire l’orge spontanée et les graminées hôtes ; éviter les semis précoces (oct.-nov.) dans les champs infestés, les semis tardifs (déc.-janv.) étant moins endommagés ; utiliser des semences saines et des cultivars résistants."
+    ],
+    "zh": [
+     "轮作非大麦作物；清除大麦残留物；清除自生大麦/禾草寄主；在发病田块避免早播（10-11月），晚播（12-1月）受害较轻；使用清洁种子和抗病品种。"
     ]
    },
    "chemical": [],
@@ -311,7 +435,9 @@
    "type": "fungus",
    "name": {
     "ar": "البياض الدقيقي",
-    "en": "Powdery mildew"
+    "en": "Powdery mildew",
+    "fr": "Oïdium",
+    "zh": "白粉病"
    },
    "sci": "Blumeria graminis f. sp. hordei",
    "symptoms": {
@@ -320,6 +446,12 @@
     ],
     "en": [
      "Powdery gray-white or buff spore masses on leaves, leaf sheaths and heads; heavy infection turns leaves yellow and brown, then dead."
+    ],
+    "fr": [
+     "Masses de spores poudreuses gris-blanc ou chamois sur les feuilles, les gaines foliaires et les épis ; une forte infection fait jaunir et brunir les feuilles, puis les tue."
+    ],
+    "zh": [
+     "叶片、叶鞘和穗上出现粉状灰白色或浅黄褐色孢子堆；严重感染使叶片变黄变褐，最终枯死。"
     ]
    },
    "timing": {
@@ -328,6 +460,12 @@
     ],
     "en": [
      "Heavy succulent growth, dense stands, over-application of nitrogen, high humidity and low temperatures favour disease."
+    ],
+    "fr": [
+     "Une croissance dense et succulente, des peuplements denses, un excès d’azote, une forte humidité et de basses températures favorisent la maladie."
+    ],
+    "zh": [
+     "植株徒长多汁、群体密度大、氮肥施用过量、高湿度和低温有利于发病。"
     ]
    },
    "cultural": {
@@ -336,6 +474,12 @@
     ],
     "en": [
      "Plant resistant varieties; reduce nitrogen rates if disease severe; clean plowing and crop rotation."
+    ],
+    "fr": [
+     "Planter des variétés résistantes ; réduire les doses d’azote si la maladie est grave ; labour propre et rotation des cultures."
+    ],
+    "zh": [
+     "种植抗病品种；病情严重时减少氮肥用量；清洁翻耕和轮作。"
     ]
    },
    "chemical": [
@@ -344,7 +488,9 @@
      "ar": "مانكوزيب",
      "note": {
       "ar": "اختُبر في تجارب حقلية على صنفي الشعير «Areg» و«Wady Bargoge» (ملخص البحث)؛ ولا يوجد ترتيب لفعاليته منفردًا.",
-      "en": "Tested in field trials on barley cultivars 'Areg' and 'Wady Bargoge' (abstract); no efficacy ranking given for mancozeb separately."
+      "en": "Tested in field trials on barley cultivars 'Areg' and 'Wady Bargoge' (abstract); no efficacy ranking given for mancozeb separately.",
+      "fr": "Testé lors d’essais au champ sur les cultivars d’orge « Areg » et « Wady Bargoge » (résumé) ; aucun classement d’efficacité n’est donné pour le mancozèbe séparément.",
+      "zh": "在大麦品种“Areg”和“Wady Bargoge”上进行了田间试验（摘要）；未单独给出mancozeb的药效排序。"
      },
      "source_country": "Libya (University of Tripoli, 2025)"
     },
@@ -353,7 +499,9 @@
      "ar": "ثيوفانيت-ميثيل",
      "note": {
       "ar": "في التجربة الليبية نفسها (باسم Topsin-M70%)؛ سُجّل أنه الأضعف تأثيرًا بين المعاملات المختبرة. وكان البنزوثيازول (محفّز كيميائي) الأفضل أداءً.",
-      "en": "Same Libyan trial (as Topsin-M70%); reported as having the weakest effect among treatments tested. Benzothiazole (chemical inducer) performed best."
+      "en": "Same Libyan trial (as Topsin-M70%); reported as having the weakest effect among treatments tested. Benzothiazole (chemical inducer) performed best.",
+      "fr": "Même essai libyen (comme Topsin-M70 %) ; signalé comme ayant l’effet le plus faible parmi les traitements testés. Le benzothiazole (inducteur chimique) a donné les meilleurs résultats.",
+      "zh": "同一利比亚试验（作为Topsin-M70%）；据报告在所测试的处理中效果最弱。苯并噻唑（化学诱导剂）效果最好。"
      },
      "source_country": "Libya (University of Tripoli, 2025)"
     }
@@ -367,6 +515,18 @@
      "title": "Albayan Scientific Journal, University of Tripoli (2025)",
      "url": "https://journal.su.edu.ly/index.php/bayan/en/article/view/3644"
     }
+   ],
+   "images": [
+    {
+     "file": "powdery_mildew-1.webp",
+     "kind": "host",
+     "w": 800,
+     "h": 534,
+     "license": "CC BY-SA 3.0",
+     "author": "Rasbak",
+     "page": "https://commons.wikimedia.org/wiki/File:Hordeum_vulgare_Erysiphe_graminis_f._hordei_(1).jpg",
+     "title": "File:Hordeum vulgare Erysiphe graminis f. hordei (1).jpg"
+    }
    ]
   },
   {
@@ -374,7 +534,9 @@
    "type": "fungus",
    "name": {
     "ar": "الصدأ البني (صدأ الأوراق) في الشعير",
-    "en": "Barley leaf rust"
+    "en": "Barley leaf rust",
+    "fr": "Rouille naine de l’orge",
+    "zh": "大麦叶锈病"
    },
    "sci": "Puccinia hordei",
    "symptoms": {
@@ -383,6 +545,12 @@
     ],
     "en": [
      "Pustules on barley are small, round and yellowish brown, without ragged edges of stem rusts; darken and turn shiny as teliospores form with maturity."
+    ],
+    "fr": [
+     "Sur l’orge, les pustules sont petites, rondes et brun jaunâtre, sans les bords déchiquetés des rouilles de la tige ; elles foncent et deviennent luisantes avec la formation des téliospores à maturité."
+    ],
+    "zh": [
+     "大麦上的锈菌夏孢子堆小而圆，呈黄褐色，没有秆锈病那样的撕裂状边缘；随着成熟形成冬孢子，颜色变深并发亮。"
     ]
    },
    "timing": {
@@ -391,6 +559,12 @@
     ],
     "en": [
      "Late-season disease causing losses in years with high humidity; secondary infection favoured at 16-22 C with humidity, dew or canopy moisture. Barley leaf rust does not affect wheat."
+    ],
+    "fr": [
+     "Maladie de fin de saison causant des pertes les années de forte humidité ; l’infection secondaire est favorisée à 16-22 C avec humidité, rosée ou humidité du couvert. La rouille naine de l’orge n’affecte pas le blé."
+    ],
+    "zh": [
+     "生长后期病害，在湿度高的年份造成损失；在16-22 °C且有湿度、露水或冠层潮湿时有利于再侵染。大麦叶锈病不危害小麦。"
     ]
    },
    "cultural": {
@@ -399,6 +573,12 @@
     ],
     "en": [
      "Plant resistant barley cultivars."
+    ],
+    "fr": [
+     "Planter des cultivars d’orge résistants."
+    ],
+    "zh": [
+     "种植抗病大麦品种。"
     ]
    },
    "chemical": [
@@ -407,7 +587,9 @@
      "ar": "بروبيكونازول",
      "note": {
       "ar": "إذا تغلبت سلالات جديدة على المقاومة؛ يُطبَّق بين التفريع والتسنبل لحماية ورقة العلم؛ والملصق للشعير حتى المرحلة Feekes 10.5.4.",
-      "en": "If new races overcome resistance; apply between tillering and heading to protect the flag leaf; label for barley up to Feekes 10.5.4."
+      "en": "If new races overcome resistance; apply between tillering and heading to protect the flag leaf; label for barley up to Feekes 10.5.4.",
+      "fr": "Si de nouvelles races surmontent la résistance ; appliquer entre le tallage et l’épiaison pour protéger la feuille étendard ; étiquette pour l’orge jusqu’à Feekes 10.5.4.",
+      "zh": "如果新的生理小种克服了抗性；在分蘖期至抽穗期之间施用以保护旗叶；大麦标签允许使用至Feekes 10.5.4期。"
      },
      "source_country": "USA (California, UC IPM, text 04/26, table 07/25)"
     }
@@ -466,7 +648,9 @@
    "type": "fungus",
    "name": {
     "ar": "الصدأ الأصفر (المخطط) في الشعير",
-    "en": "Barley stripe rust"
+    "en": "Barley stripe rust",
+    "fr": "Rouille jaune de l’orge",
+    "zh": "大麦条锈病"
    },
    "sci": "Puccinia striiformis f. sp. hordei",
    "symptoms": {
@@ -475,6 +659,12 @@
     ],
     "en": [
      "Yellow-orange pustules arranged linearly between leaf veins; glumes often infected; symptoms appear earlier than other rusts; pustules turn dark and shiny at maturity."
+    ],
+    "fr": [
+     "Pustules jaune-orangé disposées en lignes entre les nervures des feuilles ; les glumes sont souvent infectées ; les symptômes apparaissent plus tôt que ceux des autres rouilles ; les pustules foncent et deviennent luisantes à maturité."
+    ],
+    "zh": [
+     "黄橙色夏孢子堆沿叶脉之间呈线状排列；颖片常被感染；症状比其他锈病出现得更早；成熟时夏孢子堆变暗并发亮。"
     ]
    },
    "timing": {
@@ -483,6 +673,12 @@
     ],
     "en": [
      "Fastest development at 10-16 C with intermittent rain and dew, can continue at higher temperatures/drier conditions; secondary cycles every 7-10 days; barley strains survive in warmer, drier climates than wheat strains."
+    ],
+    "fr": [
+     "Développement le plus rapide à 10-16 C avec pluies intermittentes et rosée, peut se poursuivre à des températures plus élevées/dans des conditions plus sèches ; cycles secondaires tous les 7-10 jours ; les souches de l’orge survivent dans des climats plus chauds et plus secs que celles du blé."
+    ],
+    "zh": [
+     "在10-16 °C、间歇性降雨和露水条件下发展最快，在较高温度/较干燥条件下也可继续发展；每7-10天出现一次再侵染循环；大麦菌系比小麦菌系能在更温暖、更干燥的气候中存活。"
     ]
    },
    "cultural": {
@@ -491,6 +687,12 @@
     ],
     "en": [
      "Plant resistant cultivars; monitor fields and contact local advisor."
+    ],
+    "fr": [
+     "Planter des cultivars résistants ; surveiller les champs et contacter le conseiller local."
+    ],
+    "zh": [
+     "种植抗病品种；监测田块并联系当地技术顾问。"
     ]
    },
    "chemical": [
@@ -517,7 +719,9 @@
      "ar": "بروبيكونازول + تريفلوكسيستروبين",
      "note": {
       "ar": "مخلوط جاهز (premix).",
-      "en": "Premix."
+      "en": "Premix.",
+      "fr": "Mélange prêt à l’emploi.",
+      "zh": "预混剂。"
      },
      "source_country": "USA (California, UC IPM)"
     },
@@ -543,7 +747,9 @@
    "type": "fungus",
    "name": {
     "ar": "التفحم السائب",
-    "en": "Loose smut"
+    "en": "Loose smut",
+    "fr": "Charbon nu",
+    "zh": "散黑穗病"
    },
    "sci": "Ustilago nuda (syn. U. tritici in some sources)",
    "symptoms": {
@@ -552,6 +758,12 @@
     ],
     "en": [
      "Plants look normal until ear emergence; affected heads emerge before healthy ones and all grain is replaced by dark brown spore mass; membrane breaks early leaving bare stalks."
+    ],
+    "fr": [
+     "Les plantes paraissent normales jusqu’à l’épiaison ; les épis atteints sortent avant les épis sains et tout le grain est remplacé par une masse de spores brun foncé ; la membrane se rompt tôt, laissant des tiges nues."
+    ],
+    "zh": [
+     "植株在抽穗前看起来正常；病穗比健康穗先抽出，所有籽粒被深褐色孢子团取代；包膜过早破裂，只留下光秃的穗轴。"
     ]
    },
    "timing": {
@@ -560,6 +772,12 @@
     ],
     "en": [
      "Infection favoured by frequent rain, high humidity and 16-22 C during flowering; fungus survives as dormant hyphae in the seed embryo."
+    ],
+    "fr": [
+     "Infection favorisée par des pluies fréquentes, une forte humidité et 16-22 C pendant la floraison ; le champignon survit sous forme d’hyphes dormants dans l’embryon de la semence."
+    ],
+    "zh": [
+     "开花期频繁降雨、高湿度和16-22 °C有利于侵染；病菌以休眠菌丝的形式在种子胚中存活。"
     ]
    },
    "cultural": {
@@ -568,6 +786,12 @@
     ],
     "en": [
      "After an outbreak source new clean seed; systemic seed treatments every year control the disease (concept; page names no active ingredient)."
+    ],
+    "fr": [
+     "Après une attaque, se procurer de nouvelles semences saines ; des traitements de semences systémiques chaque année maîtrisent la maladie (notion générale ; la page ne nomme aucune matière active)."
+    ],
+    "zh": [
+     "病害暴发后更换新的清洁种子；每年进行内吸性种子处理可控制该病（概念性说明；该页面未指明活性成分）。"
     ]
    },
    "chemical": [],
@@ -625,7 +849,9 @@
    "type": "fungus",
    "name": {
     "ar": "التفحم المغطى",
-    "en": "Covered smut"
+    "en": "Covered smut",
+    "fr": "Charbon couvert",
+    "zh": "坚黑穗病"
    },
    "sci": "Ustilago hordei (called Ustilago segetum var. hordei in the Victorian source)",
    "symptoms": {
@@ -634,6 +860,12 @@
     ],
     "en": [
      "No signs until ear emergence; florets of infected ears replaced by masses of dark brown to black spores held more firmly than loose smut spores."
+    ],
+    "fr": [
+     "Aucun signe jusqu’à l’épiaison ; les fleurons des épis infectés sont remplacés par des masses de spores brun foncé à noires, retenues plus fermement que les spores du charbon nu."
+    ],
+    "zh": [
+     "抽穗前没有症状；病穗的小花被深褐色至黑色的孢子团取代，其孢子比散黑穗病孢子附着得更牢固。"
     ]
    },
    "timing": {
@@ -642,6 +874,12 @@
     ],
     "en": [
      "Spores contaminate grain at harvest and germinate with the seed at sowing; favours drier soils and 15-21 C; earlier sowing increases infection."
+    ],
+    "fr": [
+     "Les spores contaminent le grain à la récolte et germent avec la semence au semis ; favorisé par des sols plus secs et 15-21 C ; un semis plus précoce augmente l’infection."
+    ],
+    "zh": [
+     "孢子在收获时污染籽粒，并在播种时随种子萌发；有利于较干燥的土壤和15-21 °C；播种越早，感染越重。"
     ]
    },
    "cultural": {
@@ -650,6 +888,12 @@
     ],
     "en": [
      "Fungicide seed treatments every year control it effectively; use new seed from a clean source after an outbreak; resistant varieties are available."
+    ],
+    "fr": [
+     "Les traitements fongicides des semences chaque année le maîtrisent efficacement ; utiliser de nouvelles semences issues d’une source saine après une attaque ; des variétés résistantes sont disponibles."
+    ],
+    "zh": [
+     "每年进行杀菌剂种子处理可有效控制该病；病害暴发后使用来自清洁来源的新种子；有抗病品种可用。"
     ]
    },
    "chemical": [],
@@ -665,7 +909,9 @@
    "type": "fungus",
    "name": {
     "ar": "التعفن الشائع للجذور وتبقع الأوراق (Bipolaris)",
-    "en": "Common root rot and spot blotch"
+    "en": "Common root rot and spot blotch",
+    "fr": "Pourriture racinaire commune et tache helminthosporienne",
+    "zh": "普通根腐病和叶斑病"
    },
    "sci": "Bipolaris sorokiniana",
    "symptoms": {
@@ -674,6 +920,12 @@
     ],
     "en": [
      "B. sorokiniana: infected seedlings have brown lesions on roots, coleoptiles and subcrown internodes; spot blotch shows as small brown leaf lesions under 1 cm, which may merge."
+    ],
+    "fr": [
+     "B. sorokiniana : les plantules infectées présentent des lésions brunes sur les racines, les coléoptiles et les entre-nœuds sous la couronne ; la tache helminthosporienne apparaît sous forme de petites lésions foliaires brunes de moins de 1 cm, qui peuvent fusionner."
+    ],
+    "zh": [
+     "B. sorokiniana：受感染的幼苗在根、胚芽鞘和根冠节间上出现褐色病斑；叶斑病表现为小于1厘米的褐色叶部小病斑，可相互融合。"
     ]
    },
    "timing": {
@@ -682,6 +934,12 @@
     ],
     "en": [
      "Seedling disease favoured by stress such as planting in hot, dry soils; spot blotch more frequent in wet weather, on lower leaves and after head development (B. sorokiniana)."
+    ],
+    "fr": [
+     "Maladie des plantules favorisée par un stress tel qu’un semis dans des sols chauds et secs ; la tache helminthosporienne est plus fréquente par temps humide, sur les feuilles inférieures et après le développement de l’épi (B. sorokiniana)."
+    ],
+    "zh": [
+     "幼苗期病害在胁迫条件下（如在炎热干燥的土壤中播种）更易发生；叶斑病在潮湿天气、下部叶片上以及穗发育之后更常见（B. sorokiniana）。"
     ]
    },
    "cultural": {
@@ -690,6 +948,12 @@
     ],
     "en": [
      "Partially resistant/tolerant varieties exist for barley and wheat but are not enough alone; healthy seed; shallow planting in cool soil; reduce nutrient/moisture stress; seed-applied fungicides may help; rotation with non-hosts can reduce inoculum but may be impractical due to wide host range; foliar fungicides of limited use."
+    ],
+    "fr": [
+     "Des variétés partiellement résistantes/tolérantes existent pour l’orge et le blé mais ne suffisent pas seules ; semences saines ; semis peu profond en sol frais ; réduire le stress nutritionnel/hydrique ; les fongicides appliqués sur les semences peuvent aider ; la rotation avec des plantes non hôtes peut réduire l’inoculum mais peut être peu pratique en raison de la large gamme d’hôtes ; fongicides foliaires d’utilité limitée."
+    ],
+    "zh": [
+     "大麦和小麦有部分抗性/耐病的品种，但仅靠这些并不足够；使用健康种子；在凉爽的土壤中浅播；减轻养分/水分胁迫；种子包衣杀菌剂可能有帮助；与非寄主作物轮作可减少接种体，但因寄主范围广可能不切实际；叶面杀菌剂作用有限。"
     ]
    },
    "chemical": [],
@@ -705,7 +969,9 @@
    "type": "fungus",
    "name": {
     "ar": "التخطط الشعيري (المخطط)",
-    "en": "Barley stripe"
+    "en": "Barley stripe",
+    "fr": "Rayure de l’orge",
+    "zh": "大麦条纹病"
    },
    "sci": "Pyrenophora graminea",
    "symptoms": {
@@ -714,6 +980,12 @@
     ],
     "en": [
      "Long pale or yellow stripes on second, third and later leaves that darken; leaves split along stripes; plants stunted, spikes blank."
+    ],
+    "fr": [
+     "Longues rayures pâles ou jaunes sur les deuxième, troisième feuilles et suivantes, qui foncent ; les feuilles se fendent le long des rayures ; plantes rabougries, épis vides."
+    ],
+    "zh": [
+     "第二片、第三片及以后的叶片上出现淡色或黄色长条纹，后变暗；叶片沿条纹开裂；植株矮化，穗不结实。"
     ]
    },
    "timing": {
@@ -726,6 +998,12 @@
     ],
     "en": [
      "Use certified seed; do not replant seed from infected fields."
+    ],
+    "fr": [
+     "Utiliser des semences certifiées ; ne pas ressemer des semences issues de champs infectés."
+    ],
+    "zh": [
+     "使用认证种子；不要重新播种来自感病田块的种子。"
     ]
    },
    "chemical": [],
@@ -741,7 +1019,9 @@
    "type": "virus",
    "name": {
     "ar": "فيروس تقزم الشعير الأصفر",
-    "en": "Barley yellow dwarf virus (BYDV)"
+    "en": "Barley yellow dwarf virus (BYDV)",
+    "fr": "Virus de la jaunisse nanisante de l’orge (JNO/BYDV)",
+    "zh": "大麦黄矮病毒（BYDV）"
    },
    "sci": "Barley yellow dwarf virus (BYDV; Luteoviridae)",
    "symptoms": {
@@ -752,6 +1032,14 @@
     "en": [
      "Uneven, blotchy leaf discoloration in yellow, red or purple shades; severe early infections can kill young plants. Wheat/barley leaves usually turn yellow.",
      "In barley, leaves develop a bright golden-yellow colour, sometimes with necrotic brown flecking; plants stunted, may ripen prematurely."
+    ],
+    "fr": [
+     "Décoloration foliaire inégale et marbrée dans des teintes jaunes, rouges ou violettes ; les infections précoces graves peuvent tuer les jeunes plantes. Les feuilles de blé/d’orge jaunissent généralement.",
+     "Chez l’orge, les feuilles prennent une couleur jaune doré vif, parfois avec de petites taches brunes nécrotiques ; plantes rabougries, pouvant mûrir prématurément."
+    ],
+    "zh": [
+     "叶片出现不均匀的斑驳变色，呈黄色、红色或紫色；早期严重感染可使幼苗死亡。小麦/大麦的叶片通常变黄。",
+     "在大麦上，叶片呈现鲜亮的金黄色，有时带有坏死的褐色斑点；植株矮化，可能提前成熟。"
     ]
    },
    "timing": {
@@ -760,6 +1048,12 @@
     ],
     "en": [
      "Vectored by most common grain aphids (bird cherry-oat, English grain, rose-grain, corn leaf aphids, greenbug); Russian wheat aphid is not a vector. Epidemics most likely in cool, moist seasons."
+    ],
+    "fr": [
+     "Transmis par la plupart des pucerons courants des céréales (puceron du merisier à grappes, puceron anglais des céréales, puceron du rosier et des céréales, puceron des feuilles du maïs, puceron vert des céréales) ; le puceron russe du blé n’est pas un vecteur. Les épidémies sont les plus probables pendant les saisons fraîches et humides."
+    ],
+    "zh": [
+     "由大多数常见的谷物蚜虫传播（禾谷缢管蚜、英国谷蚜、玫瑰谷蚜、玉米蚜、麦二叉蚜）；俄罗斯小麦蚜不是传毒介体。流行最可能发生在凉爽湿润的季节。"
     ]
    },
    "cultural": {
@@ -770,6 +1064,14 @@
     "en": [
      "Plant resistant or tolerant barley cultivars; avoid early (Sept-Oct) or late (Feb-Mar) planting in California.",
      "High levels of resistance or tolerance are available in barley and oats; control grassy weeds and volunteer cereals; fungicides do not control the virus; insecticides only when scouting indicates need."
+    ],
+    "fr": [
+     "Planter des cultivars d’orge résistants ou tolérants ; éviter les semis précoces (sept.-oct.) ou tardifs (févr.-mars) en Californie.",
+     "Des niveaux élevés de résistance ou de tolérance sont disponibles chez l’orge et l’avoine ; maîtriser les mauvaises herbes graminées et les céréales spontanées ; les fongicides ne maîtrisent pas le virus ; insecticides uniquement lorsque les observations au champ en indiquent la nécessité."
+    ],
+    "zh": [
+     "种植抗病或耐病大麦品种；在加利福尼亚州避免早播（9-10月）或晚播（2-3月）。",
+     "大麦和燕麦有高水平的抗性或耐病性；控制禾本科杂草和自生谷类植株；杀菌剂不能控制该病毒；仅在田间调查表明有需要时才使用杀虫剂。"
     ]
    },
    "chemical": [],
@@ -789,7 +1091,9 @@
    "type": "nematode",
    "name": {
     "ar": "نيماتودا أكياس الحبوب",
-    "en": "Cereal cyst nematode"
+    "en": "Cereal cyst nematode",
+    "fr": "Nématode à kystes des céréales",
+    "zh": "禾谷孢囊线虫"
    },
    "sci": "Heterodera avenae (and H. latipons in Mediterranean)",
    "symptoms": {
@@ -798,6 +1102,12 @@
     ],
     "en": [
      "Wheat roots become a dense bushy knotted mass with visible females; above ground, patches (1 to 100+ m2) of pale weak plants with fewer tillers. Barley roots are less affected than oat roots."
+    ],
+    "fr": [
+     "Les racines de blé deviennent une masse dense, touffue et noueuse avec des femelles visibles ; au-dessus du sol, des plages (de 1 à plus de 100 m2) de plantes pâles et faibles avec moins de talles. Les racines d’orge sont moins touchées que celles de l’avoine."
+    ],
+    "zh": [
+     "小麦根系变成致密的丛生结节团，可见雌虫；地上部出现苍白、衰弱、分蘖较少的植株斑块（1至100+平方米）。大麦根系受影响比燕麦根系小。"
     ]
    },
    "timing": {
@@ -808,6 +1118,14 @@
     "en": [
      "In Mediterranean climates hatching dormancy is obligate and long-lasting, broken when soils cool and get wetter. H. latipons is largely Mediterranean and suspected to limit barley and durum wheat in semi-arid regions.",
      "Caveat: UC IPM (California) states cereal cyst nematode 'has been reported on grasses, but it has not been detected in small grains' there; no Libya record found."
+    ],
+    "fr": [
+     "Dans les climats méditerranéens, la dormance de l’éclosion est obligatoire et de longue durée, levée lorsque les sols se refroidissent et deviennent plus humides. H. latipons est en grande partie méditerranéen et soupçonné de limiter l’orge et le blé dur dans les régions semi-arides.",
+     "Réserve : UC IPM (Californie) indique que le nématode à kystes des céréales « a été signalé sur des graminées, mais n’a pas été détecté dans les céréales à petits grains » dans cet État ; aucun signalement en Libye trouvé."
+    ],
+    "zh": [
+     "在地中海气候下，孵化休眠是强制性的且持续时间长，在土壤变凉变湿时被打破。H. latipons主要分布于地中海地区，被怀疑限制半干旱地区的大麦和硬粒小麦。",
+     "注意：UC IPM（加利福尼亚州）指出禾谷孢囊线虫“已在禾草上有报告，但在当地的小粒谷物中尚未检出”；未发现利比亚的记录。"
     ]
    },
    "cultural": {
@@ -816,6 +1134,12 @@
     ],
     "en": [
      "Grass-free rotations with non-host crops are among the most efficient methods; resistant cultivars are one of the best options (worked in Australia, Sweden, France) but resistance can break down; nematicides generally not economical."
+    ],
+    "fr": [
+     "Les rotations sans graminées avec des cultures non hôtes figurent parmi les méthodes les plus efficaces ; les cultivars résistants sont l’une des meilleures options (ayant fonctionné en Australie, en Suède, en France) mais la résistance peut être contournée ; les nématicides ne sont généralement pas économiques."
+    ],
+    "zh": [
+     "与非寄主作物进行无禾草轮作是最有效的方法之一；抗性品种是最佳选择之一（在澳大利亚、瑞典、法国有效），但抗性可能被克服；杀线虫剂一般不经济。"
     ]
    },
    "chemical": [],
@@ -873,6 +1197,22 @@
     "title": "Al-Asmarya Islamic University J. Applied Science (2020)",
     "url": "https://journals.asmarya.edu.ly/jbs/index.php/jbs/article/download/193/136"
    }
+  ],
+  "fr": [
+   "Tableau historique de la FAO : superficie d’orge récoltée en Libye 213 000 ha (1969/71), 284 000 ha (1979/81), 283 000 ha (1989/91) ; production 70 000 / 97 000 / 140 000 t ; rendement 326 / 342 / 496 kg/ha. Données anciennes.",
+   "FAO (via World-Grain, vers août 2022) : production céréalière totale de la Libye estimée à 209 000 t pour 2022 ; seulement environ 12 % de 15,4 millions d’ha sont arables ; prévision de l’IGC pour 2022-23 : importations d’orge de 500 000 t (900 000 t l’année précédente) ; la FAO indique que 50 % des importations totales d’orge, de 1 million de t, provenaient d’Ukraine.",
+   "Note pays FAO GIEWS Libye (date de référence : 16 juillet 2026) : la récolte de blé d’hiver et d’orge a commencé en mai 2026 et devait s’achever à la fin de juillet ; la production céréalière totale de 2026 est prévue à environ 150 000 t, soit près de 20 % sous la moyenne quinquennale, avec une superficie semée réduite. Aucun chiffre propre à l’orge dans la note.",
+   "Maladies de l’orge signalées en Libye dans une première enquête nationale : rouille naine de l’orge, charbon couvert de l’orge et certaines taches foliaires de l’orge (non nommées individuellement dans le résumé). (Mohamed 1975 ; résumé uniquement ; le résumé cite aussi la rouille de la tige, la carie, le charbon nu et l’oïdium sans culture hôte.)",
+   "L’oïdium est décrit comme une menace majeure pour l’orge dans les régions arides et semi-arides ; des essais au champ en Libye sur les cultivars « Areg » et « Wady Bargoge » ont testé les acides salicylique, oxalique et tannique, le benzothiazole (meilleur résultat) et les fongicides mancozèbe et thiophanate-méthyl (Topsin-M70 %, effet le plus faible) (Ekrim & Ghazala 2025 ; résumé uniquement).",
+   "Champignons de stockage sur le grain d’orge dans la région de Zliten : 10 espèces de 6 genres identifiées (échantillons de janv. 2013) ; Aspergillus flavus, A. ochraceus et Rhizopus stolonifer les plus pathogènes, réduisant la germination à 33,3 %. L’introduction de l’article mentionne la rouille naine, l’oïdium et l’helminthosporiose en réseau comme maladies de l’orge (El-Wadii, Ali & Jubran 2020)."
+  ],
+  "zh": [
+   "FAO历史表格：利比亚大麦收获面积为213,000公顷（1969/71年）、284,000公顷（1979/81年）、283,000公顷（1989/91年）；产量70,000 / 97,000 / 140,000吨；单产326 / 342 / 496公斤/公顷。数据陈旧。",
+   "FAO（经World-Grain，约2022年8月）：利比亚2022年谷物总产量估计为209,000吨；1540万公顷土地中仅约12%为可耕地；IGC预测2022-23年度大麦进口量为500,000吨（上一年为900,000吨）；FAO称大麦进口总量100万吨中有50%来自乌克兰。",
+   "FAO GIEWS利比亚国家简报（参考日期2026年7月16日）：冬小麦和大麦收获于2026年5月开始，预计7月下旬结束；2026年谷物总产量预测约为150,000吨，比五年平均水平低近20%，种植面积减少。简报中没有大麦的具体数据。",
+   "一项早期全国调查中报告的利比亚大麦病害：大麦叶锈病、大麦坚黑穗病以及一些大麦叶斑病（摘要中未逐一列出名称）。（Mohamed 1975；仅有摘要；摘要还列出了秆锈病、腥黑穗病、散黑穗病和白粉病，但未注明寄主作物。）",
+   "白粉病被描述为干旱和半干旱地区大麦的主要威胁；在利比亚对品种“Areg”和“Wady Bargoge”进行的田间试验测试了水杨酸、草酸和单宁酸、苯并噻唑（效果最好），以及杀菌剂mancozeb和thiophanate-methyl（Topsin-M70%，效果最弱）（Ekrim & Ghazala 2025；仅有摘要）。",
+   "Zliten地区大麦籽粒上的储藏真菌：鉴定出6个属的10个种（2013年1月样品）；Aspergillus flavus、A. ochraceus和Rhizopus stolonifer致病性最强，使发芽率降至33.3%。该论文的引言提到叶锈病、白粉病和网斑病为大麦病害（El-Wadii, Ali & Jubran 2020）。"
   ]
  },
  "ui": {
@@ -909,6 +1249,40 @@
    "images": "Licensed images (on barley)",
    "host": "On the crop",
    "by": "Source"
+  },
+  "fr": {
+   "tile_note": "Sources externes",
+   "back": "Toutes les cultures",
+   "symptoms": "Symptômes",
+   "timing": "Période et conditions",
+   "cultural": "Lutte non chimique",
+   "chemical": "Matières actives citées dans leur source (sans doses)",
+   "none_chem": "Aucune matière active documentée pour ce ravageur dans les sources utilisées ici.",
+   "sources": "Sources",
+   "libya": "Ce qui est documenté sur l’orge en Libye",
+   "cards": "ravageurs et maladies",
+   "country": "Pays de la source",
+   "badge": "Absent du livre",
+   "images": "Images sous licence (sur l’orge)",
+   "host": "Sur la culture",
+   "by": "Source"
+  },
+  "zh": {
+   "tile_note": "外部资料来源",
+   "back": "所有作物",
+   "symptoms": "症状",
+   "timing": "发生时期与条件",
+   "cultural": "非化学防治",
+   "chemical": "资料来源中列出的活性成分（不含剂量）",
+   "none_chem": "本处所用资料来源中没有该病虫害的已记录活性成分。",
+   "sources": "资料来源",
+   "libya": "关于利比亚大麦的已有记录",
+   "cards": "种病虫害",
+   "country": "来源国",
+   "badge": "非来自手册",
+   "images": "授权图片（大麦上）",
+   "host": "寄主作物",
+   "by": "来源"
   }
  }
 }

@@ -597,8 +597,8 @@
         html += '<a class="tws-a7link" href="#/tws/appendix7"><b>' + esc(L('a7_link_title')) + '</b><span>' + esc(L('a7_link_desc')) + '</span></a>';
       }
       html += '<ul class="tws-grid">';
-      if (!q || 'barley الشعير hordeum'.indexOf(q) >= 0) {
-        html += '<li><a class="tws-crop" href="#/tws/barley"><b>' + esc(loc() === 'ar' ? '\u0627\u0644\u0634\u0639\u064a\u0631' : 'Barley') + '</b>'
+      if (!q || 'barley الشعير hordeum orge 大麦'.indexOf(q) >= 0) {
+        html += '<li><a class="tws-crop" href="#/tws/barley"><b>' + esc({ ar: '\u0627\u0644\u0634\u0639\u064a\u0631', fr: 'Orge', zh: '\u5927\u9ea6' }[loc()] || 'Barley') + '</b>'
           + '<span class="en">Hordeum vulgare</span><span class="n">' + esc(loc() === 'ar' ? '\u0645\u0646 \u0645\u0635\u0627\u062f\u0631 \u062e\u0627\u0631\u062c\u064a\u0629' : 'External sources') + '</span></a></li>';
       }
       list.forEach(function (c) {
@@ -621,27 +621,27 @@
   /* ---------- الشعير: قسم مستقل من مصادر خارجية (ليس من كتاب التوصيات) ---------- */
   function renderBarley(sec, id) {
     fetchJSON('data/tws/supplement/barley.json').then(function (d) {
-      var l = loc() === 'ar' ? 'ar' : 'en', U = d.ui[l], ar = l === 'ar';
+      var lc = loc(), l = (lc === 'ar' || lc === 'fr' || lc === 'zh') && d.ui[lc] ? lc : 'en', U = d.ui[l], ar = l === 'ar';
       function pick(o) { return (o && (o[l] || o.en)) || []; }
       function ul(a) { return a.length ? '<ul>' + a.map(function (x) { return '<li dir="auto">' + esc(x) + '</li>'; }).join('') + '</ul>' : ''; }
       function srcs(a) { return '<p class="tws-meta">' + esc(U.sources) + ': ' + (a || []).map(function (x) { return '<a href="' + esc(x.url) + '" rel="noopener noreferrer" target="_blank">' + esc(x.title) + '</a>'; }).join(' · ') + '</p>'; }
       var notice = '<div class="tws-err" role="note"><p dir="auto">' + esc(d.notice[l] || d.notice.en) + '</p></div>';
       var html = '<div class="wrap"><nav class="tws-crumb"><a href="#/tws">' + esc(U.back) + '</a><span class="sep">\u2039</span>'
-        + (id ? '<a href="#/tws/barley">' + esc(d.crop['name_' + l]) + '</a>' : '<span class="cur">' + esc(d.crop['name_' + l]) + '</span>') + '</nav>';
+        + (id ? '<a href="#/tws/barley">' + esc(d.crop['name_' + l] || d.crop.name_en) + '</a>' : '<span class="cur">' + esc(d.crop['name_' + l] || d.crop.name_en) + '</span>') + '</nav>';
       var card = null;
       d.cards.forEach(function (c) { if (c.id === id) card = c; });
       if (!card) {
-        html += '<div class="tws-head"><h1>' + esc(d.crop['name_' + l]) + '</h1><p class="tws-meta"><em>' + esc(d.crop.sci) + '</em> \u00b7 ' + esc(d.crop.family) + '<br>' + d.cards.length + ' ' + esc(U.cards) + ' \u00b7 ' + esc(U.badge) + '</p></div>' + notice + '<ul class="tws-list">';
+        html += '<div class="tws-head"><h1>' + esc(d.crop['name_' + l] || d.crop.name_en) + '</h1><p class="tws-meta"><em>' + esc(d.crop.sci) + '</em> \u00b7 ' + esc(d.crop.family) + '<br>' + d.cards.length + ' ' + esc(U.cards) + ' \u00b7 ' + esc(U.badge) + '</p></div>' + notice + '<ul class="tws-list">';
         d.cards.forEach(function (c) {
-          html += '<li><a class="tws-inf" href="#/tws/barley/' + esc(c.id) + '"><span class="nm"><b>' + esc(c.name[l]) + '</b></span><span class="tws-chip warn">' + esc(U.badge) + '</span></a></li>';
+          html += '<li><a class="tws-inf" href="#/tws/barley/' + esc(c.id) + '"><span class="nm"><b>' + esc(c.name[l] || c.name.en) + '</b></span><span class="tws-chip warn">' + esc(U.badge) + '</span></a></li>';
         });
         html += '</ul>';
         var lb = pick(d.libya);
         if (lb.length) html += '<h3>' + esc(U.libya) + '</h3>' + ul(lb) + srcs(d.libya.sources);
       } else {
-        html += '<div class="tws-card"><h2 dir="auto">' + esc(card.name[l]) + '</h2><p class="tws-meta"><em>' + esc(card.sci || '') + '</em> \u00b7 ' + esc(U.badge) + '</p>' + notice
+        html += '<div class="tws-card"><h2 dir="auto">' + esc(card.name[l] || card.name.en) + '</h2><p class="tws-meta"><em>' + esc(card.sci || '') + '</em> \u00b7 ' + esc(U.badge) + '</p>' + notice
           + (card.images && card.images.length ? '<h3>' + esc(U.images) + '</h3><div class="tws-gallery">' + card.images.map(function (im) {
-              return '<figure><img src="data/tws/supplement/img/' + esc(im.file) + '" width="' + esc(im.w) + '" height="' + esc(im.h) + '" loading="lazy" alt="' + esc(card.name[l]) + '">'
+              return '<figure><img src="data/tws/supplement/img/' + esc(im.file) + '" width="' + esc(im.w) + '" height="' + esc(im.h) + '" loading="lazy" alt="' + esc(card.name[l] || card.name.en) + '">'
                 + '<figcaption><span class="tws-bdg host">' + esc(U.host) + '</span><br>' + esc(im.author) + ' \u00b7 ' + esc(im.license) + '<br><a href="' + esc(im.page) + '" rel="noopener noreferrer" target="_blank">' + esc(U.by) + '</a></figcaption></figure>';
             }).join('') + '</div>' : '')
           + '<h3>' + esc(U.symptoms) + '</h3>' + ul(pick(card.symptoms))

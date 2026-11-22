@@ -23,6 +23,8 @@ jobs:
       - name: Publish built APK (signing key only in encrypted form)
         run: |
           mkdir -p out-apk && mv al-mustashar-*.apk out-apk/
+          # stable download name for download.html (only when the owner key signed it; TEMPKEY builds are never published under it)
+          for f in out-apk/al-mustashar-*.apk; do case "$f" in *TEMPKEY*) ;; *) cp "$f" out-apk/al-mustashar.apk;; esac; done
           (cd out-apk && sha256sum * > SHA256SUMS.txt)
           git config user.name apk; git config user.email apk@users.noreply.github.com
           git checkout --orphan apk-built

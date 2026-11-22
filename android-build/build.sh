@@ -10,6 +10,12 @@ rsync -a --exclude='/.git' --exclude='/.github' --exclude='/_cap' --exclude='/an
 # CSP of the bundled copy only: allow contacting the app's own website for database updates (src/remote-data.js)
 sed -i "s#connect-src 'self'#connect-src 'self' https://al-mustashar.pages.dev#" "$W/www/index.html"
 grep -q "connect-src 'self' https://al-mustashar.pages.dev" "$W/www/index.html" || { echo "CSP patch failed"; exit 1; }
+# Android packaging unzips *.gz assets and drops the extension (ara/eng.traineddata.gz became *.traineddata -> 404).
+# Ship the language files unzipped under their final names and tell the OCR engine not to expect gzip (bundled copy only).
+for f in "$W"/www/vendor/tesseract/lang/*.traineddata.gz; do gunzip -f "$f"; done
+sed -i "s#gzip: true,#gzip: false,#" "$W/www/src/ocr.js"
+grep -q "gzip: false," "$W/www/src/ocr.js" || { echo "gzip patch failed"; exit 1; }
+ls "$W"/www/vendor/tesseract/lang/
 cd "$W"
 npm init -y >/dev/null
 npm i --no-audit --no-fund @capacitor/core@6 @capacitor/cli@6 @capacitor/android@6 >/dev/null
@@ -21,7 +27,7 @@ npx cap add android >/dev/null
 npx cap sync android >/dev/null
 # 2) version + camera permission (label scanning) + icons
 G=android/app/build.gradle
-sed -i "s/versionCode [0-9]*/versionCode ${VERSION_CODE:-5}/; s/versionName \"[^\"]*\"/versionName \"${VER}\"/" "$G"
+sed -i "s/versionCode [0-9]*/versionCode ${VERSION_CODE:-6}/; s/versionName \"[^\"]*\"/versionName \"${VER}\"/" "$G"
 M=android/app/src/main/AndroidManifest.xml
 sed -i 's#<uses-permission android:name="android.permission.INTERNET" />#<uses-permission android:name="android.permission.INTERNET" />\n    <uses-permission android:name="android.permission.CAMERA" />\n    <uses-feature android:name="android.hardware.camera" android:required="false" />#' "$M"
 grep -q 'permission.CAMERA' "$M" || { echo "camera permission not inserted"; exit 1; }

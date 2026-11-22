@@ -21,7 +21,7 @@ npx cap add android >/dev/null
 npx cap sync android >/dev/null
 # 2) version + camera permission (label scanning) + icons
 G=android/app/build.gradle
-sed -i "s/versionCode [0-9]*/versionCode ${VERSION_CODE:-3}/; s/versionName \"[^\"]*\"/versionName \"${VER}\"/" "$G"
+sed -i "s/versionCode [0-9]*/versionCode ${VERSION_CODE:-4}/; s/versionName \"[^\"]*\"/versionName \"${VER}\"/" "$G"
 M=android/app/src/main/AndroidManifest.xml
 sed -i 's#<uses-permission android:name="android.permission.INTERNET" />#<uses-permission android:name="android.permission.INTERNET" />\n    <uses-permission android:name="android.permission.CAMERA" />\n    <uses-feature android:name="android.hardware.camera" android:required="false" />#' "$M"
 grep -q 'permission.CAMERA' "$M" || { echo "camera permission not inserted"; exit 1; }
